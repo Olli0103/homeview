@@ -1,6 +1,6 @@
 # Eigenständige Wetter-App nach UI20
 
-Spaeterer, separat gepruefter [Wolken-Korrekturschritt](weather-clouds.md). Die folgenden Nachweise bleiben ihrem historischen Quellstand zugeordnet.
+Späterer, separat geprüfter [Wolken-Korrekturschritt](weather-clouds.md). Die folgenden Nachweise bleiben ihrem historischen Quellstand zugeordnet.
 
 17. Oktober 2026 · [#21](https://github.com/Olli0103/homeview/issues/21).
 

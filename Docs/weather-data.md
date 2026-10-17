@@ -1,6 +1,6 @@
 # Wetterdaten ohne erfundene Live-Werte
 
-Spaeterer, separat gepruefter [Wolken-Korrekturschritt](weather-clouds.md). Die folgenden Nachweise bleiben ihrem historischen Quellstand zugeordnet.
+Späterer, separat geprüfter [Wolken-Korrekturschritt](weather-clouds.md). Die folgenden Nachweise bleiben ihrem historischen Quellstand zugeordnet.
 
 Historischer Datenschritt `b08c6f8`. Die spätere eigenständige UI20-Ansicht ist
 [separat dokumentiert](weather-app.md); die folgenden Tests gehören zu diesem älteren Stand.

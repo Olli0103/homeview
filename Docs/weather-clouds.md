@@ -47,8 +47,8 @@ Der Null-Bedeckungsfall prueft einen blauen statt weißen Himmelsbereich.
 
 [Eigener Vorher-/Nachher-Vergleich](screenshots/iteration-20261017-block2/weather-clouds-own-before-after.png) - [Bildherkunft](verification/weather-clouds-comparison.json).
 
-**99 Modelltests, sieben gezielte UI-Faelle je iPad/iPhone (14 Ausfuehrungen) und
-fuenf SDK-Builds bestanden auf identischen eingefrorenen Quellen.** Null Fehler,
+**99 Modelltests, sieben gezielte UI-Fälle je iPad/iPhone (14 Ausführungen) und
+fünf SDK-Builds bestanden auf identischen eingefrorenen Quellen.** Null Fehler,
 Skips oder von XCTest gemeldete Runtime-Warnungen. Kein neuer kompletter UI-Suite-PASS.
 
 ## Weiter offen
