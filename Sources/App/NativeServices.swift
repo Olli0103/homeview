@@ -37,12 +37,12 @@ enum NativeServiceError: Error, LocalizedError {
         throw NativeServiceError.permissionDenied
       }
       let query = store.predicateForEvents(withStart: from, end: to, calendars: nil)
-      return store.events(matching: query).prefix(200).map {
+      return try CalendarAgenda.events(store.events(matching: query).map {
         DeviceEvent(
-          id: $0.eventIdentifier ?? UUID().uuidString, title: $0.title ?? "Untitled",
+          id: CalendarAgenda.occurrenceID(item: $0.calendarItemIdentifier, start: $0.startDate), title: $0.title ?? "Untitled",
           start: $0.startDate, end: $0.endDate, location: $0.location ?? "",
-          calendar: $0.calendar.title, cancelled: $0.status == .canceled)
-      }.sorted { $0.start < $1.start }
+          calendar: $0.calendar.title, cancelled: $0.status == .canceled, allDay: $0.isAllDay)
+      }, in: DateInterval(start: from, end: to))
     }
   }
   @MainActor

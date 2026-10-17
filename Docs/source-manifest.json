@@ -1,9 +1,9 @@
 {
-  "digest": "23abe5ec471e416e87de95c974ccf2f5409a74b264663cbffce51b0ce8755b16",
+  "digest": "119509b620a3e0b2dcc92c3ef51a7c36f9354854ef99ec0578c3321f3facc202",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "ed145ba8182ca45688525b913dbecfb094d864abb8c9dd6f2a18add93510ac1a"
+      "sha256": "a13f8dab219130d6a7a50d4bef5fa189d5695495da55d0f8345a28d2a98c0cbe"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -199,7 +199,7 @@
     },
     {
       "path": "Sources/App/AppModel.swift",
-      "sha256": "32345316ab0615056f11a87836854e8ed80182842816a41cbef387cb3d26005a"
+      "sha256": "a113e6773767af4588c7d8e72ee719e83214c109b5c688d91cd5bfe0006741ce"
     },
     {
       "path": "Sources/App/CameraAndCommunication.swift",
@@ -207,7 +207,7 @@
     },
     {
       "path": "Sources/App/ConnectedViews.swift",
-      "sha256": "f9857de143d6d6a47204535da7de0ccf2778b1f3144d48723fcc682a71a18c0c"
+      "sha256": "34dfbfe3f0af746f4d8e9e15e3c49ed70d99c0fab408a4b734723d08c4d005ac"
     },
     {
       "path": "Sources/App/Controls.swift",
@@ -219,7 +219,7 @@
     },
     {
       "path": "Sources/App/DeviceConnections.swift",
-      "sha256": "a9e63432d01eaaa643796c21eaae6ddc007d13cf9895a369601ed51d839b918c"
+      "sha256": "5a19ec1a7847ff9fc525ca64a8897c7ba1a5a61bbed034b3ddc5f5ec5cae06e4"
     },
     {
       "path": "Sources/App/DisplayWakeController.swift",
@@ -227,7 +227,7 @@
     },
     {
       "path": "Sources/App/Everyday.swift",
-      "sha256": "7d6b391fda228e8e16a8c6c47d69601da35729074eeb84796942585d16c1161c"
+      "sha256": "8c49845b8672a7ab7cd808ac4ec4d092c86c873df21ecfd420834b3e36e03387"
     },
     {
       "path": "Sources/App/FaceEditor.swift",
@@ -279,7 +279,7 @@
     },
     {
       "path": "Sources/App/NativeServices.swift",
-      "sha256": "6dc69d3ba6f0c0fd14711ae2b5757826b6d9cfa3014c7d28e1a6a7cae1b00d68"
+      "sha256": "d3d3c2b7c099a8d036f694ba1e8694ee9c64e726418ffea0fadb4a1995b5cbc0"
     },
     {
       "path": "Sources/App/NativeViewportMarker.swift",
@@ -314,16 +314,20 @@
       "sha256": "fd05c78fe473682b21773ae81940261b18eb8f2c6ee4f71b3ab997077e4a9815"
     },
     {
+      "path": "Sources/Core/CalendarAgenda.swift",
+      "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+    },
+    {
       "path": "Sources/Core/ConicGradientModel.swift",
       "sha256": "c1302b49578beb90ff7e794cc925e64dad60fa54c6b3090c5b22cbd3c7402ee8"
     },
     {
       "path": "Sources/Core/ConnectedDataSession.swift",
-      "sha256": "0359141a00a49183a81735e844c4cb0e7eb750bee62f9f6f3bb63fbb781cce62"
+      "sha256": "7277767af5461de48f0ed6a0b386a31a3504ef879d63208bd6b8b2ede4b91363"
     },
     {
       "path": "Sources/Core/ConnectedModels.swift",
-      "sha256": "c7842d14e830db223b0c198857e0244295a3b579634af70db28a4835da542e47"
+      "sha256": "82c5ee99f1d468f2b34397e7c503a9d4c09814b641c7429778b779b5d2379db3"
     },
     {
       "path": "Sources/Core/FaceConfiguration.swift",
@@ -354,12 +358,16 @@
       "sha256": "418016a859f09e373daa4971031d9363a561831395b77f9d5ec28a45790ee828"
     },
     {
+      "path": "Tests/CoreTests/CalendarAgendaTests.swift",
+      "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
+    },
+    {
       "path": "Tests/CoreTests/ConicGradientTests.swift",
       "sha256": "ce08c708aeea2b514882e298761e75c286704268731ca8456aa0b9f4c9916aa8"
     },
     {
       "path": "Tests/CoreTests/DeviceConnectionTests.swift",
-      "sha256": "6a372150a309851cea12c9a407209ae53817ee1fdd89d4df86fc325c5a5adf42"
+      "sha256": "b1e71f8a476eaaceba6fb82e476d6bf17e1686f280c080733c975190aa49c4e1"
     },
     {
       "path": "Tests/CoreTests/FlowTypographyTests.swift",
@@ -383,7 +391,7 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "43b8cc020cf292c2cebc6fb6a28ef5377e426afafe20866a9c628229a097879a"
+      "sha256": "2bd61f54f121b89d7a6d821f2da208ed0bdbd47077ff00e67d188dee50add7b3"
     }
   ]
 }

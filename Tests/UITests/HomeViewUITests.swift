@@ -808,6 +808,26 @@ final class HomeViewUITests: XCTestCase {
       evaluatedWith: status)
     waitForExpectations(timeout: 8)
   }
+  func testCalendarAgendaShowsAllDayAndSourceWithoutPersonalData() {
+    launch(["--page", "Settings", "--calendar-agenda-fixture"])
+    connectService("Calendar")
+    drawer(); tap("app.Calendar"); tap("device.unlock")
+    XCTAssertTrue(app.staticTexts["Synthetic all-day event"].waitForExistence(timeout: 5))
+    XCTAssertTrue(app.staticTexts["All day"].exists)
+    XCTAssertTrue(app.staticTexts["Synthetic calendar · Test room"].exists)
+    shot("calendar-agenda-all-day-and-source")
+    tap("calendar.refresh")
+    XCTAssertTrue(app.staticTexts["Synthetic all-day event"].waitForExistence(timeout: 5))
+  }
+  func testDeniedCalendarDoesNotSilentlyFallBackToDemoAgenda() {
+    launch(["--page", "Settings", "--connection-denied"])
+    connectService("Calendar", success: false)
+    drawer(); tap("app.Calendar"); tap("device.unlock")
+    XCTAssertTrue(app.staticTexts["No events"].waitForExistence(timeout: 5))
+    XCTAssertFalse(app.staticTexts["Morning walk"].exists)
+    XCTAssertFalse(app.staticTexts["Device fixture meeting"].exists)
+    shot("calendar-denied-no-demo-fallback")
+  }
   func testConnectedCalendarRequiresDeviceUnlockAndUsesNativeSourceContract() {
     launch(["--page", "Settings"])
     connectService("Calendar")

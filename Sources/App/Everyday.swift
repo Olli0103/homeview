@@ -1,4 +1,8 @@
+import Combine
 import SwiftUI
+#if canImport(EventKit) && (os(iOS) || os(macOS) || os(visionOS))
+import EventKit
+#endif
 
 struct CalendarView: View {
   @Environment(AppModel.self) private var model
@@ -16,7 +20,7 @@ struct CalendarView: View {
     calendar.date(byAdding: .day, value: index, to: start)!
   }
   var body: some View {
-    if model.connections.enabled.contains(.calendar), !model.connections.personalUnlocked {
+    if model.connections.requested.contains(.calendar), !model.connections.personalUnlocked {
       DeviceUnlockView()
     } else {
       calendarContent
@@ -48,18 +52,30 @@ struct CalendarView: View {
       ScrollView {
         VStack(alignment: .leading, spacing: 14) {
           let events: [CalendarEntry] =
-            model.connections.enabled.contains(.calendar)
+            model.connections.requested.contains(.calendar)
             ? model.connections.events.map { event in
               let f = DateFormatter()
               f.timeStyle = .short
               f.timeZone = model.displayTimeZone
               return CalendarEntry(
-                id: event.id, time: f.string(from: event.start), title: event.title,
-                subtitle: event.location.isEmpty ? event.calendar : event.location, color: 0,
+                id: event.id, time: event.allDay ? "All day" : f.string(from: event.start), title: event.title,
+                subtitle: [event.calendar, event.location].filter { !$0.isEmpty }.joined(separator: " · "), color: 0,
                 cancelled: event.cancelled)
             }
             : day == calendar.component(.weekday, from: model.clock) - 1
               ? CalendarEntry.fixtures : Array(CalendarEntry.fixtures.prefix(2))
+          if model.connections.enabled.contains(.calendar) || model.connections.status[.calendar] != nil {
+            HStack {
+              Text(model.connections.busy.contains(.calendar) ? "Updating agenda…"
+                : model.connections.status[.calendar] ?? "Connected calendar")
+              Spacer()
+              Button("Refresh") {
+                Task { await model.connections.refreshCalendar(date(day), timeZone: model.displayTimeZone) }
+              }.accessibilityIdentifier("calendar.refresh")
+            }.font(.system(size: 13)).foregroundStyle(.gray)
+              .accessibilityElement(children: .contain)
+              .accessibilityIdentifier("calendar.sourceStatus")
+          }
           if events.isEmpty {
             Text("No events").font(.system(size: 24)).foregroundStyle(.gray).padding(30)
           }
@@ -82,7 +98,14 @@ struct CalendarView: View {
         }.padding(.horizontal, 32).padding(.bottom, 25)
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
-      .task(id: day) { await model.connections.refreshCalendar(date(day)) }
+      .task(id: date(day)) {
+        await model.connections.refreshCalendar(date(day), timeZone: model.displayTimeZone)
+      }
+      #if canImport(EventKit) && (os(iOS) || os(macOS) || os(visionOS))
+      .onReceive(NotificationCenter.default.publisher(for: .EKEventStoreChanged)) { _ in
+        Task { await model.connections.refreshCalendar(date(day), timeZone: model.displayTimeZone) }
+      }
+      #endif
   }
 }
 struct TimerView: View {

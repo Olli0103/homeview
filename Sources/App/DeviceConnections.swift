@@ -171,6 +171,16 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
     if ProcessInfo.processInfo.arguments.contains("--connection-denied") {
       throw NativeServiceError.permissionDenied
     }
+    if ProcessInfo.processInfo.arguments.contains("--calendar-agenda-fixture") {
+      return [
+        DeviceEvent(id: "repeated-one", title: "Recurring occurrence one", start: from.addingTimeInterval(36000),
+          end: from.addingTimeInterval(39600), location: "Test room", calendar: "Synthetic calendar", cancelled: false),
+        DeviceEvent(id: "all-day", title: "Synthetic all-day event", start: from,
+          end: to, location: "", calendar: "Synthetic calendar", cancelled: false, allDay: true),
+        DeviceEvent(id: "cancelled", title: "Synthetic cancelled event", start: from.addingTimeInterval(43200),
+          end: from.addingTimeInterval(46800), location: "", calendar: "Synthetic calendar", cancelled: true)
+      ]
+    }
     return [
       DeviceEvent(
         id: "fixture", title: "Device fixture meeting", start: from.addingTimeInterval(36000),
