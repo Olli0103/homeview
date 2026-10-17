@@ -745,6 +745,40 @@
       ],
       "core_repeated_after_commit": true,
       "post_commit_core_log_sha256": "c2e314265bc32de89a57037db3efa8037d7f4c2d7d539d087dd2816761bf7600"
+    },
+    {
+      "checkpoint": "camera-stills-integrated",
+      "commit": "facfa9a10c07a76f861be15f17ce3f9eda8fe989",
+      "source_digest": "2be801de674495e7d0e690a627b9bb2e284cbd2bf3c895f0fcb8c36eb85ea909",
+      "files_verified": 124,
+      "core_passed": 104,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS27.0/24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS27.0/24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "f41979da788b69e7c88d7ac1aaeaedbb2b0f37a9b629b890f951ea8da25acb96"
     }
   ],
   "all_sources_match_committed_bytes": true

@@ -32,3 +32,9 @@ Exakte Originalschrift/Lichtführung, weitere Uhrzeiten/Varianten und reale
 Hardware-/Home-Abnahme bleiben offen. Die bisherige Kamerafläche ist in diesem
 Prüfstand noch eine klar synthetische Vektorszene; eigene generierte Demo-Standbilder
 werden getrennt integriert. Kein Original-PASS und kein Ende des Gesamtauftrags.
+
+## Kamerakachel danach
+
+`2776f7c` / `facfa9a` ersetzen die oben dokumentierte Vektorszene durch eine
+eigenständig generierte Living-Room-Demoszene mit passendem Detailziel.
+[Neuer Quellen-/Bildnachweis](demo-camera-assets.md), keine echte Kamera.
