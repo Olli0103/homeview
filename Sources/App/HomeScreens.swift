@@ -153,14 +153,17 @@ struct PersonalView: View {
           Spacer()
           Image(systemName:podcast ? "mic.circle":"music.note").font(.system(size:27)).opacity(0.8)
         }
-        Text(connectedMusic ? "Connected Music":podcast ? "Demo episode":"Demo music")
-          .font(.system(size:16,weight:.medium)).opacity(0.75)
+        if connectedMusic || podcast {
+          Text(connectedMusic ? "Connected Music":"Demo episode")
+            .font(.system(size:16,weight:.medium)).opacity(0.75)
+        }
         Button { model.navigate(podcast ? .podcasts:.music) } label: {
           Text(connectedMusic ? "Open Music":podcast ? "A Quiet Morning":model.currentMusicTitle)
             .font(.system(size:20,weight:.medium)).lineLimit(2).frame(maxWidth:.infinity,alignment:.leading)
         }.accessibilityIdentifier(podcast ? "personal.podcast.open":"personal.music.open")
         if !podcast && !connectedMusic {
           Text(model.currentMusicArtist).font(.system(size:18)).lineLimit(1).opacity(0.8)
+            .accessibilityIdentifier("personal.music.artist")
         }
         Button {
           if connectedMusic { model.navigate(.music) }
