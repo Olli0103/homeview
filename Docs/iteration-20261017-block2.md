@@ -64,3 +64,11 @@ Builds; nach Commit erneut 95 Modelltests. Quelle 109 Dateien, SHA-256
 [Eigener Nachweis](verification/weather-accepted.json) und [Grenzen](weather-data.md).
 Nicht mit der älteren vollständigen 216-Ausführungen-Regression verwechseln.
 Dieser Datenschritt schließt die visuell abweichende Wetteransicht nicht ab.
+
+## Visueller Korrekturschritt nach Eigentümerreview
+
+`d5514f9`: anhand UI47 breite Glasformen und Stencil-Details korrigiert; 95 Modelltests,
+fünf gezielte UI-Fälle je iPad/iPhone, fünf SDK-Builds und erneut 95 Modelltests nach
+Commit bestanden. Quellen-SHA `58aa35311cfde62210081d3adb5491c68b6090b066d8f28587ea0628a32f7922`.
+[Originalziel, eigener Bildvergleich und offene Abweichungen](visual-recovery-20261017.md).
+#15 bleibt offen. Der verworfene Videoentwurf wird nicht als Präsentation weitergeführt.

@@ -1,10 +1,12 @@
-# Eigenständige variable Flow-Ziffern
+# Flow: historische Metrikbasis und visuelle Kurskorrektur
 
 17. Oktober 2026 · [FLOW-01, #15](https://github.com/Olli0103/homeview/issues/15).
 
+**Aktueller Folgeschritt:** `d5514f9` ersetzt die visuell verfehlten Monoline-Formen durch eine erste referenzgebundene Korrektur. [Originalziel, eigene Vorher-/Nachher-Bilder und offene Abweichungen](visual-recovery-20261017.md). Die nachfolgenden Metriken und 56er-Tests beschreiben den früheren Stand `8d7842b`, nicht die aktuelle Form oder eine Originalabnahme.
+
 Die öffentliche App verwendet eigene kubische Ziffernskelette, keine OS-Schriftdateien oder daraus extrahierte Konturen. Solid und Stencil teilen sich dieselbe Form- und Metrikgrundlage. Die Stencil-Unterbrechungen werden aus der vereinigten Strichfläche geschnitten; sie sind keine nachgebaute Apple-Schrift.
 
-## Verbindlicher Zeichenraum
+## Historischer Zeichenraum auf `8d7842b`
 
 - Breitenachse 0,90 bis 1,06; Stärke 0 bis 1 ergibt 0,10 bis 0,18 Strichbreite im Einheitszeichenraum.
 - Jeder Kontrollpunkt und seine halbe Strichbreite bleiben innerhalb des Zeichenraums. Runde Enden/Verbindungen und kubische Kurven überschreiten diese Hülle nicht.
