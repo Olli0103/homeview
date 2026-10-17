@@ -294,30 +294,10 @@ struct NumeralsFace: View {
 }
 struct LandscapeArt: View {
   var body: some View {
-    GeometryReader { g in
-      ZStack {
-        LinearGradient(
-          colors: [
-            Color(red: 0.55, green: 0.75, blue: 0.87), Color(red: 0.97, green: 0.79, blue: 0.68),
-          ], startPoint: .top, endPoint: .bottom)
-        Circle().fill(.yellow.opacity(0.65)).frame(width: 110, height: 110).position(
-          x: g.size.width * 0.74, y: g.size.height * 0.3)
-        Path { p in
-          p.move(to: .init(x: 0, y: g.size.height * 0.8))
-          p.addLine(to: .init(x: g.size.width * 0.45, y: g.size.height * 0.3))
-          p.addLine(to: .init(x: g.size.width, y: g.size.height))
-          p.addLine(to: .init(x: 0, y: g.size.height))
-          p.closeSubpath()
-        }.fill(Color(red: 0.29, green: 0.42, blue: 0.4))
-        Path { p in
-          p.move(to: .init(x: 0, y: g.size.height))
-          p.addLine(to: .init(x: g.size.width * 0.78, y: g.size.height * 0.52))
-          p.addLine(to: .init(x: g.size.width, y: g.size.height * 0.75))
-          p.addLine(to: .init(x: g.size.width, y: g.size.height))
-          p.closeSubpath()
-        }.fill(Color(red: 0.18, green: 0.29, blue: 0.27))
-      }
-    }
+    GeometryReader { geometry in
+      Image(DemoPhotoAssets.landscape).resizable().scaledToFill()
+        .frame(width:geometry.size.width,height:geometry.size.height).clipped()
+    }.accessibilityLabel("AI-generated demo landscape")
   }
 }
 struct PhotoFace: View {
@@ -344,24 +324,13 @@ struct PhotoFace: View {
         Color(red: 1, green: 0.82, blue: 0.84)
       ).position(x: 300, y: 600 * model.photoComposition.clock.centerY)
         .accessibilityIdentifier("photo.clock").accessibilityValue(model.photoComposition.clock.rawValue)
-      // Foreground path deliberately occludes the time, matching the depth composition.
-      if model.photoData == nil {
-        Path { p in
-          p.move(to: .init(x: 0, y: 600))
-          p.addLine(to: .init(x: 280, y: 170))
-          p.addLine(to: .init(x: 460, y: 600))
-          p.closeSubpath()
-        }.fill(
-          LinearGradient(
-            colors: [
-              Color(red: 0.36, green: 0.48, blue: 0.44), Color(red: 0.18, green: 0.29, blue: 0.27),
-            ], startPoint: .top, endPoint: .bottom))
-      }
+      // Depth uses the selected image's real segmentation, not a fabricated
+      // foreground triangle over the fallback landscape.
       if model.photoComposition.depthEnabled, let foreground = model.photoForegroundData {
         layer(foreground).allowsHitTesting(false)
       }
       if ProcessInfo.processInfo.arguments.contains("--uitesting") {
-        Text("clock=\(model.photoComposition.clock.rawValue);full=\(model.photoComposition.destination != .full);depth=\(model.photoComposition.depthEnabled)")
+        Text("clock=\(model.photoComposition.clock.rawValue);full=\(model.photoComposition.destination != .full);depth=\(model.photoComposition.depthEnabled);foreground=\(model.photoForegroundData != nil);finished=\(model.photoAnalysisFinished);diagnostic=\(model.photoAnalysisDiagnostic);regions=\(model.photoProtectedRegionCount);protected=\(Int((model.photoComposition.protectedCoverage*1000).rounded()))")
           .font(.system(size: 1)).foregroundStyle(.clear).allowsHitTesting(false)
           .accessibilityIdentifier("photo.layout.test")
       }

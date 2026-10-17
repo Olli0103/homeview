@@ -100,10 +100,13 @@ final class AppModel {
   }
   var photoData: Data? = nil
   var photoForegroundData: Data? = nil
+  private(set) var photoAnalysisFinished = true
   private(set) var photoComposition = PhotoComposition()
   private var photoAnalysis: PhotoAnalysis?
   private var photoAnalysisTask: Task<Void, Never>?
   private var photoKey: String?
+  var photoAnalysisDiagnostic: String { photoAnalysis?.diagnostic ?? "none" }
+  var photoProtectedRegionCount: Int { photoAnalysis?.protectedRegions.count ?? 0 }
   var photoAdjustment: PhotoAdjustment {
     photoKey.flatMap { data.photoAdjustments[$0] } ?? .init()
   }
@@ -119,8 +122,10 @@ final class AppModel {
   }
   private func updatePhotoComposition() {
     guard let photoAnalysis else { photoComposition = .init(); return }
-    photoComposition = PhotoPlacement.choose(aspect: photoAnalysis.aspect, mask: photoAnalysis.mask,
-                                            adjustment: photoAdjustment)
+    photoComposition = PhotoPlacement.choose(
+      aspect: photoAnalysis.aspect, mask: photoAnalysis.mask,
+      protectedRegions: photoAnalysis.protectedRegions,
+      foregroundAvailable: photoForegroundData != nil, adjustment: photoAdjustment)
   }
   var now = Date()
   var referenceClock: Bool
@@ -308,6 +313,7 @@ final class AppModel {
     photoAnalysisTask?.cancel()
     photoData = bytes
     photoForegroundData = nil
+    photoAnalysisFinished = bytes == nil
     photoAnalysis = nil
     photoKey = bytes.map { SHA256.hash(data: $0).map { String(format: "%02x", $0) }.joined() }
     // Establish crop and manual placement immediately, before slower Vision segmentation.
@@ -329,12 +335,17 @@ final class AppModel {
           let analysis = try? await Task.detached(priority: .utility) {
             try NativeSubjectExtractor.analyze(bytes)
           }.value
-          guard !Task.isCancelled, photoData == bytes, let analysis else { return }
-          photoAnalysis = analysis
-          photoForegroundData = analysis.foreground
-          updatePhotoComposition()
+          guard !Task.isCancelled, photoData == bytes else { return }
+          if let analysis {
+            photoAnalysis = analysis
+            photoForegroundData = analysis.foreground
+            updatePhotoComposition()
+          }
+          photoAnalysisFinished = true
         }
       }
+    #else
+      photoAnalysisFinished = true
     #endif
   }
   func setGallery(_ images: [Data]) {

@@ -31,3 +31,15 @@ Die Grenze gilt auch beim Laden. Unbekannte Uhrenstile, fehlende Werte und besch
 Die Entwicklung verwendet selbst gezeichnete Testflächen. Sie stammen nicht aus Referenzfotos, OS-Beispielpaaren oder persönlichen Alben. Die realen Freigaben von PhotosPicker/PhotoKit sowie die Vision-Qualität auf beliebigen persönlichen Bildern sind weiterhin gesonderte Geräteabnahmen. Der Layoutkern macht keine vollständige Originalpixel- oder Motivverständnis-Zusage.
 
 Abschließende Quellenbindung, vollständige Regression und Bilder: [erstes Issue-Paket](iteration-20261017.md).
+
+## Erkannter Kopf ohne verfügbare Freistellung
+
+[Der spätere Foto-Demo-Schritt](demo-photo-assets.md) ergänzt echte lokale
+Gesichtsrechtecke aus öffentlichen Vision-/Core-Image-APIs als Schutzhinweise.
+Sie sind keine Motivmaske. Die automatische Platzierung darf ohne tatsächliche
+Vordergrundbytes keine deckende Uhr über diese Bereiche setzen. Kann kein
+Overlay die Bereiche freilassen, werden vollständiges Bild und Uhr getrennt.
+Der komplette Bildschutz bei Analysefehler ist ausdrücklich konservativ, nicht
+als erkannte Person oder vorhandener Depth-Effekt etikettiert. Manuelle
+Korrekturen bleiben erhalten. Allgemeine native Vision-Qualität und hohe
+Originaltypografie werden durch die analytischen Maskentests nicht abgenommen.

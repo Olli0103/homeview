@@ -103,18 +103,27 @@ struct PhotoComposition: Equatable, Sendable {
   var coverage = 0.0
   var retention = 1.0
   var depthEnabled = false
+  var protectedCoverage = 0.0
 }
 
 enum PhotoPlacement {
   /// Ranking, candidate positions and thresholds are our own choices, not Apple's rules.
   static func choose(aspect: Double, mask: PhotoSubjectMask?,
+                     protectedRegions: [PhotoRect] = [], foregroundAvailable: Bool = true,
                      adjustment: PhotoAdjustment = .init()) -> PhotoComposition {
     guard aspect.isFinite, (0.0001...10_000).contains(aspect) else { return .init() }
+    // Rectangles are explicit protection hints, not a fabricated segmentation mask.
+    // Too many hints conservatively protect the complete image instead of dropping faces.
+    let protected: [PhotoRect] = protectedRegions.count > 64 ? [.full] : protectedRegions.compactMap {
+      guard $0.valid else { return nil }
+      let rect = $0.intersection(.full)
+      return rect.valid ? rect : nil
+    }
     let w = min(1, 1 / aspect), h = min(1, aspect)
     func unit(_ value: Double) -> Double { value.isFinite ? min(1, max(0, value)) : 0.5 }
     let center = PhotoRect(x: (1-w)/2, y: (1-h)/2, width: w, height: h)
     let crops: [PhotoRect]
-    if adjustment.automaticCrop, let mask, mask.total > 0 {
+    if adjustment.automaticCrop, (mask?.total ?? 0) > 0 || !protected.isEmpty {
       crops = [0.5, 0.25, 0.75, 0.0, 1.0].map {
         PhotoRect(x: (1-w) * $0, y: (1-h) * $0, width: w, height: h)
       }
@@ -125,7 +134,8 @@ enum PhotoPlacement {
                      y: (1-h) * unit(adjustment.vertical), width: w, height: h)]
     }
     var candidates = crops.map { crop in
-      PhotoComposition(crop: crop, retention: mask?.retention(crop) ?? 1)
+      let regionRetention = protected.map { $0.intersection(crop).area / $0.area }.min() ?? 1
+      return PhotoComposition(crop: crop, retention: min(mask?.retention(crop) ?? 1, regionRetention))
     }
     // If no square crop keeps the detected subjects, preserve the complete image.
     if adjustment.automaticCrop {
@@ -155,14 +165,40 @@ enum PhotoPlacement {
             width: visible.width/layout.destination.width*layout.crop.width,
             height: visible.height/layout.destination.height*layout.crop.height)
           layout.coverage = mask.coverage(source) * visible.area / position.rect.area
-          layout.depthEnabled = mask.total > 0 && layout.coverage <= 0.18
+          layout.depthEnabled = foregroundAvailable && mask.total > 0 && layout.coverage <= 0.18
         }
+        layout.protectedCoverage = protected.reduce(0) { sum, region in
+          let r = region.intersection(layout.crop)
+          guard r.valid else { return sum }
+          let destination = PhotoRect(
+            x: layout.destination.x + (r.x-layout.crop.x)/layout.crop.width*layout.destination.width,
+            y: layout.destination.y + (r.y-layout.crop.y)/layout.crop.height*layout.destination.height,
+            width: r.width/layout.crop.width*layout.destination.width,
+            height: r.height/layout.crop.height*layout.destination.height)
+          return sum + destination.intersection(position.rect).area / position.rect.area
+        }
+        layout.protectedCoverage = min(1, layout.protectedCoverage)
         let displacement = abs(layout.crop.x-center.x) + abs(layout.crop.y-center.y)
         let positionCost = position == .top ? 0.0 : position == .bottom ? 0.015 : 0.03
-        let score = (1-layout.retention)*8 + layout.coverage + displacement*0.01 + positionCost
+        // A real foreground layer may occlude clock ink. Without one, opaque
+        // clock ink must not trade away detected faces for a slightly nicer crop.
+        let protectionCost = layout.depthEnabled ? 0 : layout.protectedCoverage * 1_000
+        let score = protectionCost + (1-layout.retention)*8 + layout.coverage + displacement*0.01 + positionCost
         // Stable iteration and epsilon retain the preferred layout on near-ties.
         if score < bestScore - 0.000_001 { best = layout; bestScore = score }
       }
+    }
+    if let best, !best.depthEnabled, best.protectedCoverage > 0.000_001,
+       adjustment.clock == .automatic, adjustment.automaticCrop, !protected.isEmpty {
+      // No full-size overlay avoids the detected heads. Preserve the whole photo
+      // below a separate clock band; never invent a cutout or discard a face.
+      let availableHeight = 0.58
+      let width = min(1, availableHeight * aspect)
+      let height = width / aspect
+      return PhotoComposition(
+        destination: .init(x: (1-width)/2, y: 0.42+(availableHeight-height)/2,
+                           width: width, height: height),
+        clock: .top, retention: 1, depthEnabled: false, protectedCoverage: 0)
     }
     return best ?? .init()
   }
@@ -172,4 +208,6 @@ struct PhotoAnalysis: Sendable {
   let aspect: Double
   let mask: PhotoSubjectMask?
   let foreground: Data?
+  var protectedRegions: [PhotoRect] = []
+  var diagnostic = "unspecified"
 }

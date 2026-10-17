@@ -111,10 +111,10 @@ final class SharedAlbumReader {
     let ticket = generation
     if testing {
       #if os(macOS)
-        return ["Soup", "AlbumArt"].compactMap { NSImage(named: $0)?.tiffRepresentation }.compactMap
+        return DemoPhotoAssets.gallery.compactMap { NSImage(named: $0)?.tiffRepresentation }.compactMap
         { try? PhotoThumbnail.make($0) }
       #elseif canImport(UIKit)
-        return ["Soup", "AlbumArt"].compactMap {
+        return DemoPhotoAssets.gallery.compactMap {
           UIImage(named: $0)?.jpegData(compressionQuality: 0.8)
         }
       #else

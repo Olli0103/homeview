@@ -36,3 +36,9 @@ under the project license, not presented as real camera recordings. The complete
 prompts, decoded dimensions and content hashes are recorded in
 [demo-camera-assets.md](Docs/demo-camera-assets.md). No original reference
 photographs or images of a real private home were supplied for their generation.
+
+The DemoPhotoLandscapeV1 and DemoPhotoPortraitV1 fixtures are independently
+AI-generated fictional images, created with the built-in image_gen tool without
+reference-image input. They are bundled under the project license, not claimed
+to be photographs of an actual known person or place. Selected files, hashes,
+full prompts and limitations: [demo-photo-assets.md](Docs/demo-photo-assets.md).
