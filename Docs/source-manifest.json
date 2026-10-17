@@ -1,9 +1,9 @@
 {
-  "digest": "b741d60e7c5cf4314454b2bb2416145351e985c6fc97dc9fc9b8318429cc5dac",
+  "digest": "dc505811f14616dd6f08a94148889ea92bd7aa11e997ce9d6165c3ac5c114da9",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "6c13c69b75abeb3009f68aeb62a378d078a1c0d8c7482e68a71cc9cdcae809d8"
+      "sha256": "eda3be22e3bb4aa5409321c669e19d550dd7bbcf1450ab718754857216ca8186"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -183,7 +183,7 @@
     },
     {
       "path": "Scripts/generate_project.py",
-      "sha256": "3bdad890b7993220c0991d93603967cbee90c48d7e2dd667e7afc7f0360e4c6a"
+      "sha256": "d8ef2bc64435e67de3bb16c24797efaab63794db7fa13f47876fe5d37c21e9ea"
     },
     {
       "path": "Scripts/make_icon.swift",
@@ -255,7 +255,7 @@
     },
     {
       "path": "Sources/App/HomeScreens.swift",
-      "sha256": "e3d11e898453486f150f945f4d7c36d5bbbb7882ea35526bed70ff9a505120d9"
+      "sha256": "fe135e721e4953d4c4eeeaa2db2c7611ebec61e7536cb8ca076e797b94e192e8"
     },
     {
       "path": "Sources/App/HomeViewApp.swift",
@@ -375,7 +375,11 @@
     },
     {
       "path": "Sources/Core/Models.swift",
-      "sha256": "8e4b7b6b7e6401b113098674970c3a38b97060a9e19723901e6b6ff8e5731434"
+      "sha256": "51ce58a0c0cf9c2c8e4da6c7870b7253211eb15238681433ff0fb90d94bf9ab5"
+    },
+    {
+      "path": "Sources/Core/PersonalHomeConfiguration.swift",
+      "sha256": "69be953e9ee1c0340b76be423b6defdf4ec1fc3f6b8f983dd717086ef82fdd3d"
     },
     {
       "path": "Sources/Core/PhotoMaskRasterizer.swift",
@@ -391,7 +395,7 @@
     },
     {
       "path": "Sources/Core/SnapshotMigration.swift",
-      "sha256": "e19070bece8e9e234d64b2820e490a7a445477d67f2872e115902add0c69138a"
+      "sha256": "2be696fa3bfe472b810135aab8bdf1162f49addfeffe872a18e9fc42b0e9a773"
     },
     {
       "path": "Sources/Core/WeatherData.swift",
@@ -430,6 +434,10 @@
       "sha256": "942cfbe1b6295013392e8ad3de36814f4f3cafea6a125dc8f5719fd6c3abd3ca"
     },
     {
+      "path": "Tests/CoreTests/PersonalHomeTests.swift",
+      "sha256": "314c440fa3767e4782e8fe755246b305d9bf19a55c3814d456f677a18aecbc07"
+    },
+    {
       "path": "Tests/CoreTests/PhotoPlacementTests.swift",
       "sha256": "f8042746bbc46a6147ebf807d3b8f1eadaac5016dc11f0c5d0ce7e7268273084"
     },
@@ -455,7 +463,7 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "cac38c8bf66d87b30fa8a5fdb89fd24e4715f6449e50a7e817f238bd953e0f2b"
+      "sha256": "40a5aa173e8b440b7b525b88cd5b2dec6c3839df3932d141582ff5a1f18af580"
     }
   ]
 }
