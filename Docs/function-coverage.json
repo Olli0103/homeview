@@ -381,7 +381,7 @@
       "PHOTO-02"
     ],
     "current": [
-      "Vision-Maske kann das Motiv vor die Uhr legen. Automatische Optimierung von Uhrposition und Crop fehlt."
+      "Automatische Motiv-/Ausschnittbewertung, vollständiges Bild bei Randmotiven und manuelle Korrektur je Bild samt Speicherung/Reset sind implementiert und synthetisch geprüft."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -394,7 +394,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "implemented and synthetic regression passed; general Vision/device quality remains unverified",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -505,7 +505,7 @@
       "FACE-09"
     ],
     "current": [
-      "Zeitabhängiges Ein-/Ausblenden ist eine eigene Interpolation aus Einzelbildern."
+      "Eigener zyklischer Fade-Verlauf und Reduce Motion sind implementiert und pixelbasiert geprüft. Die vollständige Originalzeitkurve und visuelle Abnahme fehlen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -518,7 +518,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "own conic renderer tested; original timing remains unresolved",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -2923,7 +2923,7 @@
       "SYS-04"
     ],
     "current": [
-      "Abmelden, Hintergrund und Inaktivitätsrückkehr sperren verbundene Daten. Tatsächliches Weggehen wird nicht erkannt."
+      "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2936,7 +2936,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "session/cache/API gates tested; physical absence detection unresolved",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },

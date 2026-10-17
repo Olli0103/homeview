@@ -1,6 +1,6 @@
-# Öffentliche Kopie: Prüfung
+# Historische Erstveröffentlichung: Prüfung
 
-17. Oktober 2026. Frische Prüfung nach Austausch der Referenzassets und Ziffernkonturen.
+17. Oktober 2026, erster öffentlicher Stand `cc95825`. Aktuelle Folgeprüfung: [Issue-Paket](iteration-20261017.md). Frische Prüfung nach Austausch der Referenzassets und Ziffernkonturen.
 
 | Prüfung | Ergebnis |
 |---|---|
@@ -18,7 +18,7 @@ Vier echte Simulatorbilder mit öffentlichen Ersatzassets wurden visuell geprüf
 - [Foto-Platzhalter, iPad](screenshots/photos-public-ipad.png)
 - [Foto-Platzhalter, iPhone](screenshots/photos-public-iphone.png)
 
-Quelldigest: `226a53b5c6c3a984495617f2174c44eab2593d07060529391e5202ab1caa6e12`. Dateiliste und Einzelhashes in [source-manifest.json](source-manifest.json), Screenshotdigests in [screenshots/manifest.json](screenshots/manifest.json).
+Quelldigest: `226a53b5c6c3a984495617f2174c44eab2593d07060529391e5202ab1caa6e12`. Dateiliste und Einzelhashes in [source-manifest.json](verification/publication-source.json), Screenshotdigests in [screenshots/manifest.json](screenshots/manifest.json).
 
 Ein parallel gestarteter erster Testbundle-Build kollidierte mit dem Plattformbuild auf derselben Xcode-Build-Datenbank. Nach Abschluss der Plattformbuilds wurde er seriell erfolgreich wiederholt. Alle oben berichteten UI-Ergebnisse stammen aus dem erfolgreichen finalen Lauf.
 
