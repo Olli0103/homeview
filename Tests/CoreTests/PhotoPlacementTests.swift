@@ -9,6 +9,39 @@ final class PhotoPlacementTests: XCTestCase {
     PhotoSubjectMask(width: 100, height: 100,
                      values: (0..<10_000).map { fill($0 % 100, $0 / 100) })!
   }
+  func testOpaqueClockAvoidsDetectedHeadWhenNoMatteExists() {
+    let head=PhotoRect(x:0.3,y:0.14,width:0.4,height:0.42)
+    let result=PhotoPlacement.choose(aspect:1,mask:nil,protectedRegions:[head],foregroundAvailable:false)
+    XCTAssertEqual(result.protectedCoverage,0)
+    XCTAssertFalse(result.depthEnabled)
+    XCTAssertEqual(result.retention,1)
+    XCTAssertEqual(result.clock.rect.intersection(head).area,0)
+  }
+  func testRectangularProtectionKeepsBothEdgeHeadsWithoutAFalseMask() {
+    let heads=[PhotoRect(x:0.02,y:0.25,width:0.1,height:0.4),
+               PhotoRect(x:0.88,y:0.25,width:0.1,height:0.4)]
+    let result=PhotoPlacement.choose(aspect:2,mask:nil,protectedRegions:heads,foregroundAvailable:false)
+    XCTAssertEqual(result.crop,.full)
+    XCTAssertNotEqual(result.destination,.full)
+    XCTAssertEqual(result.retention,1)
+    XCTAssertEqual(result.protectedCoverage,0)
+    XCTAssertFalse(result.depthEnabled)
+  }
+  func testNoUnobstructedOverlayPreservesWholeImageBelowClockBand() {
+    let result=PhotoPlacement.choose(aspect:1,mask:nil,protectedRegions:[.full],foregroundAvailable:false)
+    XCTAssertEqual(result.crop,.full)
+    XCTAssertEqual(result.retention,1)
+    XCTAssertNotEqual(result.destination,.full)
+    XCTAssertEqual(result.clock.rect.intersection(result.destination).area,0)
+    XCTAssertEqual(result.protectedCoverage,0)
+    XCTAssertFalse(result.depthEnabled)
+  }
+  func testMissingForegroundLayerNeverClaimsDepthFromAMaskAlone() {
+    let sparse=mask { _,y in y>80 ? 255:0 }
+    let result=PhotoPlacement.choose(aspect:1,mask:sparse,foregroundAvailable:false)
+    XCTAssertEqual(result.coverage,0)
+    XCTAssertFalse(result.depthEnabled)
+  }
   func testIntegralCoverageMatchesKnownSoftMaskAndClipsInvalidRectangles() {
     let mask = mask { x, _ in x < 50 ? 255 : 128 }
     XCTAssertEqual(mask.coverage(.init(x: 0, y: 0, width: 0.5, height: 1)), 1)
