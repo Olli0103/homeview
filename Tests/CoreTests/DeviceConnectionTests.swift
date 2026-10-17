@@ -18,6 +18,9 @@ final class DeviceConnectionTests: XCTestCase {
     var writeReply: CheckedContinuation<Void, any Error>?
     var onStart: (() -> Void)?
     var reminderReads = 0
+    var reminderWrites = 0
+    var ignoreReminderWrites = false
+    var reminderItems = [DeviceReminder(id: "private", title: "Synthetic private reminder", completed: false)]
     var eventReads = 0
     func authorized(_ kind: DataConnection) -> Bool { hasPermission }
     func authorizePersonal(_ kind: DataConnection) async throws {
@@ -46,18 +49,32 @@ final class DeviceConnectionTests: XCTestCase {
     }
     func reminders() async throws -> [DeviceReminder] {
       reminderReads += 1
-      return [DeviceReminder(id: "private", title: "Synthetic private reminder", completed: false)]
+      return reminderItems
     }
-    func addReminder(_ title: String) async throws {
+    func addReminder(_ title: String) async throws -> String {
+      reminderWrites += 1
       if delayReminderWrite {
         try await withCheckedThrowingContinuation {
           writeReply = $0
           onStart?()
         }
       }
+      let id = UUID().uuidString
+      if !ignoreReminderWrites { reminderItems.append(DeviceReminder(id: id, title: title, completed: false)) }
+      return id
     }
-    func completeReminder(_ id: String, completed: Bool) async throws {}
-    func removeReminder(_ id: String) async throws {}
+    func completeReminder(_ id: String, completed: Bool) async throws {
+      reminderWrites += 1
+      if !ignoreReminderWrites {
+        reminderItems = reminderItems.map {
+          $0.id == id ? DeviceReminder(id: id, title: $0.title, completed: completed) : $0
+        }
+      }
+    }
+    func removeReminder(_ id: String) async throws {
+      reminderWrites += 1
+      if !ignoreReminderWrites { reminderItems.removeAll { $0.id == id } }
+    }
     func authorizeMusic() async throws {}
     func searchMusic(_ text: String) async throws -> [DeviceTrack] { [] }
     func playMusic(_ index: Int) async throws {}
@@ -77,6 +94,51 @@ final class DeviceConnectionTests: XCTestCase {
       }
       return unlockGranted
     }
+  }
+
+  func testReminderReadOnlySnapshotBlocksBothMutationPathsInTheModel() async {
+    let provider = Provider()
+    let connections = DeviceConnections(provider: provider)
+    _ = await connections.unlock(); await connections.connect(.reminders)
+    let item = DeviceReminder(id: "private", title: "Synthetic private reminder", completed: false,
+      listTitle: "Shared", writable: false)
+    await connections.completeReminder(item); await connections.removeReminder(item)
+    XCTAssertEqual(provider.reminderWrites, 0)
+    XCTAssertTrue(connections.status[.reminders]?.contains("read-only") == true)
+  }
+  func testReminderWriteAcknowledgmentRequiresExactReadbackAndNeverRetries() async {
+    let provider = Provider()
+    let session = DeviceConnections(provider: provider)
+    _ = await session.unlock(); await session.connect(.reminders)
+    provider.ignoreReminderWrites = true
+    let item = session.reminders[0]
+    await session.completeReminder(item)
+    XCTAssertTrue(session.status[.reminders]?.contains("not confirmed") == true)
+    let added = await session.addReminder("Synthetic new item")
+    XCTAssertFalse(added)
+    await session.removeReminder(item)
+    XCTAssertEqual(provider.reminderWrites, 3)
+    XCTAssertEqual(provider.reminderReads, 4)
+    XCTAssertEqual(session.reminders.count, 1)
+    XCTAssertFalse(session.reminders[0].completed)
+  }
+  func testReminderPositiveReadbackAndRevocationWithoutPermissionPrompt() async {
+    let provider = Provider()
+    let connections = DeviceConnections(provider: provider)
+    _ = await connections.unlock(); await connections.connect(.reminders)
+    await connections.completeReminder(connections.reminders[0])
+    XCTAssertTrue(connections.reminders[0].completed)
+    XCTAssertTrue(connections.status[.reminders]?.contains("confirmed by source") == true)
+    let added = await connections.addReminder("Synthetic new item")
+    XCTAssertTrue(added)
+    XCTAssertEqual(connections.reminders.count, 2)
+    let reads = provider.reminderReads
+    provider.hasPermission = false
+    await connections.refreshReminders()
+    XCTAssertEqual(provider.reminderReads, reads)
+    XCTAssertEqual(provider.permissionRequests, 1)
+    XCTAssertTrue(connections.reminders.isEmpty)
+    XCTAssertTrue(connections.requested.contains(.reminders))
   }
 
   func testCalendarRefreshUsesDisplayedZoneAndNeverRequestsPermissionAgain() async {

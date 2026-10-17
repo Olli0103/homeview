@@ -90,6 +90,7 @@ struct DeviceRemindersView: View {
   @State private var title = ""
   @FocusState private var inputFocused: Bool
   var body: some View {
+    Group {
     if !model.connections.personalUnlocked {
       DeviceUnlockView()
     } else {
@@ -109,16 +110,22 @@ struct DeviceRemindersView: View {
                   HStack {
                     Image(systemName: item.completed ? "checkmark.circle.fill" : "circle")
                       .foregroundStyle(.orange)
-                    Text(item.title).strikethrough(item.completed)
+                    VStack(alignment: .leading, spacing: 4) {
+                      Text(item.title).strikethrough(item.completed)
+                      Text(item.listTitle + (item.writable ? "" : " · Read-only"))
+                        .font(.system(size: 13)).foregroundStyle(.gray)
+                    }
                     Spacer()
-                  }
-                }.accessibilityIdentifier("device.reminder.\(item.title)")
-                  .accessibilityValue(item.completed ? "Completed" : "Open")
+                  }.contentShape(Rectangle())
+                }.disabled(!item.writable || model.connections.busy.contains(.reminders))
+                  .accessibilityIdentifier("device.reminder.\(item.title)")
+                  .accessibilityValue(!item.writable ? "Read-only" : item.completed ? "Completed" : "Open")
                 Button {
                   Task { await model.connections.removeReminder(item) }
                 } label: {
                   Image(systemName: "minus.circle").foregroundStyle(.gray)
-                }.accessibilityLabel("Delete \(item.title)")
+                }.disabled(!item.writable || model.connections.busy.contains(.reminders))
+                  .accessibilityLabel("Delete \(item.title)")
               }.font(.system(size: 23)).padding(.vertical, 12)
               Divider()
             }
@@ -126,7 +133,7 @@ struct DeviceRemindersView: View {
         }
         Text(model.connections.status[.reminders] ?? "").font(.system(size: 16)).foregroundStyle(
           .gray
-        ).padding(.horizontal, 32)
+        ).padding(.horizontal, 32).accessibilityIdentifier("device.reminder.status")
         HStack {
           TextField("New reminder", text: $title).textFieldStyle(.plain).focused($inputFocused)
             .accessibilityIdentifier(
@@ -136,14 +143,16 @@ struct DeviceRemindersView: View {
             guard !value.isEmpty else { return }
             inputFocused = false
             Task {
-              await model.connections.addReminder(value)
-              title = ""
+              if await model.connections.addReminder(value) { title = "" }
             }
           }.accessibilityIdentifier("device.reminder.add")
         }.font(.system(size: 22)).padding(30)
           .disabled(model.connections.busy.contains(.reminders))
       }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
         .task { await model.connections.refreshReminders() }
+    }
+    }.onChange(of: model.connections.personalUnlocked) { _, unlocked in
+      if !unlocked { title = ""; inputFocused = false }
     }
   }
 }

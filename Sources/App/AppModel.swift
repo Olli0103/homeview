@@ -372,7 +372,7 @@ final class AppModel {
     interact()
     #if !os(watchOS)
       if page == .calendar && connections.requested.contains(.calendar)
-        || page == .reminders && connections.enabled.contains(.reminders)
+        || page == .reminders && connections.requested.contains(.reminders)
       {
         pendingPage = page
         route = connections.personalUnlocked ? .app(page) : .deviceUnlock
