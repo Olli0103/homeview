@@ -22,7 +22,7 @@ struct ConnectionControls: View {
               if on {
                 model.connections.disconnect(kind)
               } else {
-                Task { await model.connections.connect(kind, date: model.clock) }
+                Task { await model.connections.connect(kind, date: model.clock, timeZone: model.displayTimeZone) }
               }
             }.disabled(model.connections.busy.contains(kind))
               .accessibilityIdentifier("connect.\(kind.rawValue)")
@@ -30,6 +30,10 @@ struct ConnectionControls: View {
           Text(model.connections.status[kind] ?? "Not connected").font(.system(size: 16))
             .foregroundStyle(.gray)
             .accessibilityIdentifier("connection.status.\(kind.rawValue)")
+          if model.connections.requested.contains(kind), !model.connections.enabled.contains(kind) {
+            Button("Disconnect") { model.connections.disconnect(kind) }
+              .accessibilityIdentifier("connection.forget.\(kind.rawValue)")
+          }
           if kind == .weather {
             TextField(
               "City",

@@ -8,6 +8,7 @@ struct DeviceEvent: Identifiable, Sendable {
   let location: String
   let calendar: String
   let cancelled: Bool
+  var allDay = false
 }
 struct DeviceReminder: Identifiable, Sendable {
   let id: String

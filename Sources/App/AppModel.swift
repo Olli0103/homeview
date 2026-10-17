@@ -371,7 +371,7 @@ final class AppModel {
   func navigate(_ page: AppPage) {
     interact()
     #if !os(watchOS)
-      if page == .calendar && connections.enabled.contains(.calendar)
+      if page == .calendar && connections.requested.contains(.calendar)
         || page == .reminders && connections.enabled.contains(.reminders)
       {
         pendingPage = page

@@ -4,6 +4,9 @@ import XCTest
 @MainActor
 final class DeviceConnectionTests: XCTestCase {
   private final class Provider: DeviceDataProvider {
+    var hasPermission = true
+    var permissionRequests = 0
+    var queriedInterval: DateInterval?
     var delayUnlock = false
     var unlockGranted = true
     var delayEvents = false
@@ -16,8 +19,9 @@ final class DeviceConnectionTests: XCTestCase {
     var onStart: (() -> Void)?
     var reminderReads = 0
     var eventReads = 0
-    func authorized(_ kind: DataConnection) -> Bool { true }
+    func authorized(_ kind: DataConnection) -> Bool { hasPermission }
     func authorizePersonal(_ kind: DataConnection) async throws {
+      permissionRequests += 1
       if delayAuthorization {
         try await withCheckedThrowingContinuation {
           authorizationReply = $0
@@ -27,6 +31,7 @@ final class DeviceConnectionTests: XCTestCase {
     }
     func events(from: Date, to: Date) async throws -> [DeviceEvent] {
       eventReads += 1
+      queriedInterval = DateInterval(start: from, end: to)
       if delayEvents {
         return try await withCheckedThrowingContinuation {
           eventReply = $0
@@ -72,6 +77,28 @@ final class DeviceConnectionTests: XCTestCase {
       }
       return unlockGranted
     }
+  }
+
+  func testCalendarRefreshUsesDisplayedZoneAndNeverRequestsPermissionAgain() async {
+    let provider = Provider()
+    let connections = DeviceConnections(provider: provider)
+    await connections.connect(.calendar)
+    _ = await connections.unlock()
+    let date = ISO8601DateFormatter().date(from: "2026-03-29T12:00:00Z")!
+    await connections.refreshCalendar(date, timeZone: TimeZone(identifier: "Europe/Berlin")!)
+    XCTAssertEqual(provider.permissionRequests, 1)
+    XCTAssertEqual(provider.queriedInterval?.duration, 23 * 3600)
+    provider.hasPermission = false
+    let reads = provider.eventReads
+    await connections.refreshCalendar(date)
+    XCTAssertEqual(provider.permissionRequests, 1)
+    XCTAssertEqual(provider.eventReads, reads)
+    XCTAssertTrue(connections.events.isEmpty)
+    XCTAssertFalse(connections.enabled.contains(.calendar))
+    XCTAssertTrue(connections.requested.contains(.calendar))
+    XCTAssertTrue(connections.status[.calendar]?.contains("access changed") == true)
+    connections.disconnect(.calendar)
+    XCTAssertFalse(connections.requested.contains(.calendar))
   }
 
   func testLateUnlockCannotReopenLockedSession() async throws {

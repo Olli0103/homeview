@@ -35,6 +35,7 @@ final class DeviceConnections {
   private var generation: [DataConnection: Int] = [:]
   private var unlockGeneration = 0
   private(set) var enabled: Set<DataConnection> = []
+  private(set) var requested: Set<DataConnection> = []
   private(set) var busy: Set<DataConnection> = []
   private(set) var status: [DataConnection: String] = [:]
   private(set) var events: [DeviceEvent] = []
@@ -52,8 +53,10 @@ final class DeviceConnections {
     self.provider = provider
     if !testing { city = UserDefaults.standard.string(forKey: "HomeView.weather.city") ?? "Berlin" }
   }
-  func connect(_ kind: DataConnection, date: Date = Date()) async {
+  func connect(_ kind: DataConnection, date: Date = Date(),
+               timeZone: TimeZone = .current, requestPermission: Bool = true) async {
     guard !busy.contains(kind) || kind == .calendar else { return }
+    requested.insert(kind)
     let wasEnabled = enabled.contains(kind)
     busy.insert(kind)
     generation[kind, default: 0] += 1
@@ -62,18 +65,20 @@ final class DeviceConnections {
     defer { if generation[kind] == ticket { busy.remove(kind) } }
     do {
       if kind == .calendar || kind == .reminders {
-        try await provider.authorizePersonal(kind)
+        if requestPermission {
+          try await provider.authorizePersonal(kind)
+        } else if !provider.authorized(kind) {
+          throw CalendarAgendaError.permissionRequired
+        }
         guard generation[kind] == ticket, !Task.isCancelled else { return }
       }
       switch kind {
       case .calendar:
         guard personalUnlocked else { break }
-        let c = Calendar.current
-        let from = c.startOfDay(for: date)
-        let values = try await provider.events(
-          from: from, to: c.date(byAdding: .day, value: 1, to: from)!)
+        let interval = CalendarAgenda.day(containing: date, timeZone: timeZone)
+        let values = try await provider.events(from: interval.start, to: interval.end)
         guard generation[kind] == ticket else { return }
-        if personalUnlocked { events = values }
+        if personalUnlocked { events = try CalendarAgenda.events(values, in: interval) }
       case .reminders:
         guard personalUnlocked else { break }
         let values = try await provider.reminders()
@@ -100,7 +105,10 @@ final class DeviceConnections {
         kind == .weather
         ? "Weather unavailable. Check the city and connection."
         : "Access unavailable. Check permissions and your account."
-      if kind == .calendar { events = [] }
+      if kind == .calendar {
+        events = []
+        if let error = error as? CalendarAgendaError { status[kind] = error.localizedDescription }
+      }
       if kind == .reminders { reminders = [] }
     }
   }
@@ -109,8 +117,9 @@ final class DeviceConnections {
     for kind in DataConnection.allCases
     where UserDefaults.standard.bool(forKey: "HomeView.connected." + kind.rawValue) {
       if provider.authorized(kind) {
-        await connect(kind)
+        await connect(kind, requestPermission: false)
       } else {
+        requested.insert(kind)
         status[kind] = "Access needed. Connect again."
       }
     }
@@ -119,6 +128,7 @@ final class DeviceConnections {
     generation[kind, default: 0] += 1
     busy.remove(kind)
     enabled.remove(kind)
+    requested.remove(kind)
     status[kind] = "Disconnected"
     switch kind {
     case .calendar: events = []
@@ -159,12 +169,14 @@ final class DeviceConnections {
     events = []
     reminders = []
   }
-  func refreshCalendar(_ date: Date) async {
-    if enabled.contains(.calendar), personalUnlocked { await connect(.calendar, date: date) }
+  func refreshCalendar(_ date: Date, timeZone: TimeZone = .current) async {
+    if enabled.contains(.calendar), personalUnlocked {
+      await connect(.calendar, date: date, timeZone: timeZone, requestPermission: false)
+    }
   }
   func refreshReminders() async {
     if enabled.contains(.reminders), personalUnlocked, !busy.contains(.reminders) {
-      await connect(.reminders)
+      await connect(.reminders, requestPermission: false)
     }
   }
   func addReminder(_ title: String) async {
