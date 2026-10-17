@@ -42,10 +42,15 @@ struct ConnectionControls: View {
             .textFieldStyle(.plain).padding(10).background(
               .gray.opacity(0.08), in: RoundedRectangle(cornerRadius: 10)
             ).accessibilityIdentifier("weather.city")
+            Picker("Weather units", selection: Binding(get: { model.connections.weatherUnits },
+              set: { model.connections.weatherUnits = $0 })) {
+              ForEach(WeatherUnits.allCases, id: \.self) { units in Text(units.rawValue).tag(units) }
+            }.pickerStyle(.segmented).accessibilityIdentifier("weather.units")
             Link("Weather data by Open-Meteo", destination: URL(string: "https://open-meteo.com/")!)
               .font(.system(size: 15))
-            if model.connections.enabled.contains(.weather) {
+            if model.connections.requested.contains(.weather) {
               Button("Update weather") { Task { await model.connections.connect(.weather) } }
+                .disabled(model.connections.busy.contains(.weather)).accessibilityIdentifier("weather.update")
             }
           }
         }

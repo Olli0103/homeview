@@ -11,23 +11,6 @@ struct WeatherService {
     }
     let results: [Place]?
   }
-  private struct Forecast: Decodable {
-    struct Current: Decodable {
-      let time: Double
-      let temperature_2m: Double
-      let relative_humidity_2m: Double
-      let weather_code: Int
-      let wind_speed_10m: Double
-    }
-    struct Daily: Decodable {
-      let temperature_2m_max: [Double]
-      let temperature_2m_min: [Double]
-      let sunset: [Double]
-    }
-    let utc_offset_seconds: Int
-    let current: Current
-    let daily: Daily
-  }
   private func get<T: Decodable>(
     _ type: T.Type, host: String, path: String, query: [String: String]
   ) async throws -> T {
@@ -56,23 +39,14 @@ struct WeatherService {
       query: ["name": name, "count": "1", "language": "en", "format": "json"])
     guard let p = places.results?.first else { throw URLError(.resourceUnavailable) }
     let f = try await get(
-      Forecast.self, host: "api.open-meteo.com", path: "/v1/forecast",
+      OpenMeteoForecast.self, host: "api.open-meteo.com", path: "/v1/forecast",
       query: [
         "latitude": String(p.latitude), "longitude": String(p.longitude),
-        "current": "temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m",
-        "daily": "temperature_2m_max,temperature_2m_min,sunset", "temperature_unit": "fahrenheit",
+        "current": "temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,is_day,cloud_cover,precipitation",
+        "daily": "temperature_2m_max,temperature_2m_min,sunrise,sunset", "temperature_unit": "fahrenheit",
         "wind_speed_unit": "mph", "timezone": "auto", "timeformat": "unixtime",
         "forecast_days": "1",
       ])
-    guard let high = f.daily.temperature_2m_max.first, let low = f.daily.temperature_2m_min.first,
-      let sunset = f.daily.sunset.first,
-      f.current.temperature_2m.isFinite, f.current.relative_humidity_2m.isFinite,
-      f.current.wind_speed_10m.isFinite
-    else { throw URLError(.cannotParseResponse) }
-    return WeatherReading(
-      city: p.name, temperature: f.current.temperature_2m, high: high, low: low,
-      humidity: f.current.relative_humidity_2m, wind: f.current.wind_speed_10m,
-      code: f.current.weather_code, sunset: Date(timeIntervalSince1970: sunset),
-      utcOffset: f.utc_offset_seconds, observedAt: Date(timeIntervalSince1970: f.current.time))
+    return try f.reading(city: p.name)
   }
 }

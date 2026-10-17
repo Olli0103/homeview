@@ -1,9 +1,9 @@
 {
-  "digest": "bc08572ae729d0c9be67cccc2ec5f3b86a129380d9a4e818a799c4bc00676b9a",
+  "digest": "57bf3ba3ddb5e06037b32fdba3d3dec5836d89e995831100c23cc17c83432e06",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "0bcc89836a790b1f6000e1b0617e338452a55663aaa911bfceca6ba42649b089"
+      "sha256": "07c5dcba135bc1e6516b585371b34f4d1e5d1b9a9c1d73ab373d7665d1e9fded"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -211,11 +211,11 @@
     },
     {
       "path": "Sources/App/ConnectedViews.swift",
-      "sha256": "2adc5ee31d98b3fef72f34c185ab2f59604b19695c069de02722a185008277ee"
+      "sha256": "60142fc2b5d3e057bacfcb8f22d1470ec2f5923281196c80bc8fb86a1255c14d"
     },
     {
       "path": "Sources/App/Controls.swift",
-      "sha256": "4435eec7d7d512a6b22788fff3cdc033ecc8d5b4dc1c8cb462bbc27e8555023b"
+      "sha256": "e969757a8ec6cb5b193a07cea9c24e6be0f948be291ccbbfb7684bd08e2d5819"
     },
     {
       "path": "Sources/App/Design.swift",
@@ -223,7 +223,7 @@
     },
     {
       "path": "Sources/App/DeviceConnections.swift",
-      "sha256": "380d40e70ae4c389fc1afc3f627a39c31a071d6416d1154b96e02856235d45a0"
+      "sha256": "877828a9d55ecdcb509c4dd3ff070442c4ea2434af1b9f155624910d01dac1e2"
     },
     {
       "path": "Sources/App/DisplayWakeController.swift",
@@ -235,11 +235,11 @@
     },
     {
       "path": "Sources/App/FaceEditor.swift",
-      "sha256": "87bf6e5330807edac3e72feccff8d9d046f83ee52802c82ad61ca172041e2d09"
+      "sha256": "64195338be3019f9c683fc2da1425c1f6e25ef8847169c6139735a9e1763134d"
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "f1d13662412b4d491c2bbcea45dcddfe65ca172b7f1e5e0d3acff8de3ca5cd89"
+      "sha256": "58dcfdcdb8a11132d2b8e42f880c963b38d1977e3b940d8e3f62b850c9b8f7f2"
     },
     {
       "path": "Sources/App/FlowDigitContours.swift",
@@ -315,7 +315,7 @@
     },
     {
       "path": "Sources/App/WeatherService.swift",
-      "sha256": "fd05c78fe473682b21773ae81940261b18eb8f2c6ee4f71b3ab997077e4a9815"
+      "sha256": "6054cf206566a329a8638e44aa5e9bb749ac52adf1785bdf3b83478aa966b27b"
     },
     {
       "path": "Sources/Core/BrowserPolicy.swift",
@@ -331,11 +331,11 @@
     },
     {
       "path": "Sources/Core/ConnectedDataSession.swift",
-      "sha256": "11a7d58910156f22f778040f360b1afc69d6b5f1b0d42c4adf72d314166340e9"
+      "sha256": "a13a86046396aa69a99d7e4f8bd0c07a7c270675b76fd61d4760ec5ad788f421"
     },
     {
       "path": "Sources/Core/ConnectedModels.swift",
-      "sha256": "53c07afc8ee181602f83b37e8eff2a4c11b238de98150b89321cda931f700e19"
+      "sha256": "cb011d1d322c46a8424d04e8a9e858b7d723ef76abb8ab88c2f1ed4d5bedc42c"
     },
     {
       "path": "Sources/Core/EverydayVoiceCommand.swift",
@@ -374,6 +374,10 @@
       "sha256": "e19070bece8e9e234d64b2820e490a7a445477d67f2872e115902add0c69138a"
     },
     {
+      "path": "Sources/Core/WeatherData.swift",
+      "sha256": "902535cd75beca71eefe2dbb6bfb09f32b1aee6b9648dc0ea06f77fdb95ba2d1"
+    },
+    {
       "path": "Sources/Core/WorldClock.swift",
       "sha256": "418016a859f09e373daa4971031d9363a561831395b77f9d5ec28a45790ee828"
     },
@@ -391,7 +395,7 @@
     },
     {
       "path": "Tests/CoreTests/DeviceConnectionTests.swift",
-      "sha256": "0df7ca292157c1cd9a665c5ca523e5fe5cfedd32e593e8941c0106ceed4b0851"
+      "sha256": "0aedba5f121046cf3eba3269433e11ed81c7a7ed316810692cab014462833fb7"
     },
     {
       "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
@@ -422,12 +426,16 @@
       "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
     },
     {
+      "path": "Tests/CoreTests/WeatherTests.swift",
+      "sha256": "ebfac3cccefacbed86701756714ceef521d66e50f8a9014a322540a34d58ebd5"
+    },
+    {
       "path": "Tests/CoreTests/WorldClockTests.swift",
       "sha256": "62c4a2ce24c52dca60a9315e6d0de91f0a77cb2c2c9b83aef2a9010f6389d34d"
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "910a30fa1f0ddfb3c5a6fe83be88f02f9655063994150f8b3900d69e64bc081d"
+      "sha256": "cfcfd6284bf4f86fb917979ff6eeb30b13e1545b0e331361163d46fe3a2e5dc1"
     }
   ]
 }

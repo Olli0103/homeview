@@ -1,0 +1,25 @@
+{
+  "aqi_requested_or_invented": false,
+  "city": "Berlin",
+  "condition": "Rain",
+  "gps_or_home_access": false,
+  "humidity_percent": 89,
+  "observed_at_unix": 1792252800,
+  "retrieved_at_unix": 1792253464.343381,
+  "source": "Open-Meteo",
+  "sunrise_present": true,
+  "sunset_present": true,
+  "temperature_f": 52.5,
+  "wind_mph": 7.1,
+  "method": "Compiled unchanged WeatherService.swift + WeatherData.swift, explicit public city Berlin. No accounts or private location.",
+  "compiled_sources": [
+    {
+      "path": "Sources/Core/WeatherData.swift",
+      "sha256": "902535cd75beca71eefe2dbb6bfb09f32b1aee6b9648dc0ea06f77fdb95ba2d1"
+    },
+    {
+      "path": "Sources/App/WeatherService.swift",
+      "sha256": "6054cf206566a329a8638e44aa5e9bb749ac52adf1785bdf3b83478aa966b27b"
+    }
+  ]
+}

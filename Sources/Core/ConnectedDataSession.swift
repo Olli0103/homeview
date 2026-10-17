@@ -46,12 +46,29 @@ final class DeviceConnections {
   private(set) var musicTime = 0.0
   private(set) var weather: WeatherReading?
   private(set) var personalUnlocked = false
-  var city = "Berlin"
+  var city = "Berlin" {
+    didSet {
+      guard city != oldValue else { return }
+      generation[.weather, default: 0] += 1
+      weather = nil
+      weatherFetchFailed = false
+      enabled.remove(.weather)
+      busy.remove(.weather)
+      if requested.contains(.weather) { status[.weather] = "City changed · update weather" }
+    }
+  }
+  var weatherUnits = WeatherUnits.fahrenheit {
+    didSet { if !testing { UserDefaults.standard.set(weatherUnits.rawValue, forKey: "HomeView.weather.units") } }
+  }
+  private(set) var weatherFetchFailed = false
   private var lastWeatherFetch = Date.distantPast
   init(provider: any DeviceDataProvider, testing: Bool = true) {
     self.testing = testing
     self.provider = provider
-    if !testing { city = UserDefaults.standard.string(forKey: "HomeView.weather.city") ?? "Berlin" }
+    if !testing {
+      city = UserDefaults.standard.string(forKey: "HomeView.weather.city") ?? "Berlin"
+      weatherUnits = WeatherUnits(rawValue: UserDefaults.standard.string(forKey: "HomeView.weather.units") ?? "") ?? .fahrenheit
+    }
   }
   func connect(_ kind: DataConnection, date: Date = Date(),
                timeZone: TimeZone = .current, requestPermission: Bool = true) async {
@@ -86,10 +103,12 @@ final class DeviceConnections {
         if personalUnlocked { reminders = values }
       case .music: try await provider.authorizeMusic()
       case .weather:
-        let reading = try await provider.weather(city)
-        guard generation[kind] == ticket else { return }
-        weather = reading
+        let queryCity = city
         lastWeatherFetch = Date()
+        let reading = try await provider.weather(queryCity)
+        guard generation[kind] == ticket, city == queryCity, !Task.isCancelled else { return }
+        weather = reading
+        weatherFetchFailed = false
       }
       guard generation[kind] == ticket else { return }
       enabled.insert(kind)
@@ -101,6 +120,7 @@ final class DeviceConnections {
     } catch {
       guard generation[kind] == ticket else { return }
       if kind == .weather && wasEnabled { enabled.insert(kind) } else { enabled.remove(kind) }
+      if kind == .weather { weatherFetchFailed = true }
       status[kind] =
         kind == .weather
         ? "Weather unavailable. Check the city and connection."
@@ -141,7 +161,7 @@ final class DeviceConnections {
       tracks = []
       currentTrack = nil
       musicPlaying = false
-    case .weather: weather = nil
+    case .weather: weather = nil; weatherFetchFailed = false
     }
     if !testing { UserDefaults.standard.set(false, forKey: "HomeView.connected." + kind.rawValue) }
   }
@@ -284,5 +304,25 @@ final class DeviceConnections {
       lastWeatherFetch = Date()
       Task { await connect(.weather) }
     }
+  }
+  var weatherDemo: Bool { !requested.contains(.weather) }
+  var weatherTemperature: String { weatherUnits.temperature(weatherDemo ? 54 : weather?.temperature) }
+  var weatherHighLow: String {
+    "H:\(weatherUnits.temperature(weatherDemo ? 57 : weather?.high)) L:\(weatherUnits.temperature(weatherDemo ? 49 : weather?.low))"
+  }
+  var weatherCondition: String { weatherDemo ? "Partly Cloudy · Demo" : weather?.condition ?? "Weather unavailable" }
+  var weatherSymbol: String { weatherDemo ? "cloud.sun.fill" : weather?.symbol ?? "questionmark.circle" }
+  var weatherCity: String { weatherDemo ? "San Francisco · Demo" : weather?.city ?? city }
+  func weatherSource(at now: Date) -> String {
+    if weatherDemo { return "Demo · synthetic weather · \(weatherUnits.rawValue)" }
+    guard let weather else {
+      return busy.contains(.weather) ? "Loading weather…" : "Weather unavailable · update in Settings"
+    }
+    let quality = weatherFetchFailed ? "Offline · last reading" : weather.stale(at: now) ? "Stale reading" : "Observed"
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "en_US")
+    formatter.timeZone = TimeZone(secondsFromGMT: weather.utcOffset)
+    formatter.dateFormat = "MMM d, HH:mm"
+    return "\(quality) · \(formatter.string(from: weather.observedAt)) · \(weatherUnits.rawValue)"
   }
 }

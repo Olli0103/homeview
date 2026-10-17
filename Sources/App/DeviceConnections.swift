@@ -157,6 +157,7 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
 /// Only used by --uitesting, before constructing any system provider.
 @MainActor
 final class FixtureDeviceDataProvider: DeviceDataProvider {
+  private var weatherCalls = 0
   private var list = [
     DeviceReminder(id: "fixture", title: "Device fixture reminder", completed: false, listTitle: "Synthetic list")
   ]
@@ -222,9 +223,22 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
   var musicPlaying: Bool { playing }
   var musicTime: Double { 12 }
   func weather(_ city: String) async throws -> WeatherReading {
-    WeatherReading(
-      city: "Fixture City", temperature: 55, high: 60, low: 48, humidity: 70, wind: 8, code: 2,
-      sunset: Fixtures.date, utcOffset: 0, observedAt: Fixtures.date)
+    weatherCalls += 1
+    let args = ProcessInfo.processInfo.arguments
+    if args.contains("--weather-fail") || args.contains("--weather-cached-failure") && weatherCalls > 1 {
+      throw URLError(.notConnectedToInternet)
+    }
+    if args.contains("--weather-missing") {
+      return WeatherReading(city: city,temperature:nil,high:nil,low:nil,humidity:nil,wind:nil,
+        code:nil,sunset:nil,utcOffset:20700,observedAt:Date())
+    }
+    let stale = args.contains("--weather-stale-night")
+    let snow = args.contains("--weather-snow")
+    let rain = args.contains("--weather-rain")
+    return WeatherReading(
+      city: "Fixture City", temperature: snow ? 22 : 55, high: 60, low: 48, humidity: 70, wind: 8, code: snow ? 73 : rain ? 61 : 2,
+      sunset: Fixtures.date, utcOffset: 0, observedAt: stale ? Date().addingTimeInterval(-7200) : Date(),
+      sunrise: nil,isDay: !stale,cloudCover:40)
   }
   func unlock() async -> Bool { true }
 }
