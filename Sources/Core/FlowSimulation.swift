@@ -13,8 +13,13 @@ struct FlowSimulation: Sendable {
     dye = (0..<n * n).map { i in
       let x = Float(i % n) / Float(n - 1)
       let y = Float(i / n) / Float(n - 1)
-      let blend = (sin(x * 7 + y * 5) + 1) * 0.5
-      return SIMD3(0.08 + 0.82 * blend, 0.22 + 0.48 * (1 - blend), 0.95 - 0.2 * y)
+      let blend = (sin(x * 5.5 + sin(y * 3.1) * 1.2 + y * 4.7 + 1.45) + 1) * 0.5
+      let cyan = SIMD3<Float>(0.10,0.72,0.96)
+      let pink = SIMD3<Float>(0.95,0.40,0.74)
+      let blue = SIMD3<Float>(0.12,0.35,0.97)
+      let band = y - (0.32 + 0.08 * sin(x * 6))
+      let amount = exp(-band * band * 60) * 0.75
+      return (cyan * (1 - blend) + pink * blend) * (1 - amount) + blue * amount
     }
   }
   private func index(_ x: Int, _ y: Int) -> Int {
@@ -185,7 +190,7 @@ struct FlowSimulation: Sendable {
     // Semi-Lagrangian dye advection, same sampling direction as responsiveArtAdvectColorDyeNode.
     let oldDye = dye
     let colors: [SIMD3<Float>] = [
-      SIMD3(0.02, 0.8, 1), SIMD3(0.98, 0.08, 0.75), SIMD3(0.15, 0.15, 0.85),
+      SIMD3(0.10, 0.72, 0.96), SIMD3(0.95, 0.40, 0.74), SIMD3(0.12, 0.35, 0.97),
     ]
     let locations = (0..<3).map { source in
       let phase = time * 0.22 + Float(source) * 2.0944
