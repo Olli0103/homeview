@@ -235,6 +235,9 @@ struct Snapshot: Codable, Sendable {
   var screenBrightness = 1.0
   var keepDisplayOn = false
   var photoIDs: [String] = []
+  var photoSelection = PhotoSelectionKind.legacy
+  var photoGalleryTitle: String?
+  var albumDisplay: AlbumDisplayGrant?
   var rotatePhotos = true
   var photoAdjustments: [String: PhotoAdjustment] = [:]
   var timers: [Countdown] = []
