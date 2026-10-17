@@ -709,6 +709,27 @@ final class HomeViewUITests: XCTestCase {
     waitForExpectations(timeout: 5)
     shot("connected-reminders-fixture")
   }
+  func testBackgroundLocksConnectedCalendarAndRequiresFreshDeviceUnlock() {
+    launch(["--page", "Settings"])
+    connectService("Calendar")
+    drawer()
+    tap("app.Calendar")
+    tap("device.unlock")
+    XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout: 5))
+    XCUIDevice.shared.press(.home)
+    app.activate()
+    XCTAssertTrue(app.staticTexts["mock.badge"].waitForExistence(timeout: 8))
+    XCTAssertFalse(app.staticTexts["Device fixture meeting"].exists)
+    // Navigate from a new foreground session; selecting a demo profile is not device unlock.
+    tap("nav.faces")
+    drawer()
+    tap("app.Calendar")
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout: 5))
+    XCTAssertFalse(app.staticTexts["Device fixture meeting"].exists)
+    shot("privacy-calendar-locked-after-background")
+    tap("device.unlock")
+    XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout: 5))
+  }
   func testConnectedMusicAndWeatherDoNotUseHomeKit() {
     launch(["--page", "Settings"])
     connectService("Apple Music")

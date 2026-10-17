@@ -129,6 +129,15 @@ struct RootView: View {
         Spacer(minLength: 0)
       }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+    .overlay {
+      if scenePhase != .active {
+        ZStack {
+          Color.black
+          Label("HomeView locked", systemImage: "lock.shield")
+            .font(.title2).foregroundStyle(.white)
+        }.ignoresSafeArea().accessibilityIdentifier("privacy.snapshot.shield")
+      }
+    }
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
     .task {
       await model.connections.restore()
@@ -136,7 +145,7 @@ struct RootView: View {
       model.display.apply(enabled: model.data.keepDisplayOn && scenePhase == .active)
     }
     .onReceive(pulse) { _ in model.tick() }
-    .onChange(of: model.route) { _, route in if route == .privacy { model.connections.lock() } }
+    .onChange(of: model.route) { _, route in if route == .privacy { model.lockPersonalAccess() } }
     .onChange(of: model.data.keepDisplayOn) { _, enabled in
       model.display.apply(enabled: enabled && scenePhase == .active)
     }
@@ -145,10 +154,9 @@ struct RootView: View {
       model.display.apply(enabled: model.data.keepDisplayOn && phase == .active)
       if phase == .active {
         model.reconcileSystemAlarms()
-      } else {
+      } else if phase == .background {
         model.persist()
-        model.connections.lock()
-        model.profile = nil
+        model.lockPersonalAccess()
         if case .app(let page) = model.route, page.isPersonal {
           model.pendingPage = page
           model.route = .privacy

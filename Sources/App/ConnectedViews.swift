@@ -65,7 +65,9 @@ struct DeviceUnlockView: View {
         textColor: .white
       ) {
         Task {
-          if await model.connections.unlock() {
+          let granted = await model.connections.unlock()
+          guard model.route == .deviceUnlock else { return }
+          if granted {
             if let page = model.pendingPage {
               model.route = .app(page)
               model.pendingPage = nil

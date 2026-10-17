@@ -338,13 +338,22 @@ final class AppModel {
     pendingPage = nil
   }
   func signOut() {
+    lockPersonalAccess()
+    pendingPage = nil
+    simulatedPresence = false
+    incomingCall = false
+    route = .privacy
+  }
+  func lockPersonalAccess() {
     #if !os(watchOS)
       connections.lock()
     #endif
     profile = nil
-    simulatedPresence = false
-    incomingCall = false
-    route = .privacy
+    assistantInput = ""
+    assistantReply = "What can I help you with?"
+    messageText = ""
+    toastTask?.cancel()
+    toast = nil
   }
   func homeGesture() {
     interact()
@@ -415,10 +424,7 @@ final class AppModel {
     if changed { persist() }
     if route != .face && now.timeIntervalSince(lastInteraction) > idleSeconds && !incomingCall {
       route = .face
-      profile = nil
-      #if !os(watchOS)
-        connections.lock()
-      #endif
+      lockPersonalAccess()
     }
   }
   func addTimer(seconds: TimeInterval, title: String = "Timer") {
