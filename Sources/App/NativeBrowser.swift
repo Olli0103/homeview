@@ -12,50 +12,113 @@ import SwiftUI
     var isFixture = true
     var canBack = false
     var canForward = false
+    private var loadingFixture = true
+    private let testPages: Bool
     override init() {
+      let localPages = ProcessInfo.processInfo.arguments.contains("--uitesting")
+        && ProcessInfo.processInfo.arguments.contains("--browser-navigation-fixture")
+      testPages = localPages
       let config = WKWebViewConfiguration()
       config.websiteDataStore = .nonPersistent()
+      if localPages { config.setURLSchemeHandler(BrowserNavigationFixture(), forURLScheme: "homeview-fixture") }
       webView = WKWebView(frame: .zero, configuration: config)
       super.init()
       webView.navigationDelegate = self
-      webView.loadHTMLString(Self.fixtureHTML, baseURL: URL(string: "https://example.invalid"))
+      var html = Self.fixtureHTML
+      if ProcessInfo.processInfo.arguments.contains("--uitesting"),
+         ProcessInfo.processInfo.arguments.contains("--browser-policy-fixture") {
+        html = html.replacingOccurrences(of: "</body>", with:
+          "<p><a href='homeview-fixture://blocked'>Blocked scheme fixture</a></p></body>")
+      }
+      if testPages {
+        webView.load(URLRequest(url: URL(string: "homeview-fixture://local/one")!))
+      } else {
+        webView.loadHTMLString(html, baseURL: URL(string: "https://example.invalid"))
+      }
     }
     func openAddress() {
       let text = address.trimmingCharacters(in: .whitespacesAndNewlines)
-      guard !text.contains(" "),
-        let url = URL(string: text.contains("://") ? text : "https://" + text),
-        ["http", "https"].contains(url.scheme?.lowercased() ?? ""), url.host != nil
-      else {
-        status = "Enter an HTTP or HTTPS website address."
+      guard let url = BrowserPolicy.address(text) else {
+        status = "Enter a valid HTTPS website address without credentials."
         return
       }
       isFixture = false
       loading = true
       webView.load(URLRequest(url: url))
     }
+    func stop() {
+      webView.stopLoading()
+      loading = false
+      status = "Loading stopped."
+      updateHistory()
+    }
+    private func updateHistory() {
+      canBack = webView.canGoBack
+      canForward = webView.canGoForward
+    }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
       loading = true
+      status = isFixture ? "Loading local demo page…" : "Loading…"
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
       loading = false
-      canBack = webView.canGoBack
-      canForward = webView.canGoForward
-      status = isFixture ? "Local demo page" : "Loaded"
+      updateHistory()
+      loadingFixture = false
+      status = testPages && webView.url?.scheme == "homeview-fixture"
+        ? "Synthetic local page · No network request"
+        : isFixture ? "Local demo page · No network request" : "Loaded"
       if !isFixture { address = webView.url?.absoluteString ?? address }
     }
     func webView(
       _ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!,
       withError error: Error
     ) {
+      navigationFailed(error)
+    }
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+      navigationFailed(error)
+    }
+    private func navigationFailed(_ error: Error) {
+      let cancelled = (error as NSError).domain == NSURLErrorDomain
+        && (error as NSError).code == NSURLErrorCancelled
+      if !(cancelled && !loading) { status = "Could not load this page. Check the connection or reload." }
       loading = false
-      status = "Could not load this page."
+      updateHistory()
+    }
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+      loading = false
+      status = "Page process stopped. Reload to continue."
+      updateHistory()
     }
     func webView(
       _ webView: WKWebView, decidePolicyFor action: WKNavigationAction,
       decisionHandler: @escaping @MainActor @Sendable (WKNavigationActionPolicy) -> Void
     ) {
-      let scheme = action.request.url?.scheme?.lowercased() ?? ""
-      decisionHandler(["http", "https", "about"].contains(scheme) ? .allow : .cancel)
+      guard BrowserPolicy.allowsNavigation(action.request.url, fixture: isFixture, testPages: testPages) else {
+        loading = false
+        status = "Blocked unsupported or insecure navigation."
+        decisionHandler(.cancel)
+        return
+      }
+      if !loadingFixture, action.targetFrame?.isMainFrame != false {
+        isFixture = false
+      }
+      if action.targetFrame == nil {
+        decisionHandler(.cancel)
+        webView.load(action.request)
+      } else {
+        decisionHandler(.allow)
+      }
+    }
+    func webView(_ webView: WKWebView, decidePolicyFor response: WKNavigationResponse,
+      decisionHandler: @escaping @MainActor @Sendable (WKNavigationResponsePolicy) -> Void) {
+      guard BrowserPolicy.allowsNavigation(response.response.url, fixture: isFixture, testPages: testPages) else {
+        loading = false
+        status = "Blocked unsupported or insecure response."
+        decisionHandler(.cancel)
+        return
+      }
+      decisionHandler(.allow)
     }
     func recipe() async throws -> RecipeDocument {
       let js =
@@ -112,6 +175,7 @@ struct NativeBrowserView: View {
 #if canImport(WebKit) && !os(tvOS) && !os(watchOS)
   private struct NativeBrowserContent: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.scenePhase) private var scenePhase
     @Bindable var browser: NativeBrowserController
     var body: some View {
       VStack(spacing: 10) {
@@ -123,9 +187,13 @@ struct NativeBrowserView: View {
             #if !os(macOS)
               .keyboardType(.URL).textInputAutocapitalization(.never).autocorrectionDisabled()
             #endif
+          if browser.loading {
+            RoundButton(symbol: "xmark", size: 38, label: "Stop loading") { browser.stop() }
+              .accessibilityIdentifier("browser.stop")
+          }
           RoundButton(symbol: "arrow.clockwise", size: 38, label: "Load website") {
             browser.openAddress()
-          }
+          }.accessibilityIdentifier("browser.load")
         }.padding(12).background(.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 15))
           .padding(.horizontal, 28)
         HStack(spacing: 14) {
@@ -133,12 +201,12 @@ struct NativeBrowserView: View {
             browser.webView.goBack()
           } label: {
             Image(systemName: "chevron.left")
-          }.disabled(!browser.canBack).accessibilityLabel("Back")
+          }.disabled(!browser.canBack).accessibilityLabel("Back").accessibilityIdentifier("browser.back")
           Button {
             browser.webView.goForward()
           } label: {
             Image(systemName: "chevron.right")
-          }.disabled(!browser.canForward).accessibilityLabel("Forward")
+          }.disabled(!browser.canForward).accessibilityLabel("Forward").accessibilityIdentifier("browser.forward")
           Spacer()
           Button("Saved") { model.navigate(.recipes) }.accessibilityIdentifier("browser.saved")
           Button("Read Recipe") {
@@ -155,7 +223,8 @@ struct NativeBrowserView: View {
           "browser.status")
         BrowserWebArea(controller: browser).accessibilityIdentifier("browser.page")
       }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
-
+        .onDisappear { browser.stop() }
+        .onChange(of: scenePhase) { _, phase in if phase != .active { browser.stop() } }
     }
   }
 #endif

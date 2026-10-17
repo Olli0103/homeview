@@ -268,6 +268,45 @@ final class HomeViewUITests: XCTestCase {
     app.terminate()
     launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
   }
+  func testBrowserRejectsInsecureAddressAndPageCannotOpenExternalScheme() {
+    launch(["--page", "Safari", "--browser-policy-fixture"])
+    XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 8))
+    let blocked = app.links["Blocked scheme fixture"]
+    for _ in 0..<4 where !blocked.isHittable { app.webViews.firstMatch.swipeUp() }
+    XCTAssertTrue(blocked.waitForExistence(timeout: 5))
+    blocked.tap()
+    XCTAssertTrue(app.staticTexts["browser.status"].label.contains("Blocked"))
+    let address = app.textFields["browser.address"]
+    address.tap()
+    if let value = address.value as? String {
+      address.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: value.count))
+    }
+    address.typeText("http://example.invalid")
+    tap("browser.load")
+    XCTAssertTrue(app.staticTexts["browser.status"].label.contains("HTTPS"))
+    XCTAssertFalse(app.buttons["browser.stop"].exists)
+    shot("browser-insecure-address-rejected")
+  }
+  func testBrowserLocalHistoryOfflineAndStopDoNotNeedNetwork() {
+    launch(["--page", "Safari", "--browser-navigation-fixture"])
+    XCTAssertTrue(app.webViews.staticTexts["First local page"].waitForExistence(timeout: 8))
+    app.links["Next page"].tap()
+    XCTAssertTrue(app.webViews.staticTexts["Second local page"].waitForExistence(timeout: 5))
+    tap("browser.back")
+    XCTAssertTrue(app.webViews.staticTexts["First local page"].waitForExistence(timeout: 5))
+    tap("browser.forward")
+    XCTAssertTrue(app.webViews.staticTexts["Second local page"].waitForExistence(timeout: 5))
+    app.links["Offline page"].tap()
+    expectation(for: NSPredicate(format: "label CONTAINS %@", "Could not load"),
+      evaluatedWith: app.staticTexts["browser.status"])
+    waitForExpectations(timeout: 5)
+    XCTAssertFalse(app.buttons["browser.stop"].exists)
+    app.links["Slow page"].tap()
+    tap("browser.stop")
+    XCTAssertEqual(app.staticTexts["browser.status"].label, "Loading stopped.")
+    XCTAssertFalse(app.buttons["browser.stop"].exists)
+    shot("browser-local-history-offline-and-stop")
+  }
   func testFlowHasIndependentTypefaceAndBackgroundControls() {
     launch(["--face", "Flow"])
     shot("RE-flow-stencil")

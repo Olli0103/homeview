@@ -1,9 +1,9 @@
 {
-  "digest": "844d18c7b1fd342931ce427cca19e287ce1e242ae4a6edd580a48302a21740e1",
+  "digest": "fbe773b60ce6db39bc3e5e917469ddc95cec68aa98622fcf2650d4b761f87c01",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "a13f8dab219130d6a7a50d4bef5fa189d5695495da55d0f8345a28d2a98c0cbe"
+      "sha256": "dd846c7964329a047eb0146a99b1fb9cb0401053fdcf7e08bd8ec93027d5f337"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -167,7 +167,7 @@
     },
     {
       "path": "Resources/Info.plist",
-      "sha256": "9c042cbb6e9288d46db86a17815eaa9c5f735ed1ef5d7ad4cc368b9edea81c71"
+      "sha256": "90292e4f4fe1b86218deeacccc03572f80c28137e9e65cec50b27e3b474ed074"
     },
     {
       "path": "Resources/demo-tone.wav",
@@ -200,6 +200,10 @@
     {
       "path": "Sources/App/AppModel.swift",
       "sha256": "1a2e408b57738f6dd93805145635fd1db3799f1339ca378565e63752f5c233a1"
+    },
+    {
+      "path": "Sources/App/BrowserNavigationFixture.swift",
+      "sha256": "179e863f55bcb4d0171d9ee874cc10c0dea9d9576fb465309056539d7417ebac"
     },
     {
       "path": "Sources/App/CameraAndCommunication.swift",
@@ -267,7 +271,7 @@
     },
     {
       "path": "Sources/App/NativeBrowser.swift",
-      "sha256": "368c0a6926a53747319d7973655d4255bffa912180e4d4cf54a5ae944ab53df6"
+      "sha256": "de636ee589dc1a7efcc77d5d0a50504d47e7d6fda3a337a8a3e5b5b1c25baf03"
     },
     {
       "path": "Sources/App/NativeMirror.swift",
@@ -314,6 +318,10 @@
       "sha256": "fd05c78fe473682b21773ae81940261b18eb8f2c6ee4f71b3ab997077e4a9815"
     },
     {
+      "path": "Sources/Core/BrowserPolicy.swift",
+      "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+    },
+    {
       "path": "Sources/Core/CalendarAgenda.swift",
       "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
     },
@@ -358,6 +366,10 @@
       "sha256": "418016a859f09e373daa4971031d9363a561831395b77f9d5ec28a45790ee828"
     },
     {
+      "path": "Tests/CoreTests/BrowserPolicyTests.swift",
+      "sha256": "3789d2d58f7ad0f02f5887a42c93d59cc66be0c60dd9b99515f2f82de4567c04"
+    },
+    {
       "path": "Tests/CoreTests/CalendarAgendaTests.swift",
       "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
     },
@@ -391,7 +403,7 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "259478c531099facf8a9fd64cfa2f282a2ca14b789ff32ed7e878ad7c9132396"
+      "sha256": "fc186eb1b7640ab4598f53dc27dc7a187d75331cbca1c22ac7c188497a87120c"
     }
   ]
 }
