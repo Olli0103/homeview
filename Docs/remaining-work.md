@@ -20,7 +20,7 @@
 | [#1](https://github.com/Olli0103/homeview/issues/1) | Verbindlichen Parity-Vertrag und API-Grenzen festschreiben | Abgeschlossen im ausdrücklich dokumentierten Teilumfang; Original-Parität bleibt getrennt. |
 | [#2](https://github.com/Olli0103/homeview/issues/2) | Vollständigen Referenzsatz für Zustände und Bewegungen sichern | Originalzustände/Parameter oder visuelle Abnahme offen; zusätzliche Softwarearbeit möglich. |
 | [#3](https://github.com/Olli0103/homeview/issues/3) | Redistribuierbare Grafik- und Typografiegrundlage herstellen | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |
-| [#4](https://github.com/Olli0103/homeview/issues/4) | Quelllizenz und Veröffentlichungsunterlagen festlegen | Eigentümerentscheidung zur Quelllizenz offen; keine Lizenz geraten. |
+| [#4](https://github.com/Olli0103/homeview/issues/4) | Quelllizenz und Veröffentlichungsunterlagen festlegen | Abgeschlossen: Eigentümerentscheidung MIT, LICENSE und Quellen-/Asset-Hinweise veröffentlicht. |
 | [#5](https://github.com/Olli0103/homeview/issues/5) | Face-Katalog und Varianten vollständig gegen Referenz abnehmen | Originalzustände/Parameter oder visuelle Abnahme offen; zusätzliche Softwarearbeit möglich. |
 | [#6](https://github.com/Olli0103/homeview/issues/6) | Face-Wechsel und App-Raster-Übergänge vermessen | Originalzustände/Parameter oder visuelle Abnahme offen; zusätzliche Softwarearbeit möglich. |
 | [#7](https://github.com/Olli0103/homeview/issues/7) | Räumlichen Face-Editor vollständig kalibrieren | Originalzustände/Parameter oder visuelle Abnahme offen; zusätzliche Softwarearbeit möglich. |
@@ -102,4 +102,4 @@
 
 ## Neues externes Issue
 
-[#83 – Plans for an open-source license?](https://github.com/Olli0103/homeview/issues/83) wurde während dieser Arbeit öffentlich gestellt. Es gehört zur offenen Eigentümerentscheidung in #4, nicht zu einem zusätzlichen ursprünglichen Referenzpaket. Keine Lizenz oder Community-Zusage wurde ohne Olli gewählt. Damit sind derzeit 76 der ursprünglichen 82 Pakete und dieses zusätzliche Issue offen: 77 offene GitHub-Issues.
+[#83 – Plans for an open-source license?](https://github.com/Olli0103/homeview/issues/83) wurde während dieser Arbeit öffentlich gestellt. Olli hat MIT für den eigenen Projektcode und eigene Assets gewählt. #4 und #83 sind nach Veröffentlichung der Lizenz geschlossen, der externe Issue-Text blieb unverändert. Sieben der ursprünglichen 82 Pakete sind geschlossen; zusammen bleiben 75 GitHub-Issues offen.
