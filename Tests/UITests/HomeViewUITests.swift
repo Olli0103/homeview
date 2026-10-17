@@ -244,6 +244,30 @@ final class HomeViewUITests: XCTestCase {
       }
     }
   }
+  func testWorldClockAddsFractionalZoneAndPersistsRemoval() {
+    let id = UUID().uuidString
+    launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
+    tap("world.add")
+    let search = app.textFields["world.search"]
+    search.tap(); search.typeText("Kathmandu")
+    tap("world.choose.Asia/Kathmandu")
+    app.swipeUp()
+    shot("world-after-selection")
+    print(app.debugDescription)
+    XCTAssertTrue(app.staticTexts["world.time.Asia/Kathmandu"].waitForExistence(timeout: 3))
+    XCTAssertTrue(app.staticTexts["world.time.Asia/Kathmandu"].label.contains("3:54") || app.staticTexts["world.time.Asia/Kathmandu"].label.contains("15:54"))
+    shot("world-kathmandu-fractional-zone")
+    app.terminate()
+    launch(["--page", "World Clock", "--persistence-test", id])
+    app.swipeUp()
+    tap("world.remove.Asia/Kathmandu")
+    app.terminate()
+    launch(["--page", "World Clock", "--persistence-test", id])
+    app.swipeUp()
+    XCTAssertFalse(app.buttons["world.remove.Asia/Kathmandu"].exists)
+    app.terminate()
+    launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
+  }
   func testFlowHasIndependentTypefaceAndBackgroundControls() {
     launch(["--face", "Flow"])
     shot("RE-flow-stencil")

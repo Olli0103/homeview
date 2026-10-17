@@ -1,9 +1,9 @@
 {
-  "digest": "a474585a301593b32a4cbe1b1bc8aafe173fac36490af0e589e1f02217e11d66",
+  "digest": "23abe5ec471e416e87de95c974ccf2f5409a74b264663cbffce51b0ce8755b16",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "eb80203b774f1a5a103ca37e3fabe6d72e03ff4f02633b790de4e355a8f899ae"
+      "sha256": "ed145ba8182ca45688525b913dbecfb094d864abb8c9dd6f2a18add93510ac1a"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -183,7 +183,7 @@
     },
     {
       "path": "Scripts/generate_project.py",
-      "sha256": "0e7bee6bb423ad6f8aa0ac07327a26c5f9831a9aa0455586b0196203b3e84e23"
+      "sha256": "128f0b2e81a27419b1fc01d4d4f371170bc33b39acd68cace52981db0c9a2dc1"
     },
     {
       "path": "Scripts/make_icon.swift",
@@ -199,7 +199,7 @@
     },
     {
       "path": "Sources/App/AppModel.swift",
-      "sha256": "956f185580299ffb4b4c7150fd8574f84001cc7728e99783519f0de22bcd6bd0"
+      "sha256": "32345316ab0615056f11a87836854e8ed80182842816a41cbef387cb3d26005a"
     },
     {
       "path": "Sources/App/CameraAndCommunication.swift",
@@ -227,7 +227,7 @@
     },
     {
       "path": "Sources/App/Everyday.swift",
-      "sha256": "6e283704878e417a9b5ae8685621b7e65ec518e23b73733c197b2f1d2d442ba4"
+      "sha256": "7d6b391fda228e8e16a8c6c47d69601da35729074eeb84796942585d16c1161c"
     },
     {
       "path": "Sources/App/FaceEditor.swift",
@@ -339,7 +339,7 @@
     },
     {
       "path": "Sources/Core/Models.swift",
-      "sha256": "de4aec7468beb4b026cd1e2b7ac77530a065b628ef93c4df46b9b494e0e6610e"
+      "sha256": "2e326869f528f52e7085f47992a47d04378c1b2457f584b9d833a3f85c63d048"
     },
     {
       "path": "Sources/Core/PhotoMaskRasterizer.swift",
@@ -348,6 +348,10 @@
     {
       "path": "Sources/Core/PhotoPlacement.swift",
       "sha256": "3d8d6fbd8a1065e64fff36895968786fa3f5ea25df372b3781022c1e451cb25c"
+    },
+    {
+      "path": "Sources/Core/WorldClock.swift",
+      "sha256": "418016a859f09e373daa4971031d9363a561831395b77f9d5ec28a45790ee828"
     },
     {
       "path": "Tests/CoreTests/ConicGradientTests.swift",
@@ -374,8 +378,12 @@
       "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
     },
     {
+      "path": "Tests/CoreTests/WorldClockTests.swift",
+      "sha256": "62c4a2ce24c52dca60a9315e6d0de91f0a77cb2c2c9b83aef2a9010f6389d34d"
+    },
+    {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "3943ba6c297211a31dcc0368018f4023fc08d2e052c4bd062f48754d9ae33f96"
+      "sha256": "43b8cc020cf292c2cebc6fb6a28ef5377e426afafe20866a9c628229a097879a"
     }
   ]
 }

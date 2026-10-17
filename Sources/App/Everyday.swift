@@ -445,24 +445,78 @@ struct MusicView: View {
 }
 struct WorldClockView: View {
   @Environment(AppModel.self) private var model
-  private let cities = [
-    ("San Francisco", "America/Los_Angeles"), ("New York", "America/New_York"),
-    ("Berlin", "Europe/Berlin"), ("Tokyo", "Asia/Tokyo"),
-  ]
+  @State private var choosing = false
+  @State private var search = ""
+  private var selected: [WorldCity] {
+    model.data.worldClockZones.compactMap { id in WorldCity.catalogue.first { $0.zone == id } }
+  }
   var body: some View {
-    VStack(spacing: 12) {
-      AppHeader(title: "World Clock")
-      ForEach(cities, id: \.0) { city in
-        HStack {
-          Text(city.0).font(.system(size: 29, weight: .medium))
-          Spacer()
-          Text(model.clock, style: .time).environment(\.timeZone, TimeZone(identifier: city.1)!)
-            .font(.system(size: 42, weight: .light)).monospacedDigit()
-        }.padding(.horizontal, 36).padding(.vertical, 13)
-        Divider().padding(.horizontal, 36)
+    VStack(spacing: 8) {
+      AppHeader(title: choosing ? "Add City" : "World Clock")
+      HStack {
+        Text(choosing ? "Choose a time zone" : "\(selected.count) of 12 cities")
+        Spacer()
+        Button(choosing ? "Done" : "Add City") { choosing.toggle(); search = "" }
+          .disabled(!choosing && selected.count >= 12)
+          .accessibilityIdentifier("world.add")
+      }.font(.system(size: 18)).padding(.horizontal, 30)
+      if choosing {
+        TextField("Search cities", text: $search).textFieldStyle(.plain)
+          .padding(12).background(.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 12))
+          .padding(.horizontal, 30).accessibilityIdentifier("world.search")
+        ScrollView {
+          VStack(spacing: 8) {
+            ForEach(WorldCity.catalogue.filter {
+              (search.isEmpty || $0.name.localizedCaseInsensitiveContains(search)
+               || $0.zone.localizedCaseInsensitiveContains(search))
+              && !model.data.worldClockZones.contains($0.zone)
+            }) { city in
+              Button {
+                model.addWorldCity(city.zone); choosing = false; search = ""
+              } label: {
+                HStack { Text(city.name); Spacer(); Image(systemName: "plus.circle") }
+                  .font(.system(size: 24)).padding(18).contentShape(Rectangle())
+              }.accessibilityIdentifier("world.choose.\(city.zone)")
+            }
+          }.padding(.horizontal, 18)
+        }
+      } else {
+        ScrollView {
+          VStack(spacing: 4) {
+            ForEach(selected) { city in
+              let reading = WorldClockReading(city: city, instant: model.clock,
+                referenceZone: model.displayTimeZone)
+              HStack(spacing: 12) {
+                Image(systemName: reading.daylight ? "sun.max.fill" : "moon.fill")
+                  .foregroundStyle(reading.daylight ? .orange : .indigo)
+                  .accessibilityLabel(reading.daylight ? "Daylight estimate" : "Night estimate")
+                VStack(alignment: .leading, spacing: 4) {
+                  Text(city.name).font(.system(size: 25, weight: .medium))
+                  Text(reading.date + " · " + reading.offset).font(.system(size: 13))
+                  if reading.dayDifference != 0 {
+                    Text(reading.dayDifference < 0 ? "Previous day" : "Next day")
+                      .font(.system(size: 13, weight: .semibold))
+                  }
+                }
+                Spacer(minLength: 0)
+                Text(reading.time).font(.system(size: 34, weight: .light)).monospacedDigit()
+                  .accessibilityIdentifier("world.time.\(city.zone)")
+                Button { model.removeWorldCity(city.zone) } label: {
+                  Image(systemName: "minus.circle").font(.system(size: 22)).padding(8)
+                }.accessibilityLabel("Remove \(city.name)")
+                  .accessibilityIdentifier("world.remove.\(city.zone)")
+              }.padding(.horizontal, 25).padding(.vertical, 13)
+                .accessibilityElement(children: .contain)
+                .accessibilityIdentifier("world.row.\(city.zone)")
+              Divider().padding(.horizontal, 30)
+            }
+            if selected.isEmpty { Text("Add a city to see its local time.").padding(30) }
+          }
+        }
+        Text("Sun position is an offline estimate, not current weather.")
+          .font(.system(size: 12)).foregroundStyle(.gray).padding(.bottom, 14)
       }
-      Spacer()
-    }.background(.white).foregroundStyle(.black)
+    }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
   }
 }
 struct AlarmsView: View {
