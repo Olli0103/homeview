@@ -174,7 +174,11 @@ struct SettingsView: View {
 struct AssistantView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.scenePhase) private var scenePhase
-  @State private var text = ""
+  private var text: String {
+    get { model.assistantInput }
+    nonmutating set { model.assistantInput = newValue }
+  }
+  @State private var voiceDraftGeneration = 0
   @State private var draftBeforeVoice = ""
   @State private var language = "de-DE"
   @State private var voice = VoiceInputController()
@@ -193,6 +197,7 @@ struct AssistantView: View {
                 voice.finish()
               } else {
                 draftBeforeVoice = text
+                voiceDraftGeneration = model.personalSessionGeneration
                 text = ""
                 model.stopAudioForVoice()
                 Task { await voice.start(locale: language) }
@@ -220,7 +225,7 @@ struct AssistantView: View {
         }.padding(.horizontal, 34)
       }
       HStack {
-        TextField("Type a request", text: $text).textFieldStyle(.plain).font(.system(size: 25))
+        TextField("Type a request", text: Binding(get: { text }, set: { text = $0 })).textFieldStyle(.plain).font(.system(size: 25))
           .onSubmit { submitted() }.accessibilityIdentifier("assistant.input")
         RoundButton(symbol: "arrow.up", color: .blue, foreground: .white, label: "Send request") {
           submitted()
@@ -237,7 +242,12 @@ struct AssistantView: View {
           voice.cancel()
         }
       }
-      .onDisappear { voice.cancel() }
+      .onDisappear {
+        let restore = voice.busy && scenePhase == .active
+          && voiceDraftGeneration == model.personalSessionGeneration
+        voice.cancel()
+        if restore { text = draftBeforeVoice }
+      }
   }
   private func submitted() {
     guard !voice.busy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
