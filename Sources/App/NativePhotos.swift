@@ -11,6 +11,13 @@ import UniformTypeIdentifiers
   import PhotosUI
 #endif
 
+/// Project-generated fixtures only; selecting these never opens the photo library.
+enum DemoPhotoAssets {
+  static let portrait = "DemoPhotoPortraitV1"
+  static let landscape = "DemoPhotoLandscapeV1"
+  static let gallery = [portrait, landscape]
+}
+
 struct ImportedPhoto: View {
   let data: Data
   var body: some View {
@@ -66,21 +73,21 @@ struct NativePhotoControls: View {
       SharedAlbumControls()
       Button("Use Demo Photo") {
         #if os(macOS)
-          if let image = NSImage(named: "Soup"), let bytes = image.tiffRepresentation {
+          if let image = NSImage(named: DemoPhotoAssets.portrait), let bytes = image.tiffRepresentation {
             model.setPhoto(bytes)
           }
         #elseif canImport(UIKit)
-          if let bytes = UIImage(named: "Soup")?.pngData() { model.setPhoto(bytes) }
+          if let bytes = UIImage(named: DemoPhotoAssets.portrait)?.pngData() { model.setPhoto(bytes) }
         #endif
       }.font(.system(size: 21)).accessibilityIdentifier("photos.demo")
       Button("Use Demo Gallery") {
         #if os(macOS)
-          let images = ["Soup", "AlbumArt"].compactMap { name -> Data? in
+          let images = DemoPhotoAssets.gallery.compactMap { name -> Data? in
             guard let bytes = NSImage(named: name)?.tiffRepresentation else { return nil }
             return try? PhotoThumbnail.make(bytes)
           }
         #elseif canImport(UIKit)
-          let images = ["Soup", "AlbumArt"].compactMap { name -> Data? in
+          let images = DemoPhotoAssets.gallery.compactMap { name -> Data? in
             UIImage(named: name)?.jpegData(compressionQuality: 0.8)
           }
         #else
@@ -99,6 +106,10 @@ struct NativePhotoControls: View {
             }))
       }
       if model.photoData != nil {
+        if model.photoAnalysisFinished && model.photoForegroundData == nil {
+          Text("Depth effect is unavailable for this photo. You can adjust the clock position below.")
+            .font(.system(size:16)).foregroundStyle(.secondary)
+        }
         PhotoLayoutControls()
         Button("Remove Selected Photo") { model.setPhoto(nil) }.font(.system(size: 21))
       }
@@ -162,26 +173,79 @@ struct PhotoLayoutControls: View {
         return nil
       }
       let context = CIContext(options: [.cacheIntermediates: false])
-      guard let cg = context.createCGImage(original, from: original.extent) else { return nil }
-      let fallback = PhotoAnalysis(aspect: original.extent.width / original.extent.height,
-                                   mask: nil, foreground: nil)
+      guard let cg = context.createCGImage(original, from: original.extent) else {
+        return PhotoAnalysis(aspect:original.extent.width/original.extent.height,
+                             mask:nil,foreground:nil,diagnostic:"cg_unavailable")
+      }
+      // Local rectangles protect a head when no usable foreground matte exists.
+      // They are never treated as alpha pixels or used for identity recognition.
+      let faceRequest = VNDetectFaceRectanglesRequest()
+      func protect(_ face:PhotoRect) -> PhotoRect {
+        PhotoRect(x:face.x-face.width*0.15,y:face.y-face.height*0.45,
+                  width:face.width*1.3,height:face.height*1.55).intersection(.full)
+      }
+      var faces: [PhotoRect]
+      var faceStatus: String
+      var headDetectionCompleted = false
+      do {
+        try VNImageRequestHandler(cgImage: cg, options: [:]).perform([faceRequest])
+        let results = faceRequest.results ?? []
+        headDetectionCompleted = true
+        faces = results.filter { $0.confidence >= 0.5 }.map {
+          let b = $0.boundingBox
+          return protect(PhotoRect(x:b.minX,y:1-b.maxY,width:b.width,height:b.height))
+        }.filter { $0.valid }
+        faceStatus = "face_results_\(results.count)_accepted_\(faces.count)"
+      } catch {
+        faces = []
+        faceStatus = "face_request_error_\((error as NSError).code)"
+      }
+      if faces.isEmpty {
+        // Independent public CPU detector when Vision cannot provide head bounds.
+        let cpuContext = CIContext(options:[.useSoftwareRenderer:true,.cacheIntermediates:false])
+        if let detector = CIDetector(ofType:CIDetectorTypeFace,context:cpuContext,
+                                     options:[CIDetectorAccuracy:CIDetectorAccuracyHigh]) {
+          let extent=original.extent
+          faces = detector.features(in:original,options:[CIDetectorImageOrientation:1])
+            .compactMap { $0 as? CIFaceFeature }.map {
+              let b=$0.bounds
+              return protect(PhotoRect(x:(b.minX-extent.minX)/extent.width,
+                y:1-(b.maxY-extent.minY)/extent.height,width:b.width/extent.width,height:b.height/extent.height))
+            }.filter { $0.valid }
+          headDetectionCompleted = true
+          faceStatus += "_ci_faces_\(faces.count)"
+        } else { faceStatus += "_ci_unavailable" }
+      }
+      func fallback(_ stage:String,conservative:Bool=false) -> PhotoAnalysis {
+        // A completed detector with zero faces is not a detected full-image
+        // subject. Keep the normal framing; reserve the separate clock band
+        // for unavailable analysis, not every landscape without a matte.
+        let preserveWholeImage = conservative && faces.isEmpty && !headDetectionCompleted
+        return PhotoAnalysis(aspect:original.extent.width/original.extent.height,mask:nil,foreground:nil,
+          protectedRegions:preserveWholeImage ? [.full]:faces,
+          diagnostic:faceStatus+"_"+stage+(preserveWholeImage ? "_conservative_full_image":""))
+      }
       let handler = VNImageRequestHandler(cgImage: cg, options: [:])
       let request = VNGenerateForegroundInstanceMaskRequest()
-      do { try handler.perform([request]) } catch { return fallback }
-      guard let result = request.results?.first, !result.allInstances.isEmpty else { return fallback }
-      let pixelBuffer = try result.generateScaledMaskForImage(
-        forInstances: result.allInstances, from: handler)
-      let filter = CIFilter.blendWithMask()
-      filter.inputImage = original
-      filter.backgroundImage = CIImage(color: .clear).cropped(to: original.extent)
-      let maskImage = CIImage(cvPixelBuffer: pixelBuffer)
-      filter.maskImage = maskImage
-      guard let output = filter.outputImage else { return fallback }
-      let foreground = context.pngRepresentation(
-        of: output, format: .RGBA8, colorSpace: CGColorSpaceCreateDeviceRGB(), options: [:])
-      return PhotoAnalysis(aspect: fallback.aspect,
-                           mask: PhotoMaskRasterizer.make(maskImage, context: context),
-                           foreground: foreground)
+      do {
+        try handler.perform([request])
+        guard let result = request.results?.first, !result.allInstances.isEmpty else { return fallback("no_instances") }
+        let pixelBuffer = try result.generateScaledMaskForImage(
+          forInstances: result.allInstances, from: handler)
+        let filter = CIFilter.blendWithMask()
+        filter.inputImage = original
+        filter.backgroundImage = CIImage(color: .clear).cropped(to: original.extent)
+        let maskImage = CIImage(cvPixelBuffer: pixelBuffer)
+        filter.maskImage = maskImage
+        guard let output = filter.outputImage,
+              let foreground = context.pngRepresentation(
+                of: output, format: .RGBA8, colorSpace: CGColorSpaceCreateDeviceRGB(), options: [:])
+        else { return fallback("foreground_encoding_unavailable",conservative:true) }
+        return PhotoAnalysis(aspect: original.extent.width/original.extent.height,
+                             mask: PhotoMaskRasterizer.make(maskImage, context: context),
+                             foreground: foreground, protectedRegions: faces,
+                             diagnostic:faceStatus+"_foreground_encoded")
+      } catch { return fallback("foreground_error_\((error as NSError).code)",conservative:true) }
     }
   }
 #endif

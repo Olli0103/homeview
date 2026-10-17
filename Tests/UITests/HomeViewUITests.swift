@@ -736,6 +736,20 @@ final class HomeViewUITests: XCTestCase {
     button.tap()
     XCTAssertTrue(app.otherElements["face.Photos"].waitForExistence(timeout: 8))
     XCTAssertTrue(app.staticTexts["PHOTOS"].exists)
+    expectation(for:NSPredicate(format:"label CONTAINS %@","finished=true"),evaluatedWith:app.staticTexts["photo.layout.test"])
+    waitForExpectations(timeout:20)
+    let summary=app.staticTexts["photo.layout.test"].label
+    let fields=Dictionary(uniqueKeysWithValues:summary.split(separator:";").map {
+      let pair=$0.split(separator:"=",maxSplits:1)
+      return (String(pair[0]),String(pair[1]))
+    })
+    let realDepth=fields["foreground"]=="true" && fields["depth"]=="true"
+    let protectedWithoutDepth=(Int(fields["regions"] ?? "0") ?? 0)>0 && fields["protected"]=="0"
+    XCTAssertTrue(realDepth || protectedWithoutDepth,
+      "The actual demo portrait needs a real matte or an unobstructed protected-image layout: "+summary)
+    if fields["foreground"]=="false" { XCTAssertEqual(fields["depth"],"false") }
+    print("PHOTO_LAYOUT",summary)
+    viewportShot("photo-demo-portrait-protected")
     shot("native-demo-photo-face")
   }
   func testPhotoClockAvoidsTopSubjectAndKeepsBothEdgeSubjects() {
@@ -927,7 +941,17 @@ final class HomeViewUITests: XCTestCase {
   func testDemoGalleryAutomaticallyRotatesBundledPhotos() {
     launch(["--page", "Settings", "--fast-photo-rotation"])
     let button = app.buttons["photos.gallery"]
-    for _ in 0..<10 where !button.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    let scroll = app.scrollViews.firstMatch
+    let viewport = app.otherElements["reference.viewport"]
+    // AX may report hittable while the round viewport clips this button.
+    // Require the full control inside the visible scroll area before touching it.
+    for _ in 0..<12 {
+      let safe = scroll.frame.intersection(viewport.frame).insetBy(dx:0,dy:40)
+      if button.isHittable && safe.contains(button.frame) { break }
+      if button.frame.minY < safe.minY { scroll.swipeDown() } else { scroll.swipeUp() }
+    }
+    XCTAssertTrue(scroll.frame.intersection(viewport.frame).insetBy(dx:0,dy:40).contains(button.frame))
+    shot("photo-gallery-control-fully-visible")
     button.tap()
     let caption = app.staticTexts["photo.index"]
     XCTAssertTrue(caption.waitForExistence(timeout: 8))
@@ -935,6 +959,10 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(original.contains("OF 2"))
     expectation(for: NSPredicate(format: "label != %@", original), evaluatedWith: caption)
     waitForExpectations(timeout: 7)
+    let layout = app.staticTexts["photo.layout.test"].label
+    XCTAssertTrue(layout.contains("full=false"),
+      "A completed no-face landscape analysis must not invent a full-image subject: " + layout)
+    viewportShot("photo-demo-gallery")
     shot("native-demo-photo-gallery")
   }
   func testKeepDisplayOnUsesNativeIdleTimer() {
