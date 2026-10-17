@@ -7,7 +7,10 @@ portions of the project.
 
 The public repository contains no third-party Swift package dependencies.
 The raster fixtures, app icon and demo tone are original project-generated
-assets; [asset-manifest.json](Docs/asset-manifest.json) records their provenance
+assets. The procedural DemoAlbumCover in Sources/App/HomeScreens.swift is also
+original project artwork under MIT, not a copied or connected album cover; its
+source is bound by the relevant verification source manifest.
+[asset-manifest.json](Docs/asset-manifest.json) records their provenance
 and initial publication digests. Later original Flow glyphs are documented in
 [flow-typography.md](Docs/flow-typography.md). Mathematical techniques and public
 API use do not imply inclusion of the referenced products' implementation.

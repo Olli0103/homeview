@@ -1,0 +1,58 @@
+{
+  "code_commit": "5efd09f59122c203c65650c4413a2d288e605b8e",
+  "feature_commit": "754890a",
+  "source_digest": "fbcb23a2e7b1bfe1033cba8404b9ebbc04ca04440f300bdd78b07e1f02799c48",
+  "source_files": 116,
+  "source_before_after_match": true,
+  "source_matches_committed_bytes": true,
+  "core_passed": 104,
+  "tests_after_merge_commit": true,
+  "core_repeated_after_feature_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    }
+  ],
+  "ui_executions": 22,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "original_pixel_parity": false,
+  "physical_hardware_tested": false,
+  "real_home_access": false,
+  "personal_accounts_tested": false,
+  "previous_failed_checkpoints_retained_privately": true,
+  "gesture_scale_hypothesis_disproved": true,
+  "gesture_diagnostic": {
+    "display_edge": 378,
+    "start_y": 315,
+    "delta_y": -200
+  },
+  "visual_review": {
+    "weather_top_scrolled_unavailable_both_devices": "inspected",
+    "media_both_devices": "inspected; initial artist line remains partially clipped; follow-up queued",
+    "original_parity_accepted": false
+  },
+  "logs": {
+    "layouts-fade-integrated-core.log": "054a14e47c277422ad64895f8692339883233c68092ec081fc4cce9d718643ed",
+    "layouts-fade-integrated-builds.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f",
+    "weather-grid-post-commit-core.log": "efd5446571f1d7ccd89aabbd1daec172210a76d86d81585d2a179c3502688d94"
+  }
+}
