@@ -59,13 +59,15 @@ struct RootView: View {
             }.allowsHitTesting(false)
           }
           #if !os(tvOS)
-            VStack {
+            if model.route != .face {
+              VStack {
               Spacer()
               Color.clear.frame(height: 16).contentShape(Rectangle())
                 .gesture(
                   DragGesture(minimumDistance: 20).onEnded { value in
                     if value.translation.height < -35 { model.homeGesture() }
                   })
+              }
             }
           #endif
           if model.incomingCall { CallView(incoming: true) }
@@ -81,23 +83,10 @@ struct RootView: View {
           }
         }
         #if !os(tvOS)
-          .simultaneousGesture(
-            DragGesture(minimumDistance: 45).onEnded { value in
-              model.interact()
-              if (model.route == .face || model.route == .personal)
-                && value.translation.height < -70 && value.startLocation.y > edge * 0.83
-                && abs(value.translation.height) > abs(value.translation.width)
-              {
-                model.homeGesture()
-              } else if value.translation.height > 70 && value.startLocation.y < edge * 0.12 {
-                model.route = value.startLocation.x > edge * 0.74 ? .controlCenter : .assistant
-              } else if model.route == .face && abs(value.translation.width) > 80 {
-                withAnimation(.easeInOut(duration: 0.3)) {
-                  model.nextFace(value.translation.width < 0 ? 1 : -1)
-                }
-              }
-            }
-          )
+          // Faces have no scrolling content. Their drag must cancel underlying
+          // tile taps; other screens keep normal scrolling and their bottom strip.
+          .highPriorityGesture(viewportNavigation(edge: edge), including: model.route == .face ? .all : .subviews)
+          .simultaneousGesture(viewportNavigation(edge: edge), including: model.route == .face ? .subviews : .all)
         #endif
         .simultaneousGesture(TapGesture().onEnded { model.interact() })
         HStack(spacing: 24) {
@@ -186,6 +175,26 @@ struct RootView: View {
       .onPlayPauseCommand { model.togglePlayback() }
     #endif
   }
+  #if !os(tvOS)
+    private func viewportNavigation(edge: Double) -> some Gesture {
+      DragGesture(minimumDistance: 45).onEnded { value in
+        model.interact()
+        // Exactly one bottom-edge owner per route; never treat the lower
+        // content area as a home gesture. Coordinates are the displayed square.
+        if model.route == .face && value.translation.height < -70
+          && value.startLocation.y > edge * (1 - 16.0 / 600)
+          && abs(value.translation.height) > abs(value.translation.width) {
+          model.homeGesture()
+        } else if value.translation.height > 70 && value.startLocation.y < edge * 0.12 {
+          model.route = value.startLocation.x > edge * 0.74 ? .controlCenter : .assistant
+        } else if model.route == .face && abs(value.translation.width) > 80 {
+          withAnimation(.easeInOut(duration: 0.3)) {
+            model.nextFace(value.translation.width < 0 ? 1 : -1)
+          }
+        }
+      }
+    }
+  #endif
   @ViewBuilder private var screen: some View {
     switch model.route {
     case .face:

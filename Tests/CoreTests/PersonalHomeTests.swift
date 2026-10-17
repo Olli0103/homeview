@@ -2,6 +2,16 @@ import XCTest
 @testable import HomeViewCore
 
 final class PersonalHomeTests: XCTestCase {
+  func testWeatherPresetKeepsObservedTopAppOrderAndOtherProfiles() throws {
+    var state=Snapshot(),media=PersonalHomeConfiguration(),weather=PersonalHomeConfiguration()
+    media.usePreset(.media);weather.usePreset(.weather)
+    XCTAssertEqual(weather.apps.map(\.rawValue),["Music","Podcasts","Safari","FaceTime"])
+    state.setPersonalHome(media,for:"Alex");state.setPersonalHome(weather,for:"Jamie")
+    let restored=try Snapshot.decodeMigrating(JSONEncoder().encode(state))
+    XCTAssertEqual(restored.personalHome(for:"Alex"),media)
+    XCTAssertEqual(restored.personalHome(for:"Jamie"),weather)
+    XCTAssertEqual(restored.personalHome(for:nil).layout,.photos)
+  }
   func testLayoutsRoundTripWithoutCrossProfileOrGuestInheritance() throws {
     var snapshot = Snapshot()
     var media = PersonalHomeConfiguration()

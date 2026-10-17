@@ -1,7 +1,10 @@
 import Foundation
 
 enum PersonalHomeLayout: String, Codable, CaseIterable, Sendable {
-  case photos, media
+  case photos, media, weather
+  var title:String {
+    switch self { case .photos:"Photos layout";case .media:"Media layout";case .weather:"Apps and weather" }
+  }
 }
 
 /// Layout preferences, not identity or permission to open a personal store.
@@ -9,6 +12,7 @@ struct PersonalHomeConfiguration: Codable, Equatable, Sendable {
   var layout = PersonalHomeLayout.photos
   var favorites = ["FaceTime", "Home", "Music", "Messages"]
   static let mediaFavorites = ["Music", "FaceTime", "Messages", "Calendar"]
+  static let weatherFavorites = ["Music", "Podcasts", "Safari", "FaceTime"]
   var apps: [AppPage] {
     var result: [AppPage] = []
     for raw in favorites + PersonalHomeConfiguration().favorites {
@@ -31,7 +35,11 @@ struct PersonalHomeConfiguration: Codable, Equatable, Sendable {
   }
   mutating func usePreset(_ value: PersonalHomeLayout) {
     layout = value
-    favorites = value == .media ? Self.mediaFavorites : Self().favorites
+    switch value {
+    case .photos:favorites=Self().favorites
+    case .media:favorites=Self.mediaFavorites
+    case .weather:favorites=Self.weatherFavorites
+    }
   }
 }
 
