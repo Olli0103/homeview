@@ -134,6 +134,7 @@ struct RootView: View {
     }
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
     .task {
+      model.setAlbumDisplayActive(scenePhase == .active)
       await model.connections.restore()
       model.reconcileSystemAlarms()
       model.display.apply(enabled: model.data.keepDisplayOn && scenePhase == .active)
@@ -143,8 +144,15 @@ struct RootView: View {
     .onChange(of: model.data.keepDisplayOn) { _, enabled in
       model.display.apply(enabled: enabled && scenePhase == .active)
     }
-    .onDisappear { model.display.apply(enabled: false) }
+    .onChange(of: model.connections.personalUnlocked) { _, unlocked in
+      if !unlocked { model.albumCatalogue.invalidate() }
+    }
+    .onDisappear {
+      model.display.apply(enabled: false)
+      model.setAlbumDisplayActive(false)
+    }
     .onChange(of: scenePhase) { _, phase in
+      model.setAlbumDisplayActive(phase == .active)
       model.display.apply(enabled: model.data.keepDisplayOn && phase == .active)
       if phase == .active {
         model.reconcileSystemAlarms()
