@@ -1,5 +1,8 @@
 # Wetterdaten ohne erfundene Live-Werte
 
+Historischer Datenschritt `b08c6f8`. Die spätere eigenständige UI20-Ansicht ist
+[separat dokumentiert](weather-app.md); die folgenden Tests gehören zu diesem älteren Stand.
+
 17. Oktober 2026 · [#21](https://github.com/Olli0103/homeview/issues/21).
 
 Der vorhandene öffentliche Open-Meteo-Adapter bleibt die Quelle; kein neuer Dienst,
@@ -56,6 +59,6 @@ Ortsauswahlfälle und Geräte-/Performanceabnahme offen. Diese Änderungen behau
 weder Originalparität noch eine Luftqualitätsintegration.
 
 [Öffentlicher Live-Abruf](verification/weather-live.json). Die originale Wetter-App
-(UI20) ist eine eigene, noch nicht originalgetreu rekonstruierte Ansicht; diese
+(UI20) ist eine eigene Ansicht; der spätere Layoutschritt ist im verlinkten Folgebericht dokumentiert. Diese
 Datenkorrektur schließt #21 nicht und rechtfertigt keine abweichende Neugestaltung.
 Nach Eigentümerreview haben die sichtbaren Originalvergleiche Vorrang.

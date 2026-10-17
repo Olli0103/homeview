@@ -27,11 +27,19 @@ struct WeatherReading: Sendable {
   var isDay: Bool?
   var cloudCover: Double?
   var precipitation: Double?
+  var hourly: [WeatherHour] = []
+  var timeZoneID: String?
+  var timeZone: TimeZone {
+    timeZoneID.flatMap(TimeZone.init(identifier:)) ?? TimeZone(secondsFromGMT:utcOffset) ?? .gmt
+  }
   static func valid(_ value: Double?, in range: ClosedRange<Double>) -> Double? {
     guard let value, value.isFinite, range.contains(value) else { return nil }
     return value
   }
   var condition: String {
+    Self.condition(for: code)
+  }
+  static func condition(for code: Int?) -> String {
     switch code {
     case 0: "Clear"
     case 1, 2: "Partly Cloudy"
@@ -44,7 +52,10 @@ struct WeatherReading: Sendable {
     }
   }
   var symbol: String {
-    switch condition {
+    Self.symbol(for: code,isDay:isDay)
+  }
+  static func symbol(for code: Int?,isDay: Bool?) -> String {
+    switch condition(for:code) {
     case "Clear": isDay == false ? "moon.stars.fill" : "sun.max.fill"
     case "Partly Cloudy": isDay == false ? "cloud.moon.fill" : "cloud.sun.fill"
     case "Fog": "cloud.fog.fill"
@@ -59,13 +70,32 @@ struct WeatherReading: Sendable {
     guard let date else { return "—" }
     let f = DateFormatter()
     f.locale = Locale(identifier: "en_US")
-    f.timeZone = TimeZone(secondsFromGMT: utcOffset)
+    f.timeZone = timeZone
     f.dateFormat = "h:mm a"
     return f.string(from: date)
   }
   var sunsetLabel: String { sunLabel(sunset) }
   func stale(at now: Date) -> Bool {
     now.timeIntervalSince(observedAt) > 3600 || observedAt.timeIntervalSince(now) > 300
+  }
+  var upcomingHours: [WeatherHour] {
+    hourly.filter { $0.time > observedAt && $0.time.timeIntervalSince(observedAt) <= 86_400 }
+  }
+}
+
+struct WeatherHour: Identifiable, Sendable {
+  let time: Date
+  let temperature: Double?
+  let rainChance: Double?
+  let wind: Double?
+  let code: Int?
+  let isDay: Bool?
+  var id: Date { time }
+  var symbol: String { WeatherReading.symbol(for:code,isDay:isDay) }
+  func label(timeZone: TimeZone) -> String {
+    let f=DateFormatter();f.locale=Locale(identifier:"en_US")
+    f.timeZone=timeZone;f.dateFormat="ha"
+    return f.string(from:time)
   }
 }
 
@@ -88,9 +118,19 @@ struct OpenMeteoForecast: Decodable {
     var sunrise: [Double?]?
     var sunset: [Double?]?
   }
+  struct Hourly: Decodable {
+    var time: [Double?]?
+    var temperature_2m: [Double?]?
+    var precipitation_probability: [Double?]?
+    var wind_speed_10m: [Double?]?
+    var weather_code: [Int?]?
+    var is_day: [Int?]?
+  }
   let utc_offset_seconds: Int
   let current: Current
   var daily: Daily?
+  var hourly: Hourly?
+  var timezone: String?
   func reading(city: String) throws -> WeatherReading {
     guard WeatherReading.valid(current.time, in: 0...32_503_680_000) != nil,
       (-64_800...64_800).contains(utc_offset_seconds) else { throw URLError(.cannotParseResponse) }
@@ -109,6 +149,24 @@ struct OpenMeteoForecast: Decodable {
       observedAt: Date(timeIntervalSince1970: current.time), sunrise: date(daily?.sunrise),
       isDay: current.is_day == 0 ? false : current.is_day == 1 ? true : nil,
       cloudCover: WeatherReading.valid(current.cloud_cover, in: 0...100),
-      precipitation: WeatherReading.valid(current.precipitation, in: 0...10_000))
+      precipitation: WeatherReading.valid(current.precipitation, in: 0...10_000),
+      hourly: parsedHours,timeZoneID:timezone)
+  }
+  private var parsedHours: [WeatherHour] {
+    guard let hourly,let times=hourly.time,!times.isEmpty,times.count<=168 else { return [] }
+    let validTimes=times.compactMap { WeatherReading.valid($0,in:1...32_503_680_000) }
+    guard validTimes.count==times.count,Set(validTimes).count==validTimes.count,
+      validTimes==validTimes.sorted() else { return [] }
+    func value<T>(_ items:[T?]?,_ index:Int) -> T? {
+      guard let items,items.indices.contains(index) else { return nil };return items[index]
+    }
+    return validTimes.enumerated().map { i,seconds in
+      let day:Int?=value(hourly.is_day,i)
+      return WeatherHour(time:Date(timeIntervalSince1970:seconds),
+        temperature:WeatherReading.valid(value(hourly.temperature_2m,i),in:-150...180),
+        rainChance:WeatherReading.valid(value(hourly.precipitation_probability,i),in:0...100),
+        wind:WeatherReading.valid(value(hourly.wind_speed_10m,i),in:0...400),
+        code:value(hourly.weather_code,i),isDay:day==0 ? false : day==1 ? true : nil)
+    }
   }
 }

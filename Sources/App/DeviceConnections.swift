@@ -225,6 +225,9 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
   func weather(_ city: String) async throws -> WeatherReading {
     weatherCalls += 1
     let args = ProcessInfo.processInfo.arguments
+    if args.contains("--weather-city-delay"), weatherCalls > 1 {
+      try await Task.sleep(for:.seconds(12))
+    }
     if args.contains("--weather-fail") || args.contains("--weather-cached-failure") && weatherCalls > 1 {
       throw URLError(.notConnectedToInternet)
     }
@@ -235,10 +238,22 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
     let stale = args.contains("--weather-stale-night")
     let snow = args.contains("--weather-snow")
     let rain = args.contains("--weather-rain")
+    let forecast = args.contains("--weather-forecast-fixture")
+    let observed = stale ? Date().addingTimeInterval(-7200) : Date()
+    let firstHour = floor(observed.timeIntervalSince1970/3600)*3600
+    var hours: [WeatherHour] = []
+    if forecast {
+      for i in 1...6 {
+        let time = Date(timeIntervalSince1970:firstHour+Double(i)*3600)
+        let chance: Double? = i==2 ? nil:Double(10+i*5)
+        hours.append(WeatherHour(time:time,temperature:Double(55+i),rainChance:chance,
+          wind:Double(8+i),code:i%3==1 ? 2:0,isDay:true))
+      }
+    }
     return WeatherReading(
-      city: "Fixture City", temperature: snow ? 22 : 55, high: 60, low: 48, humidity: 70, wind: 8, code: snow ? 73 : rain ? 61 : 2,
-      sunset: Fixtures.date, utcOffset: 0, observedAt: stale ? Date().addingTimeInterval(-7200) : Date(),
-      sunrise: nil,isDay: !stale,cloudCover:40)
+      city: forecast ? city : "Fixture City", temperature: snow ? 22 : 55, high: 60, low: 48, humidity: 70, wind: 8, code: snow ? 73 : rain ? 61 : 2,
+      sunset: Fixtures.date, utcOffset: 0, observedAt: observed,
+      sunrise: nil,isDay: !stale,cloudCover:40,hourly:hours)
   }
   func unlock() async -> Bool { true }
 }

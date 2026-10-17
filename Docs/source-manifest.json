@@ -1,9 +1,9 @@
 {
-  "digest": "5b9c4497bcd8b4d15e0d21461d3e342c1bbcede75826dfa56acc6a84419cff9b",
+  "digest": "1638501683b748096ab6368570f2753ae13c654131188a02315375c45b689762",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "d23fc0ddfe2616395af6870bc099907399c11370fb0203702d6e012b6a5727b8"
+      "sha256": "c869b67ce0b26c2a3cf613c2ab193496843eba461e9ee70cc87ac14f622f23e2"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -219,7 +219,7 @@
     },
     {
       "path": "Sources/App/Controls.swift",
-      "sha256": "e969757a8ec6cb5b193a07cea9c24e6be0f948be291ccbbfb7684bd08e2d5819"
+      "sha256": "1d661f0e0d85758942ed489bd738fc6fb2b0aa797d37d9094cf4312f184a414a"
     },
     {
       "path": "Sources/App/Design.swift",
@@ -227,7 +227,7 @@
     },
     {
       "path": "Sources/App/DeviceConnections.swift",
-      "sha256": "877828a9d55ecdcb509c4dd3ff070442c4ea2434af1b9f155624910d01dac1e2"
+      "sha256": "a8fb16f0ddc9a1ce68ebcacbef503ddba88c23c093067133b453d10a903113da"
     },
     {
       "path": "Sources/App/DisplayWakeController.swift",
@@ -243,7 +243,7 @@
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "58dcfdcdb8a11132d2b8e42f880c963b38d1977e3b940d8e3f62b850c9b8f7f2"
+      "sha256": "813f80b8b6cb49bd3f09b69f81df2a021dac4dc0cb261450a69a624ebf56eb23"
     },
     {
       "path": "Sources/App/FlowDigitContours.swift",
@@ -318,8 +318,12 @@
       "sha256": "4d89d19b46fe5aceee5bd43d37cb29e1feb2bed4cff3a7faac16b5e1d2f47b98"
     },
     {
+      "path": "Sources/App/WeatherScreen.swift",
+      "sha256": "8e1f485f159ca6c2cf64acbee441ff151c4e07f8fa514ccbb77461620fa4d689"
+    },
+    {
       "path": "Sources/App/WeatherService.swift",
-      "sha256": "6054cf206566a329a8638e44aa5e9bb749ac52adf1785bdf3b83478aa966b27b"
+      "sha256": "3921ee5426399c326610cfa4f25d27e6baf2018f6a827210edfbef8ae692be78"
     },
     {
       "path": "Sources/Core/BrowserPolicy.swift",
@@ -335,7 +339,7 @@
     },
     {
       "path": "Sources/Core/ConnectedDataSession.swift",
-      "sha256": "a13a86046396aa69a99d7e4f8bd0c07a7c270675b76fd61d4760ec5ad788f421"
+      "sha256": "2d95eaf7ef66102e2215e10a174cce83ce7db1ed5bfc242f51c2ee192654175c"
     },
     {
       "path": "Sources/Core/ConnectedModels.swift",
@@ -379,7 +383,7 @@
     },
     {
       "path": "Sources/Core/WeatherData.swift",
-      "sha256": "902535cd75beca71eefe2dbb6bfb09f32b1aee6b9648dc0ea06f77fdb95ba2d1"
+      "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
     },
     {
       "path": "Sources/Core/WorldClock.swift",
@@ -431,7 +435,7 @@
     },
     {
       "path": "Tests/CoreTests/WeatherTests.swift",
-      "sha256": "ebfac3cccefacbed86701756714ceef521d66e50f8a9014a322540a34d58ebd5"
+      "sha256": "a3aa9bb2852b44088207b7d0c1c8bac354fbe8f17fb2134abfa98654b3d4692c"
     },
     {
       "path": "Tests/CoreTests/WorldClockTests.swift",
@@ -439,7 +443,7 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "8afb1e8b3295ad582da18e6207ee5288f05c7879c615338d826a8fcc78bd3514"
+      "sha256": "070a2945fc4315ce0bce80e418297925242c2a407f5cf60b12bfd5f4266bea4d"
     }
   ]
 }

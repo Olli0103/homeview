@@ -44,8 +44,9 @@ struct WeatherService {
         "latitude": String(p.latitude), "longitude": String(p.longitude),
         "current": "temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,is_day,cloud_cover,precipitation",
         "daily": "temperature_2m_max,temperature_2m_min,sunrise,sunset", "temperature_unit": "fahrenheit",
+        "hourly": "temperature_2m,precipitation_probability,wind_speed_10m,weather_code,is_day",
         "wind_speed_unit": "mph", "timezone": "auto", "timeformat": "unixtime",
-        "forecast_days": "1",
+        "forecast_days": "2",
       ])
     return try f.reading(city: p.name)
   }

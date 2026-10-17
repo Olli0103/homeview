@@ -321,7 +321,7 @@ final class DeviceConnections {
     let quality = weatherFetchFailed ? "Offline · last reading" : weather.stale(at: now) ? "Stale reading" : "Observed"
     let formatter = DateFormatter()
     formatter.locale = Locale(identifier: "en_US")
-    formatter.timeZone = TimeZone(secondsFromGMT: weather.utcOffset)
+    formatter.timeZone = weather.timeZone
     formatter.dateFormat = "MMM d, HH:mm"
     return "\(quality) · \(formatter.string(from: weather.observedAt)) · \(weatherUnits.rawValue)"
   }

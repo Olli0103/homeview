@@ -10,11 +10,7 @@ struct AppContent: View {
     case .music:
       if model.connections.enabled.contains(.music) { DeviceMusicView() } else { MusicView() }
     case .weather:
-      VStack(spacing: 0) {
-        AppHeader(title: model.connections.weatherCity, light: true).background(
-          Color(red: 0.14, green: 0.36, blue: 0.6))
-        WeatherFace(inApp: true)
-      }
+      WeatherScreen()
     case .timers: TimerView()
     case .reminders:
       if model.connections.requested.contains(.reminders) {
