@@ -21,3 +21,10 @@ Die Erstfassung hatte bei gestrichelten Kurvenverbindungen sichtbare Reststücke
 [Quellenbindung und Ergebnisse](verification/flow-rendered.json) · [eigene Bilder und Digests](screenshots/iteration-20261017-block2/flow-rendered-manifest.json).
 
 Das technische Paket eigener nutzbarer Ziffern ist von originalgetreuer Apple-Typografie, Glas, Fluidbewegung und kompletter visueller Parität getrennt. Die bleiben in [#16](https://github.com/Olli0103/homeview/issues/16) und [#78](https://github.com/Olli0103/homeview/issues/78) offen. SDK-Builds sind keine Hardwareprüfung.
+
+## Eigentümerreview: wieder offen
+
+Die eigene Monoline-Gestaltung wurde als Abweichung vom Apple-HomeView-Ziel erkannt.
+#15 ist wieder offen. Die obigen Tests belegen die technische Metrik-/Renderbasis,
+nicht die verlangte Originalform. Weitere Glyphenarbeit wird am tatsächlichen
+Originalzustand bewertet; keine Fortsetzung als eigener Schriftstil.

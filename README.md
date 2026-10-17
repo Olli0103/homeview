@@ -1,6 +1,6 @@
 # HomeView
 
-Independent native Swift/SwiftUI prototype for a shared home display. This project is not affiliated with Apple and is not a complete reproduction of the reference product.
+Native Swift/SwiftUI reconstruction targeting Apple HomeView’s observed appearance and behavior, not a separate visual redesign. This independent project is not affiliated with Apple; the reconstruction is not complete.
 
 Current iteration: [issue progress](Docs/progress.md), [test results and screenshots](Docs/iteration-20261017-block2.md).
 

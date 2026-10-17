@@ -362,7 +362,7 @@
     "priority": "P1",
     "kind": "implementation",
     "functions": [],
-    "current": "Privater Stand hat feste extrahierte Konturen. Öffentliche Kopie verwendet eigene Siebensegment-Ziffern. Variable Breite/Stärke und Laufweiten fehlen.",
+    "current": "Nach Eigentümerreview wieder offen: technische eigene Glyphen/Metriken bestanden, aber Form, Proportionen, Stencil und Material treffen Apple HomeView nicht. Originalnahe Optik hat Vorrang vor weiterer Funktionsbreite.",
     "tasks": [
       "Eigenständige nutzbare Solid-/Stencil-Formen ohne extrahierte OS-Konturen erstellen",
       "Breite, Stärke, Laufweite und Randabstände konsistent parametrisieren",
@@ -375,8 +375,8 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/15",
     "issue_number": 15,
-    "state": "completed",
-    "completion": {
+    "state": "open",
+    "technical_checkpoint": {
       "date": "2026-10-17",
       "evidence": [
         "Docs/flow-typography.md",

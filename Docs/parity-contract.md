@@ -2,6 +2,20 @@
 
 Stand 17. Oktober 2026. Primärziel ist eine native gemeinsame HomeView-Oberfläche auf dem iPad. Referenzgeometrie sind 600 × 600 logische Punkte. iPhone ist eine angepasste Ansicht. Mac, TV, Vision und Watch werden separat geprüft; Watch ist eine reduzierte Begleitansicht. Zusätzliche Watch-inspirierte Faces sind optionale Erweiterungen und kein Ersatz für fehlende Originalfunktionen.
 
+## Verbindliche Zielkorrektur nach Eigentümerreview
+
+Olli hat am 17. Oktober 2026 ausdrücklich bekräftigt: Ziel ist eine visuelle
+Apple-HomeView-Kopie, keine eigenständige Gestaltungsvariante. Eigene Implementierung
+und redistribuierbare Assets sind kein Grund für abweichende Formen, Proportionen,
+Farben oder Abläufe. Funktionsbreite und grüne Tests ersetzen diesen Abgleich nicht.
+Der bisherige Videoentwurf ist als Präsentation verworfen; #15 ist wieder geöffnet.
+
+Weitere Arbeit priorisiert jetzt passende Original-/Simulatorvergleiche und die
+sichtbaren Abweichungen (zunächst Flow, dann Raster/Icons und Wetterdarstellung).
+Unbekannte Originalzustände bleiben unbekannt; neue Ersatzideen werden nicht als
+Erledigung der Kopie ausgegeben. Originalreferenzen bleiben von öffentlichem
+Projektcode und dessen MIT-Lizenz getrennt.
+
 ## Belegstärke
 
 Die historischen Quellenkürzel bleiben erhalten, sind aber kein automatisches Gütesiegel. Ein konkreter UI-Zustand oder eine beobachtete Bewegungssequenz gilt als beobachtet. Hersteller-/Berichtsaussagen ohne passenden Zustand gelten als berichtet. Ist eine Eigenschaft oder Regel aus den vorhandenen Belegen nicht bestimmbar, bleibt sie unbekannt. Eine sichtbare Taste belegt weder den Transport noch eine erfolgreiche Live-Aktion.
