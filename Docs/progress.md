@@ -41,6 +41,14 @@ sowie fünf SDK-Builds bestanden; nach Commit erneut 95 Modelltests. Die Bewegun
 prüfungen vergleichen dekodierte Pixel statt PNG-Dateiunterschiede. **#15 bleibt
 offen**, kein Original-PASS. [Vergleich und Grenzen](visual-recovery-20261017.md).
 
+## App-Marken und persönlicher Screen
+
+`e169206` ersetzt die sichtbaren Plus-Kreis-Platzhalter und korrigiert die
+Standard-Favoriten/Begrüßung nach UI16. 95 Modelltests, ein gezielter UI-Fall je
+iPad/iPhone und fünf SDK-Builds bestanden, danach erneut 95 Modelltests. Fotos,
+profilabhängige Layouts, weitere Widgets und exakte Icon-Lichtdetails bleiben offen.
+[Eigene Bilder und Grenzen](app-icons.md). #9 und #3 bleiben offen.
+
 ## Vorrang nach Eigentümerreview
 
 Ziel ist eine möglichst genaue Apple-HomeView-Kopie, keine eigenständige Optik.

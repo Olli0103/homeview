@@ -72,3 +72,11 @@ fünf gezielte UI-Fälle je iPad/iPhone, fünf SDK-Builds und erneut 95 Modellte
 Commit bestanden. Quellen-SHA `58aa35311cfde62210081d3adb5491c68b6090b066d8f28587ea0628a32f7922`.
 [Originalziel, eigener Bildvergleich und offene Abweichungen](visual-recovery-20261017.md).
 #15 bleibt offen. Der verworfene Videoentwurf wird nicht als Präsentation weitergeführt.
+
+## Persönlicher Screen und Icon-Korrektur
+
+`e169206`: erkennbare Runtime-Vektormarken statt Plus-Kreis-Fixtures; vier Standard-
+Favoriten und Begrüßung nach UI16. 95 Modelltests, ein gezielter UI-Fall je iPad/iPhone,
+fünf SDK-Builds und erneut 95 Modelltests nach Commit bestanden. [Bilder, Herkunft und
+verbleibende Abweichungen](app-icons.md). Kein Original-PASS und keine Schließung von
+#3/#9. Quelle 110 Dateien, SHA `5b9c4497bcd8b4d15e0d21461d3e342c1bbcede75826dfa56acc6a84419cff9b`.
