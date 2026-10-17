@@ -85,3 +85,14 @@ geprüft, bei Reduce Motion null abweichende Kanäle, bei 0 Prozent Bedeckung ke
 weißes Wolkenfeld. [Eigene Bilder und Grenzen](weather-clouds.md). Kein Original-PASS
 und keine Schließung von #21; Glasziffern und genaue Wolken-/Lichtphasen bleiben offen.
 Quelle 112 Dateien, SHA `c08561dfa25fc967db7a636d556bc7e83f9ef3cf4e19175da547e31e56d36fc1`.
+
+## Durchscheinende Wetter-Glasziffern
+
+`4f3c942` ersetzt die nahezu deckende Temperatur durch eigene Maskennormalen,
+Wolkenbrechung und Randreflexe nach UI05. Proportionen/Position und Gradzeichen
+sind korrigiert. Nur die gekennzeichnete Referenz-Demo hat AQI 21; verbundene Werte
+bleiben unbekannt. 99 Modelltests, sieben gezielte UI-Fälle je iPad/iPhone
+(14 Ausführungen), fünf SDK-Builds und erneut 99 Modelltests nach Commit bestanden.
+113 gebundene Quellen, SHA `0191c0e171904ac3f6fd74f4d1c51881537a8642563d7806371ef7d594fd4fb9`.
+[Eigene Bilder und Grenzen](weather-glass.md). Keine Originalabnahme: genaue Formen,
+Licht/Brechung und weitere Zustände bleiben offen. Kein neuer X-Clip.
