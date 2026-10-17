@@ -1,0 +1,38 @@
+{
+  "code_commit": "0296d04f6fa24b8c58b693e7bcef96454a4de25c",
+  "source_digest": "bc08572ae729d0c9be67cccc2ec5f3b86a129380d9a4e818a799c4bc00676b9a",
+  "source_files": 107,
+  "source_before_after_match": true,
+  "core_passed": 86,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 65,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 65,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 130,
+  "total_model_and_ui_executions": 216,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "physical_hardware_tested": false,
+  "personal_accounts_tested": false,
+  "real_home_enabled": false,
+  "original_pixel_parity": false
+}

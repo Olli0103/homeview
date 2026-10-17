@@ -1,19 +1,30 @@
 # Bearbeitungsstand
 
-## 17. Oktober 2026, erstes Issue-Paket
+## 17. Oktober 2026 · zweites Issue-Paket
 
-| Paket | Status | Ergebnis |
+[Prüfbericht und eigene Bilder](iteration-20261017-block2.md) · [alle verbleibenden Pakete](remaining-work.md).
+
+| Paket | Stand | Grenze |
 |---|---|---|
-| [BASE-01, #1](https://github.com/Olli0103/homeview/issues/1) | Abgeschlossen | Vertrag, Belegstärke und Abnahmekriterien für alle 105 Referenzfunktionen. |
-| [PHOTO-02, #12](https://github.com/Olli0103/homeview/issues/12) | Abgeschlossen | Motivgeschützte Uhr-/Ausschnittwahl, manuelle Korrektur, Reset und robuste Speicherung. |
-| [SYS-04, #67](https://github.com/Olli0103/homeview/issues/67) | Teilweise umgesetzt | Späte Auth-/Datenantworten, Caches und EventKit-Lesezugriffe abgesichert. Reale Präsenz und Hardwareprüfung fehlen. |
-| [FACE-09, #18](https://github.com/Olli0103/homeview/issues/18) | Teilweise umgesetzt | Eigener konischer Verlauf und Reduce Motion. Originalzeitkurve und vollständige visuelle Kalibrierung fehlen. |
-| [QA-01, #76](https://github.com/Olli0103/homeview/issues/76) | Weiter offen | Vollsuite für Foto/Datenschutz bestanden; spätere Fade-Änderung gesondert, keine vollständige 52er-Folge-Suite. |
+| [FLOW-01, #15](https://github.com/Olli0103/homeview/issues/15) | Abgeschlossen | Eigene variable Glyphen/Metriken; originale Apple-Formen und Glas bleiben getrennt offen. |
+| [DAY-07, #53](https://github.com/Olli0103/homeview/issues/53) | Funktional erweitert | Zonenwahl/Persistenz, DST, Datum, Sonnenstandsschätzung. Originalverlauf/Geometrie offen. |
+| [DAY-01, #47](https://github.com/Olli0103/homeview/issues/47) | Software gehärtet | Kalenderrechte, Tagesgrenzen, Vorkommen und Quelle. Physischer Testkalender/Accountwechsel offen. |
+| [DAY-02, #48](https://github.com/Olli0103/homeview/issues/48) | Software gehärtet | Listenrechte, eigener Zielkalender, exakter Read-back. Reale gemeinsame/Read-only-Listen offen. |
+| [DAY-08, #54](https://github.com/Olli0103/homeview/issues/54) | Abgeschlossen | Bounded HTTPS-/WebKit-Navigation mit lokalen Fehler-/History-/Stop-Tests, keine Safari-Kontosynchronisierung. |
+| [DAY-04, #50](https://github.com/Olli0103/homeview/issues/50) | Parser/Kochsitzung erweitert | Physische Erkennung und weitere Formulierungen offen. |
+| [DAY-09, #55](https://github.com/Olli0103/homeview/issues/55) | Abgeschlossen | Mehrere Rezepte, keine erfundenen Metadaten, stabile IDs und begrenzte Schritte. |
+| [AI-06, #38](https://github.com/Olli0103/homeview/issues/38) | Entwurf abgesichert | Erhalt bei Navigation, Löschung bei Hintergrund/Sperre; Originalgesten/Hardware offen. |
+| [QA-05, #80](https://github.com/Olli0103/homeview/issues/80) | Speicherung gehärtet | Einzelreparatur und verifizierte Originalbytes; breitere Provider-/Fehlerabnahme offen. |
+| [QA-01, #76](https://github.com/Olli0103/homeview/issues/76) | Abgeschlossen | 86 Modelltests und je 65 vollständige UI-Fälle, fünf SDK-Builds auf `0296d04`. |
 
-[Prüfbericht und Bilder](iteration-20261017.md). Foto/Datenschutz: 50 Coretests und je 50 UI-Fälle bestanden, fünf SDK-Builds. Fade separat: 53 Coretests, zwei UI-Fälle und fünf SDK-Builds bestanden. Keine Hardware-/Originalpixelabnahme.
+86 Coretests und fünf SDK-Builds sind auf dem letzten Code-Stand bestanden. Jeder der neun Code-Commits hat gezielte iPad-/iPhone-Prüfungen sowie einen erneuten Modelltestlauf nach dem Commit. Die terminalen Ergebnisbündel bestätigen 130 erfolgreiche UI-Ausführungen, null Fehler/Skips und keine von XCTest gemeldeten Runtime-Warnungen. Zusammen 216 erfolgreiche Modell-/UI-Ausführungen; Quellen vor/nach dem Lauf identisch.
 
-Zwei von 82 Arbeitspaketen sind abgeschlossen. Geschlossene Pakete bedeuten nicht automatisch vollständig originalgleiche Referenzfunktionen. Alle 105 Funktionen behalten ihre gesonderten offenen Originalabnahmen.
+Sechs der ursprünglichen 82 Pakete sind abgeschlossen; 76 bleiben offen. Zusätzlich ist die neue externe [Lizenzfrage #83](https://github.com/Olli0103/homeview/issues/83) offen, also insgesamt **77 offene GitHub-Issues**. [Vollständiger API-Read-back](verification/issue-readback-block2.json).
 
-Nächste P1-Arbeit: nutzbare variable Flow-Typografie und Metriken, weitere Fade-Referenzphasen sowie die übrigen offenen Renderer- und Funktionslücken. Apple Home bleibt bis zur ausdrücklichen Einrichtung gesperrt. Quellengebundene Ansatzpunkte: [Build-Übernahmekarte](build-transfer-map.md).
+Geschlossene Arbeitspakete sind keine pauschal akzeptierten Originalfunktionen. Die 105 Referenzfunktionen behalten ihre getrennten Original-, Funktions- und Geräteabnahmen. Es gibt weitere unbegonnene Softwarearbeit; sie wird nicht als durchweg hardwareblockiert ausgegeben.
 
-[Gesamtbacklog](backlog.md).
+## Historie
+
+Im [ersten Paket](iteration-20261017.md) wurden [BASE-01, #1](https://github.com/Olli0103/homeview/issues/1) und [PHOTO-02, #12](https://github.com/Olli0103/homeview/issues/12) abgeschlossen, der Datenschutz und der eigene Fade-Verlauf weitergebaut. Seine 150 Foto-/Datenschutz-Ausführungen und der separate Fade-Nachweis sind historische, eigene Quellstände und werden nicht als neue aktuelle Tests gezählt.
+
+Apple Home bleibt konstruktionsseitig gesperrt. Kein echtes Gerät wurde geschaltet oder entdeckt. Keine pauschale Original-Parität, physische Sprach-/Kamera-/Energie- oder vollständige Bedienhilfenabnahme.

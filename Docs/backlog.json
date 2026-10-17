@@ -1339,7 +1339,15 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/55",
     "issue_number": 55,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-17",
+      "evidence": [
+        "Docs/iteration-20261017-block2.md",
+        "Docs/verification/full-regression.json"
+      ],
+      "scope": "Das bounded Rezeptimport-/Bibliothekspaket ist abgeschlossen: explizite Auswahl mehrerer Rezepte, stabile Inhalts-IDs, unverfälschte Schritte und unbekannte statt erfundener Metadaten. Der gemeinsame Folgestand `0296d04` besteht 86 Modelltests und alle 65 UI-Fälle je iPad/iPhone sowie fünf SDK-Builds. Speicherung/Originalbackup ist zusätzlich durch echten Host-Datei-Read-back der eigenen synthetischen Testordner belegt. Frühere Teilstand-Grenzen gelten historisch; reale Accounts, Handoff und Original-Cover-/Layoutparität werden nicht mitgeschlossen."
+    }
   },
   {
     "key": "DAY-10",
@@ -1839,10 +1847,18 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/76",
     "issue_number": 76,
-    "state": "in_progress",
+    "state": "completed",
     "progress_evidence": [
       "Docs/iteration-20261017.md"
-    ]
+    ],
+    "completion": {
+      "date": "2026-10-17",
+      "evidence": [
+        "Docs/iteration-20261017-block2.md",
+        "Docs/verification/full-regression.json"
+      ],
+      "scope": "Der eingefrorene öffentliche App-/Test-/Ressourcenstand `0296d04f6fa24b8c58b693e7bcef96454a4de25c` besteht 86 Modelltests und 65 vollständige UI-Fälle auf jedem der beiden Simulatoren: 130 UI-Ausführungen, 0 Fehler, 0 Skips und keine von XCTest gemeldeten Runtime-Warnungen. Zusammen sind es 216 Modell-/UI-Ausführungen; fünf SDK-Builds bestehen. 107 relative Quellen sind vor/nach dem Lauf bytegleich, SHA-256 `bc08572ae729d0c9be67cccc2ec5f3b86a129380d9a4e818a799c4bc00676b9a`. Der zusätzliche Datei-Read-back bestätigt unveränderte unbekannte Versionen und korrekte Originalsicherungen. Dieses technische öffentliche Simulator-Regressionsgate ist abgeschlossen. Originalpixel, physische Hardware, echte Konten, Energie und vier zusätzliche Plattform-Runtimes bleiben gesonderte offene Gates. Apple Home bleibt konstruktionsseitig gesperrt; keine echten Geräteaktionen."
+    }
   },
   {
     "key": "QA-02",
