@@ -38,7 +38,9 @@ Vier terminale Vollsuite-Bilder wurden dekodiert gesichtet und bytegeprüft übe
 
 ## Issue-Abgleich
 
-Neu geschlossen sind [#15](https://github.com/Olli0103/homeview/issues/15), [#54](https://github.com/Olli0103/homeview/issues/54), [#55](https://github.com/Olli0103/homeview/issues/55) und [#76](https://github.com/Olli0103/homeview/issues/76), jeweils nur im beschriebenen Teilumfang. Die 82 ursprünglichen Titel, Labels und Zustände wurden per GitHub-API zurückgelesen: sechs Pakete insgesamt geschlossen, 76 offen. Während der Arbeit kam [#83](https://github.com/Olli0103/homeview/issues/83) als externe Frage nach der Quelllizenz hinzu; sie hängt an der noch offenen Eigentümerentscheidung #4. Zusammen 77 offene GitHub-Issues. [Read-back](verification/issue-readback-block2.json).
+Neu geschlossen sind [#15](https://github.com/Olli0103/homeview/issues/15), [#54](https://github.com/Olli0103/homeview/issues/54), [#55](https://github.com/Olli0103/homeview/issues/55) und [#76](https://github.com/Olli0103/homeview/issues/76), jeweils nur im beschriebenen Teilumfang. Danach hat der Eigentümer MIT ausdrücklich gewählt: [#4](https://github.com/Olli0103/homeview/issues/4) und die externe Lizenzfrage [#83](https://github.com/Olli0103/homeview/issues/83) sind mit veröffentlichter [LICENSE](../LICENSE) und [NOTICE](../NOTICE.md) geschlossen. Der externe Issue-Text blieb unverändert. Die 82 ursprünglichen Titel, Labels und Zustände wurden per GitHub-API zurückgelesen: sieben Pakete insgesamt geschlossen, **75 offen**; einschließlich #83 bleiben insgesamt 75 GitHub-Issues offen. [Read-back](verification/issue-readback-block2.json).
+
+Der reine Lizenz-/Dokumentationscommit `99d2afd` verändert keine der 107 eingefrorenen Quellen. Der Lizenztext entspricht SPDX MIT; erneut 86 Modelltests nach dem Commit bestanden. [Lizenzprüfung](verification/license.json).
 
 ## Was damit nicht erledigt ist
 

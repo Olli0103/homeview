@@ -19,7 +19,7 @@
 
 86 Coretests und fünf SDK-Builds sind auf dem letzten Code-Stand bestanden. Jeder der neun Code-Commits hat gezielte iPad-/iPhone-Prüfungen sowie einen erneuten Modelltestlauf nach dem Commit. Die terminalen Ergebnisbündel bestätigen 130 erfolgreiche UI-Ausführungen, null Fehler/Skips und keine von XCTest gemeldeten Runtime-Warnungen. Zusammen 216 erfolgreiche Modell-/UI-Ausführungen; Quellen vor/nach dem Lauf identisch.
 
-Sechs der ursprünglichen 82 Pakete sind abgeschlossen; 76 bleiben offen. Zusätzlich ist die neue externe [Lizenzfrage #83](https://github.com/Olli0103/homeview/issues/83) offen, also insgesamt **77 offene GitHub-Issues**. [Vollständiger API-Read-back](verification/issue-readback-block2.json).
+Sieben der ursprünglichen 82 Pakete sind abgeschlossen; **75 bleiben offen**. Der Eigentümer hat MIT gewählt: [#4](https://github.com/Olli0103/homeview/issues/4) und die zusätzliche externe [Lizenzfrage #83](https://github.com/Olli0103/homeview/issues/83) sind geschlossen. [MIT-Lizenz](../LICENSE) und [Rechtehinweise](../NOTICE.md) sind veröffentlicht. Insgesamt 75 offene GitHub-Issues. [Vollständiger API-Read-back](verification/issue-readback-block2.json).
 
 Geschlossene Arbeitspakete sind keine pauschal akzeptierten Originalfunktionen. Die 105 Referenzfunktionen behalten ihre getrennten Original-, Funktions- und Geräteabnahmen. Es gibt weitere unbegonnene Softwarearbeit; sie wird nicht als durchweg hardwareblockiert ausgegeben.
 
