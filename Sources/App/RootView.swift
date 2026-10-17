@@ -126,6 +126,11 @@ struct RootView: View {
           }.accessibilityLabel("Control Center").accessibilityIdentifier("nav.controls")
         }.font(.system(size: 18)).foregroundStyle(.white.opacity(0.7)).buttonStyle(.plain).frame(
           height: 30)
+        if model.storeReadOnly {
+          Text("Read-only saved data · Changes are temporary")
+            .font(.system(size: 12)).foregroundStyle(.orange)
+            .accessibilityIdentifier("store.readOnly")
+        }
         Spacer(minLength: 0)
       }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }

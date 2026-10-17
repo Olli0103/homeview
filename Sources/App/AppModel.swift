@@ -16,6 +16,8 @@ final class AppModel {
   var pendingPage: AppPage? = nil
   var toast: String? = nil
   var error: String? = nil
+  private(set) var storeReadOnly = false
+  private(set) var storeRecoveryNote: String?
   var assistantInput = ""
   private(set) var personalSessionGeneration = 0
   var assistantReply = "What can I help you with?"
@@ -197,13 +199,36 @@ final class AppModel {
       if args.contains("--reset-test-store") { try? FileManager.default.removeItem(at: dir) }
     }
     store = dir.appendingPathComponent("mock-state.json")
-    if !ephemeral, let bytes = try? Data(contentsOf: store),
-      let saved = try? Snapshot.decodeMigrating(bytes), saved.version == 1,
-      saved.widgets.count == 4, !saved.recipe.steps.isEmpty
-    {
-      data = saved
-    } else {
-      data = Snapshot()
+    data = Snapshot()
+    // Synthetic corruption fixtures can only target an explicitly owned UUID test store.
+    if testID != nil, args.contains("--uitesting"),
+       args.contains("--state-future-fixture") || args.contains("--state-corrupt-fixture") {
+      do {
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        if args.contains("--state-future-fixture") {
+          try Data("{\"version\":99}".utf8).write(to: store, options: .atomic)
+        } else {
+          var fixture = Snapshot(); fixture.home.temperature = 69
+          var object = try JSONSerialization.jsonObject(with: JSONEncoder().encode(fixture)) as! [String: Any]
+          object["recipe"] = ["corrupt": true]
+          try JSONSerialization.data(withJSONObject: object, options: [.sortedKeys]).write(to: store, options: .atomic)
+        }
+      } catch { self.error = "The synthetic test store could not be prepared." }
+    }
+    if !ephemeral, FileManager.default.fileExists(atPath: store.path) {
+      do {
+        let bytes = try Data(contentsOf: store)
+        let saved = try Snapshot.decodeMigrating(bytes)
+        let normalized = try JSONEncoder().encode(saved)
+        if try Snapshot.canonicalBytes(bytes) != Snapshot.canonicalBytes(normalized) {
+          try preserveOriginalStore(bytes)
+          storeRecoveryNote = "Supported saved fields recovered. The original file was preserved."
+        }
+        data = saved
+      } catch {
+        storeReadOnly = true
+        storeRecoveryNote = "Original saved data is unchanged. This file could not be safely opened; changes are not saved."
+      }
     }
     if let i = args.firstIndex(of: "--face"), args.indices.contains(i + 1),
       let face = Face(rawValue: args[i + 1])
@@ -356,13 +381,36 @@ final class AppModel {
     photoIndex = (photoIndex + 1) % gallery.count
     showPhoto(gallery[photoIndex])
   }
-  func persist() {
-    guard !ephemeral else { return }
+  private func preserveOriginalStore(_ bytes: Data) throws {
+    let folder = store.deletingLastPathComponent().appendingPathComponent("State Recovery", isDirectory: true)
+    try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+    let digest = SHA256.hash(data: bytes).map { String(format: "%02x", $0) }.joined()
+    let backup = folder.appendingPathComponent("original-" + digest + ".json")
+    if FileManager.default.fileExists(atPath: backup.path) {
+      guard try Data(contentsOf: backup) == bytes else { throw SnapshotReadError.malformed }
+    } else {
+      let existing = try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
+      guard existing.filter({ $0.lastPathComponent.hasPrefix("original-") }).count < 8 else {
+        throw SnapshotReadError.oversized
+      }
+      try bytes.write(to: backup, options: .atomic)
+      guard try Data(contentsOf: backup) == bytes else { throw SnapshotReadError.malformed }
+    }
+  }
+  private func writableStore() -> Bool {
+    guard !storeReadOnly else { error = storeRecoveryNote; return false }
+    return true
+  }
+  @discardableResult
+  func persist() -> Bool {
+    guard !ephemeral else { return true }
+    guard writableStore() else { return false }
     do {
       try FileManager.default.createDirectory(
         at: store.deletingLastPathComponent(), withIntermediateDirectories: true)
       try JSONEncoder().encode(data).write(to: store, options: .atomic)
-    } catch { self.error = "Could not save local demo state." }
+      return true
+    } catch { self.error = "Could not save local demo state."; return false }
   }
   func interact() { lastInteraction = Date() }
   func command(_ command: HomeCommand) {
@@ -496,14 +544,20 @@ final class AppModel {
   }
   @discardableResult
   func addTimer(seconds: TimeInterval, title: String = "Timer") -> Bool {
+    guard writableStore() else { return false }
     guard seconds.isFinite, seconds > 0, seconds <= 86400, data.timers.count < 12 else {
       error = "Choose 1 second to 24 hours, up to 12 timers."
       return false
     }
     let timer = Countdown(title: title, seconds: seconds)
+    let previousSelection = selectedTimer
     data.timers.append(timer)
     selectedTimer = timer.id
-    persist()
+    guard persist() else {
+      data.timers.removeAll { $0.id == timer.id }
+      selectedTimer = previousSelection
+      return false
+    }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if systemAlarmsAllowed {
         Task {
@@ -525,6 +579,7 @@ final class AppModel {
     return true
   }
   func toggleTimer(_ id: UUID) {
+    guard writableStore() else { return }
     guard let i = data.timers.firstIndex(where: { $0.id == id }) else { return }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeTimerIDs.contains(id) {
@@ -548,6 +603,7 @@ final class AppModel {
     persist()
   }
   func removeTimer(_ id: UUID) {
+    guard writableStore() else { return }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeTimerIDs.contains(id) {
         do { try nativeAlarms.cancel(id) } catch {
@@ -562,16 +618,18 @@ final class AppModel {
     persist()
   }
   func addAlarm(hour: Int, minute: Int) {
+    guard writableStore() else { return }
     guard (0...23).contains(hour), (0...59).contains(minute), data.alarms.count < 24 else {
       error = "Choose a valid time, up to 24 alarms."
       return
     }
     let alarm = AlarmItem(hour: hour, minute: minute)
     data.alarms.append(alarm)
-    persist()
+    guard persist() else { data.alarms.removeAll { $0.id == alarm.id }; return }
     scheduleNativeAlarm(alarm)
   }
   private func scheduleNativeAlarm(_ alarm: AlarmItem) {
+    guard writableStore() else { return }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if systemAlarmsAllowed {
         Task {
@@ -593,6 +651,7 @@ final class AppModel {
     #endif
   }
   func toggleAlarm(_ id: UUID) {
+    guard writableStore() else { return }
     guard let i = data.alarms.firstIndex(where: { $0.id == id }) else { return }
     if data.alarms[i].enabled {
       #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
@@ -612,6 +671,7 @@ final class AppModel {
     persist()
   }
   func removeAlarm(_ id: UUID) {
+    guard writableStore() else { return }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeAlarmIDs.contains(id) {
         do { try nativeAlarms.cancel(id) } catch {
@@ -625,6 +685,7 @@ final class AppModel {
     persist()
   }
   func reconcileSystemAlarms() {
+    guard !storeReadOnly else { return }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       guard !data.nativeTimerIDs.isEmpty || !data.nativeAlarmIDs.isEmpty else { return }
       do {
