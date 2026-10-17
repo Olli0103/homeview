@@ -141,3 +141,20 @@ und gegen den Codecommit identisch, SHA
 [Eigene Bilder, Quellen und Grenzen](weather-light.md). Kein neuer vollständiger
 UI-Suite-PASS und keine Originalabnahme: genaue Wolken, gerichtetes Sonnenlicht,
 Brechung und physische Leistung bleiben offen. #21 bleibt offen.
+
+
+## Eigene Foto-Demos und Schutz ohne native Freistellung
+
+`dc5316e`, integriert in `c87e3098`: eigene KI-Demo-Landschaft und fiktives
+Porträt statt Rezept-/Plus-Platzhaltern; öffentlicher CPU-Gesichtsschutz für
+fehlende native Matte. Tatsächlicher Kopf bleibt frei, Uhr unten; kein erfundener
+Tiefeneffekt. Null Gesichter und fehlender Detektor sind getrennte Zustände,
+damit Landschaften ohne Alpha nicht unnötig verkleinert werden.
+
+108 Modelltests, 16 gezielte UI-Ausführungen auf iPad/iPhone und fünf SDK-Builds
+bestanden. 128 Quellen, SHA
+`09e0e4a365f122a977c713ffed03888009ce684c326644da0d66a7f03a6253d2`.
+[Eigene Bilder, Fehlerhistorie und Grenzen](demo-photo-assets.md). Native Vision-
+Freistellung liefert im Simulator weiter Fehlercode 9; genaue Ursache unbewiesen.
+Hohe transparente Original-Fotoziffern, allgemeine Foto-/Albumqualität und Hardware
+bleiben offen. Keine echte Fotobibliothek, kein HomeKit und keine neue Vollsuite.
