@@ -224,6 +224,7 @@ struct PersonalContent: Codable, Sendable {
 
 struct Snapshot: Codable, Sendable {
   var personal: [String: PersonalContent] = [:]
+  var personalHomeConfigurations: [String: PersonalHomeConfiguration] = [:]
   var version = 1
   var home = MockHome()
   var face = Face.home
