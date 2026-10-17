@@ -411,7 +411,8 @@ struct WeatherFace: View {
           detail("aqi.medium", "—", "AQI")
         }.padding(.bottom, inApp ? 44 : 4)
       }
-    }.padding(inApp ? 30 : 45).foregroundStyle(.white).background(WeatherBackdrop(
+    }.padding(inApp ? 30 : 45).foregroundStyle(.white)
+      .shadow(color:.black.opacity(0.18),radius:1,x:0,y:1).background(WeatherBackdrop(
       reading: model.connections.weather, demo: model.connections.weatherDemo))
     .overlay(alignment: .bottomLeading) {
       VStack(alignment: .leading, spacing: 2) {
@@ -424,7 +425,7 @@ struct WeatherFace: View {
         }
       }.font(.system(size: 11)).foregroundStyle(.white.opacity(0.85))
         .padding(.horizontal,60).padding(.bottom,inApp ? 18 : 10)
-    }
+    }.contentShape(Rectangle()).onTapGesture { model.navigate(.weather) }
   }
   private var humidity: String {
     guard let value = WeatherReading.valid(model.connections.weatherDemo ? 76 : model.connections.weather?.humidity, in: 0...100) else { return "—" }
@@ -445,23 +446,17 @@ struct WeatherBackdrop: View {
   var body: some View {
     MotionTimeline { time in
       ZStack {
-        LinearGradient(
-          colors: reading?.isDay == false ? [.indigo, Color(red: 0.02, green: 0.07, blue: 0.18)] : [
-            Color(red: 0.47, green: 0.66, blue: 0.78), Color(red: 0.21, green: 0.51, blue: 0.79),
-            Color(red: 0.42, green: 0.66, blue: 0.88),
-          ], startPoint: .top, endPoint: .bottom)
-        Canvas { context, size in
+        GeometryReader { geometry in
           let cloudy = ["Partly Cloudy","Overcast","Fog","Rain","Snow","Thunderstorms"].contains(reading?.condition ?? "")
-          let clouds = demo ? 27 : Int(((WeatherReading.valid(reading?.cloudCover, in: 0...100) ?? (cloudy ? 60 : 0)) / 100 * 27).rounded())
-          for i in 0..<clouds {
-            let x = Double(i % 9) / 8 * size.width + sin(time * 0.13 + Double(i)) * 22
-            let y = Double(i / 9) * 66 + sin(Double(i) * 3.7) * 35
-            let w = 85 + Double(i % 5) * 28
-            context.fill(
-              Path(ellipseIn: CGRect(x: x - w / 2, y: y, width: w, height: w * 0.56)),
-              with: .color(.white.opacity(0.24 + Double(i % 3) * 0.12)))
-          }
-        }.blur(radius: 17)
+          let cover = demo ? 0.70 : (WeatherReading.valid(reading?.cloudCover,in:0...100) ?? (cloudy ? 60:0))/100
+          LinearGradient(colors:reading?.isDay == false
+            ? [Color(red:0.12,green:0.16,blue:0.31),Color(red:0.02,green:0.07,blue:0.18)]
+            : [Color(red:0.08,green:0.32,blue:0.57),Color(red:0.26,green:0.52,blue:0.78)],
+            startPoint:.top,endPoint:.bottom)
+            .colorEffect(ShaderLibrary.weatherCloudField(
+              .float2(Float(geometry.size.width),Float(geometry.size.height)),
+              .float(Float(time)),.float(Float(cover)),.float(reading?.isDay == false ? 1:0)))
+        }.allowsHitTesting(false).accessibilityHidden(true)
         if reading?.condition == "Rain" || reading?.condition == "Thunderstorms" || reading?.condition == "Snow" {
           Canvas { context, size in
             let snow = reading?.condition == "Snow"

@@ -37,7 +37,8 @@ struct WeatherScreen: View {
             Text(model.connections.weatherCondition.replacingOccurrences(of:" · Demo",with:""))
               .font(.system(size:23))
             Text(model.connections.weatherHighLow).font(.system(size:23)).padding(.top,-6)
-          }.frame(maxWidth:.infinity).padding(.top,6)
+          }.shadow(color:.black.opacity(0.18),radius:1,x:0,y:1)
+            .frame(maxWidth:.infinity).padding(.top,6)
           source
           conditions
           if let reading {
@@ -62,6 +63,7 @@ struct WeatherScreen: View {
       Spacer()
       Text(model.clock,style:.time).environment(\.timeZone,model.displayTimeZone)
         .font(.system(size:22,weight:.medium))
+        .shadow(color:.black.opacity(0.24),radius:1,x:0,y:1)
     }.padding(.leading,6).padding(.trailing,20).buttonStyle(.plain)
   }
   private var source: some View {

@@ -1,0 +1,70 @@
+{
+  "source_digest": "c08561dfa25fc967db7a636d556bc7e83f9ef3cf4e19175da547e31e56d36fc1",
+  "core_passed": 99,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "real_home_access": false,
+  "physical_hardware_tested": false,
+  "personal_accounts_tested": false,
+  "original_pixel_parity": false,
+  "decoded_sky_pixel_review": {
+    "roi_fraction": {
+      "x": [
+        0.2,
+        0.75
+      ],
+      "y": [
+        0.035,
+        0.17
+      ]
+    },
+    "results": [
+      {
+        "device": "iPad",
+        "moving_changed_rgba_channels": 527027,
+        "reduce_motion_changed_rgba_channels": 0,
+        "zero_cover_max_red": 30
+      },
+      {
+        "device": "iPhone",
+        "moving_changed_rgba_channels": 266854,
+        "reduce_motion_changed_rgba_channels": 0,
+        "zero_cover_max_red": 30
+      }
+    ]
+  },
+  "visual_review": {
+    "reference": "UI20 private approximate display crop / UI05 product reference",
+    "accepted_as_incremental_correction": true,
+    "original_parity": false,
+    "limitations": [
+      "exact cloud shape/light/motion phase",
+      "weather-face glass numerals",
+      "physical GPU energy/frame rate",
+      "full weather transitions and unobserved states"
+    ]
+  }
+}

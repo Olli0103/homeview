@@ -1,5 +1,7 @@
 # Eigenständige Wetter-App nach UI20
 
+Spaeterer, separat gepruefter [Wolken-Korrekturschritt](weather-clouds.md). Die folgenden Nachweise bleiben ihrem historischen Quellstand zugeordnet.
+
 17. Oktober 2026 · [#21](https://github.com/Olli0103/homeview/issues/21).
 
 Die Originalreferenz UI20 zeigt eine andere Ansicht als das Wetter-Zifferblatt UI05.
