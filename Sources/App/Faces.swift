@@ -254,19 +254,20 @@ struct FadeFace: View {
       }), center: .center,
       angle: .degrees(phase(reading.minutes) * 360 - 90))
       ForEach(0..<12) { n in
-        Text("\(n == 0 ? 12 : n)").font(.system(size: 94, weight: .ultraLight))
+        Text("\(n == 0 ? 12 : n)").font(.system(size: 101, weight: .thin))
           .foregroundStyle(rose)
           .shadow(color: .black.opacity(0.8), radius: 0.6, x: 0, y: -1.2)
           .shadow(color: .white.opacity(0.8), radius: 0.5, x: 0.8, y: 1.3)
           .opacity(reading.fadeOpacity(hour: n)).accessibilityHidden(true)
-          .offset(y: -233).rotationEffect(.degrees(Double(n) * 30))
+          .offset(y: -239).rotationEffect(.degrees(Double(n) * 30))
       }
       AnalogClock(
         date: model.clock, timeZone: model.displayTimeZone,
         tint: Color(red: 94.0 / 255, green: 48.0 / 255, blue: 44.0 / 255), numbered: false,
-        showTicks: false, secondsColor: Color(red: 1, green: 0.3, blue: 0.76)
+        showTicks: false, secondsColor: Color(red: 1, green: 0.3, blue: 0.76),
+        embossedHands:true,minuteReach:1.01,secondsReach:1.04
       )
-      .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 3).padding(22)
+      .padding(22)
     }.accessibilityLabel("Fade clock, \(model.dateLabel("h:mm"))")
   }
 }
