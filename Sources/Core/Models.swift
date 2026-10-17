@@ -235,6 +235,7 @@ struct Snapshot: Codable, Sendable {
   var keepDisplayOn = false
   var photoIDs: [String] = []
   var rotatePhotos = true
+  var photoAdjustments: [String: PhotoAdjustment] = [:]
   var timers: [Countdown] = []
   var nativeTimerIDs: Set<UUID> = []
   var nativeAlarmIDs: Set<UUID> = []
