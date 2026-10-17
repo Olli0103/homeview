@@ -51,3 +51,30 @@ Die volle Nachtfläche hat 2.453.095 helle Prüfstellen und null unzulässige
 Farbkanäle. Die tatsächliche Porträtaufnahme ist erneut gesichtet: Brechungsränder
 sind nun geglättet, Kopf und Platzierungsrechtecke unverändert. Das ist noch kein
 integrierter iPad-/iPhone-Nachweis und keine Originaltypografieabnahme.
+
+## Integrierter Nachweis · 18. Oktober 2026
+
+Feature `c3b6676`, Integration `9a26adc82aa081fcfe4ae3749f147ada7f394c2e`:
+108 Modelltests, acht gezielte UI-Fälle je iPad/iPhone (16 Ausführungen) und fünf
+SDK-Builds bestanden. Null UI-Fehler, Skips oder gemeldete Runtime-Warnungen.
+128 Quellen vor/nach Prüfung und gegen Mergecommit identisch; nach dem
+Featurecommit erneut 108 Core. Keine neue Vollsuite oder Hardwareabnahme.
+
+| Tatsächlich geprüfte Bildpixel | iPad | iPhone |
+|---|---:|---:|
+| Glyphen-Innenpixel der Kontrollschrift | 77.703 | 37.076 |
+| Durchsicht innerhalb unveränderter RGB-Grenze | 70.195 | 33.859 |
+| Deckende Kontrollschrift: Hintergrundtreffer | 0 | 0 |
+| Helle Pixel im vollen Nacht-Viewport | 2.453.095 | 1.244.921 |
+| Unzulässige Nachtfarbkanäle | 0 | 0 |
+
+Enthalten sind Material-/Positivkontrolle, Nachtfläche, tatsächliche Demo-
+Porträtanalyse, Galerie-Rotation, Top-/Randmotive, dichte Maske, manuelle
+Uhrposition mit Neustart/Reset sowie Ausschnitt/Reset. Die finalen Porträt-,
+Galerie-, Material-, Nacht- und Ausschnittbilder beider Geräte wurden gesichtet.
+Der Kopf bleibt frei; Quelle und Durchsicht passen auch im Ausschnitttest.
+
+[Quellen und Ergebnisse](verification/photo-glass-material.json) ·
+[eigene Bilder und Digests](screenshots/goal-20261017/photo-glass-manifest.json).
+Native Freistellung, hohe Originalglyphen, genaue Lichtführung und physische
+Lesbarkeit/Leistung bleiben getrennte offene Abnahmen.

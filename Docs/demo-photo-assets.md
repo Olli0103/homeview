@@ -46,8 +46,8 @@ Pilot und der integrierte Lauf sind kein Original-PASS.
 
 ## Noch offen
 
-Die deckende gerundete Foto-Uhr ist noch nicht die hohe transparente
-Originaltypografie. Original-Tiefenwirkung, allgemeine Motivqualität, reale
+Das spätere [eigene Glasmaterial](photo-glass-material.md) ersetzt die deckende
+Füllung. Die hohe Originaltypografie ist damit noch nicht rekonstruiert. Original-Tiefenwirkung, allgemeine Motivqualität, reale
 Albumfreigaben, Performance und physische Geräte sind gesondert offen.
 
 ## Bedienprüfung der Galerie

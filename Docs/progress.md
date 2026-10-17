@@ -158,3 +158,20 @@ bestanden. 128 Quellen, SHA
 Freistellung liefert im Simulator weiter Fehlercode 9; genaue Ursache unbewiesen.
 Hohe transparente Original-Fotoziffern, allgemeine Foto-/Albumqualität und Hardware
 bleiben offen. Keine echte Fotobibliothek, kein HomeKit und keine neue Vollsuite.
+
+
+## Durchscheinendes Foto-Uhrmaterial · 18. Oktober 2026
+
+`c3b6676`, Integration `9a26adc8`: laufzeitgerenderte öffentliche Systemglyphen
+verwenden denselben Fotohintergrund und dieselbe Ausschnitttransformation wie die
+Ansicht. Geglättete Normalen, geringe Brechung und Randlicht ersetzen die deckende
+rosa Füllung. Kein gespeicherter OS-Font/-Umriss und kein erfundener Depth-Effekt;
+Kopfschutz und bisherige Platzierungsrechtecke bleiben unverändert.
+
+108 Modelltests, 16 gezielte UI-Ausführungen auf iPad/iPhone und fünf SDK-Builds
+bestanden, null Fehler/Skips/Runtime-Warnungen. Gleiche festgelegte Pixelgrenzen
+auf beiden Größen: Durchsicht mit deckender Positivkontrolle, volle Nachtfläche
+ohne fremde Farbkanäle. 128 gebundene Quellen, SHA
+`d0dcb95a46ea5da221ca1743309352e58dfdd72221df589c8f74ba0e71f828b5`.
+[Eigene Bilder und genaue Grenzen](photo-glass-material.md). Hohe Originalglyphen,
+native Freistellung, Originallicht und Hardware bleiben offen. Keine neue Vollsuite.
