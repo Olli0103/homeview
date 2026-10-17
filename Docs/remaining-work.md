@@ -2,7 +2,13 @@
 
 17. Oktober 2026. Der Auftrag bleibt ein fortlaufender Parity-Auftrag. Die neun neuen Codepakete erledigen nicht den gesamten Backlog. Insbesondere werden unbegonnene, noch umsetzbare Softwareaufgaben nicht als Hardwareblockaden umetikettiert.
 
-## Reihenfolge für weitere Softwarearbeit
+## Verbindlicher Vorrang nach Eigentümerreview
+
+Zuerst die sichtbare Apple-HomeView-Kopie korrigieren: Flow-Ziffern/Stencil/Glas und
+Farbfläche, danach Raster/Icons und Wetteransicht. Der Videoentwurf wurde verworfen,
+#15 ist wieder offen. Keine weitere Funktionsbreite vor diesem visuellen Abgleich.
+
+## Nachgeordnete weitere Softwarearbeit
 
 - GPU-Fluid und Performancepfad (#17); Wetterzustände mit fehlenden Werten statt erfundener Daten (#21).
 - Galerie-/Album-Update-Lifecycle (#11), Profil-Layouts (#9), geteilte Panel- und Gastfreigaben mit echter Modellautorisierung (#8/#68).
@@ -31,7 +37,7 @@
 | [#12](https://github.com/Olli0103/homeview/issues/12) | Motivgeschützte Uhrplatzierung und Bildausschnitt berechnen | Abgeschlossen im ausdrücklich dokumentierten Teilumfang; Original-Parität bleibt getrennt. |
 | [#13](https://github.com/Olli0103/homeview/issues/13) | Tageszeit-, Nacht- und reduzierte Face-Zustände vervollständigen | Originalzustände/Parameter oder visuelle Abnahme offen; zusätzliche Softwarearbeit möglich. |
 | [#14](https://github.com/Olli0103/homeview/issues/14) | Snoopy-Szenen, Atlanten und Timelines klären | Assets/Rechte, echte Identitätsbindung oder öffentliche API-/Hardwarefähigkeit noch nicht nachgewiesen. |
-| [#15](https://github.com/Olli0103/homeview/issues/15) | Variable Flow-Ziffern mit korrekten Metriken entwickeln | Abgeschlossen im ausdrücklich dokumentierten Teilumfang; Original-Parität bleibt getrennt. |
+| [#15](https://github.com/Olli0103/homeview/issues/15) | Variable Flow-Ziffern mit korrekten Metriken entwickeln | Wieder offen nach Eigentümerreview: bisherige eigene Formen verfehlen die sichtbare HomeView-Kopie. Vorrangige visuelle Korrektur. |
 | [#16](https://github.com/Olli0103/homeview/issues/16) | Flow-Glas, Fluidparameter und Originalbewegung kalibrieren | Originalzustände/Parameter oder visuelle Abnahme offen; zusätzliche Softwarearbeit möglich. |
 | [#17](https://github.com/Olli0103/homeview/issues/17) | CPU-Fluid schrittweise auf Metal-Texturen portieren | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |
 | [#18](https://github.com/Olli0103/homeview/issues/18) | Fade-Verlauf und zeitabhängige Ziffern abgleichen | Originalzustände/Parameter oder visuelle Abnahme offen; zusätzliche Softwarearbeit möglich. |
@@ -102,4 +108,4 @@
 
 ## Neues externes Issue
 
-[#83 – Plans for an open-source license?](https://github.com/Olli0103/homeview/issues/83) wurde während dieser Arbeit öffentlich gestellt. Olli hat MIT für den eigenen Projektcode und eigene Assets gewählt. #4 und #83 sind nach Veröffentlichung der Lizenz geschlossen, der externe Issue-Text blieb unverändert. Sieben der ursprünglichen 82 Pakete sind geschlossen; zusammen bleiben 75 GitHub-Issues offen.
+[#83 – Plans for an open-source license?](https://github.com/Olli0103/homeview/issues/83) wurde während dieser Arbeit öffentlich gestellt. Olli hat MIT für den eigenen Projektcode und eigene Assets gewählt. #4 und #83 sind nach Veröffentlichung der Lizenz geschlossen, der externe Issue-Text blieb unverändert. Nach Wiederöffnung von #15 sind sechs der ursprünglichen 82 Pakete geschlossen; zusammen bleiben 76 GitHub-Issues offen.

@@ -38,7 +38,7 @@ Vier terminale Vollsuite-Bilder wurden dekodiert gesichtet und bytegeprüft übe
 
 ## Issue-Abgleich
 
-Neu geschlossen sind [#15](https://github.com/Olli0103/homeview/issues/15), [#54](https://github.com/Olli0103/homeview/issues/54), [#55](https://github.com/Olli0103/homeview/issues/55) und [#76](https://github.com/Olli0103/homeview/issues/76), jeweils nur im beschriebenen Teilumfang. Danach hat der Eigentümer MIT ausdrücklich gewählt: [#4](https://github.com/Olli0103/homeview/issues/4) und die externe Lizenzfrage [#83](https://github.com/Olli0103/homeview/issues/83) sind mit veröffentlichter [LICENSE](../LICENSE) und [NOTICE](../NOTICE.md) geschlossen. Der externe Issue-Text blieb unverändert. Die 82 ursprünglichen Titel, Labels und Zustände wurden per GitHub-API zurückgelesen: sieben Pakete insgesamt geschlossen, **75 offen**; einschließlich #83 bleiben insgesamt 75 GitHub-Issues offen. [Read-back](verification/issue-readback-block2.json).
+Neu geschlossen sind [#15](https://github.com/Olli0103/homeview/issues/15), [#54](https://github.com/Olli0103/homeview/issues/54), [#55](https://github.com/Olli0103/homeview/issues/55) und [#76](https://github.com/Olli0103/homeview/issues/76), jeweils nur im beschriebenen Teilumfang. Danach hat der Eigentümer MIT ausdrücklich gewählt: [#4](https://github.com/Olli0103/homeview/issues/4) und die externe Lizenzfrage [#83](https://github.com/Olli0103/homeview/issues/83) sind mit veröffentlichter [LICENSE](../LICENSE) und [NOTICE](../NOTICE.md) geschlossen. Der externe Issue-Text blieb unverändert. Die 82 ursprünglichen Titel, Labels und Zustände wurden per GitHub-API zurückgelesen: Nach anschließender visueller Eigentümerkritik ist #15 wieder geöffnet. Sechs ursprüngliche Pakete sind insgesamt geschlossen, **76 offen**; einschließlich des geschlossenen #83 bleiben insgesamt 76 GitHub-Issues offen. [Read-back](verification/issue-readback-block2.json).
 
 Der reine Lizenz-/Dokumentationscommit `99d2afd` verändert keine der 107 eingefrorenen Quellen. Der Lizenztext entspricht SPDX MIT; erneut 86 Modelltests nach dem Commit bestanden. [Lizenzprüfung](verification/license.json).
 
@@ -47,3 +47,20 @@ Der reine Lizenz-/Dokumentationscommit `99d2afd` verändert keine der 107 eingef
 Die vollständige Original-Parität ist nicht fertig. Hardware-, Account-, Sensor-, zweites-Gerät- und API-Gates bleiben offen. Ebenso existiert noch **weitere umsetzbare Softwarearbeit**, unter anderem GPU-Fluid, Feedwiedergabe, Sprachausgabe, Live Activities, Setup und feinere Gast-/Medienregeln. Diese Arbeit wird nicht als angeblich ausschließlich durch Hardware blockiert ausgegeben. [Verbleibende Arbeitsliste und Grenzen](remaining-work.md).
 
 Echte Kalender/Erinnerungen verlangen weiterhin die bewusste In-App-Verbindung und Geräteentsperrung. Automatische Tests lesen oder ändern keine realen persönlichen Konten, rufen niemanden an, senden keine Nachrichten und öffnen keine echte Kamera/Mikrofonaufnahme. Ausdrückliche bestehende AlarmKit-Prüfungen verwenden nur eigene Simulatoralarme. Keine physische Originalpixel-, Energie-, Sprachqualitäts- oder komplette Bedienhilfenabnahme ist behauptet.
+
+## Eigentümerreview: sichtbare Kopie bleibt das Ziel
+
+Der aus eigenen Screenshots erstellte Videoentwurf wurde nach Ollis Review
+verworfen. Die Arbeit war zu weit in eigenständige Ersatzgestaltung abgedriftet.
+Der technische Flow-Zeichensatz gilt nicht als visuell erledigte HomeView-Kopie;
+#15 ist wieder offen. [Verbindliches Ziel und nächste Abnahme](parity-contract.md).
+Originalnahe Darstellung erhält jetzt Vorrang vor weiterer Funktionsbreite.
+
+## Abgesicherter Wetter-Folgestand
+
+`b08c6f8`: 95 Modelltests und drei gezielte UI-Fälle je iPad/iPhone sowie fünf SDK-
+Builds; nach Commit erneut 95 Modelltests. Quelle 109 Dateien, SHA-256
+`57bf3ba3ddb5e06037b32fdba3d3dec5836d89e995831100c23cc17c83432e06`.
+[Eigener Nachweis](verification/weather-accepted.json) und [Grenzen](weather-data.md).
+Nicht mit der älteren vollständigen 216-Ausführungen-Regression verwechseln.
+Dieser Datenschritt schließt die visuell abweichende Wetteransicht nicht ab.
