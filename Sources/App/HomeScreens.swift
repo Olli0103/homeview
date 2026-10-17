@@ -16,58 +16,172 @@ extension AppPage {
 }
 struct PersonalView: View {
   @Environment(AppModel.self) private var model
-  private let favorites: [AppPage] = [.faceTime, .home, .music, .messages]
+  @State private var editingProfile: String?
+  private var configuration: PersonalHomeConfiguration { model.data.personalHome(for:model.profile) }
   var body: some View {
     ZStack {
-      FaceView(selection: model.data.face).blur(radius: 22).overlay(.black.opacity(0.28))
+      FaceView(selection:model.data.face).blur(radius:22).overlay(.black.opacity(0.28))
         .allowsHitTesting(false).accessibilityHidden(true)
-      VStack(alignment: .leading, spacing: 30) {
-        HStack {
-          VStack(alignment: .leading, spacing: 4) {
-            Text("GOOD MORNING,").font(.system(size: 20))
-            Text((model.profile ?? "everyone").uppercased()).font(.system(size: 22, weight: .semibold))
-          }
-          Spacer()
-          Button {
-            model.pendingPage = nil
-            model.route = .privacy
-          } label: {
-            Text(String(model.profile?.prefix(1) ?? "G")).font(.system(size: 22, weight: .semibold))
-              .frame(width: 58, height: 58).background(Color.lilac, in: Circle())
-          }.accessibilityLabel("Choose profile")
-        }
-        HStack(alignment: .top, spacing: 25) {
-          LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-            ForEach(favorites) { page in
-              Button {
-                model.navigate(page)
-              } label: {
-                VStack(spacing: 7) {
-                  AppIcon(page: page, edge: 88)
-                  Text(page.rawValue).font(.system(size: 17, weight: .medium))
-                }
-              }.accessibilityIdentifier("app.\(page.rawValue)")
+      VStack(alignment:.leading,spacing:30) {
+        header
+        if configuration.layout == .media {
+          ScrollView {
+            VStack(spacing:24) {
+              HStack(alignment:.top,spacing:25) {
+                appGrid(configuration.apps)
+                mediaWidget(podcast:true)
+              }
+              HStack(alignment:.top,spacing:25) {
+                mediaWidget(podcast:false)
+                appGrid([.safari,.reminders,.timers,.alarms])
+              }
+              allAppsButton
             }
-          }.frame(width: 236)
-          VStack(alignment: .leading, spacing: 8) {
-            LandscapeArt().frame(width:230,height:230).clipShape(RoundedRectangle(cornerRadius: 26))
-              .accessibilityLabel("Demo photo album")
-            Text("Photos").font(.system(size: 17, weight: .medium)).frame(maxWidth:.infinity)
-          }.frame(width:230)
+          }.scrollIndicators(.hidden).accessibilityIdentifier("personal.media.layout")
+        } else {
+          HStack(alignment:.top,spacing:25) {
+            appGrid(configuration.apps)
+            VStack(alignment:.leading,spacing:8) {
+              LandscapeArt().frame(width:230,height:230).clipShape(RoundedRectangle(cornerRadius:26))
+                .accessibilityLabel("Demo photo album")
+              Text("Photos").font(.system(size:17,weight:.medium)).frame(maxWidth:.infinity)
+            }.frame(width:230)
+          }.accessibilityIdentifier("personal.photos.layout")
+          if model.playing || model.connections.musicPlaying || model.podcastPlaying
+            || model.data.timers.contains(where:{$0.remaining(at:model.now)>0}) { ActivityStrip() }
+          Spacer(minLength:0)
+          allAppsButton
         }
-        if model.playing || model.connections.musicPlaying || model.podcastPlaying
-          || model.data.timers.contains(where: { $0.remaining(at: model.now) > 0 })
-        {
-          ActivityStrip()
-        }
-        Spacer(minLength: 0)
-        Pill(
-          title: "All Apps", symbol: "circle.grid.3x3.fill", tint: .white.opacity(0.18),
-          textColor: .white
-        ) { model.route = .drawer }
-        .accessibilityIdentifier("all.apps")
       }.padding(45)
     }.foregroundStyle(.white).buttonStyle(.plain)
+      .sheet(isPresented:Binding(get:{editingProfile != nil},set:{if !$0 { editingProfile=nil }})) {
+        if let profile=editingProfile { PersonalHomeEditor(profile:profile) }
+      }
+      .onChange(of:model.profile) { _,_ in editingProfile=nil }
+  }
+  private var allAppsButton: some View {
+    Pill(title:"All Apps",symbol:"circle.grid.3x3.fill",tint:.white.opacity(0.18),textColor:.white) {
+      model.route = .drawer
+    }.accessibilityIdentifier("all.apps")
+  }
+  private var header: some View {
+    HStack {
+      VStack(alignment:.leading,spacing:4) {
+        if configuration.layout == .media {
+          Text(model.dateLabel("EEEE, MMM d").uppercased()).font(.system(size:20,weight:.medium))
+          Text(model.dateLabel("h:mm a")).font(.system(size:22,weight:.semibold))
+        } else {
+          Text("GOOD MORNING,").font(.system(size:20))
+          Text((model.profile ?? "everyone").uppercased()).font(.system(size:22,weight:.semibold))
+        }
+      }
+      Spacer()
+      Menu {
+        Button("Choose profile") { model.pendingPage=nil;model.route = .privacy }
+        if let profile=model.profile {
+          Button("Edit Home Screen") { editingProfile=profile }
+            .accessibilityIdentifier("personal.edit")
+        }
+      } label: {
+        Text(String(model.profile?.prefix(1) ?? "G")).font(.system(size:22,weight:.semibold))
+          .frame(width:58,height:58).background(Color.lilac,in:Circle())
+      } primaryAction: {
+        model.pendingPage=nil;model.route = .privacy
+      }
+      .menuIndicator(.hidden)
+      .accessibilityLabel("Choose profile").accessibilityIdentifier("personal.profile")
+    }
+  }
+  private func appGrid(_ pages:[AppPage]) -> some View {
+    LazyVGrid(columns:[GridItem(.flexible()),GridItem(.flexible())],spacing:20) {
+      ForEach(pages) { page in
+        Button { model.navigate(page) } label: {
+          VStack(spacing:7) {
+            AppIcon(page:page,edge:88)
+            Text(page.rawValue).font(.system(size:17,weight:.medium))
+          }
+        }.accessibilityIdentifier("app.\(page.rawValue)")
+      }
+    }.frame(width:236)
+  }
+  private func mediaWidget(podcast:Bool) -> some View {
+    let connectedMusic = !podcast && model.connections.enabled.contains(.music)
+    return VStack(spacing:8) {
+      VStack(alignment:.leading,spacing:12) {
+        HStack(alignment:.top) {
+          if podcast || connectedMusic {
+            Image(systemName:podcast ? "mic.fill":"music.note").font(.system(size:32))
+              .frame(width:70,height:70).background(.white.opacity(0.16),in:RoundedRectangle(cornerRadius:10))
+          } else {
+            Image("AlbumArt").resizable().scaledToFill().frame(width:70,height:70)
+              .clipShape(RoundedRectangle(cornerRadius:10))
+          }
+          Spacer()
+          Image(systemName:podcast ? "mic.circle":"music.note").font(.system(size:27)).opacity(0.8)
+        }
+        Text(connectedMusic ? "Connected Music":podcast ? "Demo episode":"Demo music")
+          .font(.system(size:16,weight:.medium)).opacity(0.75)
+        Button { model.navigate(podcast ? .podcasts:.music) } label: {
+          Text(connectedMusic ? "Open Music":podcast ? "A Quiet Morning":model.currentMusicTitle)
+            .font(.system(size:20,weight:.medium)).lineLimit(2).frame(maxWidth:.infinity,alignment:.leading)
+        }.accessibilityIdentifier(podcast ? "personal.podcast.open":"personal.music.open")
+        Button {
+          if connectedMusic { model.navigate(.music) }
+          else if podcast { model.togglePodcast() }
+          else { model.togglePlayback() }
+        } label: {
+          Label(connectedMusic ? "Open":(podcast ? model.podcastPlaying:model.playing) ? "Pause":"Play",
+            systemImage:connectedMusic ? "arrow.up.forward":(podcast ? model.podcastPlaying:model.playing) ? "pause.fill":"play.fill")
+            .font(.system(size:19,weight:.semibold)).padding(.horizontal,14).padding(.vertical,6)
+            .background(.white.opacity(0.16),in:Capsule())
+        }.accessibilityIdentifier(podcast ? "personal.podcast.play":"personal.music.play")
+        Spacer(minLength:0)
+      }.padding(18).frame(width:230,height:230)
+        .background(LinearGradient(colors:podcast ? [.purple,Color(red:0.18,green:0.12,blue:0.9)]:[.blue,Color(red:0.1,green:0.28,blue:0.8)],startPoint:.top,endPoint:.bottom),in:RoundedRectangle(cornerRadius:26))
+      Text(podcast ? "Podcasts":"Music").font(.system(size:17,weight:.medium))
+    }.frame(width:230)
+  }
+}
+
+private struct PersonalHomeEditor: View {
+  @Environment(AppModel.self) private var model
+  @Environment(\.dismiss) private var dismiss
+  let profile:String
+  private var configuration:PersonalHomeConfiguration { model.data.personalHome(for:profile) }
+  private func update(_ edit:(inout PersonalHomeConfiguration)->Void) {
+    guard model.profile==profile else { dismiss();return }
+    var value=configuration;edit(&value)
+    guard model.data.setPersonalHome(value,for:profile) else { return }
+    model.persist()
+  }
+  var body: some View {
+    VStack(alignment:.leading,spacing:20) {
+      HStack {
+        Text("Home Screen · \(profile)").font(.title2.bold())
+        Spacer()
+        Button("Done") { dismiss() }.accessibilityIdentifier("personal.editor.done")
+      }
+      Text("Layout").font(.headline)
+      HStack {
+        ForEach(PersonalHomeLayout.allCases,id:\.self) { layout in
+          Button(layout == .photos ? "Photos layout":"Media layout") { update { $0.usePreset(layout) } }
+            .buttonStyle(.bordered).accessibilityValue(configuration.layout==layout ? "Selected":"")
+            .accessibilityIdentifier("personal.layout."+layout.rawValue)
+        }
+      }
+      Text("Favorite apps").font(.headline)
+      ForEach(0..<4) { index in
+        Picker("Position \(index+1)",selection:Binding(get:{configuration.apps[index].rawValue},set:{raw in
+          if let page=AppPage(rawValue:raw) { update { $0.select(page,at:index) } }
+        })) {
+          ForEach(AppPage.allCases) { page in Text(page.rawValue).tag(page.rawValue) }
+        }.accessibilityIdentifier("personal.favorite.\(index)")
+      }
+      Text("Layout choices are saved for this demo profile. They do not unlock personal accounts.")
+        .font(.callout).foregroundStyle(.secondary)
+      Spacer(minLength:0)
+    }.padding(28).frame(minWidth:300,minHeight:420)
+      .onChange(of:model.profile) { _,value in if value != profile { dismiss() } }
   }
 }
 struct ActivityStrip: View {
