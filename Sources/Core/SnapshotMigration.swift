@@ -35,10 +35,10 @@ extension Snapshot {
       }
       return result
     }
-    func table<T: Decodable>(_ key: String, limit: Int) -> [String: T] {
+    func table<T: Decodable>(_ key: String, limit: Int, validKey: (String) -> Bool = { _ in true }) -> [String: T] {
       guard let raw = stored[key] as? [String: Any] else { return [:] }
       var result: [String: T] = [:]
-      for name in raw.keys.sorted().prefix(limit) {
+      for name in raw.keys.filter(validKey).sorted().prefix(limit) {
         guard name.count <= 128,
           let data = try? JSONSerialization.data(withJSONObject: raw[name]!, options: [.fragmentsAllowed]),
           let item = try? decoder.decode(T.self, from: data) else { continue }
@@ -47,6 +47,9 @@ extension Snapshot {
       return result
     }
     output.personal = table("personal", limit: 6)
+    let homeConfigurations: [String: PersonalHomeConfiguration] = table("personalHomeConfigurations", limit: 6,
+      validKey: { Fixtures.profiles.contains($0) })
+    output.personalHomeConfigurations = homeConfigurations.mapValues { $0.normalized }
     output.home = value("home", fallback.home)
     output.home.temperature = min(90,max(50,output.home.temperature))
     output.home.brightness = min(100,max(0,output.home.brightness))
