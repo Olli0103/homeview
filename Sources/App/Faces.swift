@@ -277,17 +277,18 @@ struct NumeralsFace: View {
     ZStack {
       Color(red: 62.0 / 255, green: 147.0 / 255, blue: 92.0 / 255)
       Group {
-        Text("12").font(.system(size: 335, weight: .light)).tracking(0).position(
-          x: 278, y: 152)
-        Text("9").font(.system(size: 337, weight: .light)).position(x: 120, y: 302)
-        Text("3").font(.system(size: 337, weight: .light)).position(x: 475, y: 302)
-        Text("6").font(.system(size: 317, weight: .light)).position(x: 300, y: 442)
+        Text("12").font(.system(size: 335, weight: .light, design: .rounded)).tracking(0).scaleEffect(x:0.88,y:1).position(
+          x: 286, y: 152)
+        Text("9").font(.system(size: 337, weight: .light, design: .rounded)).position(x: 120, y: 296)
+        Text("3").font(.system(size: 337, weight: .light, design: .rounded)).position(x: 475, y: 296)
+        Text("6").font(.system(size: 341, weight: .light, design: .rounded)).position(x: 300, y: 442)
       }.foregroundStyle(.black).accessibilityHidden(true)
       AnalogClock(
         date: model.clock, timeZone: model.displayTimeZone, tint: .white, numbered: false,
-        showTicks: false)
-      Text(model.dateLabel("EEE d").uppercased()).font(.system(size: 29, weight: .medium))
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading).padding(43)
+        showTicks: false, embossedHands:true, minuteReach:0.94,secondsReach:0.98)
+        .overlay { Circle().fill(Color(red:62.0/255,green:147.0/255,blue:92.0/255)).frame(width:12,height:12).accessibilityHidden(true) }
+      Text(model.dateLabel("EEE d").uppercased()).font(.system(size: 34, weight: .medium))
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading).padding(.horizontal,43).padding(.bottom,34)
     }.clipped()
   }
 }
