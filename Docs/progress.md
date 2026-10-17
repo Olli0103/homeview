@@ -12,6 +12,9 @@ mit dem Renderer zusammengeführt. 103 Modelltests, 16 gezielte UI-Ausführungen
 fünf SDK-Builds auf einem gemeinsamen Freeze. #9 bleibt offen; die weitere
 Apps-/Wettervariante aus der Originalsequenz wird bereits bearbeitet.
 
+`efff917`: [Fade-Zeiger und Relief](fade-reference-detail.md), 103 Modelltests,
+sechs gezielte UI-Ausführungen und fünf SDK-Builds; #18 bleibt offen.
+
 ## 17. Oktober 2026 · zweites Issue-Paket
 
 [Prüfbericht und eigene Bilder](iteration-20261017-block2.md) · [alle verbleibenden Pakete](remaining-work.md).

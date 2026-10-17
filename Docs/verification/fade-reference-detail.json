@@ -1,0 +1,41 @@
+{
+  "code_commit": "efff9173d0757e9867fba51248b4ccee9f78d038",
+  "source_digest": "7b98556be51564e22dcf3585079887bf4b825ca0e163f0e8adb300fa2115ab15",
+  "source_files": 116,
+  "source_matches_committed_bytes": true,
+  "core_passed": 103,
+  "core_repeated_after_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0
+    },
+    {
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0
+    }
+  ],
+  "ui_executions": 6,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "original_parity": false,
+  "physical_hardware_tested": false,
+  "original_time_curve_known": false,
+  "shared_clock_defaults_unchanged": true,
+  "logs": {
+    "fade-stem-candidate-core.log": "1afb9fc3baaa4465c3c61705c84fc5b8193ffba65ebda2d98b35b1b3e880aa3d",
+    "fade-stem-post-commit-core.log": "519d31a8dfa41950154b2daf4c7cdaa94beed7f8f7a421f46ea6ed37f156c4df",
+    "fade-stem-candidate-builds.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  }
+}
