@@ -1,9 +1,9 @@
 {
-  "digest": "fbe773b60ce6db39bc3e5e917469ddc95cec68aa98622fcf2650d4b761f87c01",
+  "digest": "f1e0e07530f90b6e439520b8e383758a6a90bf40d3eb462fac1f60c39d880f93",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "dd846c7964329a047eb0146a99b1fb9cb0401053fdcf7e08bd8ec93027d5f337"
+      "sha256": "f01366393217062a85e0023dce5529195ec4c432335ebb6854b4d5b28d6ea34c"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -183,7 +183,7 @@
     },
     {
       "path": "Scripts/generate_project.py",
-      "sha256": "128f0b2e81a27419b1fc01d4d4f371170bc33b39acd68cace52981db0c9a2dc1"
+      "sha256": "25fed590fa6b3610133dad558ebf76d182f1041aa275871cf0ac067870df817e"
     },
     {
       "path": "Scripts/make_icon.swift",
@@ -199,7 +199,7 @@
     },
     {
       "path": "Sources/App/AppModel.swift",
-      "sha256": "1a2e408b57738f6dd93805145635fd1db3799f1339ca378565e63752f5c233a1"
+      "sha256": "adc38b7ac1733c6444c97728baf8a40f00253ff53ba8a4478404c64617f960b7"
     },
     {
       "path": "Sources/App/BrowserNavigationFixture.swift",
@@ -231,7 +231,7 @@
     },
     {
       "path": "Sources/App/Everyday.swift",
-      "sha256": "8c49845b8672a7ab7cd808ac4ec4d092c86c873df21ecfd420834b3e36e03387"
+      "sha256": "3bae45e9a6b37cbd3cef48e656e5c52b13714e6e0066f8f53495a8d692261a15"
     },
     {
       "path": "Sources/App/FaceEditor.swift",
@@ -338,6 +338,10 @@
       "sha256": "53c07afc8ee181602f83b37e8eff2a4c11b238de98150b89321cda931f700e19"
     },
     {
+      "path": "Sources/Core/EverydayVoiceCommand.swift",
+      "sha256": "f079e35a5ce58ff912ccd4b65b621e745790fcecac6f1a28b3493ded1773a6bd"
+    },
+    {
       "path": "Sources/Core/FaceConfiguration.swift",
       "sha256": "349e759413561d8e30abf26ea29c35d70755e2fc9421022bcb65048e751c72cd"
     },
@@ -382,6 +386,10 @@
       "sha256": "0df7ca292157c1cd9a665c5ca523e5fe5cfedd32e593e8941c0106ceed4b0851"
     },
     {
+      "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+      "sha256": "d27995a922e1c5c346f8687425a5d775bab205b4abe49ad8547d6626653ab55b"
+    },
+    {
       "path": "Tests/CoreTests/FlowTypographyTests.swift",
       "sha256": "d5952c8f5f0a11c7aba642f14fb4dd1116b6e4aafa28f1871dbcd634498ab15f"
     },
@@ -403,7 +411,7 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "fc186eb1b7640ab4598f53dc27dc7a187d75331cbca1c22ac7c188497a87120c"
+      "sha256": "d8ae73b99e17036516d4e0b0816238e2f465cafb477615677675d1308730291d"
     }
   ]
 }

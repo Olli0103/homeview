@@ -54,6 +54,7 @@ final class AppModel {
   var song = 0
   var progress = 0.0
   var cookingStep = 0
+  private(set) var cookingInProgress = false
   var selectedTimer: UUID?
   var talking = false
   var muted = false
@@ -138,6 +139,7 @@ final class AppModel {
       data.recipe = newValue
       data.pinnedRecipe = data.pinnedRecipes.contains(where: { $0.id == newValue.id })
       cookingStep = 0
+      cookingInProgress = false
       persist()
     }
   }
@@ -641,8 +643,52 @@ final class AppModel {
       }
     #endif
   }
+  func startCooking() {
+    guard !recipe.steps.isEmpty else { error = "This recipe has no cooking steps."; return }
+    cookingStep = 0
+    cookingInProgress = true
+    route = .cooking
+  }
+  func moveCookingStep(_ delta: Int) {
+    guard cookingInProgress, recipe.steps.indices.contains(cookingStep) else { return }
+    if delta > 0, cookingStep == recipe.steps.count - 1 {
+      cookingInProgress = false
+      route = .recipe
+      banner("Enjoy your meal!")
+    } else {
+      cookingStep = min(recipe.steps.count - 1, max(0, cookingStep + delta))
+      route = .cooking
+    }
+  }
+  private func runEverydayCommand() -> Bool {
+    switch EverydayVoiceCommand(assistantInput) {
+    case .timer(let seconds, let title):
+      let count = data.timers.count
+      addTimer(seconds: Double(seconds), title: title)
+      assistantReply = data.timers.count > count
+        ? "Your \(title) timer is running (\(seconds) seconds)."
+        : error ?? "The timer was not started."
+    case .step(let delta):
+      guard cookingInProgress, recipe.steps.indices.contains(cookingStep) else {
+        assistantReply = "Open a recipe and start cooking first."
+        assistantInput = ""
+        return true
+      }
+      moveCookingStep(delta)
+      assistantReply = cookingInProgress ? recipe.steps[cookingStep].text : "Cooking finished."
+    case .repeatStep:
+      assistantReply = cookingInProgress && recipe.steps.indices.contains(cookingStep)
+        ? "Step \(cookingStep + 1): " + recipe.steps[cookingStep].text
+        : "Open a recipe and start cooking first."
+    case .clarify(let message): assistantReply = message
+    case .unrelated: return false
+    }
+    assistantInput = ""
+    return true
+  }
   func runAssistant() {
     interact()
+    if runEverydayCommand() { return }
     switch AssistantIntent(assistantInput) {
     case .scene(let s):
       command(.scene(s))
@@ -653,9 +699,8 @@ final class AppModel {
     case .light:
       command(.entryLight)
       assistantReply = error ?? "The entryway light is \(data.home.entryLight ? "on" : "off")."
-    case .timer(let m):
-      addTimer(seconds: Double(m * 60), title: "\(m) min")
-      assistantReply = "Your \(m)-minute timer is running."
+    case .timer:
+      assistantReply = "Specify an explicit timer duration, for example ‘set a timer for 5 minutes’."
     case .recipe:
       route = .recipe
       assistantReply = "Here’s the soup recipe."
