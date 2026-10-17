@@ -844,6 +844,17 @@ final class HomeViewUITests: XCTestCase {
     tap("assistant.send")
     XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout: 5))
   }
+  func testConnectedReadOnlyReminderExposesListAndDisablesMutation() {
+    launch(["--page", "Settings", "--reminder-readonly-fixture"])
+    connectService("Reminders")
+    drawer(); tap("app.Reminders"); tap("device.unlock")
+    let item = app.buttons["device.reminder.Shared read-only reminder"]
+    XCTAssertTrue(item.waitForExistence(timeout: 5))
+    XCTAssertFalse(item.isEnabled)
+    XCTAssertEqual(item.value as? String, "Read-only")
+    XCTAssertFalse(app.buttons["Delete Shared read-only reminder"].isEnabled)
+    shot("reminder-readonly-source")
+  }
   func testConnectedReminderCRUDUsesProviderReadback() {
     launch(["--page", "Settings"])
     connectService("Reminders")

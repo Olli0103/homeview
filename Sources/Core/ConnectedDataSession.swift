@@ -14,7 +14,7 @@ protocol DeviceDataProvider: AnyObject {
   func authorizePersonal(_ kind: DataConnection) async throws
   func events(from: Date, to: Date) async throws -> [DeviceEvent]
   func reminders() async throws -> [DeviceReminder]
-  func addReminder(_ title: String) async throws
+  func addReminder(_ title: String) async throws -> String
   func completeReminder(_ id: String, completed: Bool) async throws
   func removeReminder(_ id: String) async throws
   func authorizeMusic() async throws
@@ -109,7 +109,10 @@ final class DeviceConnections {
         events = []
         if let error = error as? CalendarAgendaError { status[kind] = error.localizedDescription }
       }
-      if kind == .reminders { reminders = [] }
+      if kind == .reminders {
+        reminders = []
+        if let error = error as? ReminderStoreError { status[kind] = error.localizedDescription }
+      }
     }
   }
   func restore() async {
@@ -179,37 +182,54 @@ final class DeviceConnections {
       await connect(.reminders, requestPermission: false)
     }
   }
-  func addReminder(_ title: String) async {
+  @discardableResult
+  func addReminder(_ title: String) async -> Bool {
     let value = title.trimmingCharacters(in: .whitespacesAndNewlines)
     guard !value.isEmpty, value.count <= 200 else {
       status[.reminders] = "Use a reminder title up to 200 characters."
-      return
+      return false
     }
-    await editReminder { try await self.provider.addReminder(value) }
+    return await editReminder({ try await self.provider.addReminder(value) }, verify: { values, id in
+      values.contains { $0.id == id && $0.title == value && !$0.completed }
+    })
   }
   func completeReminder(_ item: DeviceReminder) async {
-    await editReminder {
+    guard item.writable else { status[.reminders] = ReminderStoreError.readOnly.localizedDescription; return }
+    _ = await editReminder({
       try await self.provider.completeReminder(item.id, completed: !item.completed)
-    }
+      return item.id
+    }, verify: { values, id in values.first { $0.id == id }?.completed == !item.completed })
   }
   func removeReminder(_ item: DeviceReminder) async {
-    await editReminder { try await self.provider.removeReminder(item.id) }
+    guard item.writable else { status[.reminders] = ReminderStoreError.readOnly.localizedDescription; return }
+    _ = await editReminder({
+      try await self.provider.removeReminder(item.id)
+      return item.id
+    }, verify: { values, id in !values.contains { $0.id == id } })
   }
-  private func editReminder(_ action: () async throws -> Void) async {
-    guard personalUnlocked, enabled.contains(.reminders), !busy.contains(.reminders) else { return }
+  private func editReminder(_ action: () async throws -> String,
+                            verify: ([DeviceReminder], String) -> Bool) async -> Bool {
+    guard personalUnlocked, enabled.contains(.reminders), !busy.contains(.reminders) else { return false }
     generation[.reminders, default: 0] += 1
     let ticket = generation[.reminders]
     busy.insert(.reminders)
     defer { if generation[.reminders] == ticket { busy.remove(.reminders) } }
     do {
-      try await action()
-      guard generation[.reminders] == ticket, personalUnlocked else { return }
+      let id = try await action()
+      guard generation[.reminders] == ticket, personalUnlocked else { return false }
       let values = try await provider.reminders()
-      guard generation[.reminders] == ticket, personalUnlocked else { return }
+      guard generation[.reminders] == ticket, personalUnlocked else { return false }
       reminders = values
+      let confirmed = verify(values, id)
+      status[.reminders] = confirmed
+        ? "Saved · confirmed by source"
+        : "Change not confirmed. The current source state is shown; no automatic retry."
+      return confirmed
     } catch {
-      guard generation[.reminders] == ticket, personalUnlocked else { return }
-      status[.reminders] = "The reminder could not be saved. Refresh to check its state."
+      guard generation[.reminders] == ticket, personalUnlocked else { return false }
+      status[.reminders] = (error as? ReminderStoreError)?.localizedDescription
+        ?? "The reminder could not be saved. Refresh to check its state."
+      return false
     }
   }
   func searchMusic(_ query: String) async {

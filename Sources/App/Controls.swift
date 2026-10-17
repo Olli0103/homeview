@@ -17,7 +17,7 @@ struct AppContent: View {
       }
     case .timers: TimerView()
     case .reminders:
-      if model.connections.enabled.contains(.reminders) {
+      if model.connections.requested.contains(.reminders) {
         DeviceRemindersView()
       } else {
         RemindersView()

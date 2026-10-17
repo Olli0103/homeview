@@ -69,9 +69,9 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
       throw NativeServiceError.unavailable
     #endif
   }
-  func addReminder(_ title: String) async throws {
+  func addReminder(_ title: String) async throws -> String {
     #if canImport(EventKit) && (os(iOS) || os(macOS) || os(visionOS))
-      try lists.createInHomeViewList(title: title)
+      return try lists.createInHomeViewList(title: title)
     #else
       throw NativeServiceError.unavailable
     #endif
@@ -158,7 +158,7 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
 @MainActor
 final class FixtureDeviceDataProvider: DeviceDataProvider {
   private var list = [
-    DeviceReminder(id: "fixture", title: "Device fixture reminder", completed: false)
+    DeviceReminder(id: "fixture", title: "Device fixture reminder", completed: false, listTitle: "Synthetic list")
   ]
   private var playing = false
   func authorized(_ kind: DataConnection) -> Bool { true }
@@ -188,13 +188,22 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
         cancelled: false)
     ]
   }
-  func reminders() async throws -> [DeviceReminder] { list }
-  func addReminder(_ title: String) async throws {
-    list.append(DeviceReminder(id: UUID().uuidString, title: title, completed: false))
+  func reminders() async throws -> [DeviceReminder] {
+    if ProcessInfo.processInfo.arguments.contains("--reminder-readonly-fixture") {
+      return list + [DeviceReminder(id: "readonly", title: "Shared read-only reminder", completed: false,
+        listTitle: "Shared synthetic list", writable: false)]
+    }
+    return list
+  }
+  func addReminder(_ title: String) async throws -> String {
+    let id = UUID().uuidString
+    list.append(DeviceReminder(id: id, title: title, completed: false, listTitle: "HomeView"))
+    return id
   }
   func completeReminder(_ id: String, completed: Bool) async throws {
     list = list.map {
-      $0.id == id ? DeviceReminder(id: id, title: $0.title, completed: completed) : $0
+      $0.id == id ? DeviceReminder(id: id, title: $0.title, completed: completed,
+        listTitle: $0.listTitle, writable: $0.writable) : $0
     }
   }
   func removeReminder(_ id: String) async throws { list.removeAll { $0.id == id } }

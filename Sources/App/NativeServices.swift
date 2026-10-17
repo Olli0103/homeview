@@ -48,62 +48,82 @@ enum NativeServiceError: Error, LocalizedError {
   @MainActor
   final class NativeReminderService {
     private lazy var store = EKEventStore()
+    private let ownListKey = "HomeView.reminders.ownedCalendarID"
+    private func requireAccess() throws {
+      guard EKEventStore.authorizationStatus(for: .reminder) == .fullAccess else {
+        throw NativeServiceError.permissionDenied
+      }
+    }
     func authorize() async throws {
       guard try await store.requestFullAccessToReminders() else {
         throw NativeServiceError.permissionDenied
       }
     }
     func read() async throws -> [DeviceReminder] {
-      guard EKEventStore.authorizationStatus(for: .reminder) == .fullAccess else {
-        throw NativeServiceError.permissionDenied
-      }
+      try requireAccess()
       let predicate = store.predicateForReminders(in: nil)
-      return await withCheckedContinuation { continuation in
+      let values: [DeviceReminder] = try await withCheckedThrowingContinuation { continuation in
         store.fetchReminders(matching: predicate) { reminders in
-          let values = (reminders ?? []).prefix(500).map {
-            DeviceReminder(
-              id: $0.calendarItemIdentifier, title: $0.title ?? "Untitled",
-              completed: $0.isCompleted)
+          guard let reminders else {
+            continuation.resume(throwing: ReminderStoreError.fetchFailed); return
           }
-          continuation.resume(returning: values)
+          guard reminders.count <= 500 else {
+            continuation.resume(throwing: ReminderStoreError.tooManyItems); return
+          }
+          continuation.resume(returning: reminders.map {
+            DeviceReminder(id: $0.calendarItemIdentifier, title: $0.title ?? "Untitled",
+              completed: $0.isCompleted, listTitle: $0.calendar.title,
+              writable: $0.calendar.allowsContentModifications)
+          }.sorted {
+            if $0.listTitle != $1.listTitle { return $0.listTitle < $1.listTitle }
+            if $0.title != $1.title { return $0.title < $1.title }
+            return $0.id < $1.id
+          })
         }
       }
+      try requireAccess()
+      return values
     }
-    func setCompleted(id: String, completed: Bool) throws {
+    private func editable(_ id: String) throws -> EKReminder {
+      try requireAccess()
       guard let reminder = store.calendarItem(withIdentifier: id) as? EKReminder else {
         throw HomeError.notFound
       }
+      guard reminder.calendar.allowsContentModifications else { throw ReminderStoreError.readOnly }
+      return reminder
+    }
+    func setCompleted(id: String, completed: Bool) throws {
+      let reminder = try editable(id)
       reminder.isCompleted = completed
       try store.save(reminder, commit: true)
     }
     func remove(id: String) throws {
-      guard let reminder = store.calendarItem(withIdentifier: id) as? EKReminder else {
-        throw HomeError.notFound
-      }
-      try store.remove(reminder, commit: true)
+      try store.remove(editable(id), commit: true)
     }
-    /// Creates only in our own named calendar; never changes existing personal reminders.
-    func createInHomeViewList(title: String) throws {
-      guard EKEventStore.authorizationStatus(for: .reminder) == .fullAccess else {
-        throw NativeServiceError.permissionDenied
-      }
+    /// A same-named user/shared list is never treated as application-owned.
+    func createInHomeViewList(title: String) throws -> String {
+      try requireAccess()
       let calendar: EKCalendar
-      if let existing = store.calendars(for: .reminder).first(where: { $0.title == "HomeView" }) {
+      if let id = UserDefaults.standard.string(forKey: ownListKey) {
+        guard let existing = store.calendar(withIdentifier: id),
+          existing.allowsContentModifications else { throw ReminderStoreError.ownListUnavailable }
         calendar = existing
       } else {
-        let c = EKCalendar(for: .reminder, eventStore: store)
+        let created = EKCalendar(for: .reminder, eventStore: store)
         guard let source = store.defaultCalendarForNewReminders()?.source else {
           throw NativeServiceError.unavailable
         }
-        c.title = "HomeView"
-        c.source = source
-        try store.saveCalendar(c, commit: true)
-        calendar = c
+        created.title = "HomeView"
+        created.source = source
+        try store.saveCalendar(created, commit: true)
+        UserDefaults.standard.set(created.calendarIdentifier, forKey: ownListKey)
+        calendar = created
       }
       let reminder = EKReminder(eventStore: store)
       reminder.title = title
       reminder.calendar = calendar
       try store.save(reminder, commit: true)
+      return reminder.calendarItemIdentifier
     }
   }
 #endif
