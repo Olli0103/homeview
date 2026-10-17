@@ -42,6 +42,17 @@ final class PhotoPlacementTests: XCTestCase {
     XCTAssertEqual(result.destination, .init(x: 0, y: 0.25, width: 1, height: 0.5))
     XCTAssertEqual(result.retention, 1)
   }
+  func testAutomaticFramingNeverTradesSubjectRetentionForLessClockOverlap() {
+    for offset in 0..<20 {
+      let subjects = mask { x, y in
+        let main = x >= 26 && x <= 65 && y >= offset && y < 100-offset
+        let secondary = x >= 70 && x < 73 && y >= 20 && y < 30
+        return main || secondary ? 255 : 0
+      }
+      let result = PhotoPlacement.choose(aspect: 2, mask: subjects)
+      XCTAssertGreaterThanOrEqual(result.retention, 0.985)
+    }
+  }
   func testManualPositionAndCropWinAndNonFiniteOffsetsAreSanitized() {
     let top = mask { _, y in y < 43 ? 255 : 0 }
     let manual = PhotoAdjustment(clock: .top, automaticCrop: false, horizontal: .nan, vertical: 4)

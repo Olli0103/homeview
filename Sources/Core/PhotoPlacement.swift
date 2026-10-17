@@ -112,10 +112,16 @@ enum PhotoPlacement {
       PhotoComposition(crop: crop, retention: mask?.retention(crop) ?? 1)
     }
     // If no square crop keeps the detected subjects, preserve the complete image.
-    if adjustment.automaticCrop, candidates.allSatisfy({ $0.retention < 0.985 }) {
-      let destination = PhotoRect(x: (1-min(1,aspect))/2, y: (1-min(1,1/aspect))/2,
-                                  width: min(1,aspect), height: min(1,1/aspect))
-      candidates = [.init(destination: destination)]
+    if adjustment.automaticCrop {
+      let safeCrops = candidates.filter { $0.retention >= 0.985 }
+      if safeCrops.isEmpty {
+        let destination = PhotoRect(x: (1-min(1,aspect))/2, y: (1-min(1,1/aspect))/2,
+                                    width: min(1,aspect), height: min(1,1/aspect))
+        candidates = [.init(destination: destination)]
+      } else {
+        // Clock readability must not buy a crop that discards a detected subject.
+        candidates = safeCrops
+      }
     }
     let positions: [PhotoClockPosition] = adjustment.clock == .automatic
       ? [.top, .bottom, .middle] : [adjustment.clock]
