@@ -1228,18 +1228,34 @@ final class HomeViewUITests: XCTestCase {
     Thread.sleep(forTimeInterval: 30)
     let late = viewportBytes("flow-material-after-thirty-seconds")
     Thread.sleep(forTimeInterval: 1.2)
-    XCTAssertNotEqual(late, viewportBytes("flow-material-after-thirty-two-seconds"))
+    XCTAssertNotEqual(flowPixels(late), flowPixels(viewportBytes("flow-material-after-thirty-two-seconds")))
   }
   func testNativeFlowMovesAndReducedMotionStaysStill() {
     launch(["--face", "Flow", "--animation-test"])
     let first = viewportBytes("flow-moving-start")
     Thread.sleep(forTimeInterval: 1.2)
-    XCTAssertNotEqual(first, viewportBytes("flow-moving-later"))
+    XCTAssertNotEqual(flowPixels(first), flowPixels(viewportBytes("flow-moving-later")))
     app.terminate()
     launch(["--face", "Flow", "--animation-test", "--reduce-motion"])
     let frozen = viewportBytes("flow-reduced-start")
     Thread.sleep(forTimeInterval: 1.2)
-    XCTAssertEqual(frozen, viewportBytes("flow-reduced-later"))
+    XCTAssertEqual(flowPixels(frozen), flowPixels(viewportBytes("flow-reduced-later")))
+  }
+  private func flowPixels(_ png: Data) -> Data {
+    let image = UIImage(data: png)!.cgImage!
+    // A predefined interior region contains only Flow glyphs/fluid. Fixed reference
+    // time excludes clock changes; no host clock, chrome, PNG metadata or corners.
+    let rect = CGRect(x: Double(image.width)*0.05,y: Double(image.height)*0.05,
+      width: Double(image.width)*0.90,height: Double(image.height)*0.90).integral
+    let crop = image.cropping(to: rect)!
+    var pixels = [UInt8](repeating:0,count:crop.width*crop.height*4)
+    pixels.withUnsafeMutableBytes {
+      let context = CGContext(data:$0.baseAddress,width:crop.width,height:crop.height,
+        bitsPerComponent:8,bytesPerRow:crop.width*4,space:CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)!
+      context.draw(crop,in:CGRect(x:0,y:0,width:crop.width,height:crop.height))
+    }
+    return Data(pixels)
   }
   func testSystemCommunicationHandsOffOnlyAfterExplicitAction() {
     launch(["--page", "FaceTime"])

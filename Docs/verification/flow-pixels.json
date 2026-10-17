@@ -1,0 +1,33 @@
+{
+  "source_digest": "58aa35311cfde62210081d3adb5491c68b6090b066d8f28587ea0628a32f7922",
+  "core_passed": 95,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "real_home_access": false,
+  "physical_hardware_tested": false,
+  "personal_accounts_tested": false,
+  "original_pixel_parity": false
+}

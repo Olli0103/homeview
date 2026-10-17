@@ -66,17 +66,18 @@ struct FlowArtwork: View {
           Color.black
           if let frame {
             if showBackground {
-              fluidImage(frame).saturation(0.82).brightness(-0.14)
+              fluidImage(frame)
             }
             // Independent layers: background, glyph shadow, refractive foreground material.
-            numerals(at: t).foregroundStyle(.black.opacity(showBackground ? 0.28 : 0))
-              .blur(radius: 4).offset(x: 3, y: 5)
+            numerals(at: t).foregroundStyle(.black.opacity(showBackground ? 0.10 : 0))
+              .blur(radius: 2).offset(x: 1, y: 2)
             numerals(at: t).foregroundStyle(.white)
+              .blur(radius: 4)
               .layerEffect(
                 ShaderLibrary.flowGlyphMaterial(
                   .image(Image(decorative: frame, scale: 1)),
                   .float2(Float(geometry.size.width), Float(geometry.size.height))),
-                maxSampleOffset: CGSize(width: 7, height: 7))
+                maxSampleOffset: CGSize(width: 28, height: 28))
           }
         }
       }

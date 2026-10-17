@@ -1,6 +1,7 @@
 import Foundation
 
-/// Independently drawn monoline numerals. These are not Apple font outlines.
+/// Stroke-safe reconstruction tuned to the broad inflated numerals in UI47.
+/// Coordinates are project-owned geometry, not extracted Apple font outlines.
 struct FlowTypography: Equatable, Sendable {
   let width: Double
   let weight: Double
@@ -8,9 +9,9 @@ struct FlowTypography: Equatable, Sendable {
     self.width = width.isFinite ? min(1.06, max(0.9, width)) : 1
     self.weight = weight.isFinite ? min(1, max(0, weight)) : 0.5
   }
-  var stroke: Double { 0.10 + weight * 0.08 }
-  var advance: Double { 0.66 * width }
-  var tracking: Double { 0.10 + stroke * 0.15 }
+  var stroke: Double { 0.32 + weight * 0.12 }
+  var advance: Double { 0.83 * width }
+  var tracking: Double { 0.075 }
   var pairWidth: Double { 2 * advance + tracking }
   // Constant ink box with a full half-stroke inset, independent of weight.
   var inset: Double { stroke / 2 + 0.015 }
@@ -45,8 +46,10 @@ struct FlowTypography: Equatable, Sendable {
     case 0: return [.move(p(0.5,0)), .curve(p(1,0),p(1,0.2),p(1,0.5)),
       .curve(p(1,0.8),p(1,1),p(0.5,1)), .curve(p(0,1),p(0,0.8),p(0,0.5)),
       .curve(p(0,0.2),p(0,0),p(0.5,0))]
-    case 1: return [.move(p(0.15,0.18)), .line(p(0.55,0)), .line(p(0.55,1)),
-      .move(p(0.1,1)), .line(p(1,1))]
+    // The visible reference has a rounded stem and detached shoulder in stencil,
+    // not the serif-like full-width foot of the former generic numeral.
+    case 1: return [.move(p(0,0.18)), .curve(p(0.25,0.18),p(0.65,0),p(0.8,0)),
+      .line(p(0.8,1))]
     case 2: return [.move(p(0,0.18)), .curve(p(0.1,0),p(0.8,0),p(1,0.18)),
       .curve(p(1,0.45),p(0.2,0.6),p(0,1)), .line(p(1,1))]
     case 3: return [.move(p(0,0.07)), .curve(p(0.9,0),p(1,0.1),p(1,0.25)),
