@@ -232,7 +232,7 @@ struct RecipeCover: View {
         Text(model.recipe.title).font(.system(size: 34, weight: .semibold)).padding(
           .horizontal, 40)
         Text(
-          "\(model.recipe.source) · \(model.recipe.durationMinutes) min. · Serves \(model.recipe.servings)"
+          "\(model.recipe.source) · \(model.recipe.durationLabel) · \(model.recipe.servingsLabel)"
         ).font(.system(size: 22)).opacity(0.75).padding(
           .horizontal, 40)
         HStack(spacing: 12) {
@@ -301,10 +301,11 @@ struct CookingView: View {
       }.frame(maxHeight: .infinity)
       if let minutes = model.recipe.steps[model.cookingStep].minutes {
         Button {
-          model.addTimer(
+          if model.addTimer(
             seconds: Double(minutes * 60),
-            title: "\(model.recipe.title) · Step \(model.cookingStep+1)")
-          model.banner("\(minutes)-minute cooking timer started")
+            title: "\(model.recipe.title) · Step \(model.cookingStep+1)") {
+            model.banner("\(minutes)-minute cooking timer started")
+          }
         } label: {
           Label("Start \(minutes)-minute timer", systemImage: "timer").font(
             .system(size: 22, weight: .semibold)

@@ -1,9 +1,9 @@
 {
-  "digest": "f1e0e07530f90b6e439520b8e383758a6a90bf40d3eb462fac1f60c39d880f93",
+  "digest": "21ca6f17b4393e7b1482f6dfb126de28e9c931d3dc52cd52c0e2ab557f7dfac3",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "f01366393217062a85e0023dce5529195ec4c432335ebb6854b4d5b28d6ea34c"
+      "sha256": "9c913919364ce5fa0efb586d9a4aa58cc931e58247205e1eda65ddd783dcf1a4"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -199,7 +199,7 @@
     },
     {
       "path": "Sources/App/AppModel.swift",
-      "sha256": "adc38b7ac1733c6444c97728baf8a40f00253ff53ba8a4478404c64617f960b7"
+      "sha256": "9f8e1ca98a456e531407eee50a61d996d4c695496e3947a7872bc5ce4066f38e"
     },
     {
       "path": "Sources/App/BrowserNavigationFixture.swift",
@@ -231,7 +231,7 @@
     },
     {
       "path": "Sources/App/Everyday.swift",
-      "sha256": "3bae45e9a6b37cbd3cef48e656e5c52b13714e6e0066f8f53495a8d692261a15"
+      "sha256": "9ea230d69cb5c3e9e99bbf12c626ad730e21829e803a2fedfd9236b123d5ddc4"
     },
     {
       "path": "Sources/App/FaceEditor.swift",
@@ -271,7 +271,7 @@
     },
     {
       "path": "Sources/App/NativeBrowser.swift",
-      "sha256": "de636ee589dc1a7efcc77d5d0a50504d47e7d6fda3a337a8a3e5b5b1c25baf03"
+      "sha256": "8009f0fcb8d8a307a5a1e1691e87abd46f824267ef854ee37de431d90d71d73d"
     },
     {
       "path": "Sources/App/NativeMirror.swift",
@@ -355,7 +355,7 @@
     },
     {
       "path": "Sources/Core/Models.swift",
-      "sha256": "2e326869f528f52e7085f47992a47d04378c1b2457f584b9d833a3f85c63d048"
+      "sha256": "e4932a02e29c4cfe4c7b5ad10ab8c2c46a1978cf2943bae0851d64a52ecc6b74"
     },
     {
       "path": "Sources/Core/PhotoMaskRasterizer.swift",
@@ -364,6 +364,10 @@
     {
       "path": "Sources/Core/PhotoPlacement.swift",
       "sha256": "3d8d6fbd8a1065e64fff36895968786fa3f5ea25df372b3781022c1e451cb25c"
+    },
+    {
+      "path": "Sources/Core/RecipeParser.swift",
+      "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
     },
     {
       "path": "Sources/Core/WorldClock.swift",
@@ -395,11 +399,15 @@
     },
     {
       "path": "Tests/CoreTests/HomeViewCoreTests.swift",
-      "sha256": "7d31db2b4ebb1bc337340b8a6c0efa4944b481db205b5bbfc8579e292477800e"
+      "sha256": "942cfbe1b6295013392e8ad3de36814f4f3cafea6a125dc8f5719fd6c3abd3ca"
     },
     {
       "path": "Tests/CoreTests/PhotoPlacementTests.swift",
       "sha256": "f8042746bbc46a6147ebf807d3b8f1eadaac5016dc11f0c5d0ce7e7268273084"
+    },
+    {
+      "path": "Tests/CoreTests/RecipeParserTests.swift",
+      "sha256": "0fa0d28fe1658ef580c3bf309bc9d7382d9968adcdf35c40ccac35898b2857b8"
     },
     {
       "path": "Tests/CoreTests/WatchFacesTests.swift",
@@ -411,7 +419,7 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "d8ae73b99e17036516d4e0b0816238e2f465cafb477615677675d1308730291d"
+      "sha256": "989e1a5479c57944aae6559460a857943f1585887b3417f06f0ba53965cbdeed"
     }
   ]
 }

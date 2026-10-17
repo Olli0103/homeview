@@ -634,6 +634,21 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.buttons["podcast.play"].label.contains("Play Demo Episode"))
   }
 
+  func testMultipleRecipesRequireSelectionAndDoNotInventMetadata() {
+    launch(["--page", "Safari", "--browser-multiple-recipes"])
+    XCTAssertTrue(app.webViews.firstMatch.staticTexts["Garden Tomato Pasta"].waitForExistence(timeout: 10))
+    tap("browser.recipe")
+    XCTAssertTrue(app.staticTexts["Choose a Recipe"].waitForExistence(timeout: 5))
+    XCTAssertTrue(app.buttons["Garden Tomato Pasta"].exists)
+    app.buttons["Second local recipe"].tap()
+    XCTAssertTrue(app.staticTexts["Second local recipe"].waitForExistence(timeout: 5))
+    XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "Duration not provided")).firstMatch.exists)
+    XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "Servings not provided")).firstMatch.exists)
+    tap("recipe.start")
+    XCTAssertEqual(app.staticTexts["cooking.text"].label, "Mix the second fixture.")
+    XCTAssertFalse(app.buttons["cooking.timer"].exists)
+    shot("recipe-multiple-choice-no-invented-duration")
+  }
   func testNativeBrowserRecipeExtractionCookingAndPinning() {
     launch(["--page", "Safari"])
     XCTAssertTrue(

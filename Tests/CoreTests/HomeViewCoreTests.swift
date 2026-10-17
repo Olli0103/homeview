@@ -168,7 +168,9 @@ final class HomeViewCoreTests: XCTestCase {
         json: #"{"@type":"Recipe","name":"Empty","recipeInstructions":[]}"#, source: "fixture"))
     XCTAssertThrowsError(
       try RecipeParser.parse(json: String(repeating: "x", count: 2_000_001), source: "fixture"))
-    XCTAssertEqual(RecipeParser.duration("PT9223372036854775807H"), 1440)
+    // Reject an unsupported source duration; never invent a 24-hour total.
+    XCTAssertNil(RecipeParser.duration("PT9223372036854775807H"))
+    XCTAssertEqual(RecipeParser.duration("PT72H"), 4320)
   }
   func testPinnedRecipesSurviveSnapshotRoundTrip() throws {
     var state = Snapshot()

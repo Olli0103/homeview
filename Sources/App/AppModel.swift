@@ -492,10 +492,11 @@ final class AppModel {
       lockPersonalAccess()
     }
   }
-  func addTimer(seconds: TimeInterval, title: String = "Timer") {
+  @discardableResult
+  func addTimer(seconds: TimeInterval, title: String = "Timer") -> Bool {
     guard seconds.isFinite, seconds > 0, seconds <= 86400, data.timers.count < 12 else {
       error = "Choose 1 second to 24 hours, up to 12 timers."
-      return
+      return false
     }
     let timer = Countdown(title: title, seconds: seconds)
     data.timers.append(timer)
@@ -519,6 +520,7 @@ final class AppModel {
         }
       }
     #endif
+    return true
   }
   func toggleTimer(_ id: UUID) {
     guard let i = data.timers.firstIndex(where: { $0.id == id }) else { return }

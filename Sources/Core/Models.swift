@@ -386,102 +386,30 @@ struct RecipeDocument: Codable, Identifiable, Sendable {
   var steps: [RecipeStep]
   var coverAsset: String?
   var imageURL: URL?
+  var prepMinutes: Int?
+  var cookMinutes: Int?
+  var durationLabel: String {
+    if durationMinutes > 0 { return "\(durationMinutes) min." }
+    if let cookMinutes { return "Cook \(cookMinutes) min." }
+    if let prepMinutes { return "Prep \(prepMinutes) min." }
+    return "Duration not provided"
+  }
+  var servingsLabel: String { servings.isEmpty ? "Servings not provided" : "Serves " + servings }
   static let soup = RecipeDocument(
     id: UUID(uuidString: "00000000-0000-0000-0000-000000000001")!, title: "Butternut Squash Soup",
     source: "Home Cookbook", durationMinutes: 35, servings: "4", ingredients: Fixtures.ingredients,
     steps: Fixtures.steps, coverAsset: "Soup")
 }
 enum RecipeParseError: Error, LocalizedError {
-  case noRecipe, oversized
+  case noRecipe, oversized, pageChanged
   var errorDescription: String? {
     switch self {
     case .noRecipe: "This page has no supported structured recipe."
     case .oversized: "The page's structured recipe is too large."
+    case .pageChanged: "The page changed while reading the recipe. Read it again."
     }
   }
 }
-enum RecipeParser {
-  static func parse(json: String, source: String) throws -> RecipeDocument {
-    guard json.utf8.count <= 2_000_000 else { throw RecipeParseError.oversized }
-    let data = Data(json.utf8)
-    let root = try JSONSerialization.jsonObject(with: data)
-    guard let node = find(root, depth: 0), let name = node["name"] as? String, !name.isEmpty else {
-      throw RecipeParseError.noRecipe
-    }
-    let instructions = steps(node["recipeInstructions"], depth: 0)
-    guard !instructions.isEmpty else { throw RecipeParseError.noRecipe }
-    let ingredients = (node["recipeIngredient"] as? [String] ?? []).prefix(200).map {
-      String($0.prefix(1000))
-    }
-    let minutes =
-      duration(node["totalTime"] as? String)
-      ?? ((duration(node["prepTime"] as? String) ?? 0)
-        + (duration(node["cookTime"] as? String) ?? 0))
-    let yield =
-      node["recipeYield"] as? String ?? (node["recipeYield"] as? [String])?.first
-      ?? (node["recipeYield"] as? NSNumber)?.stringValue ?? "4"
-    let image =
-      (node["image"] as? String) ?? (node["image"] as? [String])?.first
-      ?? (node["image"] as? [String: Any])?["url"] as? String
-    let imageURL = image.flatMap(URL.init(string:)).flatMap {
-      ["http", "https"].contains($0.scheme?.lowercased() ?? "") ? $0 : nil
-    }
-    return RecipeDocument(
-      title: String(name.prefix(200)), source: source, durationMinutes: min(1440, max(1, minutes)),
-      servings: String(yield.prefix(80)), ingredients: Array(ingredients), steps: instructions,
-      coverAsset: nil, imageURL: imageURL)
-  }
-  private static func find(_ value: Any, depth: Int) -> [String: Any]? {
-    guard depth < 10 else { return nil }
-    if let list = value as? [Any] {
-      for item in list.prefix(100) { if let found = find(item, depth: depth + 1) { return found } }
-    }
-    if let node = value as? [String: Any] {
-      let types = (node["@type"] as? [String]) ?? [node["@type"] as? String ?? ""]
-      if types.contains(where: { $0 == "Recipe" || $0.hasSuffix("/Recipe") }) { return node }
-      if let graph = node["@graph"], let found = find(graph, depth: depth + 1) { return found }
-    }
-    return nil
-  }
-  private static func steps(_ value: Any?, depth: Int) -> [RecipeStep] {
-    guard depth < 10 else { return [] }
-    if let text = value as? String {
-      return text.components(separatedBy: .newlines).filter {
-        !$0.trimmingCharacters(in: .whitespaces).isEmpty
-      }.prefix(100).map { RecipeStep(text: String($0.prefix(3000)), minutes: inlineMinutes($0)) }
-    }
-    if let list = value as? [Any] {
-      return Array(list.prefix(100).flatMap { steps($0, depth: depth + 1) }.prefix(100))
-    }
-    if let node = value as? [String: Any] {
-      if let children = node["itemListElement"] { return steps(children, depth: depth + 1) }
-      if let text = node["text"] as? String { return steps(text, depth: depth + 1) }
-    }
-    return []
-  }
-  static func duration(_ value: String?) -> Int? {
-    guard let value else { return nil }
-    let pattern = "(?i)^PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?$"
-    guard
-      let match = try? NSRegularExpression(pattern: pattern).firstMatch(
-        in: value, range: NSRange(value.startIndex..., in: value))
-    else { return nil }
-    func number(_ group: Int) -> Int {
-      guard let range = Range(match.range(at: group), in: value) else { return 0 }
-      return min(1440, Int(value[range]) ?? 0)
-    }
-    return min(1440, number(1) * 60 + number(2) + (number(3) > 0 ? 1 : 0))
-  }
-  private static func inlineMinutes(_ text: String) -> Int? {
-    guard
-      let match = try? NSRegularExpression(pattern: "(?i)(\\d{1,4})\\s*(?:minutes?|minuten|min)\\b")
-        .firstMatch(in: text, range: NSRange(text.startIndex..., in: text)),
-      let range = Range(match.range(at: 1), in: text), let n = Int(text[range])
-    else { return nil }
-    return min(1440, max(1, n))
-  }
-}
-
 /// Shared angular calculations avoid hour/minute discontinuities at midnight.
 struct ClockGeometry: Sendable {
   let hours: Double
