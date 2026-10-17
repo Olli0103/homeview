@@ -105,6 +105,9 @@ struct AnalogClock: View {
   var handColor: Color? = nil
   var showTicks = true
   var secondsColor: Color? = nil
+  var embossedHands = false
+  var minuteReach = 0.84
+  var secondsReach = 0.99
   var body: some View {
     MotionTimeline { _ in clock(date: model.referenceClock ? date : Date()) }
   }
@@ -142,18 +145,39 @@ struct AnalogClock: View {
         path.move(to: CGPoint(x: center.x - 8 * cos(angle), y: center.y - 8 * sin(angle)))
         path.addLine(
           to: CGPoint(x: center.x + length * cos(angle), y: center.y + length * sin(angle)))
-        context.stroke(
-          path, with: .color(color), style: StrokeStyle(lineWidth: width, lineCap: .round))
+        let style=StrokeStyle(lineWidth:width,lineCap:.round)
+        if embossedHands {
+          // Fade's wide hand starts outside the hub, joined by a slender stem.
+          // Keep other clock faces' existing full-width hands unchanged.
+          let neck = r * 0.15
+          var stem = Path()
+          stem.move(to: center)
+          stem.addLine(to: CGPoint(x: center.x + neck * cos(angle), y: center.y + neck * sin(angle)))
+          context.stroke(stem, with: .color(color), style: StrokeStyle(lineWidth: width * 0.25, lineCap: .round))
+          path = Path()
+          path.move(to: CGPoint(x: center.x + neck * cos(angle), y: center.y + neck * sin(angle)))
+          path.addLine(to: CGPoint(x: center.x + length * cos(angle), y: center.y + length * sin(angle)))
+          var shadow=context
+          shadow.addFilter(.shadow(color:.black.opacity(0.28),radius:1.5,x:1.2,y:2))
+          shadow.stroke(path,with:.color(color),style:style)
+          let perpendicular=CGPoint(x:-sin(angle)*width*0.5,y:cos(angle)*width*0.5)
+          context.stroke(path,with:.linearGradient(
+            Gradient(colors:[color.mix(with:.white,by:0.18),color,color.mix(with:.black,by:0.12)]),
+            startPoint:CGPoint(x:center.x-perpendicular.x,y:center.y-perpendicular.y),
+            endPoint:CGPoint(x:center.x+perpendicular.x,y:center.y+perpendicular.y)),style:style)
+        } else {
+          context.stroke(path,with:.color(color),style:style)
+        }
       }
       hand(angle: h * .pi / 6 - .pi / 2, length: r * 0.56, width: r * 0.065, color: hands)
-      hand(angle: m * .pi / 30 - .pi / 2, length: r * 0.84, width: r * 0.055, color: hands)
+      hand(angle: m * .pi / 30 - .pi / 2, length: r * minuteReach, width: r * 0.055, color: hands)
       let second = secondsColor ?? (numbered ? .white : tint)
       let angle = s * .pi / 30 - .pi / 2
       var needle = Path()
       needle.move(
         to: CGPoint(x: center.x - r * 0.15 * cos(angle), y: center.y - r * 0.15 * sin(angle)))
       needle.addLine(
-        to: CGPoint(x: center.x + r * 0.99 * cos(angle), y: center.y + r * 0.99 * sin(angle)))
+        to: CGPoint(x: center.x + r * secondsReach * cos(angle), y: center.y + r * secondsReach * sin(angle)))
       context.stroke(
         needle, with: .color(second),
         style: StrokeStyle(lineWidth: max(0.8, r * 0.009), lineCap: .round))
