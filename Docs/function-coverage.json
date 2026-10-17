@@ -14,6 +14,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/5"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Für jeden Referenz-Face existiert ein geprüfter Zustand oder eine benannte Lücke. Zusatzfaces zählen nicht als Beleg fehlender Originalfaces."
     ]
   },
   {
@@ -31,6 +45,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/6"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Framefolgen bei langsamer/schneller/abgebrochener Geste mit Referenz vergleichen; keine Sprünge, falschen Faces oder blockierten Inhalte."
     ]
   },
   {
@@ -48,6 +76,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/7"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Alle belegten Editoroptionen sind erreichbar und persistent. Inkompatible Inhalte werden nicht angeboten, andere Faces bleiben unverändert."
     ]
   },
   {
@@ -65,6 +107,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/7"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Alle belegten Editoroptionen sind erreichbar und persistent. Inkompatible Inhalte werden nicht angeboten, andere Faces bleiben unverändert."
     ]
   },
   {
@@ -82,6 +138,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/7"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Alle belegten Editoroptionen sind erreichbar und persistent. Inkompatible Inhalte werden nicht angeboten, andere Faces bleiben unverändert."
     ]
   },
   {
@@ -99,6 +169,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/8"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zwei synthetische Nutzer können nur bewusst freigegebene Inhalte gemeinsam sehen. Profilwechsel und Sperren legen keine privaten Reste offen."
     ]
   },
   {
@@ -116,6 +200,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/8"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zwei synthetische Nutzer können nur bewusst freigegebene Inhalte gemeinsam sehen. Profilwechsel und Sperren legen keine privaten Reste offen."
     ]
   },
   {
@@ -133,6 +231,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/9"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Ansicht und Auswahl überstehen Neustart; zweites Profil übernimmt keine persönlichen Einstellungen oder Daten."
     ]
   },
   {
@@ -150,6 +262,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/6"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Framefolgen bei langsamer/schneller/abgebrochener Geste mit Referenz vergleichen; keine Sprünge, falschen Faces oder blockierten Inhalte."
     ]
   },
   {
@@ -167,6 +293,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/10"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Ein dokumentierter synthetischer Bewegungs-/Distanzverlauf schaltet stabil. Echte Sensorabnahme erfolgt separat und nur nach bewusster Freigabe; kein dauerhafter Kamerazugriff als stiller Default."
     ]
   },
   {
@@ -184,6 +324,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/11"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Alben zeigen Hinzufügen/Entfernen und Neustart korrekt. Persönliche Fotobibliotheken bleiben außerhalb automatischer Tests."
     ]
   },
   {
@@ -201,6 +355,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/11"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Alben zeigen Hinzufügen/Entfernen und Neustart korrekt. Persönliche Fotobibliotheken bleiben außerhalb automatischer Tests."
     ]
   },
   {
@@ -218,6 +386,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/12"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Analytische Maskenfälle und eigene synthetische Bilder ergeben vorhersehbare Platzierungen; kein Beschnitt wichtiger Motive, keine NaN-Scores."
     ]
   },
   {
@@ -235,6 +417,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/13"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Deterministische Zeit-/Zeitzonenszenarien und Pixelprüfungen belegen lesbare Zustände ohne Farblecks; unbekannte Originalregeln bleiben markiert."
     ]
   },
   {
@@ -252,6 +448,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/14"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Erst mit dokumentierter Assetgrundlage und geprüften Szenen für Wetter, Datum und Tageszeit abschließen. Ein statisches Bild oder ähnliche Figur ist kein Parity-PASS."
     ]
   },
   {
@@ -269,6 +479,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/10"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "UI47 benennt Flow, belegt aber keine Reaktion auf Bewegung im Raum. Diese Kausalität ist nur berichtet."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Ein dokumentierter synthetischer Bewegungs-/Distanzverlauf schaltet stabil. Echte Sensorabnahme erfolgt separat und nur nach bewusster Freigabe; kein dauerhafter Kamerazugriff als stiller Default."
     ]
   },
   {
@@ -286,6 +510,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/18"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Standbilder und Zeitsequenzen über vollständige belegte Phasen vergleichen. Unbekannte Originalkurven nicht durch Einzelbild-PASS ersetzen."
     ]
   },
   {
@@ -303,6 +541,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/19"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Alle referenzierten Uhrzeiten und Ziffernformen sind dokumentiert visuell verglichen; keine extrahierten Fontdaten im Repo."
     ]
   },
   {
@@ -320,6 +572,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/21"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Fixtures für alle Zustände plus gesonderter öffentlicher Datenabruf. Effekte überlagern keine wichtigen Daten; kein erfundener AQI."
     ]
   },
   {
@@ -337,6 +603,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/22"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Visuelle Prüffälle für kritische Monate und verschiedene Sprachen, keine verdeckten Tageszahlen oder falschen Daten."
     ]
   },
   {
@@ -354,6 +634,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/13"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Deterministische Zeit-/Zeitzonenszenarien und Pixelprüfungen belegen lesbare Zustände ohne Farblecks; unbekannte Originalregeln bleiben markiert."
     ]
   },
   {
@@ -371,6 +665,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/23"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zuerst synthetische Adaptertests. Später gesondert genehmigte Testumgebung mit Read-back und verweigerter Freigabe. Nicht allein durch erfolgreiche Initialisierung schließen."
     ]
   },
   {
@@ -388,6 +696,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/23"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zuerst synthetische Adaptertests. Später gesondert genehmigte Testumgebung mit Read-back und verweigerter Freigabe. Nicht allein durch erfolgreiche Initialisierung schließen."
     ]
   },
   {
@@ -405,6 +727,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/24"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
     ]
   },
   {
@@ -422,6 +758,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/24"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
     ]
   },
   {
@@ -439,6 +789,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/24"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
     ]
   },
   {
@@ -456,6 +820,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/24"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
     ]
   },
   {
@@ -473,6 +851,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/25"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Nur Mock-/Testheim-Sicherheitsfälle, kein echtes Schloss in automatischen Tests. Abgebrochene oder abgelaufene Autorisierung sendet keinen Befehl."
     ]
   },
   {
@@ -490,6 +882,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/26"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Szenen mit teilweise verweigerten Geräten liefern korrekten Endstatus. Keine unbeauftragte neue Zeitsteuerung."
     ]
   },
   {
@@ -507,6 +913,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/26"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Szenen mit teilweise verweigerten Geräten liefern korrekten Endstatus. Keine unbeauftragte neue Zeitsteuerung."
     ]
   },
   {
@@ -524,6 +944,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/24"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
     ]
   },
   {
@@ -541,6 +975,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/27"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Streamausfälle und später freigegebene Testkameras. Hintergrund/Verlassen beendet Streams, ein Offlinefeed blockiert nicht das Raster."
     ]
   },
   {
@@ -558,6 +1006,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/27"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Streamausfälle und später freigegebene Testkameras. Hintergrund/Verlassen beendet Streams, ein Offlinefeed blockiert nicht das Raster."
     ]
   },
   {
@@ -575,6 +1037,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/28"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "UI34 zeigt die Kameraansicht, nicht die vollständige ereignisgesteuerte Türklingelkette."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Klingelsequenzen einschließlich Wiederholung und gleichzeitigem Timer; Kamera wird nur mit geltender Freigabe geöffnet."
     ]
   },
   {
@@ -592,6 +1068,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/29"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zuerst synthetischer Audiovertrag. Echte Testkamera und Mikrofon nur bewusst; kein dauerhaft offenes Mikrofon nach Navigation."
     ]
   },
   {
@@ -609,6 +1099,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/30"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Fähigkeitsbericht mit konkreten Dokumentationslinks und Testgrenzen. Mock-Suche, fremde Daten oder UI-Nachbau sind kein HKSV-PASS."
     ]
   },
   {
@@ -626,6 +1130,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/30"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Fähigkeitsbericht mit konkreten Dokumentationslinks und Testgrenzen. Mock-Suche, fremde Daten oder UI-Nachbau sind kein HKSV-PASS."
     ]
   },
   {
@@ -643,6 +1161,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/31"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Deterministische Ereignisfolgen zeigen keine verlorenen oder falsch zusammengefassten Meldungen. Echtquelle erst nach HOME-01."
     ]
   },
   {
@@ -660,6 +1192,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/32"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Dokumentierte Machbarkeitsentscheidung pro Funktion; keine erfundenen Messwerte oder Sicherheitsversprechen."
     ]
   },
   {
@@ -677,6 +1223,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/32"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Dokumentierte Machbarkeitsentscheidung pro Funktion; keine erfundenen Messwerte oder Sicherheitsversprechen."
     ]
   },
   {
@@ -694,6 +1254,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/33"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Kuratiertes Fragen-/Dialogset mit Quellen- und Fehlerprüfung; synthetische Daten, kein behauptetes Siri oder Private Cloud Compute."
     ]
   },
   {
@@ -711,6 +1285,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/34"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Anfragen dürfen nur freigegebene Daten und app-eigenen Zustand verwenden. Gesperrte Daten erscheinen weder in Antworten noch Verlauf."
     ]
   },
   {
@@ -728,6 +1316,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/35"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Aktionsketten mit Fehler im mittleren Schritt zeigen echte Dispositionen. Kein erfundener Gesamterfolg."
     ]
   },
   {
@@ -745,6 +1347,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/33"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Kuratiertes Fragen-/Dialogset mit Quellen- und Fehlerprüfung; synthetische Daten, kein behauptetes Siri oder Private Cloud Compute."
     ]
   },
   {
@@ -762,6 +1378,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/34"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Anfragen dürfen nur freigegebene Daten und app-eigenen Zustand verwenden. Gesperrte Daten erscheinen weder in Antworten noch Verlauf."
     ]
   },
   {
@@ -779,6 +1409,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/36"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Deterministische Antwortfixtures für jede belegte Kartenart mit visueller und VoiceOver-Prüfung."
     ]
   },
   {
@@ -796,6 +1440,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/37"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Dokumentierter unterstützter Aufruf oder weiter blockierter Zustand. App nimmt ohne ausdrückliche Aktivierung kein Audio auf."
     ]
   },
   {
@@ -813,6 +1471,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/38"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Auf iPad Hoch-/Querformat keine verdeckten Eingabefelder und kein versehentlicher Sendeschritt."
     ]
   },
   {
@@ -830,6 +1502,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/38"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Auf iPad Hoch-/Querformat keine verdeckten Eingabefelder und kein versehentlicher Sendeschritt."
     ]
   },
   {
@@ -847,6 +1533,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/39"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Kein vermeintlicher Apple-Verlauf aus lokalen Demos. Falls eigener Verlauf freigegeben wird, Isolation, Löschung und Konfliktfälle prüfen."
     ]
   },
   {
@@ -864,6 +1564,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/40"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Sprachausgabe mit langen Antworten, Abbruch und gleichzeitigen Timern/Musik abnehmen. Keine Ausgabe privater Inhalte im gesperrten Zustand."
     ]
   },
   {
@@ -881,6 +1595,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/41"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "F052 ist als Referenz-/Dienstabhängigkeit bilanziert. Jede eigene Nutzungsgrenze entspricht dem implementierten Anbieter."
     ]
   },
   {
@@ -898,6 +1626,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/42"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Fähigkeitsbericht je Aktion; ein animierter Mockanruf ist keine Live-Abnahme. Automatische Tests platzieren keine Anrufe."
     ]
   },
   {
@@ -915,6 +1657,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/42"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Fähigkeitsbericht je Aktion; ein animierter Mockanruf ist keine Live-Abnahme. Automatische Tests platzieren keine Anrufe."
     ]
   },
   {
@@ -932,6 +1688,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/43"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Bewusst gestartete Aufnahme auf unterstütztem Testgerät oder dokumentierter nicht verfügbarer Zustand. Keine Hardwarefähigkeit aus dem SDK-Build ableiten."
     ]
   },
   {
@@ -949,6 +1719,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/44"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Ohne bestätigten Benutzerknopf weder Versand noch Anruf. Keine Behauptung empfangener Nachrichten oder erfolgreicher Zustellung aus einem URL-Aufruf."
     ]
   },
   {
@@ -966,6 +1750,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/44"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Ohne bestätigten Benutzerknopf weder Versand noch Anruf. Keine Behauptung empfangener Nachrichten oder erfolgreicher Zustellung aus einem URL-Aufruf."
     ]
   },
   {
@@ -983,6 +1781,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/45"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Dokumentierter API-Nachweis und tatsächlicher Ziel-Read-back oder blockierter Status. Lokales Abspielen zählt nicht als Zustellung."
     ]
   },
   {
@@ -1000,6 +1812,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/46"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Nicht verfügbare Originalfunktionen bleiben als solche im Parity-Bericht. Mockpositionen können nie als live erscheinen."
     ]
   },
   {
@@ -1017,6 +1843,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/47"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zuerst synthetischer Vertrag, anschließend bewusst eingerichteter Testkalender auf Hardware. Keine privaten Daten im automatischen E2E."
     ]
   },
   {
@@ -1034,6 +1874,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/47"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zuerst synthetischer Vertrag, anschließend bewusst eingerichteter Testkalender auf Hardware. Keine privaten Daten im automatischen E2E."
     ]
   },
   {
@@ -1051,6 +1905,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/48"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Bewusst verwendete Testliste auf Hardware mit exaktem Provider-Read-back. Keine Schreiboperation in persönlichen Listen durch automatisierte Tests."
     ]
   },
   {
@@ -1068,6 +1936,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/49"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigene Testtimer stimmen nach Unterbrechung mit dem Systemzustand überein. Kein doppelter Alarm oder stehengebliebener Countdown."
     ]
   },
   {
@@ -1085,6 +1967,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/49"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigene Testtimer stimmen nach Unterbrechung mit dem Systemzustand überein. Kein doppelter Alarm oder stehengebliebener Countdown."
     ]
   },
   {
@@ -1102,6 +1998,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/50"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Transkripte ändern ausschließlich den erwarteten Timer/Schritt. Physische Erkennung gesondert in ruhiger/lauter Umgebung abnehmen."
     ]
   },
   {
@@ -1119,6 +2029,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/51"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Auf unterstütztem Simulator und Hardware außerhalb der App sichtbar, Pause/Ende konsistent und keine verwaisten Aktivitäten."
     ]
   },
   {
@@ -1136,6 +2060,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/52"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Bewusst gesetzter Testalarm auf iPad löst auch außerhalb der App aus und lässt sich entfernen; keine Garantie für ungetestete Plattformen."
     ]
   },
   {
@@ -1153,6 +2091,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/53"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zonen mit verschiedenen DST-Regeln und Tageswechsel zeigen richtige Zeit/Datum. Offlinebetrieb ohne feste UTC-Offsets."
     ]
   },
   {
@@ -1170,6 +2122,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/54"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Lokale Testseiten decken Navigation, Fehler und unerwünschte Scheme-Aufrufe ab. Keine Behauptung gemeinsamer Safari-Historie/Passwörter."
     ]
   },
   {
@@ -1187,6 +2153,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/55"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigene Rezeptfixtures prüfen DOM bis Kochschritt und Timer. Import erfindet keine Zutaten/Zeiten, entfernte Rezepte hinterlassen keine falschen Timer."
     ]
   },
   {
@@ -1204,6 +2184,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/55"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigene Rezeptfixtures prüfen DOM bis Kochschritt und Timer. Import erfindet keine Zutaten/Zeiten, entfernte Rezepte hinterlassen keine falschen Timer."
     ]
   },
   {
@@ -1221,6 +2215,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/55"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigene Rezeptfixtures prüfen DOM bis Kochschritt und Timer. Import erfindet keine Zutaten/Zeiten, entfernte Rezepte hinterlassen keine falschen Timer."
     ]
   },
   {
@@ -1238,6 +2246,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/55"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigene Rezeptfixtures prüfen DOM bis Kochschritt und Timer. Import erfindet keine Zutaten/Zeiten, entfernte Rezepte hinterlassen keine falschen Timer."
     ]
   },
   {
@@ -1255,6 +2277,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/55"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigene Rezeptfixtures prüfen DOM bis Kochschritt und Timer. Import erfindet keine Zutaten/Zeiten, entfernte Rezepte hinterlassen keine falschen Timer."
     ]
   },
   {
@@ -1272,6 +2308,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/50"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Transkripte ändern ausschließlich den erwarteten Timer/Schritt. Physische Erkennung gesondert in ruhiger/lauter Umgebung abnehmen."
     ]
   },
   {
@@ -1289,6 +2339,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/55"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigene Rezeptfixtures prüfen DOM bis Kochschritt und Timer. Import erfindet keine Zutaten/Zeiten, entfernte Rezepte hinterlassen keine falschen Timer."
     ]
   },
   {
@@ -1306,6 +2370,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/56"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zwei bewusst eingerichtete Testgeräte übernehmen Rezept/Schritt oder zeigen einen klaren Nichtverfügbarkeitszustand."
     ]
   },
   {
@@ -1323,6 +2401,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/57"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetischer Vertrag plus separat bewusster Playback-Test auf Hardware; tatsächliche native Playerzustände statt erfolgreicher Buttonaktion prüfen."
     ]
   },
   {
@@ -1340,6 +2432,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/58"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Fähigkeitsnachweis und tatsächliche Wiedergabe je unterstütztem Inhalt; statische Cover allein schließen F079 nicht."
     ]
   },
   {
@@ -1357,6 +2463,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/57"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetischer Vertrag plus separat bewusster Playback-Test auf Hardware; tatsächliche native Playerzustände statt erfolgreicher Buttonaktion prüfen."
     ]
   },
   {
@@ -1374,6 +2494,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/57"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetischer Vertrag plus separat bewusster Playback-Test auf Hardware; tatsächliche native Playerzustände statt erfolgreicher Buttonaktion prüfen."
     ]
   },
   {
@@ -1391,6 +2525,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/57"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetischer Vertrag plus separat bewusster Playback-Test auf Hardware; tatsächliche native Playerzustände statt erfolgreicher Buttonaktion prüfen."
     ]
   },
   {
@@ -1408,6 +2556,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/59"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eigener Testfeed und eigene Audiofixtures mit Seek, Pause, Navigation und Neustart. Kein behaupteter Zugriff auf private Podcast-Abos."
     ]
   },
   {
@@ -1425,6 +2587,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/60"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Unterfunktionen haben nachgewiesenen unterstützten Pfad oder eine konkrete API-/Hardwareblockade. Keine pauschale Universal-Medienzusage."
     ]
   },
   {
@@ -1442,6 +2618,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/60"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Unterfunktionen haben nachgewiesenen unterstützten Pfad oder eine konkrete API-/Hardwareblockade. Keine pauschale Universal-Medienzusage."
     ]
   },
   {
@@ -1459,6 +2649,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/61"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Bewusst gewählte Testempfänger liefern hörbare Wiedergabe und korrekten Routenstatus. Eine sichtbare Route-Picker-Schaltfläche ist kein Mehrraum-PASS."
     ]
   },
   {
@@ -1476,6 +2680,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/62"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Echte Gast-Testsequenz auf geeigneten Geräten oder weiter explizit blockiert. Normales WLAN-Streaming erfüllt diese Anforderung nicht."
     ]
   },
   {
@@ -1493,6 +2711,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/63"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Für jeden Inhaltstyp tatsächlicher unterstützter Übergang oder dokumentierte Lücke. Ein Deep Link ohne Sitzungsübernahme zählt nicht."
     ]
   },
   {
@@ -1510,6 +2742,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/64"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Bewusster physischer Test mit Vorher-/Nachher-Bild und Capture-Lifecycle-Nachweis; keine Kameranutzung im Mock-E2E."
     ]
   },
   {
@@ -1527,6 +2773,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/64"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Bewusster physischer Test mit Vorher-/Nachher-Bild und Capture-Lifecycle-Nachweis; keine Kameranutzung im Mock-E2E."
     ]
   },
   {
@@ -1544,6 +2804,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/65"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Jeder Schalter liest den tatsächlich gesteuerten Zustand zurück. Kein Mock-Online-Schalter als System-WLAN und keine Overlayabdunklung als gemessene Hardwarehelligkeit."
     ]
   },
   {
@@ -1561,6 +2835,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/65"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Jeder Schalter liest den tatsächlich gesteuerten Zustand zurück. Kein Mock-Online-Schalter als System-WLAN und keine Overlayabdunklung als gemessene Hardwarehelligkeit."
     ]
   },
   {
@@ -1578,6 +2866,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/66"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Mehrnutzer-Szenarien belegen Isolation. Gerätedaten bleiben gesperrt, bis echte Authentifizierung erfolgreich ist; keine erfundene Gesichtserkennung."
     ]
   },
   {
@@ -1595,6 +2897,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/66"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Mehrnutzer-Szenarien belegen Isolation. Gerätedaten bleiben gesperrt, bis echte Authentifizierung erfolgreich ist; keine erfundene Gesichtserkennung."
     ]
   },
   {
@@ -1612,6 +2928,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/67"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Deterministische Präsenz-/Timeout-Tests sowie Profilwechsel während laufender Requests. Späte Antworten können gesperrte Daten nicht erneut anzeigen."
     ]
   },
   {
@@ -1629,6 +2959,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/66"
+    ],
+    "evidence_assessment": {
+      "status": "observed",
+      "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Synthetische Mehrnutzer-Szenarien belegen Isolation. Gerätedaten bleiben gesperrt, bis echte Authentifizierung erfolgreich ist; keine erfundene Gesichtserkennung."
     ]
   },
   {
@@ -1646,6 +2990,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/68"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Eine Aktionsmatrix mit Gast, Nutzer und Eigentümer wird durch synthetische E2E abgedeckt. Versteckte Knöpfe allein ersetzen keine Modellautorisierung."
     ]
   },
   {
@@ -1663,6 +3021,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/69"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Anforderung bleibt unerfüllt, sofern kein nachgewiesener öffentlicher Weg existiert. LocalAuthentication wird nicht als eigener Secure-Exclaves-Port ausgegeben."
     ]
   },
   {
@@ -1680,6 +3052,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/70"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Dokumentierter unterstützter API-Pfad oder sichtbare offene Originalgrenze. Ein externer LLM-Aufruf gilt niemals als PCC."
     ]
   },
   {
@@ -1697,6 +3083,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/23"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Zuerst synthetische Adaptertests. Später gesondert genehmigte Testumgebung mit Read-back und verweigerter Freigabe. Nicht allein durch erfolgreiche Initialisierung schließen."
     ]
   },
   {
@@ -1714,6 +3114,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/71"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Neustart, Setup-Abbruch, verweigerte Freigabe und späteres Verbinden funktionieren ohne persönliche Daten in Tests."
     ]
   },
   {
@@ -1731,6 +3145,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/72"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "blocked",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Nachgewiesener Messpfad mit geeigneten Adaptern oder explizit nicht verfügbar. SDK-Build erfüllt keinen Hardwaretest."
     ]
   },
   {
@@ -1748,6 +3176,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/73"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "partial",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Face-Editor, Sperre, Timer, Kamera, Rezept und Verbindungen sind ohne präzise Wischgeste oder Sehvermögen bedienbar. Ergebnisse je Hilfsmittel dokumentieren."
     ]
   },
   {
@@ -1765,6 +3207,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/74"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Nachgewiesene Nutzbarkeit je Zielplattform und Hilfsmittel oder konkrete Blockade. Ein Textfeld erfüllt nicht sämtliche F105-Unterfunktionen."
     ]
   },
   {
@@ -1782,6 +3238,20 @@
     "parity_accepted": false,
     "issue_urls": [
       "https://github.com/Olli0103/homeview/issues/74"
+    ],
+    "evidence_assessment": {
+      "status": "reported",
+      "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
+    },
+    "target": "iPad core",
+    "implementation_status": "research",
+    "acceptance": {
+      "functional": "pending",
+      "visual": "pending original-state comparison",
+      "device_service": "pending where required; classify explicitly before acceptance"
+    },
+    "completion_criteria": [
+      "Nachgewiesene Nutzbarkeit je Zielplattform und Hilfsmittel oder konkrete Blockade. Ein Textfeld erfüllt nicht sämtliche F105-Unterfunktionen."
     ]
   }
 ]
