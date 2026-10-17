@@ -106,6 +106,7 @@ struct AnalogClock: View {
   var showTicks = true
   var secondsColor: Color? = nil
   var embossedHands = false
+  var hourReach = 0.56
   var minuteReach = 0.84
   var secondsReach = 0.99
   var body: some View {
@@ -169,7 +170,7 @@ struct AnalogClock: View {
           context.stroke(path,with:.color(color),style:style)
         }
       }
-      hand(angle: h * .pi / 6 - .pi / 2, length: r * 0.56, width: r * 0.065, color: hands)
+      hand(angle: h * .pi / 6 - .pi / 2, length: r * hourReach, width: r * 0.065, color: hands)
       hand(angle: m * .pi / 30 - .pi / 2, length: r * minuteReach, width: r * 0.055, color: hands)
       let second = secondsColor ?? (numbered ? .white : tint)
       let angle = s * .pi / 30 - .pi / 2
