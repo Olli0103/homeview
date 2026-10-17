@@ -49,6 +49,45 @@ final class HomeViewUITests: XCTestCase {
     app.scrollViews.firstMatch.swipeUp()
     shot("apps-native-marks-lower-rows")
   }
+  func testPersonalMediaLayoutPersistsOnlyForItsProfile() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--reset-test-store"])
+    tap("nav.apps")
+    app.buttons["personal.profile"].tap();tap("profile.Alex")
+    app.buttons["personal.profile"].press(forDuration:1)
+    tap("personal.edit");tap("personal.layout.media");tap("personal.editor.done")
+    XCTAssertTrue(app.scrollViews["personal.media.layout"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.buttons["personal.podcast.play"].exists)
+    XCTAssertTrue(app.buttons["app.Calendar"].exists)
+    shot("personal-ui42-media-layout-alex")
+    app.terminate()
+    launch(["--persistence-test",id])
+    tap("nav.apps");app.buttons["personal.profile"].tap();tap("profile.Alex")
+    XCTAssertTrue(app.scrollViews["personal.media.layout"].waitForExistence(timeout:5))
+    app.buttons["personal.profile"].tap();tap("profile.Jamie")
+    XCTAssertTrue(app.otherElements["personal.photos.layout"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.scrollViews["personal.media.layout"].exists)
+    XCTAssertTrue(app.buttons["app.Home"].exists)
+    shot("personal-ui16-other-profile-unchanged")
+    app.buttons["personal.profile"].tap();tap("profile.guest")
+    XCTAssertFalse(app.buttons["personal.edit"].exists)
+    XCTAssertTrue(app.otherElements["personal.photos.layout"].exists)
+  }
+  func testPersonalMediaWidgetUsesExplicitDemoPlaybackAndNavigation() {
+    launch()
+    tap("nav.apps");app.buttons["personal.profile"].tap();tap("profile.Alex")
+    app.buttons["personal.profile"].press(forDuration:1)
+    tap("personal.edit");tap("personal.layout.media");tap("personal.editor.done")
+    XCTAssertTrue(app.staticTexts["Demo episode"].exists)
+    tap("personal.podcast.play")
+    let play=app.buttons["personal.podcast.play"]
+    expectation(for:NSPredicate(format:"label CONTAINS %@","Pause"),evaluatedWith:play)
+    waitForExpectations(timeout:8)
+    shot("personal-podcast-widget-playing")
+    tap("personal.podcast.play")
+    tap("personal.podcast.open")
+    XCTAssertTrue(app.buttons["podcast.play"].waitForExistence(timeout:5))
+  }
 
   func testThermostatWritesAndScenePropagatesToDetail() {
     launch()
