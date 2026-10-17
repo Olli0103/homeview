@@ -22,22 +22,29 @@ struct PersonalView: View {
     ZStack {
       FaceView(selection:model.data.face).blur(radius:22).overlay(.black.opacity(0.28))
         .allowsHitTesting(false).accessibilityHidden(true)
-      VStack(alignment:.leading,spacing:30) {
+      VStack(alignment:.leading,spacing:configuration.layout == .photos ? 30:24) {
         header
-        if configuration.layout == .media {
+        if configuration.layout != .photos {
           ScrollView {
-            VStack(spacing:24) {
+            VStack(spacing:20) {
               HStack(alignment:.top,spacing:25) {
                 appGrid(configuration.apps)
-                mediaWidget(podcast:true)
+                if configuration.layout == .weather { weatherWidget }
+                else { mediaWidget(podcast:true) }
               }
-              HStack(alignment:.top,spacing:25) {
-                mediaWidget(podcast:false)
-                appGrid([.safari,.reminders,.timers,.alarms])
+              if configuration.layout == .weather {
+                LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:20),count:4),spacing:22) {
+                  ForEach(weatherGridApps) { page in appButton(page) }
+                }
+              } else {
+                HStack(alignment:.top,spacing:25) {
+                  mediaWidget(podcast:false)
+                  appGrid([.safari,.reminders,.timers,.alarms])
+                }
               }
               allAppsButton
             }
-          }.scrollIndicators(.hidden).accessibilityIdentifier("personal.media.layout")
+          }.scrollIndicators(.hidden).accessibilityIdentifier(configuration.layout == .weather ? "personal.weather.layout":"personal.media.layout")
         } else {
           HStack(alignment:.top,spacing:25) {
             appGrid(configuration.apps)
@@ -67,9 +74,9 @@ struct PersonalView: View {
   private var header: some View {
     HStack {
       VStack(alignment:.leading,spacing:4) {
-        if configuration.layout == .media {
-          Text(model.dateLabel("EEEE, MMM d").uppercased()).font(.system(size:20,weight:.medium))
-          Text(model.dateLabel("h:mm a")).font(.system(size:22,weight:.semibold))
+        if configuration.layout != .photos {
+          Text(model.dateLabel("EEEE, MMM d").uppercased()).font(.system(size:18,weight:.medium))
+          Text(model.dateLabel("h:mm a")).font(.system(size:20,weight:.semibold))
         } else {
           Text("GOOD MORNING,").font(.system(size:20))
           Text((model.profile ?? "everyone").uppercased()).font(.system(size:22,weight:.semibold))
@@ -94,26 +101,53 @@ struct PersonalView: View {
   }
   private func appGrid(_ pages:[AppPage]) -> some View {
     LazyVGrid(columns:[GridItem(.flexible()),GridItem(.flexible())],spacing:20) {
-      ForEach(pages) { page in
-        Button { model.navigate(page) } label: {
-          VStack(spacing:7) {
-            AppIcon(page:page,edge:88)
-            Text(page.rawValue).font(.system(size:17,weight:.medium))
-          }
-        }.accessibilityIdentifier("app.\(page.rawValue)")
-      }
+      ForEach(pages) { page in appButton(page) }
     }.frame(width:236)
+  }
+  private func appButton(_ page:AppPage) -> some View {
+    Button { model.navigate(page) } label: {
+      VStack(spacing:7) {
+        AppIcon(page:page,edge:88)
+        Text(page.rawValue).font(.system(size:17,weight:.medium)).lineLimit(1).minimumScaleFactor(0.8)
+      }
+    }.accessibilityIdentifier("app.\(page.rawValue)")
+  }
+  private var weatherGridApps:[AppPage] {
+    let order:[AppPage] = [.calendar,.messages,.home,.intercom,.weather,.findMy,.reminders,.settings,.timers,.alarms,.worldClock,.music,.podcasts,.safari,.faceTime]
+    return order.filter { !configuration.apps.contains($0) }
+  }
+  private var weatherWidget: some View {
+    Button { model.navigate(.weather) } label: {
+      VStack(alignment:.leading,spacing:3) {
+        HStack {
+          Text(model.connections.weatherCity.replacingOccurrences(of:" · Demo",with:""))
+            .font(.system(size:19,weight:.semibold)).lineLimit(1).minimumScaleFactor(0.7)
+          Image(systemName:"location.fill").font(.system(size:12))
+        }
+        Text(model.connections.weatherTemperature).font(.system(size:68,weight:.light))
+          .accessibilityIdentifier("personal.weather.temperature")
+        Spacer(minLength:4)
+        Image(systemName:model.connections.weatherSymbol).symbolRenderingMode(.palette)
+          .foregroundStyle(.white,.yellow).font(.system(size:25))
+        Text(model.connections.weatherCondition.replacingOccurrences(of:" · Demo",with:""))
+          .font(.system(size:17)).lineLimit(1).minimumScaleFactor(0.7)
+        Text(model.connections.weatherHighLow).font(.system(size:17))
+        Text(model.connections.weatherSource(at:model.now)).font(.system(size:9)).lineLimit(2)
+          .accessibilityIdentifier("personal.weather.source").opacity(0.8)
+      }.padding(18).frame(width:230,height:250,alignment:.leading)
+        .background(LinearGradient(colors:[Color(red:0.18,green:0.55,blue:0.83),Color(red:0.43,green:0.73,blue:0.95)],startPoint:.top,endPoint:.bottom),in:RoundedRectangle(cornerRadius:26))
+    }.accessibilityIdentifier("personal.weather.open")
   }
   private func mediaWidget(podcast:Bool) -> some View {
     let connectedMusic = !podcast && model.connections.enabled.contains(.music)
     return VStack(spacing:8) {
-      VStack(alignment:.leading,spacing:12) {
+      VStack(alignment:.leading,spacing:podcast ? 12:8) {
         HStack(alignment:.top) {
           if podcast || connectedMusic {
             Image(systemName:podcast ? "mic.fill":"music.note").font(.system(size:32))
               .frame(width:70,height:70).background(.white.opacity(0.16),in:RoundedRectangle(cornerRadius:10))
           } else {
-            Image("AlbumArt").resizable().scaledToFill().frame(width:70,height:70)
+            DemoAlbumCover().frame(width:58,height:58)
               .clipShape(RoundedRectangle(cornerRadius:10))
           }
           Spacer()
@@ -125,6 +159,9 @@ struct PersonalView: View {
           Text(connectedMusic ? "Open Music":podcast ? "A Quiet Morning":model.currentMusicTitle)
             .font(.system(size:20,weight:.medium)).lineLimit(2).frame(maxWidth:.infinity,alignment:.leading)
         }.accessibilityIdentifier(podcast ? "personal.podcast.open":"personal.music.open")
+        if !podcast && !connectedMusic {
+          Text(model.currentMusicArtist).font(.system(size:18)).lineLimit(1).opacity(0.8)
+        }
         Button {
           if connectedMusic { model.navigate(.music) }
           else if podcast { model.togglePodcast() }
@@ -140,6 +177,26 @@ struct PersonalView: View {
         .background(LinearGradient(colors:podcast ? [.purple,Color(red:0.18,green:0.12,blue:0.9)]:[.blue,Color(red:0.1,green:0.28,blue:0.8)],startPoint:.top,endPoint:.bottom),in:RoundedRectangle(cornerRadius:26))
       Text(podcast ? "Podcasts":"Music").font(.system(size:17,weight:.medium))
     }.frame(width:230)
+  }
+}
+
+/// Synthetic cover art, not a placeholder plus or a claimed Apple Music cover.
+struct DemoAlbumCover: View {
+  var body: some View {
+    GeometryReader { geometry in
+      let edge=min(geometry.size.width,geometry.size.height)
+      ZStack {
+        LinearGradient(colors:[.orange,.pink,Color(red:0.22,green:0.16,blue:0.55)],startPoint:.topLeading,endPoint:.bottomTrailing)
+        Circle().fill(.white.opacity(0.25)).frame(width:edge*0.65,height:edge*0.65)
+          .position(x:edge*0.70,y:edge*0.26)
+        Path { path in
+          path.move(to:CGPoint(x:-edge*0.1,y:edge*0.7))
+          path.addCurve(to:CGPoint(x:edge*1.1,y:edge*0.48),
+            control1:CGPoint(x:edge*0.3,y:edge*0.18),control2:CGPoint(x:edge*0.65,y:edge*1.1))
+        }.stroke(.white.opacity(0.65),style:StrokeStyle(lineWidth:edge*0.045,lineCap:.round))
+        VStack { Spacer();Text("DEMO").font(.system(size:edge*0.12,weight:.bold)).tracking(edge*0.025).padding(.bottom,edge*0.09) }
+      }
+    }.clipped().accessibilityLabel("Synthetic demo album artwork")
   }
 }
 
@@ -162,9 +219,9 @@ private struct PersonalHomeEditor: View {
         Button("Done") { dismiss() }.accessibilityIdentifier("personal.editor.done")
       }
       Text("Layout").font(.headline)
-      HStack {
+      VStack(alignment:.leading,spacing:8) {
         ForEach(PersonalHomeLayout.allCases,id:\.self) { layout in
-          Button(layout == .photos ? "Photos layout":"Media layout") { update { $0.usePreset(layout) } }
+          Button(layout.title) { update { $0.usePreset(layout) } }
             .buttonStyle(.bordered).accessibilityValue(configuration.layout==layout ? "Selected":"")
             .accessibilityIdentifier("personal.layout."+layout.rawValue)
         }
