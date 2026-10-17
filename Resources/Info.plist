@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSAlarmKitUsageDescription</key>
+	<string>Schedule the timers and alarms you explicitly create in HomeView.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Play music you explicitly select.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Show calendars you explicitly authorize.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Use the camera only when explicitly opening a live mirror.</string>
+	<key>NSHomeKitUsageDescription</key>
+	<string>Connect to a home only after an explicit live-mode setup. The current build uses a mock home.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Use the microphone only when explicitly starting voice input.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Choose a shared album to import photos into your HomeView gallery.</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>Show reminders you explicitly authorize.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Recognize the requests you explicitly speak.</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+</dict>
+</plist>

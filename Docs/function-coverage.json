@@ -1,0 +1,1472 @@
+[
+  {
+    "id": "F001",
+    "area": "Faces",
+    "function": "Mehrere wechselbare Faces",
+    "reference_evidence": "O,V,R",
+    "reference_state": "UI01-UI12; seitliche Übergänge in S07-GIFs",
+    "backlog_keys": [
+      "FACE-01"
+    ],
+    "current": [
+      "Mehrere native Faces sind vorhanden, Snoopy fehlt. Watch-abgeleitete zusätzliche Modular-Layouts sind keine belegten HomeView-Originalvarianten."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F002",
+    "area": "Faces",
+    "function": "Seitliches Wischen zwischen Faces",
+    "reference_evidence": "O,R",
+    "reference_state": "GIF 2SGg..., zeitgestempelte Einzelbilder",
+    "backlog_keys": [
+      "FACE-02"
+    ],
+    "current": [
+      "Richtungsabhängige Übergänge und Raster über unscharfem Face sind implementiert. Federkurven und vollständige Gestenregeln sind eigene Näherungen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F003",
+    "area": "Faces",
+    "function": "Face per langem Drücken bearbeiten",
+    "reference_evidence": "R,O",
+    "reference_state": "UI37 zeigt Farbauswahl; Auslösegeste im Bericht",
+    "backlog_keys": [
+      "FACE-03"
+    ],
+    "current": [
+      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F004",
+    "area": "Faces",
+    "function": "Farben und Stile anpassen",
+    "reference_evidence": "O,R",
+    "reference_state": "UI37; nicht alle Einstellungsseiten bekannt",
+    "backlog_keys": [
+      "FACE-03"
+    ],
+    "current": [
+      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F005",
+    "area": "Faces",
+    "function": "Widgets/Komplikationen wählen",
+    "reference_evidence": "V,R,D",
+    "reference_state": "Modular und persönlicher Home Screen getrennt",
+    "backlog_keys": [
+      "FACE-03"
+    ],
+    "current": [
+      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F006",
+    "area": "Faces",
+    "function": "Geteilter Modular-Face mit bis zu vier Widgets",
+    "reference_evidence": "D,O",
+    "reference_state": "UI01; pro Haushalt ein gemeinsamer Modular-Face",
+    "backlog_keys": [
+      "FACE-04"
+    ],
+    "current": [
+      "Vier gemeinsame Panels und weitere eigene Modular-Layouts funktionieren mit lokalen Daten. Mehrere echte Haushaltsidentitäten sind nicht angebunden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F007",
+    "area": "Faces",
+    "function": "Widgets mehrerer Haushaltsmitglieder gemeinsam anzeigen",
+    "reference_evidence": "D",
+    "reference_state": "Kann persönliche Kalender explizit für alle sichtbar machen",
+    "backlog_keys": [
+      "FACE-04"
+    ],
+    "current": [
+      "Vier gemeinsame Panels und weitere eigene Modular-Layouts funktionieren mit lokalen Daten. Mehrere echte Haushaltsidentitäten sind nicht angebunden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F008",
+    "area": "Faces",
+    "function": "Persönlicher Home Screen pro Nutzer",
+    "reference_evidence": "O,V,D",
+    "reference_state": "UI16, UI32",
+    "backlog_keys": [
+      "FACE-05"
+    ],
+    "current": [
+      "Persönlicher Screen mit Demo-Profilen liegt über unscharfem Face. Vollständige originale Anordnung und Einstellungen sind nicht abgenommen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F009",
+    "area": "Faces",
+    "function": "App-Raster durch Aufwärtswischen",
+    "reference_evidence": "O,R",
+    "reference_state": "UI40/UI41 und zugehöriges GIF zeigen Übergang",
+    "backlog_keys": [
+      "FACE-02"
+    ],
+    "current": [
+      "Richtungsabhängige Übergänge und Raster über unscharfem Face sind implementiert. Federkurven und vollständige Gestenregeln sind eigene Näherungen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F010",
+    "area": "Faces",
+    "function": "Informationsdichte abhängig von Entfernung",
+    "reference_evidence": "V,O",
+    "reference_state": "UI19/UI20; UI-Wechsel und Marketingkamerazoom unterscheiden",
+    "backlog_keys": [
+      "FACE-06"
+    ],
+    "current": [
+      "Far/Near ist ein manueller Schalter. Flow bewegt sich und reagiert auf Touch, aber nicht auf echte Raumbewegung."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F011",
+    "area": "Faces",
+    "function": "Einzelfoto oder rotierende Galerie",
+    "reference_evidence": "V",
+    "reference_state": "UI02, UI04, UI11, UI36",
+    "backlog_keys": [
+      "PHOTO-01"
+    ],
+    "current": [
+      "Bis zehn bewusst gewählte Bilder, lokale 30-Sekunden-Rotation und manueller Shared-Album-Import sind vorhanden. Kein kontinuierlicher Albumabgleich."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F012",
+    "area": "Faces",
+    "function": "Geteilte Fotoalben",
+    "reference_evidence": "V,R",
+    "reference_state": "Keine unbeschränkte Familienkontenfreigabe",
+    "backlog_keys": [
+      "PHOTO-01"
+    ],
+    "current": [
+      "Bis zehn bewusst gewählte Bilder, lokale 30-Sekunden-Rotation und manueller Shared-Album-Import sind vorhanden. Kein kontinuierlicher Albumabgleich."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F013",
+    "area": "Faces",
+    "function": "Uhr hinter freigestelltem Fotomotiv",
+    "reference_evidence": "O",
+    "reference_state": "UI04/UI11/UI36; Tiefenwirkung sichtbar",
+    "backlog_keys": [
+      "PHOTO-02"
+    ],
+    "current": [
+      "Vision-Maske kann das Motiv vor die Uhr legen. Automatische Optimierung von Uhrposition und Crop fehlt."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F014",
+    "area": "Faces",
+    "function": "Dynamische Darstellung nach Tageszeit",
+    "reference_evidence": "V,R",
+    "reference_state": "Detaillierte Regeln noch unbekannt",
+    "backlog_keys": [
+      "FACE-07"
+    ],
+    "current": [
+      "Rote Monochromdarstellung und Reduce Motion sind vorhanden. Automatische Tageszeitregeln sind unvollständig."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F015",
+    "area": "Faces",
+    "function": "Snoopy reagiert auf Wetter, Datum und Tageszeit",
+    "reference_evidence": "O,V,R",
+    "reference_state": "UI03/UI06; GIF mit Animation",
+    "backlog_keys": [
+      "FACE-08"
+    ],
+    "current": [
+      "Snoopy ist nicht implementiert. Statisch bekannte Engine-Struktur und Szenenbeschreibungen ersetzen keine vollständigen Atlanten oder Timelines."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F016",
+    "area": "Faces",
+    "function": "Flow reagiert auf Bewegung im Raum",
+    "reference_evidence": "V,R",
+    "reference_state": "UI47, Bild ausdrücklich als Flow beschriftet; Bewegung bleibt Hersteller-/Berichtsangabe",
+    "backlog_keys": [
+      "FACE-06"
+    ],
+    "current": [
+      "Far/Near ist ein manueller Schalter. Flow bewegt sich und reagiert auf Touch, aber nicht auf echte Raumbewegung."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F017",
+    "area": "Faces",
+    "function": "Fade mit verblassenden Uhrziffern",
+    "reference_evidence": "O,R",
+    "reference_state": "UI12 ähnelt Beschreibung; Name nur sekundär belegt",
+    "backlog_keys": [
+      "FACE-09"
+    ],
+    "current": [
+      "Zeitabhängiges Ein-/Ausblenden ist eine eigene Interpolation aus Einzelbildern."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F018",
+    "area": "Faces",
+    "function": "Analoge und abstrakte digitale Uhrvarianten",
+    "reference_evidence": "O",
+    "reference_state": "UI09/UI10 und Face-Editor",
+    "backlog_keys": [
+      "FACE-10"
+    ],
+    "current": [
+      "Native Zeiger sind vorhanden, Numerals verwendet angenäherte Systemtypografie und Positionen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F019",
+    "area": "Faces",
+    "function": "Wetter-Face mit Details",
+    "reference_evidence": "O,V",
+    "reference_state": "UI05: Temperatur, Uhrzeit, Wind, Feuchte, Luftqualität, Sonnenuntergang",
+    "backlog_keys": [
+      "FACE-12"
+    ],
+    "current": [
+      "Open-Meteo ist bewusst anschließbar. Wolken sind eigener Canvas-Effekt; Regen/Frost und vollständige Originalzustände fehlen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F020",
+    "area": "Faces",
+    "function": "Monatskalender-Face",
+    "reference_evidence": "O,V",
+    "reference_state": "UI08",
+    "backlog_keys": [
+      "FACE-13"
+    ],
+    "current": [
+      "Sechs-Wochen-Matrix, Nachbarmonatstage und digitale Uhr sind implementiert und modellgetestet."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F021",
+    "area": "Faces",
+    "function": "Nachtmodus mit monochrom-roter Widgetdarstellung",
+    "reference_evidence": "D,R",
+    "reference_state": "Keine vollständige eigene Original-Screenshotserie",
+    "backlog_keys": [
+      "FACE-07"
+    ],
+    "current": [
+      "Rote Monochromdarstellung und Reduce Motion sind vorhanden. Automatische Tageszeitregeln sind unvollständig."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F022",
+    "area": "Home",
+    "function": "Home Modular mit direkt bedienbaren Gerätekacheln",
+    "reference_evidence": "O,V",
+    "reference_state": "UI07/UI21",
+    "backlog_keys": [
+      "HOME-01"
+    ],
+    "current": [
+      "NativeHomeKitService wirft immer. Es gibt keine reale Hauserkennung; Oberflächen arbeiten mit MockHome."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F023",
+    "area": "Home",
+    "function": "Home-Übersicht mit 3x3-Raster",
+    "reference_evidence": "O",
+    "reference_state": "UI13",
+    "backlog_keys": [
+      "HOME-01"
+    ],
+    "current": [
+      "NativeHomeKitService wirft immer. Es gibt keine reale Hauserkennung; Oberflächen arbeiten mit MockHome."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F024",
+    "area": "Home",
+    "function": "Thermostat direkt über Pfeile ändern",
+    "reference_evidence": "O,V",
+    "reference_state": "UI07/UI21",
+    "backlog_keys": [
+      "HOME-02"
+    ],
+    "current": [
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F025",
+    "area": "Home",
+    "function": "Thermostat als farbige Vollbildansicht",
+    "reference_evidence": "O",
+    "reference_state": "UI33: Cooling to 70",
+    "backlog_keys": [
+      "HOME-02"
+    ],
+    "current": [
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F026",
+    "area": "Home",
+    "function": "Licht steuern",
+    "reference_evidence": "O,V",
+    "reference_state": "UI07/UI13; genaue Detailregler nicht vollständig belegt",
+    "backlog_keys": [
+      "HOME-02"
+    ],
+    "current": [
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F027",
+    "area": "Home",
+    "function": "Lüfter steuern",
+    "reference_evidence": "O,V",
+    "reference_state": "UI13/UI21",
+    "backlog_keys": [
+      "HOME-02"
+    ],
+    "current": [
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F028",
+    "area": "Home",
+    "function": "Türschloss mit zusätzlicher Authentifizierung",
+    "reference_evidence": "O,R",
+    "reference_state": "UI13; Authentifizierung von S01 berichtet",
+    "backlog_keys": [
+      "HOME-03"
+    ],
+    "current": [
+      "Demo-Profil schützt ein Mock-Schloss. Das ist keine Autorisierung für ein echtes Schloss."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F029",
+    "area": "Home",
+    "function": "Szenen direkt starten",
+    "reference_evidence": "O,V,R",
+    "reference_state": "Good Morning, Good Night und weitere Szenenkacheln",
+    "backlog_keys": [
+      "HOME-04"
+    ],
+    "current": [
+      "Drei lokale Szenen sind vorhanden, kein eigenständiger Dauerautomationsdienst."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F030",
+    "area": "Home",
+    "function": "Automationen und Routinen bedienen",
+    "reference_evidence": "V,R",
+    "reference_state": "Genaue Bearbeitungsoberfläche offen",
+    "backlog_keys": [
+      "HOME-04"
+    ],
+    "current": [
+      "Drei lokale Szenen sind vorhanden, kein eigenständiger Dauerautomationsdienst."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F031",
+    "area": "Home",
+    "function": "Rollläden/smarte Beschattung",
+    "reference_evidence": "R",
+    "reference_state": "Reporter nennt geplante Nutzung; keine vollständige UI-Sequenz",
+    "backlog_keys": [
+      "HOME-02"
+    ],
+    "current": [
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F032",
+    "area": "Home",
+    "function": "Home Camera mit bis zu neun Livefeeds",
+    "reference_evidence": "V,R,O",
+    "reference_state": "Kamera-GIF zeigt mehrere Feeds; Grenze neun Herstellerangabe",
+    "backlog_keys": [
+      "CAM-01"
+    ],
+    "current": [
+      "Vier-/Neunerraster und Detailansicht zeigen synthetische Kamerabilder."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F033",
+    "area": "Home",
+    "function": "Kameraeinzelansicht und benachbarte Geräte",
+    "reference_evidence": "O,R",
+    "reference_state": "UI34; zusätzliche Aktionsauswahl laut S01",
+    "backlog_keys": [
+      "CAM-01"
+    ],
+    "current": [
+      "Vier-/Neunerraster und Detailansicht zeigen synthetische Kamerabilder."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F034",
+    "area": "Home",
+    "function": "Türklingel blendet Liveansicht ein",
+    "reference_evidence": "O,V,R",
+    "reference_state": "UI34",
+    "backlog_keys": [
+      "CAM-02"
+    ],
+    "current": [
+      "Türklingel kann über Settings simuliert werden. Kein echtes Klingelereignis."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F035",
+    "area": "Home",
+    "function": "Gegensprechen über Kamera",
+    "reference_evidence": "O",
+    "reference_state": "Gelbe Mikrofontaste, Filmnutzung",
+    "backlog_keys": [
+      "CAM-03"
+    ],
+    "current": [
+      "Gelbe Mikrofontaste schaltet ausschließlich einen Mockzustand und verwendet kein Mikrofon."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F036",
+    "area": "Home",
+    "function": "HKSV erkennt Personen, bekannte Gesichter, Tiere, Pakete, Fahrzeuge",
+    "reference_evidence": "V",
+    "reference_state": "Kamera- und iCloud+-abhängig",
+    "backlog_keys": [
+      "HOME-05"
+    ],
+    "current": [
+      "Keine gleichwertige öffentliche Integration für HKSV-Metadaten, bekannte Gesichter oder natürliche Archivsuche nachgewiesen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F037",
+    "area": "Home",
+    "function": "Videobeschreibungen und natürliche Suche im HKSV-Archiv",
+    "reference_evidence": "V",
+    "reference_state": "Geeigneter iCloud+-Plan und Apple-Intelligence-Einrichtung",
+    "backlog_keys": [
+      "HOME-05"
+    ],
+    "current": [
+      "Keine gleichwertige öffentliche Integration für HKSV-Metadaten, bekannte Gesichter oder natürliche Archivsuche nachgewiesen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F038",
+    "area": "Home",
+    "function": "Zusammengehörige Hausmitteilungen gruppieren",
+    "reference_evidence": "V",
+    "reference_state": "Ankunft, Tür, Alarm als Beispiel; keine Liveprüfung",
+    "backlog_keys": [
+      "HOME-06"
+    ],
+    "current": [
+      "Keine vollständige produktive Hausmitteilungs-Pipeline oder gruppierte Ereignisabnahme vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F039",
+    "area": "Home",
+    "function": "Rauch-/CO-Alarmgeräusche erkennen und melden",
+    "reference_evidence": "V",
+    "reference_state": "Sicherheitsfunktion, nicht als gleichwertige iPad-Erkennung zusagen",
+    "backlog_keys": [
+      "HOME-07"
+    ],
+    "current": [
+      "Kein Sicherheitsalarm-Detektor und keine eigenen physischen Temperatur-/Feuchtesensoren vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F040",
+    "area": "Home",
+    "function": "Eigene Temperatur-/Feuchtesensoren für Home-Automationen",
+    "reference_evidence": "V,R",
+    "reference_state": "Hardwareeigenschaft des Originals",
+    "backlog_keys": [
+      "HOME-07"
+    ],
+    "current": [
+      "Kein Sicherheitsalarm-Detektor und keine eigenen physischen Temperatur-/Feuchtesensoren vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F041",
+    "area": "Siri",
+    "function": "Allgemeinwissen ohne persönlichen Apple-Intelligence-Partner",
+    "reference_evidence": "V",
+    "reference_state": "UI18",
+    "backlog_keys": [
+      "AI-01"
+    ],
+    "current": [
+      "Lokaler Parser versteht wenige Befehle. Kein allgemeiner Wissensdienst oder natürlicher Mehrturn-Dialog."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F042",
+    "area": "Siri",
+    "function": "Persönlichen Kontext aus Nachrichten/Kalender finden",
+    "reference_evidence": "O,V",
+    "reference_state": "UI17/UI24",
+    "backlog_keys": [
+      "AI-02"
+    ],
+    "current": [
+      "Kein Zugriff auf Nachrichtenhistorie oder systemweiten Siri-Kontext. Eigene Kalenderdaten sind bewusst anschließbar."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F043",
+    "area": "Siri",
+    "function": "Mehrstufige persönliche und Hausaktionen",
+    "reference_evidence": "V,R",
+    "reference_state": "Flugankunft und Kaffeemaschine im betreuten Demo-Bericht",
+    "backlog_keys": [
+      "AI-03"
+    ],
+    "current": [
+      "Parser führt einzelne lokale Szenen-, Timer- oder Navigationsbefehle aus."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F044",
+    "area": "Siri",
+    "function": "Natürlicher fortgesetzter Dialog",
+    "reference_evidence": "V",
+    "reference_state": "Latenz und Zuverlässigkeit nicht gemessen",
+    "backlog_keys": [
+      "AI-01"
+    ],
+    "current": [
+      "Lokaler Parser versteht wenige Befehle. Kein allgemeiner Wissensdienst oder natürlicher Mehrturn-Dialog."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F045",
+    "area": "Siri",
+    "function": "Onscreen Awareness",
+    "reference_evidence": "V",
+    "reference_state": "Kein vollständiger öffentlicher Drittanbieter-Zugang nachgewiesen",
+    "backlog_keys": [
+      "AI-02"
+    ],
+    "current": [
+      "Kein Zugriff auf Nachrichtenhistorie oder systemweiten Siri-Kontext. Eigene Kalenderdaten sind bewusst anschließbar."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F046",
+    "area": "Siri",
+    "function": "Weiße Antwortansicht mit Text, Bild und Karten",
+    "reference_evidence": "O",
+    "reference_state": "UI17/UI18/UI24",
+    "backlog_keys": [
+      "AI-04"
+    ],
+    "current": [
+      "Weiße lokale Antwortansicht und einfache Antworten sind vorhanden, keine vollständigen dynamischen Karten."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F047",
+    "area": "Siri",
+    "function": "Aktivieren mit Siri oder Hey Siri",
+    "reference_evidence": "V",
+    "reference_state": "Siri ohne Hey zunächst Englisch",
+    "backlog_keys": [
+      "AI-05"
+    ],
+    "current": [
+      "Spracheingabe startet nur durch bewussten Knopf. Keine Siri-Wakeword-Übernahme oder Hintergrundaufnahme."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F048",
+    "area": "Siri",
+    "function": "Aktivieren durch Wischen am oberen Rand",
+    "reference_evidence": "V,R",
+    "reference_state": "Abgrenzung zu Top-Rechts-Control-Center offen",
+    "backlog_keys": [
+      "AI-06"
+    ],
+    "current": [
+      "Obere Randgeste und Texteingabe sind implementiert. Nicht alle Referenzzustände oder Unterbrechungen sind vermessen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F049",
+    "area": "Siri",
+    "function": "Type to Siri mit Bildschirmtastatur",
+    "reference_evidence": "O,V",
+    "reference_state": "UI35",
+    "backlog_keys": [
+      "AI-06"
+    ],
+    "current": [
+      "Obere Randgeste und Texteingabe sind implementiert. Nicht alle Referenzzustände oder Unterbrechungen sind vermessen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F050",
+    "area": "Siri",
+    "function": "Dialogverlauf über Siri-App/iCloud fortsetzen",
+    "reference_evidence": "V",
+    "reference_state": "Kein eigener Chat-Sync-Zugang für Drittapps abgeleitet",
+    "backlog_keys": [
+      "AI-07"
+    ],
+    "current": [
+      "Kein Zugriff auf Siri-App-/iCloud-Dialoghistorie und keine geräteübergreifende Dialogfortsetzung."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F051",
+    "area": "Siri",
+    "function": "Anpassbare expressive Stimme und Sprechtempo",
+    "reference_evidence": "V",
+    "reference_state": "Zusätzliche Geräte-/RAM-Voraussetzungen",
+    "backlog_keys": [
+      "AI-08"
+    ],
+    "current": [
+      "On-device Speech verarbeitet Eingabe, eine expressive anpassbare Antwortstimme ist nicht gleichwertig umgesetzt."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F052",
+    "area": "Siri",
+    "function": "Englisch-Beta, Nutzungslimits und spätere kostenpflichtige Erweiterung",
+    "reference_evidence": "V",
+    "reference_state": "Keine heutige Zahlungsentscheidung für unser Projekt",
+    "backlog_keys": [
+      "AI-09"
+    ],
+    "current": [
+      "Originalangaben zu Beta, Sprache und kommerziellen Limits sind keine Fähigkeiten unseres lokalen Parsers."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F053",
+    "area": "Kommunikation",
+    "function": "FaceTime-Anruf annehmen oder ablehnen",
+    "reference_evidence": "O,V",
+    "reference_state": "UI27",
+    "backlog_keys": [
+      "COM-01"
+    ],
+    "current": [
+      "Annehmen, Ablehnen und aktive Anrufansicht sind lokale Simulation. Es gibt keine Kontrolle über laufende FaceTime-Anrufe."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F054",
+    "area": "Kommunikation",
+    "function": "Aktiver FaceTime-Anruf mit Kamera/Mikrofon/Beenden",
+    "reference_evidence": "O",
+    "reference_state": "UI28/UI29",
+    "backlog_keys": [
+      "COM-01"
+    ],
+    "current": [
+      "Annehmen, Ablehnen und aktive Anrufansicht sind lokale Simulation. Es gibt keine Kontrolle über laufende FaceTime-Anrufe."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F055",
+    "area": "Kommunikation",
+    "function": "Center Stage hält mehrere Personen im Bild",
+    "reference_evidence": "O,V",
+    "reference_state": "UI23/UI29",
+    "backlog_keys": [
+      "COM-02"
+    ],
+    "current": [
+      "Kein physischer Center-Stage-/Mehrpersonen-Test."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F056",
+    "area": "Kommunikation",
+    "function": "FaceTime-Audio und Sprachtelefonate",
+    "reference_evidence": "V",
+    "reference_state": "Geräte-/Netzvoraussetzungen beachten",
+    "backlog_keys": [
+      "COM-03"
+    ],
+    "current": [
+      "Messages-Composer und FaceTime-URL werden nach Knopf angeboten. Nachrichtenhistorie bleibt Mock; kein automatischer Versand."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F057",
+    "area": "Kommunikation",
+    "function": "Nachrichten lesen und per Stimme senden",
+    "reference_evidence": "O,V",
+    "reference_state": "UI30; keine API-Freigabe für fremde Nachrichten daraus ableiten",
+    "backlog_keys": [
+      "COM-03"
+    ],
+    "current": [
+      "Messages-Composer und FaceTime-URL werden nach Knopf angeboten. Nachrichtenhistorie bleibt Mock; kein automatischer Versand."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F058",
+    "area": "Kommunikation",
+    "function": "Intercom an HomeView/HomePods und persönliche Geräte",
+    "reference_evidence": "V",
+    "reference_state": "Eigene App braucht eigene unterstützte Integration",
+    "backlog_keys": [
+      "COM-04"
+    ],
+    "current": [
+      "Lokale Intercom-Ansicht versendet nicht an HomePods oder persönliche Geräte."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F059",
+    "area": "Kommunikation",
+    "function": "Find My für Geräte, AirTags und freigegebene Personen",
+    "reference_evidence": "V,O",
+    "reference_state": "Film demonstriert Finden; keine vollständige Karten-/Such-UI",
+    "backlog_keys": [
+      "COM-05"
+    ],
+    "current": [
+      "Find-My-Ansicht ist eine lokale Simulation ohne Zugriff auf Apple-Ortungsdaten."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F060",
+    "area": "Alltag",
+    "function": "Kalenderereignisse anzeigen",
+    "reference_evidence": "O,V",
+    "reference_state": "UI17/UI26",
+    "backlog_keys": [
+      "DAY-01"
+    ],
+    "current": [
+      "EventKit-Tagesdaten, Wochenleiste, Farbcodes und Geräteauthentifizierung sind angebunden. Reale Accounts wurden nicht abgenommen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F061",
+    "area": "Alltag",
+    "function": "Wochenleiste und farbige Termine, abgesagte Termine",
+    "reference_evidence": "O",
+    "reference_state": "UI26",
+    "backlog_keys": [
+      "DAY-01"
+    ],
+    "current": [
+      "EventKit-Tagesdaten, Wochenleiste, Farbcodes und Geräteauthentifizierung sind angebunden. Reale Accounts wurden nicht abgenommen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F062",
+    "area": "Alltag",
+    "function": "Erinnerungen und To-do-Listen",
+    "reference_evidence": "V",
+    "reference_state": "Keine vollständige Original-App-Screenshotfolge",
+    "backlog_keys": [
+      "DAY-02"
+    ],
+    "current": [
+      "Anzeigen, Anlegen, Erledigen und Löschen über EventKit samt Read-back sind vorhanden, mit synthetischem Anbieter getestet."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F063",
+    "area": "Alltag",
+    "function": "Mehrere Timer starten und stoppen",
+    "reference_evidence": "V,R",
+    "reference_state": "UI14 ist nur ein laufender Timer",
+    "backlog_keys": [
+      "DAY-03"
+    ],
+    "current": [
+      "Lokale Timer und iOS/iPadOS-AlarmKit-Anbindung mit Pause/Fortsetzen/Löschen sind vorhanden, Simulatorprüfungen bestehen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F064",
+    "area": "Alltag",
+    "function": "Timer als großer Countdown mit Randstrichen",
+    "reference_evidence": "O",
+    "reference_state": "UI14",
+    "backlog_keys": [
+      "DAY-03"
+    ],
+    "current": [
+      "Lokale Timer und iOS/iPadOS-AlarmKit-Anbindung mit Pause/Fortsetzen/Löschen sind vorhanden, Simulatorprüfungen bestehen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F065",
+    "area": "Alltag",
+    "function": "Timer über Sprache",
+    "reference_evidence": "V,R",
+    "reference_state": "Keine Latenz-/Endsignalprüfung",
+    "backlog_keys": [
+      "DAY-04"
+    ],
+    "current": [
+      "On-device-Sprache mit Vorschau kann den lokalen Parser bedienen. Rezeptschritte werden bisher per Taste gesteuert."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F066",
+    "area": "Alltag",
+    "function": "Timer/Intercom als Live Activities über anderen Apps",
+    "reference_evidence": "V,R",
+    "reference_state": "Systemhost versus eigene App-Overlays unterscheiden",
+    "backlog_keys": [
+      "DAY-05"
+    ],
+    "current": [
+      "App-interne Aktivitätsleiste ist vorhanden. Keine vollständige ActivityKit-Erweiterung für andere Apps oder Sperrbildschirm."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F067",
+    "area": "Alltag",
+    "function": "Alarms als eingebaute App",
+    "reference_evidence": "V",
+    "reference_state": "Detail-UI noch offen",
+    "backlog_keys": [
+      "DAY-06"
+    ],
+    "current": [
+      "Eigene AlarmKit-Wecker sind im Simulator geprüft. Andere Plattformen haben nur Vordergrundwecker."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F068",
+    "area": "Alltag",
+    "function": "World Clock als eingebaute App",
+    "reference_evidence": "V",
+    "reference_state": "Detail-UI noch offen",
+    "backlog_keys": [
+      "DAY-07"
+    ],
+    "current": [
+      "Lokale Weltuhr ist vorhanden, vollständige Zonenwahl und Tag-/Nachtverlauf sind offen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F069",
+    "area": "Alltag",
+    "function": "Safari als eingebaute App",
+    "reference_evidence": "V,R",
+    "reference_state": "Keine vollständige freie Browser-Navigation gesichtet",
+    "backlog_keys": [
+      "DAY-08"
+    ],
+    "current": [
+      "WKWebView mit URL/Vor/Zurück und lokaler Rezeptfixture vorhanden. Keine vollständige Safari-App."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F070",
+    "area": "Alltag",
+    "function": "Safari-Rezept in vereinfachte Kochansicht umwandeln",
+    "reference_evidence": "O,V,R",
+    "reference_state": "UI15/UI25",
+    "backlog_keys": [
+      "DAY-09"
+    ],
+    "current": [
+      "JSON-LD-Import, Zutaten, große Schritte, Inline-Timer und lokale angeheftete Rezepte sind vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F071",
+    "area": "Alltag",
+    "function": "Rezeptcover mit Titel, Herkunft, Dauer und Portionen",
+    "reference_evidence": "O",
+    "reference_state": "UI15",
+    "backlog_keys": [
+      "DAY-09"
+    ],
+    "current": [
+      "JSON-LD-Import, Zutaten, große Schritte, Inline-Timer und lokale angeheftete Rezepte sind vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F072",
+    "area": "Alltag",
+    "function": "Ingredients und Start Cooking als getrennte Aktionen",
+    "reference_evidence": "O",
+    "reference_state": "UI15; Ingredients-Folgezustand nicht vollständig gesichert",
+    "backlog_keys": [
+      "DAY-09"
+    ],
+    "current": [
+      "JSON-LD-Import, Zutaten, große Schritte, Inline-Timer und lokale angeheftete Rezepte sind vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F073",
+    "area": "Alltag",
+    "function": "Schrittweise große Kochanleitung",
+    "reference_evidence": "O,V",
+    "reference_state": "UI25",
+    "backlog_keys": [
+      "DAY-09"
+    ],
+    "current": [
+      "JSON-LD-Import, Zutaten, große Schritte, Inline-Timer und lokale angeheftete Rezepte sind vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F074",
+    "area": "Alltag",
+    "function": "Inline-Timer aus Rezeptschritten",
+    "reference_evidence": "R",
+    "reference_state": "Nicht mit bloßem Vorhandensein einer Timer-App verwechseln",
+    "backlog_keys": [
+      "DAY-09"
+    ],
+    "current": [
+      "JSON-LD-Import, Zutaten, große Schritte, Inline-Timer und lokale angeheftete Rezepte sind vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F075",
+    "area": "Alltag",
+    "function": "Kochschritte per Stimme weiterführen",
+    "reference_evidence": "R",
+    "reference_state": "Berichtete Funktion, keine gemessene Sprachprüfung",
+    "backlog_keys": [
+      "DAY-04"
+    ],
+    "current": [
+      "On-device-Sprache mit Vorschau kann den lokalen Parser bedienen. Rezeptschritte werden bisher per Taste gesteuert."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F076",
+    "area": "Alltag",
+    "function": "Rezepte für später anheften",
+    "reference_evidence": "R",
+    "reference_state": "Pin-Dialog und Ablageansicht noch offen",
+    "backlog_keys": [
+      "DAY-09"
+    ],
+    "current": [
+      "JSON-LD-Import, Zutaten, große Schritte, Inline-Timer und lokale angeheftete Rezepte sind vorhanden."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F077",
+    "area": "Alltag",
+    "function": "Handoff für Rezepte",
+    "reference_evidence": "V,R,O",
+    "reference_state": "Original-iPhone zu HomeView, keine allgemeine Fremd-App-Steuerung",
+    "backlog_keys": [
+      "DAY-10"
+    ],
+    "current": [
+      "Rezepte sind nur lokal gespeichert. Kein nachgewiesenes geräteübergreifendes Handoff."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F078",
+    "area": "Medien",
+    "function": "Apple Music wiedergeben",
+    "reference_evidence": "O,V",
+    "reference_state": "UI22, V02",
+    "backlog_keys": [
+      "MEDIA-01"
+    ],
+    "current": [
+      "Katalogsuche, Artwork, ApplicationMusicPlayer und kompakte Leiste sind angebunden, reale Signierung/Abo-/Hardwareabnahme fehlt. Persönliche Bibliothek ist unvollständig."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F079",
+    "area": "Medien",
+    "function": "Cover, animiertes Artwork und Lyrics",
+    "reference_evidence": "O,V",
+    "reference_state": "UI22; API-Zugang je Inhalt separat",
+    "backlog_keys": [
+      "MEDIA-02"
+    ],
+    "current": [
+      "Statische Cover werden angezeigt. Keine allgemeine Original-Lyrics- oder animierte-Artwork-Integration."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F080",
+    "area": "Medien",
+    "function": "Play/Pause, Titelwechsel und Fortschritt",
+    "reference_evidence": "O",
+    "reference_state": "Player und Nahaufnahmen",
+    "backlog_keys": [
+      "MEDIA-01"
+    ],
+    "current": [
+      "Katalogsuche, Artwork, ApplicationMusicPlayer und kompakte Leiste sind angebunden, reale Signierung/Abo-/Hardwareabnahme fehlt. Persönliche Bibliothek ist unvollständig."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F081",
+    "area": "Medien",
+    "function": "Musik-Browse-/Bibliotheksansicht",
+    "reference_evidence": "O",
+    "reference_state": "Pressefoto vPaf... zeigt Katalog/Browse",
+    "backlog_keys": [
+      "MEDIA-01"
+    ],
+    "current": [
+      "Katalogsuche, Artwork, ApplicationMusicPlayer und kompakte Leiste sind angebunden, reale Signierung/Abo-/Hardwareabnahme fehlt. Persönliche Bibliothek ist unvollständig."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F082",
+    "area": "Medien",
+    "function": "Kompakte laufende Musik beim App-Wechsel",
+    "reference_evidence": "R",
+    "reference_state": "Vom Bericht als Dynamic-Island-artig beschrieben",
+    "backlog_keys": [
+      "MEDIA-01"
+    ],
+    "current": [
+      "Katalogsuche, Artwork, ApplicationMusicPlayer und kompakte Leiste sind angebunden, reale Signierung/Abo-/Hardwareabnahme fehlt. Persönliche Bibliothek ist unvollständig."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F083",
+    "area": "Medien",
+    "function": "Apple Podcasts",
+    "reference_evidence": "O,V",
+    "reference_state": "UI22",
+    "backlog_keys": [
+      "MEDIA-03"
+    ],
+    "current": [
+      "Podcasts spielt einen synthetischen Demo-Ton. Kein Apple-Podcasts-Katalog, keine persönlichen Abos."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F084",
+    "area": "Medien",
+    "function": "Audiobooks, Classical Music, News, TV vom iPhone",
+    "reference_evidence": "V",
+    "reference_state": "Nicht als vier weitere eigenständige native HomeView-Apps zählen",
+    "backlog_keys": [
+      "MEDIA-04"
+    ],
+    "current": [
+      "Audiobooks, Classical, News, TV und beliebige Drittanbieter-Apps sind nicht gleichwertig eingebettet."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F085",
+    "area": "Medien",
+    "function": "Kompatible Drittanbieter-Audio-/Video-Apps",
+    "reference_evidence": "V,D",
+    "reference_state": "CarPlay-Kategorien, kein freier App Store",
+    "backlog_keys": [
+      "MEDIA-04"
+    ],
+    "current": [
+      "Audiobooks, Classical, News, TV und beliebige Drittanbieter-Apps sind nicht gleichwertig eingebettet."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F086",
+    "area": "Medien",
+    "function": "AirPlay-Mehrraumwiedergabe",
+    "reference_evidence": "V",
+    "reference_state": "Mehrere kompatible Lautsprecher nötig",
+    "backlog_keys": [
+      "MEDIA-05"
+    ],
+    "current": [
+      "Keine bewiesene AirPlay-Mehrraumsteuerung in dieser App."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F087",
+    "area": "Medien",
+    "function": "Peer-to-peer AirPlay/Discovery für Gäste",
+    "reference_evidence": "V,R",
+    "reference_state": "Umfang und Autorisierung nicht live geprüft",
+    "backlog_keys": [
+      "MEDIA-06"
+    ],
+    "current": [
+      "Keine eigene AirPlay-Empfänger- oder Gast-Discovery-Funktion nachgewiesen."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F088",
+    "area": "Medien",
+    "function": "Handoff für Song, Podcast, Anruf und Video",
+    "reference_evidence": "V",
+    "reference_state": "Eigene Handoff-Aktivitäten sind kein universeller Apple-Übergabezugang",
+    "backlog_keys": [
+      "MEDIA-07"
+    ],
+    "current": [
+      "Keine nachgewiesene Übergabe von Song, Podcast, aktivem Anruf oder Video zwischen Geräten."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F089",
+    "area": "System",
+    "function": "Spiegelmodus über Frontkamera",
+    "reference_evidence": "O,R",
+    "reference_state": "UI46, gesichertes Originalfoto der Spiegelansicht",
+    "backlog_keys": [
+      "SYS-01"
+    ],
+    "current": [
+      "AVFoundation-Vorschau startet bewusst und stoppt beim Verlassen. Zoom/Ringlicht sind UI-Effekte; Hardwarewirkung nicht geprüft."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F090",
+    "area": "System",
+    "function": "Spiegel-Zoom und Bildschirm-Ringlicht",
+    "reference_evidence": "R",
+    "reference_state": "UI46 zeigt hellen Rand; Zoom-Bedienablauf noch nicht komplett",
+    "backlog_keys": [
+      "SYS-01"
+    ],
+    "current": [
+      "AVFoundation-Vorschau startet bewusst und stoppt beim Verlassen. Zoom/Ringlicht sind UI-Effekte; Hardwarewirkung nicht geprüft."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F091",
+    "area": "System",
+    "function": "Control Center",
+    "reference_evidence": "R",
+    "reference_state": "Obere rechte Ecke nach unten",
+    "backlog_keys": [
+      "SYS-02"
+    ],
+    "current": [
+      "Control Center steuert Mock-Netzstatus, Nacht/Fernansicht, lokale Displayabdunklung und App-Audiolautstärke. Kein systemweites WLAN-/Helligkeits-Panel."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F092",
+    "area": "System",
+    "function": "Settings als eingebaute App",
+    "reference_evidence": "V",
+    "reference_state": "Nicht alle Einstellungen bekannt",
+    "backlog_keys": [
+      "SYS-02"
+    ],
+    "current": [
+      "Control Center steuert Mock-Netzstatus, Nacht/Fernansicht, lokale Displayabdunklung und App-Audiolautstärke. Kein systemweites WLAN-/Helligkeits-Panel."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F093",
+    "area": "System",
+    "function": "Bis zu sechs Nutzer erkennen",
+    "reference_evidence": "O,V",
+    "reference_state": "UI16/UI31; kein Beweis eigener Face-ID-Identitätsausgabe",
+    "backlog_keys": [
+      "SYS-03"
+    ],
+    "current": [
+      "Sechs bewusst gewählte Demo-Profile und lokale Trennung sind vorhanden. Keine biometrische Identifikation oder Partnergerätebindung."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F094",
+    "area": "System",
+    "function": "Persönliche Daten an Gesicht und Partnergerät binden",
+    "reference_evidence": "V",
+    "reference_state": "WLAN, kürzlich entsperrt, eng beschriebene Ausnahme",
+    "backlog_keys": [
+      "SYS-03"
+    ],
+    "current": [
+      "Sechs bewusst gewählte Demo-Profile und lokale Trennung sind vorhanden. Keine biometrische Identifikation oder Partnergerätebindung."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F095",
+    "area": "System",
+    "function": "Persönliche Inhalte beim Weggehen schützen",
+    "reference_evidence": "R",
+    "reference_state": "Genaues Timing nicht dokumentiert",
+    "backlog_keys": [
+      "SYS-04"
+    ],
+    "current": [
+      "Abmelden, Hintergrund und Inaktivitätsrückkehr sperren verbundene Daten. Tatsächliches Weggehen wird nicht erkannt."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F096",
+    "area": "System",
+    "function": "Erkennungsdialog und Ausweg über persönliches Gerät",
+    "reference_evidence": "O",
+    "reference_state": "UI31",
+    "backlog_keys": [
+      "SYS-03"
+    ],
+    "current": [
+      "Sechs bewusst gewählte Demo-Profile und lokale Trennung sind vorhanden. Keine biometrische Identifikation oder Partnergerätebindung."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F097",
+    "area": "System",
+    "function": "Gastzugriff auf Haus/Wetter/Timer/Musik",
+    "reference_evidence": "V",
+    "reference_state": "Ohne persönlichen Kontext",
+    "backlog_keys": [
+      "SYS-05"
+    ],
+    "current": [
+      "Gastpfad und einzelne persönliche Gates existieren, vollständige Policy für verbundene Quellen fehlt."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F098",
+    "area": "System",
+    "function": "Gesichts-/Stimmdaten in Secure Exclaves verarbeiten",
+    "reference_evidence": "V",
+    "reference_state": "Hardware-/Systemfunktion, keine eingebettete iPad-App-Berechtigung",
+    "backlog_keys": [
+      "SYS-06"
+    ],
+    "current": [
+      "Keine eigene Gesicht-/Stimmidentifikation in Secure Exclaves und keine belegte öffentliche Gleichwertigkeit."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F099",
+    "area": "System",
+    "function": "Private Cloud Compute für geeignete KI-Anfragen",
+    "reference_evidence": "V",
+    "reference_state": "Nicht als eigener frei nutzbarer Siri-Backenddienst einplanen",
+    "backlog_keys": [
+      "SYS-07"
+    ],
+    "current": [
+      "Keine nachgewiesene allgemeine PCC-Anbindung der App."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F100",
+    "area": "System",
+    "function": "Einrichtung durch Home-Owner mit Partnergerät, Bluetooth, WLAN",
+    "reference_evidence": "V",
+    "reference_state": "Versionsangaben P02/P04 weichen leicht ab",
+    "backlog_keys": [
+      "HOME-01"
+    ],
+    "current": [
+      "NativeHomeKitService wirft immer. Es gibt keine reale Hauserkennung; Oberflächen arbeiten mit MockHome."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F101",
+    "area": "System",
+    "function": "Kein eigener App Store, ausgewählte/verbundene Angebote",
+    "reference_evidence": "R,D",
+    "reference_state": "Von allgemeiner nativer iPad-App-Verteilung unterscheiden",
+    "backlog_keys": [
+      "SYS-08"
+    ],
+    "current": [
+      "Einzelne Verbindungsknöpfe sind vorhanden. Kein vollständiger Setup-Assistent und keine klar abgenommene Angebotsverwaltung."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F102",
+    "area": "System",
+    "function": "Stromwarnung bei unzureichendem Adapter",
+    "reference_evidence": "V",
+    "reference_state": "Power Adapter Not Supported und Blitz/Warnsymbol",
+    "backlog_keys": [
+      "SYS-09"
+    ],
+    "current": [
+      "Keine nachgewiesene Erkennung der Adapterleistung oder äquivalente Stromwarnung."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F103",
+    "area": "Zugänglichkeit",
+    "function": "VoiceOver, Zoom, Voice Control, Switch Control, AssistiveTouch",
+    "reference_evidence": "V",
+    "reference_state": "Systemfunktionen müssen in eigener UI unterstützt werden",
+    "backlog_keys": [
+      "SYS-10"
+    ],
+    "current": [
+      "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F104",
+    "area": "Zugänglichkeit",
+    "function": "Live Speech, Live Captions, RTT",
+    "reference_evidence": "V",
+    "reference_state": "Je Zielplattform und Medienfunktion separat prüfen",
+    "backlog_keys": [
+      "SYS-11"
+    ],
+    "current": [
+      "Texteingabe und eigene On-device-Spracherkennung vorhanden. Live Captions, RTT und Vocal Shortcuts sind nicht vollständig integriert."
+    ],
+    "parity_accepted": false
+  },
+  {
+    "id": "F105",
+    "area": "Zugänglichkeit",
+    "function": "Dictation, Type to Siri, Vocal Shortcuts, Untertitel",
+    "reference_evidence": "V",
+    "reference_state": "Nicht automatisch Funktionsgleichheit aller Ziele",
+    "backlog_keys": [
+      "SYS-11"
+    ],
+    "current": [
+      "Texteingabe und eigene On-device-Spracherkennung vorhanden. Live Captions, RTT und Vocal Shortcuts sind nicht vollständig integriert."
+    ],
+    "parity_accepted": false
+  }
+]

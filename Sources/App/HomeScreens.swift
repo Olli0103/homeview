@@ -1,0 +1,386 @@
+import SwiftUI
+
+extension AppPage {
+  var color: Color {
+    switch self {
+    case .home, .intercom: .orange
+    case .calendar, .reminders, .worldClock, .settings: .gray
+    case .music: .pink
+    case .faceTime, .messages, .findMy: .green
+    case .timers, .alarms: .orange
+    case .weather, .safari, .cameras: .blue
+    case .podcasts: .purple
+    default: .teal
+    }
+  }
+  var asset: String? {
+    switch self {
+    case .home: "IconHome"
+    case .calendar: "IconCalendar"
+    case .music: "IconMusic"
+    case .weather: "IconWeather"
+    case .timers: "IconTimers"
+    case .reminders: "IconReminders"
+    case .intercom: "IconIntercom"
+    case .messages: "IconMessages"
+    case .faceTime: "IconFaceTime"
+    case .findMy: "IconFindMy"
+    case .alarms: "IconAlarms"
+    case .worldClock: "IconWorldClock"
+    case .safari: "IconSafari"
+    case .podcasts: "IconPodcasts"
+    case .settings: "IconSettings"
+    default: nil
+    }
+  }
+}
+struct AppIcon: View {
+  let page: AppPage
+  var edge: CGFloat = 92
+  var body: some View {
+    Group {
+      if let name = page.asset {
+        Image(name).resizable().scaledToFit()
+      } else {
+        Image(systemName: page.symbol).font(.system(size: edge * 0.45, weight: .medium))
+          .foregroundStyle(.white).frame(width: edge, height: edge).background(
+            page.color, in: RoundedRectangle(cornerRadius: edge * 0.25))
+      }
+    }.frame(width: edge, height: edge).accessibilityHidden(true)
+  }
+}
+struct PersonalView: View {
+  @Environment(AppModel.self) private var model
+  private let favorites: [AppPage] = [.home, .calendar, .music, .weather]
+  var body: some View {
+    ZStack {
+      FaceView(selection: model.data.face).blur(radius: 22).overlay(.black.opacity(0.28))
+        .allowsHitTesting(false).accessibilityHidden(true)
+      VStack(alignment: .leading, spacing: 26) {
+        HStack {
+          VStack(alignment: .leading, spacing: 4) {
+            Text("Good morning,").font(.system(size: 27))
+            Text(model.profile ?? "everyone").font(.system(size: 43, weight: .bold))
+          }
+          Spacer()
+          Button {
+            model.pendingPage = nil
+            model.route = .privacy
+          } label: {
+            Text(String(model.profile?.prefix(1) ?? "G")).font(.system(size: 29, weight: .semibold))
+              .frame(width: 67, height: 67).background(Color.lilac, in: Circle())
+          }.accessibilityLabel("Choose profile")
+        }
+        HStack(alignment: .top, spacing: 25) {
+          LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+            ForEach(favorites) { page in
+              Button {
+                model.navigate(page)
+              } label: {
+                VStack(spacing: 7) {
+                  AppIcon(page: page, edge: 88)
+                  Text(page.rawValue).font(.system(size: 17, weight: .medium))
+                }
+              }.accessibilityIdentifier("app.\(page.rawValue)")
+            }
+          }.frame(width: 220)
+          VStack(alignment: .leading, spacing: 8) {
+            LandscapeArt().frame(height: 205).clipShape(RoundedRectangle(cornerRadius: 26))
+            Text("A little moment of calm").font(.system(size: 19, weight: .semibold))
+            Text("Demo album").font(.system(size: 17)).foregroundStyle(.gray)
+          }.frame(maxWidth: .infinity)
+        }
+        if model.playing || model.connections.musicPlaying || model.podcastPlaying
+          || model.data.timers.contains(where: { $0.remaining(at: model.now) > 0 })
+        {
+          ActivityStrip()
+        }
+        Spacer(minLength: 0)
+        Pill(
+          title: "All Apps", symbol: "circle.grid.3x3.fill", tint: .white.opacity(0.18),
+          textColor: .white
+        ) { model.route = .drawer }
+        .accessibilityIdentifier("all.apps")
+      }.padding(35)
+    }.foregroundStyle(.white).buttonStyle(.plain)
+  }
+}
+struct ActivityStrip: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    HStack {
+      if model.connections.musicPlaying, let index = model.connections.currentTrack,
+        model.connections.tracks.indices.contains(index)
+      {
+        Button {
+          model.navigate(.music)
+        } label: {
+          Label(model.connections.tracks[index].title, systemImage: "waveform").lineLimit(1)
+        }
+        Spacer()
+        Button {
+          Task { await model.connections.toggleMusic() }
+        } label: {
+          Image(systemName: "pause.fill")
+        }
+        .accessibilityLabel("Pause music")
+      } else if model.playing {
+        Button {
+          model.navigate(.music)
+        } label: {
+          Label(Fixtures.songs[model.song], systemImage: "waveform").lineLimit(1)
+        }
+        Spacer()
+        Button {
+          model.togglePlayback()
+        } label: {
+          Image(systemName: "pause.fill")
+        }.accessibilityLabel("Pause activity")
+      } else if model.podcastPlaying {
+        Button {
+          model.navigate(.podcasts)
+        } label: {
+          Label("A Quiet Morning", systemImage: "mic.circle.fill")
+        }.accessibilityIdentifier("activity.podcast")
+        Spacer()
+        Button {
+          model.togglePodcast()
+        } label: {
+          Image(systemName: "pause.fill")
+        }.accessibilityLabel("Pause podcast")
+      } else if let t = model.data.timers.first(where: { $0.remaining(at: model.now) > 0 }) {
+        Button {
+          model.selectedTimer = t.id
+          model.navigate(.timers)
+        } label: {
+          Label(t.display(at: model.now), systemImage: "timer").monospacedDigit()
+        }
+      }
+    }.font(.system(size: 18, weight: .medium)).padding(15).background(
+      .black.opacity(0.07), in: Capsule())
+  }
+}
+struct AppDrawer: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    VStack(spacing: 0) {
+      HStack {
+        Text("Apps").font(.system(size: 34, weight: .bold))
+        Spacer()
+        RoundButton(symbol: "person.crop.circle", label: "Choose profile") {
+          model.route = .privacy
+        }
+        RoundButton(symbol: "xmark", label: "Close apps") { model.route = .face }
+      }.padding(.horizontal, 34).padding(.top, 26).padding(.bottom, 16)
+      ScrollView {
+        LazyVGrid(
+          columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 4), spacing: 26
+        ) {
+          ForEach(AppPage.allCases) { page in
+            Button {
+              if page == .recipes { model.route = .recipe } else { model.navigate(page) }
+            } label: {
+              VStack(spacing: 8) {
+                AppIcon(page: page, edge: 86)
+                Text(page.rawValue).font(.system(size: 16, weight: .medium)).lineLimit(1)
+              }
+            }.accessibilityIdentifier("app.\(page.rawValue)")
+          }
+        }.padding(.horizontal, 28).padding(.bottom, 24)
+      }
+    }.background {
+      FaceView(selection: model.data.face).blur(radius: 22).overlay(.black.opacity(0.35))
+        .allowsHitTesting(false).accessibilityHidden(true)
+    }
+    .foregroundStyle(.white).buttonStyle(.plain)
+  }
+}
+struct HomeGrid: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    VStack(spacing: 10) {
+      HStack(spacing: 10) {
+        Button {
+          model.route = .thermostat
+        } label: {
+          AnalogClock(
+            date: model.clock, timeZone: model.displayTimeZone, tint: .violetInk, handColor: .black,
+            secondsColor: .violetInk)
+        }.accessibilityLabel("Thermostat").accessibilityIdentifier("grid.thermostat")
+        tile("lamp.ceiling.fill", "Lights", "Entryway", model.data.home.entryLight) {
+          model.command(.entryLight)
+        }.accessibilityIdentifier("grid.entrylight")
+        tile("waveform", "Intercom", "Everywhere", false) { model.navigate(.intercom) }
+      }
+      HStack(spacing: 10) {
+        Button {
+          model.route = .camera(0)
+        } label: {
+          MockCameraScene(index: 0).clipShape(RoundedRectangle(cornerRadius: 34))
+        }.accessibilityLabel("Front door camera").accessibilityIdentifier("grid.camera")
+        tile("homekit", "", "", false) { model.route = .personal }
+        tile("sun.max.fill", "Good Morning", "Scene", model.data.home.lastScene == "Good Morning") {
+          model.command(.scene("Good Morning"))
+          model.banner("Good Morning · Mock scene applied")
+        }.accessibilityIdentifier("scene.goodmorning")
+      }
+      HStack(spacing: 10) {
+        tile("lightbulb.fill", "Lights", "Bedroom", model.data.home.bedroomLight) {
+          model.command(.bedroomLight)
+        }.accessibilityIdentifier("grid.bedroomlight")
+        tile("fan.desk", "Fan", "Office", model.data.home.fan) { model.command(.fan) }
+          .accessibilityIdentifier("grid.fan")
+        tile(
+          model.data.home.locked ? "lock.fill" : "lock.open.fill", "Door Lock", "Front Door",
+          !model.data.home.locked
+        ) { model.route = .lock }.accessibilityIdentifier("grid.lock")
+      }
+    }.padding(12).background(.white).buttonStyle(.plain).foregroundStyle(.gray)
+  }
+  private func tile(
+    _ icon: String, _ title: String, _ sub: String, _ active: Bool, action: @escaping () -> Void
+  ) -> some View {
+    Button(action: action) {
+      Tile(active: active) {
+        VStack(spacing: 17) {
+          Image(systemName: icon).font(.system(size: 53, weight: .medium))
+          if !title.isEmpty {
+            VStack(spacing: 4) {
+              Text(title).font(.system(size: 21, weight: .semibold))
+              Text(sub).font(.system(size: 20)).opacity(0.6)
+            }
+          }
+        }.foregroundStyle(active ? Color.violetInk : .gray)
+      }
+    }.frame(maxWidth: .infinity)
+  }
+}
+
+struct ThermostatView: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    ZStack {
+      Color(red: 0.08, green: 0.58, blue: 0.82)
+      VStack {
+        AppHeader(title: "Thermostat", light: true)
+        Spacer()
+        Text("Cooling to").font(.system(size: 27, weight: .regular))
+        HStack(spacing: 0) {
+          RoundButton(
+            symbol: "chevron.down", color: .clear, foreground: .white, size: 76,
+            label: "Decrease temperature"
+          ) { model.command(.temperature(model.data.home.temperature - 1)) }
+          .accessibilityIdentifier("thermostat.down")
+          Spacer(minLength: 0)
+          Text("\(model.data.home.temperature)").font(.system(size: 170, weight: .light))
+            .monospacedDigit().accessibilityLabel("\(model.data.home.temperature)°")
+            .accessibilityIdentifier("thermostat.value")
+          Spacer(minLength: 0)
+          RoundButton(
+            symbol: "chevron.up", color: .clear, foreground: .white, size: 76,
+            label: "Increase temperature"
+          ) { model.command(.temperature(model.data.home.temperature + 1)) }
+          .accessibilityIdentifier("thermostat.up")
+        }.padding(.horizontal, 28)
+        HStack(spacing: 10) {
+          Label("70°", systemImage: "thermometer.medium")
+          Label("30%", systemImage: "humidity")
+        }.font(.system(size: 23)).opacity(0.65)
+        Spacer()
+        HStack {
+          Spacer()
+          RoundButton(
+            symbol: "thermometer.medium", color: .white.opacity(0.12), foreground: .white, size: 60,
+            label: "Cooling mode"
+          ) { model.banner("Cool mode · Mock thermostat") }
+        }.padding(.horizontal, 28).padding(.bottom, 26)
+      }
+    }.foregroundStyle(.white)
+  }
+}
+struct LightView: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    VStack(spacing: 25) {
+      AppHeader(title: "Entryway")
+      Spacer()
+      Image(systemName: model.data.home.entryLight ? "lightbulb.fill" : "lightbulb").font(
+        .system(size: 110)
+      ).foregroundStyle(model.data.home.entryLight ? .orange : .gray)
+      Text(model.data.home.entryLight ? "On" : "Off").font(.system(size: 45, weight: .semibold))
+      Pill(title: model.data.home.entryLight ? "Turn Off" : "Turn On", symbol: "power") {
+        model.command(.entryLight)
+      }
+      ValueAdjuster(value: model.data.home.brightness, label: "Brightness") {
+        model.command(.brightness($0))
+      }
+      Spacer()
+    }.padding(.horizontal, 30).background(.white).foregroundStyle(.black)
+  }
+}
+struct LockView: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    VStack(spacing: 25) {
+      AppHeader(title: "Front Door")
+      Spacer()
+      Image(systemName: model.data.home.locked ? "lock.fill" : "lock.open.fill").font(
+        .system(size: 112)
+      ).foregroundStyle(model.data.home.locked ? .green : .orange)
+      Text(model.data.home.locked ? "Locked" : "Unlocked").font(
+        .system(size: 45, weight: .semibold)
+      ).accessibilityIdentifier("lock.state")
+      Text("Mock lock · Demo profile required").font(.system(size: 20)).foregroundStyle(.gray)
+      Pill(
+        title: model.authorized
+          ? (model.data.home.locked ? "Unlock" : "Lock") : "Choose Demo Profile",
+        symbol: model.authorized ? "lock.open" : "person.crop.circle"
+      ) {
+        if model.authorized {
+          model.command(.lock)
+        } else {
+          model.pendingPage = .home
+          model.route = .privacy
+        }
+      }.accessibilityIdentifier("lock.action")
+      Spacer()
+    }.padding(.horizontal, 30).background(.white).foregroundStyle(.black)
+  }
+}
+struct PrivacyView: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    VStack(spacing: 18) {
+      AppHeader()
+      Image(systemName: "person.crop.circle.badge.checkmark").font(.system(size: 66))
+        .foregroundStyle(.gray)
+      Text("Recognizing…").font(.system(size: 37, weight: .semibold))
+      Text("Choose a demo profile to continue.\nNo camera or biometric recognition is used.").font(
+        .system(size: 21)
+      ).multilineTextAlignment(.center).foregroundStyle(.gray)
+      LazyVGrid(
+        columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 14
+      ) {
+        ForEach(Fixtures.profiles, id: \.self) { name in
+          Button {
+            model.signIn(name)
+          } label: {
+            VStack(spacing: 7) {
+              Text(String(name.prefix(1))).font(.system(size: 26, weight: .medium)).frame(
+                width: 57, height: 57
+              ).background(Color.lilac, in: Circle())
+              Text(name).font(.system(size: 17))
+            }
+          }.accessibilityIdentifier("profile.\(name)")
+        }
+      }.padding(.horizontal, 45)
+      Spacer(minLength: 0)
+      Button("Use Guest Mode") {
+        model.profile = nil
+        model.pendingPage = nil
+        model.route = .personal
+      }.font(.system(size: 20, weight: .medium)).padding(.bottom, 28).accessibilityIdentifier(
+        "profile.guest")
+    }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
+  }
+}
