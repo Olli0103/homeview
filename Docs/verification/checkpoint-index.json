@@ -1,0 +1,311 @@
+{
+  "code_checkpoints": [
+    {
+      "checkpoint": "flow-rendered",
+      "commit": "8d7842b7fcc3d167a1a9a42bbd5979e14d4f045d",
+      "source_digest": "a474585a301593b32a4cbe1b1bc8aafe173fac36490af0e589e1f02217e11d66",
+      "files_verified": 94,
+      "core_passed": 56,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "84197642a34f43e785ddf798ff75bb93bee4f95303876a3416ae41e17f5c57d2"
+    },
+    {
+      "checkpoint": "world-contained",
+      "commit": "a06ce74d7c2bc5753bfa81b08fbad91b0c4819a5",
+      "source_digest": "23abe5ec471e416e87de95c974ccf2f5409a74b264663cbffce51b0ce8755b16",
+      "files_verified": 96,
+      "core_passed": 61,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "eb4d3f400031a219e867e3309a2884947e22e71650fd47ead68393ca44e3814c"
+    },
+    {
+      "checkpoint": "calendar-accessible",
+      "commit": "a99c929e41deec9dce03f729099f5298fb5341e2",
+      "source_digest": "119509b620a3e0b2dcc92c3ef51a7c36f9354854ef99ec0578c3321f3facc202",
+      "files_verified": 98,
+      "core_passed": 66,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "7c09d01f95349c01e816484903bef8464d6f56962ddacf947296dda9cff4eca0"
+    },
+    {
+      "checkpoint": "reminders",
+      "commit": "7000f41283acf7b654a07490eafbde944fde34dc",
+      "source_digest": "844d18c7b1fd342931ce427cca19e287ce1e242ae4a6edd580a48302a21740e1",
+      "files_verified": 98,
+      "core_passed": 69,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "4e815d69513f27f4a0b81a3614ab870aea712b0de0dca12de3c88df7b60d8425"
+    },
+    {
+      "checkpoint": "browser",
+      "commit": "023645b38c832eb7649a04fa85ee397e5d2f01ca",
+      "source_digest": "fbe773b60ce6db39bc3e5e917469ddc95cec68aa98622fcf2650d4b761f87c01",
+      "files_verified": 101,
+      "core_passed": 73,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "0895e9af68a33eff03a25062baa58db904d563ecf0ac4e508dbe358cacf9749b"
+    },
+    {
+      "checkpoint": "voice-final",
+      "commit": "45c8156ec957c79dc2dacb00441de502e8ee73e5",
+      "source_digest": "f1e0e07530f90b6e439520b8e383758a6a90bf40d3eb462fac1f60c39d880f93",
+      "files_verified": 103,
+      "core_passed": 76,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "b5b179207d55e7ce4d830ff80ab734b9fa3a45da2cdd35b249a71987928953e6"
+    },
+    {
+      "checkpoint": "recipes-checked",
+      "commit": "4524c871d9498bd56097586a8761850e54249f06",
+      "source_digest": "21ca6f17b4393e7b1482f6dfb126de28e9c931d3dc52cd52c0e2ab557f7dfac3",
+      "files_verified": 105,
+      "core_passed": 81,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "aa043ef8dab09d14083473a3410d4d89767e6b60cfd43ace0eab94228985c801"
+    },
+    {
+      "checkpoint": "draft",
+      "commit": "e3f6f13333ab8e1b2555d86a6b39c3eacf16732e",
+      "source_digest": "6fe8c6c1c664d4254ec6796db1168b12a77fdb6d6a3e4e5facd6e364705e9d28",
+      "files_verified": 105,
+      "core_passed": 81,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "44a321cc44b7b94ebaf4499b90256d90bb8ab8a3f880bf22258e813f469d5781"
+    },
+    {
+      "checkpoint": "migration-final",
+      "commit": "0296d04f6fa24b8c58b693e7bcef96454a4de25c",
+      "source_digest": "bc08572ae729d0c9be67cccc2ec5f3b86a129380d9a4e818a799c4bc00676b9a",
+      "files_verified": 107,
+      "core_passed": 86,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "e5cf53298b9d788a8bdc44dace22b65aec16970f0f527c2fde309429800c5ef7"
+    }
+  ],
+  "all_sources_match_committed_bytes": true
+}

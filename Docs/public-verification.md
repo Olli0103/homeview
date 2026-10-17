@@ -1,3 +1,5 @@
+Aktueller Folgeprüfstand: [zweites Issue-Paket](iteration-20261017-block2.md). Die ursprüngliche Veröffentlichung unten ist historisch; ihre Zähler werden nicht auf spätere Änderungen übertragen.
+
 # Historische Erstveröffentlichung: Prüfung
 
 17. Oktober 2026, erster öffentlicher Stand `cc95825`. Aktuelle Folgeprüfung: [Issue-Paket](iteration-20261017.md). Frische Prüfung nach Austausch der Referenzassets und Ziffernkonturen.
