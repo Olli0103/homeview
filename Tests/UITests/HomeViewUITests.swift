@@ -201,6 +201,49 @@ final class HomeViewUITests: XCTestCase {
     tap("editor.done")
     XCTAssertTrue(app.buttons["complication.slot.bottom"].label.contains("Weather"))
   }
+  func flowAtlasHasInkInEveryCell(_ png: Data) -> Bool {
+    let image = UIImage(data: png)!.cgImage!
+    for row in 0..<2 { for col in 0..<5 {
+      let scale = Double(image.width) / 600
+      let rect = CGRect(x: Double(55 + col * 102) * scale,
+                        y: Double(96 + row * 218) * scale,
+                        width: 82 * scale, height: 190 * scale).integral
+      guard let cell = image.cropping(to: rect) else { return false }
+      var bytes = [UInt8](repeating: 0, count: cell.width * cell.height * 4)
+      bytes.withUnsafeMutableBytes { buffer in
+        let context = CGContext(data: buffer.baseAddress, width: cell.width, height: cell.height,
+          bitsPerComponent: 8, bytesPerRow: cell.width * 4,
+          space: CGColorSpaceCreateDeviceRGB(),
+          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)!
+        context.draw(cell, in: CGRect(x: 0, y: 0, width: cell.width, height: cell.height))
+      }
+      let ink = stride(from: 0, to: bytes.count, by: 4).filter { bytes[$0] > 180 }.count
+      if Double(ink) / Double(cell.width * cell.height) < 0.015 { return false }
+    } }
+    return true
+  }
+  func testFlowOwnGlyphAtlasCoversBothStylesAndAxisExtremes() {
+    for stencil in [false, true] {
+      for wide in [false, true] {
+        var args = ["--face", "Flow", "--flow-glyph-atlas"]
+        if stencil { args.append("--flow-atlas-stencil") }
+        if wide { args.append("--flow-atlas-wide") }
+        launch(args)
+        let name = "flow-own-atlas-\(stencil ? "stencil" : "solid")-\(wide ? "wide-heavy" : "narrow-light")"
+        var visible = false
+        for _ in 0..<8 {
+          if flowAtlasHasInkInEveryCell(viewportBytes(name)) { visible = true; break }
+          Thread.sleep(forTimeInterval: 0.25)
+        }
+        XCTAssertTrue(visible, "Every digit must actually render, not merely exist in accessibility")
+        for digit in 0...9 {
+          XCTAssertTrue(app.otherElements["Digit \(digit)"].exists,
+                        "Missing glyph \(digit)")
+        }
+        app.terminate()
+      }
+    }
+  }
   func testFlowHasIndependentTypefaceAndBackgroundControls() {
     launch(["--face", "Flow"])
     shot("RE-flow-stencil")

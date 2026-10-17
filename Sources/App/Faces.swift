@@ -220,10 +220,15 @@ struct ModularFace: View {
 struct FlowFace: View {
   @Environment(AppModel.self) private var model
   var body: some View {
+    if ProcessInfo.processInfo.arguments.contains("--uitesting"),
+       ProcessInfo.processInfo.arguments.contains("--flow-glyph-atlas") {
+      FlowGlyphAtlas()
+    } else {
     FlowArtwork(date: model.clock, timeZone: model.displayTimeZone, far: model.data.far,
       typeface: model.data.configuration(for: .flow).flowTypeface,
       showBackground: model.data.configuration(for: .flow).flowBackground)
       .clipped().animation(.easeInOut(duration: 0.8), value: model.data.far)
+    }
   }
 }
 struct FadeFace: View {

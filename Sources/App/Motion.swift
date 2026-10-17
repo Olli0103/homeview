@@ -69,9 +69,9 @@ struct FlowArtwork: View {
               fluidImage(frame).saturation(0.82).brightness(-0.14)
             }
             // Independent layers: background, glyph shadow, refractive foreground material.
-            numerals.foregroundStyle(.black.opacity(showBackground ? 0.28 : 0))
+            numerals(at: t).foregroundStyle(.black.opacity(showBackground ? 0.28 : 0))
               .blur(radius: 4).offset(x: 3, y: 5)
-            numerals.foregroundStyle(.white)
+            numerals(at: t).foregroundStyle(.white)
               .layerEffect(
                 ShaderLibrary.flowGlyphMaterial(
                   .image(Image(decorative: frame, scale: 1)),
@@ -93,20 +93,32 @@ struct FlowArtwork: View {
   private func fluidImage(_ frame: CGImage) -> some View {
     Image(decorative: frame, scale: 1).resizable().interpolation(.high)
   }
-  private var numerals: some View {
+  private func numerals(at time: Double) -> some View {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = timeZone
     let hour = calendar.component(.hour, from: date)
     let minute = calendar.component(.minute, from: date)
+    let twelveHour = !ProcessInfo.processInfo.arguments.contains("--reference-clock")
+      && (DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: .current)?.contains("a") ?? false)
+    let digits = FlowTypography.digits(hour: hour, minute: minute, twelveHour: twelveHour)
+    let axes = FlowTypography.animated(at: time)
     return VStack(spacing: 30) {
-      numeralRow(hour)
-      numeralRow(minute)
+      numeralRow(Array(digits.prefix(2)), axes: axes)
+      numeralRow(Array(digits.suffix(2)), axes: axes)
     }.padding(.horizontal, far ? 36 : 44).padding(.vertical, 34)
+      .accessibilityElement(children: .ignore)
+      .accessibilityLabel("Flow time")
+      .accessibilityValue(String(format: "%d%d:%d%d", digits[0], digits[1], digits[2], digits[3]))
   }
-  private func numeralRow(_ value: Int) -> some View {
-    HStack(spacing: 15) {
-      FlowDigitShape(digit: value / 10, stencil: typeface == 0)
-      FlowDigitShape(digit: value % 10, stencil: typeface == 0)
+  private func numeralRow(_ digits: [Int], axes: FlowTypography) -> some View {
+    GeometryReader { geometry in
+      let scale = min(geometry.size.width / axes.pairWidth, geometry.size.height)
+      HStack(spacing: axes.tracking * scale) {
+        ForEach(0..<2) { i in
+          FlowDigitShape(digit: digits[i], stencil: typeface == 0, typography: axes)
+            .frame(width: axes.advance * scale, height: scale)
+        }
+      }.frame(width: geometry.size.width, height: geometry.size.height)
     }
   }
 }

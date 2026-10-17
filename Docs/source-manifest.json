@@ -1,9 +1,9 @@
 {
-  "digest": "a37a89e6d37b0621342c4dcd5a237d5aa850733ecb76c5bfd769a82a794c64be",
+  "digest": "a474585a301593b32a4cbe1b1bc8aafe173fac36490af0e589e1f02217e11d66",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "51d48f7725f9d7033f5dce399db7744ee433082534cda0f5f9bb0c747d81f33c"
+      "sha256": "eb80203b774f1a5a103ca37e3fabe6d72e03ff4f02633b790de4e355a8f899ae"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -235,11 +235,11 @@
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "521fa03d76aeec1432a6f7538a32c9d84c389fcb9e06b367d4474a11d296ceb3"
+      "sha256": "f1d13662412b4d491c2bbcea45dcddfe65ca172b7f1e5e0d3acff8de3ca5cd89"
     },
     {
       "path": "Sources/App/FlowDigitContours.swift",
-      "sha256": "de31025c767f565b92680b8db7743e30143f2cd82f68314c7c1b5b47daa35549"
+      "sha256": "d4b07f2358f3031eb4f4026676e85d94a27003e01aa699f758e28d0e53f49004"
     },
     {
       "path": "Sources/App/FlowMaterial.metal",
@@ -259,7 +259,7 @@
     },
     {
       "path": "Sources/App/Motion.swift",
-      "sha256": "f7204ea095681256e588833ac4b64834de7e3d1c26d390cec32301b0f57ffa5c"
+      "sha256": "c285b9f6fbb93de14dd7252b5be93799b2c83b5aaecaa0c4560daabe3a8449ac"
     },
     {
       "path": "Sources/App/NativeAlarms.swift",
@@ -334,6 +334,10 @@
       "sha256": "44b860d70a385e30d813cff32a5022c9cd1fd5f095b27339407ea56f9bab58dd"
     },
     {
+      "path": "Sources/Core/FlowTypography.swift",
+      "sha256": "8098d80edd89f5ffa1b21737311a1c333cfb8ff8586192eb1321746703dfac50"
+    },
+    {
       "path": "Sources/Core/Models.swift",
       "sha256": "de4aec7468beb4b026cd1e2b7ac77530a065b628ef93c4df46b9b494e0e6610e"
     },
@@ -354,6 +358,10 @@
       "sha256": "6a372150a309851cea12c9a407209ae53817ee1fdd89d4df86fc325c5a5adf42"
     },
     {
+      "path": "Tests/CoreTests/FlowTypographyTests.swift",
+      "sha256": "d5952c8f5f0a11c7aba642f14fb4dd1116b6e4aafa28f1871dbcd634498ab15f"
+    },
+    {
       "path": "Tests/CoreTests/HomeViewCoreTests.swift",
       "sha256": "7d31db2b4ebb1bc337340b8a6c0efa4944b481db205b5bbfc8579e292477800e"
     },
@@ -367,8 +375,7 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "341035a31e8b385ea1b467e7b86ce847df2db5df006be4d5173e58ceae2c9369"
+      "sha256": "3943ba6c297211a31dcc0368018f4023fc08d2e052c4bd062f48754d9ae33f96"
     }
-  ],
-  "commit": "68df0faaf5c878b373b60f9444509aac188f1c4f"
+  ]
 }
