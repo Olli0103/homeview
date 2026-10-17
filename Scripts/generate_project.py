@@ -1,0 +1,57 @@
+from pathlib import Path
+import hashlib
+root=Path(__file__).resolve().parents[1]
+objects={}
+def uid(s):return hashlib.sha1(s.encode()).hexdigest()[:24].upper()
+def obj(name,body):objects[uid(name)]=body;return uid(name)
+def arr(xs):return '( '+', '.join(xs)+' )'
+def q(s):return '"'+s.replace('"','\\"')+'"'
+def buildsettings(d):return '{ '+ ' '.join((q(k) if '[' in k else k)+' = '+(v if v.startswith('(') else q(v))+';' for k,v in d.items())+' }'
+files=[]
+for p in sorted(p for p in (root/'Sources').rglob('*') if p.suffix in ['.swift', '.metal']):
+    rel=str(p.relative_to(root));kind='sourcecode.metal' if p.suffix=='.metal' else 'sourcecode.swift';obj(rel,'{isa = PBXFileReference; lastKnownFileType = '+kind+'; path = '+q(rel)+'; sourceTree = SOURCE_ROOT;}');files.append(rel)
+for rel,kind in [('Resources/Assets.xcassets','folder.assetcatalog'),('Resources/demo-tone.wav','audio.wav'),('Tests/UITests/HomeViewUITests.swift','sourcecode.swift')]:obj(rel,'{isa = PBXFileReference; lastKnownFileType = '+kind+'; path = '+q(rel)+'; sourceTree = SOURCE_ROOT;}')
+products=[];targets=[];schemes=[]
+def make_target(name,platform,sources,uitest=False):
+    product=name+('.xctest' if uitest else '.app');pid=obj('product'+name,'{isa = PBXFileReference; explicitFileType = '+('wrapper.cfbundle' if uitest else 'wrapper.application')+'; path = '+q(product)+'; sourceTree = BUILT_PRODUCTS_DIR;}');products.append(pid)
+    src=[]
+    for f in sources:src.append(obj(name+f,'{isa = PBXBuildFile; fileRef = '+uid(f)+';}'))
+    sp=obj(name+'sources','{isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = '+arr(src)+'; runOnlyForDeploymentPostprocessing = 0;}')
+    res=[]
+    if not uitest:
+        for f in ['Resources/Assets.xcassets','Resources/demo-tone.wav']:res.append(obj(name+f,'{isa = PBXBuildFile; fileRef = '+uid(f)+';}'))
+    rp=obj(name+'resources','{isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = '+arr(res)+'; runOnlyForDeploymentPostprocessing = 0;}')
+    fp=obj(name+'frameworks','{isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0;}')
+    settings={'PRODUCT_NAME':name,'PRODUCT_BUNDLE_IDENTIFIER':'org.example.'+name,'SWIFT_VERSION':'6.0','GENERATE_INFOPLIST_FILE':'YES','INFOPLIST_FILE':'Resources/Info.plist','CODE_SIGN_STYLE':'Automatic','SWIFT_STRICT_CONCURRENCY':'complete','ENABLE_USER_SCRIPT_SANDBOXING':'YES','MARKETING_VERSION':'0.1.0','CURRENT_PROJECT_VERSION':'1','INFOPLIST_KEY_CFBundleDisplayName':'HomeView','SWIFT_EMIT_LOC_STRINGS':'YES','INFOPLIST_KEY_NSHomeKitUsageDescription':'Use your explicitly connected home only in a separately enabled live build.','INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription':'Show calendars you explicitly authorize in HomeView.','INFOPLIST_KEY_NSRemindersFullAccessUsageDescription':'Show reminders you explicitly authorize in HomeView.','INFOPLIST_KEY_NSAppleMusicUsageDescription':'Play music you explicitly select.','INFOPLIST_KEY_NSCameraUsageDescription':'Use the camera only when you explicitly open the live mirror.','INFOPLIST_KEY_NSMicrophoneUsageDescription':'Use the microphone only when you explicitly start voice input.'}
+    if platform=='universal':settings.update({'SDKROOT':'auto','SUPPORTED_PLATFORMS':'(iphoneos, iphonesimulator, macosx, xros, xrsimulator, appletvos, appletvsimulator)','TARGETED_DEVICE_FAMILY':'1,2','TARGETED_DEVICE_FAMILY[sdk=appletv*]':'3','TARGETED_DEVICE_FAMILY[sdk=xr*]':'7','TARGETED_DEVICE_FAMILY[sdk=macosx*]':'','IPHONEOS_DEPLOYMENT_TARGET':'26.1','MACOSX_DEPLOYMENT_TARGET':'15.0','TVOS_DEPLOYMENT_TARGET':'26.0','XROS_DEPLOYMENT_TARGET':'26.0','SUPPORTS_MACCATALYST':'YES','ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphone*]':'AppIcon','INFOPLIST_KEY_UIApplicationSceneManifest_Generation':'YES','INFOPLIST_KEY_UILaunchScreen_Generation':'YES','INFOPLIST_KEY_UISupportedInterfaceOrientations':'UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight','INFOPLIST_KEY_NSAlarmKitUsageDescription':'Schedule timers and alarms you explicitly create in HomeView.','INFOPLIST_KEY_ITSAppUsesNonExemptEncryption':'NO'})
+    if platform=='watch':settings.update({'SDKROOT':'watchos','SUPPORTED_PLATFORMS':'(watchos, watchsimulator)','TARGETED_DEVICE_FAMILY':'4','WATCHOS_DEPLOYMENT_TARGET':'26.0','INFOPLIST_KEY_WKApplication':'YES','INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp':'YES'})
+    if uitest:settings.update({'SDKROOT':'iphoneos','SUPPORTED_PLATFORMS':'(iphoneos, iphonesimulator)','TARGETED_DEVICE_FAMILY':'1,2','IPHONEOS_DEPLOYMENT_TARGET':'26.1','TEST_TARGET_NAME':'HomeViewReplica'})
+    configs=[]
+    for conf in ['Debug','Release']:
+        s=dict(settings);s['SWIFT_OPTIMIZATION_LEVEL']='-Onone' if conf=='Debug' else '-O';s['DEBUG_INFORMATION_FORMAT']='dwarf';s['SWIFT_ACTIVE_COMPILATION_CONDITIONS']='DEBUG' if conf=='Debug' else ''
+        configs.append(obj(name+conf,'{isa = XCBuildConfiguration; buildSettings = '+buildsettings(s)+'; name = '+conf+';}'))
+    cl=obj(name+'config','{isa = XCConfigurationList; buildConfigurations = '+arr(configs)+'; defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;}')
+    deps=[]
+    if uitest:
+        proxy=obj('testproxy','{isa = PBXContainerItemProxy; containerPortal = '+uid('project')+'; proxyType = 1; remoteGlobalIDString = '+uid('HomeViewReplica')+'; remoteInfo = HomeViewReplica;}')
+        deps.append(obj('testdep','{isa = PBXTargetDependency; target = '+uid('HomeViewReplica')+'; targetProxy = '+proxy+';}'))
+    tid=obj(name,'{isa = PBXNativeTarget; buildConfigurationList = '+cl+'; buildPhases = '+arr([sp,fp,rp])+'; buildRules = (); dependencies = '+arr(deps)+'; name = '+q(name)+'; productName = '+q(name)+'; productReference = '+pid+'; productType = '+q('com.apple.product-type.bundle.ui-testing' if uitest else 'com.apple.product-type.application')+';}');targets.append(tid)
+    return tid
+make_target('HomeViewReplica','universal',files)
+watchfiles=[f for f in files if f.split('/')[-1] in ['Models.swift','FaceConfiguration.swift','ConnectedModels.swift','HomeViewApp.swift','AppModel.swift','WatchRoot.swift','LocalAudioEngine.swift','DisplayWakeController.swift']]
+make_target('HomeViewWatch','watch',watchfiles)
+make_target('HomeViewUITests','ios',['Tests/UITests/HomeViewUITests.swift'],True)
+pg=obj('products','{isa = PBXGroup; children = '+arr(products)+'; name = Products; sourceTree = "<group>";}')
+fg=obj('files','{isa = PBXGroup; children = '+arr([uid(f) for f in files]+[uid('Resources/Assets.xcassets'),uid('Resources/demo-tone.wav'),uid('Tests/UITests/HomeViewUITests.swift')])+'; name = Sources; sourceTree = "<group>";}')
+mg=obj('main','{isa = PBXGroup; children = '+arr([fg,pg])+'; sourceTree = "<group>";}')
+configs=[]
+for c in ['Debug','Release']:configs.append(obj('project'+c,'{isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES;}; name = '+c+';}'))
+cl=obj('projectconfig','{isa = XCConfigurationList; buildConfigurations = '+arr(configs)+'; defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;}')
+obj('project','{isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = YES; LastUpgradeCheck = 2700;}; buildConfigurationList = '+cl+'; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base); mainGroup = '+mg+'; productRefGroup = '+pg+'; projectDirPath = ""; projectRoot = ""; targets = '+arr(targets)+';}')
+p=root/'HomeViewReplica.xcodeproj';p.mkdir(exist_ok=True)
+(p/'project.pbxproj').write_text('// !$*UTF8*$!\n{ archiveVersion = 1; classes = {}; objectVersion = 56; objects = {\n'+''.join(k+' = '+v+';\n' for k,v in objects.items())+'}; rootObject = '+uid('project')+'; }\n')
+scheme=p/'xcshareddata/xcschemes';scheme.mkdir(parents=True,exist_ok=True)
+for name in ['HomeViewReplica','HomeViewWatch']:
+    test='<TestableReference skipped="NO"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="'+uid('HomeViewUITests')+'" BuildableName="HomeViewUITests.xctest" BlueprintName="HomeViewUITests" ReferencedContainer="container:HomeViewReplica.xcodeproj"/></TestableReference>' if name=='HomeViewReplica' else ''
+    ref='<BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="'+uid(name)+'" BuildableName="'+name+'.app" BlueprintName="'+name+'" ReferencedContainer="container:HomeViewReplica.xcodeproj"/>'
+    (scheme/(name+'.xcscheme')).write_text('<?xml version="1.0" encoding="UTF-8"?><Scheme LastUpgradeVersion="2700" version="1.3"><BuildAction parallelizeBuildables="YES" buildImplicitDependencies="YES"><BuildActionEntries><BuildActionEntry buildForTesting="YES" buildForRunning="YES" buildForProfiling="YES" buildForArchiving="YES" buildForAnalyzing="YES">'+ref+'</BuildActionEntry></BuildActionEntries></BuildAction><TestAction buildConfiguration="Debug" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier="Xcode.IDEFoundation.Launcher.LLDB" shouldUseLaunchSchemeArgsEnv="YES"><Testables>'+test+'</Testables></TestAction><LaunchAction buildConfiguration="Debug" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier="Xcode.IDEFoundation.Launcher.LLDB" launchStyle="0" useCustomWorkingDirectory="NO" ignoresPersistentStateOnLaunch="NO" debugDocumentVersioning="YES"><BuildableProductRunnable runnableDebuggingMode="0">'+ref+'</BuildableProductRunnable></LaunchAction><ProfileAction buildConfiguration="Release" shouldUseLaunchSchemeArgsEnv="YES" savedToolIdentifier="" useCustomWorkingDirectory="NO" debugDocumentVersioning="YES"><BuildableProductRunnable runnableDebuggingMode="0">'+ref+'</BuildableProductRunnable></ProfileAction><AnalyzeAction buildConfiguration="Debug"/><ArchiveAction buildConfiguration="Release" revealArchiveInOrganizer="YES"/></Scheme>')
