@@ -1,0 +1,28 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-17",
+  "input_reference_images": [],
+  "transparent_background": false,
+  "actual_decoded_output_size": [
+    1254,
+    1254
+  ],
+  "prompts": [
+    {
+      "asset_name": "DemoCameraFrontDoorV1",
+      "prompt": "Use case: photorealistic-natural. Asset type: square background image for a clearly marked synthetic home-dashboard camera demo, not a UI mockup. Create one 1024x1024 photorealistic still of an entirely fictional home's front porch. Fixed wide-angle security-camera viewpoint mounted high under a covered porch, looking diagonally downward: a plain wooden entrance door at one edge, modest cream plaster wall, a stone front walk extending into a small planted front garden. Everyday believable building geometry, straight door frame, physically consistent perspective, natural early-afternoon daylight, subtle wood grain and stone texture. The important porch and walkway should remain legible in a square thumbnail. No people, faces, delivery parcels, address numbers, license plates, brands, logos, text, timestamps, screen borders, camera device, UI or watermark. Independent fictional scene; do not copy any reference photograph. Opaque background."
+    },
+    {
+      "asset_name": "DemoCameraBackYardV1",
+      "prompt": "Use case: photorealistic-natural. Asset type: one square background still for a clearly marked synthetic home-dashboard camera demo, not a UI mockup. Create a 1024x1024 photorealistic view of an entirely fictional modest backyard seen from a fixed wide-angle security camera mounted at the corner of a house, looking slightly downward. A small wooden deck in the foreground leads to a green lawn with a stone path, ordinary garden shrubs and two shade trees, with a simple timber fence enclosing the yard. Believable everyday residential space, realistic timber grain and grass, coherent straight fence and deck geometry, soft sunny early-afternoon lighting. Keep the garden recognizable in a square thumbnail. No people, faces, pets, cars, address numbers, brands, text, timestamps, security camera device, UI, borders or watermark. Independent fictional scene; no reference photograph used. Opaque background."
+    },
+    {
+      "asset_name": "DemoCameraLivingRoomV1",
+      "prompt": "Use case: photorealistic-natural. Asset type: one square background still for a clearly marked synthetic home-dashboard camera demo, not a UI mockup. Create a 1024x1024 photorealistic image of an entirely fictional, comfortable living room seen by a fixed wide-angle indoor security camera high in one corner, looking gently downward. A simple fabric sofa, a low wooden coffee table and a light rug occupy the living area; a coherent wooden staircase with a plain railing is visible in the background beside a normal hallway. Large window daylight, warm natural wood, lived-in but tidy everyday surfaces, subtle texture, realistic scale and construction. The room should be readable in a square thumbnail. No people, faces, family photographs, pets, brands, logos, readable text, timestamps, camera device, UI, borders or watermark. Independently designed fictional interior; do not reproduce any reference photograph. Opaque background."
+    },
+    {
+      "asset_name": "DemoCameraDrivewayV1",
+      "prompt": "Use case: photorealistic-natural. Asset type: one square background still for a clearly marked synthetic home-dashboard camera demo, not a UI mockup. Create a 1024x1024 photorealistic view of an entirely fictional home's empty driveway from a fixed wide-angle security camera mounted high near a garage corner. Look diagonally down over ordinary concrete paving toward a quiet residential street, with a low hedge and narrow planting strip beside the drive and only a small section of a plain garage wall at one edge. Coherent architectural perspective, straight paving joints, realistic weathered concrete texture, natural early-afternoon daylight and soft tree shadows. Make the driveway easily recognizable in a square thumbnail. No vehicles, license plates, people, faces, house numbers, signs, brands, logos, text, timestamps, camera device, UI, borders or watermark. Independent fictional scene, not copied from any reference photograph. Opaque background."
+    }
+  ]
+}
