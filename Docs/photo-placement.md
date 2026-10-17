@@ -29,3 +29,5 @@ Korrekturen werden über einen lokalen SHA-256-Schlüssel der ausgewählten Bild
 Die Grenze gilt auch beim Laden. Unbekannte Uhrenstile, fehlende Werte und beschädigte einzelne Korrekturen fallen auf sichere Layoutdefaults zurück. Ein ungültiges Tabellenformat setzt nur die Foto-Korrekturen zurück, nicht Hauswerte oder andere App-Daten. Ein Modelltest prüft diese Fälle mit erhaltenem Thermostatwert und einer zu großen Tabelle.
 
 Die Entwicklung verwendet selbst gezeichnete Testflächen. Sie stammen nicht aus Referenzfotos, OS-Beispielpaaren oder persönlichen Alben. Die realen Freigaben von PhotosPicker/PhotoKit sowie die Vision-Qualität auf beliebigen persönlichen Bildern sind weiterhin gesonderte Geräteabnahmen. Der Layoutkern macht keine vollständige Originalpixel- oder Motivverständnis-Zusage.
+
+Abschließende Quellenbindung, vollständige Regression und Bilder: [erstes Issue-Paket](iteration-20261017.md).
