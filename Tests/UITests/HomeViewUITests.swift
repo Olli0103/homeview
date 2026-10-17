@@ -828,6 +828,25 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(cancelled.exists)
   }
 
+  func testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend() {
+    launch()
+    tap("nav.assistant")
+    let field = app.textFields["assistant.input"]
+    field.tap(); field.typeText("temperature 73")
+    tap("nav.faces"); tap("nav.assistant")
+    XCTAssertEqual(field.value as? String, "temperature 73")
+    tap("assistant.voice")
+    tap("nav.faces"); tap("nav.assistant")
+    XCTAssertEqual(field.value as? String, "temperature 73")
+    tap("nav.faces"); tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label, "68°")
+    tap("nav.assistant")
+    XCUIDevice.shared.press(.home); app.activate()
+    XCTAssertTrue(field.waitForExistence(timeout: 8))
+    XCTAssertTrue(["", "Type a request"].contains(field.value as? String ?? "invalid"))
+    XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
+    shot("assistant-draft-cleared-after-background")
+  }
   func testVoicePreviewRequiresSendBeforeMockCommand() {
     launch()
     tap("nav.assistant")

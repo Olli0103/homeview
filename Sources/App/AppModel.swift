@@ -17,6 +17,7 @@ final class AppModel {
   var toast: String? = nil
   var error: String? = nil
   var assistantInput = ""
+  private(set) var personalSessionGeneration = 0
   var assistantReply = "What can I help you with?"
   var playing = false
   var podcastPlaying = false
@@ -410,6 +411,7 @@ final class AppModel {
     route = .privacy
   }
   func lockPersonalAccess() {
+    personalSessionGeneration += 1
     #if !os(watchOS)
       connections.lock()
     #endif
