@@ -77,7 +77,7 @@
     "priority": "P1",
     "kind": "decision",
     "functions": [],
-    "current": "Das Repo ist öffentlich, eine allgemeine Quelllizenz wurde noch nicht gewählt.",
+    "current": "Der Eigentümer hat am 17. Oktober 2026 MIT gewählt. LICENSE, NOTICE.md und öffentliche Rechtehinweise sind dokumentiert; fremdes Referenzmaterial ist ausgenommen.",
     "tasks": [
       "Mit dem Eigentümer die gewünschte Quelllizenz festlegen",
       "Herkunft eigener Quellen und zukünftiger Drittkomponenten dokumentieren",
@@ -88,7 +88,17 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/4",
     "issue_number": 4,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-17",
+      "evidence": [
+        "LICENSE",
+        "NOTICE.md",
+        "Docs/publication.md",
+        "Docs/asset-manifest.json"
+      ],
+      "scope": "Owner-authorized MIT grant for project-owned code, documentation and assets only; no third-party trademark or reference-material rights granted."
+    }
   },
   {
     "key": "FACE-01",
