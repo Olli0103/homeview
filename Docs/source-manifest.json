@@ -1,11 +1,9 @@
 {
-  "date": "2026-10-17",
-  "algorithm": "SHA-256 of canonical compact sorted-key JSON file array",
-  "digest": "226a53b5c6c3a984495617f2174c44eab2593d07060529391e5202ab1caa6e12",
+  "digest": "a37a89e6d37b0621342c4dcd5a237d5aa850733ecb76c5bfd769a82a794c64be",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
-      "sha256": "6d7b19df2e72190e2b92ff55c0448cb9254db21a0d509945c0490dd0d5375d61"
+      "sha256": "51d48f7725f9d7033f5dce399db7744ee433082534cda0f5f9bb0c747d81f33c"
     },
     {
       "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
@@ -180,8 +178,12 @@
       "sha256": "e9fa088ea5e5f0c55d1bc92f60c77f915ca6bdc97d7bc1cf0042af91a7fd85fd"
     },
     {
+      "path": "Scripts/check_backlog.py",
+      "sha256": "77909fef46182e0b7946738ae390afd3ad3ecdfaf135412be3660906b8f9fc15"
+    },
+    {
       "path": "Scripts/generate_project.py",
-      "sha256": "45d6098c82fc011272f328f157d50d687d055ceb53155a6f47ed52375f5ea5f4"
+      "sha256": "0e7bee6bb423ad6f8aa0ac07327a26c5f9831a9aa0455586b0196203b3e84e23"
     },
     {
       "path": "Scripts/make_icon.swift",
@@ -197,7 +199,7 @@
     },
     {
       "path": "Sources/App/AppModel.swift",
-      "sha256": "7064a0a5a7b3e1aa73a6dda27f9c37bff259ed88df172c2fb72d70c835995cee"
+      "sha256": "956f185580299ffb4b4c7150fd8574f84001cc7728e99783519f0de22bcd6bd0"
     },
     {
       "path": "Sources/App/CameraAndCommunication.swift",
@@ -205,7 +207,7 @@
     },
     {
       "path": "Sources/App/ConnectedViews.swift",
-      "sha256": "6e45f3c623ff3bf9255f24b8e3e1a7a66ba3de8e019cad40f50c42b4b3de54f4"
+      "sha256": "f9857de143d6d6a47204535da7de0ccf2778b1f3144d48723fcc682a71a18c0c"
     },
     {
       "path": "Sources/App/Controls.swift",
@@ -217,7 +219,7 @@
     },
     {
       "path": "Sources/App/DeviceConnections.swift",
-      "sha256": "0b793109c2992e0b63f418c69ba4456645699921a623b39c86714b38d14f1123"
+      "sha256": "a9e63432d01eaaa643796c21eaae6ddc007d13cf9895a369601ed51d839b918c"
     },
     {
       "path": "Sources/App/DisplayWakeController.swift",
@@ -233,7 +235,7 @@
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "8f2cecf6e914dfac822339d57e85e63e57bd93f43446e1208330df0ade57bb50"
+      "sha256": "521fa03d76aeec1432a6f7538a32c9d84c389fcb9e06b367d4474a11d296ceb3"
     },
     {
       "path": "Sources/App/FlowDigitContours.swift",
@@ -273,11 +275,11 @@
     },
     {
       "path": "Sources/App/NativePhotos.swift",
-      "sha256": "856a7ddc4a33edc9ed882a15a9d082dad548dcd15cb7b77d398b480783ff8e71"
+      "sha256": "2f7d67cbd064088fbefefff11a14f41d47420cba6bcf0b9991ceb7ff8d60df2a"
     },
     {
       "path": "Sources/App/NativeServices.swift",
-      "sha256": "3454508c0a1679b69212d34c8e3e2e7e0c5b36ce1142e54ed3b599581de79abf"
+      "sha256": "6dc69d3ba6f0c0fd14711ae2b5757826b6d9cfa3014c7d28e1a6a7cae1b00d68"
     },
     {
       "path": "Sources/App/NativeViewportMarker.swift",
@@ -288,8 +290,12 @@
       "sha256": "77d43975c74112db646958d28908257593b54d8f1579838b41731066ab876a76"
     },
     {
+      "path": "Sources/App/PhotoLayoutFixture.swift",
+      "sha256": "0db81c90283bc89a15644402c88e19b6cfbc11688a275dbd2972e862bbf612cd"
+    },
+    {
       "path": "Sources/App/RootView.swift",
-      "sha256": "3f7a9496e21a8883ec714a53441dbbde27a138b7804d794d99f5794d9c67bb06"
+      "sha256": "bd626eca09f8ba1839b8cbc5756a2bf08179284b00241b07dce07ef00e394fb7"
     },
     {
       "path": "Sources/App/SharedAlbums.swift",
@@ -308,6 +314,14 @@
       "sha256": "fd05c78fe473682b21773ae81940261b18eb8f2c6ee4f71b3ab997077e4a9815"
     },
     {
+      "path": "Sources/Core/ConicGradientModel.swift",
+      "sha256": "c1302b49578beb90ff7e794cc925e64dad60fa54c6b3090c5b22cbd3c7402ee8"
+    },
+    {
+      "path": "Sources/Core/ConnectedDataSession.swift",
+      "sha256": "0359141a00a49183a81735e844c4cb0e7eb750bee62f9f6f3bb63fbb781cce62"
+    },
+    {
       "path": "Sources/Core/ConnectedModels.swift",
       "sha256": "c7842d14e830db223b0c198857e0244295a3b579634af70db28a4835da542e47"
     },
@@ -321,11 +335,31 @@
     },
     {
       "path": "Sources/Core/Models.swift",
-      "sha256": "a51d4a7b4b37a9b184c60e22c34dac9028e3c5605db8ccc4b04bb6ba95187166"
+      "sha256": "de4aec7468beb4b026cd1e2b7ac77530a065b628ef93c4df46b9b494e0e6610e"
+    },
+    {
+      "path": "Sources/Core/PhotoMaskRasterizer.swift",
+      "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+    },
+    {
+      "path": "Sources/Core/PhotoPlacement.swift",
+      "sha256": "3d8d6fbd8a1065e64fff36895968786fa3f5ea25df372b3781022c1e451cb25c"
+    },
+    {
+      "path": "Tests/CoreTests/ConicGradientTests.swift",
+      "sha256": "ce08c708aeea2b514882e298761e75c286704268731ca8456aa0b9f4c9916aa8"
+    },
+    {
+      "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+      "sha256": "6a372150a309851cea12c9a407209ae53817ee1fdd89d4df86fc325c5a5adf42"
     },
     {
       "path": "Tests/CoreTests/HomeViewCoreTests.swift",
       "sha256": "7d31db2b4ebb1bc337340b8a6c0efa4944b481db205b5bbfc8579e292477800e"
+    },
+    {
+      "path": "Tests/CoreTests/PhotoPlacementTests.swift",
+      "sha256": "f8042746bbc46a6147ebf807d3b8f1eadaac5016dc11f0c5d0ce7e7268273084"
     },
     {
       "path": "Tests/CoreTests/WatchFacesTests.swift",
@@ -333,7 +367,8 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "0ce3f2ce257c6252be208cd3f5ec3467f06625f11d211eab85d2beaf24e2e6c1"
+      "sha256": "341035a31e8b385ea1b467e7b86ce847df2db5df006be4d5173e58ceae2c9369"
     }
-  ]
+  ],
+  "commit": "68df0faaf5c878b373b60f9444509aac188f1c4f"
 }

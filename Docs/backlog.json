@@ -269,7 +269,7 @@
     "functions": [
       "F013"
     ],
-    "current": "Vision-Maske kann das Motiv vor die Uhr legen. Automatische Optimierung von Uhrposition und Crop fehlt.",
+    "current": "Automatische Motiv-/Ausschnittbewertung, vollständiges Bild bei Randmotiven und manuelle Korrektur je Bild samt Speicherung/Reset sind implementiert und synthetisch geprüft.",
     "tasks": [
       "Summenbildtabelle der Maske aufbauen",
       "Mehrere Uhrpositionen und Ausschnitte nach Überdeckung bewerten",
@@ -282,7 +282,19 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/12",
     "issue_number": 12,
-    "state": "open"
+    "state": "completed",
+    "progress_evidence": [
+      "Docs/iteration-20261017.md"
+    ],
+    "completion": {
+      "date": "2026-10-17",
+      "evidence": [
+        "Docs/photo-placement.md",
+        "Docs/iteration-20261017.md",
+        "Docs/verification/iteration-20261017.json"
+      ],
+      "scope": "Bounded layout feature and synthetic regression. Original F013 visual/device parity remains unaccepted."
+    }
   },
   {
     "key": "FACE-07",
@@ -409,7 +421,7 @@
     "functions": [
       "F017"
     ],
-    "current": "Zeitabhängiges Ein-/Ausblenden ist eine eigene Interpolation aus Einzelbildern.",
+    "current": "Eigener zyklischer Fade-Verlauf und Reduce Motion sind implementiert und pixelbasiert geprüft. Die vollständige Originalzeitkurve und visuelle Abnahme fehlen.",
     "tasks": [
       "Konischen Verlauf mit definiertem Nullwinkel und Farbstops implementieren",
       "Ziffernrelief, Zeiger, Schatten und Ausblendfenster abstimmen",
@@ -421,7 +433,10 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/18",
     "issue_number": 18,
-    "state": "open"
+    "state": "in_progress",
+    "progress_evidence": [
+      "Docs/iteration-20261017.md"
+    ]
   },
   {
     "key": "FACE-10",
@@ -1582,7 +1597,7 @@
     "functions": [
       "F095"
     ],
-    "current": "Sitzungsgenerationen, Cachelöschung, späte Antworten und Hintergrundschutz korrigiert und synthetisch geprüft. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots bleiben offen.",
+    "current": "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen.",
     "tasks": [
       "Sperre an bewiesene Präsenzquelle koppeln, falls verfügbar",
       "Vorschauen, Kalender, Reminder, Assistentenverlauf und Medienkontext beim Sperren bereinigen",
@@ -1598,7 +1613,7 @@
     "issue_number": 67,
     "state": "in_progress",
     "progress_evidence": [
-      "Docs/privacy-session.md"
+      "Docs/iteration-20261017.md"
     ]
   },
   {
@@ -1795,7 +1810,7 @@
     "priority": "P0",
     "kind": "validation",
     "functions": [],
-    "current": "Private Baseline hatte zuletzt 32 Modelltests und je vier gezielte Flow-UI-Läufe, fünf SDK-Builds. Frühere Vollsuiten gehören zu früheren Digests. Öffentliche Assets und Ziffern sind neu.",
+    "current": "Vollständige 50er-UI-Suite auf iPad/iPhone und 50 Coretests auf Foto-/Datenschutzstand bestanden. Fade-Folgestand separat mit 53 Coretests und zwei UI-Fällen geprüft; kein kompletter 52er-Folgelauf.",
     "tasks": [
       "Öffentliche Quellen samt Ressourcen hashen",
       "Vollständige Core- und UI-Suite auf iPad/iPhone für denselben finalen Digest ausführen",
@@ -1808,7 +1823,10 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/76",
     "issue_number": 76,
-    "state": "open"
+    "state": "in_progress",
+    "progress_evidence": [
+      "Docs/iteration-20261017.md"
+    ]
   },
   {
     "key": "QA-02",

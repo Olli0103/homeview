@@ -2,6 +2,8 @@
 
 Independent native Swift/SwiftUI prototype for a shared home display. This project is not affiliated with Apple and is not a complete reproduction of the reference product.
 
+Current iteration: [issue progress](Docs/progress.md), [test results and screenshots](Docs/iteration-20261017.md).
+
 Public source snapshot, 17 October 2026. Includes the spatial face editor, separate modular layouts, CPU fluid simulation, original Metal glyph material, local everyday apps and opt-in public-system adapters. Apple Home is deliberately disconnected.
 
 ## Build

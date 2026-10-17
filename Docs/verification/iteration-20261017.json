@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-17",
+  "photo_privacy": {
+    "commit": "5325d0124ff4a218c84cce3a0799c0483f6174e2",
+    "source_digest": "42d92f2d1b29b620b8dbdf71c4a370113f805ca8278ca21f3bd5dbf83ea189be",
+    "core_passed": 50,
+    "ui": [
+      {
+        "device": "iPad",
+        "passed": 50,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0
+      },
+      {
+        "device": "iPhone",
+        "passed": 50,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0
+      }
+    ],
+    "sdk_builds_passed": [
+      "iOS",
+      "macOS",
+      "tvOS",
+      "visionOS",
+      "watchOS"
+    ]
+  },
+  "fade_followup": {
+    "commit": "68df0faaf5c878b373b60f9444509aac188f1c4f",
+    "source_digest": "a37a89e6d37b0621342c4dcd5a237d5aa850733ecb76c5bfd769a82a794c64be",
+    "core_passed": 53,
+    "targeted_ui_passed": 2,
+    "ui_device": "fresh isolated iPad Air M4 simulator, iOS 27",
+    "failed": 0,
+    "skipped": 0,
+    "runtime_warnings": 0,
+    "available_ui_cases": 52,
+    "full_52_case_ui_suite_rerun": false,
+    "sdk_builds_passed": [
+      "iOS",
+      "macOS",
+      "tvOS",
+      "visionOS",
+      "watchOS"
+    ]
+  },
+  "physical_hardware_tested": false,
+  "personal_accounts_tested": false,
+  "apple_home_enabled": false,
+  "original_pixel_or_complete_animation_parity": false
+}
