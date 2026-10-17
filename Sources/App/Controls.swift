@@ -95,6 +95,10 @@ struct SettingsView: View {
       AppHeader(title: "Settings")
       ScrollView {
         VStack(alignment: .leading, spacing: 22) {
+          if let note = model.storeRecoveryNote {
+            Text(note).font(.system(size: 17)).foregroundStyle(.orange)
+              .accessibilityIdentifier("store.recovery")
+          }
           Label("Mock home only", systemImage: "shield.lefthalf.filled").font(
             .system(size: 27, weight: .semibold))
           Text(

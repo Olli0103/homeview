@@ -828,6 +828,31 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(cancelled.exists)
   }
 
+  func testCorruptRecipeMigrationPreservesHomeAndSubsequentWrites() {
+    let id = UUID().uuidString
+    print("MIGRATION_TEST_ID=" + id)
+    launch(["--persistence-test", id, "--reset-test-store", "--state-corrupt-fixture", "--screen-thermostat"])
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"69°")
+    tap("thermostat.up")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"70°")
+    app.terminate()
+    launch(["--persistence-test", id, "--screen-thermostat"])
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"70°")
+    shot("store-corrupt-recipe-keeps-home-and-writes")
+  }
+  func testFutureStoreRemainsReadOnlyAfterAnAttemptedSaveAndRelaunch() {
+    let id=UUID().uuidString
+    print("FUTURE_TEST_ID=" + id)
+    launch(["--persistence-test", id, "--reset-test-store", "--state-future-fixture", "--screen-thermostat"])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    tap("thermostat.up")
+    XCTAssertTrue(app.alerts.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","Original saved data is unchanged")).firstMatch.waitForExistence(timeout:5))
+    app.alerts.buttons["OK"].tap()
+    app.terminate()
+    launch(["--persistence-test", id, "--screen-thermostat"])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    shot("store-future-version-readonly-after-relaunch")
+  }
   func testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend() {
     launch()
     tap("nav.assistant")
