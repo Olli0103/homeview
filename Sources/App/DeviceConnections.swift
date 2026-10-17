@@ -238,6 +238,7 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
     let stale = args.contains("--weather-stale-night")
     let snow = args.contains("--weather-snow")
     let rain = args.contains("--weather-rain")
+    let clear = args.contains("--weather-clear")
     let forecast = args.contains("--weather-forecast-fixture")
     let observed = stale ? Date().addingTimeInterval(-7200) : Date()
     let firstHour = floor(observed.timeIntervalSince1970/3600)*3600
@@ -251,9 +252,9 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
       }
     }
     return WeatherReading(
-      city: forecast ? city : "Fixture City", temperature: snow ? 22 : 55, high: 60, low: 48, humidity: 70, wind: 8, code: snow ? 73 : rain ? 61 : 2,
+      city: forecast ? city : "Fixture City", temperature: snow ? 22 : 55, high: 60, low: 48, humidity: 70, wind: 8, code: snow ? 73 : rain ? 61 : clear ? 0 : 2,
       sunset: Fixtures.date, utcOffset: 0, observedAt: observed,
-      sunrise: nil,isDay: !stale,cloudCover:40,hourly:hours)
+      sunrise: nil,isDay: !stale,cloudCover:clear ? 0 : 40,hourly:hours)
   }
   func unlock() async -> Bool { true }
 }

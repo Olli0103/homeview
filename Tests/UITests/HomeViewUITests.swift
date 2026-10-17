@@ -1194,6 +1194,49 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertEqual(app.staticTexts["weather.app.city"].label,"Paris")
     shot("weather-app-late-result-new-editor-preserved")
   }
+  func testWeatherCloudsMoveAndRespectReduceMotion() {
+    launch(["--page","Weather","--animation-test"])
+    let first=weatherSkyPixels(viewportBytes("weather-clouds-moving-start"))
+    Thread.sleep(forTimeInterval:1.5)
+    XCTAssertNotEqual(first,weatherSkyPixels(viewportBytes("weather-clouds-moving-later")))
+    app.terminate()
+    launch(["--page","Weather","--animation-test","--reduce-motion"])
+    let frozen=weatherSkyPixels(viewportBytes("weather-clouds-reduced-start"))
+    Thread.sleep(forTimeInterval:1.5)
+    XCTAssertEqual(frozen,weatherSkyPixels(viewportBytes("weather-clouds-reduced-later")))
+  }
+  func testWeatherZeroCloudCoverDoesNotInventClouds() {
+    launch(["--page","Settings","--weather-clear"])
+    connectService("Weather");openWeather()
+    XCTAssertTrue(app.staticTexts["Clear"].exists)
+    let sky=weatherSkyPixels(viewportBytes("weather-clouds-zero-cover-clear-sky"))
+    let red=stride(from:0,to:sky.count,by:4).map { sky[$0] }
+    XCTAssertLessThan(red.max()!,100,"The predefined clear-sky region must contain blue sky, not white clouds")
+  }
+  func testWeatherFaceOpensDistinctCityScreen() {
+    launch(["--face","Weather"])
+    XCTAssertTrue(app.otherElements["face.Weather"].waitForExistence(timeout:5))
+    shot("weather-clouds-face-before-opening-city")
+    app.otherElements["face.Weather"].tap()
+    XCTAssertTrue(app.staticTexts["weather.app.city"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["Conditions"].exists)
+  }
+  private func weatherSkyPixels(_ png:Data) -> Data {
+    let image=UIImage(data:png)!.cgImage!
+    // Predeclared sky-only ROI: no city, clock, buttons, corners or host chrome.
+    // Compare decoded RGBA bytes, never PNG encoding/metadata differences.
+    let rect=CGRect(x:Double(image.width)*0.20,y:Double(image.height)*0.035,
+      width:Double(image.width)*0.55,height:Double(image.height)*0.135).integral
+    let crop=image.cropping(to:rect)!
+    var pixels=[UInt8](repeating:0,count:crop.width*crop.height*4)
+    pixels.withUnsafeMutableBytes {
+      let context=CGContext(data:$0.baseAddress,width:crop.width,height:crop.height,
+        bitsPerComponent:8,bytesPerRow:crop.width*4,space:CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)!
+      context.draw(crop,in:CGRect(x:0,y:0,width:crop.width,height:crop.height))
+    }
+    return Data(pixels)
+  }
   func testWeatherFailedConnectionDoesNotShowDemoTemperature() {
     launch(["--page","Settings","--weather-fail"])
     let button = app.buttons["connect.Weather"]
