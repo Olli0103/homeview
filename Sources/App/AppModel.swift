@@ -141,6 +141,17 @@ final class AppModel {
       persist()
     }
   }
+  func addWorldCity(_ zone: String) {
+    guard data.worldClockZones.count < 12,
+      WorldCity.catalogue.contains(where: { $0.zone == zone }),
+      !data.worldClockZones.contains(zone) else { return }
+    data.worldClockZones.append(zone)
+    persist()
+  }
+  func removeWorldCity(_ zone: String) {
+    data.worldClockZones.removeAll { $0 == zone }
+    persist()
+  }
   func pinRecipe() {
     if data.pinnedRecipes.contains(where: { $0.id == recipe.id }) {
       data.pinnedRecipes.removeAll { $0.id == recipe.id }

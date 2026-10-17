@@ -249,6 +249,7 @@ struct Snapshot: Codable, Sendable {
   var pinnedRecipe = false
   var faceConfigurations: [String: FaceConfiguration] = [:]
   var widgets = ["Date", "Clock", "Music", "Weather"]
+  var worldClockZones = WorldCity.defaults
   /// Missing additive fields in older local snapshots inherit current defaults.
   static func decodeMigrating(_ bytes: Data) throws -> Snapshot {
     let stored = try JSONSerialization.jsonObject(with: bytes) as? [String: Any] ?? [:]
@@ -261,6 +262,11 @@ struct Snapshot: Codable, Sendable {
       defaults["photoAdjustments"] = bounded
     } else {
       defaults["photoAdjustments"] = [String: Any]()
+    }
+    if let zones = stored["worldClockZones"] as? [String] {
+      defaults["worldClockZones"] = WorldCity.normalized(zones)
+    } else {
+      defaults["worldClockZones"] = WorldCity.defaults
     }
     return try JSONDecoder().decode(
       Snapshot.self, from: JSONSerialization.data(withJSONObject: defaults))
