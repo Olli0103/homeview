@@ -353,10 +353,12 @@ struct HomeGrid: View {
       }
       HStack(spacing: 10) {
         Button {
-          model.route = .camera(0)
+          model.route = .camera(2)
         } label: {
-          MockCameraScene(index: 0).clipShape(RoundedRectangle(cornerRadius: 34))
-        }.accessibilityLabel("Front door camera").accessibilityIdentifier("grid.camera")
+          MockCameraScene(index: 2)
+            .overlay(alignment: .topTrailing) { DemoCameraBadge().padding(10) }
+            .clipShape(RoundedRectangle(cornerRadius: 34))
+        }.accessibilityLabel("Living room demo camera").accessibilityIdentifier("grid.camera")
         tile("homekit", "", "", false) { model.route = .personal }
         tile("sun.max.fill", "Good Morning", "Scene", model.data.home.lastScene == "Good Morning") {
           model.command(.scene("Good Morning"))

@@ -188,19 +188,19 @@ final class HomeViewUITests: XCTestCase {
   }
   func testHomePrismMotionStopsWithReduceMotion() {
     launch(["--face","Home Modular","--animation-test"])
-    let moving=homePrismPixels(viewportBytes("home-prism-moving-start"))
+    let moving=viewportPixels(viewportBytes("home-prism-moving-start"))
     Thread.sleep(forTimeInterval:1.5)
-    XCTAssertNotEqual(moving,homePrismPixels(viewportBytes("home-prism-moving-later")))
+    XCTAssertNotEqual(moving,viewportPixels(viewportBytes("home-prism-moving-later")))
     app.terminate()
     launch(["--face","Home Modular","--animation-test","--reduce-motion"])
-    let frozen=homePrismPixels(viewportBytes("home-prism-reduced-start"))
+    let frozen=viewportPixels(viewportBytes("home-prism-reduced-start"))
     Thread.sleep(forTimeInterval:1.5)
-    XCTAssertEqual(frozen,homePrismPixels(viewportBytes("home-prism-reduced-later")))
+    XCTAssertEqual(frozen,viewportPixels(viewportBytes("home-prism-reduced-later")))
   }
   func testHomePrismNightHasNoBlueGlassLeak() {
     launch(["--face","Home Modular"])
     tap("nav.controls");tap("controls.night");tap("nav.faces")
-    let pixels=homePrismPixels(viewportBytes("home-prism-night"))
+    let pixels=viewportPixels(viewportBytes("home-prism-night"))
     var lit=0,wrongColor=0
     for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
       lit+=1
@@ -209,11 +209,12 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertGreaterThan(lit,100)
     XCTAssertEqual(wrongColor,0,"Native glass must respect the monochrome night treatment")
   }
-  private func homePrismPixels(_ png:Data) -> Data {
+  private func viewportPixels(_ png:Data,inset:Double=0.1) -> Data {
     let image=UIImage(data:png)!.cgImage!
-    // Predeclared inner 80%: no host chrome, rounded viewport edges or toolbar.
-    let crop=image.cropping(to:CGRect(x:Double(image.width)*0.1,y:Double(image.height)*0.1,
-      width:Double(image.width)*0.8,height:Double(image.height)*0.8).integral)!
+    // Prism motion samples the inner 80%; camera night checks the whole viewport,
+    // including root-owned banners and toasts. Host chrome is never in this PNG.
+    let crop=image.cropping(to:CGRect(x:Double(image.width)*inset,y:Double(image.height)*inset,
+      width:Double(image.width)*(1-2*inset),height:Double(image.height)*(1-2*inset)).integral)!
     var bytes=[UInt8](repeating:0,count:crop.width*crop.height*4)
     bytes.withUnsafeMutableBytes {
       let context=CGContext(data:$0.baseAddress,width:crop.width,height:crop.height,
@@ -537,13 +538,39 @@ final class HomeViewUITests: XCTestCase {
   }
   func testCameraGridDetailAndTalkbackAreLocal() {
     launch(["--page", "Cameras"])
+    viewportShot("camera-demo-four-stills")
     tap("camera.0")
+    XCTAssertEqual(app.descendants(matching:.any)["camera.demo.status"].label,"Demo still")
+    XCTAssertEqual(app.staticTexts["camera.time"].label,"10:09")
+    viewportShot("camera-demo-front-door-still")
     shot("UI34-camera-detail")
     tap("camera.talk")
     XCTAssertTrue(
       app.staticTexts["Mock talkback active · No microphone used"].waitForExistence(timeout: 3))
     tap("camera.grid")
     XCTAssertTrue(app.buttons["camera.0"].waitForExistence(timeout: 3))
+    tap("camera.grid.size")
+    XCTAssertTrue(app.buttons["camera.8"].exists)
+    viewportShot("camera-demo-nine-stills")
+    tap("camera.2")
+    XCTAssertEqual(app.descendants(matching:.any)["camera.demo.status"].label,"Demo still")
+    viewportShot("camera-demo-living-room-still")
+  }
+  func testCameraDemoNightAndOfflineNeverBecomeLive() {
+    launch(["--face","Home Camera"])
+    viewportShot("camera-demo-face-four-stills")
+    tap("nav.controls");tap("controls.night");tap("controls.online");tap("nav.faces")
+    tap("camera.0")
+    XCTAssertEqual(app.descendants(matching:.any)["camera.demo.status"].label,"Offline · Demo still")
+    XCTAssertTrue(app.staticTexts["Mock camera unavailable"].exists)
+    let pixels=viewportPixels(viewportBytes("camera-demo-night-offline"),inset:0)
+    var lit=0,wrongColor=0
+    for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+      lit+=1
+      if Double(pixels[i+1])>Double(pixels[i])*0.4 || Double(pixels[i+2])>Double(pixels[i])*0.4 { wrongColor+=1 }
+    }
+    XCTAssertGreaterThan(lit,100)
+    XCTAssertEqual(wrongColor,0,"Generated stills must respect the same monochrome night treatment")
   }
   func testCallAcceptAndEndWithoutNetwork() {
     launch(["--page", "FaceTime"])
@@ -594,6 +621,10 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
     tap("thermostat.up")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label,"69°")
+    launch(["--page","Home"])
+    tap("grid.camera")
+    XCTAssertTrue(app.staticTexts["Living Room"].exists)
+    XCTAssertEqual(app.descendants(matching:.any)["camera.demo.status"].label,"Demo still")
   }
   func testNativeSystemAlarmSchedulesAndCancelsOnSimulator() {
     launch(["--page", "Settings"])
