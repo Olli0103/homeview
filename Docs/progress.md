@@ -62,3 +62,15 @@ Raster/Icons und Wetteransicht. Technische Tests sind keine visuelle Abnahme.
 Im [ersten Paket](iteration-20261017.md) wurden [BASE-01, #1](https://github.com/Olli0103/homeview/issues/1) und [PHOTO-02, #12](https://github.com/Olli0103/homeview/issues/12) abgeschlossen, der Datenschutz und der eigene Fade-Verlauf weitergebaut. Seine 150 Foto-/Datenschutz-Ausführungen und der separate Fade-Nachweis sind historische, eigene Quellstände und werden nicht als neue aktuelle Tests gezählt.
 
 Apple Home bleibt konstruktionsseitig gesperrt. Kein echtes Gerät wurde geschaltet oder entdeckt. Keine pauschale Original-Parität, physische Sprach-/Kamera-/Energie- oder vollständige Bedienhilfenabnahme.
+
+## Eigenständige Wetter-App nach Original UI20
+
+`7894c76` trennt Wetter-App und Wetter-Zifferblatt: zentrierter Ort, dünne Temperatur
+und Conditions-Karte statt wiederverwendeter Uhransicht mit Zusatzheader. Der
+bestehende öffentliche Adapter liefert die Stundenfolge. 99 Modelltests, acht
+gezielte UI-Fälle je iPad/iPhone und fünf SDK-Builds bestanden; nach Commit erneut
+99 Modelltests. Null UI-Fehler/Skips/Runtime-Warnungen. 111 gebundene Quellen, SHA
+`1638501683b748096ab6368570f2753ae13c654131188a02315375c45b689762`.
+[Eigene Bilder und offene Abweichungen](weather-app.md). Kein neuer Vollsuite-PASS
+und kein Original-PASS: Wolken/Glas, Wetterübergänge und weitere Originalzustände
+bleiben offen. #21 bleibt offen; keine Smart-Home-Eingriffe.
