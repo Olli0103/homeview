@@ -80,3 +80,15 @@ Favoriten und Begrüßung nach UI16. 95 Modelltests, ein gezielter UI-Fall je iP
 fünf SDK-Builds und erneut 95 Modelltests nach Commit bestanden. [Bilder, Herkunft und
 verbleibende Abweichungen](app-icons.md). Kein Original-PASS und keine Schließung von
 #3/#9. Quelle 110 Dateien, SHA `5b9c4497bcd8b4d15e0d21461d3e342c1bbcede75826dfa56acc6a84419cff9b`.
+
+## Eigenständige Wetter-App nach Original UI20
+
+`7894c76` trennt Wetter-App und Wetter-Zifferblatt: zentrierter Ort, dünne Temperatur
+und Conditions-Karte statt wiederverwendeter Uhransicht mit Zusatzheader. Der
+bestehende öffentliche Adapter liefert die Stundenfolge. 99 Modelltests, acht
+gezielte UI-Fälle je iPad/iPhone und fünf SDK-Builds bestanden; nach Commit erneut
+99 Modelltests. Null UI-Fehler/Skips/Runtime-Warnungen. 111 gebundene Quellen, SHA
+`1638501683b748096ab6368570f2753ae13c654131188a02315375c45b689762`.
+[Eigene Bilder und offene Abweichungen](weather-app.md). Kein neuer Vollsuite-PASS
+und kein Original-PASS: Wolken/Glas, Wetterübergänge und weitere Originalzustände
+bleiben offen. #21 bleibt offen; keine Smart-Home-Eingriffe.
