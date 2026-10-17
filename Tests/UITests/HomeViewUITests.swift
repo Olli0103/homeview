@@ -51,7 +51,7 @@ final class HomeViewUITests: XCTestCase {
   }
   func testPersonalMediaLayoutPersistsOnlyForItsProfile() {
     let id=UUID().uuidString
-    launch(["--persistence-test",id,"--reset-test-store"])
+    launch(["--persistence-test",id,"--reset-test-store","--face","Home Modular Clock"])
     tap("nav.apps")
     app.buttons["personal.profile"].tap();tap("profile.Alex")
     app.buttons["personal.profile"].press(forDuration:1)
@@ -87,6 +87,65 @@ final class HomeViewUITests: XCTestCase {
     tap("personal.podcast.play")
     tap("personal.podcast.open")
     XCTAssertTrue(app.buttons["podcast.play"].waitForExistence(timeout:5))
+  }
+  func testPersonalWeatherGridScrollKeepsSourceLayoutAndOpensWeather() {
+    launch(["--face","Home Camera"])
+    tap("nav.apps");app.buttons["personal.profile"].tap();tap("profile.Alex")
+    app.buttons["personal.profile"].press(forDuration:1)
+    tap("personal.edit");tap("personal.layout.weather");tap("personal.editor.done")
+    let grid=app.scrollViews["personal.weather.layout"]
+    XCTAssertTrue(grid.waitForExistence(timeout:5))
+    XCTAssertTrue(app.buttons["app.Music"].exists)
+    XCTAssertTrue(app.buttons["app.Podcasts"].exists)
+    XCTAssertTrue(app.buttons["app.Safari"].exists)
+    XCTAssertTrue(app.buttons["app.FaceTime"].exists)
+    XCTAssertEqual(app.staticTexts["personal.weather.temperature"].label,"54°")
+    XCTAssertTrue(app.staticTexts["personal.weather.source"].label.hasPrefix("Demo"))
+    viewportShot("personal-ui41-weather-grid-top")
+    grid.swipeUp()
+    XCTAssertTrue(grid.exists,"Scrolling content must not switch to the global app drawer")
+    XCTAssertTrue(app.buttons["app.World Clock"].exists)
+    viewportShot("personal-ui41-weather-grid-scrolled")
+    grid.swipeDown()
+    tap("personal.weather.open")
+    XCTAssertTrue(app.staticTexts["weather.app.city"].waitForExistence(timeout:5))
+  }
+  func testViewportEdgeGesturesOpenTheirActualDestinations() {
+    launch(["--face","Home Camera"])
+    func drag(_ x:Double,_ y:Double,_ endX:Double,_ endY:Double) {
+      let frame=app.otherElements["reference.viewport"].frame
+      let origin=app.coordinate(withNormalizedOffset:.zero)
+      origin.withOffset(CGVector(dx:frame.minX+frame.width*x,dy:frame.minY+frame.height*y))
+        .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:frame.minX+frame.width*endX,dy:frame.minY+frame.height*endY)))
+    }
+    drag(0.5,0.985,0.5,0.3)
+    viewportShot("gesture-bottom-opens-personal")
+    XCTAssertTrue(app.otherElements["personal.photos.layout"].waitForExistence(timeout:5))
+    tap("nav.faces")
+    drag(0.4,0.06,0.4,0.5)
+    viewportShot("gesture-top-left-opens-assistant")
+    XCTAssertTrue(app.textFields["assistant.input"].waitForExistence(timeout:5))
+    tap("nav.faces")
+    drag(0.85,0.06,0.85,0.5)
+    XCTAssertTrue(app.buttons["controls.night"].waitForExistence(timeout:5))
+    tap("nav.faces")
+    drag(0.85,0.5,0.15,0.5)
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+  }
+  func testPersonalWeatherWidgetDoesNotInventUnavailableData() {
+    launch(["--page","Settings","--weather-fail"])
+    let connect=app.buttons["connect.Weather"]
+    for _ in 0..<18 where !connect.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    connect.tap()
+    expectation(for:NSPredicate(format:"label CONTAINS %@","Weather unavailable"),evaluatedWith:app.staticTexts["connection.status.Weather"])
+    waitForExpectations(timeout:5)
+    tap("nav.faces");tap("nav.apps")
+    app.buttons["personal.profile"].tap();tap("profile.Alex")
+    app.buttons["personal.profile"].press(forDuration:1)
+    tap("personal.edit");tap("personal.layout.weather");tap("personal.editor.done")
+    XCTAssertEqual(app.staticTexts["personal.weather.temperature"].label,"—")
+    XCTAssertTrue(app.staticTexts["personal.weather.source"].label.contains("unavailable"))
+    viewportShot("personal-weather-widget-unavailable-no-demo")
   }
 
   func testThermostatWritesAndScenePropagatesToDetail() {

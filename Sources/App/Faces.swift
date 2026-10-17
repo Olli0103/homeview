@@ -150,7 +150,7 @@ struct ModularFace: View {
     case "Music":
       VStack(alignment: .leading, spacing: 6) {
         HStack(alignment: .top) {
-          Image("AlbumArt").resizable().scaledToFill().frame(width: 130, height: 130).clipped()
+          DemoAlbumCover().frame(width: 130, height: 130).clipped()
             .clipShape(RoundedRectangle(cornerRadius: 8))
           Spacer()
           Image(systemName: "music.note").foregroundStyle(.white).font(.system(size: 31))

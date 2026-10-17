@@ -406,7 +406,7 @@ struct MusicView: View {
           browse = false
         } label: {
           HStack(spacing: 20) {
-            Image("AlbumArt").resizable().frame(width: 78, height: 78).clipShape(
+            DemoAlbumCover().frame(width: 78, height: 78).clipShape(
               RoundedRectangle(cornerRadius: 12))
             VStack(alignment: .leading, spacing: 6) {
               Text(Fixtures.songs[i]).font(.system(size: 23, weight: .semibold))
@@ -421,7 +421,7 @@ struct MusicView: View {
   }
   private var player: some View {
     VStack(spacing: 17) {
-      Image("AlbumArt").resizable().scaledToFill().frame(width: 270, height: 270).clipped()
+      DemoAlbumCover().frame(width: 270, height: 270).clipped()
         .clipShape(RoundedRectangle(cornerRadius: 18)).shadow(radius: 20)
       HStack {
         VStack(alignment: .leading, spacing: 5) {
