@@ -1074,6 +1074,77 @@ final class HomeViewUITests: XCTestCase {
     tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "68°")
   }
+  func openWeather() {
+    drawer(); tap("app.Weather")
+    XCTAssertTrue(app.staticTexts["weather.source"].waitForExistence(timeout:5))
+    XCTAssertLessThan(app.staticTexts["weather.source"].frame.maxY,
+      app.otherElements["reference.viewport"].frame.maxY - 8,"Weather source must be visibly inside the display")
+  }
+  func testWeatherMissingValuesRemainUnknownAndUnitsAreExplicit() {
+    launch(["--page","Settings","--weather-missing"])
+    connectService("Weather")
+    let units = app.segmentedControls["weather.units"]
+    let celsius = units.buttons["°C / km/h"]
+    for _ in 0..<8 where !celsius.isHittable
+      || celsius.frame.maxY > app.otherElements["reference.viewport"].frame.maxY - 45 {
+      app.scrollViews.firstMatch.swipeUp()
+    }
+    celsius.tap()
+    XCTAssertTrue(celsius.isSelected,"The visible Celsius segment must actually be selected")
+    openWeather()
+    XCTAssertEqual(app.staticTexts["weather.temperature"].label,"—")
+    XCTAssertTrue(app.staticTexts["weather.source"].label.contains("°C / km/h"),app.staticTexts["weather.source"].label)
+    XCTAssertTrue(app.staticTexts["Condition unavailable"].exists)
+    XCTAssertTrue(app.staticTexts["Sunrise — · AQI not supplied"].exists)
+    let sunrise = app.staticTexts["Sunrise — · AQI not supplied"].frame
+    let viewport = app.otherElements["reference.viewport"].frame
+    XCTAssertGreaterThan(sunrise.minX,viewport.minX + viewport.width * 0.07)
+    XCTAssertLessThan(sunrise.maxY,viewport.maxY - 8)
+    shot("weather-missing-metrics-no-fabricated-aqi")
+  }
+  func testWeatherFailedConnectionDoesNotShowDemoTemperature() {
+    launch(["--page","Settings","--weather-fail"])
+    let button = app.buttons["connect.Weather"]
+    for _ in 0..<18 where !button.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    button.tap()
+    let status = app.staticTexts["connection.status.Weather"]
+    expectation(for:NSPredicate(format:"label CONTAINS %@","Weather unavailable"),evaluatedWith:status)
+    waitForExpectations(timeout:5)
+    openWeather()
+    XCTAssertEqual(app.staticTexts["weather.temperature"].label,"—")
+    XCTAssertTrue(app.staticTexts["weather.source"].label.contains("unavailable"))
+    XCTAssertFalse(app.staticTexts["54°"].exists)
+    shot("weather-offline-without-demo-fallback")
+  }
+  func testWeatherStaleNightAndCachedOfflineAreLabeled() {
+    launch(["--page","Settings","--weather-stale-night"])
+    connectService("Weather");openWeather()
+    XCTAssertTrue(app.staticTexts["weather.source"].label.hasPrefix("Stale reading"))
+    shot("weather-stale-night-source-time")
+    launch(["--page","Settings","--weather-cached-failure"])
+    connectService("Weather")
+    let update=app.buttons["weather.update"]
+    for _ in 0..<8 where !update.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    update.tap()
+    let status = app.staticTexts["connection.status.Weather"]
+    expectation(for:NSPredicate(format:"label CONTAINS %@","Weather unavailable"),evaluatedWith:status)
+    waitForExpectations(timeout:5)
+    openWeather()
+    XCTAssertEqual(app.staticTexts["weather.temperature"].label,"55°")
+    XCTAssertTrue(app.staticTexts["weather.source"].label.hasPrefix("Offline"))
+    shot("weather-offline-last-reading-not-current")
+  }
+  func testWeatherRainSnowAndDemoHaveDistinctSources() {
+    launch(["--page","Weather"])
+    XCTAssertTrue(app.staticTexts["weather.source"].label.hasPrefix("Demo"))
+    shot("weather-explicit-demo-source")
+    for (flag,label) in [("--weather-rain","Rain"),("--weather-snow","Snow")] {
+      launch(["--page","Settings",flag]); connectService("Weather");openWeather()
+      XCTAssertTrue(app.staticTexts[label].exists)
+      XCTAssertFalse(app.staticTexts["weather.source"].label.hasPrefix("Demo"))
+      shot("weather-effect-"+label.lowercased())
+    }
+  }
   func viewportBytes(_ name: String) -> Data {
     let frame = app.otherElements["reference.viewport"].frame
     let screenshot = app.screenshot().image.cgImage!

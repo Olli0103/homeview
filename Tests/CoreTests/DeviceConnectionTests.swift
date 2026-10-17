@@ -22,6 +22,9 @@ final class DeviceConnectionTests: XCTestCase {
     var ignoreReminderWrites = false
     var reminderItems = [DeviceReminder(id: "private", title: "Synthetic private reminder", completed: false)]
     var eventReads = 0
+    var weatherReply: CheckedContinuation<WeatherReading, any Error>?
+    var weatherValue: WeatherReading?
+    var delayWeather = false
     func authorized(_ kind: DataConnection) -> Bool { hasPermission }
     func authorizePersonal(_ kind: DataConnection) async throws {
       permissionRequests += 1
@@ -83,6 +86,10 @@ final class DeviceConnectionTests: XCTestCase {
     var musicPlaying: Bool { false }
     var musicTime: Double { 0 }
     func weather(_ city: String) async throws -> WeatherReading {
+      if delayWeather {
+        return try await withCheckedThrowingContinuation { weatherReply = $0; onStart?() }
+      }
+      if let weatherValue { return weatherValue }
       throw CocoaError(.featureUnsupported)
     }
     func unlock() async -> Bool {
@@ -94,6 +101,48 @@ final class DeviceConnectionTests: XCTestCase {
       }
       return unlockGranted
     }
+  }
+
+  func testWeatherNeverFallsBackToDemoAfterFailedConnection() async {
+    let provider = Provider(); let session = DeviceConnections(provider: provider)
+    XCTAssertTrue(session.weatherDemo)
+    await session.connect(.weather)
+    XCTAssertFalse(session.weatherDemo); XCTAssertEqual(session.weatherTemperature,"—")
+    XCTAssertTrue(session.weatherSource(at: Date()).contains("unavailable"))
+    session.disconnect(.weather)
+    XCTAssertTrue(session.weatherDemo)
+  }
+  func testWeatherChangedCityDiscardsDelayedResponseAndDisconnectInvalidatesIt() async {
+    for changeCity in [true,false] {
+      let provider = Provider(); provider.delayWeather = true
+      let session = DeviceConnections(provider: provider)
+      let started = expectation(description:"weather started")
+      provider.onStart = { started.fulfill() }
+      let task = Task { await session.connect(.weather) }
+      await fulfillment(of:[started],timeout:2)
+      if changeCity { session.city = "Paris" } else { session.disconnect(.weather) }
+      provider.weatherReply?.resume(returning: WeatherReading(city:"Berlin",temperature:70,high:70,low:50,humidity:50,wind:10,code:0,sunset:nil,utcOffset:0,observedAt:Date()))
+      await task.value
+      XCTAssertNil(session.weather); XCTAssertFalse(session.enabled.contains(.weather))
+      XCTAssertFalse(session.busy.contains(.weather))
+      XCTAssertEqual(session.weatherDemo,!changeCity)
+    }
+  }
+  func testWeatherOfflineRetainsOnlySameCityReadingWithExplicitStatus() async {
+    let provider = Provider()
+    provider.weatherValue = WeatherReading(city:"Berlin",temperature:68,high:70,low:50,humidity:50,wind:10,code:0,sunset:nil,utcOffset:0,observedAt:Date())
+    let session = DeviceConnections(provider:provider)
+    await session.connect(.weather)
+    session.weatherUnits = .celsius
+    XCTAssertEqual(session.weatherTemperature,"20°")
+    provider.weatherValue = nil
+    await session.connect(.weather)
+    XCTAssertEqual(session.weatherTemperature,"20°")
+    XCTAssertTrue(session.weatherSource(at:Date()).hasPrefix("Offline"))
+    session.city = "Paris"
+    XCTAssertEqual(session.weatherTemperature,"—")
+    await session.connect(.weather)
+    XCTAssertNil(session.weather)
   }
 
   func testReminderReadOnlySnapshotBlocksBothMutationPathsInTheModel() async {

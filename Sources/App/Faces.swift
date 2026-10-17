@@ -171,20 +171,18 @@ struct ModularFace: View {
       } label: {
         VStack(alignment: .leading, spacing: 4) {
           HStack(spacing: 3) {
-            Text(model.connections.weather?.city ?? "San Francisco").font(
+            Text(model.connections.weatherCity).font(
               .system(size: 27, weight: .semibold))
             Image(systemName: "location.fill").font(.system(size: 15))
           }.foregroundStyle(.white)
-          Text(model.connections.weather.map { "\(Int($0.temperature.rounded()))°" } ?? "54°").font(
+          Text(model.connections.weatherTemperature).font(
             .system(size: 122, weight: .medium, design: .rounded)
           ).tracking(-8)
-          Image(systemName: model.connections.weather?.symbol ?? "cloud.sun.fill").font(
+          Image(systemName: model.connections.weatherSymbol).font(
             .system(size: 29))
-          Text(model.connections.weather?.condition ?? "Partly Cloudy").font(.system(size: 23))
+          Text(model.connections.weatherCondition).font(.system(size: 23))
           Text(
-            model.connections.weather.map {
-              "H:\(Int($0.high.rounded()))° L:\(Int($0.low.rounded()))°"
-            } ?? "H:57° L:49°"
+            model.connections.weatherHighLow
           ).font(.system(size: 21))
         }.frame(maxWidth: .infinity, alignment: .leading)
       }.buttonStyle(.plain)
@@ -375,24 +373,23 @@ struct PhotoFace: View {
 }
 struct WeatherFace: View {
   @Environment(AppModel.self) private var model
+  var inApp = false
   var body: some View {
-    VStack(alignment: .leading, spacing: 18) {
+    VStack(alignment: .leading, spacing: inApp ? 14 : 18) {
       HStack(alignment: .top) {
         VStack(alignment: .leading, spacing: 2) {
           Label(
-            model.connections.weather?.condition ?? "Partly Cloudy",
-            systemImage: model.connections.weather?.symbol ?? "cloud.sun.fill")
+            model.connections.weatherCondition,
+            systemImage: model.connections.weatherSymbol)
           Text(
-            model.connections.weather.map {
-              "H:\(Int($0.high.rounded()))° L:\(Int($0.low.rounded()))°"
-            } ?? "H:57° L:49°")
+            model.connections.weatherHighLow)
         }.font(.system(size: 28, weight: .medium))
         Spacer(minLength: 0)
         Text(model.clock, style: .time).font(.system(size: 47, weight: .semibold))
           .environment(\.timeZone, model.displayTimeZone)
       }
-      Text(model.connections.weather.map { "\(Int($0.temperature.rounded()))°" } ?? "54°").font(
-        .system(size: model.data.far ? 260 : 224, weight: .regular)
+      Text(model.connections.weatherTemperature).accessibilityIdentifier("weather.temperature").font(
+        .system(size: inApp ? 170 : model.data.far ? 260 : 224, weight: .regular)
       )
       .tracking(-10).foregroundStyle(
         LinearGradient(
@@ -404,46 +401,59 @@ struct WeatherFace: View {
       Spacer(minLength: 0)
       if !model.data.far {
         HStack(alignment: .top, spacing: 8) {
-          detail("sunset", model.connections.weather?.sunsetLabel ?? "7:32 PM", "Sunset")
+          detail("sunset", model.connections.weatherDemo ? "7:32 PM" : model.connections.weather?.sunsetLabel ?? "—", "Sunset")
           detail(
-            "wind", model.connections.weather.map { "\(Int($0.wind.rounded())) mph" } ?? "7 mph",
+            "wind", model.connections.weatherUnits.wind(model.connections.weatherDemo ? 7 : model.connections.weather?.wind),
             "Wind")
           detail(
-            "humidity", model.connections.weather.map { "\(Int($0.humidity.rounded()))%" } ?? "76%",
+            "humidity", humidity,
             "Humidity")
-          detail("aqi.medium", model.connections.weather == nil ? "21" : "—", "AQI")
-        }.padding(.bottom, 4)
+          detail("aqi.medium", "—", "AQI")
+        }.padding(.bottom, inApp ? 44 : 4)
       }
-    }.padding(45).foregroundStyle(.white).background(WeatherBackdrop())
-      .overlay(alignment: .bottomTrailing) {
-        if let weather = model.connections.weather {
-          HStack(spacing: 4) {
-            Text(weather.observedAt, style: .time)
+    }.padding(inApp ? 30 : 45).foregroundStyle(.white).background(WeatherBackdrop(
+      reading: model.connections.weather, demo: model.connections.weatherDemo))
+    .overlay(alignment: .bottomLeading) {
+      VStack(alignment: .leading, spacing: 2) {
+        Text(model.connections.weatherSource(at: model.now)).accessibilityIdentifier("weather.source")
+        if inApp && !model.connections.weatherDemo {
+          HStack {
+            Text("Sunrise \(model.connections.weather?.sunLabel(model.connections.weather?.sunrise) ?? "—") · AQI not supplied")
             Link("Open-Meteo", destination: URL(string: "https://open-meteo.com/")!)
-          }.font(.system(size: 12)).foregroundStyle(.white.opacity(0.75)).padding(12)
+          }
         }
-      }
+      }.font(.system(size: 11)).foregroundStyle(.white.opacity(0.85))
+        .padding(.horizontal,60).padding(.bottom,inApp ? 18 : 10)
+    }
+  }
+  private var humidity: String {
+    guard let value = WeatherReading.valid(model.connections.weatherDemo ? 76 : model.connections.weather?.humidity, in: 0...100) else { return "—" }
+    return "\(Int(value.rounded()))%"
   }
   private func detail(_ s: String, _ value: String, _ label: String) -> some View {
     VStack(spacing: 3) {
-      Image(systemName: s).font(.system(size: 40, weight: .light)).frame(height: 52)
-      Text(value).font(.system(size: 27, weight: .medium)).lineLimit(1).minimumScaleFactor(0.7)
-      Text(label).font(.system(size: 27)).lineLimit(1).minimumScaleFactor(0.7)
+      Image(systemName: s).font(.system(size: inApp ? 32 : 40, weight: .light)).frame(height: inApp ? 40 : 52)
+      Text(value).font(.system(size: inApp ? 22 : 27, weight: .medium)).lineLimit(1).minimumScaleFactor(0.7)
+      Text(label).font(.system(size: inApp ? 21 : 27)).lineLimit(1).minimumScaleFactor(0.7)
     }.frame(maxWidth: .infinity)
   }
 }
 /// Native illustration, not an extracted Apple weather animation.
 private struct WeatherBackdrop: View {
+  let reading: WeatherReading?
+  let demo: Bool
   var body: some View {
     MotionTimeline { time in
       ZStack {
         LinearGradient(
-          colors: [
+          colors: reading?.isDay == false ? [.indigo, Color(red: 0.02, green: 0.07, blue: 0.18)] : [
             Color(red: 0.47, green: 0.66, blue: 0.78), Color(red: 0.21, green: 0.51, blue: 0.79),
             Color(red: 0.42, green: 0.66, blue: 0.88),
           ], startPoint: .top, endPoint: .bottom)
         Canvas { context, size in
-          for i in 0..<27 {
+          let cloudy = ["Partly Cloudy","Overcast","Fog","Rain","Snow","Thunderstorms"].contains(reading?.condition ?? "")
+          let clouds = demo ? 27 : Int(((WeatherReading.valid(reading?.cloudCover, in: 0...100) ?? (cloudy ? 60 : 0)) / 100 * 27).rounded())
+          for i in 0..<clouds {
             let x = Double(i % 9) / 8 * size.width + sin(time * 0.13 + Double(i)) * 22
             let y = Double(i / 9) * 66 + sin(Double(i) * 3.7) * 35
             let w = 85 + Double(i % 5) * 28
@@ -452,6 +462,21 @@ private struct WeatherBackdrop: View {
               with: .color(.white.opacity(0.24 + Double(i % 3) * 0.12)))
           }
         }.blur(radius: 17)
+        if reading?.condition == "Rain" || reading?.condition == "Thunderstorms" || reading?.condition == "Snow" {
+          Canvas { context, size in
+            let snow = reading?.condition == "Snow"
+            for i in 0..<35 {
+              let x = (Double(i) * 83.7).truncatingRemainder(dividingBy: max(1,size.width))
+              let y = (Double(i) * 47 + time * (snow ? 18 : 95)).truncatingRemainder(dividingBy: max(1,size.height))
+              context.fill(Path(ellipseIn: CGRect(x: x,y: y,width: snow ? 4 : 1.5,height: snow ? 4 : 13)),
+                with: .color(.white.opacity(0.20)))
+            }
+          }.allowsHitTesting(false).accessibilityHidden(true)
+        }
+        if let temperature = reading?.temperature, temperature <= 32 {
+          RoundedRectangle(cornerRadius: 22).stroke(.white.opacity(0.22),lineWidth: 10)
+            .blur(radius: 7).allowsHitTesting(false).accessibilityHidden(true)
+        }
       }
     }
   }

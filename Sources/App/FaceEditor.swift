@@ -73,10 +73,10 @@ struct ComplicationContent: View {
         if family != .inline { Image(systemName: "globe").foregroundStyle(.cyan) }
         Text(model.dateLabel("HH:mm")).monospacedDigit()
       case .weather:
-        Image(systemName: model.connections.weather?.symbol ?? "cloud.sun.fill").foregroundStyle(
+        Image(systemName: model.connections.weatherSymbol).foregroundStyle(
           .cyan)
-        Text(model.connections.weather.map { "\(Int($0.temperature.rounded()))°" } ?? "54°")
-        if !family.isCompact { Text(model.connections.weather?.condition ?? "Partly Cloudy") }
+        Text(model.connections.weatherTemperature)
+        if !family.isCompact { Text(model.connections.weatherCondition) }
       case .timer:
         Image(systemName: "timer").foregroundStyle(accent)
         Text(model.data.timers.first?.display(at: model.now) ?? "No timers").monospacedDigit()
