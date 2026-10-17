@@ -64,6 +64,62 @@ final class HomeViewUITests: XCTestCase {
     tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "66°")
   }
+  func testHomeGlassControlsRemainInteractive() {
+    launch(["--face", "Home Modular"])
+    shot("prism-home-modular-reference")
+    let thermostat=app.buttons["home.thermostat"]
+    XCTAssertTrue(thermostat.waitForExistence(timeout:5))
+    let frame=thermostat.frame
+    XCTAssertTrue(app.otherElements["reference.viewport"].frame.contains(frame))
+    // XCTest's AX isHittable report is false even on the baseline.
+    // Send a real screen touch instead of relying on that AX report,
+    // then require the actual destination and resulting control values.
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:frame.midX,dy:frame.midY)).tap()
+    XCTAssertTrue(app.staticTexts["thermostat.value"].waitForExistence(timeout:5))
+    tap("thermostat.up")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label, "69°")
+    tap("nav.faces")
+    tap("scene.goodnight")
+    tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label, "66°")
+  }
+  func testHomePrismMotionStopsWithReduceMotion() {
+    launch(["--face","Home Modular","--animation-test"])
+    let moving=homePrismPixels(viewportBytes("home-prism-moving-start"))
+    Thread.sleep(forTimeInterval:1.5)
+    XCTAssertNotEqual(moving,homePrismPixels(viewportBytes("home-prism-moving-later")))
+    app.terminate()
+    launch(["--face","Home Modular","--animation-test","--reduce-motion"])
+    let frozen=homePrismPixels(viewportBytes("home-prism-reduced-start"))
+    Thread.sleep(forTimeInterval:1.5)
+    XCTAssertEqual(frozen,homePrismPixels(viewportBytes("home-prism-reduced-later")))
+  }
+  func testHomePrismNightHasNoBlueGlassLeak() {
+    launch(["--face","Home Modular"])
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    let pixels=homePrismPixels(viewportBytes("home-prism-night"))
+    var lit=0,wrongColor=0
+    for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+      lit+=1
+      if Double(pixels[i+1])>Double(pixels[i])*0.4 || Double(pixels[i+2])>Double(pixels[i])*0.4 { wrongColor+=1 }
+    }
+    XCTAssertGreaterThan(lit,100)
+    XCTAssertEqual(wrongColor,0,"Native glass must respect the monochrome night treatment")
+  }
+  private func homePrismPixels(_ png:Data) -> Data {
+    let image=UIImage(data:png)!.cgImage!
+    // Predeclared inner 80%: no host chrome, rounded viewport edges or toolbar.
+    let crop=image.cropping(to:CGRect(x:Double(image.width)*0.1,y:Double(image.height)*0.1,
+      width:Double(image.width)*0.8,height:Double(image.height)*0.8).integral)!
+    var bytes=[UInt8](repeating:0,count:crop.width*crop.height*4)
+    bytes.withUnsafeMutableBytes {
+      let context=CGContext(data:$0.baseAddress,width:crop.width,height:crop.height,
+        bitsPerComponent:8,bytesPerRow:crop.width*4,space:CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)!
+      context.draw(crop,in:CGRect(x:0,y:0,width:crop.width,height:crop.height))
+    }
+    return Data(bytes)
+  }
   func testOfflineWriteFailsWithoutChangingTemperature() {
     launch()
     tap("nav.controls")

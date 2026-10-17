@@ -38,6 +38,7 @@ struct HomeModularFace: View {
                 Text("\(model.data.home.temperature)").font(
                   .system(size: 164, weight: .medium, design: .rounded)
                 ).frame(maxWidth: .infinity, maxHeight: .infinity)
+                  .contentShape(Rectangle())
               }.accessibilityIdentifier("home.thermostat")
               HStack(alignment: .center) {
                 RoundButton(
@@ -62,8 +63,9 @@ struct HomeModularFace: View {
           VStack(spacing: 10) {
             AnalogClock(
               date: model.clock, timeZone: model.displayTimeZone, tint: .white, numbered: false
-            ).background(
-              .white.opacity(0.08), in: Circle())
+            ).background {
+              HomeGlassSurface(shape:Circle()).allowsHitTesting(false).accessibilityHidden(true)
+            }
             Button {
               model.command(.scene("Good Night"))
               model.banner("Good Night · Mock scene applied")

@@ -64,17 +64,36 @@ struct Tile<Content: View>: View {
   var glass = false
   var active = false
   @ViewBuilder var content: Content
-  var body: some View {
+  private var fittedContent: some View {
     content.frame(maxWidth: .infinity, maxHeight: .infinity)
-      .background(
-        glass ? Color.white.opacity(0.17) : active ? Color.lilac : Color(white: 0.9),
-        in: RoundedRectangle(cornerRadius: 34)
-      )
-      .overlay {
-        if glass {
-          RoundedRectangle(cornerRadius: 34).strokeBorder(.white.opacity(0.45), lineWidth: 0.8)
-        }
+  }
+  @ViewBuilder
+  var body: some View {
+    if glass {
+      fittedContent.background {
+        HomeGlassSurface(shape:RoundedRectangle(cornerRadius:34))
+          .allowsHitTesting(false).accessibilityHidden(true)
       }
+    } else {
+      fittedContent.background(active ? Color.lilac : Color(white: 0.9),
+        in: RoundedRectangle(cornerRadius: 34))
+    }
+  }
+}
+/// Public native lens, separate from the controls. visionOS and older Macs use
+/// a material fallback; that fallback is not claimed to have the same optics.
+struct HomeGlassSurface<Surface:InsettableShape>: View {
+  let shape:Surface
+  @ViewBuilder var body: some View {
+    #if os(visionOS)
+    fallback
+    #else
+    if #available(macOS 26.0, *) { Color.clear.glassEffect(.clear,in:shape) }
+    else { fallback }
+    #endif
+  }
+  private var fallback: some View {
+    shape.fill(.ultraThinMaterial).overlay { shape.strokeBorder(.white.opacity(0.45),lineWidth:0.8) }
   }
 }
 struct AnalogClock: View {
@@ -154,47 +173,13 @@ struct AnalogClock: View {
 struct PrismBackground: View {
   var theme = 0
   var body: some View {
-    MotionTimeline { t in
-      ZStack {
-        LinearGradient(
-          colors: theme == 1
-            ? [.teal, .cyan, Color(red: 0.02, green: 0.27, blue: 0.35)]
-            : [
-              Color(red: 0.49, green: 0.47, blue: 0.98), Color(red: 0.13, green: 0.10, blue: 0.57),
-              Color(red: 0.43, green: 0.38, blue: 0.94),
-            ], startPoint: .topLeading, endPoint: .bottomTrailing)
-        Canvas { c, s in
-          for row in -1..<5 {
-            for col in -2..<5 {
-              let x = Double(col) * 174 + Double(row % 2) * 82 + sin(t * 0.14 + Double(row)) * 7
-              let y = Double(row) * 173 + cos(t * 0.12 + Double(col)) * 5
-              let r = CGRect(x: x, y: y, width: 176, height: 176)
-              let points = [
-                CGPoint(x: x, y: y + 30), CGPoint(x: x + 140, y: y),
-                CGPoint(x: x + 176, y: y + 133), CGPoint(x: x + 36, y: y + 176),
-              ]
-              var p = Path()
-              p.addLines(points)
-              p.closeSubpath()
-              c.fill(
-                p,
-                with: .linearGradient(
-                  .init(colors: [.white.opacity(0.47), .white.opacity(0.02), .black.opacity(0.48)]),
-                  startPoint: r.origin, endPoint: .init(x: r.maxX, y: r.maxY)))
-              var fold = Path()
-              fold.addLines([points[0], CGPoint(x: x + 98, y: y + 96), points[2], points[1]])
-              fold.closeSubpath()
-              c.fill(
-                fold,
-                with: .linearGradient(
-                  .init(colors: [.black.opacity(0.46), .white.opacity(0.30), .white.opacity(0.04)]),
-                  startPoint: .init(x: x + 130, y: y), endPoint: .init(x: x + 38, y: y + 173)))
-              c.stroke(p, with: .color(.white.opacity(0.17)), lineWidth: 1.2)
-            }
-          }
-        }
+    GeometryReader { geometry in
+      MotionTimeline { phase in
+        Rectangle().fill(.white).colorEffect(ShaderLibrary.homePrismScene(
+          .float2(Float(geometry.size.width),Float(geometry.size.height)),
+          .float(Float(phase)),.float(Float(theme))))
       }
-    }
+    }.allowsHitTesting(false).accessibilityHidden(true)
   }
 }
 struct ValueAdjuster: View {

@@ -13,7 +13,8 @@ struct AlternateHomeFace: View {
       VStack(spacing: 10) {
         HStack(spacing: 10) {
           AnalogClock(date: model.clock, timeZone: model.displayTimeZone, tint: .white).padding(8)
-            .background(.white.opacity(0.12), in: Circle()).frame(width: 383, height: 383)
+            .background { HomeGlassSurface(shape:Circle()).allowsHitTesting(false).accessibilityHidden(true) }
+            .frame(width: 383, height: 383)
           VStack(spacing: 10) {
             Button {
               model.route = .thermostat
