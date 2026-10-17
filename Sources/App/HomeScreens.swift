@@ -49,7 +49,12 @@ struct PersonalView: View {
           HStack(alignment:.top,spacing:25) {
             appGrid(configuration.apps)
             VStack(alignment:.leading,spacing:8) {
-              LandscapeArt().frame(width:230,height:230).clipShape(RoundedRectangle(cornerRadius:26))
+              LandscapeArt().frame(width:230,height:230)
+                .overlay(alignment:.topTrailing) {
+                  Text("DEMO").font(.system(size:9,weight:.semibold)).foregroundStyle(.white)
+                    .padding(.horizontal,6).padding(.vertical,3)
+                    .background(.black.opacity(0.55),in:Capsule()).padding(10)
+                }.clipShape(RoundedRectangle(cornerRadius:26))
                 .accessibilityLabel("Demo photo album")
               Text("Photos").font(.system(size:17,weight:.medium)).frame(maxWidth:.infinity)
             }.frame(width:230)
