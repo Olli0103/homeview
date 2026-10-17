@@ -16,7 +16,17 @@
     "verify": "Jede F001–F105-Zeile hat einen verlinkten Arbeitspunkt, Status, Zielplattform und einen überprüfbaren Abschluss. Keine blockierte Funktion verschwindet aus der Bilanz.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/1",
-    "issue_number": 1
+    "issue_number": 1,
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-17",
+      "evidence": [
+        "Docs/parity-contract.md",
+        "Docs/function-coverage.json",
+        "Scripts/check_backlog.py"
+      ],
+      "scope": "Reference contract and complete mapping only. No product parity acceptance."
+    }
   },
   {
     "key": "BASE-02",
@@ -35,7 +45,8 @@
     "verify": "Ein Zustandskatalog verlinkt für jedes Abnahmeszenario Quelle, Datum, Geometrie und Unsicherheit. Fehlende Originale bleiben als Lücke erkennbar.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/2",
-    "issue_number": 2
+    "issue_number": 2,
+    "state": "open"
   },
   {
     "key": "PUB-01",
@@ -56,7 +67,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/3",
-    "issue_number": 3
+    "issue_number": 3,
+    "state": "open"
   },
   {
     "key": "PUB-02",
@@ -75,7 +87,8 @@
     "verify": "Die beschlossene Lizenz und erforderliche Notices sind im Repo, oder der bewusst lizenzlose Status bleibt ausdrücklich dokumentiert.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/4",
-    "issue_number": 4
+    "issue_number": 4,
+    "state": "open"
   },
   {
     "key": "FACE-01",
@@ -98,7 +111,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/5",
-    "issue_number": 5
+    "issue_number": 5,
+    "state": "open"
   },
   {
     "key": "FACE-02",
@@ -122,7 +136,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/6",
-    "issue_number": 6
+    "issue_number": 6,
+    "state": "open"
   },
   {
     "key": "FACE-03",
@@ -147,7 +162,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/7",
-    "issue_number": 7
+    "issue_number": 7,
+    "state": "open"
   },
   {
     "key": "FACE-04",
@@ -171,7 +187,8 @@
       "SYS-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/8",
-    "issue_number": 8
+    "issue_number": 8,
+    "state": "open"
   },
   {
     "key": "FACE-05",
@@ -194,7 +211,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/9",
-    "issue_number": 9
+    "issue_number": 9,
+    "state": "open"
   },
   {
     "key": "FACE-06",
@@ -216,7 +234,8 @@
     "verify": "Ein dokumentierter synthetischer Bewegungs-/Distanzverlauf schaltet stabil. Echte Sensorabnahme erfolgt separat und nur nach bewusster Freigabe; kein dauerhafter Kamerazugriff als stiller Default.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/10",
-    "issue_number": 10
+    "issue_number": 10,
+    "state": "open"
   },
   {
     "key": "PHOTO-01",
@@ -238,7 +257,8 @@
     "verify": "Synthetische Alben zeigen Hinzufügen/Entfernen und Neustart korrekt. Persönliche Fotobibliotheken bleiben außerhalb automatischer Tests.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/11",
-    "issue_number": 11
+    "issue_number": 11,
+    "state": "open"
   },
   {
     "key": "PHOTO-02",
@@ -261,7 +281,8 @@
       "PUB-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/12",
-    "issue_number": 12
+    "issue_number": 12,
+    "state": "open"
   },
   {
     "key": "FACE-07",
@@ -285,7 +306,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/13",
-    "issue_number": 13
+    "issue_number": 13,
+    "state": "open"
   },
   {
     "key": "FACE-08",
@@ -308,7 +330,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/14",
-    "issue_number": 14
+    "issue_number": 14,
+    "state": "open"
   },
   {
     "key": "FLOW-01",
@@ -329,7 +352,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/15",
-    "issue_number": 15
+    "issue_number": 15,
+    "state": "open"
   },
   {
     "key": "FLOW-02",
@@ -351,7 +375,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/16",
-    "issue_number": 16
+    "issue_number": 16,
+    "state": "open"
   },
   {
     "key": "FLOW-03",
@@ -372,7 +397,8 @@
       "FLOW-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/17",
-    "issue_number": 17
+    "issue_number": 17,
+    "state": "open"
   },
   {
     "key": "FACE-09",
@@ -394,7 +420,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/18",
-    "issue_number": 18
+    "issue_number": 18,
+    "state": "open"
   },
   {
     "key": "FACE-10",
@@ -417,7 +444,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/19",
-    "issue_number": 19
+    "issue_number": 19,
+    "state": "open"
   },
   {
     "key": "FACE-11",
@@ -437,7 +465,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/20",
-    "issue_number": 20
+    "issue_number": 20,
+    "state": "open"
   },
   {
     "key": "FACE-12",
@@ -460,7 +489,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/21",
-    "issue_number": 21
+    "issue_number": 21,
+    "state": "open"
   },
   {
     "key": "FACE-13",
@@ -482,7 +512,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/22",
-    "issue_number": 22
+    "issue_number": 22,
+    "state": "open"
   },
   {
     "key": "HOME-01",
@@ -505,7 +536,8 @@
     "verify": "Zuerst synthetische Adaptertests. Später gesondert genehmigte Testumgebung mit Read-back und verweigerter Freigabe. Nicht allein durch erfolgreiche Initialisierung schließen.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/23",
-    "issue_number": 23
+    "issue_number": 23,
+    "state": "open"
   },
   {
     "key": "HOME-02",
@@ -532,7 +564,8 @@
       "HOME-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/24",
-    "issue_number": 24
+    "issue_number": 24,
+    "state": "open"
   },
   {
     "key": "HOME-03",
@@ -556,7 +589,8 @@
       "SYS-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/25",
-    "issue_number": 25
+    "issue_number": 25,
+    "state": "open"
   },
   {
     "key": "HOME-04",
@@ -581,7 +615,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/26",
-    "issue_number": 26
+    "issue_number": 26,
+    "state": "open"
   },
   {
     "key": "CAM-01",
@@ -605,7 +640,8 @@
       "HOME-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/27",
-    "issue_number": 27
+    "issue_number": 27,
+    "state": "open"
   },
   {
     "key": "CAM-02",
@@ -628,7 +664,8 @@
       "CAM-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/28",
-    "issue_number": 28
+    "issue_number": 28,
+    "state": "open"
   },
   {
     "key": "CAM-03",
@@ -650,7 +687,8 @@
       "CAM-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/29",
-    "issue_number": 29
+    "issue_number": 29,
+    "state": "open"
   },
   {
     "key": "HOME-05",
@@ -674,7 +712,8 @@
       "HOME-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/30",
-    "issue_number": 30
+    "issue_number": 30,
+    "state": "open"
   },
   {
     "key": "HOME-06",
@@ -697,7 +736,8 @@
       "SYS-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/31",
-    "issue_number": 31
+    "issue_number": 31,
+    "state": "open"
   },
   {
     "key": "HOME-07",
@@ -721,7 +761,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/32",
-    "issue_number": 32
+    "issue_number": 32,
+    "state": "open"
   },
   {
     "key": "AI-01",
@@ -745,7 +786,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/33",
-    "issue_number": 33
+    "issue_number": 33,
+    "state": "open"
   },
   {
     "key": "AI-02",
@@ -770,7 +812,8 @@
       "AI-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/34",
-    "issue_number": 34
+    "issue_number": 34,
+    "state": "open"
   },
   {
     "key": "AI-03",
@@ -794,7 +837,8 @@
       "HOME-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/35",
-    "issue_number": 35
+    "issue_number": 35,
+    "state": "open"
   },
   {
     "key": "AI-04",
@@ -817,7 +861,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/36",
-    "issue_number": 36
+    "issue_number": 36,
+    "state": "open"
   },
   {
     "key": "AI-05",
@@ -839,7 +884,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/37",
-    "issue_number": 37
+    "issue_number": 37,
+    "state": "open"
   },
   {
     "key": "AI-06",
@@ -862,7 +908,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/38",
-    "issue_number": 38
+    "issue_number": 38,
+    "state": "open"
   },
   {
     "key": "AI-07",
@@ -885,7 +932,8 @@
       "SYS-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/39",
-    "issue_number": 39
+    "issue_number": 39,
+    "state": "open"
   },
   {
     "key": "AI-08",
@@ -907,7 +955,8 @@
       "AI-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/40",
-    "issue_number": 40
+    "issue_number": 40,
+    "state": "open"
   },
   {
     "key": "AI-09",
@@ -930,7 +979,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/41",
-    "issue_number": 41
+    "issue_number": 41,
+    "state": "open"
   },
   {
     "key": "COM-01",
@@ -953,7 +1003,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/42",
-    "issue_number": 42
+    "issue_number": 42,
+    "state": "open"
   },
   {
     "key": "COM-02",
@@ -973,7 +1024,8 @@
     "verify": "Bewusst gestartete Aufnahme auf unterstütztem Testgerät oder dokumentierter nicht verfügbarer Zustand. Keine Hardwarefähigkeit aus dem SDK-Build ableiten.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/43",
-    "issue_number": 43
+    "issue_number": 43,
+    "state": "open"
   },
   {
     "key": "COM-03",
@@ -995,7 +1047,8 @@
     "verify": "Ohne bestätigten Benutzerknopf weder Versand noch Anruf. Keine Behauptung empfangener Nachrichten oder erfolgreicher Zustellung aus einem URL-Aufruf.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/44",
-    "issue_number": 44
+    "issue_number": 44,
+    "state": "open"
   },
   {
     "key": "COM-04",
@@ -1017,7 +1070,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/45",
-    "issue_number": 45
+    "issue_number": 45,
+    "state": "open"
   },
   {
     "key": "COM-05",
@@ -1039,7 +1093,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/46",
-    "issue_number": 46
+    "issue_number": 46,
+    "state": "open"
   },
   {
     "key": "DAY-01",
@@ -1062,7 +1117,8 @@
       "SYS-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/47",
-    "issue_number": 47
+    "issue_number": 47,
+    "state": "open"
   },
   {
     "key": "DAY-02",
@@ -1084,7 +1140,8 @@
       "SYS-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/48",
-    "issue_number": 48
+    "issue_number": 48,
+    "state": "open"
   },
   {
     "key": "DAY-03",
@@ -1107,7 +1164,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/49",
-    "issue_number": 49
+    "issue_number": 49,
+    "state": "open"
   },
   {
     "key": "DAY-04",
@@ -1130,7 +1188,8 @@
       "SYS-12"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/50",
-    "issue_number": 50
+    "issue_number": 50,
+    "state": "open"
   },
   {
     "key": "DAY-05",
@@ -1153,7 +1212,8 @@
       "DAY-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/51",
-    "issue_number": 51
+    "issue_number": 51,
+    "state": "open"
   },
   {
     "key": "DAY-06",
@@ -1173,7 +1233,8 @@
     "verify": "Bewusst gesetzter Testalarm auf iPad löst auch außerhalb der App aus und lässt sich entfernen; keine Garantie für ungetestete Plattformen.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/52",
-    "issue_number": 52
+    "issue_number": 52,
+    "state": "open"
   },
   {
     "key": "DAY-07",
@@ -1193,7 +1254,8 @@
     "verify": "Zonen mit verschiedenen DST-Regeln und Tageswechsel zeigen richtige Zeit/Datum. Offlinebetrieb ohne feste UTC-Offsets.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/53",
-    "issue_number": 53
+    "issue_number": 53,
+    "state": "open"
   },
   {
     "key": "DAY-08",
@@ -1214,7 +1276,8 @@
     "verify": "Lokale Testseiten decken Navigation, Fehler und unerwünschte Scheme-Aufrufe ab. Keine Behauptung gemeinsamer Safari-Historie/Passwörter.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/54",
-    "issue_number": 54
+    "issue_number": 54,
+    "state": "open"
   },
   {
     "key": "DAY-09",
@@ -1244,7 +1307,8 @@
       "PUB-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/55",
-    "issue_number": 55
+    "issue_number": 55,
+    "state": "open"
   },
   {
     "key": "DAY-10",
@@ -1264,7 +1328,8 @@
     "verify": "Zwei bewusst eingerichtete Testgeräte übernehmen Rezept/Schritt oder zeigen einen klaren Nichtverfügbarkeitszustand.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/56",
-    "issue_number": 56
+    "issue_number": 56,
+    "state": "open"
   },
   {
     "key": "MEDIA-01",
@@ -1288,7 +1353,8 @@
     "verify": "Synthetischer Vertrag plus separat bewusster Playback-Test auf Hardware; tatsächliche native Playerzustände statt erfolgreicher Buttonaktion prüfen.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/57",
-    "issue_number": 57
+    "issue_number": 57,
+    "state": "open"
   },
   {
     "key": "MEDIA-02",
@@ -1312,7 +1378,8 @@
       "PUB-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/58",
-    "issue_number": 58
+    "issue_number": 58,
+    "state": "open"
   },
   {
     "key": "MEDIA-03",
@@ -1333,7 +1400,8 @@
     "verify": "Eigener Testfeed und eigene Audiofixtures mit Seek, Pause, Navigation und Neustart. Kein behaupteter Zugriff auf private Podcast-Abos.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/59",
-    "issue_number": 59
+    "issue_number": 59,
+    "state": "open"
   },
   {
     "key": "MEDIA-04",
@@ -1356,7 +1424,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/60",
-    "issue_number": 60
+    "issue_number": 60,
+    "state": "open"
   },
   {
     "key": "MEDIA-05",
@@ -1379,7 +1448,8 @@
       "MEDIA-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/61",
-    "issue_number": 61
+    "issue_number": 61,
+    "state": "open"
   },
   {
     "key": "MEDIA-06",
@@ -1401,7 +1471,8 @@
       "MEDIA-05"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/62",
-    "issue_number": 62
+    "issue_number": 62,
+    "state": "open"
   },
   {
     "key": "MEDIA-07",
@@ -1425,7 +1496,8 @@
       "COM-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/63",
-    "issue_number": 63
+    "issue_number": 63,
+    "state": "open"
   },
   {
     "key": "SYS-01",
@@ -1447,7 +1519,8 @@
     "verify": "Bewusster physischer Test mit Vorher-/Nachher-Bild und Capture-Lifecycle-Nachweis; keine Kameranutzung im Mock-E2E.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/64",
-    "issue_number": 64
+    "issue_number": 64,
+    "state": "open"
   },
   {
     "key": "SYS-02",
@@ -1471,7 +1544,8 @@
       "BASE-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/65",
-    "issue_number": 65
+    "issue_number": 65,
+    "state": "open"
   },
   {
     "key": "SYS-03",
@@ -1496,7 +1570,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/66",
-    "issue_number": 66
+    "issue_number": 66,
+    "state": "open"
   },
   {
     "key": "SYS-04",
@@ -1520,7 +1595,8 @@
       "FACE-06"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/67",
-    "issue_number": 67
+    "issue_number": 67,
+    "state": "open"
   },
   {
     "key": "SYS-05",
@@ -1544,7 +1620,8 @@
       "HOME-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/68",
-    "issue_number": 68
+    "issue_number": 68,
+    "state": "open"
   },
   {
     "key": "SYS-06",
@@ -1566,7 +1643,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/69",
-    "issue_number": 69
+    "issue_number": 69,
+    "state": "open"
   },
   {
     "key": "SYS-07",
@@ -1589,7 +1667,8 @@
       "AI-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/70",
-    "issue_number": 70
+    "issue_number": 70,
+    "state": "open"
   },
   {
     "key": "SYS-08",
@@ -1613,7 +1692,8 @@
       "SYS-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/71",
-    "issue_number": 71
+    "issue_number": 71,
+    "state": "open"
   },
   {
     "key": "SYS-09",
@@ -1635,7 +1715,8 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/72",
-    "issue_number": 72
+    "issue_number": 72,
+    "state": "open"
   },
   {
     "key": "SYS-10",
@@ -1656,7 +1737,8 @@
     "verify": "Face-Editor, Sperre, Timer, Kamera, Rezept und Verbindungen sind ohne präzise Wischgeste oder Sehvermögen bedienbar. Ergebnisse je Hilfsmittel dokumentieren.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/73",
-    "issue_number": 73
+    "issue_number": 73,
+    "state": "open"
   },
   {
     "key": "SYS-11",
@@ -1680,7 +1762,8 @@
       "SYS-10"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/74",
-    "issue_number": 74
+    "issue_number": 74,
+    "state": "open"
   },
   {
     "key": "SYS-12",
@@ -1699,7 +1782,8 @@
     "verify": "Bewusster Test auf iPad mit tatsächlichem Audio. Synthetische Transkription bleibt klar von Hardware-Speech-PASS getrennt.",
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/75",
-    "issue_number": 75
+    "issue_number": 75,
+    "state": "open"
   },
   {
     "key": "QA-01",
@@ -1720,7 +1804,8 @@
       "PUB-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/76",
-    "issue_number": 76
+    "issue_number": 76,
+    "state": "open"
   },
   {
     "key": "QA-02",
@@ -1741,7 +1826,8 @@
       "QA-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/77",
-    "issue_number": 77
+    "issue_number": 77,
+    "state": "open"
   },
   {
     "key": "QA-03",
@@ -1764,7 +1850,8 @@
       "QA-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/78",
-    "issue_number": 78
+    "issue_number": 78,
+    "state": "open"
   },
   {
     "key": "QA-04",
@@ -1785,7 +1872,8 @@
       "QA-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/79",
-    "issue_number": 79
+    "issue_number": 79,
+    "state": "open"
   },
   {
     "key": "QA-05",
@@ -1806,7 +1894,8 @@
       "SYS-03"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/80",
-    "issue_number": 80
+    "issue_number": 80,
+    "state": "open"
   },
   {
     "key": "QA-06",
@@ -1827,7 +1916,8 @@
       "QA-02"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/81",
-    "issue_number": 81
+    "issue_number": 81,
+    "state": "open"
   },
   {
     "key": "EXTRA-01",
@@ -1847,6 +1937,7 @@
       "BASE-01"
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/82",
-    "issue_number": 82
+    "issue_number": 82,
+    "state": "open"
   }
 ]

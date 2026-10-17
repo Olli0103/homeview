@@ -1,5 +1,7 @@
 # Vollständiges Parity-Backlog
 
+Aktueller Bearbeitungsstand: [Fortschritt und abgeschlossene Pakete](progress.md). Die ursprünglichen Restbeschreibungen unten sind der Ausgangskatalog.
+
 Stand 17. Oktober 2026. 82 konkrete Arbeitspakete decken alle 105 Referenzfunktionen ab. Manche Pakete bündeln eng zusammengehörige Funktionen, andere betreffen Renderer, Datenschutz, Veröffentlichung oder Abnahme.
 
 ## Was Parity hier bedeutet
