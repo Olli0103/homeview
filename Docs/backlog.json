@@ -1582,7 +1582,7 @@
     "functions": [
       "F095"
     ],
-    "current": "Abmelden, Hintergrund und Inaktivitätsrückkehr sperren verbundene Daten. Tatsächliches Weggehen wird nicht erkannt.",
+    "current": "Sitzungsgenerationen, Cachelöschung, späte Antworten und Hintergrundschutz korrigiert und synthetisch geprüft. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots bleiben offen.",
     "tasks": [
       "Sperre an bewiesene Präsenzquelle koppeln, falls verfügbar",
       "Vorschauen, Kalender, Reminder, Assistentenverlauf und Medienkontext beim Sperren bereinigen",
@@ -1596,7 +1596,10 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/67",
     "issue_number": 67,
-    "state": "open"
+    "state": "in_progress",
+    "progress_evidence": [
+      "Docs/privacy-session.md"
+    ]
   },
   {
     "key": "SYS-05",
