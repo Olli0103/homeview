@@ -59,6 +59,11 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.scrollViews["personal.media.layout"].waitForExistence(timeout:5))
     XCTAssertTrue(app.buttons["personal.podcast.play"].exists)
     XCTAssertTrue(app.buttons["app.Calendar"].exists)
+    let artist=app.staticTexts["personal.music.artist"]
+    XCTAssertTrue(artist.exists)
+    XCTAssertEqual(artist.label,"Demo Artist")
+    XCTAssertTrue(app.scrollViews["personal.media.layout"].frame.contains(artist.frame),
+      "The full artist line must be visible without scrolling")
     shot("personal-ui42-media-layout-alex")
     app.terminate()
     launch(["--persistence-test",id])
