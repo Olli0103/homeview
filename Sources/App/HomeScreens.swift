@@ -13,62 +13,27 @@ extension AppPage {
     default: .teal
     }
   }
-  var asset: String? {
-    switch self {
-    case .home: "IconHome"
-    case .calendar: "IconCalendar"
-    case .music: "IconMusic"
-    case .weather: "IconWeather"
-    case .timers: "IconTimers"
-    case .reminders: "IconReminders"
-    case .intercom: "IconIntercom"
-    case .messages: "IconMessages"
-    case .faceTime: "IconFaceTime"
-    case .findMy: "IconFindMy"
-    case .alarms: "IconAlarms"
-    case .worldClock: "IconWorldClock"
-    case .safari: "IconSafari"
-    case .podcasts: "IconPodcasts"
-    case .settings: "IconSettings"
-    default: nil
-    }
-  }
-}
-struct AppIcon: View {
-  let page: AppPage
-  var edge: CGFloat = 92
-  var body: some View {
-    Group {
-      if let name = page.asset {
-        Image(name).resizable().scaledToFit()
-      } else {
-        Image(systemName: page.symbol).font(.system(size: edge * 0.45, weight: .medium))
-          .foregroundStyle(.white).frame(width: edge, height: edge).background(
-            page.color, in: RoundedRectangle(cornerRadius: edge * 0.25))
-      }
-    }.frame(width: edge, height: edge).accessibilityHidden(true)
-  }
 }
 struct PersonalView: View {
   @Environment(AppModel.self) private var model
-  private let favorites: [AppPage] = [.home, .calendar, .music, .weather]
+  private let favorites: [AppPage] = [.faceTime, .home, .music, .messages]
   var body: some View {
     ZStack {
       FaceView(selection: model.data.face).blur(radius: 22).overlay(.black.opacity(0.28))
         .allowsHitTesting(false).accessibilityHidden(true)
-      VStack(alignment: .leading, spacing: 26) {
+      VStack(alignment: .leading, spacing: 30) {
         HStack {
           VStack(alignment: .leading, spacing: 4) {
-            Text("Good morning,").font(.system(size: 27))
-            Text(model.profile ?? "everyone").font(.system(size: 43, weight: .bold))
+            Text("GOOD MORNING,").font(.system(size: 20))
+            Text((model.profile ?? "everyone").uppercased()).font(.system(size: 22, weight: .semibold))
           }
           Spacer()
           Button {
             model.pendingPage = nil
             model.route = .privacy
           } label: {
-            Text(String(model.profile?.prefix(1) ?? "G")).font(.system(size: 29, weight: .semibold))
-              .frame(width: 67, height: 67).background(Color.lilac, in: Circle())
+            Text(String(model.profile?.prefix(1) ?? "G")).font(.system(size: 22, weight: .semibold))
+              .frame(width: 58, height: 58).background(Color.lilac, in: Circle())
           }.accessibilityLabel("Choose profile")
         }
         HStack(alignment: .top, spacing: 25) {
@@ -83,12 +48,12 @@ struct PersonalView: View {
                 }
               }.accessibilityIdentifier("app.\(page.rawValue)")
             }
-          }.frame(width: 220)
+          }.frame(width: 236)
           VStack(alignment: .leading, spacing: 8) {
-            LandscapeArt().frame(height: 205).clipShape(RoundedRectangle(cornerRadius: 26))
-            Text("A little moment of calm").font(.system(size: 19, weight: .semibold))
-            Text("Demo album").font(.system(size: 17)).foregroundStyle(.gray)
-          }.frame(maxWidth: .infinity)
+            LandscapeArt().frame(width:230,height:230).clipShape(RoundedRectangle(cornerRadius: 26))
+              .accessibilityLabel("Demo photo album")
+            Text("Photos").font(.system(size: 17, weight: .medium)).frame(maxWidth:.infinity)
+          }.frame(width:230)
         }
         if model.playing || model.connections.musicPlaying || model.podcastPlaying
           || model.data.timers.contains(where: { $0.remaining(at: model.now) > 0 })
@@ -101,7 +66,7 @@ struct PersonalView: View {
           textColor: .white
         ) { model.route = .drawer }
         .accessibilityIdentifier("all.apps")
-      }.padding(35)
+      }.padding(45)
     }.foregroundStyle(.white).buttonStyle(.plain)
   }
 }
