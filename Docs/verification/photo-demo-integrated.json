@@ -1,0 +1,68 @@
+{
+  "code_commit": "c87e3098ffd0645a7bfe06c7d57fd5b6138167e5",
+  "feature_commit": "dc5316e",
+  "source_digest": "09e0e4a365f122a977c713ffed03888009ce684c326644da0d66a7f03a6253d2",
+  "source_files": 128,
+  "source_before_after_match": true,
+  "source_matches_committed_bytes": true,
+  "core_passed": 108,
+  "core_repeated_after_feature_commit": true,
+  "tests_after_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    }
+  ],
+  "ui_executions": 16,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "generated_photo_images": 2,
+  "decoded_generated_image_size": [
+    1254,
+    1254
+  ],
+  "asset_generator": "built-in image_gen; no reference-image input",
+  "photo_selection_is_synthetic": true,
+  "native_portrait_pipeline_tested": true,
+  "real_photo_library_opened": false,
+  "native_foreground_depth_observed": false,
+  "observed_portrait_fallback": "Vision face and foreground code9; CPU Core Image face detector1; protected overlap0; clock bottom; depth false",
+  "landscape_no_face_detection_not_full_image_subject": true,
+  "original_parity": false,
+  "physical_hardware_tested": false,
+  "visual_review_both_devices": true,
+  "limits": [
+    "Native foreground error code9 root cause unproved",
+    "Original tall transparent photo clock not implemented",
+    "General personal-photo quality and real album permissions not validated"
+  ],
+  "logs": {
+    "photo-demo-integrated-core.log": "207eac12f4c789f738f27e435cd9aec77ea3782f4f1f85e89d1615f238fcd5c5",
+    "photo-demo-integrated-builds.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f",
+    "photo-post-commit-core.log": "8350c2c68e1f5af2d1cc88a2ef74e049bf19e828d3a8d5fe0875f57b429b34e1"
+  },
+  "ui_logs": {
+    "iPad": "d30a2a2ef797c4533b1e9b142fcd3c6ad7be6fdbd40e0f8f3cf100eb6a088873",
+    "iPhone": "d715f9378fc4274fd5479f9e490b207af4f5f7f0aad3892c263590f72abecda8"
+  },
+  "all_current_pngs_in_asset_index_verified": 24,
+  "new_photo_png_and_configuration_files_verified": 4
+}

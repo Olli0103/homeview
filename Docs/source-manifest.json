@@ -1,5 +1,5 @@
 {
-  "digest": "2be801de674495e7d0e690a627b9bb2e284cbd2bf3c895f0fcb8c36eb85ea909",
+  "digest": "09e0e4a365f122a977c713ffed03888009ce684c326644da0d66a7f03a6253d2",
   "files": [
     {
       "path": "HomeViewReplica.xcodeproj/project.pbxproj",
@@ -68,6 +68,22 @@
     {
       "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/image.png",
       "sha256": "b0a9540126098aab163deb7627609275600b95f1164aae5784e5e7765adf3db9"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/Contents.json",
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/image.png",
+      "sha256": "4706c1679b463628014e7fbbe64a3be6e3ebafdc864f121c33d4e2d4182f8651"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/Contents.json",
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/image.png",
+      "sha256": "a23cc0c3f9bd409029e2e4451a771d9dceb91821fd2a32dbdaaac8ca0e3f47d7"
     },
     {
       "path": "Resources/Assets.xcassets/IconAlarms.imageset/Contents.json",
@@ -235,7 +251,7 @@
     },
     {
       "path": "Sources/App/AppModel.swift",
-      "sha256": "d4cee5e0fca5cb8f773996a1e6389f8cd82ead89e2bf7d9676df555d7e6e926f"
+      "sha256": "b9b97c628efe0c8d27d4861a94b63e55fff1110a232b05d81974815f0cfc96d7"
     },
     {
       "path": "Sources/App/BrowserNavigationFixture.swift",
@@ -275,7 +291,7 @@
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "0b81dd610eb9c2da9c17aac7fb231d4af06200618e6e9c3089abbe868ef36b6a"
+      "sha256": "bd7001e0d2737b25bc121a9245bf63edfac93d2aa69ab1397b90ea28793b0854"
     },
     {
       "path": "Sources/App/FlowDigitContours.swift",
@@ -287,7 +303,7 @@
     },
     {
       "path": "Sources/App/HomeScreens.swift",
-      "sha256": "4360d61bb5b82c19d9aabd0b93fd3a236cc133b15a54f33b01fd488efed789e2"
+      "sha256": "065c34f85a63e1b2eafadb2f1641ea432658bfb813b3dcac276a0368b3bd1af6"
     },
     {
       "path": "Sources/App/HomeViewApp.swift",
@@ -315,7 +331,7 @@
     },
     {
       "path": "Sources/App/NativePhotos.swift",
-      "sha256": "2f7d67cbd064088fbefefff11a14f41d47420cba6bcf0b9991ceb7ff8d60df2a"
+      "sha256": "6c16729a94b8274d21e8677c664115a8b2316939fe9ac3b565c4eafb003eec51"
     },
     {
       "path": "Sources/App/NativeServices.swift",
@@ -343,7 +359,7 @@
     },
     {
       "path": "Sources/App/SharedAlbums.swift",
-      "sha256": "ba799e8a904d0b9408568775b1e049bd912bf23b739550878b74cdc796196a3d"
+      "sha256": "d6246d59abb5e957b7c1cbb693fc9abad2a5c9fa5dc528b97b0d21c28cbc2e30"
     },
     {
       "path": "Sources/App/SystemActions.swift",
@@ -419,7 +435,7 @@
     },
     {
       "path": "Sources/Core/PhotoPlacement.swift",
-      "sha256": "3d8d6fbd8a1065e64fff36895968786fa3f5ea25df372b3781022c1e451cb25c"
+      "sha256": "89063f0d884700da32005e7ccc63ad83a942e9ee8b4fab70ea1a30aac1292985"
     },
     {
       "path": "Sources/Core/RecipeParser.swift",
@@ -471,7 +487,7 @@
     },
     {
       "path": "Tests/CoreTests/PhotoPlacementTests.swift",
-      "sha256": "f8042746bbc46a6147ebf807d3b8f1eadaac5016dc11f0c5d0ce7e7268273084"
+      "sha256": "b31b024d09f044bb843aa303bc1872b62e2304d8cfc9a5a35f6b4586d0042d08"
     },
     {
       "path": "Tests/CoreTests/RecipeParserTests.swift",
@@ -495,7 +511,7 @@
     },
     {
       "path": "Tests/UITests/HomeViewUITests.swift",
-      "sha256": "e999101f5839f169c2123687e4f3027f607d209dea00b1b10ed7d01f8db6ad74"
+      "sha256": "7cbf05b8059830c85f110961b7ee42df112919a87a14d569de67018c38a69b49"
     }
   ]
 }

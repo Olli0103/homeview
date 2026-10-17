@@ -41,8 +41,8 @@ frei gezeichnete Vordergrund über dem Landschaftsplatzhalter entfällt.
 Der erste korrigierte native Porträt-Pilot erkennt einen Schutzbereich, zeigt
 keine Uhrüberdeckung dieses Bereichs und setzt die Uhr nach unten. Er meldet
 weiterhin keine echte Freistellung. Die Bildprüfung bestätigt den freien Kopf.
-Vollständige betroffene UI-Regression und integrierte Freigabe werden separat
-belegt; dieser Pilot ist kein Original-PASS.
+Die integrierte betroffene UI-Regression ist unten separat belegt. Dieser
+Pilot und der integrierte Lauf sind kein Original-PASS.
 
 ## Noch offen
 
@@ -64,3 +64,23 @@ Eine weitere Bildprüfung fand eine unnötige getrennte Uhrzone für die Landsch
 der erste Fallback hatte null Gesichter wie eine nicht verfügbare Erkennung
 behandelt. Diese Zustände sind nun getrennt. Die Landschaft darf ohne Alpha
 normal hinter der Uhr bleiben; es wird weiterhin kein Tiefeneffekt behauptet.
+
+## Integrierter Nachweis
+
+Feature `dc5316e`, Integration `c87e3098ffd0645a7bfe06c7d57fd5b6138167e5`:
+108 Modelltests, acht gezielte UI-Fälle je iPad/iPhone (16 Ausführungen) und fünf
+SDK-Builds bestanden. Null Fehler, Skips oder gemeldete Runtime-Warnungen. Keine
+neue Vollsuite oder physische Geräteabnahme. 128 Quellen sind vor/nach dem Lauf
+und gegen den Mergecommit identisch; nach Featurecommit erneut 108 Core.
+
+Die Fälle prüfen die echte Demo-Porträtanalyse, automatische Galerie-Rotation,
+synthetischen Shared-Album-Import, Top-/Randmotive, dichte Masken, manuelle
+Uhrposition samt Neustart/Reset, manuellen Ausschnitt samt Reset und das
+persönliche Foto-Widget. Die tatsächlichen finalen Bilder beider Größen wurden
+gesichtet: freier Porträtkopf, vollflächiger See, Foto-Preview und Albumimport.
+Alle 24 aktuellen PNGs im allgemeinen Assetindex und die beiden neuen Bilder
+sind bytegeprüft; aktuelle Konfigurationen sind im vollständigen Quellmanifest
+gebunden, nicht durch historische Erstveröffentlichungsdigests ersetzt.
+
+[Quellen und Ergebnisse](verification/photo-demo-integrated.json) ·
+[eigene Bilder und Digests](screenshots/goal-20261017/photo-demo-manifest.json).
