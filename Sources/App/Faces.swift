@@ -228,15 +228,26 @@ struct FlowFace: View {
 }
 struct FadeFace: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.accessibilityReduceMotion) private var reducedMotion
+  private var motionDisabled: Bool {
+    reducedMotion || ProcessInfo.processInfo.arguments.contains("--reduce-motion")
+  }
+  private func phase(_ minutes: Double) -> Double {
+    let args = ProcessInfo.processInfo.arguments
+    if !motionDisabled, args.contains("--uitesting"), let index = args.firstIndex(of: "--fade-test-phase"),
+       args.indices.contains(index+1), let value = Double(args[index+1]), value.isFinite {
+      return ConicGradientModel.wrap(value)
+    }
+    return ConicGradientModel.phase(minutes: minutes, reducedMotion: motionDisabled)
+  }
   private let rose = Color(red: 0.82, green: 0.65, blue: 0.64)
   var body: some View {
     let reading = ClockGeometry(date: model.clock, timeZone: model.displayTimeZone)
     ZStack {
-      LinearGradient(
-        colors: [
-          Color(red: 0.89, green: 0.74, blue: 0.73), rose,
-          Color(red: 0.69, green: 0.54, blue: 0.54),
-        ], startPoint: .topLeading, endPoint: .bottomTrailing)
+      AngularGradient(gradient: Gradient(stops: ConicGradientModel.fadeStops.map {
+        .init(color: Color(red: $0.color.x, green: $0.color.y, blue: $0.color.z), location: $0.location)
+      }), center: .center,
+      angle: .degrees(phase(reading.minutes) * 360 - 90))
       ForEach(0..<12) { n in
         Text("\(n == 0 ? 12 : n)").font(.system(size: 94, weight: .ultraLight))
           .foregroundStyle(rose)

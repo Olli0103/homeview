@@ -886,6 +886,42 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertGreaterThan(Double(colored) / Double(width * height), 0.12,
                          "A missing Metal function or opaque black glyph layer must not pass")
   }
+  func testFadeConicStopsRenderDifferentPhasesAndKeepClockVisible() {
+    launch(["--face", "Fade"])
+    _ = viewportBytes("fade-conic-reference-time")
+    app.terminate()
+    launch(["--face", "Fade", "--fade-test-phase", "0"])
+    let first = viewportBytes("fade-conic-phase-zero")
+    app.terminate()
+    launch(["--face", "Fade", "--fade-test-phase", "0.25"])
+    XCTAssertNotEqual(fadeBackgroundPixels(first),
+                      fadeBackgroundPixels(viewportBytes("fade-conic-phase-quarter")))
+    XCTAssertTrue(app.otherElements["face.Fade"].exists)
+  }
+  func testFadeReducedMotionIgnoresGradientPhaseChanges() {
+    launch(["--face", "Fade", "--reduce-motion", "--fade-test-phase", "0"])
+    let first = viewportBytes("fade-conic-reduced-zero")
+    app.terminate()
+    launch(["--face", "Fade", "--reduce-motion", "--fade-test-phase", "0.75"])
+    XCTAssertEqual(fadeBackgroundPixels(first),
+                   fadeBackgroundPixels(viewportBytes("fade-conic-reduced-later")))
+  }
+  private func fadeBackgroundPixels(_ png: Data) -> Data {
+    let image = UIImage(data: png)!.cgImage!
+    // Compare only actual gradient pixels. Clock-edge antialiasing can differ by 1–2 levels
+    // across process restarts; the lower-right background has no hands, hub or numerals.
+    let rect = CGRect(x: Double(image.width)*0.6, y: Double(image.height)*0.6,
+                      width: Double(image.width)*0.1, height: Double(image.height)*0.1).integral
+    let crop = image.cropping(to: rect)!
+    var pixels = [UInt8](repeating: 0, count: crop.width*crop.height*4)
+    pixels.withUnsafeMutableBytes {
+      let context = CGContext(data: $0.baseAddress, width: crop.width, height: crop.height,
+        bitsPerComponent: 8, bytesPerRow: crop.width*4, space: CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)!
+      context.draw(crop, in: CGRect(x: 0, y: 0, width: crop.width, height: crop.height))
+    }
+    return Data(pixels)
+  }
   func testFlowMaterialStillMovesAfterThirtySeconds() {
     launch(["--face", "Flow", "--animation-test"])
     Thread.sleep(forTimeInterval: 30)
