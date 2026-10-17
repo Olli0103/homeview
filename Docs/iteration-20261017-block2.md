@@ -92,3 +92,14 @@ gezielte UI-Fälle je iPad/iPhone und fünf SDK-Builds bestanden; nach Commit er
 [Eigene Bilder und offene Abweichungen](weather-app.md). Kein neuer Vollsuite-PASS
 und kein Original-PASS: Wolken/Glas, Wetterübergänge und weitere Originalzustände
 bleiben offen. #21 bleibt offen; keine Smart-Home-Eingriffe.
+
+## Strukturierter Wetterhimmel
+
+`ccbae27` ersetzt unscharfe Wolkenflecken durch ein eigenes begrenztes Volumenfeld
+mit Konturen und Licht/Schatten. 99 Modelltests, sieben gezielte UI-Fälle je
+iPad/iPhone (14 Ausführungen) und fünf SDK-Builds bestanden; nach Commit erneut
+99 Modelltests. Bewegte/reduzierte Himmelsbereiche werden als dekodierte RGBA-Pixel
+geprüft, bei Reduce Motion null abweichende Kanäle, bei 0 Prozent Bedeckung kein
+weißes Wolkenfeld. [Eigene Bilder und Grenzen](weather-clouds.md). Kein Original-PASS
+und keine Schließung von #21; Glasziffern und genaue Wolken-/Lichtphasen bleiben offen.
+Quelle 112 Dateien, SHA `c08561dfa25fc967db7a636d556bc7e83f9ef3cf4e19175da547e31e56d36fc1`.
