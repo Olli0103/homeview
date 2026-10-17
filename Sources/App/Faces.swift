@@ -315,27 +315,42 @@ struct PhotoFace: View {
       Color.black
       if let bytes = model.photoData {
         layer(bytes)
+      } else if model.hasPhotoSelection {
+        Color.black
+        VStack(spacing:20) {
+          Image(systemName:"photo.on.rectangle").font(.system(size:72))
+          Text(model.photoSelectionStatus).font(.system(size:21)).multilineTextAlignment(.center)
+        }.foregroundStyle(.gray).frame(width:440).position(x:300,y:330)
+          .accessibilityIdentifier("photo.album.empty")
       } else {
         LandscapeArt()
       }
+      if model.photoData == nil && model.hasPhotoSelection {
+        Text(model.dateLabel("hh mm")).font(.system(size:181,weight:.regular,design:.rounded))
+          .tracking(-10).foregroundStyle(.white).frame(width:540,height:200)
+          .position(x:300,y:600*model.photoComposition.clock.centerY)
+          .accessibilityIdentifier("photo.clock").accessibilityValue(model.photoComposition.clock.rawValue)
+      } else {
       PhotoGlassClock(time: model.dateLabel("hh mm"), spokenTime: model.dateLabel("h:mm"),
         bytes: model.photoData, composition: model.photoComposition)
         .position(x: 300, y: 600 * model.photoComposition.clock.centerY)
+      }
       // Depth uses the selected image's real segmentation, not a fabricated
       // foreground triangle over the fallback landscape.
       if model.photoComposition.depthEnabled, let foreground = model.photoForegroundData {
         layer(foreground).allowsHitTesting(false)
       }
       if ProcessInfo.processInfo.arguments.contains("--uitesting") {
-        Text("clock=\(model.photoComposition.clock.rawValue);full=\(model.photoComposition.destination != .full);depth=\(model.photoComposition.depthEnabled);foreground=\(model.photoForegroundData != nil);finished=\(model.photoAnalysisFinished);diagnostic=\(model.photoAnalysisDiagnostic);regions=\(model.photoProtectedRegionCount);protected=\(Int((model.photoComposition.protectedCoverage*1000).rounded()))")
+        let assetIDs=model.data.albumDisplay?.cache.map(\.assetID) ?? []
+        Text(verbatim:"clock=\(model.photoComposition.clock.rawValue);full=\(model.photoComposition.destination != .full);depth=\(model.photoComposition.depthEnabled);foreground=\(model.photoForegroundData != nil);finished=\(model.photoAnalysisFinished);diagnostic=\(model.photoAnalysisDiagnostic);regions=\(model.photoProtectedRegionCount);protected=\(Int((model.photoComposition.protectedCoverage*1000).rounded()));selection=\(model.data.photoSelection.rawValue);album=\(model.data.albumDisplay?.album.id ?? "none");assets=\(assetIDs.isEmpty ? "none":assetIDs.joined(separator:","));picture=\(model.photoData != nil)")
           .font(.system(size: 1)).foregroundStyle(.clear).allowsHitTesting(false)
           .accessibilityIdentifier("photo.layout.test")
       }
       VStack {
         Spacer()
-        Text(model.photoData == nil ? "LANDSCAPE · DEMO ALBUM" : model.photoCaption).font(
+        Text(model.photoData == nil && !model.hasPhotoSelection ? "LANDSCAPE · DEMO ALBUM" : model.photoCaption).font(
           .system(size: 12, weight: .semibold)
-        ).tracking(2)
+        ).tracking(2).lineLimit(1).minimumScaleFactor(0.6)
           .foregroundStyle(.white.opacity(0.7)).padding(28).accessibilityIdentifier("photo.index")
       }
     }.coordinateSpace(name: "photo-face").clipped().onTapGesture { model.nextPhoto() }

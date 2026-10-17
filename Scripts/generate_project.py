@@ -38,7 +38,7 @@ def make_target(name,platform,sources,uitest=False):
     tid=obj(name,'{isa = PBXNativeTarget; buildConfigurationList = '+cl+'; buildPhases = '+arr([sp,fp,rp])+'; buildRules = (); dependencies = '+arr(deps)+'; name = '+q(name)+'; productName = '+q(name)+'; productReference = '+pid+'; productType = '+q('com.apple.product-type.bundle.ui-testing' if uitest else 'com.apple.product-type.application')+';}');targets.append(tid)
     return tid
 make_target('HomeViewReplica','universal',files)
-watchfiles=[f for f in files if f.split('/')[-1] in ['Models.swift','SnapshotMigration.swift','PersonalHomeConfiguration.swift','EverydayVoiceCommand.swift','WorldClock.swift','PhotoPlacement.swift','FaceConfiguration.swift','ConnectedModels.swift','HomeViewApp.swift','AppModel.swift','WatchRoot.swift','LocalAudioEngine.swift','DisplayWakeController.swift']]
+watchfiles=[f for f in files if f.split('/')[-1] in ['Models.swift','SnapshotMigration.swift','AlbumDisplay.swift','PersonalHomeConfiguration.swift','EverydayVoiceCommand.swift','WorldClock.swift','PhotoPlacement.swift','FaceConfiguration.swift','ConnectedModels.swift','HomeViewApp.swift','AppModel.swift','WatchRoot.swift','LocalAudioEngine.swift','DisplayWakeController.swift']]
 make_target('HomeViewWatch','watch',watchfiles)
 make_target('HomeViewUITests','ios',['Tests/UITests/HomeViewUITests.swift'],True)
 pg=obj('products','{isa = PBXGroup; children = '+arr(products)+'; name = Products; sourceTree = "<group>";}')

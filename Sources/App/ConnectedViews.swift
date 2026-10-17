@@ -67,7 +67,7 @@ struct DeviceUnlockView: View {
       Spacer()
       Image(systemName: "lock.shield").font(.system(size: 76)).foregroundStyle(.blue)
       Text("Unlock personal data").font(.system(size: 33, weight: .semibold))
-      Text("Use this device's authentication to view your connected calendar and reminders.")
+      Text("Use this device's authentication for connected personal content and shared album choices.")
         .font(.system(size: 22)).multilineTextAlignment(.center).foregroundStyle(.gray)
       Pill(
         title: "Unlock", symbol: "person.crop.circle.badge.checkmark", tint: .blue,
