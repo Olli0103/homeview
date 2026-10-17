@@ -454,10 +454,8 @@ struct WeatherBackdrop: View {
       ZStack {
         GeometryReader { geometry in
           let cover=Self.cloudCover(reading,demo:demo)
-          LinearGradient(colors:reading?.isDay == false
-            ? [Color(red:0.12,green:0.16,blue:0.31),Color(red:0.02,green:0.07,blue:0.18)]
-            : [Color(red:0.08,green:0.32,blue:0.57),Color(red:0.26,green:0.52,blue:0.78)],
-            startPoint:.top,endPoint:.bottom)
+          // Sky palette is shared with the glass in WeatherClouds.metal.
+          Rectangle().fill(.white)
             .colorEffect(ShaderLibrary.weatherCloudField(
               .float2(Float(geometry.size.width),Float(geometry.size.height)),
               .float(Float(time)),.float(Float(cover)),.float(reading?.isDay == false ? 1:0)))

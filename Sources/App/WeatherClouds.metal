@@ -27,7 +27,15 @@ static float weatherDensity(float3 p,float cover) {
     float ceiling=mix(0.90,0.30,saturate(cover))+smoothstep(0.18,0.65,p.y/4.0)*0.30;
     return max(0.0,weatherField(p*2.0)-ceiling)*5.0;
 }
-static float3 weatherScene(float2 uv,float time,float cover,float night,float3 base) {
+// Both the backdrop and refracted text evaluate this same sky. UI05's lower
+// sky is a light blue, not the saturated mid-blue of the earlier illustration.
+static float3 weatherSky(float2 uv,float night) {
+    float3 top=mix(float3(0.08,0.32,0.57),float3(0.12,0.16,0.31),night);
+    float3 bottom=mix(float3(0.41,0.64,0.88),float3(0.02,0.07,0.18),night);
+    return mix(top,bottom,saturate(uv.y));
+}
+static float3 weatherScene(float2 uv,float time,float cover,float night) {
+    float3 base=weatherSky(uv,night);
     if(cover<=0.0) return base;
     float topBand=1.0-smoothstep(0.28,0.54,uv.y);
     float3 origin=float3(uv*4.0,1.37)+float3(time*0.018,0,0);
@@ -52,7 +60,7 @@ static float3 weatherScene(float2 uv,float time,float cover,float night,float3 b
 }
 [[ stitchable ]] half4 weatherCloudField(float2 position,half4 input,
     float2 size,float time,float cover,float night) {
-    return half4(half3(weatherScene(position/max(size,float2(1)),time,cover,night,float3(input.rgb))),input.a);
+    return half4(half3(weatherScene(position/max(size,float2(1)),time,cover,night)),input.a);
 }
 // Runtime system-text alpha mask, not redistributed font outlines.
 [[ stitchable ]] half4 weatherGlassNumber(float2 position,SwiftUI::Layer mask,
@@ -70,14 +78,15 @@ static float3 weatherScene(float2 uv,float time,float cover,float night,float3 b
     float3 normal=normalize(float3(-slope*1.5,1));
     float3 ray=refract(float3(0,0,-1),normal,1.0/1.45);
     float2 uv=(origin+position+ray.xy*12.0)/max(size,float2(1));
-    float3 top=mix(float3(0.08,0.32,0.57),float3(0.12,0.16,0.31),night);
-    float3 bottom=mix(float3(0.26,0.52,0.78),float3(0.02,0.07,0.18),night);
-    float3 color=weatherScene(uv,time,cover,night,mix(top,bottom,saturate(uv.y)));
+    float3 color=weatherScene(uv,time,cover,night);
     float bevel=saturate(length(slope));
     float highlight=pow(saturate(dot(normal,normalize(float3(-0.5,-0.7,1)))),18.0)*bevel;
     float upper=max(0.0,coverage-float(mask.sample(position-float2(0.8,0.8)).a));
     float lower=max(0.0,coverage-float(mask.sample(position+float2(0.8,0.8)).a));
-    color=mix(color,float3(0.84,0.94,1),0.24);
-    color=color*(1.0-lower*0.08)+highlight*0.45+upper*0.42;
+    // Broad translucent body plus a narrow white/cyan lip, as visible in UI05.
+    // Keep the field legible through the body rather than painting opaque text.
+    float bodyLight=mix(0.43,0.24,night);
+    color=mix(color,float3(0.84,0.94,1),bodyLight);
+    color=color*(1.0-lower*0.12)+highlight*0.40+upper*0.58;
     return half4(half3(saturate(color)*coverage),half(coverage));
 }
