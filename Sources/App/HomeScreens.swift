@@ -344,7 +344,7 @@ struct HomeGrid: View {
         } label: {
           AnalogClock(
             date: model.clock, timeZone: model.displayTimeZone, tint: .violetInk, handColor: .black,
-            secondsColor: .violetInk)
+            secondsColor: .violetInk, embossedHands: true, hourReach: 0.5, minuteReach: 0.94)
         }.accessibilityLabel("Thermostat").accessibilityIdentifier("grid.thermostat")
         tile("lamp.ceiling.fill", "Lights", "Entryway", model.data.home.entryLight) {
           model.command(.entryLight)

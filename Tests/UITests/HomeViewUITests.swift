@@ -587,8 +587,13 @@ final class HomeViewUITests: XCTestCase {
     }
     launch(["--page", "Home"])
     XCTAssertTrue(app.buttons["grid.entrylight"].exists)
+    viewportShot("home-grid-clock-reference")
     tap("grid.entrylight")
     shot("UI13-home-grid")
+    tap("grid.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+    tap("thermostat.up")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"69°")
   }
   func testNativeSystemAlarmSchedulesAndCancelsOnSimulator() {
     launch(["--page", "Settings"])
