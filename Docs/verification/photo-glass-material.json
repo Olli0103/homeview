@@ -1,0 +1,69 @@
+{
+  "code_commit": "9a26adc82aa081fcfe4ae3749f147ada7f394c2e",
+  "feature_commit": "c3b6676",
+  "source_digest": "d0dcb95a46ea5da221ca1743309352e58dfdd72221df589c8f74ba0e71f828b5",
+  "source_files": 128,
+  "source_before_after_match": true,
+  "source_matches_committed_bytes": true,
+  "core_passed": 108,
+  "core_repeated_after_feature_commit": true,
+  "tests_after_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    }
+  ],
+  "ui_executions": 16,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "pixel_proof": {
+    "iPad": {
+      "glyph_interior_samples": 77703,
+      "transmitted_within_fixed_RGB45_limit": 70195,
+      "opaque_control_matches": 0,
+      "night_lit_samples": 2453095,
+      "night_wrong_color_samples": 0,
+      "ui_log_sha256": "f452dcf6e90daa1a93e95e987211b1b954e603cb574a55b0d11cd12f4c234443"
+    },
+    "iPhone": {
+      "glyph_interior_samples": 37076,
+      "transmitted_within_fixed_RGB45_limit": 33859,
+      "opaque_control_matches": 0,
+      "night_lit_samples": 1244921,
+      "night_wrong_color_samples": 0,
+      "ui_log_sha256": "1e194af3d13628e658469b2b5f90380172e231d21166e9391b46043044fd05b7"
+    }
+  },
+  "source_photo_and_transmission_share_crop_destination": true,
+  "texture_bound_to_current_photo_bytes": true,
+  "stored_or_extracted_font_contours": false,
+  "original_tall_typography_reconstructed": false,
+  "native_foreground_depth_observed": false,
+  "original_parity": false,
+  "physical_hardware_tested": false,
+  "real_photo_library_opened": false,
+  "visual_review_both_devices": true,
+  "logs": {
+    "photo-glass-integrated-core.log": "7f8afc3673cade74b63ffe1a16d0bc778ff4b9a5b1261dc9ab153e51a34c7abd",
+    "photo-glass-integrated-builds.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f",
+    "photo-glass-post-commit-core.log": "441f0630262934414eefa9a44319654a2e896e213e2a9e19292ce481c631b247"
+  }
+}
