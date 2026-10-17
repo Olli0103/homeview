@@ -365,7 +365,15 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/15",
     "issue_number": 15,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-17",
+      "evidence": [
+        "Docs/flow-typography.md",
+        "Docs/verification/flow-rendered.json"
+      ],
+      "scope": "Own redistributable variable glyphs and shared metrics; original Apple typography/material acceptance remains in FLOW-02 and QA-03."
+    }
   },
   {
     "key": "FLOW-02",
