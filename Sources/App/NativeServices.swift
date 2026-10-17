@@ -27,8 +27,13 @@ enum NativeServiceError: Error, LocalizedError {
   @MainActor
   final class NativeCalendarService {
     private lazy var store = EKEventStore()
-    func events(from: Date, to: Date) async throws -> [DeviceEvent] {
+    func authorize() async throws {
       guard try await store.requestFullAccessToEvents() else {
+        throw NativeServiceError.permissionDenied
+      }
+    }
+    func events(from: Date, to: Date) throws -> [DeviceEvent] {
+      guard EKEventStore.authorizationStatus(for: .event) == .fullAccess else {
         throw NativeServiceError.permissionDenied
       }
       let query = store.predicateForEvents(withStart: from, end: to, calendars: nil)
@@ -43,8 +48,13 @@ enum NativeServiceError: Error, LocalizedError {
   @MainActor
   final class NativeReminderService {
     private lazy var store = EKEventStore()
-    func read() async throws -> [DeviceReminder] {
+    func authorize() async throws {
       guard try await store.requestFullAccessToReminders() else {
+        throw NativeServiceError.permissionDenied
+      }
+    }
+    func read() async throws -> [DeviceReminder] {
+      guard EKEventStore.authorizationStatus(for: .reminder) == .fullAccess else {
         throw NativeServiceError.permissionDenied
       }
       let predicate = store.predicateForReminders(in: nil)
@@ -73,8 +83,8 @@ enum NativeServiceError: Error, LocalizedError {
       try store.remove(reminder, commit: true)
     }
     /// Creates only in our own named calendar; never changes existing personal reminders.
-    func createInHomeViewList(title: String) async throws {
-      guard try await store.requestFullAccessToReminders() else {
+    func createInHomeViewList(title: String) throws {
+      guard EKEventStore.authorizationStatus(for: .reminder) == .fullAccess else {
         throw NativeServiceError.permissionDenied
       }
       let calendar: EKCalendar

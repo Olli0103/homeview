@@ -18,3 +18,9 @@ Assistenten-/Nachrichtenentwürfe und Toasts werden beim Beenden der persönlich
 - Der erste App-Build meldete zwei Quelldateien mit identischem Basisnamen. Die Core-Datei wurde umbenannt; der danach gebaute und getestete Stand enthält keinen solchen Konflikt.
 
 Alle Provider und persönlichen Inhalte dieser Tests sind synthetisch. Kein echtes Konto, Mikrofon oder Heim wurde verwendet. Keine physische LocalAuthentication- oder App-Switcher-Snapshot-Abnahme behauptet. Erkennung tatsächlichen Weggehens, geschützte Medienfreigaben und die übrige Identitäts-/Gastpolicy bleiben eigene offene Arbeit. Deshalb bleibt #67 offen.
+
+## Folgekorrektur: Freigabe ist noch kein Datenzugriff
+
+Beim Verbinden werden OS-Berechtigungen jetzt gesondert angefragt. Solange die Geräteentsperrung fehlt, startet kein Kalender-/Reminder-Lesezugriff und es entsteht kein persönlicher Datencache. Nach dem Freigabedialog wird die Sitzungsgeneration erneut geprüft, bevor ein Lesen beginnt. Kalenderabfrage und lokale Reminder-Schreibaktionen starten selbst keinen weiteren Freigabedialog mehr. Damit kann eine während dieses Dialogs abgelaufene Sitzung nicht später doch einen privaten Zugriff beginnen.
+
+Der kontrollierte Provider zählt tatsächliche Leseaufrufe. Verbinden im gesperrten Zustand muss null Aufrufe ergeben. Auch eine erfolgreiche, aber verspätete OS-Freigabe nach dem Sperren darf keinen Read starten. Dieser zusätzliche Modellfall besteht zusammen mit den Foto-Modellfällen im späteren 50er-Core-Lauf. Die abschließende Gesamtprüfung ist gesondert dokumentiert.

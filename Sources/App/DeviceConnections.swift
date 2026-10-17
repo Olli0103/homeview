@@ -46,7 +46,18 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
   }
   func events(from: Date, to: Date) async throws -> [DeviceEvent] {
     #if canImport(EventKit) && (os(iOS) || os(macOS) || os(visionOS))
-      return try await calendar.events(from: from, to: to)
+      return try calendar.events(from: from, to: to)
+    #else
+      throw NativeServiceError.unavailable
+    #endif
+  }
+  func authorizePersonal(_ kind: DataConnection) async throws {
+    #if canImport(EventKit) && (os(iOS) || os(macOS) || os(visionOS))
+      switch kind {
+      case .calendar: try await calendar.authorize()
+      case .reminders: try await lists.authorize()
+      default: throw NativeServiceError.unavailable
+      }
     #else
       throw NativeServiceError.unavailable
     #endif
@@ -60,7 +71,7 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
   }
   func addReminder(_ title: String) async throws {
     #if canImport(EventKit) && (os(iOS) || os(macOS) || os(visionOS))
-      try await lists.createInHomeViewList(title: title)
+      try lists.createInHomeViewList(title: title)
     #else
       throw NativeServiceError.unavailable
     #endif
@@ -151,6 +162,11 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
   ]
   private var playing = false
   func authorized(_ kind: DataConnection) -> Bool { true }
+  func authorizePersonal(_ kind: DataConnection) async throws {
+    if ProcessInfo.processInfo.arguments.contains("--connection-denied") {
+      throw NativeServiceError.permissionDenied
+    }
+  }
   func events(from: Date, to: Date) async throws -> [DeviceEvent] {
     if ProcessInfo.processInfo.arguments.contains("--connection-denied") {
       throw NativeServiceError.permissionDenied
