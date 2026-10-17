@@ -175,3 +175,16 @@ ohne fremde Farbkanäle. 128 gebundene Quellen, SHA
 `d0dcb95a46ea5da221ca1743309352e58dfdd72221df589c8f74ba0e71f828b5`.
 [Eigene Bilder und genaue Grenzen](photo-glass-material.md). Hohe Originalglyphen,
 native Freistellung, Originallicht und Hardware bleiben offen. Keine neue Vollsuite.
+
+
+## Native Foto-Analyse: Diagnosegrenze statt erfundener Freistellung
+
+Neun isolierte Simulator-Konfigurationsausführungen prüfen Bildaufbereitung,
+angebotene GPU/CPU und öffentliche Personensegmentierung. CPU-Gesichtserkennung
+funktioniert; allgemeine Vordergrundfreistellung bleibtCode9. Balanced-Person
+meldet fehlende Ressource/nicht unterstütztes Backend, Fast-Person liefert für
+das eigene Demo-Porträt einen tatsächlich leeren Rohpuffer. Kein neuer Renderer-
+Fix, keine in main übernommenen Diagnoseänderungen und kein erfolgreicher
+Depth-PASS. Host-Instanzerkennung ist ausdrücklich kein kompletter PNG-/App-
+Rendernachweis. [Befunde und Grenzen](photo-native-boundary.md). Der zuvor geprüfte
+Glas-/Kopfschutzstand bleibt unverändert; keine erneuten unveränderten UI-Tests.

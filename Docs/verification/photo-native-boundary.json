@@ -1,0 +1,94 @@
+{
+  "diagnostic_base_commit": "759af516dfde9fd14ed553e05b1bb58dc95c54bc",
+  "diagnostic_changes_merged": false,
+  "published_renderer_source_digest": "d0dcb95a46ea5da221ca1743309352e58dfdd72221df589c8f74ba0e71f828b5",
+  "runtime": "iOS27.0/24A434 ARM64 Simulator",
+  "device": "iPad Air11 M4 Simulator",
+  "input": "Use Demo Photo / project-generated DemoPhotoPortraitV1; no personal library",
+  "diagnostic_configuration_executions": 9,
+  "successful_native_foreground_acceptance": false,
+  "general_foreground_error9_root_cause_fully_established": false,
+  "person_balanced_observed_errors": [
+    "missing model resource",
+    "E5RT is not supported"
+  ],
+  "fast_raw_buffer": {
+    "width": 192,
+    "height": 256,
+    "format": "OneComponent8",
+    "readable": true,
+    "maximum": 0,
+    "nonzero": 0,
+    "default_context_raster_total": 0,
+    "software_context_raster_total": 0
+  },
+  "host_control": {
+    "input_preparation": "same public CI preparation and CG format for the same generated asset, not claimed identical catalog-encoded bytes",
+    "format": "8bpc/32bpp/alpha5/RGB",
+    "automatic_faces": 1,
+    "automatic_foreground_instances": 1,
+    "explicit_gpu_configured_stages_per_request": 1,
+    "explicit_gpu_faces": 1,
+    "explicit_gpu_foreground_instances": 1,
+    "scaled_mask_and_foreground_png_validated": false,
+    "full_app_depth_render_validated": false
+  },
+  "physical_device_or_personal_photo_tested": false,
+  "original_parity": false,
+  "diagnostics": [
+    {
+      "checkpoint": "photo-vision-boundary-probe",
+      "source_digest": "07ca3ffc6b17d11a4585a451d501828bc680684d6b8607a285446514a305d752",
+      "source_files": 128,
+      "configuration_outputs": [
+        "ci-auto clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=ci_cgimage_automatic_no_override_face_request_error_Vision_9_ci_faces_1_foreground_automatic_no_override_foreground_error_Vision_9;regions=1;protected=0",
+        "imageio-auto clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=imageio_up_automatic_no_override_face_request_error_Vision_9_ci_faces_1_foreground_automatic_no_override_foreground_error_Vision_9;regions=1;protected=0",
+        "ci-gpu clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=ci_cgimage_supported_cpu1_gpu1_ane0_gpu_configured1_face_request_error_Vision_9_ci_faces_1_foreground_supported_cpu0_gpu1_ane0_gpu_configured1_foreground_error_Vision_9;regions=1;protected=0",
+        "ci-auto-repeat clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=ci_cgimage_automatic_no_override_face_request_error_Vision_9_ci_faces_1_foreground_automatic_no_override_foreground_error_Vision_9;regions=1;protected=0"
+      ],
+      "log_sha256": "2f7b988611e6b032e63782168598bf23842103bb2e1e7c0c148549a4c4f6f670",
+      "meaning": "diagnostic method completed, not successful foreground acceptance"
+    },
+    {
+      "checkpoint": "photo-vision-normalized-probe",
+      "source_digest": "2c5355ad6f7ccad721c4822c3d31beb65621742e599a24bf2df38711709110ad",
+      "source_files": 128,
+      "configuration_outputs": [
+        "ci-cpu clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=ci_cgimage_bpc8_bpp32_alpha5_space1_supported_cpu1_gpu1_ane0_cpu_configured1_face_results_1_accepted_1_foreground_supported_cpu0_gpu1_ane0_cpu_configured0_foreground_error_Vision_9;regions=1;protected=0",
+        "imageio-normalized clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=imageio_thumbnail_bpc8_bpp32_alpha5_space1_automatic_no_override_face_request_error_Vision_9_ci_faces_1_foreground_automatic_no_override_foreground_error_Vision_9;regions=1;protected=0"
+      ],
+      "log_sha256": "8050a27b6f1183f1ba02e32ee065f06fd340e91edf017e53947b646841f12d0b",
+      "meaning": "diagnostic method completed, not successful foreground acceptance"
+    },
+    {
+      "checkpoint": "photo-vision-person-probe",
+      "source_digest": "0bcb04bfc28e69aa642af6f4cf100f777b48c6e2f0d0c870faab94a1cb8a4c36",
+      "source_files": 128,
+      "configuration_outputs": [
+        "person-cpu clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=ci_cgimage_bpc8_bpp32_alpha5_space1_supported_cpu1_gpu1_ane0_cpu_configured1_face_results_1_accepted_1_foreground_supported_cpu0_gpu1_ane0_cpu_configured0_foreground_error_Vision_9_person_cpu_error_Other_1;regions=1;protected=0"
+      ],
+      "log_sha256": "83c7c37f6c4038091e3e76648228478553639e4cb942b94ec9ed0cb519fdef74",
+      "meaning": "diagnostic method completed, not successful foreground acceptance"
+    },
+    {
+      "checkpoint": "photo-vision-person-fast-probe",
+      "source_digest": "439ded7dbc1b4df432212029f37d6780b8200ae8e9ed96c6c87d8f9f3461a96b",
+      "source_files": 128,
+      "configuration_outputs": [
+        "person-fast-cpu clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=ci_cgimage_bpc8_bpp32_alpha5_space1_supported_cpu1_gpu1_ane0_cpu_configured1_face_results_1_accepted_1_foreground_supported_cpu0_gpu1_ane0_cpu_configured0_foreground_error_Vision_9_person_cpu_empty_mask;regions=1;protected=0"
+      ],
+      "log_sha256": "3b977dc9d362210ad1ec36595c1e567b8a83908c6c8f2baaddc48600a047ee87",
+      "meaning": "diagnostic method completed, not successful foreground acceptance"
+    },
+    {
+      "checkpoint": "photo-vision-person-raster-readable",
+      "source_digest": "ce073a3cf2b4c1defcd12f6aee2ec430e1cc6157531d10c58a0e4ca26d1ada61",
+      "source_files": 128,
+      "configuration_outputs": [
+        "person-raw-raster clock=bottom;full=false;depth=false;foreground=false;finished=true;diagnostic=ci_cgimage_bpc8_bpp32_alpha5_space1_supported_cpu1_gpu1_ane0_cpu_configured1_face_results_1_accepted_1_foreground_supported_cpu0_gpu1_ane0_cpu_configured0_foreground_error_Vision_9_person_fast_cpu_configured1_size192x256_format1278226488_rawReadabletrue_rawMax0_rawNonzero0_defaultRaster0_softwareRaster0_empty_mask;regions=1;protected=0"
+      ],
+      "log_sha256": "d3650d8764df67e7377a75e28f7ef21753fe1b243418510d959760dec57c8e82",
+      "meaning": "diagnostic method completed, not successful foreground acceptance"
+    }
+  ]
+}
