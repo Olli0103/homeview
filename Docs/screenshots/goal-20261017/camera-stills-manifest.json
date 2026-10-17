@@ -1,0 +1,68 @@
+[
+  {
+    "path": "Docs/screenshots/goal-20261017/camera-stills-iPad-viewport-camera-demo-four-stills.png",
+    "sha256": "68d54c62f1b3ff40a359dc2a3510f8fe0051245e13cef08f937996392e54a09c",
+    "kind": "native exported viewport",
+    "source_digest": "2be801de674495e7d0e690a627b9bb2e284cbd2bf3c895f0fcb8c36eb85ea909",
+    "code_commit": "facfa9a10c07a76f861be15f17ce3f9eda8fe989",
+    "synthetic": true
+  },
+  {
+    "path": "Docs/screenshots/goal-20261017/camera-stills-iPhone-camera-demo-night-offline.png",
+    "sha256": "48875d1508e0b51e5ff85941d9c4033ad87d1713e44a1834b43712c6a1e32278",
+    "kind": "native exported viewport",
+    "source_digest": "2be801de674495e7d0e690a627b9bb2e284cbd2bf3c895f0fcb8c36eb85ea909",
+    "code_commit": "facfa9a10c07a76f861be15f17ce3f9eda8fe989",
+    "synthetic": true
+  },
+  {
+    "path": "Docs/screenshots/goal-20261017/camera-stills-contact.png",
+    "sha256": "c3ae8453c999edcda9fb5f48affdf7673e70c236fb9ac2a0ae5f0857cda15be1",
+    "kind": "QA contact sheet; eight own viewports downscaled to450 pixels; not a native-resolution capture",
+    "source_digest": "2be801de674495e7d0e690a627b9bb2e284cbd2bf3c895f0fcb8c36eb85ea909",
+    "code_commit": "facfa9a10c07a76f861be15f17ce3f9eda8fe989",
+    "inputs": [
+      {
+        "device": "iPad",
+        "attachment": "viewport-camera-demo-four-stills",
+        "sha256": "68d54c62f1b3ff40a359dc2a3510f8fe0051245e13cef08f937996392e54a09c"
+      },
+      {
+        "device": "iPad",
+        "attachment": "viewport-camera-demo-nine-stills",
+        "sha256": "4426df1a9c5bcd1b1debe655173ab712611637c1b1bf6f2e750c83720c259e0a"
+      },
+      {
+        "device": "iPad",
+        "attachment": "camera-demo-night-offline",
+        "sha256": "2defc61c4d4d8f24fc96c09e452a705806ce7e31d5e8eecb664a62fe8ec11227"
+      },
+      {
+        "device": "iPad",
+        "attachment": "viewport-home-grid-clock-reference",
+        "sha256": "d81247b79c5dcea636581ab5a292567c66000d2c3d3e4ad38d47f2065c0e0d1b"
+      },
+      {
+        "device": "iPhone",
+        "attachment": "viewport-camera-demo-four-stills",
+        "sha256": "a885c09000c76877a0b4c6af71631c09cefc5828ac26b54858cc4a0d85cab8cc"
+      },
+      {
+        "device": "iPhone",
+        "attachment": "viewport-camera-demo-nine-stills",
+        "sha256": "e19c62447ccfb13ed77e5d0643bf164cd3bcd336187bd94f6fbfbee74789b6da"
+      },
+      {
+        "device": "iPhone",
+        "attachment": "camera-demo-night-offline",
+        "sha256": "48875d1508e0b51e5ff85941d9c4033ad87d1713e44a1834b43712c6a1e32278"
+      },
+      {
+        "device": "iPhone",
+        "attachment": "viewport-home-grid-clock-reference",
+        "sha256": "8eb113f59d58bd9f76bc33629cf4bd00f8b1dc4566990f2bbc3d094bda566094"
+      }
+    ],
+    "synthetic": true
+  }
+]

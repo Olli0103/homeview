@@ -27,6 +27,11 @@ der vollständigen Originalabnahme offen. Weitere Home-Analoguhrdetails in Arbei
 sechs gezielte UI-Ausführungen und fünf SDK-Builds. Eigene Kamera-Demoassets
 werden als nächster sichtbarer Korrekturschritt integriert.
 
+`2776f7c` / `facfa9a`: [Vier eigene Kamera-Demoassets und vollständiger Nacht-Viewport](demo-camera-assets.md),
+104 Modelltests, zwölf gezielte UI-Ausführungen und fünf SDK-Builds. Nur markierte
+generierte Standbilder, keine echten Streams. Foto-Demoassets werden getrennt
+weiter korrigiert; das Gesamtgoal bleibt aktiv.
+
 ## 17. Oktober 2026 · zweites Issue-Paket
 
 [Prüfbericht und eigene Bilder](iteration-20261017-block2.md) · [alle verbleibenden Pakete](remaining-work.md).

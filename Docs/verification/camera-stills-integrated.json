@@ -1,0 +1,67 @@
+{
+  "code_commit": "facfa9a10c07a76f861be15f17ce3f9eda8fe989",
+  "feature_commit": "2776f7c",
+  "source_digest": "2be801de674495e7d0e690a627b9bb2e284cbd2bf3c895f0fcb8c36eb85ea909",
+  "source_files": 124,
+  "source_before_after_match": true,
+  "source_matches_committed_bytes": true,
+  "core_passed": 104,
+  "core_repeated_after_feature_commit": true,
+  "tests_after_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    }
+  ],
+  "ui_executions": 12,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "generated_camera_images": 4,
+  "decoded_generated_image_size": [
+    1254,
+    1254
+  ],
+  "new_camera_png_and_configuration_files_verified": 8,
+  "all_current_pngs_in_asset_index_verified": 22,
+  "asset_generator": "built-in image_gen; no reference-image input",
+  "demo_nine_grid_repeats_four_stills": true,
+  "camera_is_live": false,
+  "real_camera_or_microphone_opened": false,
+  "homekit_setup_resumed": false,
+  "physical_hardware_tested": false,
+  "original_parity": false,
+  "visual_review_both_devices": true,
+  "night_camera_pixel_guard": {
+    "region": "entire native viewport including offline banner, no host chrome",
+    "red_sample_threshold": 25,
+    "other_channel_to_red_limit": 0.4,
+    "wrong_color_samples": 0,
+    "lit_samples_greater_than": 100
+  },
+  "prism_night_guard_region": "inner80% existing glass regression",
+  "camera_reference_clock": "10:09 in display timezone",
+  "home_grid_thumbnail_and_route": "Living Room",
+  "logs": {
+    "camera-stills-integrated-core.log": "f41979da788b69e7c88d7ac1aaeaedbb2b0f37a9b629b890f951ea8da25acb96",
+    "camera-stills-integrated-builds.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f",
+    "camera-stills-post-commit-core.log": "ddfc9d79b2c58c93d310e1ab33c391c7c81335ba9ef538ae08ae680c1dc4ba18"
+  }
+}
