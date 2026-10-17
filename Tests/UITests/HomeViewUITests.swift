@@ -970,6 +970,15 @@ final class HomeViewUITests: XCTestCase {
     add(geometry)
     shot("screen-" + name)
   }
+  func testNumeralsReferenceReadingAndSharedClockDefaults() {
+    launch(["--face","Numerals"])
+    XCTAssertTrue(app.otherElements["face.Numerals"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["WED 1"].exists)
+    viewportShot("numerals-reference-time")
+    launch(["--face","Fade"])
+    XCTAssertTrue(app.otherElements["face.Fade"].waitForExistence(timeout:5))
+    viewportShot("numerals-shared-fade-regression")
+  }
   func testVisualReferenceAtlas() {
     for (reference, face) in [
       ("UI01", "Modular"), ("UI07", "Home Modular"), ("UI08", "Calendar"), ("UI10", "Numerals"),
