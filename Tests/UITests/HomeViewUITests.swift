@@ -28,6 +28,27 @@ final class HomeViewUITests: XCTestCase {
     tap("nav.apps")
     tap("all.apps")
   }
+  func testPersonalHomeUsesObservedFourAppArrangementAndNativeMarks() {
+    launch()
+    tap("nav.apps")
+    let facetime=app.buttons["app.FaceTime"],home=app.buttons["app.Home"]
+    let music=app.buttons["app.Music"],messages=app.buttons["app.Messages"]
+    for button in [facetime,home,music,messages] { XCTAssertTrue(button.isHittable) }
+    // Accessibility bounds can include a wider symbol/label. The observed grid
+    // aligns column CENTERS, not the left ink edge of differently shaped marks.
+    XCTAssertLessThan(facetime.frame.midX,home.frame.midX)
+    XCTAssertEqual(facetime.frame.minY,home.frame.minY,accuracy:2)
+    XCTAssertEqual(music.frame.midX,facetime.frame.midX,accuracy:2)
+    XCTAssertEqual(messages.frame.midX,home.frame.midX,accuracy:2)
+    XCTAssertGreaterThan(music.frame.minY,facetime.frame.maxY)
+    XCTAssertTrue(app.staticTexts["Photos"].exists)
+    shot("personal-observed-favorites-and-icons")
+    tap("all.apps")
+    XCTAssertTrue(app.buttons["app.Calendar"].isHittable)
+    shot("apps-native-marks-first-rows")
+    app.scrollViews.firstMatch.swipeUp()
+    shot("apps-native-marks-lower-rows")
+  }
 
   func testThermostatWritesAndScenePropagatesToDetail() {
     launch()
