@@ -1,4 +1,5 @@
 #include <metal_stdlib>
+#include <SwiftUI/SwiftUI_Metal.h>
 using namespace metal;
 
 // Own small volumetric field; no original textures or private weather framework.
@@ -26,10 +27,8 @@ static float weatherDensity(float3 p,float cover) {
     float ceiling=mix(0.90,0.30,saturate(cover))+smoothstep(0.18,0.65,p.y/4.0)*0.30;
     return max(0.0,weatherField(p*2.0)-ceiling)*5.0;
 }
-[[ stitchable ]] half4 weatherCloudField(float2 position,half4 input,
-    float2 size,float time,float cover,float night) {
-    float2 uv=position/max(size,float2(1));
-    if(cover<=0.0) return input;
+static float3 weatherScene(float2 uv,float time,float cover,float night,float3 base) {
+    if(cover<=0.0) return base;
     float topBand=1.0-smoothstep(0.28,0.54,uv.y);
     float3 origin=float3(uv*4.0,1.37)+float3(time*0.018,0,0);
     float3 sunlight=normalize(float3(-0.5,-0.7,-0.5));
@@ -47,8 +46,38 @@ static float weatherDensity(float3 p,float cover) {
         cloudLight+=transmission*opacity*color;
         transmission*=1.0-opacity;
     }
-    float3 sky=float3(input.rgb);
     float glow=exp(-length((uv-float2(0.27,0.04))*float2(5.0,6.0))*3.5)*(1.0-night);
-    sky=mix(sky,float3(1.0,0.99,0.95),glow*0.70);
-    return half4(half3(sky*transmission+cloudLight),input.a);
+    base=mix(base,float3(1.0,0.99,0.95),glow*0.70);
+    return base*transmission+cloudLight;
+}
+[[ stitchable ]] half4 weatherCloudField(float2 position,half4 input,
+    float2 size,float time,float cover,float night) {
+    return half4(half3(weatherScene(position/max(size,float2(1)),time,cover,night,float3(input.rgb))),input.a);
+}
+// Runtime system-text alpha mask, not redistributed font outlines.
+[[ stitchable ]] half4 weatherGlassNumber(float2 position,SwiftUI::Layer mask,
+    float2 origin,float2 size,float time,float cover,float night) {
+    float coverage=smoothstep(0.35,0.65,float(mask.sample(position).a));
+    if(coverage<=0.0) return half4(0);
+    float2 slope=float2(0);
+    const float radii[5]={1,3,6,10,14};
+    const float weights[5]={0.10,0.17,0.25,0.26,0.22};
+    for(int i=0;i<5;i++) {
+        float r=radii[i];
+        slope+=float2(float(mask.sample(position+float2(r,0)).a-mask.sample(position-float2(r,0)).a),
+                      float(mask.sample(position+float2(0,r)).a-mask.sample(position-float2(0,r)).a))*weights[i];
+    }
+    float3 normal=normalize(float3(-slope*1.5,1));
+    float3 ray=refract(float3(0,0,-1),normal,1.0/1.45);
+    float2 uv=(origin+position+ray.xy*12.0)/max(size,float2(1));
+    float3 top=mix(float3(0.08,0.32,0.57),float3(0.12,0.16,0.31),night);
+    float3 bottom=mix(float3(0.26,0.52,0.78),float3(0.02,0.07,0.18),night);
+    float3 color=weatherScene(uv,time,cover,night,mix(top,bottom,saturate(uv.y)));
+    float bevel=saturate(length(slope));
+    float highlight=pow(saturate(dot(normal,normalize(float3(-0.5,-0.7,1)))),18.0)*bevel;
+    float upper=max(0.0,coverage-float(mask.sample(position-float2(0.8,0.8)).a));
+    float lower=max(0.0,coverage-float(mask.sample(position+float2(0.8,0.8)).a));
+    color=mix(color,float3(0.84,0.94,1),0.24);
+    color=color*(1.0-lower*0.08)+highlight*0.45+upper*0.42;
+    return half4(half3(saturate(color)*coverage),half(coverage));
 }

@@ -1,0 +1,74 @@
+{
+  "source_digest": "0191c0e171904ac3f6fd74f4d1c51881537a8642563d7806371ef7d594fd4fb9",
+  "core_passed": 99,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "real_home_access": false,
+  "physical_hardware_tested": false,
+  "personal_accounts_tested": false,
+  "original_pixel_parity": false,
+  "decoded_glyph_sky_review": {
+    "roi_fraction": {
+      "x": [
+        0.05,
+        0.65
+      ],
+      "y": [
+        0.2,
+        0.62
+      ]
+    },
+    "results": [
+      {
+        "device": "iPad",
+        "moving_changed_rgba_channels": 962933,
+        "reduce_motion_changed_rgba_channels": 0
+      },
+      {
+        "device": "iPhone",
+        "moving_changed_rgba_channels": 485856,
+        "reduce_motion_changed_rgba_channels": 0
+      }
+    ],
+    "proves": "Movement/stillness of decoded glyph/sky region, not original optical accuracy."
+  },
+  "demo_aqi": {
+    "value": 21,
+    "source": "Observed UI05 synthetic example only",
+    "connected_value": null,
+    "connected_aqi_not_invented": true
+  },
+  "visual_review": {
+    "reference": "UI05 product reference, private",
+    "own_glyph_correction": true,
+    "original_pixel_parity": false,
+    "limits": [
+      "exact contour/light/refraction",
+      "unobserved temperatures and phases",
+      "physical GPU energy/frame rate"
+    ]
+  }
+}

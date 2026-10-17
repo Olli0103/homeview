@@ -375,11 +375,12 @@ struct WeatherFace: View {
   @Environment(AppModel.self) private var model
   var inApp = false
   var body: some View {
+    MotionTimeline { phase in
     VStack(alignment: .leading, spacing: inApp ? 14 : 18) {
       HStack(alignment: .top) {
         VStack(alignment: .leading, spacing: 2) {
           Label(
-            model.connections.weatherCondition,
+            model.connections.weatherCondition.replacingOccurrences(of:" · Demo",with:""),
             systemImage: model.connections.weatherSymbol)
           Text(
             model.connections.weatherHighLow)
@@ -388,16 +389,11 @@ struct WeatherFace: View {
         Text(model.clock, style: .time).font(.system(size: 47, weight: .semibold))
           .environment(\.timeZone, model.displayTimeZone)
       }
-      Text(model.connections.weatherTemperature).accessibilityIdentifier("weather.temperature").font(
-        .system(size: inApp ? 170 : model.data.far ? 260 : 224, weight: .regular)
-      )
-      .tracking(-10).foregroundStyle(
-        LinearGradient(
-          colors: [.white.opacity(0.97), Color(red: 0.48, green: 0.75, blue: 1).opacity(0.6)],
-          startPoint: .top, endPoint: .bottom)
-      )
-      .shadow(color: .white.opacity(0.8), radius: 0.5, x: 1, y: 1)
-      .shadow(color: .blue.opacity(0.5), radius: 1, x: -1, y: -1)
+      WeatherGlassTemperature(value:model.connections.weatherTemperature,
+        size:inApp ? 170 : model.data.far ? 260:236,phase:phase,
+        cover:Float(WeatherBackdrop.cloudCover(model.connections.weather,demo:model.connections.weatherDemo)),
+        night:model.connections.weather?.isDay == false ? 1:0)
+        .padding(.top,-40)
       Spacer(minLength: 0)
       if !model.data.far {
         HStack(alignment: .top, spacing: 8) {
@@ -408,12 +404,12 @@ struct WeatherFace: View {
           detail(
             "humidity", humidity,
             "Humidity")
-          detail("aqi.medium", "—", "AQI")
+          detail("aqi.medium", model.connections.weatherDemo ? "21":"—", "AQI")
         }.padding(.bottom, inApp ? 44 : 4)
       }
     }.padding(inApp ? 30 : 45).foregroundStyle(.white)
       .shadow(color:.black.opacity(0.18),radius:1,x:0,y:1).background(WeatherBackdrop(
-      reading: model.connections.weather, demo: model.connections.weatherDemo))
+      reading: model.connections.weather, demo: model.connections.weatherDemo,phase:phase))
     .overlay(alignment: .bottomLeading) {
       VStack(alignment: .leading, spacing: 2) {
         Text(model.connections.weatherSource(at: model.now)).accessibilityIdentifier("weather.source")
@@ -425,7 +421,8 @@ struct WeatherFace: View {
         }
       }.font(.system(size: 11)).foregroundStyle(.white.opacity(0.85))
         .padding(.horizontal,60).padding(.bottom,inApp ? 18 : 10)
-    }.contentShape(Rectangle()).onTapGesture { model.navigate(.weather) }
+    }.coordinateSpace(name:"weather-face").contentShape(Rectangle()).onTapGesture { model.navigate(.weather) }
+    }
   }
   private var humidity: String {
     guard let value = WeatherReading.valid(model.connections.weatherDemo ? 76 : model.connections.weather?.humidity, in: 0...100) else { return "—" }
@@ -435,6 +432,7 @@ struct WeatherFace: View {
     VStack(spacing: 3) {
       Image(systemName: s).font(.system(size: inApp ? 32 : 40, weight: .light)).frame(height: inApp ? 40 : 52)
       Text(value).font(.system(size: inApp ? 22 : 27, weight: .medium)).lineLimit(1).minimumScaleFactor(0.7)
+        .accessibilityIdentifier("weather.detail."+label)
       Text(label).font(.system(size: inApp ? 21 : 27)).lineLimit(1).minimumScaleFactor(0.7)
     }.frame(maxWidth: .infinity)
   }
@@ -443,12 +441,19 @@ struct WeatherFace: View {
 struct WeatherBackdrop: View {
   let reading: WeatherReading?
   let demo: Bool
-  var body: some View {
-    MotionTimeline { time in
+  var phase: Double? = nil
+  static func cloudCover(_ reading:WeatherReading?,demo:Bool) -> Double {
+    if demo { return 0.70 }
+    let cloudy=["Partly Cloudy","Overcast","Fog","Rain","Snow","Thunderstorms"].contains(reading?.condition ?? "")
+    return (WeatherReading.valid(reading?.cloudCover,in:0...100) ?? (cloudy ? 60:0))/100
+  }
+  @ViewBuilder var body: some View {
+    if let phase { sky(at:phase) } else { MotionTimeline { sky(at:$0) } }
+  }
+  private func sky(at time:Double) -> some View {
       ZStack {
         GeometryReader { geometry in
-          let cloudy = ["Partly Cloudy","Overcast","Fog","Rain","Snow","Thunderstorms"].contains(reading?.condition ?? "")
-          let cover = demo ? 0.70 : (WeatherReading.valid(reading?.cloudCover,in:0...100) ?? (cloudy ? 60:0))/100
+          let cover=Self.cloudCover(reading,demo:demo)
           LinearGradient(colors:reading?.isDay == false
             ? [Color(red:0.12,green:0.16,blue:0.31),Color(red:0.02,green:0.07,blue:0.18)]
             : [Color(red:0.08,green:0.32,blue:0.57),Color(red:0.26,green:0.52,blue:0.78)],
@@ -473,7 +478,6 @@ struct WeatherBackdrop: View {
             .blur(radius: 7).allowsHitTesting(false).accessibilityHidden(true)
         }
       }
-    }
   }
 }
 struct CalendarFace: View {

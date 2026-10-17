@@ -1,5 +1,8 @@
 # Strukturierter Wetterhimmel nach UI20
 
+Historischer Himmelsschritt `ccbae27`. Die nachfolgenden [Glasziffern](weather-glass.md)
+haben einen eigenen Quellen-/Testnachweis.
+
 17. Oktober 2026 - [#21](https://github.com/Olli0103/homeview/issues/21).
 
 Der vorige Layoutschritt trennte die Wetter-App vom Wetter-Zifferblatt. Der Himmel
