@@ -382,6 +382,77 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.staticTexts["PHOTOS"].exists)
     shot("native-demo-photo-face")
   }
+  func testPhotoClockAvoidsTopSubjectAndKeepsBothEdgeSubjects() {
+    launch(["--photo-layout-fixture", "top"])
+    let layout = app.staticTexts["photo.layout.test"]
+    XCTAssertTrue(layout.waitForExistence(timeout: 5))
+    XCTAssertTrue(layout.label.contains("clock=bottom"), layout.label)
+    XCTAssertTrue(layout.label.contains("depth=true"), layout.label)
+    shot("photo-layout-top-subject-clock-bottom")
+    app.terminate()
+    launch(["--photo-layout-fixture", "edges"])
+    XCTAssertTrue(layout.waitForExistence(timeout: 5))
+    XCTAssertTrue(layout.label.contains("full=true"), layout.label)
+    shot("photo-layout-two-edge-subjects-full-image")
+  }
+  func testDensePhotoMaskDoesNotHideClockBehindSubject() {
+    launch(["--photo-layout-fixture", "dense"])
+    let layout = app.staticTexts["photo.layout.test"]
+    XCTAssertTrue(layout.waitForExistence(timeout: 5))
+    XCTAssertTrue(layout.label.contains("depth=false"), layout.label)
+    XCTAssertTrue(app.staticTexts["photo.clock"].exists)
+    shot("photo-layout-dense-mask-depth-disabled")
+  }
+  func testPhotoManualClockPositionSurvivesRelaunchAndResetsToAuto() {
+    let id = UUID().uuidString
+    launch(["--persistence-test", id, "--reset-test-store", "--photo-layout-fixture", "top",
+            "--photo-layout-settings"])
+    let top = app.buttons["photos.clock.top"]
+    for _ in 0..<18 where !top.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(top.isHittable)
+    top.tap()
+    tap("nav.faces")
+    let layout = app.staticTexts["photo.layout.test"]
+    XCTAssertTrue(layout.label.contains("clock=top"), layout.label)
+    XCTAssertTrue(layout.label.contains("depth=false"), layout.label)
+    app.terminate()
+    launch(["--persistence-test", id, "--photo-layout-fixture", "top"])
+    XCTAssertTrue(layout.waitForExistence(timeout: 5))
+    XCTAssertTrue(layout.label.contains("clock=top"), layout.label)
+    shot("photo-layout-manual-top-after-relaunch")
+    // Re-open Settings and reset only this photo's correction.
+    tap("nav.controls")
+    tap("controls.settings")
+    let reset = app.buttons["photos.layout.reset"]
+    for _ in 0..<18 where !reset.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(reset.isHittable)
+    reset.tap()
+    tap("nav.faces")
+    XCTAssertTrue(layout.label.contains("clock=bottom"), layout.label)
+  }
+  func testPhotoManualCropCanOverrideAndRestoreFullImageFraming() {
+    launch(["--photo-layout-fixture", "edges", "--photo-layout-settings"])
+    let automatic = app.switches["photos.crop.auto"]
+    for _ in 0..<18 where !automatic.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(automatic.isHittable)
+    automatic.tap()
+    let horizontal = app.sliders["photos.crop.horizontal"]
+    for _ in 0..<4 where !horizontal.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(horizontal.isHittable)
+    horizontal.adjust(toNormalizedSliderPosition: 0.85)
+    tap("nav.faces")
+    let layout = app.staticTexts["photo.layout.test"]
+    XCTAssertTrue(layout.label.contains("full=false"), layout.label)
+    shot("photo-layout-manual-crop")
+    tap("nav.controls")
+    tap("controls.settings")
+    let reset = app.buttons["photos.layout.reset"]
+    for _ in 0..<18 where !reset.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(reset.isHittable)
+    reset.tap()
+    tap("nav.faces")
+    XCTAssertTrue(layout.label.contains("full=true"), layout.label)
+  }
 
   func testAlternateHomeClockSceneAndThermostat() {
     launch(["--face", "Home Modular Clock"])

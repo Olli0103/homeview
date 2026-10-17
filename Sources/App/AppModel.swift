@@ -1,4 +1,6 @@
 import AVFoundation
+import CryptoKit
+import ImageIO
 import Observation
 import SwiftUI
 
@@ -94,6 +96,28 @@ final class AppModel {
   }
   var photoData: Data? = nil
   var photoForegroundData: Data? = nil
+  private(set) var photoComposition = PhotoComposition()
+  private var photoAnalysis: PhotoAnalysis?
+  private var photoAnalysisTask: Task<Void, Never>?
+  private var photoKey: String?
+  var photoAdjustment: PhotoAdjustment {
+    photoKey.flatMap { data.photoAdjustments[$0] } ?? .init()
+  }
+  func adjustPhoto(_ adjustment: PhotoAdjustment) {
+    guard let photoKey else { return }
+    if data.photoAdjustments.count >= 100, data.photoAdjustments[photoKey] == nil,
+       let oldestKey = data.photoAdjustments.keys.sorted().first {
+      data.photoAdjustments.removeValue(forKey: oldestKey)
+    }
+    data.photoAdjustments[photoKey] = adjustment
+    updatePhotoComposition()
+    persist()
+  }
+  private func updatePhotoComposition() {
+    guard let photoAnalysis else { photoComposition = .init(); return }
+    photoComposition = PhotoPlacement.choose(aspect: photoAnalysis.aspect, mask: photoAnalysis.mask,
+                                            adjustment: photoAdjustment)
+  }
   var now = Date()
   var referenceClock: Bool
   var lastInteraction = Date()
@@ -178,9 +202,9 @@ final class AppModel {
       route = .app(page)
     }
     if !ephemeral {
-      photoData = try? Data(contentsOf: dir.appendingPathComponent("selected-photo.data"))
-      photoForegroundData = try? Data(
-        contentsOf: dir.appendingPathComponent("selected-photo-mask.png"))
+      if let selected = try? Data(contentsOf: dir.appendingPathComponent("selected-photo.data")) {
+        showPhoto(selected)
+      }
     }
     if !ephemeral {
       gallery = data.photoIDs.prefix(10).compactMap { id in
@@ -199,6 +223,17 @@ final class AppModel {
       selectedTimer = timer.id
       route = .app(.timers)
     }
+    #if !os(watchOS)
+      if args.contains("--uitesting"), let index = args.firstIndex(of: "--photo-layout-fixture"),
+         args.indices.contains(index + 1), let fixture = PhotoLayoutFixture.make(args[index+1]) {
+        setPhoto(fixture.bytes)
+        photoAnalysisTask?.cancel()
+        photoAnalysis = fixture.analysis
+        photoForegroundData = fixture.analysis.foreground
+        updatePhotoComposition()
+        if args.contains("--photo-layout-settings") { route = .app(.settings) }
+      }
+    #endif
   }
   func setPhoto(_ bytes: Data?) {
     guard (bytes?.count ?? 0) <= 40_000_000 else {
@@ -231,17 +266,34 @@ final class AppModel {
     route = .face
   }
   private func showPhoto(_ bytes: Data?) {
+    photoAnalysisTask?.cancel()
     photoData = bytes
     photoForegroundData = nil
+    photoAnalysis = nil
+    photoKey = bytes.map { SHA256.hash(data: $0).map { String(format: "%02x", $0) }.joined() }
+    // Establish crop and manual placement immediately, before slower Vision segmentation.
+    if let bytes, let source = CGImageSourceCreateWithData(bytes as CFData, nil),
+       let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString: Any],
+       let width = properties[kCGImagePropertyPixelWidth] as? Double,
+       let height = properties[kCGImagePropertyPixelHeight] as? Double, height > 0 {
+      let orientation = properties[kCGImagePropertyOrientation] as? Int ?? 1
+      let rotated = (5...8).contains(orientation)
+      photoAnalysis = PhotoAnalysis(aspect: rotated ? height/width : width/height, mask: nil,
+                                    foreground: nil)
+    }
+    updatePhotoComposition()
     photoChangedAt = Date()
     #if canImport(Vision) && (os(iOS) || os(macOS) || os(visionOS))
       if let bytes {
-        Task {
-          let mask = try? await Task.detached(priority: .utility) {
-            try NativeSubjectExtractor.foreground(bytes)
+        photoAnalysisTask = Task {
+          guard !Task.isCancelled else { return }
+          let analysis = try? await Task.detached(priority: .utility) {
+            try NativeSubjectExtractor.analyze(bytes)
           }.value
-          guard photoData == bytes else { return }
-          photoForegroundData = mask
+          guard !Task.isCancelled, photoData == bytes, let analysis else { return }
+          photoAnalysis = analysis
+          photoForegroundData = analysis.foreground
+          updatePhotoComposition()
         }
       }
     #endif
