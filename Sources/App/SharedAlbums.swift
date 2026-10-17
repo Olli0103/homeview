@@ -54,154 +54,300 @@ import SwiftUI
   }
 #endif
 
-@MainActor @Observable
-final class SharedAlbumReader {
-  struct Album: Identifiable {
-    let id: String
-    let name: String
-  }
-  var albums: [Album] = []
-  var status = ""
-  var busy = false
-  private var generation = 0
-  private let testing = ProcessInfo.processInfo.arguments.contains("--uitesting")
-  #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
-    private var collections: [String: PHAssetCollection] = [:]
-    private var pending: PhotoRequestWaiter?
-  #endif
-  func load() async {
-    guard !busy else { return }
-    busy = true
-    generation += 1
-    let ticket = generation
-    defer { busy = false }
-    if testing {
-      albums = [Album(id: "fixture", name: "Synthetic shared album")]
-      return
-    }
-    #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
-      let access = await PHPhotoLibrary.requestAuthorization(for: .readWrite)
-      guard generation == ticket, !Task.isCancelled else { return }
-      guard access == .authorized || access == .limited else {
-        status = "Photos access was not granted."
-        return
-      }
-      collections = [:]
-      albums = []
-      let fetched = PHAssetCollection.fetchAssetCollections(
-        with: .album, subtype: .albumCloudShared, options: nil)
-      for i in 0..<min(50, fetched.count) {
-        let c = fetched.object(at: i)
-        collections[c.localIdentifier] = c
-        albums.append(Album(id: c.localIdentifier, name: c.localizedTitle ?? "Shared album"))
-      }
-      status =
-        albums.isEmpty
-        ? "No accessible shared albums. You can use Choose Photos instead."
-        : "Choose an album to import up to ten photos."
-    #else
-      status = "Shared albums are unavailable on this target."
-    #endif
-  }
-  func images(_ id: String) async -> [Data] {
-    guard !busy else { return [] }
-    busy = true
-    defer { busy = false }
-    generation += 1
-    let ticket = generation
-    if testing {
-      #if os(macOS)
-        return DemoPhotoAssets.gallery.compactMap { NSImage(named: $0)?.tiffRepresentation }.compactMap
-        { try? PhotoThumbnail.make($0) }
-      #elseif canImport(UIKit)
-        return DemoPhotoAssets.gallery.compactMap {
-          UIImage(named: $0)?.jpegData(compressionQuality: 0.8)
-        }
-      #else
-        return []
-      #endif
-    }
-    #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
-      guard let collection = collections[id] else { return [] }
-      let options = PHFetchOptions()
-      options.predicate = NSPredicate(format: "mediaType == %d", PHAssetMediaType.image.rawValue)
-      options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-      options.fetchLimit = 10
-      let assets = PHAsset.fetchAssets(in: collection, options: options)
-      var values: [Data] = []
-      for i in 0..<min(10, assets.count) {
-        guard !Task.isCancelled, generation == ticket else { return [] }
-        let asset = assets.object(at: i)
-        let bytes: Data? = await withCheckedContinuation { continuation in
-          let waiter = PhotoRequestWaiter(continuation)
-          pending = waiter
-          let options = PHImageRequestOptions()
-          options.deliveryMode = .highQualityFormat
-          options.resizeMode = .exact
-          options.isNetworkAccessAllowed = true
-          let request = PHImageManager.default().requestImage(
-            for: asset, targetSize: CGSize(width: 1600, height: 1600), contentMode: .aspectFit,
-            options: options
-          ) { image, info in
-            if info?[PHImageResultIsDegradedKey] as? Bool == true { return }
-            #if os(macOS)
-              let data = image?.tiffRepresentation.flatMap { try? PhotoThumbnail.make($0) }
-            #else
-              let data = image?.jpegData(compressionQuality: 0.82)
-            #endif
-            waiter.finish(data)
-          }
-          waiter.setID(request)
-          DispatchQueue.global().asyncAfter(deadline: .now() + 20) { waiter.cancel() }
-        }
-        pending = nil
-        if let bytes, bytes.count <= 5_000_000 { values.append(bytes) }
-      }
-      guard !Task.isCancelled, generation == ticket else { return [] }
-      status =
-        values.isEmpty
-        ? "No photos could be loaded." : "Imported \(values.count) selected-album photos."
-      return values
-    #else
-      return []
-    #endif
+
+#if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
+private final class AlbumImageCancellation: @unchecked Sendable {
+  private let lock = NSLock()
+  private var waiter: PhotoRequestWaiter?
+  private var cancelled = false
+  func install(_ value: PhotoRequestWaiter) {
+    lock.lock(); waiter = value; let stop = cancelled; lock.unlock()
+    if stop { value.cancel() }
   }
   func cancel() {
+    lock.lock(); cancelled = true; let value = waiter; lock.unlock()
+    value?.cancel()
+  }
+}
+@MainActor
+private final class AlbumLibraryObserver: NSObject, PHPhotoLibraryChangeObserver {
+  let changed: @MainActor () -> Void
+  init(changed: @escaping @MainActor () -> Void) { self.changed = changed }
+  nonisolated func photoLibraryDidChange(_ changeInstance: PHChange) {
+    // No PHChange contents or other album metadata cross this callback.
+    Task { @MainActor [weak self] in self?.changed() }
+  }
+}
+#endif
+
+@MainActor
+final class SystemAlbumPhotoProvider: AlbumPhotoProvider {
+  private var generation = 0
+  #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
+    private var observer: AlbumLibraryObserver?
+    private var pending: [UUID:PhotoRequestWaiter] = [:]
+  #endif
+  init() {
+    precondition(!ProcessInfo.processInfo.arguments.contains("--uitesting"),
+      "Synthetic UI tests must construct only the fixture album provider")
+    // No PHPhotoLibrary/PHImageManager construction or reads here.
+  }
+  func authorizationGranted() -> Bool {
+    #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
+      let status = PHPhotoLibrary.authorizationStatus(for:.readWrite)
+      return status == .authorized || status == .limited
+    #else
+      return false
+    #endif
+  }
+  func requestPermission() async throws {
+    try Task.checkCancellation()
+    #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
+      let status = await PHPhotoLibrary.requestAuthorization(for:.readWrite)
+      try Task.checkCancellation()
+      guard status == .authorized || status == .limited else { throw AlbumAccessError.permissionDenied }
+    #else
+      throw AlbumAccessError.unavailable
+    #endif
+  }
+  func catalogue() async throws -> [DisplayAlbum] {
+    try Task.checkCancellation()
+    guard authorizationGranted() else { throw AlbumAccessError.permissionDenied }
+    #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
+      let result = PHAssetCollection.fetchAssetCollections(with:.album,subtype:.albumCloudShared,options:nil)
+      return (0..<min(50,result.count)).compactMap { index in
+        let collection = result.object(at:index)
+        let title = String((collection.localizedTitle ?? "Shared album").prefix(120))
+        let album = DisplayAlbum(id:collection.localIdentifier,title:title)
+        return album.valid ? album:nil
+      }
+    #else
+      throw AlbumAccessError.unavailable
+    #endif
+  }
+  func readAlbum(_ id: String, known: [AlbumPhoto]) async throws -> AlbumBatch {
+    guard DisplayAlbum.validIdentifier(id) else { throw AlbumAccessError.invalidBatch }
+    guard authorizationGranted() else { throw AlbumAccessError.permissionDenied }
+    try Task.checkCancellation()
+    let ticket = generation
+    #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
+      let collections = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers:[id],options:nil)
+      guard let collection = collections.firstObject,
+            collection.assetCollectionType == .album,
+            collection.assetCollectionSubtype == .albumCloudShared else {
+        throw AlbumAccessError.noLongerAccessible
+      }
+      let options = PHFetchOptions()
+      options.predicate = NSPredicate(format:"mediaType == %d",PHAssetMediaType.image.rawValue)
+      options.sortDescriptors = [NSSortDescriptor(key:"creationDate",ascending:false)]
+      options.fetchLimit = 10
+      let result = PHAsset.fetchAssets(in:collection,options:options)
+      let assets = (0..<min(10,result.count)).map { result.object(at:$0) }
+      let old = Dictionary(known.filter(\.valid).map { ($0.id,$0) },uniquingKeysWith:{ first,_ in first })
+      let clock = ContinuousClock()
+      let deadline = clock.now.advanced(by:.seconds(45))
+      var photos: [AlbumPhoto] = []
+      for asset in assets {
+        guard generation == ticket else { throw CancellationError() }
+        try Task.checkCancellation()
+        guard authorizationGranted() else { throw AlbumAccessError.permissionDenied }
+        // A missing revision is deliberately unstable: never infer freshness.
+        let revision = asset.modificationDate.map { String($0.timeIntervalSince1970) }
+          ?? "unknown-" + UUID().uuidString
+        if let cached = old[asset.localIdentifier],cached.revision == revision {
+          photos.append(cached); continue
+        }
+        let left = clock.now.duration(to:deadline).components
+        let remaining = Double(left.seconds) + Double(left.attoseconds)/1e18
+        if remaining <= 0 { break }
+        if let bytes = await image(asset,timeout:min(20,remaining)),
+           !bytes.isEmpty,bytes.count <= 5_000_000 {
+          photos.append(AlbumPhoto(id:asset.localIdentifier,revision:revision,bytes:bytes))
+        }
+      }
+      guard generation == ticket else { throw CancellationError() }
+      try Task.checkCancellation()
+      guard authorizationGranted() else { throw AlbumAccessError.permissionDenied }
+      return AlbumBatch(orderedIDs:assets.map(\.localIdentifier),photos:photos)
+    #else
+      throw AlbumAccessError.unavailable
+    #endif
+  }
+  #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
+  private func image(_ asset: PHAsset, timeout: TimeInterval) async -> Data? {
+    let control = AlbumImageCancellation()
+    let token = UUID()
+    defer { pending.removeValue(forKey:token) }
+    return await withTaskCancellationHandler {
+      await withCheckedContinuation { continuation in
+        let waiter = PhotoRequestWaiter(continuation)
+        pending[token] = waiter
+        control.install(waiter)
+        guard !Task.isCancelled else { waiter.cancel(); return }
+        let options = PHImageRequestOptions()
+        options.deliveryMode = .highQualityFormat
+        options.resizeMode = .exact
+        options.isNetworkAccessAllowed = true
+        let request = PHImageManager.default().requestImage(for:asset,
+          targetSize:CGSize(width:1600,height:1600),contentMode:.aspectFit,options:options) { image,info in
+          if info?[PHImageResultIsDegradedKey] as? Bool == true { return }
+          #if os(macOS)
+            let data = image?.tiffRepresentation.flatMap { try? PhotoThumbnail.make($0) }
+          #else
+            let data = image?.jpegData(compressionQuality:0.82)
+          #endif
+          waiter.finish(data)
+        }
+        waiter.setID(request)
+        DispatchQueue.global().asyncAfter(deadline:.now()+timeout) { waiter.cancel() }
+      }
+    } onCancel: { control.cancel() }
+  }
+  #endif
+  func cancelReads() {
     generation += 1
     #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
-      pending?.cancel()
-      pending = nil
+      pending.values.forEach { $0.cancel() }
+      pending = [:]
+    #endif
+  }
+  func observeChanges(_ handler: (@MainActor () -> Void)?) {
+    #if canImport(Photos) && (os(iOS) || os(macOS) || os(visionOS))
+      if let observer { PHPhotoLibrary.shared().unregisterChangeObserver(observer) }
+      observer = nil
+      guard let handler,authorizationGranted() else { return }
+      let value = AlbumLibraryObserver(changed:handler)
+      observer = value
+      PHPhotoLibrary.shared().register(value)
     #endif
   }
 }
+
+/// No PhotoKit objects, library permission requests or real albums in this path.
+@MainActor @Observable
+final class FixtureAlbumPhotoProvider: AlbumPhotoProvider {
+  var allowed: Bool
+  private(set) var catalogueReads = 0
+  private(set) var permissionRequests = 0
+  private(set) var readCalls = 0
+  private(set) var window = 0
+  private(set) var lastID = ""
+  private var changed: (@MainActor () -> Void)?
+  private var images: [String:Data] = [:]
+  init() {
+    let args = ProcessInfo.processInfo.arguments
+    allowed = !args.contains("--album-fixture-denied")
+    if let i=args.firstIndex(of:"--album-fixture-window"),args.indices.contains(i+1) {
+      window = args[i+1] == "changed" ? 1:args[i+1] == "empty" ? 2:0
+    }
+  }
+  var report: String { "fixture-only;catalogue=\(catalogueReads);permission=\(permissionRequests);reads=\(readCalls);window=\(window);album=\(lastID)" }
+  func authorizationGranted() -> Bool { allowed }
+  func requestPermission() async throws {
+    permissionRequests += 1
+    guard allowed else { throw AlbumAccessError.permissionDenied }
+  }
+  func catalogue() async throws -> [DisplayAlbum] {
+    catalogueReads += 1
+    guard allowed else { throw AlbumAccessError.permissionDenied }
+    return [DisplayAlbum(id:"fixture",title:"Synthetic shared album"),
+      DisplayAlbum(id:"second",title:"Second synthetic album")]
+  }
+  func readAlbum(_ id: String, known: [AlbumPhoto]) async throws -> AlbumBatch {
+    guard allowed else { throw AlbumAccessError.permissionDenied }
+    readCalls += 1; lastID = id
+    let ids = id == "second" ? ["fixture-c"] : window == 2 ? [] :
+      window == 1 ? ["fixture-b","fixture-c"] : ["fixture-a","fixture-b"]
+    let old = Dictionary(known.map { ($0.id,$0) },uniquingKeysWith:{ first,_ in first })
+    let revision = "v\(window)"
+    let values = ids.compactMap { assetID -> AlbumPhoto? in
+      if let old=old[assetID],old.revision == revision { return old }
+      let name = assetID == "fixture-a" ? DemoPhotoAssets.portrait :
+        assetID == "fixture-b" ? DemoPhotoAssets.landscape : "DemoCameraLivingRoomV1"
+      if images[name] == nil {
+        #if os(macOS)
+          images[name] = NSImage(named:name)?.tiffRepresentation.flatMap { try? PhotoThumbnail.make($0) }
+        #elseif canImport(UIKit)
+          images[name] = UIImage(named:name)?.jpegData(compressionQuality:0.8)
+        #endif
+      }
+      return images[name].map { AlbumPhoto(id:assetID,revision:revision,bytes:$0) }
+    }
+    return AlbumBatch(orderedIDs:ids,photos:values)
+  }
+  func cancelReads() {}
+  func observeChanges(_ handler: (@MainActor () -> Void)?) { changed = handler }
+  func changeWindow() { window = (window+1)%3; changed?() }
+  func revoke() { allowed = false; changed?() }
+}
+@MainActor
+func makeAlbumPhotoProvider() -> any AlbumPhotoProvider {
+  if ProcessInfo.processInfo.arguments.contains("--uitesting") { return FixtureAlbumPhotoProvider() }
+  return SystemAlbumPhotoProvider()
+}
+
 struct SharedAlbumControls: View {
   @Environment(AppModel.self) private var model
-  @Environment(\.scenePhase) private var scenePhase
-  @State private var reader = SharedAlbumReader()
-  @State private var task: Task<Void, Never>?
-  var body: some View {
-    VStack(alignment: .leading, spacing: 12) {
-      Button("Import Shared Album") { task = Task { await reader.load() } }
-        .disabled(reader.busy).accessibilityIdentifier("photos.shared.load")
-      ForEach(reader.albums) { album in
-        Button(album.name) {
-          task = Task {
-            let images = await reader.images(album.id)
-            if !Task.isCancelled, !images.isEmpty { model.setGallery(images) }
-          }
-        }.disabled(reader.busy).accessibilityIdentifier("photos.shared.\(album.id)")
-      }
-      if !reader.status.isEmpty {
-        Text(reader.status).font(.system(size: 16)).foregroundStyle(.gray)
-      }
-    }.font(.system(size: 21)).onChange(of: scenePhase) { _, phase in
-      if phase == .background {
-        task?.cancel()
-        reader.cancel()
-      }
-    }.onDisappear {
-      task?.cancel()
-      reader.cancel()
+  @State private var task: Task<Void,Never>?
+  @State private var importing = false
+  private func importOnce(_ album: DisplayAlbum) {
+    guard !importing else { return }
+    importing = true
+    task = Task {
+      await model.importAlbumOnce(album)
+      importing = false
     }
+  }
+  var body: some View {
+    VStack(alignment:.leading,spacing:12) {
+      if !model.connections.personalUnlocked {
+        Button("Unlock shared albums") { model.requestAlbumUnlock() }
+          .accessibilityIdentifier("photos.shared.load")
+      } else {
+        Button("Import Shared Album") { task = Task { await model.loadAlbumChoices() } }
+          .disabled(model.albumCatalogue.busy || importing)
+          .accessibilityIdentifier("photos.shared.load")
+        if !model.albumCatalogue.albums.isEmpty {
+          Text("Keep updated lets new photos from the chosen album appear on this shared display while HomeView is active. Up to ten copies are kept until you disconnect.")
+            .font(.system(size:16)).foregroundStyle(.secondary)
+            .accessibilityIdentifier("photos.shared.display.notice")
+        }
+        ForEach(model.albumCatalogue.albums) { album in
+          Menu {
+            Button("Import once") { importOnce(album) }
+            Button("Keep updated on this display") { model.linkAlbumForDisplay(album) }
+              .accessibilityIdentifier("photos.shared.link.\(album.id)")
+          } label: { Text(album.title) } primaryAction: { importOnce(album) }
+            .disabled(importing).accessibilityIdentifier("photos.shared.\(album.id)")
+        }
+      }
+      if !model.albumCatalogue.status.isEmpty {
+        Text(model.albumCatalogue.status).font(.system(size:16)).foregroundStyle(.secondary)
+      }
+      if let grant=model.data.albumDisplay {
+        Text(grant.album.title).font(.system(size:19,weight:.semibold))
+        Text("New photos from this album appear on this shared display while HomeView is active. Up to ten photos are kept.")
+          .font(.system(size:16)).foregroundStyle(.secondary)
+        Button("Update now") { model.refreshDisplayAlbum() }
+          .disabled(model.albumUpdates.busy).accessibilityIdentifier("photos.shared.refresh")
+        Button("Disconnect and remove linked copies") { model.disconnectDisplayAlbum() }
+          .accessibilityIdentifier("photos.shared.disconnect")
+      }
+      if !model.albumUpdates.status.isEmpty {
+        Text(model.albumUpdates.status).font(.system(size:16)).foregroundStyle(.secondary)
+          .accessibilityIdentifier("photos.shared.status")
+      }
+      if let report=model.albumFixtureReport {
+        Text(report).font(.system(size:10)).accessibilityIdentifier("photos.shared.fixture.report")
+        Button("Change synthetic album") { model.changeAlbumFixture() }
+          .accessibilityIdentifier("photos.shared.fixture.change")
+        Button("Revoke synthetic Photos access") { model.revokeAlbumFixture() }
+          .accessibilityIdentifier("photos.shared.fixture.revoke")
+      }
+    }.font(.system(size:21))
+      .onChange(of:model.connections.personalUnlocked) { _,unlocked in
+        if !unlocked { task?.cancel(); model.albumCatalogue.invalidate() }
+      }
+      .onDisappear { task?.cancel(); model.albumCatalogue.invalidate(locked:false) }
   }
 }
