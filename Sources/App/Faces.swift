@@ -439,7 +439,7 @@ struct WeatherFace: View {
   }
 }
 /// Native illustration, not an extracted Apple weather animation.
-private struct WeatherBackdrop: View {
+struct WeatherBackdrop: View {
   let reading: WeatherReading?
   let demo: Bool
   var body: some View {

@@ -1,0 +1,50 @@
+{
+  "source_digest": "1638501683b748096ab6368570f2753ae13c654131188a02315375c45b689762",
+  "core_passed": 99,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "real_home_access": false,
+  "physical_hardware_tested": false,
+  "personal_accounts_tested": false,
+  "original_pixel_parity": false,
+  "ui_physical_coordinate_touches": [
+    "cities",
+    "forecast.wind",
+    "forecast.precipitation"
+  ],
+  "late_closed_city_editor_cannot_dismiss_new_editor": true,
+  "visual_review": {
+    "own_decoded_images_reviewed": true,
+    "reference": "UI20 approximate private display crop, not native pixel geometry",
+    "layout_step_only": true,
+    "remaining": [
+      "original cloud structures/light/motion",
+      "weather-face glass numerals",
+      "unobserved city selection states",
+      "weather transitions/performance/hardware"
+    ]
+  }
+}

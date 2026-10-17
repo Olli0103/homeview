@@ -51,6 +51,7 @@ Die sechs Material-Abtastradien haben keine physische Energie-/Performanceabnahm
 
 Der nächste Korrekturschritt `e169206` ersetzt die Plus-Kreis-Platzhalter und passt
 Standard-Favoriten/Typografie an UI16 an. [Eigene Bilder und Grenzen](app-icons.md).
-Foto-Inhalt, weitere Profil-Layouts und die eigenständige Original-Wetteransicht
-UI20 bleiben sichtbare Lücken. Weitere Funktionspakete sind dem visuellen Abgleich
-nachgeordnet.
+Foto-Inhalt und weitere Profil-Layouts bleiben sichtbare Lücken. Der nächste
+[UI20-Wetterschritt](weather-app.md) trennt App und Zifferblatt und korrigiert die
+Conditions-Struktur; Originalwolken und Glas bleiben offen. Weitere Funktionspakete
+sind dem visuellen Abgleich nachgeordnet.

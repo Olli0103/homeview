@@ -1123,6 +1123,77 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertLessThan(sunrise.maxY,viewport.maxY - 8)
     shot("weather-missing-metrics-no-fabricated-aqi")
   }
+  func testWeatherAppUsesSeparateCenteredCityAndConditionsLayout() {
+    launch(["--page","Weather"])
+    let city=app.staticTexts["weather.app.city"],temperature=app.staticTexts["weather.temperature"]
+    let viewport=app.otherElements["reference.viewport"].frame
+    XCTAssertEqual(city.label,"San Francisco");XCTAssertEqual(temperature.label,"54°")
+    XCTAssertEqual(city.frame.midX,viewport.midX,accuracy:2)
+    XCTAssertEqual(temperature.frame.midX,viewport.midX,accuracy:2)
+    let conditions=app.staticTexts["Conditions"].frame
+    XCTAssertGreaterThan(conditions.minY,temperature.frame.maxY)
+    XCTAssertLessThan(conditions.maxY,viewport.maxY)
+    XCTAssertTrue(app.staticTexts["weather.source"].label.hasPrefix("Demo"))
+    touchWeatherControl("weather.cities")
+    XCTAssertTrue(app.textFields["weather.app.city.input"].waitForExistence(timeout:5))
+    tap("weather.city.done")
+    XCTAssertTrue(city.waitForExistence(timeout:5))
+    shot("weather-app-ui20-centered-city-conditions")
+  }
+  private func touchWeatherControl(_ id:String) {
+    let button=app.buttons[id]
+    XCTAssertTrue(button.waitForExistence(timeout:5))
+    let frame=button.frame,viewport=app.otherElements["reference.viewport"].frame
+    XCTAssertTrue(viewport.contains(CGPoint(x:frame.midX,y:frame.midY)))
+    // Verify actual screen-coordinate touches and their resulting destination.
+    // AX isHittable is false for these scaled SwiftUI scroll-view controls even
+    // when their decoded screenshot position agrees with the native anchor.
+    app.coordinate(withNormalizedOffset:.zero)
+      .withOffset(CGVector(dx:frame.midX-app.frame.minX,dy:frame.midY-app.frame.minY)).tap()
+  }
+  func testWeatherForecastModesAndCitySheetUseOnlyConnectedFixtureData() {
+    launch(["--page","Settings","--weather-forecast-fixture"])
+    connectService("Weather");openWeather()
+    XCTAssertEqual(app.staticTexts["weather.app.city"].label,"Berlin")
+    touchWeatherControl("weather.mode.Wind")
+    XCTAssertEqual(app.staticTexts["weather.metric"].label,"Wind (mph)")
+    XCTAssertTrue(app.staticTexts["9 mph"].exists)
+    touchWeatherControl("weather.mode.Precipitation")
+    XCTAssertTrue(app.staticTexts["15%"].exists)
+    shot("weather-app-source-hourly-precipitation")
+    touchWeatherControl("weather.cities")
+    let field=app.textFields["weather.app.city.input"];field.tap()
+    field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:(field.value as? String)?.count ?? 0)+"Paris")
+    XCTAssertEqual(field.value as? String,"Paris")
+    tap("weather.app.city.update")
+    expectation(for:NSPredicate(format:"label == %@","Paris"),evaluatedWith:app.staticTexts["weather.app.city"])
+    waitForExpectations(timeout:8)
+    touchWeatherControl("weather.cities")
+    app.segmentedControls["weather.app.units"].buttons["°C / km/h"].tap()
+    tap("weather.city.done")
+    XCTAssertEqual(app.staticTexts["weather.temperature"].label,"13°")
+    XCTAssertTrue(app.staticTexts["weather.source"].label.contains("°C / km/h"))
+    shot("weather-app-city-changed-celsius")
+  }
+  func testWeatherLateCityResultCannotDismissReopenedEditor() {
+    launch(["--page","Settings","--weather-forecast-fixture","--weather-city-delay"])
+    connectService("Weather");openWeather()
+    touchWeatherControl("weather.cities")
+    let field=app.textFields["weather.app.city.input"];field.tap()
+    field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:(field.value as? String)?.count ?? 0)+"Paris")
+    tap("weather.app.city.update")
+    tap("weather.city.done")
+    touchWeatherControl("weather.cities")
+    XCTAssertTrue(field.waitForExistence(timeout:5))
+    let status=app.staticTexts["weather.app.city.status"]
+    expectation(for:NSPredicate(format:"label == %@","Connected · synthetic source"),evaluatedWith:status)
+    waitForExpectations(timeout:18)
+    XCTAssertTrue(field.exists,"Completion from the closed editor must not dismiss the new sheet")
+    XCTAssertEqual(field.value as? String,"Paris")
+    tap("weather.city.done")
+    XCTAssertEqual(app.staticTexts["weather.app.city"].label,"Paris")
+    shot("weather-app-late-result-new-editor-preserved")
+  }
   func testWeatherFailedConnectionDoesNotShowDemoTemperature() {
     launch(["--page","Settings","--weather-fail"])
     let button = app.buttons["connect.Weather"]

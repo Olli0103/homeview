@@ -1,0 +1,26 @@
+{
+  "account_access": false,
+  "city": "Berlin",
+  "gps_access": false,
+  "home_access": false,
+  "hourly_rows": 48,
+  "hours_with_precipitation_probability": 24,
+  "hours_with_temperature": 24,
+  "hours_with_wind": 24,
+  "next_24h_rows": 24,
+  "observed_at_unix": 1792256400,
+  "retrieved_at_unix": 1792257079.3780031,
+  "source": "Open-Meteo",
+  "time_zone": "Europe/Berlin",
+  "method": "Compiled WeatherService.swift and WeatherData.swift for an explicit public Berlin query. This is a dated adapter/decoder probe, not a UI or original-parity test.",
+  "compiled_sources": [
+    {
+      "path": "Sources/Core/WeatherData.swift",
+      "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+    },
+    {
+      "path": "Sources/App/WeatherService.swift",
+      "sha256": "3921ee5426399c326610cfa4f25d27e6baf2018f6a827210edfbef8ae692be78"
+    }
+  ]
+}
