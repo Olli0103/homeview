@@ -1,5 +1,12 @@
 # Bearbeitungsstand
 
+## Fortlaufender Gesamtauftrag
+
+Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
+freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
+`39464d4`: [Prismen und Glaskacheln](home-prisms.md), 99 Modelltests, acht gezielte
+UI-Ausführungen und fünf SDK-Builds. #20 bleibt in der Originalabnahme offen.
+
 ## 17. Oktober 2026 · zweites Issue-Paket
 
 [Prüfbericht und eigene Bilder](iteration-20261017-block2.md) · [alle verbleibenden Pakete](remaining-work.md).

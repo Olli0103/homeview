@@ -1,0 +1,50 @@
+{
+  "code_commit": "39464d45a20e0d62ca5ae553ec06e76192c2b2dd",
+  "source_digest": "b741d60e7c5cf4314454b2bb2416145351e985c6fc97dc9fc9b8318429cc5dac",
+  "source_files": 114,
+  "source_before_after_match": true,
+  "core_passed": 99,
+  "core_repeated_after_commit": true,
+  "post_commit_core_log_sha256": "e7149248759746548fd15db7f437df695c0367484662e1617f6e10a0d20dca3e",
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 8,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "physical_hardware_tested": false,
+  "personal_accounts_tested": false,
+  "real_home_access": false,
+  "original_pixel_parity": false,
+  "visual_review": {
+    "UI07_UI45_and_own_iPad_iPhone": "inspected",
+    "night_iPad_iPhone": "inspected",
+    "original_parity_accepted": false,
+    "limits": [
+      "exact shard geometry/light/motion",
+      "hands and shadow details",
+      "visionOS and macOS <26 fallback not optically equal",
+      "physical performance"
+    ]
+  }
+}
