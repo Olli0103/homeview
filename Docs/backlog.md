@@ -23,88 +23,88 @@ Typen: implementation = fehlende Umsetzung, validation = vorhandene Umsetzung no
 
 | ID | Priorität | Typ | Arbeit | Referenz |
 |---|---|---|---|---|
-| BASE-01 | P0 | research | [Verbindlichen Parity-Vertrag und API-Grenzen festschreiben](#base-01) | technisch/Abnahme |
-| BASE-02 | P0 | research | [Vollständigen Referenzsatz für Zustände und Bewegungen sichern](#base-02) | technisch/Abnahme |
-| PUB-01 | P0 | implementation | [Redistribuierbare Grafik- und Typografiegrundlage herstellen](#pub-01) | technisch/Abnahme |
-| PUB-02 | P1 | decision | [Quelllizenz und Veröffentlichungsunterlagen festlegen](#pub-02) | technisch/Abnahme |
-| FACE-01 | P1 | validation | [Face-Katalog und Varianten vollständig gegen Referenz abnehmen](#face-01) | F001 |
-| FACE-02 | P1 | implementation | [Face-Wechsel und App-Raster-Übergänge vermessen](#face-02) | F002, F009 |
-| FACE-03 | P1 | validation | [Räumlichen Face-Editor vollständig kalibrieren](#face-03) | F003, F004, F005 |
-| FACE-04 | P1 | implementation | [Geteilte Modular-Inhalte mit echten Freigaben trennen](#face-04) | F006, F007 |
-| FACE-05 | P1 | implementation | [Persönlichen Home Screen und App-Anordnung abnehmen](#face-05) | F008 |
-| FACE-06 | P1 | research | [Entfernung und Bewegung durch nachgewiesene Präsenzquelle steuern](#face-06) | F010, F016 |
-| PHOTO-01 | P1 | implementation | [Foto-Galerie und geteilte Alben vervollständigen](#photo-01) | F011, F012 |
-| PHOTO-02 | P1 | implementation | [Motivgeschützte Uhrplatzierung und Bildausschnitt berechnen](#photo-02) | F013 |
-| FACE-07 | P1 | implementation | [Tageszeit-, Nacht- und reduzierte Face-Zustände vervollständigen](#face-07) | F014, F021 |
-| FACE-08 | P1 | blocked | [Snoopy-Szenen, Atlanten und Timelines klären](#face-08) | F015 |
-| FLOW-01 | P1 | implementation | [Variable Flow-Ziffern mit korrekten Metriken entwickeln](#flow-01) | technisch/Abnahme |
-| FLOW-02 | P1 | implementation | [Flow-Glas, Fluidparameter und Originalbewegung kalibrieren](#flow-02) | technisch/Abnahme |
-| FLOW-03 | P1 | implementation | [CPU-Fluid schrittweise auf Metal-Texturen portieren](#flow-03) | technisch/Abnahme |
-| FACE-09 | P1 | implementation | [Fade-Verlauf und zeitabhängige Ziffern abgleichen](#face-09) | F017 |
-| FACE-10 | P1 | implementation | [Numerals-Typografie und analoge Uhrvarianten kalibrieren](#face-10) | F018 |
-| FACE-11 | P1 | implementation | [Prismen-Hintergrund und analoge Materialschichten angleichen](#face-11) | technisch/Abnahme |
-| FACE-12 | P1 | implementation | [Wetterdaten, Wolken, Regen und Frost vollständig abnehmen](#face-12) | F019 |
-| FACE-13 | P2 | validation | [Monatskalender-Face vollständig abnehmen](#face-13) | F020 |
-| HOME-01 | P1 | blocked | [HomeKit-Einrichtung und Adapter nach ausdrücklichem Fortsetzen implementieren](#home-01) | F022, F023, F100 |
-| HOME-02 | P1 | blocked | [Thermostat, Licht, Lüfter und Beschattung echt anbinden](#home-02) | F024, F025, F026, F027, F031 |
-| HOME-03 | P1 | blocked | [Türschloss mit echter Autorisierung und Zustandsbestätigung absichern](#home-03) | F028 |
-| HOME-04 | P1 | blocked | [Szenen und Routinen mit nachgewiesenem Umfang bedienen](#home-04) | F029, F030 |
-| CAM-01 | P1 | blocked | [Echte Kamera-Streams bis neun Feeds und Detailaktionen anbinden](#cam-01) | F032, F033 |
-| CAM-02 | P1 | blocked | [Türklingel-Ereignis und Unterbrechungsregeln umsetzen](#cam-02) | F034 |
-| CAM-03 | P1 | blocked | [Gegensprechen mit Audio-Lifecycle und Freigaben ergänzen](#cam-03) | F035 |
-| HOME-05 | P1 | blocked | [HKSV-Erkennung und Archivsuche als API-Lücke entscheiden](#home-05) | F036, F037 |
-| HOME-06 | P2 | implementation | [Hausereignisse in einer gruppierten Mitteilungsansicht darstellen](#home-06) | F038 |
-| HOME-07 | P2 | blocked | [Rauch-/CO-Geräuscherkennung und eigene Sensoren auf Machbarkeit prüfen](#home-07) | F039, F040 |
-| AI-01 | P1 | implementation | [Allgemeinwissen und fortgesetzten Dialog durch echten Assistenten ersetzen](#ai-01) | F041, F044 |
-| AI-02 | P1 | blocked | [Persönlichen Kontext und Onscreen Awareness sicher begrenzen](#ai-02) | F042, F045 |
-| AI-03 | P1 | implementation | [Mehrschrittige Aktionen mit Bestätigung und Teilfehlern ausführen](#ai-03) | F043 |
-| AI-04 | P1 | implementation | [Antwortansicht mit Text, Bildern und Karten vervollständigen](#ai-04) | F046 |
-| AI-05 | P2 | blocked | [Wakeword und Siri-Aktivierung als getrennte Systemgrenze behandeln](#ai-05) | F047 |
-| AI-06 | P2 | validation | [Assistenten-Geste, Texteingabe und Entwurfserhalt abnehmen](#ai-06) | F048, F049 |
-| AI-07 | P2 | blocked | [Dialogverlauf und geräteübergreifende Fortsetzung klären](#ai-07) | F050 |
-| AI-08 | P2 | implementation | [Antwortstimme, Tempo und Medienunterbrechungen ergänzen](#ai-08) | F051 |
-| AI-09 | P2 | research | [Dienstverfügbarkeit, Sprachen und Limits sichtbar machen](#ai-09) | F052 |
-| COM-01 | P1 | blocked | [FaceTime-Annahme und aktive Anrufsteuerung als API-Lücke bilanzieren](#com-01) | F053, F054 |
-| COM-02 | P2 | research | [Center Stage auf geeigneter Kamera-Hardware prüfen](#com-02) | F055 |
-| COM-03 | P1 | validation | [Explizite Nachrichten- und Anruf-Systemübergaben abnehmen](#com-03) | F056, F057 |
-| COM-04 | P1 | blocked | [Intercom zu HomePods und persönlichen Geräten auf Machbarkeit prüfen](#com-04) | F058 |
-| COM-05 | P1 | blocked | [Find-My-Geräte, AirTags und Personen ehrlich abgrenzen](#com-05) | F059 |
-| DAY-01 | P1 | validation | [Kalenderverbindung und Agenda auf echter Hardware abnehmen](#day-01) | F060, F061 |
-| DAY-02 | P1 | validation | [Erinnerungen mit Listenrechten und Read-back abnehmen](#day-02) | F062 |
-| DAY-03 | P1 | validation | [Mehrere Timer und große Countdown-Ansicht vollständig abnehmen](#day-03) | F063, F064 |
-| DAY-04 | P1 | implementation | [Sprachbefehle für Timer und Kochschritte vervollständigen](#day-04) | F065, F075 |
-| DAY-05 | P1 | implementation | [Live Activities für Timer und zulässige Aktivitäten implementieren](#day-05) | F066 |
-| DAY-06 | P1 | validation | [Eigene Wecker über Neustart und Gerätebetrieb abnehmen](#day-06) | F067 |
-| DAY-07 | P2 | implementation | [Weltuhr um Zonenwahl und Tag-/Nachtanzeige ergänzen](#day-07) | F068 |
-| DAY-08 | P1 | validation | [Browser-Navigation und sichere externe Inhalte abnehmen](#day-08) | F069 |
-| DAY-09 | P1 | implementation | [Rezeptimport, Kochansicht und Bibliothek an Randfällen vervollständigen](#day-09) | F070, F071, F072, F073, F074, F076 |
-| DAY-10 | P2 | implementation | [Rezept-Handoff über öffentliche Continuity-Technik implementieren](#day-10) | F077 |
-| MEDIA-01 | P1 | implementation | [MusicKit-Suche, Bibliothek und Player produktiv abnehmen](#media-01) | F078, F080, F081, F082 |
-| MEDIA-02 | P2 | blocked | [Animiertes Artwork und Lyrics pro öffentlicher Fähigkeit entscheiden](#media-02) | F079 |
-| MEDIA-03 | P1 | implementation | [Podcasts durch echte frei zugängliche Feedwiedergabe ergänzen](#media-03) | F083 |
-| MEDIA-04 | P2 | research | [Weitere Medien und Drittanbieter-Angebote auf Zugriffsmöglichkeiten prüfen](#media-04) | F084, F085 |
-| MEDIA-05 | P1 | research | [AirPlay-Routenauswahl und Mehrraumwiedergabe abnehmen](#media-05) | F086 |
-| MEDIA-06 | P2 | blocked | [Gast- und Peer-to-peer-AirPlay separat klären](#media-06) | F087 |
-| MEDIA-07 | P2 | blocked | [Medien- und Anruf-Handoff pro Inhaltstyp abgrenzen](#media-07) | F088 |
-| SYS-01 | P1 | validation | [Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen](#sys-01) | F089, F090 |
-| SYS-02 | P1 | implementation | [Control Center und Settings mit echten Zuständen abgleichen](#sys-02) | F091, F092 |
-| SYS-03 | P0 | blocked | [Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen](#sys-03) | F093, F094, F096 |
-| SYS-04 | P0 | implementation | [Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen](#sys-04) | F095 |
-| SYS-05 | P1 | implementation | [Gastberechtigungen für Haus, Wetter, Timer und Musik definieren](#sys-05) | F097 |
-| SYS-06 | P1 | blocked | [Secure-Exclaves-Identitätsverarbeitung als Hardwaregrenze dokumentieren](#sys-06) | F098 |
-| SYS-07 | P1 | blocked | [Private Cloud Compute als externe Systemfähigkeit bilanzieren](#sys-07) | F099 |
-| SYS-08 | P1 | implementation | [Ersteinrichtung, Capability-Erklärung und verbundene Angebote ausarbeiten](#sys-08) | F101 |
-| SYS-09 | P2 | blocked | [Unzureichenden Stromadapter auf unterstützter Hardware erkennen oder ausweisen](#sys-09) | F102 |
-| SYS-10 | P1 | validation | [Accessibility über alle zentralen Flows abnehmen](#sys-10) | F103 |
-| SYS-11 | P2 | research | [Live Speech, Captions, RTT und Shortcuts pro Plattform klären](#sys-11) | F104, F105 |
-| SYS-12 | P1 | validation | [On-device-Spracherkennung auf echter Hardware abnehmen](#sys-12) | technisch/Abnahme |
-| QA-01 | P0 | validation | [Finalen öffentlichen Stand mit vollständiger iPad-/iPhone-Regression einfrieren](#qa-01) | technisch/Abnahme |
-| QA-02 | P1 | validation | [Physisches iPad signieren, installieren und dauerhaft betreiben](#qa-02) | technisch/Abnahme |
-| QA-03 | P1 | validation | [Visuelle Parity aller belegten Zustände und Animationen abnehmen](#qa-03) | technisch/Abnahme |
-| QA-04 | P2 | validation | [macOS, tvOS, visionOS und Watch als eigene Plattformabnahmen führen](#qa-04) | technisch/Abnahme |
-| QA-05 | P1 | validation | [Persistenz, Migration, Offline und späte Antworten systematisch prüfen](#qa-05) | technisch/Abnahme |
-| QA-06 | P1 | validation | [Dauerleistung, Energie und Animation-Lifecycle vermessen](#qa-06) | technisch/Abnahme |
-| EXTRA-01 | P3 | optional | [Palette, Bounce-Gitter und Flux als optionale Watch-inspirierte Erweiterungen bewerten](#extra-01) | technisch/Abnahme |
+| BASE-01 | P0 | research | [Verbindlichen Parity-Vertrag und API-Grenzen festschreiben](https://github.com/Olli0103/homeview/issues/1) | technisch/Abnahme |
+| BASE-02 | P0 | research | [Vollständigen Referenzsatz für Zustände und Bewegungen sichern](https://github.com/Olli0103/homeview/issues/2) | technisch/Abnahme |
+| PUB-01 | P0 | implementation | [Redistribuierbare Grafik- und Typografiegrundlage herstellen](https://github.com/Olli0103/homeview/issues/3) | technisch/Abnahme |
+| PUB-02 | P1 | decision | [Quelllizenz und Veröffentlichungsunterlagen festlegen](https://github.com/Olli0103/homeview/issues/4) | technisch/Abnahme |
+| FACE-01 | P1 | validation | [Face-Katalog und Varianten vollständig gegen Referenz abnehmen](https://github.com/Olli0103/homeview/issues/5) | F001 |
+| FACE-02 | P1 | implementation | [Face-Wechsel und App-Raster-Übergänge vermessen](https://github.com/Olli0103/homeview/issues/6) | F002, F009 |
+| FACE-03 | P1 | validation | [Räumlichen Face-Editor vollständig kalibrieren](https://github.com/Olli0103/homeview/issues/7) | F003, F004, F005 |
+| FACE-04 | P1 | implementation | [Geteilte Modular-Inhalte mit echten Freigaben trennen](https://github.com/Olli0103/homeview/issues/8) | F006, F007 |
+| FACE-05 | P1 | implementation | [Persönlichen Home Screen und App-Anordnung abnehmen](https://github.com/Olli0103/homeview/issues/9) | F008 |
+| FACE-06 | P1 | research | [Entfernung und Bewegung durch nachgewiesene Präsenzquelle steuern](https://github.com/Olli0103/homeview/issues/10) | F010, F016 |
+| PHOTO-01 | P1 | implementation | [Foto-Galerie und geteilte Alben vervollständigen](https://github.com/Olli0103/homeview/issues/11) | F011, F012 |
+| PHOTO-02 | P1 | implementation | [Motivgeschützte Uhrplatzierung und Bildausschnitt berechnen](https://github.com/Olli0103/homeview/issues/12) | F013 |
+| FACE-07 | P1 | implementation | [Tageszeit-, Nacht- und reduzierte Face-Zustände vervollständigen](https://github.com/Olli0103/homeview/issues/13) | F014, F021 |
+| FACE-08 | P1 | blocked | [Snoopy-Szenen, Atlanten und Timelines klären](https://github.com/Olli0103/homeview/issues/14) | F015 |
+| FLOW-01 | P1 | implementation | [Variable Flow-Ziffern mit korrekten Metriken entwickeln](https://github.com/Olli0103/homeview/issues/15) | technisch/Abnahme |
+| FLOW-02 | P1 | implementation | [Flow-Glas, Fluidparameter und Originalbewegung kalibrieren](https://github.com/Olli0103/homeview/issues/16) | technisch/Abnahme |
+| FLOW-03 | P1 | implementation | [CPU-Fluid schrittweise auf Metal-Texturen portieren](https://github.com/Olli0103/homeview/issues/17) | technisch/Abnahme |
+| FACE-09 | P1 | implementation | [Fade-Verlauf und zeitabhängige Ziffern abgleichen](https://github.com/Olli0103/homeview/issues/18) | F017 |
+| FACE-10 | P1 | implementation | [Numerals-Typografie und analoge Uhrvarianten kalibrieren](https://github.com/Olli0103/homeview/issues/19) | F018 |
+| FACE-11 | P1 | implementation | [Prismen-Hintergrund und analoge Materialschichten angleichen](https://github.com/Olli0103/homeview/issues/20) | technisch/Abnahme |
+| FACE-12 | P1 | implementation | [Wetterdaten, Wolken, Regen und Frost vollständig abnehmen](https://github.com/Olli0103/homeview/issues/21) | F019 |
+| FACE-13 | P2 | validation | [Monatskalender-Face vollständig abnehmen](https://github.com/Olli0103/homeview/issues/22) | F020 |
+| HOME-01 | P1 | blocked | [HomeKit-Einrichtung und Adapter nach ausdrücklichem Fortsetzen implementieren](https://github.com/Olli0103/homeview/issues/23) | F022, F023, F100 |
+| HOME-02 | P1 | blocked | [Thermostat, Licht, Lüfter und Beschattung echt anbinden](https://github.com/Olli0103/homeview/issues/24) | F024, F025, F026, F027, F031 |
+| HOME-03 | P1 | blocked | [Türschloss mit echter Autorisierung und Zustandsbestätigung absichern](https://github.com/Olli0103/homeview/issues/25) | F028 |
+| HOME-04 | P1 | blocked | [Szenen und Routinen mit nachgewiesenem Umfang bedienen](https://github.com/Olli0103/homeview/issues/26) | F029, F030 |
+| CAM-01 | P1 | blocked | [Echte Kamera-Streams bis neun Feeds und Detailaktionen anbinden](https://github.com/Olli0103/homeview/issues/27) | F032, F033 |
+| CAM-02 | P1 | blocked | [Türklingel-Ereignis und Unterbrechungsregeln umsetzen](https://github.com/Olli0103/homeview/issues/28) | F034 |
+| CAM-03 | P1 | blocked | [Gegensprechen mit Audio-Lifecycle und Freigaben ergänzen](https://github.com/Olli0103/homeview/issues/29) | F035 |
+| HOME-05 | P1 | blocked | [HKSV-Erkennung und Archivsuche als API-Lücke entscheiden](https://github.com/Olli0103/homeview/issues/30) | F036, F037 |
+| HOME-06 | P2 | implementation | [Hausereignisse in einer gruppierten Mitteilungsansicht darstellen](https://github.com/Olli0103/homeview/issues/31) | F038 |
+| HOME-07 | P2 | blocked | [Rauch-/CO-Geräuscherkennung und eigene Sensoren auf Machbarkeit prüfen](https://github.com/Olli0103/homeview/issues/32) | F039, F040 |
+| AI-01 | P1 | implementation | [Allgemeinwissen und fortgesetzten Dialog durch echten Assistenten ersetzen](https://github.com/Olli0103/homeview/issues/33) | F041, F044 |
+| AI-02 | P1 | blocked | [Persönlichen Kontext und Onscreen Awareness sicher begrenzen](https://github.com/Olli0103/homeview/issues/34) | F042, F045 |
+| AI-03 | P1 | implementation | [Mehrschrittige Aktionen mit Bestätigung und Teilfehlern ausführen](https://github.com/Olli0103/homeview/issues/35) | F043 |
+| AI-04 | P1 | implementation | [Antwortansicht mit Text, Bildern und Karten vervollständigen](https://github.com/Olli0103/homeview/issues/36) | F046 |
+| AI-05 | P2 | blocked | [Wakeword und Siri-Aktivierung als getrennte Systemgrenze behandeln](https://github.com/Olli0103/homeview/issues/37) | F047 |
+| AI-06 | P2 | validation | [Assistenten-Geste, Texteingabe und Entwurfserhalt abnehmen](https://github.com/Olli0103/homeview/issues/38) | F048, F049 |
+| AI-07 | P2 | blocked | [Dialogverlauf und geräteübergreifende Fortsetzung klären](https://github.com/Olli0103/homeview/issues/39) | F050 |
+| AI-08 | P2 | implementation | [Antwortstimme, Tempo und Medienunterbrechungen ergänzen](https://github.com/Olli0103/homeview/issues/40) | F051 |
+| AI-09 | P2 | research | [Dienstverfügbarkeit, Sprachen und Limits sichtbar machen](https://github.com/Olli0103/homeview/issues/41) | F052 |
+| COM-01 | P1 | blocked | [FaceTime-Annahme und aktive Anrufsteuerung als API-Lücke bilanzieren](https://github.com/Olli0103/homeview/issues/42) | F053, F054 |
+| COM-02 | P2 | research | [Center Stage auf geeigneter Kamera-Hardware prüfen](https://github.com/Olli0103/homeview/issues/43) | F055 |
+| COM-03 | P1 | validation | [Explizite Nachrichten- und Anruf-Systemübergaben abnehmen](https://github.com/Olli0103/homeview/issues/44) | F056, F057 |
+| COM-04 | P1 | blocked | [Intercom zu HomePods und persönlichen Geräten auf Machbarkeit prüfen](https://github.com/Olli0103/homeview/issues/45) | F058 |
+| COM-05 | P1 | blocked | [Find-My-Geräte, AirTags und Personen ehrlich abgrenzen](https://github.com/Olli0103/homeview/issues/46) | F059 |
+| DAY-01 | P1 | validation | [Kalenderverbindung und Agenda auf echter Hardware abnehmen](https://github.com/Olli0103/homeview/issues/47) | F060, F061 |
+| DAY-02 | P1 | validation | [Erinnerungen mit Listenrechten und Read-back abnehmen](https://github.com/Olli0103/homeview/issues/48) | F062 |
+| DAY-03 | P1 | validation | [Mehrere Timer und große Countdown-Ansicht vollständig abnehmen](https://github.com/Olli0103/homeview/issues/49) | F063, F064 |
+| DAY-04 | P1 | implementation | [Sprachbefehle für Timer und Kochschritte vervollständigen](https://github.com/Olli0103/homeview/issues/50) | F065, F075 |
+| DAY-05 | P1 | implementation | [Live Activities für Timer und zulässige Aktivitäten implementieren](https://github.com/Olli0103/homeview/issues/51) | F066 |
+| DAY-06 | P1 | validation | [Eigene Wecker über Neustart und Gerätebetrieb abnehmen](https://github.com/Olli0103/homeview/issues/52) | F067 |
+| DAY-07 | P2 | implementation | [Weltuhr um Zonenwahl und Tag-/Nachtanzeige ergänzen](https://github.com/Olli0103/homeview/issues/53) | F068 |
+| DAY-08 | P1 | validation | [Browser-Navigation und sichere externe Inhalte abnehmen](https://github.com/Olli0103/homeview/issues/54) | F069 |
+| DAY-09 | P1 | implementation | [Rezeptimport, Kochansicht und Bibliothek an Randfällen vervollständigen](https://github.com/Olli0103/homeview/issues/55) | F070, F071, F072, F073, F074, F076 |
+| DAY-10 | P2 | implementation | [Rezept-Handoff über öffentliche Continuity-Technik implementieren](https://github.com/Olli0103/homeview/issues/56) | F077 |
+| MEDIA-01 | P1 | implementation | [MusicKit-Suche, Bibliothek und Player produktiv abnehmen](https://github.com/Olli0103/homeview/issues/57) | F078, F080, F081, F082 |
+| MEDIA-02 | P2 | blocked | [Animiertes Artwork und Lyrics pro öffentlicher Fähigkeit entscheiden](https://github.com/Olli0103/homeview/issues/58) | F079 |
+| MEDIA-03 | P1 | implementation | [Podcasts durch echte frei zugängliche Feedwiedergabe ergänzen](https://github.com/Olli0103/homeview/issues/59) | F083 |
+| MEDIA-04 | P2 | research | [Weitere Medien und Drittanbieter-Angebote auf Zugriffsmöglichkeiten prüfen](https://github.com/Olli0103/homeview/issues/60) | F084, F085 |
+| MEDIA-05 | P1 | research | [AirPlay-Routenauswahl und Mehrraumwiedergabe abnehmen](https://github.com/Olli0103/homeview/issues/61) | F086 |
+| MEDIA-06 | P2 | blocked | [Gast- und Peer-to-peer-AirPlay separat klären](https://github.com/Olli0103/homeview/issues/62) | F087 |
+| MEDIA-07 | P2 | blocked | [Medien- und Anruf-Handoff pro Inhaltstyp abgrenzen](https://github.com/Olli0103/homeview/issues/63) | F088 |
+| SYS-01 | P1 | validation | [Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen](https://github.com/Olli0103/homeview/issues/64) | F089, F090 |
+| SYS-02 | P1 | implementation | [Control Center und Settings mit echten Zuständen abgleichen](https://github.com/Olli0103/homeview/issues/65) | F091, F092 |
+| SYS-03 | P0 | blocked | [Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen](https://github.com/Olli0103/homeview/issues/66) | F093, F094, F096 |
+| SYS-04 | P0 | implementation | [Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen](https://github.com/Olli0103/homeview/issues/67) | F095 |
+| SYS-05 | P1 | implementation | [Gastberechtigungen für Haus, Wetter, Timer und Musik definieren](https://github.com/Olli0103/homeview/issues/68) | F097 |
+| SYS-06 | P1 | blocked | [Secure-Exclaves-Identitätsverarbeitung als Hardwaregrenze dokumentieren](https://github.com/Olli0103/homeview/issues/69) | F098 |
+| SYS-07 | P1 | blocked | [Private Cloud Compute als externe Systemfähigkeit bilanzieren](https://github.com/Olli0103/homeview/issues/70) | F099 |
+| SYS-08 | P1 | implementation | [Ersteinrichtung, Capability-Erklärung und verbundene Angebote ausarbeiten](https://github.com/Olli0103/homeview/issues/71) | F101 |
+| SYS-09 | P2 | blocked | [Unzureichenden Stromadapter auf unterstützter Hardware erkennen oder ausweisen](https://github.com/Olli0103/homeview/issues/72) | F102 |
+| SYS-10 | P1 | validation | [Accessibility über alle zentralen Flows abnehmen](https://github.com/Olli0103/homeview/issues/73) | F103 |
+| SYS-11 | P2 | research | [Live Speech, Captions, RTT und Shortcuts pro Plattform klären](https://github.com/Olli0103/homeview/issues/74) | F104, F105 |
+| SYS-12 | P1 | validation | [On-device-Spracherkennung auf echter Hardware abnehmen](https://github.com/Olli0103/homeview/issues/75) | technisch/Abnahme |
+| QA-01 | P0 | validation | [Finalen öffentlichen Stand mit vollständiger iPad-/iPhone-Regression einfrieren](https://github.com/Olli0103/homeview/issues/76) | technisch/Abnahme |
+| QA-02 | P1 | validation | [Physisches iPad signieren, installieren und dauerhaft betreiben](https://github.com/Olli0103/homeview/issues/77) | technisch/Abnahme |
+| QA-03 | P1 | validation | [Visuelle Parity aller belegten Zustände und Animationen abnehmen](https://github.com/Olli0103/homeview/issues/78) | technisch/Abnahme |
+| QA-04 | P2 | validation | [macOS, tvOS, visionOS und Watch als eigene Plattformabnahmen führen](https://github.com/Olli0103/homeview/issues/79) | technisch/Abnahme |
+| QA-05 | P1 | validation | [Persistenz, Migration, Offline und späte Antworten systematisch prüfen](https://github.com/Olli0103/homeview/issues/80) | technisch/Abnahme |
+| QA-06 | P1 | validation | [Dauerleistung, Energie und Animation-Lifecycle vermessen](https://github.com/Olli0103/homeview/issues/81) | technisch/Abnahme |
+| EXTRA-01 | P3 | optional | [Palette, Bounce-Gitter und Flux als optionale Watch-inspirierte Erweiterungen bewerten](https://github.com/Olli0103/homeview/issues/82) | technisch/Abnahme |
 
 ## Konkreter Restumfang
 
