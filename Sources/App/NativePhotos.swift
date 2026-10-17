@@ -99,9 +99,54 @@ struct NativePhotoControls: View {
             }))
       }
       if model.photoData != nil {
+        PhotoLayoutControls()
         Button("Remove Selected Photo") { model.setPhoto(nil) }.font(.system(size: 21))
       }
     }
+  }
+}
+
+struct PhotoLayoutControls: View {
+  @Environment(AppModel.self) private var model
+  private func change(_ edit: (inout PhotoAdjustment) -> Void) {
+    var value = model.photoAdjustment
+    edit(&value)
+    model.adjustPhoto(value)
+  }
+  var body: some View {
+    VStack(alignment: .leading, spacing: 14) {
+      Text("Clock position").font(.system(size: 21, weight: .semibold))
+      HStack {
+        ForEach(PhotoClockPosition.allCases) { position in
+          Button(position == .automatic ? "Auto" : position.rawValue.capitalized) {
+            change { $0.clock = position }
+          }.padding(10)
+            .background(model.photoAdjustment.clock == position ? Color.blue.opacity(0.18) : .gray.opacity(0.06),
+                        in: RoundedRectangle(cornerRadius: 10))
+            .accessibilityIdentifier("photos.clock.\(position.rawValue)")
+            .accessibilityValue(model.photoAdjustment.clock == position ? "Selected" : "Not selected")
+        }
+      }
+      Toggle("Automatic framing", isOn: Binding(get: { model.photoAdjustment.automaticCrop },
+                                                set: { value in change { $0.automaticCrop = value } }))
+        .accessibilityIdentifier("photos.crop.auto")
+      if !model.photoAdjustment.automaticCrop {
+        Text("Adjust the crop for this photo. Automatic framing preserves detected subjects.")
+          .font(.system(size: 16)).foregroundStyle(.gray)
+        #if !os(tvOS)
+          Slider(value: Binding(get: { model.photoAdjustment.horizontal },
+                                set: { value in change { $0.horizontal = value } }), in: 0...1) {
+            Text("Horizontal crop")
+          }.accessibilityIdentifier("photos.crop.horizontal")
+          Slider(value: Binding(get: { model.photoAdjustment.vertical },
+                                set: { value in change { $0.vertical = value } }), in: 0...1) {
+            Text("Vertical crop")
+          }.accessibilityIdentifier("photos.crop.vertical")
+        #endif
+      }
+      Button("Reset photo layout") { model.adjustPhoto(.init()) }
+        .accessibilityIdentifier("photos.layout.reset")
+    }.font(.system(size: 18))
   }
 }
 
@@ -112,25 +157,31 @@ struct NativePhotoControls: View {
 
   enum NativeSubjectExtractor {
     /// Runs only for an explicitly selected image, never for camera surveillance.
-    static func foreground(_ bytes: Data) throws -> Data? {
+    static func analyze(_ bytes: Data) throws -> PhotoAnalysis? {
       guard let original = CIImage(data: bytes, options: [.applyOrientationProperty: true]) else {
         return nil
       }
       let context = CIContext(options: [.cacheIntermediates: false])
       guard let cg = context.createCGImage(original, from: original.extent) else { return nil }
+      let fallback = PhotoAnalysis(aspect: original.extent.width / original.extent.height,
+                                   mask: nil, foreground: nil)
       let handler = VNImageRequestHandler(cgImage: cg, options: [:])
       let request = VNGenerateForegroundInstanceMaskRequest()
-      try handler.perform([request])
-      guard let result = request.results?.first, !result.allInstances.isEmpty else { return nil }
+      do { try handler.perform([request]) } catch { return fallback }
+      guard let result = request.results?.first, !result.allInstances.isEmpty else { return fallback }
       let pixelBuffer = try result.generateScaledMaskForImage(
         forInstances: result.allInstances, from: handler)
       let filter = CIFilter.blendWithMask()
       filter.inputImage = original
       filter.backgroundImage = CIImage(color: .clear).cropped(to: original.extent)
-      filter.maskImage = CIImage(cvPixelBuffer: pixelBuffer)
-      guard let output = filter.outputImage else { return nil }
-      return context.pngRepresentation(
+      let maskImage = CIImage(cvPixelBuffer: pixelBuffer)
+      filter.maskImage = maskImage
+      guard let output = filter.outputImage else { return fallback }
+      let foreground = context.pngRepresentation(
         of: output, format: .RGBA8, colorSpace: CGColorSpaceCreateDeviceRGB(), options: [:])
+      return PhotoAnalysis(aspect: fallback.aspect,
+                           mask: PhotoMaskRasterizer.make(maskImage, context: context),
+                           foreground: foreground)
     }
   }
 #endif

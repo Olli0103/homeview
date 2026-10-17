@@ -304,18 +304,28 @@ struct LandscapeArt: View {
 }
 struct PhotoFace: View {
   @Environment(AppModel.self) private var model
+  private func layer(_ bytes: Data) -> some View {
+    let composition = model.photoComposition
+    let width = 600 * composition.destination.width / composition.crop.width
+    let height = 600 * composition.destination.height / composition.crop.height
+    return ImportedPhoto(data: bytes).frame(width: width, height: height)
+      .position(x: 600 * composition.destination.x + width * (0.5-composition.crop.x),
+                y: 600 * composition.destination.y + height * (0.5-composition.crop.y))
+  }
   var body: some View {
     ZStack(alignment: .top) {
+      Color.black
       if let bytes = model.photoData {
-        ImportedPhoto(data: bytes).frame(width: 600, height: 600).clipped()
+        layer(bytes)
       } else {
         LandscapeArt()
       }
       Text(model.clock, style: .time).environment(\.timeZone, model.displayTimeZone).font(
         .system(size: 181, weight: .semibold, design: .rounded)
-      ).tracking(-10).frame(height: 200).padding(.top, 15).foregroundStyle(
+      ).tracking(-10).lineLimit(1).minimumScaleFactor(0.65).frame(width: 540, height: 200).foregroundStyle(
         Color(red: 1, green: 0.82, blue: 0.84)
-      ).padding(.top, 22)
+      ).position(x: 300, y: 600 * model.photoComposition.clock.centerY)
+        .accessibilityIdentifier("photo.clock").accessibilityValue(model.photoComposition.clock.rawValue)
       // Foreground path deliberately occludes the time, matching the depth composition.
       if model.photoData == nil {
         Path { p in
@@ -329,9 +339,13 @@ struct PhotoFace: View {
               Color(red: 0.36, green: 0.48, blue: 0.44), Color(red: 0.18, green: 0.29, blue: 0.27),
             ], startPoint: .top, endPoint: .bottom))
       }
-      if let foreground = model.photoForegroundData {
-        ImportedPhoto(data: foreground).frame(width: 600, height: 600).clipped().allowsHitTesting(
-          false)
+      if model.photoComposition.depthEnabled, let foreground = model.photoForegroundData {
+        layer(foreground).allowsHitTesting(false)
+      }
+      if ProcessInfo.processInfo.arguments.contains("--uitesting") {
+        Text("clock=\(model.photoComposition.clock.rawValue);full=\(model.photoComposition.destination != .full);depth=\(model.photoComposition.depthEnabled)")
+          .font(.system(size: 1)).foregroundStyle(.clear).allowsHitTesting(false)
+          .accessibilityIdentifier("photo.layout.test")
       }
       VStack {
         Spacer()
