@@ -30,8 +30,6 @@ struct RootView: View {
           .animation(
             animate ? .spring(response: 0.43, dampingFraction: 0.92) : nil, value: model.route
           )
-          .saturation(model.data.night ? 0 : 1).colorMultiply(
-            model.data.night ? .red : .white)
           if model.route == .face
             && (model.playing || model.podcastPlaying || model.connections.musicPlaying
               || model.data.timers.contains(where: { $0.remaining(at: model.now) > 0 }))
@@ -74,6 +72,8 @@ struct RootView: View {
         }
         .frame(width: 600, height: 600)
         .background(.white).clipShape(RoundedRectangle(cornerRadius: 84, style: .continuous))
+        // Night mode includes activity, status banners and toasts, not only the screen.
+        .saturation(model.data.night ? 0 : 1).colorMultiply(model.data.night ? .red : .white)
         .environment(\.colorScheme, .light)
         .scaleEffect(edge / 600)
         .frame(width: edge, height: edge)

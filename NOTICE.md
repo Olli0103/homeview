@@ -29,3 +29,10 @@ simulator states; incidental system UI remains its owner's material.
 
 Any future third-party source or bundled asset must retain its own applicable
 license and attribution, with provenance documented before redistribution.
+
+The four DemoCamera*V1 images are project-generated fictional AI stills, created
+with the built-in image_gen tool without reference-image input. They are bundled
+under the project license, not presented as real camera recordings. The complete
+prompts, decoded dimensions and content hashes are recorded in
+[demo-camera-assets.md](Docs/demo-camera-assets.md). No original reference
+photographs or images of a real private home were supplied for their generation.

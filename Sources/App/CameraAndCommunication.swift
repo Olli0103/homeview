@@ -1,46 +1,25 @@
 import SwiftUI
 
+/// Bundled generated stills only. This view never opens a camera or a stream.
 struct MockCameraScene: View {
   var index: Int
+  private var asset: String {
+    ["DemoCameraFrontDoorV1", "DemoCameraBackYardV1", "DemoCameraLivingRoomV1", "DemoCameraDrivewayV1"][(index % 4 + 4) % 4]
+  }
   var body: some View {
-    GeometryReader { g in
-      ZStack {
-        LinearGradient(
-          colors: [
-            Color(red: 0.75, green: 0.78, blue: 0.72), Color(red: 0.35, green: 0.44, blue: 0.35),
-          ], startPoint: .top, endPoint: .bottom)
-        Canvas { c, s in
-          let wall = CGRect(
-            x: s.width * 0.12, y: s.height * 0.08, width: s.width * 0.75, height: s.height * 0.67)
-          c.fill(Path(wall), with: .color(Color(red: 0.8, green: 0.76, blue: 0.65)))
-          c.fill(
-            Path(
-              CGRect(
-                x: s.width * 0.43, y: s.height * 0.25, width: s.width * 0.22, height: s.height * 0.5
-              )), with: .color(Color(red: 0.24, green: 0.29, blue: 0.28)))
-          c.fill(
-            Path(
-              CGRect(
-                x: s.width * 0.19, y: s.height * 0.23, width: s.width * 0.17,
-                height: s.height * 0.22)), with: .color(.cyan.opacity(0.3)))
-          var path = Path()
-          path.move(to: .init(x: 0, y: s.height))
-          path.addLine(to: .init(x: s.width * 0.42, y: s.height * 0.73))
-          path.addLine(to: .init(x: s.width * 0.67, y: s.height * 0.73))
-          path.addLine(to: .init(x: s.width, y: s.height))
-          path.closeSubpath()
-          c.fill(path, with: .color(.gray.opacity(0.7)))
-        }
-        Image(systemName: index == 1 ? "tree.fill" : "leaf.fill").font(
-          .system(size: g.size.width * 0.25)
-        ).foregroundStyle(Color(red: 0.21, green: 0.37, blue: 0.23)).position(
-          x: g.size.width * 0.84, y: g.size.height * 0.58)
-        Text("MOCK FEED \(index+1)").font(
-          .system(size: max(9, g.size.width * 0.025), weight: .semibold, design: .monospaced)
-        ).foregroundStyle(.white.opacity(0.6)).position(
-          x: g.size.width * 0.23, y: g.size.height * 0.94)
-      }
-    }.clipped().accessibilityLabel("Synthetic camera image, no camera access")
+    GeometryReader { geometry in
+      Image(asset).resizable().scaledToFill()
+        .frame(width: geometry.size.width, height: geometry.size.height).clipped()
+    }
+    .accessibilityElement(children: .ignore)
+    .accessibilityLabel("AI-generated demo still, no camera access")
+  }
+}
+struct DemoCameraBadge: View {
+  var body: some View {
+    Text("DEMO").font(.system(size: 9, weight: .semibold))
+      .foregroundStyle(.white).padding(.horizontal, 6).padding(.vertical, 3)
+      .background(.black.opacity(0.55), in: Capsule()).accessibilityHidden(true)
   }
 }
 struct CameraGrid: View {
@@ -54,7 +33,7 @@ struct CameraGrid: View {
         if !isFace {
           AppHeader(title: "Cameras", light: true)
           Button(nine ? "Show 4" : "Show 9") { nine.toggle() }.font(.system(size: 18))
-            .foregroundStyle(.white)
+            .foregroundStyle(.white).accessibilityIdentifier("camera.grid.size")
         }
         LazyVGrid(
           columns: Array(repeating: GridItem(.flexible(), spacing: 7), count: nine ? 3 : 2),
@@ -66,6 +45,7 @@ struct CameraGrid: View {
             } label: {
               ZStack(alignment: .bottomLeading) {
                 MockCameraScene(index: i)
+                  .overlay(alignment: .topTrailing) { DemoCameraBadge().padding(9) }
                 Text(["Front Door", "Back Yard", "Living Room", "Driveway"][i % 4]).font(
                   .system(size: nine ? 14 : 19, weight: .medium)
                 ).foregroundStyle(.white).padding(12).shadow(radius: 2)
@@ -91,11 +71,15 @@ struct CameraDetail: View {
           VStack(alignment: .leading, spacing: 6) {
             Text(["Front Door", "Back Yard", "Living Room", "Driveway"][index % 4]).font(
               .system(size: 29, weight: .semibold))
-            Label(model.data.home.online ? "Mock Live" : "Offline", systemImage: "circle.fill")
+            Label(model.data.home.online ? "Demo still" : "Offline · Demo still", systemImage: "circle.fill")
               .font(.system(size: 17)).foregroundStyle(model.data.home.online ? .white : .orange)
+              .accessibilityElement(children: .ignore)
+              .accessibilityLabel(model.data.home.online ? "Demo still" : "Offline · Demo still")
+              .accessibilityIdentifier("camera.demo.status")
           }
           Spacer()
-          Text(model.clock, style: .time).font(.system(size: 22))
+          Text(model.dateLabel("h:mm")).font(.system(size: 22))
+            .accessibilityIdentifier("camera.time")
         }.padding(34).background(
           LinearGradient(
             colors: [.black.opacity(0.6), .clear], startPoint: .top, endPoint: .bottom))
