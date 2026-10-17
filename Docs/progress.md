@@ -7,6 +7,11 @@ freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetz
 `39464d4`: [Prismen und Glaskacheln](home-prisms.md), 99 Modelltests, acht gezielte
 UI-Ausführungen und fünf SDK-Builds. #20 bleibt in der Originalabnahme offen.
 
+`5f00961`: [profilgetrennte Home-Layouts und Medienwidgets](personal-home-layouts.md)
+mit dem Renderer zusammengeführt. 103 Modelltests, 16 gezielte UI-Ausführungen und
+fünf SDK-Builds auf einem gemeinsamen Freeze. #9 bleibt offen; die weitere
+Apps-/Wettervariante aus der Originalsequenz wird bereits bearbeitet.
+
 ## 17. Oktober 2026 · zweites Issue-Paket
 
 [Prüfbericht und eigene Bilder](iteration-20261017-block2.md) · [alle verbleibenden Pakete](remaining-work.md).
