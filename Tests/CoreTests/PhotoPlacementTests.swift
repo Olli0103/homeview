@@ -86,6 +86,21 @@ final class PhotoPlacementTests: XCTestCase {
     XCTAssertTrue(migrated.photoAdjustments.isEmpty)
     XCTAssertEqual(migrated.home.temperature, 72)
   }
+  func testMalformedPhotoOverridesDoNotResetHomeAndLargeTablesAreBounded() throws {
+    var snapshot = Snapshot()
+    snapshot.home.temperature = 74
+    var raw = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(snapshot)) as? [String: Any])
+    raw["photoAdjustments"] = ["photo": ["clock": "future-style", "horizontal": 9, "vertical": "bad"]]
+    let restored = try Snapshot.decodeMigrating(JSONSerialization.data(withJSONObject: raw))
+    XCTAssertEqual(restored.home.temperature, 74)
+    XCTAssertEqual(restored.photoAdjustments["photo"]?.clock, .automatic)
+    XCTAssertEqual(restored.photoAdjustments["photo"]?.horizontal, 1)
+    XCTAssertEqual(restored.photoAdjustments["photo"]?.vertical, 0.5)
+    raw["photoAdjustments"] = "not a table"
+    XCTAssertTrue(try Snapshot.decodeMigrating(JSONSerialization.data(withJSONObject: raw)).photoAdjustments.isEmpty)
+    raw["photoAdjustments"] = Dictionary(uniqueKeysWithValues: (0..<200).map { ("photo-\($0)", ["clock": "top"]) })
+    XCTAssertEqual(try Snapshot.decodeMigrating(JSONSerialization.data(withJSONObject: raw)).photoAdjustments.count, 100)
+  }
   #if canImport(CoreImage)
   func testCoreImageMaskTopRowIsNotVerticallyMirrored() throws {
     let background = CIImage(color: .black).cropped(to: CGRect(x: 0, y: 0, width: 100, height: 200))

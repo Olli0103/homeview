@@ -255,6 +255,13 @@ struct Snapshot: Codable, Sendable {
     var defaults =
       try JSONSerialization.jsonObject(with: JSONEncoder().encode(Snapshot())) as! [String: Any]
     defaults.merge(stored) { _, saved in saved }
+    if let adjustments = stored["photoAdjustments"] as? [String: Any] {
+      var bounded: [String: Any] = [:]
+      for key in adjustments.keys.sorted().prefix(100) { bounded[key] = adjustments[key] }
+      defaults["photoAdjustments"] = bounded
+    } else {
+      defaults["photoAdjustments"] = [String: Any]()
+    }
     return try JSONDecoder().decode(
       Snapshot.self, from: JSONSerialization.data(withJSONObject: defaults))
   }
