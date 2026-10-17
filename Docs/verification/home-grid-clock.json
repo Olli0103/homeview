@@ -1,0 +1,48 @@
+{
+  "code_commit": "b8740759acc0a6b89162016f2bdc66a9b1b36616",
+  "feature_commit": "27dde45",
+  "source_digest": "6293ae37f589eaefbfd50a541e6e4bd81ea2bbf0287497a6b8d53a80b59bc2f0",
+  "source_files": 116,
+  "source_before_after_match": true,
+  "source_matches_committed_bytes": true,
+  "core_passed": 104,
+  "tests_after_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    }
+  ],
+  "ui_executions": 6,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "original_parity": false,
+  "physical_hardware_tested": false,
+  "real_home_access": false,
+  "default_hour_reach_unchanged": 0.56,
+  "home_grid_hour_reach": 0.5,
+  "home_grid_minute_reach": 0.94,
+  "actual_thermostat_navigation_and_68_to_69_mock_state": true,
+  "logs": {
+    "grid-clock-integrated-core.log": "c2e314265bc32de89a57037db3efa8037d7f4c2d7d539d087dd2816761bf7600",
+    "grid-clock-integrated-builds.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f",
+    "grid-clock-post-commit-core.log": "ed26792e1a77dce9b1fcd2ff27a57c2606785dbb8839d06dd7a2a58e3beea241"
+  }
+}

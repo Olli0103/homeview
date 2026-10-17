@@ -23,6 +23,10 @@ Stand. #9 bleibt offen; angeschnittene Artist-Zeile wird weiter korrigiert.
 104 Modelltests, acht gezielte UI-Ausführungen und fünf SDK-Builds. #19 bleibt in
 der vollständigen Originalabnahme offen. Weitere Home-Analoguhrdetails in Arbeit.
 
+`27dde45` / `b874075`: [Kleine Home-Raster-Uhr](home-grid-clock.md), 104 Modelltests,
+sechs gezielte UI-Ausführungen und fünf SDK-Builds. Eigene Kamera-Demoassets
+werden als nächster sichtbarer Korrekturschritt integriert.
+
 ## 17. Oktober 2026 · zweites Issue-Paket
 
 [Prüfbericht und eigene Bilder](iteration-20261017-block2.md) · [alle verbleibenden Pakete](remaining-work.md).
