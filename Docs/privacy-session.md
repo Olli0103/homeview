@@ -24,3 +24,5 @@ Alle Provider und persönlichen Inhalte dieser Tests sind synthetisch. Kein echt
 Beim Verbinden werden OS-Berechtigungen jetzt gesondert angefragt. Solange die Geräteentsperrung fehlt, startet kein Kalender-/Reminder-Lesezugriff und es entsteht kein persönlicher Datencache. Nach dem Freigabedialog wird die Sitzungsgeneration erneut geprüft, bevor ein Lesen beginnt. Kalenderabfrage und lokale Reminder-Schreibaktionen starten selbst keinen weiteren Freigabedialog mehr. Damit kann eine während dieses Dialogs abgelaufene Sitzung nicht später doch einen privaten Zugriff beginnen.
 
 Der kontrollierte Provider zählt tatsächliche Leseaufrufe. Verbinden im gesperrten Zustand muss null Aufrufe ergeben. Auch eine erfolgreiche, aber verspätete OS-Freigabe nach dem Sperren darf keinen Read starten. Dieser zusätzliche Modellfall besteht zusammen mit den Foto-Modellfällen im späteren 50er-Core-Lauf. Die abschließende Gesamtprüfung ist gesondert dokumentiert.
+
+Abschließende Quellenbindung und vollständige Regression dieses Foto-/Datenschutzstands: [erstes Issue-Paket](iteration-20261017.md).
