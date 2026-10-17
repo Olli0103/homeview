@@ -57,3 +57,9 @@ nicht durch den funktionalen PASS als erledigt erklärt.
 
 [Quellen und Ergebnisse](verification/layouts-fade-integrated.json) ·
 [eigene Bilder und Digests](screenshots/goal-20261017/weather-grid-manifest.json).
+
+## Medienkorrektur danach
+
+`5cc126a` / `45383b5` beseitigen die oben dokumentierte anfängliche Artist-
+Beschneidung. [Neuer eigener Quellen-/Bildnachweis](numerals-reference.md); der
+frühere 22er-Lauf bleibt unverändert an seinem ursprünglichen Stand gebunden.

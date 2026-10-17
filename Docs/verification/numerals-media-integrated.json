@@ -1,0 +1,56 @@
+{
+  "code_commit": "45383b58cfe683b4fa758df58b2dd7a819cd542c",
+  "feature_commits": [
+    "35fc888",
+    "5cc126a"
+  ],
+  "source_digest": "e51f6b6f64d7a9ce7291dc002f681db8a76126358acf6548ebae226cae518cb8",
+  "source_files": 116,
+  "source_before_after_match": true,
+  "source_matches_committed_bytes": true,
+  "core_passed": 104,
+  "tests_after_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0/24A434"
+    }
+  ],
+  "ui_executions": 8,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "runtime_font": "public rounded system font; no bundled font or extracted contours",
+  "original_font_identified": false,
+  "original_pixel_parity": false,
+  "physical_hardware_tested": false,
+  "visual_review": {
+    "numerals_both_devices": "inspected",
+    "media_artist_both_devices": "full text visible, inspected",
+    "shared_fade": "inspected in reference-reading case"
+  },
+  "real_home_access": false,
+  "personal_accounts_tested": false,
+  "logs": {
+    "numerals-media-integrated-core.log": "3e6df72de123c9e03600b2c5b3cf5e57ffed570604fb390fbb13120b9108a6d2",
+    "numerals-media-integrated-builds.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f",
+    "numerals-post-commit-core.log": "adb41fbd02d86979964b6ab7f564fbcd2712a7bb0bc1b74c1cd8baf99e23a6f7",
+    "media-artist-corrected-post-commit-core.log": "c178aeafb7a02e0b12866bd7489dbfb93a462141cb44d9faa963c04e4f552f9f"
+  }
+}
