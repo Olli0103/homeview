@@ -1,0 +1,72 @@
+{
+  "source_digest": "213fa407a7b42230d7bd131a468c78e2be72b25768fc84b087d7878f0ec50db2",
+  "source_files": 113,
+  "source_before_after_match": true,
+  "core_passed": 99,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 18,
+  "sdk_builds": [
+    "iOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "decoded_motion": [
+    {
+      "device": "iPad",
+      "glass_moving_changed_rgba_channels": 928737,
+      "glass_reduced_changed_rgba_channels": 0,
+      "clouds_moving_changed_rgba_channels": 523635,
+      "clouds_reduced_changed_rgba_channels": 0
+    },
+    {
+      "device": "iPhone",
+      "glass_moving_changed_rgba_channels": 465341,
+      "glass_reduced_changed_rgba_channels": 0,
+      "clouds_moving_changed_rgba_channels": 264083,
+      "clouds_reduced_changed_rgba_channels": 0
+    }
+  ],
+  "original_pixel_parity": false,
+  "physical_hardware_tested": false,
+  "personal_accounts_tested": false,
+  "real_home_access": false,
+  "proves": "Targeted software/decoded-region checks only; no complete UI-suite, original optics or device-performance acceptance.",
+  "visual_review": {
+    "own_demo_face_iPad_iPhone": "inspected",
+    "own_city_app_iPad_iPhone": "inspected",
+    "night_and_clear_iPad_iPhone": "inspected",
+    "private_UI05_comparison": "inspected",
+    "bounded_result": "Lower sky and translucent body lighter; corner glints reduced after prototype.",
+    "remaining": [
+      "original cloud contours",
+      "directional sunlight",
+      "exact glyph proportions and optical refraction",
+      "unobserved states",
+      "physical performance"
+    ],
+    "original_parity_accepted": false
+  },
+  "code_commit": "2e1384350d705f78c5ad4a6d39a8ac0c3af55426",
+  "committed_source_verified": true,
+  "core_repeated_after_commit": true,
+  "post_commit_core_log_sha256": "5c4fd576bbda33c9fa407e8d4653e5b6bd8306b41087f13b92ab25e72ab2a465"
+}

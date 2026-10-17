@@ -52,3 +52,8 @@ Original akzeptiert. Eine bewegte Ziffernregion beweist weder Originalbewegung n
 korrekte physikalische Optik. Die gemeinsame eigene Illustration ist kein
 astronomischer oder energievalidierter Wetterrenderer. Weitere Geräteplattformen
 werden kompiliert, nicht pauschal zur Laufzeit abgenommen.
+
+Der getrennte [Licht-/Materialschritt](weather-light.md) korrigiert danach die
+zu dunkle Tagespalette und die Glaskörpertönung. Seine Nachweise gehören zu einem
+neuen Quellstand; die oben genannten Ergebnisse bleiben an diesen älteren Schritt
+gebunden.
