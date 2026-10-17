@@ -6,7 +6,7 @@
 
 | Paket | Stand | Grenze |
 |---|---|---|
-| [FLOW-01, #15](https://github.com/Olli0103/homeview/issues/15) | Abgeschlossen | Eigene variable Glyphen/Metriken; originale Apple-Formen und Glas bleiben getrennt offen. |
+| [FLOW-01, #15](https://github.com/Olli0103/homeview/issues/15) | Wieder offen | Bisherige eigene Glyphen treffen Apple HomeView nicht. Form, Stencil, Proportionen und Material werden gegen UI47 korrigiert. |
 | [DAY-07, #53](https://github.com/Olli0103/homeview/issues/53) | Funktional erweitert | Zonenwahl/Persistenz, DST, Datum, Sonnenstandsschätzung. Originalverlauf/Geometrie offen. |
 | [DAY-01, #47](https://github.com/Olli0103/homeview/issues/47) | Software gehärtet | Kalenderrechte, Tagesgrenzen, Vorkommen und Quelle. Physischer Testkalender/Accountwechsel offen. |
 | [DAY-02, #48](https://github.com/Olli0103/homeview/issues/48) | Software gehärtet | Listenrechte, eigener Zielkalender, exakter Read-back. Reale gemeinsame/Read-only-Listen offen. |
@@ -17,7 +17,7 @@
 | [QA-05, #80](https://github.com/Olli0103/homeview/issues/80) | Speicherung gehärtet | Einzelreparatur und verifizierte Originalbytes; breitere Provider-/Fehlerabnahme offen. |
 | [QA-01, #76](https://github.com/Olli0103/homeview/issues/76) | Abgeschlossen | 86 Modelltests und je 65 vollständige UI-Fälle, fünf SDK-Builds auf `0296d04`. |
 
-86 Coretests und fünf SDK-Builds sind auf dem letzten Code-Stand bestanden. Jeder der neun Code-Commits hat gezielte iPad-/iPhone-Prüfungen sowie einen erneuten Modelltestlauf nach dem Commit. Die terminalen Ergebnisbündel bestätigen 130 erfolgreiche UI-Ausführungen, null Fehler/Skips und keine von XCTest gemeldeten Runtime-Warnungen. Zusammen 216 erfolgreiche Modell-/UI-Ausführungen; Quellen vor/nach dem Lauf identisch.
+Die gemeinsame historische Regression auf `0296d04` umfasst 86 Coretests und fünf SDK-Builds. Jeder der neun Code-Commits hat gezielte iPad-/iPhone-Prüfungen sowie einen erneuten Modelltestlauf nach dem Commit. Die terminalen Ergebnisbündel bestätigen 130 erfolgreiche UI-Ausführungen, null Fehler/Skips und keine von XCTest gemeldeten Runtime-Warnungen. Zusammen 216 erfolgreiche Modell-/UI-Ausführungen; Quellen vor/nach dem Lauf identisch.
 
 Nach Eigentümerreview wurde #15 wieder geöffnet: **76 der ursprünglichen 82 Pakete bleiben offen**. Der Eigentümer hat MIT gewählt: [#4](https://github.com/Olli0103/homeview/issues/4) und die zusätzliche externe [Lizenzfrage #83](https://github.com/Olli0103/homeview/issues/83) sind geschlossen. [MIT-Lizenz](../LICENSE) und [Rechtehinweise](../NOTICE.md) sind veröffentlicht. Insgesamt 76 offene GitHub-Issues. [Vollständiger API-Read-back](verification/issue-readback-block2.json).
 
@@ -32,6 +32,14 @@ Abruf durch denselben kompilierten Adapter bestanden. Dies ist **keine** neue
 Vollsuite oder Originaloptik-Abnahme. [Wetterdaten und Grenzen](weather-data.md).
 #21 bleibt offen; insbesondere ist die eigenständige Original-Wetter-App noch nicht
 getreu rekonstruiert.
+
+## Erster visueller Korrekturschritt
+
+`d5514f9` korrigiert die breiten Glasformen, 0/1/9-Stencil-Details und die helle
+Farbfläche anhand UI47. 95 Modelltests und fünf gezielte UI-Fälle je iPad/iPhone
+sowie fünf SDK-Builds bestanden; nach Commit erneut 95 Modelltests. Die Bewegungs-
+prüfungen vergleichen dekodierte Pixel statt PNG-Dateiunterschiede. **#15 bleibt
+offen**, kein Original-PASS. [Vergleich und Grenzen](visual-recovery-20261017.md).
 
 ## Vorrang nach Eigentümerreview
 

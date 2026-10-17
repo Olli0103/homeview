@@ -362,7 +362,7 @@
     "priority": "P1",
     "kind": "implementation",
     "functions": [],
-    "current": "Nach Eigentümerreview wieder offen: technische eigene Glyphen/Metriken bestanden, aber Form, Proportionen, Stencil und Material treffen Apple HomeView nicht. Originalnahe Optik hat Vorrang vor weiterer Funktionsbreite.",
+    "current": "Wieder offen nach Eigentümerreview. d5514f9 korrigiert breite Glasformen und 0/1/9-Details nach UI47; 95 Core, 5 UI je Gerät, 5 SDK bestanden. Übrige Originalformen/Achsen, Glas und Bewegung noch nicht abgenommen; kein eigener Ersatzstil als Abschluss.",
     "tasks": [
       "Eigenständige nutzbare Solid-/Stencil-Formen ohne extrahierte OS-Konturen erstellen",
       "Breite, Stärke, Laufweite und Randabstände konsistent parametrisieren",
@@ -510,7 +510,7 @@
     "functions": [
       "F019"
     ],
-    "current": "Open-Meteo ist bewusst anschließbar. Wolken sind eigener Canvas-Effekt; Regen/Frost und vollständige Originalzustände fehlen.",
+    "current": "Daten-/Fehlerpfad und Einheiten in b08c6f8 geprüft (95 Core, 3 UI je Gerät, 5 SDK). Originale Wetter-App, Wolken-/Glasdarstellung und weitere Zustände weiterhin offen; sichtbare HomeView-Kopie hat Vorrang.",
     "tasks": [
       "Wetterzustände, Wind, Feuchte, Luftqualität und Sonnenzeiten mit Quelle und Zeitstempel darstellen",
       "Fehlende Werte nicht erfinden",
