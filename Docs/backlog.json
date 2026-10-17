@@ -1300,7 +1300,15 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/54",
     "issue_number": 54,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-17",
+      "evidence": [
+        "Docs/browser-navigation.md",
+        "Docs/verification/browser.json"
+      ],
+      "scope": "HTTPS-only WebKit navigation, transport-policy cleanup and synthetic history/offline/stop/external-scheme coverage; not Safari account synchronization or universal website reachability."
+    }
   },
   {
     "key": "DAY-09",
