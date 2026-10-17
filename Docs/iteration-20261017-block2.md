@@ -114,3 +114,16 @@ bleiben unbekannt. 99 Modelltests, sieben gezielte UI-Fälle je iPad/iPhone
 113 gebundene Quellen, SHA `0191c0e171904ac3f6fd74f4d1c51881537a8642563d7806371ef7d594fd4fb9`.
 [Eigene Bilder und Grenzen](weather-glass.md). Keine Originalabnahme: genaue Formen,
 Licht/Brechung und weitere Zustände bleiben offen. Kein neuer X-Clip.
+
+## Wetterlicht und Glasmaterial
+
+`2e13843` hellt den unteren Tageshimmel und den durchscheinenden Ziffernkörper
+nach UI05 auf; die schmalen Randreflexe sind nach Sichtprüfung kalibriert.
+Hintergrund und Glas verwenden eine gemeinsame Himmelsfunktion. 99 Modelltests,
+neun gezielte UI-Fälle je iPad/iPhone (18 Ausführungen) und fünf SDK-Builds
+bestanden; nach dem Codecommit erneut 99 Modelltests. 113 Quellen vor/nach Prüfung
+und gegen den Codecommit identisch, SHA
+`213fa407a7b42230d7bd131a468c78e2be72b25768fc84b087d7878f0ec50db2`.
+[Eigene Bilder, Quellen und Grenzen](weather-light.md). Kein neuer vollständiger
+UI-Suite-PASS und keine Originalabnahme: genaue Wolken, gerichtetes Sonnenlicht,
+Brechung und physische Leistung bleiben offen. #21 bleibt offen.
