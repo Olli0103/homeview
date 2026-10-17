@@ -13,6 +13,7 @@ import SwiftUI
     var canBack = false
     var canForward = false
     private var loadingFixture = true
+    private(set) var pageGeneration = 0
     private let testPages: Bool
     override init() {
       let localPages = ProcessInfo.processInfo.arguments.contains("--uitesting")
@@ -29,6 +30,12 @@ import SwiftUI
          ProcessInfo.processInfo.arguments.contains("--browser-policy-fixture") {
         html = html.replacingOccurrences(of: "</body>", with:
           "<p><a href='homeview-fixture://blocked'>Blocked scheme fixture</a></p></body>")
+      }
+      if ProcessInfo.processInfo.arguments.contains("--uitesting"),
+         ProcessInfo.processInfo.arguments.contains("--browser-multiple-recipes") {
+        html = html.replacingOccurrences(of: "</body>", with: """
+          <script type="application/ld+json">{"@type":"Recipe","name":"Second local recipe","recipeIngredient":["Water"],"recipeInstructions":[{"@type":"HowToStep","text":"Mix the second fixture."}]}</script></body>
+          """)
       }
       if testPages {
         webView.load(URLRequest(url: URL(string: "homeview-fixture://local/one")!))
@@ -57,6 +64,7 @@ import SwiftUI
       canForward = webView.canGoForward
     }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+      pageGeneration += 1
       loading = true
       status = isFixture ? "Loading local demo page…" : "Loading…"
     }
@@ -120,20 +128,34 @@ import SwiftUI
       }
       decisionHandler(.allow)
     }
-    func recipe() async throws -> RecipeDocument {
-      let js =
-        "JSON.stringify(Array.from(document.querySelectorAll('script[type=\"application/ld+json\"]')).slice(0,20).map(n=>n.textContent.slice(0,100000)))"
+    func recipes() async throws -> [RecipeDocument] {
+      let origin = webView.url, ticket = pageGeneration
+      let js = """
+        (()=>{const n=Array.from(document.querySelectorAll('script[type="application/ld+json"]'));const s=n.slice(0,20).map(n=>n.textContent||'');return JSON.stringify({count:n.length,oversized:s.some(t=>t.length>100000),scripts:s.map(t=>t.slice(0,100000))})})()
+        """
       guard let text = try await webView.evaluateJavaScript(js) as? String,
-        let scripts = try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String]
+        text.utf8.count <= 2_000_000,
+        let payload = try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String: Any],
+        let scripts = payload["scripts"] as? [String], let count = payload["count"] as? Int
       else { throw RecipeParseError.noRecipe }
-      for script in scripts {
-        if let recipe = try? RecipeParser.parse(
-          json: script, source: isFixture ? "Demo Cookbook" : webView.url?.host ?? "Web Recipe")
-        {
-          return recipe
-        }
+      guard origin == webView.url, ticket == pageGeneration, !Task.isCancelled else {
+        throw RecipeParseError.pageChanged
       }
-      throw RecipeParseError.noRecipe
+      guard count <= 20, scripts.count <= 20, payload["oversized"] as? Bool == false else {
+        throw RecipeParseError.oversized
+      }
+      var values: [RecipeDocument] = [], seen = Set<UUID>()
+      for script in scripts {
+        do {
+          let recipes = try RecipeParser.parseAll(json: script,
+            source: isFixture ? "Demo Cookbook" : origin?.host ?? "Web Recipe")
+          for recipe in recipes where seen.insert(recipe.id).inserted { values.append(recipe) }
+          guard values.count <= 20 else { throw RecipeParseError.oversized }
+        } catch RecipeParseError.oversized { throw RecipeParseError.oversized }
+        catch { continue }
+      }
+      guard !values.isEmpty else { throw RecipeParseError.noRecipe }
+      return values
     }
     static let fixtureHTML = """
       <!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;padding:30px;background:#faf8f2;color:#252924;font:18px -apple-system}header{letter-spacing:3px;font-size:12px;color:#617258}h1{font-size:38px;line-height:1.1}article{padding:24px;border-radius:20px;background:#e6e9d9}li{margin:12px 0}.dish{font-size:72px}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Recipe","name":"Garden Tomato Pasta","totalTime":"PT25M","recipeYield":"4","recipeIngredient":["300 g pasta","400 g tomatoes","2 tbsp olive oil","Fresh basil"],"recipeInstructions":[{"@type":"HowToStep","text":"Simmer the tomatoes in olive oil for 5 minutes."},{"@type":"HowToStep","text":"Cook the pasta, then toss with the sauce and fresh basil."}]}</script></head><body><header>DEMO COOKBOOK</header><h1>Garden Tomato Pasta</h1><p>25 minutes · Serves 4</p><article><div class="dish">🍅</div><h2>A simple dinner</h2><p>Open this page in the native cooking view with the Read Recipe button above.</p><ul><li>Pasta</li><li>Tomatoes</li><li>Olive oil</li><li>Fresh basil</li></ul></article><p>This page is bundled test data. No website or personal account is opened.</p></body></html>
@@ -177,54 +199,102 @@ struct NativeBrowserView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.scenePhase) private var scenePhase
     @Bindable var browser: NativeBrowserController
+    @State private var candidates: [RecipeDocument] = []
+    @State private var importing = false
+    @State private var importGeneration = 0
+    @State private var importTask: Task<Void, Never>?
     var body: some View {
-      VStack(spacing: 10) {
-        AppHeader(title: "Safari")
-        HStack(spacing: 12) {
-          TextField("Website address", text: $browser.address).textFieldStyle(.plain).font(
-            .system(size: 18)
-          ).onSubmit { browser.openAddress() }.accessibilityIdentifier("browser.address")
-            #if !os(macOS)
-              .keyboardType(.URL).textInputAutocapitalization(.never).autocorrectionDisabled()
-            #endif
-          if browser.loading {
-            RoundButton(symbol: "xmark", size: 38, label: "Stop loading") { browser.stop() }
-              .accessibilityIdentifier("browser.stop")
-          }
-          RoundButton(symbol: "arrow.clockwise", size: 38, label: "Load website") {
-            browser.openAddress()
-          }.accessibilityIdentifier("browser.load")
-        }.padding(12).background(.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 15))
-          .padding(.horizontal, 28)
-        HStack(spacing: 14) {
-          Button {
-            browser.webView.goBack()
-          } label: {
-            Image(systemName: "chevron.left")
-          }.disabled(!browser.canBack).accessibilityLabel("Back").accessibilityIdentifier("browser.back")
-          Button {
-            browser.webView.goForward()
-          } label: {
-            Image(systemName: "chevron.right")
-          }.disabled(!browser.canForward).accessibilityLabel("Forward").accessibilityIdentifier("browser.forward")
-          Spacer()
-          Button("Saved") { model.navigate(.recipes) }.accessibilityIdentifier("browser.saved")
-          Button("Read Recipe") {
-            Task {
-              do {
-                model.recipe = try await browser.recipe()
-                model.route = .recipe
-              } catch { model.error = error.localizedDescription }
+      Group {
+        if !candidates.isEmpty {
+          VStack(spacing: 20) {
+            AppHeader(title: "Choose a Recipe")
+            ScrollView {
+              VStack(spacing: 12) {
+                ForEach(candidates) { recipe in
+                  Button {
+                    candidates = []
+                    model.recipe = recipe
+                    model.route = .recipe
+                  } label: {
+                    VStack(alignment: .leading, spacing: 7) {
+                      Text(recipe.title).font(.system(size: 27, weight: .semibold))
+                      Text(recipe.durationLabel).font(.system(size: 18)).foregroundStyle(.gray)
+                    }.frame(maxWidth: .infinity, alignment: .leading).padding(20)
+                      .background(.gray.opacity(0.06), in: RoundedRectangle(cornerRadius: 18))
+                      .contentShape(Rectangle())
+                  }.accessibilityLabel(recipe.title)
+                    .accessibilityIdentifier("browser.chooseRecipe.\(recipe.id)")
+                }
+              }.padding(30)
             }
-          }.fontWeight(.semibold).disabled(browser.loading).accessibilityIdentifier(
-            "browser.recipe")
-        }.font(.system(size: 19)).padding(.horizontal, 30)
-        Text(browser.status).font(.system(size: 12)).foregroundStyle(.gray).accessibilityIdentifier(
-          "browser.status")
-        BrowserWebArea(controller: browser).accessibilityIdentifier("browser.page")
+            Button("Cancel") { candidates = [] }.padding(24)
+              .accessibilityIdentifier("browser.cancelRecipes")
+          }
+        } else {
+          VStack(spacing: 10) {
+            AppHeader(title: "Safari")
+            HStack(spacing: 12) {
+              TextField("Website address", text: $browser.address).textFieldStyle(.plain).font(
+                .system(size: 18)
+              ).onSubmit { browser.openAddress() }.accessibilityIdentifier("browser.address")
+                #if !os(macOS)
+                  .keyboardType(.URL).textInputAutocapitalization(.never).autocorrectionDisabled()
+                #endif
+              if browser.loading {
+                RoundButton(symbol: "xmark", size: 38, label: "Stop loading") { browser.stop() }
+                  .accessibilityIdentifier("browser.stop")
+              }
+              RoundButton(symbol: "arrow.clockwise", size: 38, label: "Load website") {
+                browser.openAddress()
+              }.accessibilityIdentifier("browser.load")
+            }.padding(12).background(.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 15))
+              .padding(.horizontal, 28)
+            HStack(spacing: 14) {
+              Button { browser.webView.goBack() } label: { Image(systemName: "chevron.left") }
+                .disabled(!browser.canBack).accessibilityLabel("Back").accessibilityIdentifier("browser.back")
+              Button { browser.webView.goForward() } label: { Image(systemName: "chevron.right") }
+                .disabled(!browser.canForward).accessibilityLabel("Forward").accessibilityIdentifier("browser.forward")
+              Spacer()
+              Button("Saved") { model.navigate(.recipes) }.accessibilityIdentifier("browser.saved")
+              Button(importing ? "Reading…" : "Read Recipe") { importRecipes() }
+                .fontWeight(.semibold).disabled(browser.loading || importing)
+                .accessibilityIdentifier("browser.recipe")
+            }.font(.system(size: 19)).padding(.horizontal, 30)
+            Text(browser.status).font(.system(size: 12)).foregroundStyle(.gray)
+              .accessibilityIdentifier("browser.status")
+            BrowserWebArea(controller: browser).accessibilityIdentifier("browser.page")
+          }
+        }
       }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
-        .onDisappear { browser.stop() }
-        .onChange(of: scenePhase) { _, phase in if phase != .active { browser.stop() } }
+        .onDisappear { cancelImport(); browser.stop() }
+        .onChange(of: scenePhase) { _, phase in
+          if phase != .active { cancelImport(); browser.stop() }
+        }
+    }
+    private func cancelImport() {
+      importGeneration += 1
+      importTask?.cancel()
+      importing = false
+    }
+    private func importRecipes() {
+      importGeneration += 1
+      let ticket = importGeneration, pageTicket = browser.pageGeneration
+      importing = true
+      importTask = Task {
+        defer { if ticket == importGeneration { importing = false } }
+        do {
+          let values = try await browser.recipes()
+          guard ticket == importGeneration, pageTicket == browser.pageGeneration,
+            !Task.isCancelled, model.route == .app(.safari) else { return }
+          if values.count == 1 {
+            model.recipe = values[0]
+            model.route = .recipe
+          } else { candidates = values }
+        } catch {
+          guard ticket == importGeneration, !Task.isCancelled, model.route == .app(.safari) else { return }
+          model.error = error.localizedDescription
+        }
+      }
     }
   }
 #endif
@@ -272,7 +342,7 @@ struct RecipeLibraryView: View {
                 Image(systemName: "fork.knife").font(.system(size: 30)).foregroundStyle(.orange)
                 VStack(alignment: .leading, spacing: 5) {
                   Text(recipe.title).font(.system(size: 24, weight: .semibold))
-                  Text("\(recipe.durationMinutes) min. · \(recipe.source)").font(.system(size: 17))
+                  Text(recipe.durationLabel + " · " + recipe.source).font(.system(size: 17))
                     .foregroundStyle(.gray)
                 }
                 Spacer()

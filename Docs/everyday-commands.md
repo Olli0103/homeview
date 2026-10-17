@@ -4,7 +4,7 @@
 
 Der lokale Parser versteht ausdrücklich gesendete Timerbefehle auf Deutsch und Englisch, inklusive Sekunden, Minuten, Stunden, kombinierter Dauer, Dezimaldauer und optionalem Namen. Beispiele: `Timer auf 90 Sekunden namens Tee`, `set a timer for 1 hour and 30 minutes named Pasta`.
 
-Vage Angaben, Alternativen, negative/zu große Dauern, doppelte Einheiten und Abbruch-/Negationsbefehle erzeugen eine Rückfrage beziehungsweise einen Hinweis — keinen geratenen Fünf-Minuten-Timer. Der zulässige Bereich bleibt eine Sekunde bis 24 Stunden. Ganze Zahlwörter sind für eins bis zwanzig sowie ausgewählte Zehner abgedeckt; nicht unterstützte Formulierungen werden nicht geraten. Zusammengesetzte Zahlwörter sind nicht allgemein implementiert.
+Vage Angaben, Alternativen, negative/zu große Dauern, doppelte Einheiten und Abbruch-/Negationsbefehle erzeugen eine Rückfrage beziehungsweise einen Hinweis — keinen geratenen Fünf-Minuten-Timer. Der zulässige Bereich bleibt eine Sekunde bis 24 Stunden. Englische Zahlwörter sind für eins bis zwanzig abgedeckt, deutsche für eins bis zwölf sowie ausgewählte weitere Zahlen und Zehner; nicht unterstützte Formulierungen werden nicht geraten. Zusammengesetzte Zahlwörter sind nicht allgemein implementiert.
 
 `next step` / `nächster Schritt`, `previous step` / `vorheriger Schritt` und `repeat this step` / `Schritt wiederholen` arbeiten nur auf einer ausdrücklich gestarteten Kochsitzung. UI-Schaltflächen und Befehle nutzen dieselben Schrittwechsel. Rezeptwechsel beendet die alte Kochsitzung. Wiederholen zeigt den tatsächlichen aktuellen Schritt als Text; es behauptet keine automatische Sprachausgabe.
 
