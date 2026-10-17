@@ -8,4 +8,4 @@ All seventeen reference-derived raster fixtures were replaced by original geomet
 
 Build identifiers use org.example placeholders. Build cache paths resolve from the current user. There is no signing identity, provisioning profile, account token or live home configuration in the snapshot.
 
-No general source license is granted yet. Selecting the source license and documenting any future external assets remain tracked release work. Redistributable visual fixtures and typography are tracked as explicit parity work.
+The initial snapshot was published without a general source license. On 17 October 2026 the owner selected the [MIT License](../LICENSE) for the project's own source, documentation and generated assets. [Source and asset notices](../NOTICE.md) distinguish these from system resources, trademarks and excluded proprietary reference material. Future external components require their own documented redistribution terms. Redistributable visual fixtures and typography remain separate parity work.

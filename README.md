@@ -38,4 +38,4 @@ No full visual, hardware or system-service parity is claimed. Existing historica
 
 ## Rights
 
-No open-source license has been selected yet. Public visibility alone does not grant a license. Third-party product names identify compatibility or research targets. Do not upload proprietary reference assets or extracted operating-system code.
+Project-owned source, documentation and generated assets are available under the [MIT License](LICENSE), including use, modification and redistribution. See [source and asset notices](NOTICE.md) for provenance and third-party/system-resource boundaries. Third-party product names identify compatibility or research targets; this project is independent and not affiliated with Apple. Do not upload proprietary reference assets or extracted operating-system code.
