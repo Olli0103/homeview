@@ -8,13 +8,25 @@ final class DeviceConnectionTests: XCTestCase {
     var unlockGranted = true
     var delayEvents = false
     var delayReminderWrite = false
+    var delayAuthorization = false
+    var authorizationReply: CheckedContinuation<Void, any Error>?
     var unlockReply: CheckedContinuation<Bool, Never>?
     var eventReply: CheckedContinuation<[DeviceEvent], any Error>?
     var writeReply: CheckedContinuation<Void, any Error>?
     var onStart: (() -> Void)?
     var reminderReads = 0
+    var eventReads = 0
     func authorized(_ kind: DataConnection) -> Bool { true }
+    func authorizePersonal(_ kind: DataConnection) async throws {
+      if delayAuthorization {
+        try await withCheckedThrowingContinuation {
+          authorizationReply = $0
+          onStart?()
+        }
+      }
+    }
     func events(from: Date, to: Date) async throws -> [DeviceEvent] {
+      eventReads += 1
       if delayEvents {
         return try await withCheckedThrowingContinuation {
           eventReply = $0
@@ -118,17 +130,35 @@ final class DeviceConnectionTests: XCTestCase {
   }
 
   func testLockedConnectDoesNotRetainPrivateRecords() async {
-    let connections = DeviceConnections(provider: Provider())
+    let provider = Provider()
+    let connections = DeviceConnections(provider: provider)
     await connections.connect(.calendar)
     await connections.connect(.reminders)
     XCTAssertTrue(connections.events.isEmpty)
     XCTAssertTrue(connections.reminders.isEmpty)
     XCTAssertEqual(connections.enabled, [.calendar, .reminders])
+    XCTAssertEqual(provider.eventReads, 0)
+    XCTAssertEqual(provider.reminderReads, 0)
     _ = await connections.unlock()
     await connections.refreshCalendar(Date())
     await connections.refreshReminders()
     XCTAssertEqual(connections.events.count, 1)
     XCTAssertEqual(connections.reminders.count, 1)
+  }
+  func testLockWhileGrantingOSPermissionDoesNotStartPrivateRead() async throws {
+    let provider = Provider()
+    let connections = DeviceConnections(provider: provider)
+    _ = await connections.unlock()
+    provider.delayAuthorization = true
+    let started = expectation(description: "OS permission request started")
+    provider.onStart = { started.fulfill() }
+    let connect = Task { await connections.connect(.calendar) }
+    await fulfillment(of: [started], timeout: 2)
+    connections.lock()
+    try XCTUnwrap(provider.authorizationReply).resume()
+    await connect.value
+    XCTAssertEqual(provider.eventReads, 0)
+    XCTAssertTrue(connections.events.isEmpty)
   }
 
   func testOldCalendarResponseCannotReplaceNewSessionOrClearItsBusyFlag() async throws {

@@ -11,6 +11,7 @@ enum DataConnection: String, CaseIterable, Identifiable {
 @MainActor
 protocol DeviceDataProvider: AnyObject {
   func authorized(_ kind: DataConnection) -> Bool
+  func authorizePersonal(_ kind: DataConnection) async throws
   func events(from: Date, to: Date) async throws -> [DeviceEvent]
   func reminders() async throws -> [DeviceReminder]
   func addReminder(_ title: String) async throws
@@ -60,8 +61,13 @@ final class DeviceConnections {
     status[kind] = "Connecting…"
     defer { if generation[kind] == ticket { busy.remove(kind) } }
     do {
+      if kind == .calendar || kind == .reminders {
+        try await provider.authorizePersonal(kind)
+        guard generation[kind] == ticket, !Task.isCancelled else { return }
+      }
       switch kind {
       case .calendar:
+        guard personalUnlocked else { break }
         let c = Calendar.current
         let from = c.startOfDay(for: date)
         let values = try await provider.events(
@@ -69,6 +75,7 @@ final class DeviceConnections {
         guard generation[kind] == ticket else { return }
         if personalUnlocked { events = values }
       case .reminders:
+        guard personalUnlocked else { break }
         let values = try await provider.reminders()
         guard generation[kind] == ticket else { return }
         if personalUnlocked { reminders = values }
