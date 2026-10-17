@@ -752,6 +752,65 @@ final class HomeViewUITests: XCTestCase {
     viewportShot("photo-demo-portrait-protected")
     shot("native-demo-photo-face")
   }
+  func testPhotoGlassTransmitsTheSameBackdropInsteadOfOpaqueInk() {
+    func pixels(_ data: Data) -> (values:[UInt8],width:Int,height:Int) {
+      let image = UIImage(data:data)!.cgImage!
+      var bytes = [UInt8](repeating:0,count:image.width*image.height*4)
+      bytes.withUnsafeMutableBytes { buffer in
+        let context = CGContext(data:buffer.baseAddress,width:image.width,height:image.height,
+          bitsPerComponent:8,bytesPerRow:image.width*4,space:CGColorSpaceCreateDeviceRGB(),
+          bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+        context.draw(image,in:CGRect(x:0,y:0,width:image.width,height:image.height))
+      }
+      return (bytes,image.width,image.height)
+    }
+    launch(["--face","Photos","--photo-clock-test-mode","background"])
+    let backdrop = pixels(viewportBytes("photo-glass-background-control"))
+    app.terminate()
+    launch(["--face","Photos","--photo-clock-test-mode","stencil"])
+    let stencil = pixels(viewportBytes("photo-glass-opaque-positive-control"))
+    app.terminate()
+    launch(["--face","Photos"])
+    let glass = pixels(viewportBytes("photo-glass-same-backdrop"))
+    XCTAssertEqual(backdrop.width,glass.width)
+    XCTAssertEqual(stencil.height,glass.height)
+    var samples=0,transmitted=0,opaqueMatches=0
+    // Fixed upper clock ROI, excluding caption, round corners and host chrome.
+    // The separate white-stencil launch identifies actual interior ink pixels.
+    for y in Int(Double(glass.height)*0.06)..<Int(Double(glass.height)*0.43) {
+      for x in Int(Double(glass.width)*0.05)..<Int(Double(glass.width)*0.95) {
+        let i=(y*glass.width+x)*4
+        let neighbors=[i,i-12,i+12,i-glass.width*12,i+glass.width*12]
+        guard neighbors.allSatisfy({ j in (0..<3).allSatisfy { stencil.values[j+$0]>245 } }),
+              (0..<3).contains(where:{ backdrop.values[i+$0]<190 }) else { continue }
+        samples += 1
+        let error=(0..<3).map { abs(Int(glass.values[i+$0])-Int(backdrop.values[i+$0])) }.max()!
+        let opaqueError=(0..<3).map { abs(Int(stencil.values[i+$0])-Int(backdrop.values[i+$0])) }.max()!
+        if error<=45 { transmitted += 1 }
+        if opaqueError<=45 { opaqueMatches += 1 }
+      }
+    }
+    XCTAssertGreaterThan(samples,500,"The positive control must expose actual glyph interiors")
+    XCTAssertGreaterThan(Double(transmitted)/Double(max(1,samples)),0.8,
+      "The photo must remain visible through clock bodies, not flat opaque ink")
+    XCTAssertLessThan(Double(opaqueMatches)/Double(max(1,samples)),0.05)
+    print("PHOTO_GLASS_PIXELS samples=\(samples) transmitted=\(transmitted) opaqueMatches=\(opaqueMatches)")
+  }
+  func testPhotoGlassNightUsesTheWholeViewportMonochrome() {
+    launch(["--face","Photos"])
+    tap("nav.controls"); tap("controls.night"); tap("nav.faces")
+    let pixels=[UInt8](viewportPixels(viewportBytes("photo-glass-night-full-viewport"),inset:0))
+    var lit=0,wrongColor=0
+    for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+      lit += 1
+      if Double(pixels[i+1])>Double(pixels[i])*0.4 || Double(pixels[i+2])>Double(pixels[i])*0.4 {
+        wrongColor += 1
+      }
+    }
+    XCTAssertGreaterThan(lit,100)
+    XCTAssertEqual(wrongColor,0,"Photo transmission and highlights must stay inside the night treatment")
+    print("PHOTO_GLASS_NIGHT lit=\(lit) wrongColor=\(wrongColor)")
+  }
   func testPhotoClockAvoidsTopSubjectAndKeepsBothEdgeSubjects() {
     launch(["--photo-layout-fixture", "top"])
     let layout = app.staticTexts["photo.layout.test"]

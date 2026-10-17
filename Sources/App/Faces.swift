@@ -318,12 +318,9 @@ struct PhotoFace: View {
       } else {
         LandscapeArt()
       }
-      Text(model.clock, style: .time).environment(\.timeZone, model.displayTimeZone).font(
-        .system(size: 181, weight: .semibold, design: .rounded)
-      ).tracking(-10).lineLimit(1).minimumScaleFactor(0.65).frame(width: 540, height: 200).foregroundStyle(
-        Color(red: 1, green: 0.82, blue: 0.84)
-      ).position(x: 300, y: 600 * model.photoComposition.clock.centerY)
-        .accessibilityIdentifier("photo.clock").accessibilityValue(model.photoComposition.clock.rawValue)
+      PhotoGlassClock(time: model.dateLabel("hh mm"), spokenTime: model.dateLabel("h:mm"),
+        bytes: model.photoData, composition: model.photoComposition)
+        .position(x: 300, y: 600 * model.photoComposition.clock.centerY)
       // Depth uses the selected image's real segmentation, not a fabricated
       // foreground triangle over the fallback landscape.
       if model.photoComposition.depthEnabled, let foreground = model.photoForegroundData {
@@ -341,7 +338,7 @@ struct PhotoFace: View {
         ).tracking(2)
           .foregroundStyle(.white.opacity(0.7)).padding(28).accessibilityIdentifier("photo.index")
       }
-    }.clipped().onTapGesture { model.nextPhoto() }
+    }.coordinateSpace(name: "photo-face").clipped().onTapGesture { model.nextPhoto() }
   }
 }
 struct WeatherFace: View {

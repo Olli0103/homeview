@@ -28,6 +28,68 @@ struct ImportedPhoto: View {
     #endif
   }
 }
+
+/// Public runtime font coverage, refracting the same explicitly selected photo.
+/// No saved font outlines and no foreground/Depth approximation.
+struct PhotoGlassClock: View {
+  let time: String
+  let spokenTime: String
+  let bytes: Data?
+  let composition: PhotoComposition
+  @State private var texture: Image?
+  @State private var renderedBytes: Data?
+  private var testMode: String {
+    let args = ProcessInfo.processInfo.arguments
+    guard args.contains("--uitesting"), let i = args.firstIndex(of: "--photo-clock-test-mode"),
+          args.indices.contains(i + 1) else { return "glass" }
+    return args[i + 1]
+  }
+  private var glyphs: some View {
+    Text(time).font(.system(size: 181, weight: .regular, design: .rounded))
+      .tracking(-10).lineLimit(1).minimumScaleFactor(0.65)
+      .frame(width: 540, height: 200).foregroundStyle(.white)
+  }
+  var body: some View {
+    Group {
+      if testMode == "background" {
+        glyphs.opacity(0)
+      } else if testMode == "stencil" {
+        glyphs
+      } else if let texture, renderedBytes == bytes {
+        glyphs.blur(radius: 1).visualEffect { content, geometry in
+          let bounds = geometry.frame(in: .named("photo-face"))
+          return content.layerEffect(ShaderLibrary.photoGlassGlyph(
+            .image(texture), .float2(Float(bounds.minX), Float(bounds.minY)),
+            .float2(Float(composition.crop.x), Float(composition.crop.y)),
+            .float2(Float(composition.crop.width), Float(composition.crop.height)),
+            .float2(Float(composition.destination.x), Float(composition.destination.y)),
+            .float2(Float(composition.destination.width), Float(composition.destination.height))),
+            maxSampleOffset: CGSize(width: 12, height: 12))
+        }
+      } else {
+        glyphs.opacity(0.8)
+      }
+    }
+    .accessibilityIdentifier("photo.clock")
+    .accessibilityLabel(spokenTime)
+    .accessibilityValue(composition.clock.rawValue)
+    .task(id: bytes) {
+      if let bytes {
+        #if os(macOS)
+          texture = NSImage(data: bytes).map { Image(nsImage: $0) }
+        #elseif canImport(UIKit)
+          texture = UIImage(data: bytes).map { Image(uiImage: $0) }
+        #endif
+      } else {
+        texture = Image(DemoPhotoAssets.landscape)
+      }
+      // Never show the previous selection inside the next photo's clock while
+      // its image texture is being prepared.
+      renderedBytes = bytes
+    }
+  }
+}
+
 struct NativePhotoControls: View {
   @Environment(AppModel.self) private var model
   #if canImport(PhotosUI) && !os(tvOS) && !os(watchOS)
