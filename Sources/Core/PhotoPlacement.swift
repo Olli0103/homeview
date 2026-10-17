@@ -80,6 +80,22 @@ struct PhotoAdjustment: Codable, Equatable, Sendable {
   var vertical = 0.5
 }
 
+extension PhotoAdjustment {
+  private enum CodingKeys: String, CodingKey { case clock, automaticCrop, horizontal, vertical }
+  init(from decoder: any Decoder) throws {
+    self.init()
+    guard let values = try? decoder.container(keyedBy: CodingKeys.self) else { return }
+    clock = (try? values.decode(PhotoClockPosition.self, forKey: .clock)) ?? .automatic
+    automaticCrop = (try? values.decode(Bool.self, forKey: .automaticCrop)) ?? true
+    func offset(_ key: CodingKeys) -> Double {
+      guard let value = try? values.decode(Double.self, forKey: key), value.isFinite else { return 0.5 }
+      return min(1, max(0, value))
+    }
+    horizontal = offset(.horizontal)
+    vertical = offset(.vertical)
+  }
+}
+
 struct PhotoComposition: Equatable, Sendable {
   var crop: PhotoRect = .full
   var destination: PhotoRect = .full
