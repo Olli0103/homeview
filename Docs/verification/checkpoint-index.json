@@ -643,6 +643,40 @@
       ],
       "core_repeated_after_commit": true,
       "post_commit_core_log_sha256": "519d31a8dfa41950154b2daf4c7cdaa94beed7f8f7a421f46ea6ed37f156c4df"
+    },
+    {
+      "checkpoint": "layouts-fade-integrated",
+      "commit": "5efd09f59122c203c65650c4413a2d288e605b8e",
+      "source_digest": "fbcb23a2e7b1bfe1033cba8404b9ebbc04ca04440f300bdd78b07e1f02799c48",
+      "files_verified": 116,
+      "core_passed": 104,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 11,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS27.0/24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 11,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS27.0/24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "054a14e47c277422ad64895f8692339883233c68092ec081fc4cce9d718643ed"
     }
   ],
   "all_sources_match_committed_bytes": true

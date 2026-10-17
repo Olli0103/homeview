@@ -15,6 +15,10 @@ Apps-/Wettervariante aus der Originalsequenz wird bereits bearbeitet.
 `efff917`: [Fade-Zeiger und Relief](fade-reference-detail.md), 103 Modelltests,
 sechs gezielte UI-Ausführungen und fünf SDK-Builds; #18 bleibt offen.
 
+`754890a` / `5efd09f`: [Apps-/Wetterraster und Gestenkorrektur](personal-weather-grid.md),
+104 Modelltests, 22 gezielte UI-Ausführungen und fünf SDK-Builds im integrierten
+Stand. #9 bleibt offen; angeschnittene Artist-Zeile wird weiter korrigiert.
+
 ## 17. Oktober 2026 · zweites Issue-Paket
 
 [Prüfbericht und eigene Bilder](iteration-20261017-block2.md) · [alle verbleibenden Pakete](remaining-work.md).
