@@ -243,8 +243,7 @@ struct RecipeCover: View {
             title: "Start Cooking", symbol: "frying.pan", tint: .white.opacity(0.22),
             textColor: .white
           ) {
-            model.cookingStep = 0
-            model.route = .cooking
+            model.startCooking()
           }.accessibilityIdentifier("recipe.start")
         }.padding(.horizontal, 32).padding(.bottom, 32)
       }.foregroundStyle(.white)
@@ -274,8 +273,7 @@ struct IngredientsView: View {
         }.padding(32)
       }
       Pill(title: "Start Cooking", symbol: "frying.pan") {
-        model.cookingStep = 0
-        model.route = .cooking
+        model.startCooking()
       }.padding(30)
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
   }
@@ -315,18 +313,13 @@ struct CookingView: View {
       }
       HStack(spacing: 16) {
         RoundButton(symbol: "chevron.left", label: "Previous step") {
-          model.cookingStep = max(0, model.cookingStep - 1)
+          model.moveCookingStep(-1)
         }.disabled(model.cookingStep == 0)
         Pill(
           title: model.cookingStep == model.recipe.steps.count - 1 ? "Finish" : "Next Step",
           symbol: model.cookingStep == model.recipe.steps.count - 1 ? "checkmark" : "chevron.right"
         ) {
-          if model.cookingStep < model.recipe.steps.count - 1 {
-            model.cookingStep += 1
-          } else {
-            model.route = .recipe
-            model.banner("Enjoy your meal!")
-          }
+          model.moveCookingStep(1)
         }.accessibilityIdentifier("cooking.next")
         RoundButton(symbol: model.data.pinnedRecipe ? "pin.fill" : "pin", label: "Pin recipe") {
           model.pinRecipe()

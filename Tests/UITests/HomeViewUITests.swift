@@ -307,6 +307,40 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertFalse(app.buttons["browser.stop"].exists)
     shot("browser-local-history-offline-and-stop")
   }
+  func submitAssistant(_ request: String) {
+    tap("nav.assistant")
+    let field = app.textFields["assistant.input"]
+    field.tap(); field.typeText(request); tap("assistant.send")
+  }
+  func testBilingualTimerCommandUsesSecondsAndAmbiguityDoesNotAddTimer() {
+    launch()
+    submitAssistant("Timer auf 90 Sekunden namens Tee")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("90 seconds"))
+    tap("nav.faces"); drawer(); tap("app.Timers")
+    XCTAssertTrue(app.staticTexts["TEE"].exists)
+    XCTAssertTrue(app.staticTexts["timer.countdown"].label.hasPrefix("01:")
+      || app.staticTexts["timer.countdown"].label.hasPrefix("00:"))
+    tap("timer.pause")
+    submitAssistant("set a timer")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("Specify"))
+    tap("nav.faces"); drawer(); tap("app.Timers")
+    tap("timer.delete")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout: 5))
+    shot("voice-timer-ambiguity-no-extra-timer")
+  }
+  func testCookingStepCommandsPreserveAnExplicitCookingSession() {
+    launch(["--screen-recipe"])
+    tap("recipe.start")
+    XCTAssertTrue(app.staticTexts["cooking.text"].label.contains("olive oil"))
+    submitAssistant("next step")
+    XCTAssertTrue(app.staticTexts["cooking.text"].waitForExistence(timeout: 5))
+    XCTAssertTrue(app.staticTexts["cooking.text"].label.contains("squash"))
+    submitAssistant("vorheriger schritt")
+    XCTAssertTrue(app.staticTexts["cooking.text"].label.contains("olive oil"))
+    submitAssistant("repeat this step")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("olive oil"))
+    shot("voice-cooking-repeat-step")
+  }
   func testFlowHasIndependentTypefaceAndBackgroundControls() {
     launch(["--face", "Flow"])
     shot("RE-flow-stencil")
