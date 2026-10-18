@@ -141,6 +141,7 @@ struct ModularFace: View {
           )
           .font(.system(size: 52, weight: .semibold)).fixedSize().padding(.leading, 18)
           FaceDateNumber(value: model.dateLabel("d"), size: 208)
+            .shadow(color: .white.opacity(0.35), radius: 0.65, x: 0, y: 0.2)
             .frame(width: 235, height: 190)
         }.frame(maxWidth: .infinity, alignment: .leading)
       }.buttonStyle(.plain)
@@ -182,7 +183,9 @@ struct ModularFace: View {
             .offset(y:2)
           Text(model.connections.weatherTemperature).font(
             .system(size: 122, weight: .medium)
-          ).tracking(-8).scaleEffect(125.0/122,anchor:.topLeading).offset(y:-22)
+          ).tracking(-8)
+            .shadow(color: .white.opacity(0.35), radius: 0.65, x: 0, y: 0.2)
+            .scaleEffect(125.0/122,anchor:.topLeading).offset(y:-22)
             .accessibilityIdentifier("modular.weather.temperature")
           Image(systemName: model.connections.weatherSymbol).font(
             .system(size: 29)).scaleEffect(24.0/29,anchor:.topLeading).offset(y:-18)
