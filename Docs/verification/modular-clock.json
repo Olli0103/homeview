@@ -1,0 +1,942 @@
+{
+  "code_commit": "01aa86d5ce9e4830cad4ba8f3d34b100e692acda",
+  "feature_commit": "38fb3c1adec88f8f1875fb47ba4b7e22dae37cfb",
+  "source_digest": "256a9c09fe4b5b7ccf5f4c2879ac75f381a682ffbd5f5a5f3b3ea26a75a49e4b",
+  "source_files": 142,
+  "source_matches_feature_and_merge": true,
+  "changed_sources": [
+    "Sources/App/Design.swift",
+    "Sources/App/Faces.swift"
+  ],
+  "core_providers_tests_resources_root_bytes_unchanged": true,
+  "implementation": "Existing embossed hand neck shape opted in only by Modular; new lightEdgeInk defaults false, scoped public Canvas shadow filters, old Fade offset black shadow retained when false. Font sizes/positions, reaches, ticks, second needle and hub geometry unchanged.",
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "ui_executions": 6,
+  "unique_cases": 3,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "before_fade_executions2_not_added_to_final6": true,
+  "native_run_label": "modular-clock-prototype-ui",
+  "same_unchanged_source_accepted_after_native_review_not_counted_again": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T07:21:47.282311+00:00",
+      "ended": "2026-10-18T07:22:04.055206+00:00",
+      "log_sha256": "cefd5326f3ead8ca9a91e272941e7bd10513208a94d51387df9425dbbe85d7d0"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T07:22:04.055685+00:00",
+      "ended": "2026-10-18T07:22:18.937927+00:00",
+      "log_sha256": "4b843d9893954f625733892012bdde2a7aed6164df640b4da1030b728bb73dfa"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T07:22:18.938476+00:00",
+      "ended": "2026-10-18T07:22:30.150039+00:00",
+      "log_sha256": "4bf919b722ab386e4b0f8a875de4451b22e23f07aa9b1b93c9ff3bfdeb9a8eb7"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T07:22:30.150502+00:00",
+      "ended": "2026-10-18T07:22:42.917352+00:00",
+      "log_sha256": "daf519d79f0ad43d0f4f135e95bd8751086aae24b1bf175994ae0556ad8cb0da"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T07:22:42.917831+00:00",
+      "ended": "2026-10-18T07:22:49.707856+00:00",
+      "log_sha256": "c95d6bd4a3f2a847f6f2343744d8b0fbad799b4985bd8fcbb68bb526f5aefc30"
+    }
+  ],
+  "before_source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b",
+  "own_predeclared_contract": {
+    "scope": "Own bounded UI01-informed Modular analog numeral/hand edge and existing neck-form reuse; not original font/shader equivalence",
+    "frozen_before_visible_prototype": true,
+    "base_commit": "133fb0adfd041798d08e3d5adaa7e7728bb8d423",
+    "base_source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b",
+    "allowed_clock_roi": [
+      0.52,
+      0.05,
+      0.97,
+      0.49
+    ],
+    "outside_clock_changed_pixels": 0,
+    "day_comparison_dates": [
+      1,
+      13,
+      30
+    ],
+    "font_geometry_tick_positions_hand_reaches_second_needle_hub_not_changed": true,
+    "numeral_rois": {
+      "12": [
+        0.695,
+        0.095,
+        0.775,
+        0.15
+      ],
+      "3": [
+        0.85,
+        0.232,
+        0.91,
+        0.302
+      ],
+      "6": [
+        0.7,
+        0.386,
+        0.765,
+        0.446
+      ],
+      "9": [
+        0.565,
+        0.232,
+        0.615,
+        0.302
+      ]
+    },
+    "numeral_core": {
+      "baseline_maxRGB_under": 25,
+      "erode_by_reference_pixels": 1,
+      "reference_width": 544,
+      "allowed_changed_pixels": 0
+    },
+    "positive_halo": {
+      "each_rgb_increase_at_least": 2,
+      "before_maxRGB_at_least": 70,
+      "minimum_pixels_in_clock_roi": 100
+    },
+    "neck_samples": {
+      "center_normalized": [
+        0.7316666666666667,
+        0.265
+      ],
+      "radius_normalized": 0.19166666666666668,
+      "reference_time": "10:09:30 UTC",
+      "forward_distance_in_radii": [
+        0.07,
+        0.13
+      ],
+      "perpendicular_half_width_in_radii": 0.045,
+      "dark_maxRGB_under": 70,
+      "maximum_new_to_old_dark_pixel_ratio": 0.65,
+      "meaning": "Actual narrower black neck, not a source-parameter assertion; old wide back-tail removed through existing public renderer shape."
+    },
+    "fade_opt_out_native_phase_pairs_byte_and_pixel_identical": true,
+    "night_existing_predicate_wrong_pixels": 0,
+    "original_acceptance": false,
+    "hardware_acceptance": false
+  },
+  "initial_image_assessment_retained_not_all_passed": [
+    {
+      "device": "iPad",
+      "day_outside_clock_checks": [
+        {
+          "day": 1,
+          "changed_pixels": 26652,
+          "outside_clock_changed_pixels": 0
+        },
+        {
+          "day": 13,
+          "changed_pixels": 26652,
+          "outside_clock_changed_pixels": 0
+        },
+        {
+          "day": 30,
+          "changed_pixels": 26652,
+          "outside_clock_changed_pixels": 0
+        }
+      ],
+      "numeral_core_and_halo_checks": [
+        {
+          "visible_halo_pixels": 1231,
+          "digit": "12",
+          "eroded_dark_pixels": 4,
+          "changed_dark_pixels": 0
+        },
+        {
+          "visible_halo_pixels": 801,
+          "digit": "3",
+          "eroded_dark_pixels": 0,
+          "changed_dark_pixels": 0
+        },
+        {
+          "visible_halo_pixels": 849,
+          "digit": "6",
+          "eroded_dark_pixels": 8,
+          "changed_dark_pixels": 0
+        },
+        {
+          "visible_halo_pixels": 872,
+          "digit": "9",
+          "eroded_dark_pixels": 8,
+          "changed_dark_pixels": 0
+        }
+      ],
+      "numeral_cores_nonempty": false,
+      "visible_clock_halo_pixels": 12608,
+      "visible_numeral_halo_pixels": 3753,
+      "actual_neck_samples": [
+        {
+          "hand": "hour",
+          "sample_pixels": 502,
+          "old_dark": 355,
+          "new_dark": 102,
+          "ratio": 0.28732394366197184,
+          "narrower": true
+        },
+        {
+          "hand": "minute",
+          "sample_pixels": 503,
+          "old_dark": 301,
+          "new_dark": 77,
+          "ratio": 0.2558139534883721,
+          "narrower": true
+        }
+      ],
+      "fade_opt_out_pairs": [
+        {
+          "state": "fade-conic-reduced-zero",
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        },
+        {
+          "state": "fade-conic-reduced-later",
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        }
+      ],
+      "night_wrong_color_pixels": 0,
+      "all_checks_passed": false
+    },
+    {
+      "device": "iPhone",
+      "day_outside_clock_checks": [
+        {
+          "day": 1,
+          "changed_pixels": 12422,
+          "outside_clock_changed_pixels": 0
+        },
+        {
+          "day": 13,
+          "changed_pixels": 12422,
+          "outside_clock_changed_pixels": 0
+        },
+        {
+          "day": 30,
+          "changed_pixels": 12422,
+          "outside_clock_changed_pixels": 0
+        }
+      ],
+      "numeral_core_and_halo_checks": [
+        {
+          "visible_halo_pixels": 548,
+          "digit": "12",
+          "eroded_dark_pixels": 25,
+          "changed_dark_pixels": 0
+        },
+        {
+          "visible_halo_pixels": 378,
+          "digit": "3",
+          "eroded_dark_pixels": 1,
+          "changed_dark_pixels": 0
+        },
+        {
+          "visible_halo_pixels": 401,
+          "digit": "6",
+          "eroded_dark_pixels": 15,
+          "changed_dark_pixels": 0
+        },
+        {
+          "visible_halo_pixels": 425,
+          "digit": "9",
+          "eroded_dark_pixels": 13,
+          "changed_dark_pixels": 0
+        }
+      ],
+      "numeral_cores_nonempty": true,
+      "visible_clock_halo_pixels": 5973,
+      "visible_numeral_halo_pixels": 1752,
+      "actual_neck_samples": [
+        {
+          "hand": "hour",
+          "sample_pixels": 255,
+          "old_dark": 181,
+          "new_dark": 55,
+          "ratio": 0.30386740331491713,
+          "narrower": true
+        },
+        {
+          "hand": "minute",
+          "sample_pixels": 254,
+          "old_dark": 152,
+          "new_dark": 40,
+          "ratio": 0.2631578947368421,
+          "narrower": true
+        }
+      ],
+      "fade_opt_out_pairs": [
+        {
+          "state": "fade-conic-reduced-zero",
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        },
+        {
+          "state": "fade-conic-reduced-later",
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        }
+      ],
+      "night_wrong_color_pixels": 0,
+      "all_checks_passed": true
+    }
+  ],
+  "direct_preblack_assessment_retained_not_passed": {
+    "reason": "One-reference-pixel erosion emptied iPad3; historical erosion nonempty guard failure retained, never reclassified as a pass. Supplemental direct RGB(0,0,0) comparisons have no erosion, no per-pixel tolerance and require nonempty black masks. Source and native app tests not changed.",
+    "replaces_historical_failed_guard": false,
+    "records": [
+      {
+        "device": "iPad",
+        "checks": [
+          {
+            "digit": "12",
+            "pure_black_before_pixels": 784,
+            "changed_pure_black_pixels": 2,
+            "nonempty_and_unchanged": false
+          },
+          {
+            "digit": "3",
+            "pure_black_before_pixels": 472,
+            "changed_pure_black_pixels": 2,
+            "nonempty_and_unchanged": false
+          },
+          {
+            "digit": "6",
+            "pure_black_before_pixels": 530,
+            "changed_pure_black_pixels": 3,
+            "nonempty_and_unchanged": false
+          },
+          {
+            "digit": "9",
+            "pure_black_before_pixels": 601,
+            "changed_pure_black_pixels": 1,
+            "nonempty_and_unchanged": false
+          }
+        ],
+        "all_direct_checks_passed": false
+      },
+      {
+        "device": "iPhone",
+        "checks": [
+          {
+            "digit": "12",
+            "pure_black_before_pixels": 489,
+            "changed_pure_black_pixels": 0,
+            "nonempty_and_unchanged": true
+          },
+          {
+            "digit": "3",
+            "pure_black_before_pixels": 290,
+            "changed_pure_black_pixels": 0,
+            "nonempty_and_unchanged": true
+          },
+          {
+            "digit": "6",
+            "pure_black_before_pixels": 340,
+            "changed_pure_black_pixels": 1,
+            "nonempty_and_unchanged": false
+          },
+          {
+            "digit": "9",
+            "pure_black_before_pixels": 372,
+            "changed_pure_black_pixels": 0,
+            "nonempty_and_unchanged": true
+          }
+        ],
+        "all_direct_checks_passed": false
+      }
+    ]
+  },
+  "all_native_radii_diagnostic": {
+    "scope": "All radii reported, no app-source change and no allowed RGB error. Prior empty-mask/pure-black failures retained. Smaller erosion compares a superset of old interior pixels, not fewer.",
+    "records": [
+      {
+        "device": "iPad",
+        "glyphs": [
+          {
+            "digit": "12",
+            "all_native_radii": [
+              {
+                "native_erosion_radius": 0,
+                "compared_dark_pixels": 1037,
+                "changed_dark_pixels": 203
+              },
+              {
+                "native_erosion_radius": 1,
+                "compared_dark_pixels": 599,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 2,
+                "compared_dark_pixels": 204,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 3,
+                "compared_dark_pixels": 4,
+                "changed_dark_pixels": 0
+              }
+            ],
+            "changed_previously_black_pixels": [
+              {
+                "x": 1189,
+                "y": 170,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  0,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 97,
+                "adjacent_to_outside_dark_mask": true
+              },
+              {
+                "x": 1191,
+                "y": 176,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  1,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 26,
+                "adjacent_to_outside_dark_mask": true
+              }
+            ]
+          },
+          {
+            "digit": "3",
+            "all_native_radii": [
+              {
+                "native_erosion_radius": 0,
+                "compared_dark_pixels": 648,
+                "changed_dark_pixels": 139
+              },
+              {
+                "native_erosion_radius": 1,
+                "compared_dark_pixels": 340,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 2,
+                "compared_dark_pixels": 69,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 3,
+                "compared_dark_pixels": 0,
+                "changed_dark_pixels": 0
+              }
+            ],
+            "changed_previously_black_pixels": [
+              {
+                "x": 1405,
+                "y": 403,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  0,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 55,
+                "adjacent_to_outside_dark_mask": true
+              },
+              {
+                "x": 1406,
+                "y": 426,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  0,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 91,
+                "adjacent_to_outside_dark_mask": true
+              }
+            ]
+          },
+          {
+            "digit": "6",
+            "all_native_radii": [
+              {
+                "native_erosion_radius": 0,
+                "compared_dark_pixels": 755,
+                "changed_dark_pixels": 168
+              },
+              {
+                "native_erosion_radius": 1,
+                "compared_dark_pixels": 408,
+                "changed_dark_pixels": 1
+              },
+              {
+                "native_erosion_radius": 2,
+                "compared_dark_pixels": 110,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 3,
+                "compared_dark_pixels": 8,
+                "changed_dark_pixels": 0
+              }
+            ],
+            "changed_previously_black_pixels": [
+              {
+                "x": 1151,
+                "y": 649,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  0,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 47,
+                "adjacent_to_outside_dark_mask": true
+              },
+              {
+                "x": 1180,
+                "y": 662,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  0,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 22,
+                "adjacent_to_outside_dark_mask": false
+              },
+              {
+                "x": 1169,
+                "y": 683,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  0,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 86,
+                "adjacent_to_outside_dark_mask": true
+              }
+            ]
+          },
+          {
+            "digit": "9",
+            "all_native_radii": [
+              {
+                "native_erosion_radius": 0,
+                "compared_dark_pixels": 820,
+                "changed_dark_pixels": 174
+              },
+              {
+                "native_erosion_radius": 1,
+                "compared_dark_pixels": 462,
+                "changed_dark_pixels": 3
+              },
+              {
+                "native_erosion_radius": 2,
+                "compared_dark_pixels": 128,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 3,
+                "compared_dark_pixels": 8,
+                "changed_dark_pixels": 0
+              }
+            ],
+            "changed_previously_black_pixels": [
+              {
+                "x": 945,
+                "y": 415,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  0,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 10,
+                "adjacent_to_outside_dark_mask": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "glyphs": [
+          {
+            "digit": "12",
+            "all_native_radii": [
+              {
+                "native_erosion_radius": 0,
+                "compared_dark_pixels": 554,
+                "changed_dark_pixels": 53
+              },
+              {
+                "native_erosion_radius": 1,
+                "compared_dark_pixels": 243,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 2,
+                "compared_dark_pixels": 25,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 3,
+                "compared_dark_pixels": 0,
+                "changed_dark_pixels": 0
+              }
+            ],
+            "changed_previously_black_pixels": []
+          },
+          {
+            "digit": "3",
+            "all_native_radii": [
+              {
+                "native_erosion_radius": 0,
+                "compared_dark_pixels": 357,
+                "changed_dark_pixels": 53
+              },
+              {
+                "native_erosion_radius": 1,
+                "compared_dark_pixels": 131,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 2,
+                "compared_dark_pixels": 1,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 3,
+                "compared_dark_pixels": 0,
+                "changed_dark_pixels": 0
+              }
+            ],
+            "changed_previously_black_pixels": []
+          },
+          {
+            "digit": "6",
+            "all_native_radii": [
+              {
+                "native_erosion_radius": 0,
+                "compared_dark_pixels": 419,
+                "changed_dark_pixels": 65
+              },
+              {
+                "native_erosion_radius": 1,
+                "compared_dark_pixels": 171,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 2,
+                "compared_dark_pixels": 15,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 3,
+                "compared_dark_pixels": 0,
+                "changed_dark_pixels": 0
+              }
+            ],
+            "changed_previously_black_pixels": [
+              {
+                "x": 818,
+                "y": 480,
+                "before": [
+                  0,
+                  0,
+                  0
+                ],
+                "after": [
+                  0,
+                  1,
+                  1
+                ],
+                "maxRGB_in_3x3_neighborhood": 162,
+                "adjacent_to_outside_dark_mask": true
+              }
+            ]
+          },
+          {
+            "digit": "9",
+            "all_native_radii": [
+              {
+                "native_erosion_radius": 0,
+                "compared_dark_pixels": 456,
+                "changed_dark_pixels": 72
+              },
+              {
+                "native_erosion_radius": 1,
+                "compared_dark_pixels": 197,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 2,
+                "compared_dark_pixels": 13,
+                "changed_dark_pixels": 0
+              },
+              {
+                "native_erosion_radius": 3,
+                "compared_dark_pixels": 0,
+                "changed_dark_pixels": 0
+              }
+            ],
+            "changed_previously_black_pixels": []
+          }
+        ]
+      }
+    ]
+  },
+  "expanded_interior_supplement": {
+    "reason": "Initial one-reference-pixel erosion yielded empty iPad3 mask. Direct pre-black check includes quantized antialiasing and also failed. Both failures retained. Two-native-pixel erosion compares a superset of the earlier nonempty masks (511 versus20 iPad pixels; same54 phone), adds nonempty iPad3 and requires exact zero changed RGB pixels.",
+    "prior_results_rewritten": false,
+    "app_or_test_source_changed": false,
+    "new_RGB_error_allowance": 0,
+    "selection_is_expanded_comparison_not_fewer_pixels": true,
+    "records": [
+      {
+        "device": "iPad",
+        "native_interior_radius": 2,
+        "glyphs": [
+          {
+            "digit": "12",
+            "compared_dark_pixels": 204,
+            "changed_dark_pixels": 0,
+            "earlier_compared_dark_pixels": 4,
+            "same_or_larger_mask": true
+          },
+          {
+            "digit": "3",
+            "compared_dark_pixels": 69,
+            "changed_dark_pixels": 0,
+            "earlier_compared_dark_pixels": 0,
+            "same_or_larger_mask": true
+          },
+          {
+            "digit": "6",
+            "compared_dark_pixels": 110,
+            "changed_dark_pixels": 0,
+            "earlier_compared_dark_pixels": 8,
+            "same_or_larger_mask": true
+          },
+          {
+            "digit": "9",
+            "compared_dark_pixels": 128,
+            "changed_dark_pixels": 0,
+            "earlier_compared_dark_pixels": 8,
+            "same_or_larger_mask": true
+          }
+        ],
+        "total_compared_dark_pixels": 511,
+        "all_expanded_checks_passed": true,
+        "all_original_non_interior_checks_passed": true
+      },
+      {
+        "device": "iPhone",
+        "native_interior_radius": 2,
+        "glyphs": [
+          {
+            "digit": "12",
+            "compared_dark_pixels": 25,
+            "changed_dark_pixels": 0,
+            "earlier_compared_dark_pixels": 25,
+            "same_or_larger_mask": true
+          },
+          {
+            "digit": "3",
+            "compared_dark_pixels": 1,
+            "changed_dark_pixels": 0,
+            "earlier_compared_dark_pixels": 1,
+            "same_or_larger_mask": true
+          },
+          {
+            "digit": "6",
+            "compared_dark_pixels": 15,
+            "changed_dark_pixels": 0,
+            "earlier_compared_dark_pixels": 15,
+            "same_or_larger_mask": true
+          },
+          {
+            "digit": "9",
+            "compared_dark_pixels": 13,
+            "changed_dark_pixels": 0,
+            "earlier_compared_dark_pixels": 13,
+            "same_or_larger_mask": true
+          }
+        ],
+        "total_compared_dark_pixels": 54,
+        "all_expanded_checks_passed": true,
+        "all_original_non_interior_checks_passed": true
+      }
+    ]
+  },
+  "actual_mask_subset_proof": [
+    {
+      "device": "iPad",
+      "digit": "12",
+      "actual_prior_mask_is_subset_of_expanded_mask": true
+    },
+    {
+      "device": "iPad",
+      "digit": "3",
+      "actual_prior_mask_is_subset_of_expanded_mask": true
+    },
+    {
+      "device": "iPad",
+      "digit": "6",
+      "actual_prior_mask_is_subset_of_expanded_mask": true
+    },
+    {
+      "device": "iPad",
+      "digit": "9",
+      "actual_prior_mask_is_subset_of_expanded_mask": true
+    },
+    {
+      "device": "iPhone",
+      "digit": "12",
+      "actual_prior_mask_is_subset_of_expanded_mask": true
+    },
+    {
+      "device": "iPhone",
+      "digit": "3",
+      "actual_prior_mask_is_subset_of_expanded_mask": true
+    },
+    {
+      "device": "iPhone",
+      "digit": "6",
+      "actual_prior_mask_is_subset_of_expanded_mask": true
+    },
+    {
+      "device": "iPhone",
+      "digit": "9",
+      "actual_prior_mask_is_subset_of_expanded_mask": true
+    }
+  ],
+  "final_supplement_criteria_passed": true,
+  "no_RGB_error_tolerance_introduced": true,
+  "three_dates_two_devices_outside_clock_zero_changed_pixels": true,
+  "four_Fade_pairs_pixel_and_png_byte_identical": true,
+  "actual_neck_ratio_bounded_below_0_65_both_hands_and_devices": true,
+  "four_sampled_numeral_regions_not_all12_interior_pixels_claimed": true,
+  "reference_scope": "Private frontal UI01 viewed separately; no reference image or font/shader extraction published. Initial9ROI contained ticks; not a font acceptance. 12 dimensions did not support resizing.",
+  "own_pngs_reviewed": 22,
+  "panels": [
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-clock-iPad-contact-1.jpg",
+      "sha256": "e19f33a4795134efbcd797c5b9cf3228579f1c9e9f6229ec2cfeeede6657d8d2"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-clock-iPad-contact-2.jpg",
+      "sha256": "a68024f37443ab644a799cfbc4f663e0c14eb3b5cb71acacbcdb29479c3bf4de"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-clock-iPhone-contact-1.jpg",
+      "sha256": "d54eb5d893789e6a5847e5cc557cd2f50055da92727316a717a0e8d1aa98de30"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-clock-iPhone-contact-2.jpg",
+      "sha256": "b8383bccdb51a82be0f694bc538ad19e78480d6dbe3d33b7b696d61f67aa0ce0"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-clock-iPad-own-detail.jpg",
+      "sha256": "4b4be39bc23e43044bb4feca324cd8dc0a020725f953a25bfb59e7b301e15651"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-clock-iPhone-own-detail.jpg",
+      "sha256": "a9687849342ed94712b4caa09f8b7e3d8ef7dc81d1930a47da5c214d0789840c"
+    }
+  ],
+  "history": {
+    "initial_iPad3_one_reference_pixel_erosion_empty_mask_not_passed": true,
+    "initial_raw_preblack_check_failed_at_quantized_edge_pixels_not_called_opaque_interior": true,
+    "expanded_two_native_pixel_mask_is_larger_not_smaller_comparison511vs20_pad54phone": true,
+    "app_source_unchanged_through_all_mask_diagnostics": true,
+    "initial_failed_metadata_not_rewritten": true,
+    "prototype_source_archive_sha256": "0efffe06ccf72b71d4b382853ccb3f6f4e5d2e73b6b9744427fd527b5e756ffd"
+  },
+  "full_ui_or_original_suite_claimed": false,
+  "original_font_relief_hub_position_or_visual_parity_accepted": false,
+  "physical_devices_or_performance_accepted": false,
+  "real_accounts_homes_libraries_or_system_alarms_used": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/modular-clock-manifest.json",
+  "logs_sha256": {
+    "modular-clock-core.log": "aa92779c446df30a91a4fbde67723e7d5d03fed004b3667cc80a0dc0b0ce30b1",
+    "modular-clock-feature-post-commit-core.log": "e6d4910a9ea96cfae8b76c13e9e585711f684ad736c718619dfc2ca0ff442d25",
+    "modular-clock-integrated-core.log": "d17ba5ccdc9e60a0c61cf68c45e16d8034e9d6c3b60ef76ef061fd30ecf9cf07",
+    "modular-clock-build.log": "9d470d4093eee42e931b28e6ad5386a1f56ced0fa226baebb6cdff2f0b3983f7",
+    "modular-clock-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "a0a09ff754ca10d98b5108070d826072b4c0530d1992b30976b55bcf7b97752a",
+    "iPhone": "3fe15004c8dbfe20c1ec5c3440b10004a8f96de53d812c69f65f21a51dab1a36"
+  }
+}
