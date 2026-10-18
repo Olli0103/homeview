@@ -2362,3 +2362,92 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
   }
 }
+
+extension HomeViewUITests {
+  private func timerChoice(_ number:Int) -> XCUIElement {
+    app.buttons[String(format:"timer.select.00000000-0000-0000-0000-%012d",number)]
+  }
+  private func verifyTimerChoice(_ number:Int,title:String,value:String?=nil) {
+    XCTAssertEqual(app.staticTexts["timer.title"].label,title)
+    if let value { XCTAssertEqual(app.staticTexts["timer.countdown"].label,value) }
+    XCTAssertEqual(timerChoice(number).value as? String,"Selected")
+    let choices=app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH %@","timer.select."))
+    let selected=(0..<choices.count).filter { choices.element(boundBy:$0).value as? String == "Selected" }
+    XCTAssertEqual(selected.count,1)
+    let caption=app.staticTexts["timer.title"],status=app.staticTexts["timer.systemStatus"]
+    XCTAssertGreaterThan(status.frame.minY,caption.frame.maxY,"Status must not cover the timer title")
+    let viewport=app.otherElements["reference.viewport"].frame
+    for i in 0..<choices.count {
+      let frame=choices.element(boundBy:i).frame
+      XCTAssertTrue(viewport.contains(frame))
+      XCTAssertGreaterThan(frame.minY,viewport.minY+viewport.height*0.9,"Choices must stay below perimeter ticks")
+    }
+  }
+  private func captureTimerChoices(_ state:String) {
+    for number in [101,102,103] where timerChoice(number).exists {
+      let attachment=XCTAttachment(data:timerChoice(number).screenshot().pngRepresentation,
+        uniformTypeIdentifier:"public.png")
+      attachment.name="timer-chip-"+state+"-"+String(number)
+      attachment.lifetime = .keepAlways;add(attachment)
+    }
+  }
+  private func timerSelectionSeconds() -> Int {
+    let parts=app.staticTexts["timer.countdown"].label.split(separator:":").compactMap { Int($0) }
+    XCTAssertTrue(parts.count==2 || parts.count==3)
+    return parts.reduce(0) { $0*60+$1 }
+  }
+  @objc func testMultipleTimerFallbackAndDeletionKeepTheDisplayedChoice() {
+    launch(["--multiple-timers-fixture"])
+    verifyTimerChoice(103,title:"BREAD",value:"10:00")
+    viewportShot("timer-selection-restored-fallback")
+    captureTimerChoices("restored")
+    timerChoice(101).tap()
+    verifyTimerChoice(101,title:"TEA",value:"03:00")
+    viewportShot("timer-selection-tea")
+    captureTimerChoices("tea")
+    tap("timer.delete")
+    XCTAssertFalse(timerChoice(101).exists)
+    verifyTimerChoice(103,title:"BREAD",value:"10:00")
+    viewportShot("timer-selection-after-delete-fallback")
+    captureTimerChoices("deleted")
+    timerChoice(102).tap()
+    verifyTimerChoice(102,title:"PASTA",value:"08:00")
+    viewportShot("timer-selection-pasta-preserved")
+    captureTimerChoices("pasta")
+  }
+  @objc func testMultipleTimersRunAndPauseIndependently() {
+    launch(["--multiple-timers-fixture"])
+    timerChoice(101).tap();tap("timer.pause")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Pause timer")
+    expectation(for:NSPredicate(format:"label != %@","03:00"),evaluatedWith:app.staticTexts["timer.countdown"])
+    waitForExpectations(timeout:6)
+    XCTAssertLessThan(timerSelectionSeconds(),180)
+    XCTAssertGreaterThan(timerSelectionSeconds(),0)
+    timerChoice(103).tap()
+    verifyTimerChoice(103,title:"BREAD",value:"10:00")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    timerChoice(102).tap();tap("timer.pause")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Pause timer")
+    expectation(for:NSPredicate(format:"label != %@","08:00"),evaluatedWith:app.staticTexts["timer.countdown"])
+    waitForExpectations(timeout:6)
+    XCTAssertLessThan(timerSelectionSeconds(),480)
+    viewportShot("timer-selection-pasta-running-with-tea")
+    timerChoice(101).tap();tap("timer.pause")
+    let tea=app.staticTexts["timer.countdown"].label
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    viewportShot("timer-selection-tea-paused")
+    timerChoice(102).tap()
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Pause timer")
+    let pasta=timerSelectionSeconds()
+    let pastaLabel=app.staticTexts["timer.countdown"].label
+    expectation(for:NSPredicate(format:"label != %@",pastaLabel),evaluatedWith:app.staticTexts["timer.countdown"])
+    waitForExpectations(timeout:6)
+    XCTAssertLessThan(timerSelectionSeconds(),pasta)
+    tap("timer.pause")
+    timerChoice(103).tap()
+    verifyTimerChoice(103,title:"BREAD",value:"10:00")
+    timerChoice(101).tap()
+    verifyTimerChoice(101,title:"TEA",value:tea)
+    viewportShot("timer-selection-tea-still-paused")
+  }
+}
