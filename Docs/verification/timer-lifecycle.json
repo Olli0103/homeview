@@ -1,0 +1,156 @@
+{
+  "code_commit": "5f5b817b8fe7f83fd621de95066602fba129fc2c",
+  "feature_commit": "156d7445096493e9c506773f692c4e1cac4df413",
+  "source_digest": "5d9d3b572d0f856ec6be8bb2c0ec4c29b85cac716eb8cf8e23a7a1db3bace177",
+  "source_files": 133,
+  "source_matches_feature_and_merge_bytes": true,
+  "changed_sources_since_timer_overflow": [
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "production_code_changed": false,
+  "core_passed": 139,
+  "core_repeated_after_feature_and_merge_commit": true,
+  "ui_executions": 4,
+  "unique_cases": 2,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T03:21:49.267232+00:00",
+      "ended": "2026-10-18T03:22:09.355565+00:00",
+      "log_sha256": "548d5417875f671c37fd7a22522c23548939b57b036f99bc5ad7c81c54f7a638"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T03:22:09.356037+00:00",
+      "ended": "2026-10-18T03:22:26.056244+00:00",
+      "log_sha256": "8d962358da663b798a1bb33e22b15d596900d4f0bebba25652cea92df407ed1d"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T03:22:26.056864+00:00",
+      "ended": "2026-10-18T03:22:37.866058+00:00",
+      "log_sha256": "8a8ce23257b739a40a78d8c9b197b65205387059952e04f98ce768cfbecf91e2"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T03:22:37.866528+00:00",
+      "ended": "2026-10-18T03:22:50.752869+00:00",
+      "log_sha256": "6d760c244cfdaa2789937f00a95d45dee0ded574b71d51d58a705b5e08d76fdc"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T03:22:50.753389+00:00",
+      "ended": "2026-10-18T03:22:57.642001+00:00",
+      "log_sha256": "da496ef1943a0af706e30e8e8008f1ae69f80b35870977cfcc4541b3953d621d"
+    }
+  ],
+  "metrics": [
+    {
+      "device": "iPad",
+      "state": "timer-lifecycle-background-metrics",
+      "metrics": {
+        "after_seconds": 590,
+        "allowed_pulse_rounding_observation_seconds": 3,
+        "before_seconds": 598,
+        "display_drop_seconds": 8,
+        "observed_monotonic_elapsed_seconds": 7.2181237081531435,
+        "system_alarm_requested": false
+      },
+      "json_sha256": "c04c20541808d7c6ea9cc5a1a9f39bcfc3f154ac8e85984a16852e66b8b05e15"
+    },
+    {
+      "device": "iPad",
+      "state": "timer-lifecycle-process-restart-metrics",
+      "metrics": {
+        "after_seconds": 587,
+        "allowed_pulse_rounding_observation_seconds": 3,
+        "before_seconds": 598,
+        "display_drop_seconds": 11,
+        "observed_monotonic_elapsed_seconds": 10.770697708474472,
+        "system_alarm_requested": false
+      },
+      "json_sha256": "8add1ce2ba72ecb0c43c9b38825ed202c3eea90c104361ce8ea40824b63cdb63"
+    },
+    {
+      "device": "iPhone",
+      "state": "timer-lifecycle-background-metrics",
+      "metrics": {
+        "after_seconds": 590,
+        "allowed_pulse_rounding_observation_seconds": 3,
+        "before_seconds": 598,
+        "display_drop_seconds": 8,
+        "observed_monotonic_elapsed_seconds": 7.19415554148145,
+        "system_alarm_requested": false
+      },
+      "json_sha256": "deb35e0060c853042ee287fb9454c7ad3fcb2749130a9e28a3eb0e6fa0e960b3"
+    },
+    {
+      "device": "iPhone",
+      "state": "timer-lifecycle-process-restart-metrics",
+      "metrics": {
+        "after_seconds": 587,
+        "allowed_pulse_rounding_observation_seconds": 3,
+        "before_seconds": 598,
+        "display_drop_seconds": 11,
+        "observed_monotonic_elapsed_seconds": 10.723831833340228,
+        "system_alarm_requested": false
+      },
+      "json_sha256": "6c7918ab5b844a874e124c5fdec149d2cc7be091020e1b60ab8fe20728fea165"
+    }
+  ],
+  "metric_bound_seconds": 3,
+  "metric_bound_scope": "Predeclared coarse one-second pulse, ceiling and AX observation bound; not exact Original timing. Screenshots captured later than metrics.",
+  "scope": [
+    "Real Home button and activation; running own timer catches elapsed time; paused peers preserved",
+    "Real app terminate/launch, same fresh UUID test store; no fixture on second launch; saved deadlines and paused peers reloaded",
+    "Actual peer selection, countdown inspection and pause touch at end"
+  ],
+  "pilot_executions_not_added": 2,
+  "native_images_reviewed_both_devices": true,
+  "full_ui_suite_claimed": false,
+  "original_accepted": false,
+  "device_or_os_restart_tested": false,
+  "clock_changes_or_simultaneous_expiry_tested": false,
+  "system_alarms_executed": false,
+  "real_accounts_or_homekit_used": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/timer-lifecycle-manifest.json",
+  "logs": {
+    "timer-lifecycle-candidate-core.log": "e69c1aaf1dec11709cd8813d5b3a8c167794f743f45a17d8a30999982d81fe77",
+    "timer-lifecycle-feature-post-commit-core.log": "426ea945321534633d1879ac9a99d12972c6fd096a1f8fa196ea6353a9d6cc38",
+    "timer-lifecycle-integrated-core.log": "23edc0fd563febc4218d7c388cbccd4d2c1998a261db760e7169573e5322dc27",
+    "timer-lifecycle-candidate-build.log": "2684bc4b685a6a9ab398a55778064a7391bf928d2866a54e618706f54d540805",
+    "timer-lifecycle-candidate-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "895c8b32a732146ded1be8e5e0ee49e6ea253305c534044471194707c657e8c4",
+    "iPhone": "25341b8bbb1b09beeb6eef672154dfeb157f9f32053833ec5d3e6143ca810cab"
+  }
+}
