@@ -123,13 +123,14 @@ struct TimerView: View {
       if let t = selected {
         TimerTicks(fraction: max(0, min(1, t.remaining(at: model.now) / t.duration)))
         VStack(spacing: -10) {
-          Text(t.display(at: model.now)).font(.system(size: 128, weight: .medium, design: .rounded))
-            .monospacedDigit()
+          Text(t.display(at: model.now)).font(.system(size: 112, weight: .medium, design: .rounded))
+            .monospacedDigit().lineLimit(1).minimumScaleFactor(0.5)
             .accessibilityIdentifier("timer.countdown")
           Text(t.remaining(at: model.now) == 0 ? "DONE" : t.title.uppercased()).font(
-            .system(size: 34, weight: .semibold)
-          ).foregroundStyle(Color.timerAccent)
-        }.foregroundStyle(.white).offset(y: -6)
+            .system(size: 30, weight: .semibold)
+          ).lineLimit(1).minimumScaleFactor(0.5).foregroundStyle(Color.timerAccent)
+            .accessibilityIdentifier("timer.title")
+        }.foregroundStyle(.white).frame(maxWidth:.infinity).padding(.horizontal,94).offset(y: -6)
         if controlsVisible {
           VStack {
             HStack {
@@ -597,18 +598,18 @@ struct TimerTicks: View {
   var body: some View {
     Canvas { context, size in
       let center = CGPoint(x: size.width / 2, y: size.height / 2)
-      let radius = min(size.width, size.height) * 0.443
+      let radius = min(size.width, size.height) * 0.40
       for i in 0..<60 {
         let angle = Double(i) * Double.pi / 30 - Double.pi / 2
         let c = cos(angle)
         let s = sin(angle)
         let length = radius / pow(pow(abs(c), 5) + pow(abs(s), 5), 0.2)
         var p = Path()
-        p.move(to: CGPoint(x: center.x + (length - 22) * c, y: center.y + (length - 22) * s))
+        p.move(to: CGPoint(x: center.x + (length - 20) * c, y: center.y + (length - 20) * s))
         p.addLine(to: CGPoint(x: center.x + length * c, y: center.y + length * s))
         context.stroke(
           p, with: .color(Color.timerAccent.opacity(Double(i) / 60 < fraction ? 1 : 0.18)),
-          style: StrokeStyle(lineWidth: 7, lineCap: .round))
+          style: StrokeStyle(lineWidth: 6, lineCap: .round))
       }
     }.allowsHitTesting(false)
   }
