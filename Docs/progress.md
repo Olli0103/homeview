@@ -425,3 +425,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: R/G-Balance der blauen Prismenpalette
 
 [Ein-Wert-Kalibrierung](prism-blue-balance.md):166Modelltests,14gezielteUI,5SDK.BegrenzterR/G-Median6→0;weißeRasterkernprobenundachtandereAtlaszielejeGerätexakt.Schattenprototypzurückgehalten;keineGesamt-Original-/Helligkeits-/Hardwareabnahme.
+
+
+## 18. Oktober: Systemschalter am aktuellen App-Paket
+
+[Zusatznachweis](prisms-current-system-reduce-motion.md): zwei native Läufe auf exakt dem veröffentlichten Palette-App-Paket; je Gerät16 ganze Standbilder exakt über zwei echte OS-Schalterzyklen,40 eigene PNGs gesichtet und Ausgangswert aus rückgelesen. App-/Standard-Testquellen unverändert; keine neue SDK-/Gesamtsuiten-/Original-/Hardwareabnahme.
