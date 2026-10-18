@@ -51,3 +51,11 @@ bleiben offen. Die übrige freigegebene Arbeit läuft weiter.
 
 [Getrennte Quellen-/Ergebnisbindung](verification/photo-native-boundary.json) ·
 [veröffentlichter Materialstand](photo-glass-material.md).
+
+## Getrennter nachfolgender Mac-Adapterlauf
+
+Der [neue vollständige Mac-Adapter-Nachweis](photo-native-mac.md) liefert für das
+eigene gebaute Demo-Porträt eine tatsächlich kodierte Vordergrund-PNG mit
+nichttrivialem Alpha und eine nutzbare Modellmaske. Das erweitert den früheren
+reinen Host-Instanznachweis, ersetzt ihn aber nicht rückwirkend. Kein Mac-App-
+Render-, iOS-Simulator- oder physischer iPad-PASS; die obigen Grenzen bleiben.
