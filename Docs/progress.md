@@ -4,6 +4,24 @@
 
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
+
+### Zusätzliche begrenzte Nachweise · 18. Oktober 2026
+
+| Paket | Modelltests | Gezielte UI-Ausführungen | SDK-Builds |
+|---|---:|---:|---:|
+| [Öffentliche Flow-Glaslinse](flow-native-glass.md) | 139 | 10 | 5 |
+| [Tatsächliche Timer-Inaktivität](timer-idle.md) | 139 | 4 | 5 |
+| [Mehrtimer-Auswahl und Layout](timer-selection.md) | 139 | 8 | 5 |
+| [Eigene Zwölf-Timer-Grenze](timer-overflow.md) | 139 | 8 | 5 |
+| [Lokaler Timer-Lebenszyklus](timer-lifecycle.md) | 139 | 4 | 5 |
+| [Höhere Foto-Glasziffern in bestehender Schutzzone](photo-type.md) | 139 | 16 | 5 |
+
+Jede Zeile bezeichnet einen eigenen gebundenen Quellenstand, keine aufsummierte
+aktuelle Vollsuite. Original-/Geräteabnahmen bleiben wie in den Einzelbelegen
+offen. Der spätere planare Prismenprototyp ist wegen einer ungeklärten früheren
+Pixelabweichung **nicht integriert**; ein nachfolgender erfolgreicher Lauf hebt
+den ursprünglichen Fehler nicht auf. Die freigegebene übrige Arbeit läuft weiter.
+
 `39464d4`: [Prismen und Glaskacheln](home-prisms.md), 99 Modelltests, acht gezielte
 UI-Ausführungen und fünf SDK-Builds. #20 bleibt in der Originalabnahme offen.
 
