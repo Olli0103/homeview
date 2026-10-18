@@ -1,0 +1,878 @@
+{
+  "base": "503ffe938fc441ee1eae14f961e5946201411d1d",
+  "production_App_unchanged": true,
+  "public_App10_installed_exact_both": true,
+  "all20_native_inputs_unchanged": true,
+  "private_harness_source_digest": "f9cc06513bd752bc0146ab76bdba4b1ee6199289aa5fc53c822774d5f445742e",
+  "native_executions": 2,
+  "native_failed": 0,
+  "native_skipped": 0,
+  "XCTest_runtime_warnings": 0,
+  "all18_native_PNG_decoded": true,
+  "devices": [
+    {
+      "device": "iPhone",
+      "native_UI_passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "XCTest_runtime_warnings": 0,
+      "installed_public_App10_exact": true,
+      "all9_native_PNG_decoded": true,
+      "eroded_own_body_sample_pixels": 85447,
+      "checkpoints": [
+        {
+          "seconds": 60,
+          "changed_own_eroded_body_pixels": 84821,
+          "colored_body_fraction_start_later": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seconds": 180,
+          "changed_own_eroded_body_pixels": 85447,
+          "colored_body_fraction_start_later": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seconds": 300,
+          "changed_own_eroded_body_pixels": 85092,
+          "colored_body_fraction_start_later": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "monotonic_wall_clock_timings": [
+        {
+          "first_capture_not_before": 60.01001620828174,
+          "requested_seconds": 60,
+          "second_capture_completed_after": 61.740315791685134
+        },
+        {
+          "first_capture_not_before": 180.01001545833424,
+          "requested_seconds": 180,
+          "second_capture_completed_after": 181.69642941677012
+        },
+        {
+          "first_capture_not_before": 300.01002108328976,
+          "requested_seconds": 300,
+          "second_capture_completed_after": 301.71761854179204
+        }
+      ],
+      "reduced_body_RGBA_exact": true
+    },
+    {
+      "device": "iPad",
+      "native_UI_passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "XCTest_runtime_warnings": 0,
+      "installed_public_App10_exact": true,
+      "all9_native_PNG_decoded": true,
+      "eroded_own_body_sample_pixels": 167917,
+      "checkpoints": [
+        {
+          "seconds": 60,
+          "changed_own_eroded_body_pixels": 167822,
+          "colored_body_fraction_start_later": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seconds": 180,
+          "changed_own_eroded_body_pixels": 167911,
+          "colored_body_fraction_start_later": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seconds": 300,
+          "changed_own_eroded_body_pixels": 167379,
+          "colored_body_fraction_start_later": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "monotonic_wall_clock_timings": [
+        {
+          "first_capture_not_before": 60.00850862497464,
+          "requested_seconds": 60,
+          "second_capture_completed_after": 61.9099676667247
+        },
+        {
+          "first_capture_not_before": 180.01001716661267,
+          "requested_seconds": 180,
+          "second_capture_completed_after": 181.86084529175423
+        },
+        {
+          "first_capture_not_before": 300.0085022917483,
+          "requested_seconds": 300,
+          "second_capture_completed_after": 301.88846425013617
+        }
+      ],
+      "reduced_body_RGBA_exact": true
+    }
+  ],
+  "standalone_40_grid_601_simulated_seconds_three_modes": [
+    {
+      "channels": [
+        {
+          "max": 0.9484254121780396,
+          "mean": 0.2851426145480946,
+          "min": 0.10534243285655975,
+          "p05": 0.11289302259683609,
+          "p95": 0.9020675420761108,
+          "range": 0.8430829793214798,
+          "variance": 0.06412917640589164
+        },
+        {
+          "max": 0.6696469783782959,
+          "mean": 0.5038380352966487,
+          "min": 0.36062368750572205,
+          "p05": 0.3997337520122528,
+          "p95": 0.6361687779426575,
+          "range": 0.30902329087257385,
+          "variance": 0.005960484932745969
+        },
+        {
+          "max": 0.9685213565826416,
+          "mean": 0.9182129045948386,
+          "min": 0.7404143214225769,
+          "p05": 0.752575159072876,
+          "p95": 0.9674222469329834,
+          "range": 0.2281070351600647,
+          "variance": 0.004705938423282381
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "idle",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 30,
+      "steps": 600,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9432185888290405,
+          "mean": 0.2762731281667948,
+          "min": 0.10252779722213745,
+          "p05": 0.10575290769338608,
+          "p95": 0.8832604289054871,
+          "range": 0.8406907916069031,
+          "variance": 0.0636418050317914
+        },
+        {
+          "max": 0.7128003835678101,
+          "mean": 0.5346524948254228,
+          "min": 0.3504006862640381,
+          "p05": 0.3585703372955322,
+          "p95": 0.7070721387863159,
+          "range": 0.362399697303772,
+          "variance": 0.014034439120927545
+        },
+        {
+          "max": 0.969880998134613,
+          "mean": 0.9193581519275904,
+          "min": 0.7417953014373779,
+          "p05": 0.7580018043518066,
+          "p95": 0.9672634601593018,
+          "range": 0.2280856966972351,
+          "variance": 0.004543869810628701
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "idle",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 60,
+      "steps": 1200,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.905884325504303,
+          "mean": 0.32861128736753015,
+          "min": 0.1115104928612709,
+          "p05": 0.14056456089019775,
+          "p95": 0.7544594407081604,
+          "range": 0.7943738326430321,
+          "variance": 0.037428924776476545
+        },
+        {
+          "max": 0.7030753493309021,
+          "mean": 0.4830181680433452,
+          "min": 0.35146746039390564,
+          "p05": 0.37684133648872375,
+          "p95": 0.6862638592720032,
+          "range": 0.35160788893699646,
+          "variance": 0.009567663893475319
+        },
+        {
+          "max": 0.969855010509491,
+          "mean": 0.9071486084535718,
+          "min": 0.751848042011261,
+          "p05": 0.7919492125511169,
+          "p95": 0.9626852869987488,
+          "range": 0.21800696849822998,
+          "variance": 0.002775399605012447
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "idle",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 120,
+      "steps": 2400,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9469724893569946,
+          "mean": 0.29563060229178517,
+          "min": 0.10193824768066406,
+          "p05": 0.10704915225505829,
+          "p95": 0.866283118724823,
+          "range": 0.8450342416763306,
+          "variance": 0.05397688546019939
+        },
+        {
+          "max": 0.7159232497215271,
+          "mean": 0.5374096427299082,
+          "min": 0.3514336943626404,
+          "p05": 0.38351312279701233,
+          "p95": 0.7097117900848389,
+          "range": 0.3644895553588867,
+          "variance": 0.013129050163967499
+        },
+        {
+          "max": 0.9691647291183472,
+          "mean": 0.913927400521934,
+          "min": 0.7408153414726257,
+          "p05": 0.7627339959144592,
+          "p95": 0.9611339569091797,
+          "range": 0.22834938764572144,
+          "variance": 0.0038553885504183853
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "idle",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 300,
+      "steps": 6000,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9498683214187622,
+          "mean": 0.31451068779919295,
+          "min": 0.10277553647756577,
+          "p05": 0.10694436728954315,
+          "p95": 0.9069081544876099,
+          "range": 0.8470927849411964,
+          "variance": 0.07064644807817473
+        },
+        {
+          "max": 0.702972412109375,
+          "mean": 0.5083856513909996,
+          "min": 0.3993265628814697,
+          "p05": 0.4074670672416687,
+          "p95": 0.6776319146156311,
+          "range": 0.3036458492279053,
+          "variance": 0.008037960673601295
+        },
+        {
+          "max": 0.9669786691665649,
+          "mean": 0.909958350174129,
+          "min": 0.7400345206260681,
+          "p05": 0.7516865134239197,
+          "p95": 0.9665036797523499,
+          "range": 0.22694414854049683,
+          "variance": 0.005107929261747312
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "idle",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 600,
+      "steps": 12000,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9485234022140503,
+          "mean": 0.3237618945306167,
+          "min": 0.11131519079208374,
+          "p05": 0.11776111274957657,
+          "p95": 0.8345140814781189,
+          "range": 0.8372082114219666,
+          "variance": 0.061395229992295235
+        },
+        {
+          "max": 0.6930114030838013,
+          "mean": 0.521341795027256,
+          "min": 0.38935795426368713,
+          "p05": 0.4020198583602905,
+          "p95": 0.6875056624412537,
+          "range": 0.30365344882011414,
+          "variance": 0.009405090143585305
+        },
+        {
+          "max": 0.9661299586296082,
+          "mean": 0.9068756041675806,
+          "min": 0.740389883518219,
+          "p05": 0.7705644369125366,
+          "p95": 0.9652870297431946,
+          "range": 0.22574007511138916,
+          "variance": 0.004452476326531745
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "idle",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 601,
+      "steps": 12020,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9436444044113159,
+          "mean": 0.2657361820526421,
+          "min": 0.11249338835477829,
+          "p05": 0.11422731727361679,
+          "p95": 0.868349552154541,
+          "range": 0.8311510160565376,
+          "variance": 0.05626762681073969
+        },
+        {
+          "max": 0.6521522998809814,
+          "mean": 0.5077835686132312,
+          "min": 0.3720949590206146,
+          "p05": 0.3996555805206299,
+          "p95": 0.6343029737472534,
+          "range": 0.2800573408603668,
+          "variance": 0.005938945136382776
+        },
+        {
+          "max": 0.9689409732818604,
+          "mean": 0.9233764415979385,
+          "min": 0.7416985630989075,
+          "p05": 0.7615002989768982,
+          "p95": 0.9680478572845459,
+          "range": 0.22724241018295288,
+          "variance": 0.004138060158566365
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "bounded-touch-bursts",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 30,
+      "steps": 600,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9459903836250305,
+          "mean": 0.2795888685574755,
+          "min": 0.10133570432662964,
+          "p05": 0.10426408052444458,
+          "p95": 0.8764432072639465,
+          "range": 0.8446546792984009,
+          "variance": 0.06081658629018282
+        },
+        {
+          "max": 0.7118495106697083,
+          "mean": 0.5393055609613657,
+          "min": 0.35008862614631653,
+          "p05": 0.35468244552612305,
+          "p95": 0.7058441042900085,
+          "range": 0.3617608845233917,
+          "variance": 0.013850959779571792
+        },
+        {
+          "max": 0.9699347615242004,
+          "mean": 0.9182528659328818,
+          "min": 0.7410684823989868,
+          "p05": 0.7596495747566223,
+          "p95": 0.9661766886711121,
+          "range": 0.22886627912521362,
+          "variance": 0.004319335576841039
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "bounded-touch-bursts",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 60,
+      "steps": 1200,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9268502593040466,
+          "mean": 0.3210007783258334,
+          "min": 0.1115104928612709,
+          "p05": 0.14073851704597473,
+          "p95": 0.7564426064491272,
+          "range": 0.8153397664427757,
+          "variance": 0.03978913419293009
+        },
+        {
+          "max": 0.7051103711128235,
+          "mean": 0.4844928246736526,
+          "min": 0.3535313010215759,
+          "p05": 0.38290929794311523,
+          "p95": 0.6826417446136475,
+          "range": 0.35157907009124756,
+          "variance": 0.009473116093858527
+        },
+        {
+          "max": 0.9695590138435364,
+          "mean": 0.9091766089946032,
+          "min": 0.7461912035942078,
+          "p05": 0.7922288179397583,
+          "p95": 0.9619419574737549,
+          "range": 0.2233678102493286,
+          "variance": 0.002961709268517993
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "bounded-touch-bursts",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 120,
+      "steps": 2400,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9485081434249878,
+          "mean": 0.2925054623465985,
+          "min": 0.10641000419855118,
+          "p05": 0.11063258349895477,
+          "p95": 0.8694988489151001,
+          "range": 0.8420981392264366,
+          "variance": 0.053754687385335495
+        },
+        {
+          "max": 0.7143308520317078,
+          "mean": 0.5376791013777256,
+          "min": 0.35419896245002747,
+          "p05": 0.3885723948478699,
+          "p95": 0.708715558052063,
+          "range": 0.3601318895816803,
+          "variance": 0.012810695589293637
+        },
+        {
+          "max": 0.9681987762451172,
+          "mean": 0.9147742164880037,
+          "min": 0.740400493144989,
+          "p05": 0.7615050077438354,
+          "p95": 0.9622030854225159,
+          "range": 0.22779828310012817,
+          "variance": 0.0038520221984705122
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "bounded-touch-bursts",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 300,
+      "steps": 6000,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9499180316925049,
+          "mean": 0.2749449097458273,
+          "min": 0.10103707760572433,
+          "p05": 0.10501044988632202,
+          "p95": 0.9163403511047363,
+          "range": 0.8488809540867805,
+          "variance": 0.06273987578092285
+        },
+        {
+          "max": 0.7030101418495178,
+          "mean": 0.5193043347075581,
+          "min": 0.3993265628814697,
+          "p05": 0.40458056330680847,
+          "p95": 0.6775504350662231,
+          "range": 0.3036835789680481,
+          "variance": 0.008210011707268691
+        },
+        {
+          "max": 0.9672920107841492,
+          "mean": 0.9203654811531305,
+          "min": 0.7400222420692444,
+          "p05": 0.74903404712677,
+          "p95": 0.966901957988739,
+          "range": 0.22726976871490479,
+          "variance": 0.004497803672328027
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "bounded-touch-bursts",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 600,
+      "steps": 12000,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9491199851036072,
+          "mean": 0.2992212468525395,
+          "min": 0.10176528245210648,
+          "p05": 0.11681143194437027,
+          "p95": 0.8638516068458557,
+          "range": 0.8473547026515007,
+          "variance": 0.055880484541396006
+        },
+        {
+          "max": 0.699386715888977,
+          "mean": 0.5445042014308273,
+          "min": 0.3765026926994324,
+          "p05": 0.3967505693435669,
+          "p95": 0.6921061873435974,
+          "range": 0.3228840231895447,
+          "variance": 0.010364697853801801
+        },
+        {
+          "max": 0.9669268727302551,
+          "mean": 0.912644427344203,
+          "min": 0.7402373552322388,
+          "p05": 0.7628724575042725,
+          "p95": 0.9663434028625488,
+          "range": 0.22668951749801636,
+          "variance": 0.004007071897574956
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "bounded-touch-bursts",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 601,
+      "steps": 12020,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9409038424491882,
+          "mean": 0.4422285583987832,
+          "min": 0.13839960098266602,
+          "p05": 0.15669603645801544,
+          "p95": 0.7806520462036133,
+          "range": 0.8025042414665222,
+          "variance": 0.027744806657640623
+        },
+        {
+          "max": 0.642661452293396,
+          "mean": 0.48984038665890695,
+          "min": 0.3765799105167389,
+          "p05": 0.3949345350265503,
+          "p95": 0.5884947180747986,
+          "range": 0.2660815417766571,
+          "variance": 0.0039486751911266904
+        },
+        {
+          "max": 0.9634585976600647,
+          "mean": 0.8756649909168481,
+          "min": 0.7425105571746826,
+          "p05": 0.7838850617408752,
+          "p95": 0.956567645072937,
+          "range": 0.22094804048538208,
+          "variance": 0.0021242139740733686
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "extreme-alternating-touch",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 30,
+      "steps": 600,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9156494736671448,
+          "mean": 0.590877671726048,
+          "min": 0.12387114763259888,
+          "p05": 0.3047008514404297,
+          "p95": 0.8437153697013855,
+          "range": 0.7917783260345459,
+          "variance": 0.031709866735491817
+        },
+        {
+          "max": 0.6949092745780945,
+          "mean": 0.4498925575427711,
+          "min": 0.36141201853752136,
+          "p05": 0.4060952961444855,
+          "p95": 0.5565289258956909,
+          "range": 0.3334972560405731,
+          "variance": 0.0020929230738035783
+        },
+        {
+          "max": 0.9684591293334961,
+          "mean": 0.8365205306559801,
+          "min": 0.7490867972373962,
+          "p05": 0.768022894859314,
+          "p95": 0.9166408777236938,
+          "range": 0.21937233209609985,
+          "variance": 0.002384219680071977
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "extreme-alternating-touch",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 60,
+      "steps": 1200,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.8463913798332214,
+          "mean": 0.36928638759069143,
+          "min": 0.1115104928612709,
+          "p05": 0.13511061668395996,
+          "p95": 0.7602753639221191,
+          "range": 0.7348808869719505,
+          "variance": 0.035371546981372834
+        },
+        {
+          "max": 0.6863018274307251,
+          "mean": 0.5123019801266492,
+          "min": 0.35101059079170227,
+          "p05": 0.36969420313835144,
+          "p95": 0.6678422689437866,
+          "range": 0.3352912366390228,
+          "variance": 0.00765242543886608
+        },
+        {
+          "max": 0.9696660041809082,
+          "mean": 0.8947530652210116,
+          "min": 0.7675498723983765,
+          "p05": 0.7910500764846802,
+          "p95": 0.9644257426261902,
+          "range": 0.20211613178253174,
+          "variance": 0.0025845822618679294
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "extreme-alternating-touch",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 120,
+      "steps": 2400,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9135898947715759,
+          "mean": 0.28915429700165984,
+          "min": 0.12119746953248978,
+          "p05": 0.12769800424575806,
+          "p95": 0.7334370017051697,
+          "range": 0.7923924252390862,
+          "variance": 0.03745058805274585
+        },
+        {
+          "max": 0.6995928287506104,
+          "mean": 0.5402696042694152,
+          "min": 0.352577269077301,
+          "p05": 0.3678584396839142,
+          "p95": 0.6921702027320862,
+          "range": 0.3470155596733093,
+          "variance": 0.011511991315830705
+        },
+        {
+          "max": 0.9695591926574707,
+          "mean": 0.9155853025987745,
+          "min": 0.7500240802764893,
+          "p05": 0.7967276573181152,
+          "p95": 0.9671680927276611,
+          "range": 0.21953511238098145,
+          "variance": 0.0027988464448887762
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "extreme-alternating-touch",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 300,
+      "steps": 6000,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9388478398323059,
+          "mean": 0.5526567403133958,
+          "min": 0.1602678894996643,
+          "p05": 0.21355266869068146,
+          "p95": 0.8606608510017395,
+          "range": 0.7785799503326416,
+          "variance": 0.03522036441230743
+        },
+        {
+          "max": 0.6894765496253967,
+          "mean": 0.4595759529992938,
+          "min": 0.3730810284614563,
+          "p05": 0.3884690999984741,
+          "p95": 0.572104811668396,
+          "range": 0.31639552116394043,
+          "variance": 0.003823441440668522
+        },
+        {
+          "max": 0.9517099857330322,
+          "mean": 0.8466099172458053,
+          "min": 0.7430889010429382,
+          "p05": 0.7640244364738464,
+          "p95": 0.9424465894699097,
+          "range": 0.208621084690094,
+          "variance": 0.0026044616755171203
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "extreme-alternating-touch",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 600,
+      "steps": 12000,
+      "wall_boundary_exact": true
+    },
+    {
+      "channels": [
+        {
+          "max": 0.9404468536376953,
+          "mean": 0.38554513509385285,
+          "min": 0.15584775805473328,
+          "p05": 0.18873855471611023,
+          "p95": 0.7887595295906067,
+          "range": 0.784599095582962,
+          "variance": 0.0385603595064118
+        },
+        {
+          "max": 0.6894765496253967,
+          "mean": 0.4944399392604828,
+          "min": 0.36759114265441895,
+          "p05": 0.38111284375190735,
+          "p95": 0.6489242315292358,
+          "range": 0.3218854069709778,
+          "variance": 0.00901009259688524
+        },
+        {
+          "max": 0.9553549885749817,
+          "mean": 0.8910369951650501,
+          "min": 0.7426443696022034,
+          "p05": 0.7825770974159241,
+          "p95": 0.9494801163673401,
+          "range": 0.21271061897277832,
+          "variance": 0.0029544899739650165
+        }
+      ],
+      "existing_R_G_range_above_025": true,
+      "finite": true,
+      "late_one_second_dye_changed": true,
+      "mode": "extreme-alternating-touch",
+      "RGB_in_0_to_1": true,
+      "side": 40,
+      "simulated_seconds": 601,
+      "steps": 12020,
+      "wall_boundary_exact": true
+    }
+  ],
+  "scope": "Five actual wall-clock minutes per owned simulator; concurrently executed on one Mac. No FPS/energy, arbitrary duration, Original/globalAccessibility/physical hardware claim. CLI Reduce Motion control, not actual OS switch for Flow.",
+  "App_source_digest": "6750246c7ddb1bb6bf13ab32797f291aaa2c49b5d95bebfabc5cf557f701c44d",
+  "App_source_manifest_basis": "prisms-current-system-reduce-motion.json",
+  "App_source_manifest_reverified": true,
+  "private_harness_source_files": 142,
+  "default_UITest_and141_other_files_unchanged": true,
+  "base_test_file_sha256": "88f7dff244895de36dd06a6e17fa5c5b0395e628565c0c75f7be01f84d71a762",
+  "extended_test_file_sha256": "5c79445d242bbfaa936b5927cb2184d38e51d364c3629759ec49f12ebe1db537",
+  "native_fixture": {
+    "file": "flow-five-minute-native-fixture.swift.txt",
+    "sha256": "7d4fe5805d8cbbcf8bb312bef92e19baa985747e3cde41cf583e15d80a6cd64c",
+    "reconstruction": "Append one LF and exact fixture bytes to the base UITest file."
+  },
+  "standalone_fixture": {
+    "file": "flow-ten-minute-simulation.swift.txt",
+    "sha256": "5685b0c387bf9ea9501cb6760f15579c260096a207534db19c6900f5608a5554",
+    "simulation_source": "Sources/Core/FlowSimulation.swift",
+    "simulation_source_sha256": "11dc99bb0d648625c37a17c5a78ec4a618c69c44370d91373da63e038ea21494",
+    "compiled_optimized": true,
+    "simulated_Hz": 20,
+    "side": 40,
+    "steps_each_mode": 12020,
+    "native_frame_rate_not_inferred": true
+  },
+  "compiled_archive": {
+    "file": "flow-long-native-compiled.zip",
+    "sha256": "563487a5b67499456df61e61c922fc1cf03d7266e8110fd3f38cee7b1db2671c",
+    "unique_input_files": 20,
+    "all_entries_SHA256_readback": true,
+    "retained_privately": true
+  },
+  "own18_PNG_and2_contacts_actually_viewed": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/flow-five-minute-manifest.json",
+  "no_new_App_implementation_or_SDK_sweep": true
+}

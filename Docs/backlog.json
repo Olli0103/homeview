@@ -397,7 +397,7 @@
     "priority": "P1",
     "kind": "implementation",
     "functions": [],
-    "current": "Öffentliche SwiftUI-Glaslinse auf eigenen Ziffern bei sichtbarem Fluid; vorhandener Metal-Fallback für Hintergrund aus, visionOS und ältere Macs. 139 Modelltests, zehn gezielte iPad-/iPhone-Ausführungen und fünf SDKs; feste Glyphenkörper nach 30 Sekunden, Reduce Motion, beide Schriftstile und Nachtfilter geprüft. CPU-Fluid bleibt unverändert. Exakte Originaloptik, Langzeit-/Hardware- und GPU-Abnahmen offen. Details: Docs/flow-native-glass.md.",
+    "current": "Öffentliche SwiftUI-Glaslinse auf eigenen Ziffern bei sichtbarem Fluid; vorhandener Metal-Fallback für Hintergrund aus, visionOS und ältere Macs. 139 Modelltests, zehn gezielte iPad-/iPhone-Ausführungen und fünf SDKs; feste Glyphenkörper nach 30 Sekunden, Reduce Motion, beide Schriftstile und Nachtfilter geprüft. CPU-Fluid bleibt unverändert. Exakte Originaloptik, Langzeit-/Hardware- und GPU-Abnahmen offen. Details: Docs/flow-native-glass.md. Begrenzter Zusatz auf aktuellem unverändertem App-Paket: zwei native Fünf-Minuten-Ausführungen mit festen Ziffernkörpern bei60/180/300s; Bewegung/Farbe und CLI-Reduce-Motion geprüft. Getrennte40×40-CPU-Rechnung601 Simulationssekunden in drei Eingabeszenarien stabil. Docs/flow-five-minute.md; keine FPS/Energie/Hardware/Original- oder beliebige Dauerabnahme.",
     "tasks": [
       "Hintergrund, Schatten, Brechung, Bevel, Licht und Deckung anhand Zeitsequenzen abstimmen",
       "Hintergrund an/aus und beide Schriftstile getrennt behandeln",
