@@ -816,13 +816,46 @@ final class HomeViewUITests: XCTestCase {
     tap("app.Reminders")
     XCTAssertFalse(app.buttons["reminder.Alex private test"].exists)
   }
-  func testLandscapeAndReturnToPortrait() {
-    launch()
-    XCUIDevice.shared.orientation = .landscapeLeft
-    XCTAssertTrue(app.buttons["home.thermostat"].waitForExistence(timeout: 5))
-    shot("iPad-landscape-home")
+  func testLandscapeAndReturnToPortrait() throws {
     XCUIDevice.shared.orientation = .portrait
-    XCTAssertTrue(app.buttons["home.thermostat"].waitForExistence(timeout: 5))
+    defer { XCUIDevice.shared.orientation = .portrait }
+    launch()
+    for (name,orientation) in [("landscape-left",UIDeviceOrientation.landscapeLeft),
+      ("portrait-return",.portrait),("landscape-right",.landscapeRight),("portrait-final",.portrait)] {
+      XCUIDevice.shared.orientation=orientation
+      let until=Date().addingTimeInterval(12)
+      var previous=CGRect.null,stable=0,settled=false
+      while Date()<until {
+        let a=app.frame,v=app.otherElements["reference.viewport"].frame
+        let expectedAspect=orientation.isLandscape ? a.width>a.height:a.height>a.width
+        let valid=expectedAspect && !v.isEmpty && a.contains(v) && v.width==v.height
+          && v.contains(app.buttons["home.thermostat"].frame) && app.buttons["nav.faces"].isHittable
+        stable = valid && v==previous ? stable+1:0
+        previous=v
+        if stable>=2 { settled=true;break }
+        Thread.sleep(forTimeInterval:0.2)
+      }
+      XCTAssertTrue(settled,"Expected stable orientation and a contained square viewport: "+name)
+      // app.screenshot() crops using inconsistent rotation coordinates on the
+      // tested simulator runtime. Whole-screen capture preserves the actual
+      // display; require its oriented point dimensions to match the app frame.
+      let screen=XCUIScreen.main.screenshot()
+      XCTAssertEqual(screen.image.size.width,app.frame.width)
+      XCTAssertEqual(screen.image.size.height,app.frame.height)
+      let picture=XCTAttachment(screenshot:screen)
+      picture.name="rotation-"+name+"-screen";picture.lifetime = .keepAlways;add(picture)
+      let frame=app.buttons["home.thermostat"].frame
+      // Baseline AX hittability is false for this glass button even in portrait.
+      // A real coordinate tap plus resulting values verifies actual interaction.
+      app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:frame.midX,dy:frame.midY)).tap()
+      XCTAssertTrue(app.staticTexts["thermostat.value"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+      tap("thermostat.up")
+      XCTAssertEqual(app.staticTexts["thermostat.value"].label,"69°")
+      tap("thermostat.down")
+      XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+      tap("nav.faces")
+    }
   }
 
   func testNativeRegularTimerPauseResumeAndCancel() {
