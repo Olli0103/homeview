@@ -1194,7 +1194,7 @@
       "F063",
       "F064"
     ],
-    "current": "Lokale Timer und iOS/iPadOS-AlarmKit-Anbindung mit Pause/Fortsetzen/Löschen sind vorhanden, Simulatorprüfungen bestehen.",
+    "current": "Countdown und Randring nach UI14 begrenzt kalibriert; lange Anzeige bleibt innerhalb der Randstriche. Ruhender Referenzzustand, Einblenden per echtem Touch, lokale Bedienung, Rezepttimer und Demo-Türklingel-Rückkehr sind geprüft. Produktive Fristen/Alarmadapter unverändert; vollständige Original-, Mehrtimer-, Neustart-/Zeitwechsel- und Hardwareabnahme bleiben offen.",
     "tasks": [
       "Gleichzeitige Timer, Ablauf, Neusortierung und Rückkehr aus Hintergrund testen",
       "Große Randstriche, Steuerungsverbergen und Überlauf kalibrieren",
@@ -1206,7 +1206,8 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/49",
     "issue_number": 49,
-    "state": "open"
+    "state": "open",
+    "implementation_note": "timer-ui14.md;139Core/10gezielteUI/5SDK. Kein Systemalarm-Test in diesem Bildschritt, keine automatische Idle-/Hardwareabnahme."
   },
   {
     "key": "DAY-04",

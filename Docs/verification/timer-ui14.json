@@ -1,0 +1,246 @@
+{
+  "code_commit": "c1fe5de2110c4b3ca6cd06f9db54e28982959bd0",
+  "feature_commit": "02cb6eb97caa7329a7cda2681b2167558f876e6f",
+  "source_digest": "9398c04d8ded06dcb873b442ca73f709707d7f47f9d7b92aba09a9423ffd9d23",
+  "source_files": 133,
+  "source_before_after_match": true,
+  "source_matches_feature_and_merge_bytes": true,
+  "changed_sources_since_weather_ui05": [
+    "Sources/App/AppModel.swift",
+    "Sources/App/Everyday.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "countdown_core_and_alarm_adapters_unchanged": true,
+  "production_deadline_logic_changed": false,
+  "long_fixture_requires_uitesting_and_reference_timer": true,
+  "long_fixture_paused_seconds": 86399,
+  "core_passed": 139,
+  "core_repeated_after_feature_and_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 10,
+  "unique_cases": 5,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T01:20:06.620990+00:00",
+      "ended": "2026-10-18T01:20:19.200878+00:00",
+      "log_sha256": "72e82a69e2a4b576ffbb0bbd602dc305969bbffa58bbc9e0a329eea1e12260cc"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T01:20:19.201539+00:00",
+      "ended": "2026-10-18T01:20:32.619466+00:00",
+      "log_sha256": "7b58fbb5a919e0952c735ea844eeae570ccb5b9def917886e1270d112f609690"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T01:20:32.620062+00:00",
+      "ended": "2026-10-18T01:20:43.339982+00:00",
+      "log_sha256": "cc2fea7da447f38e1eb3af69e9e3bce6c31154239cb22cdc0b762b0b4fe252eb"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T01:20:43.340461+00:00",
+      "ended": "2026-10-18T01:20:54.928422+00:00",
+      "log_sha256": "9eb5342030ae19737aeb5f7450c7d26fa409a33d1ea76126eff217908573ef7e"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T01:20:54.928943+00:00",
+      "ended": "2026-10-18T01:21:02.573443+00:00",
+      "log_sha256": "50696fe8716c3d69256c8f896269a85e81fdbcef7d13542a56e1a16a4437121d"
+    }
+  ],
+  "full_ui_suite_claimed": false,
+  "ui_scope": [
+    "resting reference10:56 and actual touch reveals resume without changing paused value",
+    "23:59:59 fits inner dial, visible glyph separation and delete returns setup",
+    "ordinary local timer pause/resume/delete",
+    "demo doorbell preserves running timer and blocks underlying controls",
+    "recipe ingredients/cooking inline timer opens timer page"
+  ],
+  "visible_glyph_pixel_checks": [
+    {
+      "device": "iPad",
+      "state": "timer-ui14-reference-resting",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "countdown_white_bbox": [
+        424,
+        638,
+        1189,
+        853
+      ],
+      "title_orange_min_y": 917,
+      "visible_vertical_gap_pixels": 63,
+      "white_pixels": 54896,
+      "orange_pixels": 5109,
+      "white_roi_xywh": [
+        0.12,
+        0.28,
+        0.76,
+        0.42
+      ],
+      "orange_roi_xywh": [
+        0.25,
+        0.45,
+        0.5,
+        0.25
+      ],
+      "input_png_sha256": "b4ef61b443b7a33f59544d94dd762fdaddbd1b9b437fe5cfd480ef2b18ab71fe",
+      "actual_visible_glyphs_not_ax_layout_rectangles": true
+    },
+    {
+      "device": "iPad",
+      "state": "timer-ui14-long-readout",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "countdown_white_bbox": [
+        274,
+        653,
+        1325,
+        837
+      ],
+      "title_orange_min_y": 891,
+      "visible_vertical_gap_pixels": 53,
+      "white_pixels": 65347,
+      "orange_pixels": 7669,
+      "white_roi_xywh": [
+        0.12,
+        0.28,
+        0.76,
+        0.42
+      ],
+      "orange_roi_xywh": [
+        0.25,
+        0.45,
+        0.5,
+        0.25
+      ],
+      "input_png_sha256": "97d787daa6ee006d3bd66b657135c34284b780ea7cb0f18ec5bb7886ef76f68a",
+      "actual_visible_glyphs_not_ax_layout_rectangles": true
+    },
+    {
+      "device": "iPhone",
+      "state": "timer-ui14-reference-resting",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "countdown_white_bbox": [
+        301,
+        455,
+        846,
+        608
+      ],
+      "title_orange_min_y": 653,
+      "visible_vertical_gap_pixels": 44,
+      "white_pixels": 28556,
+      "orange_pixels": 2711,
+      "white_roi_xywh": [
+        0.12,
+        0.28,
+        0.76,
+        0.42
+      ],
+      "orange_roi_xywh": [
+        0.25,
+        0.45,
+        0.5,
+        0.25
+      ],
+      "input_png_sha256": "b4746fc937eae97707ef0fb0e32ed480fa419ac3ba4a710d08f79a495b110554",
+      "actual_visible_glyphs_not_ax_layout_rectangles": true
+    },
+    {
+      "device": "iPhone",
+      "state": "timer-ui14-long-readout",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "countdown_white_bbox": [
+        194,
+        466,
+        943,
+        597
+      ],
+      "title_orange_min_y": 635,
+      "visible_vertical_gap_pixels": 37,
+      "white_pixels": 34117,
+      "orange_pixels": 4171,
+      "white_roi_xywh": [
+        0.12,
+        0.28,
+        0.76,
+        0.42
+      ],
+      "orange_roi_xywh": [
+        0.25,
+        0.45,
+        0.5,
+        0.25
+      ],
+      "input_png_sha256": "4397cacae22ade6b7c32a522651b30976849940846f8df47b6447fb7c2c956d9",
+      "actual_visible_glyphs_not_ax_layout_rectangles": true
+    }
+  ],
+  "visual_review_both_devices": true,
+  "native_system_alarm_test_executed": false,
+  "automatic_idle_hide_accepted": false,
+  "system_restart_clockchange_or_hardware_accepted": false,
+  "original_visual_accepted": false,
+  "reference_crop_is_only_approximate_black_front_surface": true,
+  "initial_prototype": {
+    "source_digest": "5b9c127469ead62ee95663c2b5842ad872f239f70c24f452b72d0025817e038e",
+    "passed": 1,
+    "failed": 2,
+    "cause": "Invalid rectangle non-overlap assumption: full-font AX boxes overlap while actual glyphs are separated. Failure videos separately revealed true long-number contact with ticks. Kept historical; new pixel and inner-dial checks are stricter."
+  },
+  "historical_pilots_not_added_to_current_counts": true,
+  "real_accounts_or_homekit_used": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/timer-ui14-manifest.json",
+  "own_comparison": "../screenshots/goal-20261018/timer-ui14-own-comparison.json",
+  "logs": {
+    "timer-ui14-candidate-core.log": "29c60abd774c0ca2bbea6d54855d455fa8c09d9b86dd76acf1c8a7554e259c3d",
+    "timer-ui14-feature-post-commit-core.log": "3cac6a8f2cd8fa840c306c53149537ca47a2593146b2262317fac69333c5926f",
+    "timer-ui14-integrated-core.log": "5ec151fe56dfe9c76738e3d08ec343a1e83bc3cc1b013ee948e6e32b852c62c1",
+    "timer-ui14-candidate-build.log": "73492f5c0fb2548c0f096dbe932f113483aa759e2ddb5b3325936729473cc054",
+    "timer-ui14-candidate-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "4b92d5acc3b33b89136418c941d344b9dd8a27f94b079ad4f1c8f3f6f08500e7",
+    "iPhone": "8c9c25d58bd1b8c6957b45f7af5d7aa12028f0bc84c298b36044a697b56b7842"
+  }
+}

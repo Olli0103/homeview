@@ -843,7 +843,7 @@ Abhängigkeiten: SYS-03.
 <a id="day-03"></a>
 ### DAY-03: Mehrere Timer und große Countdown-Ansicht vollständig abnehmen
 
-Lokale Timer und iOS/iPadOS-AlarmKit-Anbindung mit Pause/Fortsetzen/Löschen sind vorhanden, Simulatorprüfungen bestehen.
+Countdown und Randring nach UI14 begrenzt kalibriert; lange Anzeige bleibt innerhalb der Randstriche. Ruhender Referenzzustand, Einblenden per echtem Touch, lokale Bedienung, Rezepttimer und Demo-Türklingel-Rückkehr sind geprüft. Produktive Fristen/Alarmadapter unverändert; vollständige Original-, Mehrtimer-, Neustart-/Zeitwechsel- und Hardwareabnahme bleiben offen.
 
 Offen:
 

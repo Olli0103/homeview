@@ -253,3 +253,10 @@ Uhr, Gradzeichen, Detailspalten und öffentliche Symbole getrennt korrigiert.
 139 Modelltests, zehn gezielte UI-Ausführungen und fünf SDKs; Demo/Celsius/unbekannte
 Werte vollständig sichtbar. Vorgabegemäße freie Himmelsregion pixelgleich zum
 vorherigen Wolkenstand. [Eigene Bilder und Grenzen](weather-ui05-layout.md). #21 offen.
+
+
+## Timer-UI14 und lange Anzeige
+
+Kleinerer Countdown/Randring und sichere lange Anzeige, sichtbare Glyphen statt
+Fontrechteck-Überlappung geprüft. 139 Modelltests, zehn gezielte UI-Ausführungen
+und fünf SDKs. [Eigene Bilder und Grenzen](timer-ui14.md). #49 bleibt offen.
