@@ -477,6 +477,15 @@ struct WeatherFace: View {
     }.padding(inApp ? 30 : 45).foregroundStyle(.white)
       .shadow(color:.black.opacity(0.18),radius:1,x:0,y:1).background(WeatherBackdrop(
       reading: model.connections.weather, demo: model.connections.weatherDemo,phase:phase))
+    .overlay {
+      let cover=Float(WeatherBackdrop.cloudCover(model.connections.weather,demo:model.connections.weatherDemo))
+      if cover>0 && model.connections.weather?.isDay != false {
+        GeometryReader { geometry in
+          Rectangle().fill(.white).colorEffect(ShaderLibrary.weatherDaylightSpur(
+            .float2(Float(geometry.size.width),Float(geometry.size.height)),.float(cover)))
+        }.allowsHitTesting(false).accessibilityHidden(true)
+      }
+    }
     .overlay(alignment: .bottomLeading) {
       VStack(alignment: .leading, spacing: 2) {
         Text(model.connections.weatherSource(at: model.now)).accessibilityIdentifier("weather.source")
