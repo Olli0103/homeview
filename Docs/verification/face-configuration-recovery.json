@@ -1,0 +1,240 @@
+{
+  "code_commit": "22f8728b68207780af1e5adf2283e0dafdcddb6b",
+  "feature_commit": "d67b74d30803366771ec6c9ac0f81169f9baed74",
+  "source_digest": "c0679651f609a36da85a8cb2028319ccfd7032b0ce9593e535c3da473e5aa5dd",
+  "source_files": 142,
+  "source_matches_feature_and_merge_bytes": true,
+  "changed_sources": [
+    "Sources/App/AppModel.swift",
+    "Sources/Core/FaceConfiguration.swift",
+    "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "ui_executions": 8,
+  "unique_cases": 4,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:36:29.596557+00:00",
+      "ended": "2026-10-18T05:36:46.885098+00:00",
+      "log_sha256": "5bbeabc17410b321a03c4ed69a83b466fa1fa64466ba465443779c7d2756d8de"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T05:36:46.885713+00:00",
+      "ended": "2026-10-18T05:37:02.418754+00:00",
+      "log_sha256": "48f5c1b6c43fa049db9ef249c2dfd70a22162298fd29add3277e26544089d32a"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:37:02.419306+00:00",
+      "ended": "2026-10-18T05:37:14.862887+00:00",
+      "log_sha256": "4f77f1e751fbfdca416edac7285f74ef9cb47df6cd2d22028f398e6bc1436777"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:37:14.863406+00:00",
+      "ended": "2026-10-18T05:37:28.314091+00:00",
+      "log_sha256": "e950304614ca1dfa5b098747bf7c104ccc0a6fd5a051d6cc7610efaa4d71aaf7"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:37:28.314576+00:00",
+      "ended": "2026-10-18T05:37:35.627192+00:00",
+      "log_sha256": "2c713c63dfde916277120499b2f5c309f3cd2d989047b01f1bc923009ea73a66"
+    }
+  ],
+  "actual_native_pixel_metrics": [
+    {
+      "device": "iPad",
+      "states": [
+        {
+          "mode": "legacy",
+          "whole_viewport_pixels_identical": true,
+          "whole_png_bytes_identical": true,
+          "sage_samples": 7632,
+          "sage_pixels": 7632
+        },
+        {
+          "mode": "future-widget",
+          "whole_viewport_pixels_identical": true,
+          "whole_png_bytes_identical": true,
+          "sage_samples": 7632,
+          "sage_pixels": 7632
+        }
+      ]
+    },
+    {
+      "device": "iPhone",
+      "states": [
+        {
+          "mode": "legacy",
+          "whole_viewport_pixels_identical": true,
+          "whole_png_bytes_identical": true,
+          "sage_samples": 3842,
+          "sage_pixels": 3842
+        },
+        {
+          "mode": "future-widget",
+          "whole_viewport_pixels_identical": true,
+          "whole_png_bytes_identical": true,
+          "sage_samples": 3842,
+          "sage_pixels": 3842
+        }
+      ]
+    }
+  ],
+  "actual_own_UUID_store_readback": [
+    {
+      "device": "iPad",
+      "mode": "legacy",
+      "uuid_test_store_only": true,
+      "original_backup_bytes": 2170,
+      "original_backup_sha256": "9a5f27f219801d23b48933a148cd6ab91da6e56c101a205aa473a989e33bf140",
+      "backup_filename_content_digest_matches": true,
+      "current_saved_sha256": "803f61fa8f887b9b502439d0b9316ab8689c3352cce4582e741aed15fb616538",
+      "all_unrelated_snapshot_fields_equal": true,
+      "other_flow_configuration_equal": true,
+      "recovered_modular_configuration": {
+        "theme": 1,
+        "flowTypeface": 0,
+        "flowBackground": true,
+        "complications": {
+          "panel1": "Clock",
+          "panel2": "Timer",
+          "panel0": "Weather"
+        }
+      },
+      "normal_store_reader_writer_and_process_restart_observed": true
+    },
+    {
+      "device": "iPad",
+      "mode": "future-widget",
+      "uuid_test_store_only": true,
+      "original_backup_bytes": 2215,
+      "original_backup_sha256": "18c5065580a78912942ae87b34d7f6c4c4a2e65b37d4d3a170ee019e896001f8",
+      "backup_filename_content_digest_matches": true,
+      "current_saved_sha256": "6a72e87e2df8a8d7440263183e7f20000febc50b50be04aa75b7c4c9f68d8686",
+      "all_unrelated_snapshot_fields_equal": true,
+      "other_flow_configuration_equal": true,
+      "recovered_modular_configuration": {
+        "theme": 1,
+        "flowTypeface": 1,
+        "complications": {
+          "panel1": "Clock",
+          "panel2": "Timer"
+        },
+        "flowBackground": false
+      },
+      "normal_store_reader_writer_and_process_restart_observed": true
+    },
+    {
+      "device": "iPhone",
+      "mode": "legacy",
+      "uuid_test_store_only": true,
+      "original_backup_bytes": 2170,
+      "original_backup_sha256": "fe7e16b1cb32aba033621f82988083f5a3f83cd8c9e07a68f6fa2f8149a7798c",
+      "backup_filename_content_digest_matches": true,
+      "current_saved_sha256": "457349179e50ccba2119329e711cb7fbec8fa24dfeda795a55549986353cd1e9",
+      "all_unrelated_snapshot_fields_equal": true,
+      "other_flow_configuration_equal": true,
+      "recovered_modular_configuration": {
+        "complications": {
+          "panel1": "Clock",
+          "panel0": "Weather",
+          "panel2": "Timer"
+        },
+        "theme": 1,
+        "flowTypeface": 0,
+        "flowBackground": true
+      },
+      "normal_store_reader_writer_and_process_restart_observed": true
+    },
+    {
+      "device": "iPhone",
+      "mode": "future-widget",
+      "uuid_test_store_only": true,
+      "original_backup_bytes": 2215,
+      "original_backup_sha256": "d94bd6716c6c6b36f01b02afdb212cddc16bcd241d816406ec4d262374e9314f",
+      "backup_filename_content_digest_matches": true,
+      "current_saved_sha256": "0c35ae671e81124020784cee7a6a5e7f5435087ee876b17d650ed7e74547e8a4",
+      "all_unrelated_snapshot_fields_equal": true,
+      "other_flow_configuration_equal": true,
+      "recovered_modular_configuration": {
+        "complications": {
+          "panel1": "Clock",
+          "panel2": "Timer"
+        },
+        "theme": 1,
+        "flowBackground": false,
+        "flowTypeface": 1
+      },
+      "normal_store_reader_writer_and_process_restart_observed": true
+    }
+  ],
+  "top_level_version_and_original_backup_logic_unchanged": true,
+  "known_family_validation_unchanged": true,
+  "fixtures_require_explicit_UUID_UITesting_and_absent_store": true,
+  "fixture_not_passed_on_process_restart": true,
+  "existing_user_stores_read_or_changed": false,
+  "history": {
+    "unchanged_decoder_baseline_source_digest": "5ef28de69e2edb73600799d093fe3bc5533889deccc3585744356a5ee027fa1f",
+    "baseline_tests": 2,
+    "baseline_failed_tests": 2,
+    "baseline_failed_assertions": 8,
+    "baseline_source_archive_sha256": "967bb0750832788fe9b459e0b35e51727f048153ad04ced93d8fdd291a95cf72",
+    "early_candidate_source_digest": "713e61d74e903ec86b69eab8441913ce2464fb907563cc10da14a08f237ae045",
+    "early_candidate_core_total": 166,
+    "early_candidate_failed_tests": 1,
+    "early_candidate_qualification": "New family test incorrectly expected Date instead of existing Off. Only that expectation corrected; decoder bytes match final candidate.",
+    "early_candidate_archive_sha256": "601a67352856b796b6dd8539e734179f91a3dd04ada2b82e50be26a9e88664fb",
+    "separate_pilot_cases_not_added_to_final8": 2
+  },
+  "actual_images_reviewed_both_devices": true,
+  "full_migration_or_editor_suite_claimed": false,
+  "original_visual_parity_accepted": false,
+  "physical_devices_tested": false,
+  "real_accounts_homes_libraries_or_system_alarms_used": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/face-recovery-manifest.json",
+  "logs": {
+    "face-migration-native-core.log": "b4ad6122c2df50398a391faa0ffda8dcaf2f5f65b206d600832248e12c0374ab",
+    "face-migration-feature-post-commit-core.log": "9de07e42167e939b39463ccefdf9d8203222c85a70c701ce345e31f88e806f6f",
+    "face-migration-integrated-core.log": "bbaffffa4986c7794d97d08f55ebfe8501429c7ae9c91f91c326272976901ce4",
+    "face-migration-native-build.log": "dbd32d2fccaf8e9588cb2c1c7a59e22dc0b1eddad09aa9e03b7b8edd898d2990",
+    "face-migration-native-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "54ae245fca16f38e4008c0ae74c601e3695fa371783b17f89db8f4823cb4b991",
+    "iPhone": "db3da3b14354b5a897f26b72aa58250ae94dd664a615718ae569e0d87d636bcc"
+  }
+}

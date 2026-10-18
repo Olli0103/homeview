@@ -19,6 +19,7 @@ freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetz
 | [Eigene hohe Foto-Konturen und Zehneratlas](photo-glyphs.md) | 143 | 22 | 5 |
 | [Foto-Größenwahl nach tatsächlicher Schrift](photo-ink-placement.md) | 151 | 28 | 5 |
 | [Dominante Achse bei diagonalen Wischgesten](navigation-intent.md) | 159 | 14 | 5 |
+| [Gezielte Wiederherstellung gespeicherter Face-Optionen](face-configuration-recovery.md) | 166 | 8 | 5 |
 
 Ein getrennter [nativer Mac-Adapterlauf](photo-native-mac.md) auf dem eigenen
 gebauten Demo-Porträt liefert nun eine tatsächliche Vordergrund-PNG mit brauchbarem
@@ -308,3 +309,13 @@ Fehlziel-Reproduktionen auf unverändertem App-Code. 159 Modelltests / 14 geziel
 UI / fünf SDKs; vier ignorierte Gestenpaare pixel- und PNG-bytegleich. Bisherige
 Abstände/Randbereiche und Übergänge bleiben erhalten. #6 und Original-/Hardware-
 Abnahme bleiben offen.
+
+
+## Gespeicherte Face-Konfigurationen gezielt retten
+
+[Getrennte Fehlerkorrektur](face-configuration-recovery.md) nach zwei Modell-
+Reproduktionen auf unverändertem Decoder. 166 Modelltests / acht gezielte UI /
+fünf SDKs. Vier vollständige Neustart-Bildpaare pixel-/bytegleich; Originalkopien
+und gespeicherte Optionen in vier eigenen UUID-Testordnern direkt zurückgelesen.
+Bekannte Geschwister und fremde Face-Konfiguration bleiben erhalten. #7/#80 offen;
+keine vollständige Migration-, Editor-, Original- oder Hardwareabnahme.

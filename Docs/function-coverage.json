@@ -74,7 +74,8 @@
       "FACE-03"
     ],
     "current": [
-      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen."
+      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen.",
+      "Gespeicherte alte/teilweise unbekannte Face-Optionen werden feldweise gerettet statt die ganze Konfiguration zu verwerfen.166Modelltests/8gezielteUI/5SDK; tatsächlicher Stil, Editor und Prozessneustart plus Original-/Dateirücklesen an vier eigenen UUID-Testständen geprüft. Docs/face-configuration-recovery.md. Familienregeln/Versionsschutz unverändert; keine vollständige Editor-/Migrationsabnahme."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -87,7 +88,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "pending; bounded saved-field recovery, own UUID store original-byte readback and native restart rendering verified",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -105,7 +106,8 @@
       "FACE-03"
     ],
     "current": [
-      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen."
+      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen.",
+      "Gespeicherte alte/teilweise unbekannte Face-Optionen werden feldweise gerettet statt die ganze Konfiguration zu verwerfen.166Modelltests/8gezielteUI/5SDK; tatsächlicher Stil, Editor und Prozessneustart plus Original-/Dateirücklesen an vier eigenen UUID-Testständen geprüft. Docs/face-configuration-recovery.md. Familienregeln/Versionsschutz unverändert; keine vollständige Editor-/Migrationsabnahme."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -118,7 +120,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "pending; bounded saved-field recovery, own UUID store original-byte readback and native restart rendering verified",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -136,7 +138,8 @@
       "FACE-03"
     ],
     "current": [
-      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen."
+      "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen.",
+      "Gespeicherte alte/teilweise unbekannte Face-Optionen werden feldweise gerettet statt die ganze Konfiguration zu verwerfen.166Modelltests/8gezielteUI/5SDK; tatsächlicher Stil, Editor und Prozessneustart plus Original-/Dateirücklesen an vier eigenen UUID-Testständen geprüft. Docs/face-configuration-recovery.md. Familienregeln/Versionsschutz unverändert; keine vollständige Editor-/Migrationsabnahme."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -149,7 +152,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "pending; bounded saved-field recovery, own UUID store original-byte readback and native restart rendering verified",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
