@@ -65,19 +65,26 @@ struct FlowArtwork: View {
         return ZStack {
           Color.black
           if let frame {
-            if showBackground {
+            if showBackground && !drawsMaskFixture {
               fluidImage(frame)
             }
-            // Independent layers: background, glyph shadow, refractive foreground material.
-            numerals(at: t).foregroundStyle(.black.opacity(showBackground ? 0.10 : 0))
-              .blur(radius: 2).offset(x: 1, y: 2)
-            numerals(at: t).foregroundStyle(.white)
-              .blur(radius: 4)
-              .layerEffect(
-                ShaderLibrary.flowGlyphMaterial(
-                  .image(Image(decorative: frame, scale: 1)),
-                  .float2(Float(geometry.size.width), Float(geometry.size.height))),
-                maxSampleOffset: CGSize(width: 28, height: 28))
+            if drawsMaskFixture {
+              numerals(at: t).foregroundStyle(.white)
+            } else if usesNativeGlass {
+              numerals(at: t, nativeGlass: true)
+            } else {
+              // Own layer fallback also retains colored numerals when the
+              // visible background is switched off.
+              numerals(at: t).foregroundStyle(.black.opacity(showBackground ? 0.10 : 0))
+                .blur(radius: 2).offset(x: 1, y: 2)
+              numerals(at: t).foregroundStyle(.white)
+                .blur(radius: 4)
+                .layerEffect(
+                  ShaderLibrary.flowGlyphMaterial(
+                    .image(Image(decorative: frame, scale: 1)),
+                    .float2(Float(geometry.size.width), Float(geometry.size.height))),
+                  maxSampleOffset: CGSize(width: 28, height: 28))
+            }
           }
         }
       }
@@ -94,7 +101,32 @@ struct FlowArtwork: View {
   private func fluidImage(_ frame: CGImage) -> some View {
     Image(decorative: frame, scale: 1).resizable().interpolation(.high)
   }
-  private func numerals(at time: Double) -> some View {
+  // Test-only render controls isolate material motion from glyph morphing.
+  private var fixedGlyphsFixture: Bool {
+    let args=ProcessInfo.processInfo.arguments
+    return args.contains("--uitesting") && args.contains("--flow-fixed-glyphs")
+  }
+  private var drawsMaskFixture: Bool {
+    let args=ProcessInfo.processInfo.arguments
+    return args.contains("--uitesting") && args.contains("--flow-mask")
+  }
+  private var usesNativeGlass: Bool {
+    #if os(visionOS)
+      return false
+    #else
+      if #available(macOS 26.0, *) { return showBackground }
+      return false
+    #endif
+  }
+  @ViewBuilder private func nativeGlyph(_ shape: FlowDigitShape) -> some View {
+    #if os(visionOS)
+      shape.fill(.clear)
+    #else
+      if #available(macOS 26.0, *) { Color.clear.glassEffect(.clear,in:shape) }
+      else { shape.fill(.clear) }
+    #endif
+  }
+  private func numerals(at time: Double, nativeGlass: Bool = false) -> some View {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = timeZone
     let hour = calendar.component(.hour, from: date)
@@ -102,22 +134,25 @@ struct FlowArtwork: View {
     let twelveHour = !ProcessInfo.processInfo.arguments.contains("--reference-clock")
       && (DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: .current)?.contains("a") ?? false)
     let digits = FlowTypography.digits(hour: hour, minute: minute, twelveHour: twelveHour)
-    let axes = FlowTypography.animated(at: time)
+    let axes = FlowTypography.animated(at: fixedGlyphsFixture ? 0 : time)
     return VStack(spacing: 30) {
-      numeralRow(Array(digits.prefix(2)), axes: axes)
-      numeralRow(Array(digits.suffix(2)), axes: axes)
+      numeralRow(Array(digits.prefix(2)), axes: axes, nativeGlass: nativeGlass)
+      numeralRow(Array(digits.suffix(2)), axes: axes, nativeGlass: nativeGlass)
     }.padding(.horizontal, far ? 36 : 44).padding(.vertical, 34)
       .accessibilityElement(children: .ignore)
       .accessibilityLabel("Flow time")
       .accessibilityValue(String(format: "%d%d:%d%d", digits[0], digits[1], digits[2], digits[3]))
   }
-  private func numeralRow(_ digits: [Int], axes: FlowTypography) -> some View {
+  private func numeralRow(_ digits: [Int], axes: FlowTypography, nativeGlass: Bool) -> some View {
     GeometryReader { geometry in
       let scale = min(geometry.size.width / axes.pairWidth, geometry.size.height)
       HStack(spacing: axes.tracking * scale) {
         ForEach(0..<2) { i in
-          FlowDigitShape(digit: digits[i], stencil: typeface == 0, typography: axes)
-            .frame(width: axes.advance * scale, height: scale)
+          let shape=FlowDigitShape(digit: digits[i], stencil: typeface == 0, typography: axes)
+          Group {
+            if nativeGlass { nativeGlyph(shape) }
+            else { shape }
+          }.frame(width: axes.advance * scale, height: scale)
         }
       }.frame(width: geometry.size.width, height: geometry.size.height)
     }

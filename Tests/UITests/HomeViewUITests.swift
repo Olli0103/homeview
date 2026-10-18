@@ -2209,3 +2209,80 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
   }
 }
+
+extension HomeViewUITests {
+  private func flowBodyRGBA(_ data:Data) -> ([UInt8],Int,Int) {
+    let image=UIImage(data:data)!.cgImage!,width=image.width,height=image.height
+    var pixels=[UInt8](repeating:0,count:width*height*4)
+    pixels.withUnsafeMutableBytes {
+      let context=CGContext(data:$0.baseAddress,width:width,height:height,bitsPerComponent:8,
+        bytesPerRow:width*4,space:CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)!
+      context.draw(image,in:CGRect(x:0,y:0,width:width,height:height))
+    }
+    return (pixels,width,height)
+  }
+  private func fixedFlowBodyPixels(_ data:Data,mask:Data) -> Data {
+    let (pixels,width,height)=flowBodyRGBA(data)
+    let (m,mw,mh)=flowBodyRGBA(mask)
+    XCTAssertEqual(width,mw);XCTAssertEqual(height,mh)
+    guard width==mw && height==mh else { return Data() }
+    let radius=max(1,width*2/100)
+    let offsets=[(0,0),(-radius,0),(radius,0),(0,-radius),(0,radius),
+      (-radius,-radius),(-radius,radius),(radius,-radius),(radius,radius)]
+    var interior=[UInt8]()
+    for y in stride(from:radius,to:height-radius,by:2) {
+      for x in stride(from:radius,to:width-radius,by:2) {
+        let inside=offsets.allSatisfy { dx,dy in
+          let i=((y+dy)*width+x+dx)*4
+          return m[i]>245 && m[i+1]>245 && m[i+2]>245
+        }
+        if inside {
+          let i=(y*width+x)*4
+          interior.append(contentsOf:pixels[i..<(i+4)])
+        }
+      }
+    }
+    XCTAssertGreaterThan(interior.count,1000,"The own eroded mask must contain actual glyph interiors")
+    return Data(interior)
+  }
+  @objc func testFlowGlassBodyMovesAfterThirtySecondsWithFixedGlyphs() {
+    launch(["--face","Flow","--animation-test","--flow-fixed-glyphs"])
+    Thread.sleep(forTimeInterval:30)
+    let late=viewportBytes("flow-fixed-body-after-thirty-seconds")
+    Thread.sleep(forTimeInterval:1.2)
+    let later=viewportBytes("flow-fixed-body-after-thirty-two-seconds")
+    launch(["--face","Flow","--flow-fixed-glyphs","--reduce-motion"])
+    let frozen=viewportBytes("flow-fixed-body-reduced-start")
+    Thread.sleep(forTimeInterval:1.2)
+    let frozenLater=viewportBytes("flow-fixed-body-reduced-later")
+    launch(["--face","Flow","--flow-fixed-glyphs","--flow-mask"])
+    let mask=viewportBytes("flow-fixed-body-own-mask")
+    XCTAssertNotEqual(fixedFlowBodyPixels(late,mask:mask),fixedFlowBodyPixels(later,mask:mask),
+      "Moving fluid must change pixels inside fixed glyph bodies, not merely the background")
+    XCTAssertEqual(fixedFlowBodyPixels(frozen,mask:mask),fixedFlowBodyPixels(frozenLater,mask:mask))
+  }
+}
+
+extension HomeViewUITests {
+  @objc func testFlowNativeSolidStyleAndWholeViewportNightTreatment() {
+    launch(["--face","Flow"])
+    app.otherElements["face.Flow"].press(forDuration:1)
+    tap("flow.typeface.1")
+    XCTAssertEqual(app.switches["flow.background"].value as? String,"1")
+    tap("editor.done")
+    viewportShot("flow-native-solid-background-on")
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    let pixels=[UInt8](viewportPixels(viewportBytes("flow-native-solid-night-whole-viewport"),inset:0))
+    var lit=0,wrongColor=0
+    for i in stride(from:0,to:pixels.count,by:4) {
+      let r=Double(pixels[i]),g=Double(pixels[i+1]),b=Double(pixels[i+2])
+      if max(r,max(g,b))>25 {
+        lit+=1
+        if g>r*0.4 || b>r*0.4 { wrongColor+=1 }
+      }
+    }
+    XCTAssertGreaterThan(lit,100)
+    XCTAssertEqual(wrongColor,0,"Native lenses and fluid must remain within the whole-viewport night treatment")
+  }
+}
