@@ -101,7 +101,16 @@ struct HomeModularFace: View {
     Button(action: action) {
       Tile(glass: true) {
         VStack(spacing: 16) {
-          Image(systemName: icon).font(.system(size: 52, weight: .medium))
+          if icon == "waveform" {
+            Image(systemName: icon).font(.system(size: 52, weight: .medium)).hidden()
+              .overlay {
+                IntercomMark().frame(width:44,height:44).clipShape(Circle())
+                  .shadow(color:.black.opacity(0.20),radius:0.65,x:0,y:0.6)
+                  .offset(x:2,y:-3).accessibilityHidden(true)
+              }
+          } else {
+            Image(systemName: icon).font(.system(size: 52, weight: .medium))
+          }
           VStack(spacing: 3) {
             Text(title).fontWeight(.semibold)
             Text(subtitle).opacity(0.65)
