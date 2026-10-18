@@ -398,7 +398,7 @@ struct HomeGrid: View {
             // Retain the existing symbol's layout box; only replace its ink.
             Image(systemName: icon).font(.system(size: 53, weight: .medium)).hidden()
               .overlay {
-                HomeGridIntercomMark().frame(width:45,height:45)
+                IntercomMark().frame(width:45,height:45)
                   .clipShape(Circle()).offset(y:3).accessibilityHidden(true)
               }
           } else {
@@ -413,22 +413,6 @@ struct HomeGrid: View {
         }.foregroundStyle(active ? Color.violetInk : .gray)
       }
     }.frame(maxWidth: .infinity)
-  }
-}
-
-// Independent simple geometry: seven symmetric bars, not extracted contours.
-private struct HomeGridIntercomMark: Shape {
-  func path(in rect:CGRect) -> Path {
-    let side=min(rect.width,rect.height),bar=side*0.065
-    let heights:[CGFloat]=[0.44,0.79,0.97,1,0.97,0.79,0.44]
-    var path=Path()
-    for (index,fraction) in heights.enumerated() {
-      let h=side*fraction
-      let box=CGRect(x:rect.midX-side/2+CGFloat(index)*(side-bar)/6,
-        y:rect.midY-h/2,width:bar,height:h)
-      path.addRoundedRect(in:box,cornerSize:CGSize(width:bar/2,height:bar/2))
-    }
-    return path
   }
 }
 
