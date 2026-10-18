@@ -1748,3 +1748,94 @@ final class HomeViewUITests: XCTestCase {
   }
 
 }
+
+extension HomeViewUITests {
+  @objc func testDemoDoorbellDismissReturnsToTheSameFaceAndARepeatedEventDoesNotReopen() {
+    launch(["--face","Fade","--doorbell-fixture"])
+    tap("fixture.doorbell.repeat")
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["fixture.doorbell.route"].label,"face")
+    // Prove interaction by the actual dismiss and resulting route below,
+    // not by the unreliable hittable flag of the scaled camera button.
+    app.otherElements["doorbell.overlay"].swipeLeft()
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].exists)
+    viewportShot("doorbell-demo-over-face")
+    tap("doorbell.dismiss")
+    XCTAssertFalse(app.staticTexts["doorbell.demo.label"].exists)
+    XCTAssertEqual(app.staticTexts["fixture.doorbell.route"].label,"face")
+    XCTAssertTrue(app.otherElements["face.Fade"].waitForExistence(timeout:5))
+    tap("fixture.doorbell.repeat")
+    XCTAssertFalse(app.staticTexts["doorbell.demo.label"].exists)
+    tap("fixture.doorbell.new")
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].waitForExistence(timeout:5))
+    tap("doorbell.dismiss")
+    XCTAssertTrue(app.otherElements["face.Fade"].exists)
+  }
+  @objc func testDemoDoorbellPreservesTheRunningTimerAndBlocksUnderlyingControls() {
+    launch(["--page","Timers","--doorbell-fixture"])
+    tap("timer.start")
+    let before=app.staticTexts["timer.countdown"].label
+    tap("fixture.doorbell.new")
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["fixture.doorbell.route"].label,"app:Timers")
+    XCTAssertFalse(app.buttons["timer.pause"].isHittable)
+    tap("doorbell.dismiss")
+    XCTAssertTrue(app.buttons["timer.pause"].waitForExistence(timeout:5))
+    let after=app.staticTexts["timer.countdown"].label
+    func seconds(_ value:String)->Int {
+      let parts=value.split(separator:":").compactMap { Int($0) }
+      XCTAssertEqual(parts.count,2)
+      return parts.count == 2 ? parts[0]*60+parts[1]:Int.max
+    }
+    XCTAssertLessThan(seconds(after),seconds(before))
+    XCTAssertTrue(app.buttons["timer.pause"].label.contains("Pause"))
+    viewportShot("doorbell-dismiss-running-timer-preserved")
+  }
+  @objc func testDemoDoorbellKeepsTheCurrentCookingStep() {
+    launch(["--screen-recipe","--doorbell-fixture"])
+    tap("recipe.start");tap("cooking.next")
+    let text=app.staticTexts["cooking.text"].label
+    tap("fixture.doorbell.new")
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["fixture.doorbell.route"].label,"cooking")
+    XCTAssertFalse(app.buttons["cooking.next"].isHittable)
+    tap("doorbell.dismiss")
+    XCTAssertTrue(app.staticTexts["cooking.text"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["cooking.text"].label,text)
+    viewportShot("doorbell-dismiss-cooking-step-preserved")
+  }
+  @objc func testDemoDoorbellDoesNotHideATimerCompletion() {
+    launch(["--page","Timers","--doorbell-fixture"])
+    tap("timer.start");tap("fixture.doorbell.new")
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].waitForExistence(timeout:5))
+    tap("fixture.doorbell.finishTimer")
+    XCTAssertTrue(app.staticTexts["15 min finished"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].exists)
+    viewportShot("doorbell-with-visible-timer-completion")
+    tap("doorbell.dismiss")
+    XCTAssertTrue(app.staticTexts["DONE"].waitForExistence(timeout:5))
+  }
+  @objc func testDemoDoorbellBackgroundDoesNotRestoreTheOldPersonalPage() {
+    launch(["--page","Calendar","--doorbell-fixture"])
+    tap("fixture.doorbell.new")
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].waitForExistence(timeout:5))
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertTrue(app.staticTexts["Recognizing…"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["doorbell.demo.label"].exists)
+    XCTAssertFalse(app.buttons["calendar.day.3"].exists)
+    viewportShot("doorbell-background-personal-page-stays-locked")
+  }
+  @objc func testDemoDoorbellOfflineAndIncomingCallDoNotOpenACamera() {
+    launch(["--doorbell-fixture"])
+    tap("fixture.doorbell.offline");tap("fixture.doorbell.new")
+    XCTAssertFalse(app.staticTexts["doorbell.demo.label"].exists)
+    XCTAssertTrue(app.staticTexts["Demo doorbell unavailable · Mock camera offline"].exists)
+    launch(["--doorbell-fixture"])
+    tap("fixture.doorbell.call");tap("fixture.doorbell.new")
+    XCTAssertTrue(app.buttons["call.end"].exists)
+    XCTAssertFalse(app.staticTexts["doorbell.demo.label"].exists)
+    viewportShot("doorbell-does-not-cover-incoming-demo-call")
+    tap("call.end")
+    XCTAssertFalse(app.staticTexts["doorbell.demo.label"].exists)
+  }
+}
