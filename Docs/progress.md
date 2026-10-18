@@ -17,6 +17,7 @@ freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetz
 | [Höhere Foto-Glasziffern in bestehender Schutzzone](photo-type.md) | 139 | 16 | 5 |
 | [Adaptive hohe Foto-Uhr mit vorhandener Matte](photo-adaptive.md) | 143 | 20 | 5 |
 | [Eigene hohe Foto-Konturen und Zehneratlas](photo-glyphs.md) | 143 | 22 | 5 |
+| [Foto-Größenwahl nach tatsächlicher Schrift](photo-ink-placement.md) | 151 | 28 | 5 |
 
 Ein getrennter [nativer Mac-Adapterlauf](photo-native-mac.md) auf dem eigenen
 gebauten Demo-Porträt liefert nun eine tatsächliche Vordergrund-PNG mit brauchbarem
@@ -286,3 +287,14 @@ vorherigen Wolkenstand. [Eigene Bilder und Grenzen](weather-ui05-layout.md). #21
 Kleinerer Countdown/Randring und sichere lange Anzeige, sichtbare Glyphen statt
 Fontrechteck-Überlappung geprüft. 139 Modelltests, zehn gezielte UI-Ausführungen
 und fünf SDKs. [Eigene Bilder und Grenzen](timer-ui14.md). #49 bleibt offen.
+
+
+## Foto-Uhr: tatsächliche Schrift statt Leerraum bewerten
+
+[Getrennter Schritt](photo-ink-placement.md): eigene neue erweiterte Regel
+18 % Schrift insgesamt / 30 % je Ziffer; kompakte Eintrittsprüfung bleibt.
+Gleiche eigene Konturen für Anzeige und Bewertung, aktuelle Foto-/Crop-Maske
+und Minutenwechsel geprüft. Markiertes Mac-Alpha-Replay ist kein iOS-native-PASS.
+151 Modelltests / 28 gezielte UI / fünf SDKs; zehn kompakte PNGs exakt erhalten.
+Erster gespiegelter Kandidat verworfen und getrennt dokumentiert. #5 offen;
+historischer begrenzter analytischer CLOSED-Status von #12 bleibt unverändert.
