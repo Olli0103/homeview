@@ -257,7 +257,7 @@
       "F011",
       "F012"
     ],
-    "current": "Bis zehn bewusst gewählte Bilder, lokale 30-Sekunden-Rotation und manueller Shared-Album-Import sind vorhanden. Kein kontinuierlicher Albumabgleich.",
+    "current": "Bis zehn bewusst gewählte Bilder, lokale Rotation und ein ausdrücklich freigegebenes, begrenzt aktualisiertes Shared Album sind implementiert. Updates nur bei aktiver App; privater Katalog nur nach Geräteauthentifizierung. Originale Galerie-/Wechselregeln und reale PhotoKit-Abnahme offen.",
     "tasks": [
       "Originale Galerieauswahl und Wechselregeln klären",
       "Begrenzte, widerrufbare Albumaktualisierung implementieren, soweit PhotoKit sie unterstützt",
@@ -268,7 +268,8 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/11",
     "issue_number": 11,
-    "state": "open"
+    "state": "open",
+    "implementation_note": "selected-album-updates.md; 128 Core, acht aktuelle gezielte UI-Ausführungen, fünf SDKs. Historischer breiter Lauf 31/34 getrennt dokumentiert."
   },
   {
     "key": "PHOTO-02",

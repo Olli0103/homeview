@@ -1,0 +1,172 @@
+{
+  "code_commit": "6994bde8db180bad27baa86e6941925c5792472f",
+  "feature_commit": "d3bee86b265ce64cab98a6c5fd0d569b8d3ca096",
+  "source_digest": "4752c60279a7a31c952c4a54a576ea9c561ab44473a2e481ca8daecc22af6b55",
+  "source_files": 130,
+  "source_before_after_match": true,
+  "source_matches_feature_and_merge_committed_bytes": true,
+  "core_passed": 128,
+  "core_repeated_after_feature_commit": true,
+  "core_repeated_after_merge_commit": true,
+  "current_targeted_ui": [
+    {
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434",
+      "test_failure_names": []
+    },
+    {
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434",
+      "test_failure_names": []
+    }
+  ],
+  "current_targeted_ui_executions": 8,
+  "current_targeted_scope": [
+    "selected-album switch and actual personal-photo button touch",
+    "read-only unsupported-store preservation",
+    "native home marks and accessible photo action",
+    "own demo photos, gallery and personal preview"
+  ],
+  "current_sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-17T23:49:48.594778+00:00",
+      "ended": "2026-10-17T23:49:55.443602+00:00",
+      "log_sha256": "80b013e249abe3c33515c0cd408de1c9db7adaf3a54efa009b3b17873e784038"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-17T23:49:55.444256+00:00",
+      "ended": "2026-10-17T23:50:00.158141+00:00",
+      "log_sha256": "e073337ac328bdeb70f49a27fcbf92139390040f8aadff40d35993691559b15f"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-17T23:50:00.158679+00:00",
+      "ended": "2026-10-17T23:50:04.559485+00:00",
+      "log_sha256": "a6157f5d6ffebdad009d582c6973aa591cd635505a72d77b12ea430dd9bfbb70"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-17T23:50:04.560002+00:00",
+      "ended": "2026-10-17T23:50:09.268702+00:00",
+      "log_sha256": "1284798de4841c238f62bb84572c90113ae672d7d3f470b285f053ee5367d62c"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-17T23:50:09.269244+00:00",
+      "ended": "2026-10-17T23:50:10.698025+00:00",
+      "log_sha256": "4accf3b1fbefa251540fe7086c1a1dda807c22d899ec08af23058d5a5109c344"
+    }
+  ],
+  "supporting_broad_checkpoint": {
+    "source_digest": "8d7428d252651d21e08c71d29376f1023593b3fe0132040e465268dd55115e0b",
+    "source_files": 130,
+    "execution_base_commit": "93b4d2e7f7c338e1134989951fb50c44af0cf20e",
+    "source_manifest": "selected-album-storage-source.json",
+    "core_passed": 128,
+    "ui": [
+      {
+        "device": "iPad",
+        "passed": 15,
+        "failed": 2,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "runtime": "iOS 27.0 / 24A434",
+        "test_failure_names": [
+          "HomeViewUITests/testAlbumSourceSwitchAndPersonalPreviewUseOnlyTheSelectedAlbum()",
+          "HomeViewUITests/testReadOnlyRecoveredSnapshotCannotBeOverwrittenByAlbumConnection()"
+        ]
+      },
+      {
+        "device": "iPhone",
+        "passed": 16,
+        "failed": 1,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "runtime": "iOS 27.0 / 24A434",
+        "test_failure_names": [
+          "HomeViewUITests/testAlbumSourceSwitchAndPersonalPreviewUseOnlyTheSelectedAlbum()"
+        ]
+      }
+    ],
+    "ui_executions": 34,
+    "passed_executions": 31,
+    "failed_executions": 3,
+    "status": "historical failed broad run, NOT relabelled as a final full-suite PASS",
+    "resolution": "Both photo-preview failures were parent accessibility-identifier propagation, proven with actual screen and archived accessibility snapshot. The iPad read-only failure was the central test drag landing on a Slider. Explicit accessibility containment and measured gutter drags retain the original full-visibility and content/state assertions. All affected cases pass in the current targeted checkpoint.",
+    "only_changed_source_paths_since_broad_run": [
+      "Sources/App/HomeScreens.swift",
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "core_and_album_storage_inputs_unchanged": true
+  },
+  "known_permission_revocation_regression": {
+    "before": "Selected export remained after known permission loss on foreground and was throttled.",
+    "red_tests": 2,
+    "red_source_digest": "e71f4f1b1c99bca633c6a6f0eebe5acad71a3305ed0ffc23e705bd5aa739babe",
+    "after": "Known permission loss clears the selected export before foreground display or automatic-read throttling, without permission prompts or library reads."
+  },
+  "private_catalogue_requires_actual_device_authentication": true,
+  "os_permission_not_treated_as_device_authentication": true,
+  "ongoing_shared_display_selection_requires_explicit_action": true,
+  "selected_album_only_no_catalogue_enumeration_during_update": true,
+  "background_photo_reads": false,
+  "automatic_refresh_throttle_seconds": 30,
+  "maximum_photos": 10,
+  "maximum_photo_bytes": 5000000,
+  "maximum_total_bytes": 30000000,
+  "image_request_budget_seconds": 20,
+  "whole_image_fetch_budget_seconds": 45,
+  "provider_in_automated_tests": "synthetic fixture only, real provider construction rejected",
+  "real_photo_library_opened_in_tests": false,
+  "real_homekit_constructed_or_operated": false,
+  "original_gallery_selection_or_switch_rules_accepted": false,
+  "physical_device_or_real_photokit_accepted": false,
+  "full_current_ui_suite_pass_claimed": false,
+  "visual_review_both_devices": true,
+  "screenshots": "../screenshots/goal-20261018/selected-album-manifest.json",
+  "logs": {
+    "album-revocation-fixed-core.log": "eec45c42ee49cdb983a6815d1fe97af56f491ab789bd6dffd959dab7e7410cc4",
+    "album-feature-post-commit-core.log": "2507644f8db9d949a45a008e8956c2020b072fe94a3c149a14d1b9fe2d4d0fc2",
+    "album-integrated-core.log": "16d30056132152c1ce1fb81142bcebdc87f2fb859c5560b333fa327c2c9cd6f4",
+    "album-preview-accessibility-build-for-testing.log": "c8f802fb2e5f867f58545a981bdbabe8836436203ee50b4a66ee00f22c97e23d",
+    "album-preview-accessibility-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_ui_summary_hashes": {
+    "album-preview-followup": {
+      "iPad": "a491ccdab9b3f338ed7b091ea11a37d324f3e58269bc55052a23cc5c8300d747",
+      "iPhone": "56d84f1da13ed40305e4835d926721548844036df7d6c41014fd51435dd153c1"
+    },
+    "album-revocation-fixed-ui": {
+      "iPad": "e148b210bd31356672ab07e8f8c2ba8462510f4ea83c22dc9369b91ba548847f",
+      "iPhone": "aa2aada9b910b178a99e620ccccd6660535e678ae3eec0e184cb85a957381f63"
+    }
+  },
+  "contact_sheet": {
+    "path": "Docs/screenshots/goal-20261018/selected-album-current-contact.jpg",
+    "sha256": "9135def4519670195ce9af25a3912faa2c776fb87b3e523fb4e722ac4107c027",
+    "pixels": [
+      1800,
+      1000
+    ]
+  }
+}

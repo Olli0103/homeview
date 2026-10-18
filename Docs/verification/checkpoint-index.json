@@ -847,6 +847,44 @@
       ],
       "core_repeated_after_commit": true,
       "post_commit_core_log_sha256": "7f8afc3673cade74b63ffe1a16d0bc778ff4b9a5b1261dc9ab153e51a34c7abd"
+    },
+    {
+      "checkpoint": "selected-album-updates",
+      "commit": "6994bde8db180bad27baa86e6941925c5792472f",
+      "source_digest": "4752c60279a7a31c952c4a54a576ea9c561ab44473a2e481ca8daecc22af6b55",
+      "files_verified": 130,
+      "core_passed": 128,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434",
+          "test_failure_names": []
+        },
+        {
+          "device": "iPhone",
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434",
+          "test_failure_names": []
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "16d30056132152c1ce1fb81142bcebdc87f2fb859c5560b333fa327c2c9cd6f4",
+      "supporting_failed_broad_run_is_separate": "selected-album-updates.json",
+      "no_full_current_ui_suite_claim": true
     }
   ],
   "all_sources_match_committed_bytes": true
