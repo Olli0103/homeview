@@ -415,3 +415,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: Stundenmarkierungen der kleinen Glas-Uhr
 
 [Begrenzte UI07-Kalibrierung](home-clock-hour-marks.md):166Modelltests,14gezielteUI,5SDK. NurStundenstrichlänge;Strichstärke/äußereEnden erhalten.AußerhalbzwölfMarkierungsbereiche0Pixeländerung,achtandereAtlasziele jeGerätRGBA/PNGexakt.Zeiger/Relief/Nabe/Licht/Hardwarebleibenoffen.
+
+
+## 18. Oktober: Zeigerrelief, Minutenlänge und offene Nabe
+
+[Begrenzte UI07-Korrektur](home-clock-hand-relief.md):166Modelltests,14gezielteUI,5SDK.NurschmaleZeigeransätze,vorhandenesRelief,MinutenlängeundeigeneRingnabe.AußerhalbZeigerbereiche0Pixeländerung,dreiMarkierungsausschnitteundachtandereAtlasziele jeGerätexakt.Originalkonturen/Licht/Hardwarebleibenoffen.
