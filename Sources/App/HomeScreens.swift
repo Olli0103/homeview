@@ -48,17 +48,22 @@ struct PersonalView: View {
         } else {
           HStack(alignment:.top,spacing:25) {
             appGrid(configuration.apps)
-            VStack(alignment:.leading,spacing:8) {
-              LandscapeArt().frame(width:230,height:230)
-                .overlay(alignment:.topTrailing) {
-                  Text("DEMO").font(.system(size:9,weight:.semibold)).foregroundStyle(.white)
-                    .padding(.horizontal,6).padding(.vertical,3)
-                    .background(.black.opacity(0.55),in:Capsule()).padding(10)
-                }.clipShape(RoundedRectangle(cornerRadius:26))
-                .accessibilityLabel("Demo photo album")
-              Text("Photos").font(.system(size:17,weight:.medium)).frame(maxWidth:.infinity)
-            }.frame(width:230)
-          }.accessibilityIdentifier("personal.photos.layout")
+            Button { model.openPhotoFace() } label: {
+              VStack(alignment:.leading,spacing:8) {
+                SelectedPhotoPreview().frame(width:230,height:230)
+                  .overlay(alignment:.topTrailing) {
+                    if !model.hasPhotoSelection {
+                      Text("DEMO").font(.system(size:9,weight:.semibold)).foregroundStyle(.white)
+                        .padding(.horizontal,6).padding(.vertical,3)
+                        .background(.black.opacity(0.55),in:Capsule()).padding(10)
+                    }
+                  }.clipShape(RoundedRectangle(cornerRadius:26))
+                Text("Photos").font(.system(size:17,weight:.medium)).frame(maxWidth:.infinity)
+              }.frame(width:230)
+            }.buttonStyle(.plain).accessibilityLabel("Photos")
+              .accessibilityIdentifier("personal.photos.open")
+          }.accessibilityElement(children:.contain)
+            .accessibilityIdentifier("personal.photos.layout")
           if model.playing || model.connections.musicPlaying || model.podcastPlaying
             || model.data.timers.contains(where:{$0.remaining(at:model.now)>0}) { ActivityStrip() }
           Spacer(minLength:0)

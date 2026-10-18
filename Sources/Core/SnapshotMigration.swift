@@ -64,6 +64,29 @@ extension Snapshot {
     output.screenBrightness = min(1,max(0,value("screenBrightness",fallback.screenBrightness)))
     output.keepDisplayOn = value("keepDisplayOn",fallback.keepDisplayOn)
     output.photoIDs = Array(value("photoIDs",fallback.photoIDs).filter { UUID(uuidString:$0) != nil }.prefix(10))
+    // Missing means an older snapshot. A present but malformed discriminator
+    // must not resurrect an unrelated legacy selected-photo.data file.
+    output.photoSelection = stored["photoSelection"] == nil ? .legacy : value("photoSelection",.none)
+    let galleryTitle: String? = value("photoGalleryTitle",nil)
+    output.photoGalleryTitle = galleryTitle.flatMap {
+      !$0.isEmpty && $0.count <= 120 && $0.utf8.count <= 2048
+        && !$0.unicodeScalars.contains(where: CharacterSet.controlCharacters.contains) ? $0:nil
+    }
+    let grant: AlbumDisplayGrant? = value("albumDisplay",nil)
+    output.albumDisplay = grant.flatMap { item in
+      item.valid && item.cache.map(\.fileID) == output.photoIDs ? item:nil
+    }
+    if output.photoSelection == .album, output.albumDisplay == nil {
+      output.photoSelection = .none
+    }
+    if output.photoSelection == .none {
+      output.photoIDs = []
+      output.photoGalleryTitle = nil
+    } else if output.photoSelection == .single {
+      output.photoIDs = Array(output.photoIDs.prefix(1))
+      output.photoGalleryTitle = nil
+    }
+    if output.photoSelection != .album { output.albumDisplay = nil }
     output.rotatePhotos = value("rotatePhotos",fallback.rotatePhotos)
     output.photoAdjustments = table("photoAdjustments",limit:100)
     output.timers = items("timers",fallback.timers,limit:12) {
