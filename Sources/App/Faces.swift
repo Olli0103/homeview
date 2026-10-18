@@ -179,18 +179,21 @@ struct ModularFace: View {
             Image(systemName: "location.fill").font(.system(size: 15))
           }.foregroundStyle(.white).accessibilityElement(children:.contain)
             .accessibilityIdentifier("modular.weather.cityRow")
+            .offset(y:2)
           Text(model.connections.weatherTemperature).font(
-            .system(size: 122, weight: .medium, design: .rounded)
-          ).tracking(-8)
+            .system(size: 122, weight: .medium)
+          ).tracking(-8).scaleEffect(125.0/122,anchor:.topLeading).offset(y:-22)
+            .accessibilityIdentifier("modular.weather.temperature")
           Image(systemName: model.connections.weatherSymbol).font(
-            .system(size: 29))
+            .system(size: 29)).scaleEffect(24.0/29,anchor:.topLeading).offset(y:-18)
           Text(model.connections.weatherCondition).font(.system(size: 23))
+            .offset(y:-27)
             .accessibilityIdentifier("modular.weather.condition")
           Text(
             model.connections.weatherHighLow
-          ).font(.system(size: 21))
-        }.frame(maxWidth: .infinity, alignment: .leading)
-      }.buttonStyle(.plain)
+          ).font(.system(size: 21)).offset(y:-28).accessibilityIdentifier("modular.weather.highlow")
+        }.frame(maxWidth: .infinity, alignment: .leading).offset(x:10)
+      }.buttonStyle(.plain).accessibilityIdentifier("modular.weather.widget")
     case "Calendar":
       Button {
         model.navigate(.calendar)
