@@ -349,6 +349,9 @@ struct PhotoFace: View {
         Text(verbatim:"height=\(model.photoComposition.clockRect.height);y=\(model.photoComposition.clockRect.y);coverage=\(model.photoComposition.coverage)")
           .font(.system(size:1)).foregroundStyle(.clear).allowsHitTesting(false)
           .accessibilityIdentifier("photo.clock.geometry.test")
+        Text(verbatim:"digits=\(model.dateLabel("hh mm"));revision=\(model.photoInkRevision);ink=\(model.photoComposition.clockInkCoverage?.overall ?? -1);maxDigit=\(model.photoComposition.clockInkCoverage?.perDigit.max() ?? -1)")
+          .font(.system(size:1)).foregroundStyle(.clear).allowsHitTesting(false)
+          .accessibilityIdentifier("photo.clock.ink.test")
       }
       if ProcessInfo.processInfo.arguments.contains("--uitesting") {
         let assetIDs=model.data.albumDisplay?.cache.map(\.assetID) ?? []
@@ -366,6 +369,12 @@ struct PhotoFace: View {
       if ProcessInfo.processInfo.arguments.contains("--uitesting") &&
          ProcessInfo.processInfo.arguments.contains("--photo-glyph-atlas") {
         PhotoTallGlyphAtlas()
+      }
+      if ProcessInfo.processInfo.arguments.contains("--uitesting") &&
+         ProcessInfo.processInfo.arguments.contains("--photo-ink-raster-control"),
+         let image = model.photoInkControlImage {
+        Image(decorative:image,scale:1).resizable().interpolation(.none)
+          .frame(width:600,height:600)
       }
     }.coordinateSpace(name: "photo-face").clipped().onTapGesture { model.nextPhoto() }
   }

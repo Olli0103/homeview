@@ -47,3 +47,9 @@ AI-generated fictional images, created with the built-in image_gen tool without
 reference-image input. They are bundled under the project license, not claimed
 to be photographs of an actual known person or place. Selected files, hashes,
 full prompts and limitations: [demo-photo-assets.md](Docs/demo-photo-assets.md).
+
+DemoPortraitNativeAlphaReplayV1 is a deterministic grayscale copy of the alpha
+channel produced by the public native Mac foreground adapter from our own
+DemoPhotoPortraitV1. It is test-only replay data under the project license, not
+an extracted Apple asset, an iOS native-extraction result or a production
+segmentation fallback. Provenance: Docs/demo-photo-assets.json.
