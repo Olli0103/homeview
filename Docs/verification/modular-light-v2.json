@@ -1,0 +1,237 @@
+{
+  "code_commit": "d77e6ed5733a6f8f6b6fb83b22e63810cb479db8",
+  "feature_commit": "5ec36a01e5f00a7d3bf7598274d131beb889d46b",
+  "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b",
+  "source_files": 142,
+  "source_matches_feature_and_merge": true,
+  "changed_sources": [
+    "Sources/App/Faces.swift"
+  ],
+  "exact_two_public_shadow_modifiers_only": true,
+  "all_other_face_body_bytes_unchanged": true,
+  "font_layout_frames_positions_root_core_providers_tests_resources_unchanged": true,
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "ui_executions": 6,
+  "unique_cases": 3,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "native_run_label": "modular-light-v2-prototype-ui",
+  "same_unchanged_source_accepted_after_actual_native_review_not_counted_again": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T07:00:07.475944+00:00",
+      "ended": "2026-10-18T07:00:22.717421+00:00",
+      "log_sha256": "dfffc0b795ed538a01f17479ec9f1625e8cbcd4a4ec18bc1833f9b5e6c9714a4"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T07:00:22.717990+00:00",
+      "ended": "2026-10-18T07:00:35.878115+00:00",
+      "log_sha256": "840f2e699315f4a05b985d0dd46bf3a01598068312a0415af722db135d495214"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T07:00:35.878642+00:00",
+      "ended": "2026-10-18T07:00:46.630672+00:00",
+      "log_sha256": "d0db3e45e780125362fca5bfcb043393ee8ca934d458f1ed9a72b01f5fdc4091"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T07:00:46.631439+00:00",
+      "ended": "2026-10-18T07:00:58.283146+00:00",
+      "log_sha256": "18d2330fd94e8de00c4f0d242fa9060554d2209e2bb3c549b6a1281e29c580a5"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T07:00:58.283613+00:00",
+      "ended": "2026-10-18T07:01:05.650445+00:00",
+      "log_sha256": "1db8bcea058abf61e23a2cdacbde11fd521bc1eb31a554d6d3e00a3c6057e163"
+    }
+  ],
+  "before_source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321",
+  "before_native_capture": "night-primary-final-ui, same source as published night-primary baseline",
+  "own_predeclared_contract": {
+    "scope": "Own bounded thin highlight prototype informed by privately viewed frontal UI01; not Apple shader reconstruction or original parity",
+    "before_visible_prototype": true,
+    "base_commit": "4c4e1337c8b3496a2aa2a5c7fce4d6e8ffdd1ce7",
+    "allowed_changed_regions_normalized": {
+      "date": [
+        0.17,
+        0.18,
+        0.36,
+        0.47
+      ],
+      "temperature": [
+        0.52,
+        0.57,
+        0.88,
+        0.78
+      ]
+    },
+    "outside_regions_changed_pixels": 0,
+    "preserve_black_interiors": {
+      "baseline_maxRGB_under": 25,
+      "changed_interior_pixels": 0,
+      "erode_baseline_dark_mask_by_reference_pixels": 1
+    },
+    "highlight_must_be_visible_outside_old_dark_ink": true,
+    "no_font_or_layout_sizing_change": true,
+    "other_faces_source_bytes_unchanged": true,
+    "original_reference": "UI01 direct private viewing; light edge around date/temperature; background-relative edge samples saved privately",
+    "original_font_shader_exactness_accepted": false,
+    "hardware_accepted": false,
+    "strict_ROI_comparison_scope": "UI01-like April 1 reference state only; other two-digit dates are native rendering regressions, not a new original geometry target",
+    "baseline_has_no_visible_source_edit": true,
+    "contract_version": 4,
+    "pre_prototype_revision_reason": "Clarify that preserved dark interiors exclude anti-aliased boundary pixels: erode the baseline dark mask by one reference pixel. No prototype has run or been viewed; initial draft retained.",
+    "resumed_base_commit": "fb817ca956a0f96c34ce58d456981ad758fa8e0b",
+    "resumed_base_source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321",
+    "prior_contract_criteria_retained": true,
+    "resumption_reason": "Separate qualified night-primary fix is published; native daytime images are byte-identical old baseline. New base matches source of completed native night-primary captures, no new baseline UI execution claimed.",
+    "positive_highlight_check_before_native_prototype_capture": {
+      "per_region_minimum_pixels": 100,
+      "baseline_not_dark_maxRGB_at_least": 70,
+      "each_rgb_channel_increase_at_least": 2,
+      "scope": "Date and temperature of fixed April 1 reference view on each primary device",
+      "meaning": "Own positive visible-halo control, not an RGB error allowance. Outside-region and eroded dark-interior changed-pixel allowances remain exactly zero."
+    }
+  },
+  "actual_native_pixel_checks": [
+    {
+      "device": "iPad",
+      "changed_pixels_total": 20512,
+      "outside_allowed_regions_changed_pixels": 0,
+      "regions": [
+        {
+          "region": "date",
+          "eroded_dark_core_pixels": 30047,
+          "changed_dark_core_pixels": 0,
+          "visible_highlight_pixels": 3495,
+          "core_unchanged": true,
+          "positive_highlight_passed": true
+        },
+        {
+          "region": "temperature",
+          "eroded_dark_core_pixels": 31263,
+          "changed_dark_core_pixels": 0,
+          "visible_highlight_pixels": 9148,
+          "core_unchanged": true,
+          "positive_highlight_passed": true
+        }
+      ],
+      "night_wrong_color_pixels": 0,
+      "all_contract_checks_passed": true
+    },
+    {
+      "device": "iPhone",
+      "changed_pixels_total": 9540,
+      "outside_allowed_regions_changed_pixels": 0,
+      "regions": [
+        {
+          "region": "date",
+          "eroded_dark_core_pixels": 15274,
+          "changed_dark_core_pixels": 0,
+          "visible_highlight_pixels": 1628,
+          "core_unchanged": true,
+          "positive_highlight_passed": true
+        },
+        {
+          "region": "temperature",
+          "eroded_dark_core_pixels": 16448,
+          "changed_dark_core_pixels": 0,
+          "visible_highlight_pixels": 4673,
+          "core_unchanged": true,
+          "positive_highlight_passed": true
+        }
+      ],
+      "night_wrong_color_pixels": 0,
+      "all_contract_checks_passed": true
+    }
+  ],
+  "default_April1_strict_ROI_scope_not_all_widget_combinations": true,
+  "reference_width_for_inner_mask_erosion": 544,
+  "inner_mask_native_radius_pixels": {
+    "iPad": 3,
+    "iPhone": 2
+  },
+  "positive_control_not_RGB_error_allowance": true,
+  "own_pngs_reviewed": 22,
+  "panels": [
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-contact-1.jpg",
+      "sha256": "149931544da0ff9f673cc235d109c0cd33502f4d1dd545df2f075ca86bb448e0"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-contact-2.jpg",
+      "sha256": "cbc1eed48a0f44d2cf942d22678633803c1292bd1d2f95c322119a2b34e596e1"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-contact-1.jpg",
+      "sha256": "7cdf78ba3bbe926b54c42848c0e35c9a1c8a5fc16ad4f2419578447333409cc8"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-contact-2.jpg",
+      "sha256": "2530b28e4d291aaca5b3de2e1190702f72fc6cb6075acf5757fc2c75381098ad"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-own-detail.jpg",
+      "sha256": "9ee998c1ba07edb8f5a43fa8e1436745ff5b02b70444fdbb3f624b87fe8e0349"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-own-detail.jpg",
+      "sha256": "475b1f4ab01e992ae6f6886ffc8aeb31bc2cb8308cb264bf65a2667c235a8b3f"
+    }
+  ],
+  "history": {
+    "initial_contract_draft_retained": true,
+    "inner_mask_definition_clarified_before_any_visible_prototype_frame": true,
+    "numeric_positive_halo_control_frozen_before_native_prototype_capture": true,
+    "base_changed_only_after_separate_night_fix_publication_day_images_byte_identical": true,
+    "old_iPad_night_failure_not_erased_or_assigned_to_this_feature": true,
+    "prototype_source_archive_sha256": "7903176ab1a4d3c75fc218889d48f9b9b017dd568365fdff85d50c1a577f7b41"
+  },
+  "full_ui_or_original_suite_claimed": false,
+  "original_font_embossed_shader_or_visual_parity_accepted": false,
+  "hardware_accepted": false,
+  "real_accounts_homes_libraries_or_system_alarms_used": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/modular-light-v2-manifest.json",
+  "logs_sha256": {
+    "modular-light-v2-core.log": "1f766162826be6cf700847b5e242c9d9d19d2eb175f8562735520885966a2c2e",
+    "modular-light-v2-feature-post-commit-core.log": "a0e7f80c26218e4506e8af659165b1a1776ffd698b2dd69472f3b0d25cd3368d",
+    "modular-light-v2-integrated-core.log": "294e57a1d9f604534a51ac359a2806cc16c6ffc6fd5f52ecc829b733f318f089",
+    "modular-light-v2-build.log": "f42d155fa3e437d60afbbdb4b278e37d2bbeb95c7d7f0ce1dae82cfc4413501c",
+    "modular-light-v2-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "96773e8d1d3e2230a04ae34d889ce81ce388bed401c93578277a66c0def60301",
+    "iPhone": "ff25efdb4808ac9e54154c910656002360e3a4ff65f4b051d74443c0cc786657"
+  }
+}
