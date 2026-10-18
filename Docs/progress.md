@@ -16,6 +16,7 @@ freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetz
 | [Lokaler Timer-Lebenszyklus](timer-lifecycle.md) | 139 | 4 | 5 |
 | [Höhere Foto-Glasziffern in bestehender Schutzzone](photo-type.md) | 139 | 16 | 5 |
 | [Adaptive hohe Foto-Uhr mit vorhandener Matte](photo-adaptive.md) | 143 | 20 | 5 |
+| [Eigene hohe Foto-Konturen und Zehneratlas](photo-glyphs.md) | 143 | 22 | 5 |
 
 Jede Zeile bezeichnet einen eigenen gebundenen Quellenstand, keine aufsummierte
 aktuelle Vollsuite. Original-/Geräteabnahmen bleiben wie in den Einzelbelegen
