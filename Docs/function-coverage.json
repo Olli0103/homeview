@@ -1931,7 +1931,8 @@
       "DAY-03"
     ],
     "current": [
-      "Lokale und angebundene Timer sind vorhanden. Drei synthetische Timer und ihre unabhängigen Zähler sowie eigene12erAnlage-/Horizontalgrenze mit tatsächlicher Auswahl/Löschen/13erAblehnung nativ geprüft. Zugängliche Anzahl ergänzt; Produktionslogik für Timer/Grenze/Ersatzwahl/Sortierung unverändert. Bounded evidence: Docs/timer-selection.md und Docs/timer-overflow.md."
+      "Lokale und angebundene Timer sind vorhanden. Drei synthetische Timer und ihre unabhängigen Zähler sowie eigene12erAnlage-/Horizontalgrenze mit tatsächlicher Auswahl/Löschen/13erAblehnung nativ geprüft. Zugängliche Anzahl ergänzt; Produktionslogik für Timer/Grenze/Ersatzwahl/Sortierung unverändert. Bounded evidence: Docs/timer-selection.md und Docs/timer-overflow.md.",
+      "Eigene laufende/pausierte Timer nach Hintergrund und App-Prozessneustart mit frischem UUID-Test-Speicher nativ geprüft; nur Testcode geändert. Docs/timer-lifecycle.md. Kein OS-/Geräteneustart oder Systemalarmabgleich."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1944,7 +1945,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "bounded synthetic3timer independence and own12timer normal-add/manual-overflow/deletion/limit checks passed; simultaneous expiry, system reconciliation and lifecycle remain pending",
+      "functional": "bounded synthetic3timer independence, own12timer overflow/limit and own-store background/app-process-restart checks passed; simultaneous expiry, OS/device restart, clock changes and system reconciliation pending",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
