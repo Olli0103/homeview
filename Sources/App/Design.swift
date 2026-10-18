@@ -138,6 +138,7 @@ struct AnalogClock: View {
   var secondsReach = 0.99
   var lightEdgeInk = false
   var majorTickLength = 10.0
+  var hollowHub = false
   var body: some View {
     MotionTimeline { _ in clock(date: model.referenceClock ? date : Date()) }
   }
@@ -174,8 +175,17 @@ struct AnalogClock: View {
       let m = reading.minutes
       let s = reading.seconds
       let hands = handColor ?? tint
+      let hub = max(3, r * 0.035)
+      let hubHole = hub * 0.55
+      var handContext = context
+      if hollowHub {
+        var clipping = Path(CGRect(origin:.zero,size:size))
+        clipping.addEllipse(in:CGRect(x:center.x-hubHole,y:center.y-hubHole,
+          width:hubHole*2,height:hubHole*2))
+        handContext.clip(to:clipping,style:FillStyle(eoFill:true))
+      }
       func hand(angle: Double, length: Double, width: Double, color: Color) {
-        var bodyContext=context
+        var bodyContext=handContext
         if lightEdgeInk {
           bodyContext.addFilter(.shadow(color:.white.opacity(0.35),radius:0.65,x:0,y:0.2))
         }
@@ -196,7 +206,7 @@ struct AnalogClock: View {
           path.move(to: CGPoint(x: center.x + neck * cos(angle), y: center.y + neck * sin(angle)))
           path.addLine(to: CGPoint(x: center.x + length * cos(angle), y: center.y + length * sin(angle)))
           if !lightEdgeInk {
-            var shadow=context
+            var shadow=handContext
             shadow.addFilter(.shadow(color:.black.opacity(0.28),radius:1.5,x:1.2,y:2))
             shadow.stroke(path,with:.color(color),style:style)
           }
@@ -218,19 +228,26 @@ struct AnalogClock: View {
         to: CGPoint(x: center.x - r * 0.15 * cos(angle), y: center.y - r * 0.15 * sin(angle)))
       needle.addLine(
         to: CGPoint(x: center.x + r * secondsReach * cos(angle), y: center.y + r * secondsReach * sin(angle)))
-      context.stroke(
+      handContext.stroke(
         needle, with: .color(second),
         style: StrokeStyle(lineWidth: max(0.8, r * 0.009), lineCap: .round))
-      let hub = max(3, r * 0.035)
-      context.fill(
-        Path(
-          ellipseIn: CGRect(x: center.x - hub, y: center.y - hub, width: hub * 2, height: hub * 2)),
-        with: .color(second))
-      context.fill(
-        Path(
-          ellipseIn: CGRect(
-            x: center.x - hub * 0.55, y: center.y - hub * 0.55, width: hub * 1.1, height: hub * 1.1)
-        ), with: .color(hands))
+      if hollowHub {
+        var ring = Path(ellipseIn:CGRect(x:center.x-hub,y:center.y-hub,
+          width:hub*2,height:hub*2))
+        ring.addEllipse(in:CGRect(x:center.x-hubHole,y:center.y-hubHole,
+          width:hubHole*2,height:hubHole*2))
+        context.fill(ring,with:.color(second),style:FillStyle(eoFill:true))
+      } else {
+        context.fill(
+          Path(
+            ellipseIn: CGRect(x: center.x - hub, y: center.y - hub, width: hub * 2, height: hub * 2)),
+          with: .color(second))
+        context.fill(
+          Path(
+            ellipseIn: CGRect(
+              x: center.x - hub * 0.55, y: center.y - hub * 0.55, width: hub * 1.1, height: hub * 1.1)
+          ), with: .color(hands))
+      }
     }.accessibilityLabel("Analog clock")
   }
 }
