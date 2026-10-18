@@ -1927,6 +1927,75 @@ final class HomeViewUITests: XCTestCase {
     let red=stride(from:0,to:sky.count,by:4).map { sky[$0] }
     XCTAssertLessThan(red.max()!,100,"The predefined clear-sky region must contain blue sky, not white clouds")
   }
+  func testModularWeatherReferenceFieldsRender() {
+    launch(["--face","Modular"])
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    let viewport=app.otherElements["reference.viewport"].frame
+    var frames:[String:[String:Double]]=[:]
+    for field in ["city","temperature","condition","highlow"] {
+      let element=app.staticTexts["modular.weather."+field].firstMatch
+      XCTAssertTrue(element.waitForExistence(timeout:5))
+      let frame=element.frame
+      XCTAssertFalse(frame.isEmpty)
+      frames[field]=["x":Double((frame.minX-viewport.minX)/viewport.width),
+        "y":Double((frame.minY-viewport.minY)/viewport.height),
+        "width":Double(frame.width/viewport.width),"height":Double(frame.height/viewport.height)]
+      let shot=XCTAttachment(screenshot:element.screenshot())
+      shot.name="modular-reference-"+field;shot.lifetime = .keepAlways;add(shot)
+      print("MODULAR_REFERENCE field=\(field) label=\(element.label)")
+    }
+    let widget=app.buttons["modular.weather.widget"].firstMatch.frame
+    frames["widget"]=["x":Double((widget.minX-viewport.minX)/viewport.width),
+      "y":Double((widget.minY-viewport.minY)/viewport.height),
+      "width":Double(widget.width/viewport.width),"height":Double(widget.height/viewport.height)]
+    let data=try! JSONSerialization.data(withJSONObject:frames,options:.sortedKeys)
+    let geometry=XCTAttachment(data:data,uniformTypeIdentifier:"public.json")
+    geometry.name="modular-weather-reference-frames";geometry.lifetime = .keepAlways;add(geometry)
+    viewportBytes("modular-weather-reference")
+    XCTAssertEqual(app.staticTexts["modular.weather.temperature"].firstMatch.label,"54°")
+    XCTAssertTrue(app.staticTexts["modular.weather.condition"].firstMatch.label.contains("Demo"))
+  }
+  func testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback() {
+    for missing in [false,true] {
+      let state=missing ? "missing":"connected"
+      launch(["--face","Modular","--page","Settings"]+(missing ? ["--weather-missing"]:[]))
+      connectService("Weather");tap("nav.faces")
+      XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+      let city=app.staticTexts["modular.weather.city"].firstMatch
+      let temperature=app.staticTexts["modular.weather.temperature"].firstMatch
+      let condition=app.staticTexts["modular.weather.condition"].firstMatch
+      XCTAssertEqual(city.label,missing ? "Berlin":"Fixture City")
+      XCTAssertEqual(temperature.label,missing ? "—":"55°")
+      XCTAssertFalse(condition.label.contains("Demo"))
+      let viewport=app.otherElements["reference.viewport"].frame
+      for field in ["city","temperature","condition","highlow"] {
+        let text=app.staticTexts["modular.weather."+field].firstMatch
+        XCTAssertFalse(text.frame.isEmpty)
+        XCTAssertGreaterThanOrEqual(text.frame.minX,viewport.minX)
+        XCTAssertLessThanOrEqual(text.frame.maxX,viewport.maxX)
+        XCTAssertGreaterThanOrEqual(text.frame.minY,viewport.minY)
+        XCTAssertLessThanOrEqual(text.frame.maxY,viewport.maxY)
+      }
+      let shot=temperature.screenshot()
+      let attachment=XCTAttachment(screenshot:shot)
+      attachment.name="modular-weather-"+state+"-temperature"
+      attachment.lifetime = .keepAlways;add(attachment)
+      let pixels=[UInt8](viewportPixels(shot.pngRepresentation,inset:0))
+      var dark=0
+      for i in stride(from:0,to:pixels.count,by:4) {
+        if (0..<3).allSatisfy({pixels[i+$0]<70}) { dark += 1 }
+      }
+      XCTAssertGreaterThan(dark,100,"The actual connected value or missing-value dash must visibly render")
+      viewportBytes("modular-weather-"+state)
+      print("MODULAR_REFERENCE_DATA state=\(state) city=\(city.label) temperature=\(temperature.label) condition=\(condition.label) dark=\(dark)")
+      app.buttons["modular.weather.widget"].firstMatch.tap()
+      XCTAssertTrue(app.staticTexts["weather.app.city"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.staticTexts["weather.app.city"].label,missing ? "Berlin":"Fixture City")
+      XCTAssertTrue(app.staticTexts["Conditions"].exists)
+      viewportBytes("modular-weather-"+state+"-opened-city")
+      app.terminate()
+    }
+  }
   func testModularWeatherCityCaptionKeepsVisibleDataProvenance() {
     for connected in [false,true] {
       let state=connected ? "connected":"demo"
