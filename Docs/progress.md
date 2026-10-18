@@ -440,3 +440,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: Flow nach kontrolliertem Hintergrundwechsel
 
 [Lifecycle-Zusatz](flow-lifecycle.md): zwei native Ausführungen mit je drei explizit rückgelesenen Hintergrundzuständen,weiterer Körperbewegung und realem Flow→Fade→Flow. Reduzierte Körper vor/nach Rückkehr exakt;22 eigene PNGs gesichtet. Frühere Home-Tastendruck-Fehler bleiben ungeklärt. App unverändert,keine Energie-/Original-/Hardwareabnahme.
+
+
+## 18. Oktober: Tageswolken-Schatten in UI05
+
+[Begrenzte Farbkorrektur](weather-day-shadow.md):166 Modelltests,22 gezielte iPad-/iPhone-Ausführungen und fünf SDKs bestanden;78 eigene PNGs gesichtet. Zwei vorab begrenzte Licht-/Kontrastmetriken erfüllt; Nacht/Klarhimmel oben94% und untere Tagesregionen exakt erhalten. Keine vollständige Original-/Hardware-/Farbverwaltungsabnahme.

@@ -526,7 +526,7 @@
     "functions": [
       "F019"
     ],
-    "current": "Open-Meteo, unbekannte statt erfundener Werte und getrennte Wetter-App sind geprüft. Eigene Metal-Wolken, Glasziffern und UI05-Geometrie mit öffentlichen Symbolen sind getrennt kalibriert; Demo/Celsius/unbekannte Face-Werte bleiben vollständig sichtbar. Exakte Originalformen, Schrift, Brechung, Übergänge, Regen/Frost und physische Leistung bleiben offen.",
+    "current": "Open-Meteo, unbekannte statt erfundener Werte und getrennte Wetter-App sind geprüft. Eigene Metal-Wolken, Glasziffern und UI05-Geometrie mit öffentlichen Symbolen sind getrennt kalibriert; Demo/Celsius/unbekannte Face-Werte bleiben vollständig sichtbar. Exakte Originalformen, Schrift, Brechung, Übergänge, Regen/Frost und physische Leistung bleiben offen. Tages-Schattenfarbton der eigenen UI05-Wolken nach vorab begrenzter nominaler RGB-Y-Metrik angehoben;166Core/22gezielteUI/5SDK. Nacht/Klarhimmel oben94% und untere Tagesregionen exakt erhalten,78 eigene PNGs gesichtet. Docs/weather-day-shadow.md;Original-/Farbverwaltungs-/Hardwareabnahmen bleiben offen.",
     "tasks": [
       "Wetterzustände, Wind, Feuchte, Luftqualität und Sonnenzeiten mit Quelle und Zeitstempel darstellen",
       "Fehlende Werte nicht erfinden",
