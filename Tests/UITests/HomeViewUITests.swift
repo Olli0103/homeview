@@ -853,6 +853,36 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertLessThan(Double(opaqueMatches)/Double(max(1,samples)),0.05)
     print("PHOTO_GLASS_PIXELS samples=\(samples) transmitted=\(transmitted) opaqueMatches=\(opaqueMatches)")
   }
+  func testPhotoClockVisibleInkUsesButDoesNotExceedTheProtectedBand() {
+    launch(["--face","Photos","--photo-clock-test-mode","background"])
+    let background=viewportBytes("photo-type-protected-band-background")
+    let backdrop=[UInt8](viewportPixels(background,inset:0))
+    app.terminate()
+    launch(["--face","Photos","--photo-clock-test-mode","stencil"])
+    let data=viewportBytes("photo-type-protected-band-stencil")
+    let image=UIImage(data:data)!.cgImage!
+    let pixels=[UInt8](viewportPixels(data,inset:0))
+    XCTAssertEqual(pixels.count,backdrop.count)
+    var rows:[Int]=[]
+    // White runtime ink against the own dark landscape, not accessibility bounds.
+    // Caption and rounded viewport corners are outside this fixed clock ROI.
+    for y in Int(Double(image.height)*0.04)..<Int(Double(image.height)*0.44) {
+      var white=0
+      for x in Int(Double(image.width)*0.05)..<Int(Double(image.width)*0.95) {
+        let i=(y*image.width+x)*4
+        if (0..<3).allSatisfy({pixels[i+$0]>245}) &&
+           (0..<3).contains(where:{backdrop[i+$0]<190}) { white += 1 }
+      }
+      if white>10 { rows.append(y) }
+    }
+    XCTAssertFalse(rows.isEmpty)
+    let top=Double(rows.first ?? 0)/Double(image.height)
+    let bottom=Double((rows.last ?? 0)+1)/Double(image.height)
+    XCTAssertGreaterThanOrEqual(bottom-top,0.27,"Ink should visibly use the taller available band")
+    XCTAssertGreaterThanOrEqual(top,0.07,"Ink must remain inside the existing protected layout")
+    XCTAssertLessThanOrEqual(bottom,0.39,"No glyph may exceed the existing protected layout")
+    print("PHOTO_TYPE_INK top=\(top) bottom=\(bottom) height=\(bottom-top)")
+  }
   func testPhotoGlassNightUsesTheWholeViewportMonochrome() {
     launch(["--face","Photos"])
     tap("nav.controls"); tap("controls.night"); tap("nav.faces")
