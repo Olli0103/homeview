@@ -21,6 +21,7 @@ freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetz
 | [Dominante Achse bei diagonalen Wischgesten](navigation-intent.md) | 159 | 14 | 5 |
 | [Gezielte Wiederherstellung gespeicherter Face-Optionen](face-configuration-recovery.md) | 166 | 8 | 5 |
 | [Vollständige Modular-Wetterstadt ohne gekürzten Demo-Zusatz](modular-weather-caption.md) | 166 | 4 | 5 |
+| [Modular-Wetterblock näher an UI01](modular-weather-reference.md) | 166 | 6 | 5 |
 
 Ein getrennter [nativer Mac-Adapterlauf](photo-native-mac.md) auf dem eigenen
 gebauten Demo-Porträt liefert nun eine tatsächliche Vordergrund-PNG mit brauchbarem
@@ -329,3 +330,13 @@ und Ortszeichen ohne abgeschnittene doppelte Demo-Zugabe, sichtbare Datenherkunf
 bleibt. 166 Modelltests / vier gezielte UI / fünf SDKs. Im Demo-Ganzbild außerhalb
 der Titelzeile null Pixeländerungen; verbundene Ganzbilder pixel-/bytegleich.
 #5/#21 und vollständige Originalabnahmen bleiben offen.
+
+
+## Modular-Wetterblock: normale Schrift und sichtbare Positionen
+
+[Getrennter UI01-Korrekturschritt](modular-weather-reference.md): öffentliche
+normale Temperaturschrift und visuelle Feldpositionen statt Layout-Padding.
+166 Modelltests / sechs abschließende UI / fünf SDKs; Positionsgrenzen grün,
+Demo außerhalb Wetterbereich exakt pixelgleich. Verbundene/fehlende Werte und
+reale Widget-Tap-Ziele geprüft. Originalschrift, Symbolbild, Licht und Hardware
+bleiben offen; #5/#21 unverändert offen.
