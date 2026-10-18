@@ -535,7 +535,7 @@
     "functions": [
       "F020"
     ],
-    "current": "Sechs-Wochen-Matrix, Nachbarmonatstage und digitale Uhr sind implementiert und modellgetestet.",
+    "current": "Sechs-Wochen-Matrix samt Schaltjahr, sechs Wochen belegtem August und lokalem Jahres-/Zeitzonenwechsel auf iPad/iPhone geprüft. Agenda-Auswahl ändert nicht das lokale Heute des Faces. Originalgeometrie, Schrift, weitere Locales und Original-Auswahlregeln bleiben offen.",
     "tasks": [
       "Geometrie, Schrift, Auswahl und Locale gegen alle verfügbaren Referenzzustände prüfen",
       "Monats-/Jahreswechsel, Schaltjahre und Zeitzonenübergang prüfen",
@@ -547,7 +547,8 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/22",
     "issue_number": 22,
-    "state": "open"
+    "state": "open",
+    "implementation_note": "calendar-critical-dates.md;139 Core,12 gezielte UI-Ausführungen,5 SDKs. Synthetische Testuhr; kein EventKit-/Hardware-PASS."
   },
   {
     "key": "HOME-01",

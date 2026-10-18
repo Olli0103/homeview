@@ -1,0 +1,109 @@
+{
+  "code_commit": "af8d5de467cba00913b2381303139d334df22971",
+  "feature_commit": "928412d77aba25a68ea266059c6bfea547c1bbe2",
+  "source_digest": "09d35b59ef2d63e785d346cb2ab3e4c36a70f610447e6a446c6ebeb9a5cfb80e",
+  "source_files": 133,
+  "source_before_after_match": true,
+  "source_matches_committed_bytes": true,
+  "core_passed": 139,
+  "core_repeated_after_feature_and_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 12,
+  "unique_cases": 6,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:28:05.499106+00:00",
+      "ended": "2026-10-18T00:28:20.779020+00:00",
+      "log_sha256": "8871630004a8cef3f780f3644c1b5bf8fd57728f78c1902a2ecdced2a7744f92"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T00:28:20.779550+00:00",
+      "ended": "2026-10-18T00:28:34.624773+00:00",
+      "log_sha256": "00bac010991385e7c02630f409730e686d9c485a57b98546ac743e8072e4e7d9"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:28:34.625334+00:00",
+      "ended": "2026-10-18T00:28:46.392322+00:00",
+      "log_sha256": "695c1a6843efc8297f9c099f1cfd2c596c4ec2d029567328e04fca79a528241d"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:28:46.392858+00:00",
+      "ended": "2026-10-18T00:28:59.095602+00:00",
+      "log_sha256": "196719813f844ff16e6693e554a7e64a115bcca112eb98cba79e0a2cf20b8e99"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:28:59.096094+00:00",
+      "ended": "2026-10-18T00:29:06.318192+00:00",
+      "log_sha256": "0ef865537b538dd64486345ecac7a9e6d655b5526477455d89f4682a85dabda8"
+    }
+  ],
+  "full_ui_suite_claimed": false,
+  "real_calendar_store_accessed": false,
+  "test_clock_requires_uitesting": true,
+  "default_reference_clock_preserved": true,
+  "ui_scope": [
+    "reference April 2026 six-row face",
+    "February 2024 leap day and August 2026 six-week month, all 42 labels and visible bounds",
+    "same instant December 31 Los Angeles / January 1 Kiritimati",
+    "synthetic agenda selection independent of face local today",
+    "existing week selection changes synthetic agenda",
+    "existing camera grid, detail and mock talkback with default reference clock"
+  ],
+  "visual_review_both_devices": true,
+  "original_visual_accepted": false,
+  "original_selection_policy_accepted": false,
+  "other_locales_accepted": false,
+  "hardware_or_eventkit_accepted": false,
+  "remaining_visible_gaps": [
+    "UI08 large date-one stem too wide and lower shoulder too low",
+    "header horizontal alignment and exact typography remain to calibrate"
+  ],
+  "screenshot_manifest": "../screenshots/goal-20261018/calendar-critical-manifest.json",
+  "contact_sheet": {
+    "path": "Docs/screenshots/goal-20261018/calendar-critical-contact.jpg",
+    "sha256": "7b64693e1611840512f7c82f6b8b86d0605ffea525f0003578c16b0d0a9731b3"
+  },
+  "logs": {
+    "calendar-critical-candidate-core.log": "3a3a3b7e87ee69bc3f2efa587b91810c3f81bcfb2a2c682d7ad662274f950930",
+    "calendar-feature-post-commit-core.log": "6d572274e3f3958c261d4729b975d28a9adb1c41c409441eaaf22d5e4f11e3bb",
+    "calendar-integrated-core.log": "dbb7606b60538914e6551e7039ac93327f43161232dd5de3783c7d12df2e2ad0",
+    "calendar-critical-candidate-build-for-testing.log": "7fba98d7fe2b27fb489f66bdfd4b99cdeed4b9165ce86988b0f8b05c1dbfe51c",
+    "calendar-critical-candidate-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "141ca52086527d59ac8ed33a3392d888cedb20e9186e19e4e737f866a650ee56",
+    "iPhone": "bbbe4e9d2473c96fde534822665d19dd9fb39695f9b7120a1f5ead349c49d491"
+  }
+}

@@ -433,7 +433,7 @@ Abhängigkeiten: BASE-02.
 <a id="face-13"></a>
 ### FACE-13: Monatskalender-Face vollständig abnehmen
 
-Sechs-Wochen-Matrix, Nachbarmonatstage und digitale Uhr sind implementiert und modellgetestet.
+Sechs-Wochen-Matrix samt Schaltjahr, sechs Wochen belegtem August und lokalem Jahres-/Zeitzonenwechsel auf iPad/iPhone geprüft. Agenda-Auswahl ändert nicht das lokale Heute des Faces. Originalgeometrie, Schrift, weitere Locales und Original-Auswahlregeln bleiben offen.
 
 Offen:
 
