@@ -38,7 +38,7 @@ using namespace metal;
     return half4(color * coverage, coverage);
 }
 
-// Own photo-clock material. Only runtime public-font alpha and the selected
+// Own photo-clock material. Only own/runtime-public glyph alpha and the selected
 // image enter this effect; the face's crop/destination also drive transmission.
 [[ stitchable ]] half4 photoGlassGlyph(float2 position, SwiftUI::Layer glyphs,
     texture2d<half> photo, float2 origin, float2 cropOrigin, float2 cropSize,
