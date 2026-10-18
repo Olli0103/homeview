@@ -3280,3 +3280,17 @@ extension HomeViewUITests {
     viewportShot("timer-lifecycle-restart-peers-preserved")
   }
 }
+
+
+extension HomeViewUITests {
+  @objc func testWeatherDayShadowPreservesNightAndClearFacePixels() {
+    for (flag,name) in [("--weather-stale-night","night"),("--weather-clear","clear")] {
+      launch(["--face","Weather","--page","Settings",flag])
+      connectService("Weather");tap("nav.faces")
+      XCTAssertTrue(app.otherElements["face.Weather"].waitForExistence(timeout:5))
+      XCTAssertFalse(app.staticTexts["weather.source"].label.hasPrefix("Demo"))
+      if name == "night" { XCTAssertTrue(app.staticTexts["weather.source"].label.hasPrefix("Stale reading")) }
+      viewportShot("weather-shadow-preserved-"+name+"-face")
+    }
+  }
+}
