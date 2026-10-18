@@ -218,18 +218,19 @@ struct RootView: View {
     private func viewportNavigation(edge: Double) -> some Gesture {
       DragGesture(minimumDistance: 45).onEnded { value in
         model.interact()
-        // Exactly one bottom-edge owner per route; never treat the lower
-        // content area as a home gesture. Coordinates are the displayed square.
-        if model.route == .face && value.translation.height < -70
-          && value.startLocation.y > edge * (1 - 16.0 / 600)
-          && abs(value.translation.height) > abs(value.translation.width) {
-          model.homeGesture()
-        } else if value.translation.height > 70 && value.startLocation.y < edge * 0.12 {
-          model.route = value.startLocation.x > edge * 0.74 ? .controlCenter : .assistant
-        } else if model.route == .face && abs(value.translation.width) > 80 {
+        // One dominant axis owns each completed drag. Existing distances and
+        // edge regions stay in the displayed square's coordinate system.
+        switch ViewportNavigationIntent.choose(startX:value.startLocation.x,
+          startY:value.startLocation.y,dx:value.translation.width,dy:value.translation.height,
+          edge:edge,isFace:model.route == .face) {
+        case .home: model.homeGesture()
+        case .assistant: model.route = .assistant
+        case .controlCenter: model.route = .controlCenter
+        case .face(let direction):
           withAnimation(.easeInOut(duration: 0.3)) {
-            model.nextFace(value.translation.width < 0 ? 1 : -1)
+            model.nextFace(direction)
           }
+        case nil: break
         }
       }
     }
