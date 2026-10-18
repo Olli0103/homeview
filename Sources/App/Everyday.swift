@@ -182,6 +182,10 @@ struct TimerView: View {
                   }
                 }.padding(.horizontal, 40)
               }.frame(height:44).padding(.bottom,10)
+                .accessibilityElement(children:.contain)
+                .accessibilityIdentifier("timer.choices")
+                .accessibilityLabel("Timer choices")
+                .accessibilityValue("\(model.data.timers.count) timers")
             }
           }
         }
