@@ -42,7 +42,8 @@
       "FACE-02"
     ],
     "current": [
-      "Richtungsabhängige Übergänge und Raster über unscharfem Face sind implementiert. Federkurven und vollständige Gestenregeln sind eigene Näherungen."
+      "Richtungsabhängige Übergänge und Raster über unscharfem Face sind implementiert. Federkurven und vollständige Gestenregeln sind eigene Näherungen.",
+      "Diagonale Touch-Konflikte am unveränderten Navigationscode reproduziert und durch eigene dominante-Achse-Regel korrigiert; bestehende Abstände/Randbereiche/Übergänge unverändert.159Modelltests/14gezielteUI/5SDK; reale Ziele, Scrollen, Langdruck, Tap und vier pixel-/bytegleiche ignorierte Gestenpaare geprüft. Docs/navigation-intent.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -55,7 +56,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded dominant-axis gesture conflict correction and native scroll/longpress/tap regressions verified; complete original gestures, interactive cancellation and hardware remain unverified",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -259,7 +260,8 @@
       "FACE-02"
     ],
     "current": [
-      "Richtungsabhängige Übergänge und Raster über unscharfem Face sind implementiert. Federkurven und vollständige Gestenregeln sind eigene Näherungen."
+      "Richtungsabhängige Übergänge und Raster über unscharfem Face sind implementiert. Federkurven und vollständige Gestenregeln sind eigene Näherungen.",
+      "Diagonale Touch-Konflikte am unveränderten Navigationscode reproduziert und durch eigene dominante-Achse-Regel korrigiert; bestehende Abstände/Randbereiche/Übergänge unverändert.159Modelltests/14gezielteUI/5SDK; reale Ziele, Scrollen, Langdruck, Tap und vier pixel-/bytegleiche ignorierte Gestenpaare geprüft. Docs/navigation-intent.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -272,7 +274,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded dominant-axis gesture conflict correction and native scroll/longpress/tap regressions verified; complete original gestures, interactive cancellation and hardware remain unverified",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },

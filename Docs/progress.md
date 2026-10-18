@@ -18,6 +18,7 @@ freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetz
 | [Adaptive hohe Foto-Uhr mit vorhandener Matte](photo-adaptive.md) | 143 | 20 | 5 |
 | [Eigene hohe Foto-Konturen und Zehneratlas](photo-glyphs.md) | 143 | 22 | 5 |
 | [Foto-Größenwahl nach tatsächlicher Schrift](photo-ink-placement.md) | 151 | 28 | 5 |
+| [Dominante Achse bei diagonalen Wischgesten](navigation-intent.md) | 159 | 14 | 5 |
 
 Ein getrennter [nativer Mac-Adapterlauf](photo-native-mac.md) auf dem eigenen
 gebauten Demo-Porträt liefert nun eine tatsächliche Vordergrund-PNG mit brauchbarem
@@ -298,3 +299,12 @@ und Minutenwechsel geprüft. Markiertes Mac-Alpha-Replay ist kein iOS-native-PAS
 151 Modelltests / 28 gezielte UI / fünf SDKs; zehn kompakte PNGs exakt erhalten.
 Erster gespiegelter Kandidat verworfen und getrennt dokumentiert. #5 offen;
 historischer begrenzter analytischer CLOSED-Status von #12 bleibt unverändert.
+
+
+## Diagonale Wisch-Navigation
+
+[Begrenzte Konfliktkorrektur](navigation-intent.md) nach zwei tatsächlichen
+Fehlziel-Reproduktionen auf unverändertem App-Code. 159 Modelltests / 14 gezielte
+UI / fünf SDKs; vier ignorierte Gestenpaare pixel- und PNG-bytegleich. Bisherige
+Abstände/Randbereiche und Übergänge bleiben erhalten. #6 und Original-/Hardware-
+Abnahme bleiben offen.
