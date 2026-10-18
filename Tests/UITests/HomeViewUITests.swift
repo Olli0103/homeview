@@ -2286,3 +2286,79 @@ extension HomeViewUITests {
     XCTAssertEqual(wrongColor,0,"Native lenses and fluid must remain within the whole-viewport night treatment")
   }
 }
+
+extension HomeViewUITests {
+  @objc func testTimerControlsHideAfterRealIdleAndTouchRestartsTheDeadline() {
+    launch(["--reference-timer","--timer-idle-test"])
+    let pause=app.buttons["timer.pause"],countdown=app.staticTexts["timer.countdown"]
+    XCTAssertTrue(countdown.waitForExistence(timeout:5))
+    XCTAssertEqual(countdown.label,"10:56")
+    expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:pause)
+    waitForExpectations(timeout:8)
+    XCTAssertFalse(app.buttons["timer.delete"].exists)
+    viewportShot("timer-idle-first-hidden")
+    let frame=countdown.frame
+    let timeTouch=app.coordinate(withNormalizedOffset:.zero).withOffset(
+      CGVector(dx:frame.midX-app.frame.minX,dy:frame.midY-app.frame.minY))
+    timeTouch.tap()
+    XCTAssertTrue(pause.waitForExistence(timeout:3))
+    XCTAssertEqual(pause.label,"Resume timer")
+    Thread.sleep(forTimeInterval:2.8)
+    XCTAssertTrue(pause.exists)
+    timeTouch.tap()
+    Thread.sleep(forTimeInterval:2.3)
+    // More than five seconds after the first reveal, but fewer than four since
+    // the second real touch: a mere one-shot show timer would already have hidden.
+    XCTAssertTrue(pause.exists)
+    XCTAssertEqual(countdown.label,"10:56")
+    viewportShot("timer-idle-touch-reset-visible")
+    expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:pause)
+    waitForExpectations(timeout:8)
+    XCTAssertEqual(countdown.label,"10:56")
+    XCTAssertFalse(app.buttons["timer.delete"].exists)
+    viewportShot("timer-idle-hidden-again")
+    timeTouch.tap()
+    XCTAssertTrue(pause.waitForExistence(timeout:3))
+    tap("timer.delete")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+    viewportShot("timer-idle-delete-returns-setup")
+  }
+}
+
+extension HomeViewUITests {
+  @objc func testRunningTimerContinuesWithHiddenControlsAndPausesAfterTouch() {
+    launch(["--page","Timers","--timer-idle-test"])
+    tap("timer.start")
+    let countdown=app.staticTexts["timer.countdown"],pause=app.buttons["timer.pause"]
+    XCTAssertTrue(countdown.waitForExistence(timeout:5))
+    func seconds(_ text:String) -> Int {
+      let fields=text.split(separator:":").compactMap { Int($0) }
+      XCTAssertTrue(fields.count==2 || fields.count==3)
+      return fields.reduce(0) { $0*60+$1 }
+    }
+    let before=seconds(countdown.label)
+    expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:pause)
+    waitForExpectations(timeout:8)
+    let hidden=seconds(countdown.label)
+    XCTAssertGreaterThan(hidden,0)
+    XCTAssertLessThan(hidden,before,"The countdown must keep running while controls are hidden")
+    viewportShot("timer-idle-running-hidden")
+    let frame=countdown.frame
+    app.coordinate(withNormalizedOffset:.zero).withOffset(
+      CGVector(dx:frame.midX-app.frame.minX,dy:frame.midY-app.frame.minY)).tap()
+    XCTAssertTrue(pause.waitForExistence(timeout:3))
+    tap("timer.pause")
+    XCTAssertTrue(app.buttons["Resume timer"].exists)
+    let frozen=countdown.label
+    Thread.sleep(forTimeInterval:1.5)
+    XCTAssertEqual(countdown.label,frozen)
+    viewportShot("timer-idle-running-then-paused")
+    // A screenshot can consume most of the four-second visibility window.
+    // Reveal again before the actual delete action, as a person would.
+    let visibleFrame=countdown.frame
+    app.coordinate(withNormalizedOffset:.zero).withOffset(
+      CGVector(dx:visibleFrame.midX-app.frame.minX,dy:visibleFrame.midY-app.frame.minY)).tap()
+    tap("timer.delete")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+  }
+}
