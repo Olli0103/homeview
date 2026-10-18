@@ -53,6 +53,15 @@ struct HomeModularFace: View {
     } else { tiles }
     #endif
   }
+  // Independent symbol drawing; retain the 62-point layout and explicitly fill its hit area.
+  private func temperatureArrow(symbol:String, offsetX:CGFloat, label:String,
+    action:@escaping () -> Void) -> some View {
+    Button(action:action) {
+      Image(systemName:symbol).font(.system(size:62 * 0.4,weight:.medium))
+        .foregroundStyle(.white).scaleEffect(1.5).offset(x:offsetX,y:-2.25)
+        .frame(width:62,height:62).background(Color.clear,in:Circle()).contentShape(Rectangle())
+    }.buttonStyle(GlassPressStyle()).accessibilityLabel(label)
+  }
   private var tiles: some View {
       VStack(spacing: 10) {
         HStack(spacing: 10) {
@@ -68,9 +77,9 @@ struct HomeModularFace: View {
                   .contentShape(Rectangle())
               }.accessibilityIdentifier("home.thermostat")
               HStack(alignment: .center) {
-                RoundButton(
-                  symbol: "chevron.down", color: .clear, foreground: .white, size: 62,
-                  label: "Decrease temperature"
+                temperatureArrow(
+                  symbol:"chevron.down", offsetX:15,
+                  label:"Decrease temperature"
                 ) { model.command(.temperature(model.data.home.temperature - 1)) }
                 .accessibilityIdentifier("temperature.decrease")
                 Spacer(minLength: 0)
@@ -79,9 +88,9 @@ struct HomeModularFace: View {
                   Text("Living Room").opacity(0.7)
                 }.font(.system(size: 20))
                 Spacer(minLength: 0)
-                RoundButton(
-                  symbol: "chevron.up", color: .clear, foreground: .white, size: 62,
-                  label: "Increase temperature"
+                temperatureArrow(
+                  symbol:"chevron.up", offsetX:-13.5,
+                  label:"Increase temperature"
                 ) { model.command(.temperature(model.data.home.temperature + 1)) }
                 .accessibilityIdentifier("temperature.increase")
               }.padding(.bottom, 24).padding(.horizontal, 10)

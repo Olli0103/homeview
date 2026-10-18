@@ -284,6 +284,39 @@ final class HomeViewUITests: XCTestCase {
     tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "66°")
   }
+  func testHomeModularThermostatArrowDrawingKeepsControlFramesAndState() {
+    launch(["--face","Home Modular"])
+    let viewport=app.otherElements["reference.viewport"]
+    let thermostat=app.buttons["home.thermostat"]
+    XCTAssertTrue(thermostat.waitForExistence(timeout:5))
+    XCTAssertEqual(thermostat.label,"68")
+    let frame=viewport.frame
+    for id in ["temperature.increase","temperature.decrease"] {
+      let control=app.buttons[id]
+      XCTAssertTrue(control.waitForExistence(timeout:5))
+      XCTAssertTrue(frame.contains(control.frame))
+      XCTAssertEqual(control.frame.width,frame.width*62/600,accuracy:1)
+      XCTAssertEqual(control.frame.height,frame.height*62/600,accuracy:1)
+    }
+    viewportShot("home-modular-thermostat-arrows-initial")
+    // Tap the visible symbol, not just the old control's centre.
+    let origin=app.coordinate(withNormalizedOffset:.zero)
+    origin.withOffset(CGVector(dx:frame.minX+frame.width*0.5645,
+      dy:frame.minY+frame.height*0.5603)).tap()
+    XCTAssertEqual(thermostat.label,"69")
+    viewportShot("home-modular-thermostat-arrows-increased")
+    origin.withOffset(CGVector(dx:frame.minX+frame.width*0.1105,
+      dy:frame.minY+frame.height*0.5603)).tap()
+    XCTAssertEqual(thermostat.label,"68")
+    viewportShot("home-modular-thermostat-arrows-restored")
+    // Padding is a real hit target, not just a visual/AX frame assertion.
+    let increase=app.buttons["temperature.increase"].frame
+    origin.withOffset(CGVector(dx:increase.minX+2,dy:increase.midY)).tap()
+    XCTAssertEqual(thermostat.label,"69")
+    let decrease=app.buttons["temperature.decrease"].frame
+    origin.withOffset(CGVector(dx:decrease.minX+2,dy:decrease.midY)).tap()
+    XCTAssertEqual(thermostat.label,"68")
+  }
   // Regression for material-composition drift: retain exact equality, including
   // across independent cold launches. No retry or RGB tolerance.
   func testHomePrismColdLaunchesKeepFrozenPixelsExact() {
