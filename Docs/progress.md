@@ -400,3 +400,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: UI07-Temperaturzeichnung positioniert
 
 [Begrenzter Positionsschritt](home-temperature-position.md): 166Modelltests,zehn gezielteUI,fünfSDK. Schriftgröße/-breite und Touchrahmen erhalten;außerhalb Temperaturbereich0Pixeländerung auf beiden Geräten. Originalschrift/Licht/Hardware bleiben offen.
+
+
+## 18. Oktober: UI07-Temperaturbreite und Abstand
+
+[Begrenzte Zeichnungskalibrierung](home-temperature-width.md):166 Modelltests,zehn gezielteUI,fünfSDK;vorab gesetzte Breiten-/Abstandsgrenzen erfüllt.Höhe/Mitte/Touchrahmen erhalten,außerhalb Temperaturbereich exakt0Pixeländerung.Originalglyphenform/andere Werte/Licht/Hardware bleiben offen.
