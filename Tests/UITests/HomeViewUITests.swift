@@ -753,6 +753,35 @@ final class HomeViewUITests: XCTestCase {
     tap("reminder.Test groceries")
     XCTAssertTrue(app.buttons["reminder.Test groceries"].exists)
   }
+  func testHomeGridIntercomReferenceMarkAndMatchedState() {
+    XCUIDevice.shared.orientation = .portrait
+    launch(["--page","Home"])
+    XCTAssertTrue(app.buttons["grid.entrylight"].waitForExistence(timeout:5))
+    viewportShot("grid-intercom-entry-on")
+    tap("grid.entrylight")
+    viewportShot("grid-intercom-entry-off")
+    tap("grid.entrylight")
+    viewportShot("grid-intercom-entry-on-return")
+    let intercom=app.buttons.matching(NSPredicate(format:"label CONTAINS %@","Intercom")).firstMatch
+    XCTAssertTrue(intercom.waitForExistence(timeout:5))
+    intercom.tap()
+    XCTAssertTrue(app.textFields["intercom.input"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.buttons["intercom.send"].exists)
+    viewportShot("grid-intercom-local-destination-no-send")
+    // No announcement, microphone or system communication is invoked.
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    drawer();tap("app.Home")
+    XCTAssertTrue(app.buttons["grid.entrylight"].waitForExistence(timeout:5))
+    let pixels=viewportPixels(viewportBytes("grid-intercom-night-primary"))
+    var lit=0,wrong=0
+    for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+      lit+=1
+      if Double(pixels[i+1])>Double(pixels[i])*0.4 || Double(pixels[i+2])>Double(pixels[i])*0.4 { wrong+=1 }
+    }
+    XCTAssertGreaterThan(lit,100)
+    XCTAssertEqual(wrong,0)
+  }
+
   func testReferenceFacesAndHomeGridRender() {
     for name in ["Home Modular", "Weather", "Calendar", "Flow", "Photos"] {
       launch(["--face", name])
