@@ -1,0 +1,57 @@
+{
+  "contains_proprietary_reference": false,
+  "inputs": [
+    {
+      "device": "iPad",
+      "state": "weather-glass-ui05-demo-known-example",
+      "sha256": "e427afbeb6d7b6364644cb3d5d24bd8b7fd02d270831bce6f1746adb7f17c69f",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "checkpoint": "modular-caption-final-ui",
+      "source_digest": "c6fae37d5c545f96a16ccd7d95d67bd5de60984b93b1e3589c32be023a719f69",
+      "path": "Docs/screenshots/goal-20261018/modular-caption-final-iPad-weather-glass-ui05-demo-known-example.png"
+    },
+    {
+      "device": "iPad",
+      "state": "weather-glass-connected-no-invented-aqi",
+      "sha256": "c6edfcdbe47cc0427f27bf1a48efd614c5d9561829b3927178846fead0238e1c",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "checkpoint": "modular-caption-final-ui",
+      "source_digest": "c6fae37d5c545f96a16ccd7d95d67bd5de60984b93b1e3589c32be023a719f69",
+      "path": "Docs/screenshots/goal-20261018/modular-caption-final-iPad-weather-glass-connected-no-invented-aqi.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "weather-glass-ui05-demo-known-example",
+      "sha256": "173d0e1fc232b36c9c6165b61d10f27018c42a658bd88f721b8c4e0283a93028",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "checkpoint": "modular-caption-final-ui",
+      "source_digest": "c6fae37d5c545f96a16ccd7d95d67bd5de60984b93b1e3589c32be023a719f69",
+      "path": "Docs/screenshots/goal-20261018/modular-caption-final-iPhone-weather-glass-ui05-demo-known-example.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "weather-glass-connected-no-invented-aqi",
+      "sha256": "c5e288c1fe16dc2bcbd95d23e36dc0fed7cf5cc7c7a41d152536bd0c962f4305",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "checkpoint": "modular-caption-final-ui",
+      "source_digest": "c6fae37d5c545f96a16ccd7d95d67bd5de60984b93b1e3589c32be023a719f69",
+      "path": "Docs/screenshots/goal-20261018/modular-caption-final-iPhone-weather-glass-connected-no-invented-aqi.png"
+    }
+  ],
+  "output": {
+    "path": "Docs/screenshots/goal-20261018/modular-caption-weather-regression.jpg",
+    "sha256": "607a013c3687621ec66529cf4755087481ee8c10225c355cec36b1f4f4ab4c25"
+  }
+}

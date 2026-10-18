@@ -20,6 +20,7 @@ freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetz
 | [Foto-Größenwahl nach tatsächlicher Schrift](photo-ink-placement.md) | 151 | 28 | 5 |
 | [Dominante Achse bei diagonalen Wischgesten](navigation-intent.md) | 159 | 14 | 5 |
 | [Gezielte Wiederherstellung gespeicherter Face-Optionen](face-configuration-recovery.md) | 166 | 8 | 5 |
+| [Vollständige Modular-Wetterstadt ohne gekürzten Demo-Zusatz](modular-weather-caption.md) | 166 | 4 | 5 |
 
 Ein getrennter [nativer Mac-Adapterlauf](photo-native-mac.md) auf dem eigenen
 gebauten Demo-Porträt liefert nun eine tatsächliche Vordergrund-PNG mit brauchbarem
@@ -319,3 +320,12 @@ fünf SDKs. Vier vollständige Neustart-Bildpaare pixel-/bytegleich; Originalkop
 und gespeicherte Optionen in vier eigenen UUID-Testordnern direkt zurückgelesen.
 Bekannte Geschwister und fremde Face-Konfiguration bleiben erhalten. #7/#80 offen;
 keine vollständige Migration-, Editor-, Original- oder Hardwareabnahme.
+
+
+## Modular-Wetterüberschrift
+
+[Direkt an UI01 orientierte kleine Korrektur](modular-weather-caption.md): Stadt
+und Ortszeichen ohne abgeschnittene doppelte Demo-Zugabe, sichtbare Datenherkunft
+bleibt. 166 Modelltests / vier gezielte UI / fünf SDKs. Im Demo-Ganzbild außerhalb
+der Titelzeile null Pixeländerungen; verbundene Ganzbilder pixel-/bytegleich.
+#5/#21 und vollständige Originalabnahmen bleiben offen.
