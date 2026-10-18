@@ -843,7 +843,7 @@ Abhängigkeiten: SYS-03.
 <a id="day-03"></a>
 ### DAY-03: Mehrere Timer und große Countdown-Ansicht vollständig abnehmen
 
-Countdown und Randring nach UI14 begrenzt kalibriert; lange Anzeige bleibt innerhalb der Randstriche. Zusätzlich vorhandenes Vier-Sekunden-Ausblenden, Touch-Fristneustart und Weiterlaufen bei verborgenen Bedienelementen nativ mit synthetischen Timern geprüft. Produktive Fristen/Alarmadapter unverändert; exaktes Originaltiming, vollständige Original-, Mehrtimer-, Neustart-/Zeitwechsel- und Hardwareabnahme bleiben offen.
+UI14-Geometrie und vorhandene Inaktivitätsregel begrenzt geprüft. Mehrtimer-Status/Titelüberlagerung und schlecht lesbare Chips korrigiert; Auswahl/Löschen sowie zwei unabhängige laufende/pausierte Zähler mit drittem pausierten Timer nativ geprüft. Einzel-Timer-Bilder bleiben exakt unverändert. Fristen/Alarmadapter, Auswahl-Fallback und Sortierung unverändert; Original-Mehrtimerlayout, Vollumfang, Hintergrund/Neustart/Zeitwechsel und Hardware offen.
 
 Offen:
 
