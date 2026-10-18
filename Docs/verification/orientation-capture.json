@@ -1,0 +1,529 @@
+{
+  "feature_commit": "abadefa6eabb9da239f65140f54180beb5c3fe38",
+  "integrated_commit": "0b24240cf2c502f6f6f31de15bc93c43767b5275",
+  "source_digest": "8b54636ba5c9a986feee3bca52d8496c1bcd0faf0d119e44c1ebdc6e2b22f802",
+  "source_files": 142,
+  "only_changed_source": "Tests/UITests/HomeViewUITests.swift",
+  "all_app_core_provider_resource_project_bytes_identical_to": "2cc29b374ba7576f78e6f7508e46197fd17d7e5a",
+  "broad_suite_source_is_separate": "256a9c09fe4b5b7ccf5f4c2879ac75f381a682ffbd5f5a5f3b3ea26a75a49e4b",
+  "final_ui_executions": 6,
+  "final_ui": [
+    {
+      "device": "iPad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "summary_sha256": "d308cedfd956e13c44ad0502e582d24108fea719db3f5e84ab37397e2464b2d2",
+      "log_sha256": "4f393bb5c87c166368ab668f12bc00b509898b6020154dac0c05c8f9779197db"
+    },
+    {
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "summary_sha256": "a9b1e249cd7160b0b00fd945519d7402cbd92921dc37b3b8b4ee3dcb10a6f86c",
+      "log_sha256": "e65b19c47b4f33e46072bef6a416aa45fa2dcfdfe34d4b2566d03d8cadf12d97"
+    }
+  ],
+  "final_selected_cases": [
+    "testLandscapeAndReturnToPortrait",
+    "testHomeGlassControlsRemainInteractive",
+    "testThermostatWritesAndScenePropagatesToDetail"
+  ],
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "new_five_sdk_sweep_claimed": false,
+  "prior_unchanged_app_five_sdk_evidence": "modular-clock.json",
+  "ios_test_bundle_build_succeeded": true,
+  "geometry": [
+    {
+      "device": "iPad",
+      "sha256": "84ae260a27a134e80baea7bae66611abc53511a38b146547074212ea2eb216b2",
+      "geometry": {
+        "app": {
+          "height": 1180,
+          "width": 820,
+          "x": 0,
+          "y": 0
+        },
+        "appImage": {
+          "cgHeight": 2360,
+          "cgWidth": 1640,
+          "height": 1180,
+          "orientation": 0,
+          "scale": 2,
+          "width": 820
+        },
+        "navFaces": {
+          "height": 18,
+          "width": 22,
+          "x": 277.5,
+          "y": 991
+        },
+        "navFacesHittable": true,
+        "orientation": 1,
+        "screenImage": {
+          "cgHeight": 2360,
+          "cgWidth": 1640,
+          "height": 1180,
+          "orientation": 0,
+          "scale": 2,
+          "width": 820
+        },
+        "state": "portrait-final-settled",
+        "thermostat": {
+          "height": 394.02,
+          "width": 508.11333333333334,
+          "x": 25.266666666666666,
+          "y": 190.26666666666665
+        },
+        "thermostatHittable": false,
+        "viewport": {
+          "height": 796,
+          "width": 796,
+          "x": 12,
+          "y": 177
+        }
+      }
+    },
+    {
+      "device": "iPad",
+      "sha256": "1a5b85f786fc2b0e05f216532958b68dd4eee3f460d1eab64b8086bd54cd6315",
+      "geometry": {
+        "app": {
+          "height": 820,
+          "width": 1180,
+          "x": 0,
+          "y": 0
+        },
+        "appImage": {
+          "cgHeight": 1640,
+          "cgWidth": 2360,
+          "height": 1180,
+          "orientation": 3,
+          "scale": 2,
+          "width": 820
+        },
+        "navFaces": {
+          "height": 18,
+          "width": 22,
+          "x": 457.5,
+          "y": 766
+        },
+        "navFacesHittable": true,
+        "orientation": 4,
+        "screenImage": {
+          "cgHeight": 2360,
+          "cgWidth": 1640,
+          "height": 820,
+          "orientation": 3,
+          "scale": 2,
+          "width": 1180
+        },
+        "state": "landscape-right-settled",
+        "thermostat": {
+          "height": 348.47999999999996,
+          "width": 449.38666666666666,
+          "x": 249.73333333333335,
+          "y": 55.733333333333334
+        },
+        "thermostatHittable": false,
+        "viewport": {
+          "height": 704,
+          "width": 704,
+          "x": 238,
+          "y": 44
+        }
+      }
+    },
+    {
+      "device": "iPad",
+      "sha256": "c03f693ca600088f44c59667b0255d71cbd75184c2b670b05809369f0fd61d8f",
+      "geometry": {
+        "app": {
+          "height": 1180,
+          "width": 820,
+          "x": 0,
+          "y": 0
+        },
+        "appImage": {
+          "cgHeight": 2360,
+          "cgWidth": 1640,
+          "height": 1180,
+          "orientation": 0,
+          "scale": 2,
+          "width": 820
+        },
+        "navFaces": {
+          "height": 18,
+          "width": 22,
+          "x": 277.5,
+          "y": 991
+        },
+        "navFacesHittable": true,
+        "orientation": 1,
+        "screenImage": {
+          "cgHeight": 2360,
+          "cgWidth": 1640,
+          "height": 1180,
+          "orientation": 0,
+          "scale": 2,
+          "width": 820
+        },
+        "state": "portrait-return-settled",
+        "thermostat": {
+          "height": 394.02,
+          "width": 508.11333333333334,
+          "x": 25.266666666666666,
+          "y": 190.26666666666665
+        },
+        "thermostatHittable": false,
+        "viewport": {
+          "height": 796,
+          "width": 796,
+          "x": 12,
+          "y": 177
+        }
+      }
+    },
+    {
+      "device": "iPad",
+      "sha256": "9f10a99411132403fae1f785a702b2e065fc2f115769b7ad421449202956820b",
+      "geometry": {
+        "app": {
+          "height": 820,
+          "width": 1180,
+          "x": 0,
+          "y": 0
+        },
+        "appImage": {
+          "cgHeight": 1640,
+          "cgWidth": 2360,
+          "height": 1180,
+          "orientation": 2,
+          "scale": 2,
+          "width": 820
+        },
+        "navFaces": {
+          "height": 18,
+          "width": 22,
+          "x": 457.5,
+          "y": 766
+        },
+        "navFacesHittable": true,
+        "orientation": 3,
+        "screenImage": {
+          "cgHeight": 2360,
+          "cgWidth": 1640,
+          "height": 820,
+          "orientation": 2,
+          "scale": 2,
+          "width": 1180
+        },
+        "state": "landscape-left-settled",
+        "thermostat": {
+          "height": 348.47999999999996,
+          "width": 449.38666666666666,
+          "x": 249.73333333333335,
+          "y": 55.73333333333335
+        },
+        "thermostatHittable": false,
+        "viewport": {
+          "height": 704,
+          "width": 704,
+          "x": 238,
+          "y": 44
+        }
+      }
+    },
+    {
+      "device": "iPhone",
+      "sha256": "9164142ff94af9f4994fd497c1d66c6b9632014f0e8da88bc464c60e8f74bd42",
+      "geometry": {
+        "app": {
+          "height": 874,
+          "width": 402,
+          "x": 0,
+          "y": 0
+        },
+        "appImage": {
+          "cgHeight": 2622,
+          "cgWidth": 1206,
+          "height": 874,
+          "orientation": 0,
+          "scale": 3,
+          "width": 402
+        },
+        "navFaces": {
+          "height": 18,
+          "width": 22.000000000000014,
+          "x": 67.66666666666666,
+          "y": 636.9999999999999
+        },
+        "navFacesHittable": true,
+        "orientation": 1,
+        "screenImage": {
+          "cgHeight": 2622,
+          "cgWidth": 1206,
+          "height": 874,
+          "orientation": 0,
+          "scale": 3,
+          "width": 402
+        },
+        "state": "portrait-final-settled",
+        "thermostat": {
+          "height": 187.10999999999999,
+          "width": 241.29000000000002,
+          "x": 18.299999999999997,
+          "y": 247.30000000000004
+        },
+        "thermostatHittable": false,
+        "viewport": {
+          "height": 378,
+          "width": 378,
+          "x": 12,
+          "y": 241
+        }
+      }
+    },
+    {
+      "device": "iPhone",
+      "sha256": "4e4c8217cfbec7f4aa9fb63acbcbdc4ec915f21c0d5057e8f4b5a15cc54433d6",
+      "geometry": {
+        "app": {
+          "height": 402,
+          "width": 874,
+          "x": 0,
+          "y": 0
+        },
+        "appImage": {
+          "cgHeight": 1206,
+          "cgWidth": 2622,
+          "height": 874,
+          "orientation": 3,
+          "scale": 3,
+          "width": 402
+        },
+        "navFaces": {
+          "height": 18,
+          "width": 22,
+          "x": 303.66666666666663,
+          "y": 348
+        },
+        "navFacesHittable": true,
+        "orientation": 4,
+        "screenImage": {
+          "cgHeight": 2622,
+          "cgWidth": 1206,
+          "height": 402,
+          "orientation": 3,
+          "scale": 3,
+          "width": 874
+        },
+        "state": "landscape-right-settled",
+        "thermostat": {
+          "height": 157.41000000000003,
+          "width": 202.98999999999995,
+          "x": 283.30000000000007,
+          "y": 17.30000000000001
+        },
+        "thermostatHittable": false,
+        "viewport": {
+          "height": 318,
+          "width": 318,
+          "x": 278,
+          "y": 12
+        }
+      }
+    },
+    {
+      "device": "iPhone",
+      "sha256": "05cb9af94c26956ca03c93077dd50652d485e93c184eca17e707b29a7b91031a",
+      "geometry": {
+        "app": {
+          "height": 874,
+          "width": 402,
+          "x": 0,
+          "y": 0
+        },
+        "appImage": {
+          "cgHeight": 2622,
+          "cgWidth": 1206,
+          "height": 874,
+          "orientation": 0,
+          "scale": 3,
+          "width": 402
+        },
+        "navFaces": {
+          "height": 18,
+          "width": 22.000000000000014,
+          "x": 67.66666666666666,
+          "y": 636.9999999999999
+        },
+        "navFacesHittable": true,
+        "orientation": 1,
+        "screenImage": {
+          "cgHeight": 2622,
+          "cgWidth": 1206,
+          "height": 874,
+          "orientation": 0,
+          "scale": 3,
+          "width": 402
+        },
+        "state": "portrait-return-settled",
+        "thermostat": {
+          "height": 187.10999999999999,
+          "width": 241.29000000000002,
+          "x": 18.299999999999997,
+          "y": 247.30000000000004
+        },
+        "thermostatHittable": false,
+        "viewport": {
+          "height": 378,
+          "width": 378,
+          "x": 12,
+          "y": 241
+        }
+      }
+    },
+    {
+      "device": "iPhone",
+      "sha256": "7c5537fa49213704dcbfef781dc9700bd624ee1d4b890a2302179a74640a763d",
+      "geometry": {
+        "app": {
+          "height": 402,
+          "width": 874,
+          "x": 0,
+          "y": 0
+        },
+        "appImage": {
+          "cgHeight": 1206,
+          "cgWidth": 2622,
+          "height": 874,
+          "orientation": 2,
+          "scale": 3,
+          "width": 402
+        },
+        "navFaces": {
+          "height": 18,
+          "width": 22,
+          "x": 303.66666666666663,
+          "y": 348
+        },
+        "navFacesHittable": true,
+        "orientation": 3,
+        "screenImage": {
+          "cgHeight": 2622,
+          "cgWidth": 1206,
+          "height": 402,
+          "orientation": 2,
+          "scale": 3,
+          "width": 874
+        },
+        "state": "landscape-left-settled",
+        "thermostat": {
+          "height": 157.41000000000003,
+          "width": 202.99,
+          "x": 283.3,
+          "y": 17.30000000000001
+        },
+        "thermostatHittable": false,
+        "viewport": {
+          "height": 318,
+          "width": 318,
+          "x": 278,
+          "y": 12
+        }
+      }
+    }
+  ],
+  "same_app_diagnostic_touch_executions2_not_added_to_final6": [
+    {
+      "device": "iPad",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "summary_sha256": "ee22c052298974789260abf7b516d2294f1c36f4d0f72abffca4a3a2fd4d4a8e",
+      "log_sha256": "77b3ca1522b030b62e2a152b25adbea2685185afe34d517895d6e32c4625403f"
+    },
+    {
+      "device": "iPhone",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "summary_sha256": "7b6af800bb2fd34b7ad7b631ea611a15c345c640eba961ec926e6f5029398d2b",
+      "log_sha256": "5c2c5b2402a8139de244bd60e6780e2a681bfd8289b32999014caea7b02cbd66"
+    }
+  ],
+  "qualified_initial_diagnostic_failures_retained": [
+    {
+      "device": "iPad",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "summary_sha256": "1cd1b2b6711ca58451b8c6c2ebe55c945b228a1f3ccdcd2c36aeeecf4912a347",
+      "log_sha256": "362a833c835ada2f1cc2b4074aafd769add79c0bfddc057631397eb40dc32431"
+    },
+    {
+      "device": "iPhone",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "summary_sha256": "98080564e6616117e43bd4e2b2fe712cd173c3f013d6e7a1f69e4ffa683c2704",
+      "log_sha256": "9561580cf2a069ecb3af6d340d0a1b7c271437dbdb2f2ae4007f7d2e9b4ecec3"
+    }
+  ],
+  "initial_native_failure_reason": "AX home.thermostat isHittable=false, already false in initial portrait on unchanged baseline; actual geometry contained. Subsequent test uses actual coordinate touch and model value68->69->68, not a fabricated AX pass.",
+  "qualified_first_build_failure": "Initial diagnostic-only source used incorrect XCTest API names; no test executed. Correct public XCUIScreen.main and UIDeviceOrientation build followed.",
+  "capture_finding": "On iOS27.0/24A434 simulators, app.screenshot UIImage point dimensions remain portrait in landscape; underlying CG dimensions landscape plus orientation metadata. Simultaneous XCUIScreen screenshot has oriented landscape point dimensions matching app.frame and displays full centered viewport. Crop discrepancy persists after12sec stable geometry in first diagnostic. This identifies the observed capture path, not internal XCTest root cause or all-runtime behavior.",
+  "final_capture_contract": "Both landscape directions and two portrait returns: stable square viewport contained in app bounds, thermostat frame contained, nav hittable. Whole-screen oriented image dimensions exactly equal app bounds. Actual taps and68->69->68 checked each state.",
+  "original_broad_clipped_images_not_relabelled_accepted": true,
+  "all_final_images_reviewed": 12,
+  "diagnostic_images_reviewed": 36,
+  "contacts": [
+    {
+      "path": "Docs/screenshots/goal-20261018/orientation-touch-iPad-contact-2.jpg",
+      "sha256": "976c9e77eddc81125ae2b96b33c4b9ebe148246f8923e93947f3235b3a063264"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/orientation-touch-iPad-contact-3.jpg",
+      "sha256": "3e4d905453f1691247691319edc2f706e67afc7d374e96e5b4006614aaceaa91"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/orientation-touch-iPad-contact-1.jpg",
+      "sha256": "58fd3775a644fc09054b64121770b2fdc97c02dc48f8f772d3188eacda540815"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/orientation-touch-iPhone-contact-2.jpg",
+      "sha256": "f46dfa9c578f52c37dc9e47ecc69e360bc8982f4a8018071ddf4aaaec0edc706"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/orientation-touch-iPhone-contact-3.jpg",
+      "sha256": "1bd4f64d26414ad0739d5ca0fb51f8856d696599a33ca9fd97b1e575000ce1c5"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/orientation-touch-iPhone-contact-1.jpg",
+      "sha256": "dae76c5d8527370f966392e3582b7fc455ed236323fb22833194ac7f5f6aa652"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/orientation-candidate-iPad-contact-1.jpg",
+      "sha256": "ea9f4e7337423165e0bfd2c69fec0d7332f530cd57cc2efc24555de195f6522b"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/orientation-candidate-iPhone-contact-1.jpg",
+      "sha256": "036baff9bd38ce83727daa8e164a67a6a408695c5e2fe6d4b1f585ee7fcf9365"
+    }
+  ],
+  "no_RGB_or_layout_error_tolerance_added": true,
+  "no_app_layout_change": true,
+  "physical_device_original_or_live_service_acceptance": false,
+  "held_prism_prototype_unchanged": true,
+  "source_archive_sha256": "3026fba29d9b3e6d254dcdae0089c772de95122cfbda269fba51f1456e87b03a",
+  "publication_note": "Initial broad publisher stopped after image/source staging at a wrong metadata key. Metadata-only finish verified staged hashes; original failure retained locally, no image recopy or test retry."
+}

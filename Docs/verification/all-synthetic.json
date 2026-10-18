@@ -1,0 +1,406 @@
+{
+  "source_commit": "2cc29b374ba7576f78e6f7508e46197fd17d7e5a",
+  "source_digest": "256a9c09fe4b5b7ccf5f4c2879ac75f381a682ffbd5f5a5f3b3ea26a75a49e4b",
+  "source_files": 142,
+  "app_or_test_code_changed_for_run": false,
+  "selection": [
+    "testPersonalHomeUsesObservedFourAppArrangementAndNativeMarks",
+    "testPersonalMediaLayoutPersistsOnlyForItsProfile",
+    "testPersonalMediaWidgetUsesExplicitDemoPlaybackAndNavigation",
+    "testPersonalWeatherGridScrollKeepsSourceLayoutAndOpensWeather",
+    "testHorizontalDominantTopDiagonalChangesFaceInsteadOfOpeningAssistant",
+    "testVerticalDominantInteriorDiagonalDoesNotAdvanceFace",
+    "testShortFaceDragKeepsActualFaceAndDoesNotOpenAnOverlay",
+    "testViewportEdgeGesturesOpenTheirActualDestinations",
+    "testPersonalWeatherWidgetDoesNotInventUnavailableData",
+    "testThermostatWritesAndScenePropagatesToDetail",
+    "testHomeGlassControlsRemainInteractive",
+    "testHomePrismMotionStopsWithReduceMotion",
+    "testHomePrismNightHasNoBlueGlassLeak",
+    "testOfflineWriteFailsWithoutChangingTemperature",
+    "testGuestPersonalContentGateAndMockLockAuthentication",
+    "testRecipeIngredientsCookingAndInlineTimer",
+    "testTimerPauseResumeAndDelete",
+    "testLocalAssistantActuallyMutatesMockHome",
+    "testLegacyFaceConfigurationRecoversAndSurvivesProcessRestart",
+    "testUnknownFaceWidgetPreservesSiblingChoicesAndStyleAcrossRestart",
+    "testFaceEditorChangesFaceAndWidget",
+    "testWatchModularPickerEnforcesSmallFamilyAndKeepsOtherFace",
+    "testSpatialEditorFiltersInlineSlotAndRestoresAfterRelaunch",
+    "testDuoAndCompactUseIndependentSlotsAndNavigableContent",
+    "testFlowOwnGlyphAtlasCoversBothStylesAndAxisExtremes",
+    "testWorldClockAddsFractionalZoneAndPersistsRemoval",
+    "testBrowserRejectsInsecureAddressAndPageCannotOpenExternalScheme",
+    "testBrowserLocalHistoryOfflineAndStopDoNotNeedNetwork",
+    "testBilingualTimerCommandUsesSecondsAndAmbiguityDoesNotAddTimer",
+    "testCookingStepCommandsPreserveAnExplicitCookingSession",
+    "testFlowHasIndependentTypefaceAndBackgroundControls",
+    "testCameraGridDetailAndTalkbackAreLocal",
+    "testCameraDemoNightAndOfflineNeverBecomeLive",
+    "testCallAcceptAndEndWithoutNetwork",
+    "testMusicPlaybackAndTrackNavigation",
+    "testRemindersCreateAndComplete",
+    "testReferenceFacesAndHomeGridRender",
+    "testPersonalReminderDoesNotLeakToAnotherProfile",
+    "testLandscapeAndReturnToPortrait",
+    "testNativeDemoPhotoSelectionWithoutOpeningPhotoLibrary",
+    "testPhotoGlassTransmitsTheSameBackdropInsteadOfOpaqueInk",
+    "testPhotoClockVisibleInkUsesButDoesNotExceedTheProtectedBand",
+    "testAllTenOwnedPhotoGlyphsRenderInsideTheirNativeTiles",
+    "testPhotoInkRasterMatchesRenderedOwnPathsWithoutMirroring",
+    "testPhotoNativeAlphaReplayUsesReadableMediumTopAndActuallyOccludesInk",
+    "testPhotoInkIsRecomputedWhenTheDisplayedMinuteChanges",
+    "testPhotoFullHeightMatteActuallyOccludesClockInkWithoutMirroring",
+    "testPhotoMediumMatteBandHasVisibleInkWithinItsOwnGeometry",
+    "testPhotoGlassNightUsesTheWholeViewportMonochrome",
+    "testPhotoClockAvoidsTopSubjectAndKeepsBothEdgeSubjects",
+    "testDensePhotoMaskDoesNotHideClockBehindSubject",
+    "testPhotoManualClockPositionSurvivesRelaunchAndResetsToAuto",
+    "testPhotoManualCropCanOverrideAndRestoreFullImageFraming",
+    "testAlternateHomeClockSceneAndThermostat",
+    "testPodcastTransportPersistsThroughNavigation",
+    "testMultipleRecipesRequireSelectionAndDoNotInventMetadata",
+    "testNativeBrowserRecipeExtractionCookingAndPinning",
+    "testMockMirrorZoomAndRingLightNeverOpenCamera",
+    "testNightFaceActuallyRendersMonochromeRed",
+    "testDemoGalleryAutomaticallyRotatesBundledPhotos",
+    "testKeepDisplayOnUsesNativeIdleTimer",
+    "testMockStateSurvivesRelaunchInIsolatedStore",
+    "testNumeralsReferenceReadingAndSharedClockDefaults",
+    "testVisualReferenceAtlas",
+    "testCalendarWeekSelectionChangesMockAgenda",
+    "testCorruptRecipeMigrationPreservesHomeAndSubsequentWrites",
+    "testFutureStoreRemainsReadOnlyAfterAnAttemptedSaveAndRelaunch",
+    "testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend",
+    "testVoicePreviewRequiresSendBeforeMockCommand",
+    "testVoiceCancelAndDeniedPermissionKeepTypingAvailable",
+    "testVoiceStopsDemoAudioAndResetsOnNavigation",
+    "testCalendarAgendaShowsAllDayAndSourceWithoutPersonalData",
+    "testDeniedCalendarDoesNotSilentlyFallBackToDemoAgenda",
+    "testConnectedCalendarRequiresDeviceUnlockAndUsesNativeSourceContract",
+    "testConnectedReadOnlyReminderExposesListAndDisablesMutation",
+    "testConnectedReminderCRUDUsesProviderReadback",
+    "testBackgroundLocksConnectedCalendarAndRequiresFreshDeviceUnlock",
+    "testConnectedMusicAndWeatherDoNotUseHomeKit",
+    "testDeniedConnectionDoesNotBecomeConnected",
+    "testWeatherMissingValuesRemainUnknownAndUnitsAreExplicit",
+    "testWeatherAppUsesSeparateCenteredCityAndConditionsLayout",
+    "testWeatherForecastModesAndCitySheetUseOnlyConnectedFixtureData",
+    "testWeatherLateCityResultCannotDismissReopenedEditor",
+    "testWeatherCloudsMoveAndRespectReduceMotion",
+    "testWeatherZeroCloudCoverDoesNotInventClouds",
+    "testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays",
+    "testModularNightWholeViewportContainsNoColorLeak",
+    "testModularWeatherReferenceFieldsRender",
+    "testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback",
+    "testModularWeatherCityCaptionKeepsVisibleDataProvenance",
+    "testWeatherFaceOpensDistinctCityScreen",
+    "testWeatherGlassDemoAndUnavailableLiveAQIRemainDistinct",
+    "testWeatherGlassFaceMovesAndReducedMotionIsStable",
+    "testWeatherFailedConnectionDoesNotShowDemoTemperature",
+    "testWeatherStaleNightAndCachedOfflineAreLabeled",
+    "testWeatherRainSnowAndDemoHaveDistinctSources",
+    "testFlowMaterialRendersColoredGlyphsOnBlackWithoutBackground",
+    "testFadeConicStopsRenderDifferentPhasesAndKeepClockVisible",
+    "testFadeReducedMotionIgnoresGradientPhaseChanges",
+    "testFlowMaterialStillMovesAfterThirtySeconds",
+    "testNativeFlowMovesAndReducedMotionStaysStill",
+    "testSystemCommunicationHandsOffOnlyAfterExplicitAction",
+    "testSharedAlbumImportUsesOnlySyntheticPhotos",
+    "testAlbumLiveWindowDropsRemovedPhotosAndShowsEmptyWithoutDemoSubstitution",
+    "testAlbumSourceSwitchAndPersonalPreviewUseOnlyTheSelectedAlbum",
+    "testAlbumDisconnectStopsFurtherRefreshAndBackgroundLocksPrivateChoices",
+    "testAlbumWindowPersistsAndRestoresOnlyTheKnownScopeWithoutCatalogueReads",
+    "testAlbumRevocationAndRemovalCannotResurrectALegacySinglePhotoFile",
+    "testEmptyLinkedAlbumSurvivesRestartWithoutAnOldPhotoOrInventedDemo",
+    "testAlbumCatalogueRequiresActualDeviceUnlockNotADemoProfile",
+    "testReadOnlyRecoveredSnapshotCannotBeOverwrittenByAlbumConnection",
+    "testDemoDoorbellDismissReturnsToTheSameFaceAndARepeatedEventDoesNotReopen",
+    "testDemoDoorbellPreservesTheRunningTimerAndBlocksUnderlyingControls",
+    "testDemoDoorbellKeepsTheCurrentCookingStep",
+    "testDemoDoorbellDoesNotHideATimerCompletion",
+    "testDemoDoorbellBackgroundDoesNotRestoreTheOldPersonalPage",
+    "testDemoDoorbellOfflineAndIncomingCallDoNotOpenACamera",
+    "testCalendarReferenceMonthKeepsTheObservedSixRowsAndToday",
+    "testCalendarLeapDayAndSixWeekMonthKeepAllDatesVisible",
+    "testCalendarYearBoundaryFollowsTheChosenTimeZoneNotUTC",
+    "testCalendarAgendaSelectionDoesNotChangeTheFacesLocalToday",
+    "testWeatherFaceMetricsFitDemoCelsiusAndUnknownValues",
+    "testRestingTimerReferenceFitsAndTouchRevealsItsRealControls",
+    "testLongTimerReadoutFitsWithoutChangingItsPausedValue",
+    "testFlowGlassBodyMovesAfterThirtySecondsWithFixedGlyphs",
+    "testFlowNativeSolidStyleAndWholeViewportNightTreatment",
+    "testTimerControlsHideAfterRealIdleAndTouchRestartsTheDeadline",
+    "testRunningTimerContinuesWithHiddenControlsAndPausesAfterTouch",
+    "testMultipleTimerFallbackAndDeletionKeepTheDisplayedChoice",
+    "testMultipleTimersRunAndPauseIndependently",
+    "testTwelveTimerHorizontalSelectionDeletionAndLimit",
+    "testNormalAddsReachTwelveAndRejectThirteen",
+    "testLocalTimersKeepElapsedTimeAndPausedPeersAcrossBackground",
+    "testLocalTimersReloadOwnStoredDeadlinesAfterProcessRestart"
+  ],
+  "selected_unique_cases": 134,
+  "ui_executions": 268,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 134,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0 / 24A434",
+      "summary_sha256": "eba11d7ee0111ffecc0dbf578d90907f6b1a53c1c28fd9324aadd8bc7ab9f670",
+      "log_sha256": "ae1a1a363e9e821ad2c79daf614abf753baac9729cecfda23664f2476b0332d8"
+    },
+    {
+      "device": "iPhone",
+      "passed": 134,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0 / 24A434",
+      "summary_sha256": "7b23c8ccc4e3766bc47f2108821a3886d2ebb2bbc0a321e0c75c02e2610d4781",
+      "log_sha256": "29eb20959efdbbdab1ccf7423b2902e906419aec39173e5086262b39026e3949"
+    }
+  ],
+  "enumerated_total": 138,
+  "excluded_native_alarm_tests": [
+    "testNativeSystemAlarmSchedulesAndCancelsOnSimulator",
+    "testNativeRegularTimerPauseResumeAndCancel",
+    "testNativeAlarmDeliversWhileAppIsInBackground",
+    "testNativeAlarmEditorSchedulesAndDeletesOwnAlarm"
+  ],
+  "exact_enumeration_verified": true,
+  "complete_all_ui_or_original_suite_claimed": false,
+  "safety": {
+    "all_launches_uitesting": true,
+    "personal_data_provider": "FixtureDeviceDataProvider",
+    "album_provider": "FixtureAlbumPhotoProvider",
+    "voice": "synthetic before any microphone/speech permission",
+    "mirror": "no Use Camera interaction; zoom/ring light on mock preview",
+    "communication": "system handoff guards return before composer/URL opening",
+    "browser": "local HTML/custom scheme; only address entered is rejected http://example.invalid",
+    "home": "HMHomeManager construction disabled; MockHome only",
+    "timers": "native alarm cases excluded and no system-alarms flag in selected cases",
+    "storage": "ephemeral or fresh UUID-scoped test stores, no existing owner store"
+  },
+  "prior_same_digest_core_passed": 166,
+  "prior_same_digest_sdk_builds_passed": 5,
+  "prior_same_digest_evidence": "modular-clock.json",
+  "new_sdk_builds_in_this_run": 0,
+  "build_artifacts_unchanged_after_run": true,
+  "artifacts": [
+    {
+      "file": "HomeViewReplica_iphonesimulator27.0-arm64-x86_64.xctestrun",
+      "sha256": "6c0f9f2b15301dd83b47dfff8ae7d96b1b4f3d3f30edb8d1facd18a58d2d6e3e",
+      "bytes": 4909
+    },
+    {
+      "file": "HomeViewReplica",
+      "sha256": "3d22808d25142dd7a07d3e433469647fcfb8183551b086f4dba996cbc3799320",
+      "bytes": 72992
+    },
+    {
+      "file": "HomeViewUITests",
+      "sha256": "31c2cce97cc6db49975dfb8da4b7b2ae4df2f1fce24e1e48511c6a1e604573b6",
+      "bytes": 2400464
+    },
+    {
+      "file": "all-synthetic-plan.json",
+      "sha256": "f7a09b32f12015c6a5aac1d91a7e23654061796d80bad8fe32fd89ce61232bb2",
+      "bytes": 9547
+    },
+    {
+      "file": "all-synthetic-enumeration.json",
+      "sha256": "fc11916303066e21fa2b1d417bc2e0a2100d6295a2b2a76d45f18e19c3fb337d",
+      "bytes": 18796
+    },
+    {
+      "file": "run-all-synthetic.py",
+      "sha256": "19b1036ab35d9839d6752281bc4a303e9381bc39a443db3dd1aeb6b66b796737",
+      "bytes": 2216
+    }
+  ],
+  "own_pngs_decoded": 724,
+  "actual_representative_frames_viewed": 242,
+  "contact_reviews": [
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-1.jpg",
+      "sha256": "38048833adeb804807b6cbe7174db9c4eaa6e81b691e6ddf36f2e9c67965ca5d"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-2.jpg",
+      "sha256": "11764b608408e5cd8d074aa763c46dfb1e576684e8293d3d2e30649969b26d01"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-3.jpg",
+      "sha256": "4faac8f4e21ea9715a49697e737aa1acd9bc636ef91a63c0cc5f136f19ddcb10"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-4.jpg",
+      "sha256": "f7ce603e755ec35552ca16da151320a8a57338ae10d1691be6c5792fa7b5b3e3"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-5.jpg",
+      "sha256": "cd6f1717951f901c1b47603e8aed4604aba2ca42d8865415a401e554ea6a7153"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-6.jpg",
+      "sha256": "ad08ab592703e7f8d60b9ac605f019c2f84aab26e6b21ab66d318f1103ccc396"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-7.jpg",
+      "sha256": "1fe3eefc40d8f0cb154311b500c29500787c397339cba55c9a1e47b7b145a199"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-8.jpg",
+      "sha256": "831f498d91b8fdce1e43e8ae18a08b8e058982ca3162861e1291ec79ceb05428"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-9.jpg",
+      "sha256": "34cf0d812651f47e3580278768522ad433f49b1cca6f01435825987f145ad11b"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-10.jpg",
+      "sha256": "09645f1daac770173399e5a21dbf0c7ebe6d9353225561681b73e8846471df08"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-11.jpg",
+      "sha256": "0c0383e7986c258dbd32814d4df38a7ef50ddaaa28b0abebb676020f58338491"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-12.jpg",
+      "sha256": "9ccf207713c6adf2ded050bf27dc413148384ba5d3bab2c4079727270e72a6da"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-13.jpg",
+      "sha256": "a6246774e68428d6ae4736306f9a066fcb0aa2a31cf5f27b9bb4958864635799"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-contact-14.jpg",
+      "sha256": "7c731a42a81e047611cc5a2fad703a243b4254773cbfedcd964cf6c77266714a"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-1.jpg",
+      "sha256": "25679f4dbdcc34e0d839a60e257a0a625caaaa862f0e0bbebc2d0608638c9e58"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-2.jpg",
+      "sha256": "84e6c6a37a5287283e29767861c06a00c4051734b5d29558d7d514c7dba7230f"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-3.jpg",
+      "sha256": "c65282442d7a8494aededf0ec6c1231ca93cbd04e15064825fa463b5a89ec80f"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-4.jpg",
+      "sha256": "5981839ddd327fa0a76008aff9e0fa210a1f219927335dd1070ddb80168ec82a"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-5.jpg",
+      "sha256": "a7b6b5b0d2a0c4a0c9cfd70c882d19cc2cff678db8f84d1f24125ac5c74e2e5e"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-6.jpg",
+      "sha256": "29c4c0093cf33d01ccfba59db6e8b6e6dcb9072aefd317f7708dead876798df8"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-7.jpg",
+      "sha256": "577debd23a014e3486f61476022522834d7a7949fc9d76dfdd4044f4d63f524a"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-8.jpg",
+      "sha256": "4f7c5f79cf6a0a0de95ff81bbaa315d60a8353a506b59294947939dcfa9cb65d"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-9.jpg",
+      "sha256": "a7da47806a3976f7c3a3750fdb56bc4dcd4c9be170c115610c65aa0b3a35292f"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-10.jpg",
+      "sha256": "c4777a2680e1036c6fa9b0b55f8ec74265a2bd956cc9107dd99643c271254fca"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-11.jpg",
+      "sha256": "eb50d076128323ae0b1dc425ff6359ee1dd2691d70ea30580f2e4fe07f0aeb92"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-12.jpg",
+      "sha256": "453cda89fff19146355de1ff43dd1deaf9694111961249a03ef99e9b56517542"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-13.jpg",
+      "sha256": "1c03d3a5116eb8ad94f0ce5dec96131616a237e1e4ef4e7791f9e100a76640dd"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-contact-14.jpg",
+      "sha256": "fb629cb3b9507461a888343fce800720931f84778b04b9b02dbf8906f7c3f522"
+    }
+  ],
+  "image_coverage": {
+    "devices": [
+      {
+        "device": "iPad",
+        "all_decoded_pngs": 362,
+        "representatives": 121,
+        "no_representative_test_cases": [
+          "testAlbumCatalogueRequiresActualDeviceUnlockNotADemoProfile",
+          "testCalendarWeekSelectionChangesMockAgenda",
+          "testDeniedConnectionDoesNotBecomeConnected",
+          "testKeepDisplayOnUsesNativeIdleTimer",
+          "testLocalAssistantActuallyMutatesMockHome",
+          "testMockStateSurvivesRelaunchInIsolatedStore",
+          "testPersonalReminderDoesNotLeakToAnotherProfile",
+          "testPodcastTransportPersistsThroughNavigation",
+          "testReadOnlyRecoveredSnapshotCannotBeOverwrittenByAlbumConnection",
+          "testRemindersCreateAndComplete",
+          "testSystemCommunicationHandsOffOnlyAfterExplicitAction",
+          "testVoiceCancelAndDeniedPermissionKeepTypingAvailable",
+          "testVoiceStopsDemoAudioAndResetsOnNavigation"
+        ]
+      },
+      {
+        "device": "iPhone",
+        "all_decoded_pngs": 362,
+        "representatives": 121,
+        "no_representative_test_cases": [
+          "testAlbumCatalogueRequiresActualDeviceUnlockNotADemoProfile",
+          "testCalendarWeekSelectionChangesMockAgenda",
+          "testDeniedConnectionDoesNotBecomeConnected",
+          "testKeepDisplayOnUsesNativeIdleTimer",
+          "testLocalAssistantActuallyMutatesMockHome",
+          "testMockStateSurvivesRelaunchInIsolatedStore",
+          "testPersonalReminderDoesNotLeakToAnotherProfile",
+          "testPodcastTransportPersistsThroughNavigation",
+          "testReadOnlyRecoveredSnapshotCannotBeOverwrittenByAlbumConnection",
+          "testRemindersCreateAndComplete",
+          "testSystemCommunicationHandsOffOnlyAfterExplicitAction",
+          "testVoiceCancelAndDeniedPermissionKeepTypingAvailable",
+          "testVoiceStopsDemoAudioAndResetsOnNavigation"
+        ]
+      }
+    ],
+    "actual_contacts_viewed": 28,
+    "representative_frames_viewed": 242,
+    "scope": "Latest eligible native image per available testcase, not every intermediate state; both landscape app images clipped. No Original parity acceptance."
+  },
+  "qualified_clipped_frames": [
+    {
+      "device": "iPad",
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPad-qualified-clipped-app.png",
+      "sha256": "b2977a5f7fb70f08c6f11805749c9d1d63bca98b040064b2ae4f5aa1c9989ae9",
+      "accepted_as_complete_visual_frame": false
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/screenshots/goal-20261018/all-synthetic-iPhone-qualified-clipped-app.png",
+      "sha256": "f066c04106e2653d6fc6ff11df9fac4bc343a9ee2dde8e3a841adf00a9a950a6",
+      "accepted_as_complete_visual_frame": false
+    }
+  ],
+  "landscape_visual_acceptance_from_broad_run": false,
+  "orientation_diagnosis": "Separate same-App-source app-versus-whole-screen captures reproduce app screenshot crop defect even after stable geometry. Whole-screen frames complete; subsequent actual-touch diagnostic passes both devices. Initial diagnostic native failures retained separately; not added to268. Final strengthened test is a separate source/targeted run.",
+  "no_original_hardware_live_service_acceptance": true,
+  "held_prism_prototype_unchanged": true,
+  "historical_QA01_status_unchanged": true
+}
