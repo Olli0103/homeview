@@ -1,0 +1,168 @@
+{
+  "code_commit": "e906d0eef473f095e64358938978a3f03d512d5a",
+  "prototype_commit": "dc37cfd2df4cb4a7c9b7a545f9760f3905947720",
+  "combined_branch_commit": "3f1686f0f4a46944c4043a66f8fab8efbf07d4df",
+  "source_digest": "a39992c86491f1ffdf48913002619ab4c400efc44db8ac6ddd069387c772543f",
+  "source_files": 132,
+  "source_before_after_match": true,
+  "source_matches_committed_bytes": true,
+  "core_passed": 135,
+  "core_repeated_after_merge_commit": true,
+  "prototype_core_after_commit": 115,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 18,
+  "unique_cases": 9,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:07:25.259292+00:00",
+      "ended": "2026-10-18T00:07:41.220564+00:00",
+      "log_sha256": "1be5e3650af25980c1d6483eaedcd8f499867ffb7b047899232ccf694220e504"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T00:07:41.221091+00:00",
+      "ended": "2026-10-18T00:07:57.911819+00:00",
+      "log_sha256": "65e0c0f56efe60b39b6828301fa0254098bddcc969ed04a62171d5ea12aa94f6"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:07:57.912446+00:00",
+      "ended": "2026-10-18T00:08:09.516856+00:00",
+      "log_sha256": "4b86710adc935f4b7946af4a2b994773350206a720d0d6d7e539d7c87d8c238c"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:08:09.517351+00:00",
+      "ended": "2026-10-18T00:08:22.303104+00:00",
+      "log_sha256": "2a1075892db13ab3a0965228bca8fb60669a2eaec64202c409a1ae2587cf7c30"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:08:22.303639+00:00",
+      "ended": "2026-10-18T00:08:30.344785+00:00",
+      "log_sha256": "a163fba2218632c645f9d1d5ed0ee225944e48a7d6a7b5ef6936dce1591f357e"
+    }
+  ],
+  "ui_scope": [
+    "demo interruption face return, duplicate replay and swipe preservation",
+    "running timer return and blocked underlying interaction",
+    "timer completion remains visible over camera",
+    "current cooking step retained",
+    "background does not restore a stale personal page",
+    "offline and existing demo call do not open a camera",
+    "selected-album switch and actual personal preview touch",
+    "album disconnect, no further reads and private-catalogue lock on background",
+    "ordinary camera grid/detail and mock talkback use the default callbacks correctly"
+  ],
+  "demo_event_only": true,
+  "real_doorbell_subscription": false,
+  "real_homekit_manager_constructed": false,
+  "real_camera_stream_opened": false,
+  "microphone_accessed": false,
+  "real_call_placed_or_received": false,
+  "event_lifetime_seconds": 30,
+  "deduplication_recent_ids": 64,
+  "hidden_event_queue": false,
+  "newest_distinct_arrival_replaces_current": true,
+  "overlay_replaces_underlying_route": false,
+  "stale_private_route_restored": false,
+  "original_apple_interruption_policy_accepted": false,
+  "physical_device_or_live_source_accepted": false,
+  "physical_voiceover_or_snapshot_privacy_accepted": false,
+  "full_ui_suite_claimed": false,
+  "visual_review_both_devices": true,
+  "prototype_diagnostics": "Visible camera proved the first labelled-control failure was outer accessibility identifier propagation; an explicit container preserves the child identifiers. Actual dismiss/touch and exact route/state results, not a hidden-container existence or scaled-button Hittable flag alone, establish the final interaction checks.",
+  "screenshot_manifest": "../screenshots/goal-20261018/demo-doorbell-manifest.json",
+  "contact_sheet": {
+    "path": "Docs/screenshots/goal-20261018/demo-doorbell-contact.jpg",
+    "sha256": "a8d4affe8f3390c98d7185db460add5ce6fedde4b869fea6bb8a526ddccc29ad",
+    "pixels": [
+      2400,
+      900
+    ]
+  },
+  "logs": {
+    "doorbell-feature-post-commit-core.log": "fa5fcad5b705c91e7461c22c3bad7034d976f060d984f3ba18f3f326dd0659ae",
+    "doorbell-combined-candidate-core.log": "fe1f2b4a28afc1e14e51d7b5bbbfc27f9f786d80ea13c6b6d73dde15a8b8ac40",
+    "doorbell-integrated-core.log": "105860b709bdcc58f670cacf874c8f284b4002b414339b539d19122a05ab2ce2",
+    "doorbell-combined-candidate-build-for-testing.log": "a44f0ed9fdf9534c527fc217c6fa006b2339768c00842bb5f69b40b39b3fa7a1",
+    "doorbell-combined-candidate-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "cccec227cd9bb0a7e18308357f1fef5230d60be9fa15594f9fd7565644714806",
+    "iPhone": "e9f460a58b8c25422f22e3b390f12bbee563805fa90fae07434b9199e3a70790"
+  },
+  "combined_interruption_ui": [
+    {
+      "device": "iPad",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ordinary_camera_supplement": {
+    "checkpoint": "doorbell-camera-regression",
+    "source_digest": "a39992c86491f1ffdf48913002619ab4c400efc44db8ac6ddd069387c772543f",
+    "ui": [
+      {
+        "device": "iPad",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "runtime": "iOS 27.0 / 24A434"
+      },
+      {
+        "device": "iPhone",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "runtime": "iOS 27.0 / 24A434"
+      }
+    ],
+    "scope": "Ordinary four/nine demo camera grid, detail, reference clock and mock talkback without an interruption; verifies default CameraDetail callbacks remain functional.",
+    "summary_hashes": {
+      "iPad": "d40e27bae82716f974ffa768c2b6fb1af642fdc48f720d41716035ad34185c58",
+      "iPhone": "b38c71d5960b90d100c9a9633f1d35361eddc0f8e14e715591f831b1b2ad5b41"
+    }
+  }
+}

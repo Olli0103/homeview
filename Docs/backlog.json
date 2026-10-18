@@ -686,7 +686,7 @@
     "functions": [
       "F034"
     ],
-    "current": "Türklingel kann über Settings simuliert werden. Kein echtes Klingelereignis.",
+    "current": "Synthetische Türklingel als begrenztes Overlay ohne Navigationsersatz implementiert und geprüft: Wiederholung, Ablauf, Timer/Kochschritt, Offline/Anruf und Hintergrundsperre. Keine echte Eventquelle oder Kameraanbindung; Originalprioritäten und Hardware offen.",
     "tasks": [
       "Verfügbare öffentliche Eventquelle nachweisen",
       "Overlay über Face/Timer/Rezept definieren",
@@ -699,7 +699,8 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/28",
     "issue_number": 28,
-    "state": "open"
+    "state": "open",
+    "implementation_note": "demo-doorbell-interruption.md; 135 Core,18 gezielte UI-Ausführungen,5SDK. Rein synthetisch; echte Quelle bleibt blockiert."
   },
   {
     "key": "CAM-03",
