@@ -5,6 +5,13 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Home-Raster-Intercomzeichen · 18. Oktober 2026
+
+[Sieben symmetrische Balken nach UI13](home-grid-intercom.md): 166 Modelltests,
+sechs gezielte UI-Ausführungen und fünf SDKs. 42 finale eigene PNGs gesichtet,
+außerhalb Symbolbereich exakt null Pixeländerung. Lichtzustände/Zielseite
+unverändert; keine Intercom-Durchsage. F023/HomeKit-Gates bleiben offen.
+
 ### Gesamter vorhandener synthetischer Bestand · 18. Oktober 2026
 
 [268 erfolgreiche UI-Ausführungen](all-synthetic.md), 134 je Gerät auf

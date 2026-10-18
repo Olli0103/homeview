@@ -708,7 +708,8 @@
       "HOME-01"
     ],
     "current": [
-      "NativeHomeKitService wirft immer. Es gibt keine reale Hauserkennung; Oberflächen arbeiten mit MockHome."
+      "NativeHomeKitService wirft immer. Es gibt keine reale Hauserkennung; Oberflächen arbeiten mit MockHome.",
+      "UI13-Rasterzeichen begrenzt korrigiert: eigene sieben symmetrische Intercom-Balken bei unveränderter Kachel-/Textgeometrie. 166 Modelltests, sechs gezielte UI-Ausführungen und fünf SDKs; außerhalb Symbol-ROI exakt null Pixeländerung bei drei Lichtzuständen auf beiden Geräten. Lokale Zielansicht ungeändert, keine Durchsage gesendet. Kein HomeKit-/Original-/Hardware-PASS; Docs/home-grid-intercom.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
