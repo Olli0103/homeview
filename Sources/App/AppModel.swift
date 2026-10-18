@@ -335,6 +335,16 @@ final class AppModel {
       selectedTimer=nil
       route = .app(.timers)
     }
+    if args.contains("--uitesting"), args.contains("--timer-overflow-fixture") {
+      data.timers=(1...12).map { index in
+        var timer=Countdown(title:"Timer \(index)",seconds:Double(index)*60)
+        timer.id=UUID(uuidString:String(format:"00000000-0000-0000-0000-%012d",index+200))!
+        timer.deadline=nil
+        return timer
+      }
+      selectedTimer=nil
+      route = .app(.timers)
+    }
     #if !os(watchOS)
       if args.contains("--uitesting"), let index = args.firstIndex(of: "--photo-layout-fixture"),
          args.indices.contains(index + 1), let fixture = PhotoLayoutFixture.make(args[index+1]) {

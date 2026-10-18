@@ -2451,3 +2451,117 @@ extension HomeViewUITests {
     viewportShot("timer-selection-tea-still-paused")
   }
 }
+
+extension HomeViewUITests {
+  private var timerChoicesContainer:XCUIElement {
+    app.descendants(matching:.any).matching(identifier:"timer.choices").firstMatch
+  }
+  private func axContains(_ outer:CGRect,_ inner:CGRect) -> Bool {
+    // Observed AX target coordinates have Float32 rounding. Compare both
+    // rectangles at that precision instead of inventing sub-AX differences.
+    Float(inner.minX)>=Float(outer.minX) && Float(inner.minY)>=Float(outer.minY)
+      && Float(inner.maxX)<=Float(outer.maxX) && Float(inner.maxY)<=Float(outer.maxY)
+  }
+  private func timerChoiceIsVisible(_ element:XCUIElement) -> Bool {
+    guard element.exists,!element.frame.isEmpty else { return false }
+    let viewport=app.otherElements["reference.viewport"].frame
+    // Match the existing 40pt content padding, keeping the choice away from
+    // the rounded display corner rather than accepting a merely clipped AX box.
+    return axContains(viewport.insetBy(dx:viewport.width*40/600,dy:0),element.frame)
+  }
+  private func dragTimerChoices(left:Bool) {
+    let row=timerChoicesContainer.frame
+    let viewport=app.otherElements["reference.viewport"].frame
+    let native=app.scrollViews.firstMatch.frame
+    let report=XCTAttachment(string:"group=\(row) viewport=\(viewport) nativeScroll=\(native)")
+    report.name="timer-overflow-scroll-frames";report.lifetime = .keepAlways;add(report)
+    // This also normalizes the earlier x=11.999999999999991 vs x=12 report.
+    XCTAssertTrue(axContains(viewport,row),
+      "group=\(row), viewport=\(viewport), nativeScroll=\(native)")
+    XCTAssertLessThan(row.height,viewport.height*0.12)
+    let visibleRow=row.intersection(viewport)
+    let x0=visibleRow.minX+visibleRow.width*(left ? 0.8:0.2)
+    let x1=visibleRow.minX+visibleRow.width*(left ? 0.2:0.8)
+    let origin=app.coordinate(withNormalizedOffset:.zero)
+    origin.withOffset(CGVector(dx:x0-app.frame.minX,dy:visibleRow.midY-app.frame.minY))
+      .press(forDuration:0.1,thenDragTo:origin.withOffset(
+        CGVector(dx:x1-app.frame.minX,dy:visibleRow.midY-app.frame.minY)),withVelocity:.slow,thenHoldForDuration:0.2)
+  }
+  private func revealTimerChoice(_ element:XCUIElement,left:Bool) {
+    for _ in 0..<8 where !timerChoiceIsVisible(element) { dragTimerChoices(left:left) }
+    let viewport=app.otherElements["reference.viewport"].frame
+    let report=XCTAttachment(string:"target=\(element.frame) viewport=\(viewport) safe=\(viewport.insetBy(dx:viewport.width*40/600,dy:0)) row=\(timerChoicesContainer.frame)")
+    report.name="timer-overflow-target-frame";report.lifetime = .keepAlways;add(report)
+    XCTAssertTrue(timerChoiceIsVisible(element),"target=\(element.frame), viewport=\(viewport), safe=\(viewport.insetBy(dx:viewport.width*40/600,dy:0))")
+  }
+  private func touchTimerChoice(_ element:XCUIElement) {
+    XCTAssertTrue(timerChoiceIsVisible(element))
+    let frame=element.frame
+    app.coordinate(withNormalizedOffset:.zero).withOffset(
+      CGVector(dx:frame.midX-app.frame.minX,dy:frame.midY-app.frame.minY)).tap()
+  }
+  private func verifyTimerLimitAlert() {
+    tap("Add another timer")
+    let alert=app.alerts["HomeView"]
+    XCTAssertTrue(alert.waitForExistence(timeout:4))
+    XCTAssertTrue(alert.staticTexts["Choose 1 second to 24 hours, up to 12 timers."].exists)
+    alert.buttons["OK"].tap()
+    XCTAssertEqual(timerChoicesContainer.value as? String,"12 timers")
+  }
+  private func captureVisibleTimerChoice(_ element:XCUIElement,state:String) {
+    XCTAssertTrue(timerChoiceIsVisible(element))
+    let attachment=XCTAttachment(data:element.screenshot().pngRepresentation,uniformTypeIdentifier:"public.png")
+    attachment.name="timer-overflow-chip-"+state;attachment.lifetime = .keepAlways;add(attachment)
+  }
+  @objc func testTwelveTimerHorizontalSelectionDeletionAndLimit() {
+    launch(["--timer-overflow-fixture"])
+    XCTAssertTrue(timerChoicesContainer.waitForExistence(timeout:5))
+    XCTAssertEqual(timerChoicesContainer.value as? String,"12 timers")
+    XCTAssertEqual(app.staticTexts["timer.title"].label,"TIMER 12")
+    XCTAssertEqual(app.staticTexts["timer.countdown"].label,"12:00")
+    revealTimerChoice(timerChoice(212),left:true)
+    XCTAssertEqual(timerChoice(212).value as? String,"Selected")
+    viewportShot("timer-overflow-last-visible")
+    captureVisibleTimerChoice(timerChoice(212),state:"last")
+    revealTimerChoice(timerChoice(201),left:false)
+    touchTimerChoice(timerChoice(201))
+    XCTAssertEqual(app.staticTexts["timer.countdown"].label,"01:00")
+    XCTAssertEqual(timerChoice(201).value as? String,"Selected")
+    viewportShot("timer-overflow-first-selected")
+    captureVisibleTimerChoice(timerChoice(201),state:"first")
+    revealTimerChoice(timerChoice(206),left:true)
+    touchTimerChoice(timerChoice(206))
+    XCTAssertEqual(app.staticTexts["timer.countdown"].label,"06:00")
+    verifyTimerLimitAlert()
+    XCTAssertEqual(app.staticTexts["timer.countdown"].label,"06:00")
+    XCTAssertEqual(timerChoice(206).value as? String,"Selected")
+    viewportShot("timer-overflow-thirteenth-rejected")
+    captureVisibleTimerChoice(timerChoice(206),state:"middle")
+    revealTimerChoice(timerChoice(212),left:true)
+    touchTimerChoice(timerChoice(212));tap("timer.delete")
+    XCTAssertEqual(timerChoicesContainer.value as? String,"11 timers")
+    XCTAssertFalse(timerChoice(212).exists)
+    XCTAssertEqual(app.staticTexts["timer.countdown"].label,"11:00")
+    revealTimerChoice(timerChoice(211),left:true)
+    XCTAssertEqual(timerChoice(211).value as? String,"Selected")
+    viewportShot("timer-overflow-delete-last-fallback")
+    captureVisibleTimerChoice(timerChoice(211),state:"delete-fallback")
+  }
+  @objc func testNormalAddsReachTwelveAndRejectThirteen() {
+    launch(["--page","Timers"])
+    tap("timer.start")
+    for _ in 0..<11 { tap("Add another timer") }
+    XCTAssertEqual(timerChoicesContainer.value as? String,"12 timers")
+    let choices=app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH %@ AND value == %@","timer.select.","Selected"))
+    let selected=choices.firstMatch
+    revealTimerChoice(selected,left:true)
+    XCTAssertEqual(choices.count,1)
+    let id=selected.identifier
+    viewportShot("timer-overflow-twelve-normal-adds")
+    verifyTimerLimitAlert()
+    XCTAssertEqual(choices.count,1)
+    XCTAssertEqual(choices.firstMatch.identifier,id)
+    XCTAssertEqual(app.staticTexts["timer.title"].label,"15 MIN")
+    viewportShot("timer-overflow-normal-add-limit-preserved")
+  }
+}
