@@ -1,0 +1,161 @@
+{
+  "code_commit": "670bd5d9d74eaab91583c4e42a7e152124d4ae39",
+  "feature_commit": "35f008e13b831b4af3fd92cb54f16bbec241e8aa",
+  "source_digest": "b68764f21943a5e1ccfa12e5412a64704b36cf8baf1156d70de3314ee0453cf3",
+  "source_files": 141,
+  "source_matches_feature_and_merge_bytes": true,
+  "changed_sources": [
+    "HomeViewReplica.xcodeproj/project.pbxproj",
+    "Sources/App/RootView.swift",
+    "Sources/Core/ViewportNavigationIntent.swift",
+    "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "core_passed": 159,
+  "core_repeated_after_feature_and_merge": true,
+  "ui_executions": 14,
+  "unique_cases": 7,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:21:49.548548+00:00",
+      "ended": "2026-10-18T05:22:01.161737+00:00",
+      "log_sha256": "f057df51dba91403dfe2a20ae3a46047602215754ab7ed5c3607dbbbf4d8a4cf"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T05:22:01.162264+00:00",
+      "ended": "2026-10-18T05:22:14.102990+00:00",
+      "log_sha256": "ef0875e93bc4b7655720bd4aa281c53a31a8d8b3a00ee6daaeb8213c00326e7e"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:22:14.103506+00:00",
+      "ended": "2026-10-18T05:22:28.318723+00:00",
+      "log_sha256": "3a64ba5f3a84bb9cb0dea9022f92118f48911b127c76d652e9d978a1a5697fc5"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:22:28.319193+00:00",
+      "ended": "2026-10-18T05:22:41.377491+00:00",
+      "log_sha256": "44ed29a012fc483fcd22bc0a77c45e70e3249df2699602d4ee63c957c98deb19"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:22:41.378285+00:00",
+      "ended": "2026-10-18T05:22:49.045707+00:00",
+      "log_sha256": "bb631afc186ff758a7f6b5e57a91828fcc733c67144252a8800c0313ae4cdc93"
+    }
+  ],
+  "actual_native_pixel_metrics": [
+    {
+      "device": "iPad",
+      "ignored_gestures": [
+        {
+          "gesture": "diagonal-vertical",
+          "pixels_identical": true,
+          "png_bytes_identical": true,
+          "before_sha256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c",
+          "after_sha256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c"
+        },
+        {
+          "gesture": "short",
+          "pixels_identical": true,
+          "png_bytes_identical": true,
+          "before_sha256": "6d1e61a2d428e0ecdc7303a8740039eeaabdbb21604365fdffe52f6369594749",
+          "after_sha256": "6d1e61a2d428e0ecdc7303a8740039eeaabdbb21604365fdffe52f6369594749"
+        }
+      ],
+      "horizontal_changed_pixels": 2478080,
+      "horizontal_destination_asserted_natively": "Numerals"
+    },
+    {
+      "device": "iPhone",
+      "ignored_gestures": [
+        {
+          "gesture": "diagonal-vertical",
+          "pixels_identical": true,
+          "png_bytes_identical": true,
+          "before_sha256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368",
+          "after_sha256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368"
+        },
+        {
+          "gesture": "short",
+          "pixels_identical": true,
+          "png_bytes_identical": true,
+          "before_sha256": "41ea1aae224d66c6aa7d0b2cb0bbb4b97cb56bc50eff818875316905c30a4d61",
+          "after_sha256": "41ea1aae224d66c6aa7d0b2cb0bbb4b97cb56bc50eff818875316905c30a4d61"
+        }
+      ],
+      "horizontal_changed_pixels": 1257414,
+      "horizontal_destination_asserted_natively": "Numerals"
+    }
+  ],
+  "gesture_policy": "Own dominant-axis arbitration; equal axes choose neither. Existing strict 70/80 distances and 16/600, .12, .74 edge regions retained.",
+  "unchanged_app_model_nextFace_and_route_behavior": true,
+  "gesture_transition_animation_bytes_not_changed": true,
+  "qualified_before_fix": {
+    "source_digest": "7ebf80c0bf4d74b012eda6695f4795ec80343bc344cba6b69eb7f913fa277850",
+    "source_files": 139,
+    "app_navigation_bytes_match_published_commit": "b96efb930a79aed0702231bc1589f8539a396448",
+    "passed": 0,
+    "failed": 2,
+    "skipped": 0,
+    "archive_sha256": "63636d21bfe3135105f0b32e3ca10006fd84bf8002e90f41a7d9b72f3a8d5591",
+    "actual_native_images_reviewed": true
+  },
+  "initial_baseline_qualification": {
+    "source_digest": "170ff7e09f33dacc0946fd8b235f95f8ecda2bcbdc9c6682e12fa3d9a71137ad",
+    "passed": 1,
+    "failed": 2,
+    "wrong_horizontal_neighbour_expectation": "First test used Modular for a right swipe; corrected to Numerals before the second unmodified-app baseline. Do not treat that first assertion alone as qualified reproduction.",
+    "source_archive_sha256": "74e302627e93de62b228b0c90b8591973fb3f44dba05fd15379b8e1e05e8fda5"
+  },
+  "four_case_pilot_not_added_to_final14": true,
+  "actual_final_images_reviewed_both_devices": true,
+  "original_motion_curves_or_thresholds_accepted": false,
+  "interactive_transition_cancellation_tested": false,
+  "physical_devices_tested": false,
+  "real_accounts_homes_or_calls_used": false,
+  "full_ui_suite_claimed": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/navigation-intent-manifest.json",
+  "logs": {
+    "navigation-dominant-axis-core.log": "85ce7016d8f2b09d9645c9a80a405b2445a7fc8b190b86a8a42989ddb9d74e26",
+    "navigation-feature-post-commit-core.log": "a92a63186c76de035d96b4e4a0b33ba3438c365aa36d931d3bf2bdbf0d55e1b3",
+    "navigation-integrated-core.log": "49e1a2f3ee7171fff1ab59c97149307f7fdcd073962476e0ba4899e4cb32fa9e",
+    "navigation-dominant-axis-build.log": "19030c4dd9ba5fceb8b70015f273d370a71ad7db5e12dac8ccb2df9b04ad1a4c",
+    "navigation-dominant-axis-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "61c6a2709223fed73e7277637ad9a859a24b2c6621b1b9556909745a66f925e4",
+    "iPhone": "64a592059195705ed7038dfc024f34554eab3b12adc8cb77a366682d8e6ce1d7"
+  }
+}
