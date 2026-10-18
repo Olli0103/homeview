@@ -1,0 +1,136 @@
+{
+  "base": "f3dfbe14eb026b75474c8dab4a4b7e15a118e7e8",
+  "App_source_digest": "6750246c7ddb1bb6bf13ab32797f291aaa2c49b5d95bebfabc5cf557f701c44d",
+  "default_source_manifest_basis": "prisms-current-system-reduce-motion.json",
+  "default_source_reverified": true,
+  "private_harness_source_digest": "216fd5a963ac0895ffd9f4f1856d13baa09f089e1f6e89d01a40ca615ffac56e",
+  "private_harness_source_files": 142,
+  "private_fixture_only": true,
+  "base_test_file_sha256": "88f7dff244895de36dd06a6e17fa5c5b0395e628565c0c75f7be01f84d71a762",
+  "extended_test_file_sha256": "c69ed40a8c2700fb3f18286e6ee609107bde6ec2645f828799c28cec0334b865",
+  "fixture_sha256": "4cf269b85306148e070f2b4b8c6947d18252d61f3ca45c3db6c3b71ac258b9b5",
+  "fixture_reconstruction": "Append one LF and exact optional fixture bytes to base UITest file.",
+  "native_runs": [
+    {
+      "device": "iPhone",
+      "native_passed": 1,
+      "native_failed": 0,
+      "native_skipped": 0,
+      "XCTest_runtime_warnings": 0,
+      "all11_PNG_decoded": true,
+      "three_background_states_explicitly_2or3": true,
+      "background_states": [
+        {
+          "background_state": 3,
+          "phase": "moving-0",
+          "uptime": 1350131.5015982918
+        },
+        {
+          "background_state": 3,
+          "phase": "moving-1",
+          "uptime": 1350144.1549739584
+        },
+        {
+          "background_state": 3,
+          "phase": "reduced",
+          "uptime": 1350169.1477295416
+        }
+      ],
+      "installed_public_App10_exact": true,
+      "own_eroded_body_samples": 85447,
+      "moving_pairs": [
+        {
+          "phase": "resume-0",
+          "changed_body_pixels": 85429
+        },
+        {
+          "phase": "resume-1",
+          "changed_body_pixels": 85442
+        },
+        {
+          "phase": "face-return",
+          "changed_body_pixels": 83964
+        }
+      ],
+      "reduced_before_after_later_body_RGBA_exact": true,
+      "actual_Flow_Fade_Flow_destination_attached": true,
+      "no_original_hardware_energy_frame_rate_claim": true,
+      "no_Home_button_root_cause_claim": true
+    },
+    {
+      "device": "iPad",
+      "native_passed": 1,
+      "native_failed": 0,
+      "native_skipped": 0,
+      "XCTest_runtime_warnings": 0,
+      "all11_PNG_decoded": true,
+      "three_background_states_explicitly_2or3": true,
+      "background_states": [
+        {
+          "background_state": 3,
+          "phase": "moving-0",
+          "uptime": 1350311.87830125
+        },
+        {
+          "background_state": 3,
+          "phase": "moving-1",
+          "uptime": 1350325.277880125
+        },
+        {
+          "background_state": 3,
+          "phase": "reduced",
+          "uptime": 1350352.5486684167
+        }
+      ],
+      "installed_public_App10_exact": true,
+      "own_eroded_body_samples": 167917,
+      "moving_pairs": [
+        {
+          "phase": "resume-0",
+          "changed_body_pixels": 167897
+        },
+        {
+          "phase": "resume-1",
+          "changed_body_pixels": 167855
+        },
+        {
+          "phase": "face-return",
+          "changed_body_pixels": 164803
+        }
+      ],
+      "reduced_before_after_later_body_RGBA_exact": true,
+      "actual_Flow_Fade_Flow_destination_attached": true,
+      "no_original_hardware_energy_frame_rate_claim": true,
+      "no_Home_button_root_cause_claim": true
+    }
+  ],
+  "native_executions": 2,
+  "failed": 0,
+  "skipped": 0,
+  "XCTest_runtime_warnings": 0,
+  "all22_own_PNG_and2_contacts_actually_viewed": true,
+  "same_App_Runner_xctestrun_both_devices": true,
+  "installed_public_App10_SHA_exact_both": true,
+  "all21_shared_inputs_unchanged": true,
+  "compiled_archive": {
+    "file": "flow-lifecycle-settings-shared-compiled.zip",
+    "sha256": "0f9958ccd4eada147768f3e015ebf3333bfc675ba9eaa608aa485018d8c73c0a",
+    "unique_input_files": 21,
+    "all_entries_SHA256_readback": true,
+    "retained_privately": true
+  },
+  "prior_home_button_failures": {
+    "native_executions": 2,
+    "passed": 0,
+    "failed": 2,
+    "failure": "Home input plus2s left foreground state4;guard stopped before resume or material images.",
+    "cause": "Unknown;not explained by subsequent Settings-based success.",
+    "retained_source_digest": "3eda6ab1b3cc19bfa30438ccb4770a60756f245e109fe03946fae936123d37ad",
+    "retained_compiled_archive": "7a8106790bfbc8660ba61edcf5a1e7dc2c3e926e797467068972e318707a3397"
+  },
+  "no_App_or_default_test_changes_or_new_SDK_sweep": true,
+  "no_actual_OS_ReduceMotion_switch_test": true,
+  "no_background_GPU_CPU_activity_or_energy_measurement": true,
+  "no_Original_hardware_global_accessibility_process_restart_claim": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/flow-lifecycle-manifest.json"
+}
