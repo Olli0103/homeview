@@ -1,0 +1,288 @@
+[
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-day-1",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "071f22e654b6a36c2ec75338178e091a3f5912d866b9af83c0095c4280456eed",
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-00.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-day-30",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "717f1841bd6533891719fb42318033a8932f7dcdf8b33e4aba9ebc31d0853081",
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-01.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-day-13",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "56f22b71767f84996479883f099ee368e965285b76b6953d055f1c4d48e7726b",
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-02.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-day-1",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "48c6e87513f995c2cd2014159c7812ac1c7b3ad1df6443b98aef289caddd59d4",
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-03.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-viewport",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "03e9d5cd95f01f3b4a39f132482dbb00315ccaf15d2203e2fe3077adb614737c",
+    "test": "HomeViewUITests/testModularNightWholeViewportContainsNoColorLeak()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-04.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-weather-missing-opened-city",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "15479980837824faa2e4787c52263f1930197701f66efc5c783da0d03f402285",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-05.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-weather-missing",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "e3e93345dfee7cc11fe5188f1f4fb3c5f4ee0ad38d63238d206e8f2e6de07f27",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-06.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-weather-missing-temperature",
+    "pixels": [
+      258,
+      397
+    ],
+    "sha256": "fc1b56b1317418415fd6951d3f2c9fb5156b1b75af6f17ac413609bb96aaf15b",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-07.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-weather-connected-opened-city",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "4d9ed1739f008e6bfdb81f8a5006ce28e4186537d6296e6174aa41f3e6d554cc",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-08.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-weather-connected",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "sha256": "ae26d379ad93d8877e451177fc18eb208a3579c2f65e52e30c5cda5c4cf4a3b0",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-09.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-weather-connected-temperature",
+    "pixels": [
+      470,
+      397
+    ],
+    "sha256": "4a824a9b4014eaf97524ff8a315697584df2fb16ed26bebf3e209420be7ad492",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPad-10.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-day-1",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "7b19bfdfc04960199cd2101ec2d516591b6e9fe9ebb8a1eeb17244d20dcc8177",
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-11.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-day-30",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "fcd44e0a558e2cd638cbed94cd119f23bcb9a89ca583cdc73bec1010962d84b0",
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-12.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-day-13",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "8f7d387d7cb62205d987788bdbe51259b4e60b3053dddc92c58347cf460b9f43",
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-13.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-day-1",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "f189f70cc0d27bb460eadfb713cd4e0ee6f26c38d585f3135dba619049b89881",
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-14.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-viewport",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "05729d5b61fa34e9859a65ae91b8bc4360b4987bb48a8971da585651d3d90802",
+    "test": "HomeViewUITests/testModularNightWholeViewportContainsNoColorLeak()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-15.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-weather-missing-opened-city",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "211cd5f5b1f5285d7e0aea81e8b0211d160ec24468dd80d85f98d79c4bebe349",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-16.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-weather-missing",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "eb800972605874c8c8aabe334770dc2e6b8c286b116041df07b5f58b7878e756",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-17.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-weather-missing-temperature",
+    "pixels": [
+      182,
+      282
+    ],
+    "sha256": "c32d3d20c69d4b6d9ec60eb827e8cbf103aa47de0d9c379d57fadfb6cb5392c9",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-18.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-weather-connected-opened-city",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "60c8261ebfc8c0d253a8d87095907f56d62f4b90cad2c827543767200e102b8f",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-19.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-weather-connected",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "sha256": "2089eed0998f36d3434ccc7f1ac9cbb220bab02b7910940bd705a817f56c6809",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-20.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-weather-connected-temperature",
+    "pixels": [
+      336,
+      282
+    ],
+    "sha256": "5932e893382febfdc9e146f6418d0660dfa41fe10aba040d814148278a4b11f3",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "checkpoint": "modular-light-v2-prototype-ui",
+    "path": "Docs/screenshots/goal-20261018/modular-light-v2-iPhone-21.png",
+    "source_digest": "88a0fc14489e8dcbfa7b1ecfbd7961a39378701185ffbb244de47dbda7e3375b"
+  }
+]
