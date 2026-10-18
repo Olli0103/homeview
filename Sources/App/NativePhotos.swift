@@ -66,10 +66,14 @@ struct PhotoGlassClock: View {
   private var glyphs: some View {
     Text(time).font(.system(size: 181, weight: .regular, design: .rounded))
       .tracking(-10).lineLimit(1).minimumScaleFactor(0.65)
-      // Taller public runtime glyphs, still inside the existing protected clock
-      // band. Full-height Original typography needs its separate matte contract.
-      .scaleEffect(x: 1, y: 1.4)
-      .frame(width: 540, height: 200).foregroundStyle(.white)
+      // Public runtime glyphs and the matte-backed expanded band share the
+      // composition's bounds; no extracted or persisted font outlines.
+      // Constrain before stretching, reserving 20pt per side for glyph bearings.
+      .frame(width: composition.clockFrame == nil ? nil : 500 / 1.4)
+      .scaleEffect(x: composition.clockFrame == nil ? 1 : 1.4,
+                   y: 1.4 * composition.clockRect.height / 0.32)
+      .frame(width: 540, height: 200 * composition.clockRect.height / 0.32)
+      .foregroundStyle(.white)
   }
   var body: some View {
     Group {

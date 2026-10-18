@@ -883,6 +883,90 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertLessThanOrEqual(bottom,0.39,"No glyph may exceed the existing protected layout")
     print("PHOTO_TYPE_INK top=\(top) bottom=\(bottom) height=\(bottom-top)")
   }
+  func testPhotoFullHeightMatteActuallyOccludesClockInkWithoutMirroring() {
+    let fixture=["--photo-layout-fixture","sparse-depth"]
+    launch(fixture+["--photo-clock-test-mode","background"])
+    let background=viewportBytes("photo-adaptive-full-background")
+    let bg=[UInt8](viewportPixels(background,inset:0))
+    app.terminate()
+    launch(fixture+["--photo-clock-test-mode","stencil","--photo-depth-unoccluded-control"])
+    let stencilData=viewportBytes("photo-adaptive-full-unoccluded-stencil")
+    let image=UIImage(data:stencilData)!.cgImage!,w=image.width,h=image.height
+    let stencil=[UInt8](viewportPixels(stencilData,inset:0))
+    XCTAssertEqual(stencil.count,bg.count)
+    app.terminate()
+    launch(fixture)
+    let geometry=app.staticTexts["photo.clock.geometry.test"].label
+    XCTAssertTrue(geometry.contains("height=0.9;"),geometry)
+    let actual=[UInt8](viewportPixels(viewportBytes("photo-adaptive-full-alpha-occlusion"),inset:0))
+    XCTAssertEqual(actual.count,bg.count)
+    var covered=0,coveredChanges=0,outsideChanges=0
+    var inkRows:[Int]=[]
+    var left=w,right=0
+    for y in Int(Double(h)*0.02)..<Int(Double(h)*0.98) {
+      var rowInk=0
+      for x in Int(Double(w)*0.02)..<Int(Double(w)*0.98) {
+        let i=(y*w+x)*4
+        let ink=(0..<3).allSatisfy { stencil[i+$0]>245 } &&
+          (0..<3).contains { bg[i+$0]<190 }
+        if ink { rowInk += 1;left=min(left,x);right=max(right,x+1) }
+        let nx=Double(x)/Double(w),ny=Double(y)/Double(h)
+        // Fixed interior of the asymmetric top-left alpha fixture, away from edges.
+        let subject=nx>=0.13 && nx<=0.24 && ny>=0.17 && ny<=0.43
+        if ink && subject {
+          covered += 1
+          if (0..<3).contains(where:{actual[i+$0] != bg[i+$0]}) { coveredChanges += 1 }
+        } else if ink && !subject &&
+                  (0..<3).contains(where:{abs(Int(actual[i+$0])-Int(bg[i+$0]))>3}) {
+          outsideChanges += 1
+        }
+      }
+      if rowInk>10 { inkRows.append(y) }
+    }
+    XCTAssertFalse(inkRows.isEmpty)
+    let top=Double(inkRows.first ?? 0)/Double(h),bottom=Double((inkRows.last ?? 0)+1)/Double(h)
+    XCTAssertGreaterThan(bottom-top,0.75)
+    XCTAssertGreaterThanOrEqual(top,0.05)
+    XCTAssertLessThanOrEqual(bottom,0.95)
+    XCTAssertGreaterThanOrEqual(Double(left)/Double(w),0.05)
+    XCTAssertLessThanOrEqual(Double(right)/Double(w),0.95)
+    XCTAssertGreaterThan(covered,100,"The independent stencil must prove ink exists behind the subject")
+    XCTAssertEqual(coveredChanges,0,"Actual foreground must occlude every sampled covered ink pixel")
+    XCTAssertGreaterThan(outsideChanges,1000,"The unoccluded glass clock must remain visibly rendered")
+    print("PHOTO_ADAPTIVE_ALPHA covered=\(covered) coveredChanges=\(coveredChanges) outsideChanges=\(outsideChanges) top=\(top) bottom=\(bottom) left=\(Double(left)/Double(w)) right=\(Double(right)/Double(w))")
+  }
+  func testPhotoMediumMatteBandHasVisibleInkWithinItsOwnGeometry() {
+    launch(["--photo-layout-fixture","top","--photo-clock-test-mode","stencil",
+            "--photo-depth-unoccluded-control"])
+    let data=viewportBytes("photo-adaptive-medium-unoccluded-stencil")
+    let image=UIImage(data:data)!.cgImage!,w=image.width,h=image.height
+    let pixels=[UInt8](viewportPixels(data,inset:0))
+    var rows:[Int]=[]
+    var left=w,right=0
+    for y in 0..<h {
+      var white=0
+      for x in 0..<w {
+        let i=(y*w+x)*4
+        if (0..<3).allSatisfy({pixels[i+$0]>245}) {
+          white += 1;left=min(left,x);right=max(right,x+1)
+        }
+      }
+      if white>10 { rows.append(y) }
+    }
+    let geometry=app.staticTexts["photo.clock.geometry.test"].label
+    XCTAssertTrue(geometry.contains("height=0.56;"),geometry)
+    XCTAssertFalse(rows.isEmpty)
+    let top=Double(rows.first ?? 0)/Double(h),bottom=Double((rows.last ?? 0)+1)/Double(h)
+    XCTAssertGreaterThan(bottom-top,0.45)
+    XCTAssertGreaterThanOrEqual(top,0.39)
+    XCTAssertLessThanOrEqual(bottom,0.95)
+    XCTAssertGreaterThanOrEqual(Double(left)/Double(w),0.05)
+    XCTAssertLessThanOrEqual(Double(right)/Double(w),0.95)
+    print("PHOTO_ADAPTIVE_MEDIUM top=\(top) bottom=\(bottom) left=\(Double(left)/Double(w)) right=\(Double(right)/Double(w))")
+    app.terminate()
+    launch(["--photo-layout-fixture","top"])
+    viewportShot("photo-adaptive-medium-glass")
+  }
   func testPhotoGlassNightUsesTheWholeViewportMonochrome() {
     launch(["--face","Photos"])
     tap("nav.controls"); tap("controls.night"); tap("nav.faces")
