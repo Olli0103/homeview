@@ -410,3 +410,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: Thermostat-Pfeile und explizite Trefferrechtecke
 
 [Begrenzte UI07-Korrektur](home-thermostat-arrows.md):166Modelltests,zwölfgezielteUI,fünfSDK. EigeneSF-Zeichenzeichnung kalibriert;62-Punkte-Layout jetzt explizit bedienbar,Symbol-/Randtaps68→69→68.Außerhalb Pfeilbereiche0Pixeländerung.ErsterPilot/Rahmenannahme und negativerVorherstandtest erhalten.Originalkonturen/Licht/Hardware offen.
+
+
+## 18. Oktober: Stundenmarkierungen der kleinen Glas-Uhr
+
+[Begrenzte UI07-Kalibrierung](home-clock-hour-marks.md):166Modelltests,14gezielteUI,5SDK. NurStundenstrichlänge;Strichstärke/äußereEnden erhalten.AußerhalbzwölfMarkierungsbereiche0Pixeländerung,achtandereAtlasziele jeGerätRGBA/PNGexakt.Zeiger/Relief/Nabe/Licht/Hardwarebleibenoffen.
