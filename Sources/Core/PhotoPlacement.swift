@@ -104,6 +104,9 @@ struct PhotoComposition: Equatable, Sendable {
   var retention = 1.0
   var depthEnabled = false
   var protectedCoverage = 0.0
+  /// An optional larger band is only selected with a usable foreground matte.
+  var clockFrame: PhotoRect?
+  var clockRect: PhotoRect { clockFrame ?? clock.rect }
 }
 
 enum PhotoPlacement {
@@ -199,6 +202,37 @@ enum PhotoPlacement {
         destination: .init(x: (1-width)/2, y: 0.42+(availableHeight-height)/2,
                            width: width, height: height),
         clock: .top, retention: 1, depthEnabled: false, protectedCoverage: 0)
+    }
+    if var expanded = best, expanded.depthEnabled, adjustment.clock == .automatic,
+       adjustment.automaticCrop,
+       expanded.destination == .full, let mask {
+      // Own bounded candidates informed by the tall reference states, not a
+      // claim about Apple's placement algorithm. Keep the same occlusion limit.
+      for height in [0.90, 0.56] {
+        let mediumY: Double = switch expanded.clock {
+          case .automatic, .top: 0.05
+          case .middle: 0.22
+          case .bottom: 0.39
+        }
+        let rect = PhotoRect(x:0.05,y:height == 0.90 ? 0.05:mediumY,
+                             width:0.90,height:height)
+        let source = PhotoRect(x:expanded.crop.x+rect.x*expanded.crop.width,
+          y:expanded.crop.y+rect.y*expanded.crop.height,
+          width:rect.width*expanded.crop.width,height:rect.height*expanded.crop.height)
+        let coverage = mask.coverage(source)
+        guard coverage <= 0.18 else { continue }
+        expanded.clockFrame = rect
+        expanded.coverage = coverage
+        expanded.protectedCoverage = min(1,protected.reduce(0) { sum, region in
+          let r=region.intersection(expanded.crop)
+          guard r.valid else { return sum }
+          let destination=PhotoRect(x:(r.x-expanded.crop.x)/expanded.crop.width,
+            y:(r.y-expanded.crop.y)/expanded.crop.height,
+            width:r.width/expanded.crop.width,height:r.height/expanded.crop.height)
+          return sum+destination.intersection(rect).area/rect.area
+        })
+        return expanded
+      }
     }
     return best ?? .init()
   }

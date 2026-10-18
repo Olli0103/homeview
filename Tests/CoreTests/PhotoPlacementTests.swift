@@ -9,6 +9,53 @@ final class PhotoPlacementTests: XCTestCase {
     PhotoSubjectMask(width: 100, height: 100,
                      values: (0..<10_000).map { fill($0 % 100, $0 / 100) })!
   }
+  func testSparseRealMatteAllowsFullHeightWithUnchangedOcclusionLimit() {
+    let subject=mask { x,y in x>=10 && x<22 && y>=10 && y<48 ? 255:0 }
+    let result=PhotoPlacement.choose(aspect:1,mask:subject,foregroundAvailable:true)
+    XCTAssertTrue(result.depthEnabled)
+    XCTAssertEqual(result.clockRect,.init(x:0.05,y:0.05,width:0.9,height:0.9))
+    XCTAssertEqual(result.coverage,subject.coverage(result.clockRect),accuracy:0.000001)
+    XCTAssertLessThanOrEqual(result.coverage,0.18)
+  }
+  func testLargerClockNeverUsesFaceBoxesOrAnEmptyMatteAsAlpha() {
+    let sparse=mask { x,y in x<15 && y<40 ? 255:0 }
+    for (subject,available) in [(sparse,false),(nil,true),(mask { _,_ in 0 },true)] {
+      let result=PhotoPlacement.choose(aspect:1,mask:subject,
+        protectedRegions:[.init(x:0.1,y:0.1,width:0.12,height:0.38)],foregroundAvailable:available)
+      XCTAssertNil(result.clockFrame)
+      XCTAssertEqual(result.clockRect,result.clock.rect)
+      XCTAssertFalse(result.depthEnabled)
+    }
+  }
+  func testExplicitManualClockAndLetterboxKeepTheExistingBand() {
+    let sparse=mask { x,y in x<12 && y<40 ? 255:0 }
+    let manual=PhotoPlacement.choose(aspect:1,mask:sparse,
+      adjustment:.init(clock:.bottom))
+    XCTAssertTrue(manual.depthEnabled)
+    XCTAssertNil(manual.clockFrame)
+    XCTAssertEqual(manual.clockRect,PhotoClockPosition.bottom.rect)
+    let manualCrop=PhotoPlacement.choose(aspect:1,mask:sparse,
+      adjustment:.init(automaticCrop:false))
+    XCTAssertNil(manualCrop.clockFrame)
+    XCTAssertEqual(manualCrop.clockRect,manualCrop.clock.rect)
+    let edges=mask { x,y in (x<10 || x>90) && y>35 && y<65 ? 255:0 }
+    let letterbox=PhotoPlacement.choose(aspect:2,mask:edges)
+    XCTAssertNotEqual(letterbox.destination,.full)
+    XCTAssertNil(letterbox.clockFrame)
+  }
+  func testExpandedCoverageUsesTheSameSelectedSourceCrop() {
+    let left=mask { x,y in x<12 && y>35 && y<65 ? 255:0 }
+    let result=PhotoPlacement.choose(aspect:2,mask:left)
+    XCTAssertEqual(result.crop.x,0)
+    XCTAssertEqual(result.retention,1)
+    XCTAssertNotNil(result.clockFrame)
+    let rect=result.clockRect
+    let source=PhotoRect(x:result.crop.x+rect.x*result.crop.width,
+      y:result.crop.y+rect.y*result.crop.height,
+      width:rect.width*result.crop.width,height:rect.height*result.crop.height)
+    XCTAssertEqual(result.coverage,left.coverage(source),accuracy:0.000001)
+    XCTAssertLessThanOrEqual(result.coverage,0.18)
+  }
   func testOpaqueClockAvoidsDetectedHeadWhenNoMatteExists() {
     let head=PhotoRect(x:0.3,y:0.14,width:0.4,height:0.42)
     let result=PhotoPlacement.choose(aspect:1,mask:nil,protectedRegions:[head],foregroundAvailable:false)
@@ -55,7 +102,14 @@ final class PhotoPlacementTests: XCTestCase {
     let top = mask { _, y in y < 43 ? 255 : 0 }
     let result = PhotoPlacement.choose(aspect: 1, mask: top)
     XCTAssertEqual(result.clock, .bottom)
-    XCTAssertEqual(result.coverage, 0)
+    // The selected bottom anchor now safely uses the medium matte-backed band.
+    XCTAssertEqual(result.clockRect.height,0.56)
+    XCTAssertEqual(result.clockRect,.init(x:0.05,y:0.39,width:0.9,height:0.56))
+    // Summed-area sampling conservatively floors/ceils source pixels. Check
+    // the expanded source rectangle, not the former compact zero-overlap band.
+    XCTAssertEqual(result.coverage,top.coverage(result.clockRect),accuracy:0.000001)
+    XCTAssertGreaterThan(result.coverage,0)
+    XCTAssertLessThanOrEqual(result.coverage,0.18)
     XCTAssertTrue(result.depthEnabled)
     let dense = PhotoPlacement.choose(aspect: 1, mask: mask { _, _ in 255 })
     XCTAssertEqual(dense.clock, .top)

@@ -6,17 +6,20 @@ import UniformTypeIdentifiers
 /// Original geometric fixtures. Only instantiated behind --uitesting.
 enum PhotoLayoutFixture {
   static func make(_ kind: String) -> (bytes: Data, analysis: PhotoAnalysis)? {
-    guard ["top", "edges", "dense"].contains(kind) else { return nil }
+    guard ["top", "edges", "dense", "sparse-depth"].contains(kind) else { return nil }
     let width = kind == "edges" ? 800 : 600
     let height = kind == "edges" ? 400 : 600
     let subjects: [PhotoRect] = kind == "edges"
       ? [.init(x: 0.02, y: 0.35, width: 0.10, height: 0.3),
          .init(x: 0.88, y: 0.35, width: 0.10, height: 0.3)]
-      : kind == "dense" ? [.full] : [.init(x: 0.1, y: 0.02, width: 0.8, height: 0.4)]
+      : kind == "dense" ? [.full]
+      : kind == "sparse-depth" ? [.init(x:0.12,y:0.16,width:0.13,height:0.28)]
+      : [.init(x: 0.1, y: 0.02, width: 0.8, height: 0.4)]
     func image(background: Bool) -> Data? {
       guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8,
                                     bytesPerRow: width*4, space: CGColorSpaceCreateDeviceRGB(),
                                     bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
+      context.clear(CGRect(x:0,y:0,width:width,height:height))
       if background {
         context.setFillColor(CGColor(red: 0.05, green: 0.13, blue: 0.2, alpha: 1))
         context.fill(CGRect(x: 0, y: 0, width: width, height: height))
