@@ -30,6 +30,9 @@ static float weatherDensity(float3 p,float cover,float daylight) {
     float3 fieldPoint=mix(p,layered,daylight);
     float ceiling=mix(0.90,0.30,saturate(cover))
         +smoothstep(0.18,0.65,p.y/4.0)*mix(0.30,0.20,daylight);
+    // Close excessive upper daylight gaps without adding density samples.
+    if(daylight>0.5)
+        ceiling-=0.035*(1.0-smoothstep(0.08,0.22,p.y/4.0))*saturate(cover/0.70);
     return max(0.0,weatherField(fieldPoint*2.0)-ceiling)*mix(5.0,9.0,daylight);
 }
 // Both the backdrop and refracted text evaluate this same sky. UI05's lower
@@ -59,7 +62,7 @@ static float3 weatherScene(float2 uv,float time,float cover,float night) {
         float nightLight=0.30+0.70*exp(-nearShadow*2.1);
         float light=mix(nightLight,layeredLight,daylight);
         // Lift only the daylight shadow floor; keep density, light and night unchanged.
-        float3 shadow=mix(float3(0.45,0.54,0.67),float3(0.64,0.72,0.83),daylight);
+        float3 shadow=mix(float3(0.45,0.54,0.67),float3(0.66,0.74,0.85),daylight);
         float3 color=mix(shadow,float3(1.0,0.995,0.98),light);
         color*=1.0-smoothstep(0.05,0.45,uv.y)*0.16;
         color=mix(color,color*float3(0.34,0.39,0.57),night*0.7);
