@@ -1,0 +1,422 @@
+{
+  "code_commit": "350914e537bde2af07ed18425ba01445ef1eb770",
+  "feature_commit": "d80e26391ad839e86379353d60d48d7ada6bd37b",
+  "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321",
+  "source_files": 142,
+  "changed_sources": [
+    "Sources/App/RootView.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "faces_core_providers_resources_unchanged": true,
+  "code_change": "RootView night multiplier changes from named Color.red to explicit RGB(1,0,0); day multiplier remains white. No light-edge material, layout or data edit.",
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "ui_executions": 12,
+  "unique_cases": 6,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T06:47:22.441707+00:00",
+      "ended": "2026-10-18T06:47:37.214555+00:00",
+      "log_sha256": "034a88ea42ae93a9284cb1d0f5a9541e844d55d15f09983668f9e0eff4f6af6c"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T06:47:37.215068+00:00",
+      "ended": "2026-10-18T06:47:50.394338+00:00",
+      "log_sha256": "62b252b0751916e9901cd40e8f0d5d7d1fa5f7cce10b24362b74f0f037808d8b"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T06:47:50.395062+00:00",
+      "ended": "2026-10-18T06:48:01.643721+00:00",
+      "log_sha256": "8ad3faf24622807b7a0235d6aef455886df5cea9abb0d26df5c11fb178807094"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T06:48:01.644169+00:00",
+      "ended": "2026-10-18T06:48:16.557918+00:00",
+      "log_sha256": "1b56b66289b03101ad2122c5a5c4c9e6fadcdcbd6e63a6d17e367d2dc9faea87"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T06:48:16.558428+00:00",
+      "ended": "2026-10-18T06:48:24.719872+00:00",
+      "log_sha256": "e81bea3daf48eb7b773ea418babf7fa25b820f982d4f1e3bcbe77c8fff512aee"
+    }
+  ],
+  "baseline": {
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc",
+    "graphic_root_bytes_match_published_b28e539": true,
+    "total_executions": 4,
+    "passed": 3,
+    "failed": 1,
+    "iPad_night_wrong_color_pixels": 8,
+    "iPhone_night_wrong_color_pixels": 0,
+    "eight_iPad_rgb": [
+      27,
+      10,
+      11
+    ],
+    "bright_old_white_ink_rgb": [
+      255,
+      56,
+      60
+    ],
+    "source_archive_sha256": "0b21cba594eb0d417c6a85c74197df0a9bd5ab6e55ad0ff12286ba4223fb5f7e",
+    "original_failed_run_retained": true
+  },
+  "native_pixel_diagnosis": [
+    {
+      "device": "iPad",
+      "png_sha256": "904a3f04eb91ef864a339c4051051eb602f8d31e1e02744365928220cdc85e4c",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "non_red_pixels": [
+        {
+          "x": 245,
+          "y": 1,
+          "rgb": [
+            27,
+            10,
+            11
+          ]
+        },
+        {
+          "x": 1346,
+          "y": 1,
+          "rgb": [
+            27,
+            10,
+            11
+          ]
+        },
+        {
+          "x": 1,
+          "y": 245,
+          "rgb": [
+            27,
+            10,
+            11
+          ]
+        },
+        {
+          "x": 1590,
+          "y": 245,
+          "rgb": [
+            27,
+            10,
+            11
+          ]
+        },
+        {
+          "x": 1,
+          "y": 1346,
+          "rgb": [
+            27,
+            10,
+            11
+          ]
+        },
+        {
+          "x": 1590,
+          "y": 1346,
+          "rgb": [
+            27,
+            10,
+            11
+          ]
+        },
+        {
+          "x": 245,
+          "y": 1590,
+          "rgb": [
+            27,
+            10,
+            11
+          ]
+        },
+        {
+          "x": 1346,
+          "y": 1590,
+          "rgb": [
+            27,
+            10,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "device": "iPhone",
+      "png_sha256": "bf9392bf2da804a43cb0401324a0208ca35b79b0be6a718319ec9cecc8ca4e9d",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "non_red_pixels": []
+    }
+  ],
+  "native_final_pixels": [
+    {
+      "device": "iPad",
+      "exact_day_image_pairs": [
+        {
+          "day": 1,
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        },
+        {
+          "day": 13,
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        },
+        {
+          "day": 30,
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        }
+      ],
+      "night_native_pixel_checks": [
+        {
+          "state": "camera-demo-night-offline",
+          "lit_pixels": 2409789,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1592,
+            1592
+          ]
+        },
+        {
+          "state": "flow-native-solid-night-whole-viewport",
+          "lit_pixels": 2489545,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1592,
+            1592
+          ]
+        },
+        {
+          "state": "home-prism-night",
+          "lit_pixels": 2431867,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1592,
+            1592
+          ]
+        },
+        {
+          "state": "modular-night-primary-viewport",
+          "lit_pixels": 2380629,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1592,
+            1592
+          ]
+        },
+        {
+          "state": "photo-glass-night-full-viewport",
+          "lit_pixels": 2453095,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1592,
+            1592
+          ]
+        }
+      ]
+    },
+    {
+      "device": "iPhone",
+      "exact_day_image_pairs": [
+        {
+          "day": 1,
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        },
+        {
+          "day": 13,
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        },
+        {
+          "day": 30,
+          "changed_pixels": 0,
+          "png_bytes_identical": true
+        }
+      ],
+      "night_native_pixel_checks": [
+        {
+          "state": "camera-demo-night-offline",
+          "lit_pixels": 1222588,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1134,
+            1134
+          ]
+        },
+        {
+          "state": "flow-native-solid-night-whole-viewport",
+          "lit_pixels": 1263391,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1134,
+            1134
+          ]
+        },
+        {
+          "state": "home-prism-night",
+          "lit_pixels": 1234268,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1134,
+            1134
+          ]
+        },
+        {
+          "state": "modular-night-primary-viewport",
+          "lit_pixels": 1206638,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1134,
+            1134
+          ]
+        },
+        {
+          "state": "photo-glass-night-full-viewport",
+          "lit_pixels": 1244921,
+          "wrong_color_pixels": 0,
+          "brightest_pixel": [
+            255,
+            0,
+            0
+          ],
+          "size": [
+            1134,
+            1134
+          ]
+        }
+      ]
+    }
+  ],
+  "night_predicate_unchanged": "For R>25, G and B must each be <=0.4*R; no allowed wrong pixels. Dark outside rounded face is not claimed to have pure-red RGB.",
+  "six_day_native_pairs_pixel_and_png_byte_identical": true,
+  "ten_full_night_native_frames_zero_wrong_color_pixels": true,
+  "own_pngs": 32,
+  "own_frames_presented_in_four_reviewed_contacts": 26,
+  "additional_six_before_day_pngs_byte_identical_to_reviewed_final_frames": true,
+  "contacts": [
+    {
+      "path": "Docs/screenshots/goal-20261018/night-primary-iPad-contact-1.jpg",
+      "sha256": "5a9e0ee005b3a8b6f9ac62bf477e93286cab15766cf7034148939d601024a472"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/night-primary-iPad-contact-2.jpg",
+      "sha256": "9c8f0f9b90525c66a0748dbb41296012d917b704061db7e8241e9f90269f1eb4"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-contact-1.jpg",
+      "sha256": "d391f7604a3f89fc4bcc95a0964cdc9679e762887c01b48d940355e850fce191"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-contact-2.jpg",
+      "sha256": "007554a32c5c4c66578f015df95d039b7eeae216911383ac09ae01089d966a32"
+    }
+  ],
+  "history": {
+    "initial_external_dispatch_glob_missed_universal_build_before_zero_tests": true,
+    "initial_external_postprocessor_misclassified_day_namespace_as_night_then_explicit_state_allowlist_corrected": true,
+    "app_test_predicate_or_RGB_tolerance_not_changed": true,
+    "baseline_failure_is_not_held_prism_animation_failure": true
+  },
+  "full_ui_or_original_suite_claimed": false,
+  "original_visual_parity_accepted": false,
+  "hardware_accepted": false,
+  "real_accounts_homes_libraries_or_system_alarms_used": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/night-primary-manifest.json",
+  "logs_sha256": {
+    "night-primary-core.log": "ad50808075247843105cf18339a39a36b4dce07d307b736c135e1105c17b22fe",
+    "night-primary-feature-post-commit-core.log": "dd2bfc1c67ff3466f7cdce6964eee7a2005c8022f860e716decec5b1c479e0e1",
+    "night-primary-integrated-core.log": "8c0c85c0f4b92f2f57f8a7a9f6156f7c74b86d5a3e08fdd1fbe426d6e98b6616",
+    "night-primary-build.log": "005fb0494634cc60b86d19b79ced09be54e09b8c928874dbb5483e74f0412b49",
+    "night-primary-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "cc78adbd8124f5fe93cc0f8e2b68aa2807145b53d77b4c99a9387f3524d1eb3c",
+    "iPhone": "efc65640a96034c6988f8a1c82a3dc4d634147bb2e36b3c98530a9381abc3781"
+  }
+}

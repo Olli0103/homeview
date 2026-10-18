@@ -32,6 +32,7 @@ Original-/Hardwarekriterien und die historische QA-01-Abnahme bleiben unverände
 | [Gezielte Wiederherstellung gespeicherter Face-Optionen](face-configuration-recovery.md) | 166 | 8 | 5 |
 | [Vollständige Modular-Wetterstadt ohne gekürzten Demo-Zusatz](modular-weather-caption.md) | 166 | 4 | 5 |
 | [Modular-Wetterblock näher an UI01](modular-weather-reference.md) | 166 | 6 | 5 |
+| [Primärroter Ganzbild-Nachtfilter](night-primary.md) | 166 | 12 | 5 |
 
 Ein getrennter [nativer Mac-Adapterlauf](photo-native-mac.md) auf dem eigenen
 gebauten Demo-Porträt liefert nun eine tatsächliche Vordergrund-PNG mit brauchbarem

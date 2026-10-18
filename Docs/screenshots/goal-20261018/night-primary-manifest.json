@@ -1,0 +1,418 @@
+[
+  {
+    "device": "iPad",
+    "state": "modular-light-edge-night",
+    "sha256": "904a3f04eb91ef864a339c4051051eb602f8d31e1e02744365928220cdc85e4c",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testModularLightEdgeNightKeepsTheEntireViewportMonochrome()",
+    "checkpoint": "modular-light-edge-baseline-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-00.png",
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc"
+  },
+  {
+    "device": "iPad",
+    "state": "camera-demo-night-offline",
+    "sha256": "0d2a79dedc6c43d10849761328cd5b48029015834bc4f9520b8e58ad8ef29bd4",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testCameraDemoNightAndOfflineNeverBecomeLive()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-01.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "screen-camera-demo-face-four-stills",
+    "sha256": "e5472af051c58f3dd6345ca25f0ac3b6f3cfcdf6bf9055fdb8c807d182e36d62",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "test": "HomeViewUITests/testCameraDemoNightAndOfflineNeverBecomeLive()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-02.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "viewport-camera-demo-face-four-stills",
+    "sha256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testCameraDemoNightAndOfflineNeverBecomeLive()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-03.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "flow-native-solid-night-whole-viewport",
+    "sha256": "8a93b817a4706c247641fa390ad594e901abac364fca90658d684d54fcaead50",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testFlowNativeSolidStyleAndWholeViewportNightTreatment()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-04.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "screen-flow-native-solid-background-on",
+    "sha256": "2ae4fdf9bedf6592d57c3bcfdc610e5b33bd4dde2ae9abb65b50fd0af0ab4282",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "test": "HomeViewUITests/testFlowNativeSolidStyleAndWholeViewportNightTreatment()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-05.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "viewport-flow-native-solid-background-on",
+    "sha256": "ccea1bbf5bc0d40bd4f287f91191922a9b3785d9b5edcc9efcd7fbcb826aba5a",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testFlowNativeSolidStyleAndWholeViewportNightTreatment()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-06.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "home-prism-night",
+    "sha256": "e5fe0c7f6660e59d12f2b8eab458f81d3f6e4a3a4a2560f2191cf33a941cec1e",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testHomePrismNightHasNoBlueGlassLeak()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-07.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-day-30",
+    "sha256": "c541a922ba60eab62fdc6bf0062e75250df2df33784f62d5953e66103a0cdd4f",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-08.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-day-13",
+    "sha256": "daafba808701233c9bdfe3d8b6bf2958b2bafae210fc876dc0bb5c013fefb0bb",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-09.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-day-1",
+    "sha256": "071f22e654b6a36c2ec75338178e091a3f5912d866b9af83c0095c4280456eed",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-10.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-night-primary-viewport",
+    "sha256": "063e9953c5211f6563c5e651aad042cd03e45cffd572bc981aee698c722a3291",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testModularNightWholeViewportContainsNoColorLeak()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-11.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "photo-glass-night-full-viewport",
+    "sha256": "0aed71fa809bec4f009750d7bda42691dd3fe4284e34131547392416cf514428",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testPhotoGlassNightUsesTheWholeViewportMonochrome()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-12.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-light-edge-night",
+    "sha256": "bf9392bf2da804a43cb0401324a0208ca35b79b0be6a718319ec9cecc8ca4e9d",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testModularLightEdgeNightKeepsTheEntireViewportMonochrome()",
+    "checkpoint": "modular-light-edge-baseline-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-13.png",
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc"
+  },
+  {
+    "device": "iPhone",
+    "state": "camera-demo-night-offline",
+    "sha256": "60121c563be5e0f973f802723bcecd1ff29b07a45f8d8325c4810619733f3b50",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testCameraDemoNightAndOfflineNeverBecomeLive()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-14.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "screen-camera-demo-face-four-stills",
+    "sha256": "3ce0f730817e52a969384880ae326c8702fe38c907b740960c62e3340f07bf76",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "test": "HomeViewUITests/testCameraDemoNightAndOfflineNeverBecomeLive()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-15.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "viewport-camera-demo-face-four-stills",
+    "sha256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testCameraDemoNightAndOfflineNeverBecomeLive()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-16.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "flow-native-solid-night-whole-viewport",
+    "sha256": "b2d1861168cd35eba0876094a4ab484277bee24f0d6bfd6c417b475c3f4247cf",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testFlowNativeSolidStyleAndWholeViewportNightTreatment()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-17.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "screen-flow-native-solid-background-on",
+    "sha256": "b11e34bc94812d0d2a0400445a16a46a121fe8dcdabfaa43ad428d6e90ac5e6a",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "test": "HomeViewUITests/testFlowNativeSolidStyleAndWholeViewportNightTreatment()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-18.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "viewport-flow-native-solid-background-on",
+    "sha256": "f6b2687eb7aa1c83fc784beb75bc8068625e7493a588d2cf379b5846b1f304b8",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testFlowNativeSolidStyleAndWholeViewportNightTreatment()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-19.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "home-prism-night",
+    "sha256": "232fdad248e21050fc1b50a21ecd0009f6134cdbeb3be04ccaf265feecea447f",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testHomePrismNightHasNoBlueGlassLeak()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-20.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-day-30",
+    "sha256": "b771ad887e23d0dc6f735f01012508637ecb18fe9de4ef0f057f4d9a3195200d",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-21.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-day-13",
+    "sha256": "b2a14fc7e997b48a73545646ed71f1f249b1724730ed299ff3b7ac61c397cfa8",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-22.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-day-1",
+    "sha256": "7b19bfdfc04960199cd2101ec2d516591b6e9fe9ebb8a1eeb17244d20dcc8177",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-23.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-night-primary-viewport",
+    "sha256": "e6c47c6ba32c7fab43f338581a75d5a036a63fdb5a615f147303ee286602eb9b",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testModularNightWholeViewportContainsNoColorLeak()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-24.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPhone",
+    "state": "photo-glass-night-full-viewport",
+    "sha256": "a4b6cf6faac0a43159414c1c45dcddb6b6adb0765e9777c6185086f778d81bf1",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testPhotoGlassNightUsesTheWholeViewportMonochrome()",
+    "checkpoint": "night-primary-final-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-25.png",
+    "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-light-edge-day-1",
+    "sha256": "071f22e654b6a36c2ec75338178e091a3f5912d866b9af83c0095c4280456eed",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-edge-baseline-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-26.png",
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-light-edge-day-13",
+    "sha256": "daafba808701233c9bdfe3d8b6bf2958b2bafae210fc876dc0bb5c013fefb0bb",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-edge-baseline-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-27.png",
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc"
+  },
+  {
+    "device": "iPad",
+    "state": "modular-light-edge-day-30",
+    "sha256": "c541a922ba60eab62fdc6bf0062e75250df2df33784f62d5953e66103a0cdd4f",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-edge-baseline-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPad-28.png",
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-light-edge-day-1",
+    "sha256": "7b19bfdfc04960199cd2101ec2d516591b6e9fe9ebb8a1eeb17244d20dcc8177",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-edge-baseline-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-29.png",
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-light-edge-day-13",
+    "sha256": "b2a14fc7e997b48a73545646ed71f1f249b1724730ed299ff3b7ac61c397cfa8",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-edge-baseline-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-30.png",
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc"
+  },
+  {
+    "device": "iPhone",
+    "state": "modular-light-edge-day-30",
+    "sha256": "b771ad887e23d0dc6f735f01012508637ecb18fe9de4ef0f057f4d9a3195200d",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "test": "HomeViewUITests/testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays()",
+    "checkpoint": "modular-light-edge-baseline-ui",
+    "path": "Docs/screenshots/goal-20261018/night-primary-iPhone-31.png",
+    "source_digest": "3d546d731c9e2d1f82ab18e18940c3a8f9979f002b09f73f67a41afa74c7e3dc"
+  }
+]
