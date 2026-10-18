@@ -1,0 +1,446 @@
+{
+  "base": "1922f079aa71217547d07ae52b4f2fd9a9861966",
+  "feature_commit": "4b647666d8f57474d62620d96336ef50eb35e4c5",
+  "integrated_commit": "760e3012fa2553536b393a17411581aa141bc4af",
+  "source_digest": "f3c905fbf1e5651b8060794d4ca736b53ac3835b6be72cbfde252cb6631e320b",
+  "source_files": 142,
+  "only_source_deltas": [
+    "Sources/App/WeatherClouds.metal",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "other140_files_byte_exact_to_base": true,
+  "day_shadow_floor": [
+    0.64,
+    0.72,
+    0.83
+  ],
+  "night_shadow_floor_unchanged": [
+    0.45,
+    0.54,
+    0.67
+  ],
+  "density_shape_directional_light_formula_phase_stepcount_sky_palette_data_layout_unchanged": true,
+  "source_contract": {
+    "metric": "Nominal gamma-encoded RGB weighted Y=0.2126R+0.7152G+0.0722B;not calibrated colour management/HDR/physical luminance",
+    "ROIs": [
+      [
+        0.05,
+        0.18,
+        0.95,
+        0.23
+      ],
+      [
+        0.72,
+        0.2,
+        0.92,
+        0.35
+      ]
+    ],
+    "acceptance": {
+      "each_ROI_each_device_median_error_at_most": 12,
+      "median_error_reduction_at_least_fraction": 0.5,
+      "contrast_span_at_least_fraction_of_original": 0.65,
+      "upper_ROIs_only_nominal_metric_not_stability_tolerance": true
+    },
+    "exact_checks": {
+      "native_night_and_zero_cover_face_RGBA_top94percent": 0,
+      "day_lower_viewport_y58to94percent_RGBA_changed_pixels": 0,
+      "no_RGB_tolerance_for_stability_or_unchanged_regions": true
+    },
+    "reference_identifier": "UI05;private image retained privately,only aggregate metrics published",
+    "original_reference_ROI_aggregates": [
+      {
+        "p10": 185.1094,
+        "p50": 203.3902,
+        "p90": 220.37819999999996,
+        "span90minus10": 35.26879999999997,
+        "mean": 202.5132741600935
+      },
+      {
+        "p10": 179.89280000000002,
+        "p50": 189.39019999999996,
+        "p90": 207.74439999999998,
+        "span90minus10": 27.851599999999962,
+        "mean": 191.1480275005594
+      }
+    ]
+  },
+  "candidate_UI_passed": 22,
+  "failed": 0,
+  "skipped": 0,
+  "XCTest_runtime_warnings": 0,
+  "methods": [
+    "testWeatherFaceMetricsFitDemoCelsiusAndUnknownValues",
+    "testWeatherDayShadowPreservesNightAndClearFacePixels",
+    "testWeatherGlassDemoAndUnavailableLiveAQIRemainDistinct",
+    "testWeatherGlassFaceMovesAndReducedMotionIsStable",
+    "testWeatherCloudsMoveAndRespectReduceMotion",
+    "testWeatherZeroCloudCoverDoesNotInventClouds",
+    "testWeatherStaleNightAndCachedOfflineAreLabeled",
+    "testWeatherRainSnowAndDemoHaveDistinctSources",
+    "testWeatherMissingValuesRemainUnknownAndUnitsAreExplicit",
+    "testWeatherFaceOpensDistinctCityScreen",
+    "testWeatherAppUsesSeparateCenteredCityAndConditionsLayout"
+  ],
+  "baseline_cases_separate": {
+    "iPad": 2,
+    "iPhone": 2,
+    "production_App_source_digest": "6750246c7ddb1bb6bf13ab32797f291aaa2c49b5d95bebfabc5cf557f701c44d"
+  },
+  "same_compiled_Runner_for_baselines_pilots_and_final": true,
+  "UItest_source_byte_identical_between_first_pilot_and_final": true,
+  "installed_App_expected_files_SHA_exact_all_runs": true,
+  "full33_native_inputs_unchanged": true,
+  "compiled_archive": {
+    "executed_once": true,
+    "file": "weather-day-shadow-v2-final-compiled.zip",
+    "sha256": "591159bb95167ff3d25294f9a79c57031bd6b6025f08b9ed6e605bb4260b3484",
+    "unique_input_files": 33,
+    "all_entries_SHA256_readback": true
+  },
+  "Core_passed": 166,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "log_sha256": "3ded85986378a18cc3c3efd292d3f1abb9ad33b4d8deae602a4c52db43b95367"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "log_sha256": "81b52bc5afe1aca8e22f79fa934016b203ba7b92dd16d85ce67ed5ae85cffa0e"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "log_sha256": "243cbd28ceeb41e5f7dfb8730ebe14f7081d3062b7b6c647a181d7efe92c5a16"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "log_sha256": "28a83fff9a91ac05af3a5a9d4b894ee9814a5c07161a3a5401d7e9057a14a651"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "log_sha256": "a11f6df6f89a5c142b9bd9446ab2c7da78feed54917f83dabaa40bf1cc3bb461"
+    }
+  ],
+  "image_checks": [
+    {
+      "name": "iPhone-weather-ui05-demo-bounds-lower58to94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-weather-ui05-connected-celsius-bounds-lower58to94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-weather-ui05-unknown-values-bounds-lower58to94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-weather-shadow-preserved-night-face-top94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-weather-shadow-preserved-clear-face-top94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-baseline-reproduces-passed675-atlas",
+      "passed": true
+    },
+    {
+      "name": "iPhone-ROI0-median",
+      "passed": true,
+      "median_abs_error": 10.279599999999988,
+      "reduction_fraction": 0.728932087989748
+    },
+    {
+      "name": "iPhone-ROI0-contrast",
+      "passed": true
+    },
+    {
+      "name": "iPhone-ROI1-median",
+      "passed": true,
+      "median_abs_error": 5.78619999999998,
+      "reduction_fraction": 0.8249947070743736
+    },
+    {
+      "name": "iPhone-ROI1-contrast",
+      "passed": true
+    },
+    {
+      "name": "iPhone-clouds-moving",
+      "passed": true,
+      "changed_pixels": 77588
+    },
+    {
+      "name": "iPhone-clouds-reduced",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-glass-moving",
+      "passed": true,
+      "changed_pixels": 202392
+    },
+    {
+      "name": "iPhone-glass-reduced",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-ui05-demo-bounds-lower58to94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-ui05-connected-celsius-bounds-lower58to94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-ui05-unknown-values-bounds-lower58to94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-shadow-preserved-night-face-top94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-shadow-preserved-clear-face-top94exact",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-baseline-reproduces-passed675-atlas",
+      "passed": true
+    },
+    {
+      "name": "iPad-ROI0-median",
+      "passed": true,
+      "median_abs_error": 10.279599999999988,
+      "reduction_fraction": 0.728932087989748
+    },
+    {
+      "name": "iPad-ROI0-contrast",
+      "passed": true
+    },
+    {
+      "name": "iPad-ROI1-median",
+      "passed": true,
+      "median_abs_error": 5.858399999999989,
+      "reduction_fraction": 0.8231970834641108
+    },
+    {
+      "name": "iPad-ROI1-contrast",
+      "passed": true
+    },
+    {
+      "name": "iPad-clouds-moving",
+      "passed": true,
+      "changed_pixels": 153005
+    },
+    {
+      "name": "iPad-clouds-reduced",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-glass-moving",
+      "passed": true,
+      "changed_pixels": 401301
+    },
+    {
+      "name": "iPad-glass-reduced",
+      "passed": true,
+      "changed_pixels": 0
+    }
+  ],
+  "cloud_nominal_metrics": [
+    {
+      "device": "iPhone",
+      "ROI": 0,
+      "reference_nominal_metrics": {
+        "p10": 185.1094,
+        "p50": 203.3902,
+        "p90": 220.37819999999996,
+        "span90minus10": 35.26879999999997,
+        "mean": 202.5132741600935
+      },
+      "own": {
+        "baseline": {
+          "p10": 150.1186,
+          "p50": 165.46759999999998,
+          "p90": 189.02519999999998,
+          "span": 38.9066,
+          "mean": 167.47602825661116
+        },
+        "candidate": {
+          "p10": 183.25499999999997,
+          "p50": 193.1106,
+          "p90": 208.8808,
+          "span": 25.625800000000027,
+          "mean": 194.30926846928782
+        }
+      },
+      "median_error_before": 37.92260000000002,
+      "median_error_after": 10.279599999999988
+    },
+    {
+      "device": "iPhone",
+      "ROI": 1,
+      "reference_nominal_metrics": {
+        "p10": 179.89280000000002,
+        "p50": 189.39019999999996,
+        "p90": 207.74439999999998,
+        "span90minus10": 27.851599999999962,
+        "mean": 191.1480275005594
+      },
+      "own": {
+        "baseline": {
+          "p10": 140.25900000000001,
+          "p50": 156.3272,
+          "p90": 184.7404,
+          "span": 44.48139999999998,
+          "mean": 159.90951868877946
+        },
+        "candidate": {
+          "p10": 171.18280000000001,
+          "p50": 183.60399999999998,
+          "p90": 204.8086,
+          "span": 33.6258,
+          "mean": 186.18767171287897
+        }
+      },
+      "median_error_before": 33.06299999999996,
+      "median_error_after": 5.78619999999998
+    },
+    {
+      "device": "iPad",
+      "ROI": 0,
+      "reference_nominal_metrics": {
+        "p10": 185.1094,
+        "p50": 203.3902,
+        "p90": 220.37819999999996,
+        "span90minus10": 35.26879999999997,
+        "mean": 202.5132741600935
+      },
+      "own": {
+        "baseline": {
+          "p10": 150.1186,
+          "p50": 165.46759999999998,
+          "p90": 189.02519999999998,
+          "span": 38.9066,
+          "mean": 167.4636538782275
+        },
+        "candidate": {
+          "p10": 183.25499999999997,
+          "p50": 193.1106,
+          "p90": 208.8808,
+          "span": 25.625800000000027,
+          "mean": 194.29358285938588
+        }
+      },
+      "median_error_before": 37.92260000000002,
+      "median_error_after": 10.279599999999988
+    },
+    {
+      "device": "iPad",
+      "ROI": 1,
+      "reference_nominal_metrics": {
+        "p10": 179.89280000000002,
+        "p50": 189.39019999999996,
+        "p90": 207.74439999999998,
+        "span90minus10": 27.851599999999962,
+        "mean": 191.1480275005594
+      },
+      "own": {
+        "baseline": {
+          "p10": 140.25900000000001,
+          "p50": 156.255,
+          "p90": 184.6722,
+          "span": 44.41319999999999,
+          "mean": 159.7468673508592
+        },
+        "candidate": {
+          "p10": 171.1146,
+          "p50": 183.53179999999998,
+          "p90": 204.6682,
+          "span": 33.55360000000002,
+          "mean": 186.03656484039894
+        }
+      },
+      "median_error_before": 33.13519999999997,
+      "median_error_after": 5.858399999999989
+    }
+  ],
+  "motion_ROI_checks": [
+    {
+      "device": "iPhone",
+      "kind": "clouds",
+      "changed_pixels": {
+        "moving": 77588,
+        "reduced": 0
+      }
+    },
+    {
+      "device": "iPhone",
+      "kind": "glass",
+      "changed_pixels": {
+        "moving": 202392,
+        "reduced": 0
+      }
+    },
+    {
+      "device": "iPad",
+      "kind": "clouds",
+      "changed_pixels": {
+        "moving": 153005,
+        "reduced": 0
+      }
+    },
+    {
+      "device": "iPad",
+      "kind": "glass",
+      "changed_pixels": {
+        "moving": 401301,
+        "reduced": 0
+      }
+    }
+  ],
+  "all78_PNG_decoded_and_actually_viewed": true,
+  "candidate_PNGs": 58,
+  "baseline_PNGs": 20,
+  "all16_contacts_actually_viewed": true,
+  "iPad_demo_whole_RGBA_exact_to_passed_pilot": true,
+  "prior_v1": {
+    "source_digest": "1f0dbd94ecb8c6001cf503345275eabd1adcdd9561e0ec5bc6e765fd20187254",
+    "native_candidate_cases_passed": 2,
+    "nominal_metric_passed": false,
+    "failed_ROI0_median_error": 13.7862,
+    "unchanged_target": 12,
+    "not_adopted": true,
+    "compiled31_archive_retained_privately": true
+  },
+  "pilot_v2_cases_passed": 2,
+  "pilots_and_baselines_not_added_to22": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/weather-day-shadow-manifest.json",
+  "no_RGB_tolerance_for_exact_or_stability_checks": true,
+  "exact_region_note": "Night/clear upper94%;bottom6% contains run-dependent observation/source footer,excluded by contract before first edit. Lowerday y58..94% exact for demo/Celsius/unknown.",
+  "not_Original_colour_management_HDR_hardware_energy_fullsuite_acceptance": true
+}
