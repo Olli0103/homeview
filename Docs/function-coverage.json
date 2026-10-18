@@ -1962,7 +1962,7 @@
       "DAY-03"
     ],
     "current": [
-      "Lokale Timer und iOS/iPadOS-AlarmKit-Anbindung mit Pause/Fortsetzen/Löschen sind vorhanden, Simulatorprüfungen bestehen."
+      "Countdown und Randring nach UI14 begrenzt kalibriert; lange Anzeige bleibt innerhalb der Randstriche. Ruhender Referenzzustand, Einblenden per echtem Touch, lokale Bedienung, Rezepttimer und Demo-Türklingel-Rückkehr sind geprüft. Produktive Fristen/Alarmadapter unverändert; vollständige Original-, Mehrtimer-, Neustart-/Zeitwechsel- und Hardwareabnahme bleiben offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1975,8 +1975,8 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
-      "visual": "pending original-state comparison",
+      "functional": "bounded synthetic paused reference, long readout, control touch and local timer/recipe/doorbell regression passed; system reconciliation remains pending",
+      "visual": "bounded UI14 correction from approximate front crop; exact typography and calibrated display limits remain pending",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
     "completion_criteria": [
