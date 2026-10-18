@@ -1,0 +1,274 @@
+{
+  "code_commit": "84d87fd9dd3a46c6db2a32672a35caeada8e888f",
+  "feature_commit": "7ca2c94df8492e39cd1c4dda119183a2f70b662f",
+  "source_digest": "cdf3ae8ffe870d20c365fe5c8fe8545e6af5078248f0f667c34579597a1a40a6",
+  "source_files": 133,
+  "source_before_after_match": true,
+  "source_matches_feature_and_merge_bytes": true,
+  "only_changed_source_since_calendar_ui08": "Sources/App/WeatherClouds.metal",
+  "core_passed": 139,
+  "core_repeated_after_feature_and_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 18,
+  "unique_cases": 9,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:43:59.012371+00:00",
+      "ended": "2026-10-18T00:44:10.973934+00:00",
+      "log_sha256": "46e42bf182c8bbc94652ebff116869a795bbf8f99344e01bfc8f298ed0b64819"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T00:44:10.974450+00:00",
+      "ended": "2026-10-18T00:44:24.158964+00:00",
+      "log_sha256": "a546766b1fec5ea0eb19fd24d843451db87aeed4a031d3ae459d80c31147dd63"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:44:24.159551+00:00",
+      "ended": "2026-10-18T00:44:34.555824+00:00",
+      "log_sha256": "738078330bef2de2e4cb37f934ffdb04b28bbb589c7383975735cd8dca77975f"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:44:34.556284+00:00",
+      "ended": "2026-10-18T00:44:44.931020+00:00",
+      "log_sha256": "ebd28569d8103269a03fe230dc68af5de2ceba57c4c7aaa5e9c5d0d55aa816aa"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:44:44.931876+00:00",
+      "ended": "2026-10-18T00:44:51.471577+00:00",
+      "log_sha256": "3e54a17d43d17efa21a889ad2eb71f412a1d56c169e69aa6d2e239c9ebd37d88"
+    }
+  ],
+  "full_ui_suite_claimed": false,
+  "real_weather_account_or_location_accessed": false,
+  "real_homekit_manager_constructed": false,
+  "motion_pixels": [
+    {
+      "device": "iPad",
+      "region": "clouds",
+      "mode": "moving",
+      "roi_normalized": [
+        0.2,
+        0.035,
+        0.55,
+        0.135
+      ],
+      "roi_pixels": [
+        318,
+        55,
+        1194,
+        271
+      ],
+      "rgba_channels_compared": 756864,
+      "rgba_channels_changed": 433244,
+      "before_png_sha256": "a9c4742443b91551639f0258bdee682d4b8660e221f44b6e1d6cbb6593f05072",
+      "after_png_sha256": "03fd7db450ee210950e8e84d480d05e706bc35864804478cfce36b55ff953ef8"
+    },
+    {
+      "device": "iPad",
+      "region": "clouds",
+      "mode": "reduced",
+      "roi_normalized": [
+        0.2,
+        0.035,
+        0.55,
+        0.135
+      ],
+      "roi_pixels": [
+        318,
+        55,
+        1194,
+        271
+      ],
+      "rgba_channels_compared": 756864,
+      "rgba_channels_changed": 0,
+      "before_png_sha256": "9648e6d75e213ff9546e97dc0dca4d56b6137a0a8804ff5f149ec68cdf644b3e",
+      "after_png_sha256": "9648e6d75e213ff9546e97dc0dca4d56b6137a0a8804ff5f149ec68cdf644b3e"
+    },
+    {
+      "device": "iPad",
+      "region": "glass",
+      "mode": "moving",
+      "roi_normalized": [
+        0.05,
+        0.2,
+        0.6,
+        0.42
+      ],
+      "roi_pixels": [
+        79,
+        318,
+        1035,
+        988
+      ],
+      "rgba_channels_compared": 2562080,
+      "rgba_channels_changed": 972719,
+      "before_png_sha256": "50a7232ac56886cfe89a0c93503675aee6e18d0e48c21e2b6f1b530cfda0d83e",
+      "after_png_sha256": "1bdaf399a1d8ec8bb2eb0515bd917547312285bca1557af596cc241cbbcd084a"
+    },
+    {
+      "device": "iPad",
+      "region": "glass",
+      "mode": "reduced",
+      "roi_normalized": [
+        0.05,
+        0.2,
+        0.6,
+        0.42
+      ],
+      "roi_pixels": [
+        79,
+        318,
+        1035,
+        988
+      ],
+      "rgba_channels_compared": 2562080,
+      "rgba_channels_changed": 0,
+      "before_png_sha256": "079fee4ec7bdb1b84701584be81d264d5cec06213bec067753bb15d36bdbe02a",
+      "after_png_sha256": "079fee4ec7bdb1b84701584be81d264d5cec06213bec067753bb15d36bdbe02a"
+    },
+    {
+      "device": "iPhone",
+      "region": "clouds",
+      "mode": "moving",
+      "roi_normalized": [
+        0.2,
+        0.035,
+        0.55,
+        0.135
+      ],
+      "roi_pixels": [
+        226,
+        39,
+        851,
+        193
+      ],
+      "rgba_channels_compared": 385000,
+      "rgba_channels_changed": 220427,
+      "before_png_sha256": "8d14a2aaad16aed75f55a460601527afbac0d315fcad2b2592bc97f53bd92ad7",
+      "after_png_sha256": "bced572392bafe872cce482297f0d5e934be5ac7d60e4f22c092ff13d1db33aa"
+    },
+    {
+      "device": "iPhone",
+      "region": "clouds",
+      "mode": "reduced",
+      "roi_normalized": [
+        0.2,
+        0.035,
+        0.55,
+        0.135
+      ],
+      "roi_pixels": [
+        226,
+        39,
+        851,
+        193
+      ],
+      "rgba_channels_compared": 385000,
+      "rgba_channels_changed": 0,
+      "before_png_sha256": "5fb10c4ff61d550a734e1fc568de3d9932a51b838c5d45a0f77483210f58ed1b",
+      "after_png_sha256": "5fb10c4ff61d550a734e1fc568de3d9932a51b838c5d45a0f77483210f58ed1b"
+    },
+    {
+      "device": "iPhone",
+      "region": "glass",
+      "mode": "moving",
+      "roi_normalized": [
+        0.05,
+        0.2,
+        0.6,
+        0.42
+      ],
+      "roi_pixels": [
+        56,
+        226,
+        738,
+        704
+      ],
+      "rgba_channels_compared": 1303984,
+      "rgba_channels_changed": 492129,
+      "before_png_sha256": "365294cb5a510d5def357acb652e9d02b3f8d015c1f4e98397949cad73daedce",
+      "after_png_sha256": "5bfda7d96576a55c620b494e8cd9448bc416fd79997f709d6ac69faf6028b4e4"
+    },
+    {
+      "device": "iPhone",
+      "region": "glass",
+      "mode": "reduced",
+      "roi_normalized": [
+        0.05,
+        0.2,
+        0.6,
+        0.42
+      ],
+      "roi_pixels": [
+        56,
+        226,
+        738,
+        704
+      ],
+      "rgba_channels_compared": 1303984,
+      "rgba_channels_changed": 0,
+      "before_png_sha256": "79c3d0fd13d85518d2ec433c667def7db8b00b8f74801a61c5b94d28d4a849b9",
+      "after_png_sha256": "79c3d0fd13d85518d2ec433c667def7db8b00b8f74801a61c5b94d28d4a849b9"
+    }
+  ],
+  "visual_review_both_devices": true,
+  "original_visual_accepted": false,
+  "physical_performance_accepted": false,
+  "genuine_solar_position_claimed": false,
+  "clear_zero_cover_early_return_unchanged": true,
+  "night_parameters_preserved_not_claimed_as_pixel_acceptance": true,
+  "depth_samples_per_pixel": 16,
+  "shadow_samples_per_depth": 2,
+  "historical_prototypes_not_added_to_current_counts": true,
+  "remaining_original_gaps": [
+    "exact cloud distribution, depth and phase",
+    "exact original sunlight and glass refraction",
+    "additional original weather transitions and rain/frost",
+    "physical energy and frame rate"
+  ],
+  "screenshot_manifest": "../screenshots/goal-20261018/weather-body-manifest.json",
+  "own_comparison": "../screenshots/goal-20261018/weather-body-own-comparison.json",
+  "logs": {
+    "weather-body-light-candidate-core.log": "91ccf8447597eb13393cac2b1c12a81a28c59d8d219254a88af46d4d0bd6f7be",
+    "weather-body-feature-post-commit-core.log": "3e77827987a315b79077f28639c831818660ba5f1a8b0c498f34043e5f2c0bd9",
+    "weather-body-integrated-core.log": "97c033bed596edf45bb9c0d1b54b285cf22abcd067229425add79852c23c89a9",
+    "weather-body-light-candidate-build.log": "146039230693dd8c7db0f6f9e35696cc63127c228b9ca8ee9f83b7e242f755f3",
+    "weather-body-light-candidate-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "5b727923bd2798bae8fb6ae0eb1dd006df39a72adab7c3e1df477f5a7b4b35f5",
+    "iPhone": "37a42423707e9dae6b75adb37c7a7ded380cd4d06cf7a9de6544270c3ef930de"
+  }
+}

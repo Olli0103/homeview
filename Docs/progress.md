@@ -229,3 +229,19 @@ identischen Quellen. [Eigene Bilder, Umfang und Grenzen](calendar-critical-dates
 Kalender-Eins, Kopfzeile, Heute-Kreis und lokale Farben getrennt kalibriert.
 139 Modelltests, zehn gezielte UI-Ausführungen und fünf SDKs; Modular-Form
 unverändert. [Eigener Bildvergleich und offene Grenzen](calendar-ui08.md). #22 offen.
+
+
+## Tageswolkenkörper und Eigenverschattung
+
+Eigene gröbere Tageskörper und gedämpfte Beleuchtung, unveränderte gemeinsame
+Himmels-/Glasphase. 139 Modelltests, 18 gezielte UI-Ausführungen und fünf SDKs.
+[Eigene Bilder und Grenzen](weather-cloud-light.md). #21 bleibt offen.
+
+
+## Statusabgleich ohne neue Abnahme
+
+Fünf veraltete Renderer-/Layoutbeschreibungen in Backlog und Funktionskarte mit
+veröffentlichten Quellenbelegen abgeglichen: Profil-Layouts/Albumvorschau, Fade,
+Numerals/Rasteruhr, Prismen/Glaskacheln und Metal-Wetter. Historische Testergebnisse
+bleiben beim jeweiligen Prüfstand; kein parity_accepted, Originalkriterium oder
+Issue-State wurde dadurch auf erledigt gesetzt.

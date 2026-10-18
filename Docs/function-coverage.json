@@ -226,7 +226,7 @@
       "FACE-05"
     ],
     "current": [
-      "Persönlicher Screen mit Demo-Profilen liegt über unscharfem Face. Vollständige originale Anordnung und Einstellungen sind nicht abgenommen."
+      "Profilgetrennte eigene Layouts, vier Favoriten, Medien-/Wetterraster und lokale Speicherung sind synthetisch geprüft. Foto-Vorschau und explizit freigegebenes Album sind ergänzt. Vollständige Originalvarianten, echte Mehrnutzeridentität, Accounts und genaue Licht-/Rasterdetails bleiben offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -239,7 +239,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded synthetic profile layout, favorites persistence, guest isolation and widget/source checks passed; real identity and original policy remain pending",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -505,7 +505,7 @@
       "FACE-09"
     ],
     "current": [
-      "Eigener zyklischer Fade-Verlauf und Reduce Motion sind implementiert und pixelbasiert geprüft. Die vollständige Originalzeitkurve und visuelle Abnahme fehlen."
+      "Eigener konischer Fade-Verlauf und Reduce Motion sind pixelbasiert geprüft; Zeigerlängen, schmaler Ansatz, Relief und Ziffernanordnung wurden getrennt nach UI12 kalibriert. Exakte Originalzeitkurve, weitere Übergänge, Licht und Schrift bleiben offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -518,7 +518,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "own conic renderer tested; original timing remains unresolved",
+      "functional": "own conic renderer and phase/reduce-motion checks passed; UI12 hand/detail correction checked separately; original timing remains unresolved",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -536,7 +536,7 @@
       "FACE-10"
     ],
     "current": [
-      "Native Zeiger sind vorhanden, Numerals verwendet angenäherte Systemtypografie und Positionen."
+      "Numerals verwendet kalibrierte öffentliche gerundete Runtime-Typografie, längeren Minutenzeiger, Relief und offene Nabe; die alternative Home-Rasteruhr wurde getrennt angepasst. Exakte Originalschrift, alle Uhrzeiten/Stile und Lichtdetails bleiben offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -549,7 +549,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded reference-clock, Numerals and alternative Home-clock checks passed; complete style/time range remains pending",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -567,7 +567,7 @@
       "FACE-12"
     ],
     "current": [
-      "Open-Meteo ist bewusst anschließbar. Wolken sind eigener Canvas-Effekt; Regen/Frost und vollständige Originalzustände fehlen."
+      "Bewusst anschließbares Open-Meteo, unbekannte statt erfundener Werte und getrennte Wetter-App sind geprüft. Eigene Metal-Wolken und gemeinsame durchscheinende Glasziffern ersetzen die alten Canvas-Flecken; Tageswolkenkörper und Eigenverschattung wurden getrennt vergröbert und gedämpft. Originalformen, Brechung, Übergänge, Regen/Frost und physische Leistung bleiben offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -580,7 +580,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded synthetic weather source, missing-data, units, navigation, motion and reduce-motion checks passed at documented checkpoints; no complete original-state or hardware acceptance",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
