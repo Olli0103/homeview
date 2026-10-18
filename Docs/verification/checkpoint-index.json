@@ -921,6 +921,41 @@
       "post_commit_core_log_sha256": "105860b709bdcc58f670cacf874c8f284b4002b414339b539d19122a05ab2ce2",
       "full_ui_suite_claimed": false,
       "supplementary_same_source_checkpoint": "doorbell-camera-regression"
+    },
+    {
+      "checkpoint": "calendar-critical-integrated",
+      "commit": "af8d5de467cba00913b2381303139d334df22971",
+      "source_digest": "09d35b59ef2d63e785d346cb2ab3e4c36a70f610447e6a446c6ebeb9a5cfb80e",
+      "files_verified": 133,
+      "core_passed": 139,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "dbb7606b60538914e6551e7039ac93327f43161232dd5de3783c7d12df2e2ad0",
+      "full_ui_suite_claimed": false
     }
   ],
   "all_sources_match_committed_bytes": true

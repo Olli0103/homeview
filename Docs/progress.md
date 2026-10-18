@@ -215,3 +215,10 @@ Hintergrundsperre sind begrenzt behandelt. 135 Modelltests, nach Merge erneut,
 fünf SDK-Builds auf denselben 132 Quellen. Die Album-Neuerung wurde dabei mitgeprüft. [Eigene Bilder und Grenzen](demo-doorbell-interruption.md).
 #28 bleibt offen: kein echtes Klingelereignis, keine Stream-/Hardware- oder
 vollständige Original-Unterbrechungsabnahme; HomeKit bleibt gesperrt.
+
+
+## Kritische Kalenderdaten
+
+139 Modelltests, zwölf gezielte iPad-/iPhone-Ausführungen und fünf SDKs auf
+identischen Quellen. [Eigene Bilder, Umfang und Grenzen](calendar-critical-dates.md).
+#22 bleibt offen; sichtbare UI08-Geometrie wird getrennt korrigiert.
