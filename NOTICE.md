@@ -15,6 +15,11 @@ and initial publication digests. Later original Flow glyphs are documented in
 [flow-typography.md](Docs/flow-typography.md). Mathematical techniques and public
 API use do not imply inclusion of the referenced products' implementation.
 
+The tall photo-clock paths in Sources/App/PhotoTallGlyphs.swift are also
+project-authored geometry under MIT, not extracted Apple font contours. Some
+digits reuse our own cubic skeletons. Their bounded visual scope and native
+atlas evidence are documented in [photo-glyphs.md](Docs/photo-glyphs.md).
+
 Apple SDKs, system-provided fonts, SF Symbols and other system resources are not
 redistributed or relicensed by this repository. Their use remains subject to
 their respective terms. Product names and trademarks identify compatibility or
