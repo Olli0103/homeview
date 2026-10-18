@@ -1,0 +1,57 @@
+{
+  "contains_proprietary_reference": false,
+  "inputs": [
+    {
+      "device": "iPad",
+      "state": "weather-glass-ui05-demo-known-example",
+      "sha256": "9d5defc6b8355e570010ce3c784508dd92699737b62071835541497e937d76c6",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "checkpoint": "modular-reference-interaction-final-ui",
+      "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a",
+      "path": "Docs/screenshots/goal-20261018/modular-reference-final-iPad-weather-glass-ui05-demo-known-example.png"
+    },
+    {
+      "device": "iPad",
+      "state": "weather-glass-connected-no-invented-aqi",
+      "sha256": "445b0f2a11015f4ad698e339159d2542c4ee4aebdbaca0b5f6f376f46b1a20c7",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "checkpoint": "modular-reference-interaction-final-ui",
+      "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a",
+      "path": "Docs/screenshots/goal-20261018/modular-reference-final-iPad-weather-glass-connected-no-invented-aqi.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "weather-glass-ui05-demo-known-example",
+      "sha256": "91b49bb1f8ddfad4890ed52d4816cad1a946b4d134e8f600b611f3f6184d1e43",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "checkpoint": "modular-reference-interaction-final-ui",
+      "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a",
+      "path": "Docs/screenshots/goal-20261018/modular-reference-final-iPhone-weather-glass-ui05-demo-known-example.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "weather-glass-connected-no-invented-aqi",
+      "sha256": "6ec4cd80342319cfeaf7908c510bd9f260c044e6703c7f8b7d6102d4a280d402",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "checkpoint": "modular-reference-interaction-final-ui",
+      "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a",
+      "path": "Docs/screenshots/goal-20261018/modular-reference-final-iPhone-weather-glass-connected-no-invented-aqi.png"
+    }
+  ],
+  "output": {
+    "path": "Docs/screenshots/goal-20261018/modular-reference-weather-regression.jpg",
+    "sha256": "1d999ec1020130319c6cc350af7f9c5c32bca15fe28959b05f4e3cad68993acb"
+  }
+}

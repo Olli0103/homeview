@@ -1,0 +1,399 @@
+{
+  "code_commit": "8b6b6fab7ea0494b807819747aadb7cc99921a03",
+  "feature_commit": "4dad572ec2945d78b91fbff7cd8be10010a05741",
+  "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a",
+  "source_files": 142,
+  "source_matches_feature_and_merge_bytes": true,
+  "changed_sources": [
+    "Sources/App/Faces.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "ui_executions": 6,
+  "unique_cases": 3,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T06:14:55.240739+00:00",
+      "ended": "2026-10-18T06:14:57.511928+00:00",
+      "log_sha256": "08e086f6f02660e3d46b7ac882b67cbca524ff829e38b6bce7be52fe28307342"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T06:14:57.512488+00:00",
+      "ended": "2026-10-18T06:14:58.842359+00:00",
+      "log_sha256": "d7afc978b0a0eb800db45158f104f563f8068555c8a5f76f021e4325fe5529ed"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T06:14:58.842902+00:00",
+      "ended": "2026-10-18T06:15:00.404332+00:00",
+      "log_sha256": "ace2146e12d111b8450494e10ed414ecc6dff2e61c5e57b65e13d4a39a3637c4"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T06:15:00.404802+00:00",
+      "ended": "2026-10-18T06:15:01.794841+00:00",
+      "log_sha256": "3d9badbb8afc6c6cfcb0b827e3e4065dbedd9738318640f9ec928f54d070fc91"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T06:15:01.795433+00:00",
+      "ended": "2026-10-18T06:15:03.134955+00:00",
+      "log_sha256": "656161facd80f39d4e5b2c2c720c25cde14ae53b1c0f242a27d08724d85fe86c"
+    }
+  ],
+  "core_providers_navigation_shader_source_bytes_unchanged": true,
+  "public_runtime_system_font_not_embedded_or_extracted_contours": true,
+  "reference_scope": "Private frontal UI01 scalar positions and qualitative shape; not full font/symbol/lighting/visual parity. No reference image published.",
+  "own_predeclared_positional_contract": {
+    "scope": "Bounded own positional/ink checks based on privately inspected frontal UI01, not Original acceptance or inferred exact Apple implementation",
+    "reference": {
+      "city_left": 0.5367647058823529,
+      "city_top": 0.5293040293040293,
+      "temperature_top": 0.5897435897435898,
+      "temperature_height": 0.152014652014652,
+      "condition_top": 0.8571428571428571,
+      "highlow_top": 0.9065934065934066
+    },
+    "bounds": {
+      "city_left_abs_error_max": 0.006,
+      "city_top_abs_error_max": 0.006,
+      "temperature_top_abs_error_max": 0.008,
+      "temperature_ink_height_min": 0.145,
+      "temperature_ink_height_max": 0.16,
+      "condition_top_abs_error_max": 0.008,
+      "highlow_top_abs_error_max": 0.008,
+      "highlow_bottom_max": 0.945,
+      "symbol_height_max": 0.042
+    },
+    "pixel_thresholds": {
+      "dark_max_RGB": 70,
+      "city_min_RGB": 230
+    },
+    "unchanged_region_contract": {
+      "allowed_weather_slot_normalized": [
+        0.5,
+        0.49,
+        0.96,
+        0.99
+      ],
+      "outside_pixels_changed_max": 0
+    },
+    "source_reference_image_published": false,
+    "early_broad_ROI_diagnostics_are_not_acceptance": true
+  },
+  "actual_final_field_geometry_and_ink": [
+    {
+      "device": "iPad",
+      "actual_element_frames": {
+        "city": {
+          "height": 0.054166666666666675,
+          "width": 0.28750000000000003,
+          "x": 0.5333333333333333,
+          "y": 0.5191666666666667
+        },
+        "condition": {
+          "height": 0.04583333333333335,
+          "width": 0.34583333333333344,
+          "x": 0.5333333333333333,
+          "y": 0.8475
+        },
+        "highlow": {
+          "height": 0.042499999999999906,
+          "width": 0.1816666666666667,
+          "x": 0.5333333333333333,
+          "y": 0.8983333333333334
+        },
+        "temperature": {
+          "height": 0.24931693989071047,
+          "width": 0.29883879781420764,
+          "x": 0.5333333333333333,
+          "y": 0.5399999999999999
+        },
+        "widget": {
+          "height": 0.4216666676890311,
+          "width": 0.34583332310968906,
+          "x": 0.5333333231096891,
+          "y": 0.5191666492864714
+        }
+      },
+      "actual_native_ink_bounds": {
+        "city": {
+          "left": 0.535175879396985,
+          "top": 0.5295226130653267,
+          "right": 0.8178391959798995,
+          "bottom": 0.5615577889447236,
+          "height": 0.03203517587939697,
+          "width": 0.28266331658291455
+        },
+        "temperature": {
+          "left": 0.5452261306532663,
+          "top": 0.5910804020100503,
+          "right": 0.832286432160804,
+          "bottom": 0.7405778894472361,
+          "height": 0.14949748743718583,
+          "width": 0.2870603015075377
+        },
+        "condition": {
+          "left": 0.5364321608040201,
+          "top": 0.8567839195979899,
+          "right": 0.8768844221105527,
+          "bottom": 0.8907035175879398,
+          "height": 0.03391959798994981,
+          "width": 0.3404522613065326
+        },
+        "highlow": {
+          "left": 0.5364321608040201,
+          "top": 0.9064070351758794,
+          "right": 0.7129396984924623,
+          "bottom": 0.9321608040201005,
+          "height": 0.025753768844221092,
+          "width": 0.17650753768844218
+        },
+        "symbol": {
+          "left": 0.5358040201005025,
+          "top": 0.8008793969849246,
+          "right": 0.5917085427135679,
+          "bottom": 0.839824120603015,
+          "height": 0.03894472361809043,
+          "width": 0.05590452261306533
+        }
+      }
+    },
+    {
+      "device": "iPhone",
+      "actual_element_frames": {
+        "city": {
+          "height": 0.05388888888888875,
+          "width": 0.2872222222222222,
+          "x": 0.5333333333333334,
+          "y": 0.5194444444444447
+        },
+        "condition": {
+          "height": 0.04611111111111098,
+          "width": 0.3455555555555554,
+          "x": 0.5333333333333334,
+          "y": 0.8472222222222222
+        },
+        "highlow": {
+          "height": 0.04222222222222232,
+          "width": 0.18166666666666656,
+          "x": 0.5333333333333334,
+          "y": 0.8983333333333332
+        },
+        "temperature": {
+          "height": 0.24874772313296895,
+          "width": 0.2988387978142075,
+          "x": 0.5333333333333334,
+          "y": 0.5400000000000001
+        },
+        "widget": {
+          "height": 0.4211111724692047,
+          "width": 0.3460153246682788,
+          "x": 0.5328735674499835,
+          "y": 0.5194444605913112
+        }
+      },
+      "actual_native_ink_bounds": {
+        "city": {
+          "left": 0.5352733686067019,
+          "top": 0.5299823633156967,
+          "right": 0.818342151675485,
+          "bottom": 0.562610229276896,
+          "height": 0.032627865961199265,
+          "width": 0.283068783068783
+        },
+        "temperature": {
+          "left": 0.544973544973545,
+          "top": 0.591710758377425,
+          "right": 0.8324514991181657,
+          "bottom": 0.7407407407407407,
+          "height": 0.14902998236331566,
+          "width": 0.28747795414462074
+        },
+        "condition": {
+          "left": 0.5361552028218695,
+          "top": 0.8562610229276896,
+          "right": 0.8774250440917107,
+          "bottom": 0.890652557319224,
+          "height": 0.03439153439153442,
+          "width": 0.3412698412698413
+        },
+        "highlow": {
+          "left": 0.5361552028218695,
+          "top": 0.9065255731922398,
+          "right": 0.7134038800705468,
+          "bottom": 0.9320987654320988,
+          "height": 0.02557319223985899,
+          "width": 0.17724867724867732
+        },
+        "symbol": {
+          "left": 0.5352733686067019,
+          "top": 0.7998236331569665,
+          "right": 0.591710758377425,
+          "bottom": 0.8395061728395061,
+          "height": 0.03968253968253965,
+          "width": 0.0564373897707231
+        }
+      }
+    }
+  ],
+  "strict_demo_whole_viewport_outside_weather_checks": [
+    {
+      "device": "iPad",
+      "checks": {
+        "city_left": true,
+        "city_top": true,
+        "temperature_top": true,
+        "temperature_height": true,
+        "condition_top": true,
+        "highlow_top": true,
+        "highlow_bottom": true,
+        "symbol_height": true,
+        "outside_weather_slot_exact": true,
+        "weather_changed": true
+      },
+      "all_checks_passed": true,
+      "changed_pixels": 121996,
+      "outside_weather_pixels_changed": 0,
+      "allowed_weather_pixel_bounds": [
+        796,
+        780,
+        1529,
+        1577
+      ]
+    },
+    {
+      "device": "iPhone",
+      "checks": {
+        "city_left": true,
+        "city_top": true,
+        "temperature_top": true,
+        "temperature_height": true,
+        "condition_top": true,
+        "highlow_top": true,
+        "highlow_bottom": true,
+        "symbol_height": true,
+        "outside_weather_slot_exact": true,
+        "weather_changed": true
+      },
+      "all_checks_passed": true,
+      "changed_pixels": 57821,
+      "outside_weather_pixels_changed": 0,
+      "allowed_weather_pixel_bounds": [
+        567,
+        555,
+        1089,
+        1123
+      ]
+    }
+  ],
+  "actual_connected_missing_values_and_widget_tap_destinations": [
+    {
+      "device": "iPad",
+      "actual_native_value_records": [
+        [
+          "connected",
+          "Fixture City",
+          "55°",
+          "Partly Cloudy",
+          "43629"
+        ],
+        [
+          "missing",
+          "Berlin",
+          "—",
+          "Condition unavailable",
+          "7719"
+        ]
+      ],
+      "both_widget_taps_verified_destination_and_Conditions": true
+    },
+    {
+      "device": "iPhone",
+      "actual_native_value_records": [
+        [
+          "connected",
+          "Fixture City",
+          "55°",
+          "Partly Cloudy",
+          "22348"
+        ],
+        [
+          "missing",
+          "Berlin",
+          "—",
+          "Condition unavailable",
+          "3872"
+        ]
+      ],
+      "both_widget_taps_verified_destination_and_Conditions": true
+    }
+  ],
+  "layout_sizing_padding_not_changed_visual_transform_only": true,
+  "demo_provenance_and_unknown_values_retained": true,
+  "instrumented_old_graphics_source_digest": "884dbb2e1de124422ae805e935d8ea3e80680b6a4762ed06966b8b01574d73a0",
+  "baseline_is_AX_instrumented_not_byte_identical_published_source": true,
+  "history": {
+    "early_broad_ROI_diagnostic_not_accepted": "Initial broad ROI truncated own temperature bottom and confused own symbol with reference condition; actual native field frames and adaptive symbol ROI replaced that diagnostic.",
+    "private_original_zoom_never_published": true,
+    "before_primary2_and_C94baseline1_not_added_to_final6": true,
+    "prototype_C94_1_not_added": true,
+    "prototype_source_digest": "b9970781ab3ab2efceab58cc7e9b8040cfa528b971b2fcb6078dc0cda40cd49b",
+    "prototype_zip_reconstructed_afterward_against_pre_run_manifest": true,
+    "prototype_archive_sha256": "2e70bf2b50045e93629dba756bc9f2f334221e76b08899f71f59118a093ad643",
+    "pre_touch_rendering6_not_added_to_final6": true,
+    "pre_touch_source_digest": "ed6784c2a95075b6f78c2305ae3fdb94231add851111697f49ed3bb98d298e21",
+    "pre_touch_app_Faces_bytes_match_final": true,
+    "pre_touch_source_archive_sha256": "cde1fe7537e216e7b06ec19a36208049b9298fd5025f924235cfcc4a4c410997",
+    "before_source_archive_sha256": "6ae829b8f456ad28892ebdf3da62e36f06f02d457a40b62a3d480092a94a7dea"
+  },
+  "actual_36_own_images_reviewed": true,
+  "data_actual_temperature_glyphs_not_AX_only": true,
+  "full_ui_or_original_suite_claimed": false,
+  "original_visual_parity_accepted": false,
+  "physical_devices_tested": false,
+  "real_accounts_homes_libraries_or_weather_fetch_used": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/modular-reference-manifest.json",
+  "logs": {
+    "modular-reference-interaction-core.log": "2bd4c4bc8c7377ba69cea44f5b6a04c9f2e0b893fceff0f47daaa19ad044bf67",
+    "modular-reference-feature-post-commit-core.log": "e058e9fbc2a434e5dec9e355dcddc2d3e8b646b765474f16728e30f34727de7b",
+    "modular-reference-integrated-core.log": "88d9ddfc8e01b2955f88aabb68ae4ba6b278f765fa417eac95154671d229980f",
+    "modular-reference-interaction-build.log": "302f137a3b3a3a4bf762b927b432eac7e50e644b7e9adc0f87e97729e7ede223",
+    "modular-reference-interaction-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "9af4680e3754acc29fbe3ffb6abd5eb07052d1daeef6d2832fc9efa657cfe273",
+    "iPhone": "7ef7982b70f2c204426dac37443d4003f0ef0114c39f19e4e5dbc747d9d41a72"
+  }
+}
