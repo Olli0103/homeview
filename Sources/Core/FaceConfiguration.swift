@@ -36,6 +36,33 @@ struct FaceConfiguration: Codable, Equatable, Sendable {
   var flowTypeface = 0
   var flowBackground = true
 }
+extension FaceConfiguration {
+  private enum CodingKeys: String, CodingKey { case complications, theme, flowTypeface, flowBackground }
+  private struct SlotKey: CodingKey {
+    var stringValue: String
+    var intValue: Int? { nil }
+    init?(stringValue: String) { self.stringValue = stringValue }
+    init?(intValue: Int) { return nil }
+  }
+  /// A later option or one unknown widget must not discard a saved face's
+  /// healthy sibling settings. Non-object entries still fail at the table level.
+  init(from decoder: any Decoder) throws {
+    self.init()
+    let values = try decoder.container(keyedBy:CodingKeys.self)
+    if let raw = try? values.decode(Int.self,forKey:.theme), (0...1).contains(raw) { theme = raw }
+    if let raw = try? values.decode(Int.self,forKey:.flowTypeface), (0...1).contains(raw) { flowTypeface = raw }
+    flowBackground = (try? values.decode(Bool.self,forKey:.flowBackground)) ?? true
+    if let slots = try? values.nestedContainer(keyedBy:SlotKey.self,forKey:.complications) {
+      let keys = slots.allKeys.filter { !$0.stringValue.isEmpty && $0.stringValue.count <= 128 }
+        .sorted { $0.stringValue < $1.stringValue }
+      for key in keys.prefix(64) {
+        guard let raw = try? slots.decode(String.self,forKey:key),
+              let kind = ComplicationKind(rawValue:raw) else { continue }
+        complications[key.stringValue] = kind
+      }
+    }
+  }
+}
 /// Public SwiftUI layout data. Coordinates are our 600-point adaptation, not Watch metrics.
 struct SlotPlacement: Sendable {
   let slot: FaceSlot
