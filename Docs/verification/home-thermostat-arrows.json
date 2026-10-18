@@ -1,0 +1,454 @@
+{
+  "feature_commit": "d7be709e98d4f17001f3b6b03d60abc703f50109",
+  "integrated_commit": "511c313ccb47d06f156991e5fdb7d647362ffdee",
+  "source_digest": "82db3dd9198bac95d603ce17ccf44656dc0f46c1dc413ff631f477358eb02121",
+  "source_files": 142,
+  "source_matches_feature_merge_and_worktree": true,
+  "base": "30401b4a9443a70c0d5681ba3a981dd70fa9106d",
+  "predeclared_contract": {
+    "base": "30401b4a9443a70c0d5681ba3a981dd70fa9106d",
+    "scope": "Home Modular own SF glyph scale/position, preserve62pt layout and actions; make full62pt control rectangle explicitly interactive instead of old glyph-only AX bounds.",
+    "reference_metrics": {
+      "decrease": {
+        "ROI": [
+          0.055,
+          0.52,
+          0.155,
+          0.6
+        ],
+        "bbox": [
+          46,
+          297,
+          75,
+          313
+        ],
+        "pixels": 118,
+        "width": 0.053406998158379376,
+        "height": 0.029411764705882353,
+        "centerx": 0.11141804788213629,
+        "centery": 0.5606617647058824
+      },
+      "increase": {
+        "ROI": [
+          0.505,
+          0.52,
+          0.625,
+          0.6
+        ],
+        "bbox": [
+          292,
+          296,
+          321,
+          313
+        ],
+        "pixels": 138,
+        "width": 0.053406998158379376,
+        "height": 0.03125,
+        "centerx": 0.5644567219152854,
+        "centery": 0.5597426470588235
+      }
+    },
+    "drawing_scale": 1.5,
+    "down_x_offset": 15,
+    "up_x_offset": -13.5,
+    "y_offset": -2.25,
+    "native_contract": {
+      "ROIs": [
+        [
+          0.05,
+          0.51,
+          0.165,
+          0.61
+        ],
+        [
+          0.49,
+          0.51,
+          0.64,
+          0.61
+        ]
+      ],
+      "outside_both_ROIs_changed_pixels": 0,
+      "width_bounds": [
+        0.0504,
+        0.0565
+      ],
+      "height_bounds": [
+        0.026,
+        0.035
+      ],
+      "center_x_down": [
+        0.108,
+        0.115
+      ],
+      "center_x_up": [
+        0.561,
+        0.568
+      ],
+      "center_y": [
+        0.556,
+        0.565
+      ],
+      "positive_live_glyph_taps": "68 -> 69 -> 68 at normalized visible arrow centers, controlframes62design points",
+      "unchanged_temperature_and_labels_outside_ROIs": true
+    },
+    "preflight": "Existing RoundButton geometry has no independent drawing transform. Local HomeModular helper reuses same public SF Symbols and GlassPressStyle without altering the global component or adding libraries.",
+    "no_private_original_raster_or_contours": true,
+    "measurement_v1_retained_but_rejected": "Original first ROI clipped the arrows; use v2 connected-component bounds only. No candidate or pass was based on v1.",
+    "baseline_evidence": {
+      "original_published_App_AX_width_points": 28.523333333333312,
+      "first_candidate_AX_width_points": 42.785000000000025,
+      "62design_points_in_this_viewport": 82.25333333333333,
+      "original_native_probe_expected_failure": true,
+      "first_pilot_1pass_1fail_retained": true,
+      "no_assertion_relaxed": true
+    },
+    "additional_gate": "Exact original62designpoint frame checks retained; actual visibleglyph taps AND left-interior-edge taps each prove68->69->68.",
+    "source_change": "Local HomeModular helper adds contentShape(Rectangle()) after original62pt frame/background; global RoundButton untouched.",
+    "source_digest": "82db3dd9198bac95d603ce17ccf44656dc0f46c1dc413ff631f477358eb02121",
+    "source_files": 142,
+    "source_archive_sha256": "15092940e480fa1953f19af0713143db857e134d3c0670f3152f9ff5a93e49d6"
+  },
+  "source_scope": {
+    "changed_files": [
+      "Sources/App/Faces.swift",
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "all_existing_test_methods_byte_exact": true,
+    "global_RoundButton_unchanged": true,
+    "only_local_HomeModular_drawing_and_explicit_hitarea": true
+  },
+  "independent_image_measurements": {
+    "mode": "final",
+    "source_digest": "82db3dd9198bac95d603ce17ccf44656dc0f46c1dc413ff631f477358eb02121",
+    "source_files": 142,
+    "UI_executions": 12,
+    "failed_skipped_runtime_warnings": 0,
+    "inputs_unchanged": true,
+    "all_native_PNG_decoded": 98,
+    "devices": [
+      {
+        "device": "iPad",
+        "all_PNG_decoded": true,
+        "measurements": [
+          {
+            "state": "viewport-home-modular-intercom-reference",
+            "changed_pixels": 3879,
+            "outside_both_ROIs_changed_pixels": 0,
+            "arrows": [
+              {
+                "bbox": [
+                  133,
+                  867,
+                  218,
+                  915
+                ],
+                "pixels": 1183,
+                "width": 0.05339195979899498,
+                "height": 0.03015075376884422,
+                "centerx": 0.11023869346733668,
+                "centery": 0.5596733668341709,
+                "checks": {
+                  "width": true,
+                  "height": true,
+                  "centerx": true,
+                  "centery": true
+                }
+              },
+              {
+                "bbox": [
+                  856,
+                  867,
+                  941,
+                  915
+                ],
+                "pixels": 1167,
+                "width": 0.05339195979899498,
+                "height": 0.03015075376884422,
+                "centerx": 0.5643844221105527,
+                "centery": 0.5596733668341709,
+                "checks": {
+                  "width": true,
+                  "height": true,
+                  "centerx": true,
+                  "centery": true
+                }
+              }
+            ],
+            "contract_passed": true
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "changed_pixels": 3879,
+            "outside_both_ROIs_changed_pixels": 0,
+            "arrows": [
+              {
+                "bbox": [
+                  133,
+                  867,
+                  218,
+                  915
+                ],
+                "pixels": 1186,
+                "width": 0.05339195979899498,
+                "height": 0.03015075376884422,
+                "centerx": 0.11023869346733668,
+                "centery": 0.5596733668341709,
+                "checks": {
+                  "width": true,
+                  "height": true,
+                  "centerx": true,
+                  "centery": true
+                }
+              },
+              {
+                "bbox": [
+                  856,
+                  867,
+                  941,
+                  915
+                ],
+                "pixels": 1169,
+                "width": 0.05339195979899498,
+                "height": 0.03015075376884422,
+                "centerx": 0.5643844221105527,
+                "centery": 0.5596733668341709,
+                "checks": {
+                  "width": true,
+                  "height": true,
+                  "centerx": true,
+                  "centery": true
+                }
+              }
+            ],
+            "contract_passed": true
+          }
+        ],
+        "contract_passed": true,
+        "local_target_RGBA_PNG_exact": true,
+        "actual_glyph_and_padding_taps_68_69_68_and_explicit62pt_frames_asserted": true,
+        "initial_restored_RGBA_exact": true,
+        "cold4_launches32_full_RGBA_PNG_exact": true,
+        "moving_positive": true,
+        "reduced_pair_exact": true,
+        "night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 2486355,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 2486355,
+            "wrong_primary_pixels": 0
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "all_PNG_decoded": true,
+        "measurements": [
+          {
+            "state": "viewport-home-modular-intercom-reference",
+            "changed_pixels": 2056,
+            "outside_both_ROIs_changed_pixels": 0,
+            "arrows": [
+              {
+                "bbox": [
+                  94,
+                  618,
+                  154,
+                  652
+                ],
+                "pixels": 585,
+                "width": 0.05291005291005291,
+                "height": 0.029982363315696647,
+                "centerx": 0.10934744268077601,
+                "centery": 0.5599647266313933,
+                "checks": {
+                  "width": true,
+                  "height": true,
+                  "centerx": true,
+                  "centery": true
+                }
+              },
+              {
+                "bbox": [
+                  610,
+                  618,
+                  669,
+                  652
+                ],
+                "pixels": 573,
+                "width": 0.05202821869488536,
+                "height": 0.029982363315696647,
+                "centerx": 0.5639329805996472,
+                "centery": 0.5599647266313933,
+                "checks": {
+                  "width": true,
+                  "height": true,
+                  "centerx": true,
+                  "centery": true
+                }
+              }
+            ],
+            "contract_passed": true
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "changed_pixels": 2056,
+            "outside_both_ROIs_changed_pixels": 0,
+            "arrows": [
+              {
+                "bbox": [
+                  94,
+                  618,
+                  154,
+                  652
+                ],
+                "pixels": 588,
+                "width": 0.05291005291005291,
+                "height": 0.029982363315696647,
+                "centerx": 0.10934744268077601,
+                "centery": 0.5599647266313933,
+                "checks": {
+                  "width": true,
+                  "height": true,
+                  "centerx": true,
+                  "centery": true
+                }
+              },
+              {
+                "bbox": [
+                  610,
+                  618,
+                  669,
+                  652
+                ],
+                "pixels": 575,
+                "width": 0.05202821869488536,
+                "height": 0.029982363315696647,
+                "centerx": 0.5639329805996472,
+                "centery": 0.5599647266313933,
+                "checks": {
+                  "width": true,
+                  "height": true,
+                  "centerx": true,
+                  "centery": true
+                }
+              }
+            ],
+            "contract_passed": true
+          }
+        ],
+        "contract_passed": true,
+        "local_target_RGBA_PNG_exact": true,
+        "actual_glyph_and_padding_taps_68_69_68_and_explicit62pt_frames_asserted": true,
+        "initial_restored_RGBA_exact": true,
+        "cold4_launches32_full_RGBA_PNG_exact": true,
+        "moving_positive": true,
+        "reduced_pair_exact": true,
+        "night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 1261722,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 1261722,
+            "wrong_primary_pixels": 0
+          }
+        ]
+      }
+    ],
+    "all_contracts_passed": true,
+    "selected_native_representatives": 40,
+    "contacts": [
+      "Docs/screenshots/goal-20261018/home-thermostat-arrows-iPad-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/home-thermostat-arrows-iPad-own-contact-2.jpg",
+      "Docs/screenshots/goal-20261018/home-thermostat-arrows-iPhone-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/home-thermostat-arrows-iPhone-own-contact-2.jpg"
+    ],
+    "Original_symbol_exact_contours_lighting_or_hardware_accepted": false
+  },
+  "UI_executions": 12,
+  "UI_failed": 0,
+  "UI_skipped": 0,
+  "UI_runtime_warnings": 0,
+  "selected_methods": [
+    "testHomePrismColdLaunchesKeepFrozenPixelsExact",
+    "testHomePrismMotionStopsWithReduceMotion",
+    "testHomePrismNightHasNoBlueGlassLeak",
+    "testHomeGlassControlsRemainInteractive",
+    "testHomeModularIntercomReferenceMarkAndLocalDestination",
+    "testHomeModularThermostatArrowDrawingKeepsControlFramesAndState"
+  ],
+  "successful_pilot2_not_added": true,
+  "failed_initial_pilot": {
+    "passed": 1,
+    "failed": 1,
+    "source_digest": "000ce62cb6a80811511226f2fba3d10aa3ea5f22f6a2ffd4b30c40a34b4e18cb",
+    "reason": "AX width42.785 vs expected82.253; layout62 was not an explicit full hit area",
+    "not_relabelled_PASS": true
+  },
+  "controlled_unchanged_prior_App_probe": {
+    "failed": 1,
+    "reason": "Same test binary, prior published App AX width28.523 vs expected82.253",
+    "expected_negative_not_counted": true,
+    "original_App_product10_SHA_exact": true
+  },
+  "repair": "Explicit contentShape(Rectangle()) on local HomeModular helper; no frame assertion relaxed; add real left-padding taps",
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T12:53:09.802445+00:00",
+      "ended": "2026-10-18T12:53:22.623464+00:00"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T12:53:22.623994+00:00",
+      "ended": "2026-10-18T12:53:36.204693+00:00"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T12:53:36.205217+00:00",
+      "ended": "2026-10-18T12:53:48.534315+00:00"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T12:53:48.534748+00:00",
+      "ended": "2026-10-18T12:54:00.195362+00:00"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T12:54:00.195764+00:00",
+      "ended": "2026-10-18T12:54:07.019320+00:00"
+    }
+  ],
+  "full_native_input_files": 20,
+  "all_native_inputs_before_after_exact": true,
+  "App_Test16_product_files_exact_to_visual_pilot": true,
+  "actual_final_native_representatives_viewed": 40,
+  "actual_final_contacts_viewed": 4,
+  "actual_pilot_own_contact_viewed": true,
+  "actual_private_UI07_comparison_viewed_not_published": true,
+  "actual_OS_switch_checks_not_repeated_on_this_payload": true,
+  "prior_actual_OS_evidence": "prisms-system-reduce-motion.json, older App payload, not newly counted",
+  "no_private_reference_raster_font_contours_or_original_shader": true,
+  "no_real_homes_accounts_libraries_devices_communication_or_system_alarms": true,
+  "no_frozen_RGB_tolerance": true,
+  "no_full_Original_symbol_contours_lighting_hardware_or_current_full_suite_acceptance": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/home-thermostat-arrows-manifest.json"
+}
