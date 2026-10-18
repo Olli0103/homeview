@@ -5,6 +5,14 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Home Modular Intercom-Zeichen · 18. Oktober 2026
+
+[Sieben weiße Balken nach UI07](home-modular-intercom.md): 166 Modelltests,
+acht gezielte UI-Ausführungen und fünf SDKs auf dem bereinigten Abschlussstand.
+38 finale eigene PNGs gesichtet. Home-Raster in fünf Zuständen je Gerät komplett
+bytegleich; außerhalb Modular-Symbol null Pixeländerung. Bestehender Motion-/
+Reduce-Motion-Test bestanden, keine Aufhebung des separat gehaltenen Prismenfehlers.
+
 ### Home-Raster-Intercomzeichen · 18. Oktober 2026
 
 [Sieben symmetrische Balken nach UI13](home-grid-intercom.md): 166 Modelltests,
