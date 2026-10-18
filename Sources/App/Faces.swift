@@ -504,6 +504,7 @@ struct CalendarFace: View {
                 )
                 .accessibilityIdentifier(
                   selected ? "calendar.face.selected" : "calendar.face.cell.\(i)")
+                .accessibilityValue(selected ? "Today":"")
             }
           }
         }.padding(.top, 12).foregroundStyle(Color(red: 0, green: 0.36, blue: 1))

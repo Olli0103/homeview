@@ -2030,3 +2030,68 @@ extension HomeViewUITests {
     XCTAssertFalse(app.staticTexts["doorbell.demo.label"].exists)
   }
 }
+
+extension HomeViewUITests {
+  func verifyCalendarFace(header:String,day:Int,selectedCell:Int,grid:[Int],name:String) {
+    XCTAssertEqual(grid.count,42)
+    XCTAssertTrue(app.staticTexts[header].waitForExistence(timeout:5))
+    let selected=app.staticTexts["calendar.face.selected"]
+    XCTAssertEqual(selected.label,String(day))
+    XCTAssertEqual(selected.value as? String,"Today")
+    let viewport=app.otherElements["reference.viewport"].frame.insetBy(dx:8,dy:8)
+    for i in 0..<42 {
+      let cell=i == selectedCell ? selected:app.staticTexts["calendar.face.cell.\(i)"]
+      XCTAssertTrue(cell.exists,"Missing cell \(i)")
+      XCTAssertEqual(cell.label,String(grid[i]),"Wrong date in cell \(i)")
+      XCTAssertTrue(viewport.contains(cell.frame),"Clipped date in cell \(i)")
+    }
+    viewportShot(name)
+  }
+  @objc func testCalendarReferenceMonthKeepsTheObservedSixRowsAndToday() {
+    launch(["--face","Calendar"])
+    verifyCalendarFace(header:"April 2026",day:1,selectedCell:3,grid:[
+      29,30,31,1,2,3,4, 5,6,7,8,9,10,11, 12,13,14,15,16,17,18,
+      19,20,21,22,23,24,25, 26,27,28,29,30,1,2, 3,4,5,6,7,8,9],
+      name:"calendar-reference-april2026")
+  }
+  @objc func testCalendarLeapDayAndSixWeekMonthKeepAllDatesVisible() {
+    launch(["--face","Calendar","--reference-date","2024-02-29T12:00:00Z"])
+    verifyCalendarFace(header:"February 2024",day:29,selectedCell:32,grid:[
+      28,29,30,31,1,2,3, 4,5,6,7,8,9,10, 11,12,13,14,15,16,17,
+      18,19,20,21,22,23,24, 25,26,27,28,29,1,2, 3,4,5,6,7,8,9],
+      name:"calendar-leap-day-february2024")
+    launch(["--face","Calendar","--reference-date","2026-08-31T12:00:00Z"])
+    verifyCalendarFace(header:"August 2026",day:31,selectedCell:36,grid:[
+      26,27,28,29,30,31,1, 2,3,4,5,6,7,8, 9,10,11,12,13,14,15,
+      16,17,18,19,20,21,22, 23,24,25,26,27,28,29, 30,31,1,2,3,4,5],
+      name:"calendar-six-week-august2026")
+  }
+  @objc func testCalendarYearBoundaryFollowsTheChosenTimeZoneNotUTC() {
+    let instant="2026-12-31T23:30:00Z"
+    launch(["--face","Calendar","--reference-date",instant,"--reference-zone","America/Los_Angeles"])
+    verifyCalendarFace(header:"December 2026",day:31,selectedCell:32,grid:[
+      29,30,1,2,3,4,5, 6,7,8,9,10,11,12, 13,14,15,16,17,18,19,
+      20,21,22,23,24,25,26, 27,28,29,30,31,1,2, 3,4,5,6,7,8,9],
+      name:"calendar-local-december31-los-angeles")
+    launch(["--face","Calendar","--reference-date",instant,"--reference-zone","Pacific/Kiritimati"])
+    verifyCalendarFace(header:"January 2027",day:1,selectedCell:5,grid:[
+      27,28,29,30,31,1,2, 3,4,5,6,7,8,9, 10,11,12,13,14,15,16,
+      17,18,19,20,21,22,23, 24,25,26,27,28,29,30, 31,1,2,3,4,5,6],
+      name:"calendar-local-january1-kiritimati")
+  }
+  @objc func testCalendarAgendaSelectionDoesNotChangeTheFacesLocalToday() {
+    launch(["--face","Calendar","--page","Calendar",
+      "--reference-date","2026-12-31T23:30:00Z","--reference-zone","Pacific/Kiritimati"])
+    XCTAssertTrue(app.staticTexts["January"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.buttons["calendar.day.5"].value as? String,"Selected")
+    tap("calendar.day.0")
+    XCTAssertEqual(app.buttons["calendar.day.0"].value as? String,"Selected")
+    XCTAssertNotEqual(app.buttons["calendar.day.5"].value as? String,"Selected")
+    viewportShot("calendar-agenda-local-year-boundary-selection")
+    tap("nav.faces")
+    XCTAssertEqual(app.staticTexts["calendar.face.selected"].label,"1")
+    XCTAssertEqual(app.staticTexts["calendar.face.selected"].value as? String,"Today")
+    XCTAssertTrue(app.staticTexts["January 2027"].exists)
+    viewportShot("calendar-face-keeps-local-today-after-agenda-navigation")
+  }
+}
