@@ -289,6 +289,30 @@ final class AppModel {
         }
       } catch { self.error = "The synthetic test store could not be prepared." }
     }
+    // Seed only a fresh, explicitly owned UUID store. The ordinary reader and
+    // original-byte preservation below must perform the actual recovery.
+    if testID != nil, args.contains("--uitesting"),
+       let index = args.firstIndex(of:"--face-configuration-fixture"),
+       args.indices.contains(index+1), ["legacy","future-widget"].contains(args[index+1]),
+       !FileManager.default.fileExists(atPath:store.path) {
+      do {
+        let legacy = args[index+1] == "legacy"
+        var fixture = Snapshot();fixture.face = .modular;fixture.home.temperature = 74
+        fixture.personal["Alex"] = PersonalContent()
+        fixture.personal["Alex"]!.messages = ["Synthetic face recovery note"]
+        var object = try JSONSerialization.jsonObject(with:JSONEncoder().encode(fixture)) as! [String:Any]
+        let slots = ["panel0":legacy ? "Weather":"Future Radar","panel1":"Clock","panel2":"Timer"]
+        var configuration: [String:Any] = ["complications":slots,"theme":1]
+        if !legacy { configuration["flowTypeface"] = 1;configuration["flowBackground"] = false }
+        object["faceConfigurations"] = [
+          "Modular":configuration,
+          "Flow":["complications":[:],"theme":0,"flowTypeface":1,"flowBackground":false]
+        ] as [String:Any]
+        try FileManager.default.createDirectory(at:dir,withIntermediateDirectories:true)
+        try JSONSerialization.data(withJSONObject:object,options:[.sortedKeys])
+          .write(to:store,options:.atomic)
+      } catch { self.error = "The synthetic face configuration store could not be prepared." }
+    }
     if !ephemeral, FileManager.default.fileExists(atPath: store.path) {
       do {
         let bytes = try Data(contentsOf: store)
