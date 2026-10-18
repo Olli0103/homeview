@@ -83,3 +83,10 @@ Vordergrundextraktion und physische Gerätequalität bleiben offen. #5 und #3
 bleiben offen. Kein nativer Depth-/Original-/Hardware-PASS und keine echte
 Fotobibliothek, Accounts oder Homes. Der frühere [Simulatorbefund](photo-native-boundary.md)
 bleibt gültig.
+
+## Nachfolgende Größenbewertung
+
+Dieser historische Konturstand ließ die Rechteckgrenze unverändert. Der
+[getrennte folgende Schritt](photo-ink-placement.md) ändert ausdrücklich nur die
+erweiterte Größenbewertung auf Schrift-Alpha plus Einzelzifferschutz. Er ist
+keine rückwirkende Änderung der hier dokumentierten Testergebnisse.

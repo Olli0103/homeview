@@ -1,0 +1,732 @@
+{
+  "code_commit": "2602ba4b52830257b5cf2935487738439f9d00cd",
+  "feature_commit": "9603bd5a0289ea2ed7b562a8b56e1fd29fde7a9e",
+  "source_digest": "063a28b2f73f8c38d339e7e92558d02e3bcda473d1edefd3687baeb4ed8a91c5",
+  "source_files": 139,
+  "source_matches_feature_and_merge_bytes": true,
+  "core_passed": 151,
+  "core_repeated_after_feature_and_merge": true,
+  "ui_executions": 28,
+  "unique_cases": 14,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:06:09.511853+00:00",
+      "ended": "2026-10-18T05:06:21.831409+00:00",
+      "log_sha256": "1bf35dc696e4cf99ce061eb1f4a4fcdee8231a49079201b6f6945608cf3b19e3"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T05:06:21.831884+00:00",
+      "ended": "2026-10-18T05:06:35.115150+00:00",
+      "log_sha256": "7a905290f6061966e1ece7c627f14824f40d5b6b9164863c280986e1541e7268"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:06:35.115711+00:00",
+      "ended": "2026-10-18T05:06:48.337396+00:00",
+      "log_sha256": "d41d599fb299b123dbd00e6e8ea4fb5c1d516f4c9c612ffe052907fdae0e46e4"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:06:48.337949+00:00",
+      "ended": "2026-10-18T05:07:01.192562+00:00",
+      "log_sha256": "d9ffde36da603213532d55a553161f53d29dd354a721c1e6a9fa7ac5c6bf4f14"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:07:01.193047+00:00",
+      "ended": "2026-10-18T05:07:08.337382+00:00",
+      "log_sha256": "71b4027c835e34a0f17b460974a23b4474807404528bad3d1708d3cb388c6b5b"
+    }
+  ],
+  "policy": {
+    "source_checkpoint": "photo-ink-oriented-candidate",
+    "expanded_policy": {
+      "overall_ink_occluded_max": 0.18,
+      "each_digit_ink_occluded_max": 0.3,
+      "denominator": "Own rendered path alpha, not rectangle area",
+      "compact_depth_entry_rectangle_limit": 0.18,
+      "missing_or_invalid_ink_candidates": "Do not expand",
+      "legacy_nil_candidates": "Unchanged rectangle-only expansion"
+    },
+    "alignment": {
+      "overall_IoU_min": 0.9,
+      "each_digit_IoU_min": 0.9,
+      "fixtures": [
+        "sparse-depth",
+        "top"
+      ],
+      "method": "128-cell majority of actual high-resolution white native stencil versus exposed raw raster; no display compensation flip"
+    },
+    "alpha_replay": {
+      "test_input": "Mac-produced foreground PNG alpha of own generated portrait",
+      "not_native_iOS_extraction": true,
+      "expected_band_height": 0.56,
+      "expected_y": 0.05,
+      "opaque_head_ROI": [
+        0.585,
+        0.29,
+        0.595,
+        0.38
+      ],
+      "opaque_ROI_verified_on_source_alpha": [
+        255,
+        255
+      ],
+      "RGB_channel_error_max": 2,
+      "crossed_ink_pixels_min": 100
+    },
+    "history": {
+      "photo-ink-pilot-1": "1 PASS / 2 FAIL, rejected. Whole-shape overlap alone missed visible vertical mirroring. CPU measurements and actual native raster image agree.",
+      "first_source_digest": "2dd0e6e17fbc8aa52644561378ed5d0b2fa1b539635fcf6553394cc6f053cc40",
+      "first_archived_source_zip_sha256": "74a3540a29c07bb666883c22db3687f977de4827e1c40adae1fa00e9222c03c4",
+      "opaque_ROI_change": "Original proposed .27-.38 included partially transparent edge in the independent source alpha; before corrected candidate UI execution fixed ROI to verified fully opaque .29-.38. No alpha-error threshold relaxation."
+    }
+  },
+  "new_native_png_measurements": [
+    {
+      "device": "iPad",
+      "alignment": [
+        {
+          "fixture": "sparse-depth",
+          "independent_png_iou": 0.9691516709511568,
+          "independent_per_digit_iou": [
+            0.9952153110047847,
+            0.9974683544303797,
+            0.9384203480589023,
+            0.9557291666666666
+          ]
+        },
+        {
+          "fixture": "top",
+          "independent_png_iou": 0.9761061946902655,
+          "independent_per_digit_iou": [
+            1.0,
+            0.9959016393442623,
+            0.9472551130247578,
+            0.9711042311661506
+          ]
+        }
+      ],
+      "replay_visible_ink_alpha_weighted": {
+        "overall": 0.12898764567119603,
+        "per_digit": [
+          0.0,
+          0.1972256866810304,
+          0.25872477075769246,
+          0.0
+        ]
+      },
+      "native_replay_metadata": "height=0.56;y=0.05;coverage=0.24328961627163856 digits=10 09;revision=1;ink=0.12901284040194638;maxDigit=0.25913697150926157",
+      "opaque_head_roi": {
+        "crossed_ink": 1292.0,
+        "RGB_error_above_2": 0.0
+      },
+      "minute_change_native": {
+        "before": "digits=10 09;revision=1;ink=0.12901284040194638;maxDigit=0.25913697150926157",
+        "after": "digits=10 10;revision=2;ink=0.12452353497336571;maxDigit=0.29000791454257363"
+      }
+    },
+    {
+      "device": "iPhone",
+      "alignment": [
+        {
+          "fixture": "sparse-depth",
+          "independent_png_iou": 0.9693352919574,
+          "independent_per_digit_iou": [
+            0.9952153110047847,
+            1.0,
+            0.9370816599732262,
+            0.955078125
+          ]
+        },
+        {
+          "fixture": "top",
+          "independent_png_iou": 0.975811209439528,
+          "independent_per_digit_iou": [
+            0.998062015503876,
+            0.9979508196721312,
+            0.946178686759957,
+            0.9700722394220846
+          ]
+        }
+      ],
+      "replay_visible_ink_alpha_weighted": {
+        "overall": 0.12896336593918392,
+        "per_digit": [
+          0.0,
+          0.19678657592104443,
+          0.2594957660854906,
+          0.0
+        ]
+      },
+      "native_replay_metadata": "height=0.56;y=0.05;coverage=0.24328961627163856 digits=10 09;revision=1;ink=0.12901284040194638;maxDigit=0.25913697150926157",
+      "opaque_head_roi": {
+        "crossed_ink": 644.0,
+        "RGB_error_above_2": 0.0
+      },
+      "minute_change_native": {
+        "before": "digits=10 09;revision=1;ink=0.12901284040194638;maxDigit=0.25913697150926157",
+        "after": "digits=10 10;revision=2;ink=0.12452353497336571;maxDigit=0.29000791454257363"
+      }
+    }
+  ],
+  "existing_alpha_metrics": [
+    {
+      "device": "iPad",
+      "independent_png_alpha": {
+        "covered": 45540,
+        "covered_changes": 0,
+        "outside_changed": 758085,
+        "top": 0.06030150753768844,
+        "bottom": 0.9396984924623115
+      },
+      "native_alpha": {
+        "covered": 45540.0,
+        "covered_changes": 0.0,
+        "outside_changed": 758085.0,
+        "top": 0.06030150753768844,
+        "bottom": 0.9396984924623115
+      }
+    },
+    {
+      "device": "iPhone",
+      "independent_png_alpha": {
+        "covered": 23010,
+        "covered_changes": 0,
+        "outside_changed": 382012,
+        "top": 0.06084656084656084,
+        "bottom": 0.9391534391534392
+      },
+      "native_alpha": {
+        "covered": 23010.0,
+        "covered_changes": 0.0,
+        "outside_changed": 382012.0,
+        "top": 0.06084656084656084,
+        "bottom": 0.9391534391534392
+      }
+    }
+  ],
+  "horizontal_reviews": [
+    {
+      "device": "iPad",
+      "state": "photo-adaptive-full-unoccluded-stencil",
+      "png_sha256": "2c1d7c122baa420b16aef18551b860f5ad61c66a1b402eb2396db83d9f5337da",
+      "ink_bounds": [
+        0.06595477386934673,
+        0.06030150753768844,
+        0.9447236180904522,
+        0.9396984924623115
+      ],
+      "required_horizontal_bounds": [
+        0.05,
+        0.95
+      ],
+      "horizontal_passed": true
+    },
+    {
+      "device": "iPad",
+      "state": "photo-adaptive-medium-unoccluded-stencil",
+      "png_sha256": "a1632444dfe21ae9e8332c65edd61cb56b1f15dda095272e861a2db0ce6e5b25",
+      "ink_bounds": [
+        0.06595477386934673,
+        0.4001256281407035,
+        0.9447236180904522,
+        0.9396984924623115
+      ],
+      "required_horizontal_bounds": [
+        0.05,
+        0.95
+      ],
+      "horizontal_passed": true
+    },
+    {
+      "device": "iPhone",
+      "state": "photo-adaptive-full-unoccluded-stencil",
+      "png_sha256": "205f6caffdd8352d93054f5185bc602fc5e1b9e754d7631ff2cdfec0ab5b5049",
+      "ink_bounds": [
+        0.06613756613756613,
+        0.059964726631393295,
+        0.9444444444444444,
+        0.9391534391534392
+      ],
+      "required_horizontal_bounds": [
+        0.05,
+        0.95
+      ],
+      "horizontal_passed": true
+    },
+    {
+      "device": "iPhone",
+      "state": "photo-adaptive-medium-unoccluded-stencil",
+      "png_sha256": "5f86742ec4762f55fac62e98cda1b898307828f28f1d8df42381b92a3013814f",
+      "ink_bounds": [
+        0.06613756613756613,
+        0.400352733686067,
+        0.9444444444444444,
+        0.9391534391534392
+      ],
+      "required_horizontal_bounds": [
+        0.05,
+        0.95
+      ],
+      "horizontal_passed": true
+    }
+  ],
+  "own_glyphs_and_glass_metrics": [
+    {
+      "device": "iPad",
+      "glyphs": [
+        {
+          "digit": 0,
+          "white_pixels": 91234,
+          "bounds": [
+            8,
+            16,
+            241,
+            634
+          ]
+        },
+        {
+          "digit": 1,
+          "white_pixels": 51432,
+          "bounds": [
+            32,
+            16,
+            209,
+            634
+          ]
+        },
+        {
+          "digit": 2,
+          "white_pixels": 66322,
+          "bounds": [
+            8,
+            41,
+            241,
+            634
+          ]
+        },
+        {
+          "digit": 3,
+          "white_pixels": 63352,
+          "bounds": [
+            8,
+            42,
+            241,
+            617
+          ]
+        },
+        {
+          "digit": 4,
+          "white_pixels": 69967,
+          "bounds": [
+            8,
+            16,
+            241,
+            634
+          ]
+        },
+        {
+          "digit": 5,
+          "white_pixels": 70989,
+          "bounds": [
+            8,
+            16,
+            241,
+            615
+          ]
+        },
+        {
+          "digit": 6,
+          "white_pixels": 93209,
+          "bounds": [
+            8,
+            16,
+            241,
+            634
+          ]
+        },
+        {
+          "digit": 7,
+          "white_pixels": 54780,
+          "bounds": [
+            8,
+            16,
+            241,
+            634
+          ]
+        },
+        {
+          "digit": 8,
+          "white_pixels": 99406,
+          "bounds": [
+            8,
+            16,
+            241,
+            634
+          ]
+        },
+        {
+          "digit": 9,
+          "white_pixels": 93076,
+          "bounds": [
+            8,
+            16,
+            241,
+            634
+          ]
+        }
+      ],
+      "own_glass": {
+        "samples": 687928,
+        "transmitted_fixed_rgb45": 666423,
+        "opaque_matches": 0,
+        "fraction": 0.9687394611063949
+      }
+    },
+    {
+      "device": "iPhone",
+      "glyphs": [
+        {
+          "digit": 0,
+          "white_pixels": 46206,
+          "bounds": [
+            6,
+            12,
+            172,
+            451
+          ]
+        },
+        {
+          "digit": 1,
+          "white_pixels": 25958,
+          "bounds": [
+            23,
+            12,
+            149,
+            451
+          ]
+        },
+        {
+          "digit": 2,
+          "white_pixels": 33385,
+          "bounds": [
+            6,
+            29,
+            172,
+            451
+          ]
+        },
+        {
+          "digit": 3,
+          "white_pixels": 31945,
+          "bounds": [
+            6,
+            30,
+            172,
+            440
+          ]
+        },
+        {
+          "digit": 4,
+          "white_pixels": 35284,
+          "bounds": [
+            6,
+            12,
+            172,
+            451
+          ]
+        },
+        {
+          "digit": 5,
+          "white_pixels": 35716,
+          "bounds": [
+            6,
+            12,
+            172,
+            438
+          ]
+        },
+        {
+          "digit": 6,
+          "white_pixels": 47104,
+          "bounds": [
+            6,
+            12,
+            172,
+            451
+          ]
+        },
+        {
+          "digit": 7,
+          "white_pixels": 27536,
+          "bounds": [
+            6,
+            12,
+            172,
+            451
+          ]
+        },
+        {
+          "digit": 8,
+          "white_pixels": 50308,
+          "bounds": [
+            6,
+            12,
+            172,
+            451
+          ]
+        },
+        {
+          "digit": 9,
+          "white_pixels": 47140,
+          "bounds": [
+            6,
+            12,
+            172,
+            451
+          ]
+        }
+      ],
+      "own_glass": {
+        "samples": 335784,
+        "transmitted_fixed_rgb45": 329151,
+        "opaque_matches": 0,
+        "fraction": 0.9802462297191051
+      }
+    }
+  ],
+  "compact_whole_png_regression": [
+    {
+      "device": "iPad",
+      "state": "photo-type-protected-band-background",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "e1a51a0b468c719ff2d743c656dc41ce9b684461c096bef9f42661625a4a8a64",
+      "current_png_sha256": "e1a51a0b468c719ff2d743c656dc41ce9b684461c096bef9f42661625a4a8a64",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPad",
+      "state": "photo-type-protected-band-stencil",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "e738d64823b6da5e8831e121342937805e29dae826abf379baa36a5d63b7c6e8",
+      "current_png_sha256": "e738d64823b6da5e8831e121342937805e29dae826abf379baa36a5d63b7c6e8",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPad",
+      "state": "photo-glass-same-backdrop",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "609b4adee55c6191b1086f50967a3d43872c83413b212fd6fdc67f00061a5332",
+      "current_png_sha256": "609b4adee55c6191b1086f50967a3d43872c83413b212fd6fdc67f00061a5332",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-photo-demo-portrait-protected",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "ca735292d19dfaee6007b019ba61b7dd5a77a768d039dd1838d00a6266f96402",
+      "current_png_sha256": "ca735292d19dfaee6007b019ba61b7dd5a77a768d039dd1838d00a6266f96402",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPad",
+      "state": "photo-glass-night-full-viewport",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "eecb5b5eaa483b971a8c47f714719167f9d3ba930b2558c5ccfaa4d0e422d923",
+      "current_png_sha256": "eecb5b5eaa483b971a8c47f714719167f9d3ba930b2558c5ccfaa4d0e422d923",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPhone",
+      "state": "photo-type-protected-band-background",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "240b9a11ea0df88cc1ad675cc2dcb78d723081a9583329e76eef669861cb3c3f",
+      "current_png_sha256": "240b9a11ea0df88cc1ad675cc2dcb78d723081a9583329e76eef669861cb3c3f",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPhone",
+      "state": "photo-type-protected-band-stencil",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "c9aac5dfb97b9522e24907fa464d887a9854fcf79739e9a03c0100a19f50acda",
+      "current_png_sha256": "c9aac5dfb97b9522e24907fa464d887a9854fcf79739e9a03c0100a19f50acda",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPhone",
+      "state": "photo-glass-same-backdrop",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "9711119659535ba0cc66cc9880d293c18b8b80b7d404553830e40944db16c256",
+      "current_png_sha256": "9711119659535ba0cc66cc9880d293c18b8b80b7d404553830e40944db16c256",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-photo-demo-portrait-protected",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "ad0186a7906dc0a05cd947936e330161fd0cf2aba74244afdb6ec02dd87ee048",
+      "current_png_sha256": "ad0186a7906dc0a05cd947936e330161fd0cf2aba74244afdb6ec02dd87ee048",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    },
+    {
+      "device": "iPhone",
+      "state": "photo-glass-night-full-viewport",
+      "historical_source": "99c801866659ce3363849adeeb1fa28fb458e9dfe3c2f1f360a58a4191e61c2d",
+      "historical_png_sha256": "fe883f650e6ad2c2cb46c46bf3940d9e6a1e6c82cb7e4a8fe1a5d7512c076f47",
+      "current_png_sha256": "fe883f650e6ad2c2cb46c46bf3940d9e6a1e6c82cb7e4a8fe1a5d7512c076f47",
+      "pixels_identical": true,
+      "png_bytes_identical": true
+    }
+  ],
+  "existing_photo_regression_metrics": [
+    {
+      "device": "iPad",
+      "independent_png_ink": {
+        "top": 0.08919597989949749,
+        "bottom": 0.3712311557788945,
+        "height": 0.28203517587939697
+      },
+      "native_test_ink": {
+        "top": 0.08919597989949749,
+        "bottom": 0.3712311557788945,
+        "height": 0.28203517587939697
+      },
+      "transmission": {
+        "samples": 110150,
+        "passed_fixed_rgb45": 99407,
+        "opaque_matches": 0
+      },
+      "night": {
+        "lit": 2453095,
+        "wrong_color": 0
+      },
+      "portrait_has_no_depth": true,
+      "portrait_protected_regions_and_zero_overlap": true
+    },
+    {
+      "device": "iPhone",
+      "independent_png_ink": {
+        "top": 0.08994708994708994,
+        "bottom": 0.373015873015873,
+        "height": 0.2830687830687831
+      },
+      "native_test_ink": {
+        "top": 0.08994708994708994,
+        "bottom": 0.373015873015873,
+        "height": 0.2830687830687831
+      },
+      "transmission": {
+        "samples": 53237,
+        "passed_fixed_rgb45": 48516,
+        "opaque_matches": 0
+      },
+      "night": {
+        "lit": 1244921,
+        "wrong_color": 0
+      },
+      "portrait_has_no_depth": true,
+      "portrait_protected_regions_and_zero_overlap": true
+    }
+  ],
+  "native_demo_button_and_extractor_source_unchanged": true,
+  "shader_function_and_source_unchanged": true,
+  "mask_rasterizer_source_unchanged": true,
+  "replay_is_owned_Mac_alpha_not_native_iOS_extraction": true,
+  "normal_demo_action_uses_no_precomputed_matte": true,
+  "typography_only_cache_invalidated_on_minute_change": true,
+  "coverage_stays_rectangle_measurement": true,
+  "ink_metric_is_separate_explicit_policy_change": true,
+  "occlusion_policy_not_general_perceptual_readability_proof": true,
+  "preexisting_asset_manifest_repair": [
+    {
+      "path": "Resources/Info.plist",
+      "stale_manifest_sha256": "9c042cbb6e9288d46db86a17815eaa9c5f735ed1ef5d7ad4cc368b9edea81c71",
+      "current_unchanged_resource_sha256": "90292e4f4fe1b86218deeacccc03572f80c28137e9e65cec50b27e3b474ed074",
+      "resource_changed": false
+    }
+  ],
+  "assets_audit": {
+    "unchanged_existing_files": 51,
+    "added": [
+      {
+        "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/Contents.json",
+        "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+      },
+      {
+        "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/image.png",
+        "sha256": "6a494569e8a377f4fe6a1d21cb6bda8024c25848dc78f905a2fe58f660d833ab"
+      }
+    ],
+    "native_input_foreground_sha256": "a66b77abff5c527cefade003777122010a9bc61360fd8078cc59486ac51ef8f2"
+  },
+  "history": {
+    "first_source_digest": "2dd0e6e17fbc8aa52644561378ed5d0b2fa1b539635fcf6553394cc6f053cc40",
+    "first_source_zip_sha256": "74a3540a29c07bb666883c22db3687f977de4827e1c40adae1fa00e9222c03c4",
+    "first_core_passed": 151,
+    "first_ui_passed": 1,
+    "first_ui_failed": 2,
+    "first_ui_skipped": 0,
+    "rejected_reason": "Vertically mirrored ink raster; actual native control images and independent CPU measurements agree. Overall full-shape overlap alone missed the asymmetry.",
+    "rejected_rasterizer_source_sha256": "10e949661b6957d018a02b78fa90f3c0882f1028d2faf95af8417a1331bb96b3",
+    "corrected_pilot_passed": 3,
+    "pilot_not_added_to_final28": true
+  },
+  "own_native_images_reviewed_both_devices": true,
+  "native_iOS_foreground_extraction_observed": false,
+  "original_visual_parity_accepted": false,
+  "physical_devices_tested": false,
+  "real_libraries_accounts_or_homekit_used": false,
+  "full_ui_suite_claimed": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/photo-ink-manifest.json",
+  "logs": {
+    "photo-ink-oriented-core.log": "819f390a2c946196e9d719e620c37f27145b9803adb078987e231c6997a1ffb8",
+    "photo-ink-feature-post-commit-core.log": "b8599b6a4f3735cc457fb44ad73457ed6d14fb20f5dc124d61f05e281fe85ba6",
+    "photo-ink-integrated-core.log": "92fc7cd3385e1f8603761c5741867b632cff28642baae8d5c00ec20f31df0e6a",
+    "photo-ink-oriented-build.log": "0d2edc19eab335dff744de838d929cce7a8d80932a16eecbc6949abaabe1b581",
+    "photo-ink-oriented-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "9723d180429bca92de4c1333ce798a372d1e2ef9d54e337a2d40b9055c12079c",
+    "iPhone": "02409c96d5c8a9590866fc962d1a85b4c39cef13c62ac7274fc2db75e8a04fc6"
+  }
+}
