@@ -417,7 +417,7 @@ Abhängigkeiten: BASE-02.
 <a id="face-12"></a>
 ### FACE-12: Wetterdaten, Wolken, Regen und Frost vollständig abnehmen
 
-Bewusst anschließbares Open-Meteo, unbekannte statt erfundener Werte und getrennte Wetter-App sind geprüft. Eigene Metal-Wolken und gemeinsame durchscheinende Glasziffern ersetzen die alten Canvas-Flecken; Tageswolkenkörper und Eigenverschattung wurden getrennt vergröbert und gedämpft. Originalformen, Brechung, Übergänge, Regen/Frost und physische Leistung bleiben offen.
+Open-Meteo, unbekannte statt erfundener Werte und getrennte Wetter-App sind geprüft. Eigene Metal-Wolken, Glasziffern und UI05-Geometrie mit öffentlichen Symbolen sind getrennt kalibriert; Demo/Celsius/unbekannte Face-Werte bleiben vollständig sichtbar. Exakte Originalformen, Schrift, Brechung, Übergänge, Regen/Frost und physische Leistung bleiben offen.
 
 Offen:
 
