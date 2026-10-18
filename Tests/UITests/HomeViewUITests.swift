@@ -172,6 +172,47 @@ final class HomeViewUITests: XCTestCase {
     tap("personal.weather.open")
     XCTAssertTrue(app.staticTexts["weather.app.city"].waitForExistence(timeout:5))
   }
+  func testHorizontalDominantTopDiagonalChangesFaceInsteadOfOpeningAssistant() {
+    launch(["--face","Home Camera"])
+    let frame=app.otherElements["reference.viewport"].frame
+    let origin=app.coordinate(withNormalizedOffset:.zero)
+    let start=origin.withOffset(CGVector(dx:frame.minX+frame.width*0.25,dy:frame.minY+frame.height*0.08))
+    let end=origin.withOffset(CGVector(dx:frame.minX+frame.width*0.83,dy:frame.minY+frame.height*0.32))
+    viewportShot("navigation-diagonal-horizontal-before")
+    start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+    viewportShot("navigation-diagonal-horizontal-after")
+    XCTAssertFalse(app.textFields["assistant.input"].exists)
+    XCTAssertTrue(app.otherElements["face.Numerals"].waitForExistence(timeout:5))
+  }
+  func testVerticalDominantInteriorDiagonalDoesNotAdvanceFace() {
+    launch(["--face","Home Camera"])
+    let frame=app.otherElements["reference.viewport"].frame
+    let origin=app.coordinate(withNormalizedOffset:.zero)
+    let start=origin.withOffset(CGVector(dx:frame.minX+frame.width*0.45,dy:frame.minY+frame.height*0.45))
+    let end=origin.withOffset(CGVector(dx:frame.minX+frame.width*0.70,dy:frame.minY+frame.height*0.90))
+    let before=viewportBytes("navigation-diagonal-vertical-before")
+    start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+    let after=viewportBytes("navigation-diagonal-vertical-after")
+    XCTAssertTrue(app.otherElements["face.Home Camera"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.otherElements["face.Numerals"].exists)
+    XCTAssertEqual(viewportPixels(before,inset:0),viewportPixels(after,inset:0),
+      "An ignored interior vertical gesture must preserve the actual displayed face")
+  }
+  func testShortFaceDragKeepsActualFaceAndDoesNotOpenAnOverlay() {
+    launch(["--face","Numerals"])
+    let frame=app.otherElements["reference.viewport"].frame
+    let origin=app.coordinate(withNormalizedOffset:.zero)
+    let before=viewportBytes("navigation-short-before")
+    origin.withOffset(CGVector(dx:frame.minX+frame.width*0.5,dy:frame.minY+frame.height*0.5))
+      .press(forDuration:0.1,thenDragTo:origin.withOffset(
+        CGVector(dx:frame.minX+frame.width*0.58,dy:frame.minY+frame.height*0.57)),
+        withVelocity:.slow,thenHoldForDuration:0.2)
+    let after=viewportBytes("navigation-short-after")
+    XCTAssertTrue(app.otherElements["face.Numerals"].exists)
+    XCTAssertFalse(app.textFields["assistant.input"].exists)
+    XCTAssertFalse(app.buttons["controls.night"].exists)
+    XCTAssertEqual(viewportPixels(before,inset:0),viewportPixels(after,inset:0))
+  }
   func testViewportEdgeGesturesOpenTheirActualDestinations() {
     launch(["--face","Home Camera"])
     func drag(_ x:Double,_ y:Double,_ endX:Double,_ endY:Double) {
