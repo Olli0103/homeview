@@ -390,3 +390,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: planare Prismen und getrennte native Glasschicht
 
 [Geprüfter Schritt](prisms-planar-grouped.md): 166 Modelltests,16 gezielte UI-Ausführungen,5 SDKs; je Gerät vier Kaltstarts mit acht exakten Standbildern. Quellen und vollständige native Inputs eingefroren. Kontrollversuche und frühere Fehlbelege getrennt erhalten. Original-/Hardwareabnahme und #20 bleiben offen.
+
+
+## 18. Oktober: echter Systemschalter statt CLI-Ersatz
+
+[Separater Nachweis](prisms-system-reduce-motion.md): zwei native Ausführungen,je Gerät zwei echte Systemschalter-Zyklen mit16 exakt gleichen Standbildern,40 eigene PNGs gesichtet. Produktions-App zehn Dateien bytegleich; Schalter zurückgestellt. Keine neue SDK-/Gesamtsuiten-/Original-/Hardwareabnahme.

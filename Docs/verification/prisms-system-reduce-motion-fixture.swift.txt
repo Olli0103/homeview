@@ -1,0 +1,72 @@
+  // Actual simulator OS Reduce Motion; same launch arguments in live/frozen
+  // modes. Restore the observed initial setting even after an assertion failure.
+  func testSystemReduceMotionFreezesHomePrismsWithoutLaunchOverride() throws {
+    XCUIDevice.shared.orientation = .portrait
+    app.terminate()
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences")
+    var initialOffVerified=false
+    func setSystemReduceMotion(_ enabled:Bool,requireInitialOff:Bool=false) throws {
+      settings.launch()
+      let sw=settings.switches["Reduce Motion"].firstMatch
+      if !sw.exists {
+        let access=settings.staticTexts["Accessibility"].firstMatch
+        if access.exists { access.tap() }
+        let motion=settings.staticTexts["Motion"].firstMatch
+        guard motion.waitForExistence(timeout:5) else { throw NSError(domain:"SimulatorMotionSettingsAbsent",code:1) }
+        motion.tap()
+      }
+      guard sw.waitForExistence(timeout:5),let before=sw.value as? String,["0","1"].contains(before) else { throw NSError(domain:"SimulatorMotionSwitchAbsent",code:1) }
+      if requireInitialOff {
+        guard before=="0" else { throw NSError(domain:"SimulatorInitialStateNotOff",code:1) }
+        initialOffVerified=true
+      }
+      let wanted=enabled ? "1" : "0"
+      if before != wanted {
+        let thumb=sw.switches.firstMatch
+        guard thumb.waitForExistence(timeout:5),thumb.frame.width<100,sw.frame.insetBy(dx:-4,dy:-1).contains(thumb.frame) else {
+          throw NSError(domain:"SimulatorMotionThumbAbsent",code:1)
+        }
+        thumb.tap()
+      }
+      let settled=XCTNSPredicateExpectation(predicate:NSPredicate(format:"value == %@",wanted),object:sw)
+      guard XCTWaiter.wait(for:[settled],timeout:5) == .completed else { throw NSError(domain:"SimulatorMotionReadbackMismatch",code:1) }
+      let data=try JSONSerialization.data(withJSONObject:["before":before,"after":sw.value as? String ?? "missing","wanted":wanted,"unix":Date().timeIntervalSince1970],options:[.sortedKeys])
+      let a=XCTAttachment(data:data,uniformTypeIdentifier:"public.json");a.name="simulator-reduce-motion-switch";a.lifetime = .keepAlways;add(a)
+      settings.terminate()
+    }
+    defer {
+      app.terminate()
+      if initialOffVerified {
+        do { try setSystemReduceMotion(false) }
+        catch { XCTFail("Simulator Reduce Motion restore failed: \(error)") }
+      }
+      settings.terminate()
+    }
+    try setSystemReduceMotion(false,requireInitialOff:true)
+    var first:Data?
+    var mismatches:[[String:Int]]=[]
+    for cycle in 0..<2 {
+      try setSystemReduceMotion(false)
+      launch(["--face","Home Modular","--animation-test"])
+      XCTAssertFalse(app.launchArguments.contains("--reduce-motion"))
+      let moving=viewportPixels(viewportBytes("system-prism-c\(cycle)-moving-start"))
+      Thread.sleep(forTimeInterval:1.5)
+      XCTAssertNotEqual(moving,viewportPixels(viewportBytes("system-prism-c\(cycle)-moving-later")))
+      app.terminate()
+      try setSystemReduceMotion(true)
+      launch(["--face","Home Modular","--animation-test"])
+      XCTAssertFalse(app.launchArguments.contains("--reduce-motion"))
+      for frame in 0..<8 {
+        if frame>0 { Thread.sleep(forTimeInterval:1.5) }
+        let pixels=viewportPixels(viewportBytes("system-prism-c\(cycle)-frozen-\(frame)"))
+        if let first { if pixels != first { mismatches.append(["cycle":cycle,"frame":frame]) } }
+        else { first=pixels }
+      }
+      app.terminate()
+      try setSystemReduceMotion(false)
+    }
+    // Report exact failures only after the actual switch is restored and read back.
+    let comparison=XCTAttachment(data:try JSONSerialization.data(withJSONObject:mismatches,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    comparison.name="system-prism-exact-mismatches";comparison.lifetime = .keepAlways;add(comparison)
+    XCTAssertEqual(mismatches.count,0,"Exact actual-system frozen viewport mismatch: \(mismatches)")
+  }

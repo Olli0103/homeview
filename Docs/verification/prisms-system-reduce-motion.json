@@ -1,0 +1,244 @@
+{
+  "base_production_commit": "6fd88d91623121701bce921686d6db7ad1f6a005",
+  "production_App10_files_byte_identical_to_previously_passed16_UI_5SDK": true,
+  "production_App_payload": [
+    {
+      "path": "AppIcon60x60@2x.png",
+      "sha256": "5c06bf1aefc6e1b00e1f8b536585e5e1515412f0bb0643c1655e0e44ff622c27",
+      "bytes": 15933
+    },
+    {
+      "path": "AppIcon76x76@2x~ipad.png",
+      "sha256": "807a52a8a579e6020367af0e30b28c74b6f35a61b50ffed4e3a9f75102c52f3d",
+      "bytes": 23236
+    },
+    {
+      "path": "Assets.car",
+      "sha256": "a186d2d61b422922ebe7290db8ec71bde2965ecc005ac2b0b87def49547db714",
+      "bytes": 14750264
+    },
+    {
+      "path": "HomeViewReplica",
+      "sha256": "3d22808d25142dd7a07d3e433469647fcfb8183551b086f4dba996cbc3799320",
+      "bytes": 72992
+    },
+    {
+      "path": "HomeViewReplica.debug.dylib",
+      "sha256": "2324adc4313db320d4175aeda2f0f3328f02c492d861c3d63d18d729135c2abc",
+      "bytes": 28337624
+    },
+    {
+      "path": "Info.plist",
+      "sha256": "5d0ae1299f10c952717359018876b7250fab1303c8cd4fa7f9a94a820161d702",
+      "bytes": 2301
+    },
+    {
+      "path": "PkgInfo",
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+      "bytes": 8
+    },
+    {
+      "path": "__preview.dylib",
+      "sha256": "f2057b1f2a2cf088de0afe2e520011a7b03fd1c5e8013528314b610a50a0eab9",
+      "bytes": 33144
+    },
+    {
+      "path": "default.metallib",
+      "sha256": "1ff01b1d919f66c008a91a1762610baaf49ef705214530f0e8d07c17ec5d519a",
+      "bytes": 65072
+    },
+    {
+      "path": "demo-tone.wav",
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+      "bytes": 176444
+    }
+  ],
+  "no_App_renderer_Core_assets_project_or_scripts_changes": true,
+  "default_project_test_sources_unchanged": true,
+  "optional_exact_simulator_fixture": "Docs/verification/prisms-system-reduce-motion-fixture.swift.txt",
+  "fixture_sha256": "7dda2cf722da6710b8b6c45c8280367f5fd653c300ca77b76360ebff82de1490",
+  "fixture_reconstruction": "Insert exact fixture bytes plus fixture_insertion_suffix_utf8 immediately before the comment:  // Regression for material-composition drift: in the base UITest file. Exact reconstruction SHA verified.",
+  "base_test_file_sha256": "47cb65933e7bb2cd6b05f581e0be0bd6c5f0caf21c73355eb85c7434a7776290",
+  "extended_test_file_sha256": "5b2f01747bd13c4e2af869a2b965228395ac626ad7dbd7505c4975850afde374",
+  "extended_source_digest": "3b69b88f22f4036a7436cf8b6e96a3dfabc7e2199a61e34384160155f3754b60",
+  "extended_source_files": 142,
+  "only_extended_source_delta": "Tests/UITests/HomeViewUITests.swift",
+  "native_executions": 2,
+  "previous16_regular_UI_not_added_to_this_counter": true,
+  "no_new_SDK_sweep": true,
+  "SDK_basis": "Previously passed5SDK on same production App, documented in prisms-planar-grouped.json.",
+  "same_compiled_App_Runner_Test16_product_files_across_both_devices": true,
+  "native_runs": [
+    {
+      "device": "iPhone",
+      "native_passed": 1,
+      "native_failed": 0,
+      "native_skipped": 0,
+      "native_runtime_warnings": 0,
+      "frozen_frames": 16,
+      "moving_frames": 4,
+      "two_cold_cycles": true,
+      "whole_frozen_RGBA_and_PNG_exact": true,
+      "moving": [
+        {
+          "cycle": 0,
+          "changed_pixels": 310516
+        },
+        {
+          "cycle": 1,
+          "changed_pixels": 308652
+        }
+      ],
+      "setting_readbacks": [
+        {
+          "after": "0",
+          "before": "0",
+          "unix": 1792323723.900669,
+          "wanted": "0"
+        },
+        {
+          "after": "0",
+          "before": "0",
+          "unix": 1792323736.547091,
+          "wanted": "0"
+        },
+        {
+          "after": "1",
+          "before": "0",
+          "unix": 1792323760.172431,
+          "wanted": "1"
+        },
+        {
+          "after": "0",
+          "before": "1",
+          "unix": 1792323793.766488,
+          "wanted": "0"
+        },
+        {
+          "after": "0",
+          "before": "0",
+          "unix": 1792323806.519909,
+          "wanted": "0"
+        },
+        {
+          "after": "1",
+          "before": "0",
+          "unix": 1792323829.3319921,
+          "wanted": "1"
+        },
+        {
+          "after": "0",
+          "before": "1",
+          "unix": 1792323862.7122579,
+          "wanted": "0"
+        },
+        {
+          "after": "0",
+          "before": "0",
+          "unix": 1792323875.3253422,
+          "wanted": "0"
+        }
+      ],
+      "initial_and_final_off": true,
+      "compiled_App_Test_identical_between_devices": true
+    },
+    {
+      "device": "iPad",
+      "native_passed": 1,
+      "native_failed": 0,
+      "native_skipped": 0,
+      "native_runtime_warnings": 0,
+      "frozen_frames": 16,
+      "moving_frames": 4,
+      "two_cold_cycles": true,
+      "whole_frozen_RGBA_and_PNG_exact": true,
+      "moving": [
+        {
+          "cycle": 0,
+          "changed_pixels": 559509
+        },
+        {
+          "cycle": 1,
+          "changed_pixels": 557009
+        }
+      ],
+      "setting_readbacks": [
+        {
+          "after": "0",
+          "before": "0",
+          "unix": 1792324105.042863,
+          "wanted": "0"
+        },
+        {
+          "after": "0",
+          "before": "0",
+          "unix": 1792324118.599124,
+          "wanted": "0"
+        },
+        {
+          "after": "1",
+          "before": "0",
+          "unix": 1792324143.649591,
+          "wanted": "1"
+        },
+        {
+          "after": "0",
+          "before": "1",
+          "unix": 1792324179.2763882,
+          "wanted": "0"
+        },
+        {
+          "after": "0",
+          "before": "0",
+          "unix": 1792324193.358264,
+          "wanted": "0"
+        },
+        {
+          "after": "1",
+          "before": "0",
+          "unix": 1792324217.879675,
+          "wanted": "1"
+        },
+        {
+          "after": "0",
+          "before": "1",
+          "unix": 1792324253.869108,
+          "wanted": "0"
+        },
+        {
+          "after": "0",
+          "before": "0",
+          "unix": 1792324267.6662889,
+          "wanted": "0"
+        }
+      ],
+      "initial_and_final_off": true,
+      "compiled_App_Test_identical_between_devices": true
+    }
+  ],
+  "identical_live_and_frozen_launch_arguments": [
+    "--uitesting",
+    "--reference-clock",
+    "--face",
+    "Home Modular",
+    "--animation-test"
+  ],
+  "no_reduce_motion_CLI_flag_in_either_phase": true,
+  "actual_controls": "Normal observed simulator Settings: Accessibility > Motion > Reduce Motion, nested UISwitch; initialoff guard/readback, eachtransitionreadback+timestamp, finaloff verified percycle anddefer.",
+  "exact_assertion_after_verified_setting_restoration": true,
+  "all40_native_PNG_decoded_and_actually_viewed": true,
+  "own_contacts_actually_viewed": 4,
+  "source_and_full_inputs_before_after_unchanged": true,
+  "retained_compiled_archive": {
+    "file": "prism-system-production-shared-proof-compiled.zip",
+    "sha256": "13db366dad64e0f3262848b1475b137b091cdb93ea58861bea0b898ba80ddb85",
+    "unique_input_files": 21,
+    "retained_privately": true
+  },
+  "scope": "Home Modular in these iOS27simulators only. No global Accessibility, physical hardware, Original optics/animation parity or internal UIKit cause acceptance.",
+  "no_real_accounts_libraries_homes_system_alarms_communication_or_host_setting_changes": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/prism-system-manifest.json",
+  "tested_insertion_fragment_sha256": "a4bbabbec02f3d8ef9889f03ca1eb412f7edbffbde5f73695f94e42e15911c20",
+  "fixture_insertion_suffix_utf8": "\n",
+  "fixture_artifact_format_qualification": "One trailing separator LF omitted at standalone artifact EOF for repository whitespace policy. It is explicitly restored during source reconstruction; tested App/Test source and compiled inputs unchanged."
+}
