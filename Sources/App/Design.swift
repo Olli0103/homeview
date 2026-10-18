@@ -80,11 +80,38 @@ struct Tile<Content: View>: View {
     }
   }
 }
+// Resolve only glass material backgrounds into a shared composition layer.
+// Foreground controls never enter the material container.
+struct HomeGlassAnchor {
+  let bounds:Anchor<CGRect>
+  let material:AnyView
+}
+struct HomeGlassAnchors:PreferenceKey {
+  static var defaultValue:[HomeGlassAnchor] { [] }
+  static func reduce(value:inout [HomeGlassAnchor],nextValue:()->[HomeGlassAnchor]) {
+    value.append(contentsOf:nextValue())
+  }
+}
+private struct HostedHomeGlassKey:EnvironmentKey { static let defaultValue=false }
+extension EnvironmentValues {
+  var hostedHomeGlass:Bool {
+    get { self[HostedHomeGlassKey.self] }
+    set { self[HostedHomeGlassKey.self]=newValue }
+  }
+}
 /// Public native lens, separate from the controls. visionOS and older Macs use
 /// a material fallback; that fallback is not claimed to have the same optics.
 struct HomeGlassSurface<Surface:InsettableShape>: View {
   let shape:Surface
+  @Environment(\.hostedHomeGlass) private var hosted
   @ViewBuilder var body: some View {
+    if hosted {
+      Color.clear.anchorPreference(key:HomeGlassAnchors.self,value:.bounds) { bounds in
+        [HomeGlassAnchor(bounds:bounds,material:AnyView(nativeSurface))]
+      }
+    } else { nativeSurface }
+  }
+  @ViewBuilder private var nativeSurface: some View {
     #if os(visionOS)
     fallback
     #else
