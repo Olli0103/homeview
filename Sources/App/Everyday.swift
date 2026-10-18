@@ -114,6 +114,10 @@ struct TimerView: View {
   @State private var minutes = 15
   @State private var controlsVisible = !ProcessInfo.processInfo.arguments.contains(
     "--reference-resting")
+  private var testsKeepControlsVisible: Bool {
+    let args=ProcessInfo.processInfo.arguments
+    return args.contains("--uitesting") && !args.contains("--timer-idle-test")
+  }
   private var selected: Countdown? {
     model.data.timers.first(where: { $0.id == model.selectedTimer }) ?? model.data.timers.last
   }
@@ -185,7 +189,7 @@ struct TimerView: View {
         model.interact()
       }
       .onChange(of: model.now) { _, now in
-        if !ProcessInfo.processInfo.arguments.contains("--uitesting"),
+        if !testsKeepControlsVisible,
           now.timeIntervalSince(model.lastInteraction) > 4
         {
           controlsVisible = false
