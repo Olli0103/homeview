@@ -445,3 +445,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: Tageswolken-Schatten in UI05
 
 [Begrenzte Farbkorrektur](weather-day-shadow.md):166 Modelltests,22 gezielte iPad-/iPhone-Ausführungen und fünf SDKs bestanden;78 eigene PNGs gesichtet. Zwei vorab begrenzte Licht-/Kontrastmetriken erfüllt; Nacht/Klarhimmel oben94% und untere Tagesregionen exakt erhalten. Keine vollständige Original-/Hardware-/Farbverwaltungsabnahme.
+
+
+## 18. Oktober: begrenzte UI05-Lichtspur
+
+[Getrennte eigene Zeichenebene](weather-light-overlay.md):166 Modelltests,22 gezielte iPad-/iPhone-Fälle und fünf SDKs bestanden;78 eigene PNGs auf16 unterschiedlichen Kontaktbögen gesichtet. Ursprüngliche Lichtprofil-/Exaktgrenzen erfüllt,alter Wolken-/Glasshader bytegleich. Zwei direkte Shaderwege wegen Fremdpixeln zurückgehalten;keine RGB-Toleranz. Bildschirmillustration,keine neue physikalische Lichtverdeckung/Brechung oder vollständige Original-/Hardwareabnahme.

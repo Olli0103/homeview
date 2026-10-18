@@ -1,0 +1,1002 @@
+{
+  "base": "77ccdaeba9f367f92a78d887b3a0f73c124e677a",
+  "feature_commit": "b7990d9398c31524c6329ca890a8790598e17f8b",
+  "integrated_commit": "c0373ed80df5cbfc282ce9b4eb84fc9b30ce735e",
+  "source_digest": "ac4c317d8ea8c76c2e31fb325ec01650306c62c2016894d2e2176fb080f188a8",
+  "source_files": 143,
+  "source_deltas": [
+    "HomeViewReplica.xcodeproj/project.pbxproj",
+    "Sources/App/Faces.swift",
+    "Sources/App/WeatherLightSpur.metal"
+  ],
+  "other140_files_byte_exact": true,
+  "established_cloud_and_glass_shader_byte_exact": true,
+  "illustration": "Separate premultiplied-white-alpha screen-space layer; not new solar/depth-occlusion/refraction physics",
+  "reference_contract": {
+    "base_commit": "77ccdaeba9f367f92a78d887b3a0f73c124e677a",
+    "base_source_digest": "f3c905fbf1e5651b8060794d4ca736b53ac3835b6be72cbfde252cb6631e320b",
+    "kind": "Own analytic daylight illustration; not original solar physics",
+    "reference_metrics": [
+      {
+        "y": 0.55,
+        "peak_x": 0.40808823529411764,
+        "excess_Y": 8.55437999999998,
+        "FWHM_normalized": 0.04779411764705882
+      },
+      {
+        "y": 0.58,
+        "peak_x": 0.42830882352941174,
+        "excess_Y": 8.28947199999999,
+        "FWHM_normalized": 0.04963235294117646
+      },
+      {
+        "y": 0.62,
+        "peak_x": 0.4411764705882353,
+        "excess_Y": 8.417200000000008,
+        "FWHM_normalized": 0.0533088235294118
+      },
+      {
+        "y": 0.66,
+        "peak_x": 0.4540441176470588,
+        "excess_Y": 7.339169999999996,
+        "FWHM_normalized": 0.05514705882352944
+      },
+      {
+        "y": 0.69,
+        "peak_x": 0.4522058823529412,
+        "excess_Y": 7.136400000000009,
+        "FWHM_normalized": 0.0514705882352941
+      }
+    ],
+    "metric": "gamma-encoded RGB weighted nominal Y=.2126R+.7152G+.0722B, not physical luminance",
+    "profile": {
+      "normalize_width": 544,
+      "row_half_height": 0.003,
+      "smooth_pixels": 5,
+      "baseline_flanks": [
+        [
+          0.2,
+          0.28
+        ],
+        [
+          0.6,
+          0.68
+        ]
+      ],
+      "peak_search": [
+        0.32,
+        0.55
+      ]
+    },
+    "limits": {
+      "peak_excess_error_max_Y": 3,
+      "peak_excess_min_Y": 4,
+      "peak_x_error_max": 0.025,
+      "FWHM_error_max": 0.025
+    },
+    "unchanged": {
+      "night_clear_upper_fraction": 0.94,
+      "day_outside_rectangle": [
+        0.25,
+        0.32,
+        0.61,
+        0.75
+      ],
+      "day_checked_upper_fraction": 0.94,
+      "excluded_bottom_reason": "run-dependent observation/source footer; excluded before first edit"
+    },
+    "cloud_shadow_ROIs": [
+      [
+        0.05,
+        0.18,
+        0.95,
+        0.23
+      ],
+      [
+        0.72,
+        0.2,
+        0.92,
+        0.35
+      ]
+    ],
+    "pilot_methods": [
+      "testWeatherFaceMetricsFitDemoCelsiusAndUnknownValues",
+      "testWeatherDayShadowPreservesNightAndClearFacePixels"
+    ],
+    "no_RGB_tolerance": true,
+    "no_private_assets_in_public": true
+  },
+  "candidate_UI_passed": 22,
+  "failed": 0,
+  "skipped": 0,
+  "XCTest_runtime_warnings": 0,
+  "methods": [
+    "testWeatherFaceMetricsFitDemoCelsiusAndUnknownValues",
+    "testWeatherDayShadowPreservesNightAndClearFacePixels",
+    "testWeatherGlassDemoAndUnavailableLiveAQIRemainDistinct",
+    "testWeatherGlassFaceMovesAndReducedMotionIsStable",
+    "testWeatherCloudsMoveAndRespectReduceMotion",
+    "testWeatherZeroCloudCoverDoesNotInventClouds",
+    "testWeatherStaleNightAndCachedOfflineAreLabeled",
+    "testWeatherRainSnowAndDemoHaveDistinctSources",
+    "testWeatherMissingValuesRemainUnknownAndUnitsAreExplicit",
+    "testWeatherFaceOpensDistinctCityScreen",
+    "testWeatherAppUsesSeparateCenteredCityAndConditionsLayout"
+  ],
+  "prior_accepted_f3c_baseline_pictures_reused": true,
+  "same_exact_prior_Runner_and_UI_source": true,
+  "installed_App_all_expected_files_SHA_exact_both_devices": true,
+  "full34_native_inputs_unchanged": true,
+  "compiled_archive": {
+    "file": "weather-light-overlay-final-compiled.zip",
+    "sha256": "631fce0d1e2a376c766091ef21d0dacbc30150c56458c1d9015928d0a981d356",
+    "unique_input_files": 34,
+    "all_entries_SHA256_readback": true,
+    "executed_once": true
+  },
+  "Core_passed": 166,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "log_sha256": "f01146867dcec7f47f7fa19f8a6668d4d5b32e714a3d54b2dfda0471cfc016d8"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "log_sha256": "faa4f881a26c5c0c4d880cd8014407bee3e20d189414695051f93a6b9223aba0"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "log_sha256": "9bdca875e76996fbf91280f428269f8cc0773e9676647299e0175165c506ebb7"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "log_sha256": "d87bfd53f1099e0cdfeb01051a62b0945a310590cfcf44072710ddf8714bce2f"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "log_sha256": "647d0cc859031e97be16ca43a2b9a30657877b59f8aa2ca31e96cdbe2a47e5a3"
+    }
+  ],
+  "image_checks": [
+    {
+      "name": "iPhone-weather-ui05-demo-bounds-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-cloud-shadow-ROI0-exact",
+      "passed": true
+    },
+    {
+      "name": "iPhone-cloud-shadow-ROI1-exact",
+      "passed": true
+    },
+    {
+      "name": "iPhone-weather-ui05-connected-celsius-bounds-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-weather-ui05-unknown-values-bounds-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-weather-shadow-preserved-night-face-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-weather-shadow-preserved-clear-face-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-beam-row-0.55",
+      "passed": true,
+      "reference": {
+        "y": 0.55,
+        "peak_x": 0.40808823529411764,
+        "excess_Y": 8.55437999999998,
+        "FWHM_normalized": 0.04779411764705882
+      },
+      "candidate": {
+        "y": 0.55,
+        "peak_x": 0.41360294117647056,
+        "excess_Y": 9.303840000000008,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          66.75,
+          126.5,
+          189
+        ]
+      },
+      "baseline": {
+        "y": 0.55,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          66.75,
+          126.5,
+          189
+        ]
+      }
+    },
+    {
+      "name": "iPhone-beam-row-0.58",
+      "passed": true,
+      "reference": {
+        "y": 0.58,
+        "peak_x": 0.42830882352941174,
+        "excess_Y": 8.28947199999999,
+        "FWHM_normalized": 0.04963235294117646
+      },
+      "candidate": {
+        "y": 0.58,
+        "peak_x": 0.4209558823529412,
+        "excess_Y": 8.561600000000013,
+        "FWHM_normalized": 0.051470588235294115,
+        "baseline_RGB": [
+          69.2,
+          129,
+          191
+        ]
+      },
+      "baseline": {
+        "y": 0.58,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          69.2,
+          129,
+          191
+        ]
+      }
+    },
+    {
+      "name": "iPhone-beam-row-0.62",
+      "passed": true,
+      "reference": {
+        "y": 0.62,
+        "peak_x": 0.4411764705882353,
+        "excess_Y": 8.417200000000008,
+        "FWHM_normalized": 0.0533088235294118
+      },
+      "candidate": {
+        "y": 0.62,
+        "peak_x": 0.43566176470588236,
+        "excess_Y": 8.540339999999986,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          72.5,
+          132,
+          194
+        ]
+      },
+      "baseline": {
+        "y": 0.62,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          72.5,
+          132,
+          194
+        ]
+      }
+    },
+    {
+      "name": "iPhone-beam-row-0.66",
+      "passed": true,
+      "reference": {
+        "y": 0.66,
+        "peak_x": 0.4540441176470588,
+        "excess_Y": 7.339169999999996,
+        "FWHM_normalized": 0.05514705882352944
+      },
+      "candidate": {
+        "y": 0.66,
+        "peak_x": 0.45036764705882354,
+        "excess_Y": 8.529709999999994,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          76,
+          135.25,
+          197.5
+        ]
+      },
+      "baseline": {
+        "y": 0.66,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          76,
+          135.25,
+          197.5
+        ]
+      }
+    },
+    {
+      "name": "iPhone-beam-row-0.69",
+      "passed": true,
+      "reference": {
+        "y": 0.69,
+        "peak_x": 0.4522058823529412,
+        "excess_Y": 7.136400000000009,
+        "FWHM_normalized": 0.0514705882352941
+      },
+      "candidate": {
+        "y": 0.69,
+        "peak_x": 0.4577205882352941,
+        "excess_Y": 8.461600000000004,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          78.5,
+          138,
+          200
+        ]
+      },
+      "baseline": {
+        "y": 0.69,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          78.5,
+          138,
+          200
+        ]
+      }
+    },
+    {
+      "name": "iPhone-clouds-moving",
+      "passed": true,
+      "changed_pixels": 77593
+    },
+    {
+      "name": "iPhone-clouds-reduced",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-glass-moving",
+      "passed": true,
+      "changed_pixels": 202371
+    },
+    {
+      "name": "iPhone-glass-reduced",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-ui05-demo-bounds-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-cloud-shadow-ROI0-exact",
+      "passed": true
+    },
+    {
+      "name": "iPad-cloud-shadow-ROI1-exact",
+      "passed": true
+    },
+    {
+      "name": "iPad-weather-ui05-connected-celsius-bounds-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-ui05-unknown-values-bounds-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-shadow-preserved-night-face-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-weather-shadow-preserved-clear-face-unchanged-outside-effect",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-beam-row-0.55",
+      "passed": true,
+      "reference": {
+        "y": 0.55,
+        "peak_x": 0.40808823529411764,
+        "excess_Y": 8.55437999999998,
+        "FWHM_normalized": 0.04779411764705882
+      },
+      "candidate": {
+        "y": 0.55,
+        "peak_x": 0.41360294117647056,
+        "excess_Y": 9.35023000000001,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          66.75,
+          126.5,
+          189
+        ]
+      },
+      "baseline": {
+        "y": 0.55,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          66.75,
+          126.5,
+          189
+        ]
+      }
+    },
+    {
+      "name": "iPad-beam-row-0.58",
+      "passed": true,
+      "reference": {
+        "y": 0.58,
+        "peak_x": 0.42830882352941174,
+        "excess_Y": 8.28947199999999,
+        "FWHM_normalized": 0.04963235294117646
+      },
+      "candidate": {
+        "y": 0.58,
+        "peak_x": 0.4209558823529412,
+        "excess_Y": 8.561600000000013,
+        "FWHM_normalized": 0.051470588235294115,
+        "baseline_RGB": [
+          69.2,
+          129,
+          191
+        ]
+      },
+      "baseline": {
+        "y": 0.58,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          69.2,
+          129,
+          191
+        ]
+      }
+    },
+    {
+      "name": "iPad-beam-row-0.62",
+      "passed": true,
+      "reference": {
+        "y": 0.62,
+        "peak_x": 0.4411764705882353,
+        "excess_Y": 8.417200000000008,
+        "FWHM_normalized": 0.0533088235294118
+      },
+      "candidate": {
+        "y": 0.62,
+        "peak_x": 0.43566176470588236,
+        "excess_Y": 8.561599999999999,
+        "FWHM_normalized": 0.04963235294117647,
+        "baseline_RGB": [
+          72.5,
+          132,
+          194
+        ]
+      },
+      "baseline": {
+        "y": 0.62,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          72.5,
+          132,
+          194
+        ]
+      }
+    },
+    {
+      "name": "iPad-beam-row-0.66",
+      "passed": true,
+      "reference": {
+        "y": 0.66,
+        "peak_x": 0.4540441176470588,
+        "excess_Y": 7.339169999999996,
+        "FWHM_normalized": 0.05514705882352944
+      },
+      "candidate": {
+        "y": 0.66,
+        "peak_x": 0.4485294117647059,
+        "excess_Y": 8.54034,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          76,
+          135.5,
+          197.5
+        ]
+      },
+      "baseline": {
+        "y": 0.66,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          76,
+          135.5,
+          197.5
+        ]
+      }
+    },
+    {
+      "name": "iPad-beam-row-0.69",
+      "passed": true,
+      "reference": {
+        "y": 0.69,
+        "peak_x": 0.4522058823529412,
+        "excess_Y": 7.136400000000009,
+        "FWHM_normalized": 0.0514705882352941
+      },
+      "candidate": {
+        "y": 0.69,
+        "peak_x": 0.4577205882352941,
+        "excess_Y": 8.490340000000003,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          78.5,
+          138,
+          200
+        ]
+      },
+      "baseline": {
+        "y": 0.69,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          78.5,
+          138,
+          200
+        ]
+      }
+    },
+    {
+      "name": "iPad-clouds-moving",
+      "passed": true,
+      "changed_pixels": 153495
+    },
+    {
+      "name": "iPad-clouds-reduced",
+      "passed": true,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-glass-moving",
+      "passed": true,
+      "changed_pixels": 401353
+    },
+    {
+      "name": "iPad-glass-reduced",
+      "passed": true,
+      "changed_pixels": 0
+    }
+  ],
+  "beam_nominal_metrics": [
+    {
+      "device": "iPhone",
+      "reference": {
+        "y": 0.55,
+        "peak_x": 0.40808823529411764,
+        "excess_Y": 8.55437999999998,
+        "FWHM_normalized": 0.04779411764705882
+      },
+      "candidate": {
+        "y": 0.55,
+        "peak_x": 0.41360294117647056,
+        "excess_Y": 9.303840000000008,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          66.75,
+          126.5,
+          189
+        ]
+      },
+      "baseline": {
+        "y": 0.55,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          66.75,
+          126.5,
+          189
+        ]
+      }
+    },
+    {
+      "device": "iPhone",
+      "reference": {
+        "y": 0.58,
+        "peak_x": 0.42830882352941174,
+        "excess_Y": 8.28947199999999,
+        "FWHM_normalized": 0.04963235294117646
+      },
+      "candidate": {
+        "y": 0.58,
+        "peak_x": 0.4209558823529412,
+        "excess_Y": 8.561600000000013,
+        "FWHM_normalized": 0.051470588235294115,
+        "baseline_RGB": [
+          69.2,
+          129,
+          191
+        ]
+      },
+      "baseline": {
+        "y": 0.58,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          69.2,
+          129,
+          191
+        ]
+      }
+    },
+    {
+      "device": "iPhone",
+      "reference": {
+        "y": 0.62,
+        "peak_x": 0.4411764705882353,
+        "excess_Y": 8.417200000000008,
+        "FWHM_normalized": 0.0533088235294118
+      },
+      "candidate": {
+        "y": 0.62,
+        "peak_x": 0.43566176470588236,
+        "excess_Y": 8.540339999999986,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          72.5,
+          132,
+          194
+        ]
+      },
+      "baseline": {
+        "y": 0.62,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          72.5,
+          132,
+          194
+        ]
+      }
+    },
+    {
+      "device": "iPhone",
+      "reference": {
+        "y": 0.66,
+        "peak_x": 0.4540441176470588,
+        "excess_Y": 7.339169999999996,
+        "FWHM_normalized": 0.05514705882352944
+      },
+      "candidate": {
+        "y": 0.66,
+        "peak_x": 0.45036764705882354,
+        "excess_Y": 8.529709999999994,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          76,
+          135.25,
+          197.5
+        ]
+      },
+      "baseline": {
+        "y": 0.66,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          76,
+          135.25,
+          197.5
+        ]
+      }
+    },
+    {
+      "device": "iPhone",
+      "reference": {
+        "y": 0.69,
+        "peak_x": 0.4522058823529412,
+        "excess_Y": 7.136400000000009,
+        "FWHM_normalized": 0.0514705882352941
+      },
+      "candidate": {
+        "y": 0.69,
+        "peak_x": 0.4577205882352941,
+        "excess_Y": 8.461600000000004,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          78.5,
+          138,
+          200
+        ]
+      },
+      "baseline": {
+        "y": 0.69,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          78.5,
+          138,
+          200
+        ]
+      }
+    },
+    {
+      "device": "iPad",
+      "reference": {
+        "y": 0.55,
+        "peak_x": 0.40808823529411764,
+        "excess_Y": 8.55437999999998,
+        "FWHM_normalized": 0.04779411764705882
+      },
+      "candidate": {
+        "y": 0.55,
+        "peak_x": 0.41360294117647056,
+        "excess_Y": 9.35023000000001,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          66.75,
+          126.5,
+          189
+        ]
+      },
+      "baseline": {
+        "y": 0.55,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          66.75,
+          126.5,
+          189
+        ]
+      }
+    },
+    {
+      "device": "iPad",
+      "reference": {
+        "y": 0.58,
+        "peak_x": 0.42830882352941174,
+        "excess_Y": 8.28947199999999,
+        "FWHM_normalized": 0.04963235294117646
+      },
+      "candidate": {
+        "y": 0.58,
+        "peak_x": 0.4209558823529412,
+        "excess_Y": 8.561600000000013,
+        "FWHM_normalized": 0.051470588235294115,
+        "baseline_RGB": [
+          69.2,
+          129,
+          191
+        ]
+      },
+      "baseline": {
+        "y": 0.58,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          69.2,
+          129,
+          191
+        ]
+      }
+    },
+    {
+      "device": "iPad",
+      "reference": {
+        "y": 0.62,
+        "peak_x": 0.4411764705882353,
+        "excess_Y": 8.417200000000008,
+        "FWHM_normalized": 0.0533088235294118
+      },
+      "candidate": {
+        "y": 0.62,
+        "peak_x": 0.43566176470588236,
+        "excess_Y": 8.561599999999999,
+        "FWHM_normalized": 0.04963235294117647,
+        "baseline_RGB": [
+          72.5,
+          132,
+          194
+        ]
+      },
+      "baseline": {
+        "y": 0.62,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          72.5,
+          132,
+          194
+        ]
+      }
+    },
+    {
+      "device": "iPad",
+      "reference": {
+        "y": 0.66,
+        "peak_x": 0.4540441176470588,
+        "excess_Y": 7.339169999999996,
+        "FWHM_normalized": 0.05514705882352944
+      },
+      "candidate": {
+        "y": 0.66,
+        "peak_x": 0.4485294117647059,
+        "excess_Y": 8.54034,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          76,
+          135.5,
+          197.5
+        ]
+      },
+      "baseline": {
+        "y": 0.66,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          76,
+          135.5,
+          197.5
+        ]
+      }
+    },
+    {
+      "device": "iPad",
+      "reference": {
+        "y": 0.69,
+        "peak_x": 0.4522058823529412,
+        "excess_Y": 7.136400000000009,
+        "FWHM_normalized": 0.0514705882352941
+      },
+      "candidate": {
+        "y": 0.69,
+        "peak_x": 0.4577205882352941,
+        "excess_Y": 8.490340000000003,
+        "FWHM_normalized": 0.04779411764705882,
+        "baseline_RGB": [
+          78.5,
+          138,
+          200
+        ]
+      },
+      "baseline": {
+        "y": 0.69,
+        "peak_x": 0.31985294117647056,
+        "excess_Y": 0.0,
+        "FWHM_normalized": 1.0,
+        "baseline_RGB": [
+          78.5,
+          138,
+          200
+        ]
+      }
+    }
+  ],
+  "motion_ROI_checks": [
+    {
+      "device": "iPhone",
+      "kind": "clouds",
+      "changed_pixels": {
+        "moving": 77593,
+        "reduced": 0
+      }
+    },
+    {
+      "device": "iPhone",
+      "kind": "glass",
+      "changed_pixels": {
+        "moving": 202371,
+        "reduced": 0
+      }
+    },
+    {
+      "device": "iPad",
+      "kind": "clouds",
+      "changed_pixels": {
+        "moving": 153495,
+        "reduced": 0
+      }
+    },
+    {
+      "device": "iPad",
+      "kind": "glass",
+      "changed_pixels": {
+        "moving": 401353,
+        "reduced": 0
+      }
+    }
+  ],
+  "all78_PNG_decoded_and_actually_viewed": true,
+  "candidate_PNGs": 58,
+  "baseline_PNGs": 20,
+  "all16_distinct_contacts_actually_viewed": true,
+  "iPad_demo_whole_RGBA_exact_to_passed_pilot": true,
+  "held_attempts": [
+    {
+      "source_digest": "a3fa42beb454c5c9299369ca4f5f7c00555ab2bdae3c972f64bfda4a3c20fafe",
+      "native_UI_passed": 2,
+      "image_gate_passed": false,
+      "outside_pixel": [
+        651,
+        191
+      ],
+      "old_RGB": [
+        40,
+        96,
+        155
+      ],
+      "new_RGB": [
+        40,
+        96,
+        156
+      ],
+      "archive_unique_files": 25
+    },
+    {
+      "source_digest": "3043de10a6c0631bc52e2bac9a6e595fd61c7332f36da2366df1c23b7898997d",
+      "native_UI_passed": 22,
+      "image_gate_passed": false,
+      "outside_pixel": [
+        566,
+        13
+      ],
+      "old_RGB": [
+        60,
+        111,
+        164
+      ],
+      "new_RGB": [
+        60,
+        111,
+        163
+      ],
+      "archive_unique_files": 34,
+      "control_native_UI_passed": 3,
+      "control32_inputs_exact": true,
+      "control_same_binary_frames_upper94_RGBA_exact": true,
+      "only_candidate_reproduced_outside_difference": true,
+      "precise_compiler_cause_unknown": true
+    }
+  ],
+  "pilot_iPad_UI_passed": 2,
+  "pilot_iPhone_UI_passed": 1,
+  "pilots_controls_not_added_to22": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/weather-light-overlay-manifest.json",
+  "no_RGB_tolerance": true,
+  "not_Original_colour_management_HDR_hardware_energy_fullsuite_acceptance": true
+}
