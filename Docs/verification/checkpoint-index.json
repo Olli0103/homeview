@@ -1551,6 +1551,37 @@
       "core_repeated_after_commit": true,
       "post_commit_core_log_sha256": "88d9ddfc8e01b2955f88aabb68ae4ba6b278f765fa417eac95154671d229980f",
       "full_ui_suite_claimed": false
+    },
+    {
+      "checkpoint": "synthetic-integration-20261018",
+      "commit": "4c4e1337c8b3496a2aa2a5c7fce4d6e8ffdd1ce7",
+      "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a",
+      "files_verified": 142,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 20,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434",
+          "summary_sha256": "91b7a1509b49e6aa555a7282740bc5f2688e12acd66435e2fe8dd352dd8ed45b",
+          "log_sha256": "62f2e7ffa96b793f4989cdaec32facf4cc3596a34cd9a150d92de80dce1214a6"
+        },
+        {
+          "device": "iPhone",
+          "passed": 20,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434",
+          "summary_sha256": "89819ab489b1529ee58011315d11d077768f29cf5abe6d36b2a0ca5def21cbd4",
+          "log_sha256": "c0252ca4de108164285dac2e3b80e778be55a235ae651afdeb226aa620b5e207"
+        }
+      ],
+      "full_ui_suite_claimed": false,
+      "same_app_source_as": "modular-weather-reference-integrated",
+      "new_sdk_builds": 0
     }
   ],
   "all_sources_match_committed_bytes": true
