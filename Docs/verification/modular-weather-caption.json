@@ -1,0 +1,267 @@
+{
+  "code_commit": "f451cb1408c470cb0240c00cc07fc79112230ecb",
+  "feature_commit": "e5b10911563a7bde57f56d550c8d9b859a7a9f22",
+  "source_digest": "c6fae37d5c545f96a16ccd7d95d67bd5de60984b93b1e3589c32be023a719f69",
+  "source_files": 142,
+  "source_matches_feature_and_merge_bytes": true,
+  "changed_sources": [
+    "Sources/App/Faces.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "ui_executions": 4,
+  "unique_cases": 2,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:51:08.901955+00:00",
+      "ended": "2026-10-18T05:51:27.435725+00:00",
+      "log_sha256": "28b7a75a5ad6f6045d4d54e67ed7c7c492bb5d17e227f6dcd7e38e9d2cc7427a"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T05:51:27.436516+00:00",
+      "ended": "2026-10-18T05:51:43.942566+00:00",
+      "log_sha256": "947937079aa95d6e5a0382e93b06418307fe64d830bc42ae3efaa5f95fe515a6"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:51:43.943211+00:00",
+      "ended": "2026-10-18T05:51:55.857010+00:00",
+      "log_sha256": "24a88fcac543067276fae12c02a70bc067d25505ea78160744a0c5fa45ca7dba"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:51:55.857605+00:00",
+      "ended": "2026-10-18T05:52:09.681956+00:00",
+      "log_sha256": "32c913be030efa81bc12b795fa89bf695202c8befd7dc907c22f961c4eef118b"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T05:52:09.682464+00:00",
+      "ended": "2026-10-18T05:52:17.626231+00:00",
+      "log_sha256": "a268fef92c79a7063f2a2b2c9efcb2bc1f51c8b1164918abd8f5c22831f57f46"
+    }
+  ],
+  "all_core_and_weather_provider_source_bytes_unchanged": true,
+  "only_visible_change": "Demo Modular weather title uses plain San Francisco; existing Partly Cloudy · Demo condition remains visible. Connected title and all data unchanged.",
+  "reference_scope": "Direct qualitative UI01 city/location-symbol comparison; no proprietary image published or whole-image/font parity claimed.",
+  "actual_native_before_after_pixel_metrics": [
+    {
+      "device": "iPad",
+      "state": "demo",
+      "old_png_sha256": "f79ea0c9e2a4b86b057c499d1c4073792b80dd0039bc988fbdd73665fb87e384",
+      "current_png_sha256": "eced1f9b51bab19393c82349565dcab5bdadfcd79aef4e9f58d6f9cd11c73694",
+      "changed_pixels": 3595,
+      "outside_union_header_pixels_changed": 0,
+      "union_header_pixel_bounds_with_3px_antialias_margin": [
+        819,
+        818,
+        1481,
+        911
+      ],
+      "whole_png_bytes_identical": false
+    },
+    {
+      "device": "iPad",
+      "state": "connected",
+      "old_png_sha256": "d6629f798c907971c6bebfe619132e1c7273e96a1d125449f2d6434dcaf93374",
+      "current_png_sha256": "d6629f798c907971c6bebfe619132e1c7273e96a1d125449f2d6434dcaf93374",
+      "changed_pixels": 0,
+      "outside_union_header_pixels_changed": 0,
+      "union_header_pixel_bounds_with_3px_antialias_margin": [
+        819,
+        818,
+        1248,
+        911
+      ],
+      "whole_png_bytes_identical": true
+    },
+    {
+      "device": "iPhone",
+      "state": "demo",
+      "old_png_sha256": "22aca32cfa6be0f960bd362f6106be0741926bbcadffdcd9c8a47f739bb409e7",
+      "current_png_sha256": "7715446dfb57d787caa0b60c72cb574e25e6b2c9abace13fea06187b3bc0f783",
+      "changed_pixels": 1756,
+      "outside_union_header_pixels_changed": 0,
+      "union_header_pixel_bounds_with_3px_antialias_margin": [
+        582,
+        582,
+        1055,
+        650
+      ],
+      "whole_png_bytes_identical": false
+    },
+    {
+      "device": "iPhone",
+      "state": "connected",
+      "old_png_sha256": "c6df0cc094ca58340bdf840e4563520d3846fd5e27fa0b5a26acb1f4c1082f89",
+      "current_png_sha256": "c6df0cc094ca58340bdf840e4563520d3846fd5e27fa0b5a26acb1f4c1082f89",
+      "changed_pixels": 0,
+      "outside_union_header_pixels_changed": 0,
+      "union_header_pixel_bounds_with_3px_antialias_margin": [
+        582,
+        582,
+        889,
+        650
+      ],
+      "whole_png_bytes_identical": true
+    }
+  ],
+  "old_header_geometry": [
+    {
+      "device": "iPad",
+      "states": [
+        {
+          "state": "demo",
+          "normalized_header_bounds": {
+            "height": 0.05416663088391175,
+            "width": 0.41166671676252353,
+            "x": 0.5166666615548445,
+            "y": 0.515833332310969
+          }
+        },
+        {
+          "state": "connected",
+          "normalized_header_bounds": {
+            "height": 0.05416663088391175,
+            "width": 0.26500000306709326,
+            "x": 0.5166666615548445,
+            "y": 0.515833332310969
+          }
+        }
+      ]
+    },
+    {
+      "device": "iPhone",
+      "states": [
+        {
+          "state": "demo",
+          "normalized_header_bounds": {
+            "height": 0.0538888759713955,
+            "width": 0.41055552164713544,
+            "x": 0.5166666747401001,
+            "y": 0.5161111014229911
+          }
+        },
+        {
+          "state": "connected",
+          "normalized_header_bounds": {
+            "height": 0.0538888759713955,
+            "width": 0.2644443814716642,
+            "x": 0.5166666747401001,
+            "y": 0.5161111014229911
+          }
+        }
+      ]
+    }
+  ],
+  "new_header_geometry": [
+    {
+      "device": "iPad",
+      "states": [
+        {
+          "state": "demo",
+          "normalized_header_bounds": {
+            "height": 0.05416663088391175,
+            "width": 0.319166710628337,
+            "x": 0.5166666615548445,
+            "y": 0.515833332310969
+          }
+        },
+        {
+          "state": "connected",
+          "normalized_header_bounds": {
+            "height": 0.05416663088391175,
+            "width": 0.26500000306709326,
+            "x": 0.5166666615548445,
+            "y": 0.515833332310969
+          }
+        }
+      ]
+    },
+    {
+      "device": "iPhone",
+      "states": [
+        {
+          "state": "demo",
+          "normalized_header_bounds": {
+            "height": 0.0538888759713955,
+            "width": 0.31833333817739334,
+            "x": 0.5166666747401001,
+            "y": 0.5161111014229911
+          }
+        },
+        {
+          "state": "connected",
+          "normalized_header_bounds": {
+            "height": 0.0538888759713955,
+            "width": 0.2644443814716642,
+            "x": 0.5166666747401001,
+            "y": 0.5161111014229911
+          }
+        }
+      ]
+    }
+  ],
+  "instrumented_before_source_digest": "709b0ec5f1f2e319ec9ec2f56079cc2940fa698ace1c747b826bd663d7712985",
+  "before_is_old_caption_with_AX_instrumentation_not_identical_published_source": true,
+  "before_primary_executions_not_added_to_current4": 2,
+  "corrected_C94_baseline_execution_not_added": 1,
+  "before_source_archive_sha256": "b08af4aba2e20843e008fcd31a0811e704549dcb188c1b0391388770b5c14a42",
+  "initial_probe_qualification": {
+    "source_digest": "f07d8205fe5b2c4bdc1588c7b416dc9886599592a540742082df4d41c1df303b",
+    "passed": 0,
+    "failed": 1,
+    "reason": "New probe incorrectly expected San Francisco from connected fixture provider, which actually returns Fixture City. Corrected expectation and reran old-caption baseline before presentation edit.",
+    "source_archive_sha256": "1ed162ab4b6cc1a0176e1c6a96cfa364d40ac6cf823a00d4d184fa2fcb19b184"
+  },
+  "actual_final_titles_and_weather_regressions_reviewed_both_devices": true,
+  "demo_AQI21_example_and_connected_unknown_AQI_retained": true,
+  "real_weather_provider_fetch_tested": false,
+  "original_visual_parity_accepted": false,
+  "physical_devices_tested": false,
+  "real_accounts_homes_or_libraries_used": false,
+  "full_ui_suite_claimed": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/modular-caption-manifest.json",
+  "logs": {
+    "modular-caption-core.log": "3ca088d495544cd2090f1b840ba1c331a0245f2122e49cbb2f302746dfdff5d7",
+    "modular-caption-feature-post-commit-core.log": "178675475c63fd3cec1f762789fa7703b6667ddcbf9f66087e337bb93215dacc",
+    "modular-caption-integrated-core.log": "ede522759dbaab53efee2834c1c993dc41deecd37dd07ec5541f58cf1e6c2ef2",
+    "modular-caption-build.log": "5c4216b9ba7348a4fd2c10b87763ac58af8297e7612f3b014fb9888700cc73df",
+    "modular-caption-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "003c1d5f0bb8d9727aa0c9fa2da0c4b6e1ee0e9116c2bc0215a597773f9899c5",
+    "iPhone": "8883b04904b75b142ee952d9be26c25503b5d37f6775855ceae112c03cbbc96f"
+  }
+}
