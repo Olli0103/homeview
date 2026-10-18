@@ -173,16 +173,19 @@ struct ModularFace: View {
       } label: {
         VStack(alignment: .leading, spacing: 4) {
           HStack(spacing: 3) {
-            Text(model.connections.weatherCity).font(
+            Text(model.connections.weatherDemo ? "San Francisco" : model.connections.weatherCity).font(
               .system(size: 27, weight: .semibold))
+              .accessibilityIdentifier("modular.weather.city")
             Image(systemName: "location.fill").font(.system(size: 15))
-          }.foregroundStyle(.white)
+          }.foregroundStyle(.white).accessibilityElement(children:.contain)
+            .accessibilityIdentifier("modular.weather.cityRow")
           Text(model.connections.weatherTemperature).font(
             .system(size: 122, weight: .medium, design: .rounded)
           ).tracking(-8)
           Image(systemName: model.connections.weatherSymbol).font(
             .system(size: 29))
           Text(model.connections.weatherCondition).font(.system(size: 23))
+            .accessibilityIdentifier("modular.weather.condition")
           Text(
             model.connections.weatherHighLow
           ).font(.system(size: 21))
