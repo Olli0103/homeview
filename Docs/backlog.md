@@ -843,7 +843,7 @@ Abhängigkeiten: SYS-03.
 <a id="day-03"></a>
 ### DAY-03: Mehrere Timer und große Countdown-Ansicht vollständig abnehmen
 
-Countdown und Randring nach UI14 begrenzt kalibriert; lange Anzeige bleibt innerhalb der Randstriche. Ruhender Referenzzustand, Einblenden per echtem Touch, lokale Bedienung, Rezepttimer und Demo-Türklingel-Rückkehr sind geprüft. Produktive Fristen/Alarmadapter unverändert; vollständige Original-, Mehrtimer-, Neustart-/Zeitwechsel- und Hardwareabnahme bleiben offen.
+Countdown und Randring nach UI14 begrenzt kalibriert; lange Anzeige bleibt innerhalb der Randstriche. Zusätzlich vorhandenes Vier-Sekunden-Ausblenden, Touch-Fristneustart und Weiterlaufen bei verborgenen Bedienelementen nativ mit synthetischen Timern geprüft. Produktive Fristen/Alarmadapter unverändert; exaktes Originaltiming, vollständige Original-, Mehrtimer-, Neustart-/Zeitwechsel- und Hardwareabnahme bleiben offen.
 
 Offen:
 
