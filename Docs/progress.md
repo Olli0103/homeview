@@ -395,3 +395,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: echter Systemschalter statt CLI-Ersatz
 
 [Separater Nachweis](prisms-system-reduce-motion.md): zwei native Ausführungen,je Gerät zwei echte Systemschalter-Zyklen mit16 exakt gleichen Standbildern,40 eigene PNGs gesichtet. Produktions-App zehn Dateien bytegleich; Schalter zurückgestellt. Keine neue SDK-/Gesamtsuiten-/Original-/Hardwareabnahme.
+
+
+## 18. Oktober: UI07-Temperaturzeichnung positioniert
+
+[Begrenzter Positionsschritt](home-temperature-position.md): 166Modelltests,zehn gezielteUI,fünfSDK. Schriftgröße/-breite und Touchrahmen erhalten;außerhalb Temperaturbereich0Pixeländerung auf beiden Geräten. Originalschrift/Licht/Hardware bleiben offen.
