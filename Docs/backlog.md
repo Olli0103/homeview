@@ -340,7 +340,7 @@ Abhängigkeiten: PUB-01, BASE-02.
 <a id="flow-02"></a>
 ### FLOW-02: Flow-Glas, Fluidparameter und Originalbewegung kalibrieren
 
-CPU-Fluid mit Advektion, Druck, Vorticity und Rändern sowie separates Metal-Glyphenmaterial sind vorhanden. Originalpassfolge und internes Textglas sind nicht vollständig rekonstruiert.
+Öffentliche SwiftUI-Glaslinse auf eigenen Ziffern bei sichtbarem Fluid; vorhandener Metal-Fallback für Hintergrund aus, visionOS und ältere Macs. 139 Modelltests, zehn gezielte iPad-/iPhone-Ausführungen und fünf SDKs; feste Glyphenkörper nach 30 Sekunden, Reduce Motion, beide Schriftstile und Nachtfilter geprüft. CPU-Fluid bleibt unverändert. Exakte Originaloptik, Langzeit-/Hardware- und GPU-Abnahmen offen. Details: Docs/flow-native-glass.md.
 
 Offen:
 

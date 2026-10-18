@@ -1,0 +1,175 @@
+{
+  "code_commit": "ccfd99f80cbae60400b615a8a96b0e067db606dc",
+  "feature_commit": "55a4022b89d4f7a014e91bc9da1be982363150fb",
+  "source_digest": "d1be3c6fb544d1aa5762e1cbc984a16de91cf8db2d29b9f7d57a98bb827e9dce",
+  "source_files": 133,
+  "source_matches_feature_and_merge_bytes": true,
+  "changed_sources_since_timer_ui14": [
+    "Sources/App/Motion.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "flow_shader_core_fluid_typography_and_own_contours_unchanged": true,
+  "public_api": "Color.clear.glassEffect(.clear,in:ownFlowDigitShape)",
+  "native_path": "visible background, supported iOS/tvOS and macOS26+; visionOS excluded",
+  "fallback": "existing own Metal shader: background off, visionOS, macOS before26",
+  "cpu_fluid_ported": false,
+  "core_passed": 139,
+  "core_repeated_after_feature_and_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 10,
+  "unique_cases": 5,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T01:52:29.229411+00:00",
+      "ended": "2026-10-18T01:52:31.752991+00:00",
+      "log_sha256": "c82cbe17da3935eccb797964a7d51e9f043c2a31a78d795bf25281144f54e6f9"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T01:52:31.753494+00:00",
+      "ended": "2026-10-18T01:52:33.283306+00:00",
+      "log_sha256": "5ef8f22942e26ae2e345463b123d7173e071cd46e096c1847a4c71daf694060b"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T01:52:33.283849+00:00",
+      "ended": "2026-10-18T01:52:34.813733+00:00",
+      "log_sha256": "19448191933faee3ffb2b32754c718e645af5cbd3416ca67a2212dac3124f842"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T01:52:34.814271+00:00",
+      "ended": "2026-10-18T01:52:36.958261+00:00",
+      "log_sha256": "e087a5d07593b1311a616dff02495cfc1ef6abc3af2eef92ed512fbe33a6ce5b"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T01:52:36.958816+00:00",
+      "ended": "2026-10-18T01:52:38.425868+00:00",
+      "log_sha256": "3dd1dcfd84ea89cc06b6b2904a2d74d532d2f0e78a624822536e34d1afecee6e"
+    }
+  ],
+  "full_ui_suite_claimed": false,
+  "pixel_checks": [
+    {
+      "device": "iPad",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "mask_radius": 31,
+      "mask_points": 167917,
+      "body_changed_rgba_channels": 446572,
+      "body_reduced_changed_rgba_channels": 0,
+      "normal_inner90_changed_rgba_channels": 5162723,
+      "reduced_inner90_changed_rgba_channels": 0,
+      "night_lit_pixels": 2489545,
+      "night_wrong_color_pixels": 0,
+      "inputs": {
+        "flow-fixed-body-own-mask": "1107a616ec8f3aab63f128bccc31f1254e17763c4d857454171574792ff2fbc2",
+        "flow-fixed-body-reduced-later": "2a35e3fd6b47876cf55f3bc5b2ada5feec3d4552b116091420343d32ad52a94c",
+        "flow-fixed-body-reduced-start": "2a35e3fd6b47876cf55f3bc5b2ada5feec3d4552b116091420343d32ad52a94c",
+        "flow-fixed-body-after-thirty-two-seconds": "4643ef14598c16d12daee18c662ed6277002572267a9a093514db729917b38fc",
+        "flow-fixed-body-after-thirty-seconds": "cae19e72b2c763cb210f704061af43d1e5eb82fe167730cfdd741400b59b04f9",
+        "RE-flow-numerals-only": "c2e496fff7a3677e56dceed764aa4eaca5e04605c1af00d453ba36efad4f6506",
+        "RE-flow-stencil": "78618182f403864d3ee8d78c57b56e2bb4d0781a9840c19129d5e6a1770f9343",
+        "flow-material-solid-black": "b00d1a020765d1dcbfd057f032b840452ff189277abe5d44bf6e378a5662845d",
+        "flow-native-solid-night-whole-viewport": "bde85c25b57638fc2de0cd815e070ae46625bd4181d731ab81425cc08a7a8ddd",
+        "screen-flow-native-solid-background-on": "2ae4fdf9bedf6592d57c3bcfdc610e5b33bd4dde2ae9abb65b50fd0af0ab4282",
+        "viewport-flow-native-solid-background-on": "ccea1bbf5bc0d40bd4f287f91191922a9b3785d9b5edcc9efcd7fbcb826aba5a",
+        "flow-reduced-later": "2a35e3fd6b47876cf55f3bc5b2ada5feec3d4552b116091420343d32ad52a94c",
+        "flow-reduced-start": "2a35e3fd6b47876cf55f3bc5b2ada5feec3d4552b116091420343d32ad52a94c",
+        "flow-moving-later": "e3999b32bd40552086a4d98d8853c516d789b11425eaedb2f41f1d051168c4b6",
+        "flow-moving-start": "2143884a4c505a4fbaa5e8628458d7d5e8a2c416c98d9582e11add192185b41c"
+      }
+    },
+    {
+      "device": "iPhone",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "mask_radius": 22,
+      "mask_points": 85447,
+      "body_changed_rgba_channels": 232460,
+      "body_reduced_changed_rgba_channels": 0,
+      "normal_inner90_changed_rgba_channels": 2609042,
+      "reduced_inner90_changed_rgba_channels": 0,
+      "night_lit_pixels": 1263391,
+      "night_wrong_color_pixels": 0,
+      "inputs": {
+        "flow-fixed-body-own-mask": "1acc62ec0949bf8fd811beefb5b9cb3a7e6a24c6e8987e6c0b050b23296a36ac",
+        "flow-fixed-body-reduced-later": "25da9efa4c03bee9e9adf65def128ea5e8afc26f3482d75366b0546a802db3c8",
+        "flow-fixed-body-reduced-start": "25da9efa4c03bee9e9adf65def128ea5e8afc26f3482d75366b0546a802db3c8",
+        "flow-fixed-body-after-thirty-two-seconds": "3e1e5b8c87f1f120afff859d4a064599b005d0d079d4d542373b521231c4c069",
+        "flow-fixed-body-after-thirty-seconds": "38cbb19ed7fc65d8ceef0ab5cac571c2b7b93944b5506dacef10f17d3ecfe96f",
+        "RE-flow-numerals-only": "99d91560121aae2aafaf2150cda55101b5ad7d282f22c8ec4f3539aaf70f9266",
+        "RE-flow-stencil": "1a0da42fc96dd7584d0574f1e35cdbf6ebb22e47672ef65adaef98df134b60dc",
+        "flow-material-solid-black": "391546ddee5f89d5e1784eb0456c81e642427629e478a5e379754ce2c30e1e15",
+        "flow-native-solid-night-whole-viewport": "c4af5be2e7c8c9005f48ccab50a6be62cffc15bcc329d79bd51fa84b6a89882b",
+        "screen-flow-native-solid-background-on": "3a5473719ce984e35587d58a3618757cc2d392006cbf36d17b347b37790d529c",
+        "viewport-flow-native-solid-background-on": "f6b2687eb7aa1c83fc784beb75bc8068625e7493a588d2cf379b5846b1f304b8",
+        "flow-reduced-later": "25da9efa4c03bee9e9adf65def128ea5e8afc26f3482d75366b0546a802db3c8",
+        "flow-reduced-start": "25da9efa4c03bee9e9adf65def128ea5e8afc26f3482d75366b0546a802db3c8",
+        "flow-moving-later": "040ca9458f9cdcfeb796f5e747db7de52e3d2ac3e2f35aad460a6ad758d1f57d",
+        "flow-moving-start": "4d8d27e2c3dc43b69586d62659289af471ea240b52cd2632bab83cd7a66430a6"
+      }
+    }
+  ],
+  "mask_sampling": "own fixed glyph white mask; RGB>245 at center and8 offsets, radius floor2%width, stride2; same fixed glyphs in live and reduced fixtures",
+  "night_criterion": "entire viewport: maxRGB>25 counts lit; green/blue <=0.4red, zero violations",
+  "visual_review_both_devices": true,
+  "original_visual_accepted": false,
+  "hardware_or_performance_accepted": false,
+  "long_duration_stability_beyond_waited30seconds_accepted": false,
+  "ui_only_fixtures_require_uitesting": true,
+  "original_UI47_only_qualitative_uncalibrated_perspective_observation": true,
+  "rejected_shader_prototype": {
+    "source_digest": "c43b37e73cb06944ed3c655d0ef185ea09853f004e2a619022f93209b8725ebb",
+    "ui_passed": 2,
+    "visual_accepted": false,
+    "reason": "looked flat/disc-like; not merged"
+  },
+  "historical_pilots_not_added_to_current_counts": true,
+  "real_accounts_or_homekit_used": false,
+  "screenshot_manifest": "../screenshots/goal-20261018/flow-native-manifest.json",
+  "logs": {
+    "flow-native-complete-candidate-core.log": "ad43ad7a8b173735056f77c0a9e2a7ddee99b728645e8394fdaad678ed82836d",
+    "flow-native-feature-post-commit-core.log": "91dc6bd1b5b1143ee8e8e982083921f0922f423b1d5a1a39c97e443e4f1c5029",
+    "flow-native-integrated-core.log": "fca951c86c9dbaf32c408d6b68cc7755a75ee719bebdc13df1691374a6b202a1",
+    "flow-native-complete-candidate-build.log": "f6eefab1db900d7a5be51038415ebb47077868cb59cf3544f04e5e19c72890a8",
+    "flow-native-complete-candidate-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "8aa19c2c1a9a3499b5812c116c7d24c480b6ec4d62fd9bfaa42d42d6fc759e6a",
+    "iPhone": "b857822c097b8a3e2d3d1e0caeb53d5ff3284c47ee942523e9c5c8f52f6d26f9"
+  }
+}
