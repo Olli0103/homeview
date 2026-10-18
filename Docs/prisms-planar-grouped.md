@@ -57,9 +57,11 @@ betätigten nur synthetische Thermostat-/Szenen-/Navigationselemente; keine Durc
 
 Der direkte private Vergleich mit UI07 und der perspektivischen UI45-Aufnahme
 zeigt weiter Abweichungen bei Prismenlage, Licht, Randbrechung und Zeigerdetails.
-Die Bildfolge ist keine Original-Animationsrekonstruktion. Echter System-Reduce-Motion
-auf diesem neuen Produktionsstand, physische Leistung/Energie und Hardware bleiben
-getrennte offene Prüfungen; der CLI-Testmodus wird nicht als vollständige Systemabnahme ausgegeben.
+Die Bildfolge ist keine Original-Animationsrekonstruktion. Echter System-Reduce-Motion war zum Prüfzeitpunkt dieses Pakets noch offen.
+Der spätere [begrenzte Systemschalter-Zusatznachweis](prisms-system-reduce-motion.md)
+belegt diesen Home-Modular-Zustand auf beiden Simulatoren. Physische Leistung/Energie,
+Hardware und vollständige Accessibility bleiben getrennt offen; der CLI-Testmodus
+wird nicht als vollständige Systemabnahme ausgegeben.
 visionOS und Macs vor Version 26 behalten den ausdrücklichen öffentlichen
 Materialfallback, nicht behauptete identische Optik. Keine echte HomeKit-Verbindung.
 
