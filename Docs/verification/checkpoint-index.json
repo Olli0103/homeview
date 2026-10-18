@@ -1582,6 +1582,40 @@
       "full_ui_suite_claimed": false,
       "same_app_source_as": "modular-weather-reference-integrated",
       "new_sdk_builds": 0
+    },
+    {
+      "checkpoint": "night-primary-integrated",
+      "commit": "350914e537bde2af07ed18425ba01445ef1eb770",
+      "source_digest": "2ec40e4e6ec6cec0cfa5cace76dd899cf07e0c7d7c32666c45e47d81b32a8321",
+      "files_verified": 142,
+      "core_passed": 166,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "full_ui_suite_claimed": false
     }
   ],
   "all_sources_match_committed_bytes": true

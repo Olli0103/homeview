@@ -643,7 +643,8 @@
       "FACE-07"
     ],
     "current": [
-      "Rote Monochromdarstellung und Reduce Motion sind vorhanden. Automatische Tageszeitregeln sind unvollständig."
+      "Rote Monochromdarstellung und Reduce Motion sind vorhanden. Automatische Tageszeitregeln sind unvollständig.",
+      "Expliziter Root-Nachtmultiplikator RGB(1,0,0): vorher acht iPad-Rundungskantenpixel außerhalb der vorhandenen Farbgrenze, nun null in zehn vollständigen nativen Nachtbildern. Sechs Modular-Tagespaare pixel-/bytegleich. 166 Modelltests, zwölf gezielte UI-Ausführungen, fünf SDKs; Docs/night-primary.md. Keine neue Original-/Hardware- oder Vollsuite-Abnahme."
     ],
     "parity_accepted": false,
     "issue_urls": [
