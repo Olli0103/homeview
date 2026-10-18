@@ -394,7 +394,7 @@
     "priority": "P1",
     "kind": "implementation",
     "functions": [],
-    "current": "CPU-Fluid mit Advektion, Druck, Vorticity und Rändern sowie separates Metal-Glyphenmaterial sind vorhanden. Originalpassfolge und internes Textglas sind nicht vollständig rekonstruiert.",
+    "current": "Öffentliche SwiftUI-Glaslinse auf eigenen Ziffern bei sichtbarem Fluid; vorhandener Metal-Fallback für Hintergrund aus, visionOS und ältere Macs. 139 Modelltests, zehn gezielte iPad-/iPhone-Ausführungen und fünf SDKs; feste Glyphenkörper nach 30 Sekunden, Reduce Motion, beide Schriftstile und Nachtfilter geprüft. CPU-Fluid bleibt unverändert. Exakte Originaloptik, Langzeit-/Hardware- und GPU-Abnahmen offen. Details: Docs/flow-native-glass.md.",
     "tasks": [
       "Hintergrund, Schatten, Brechung, Bevel, Licht und Deckung anhand Zeitsequenzen abstimmen",
       "Hintergrund an/aus und beide Schriftstile getrennt behandeln",
@@ -408,7 +408,15 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/16",
     "issue_number": 16,
-    "state": "open"
+    "state": "open",
+    "evidence": {
+      "date": "2026-10-18",
+      "verification": [
+        "Docs/flow-native-glass.md",
+        "Docs/verification/flow-native.json"
+      ],
+      "scope": "Bounded public material correction, not full Original, long-duration or hardware acceptance."
+    }
   },
   {
     "key": "FLOW-03",
