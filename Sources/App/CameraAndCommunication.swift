@@ -63,6 +63,9 @@ struct CameraGrid: View {
 struct CameraDetail: View {
   @Environment(AppModel.self) private var model
   var index: Int
+  var doorbell = false
+  var onClose: (() -> Void)?
+  var onGrid: (() -> Void)?
   var body: some View {
     ZStack {
       MockCameraScene(index: index)
@@ -71,6 +74,10 @@ struct CameraDetail: View {
           VStack(alignment: .leading, spacing: 6) {
             Text(["Front Door", "Back Yard", "Living Room", "Driveway"][index % 4]).font(
               .system(size: 29, weight: .semibold))
+            if doorbell {
+              Text("Doorbell · DEMO").font(.system(size:17,weight:.semibold))
+                .accessibilityIdentifier("doorbell.demo.label")
+            }
             Label(model.data.home.online ? "Demo still" : "Offline · Demo still", systemImage: "circle.fill")
               .font(.system(size: 17)).foregroundStyle(model.data.home.online ? .white : .orange)
               .accessibilityElement(children: .ignore)
@@ -92,7 +99,10 @@ struct CameraDetail: View {
         HStack {
           RoundButton(
             symbol: "xmark", color: .red, foreground: .white, size: 62, label: "Close camera"
-          ) { model.route = .personal }
+          ) {
+            model.talking = false
+            if let onClose { onClose() } else { model.route = .personal }
+          }.accessibilityIdentifier(doorbell ? "doorbell.dismiss":"camera.close")
           Spacer()
           RoundButton(
             symbol: model.talking ? "mic.fill" : "mic.slash.fill", color: .yellow,
@@ -106,12 +116,15 @@ struct CameraDetail: View {
           RoundButton(
             symbol: "square.grid.2x2.fill", color: .white.opacity(0.2), foreground: .white,
             size: 62, label: "Camera grid"
-          ) { model.navigate(.cameras) }.accessibilityIdentifier("camera.grid")
+          ) {
+            model.talking = false
+            if let onGrid { onGrid() } else { model.navigate(.cameras) }
+          }.accessibilityIdentifier("camera.grid")
         }.padding(32).background(
           LinearGradient(
             colors: [.clear, .black.opacity(0.6)], startPoint: .top, endPoint: .bottom))
       }.foregroundStyle(.white)
-    }
+    }.onDisappear { model.talking = false }
   }
 }
 struct IntercomView: View {

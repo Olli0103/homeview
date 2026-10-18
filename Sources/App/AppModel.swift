@@ -13,6 +13,8 @@ final class AppModel {
     let albumUpdates: AlbumDisplaySession
     private var albumRefreshTask: Task<Void,Never>?
   #endif
+  let demoDoorbell = DemoDoorbell()
+  private let repeatedDoorbellFixtureID = UUID()
   var faceDirection = 1
   var data: Snapshot
   var route: Route = .face
@@ -567,6 +569,50 @@ final class AppModel {
       return true
     } catch { self.error = "Could not save local demo state."; return false }
   }
+  var doorbellFixtureRoute: String {
+    switch route {
+    case .face: "face"
+    case .app(let page): "app:" + page.rawValue
+    case .cooking: "cooking"
+    case .privacy: "privacy"
+    default: String(describing:route)
+    }
+  }
+  func simulateDoorbell(repeatFixture: Bool = false) {
+    if repeatFixture {
+      let args = ProcessInfo.processInfo.arguments
+      guard args.contains("--uitesting"), args.contains("--doorbell-fixture") else { return }
+    }
+    interact()
+    let event = DemoDoorbellEvent(id:repeatFixture ? repeatedDoorbellFixtureID:UUID(),
+      cameraIndex:0,occurredAt:Date())
+    let result = demoDoorbell.receive(event,now:Date(),
+      uptime:ProcessInfo.processInfo.systemUptime,cameraAvailable:data.home.online,
+      callInProgress:incomingCall || route == .call)
+    switch result {
+    case .shown,.replaced: talking=false
+    case .cameraUnavailable: banner("Demo doorbell unavailable · Mock camera offline")
+    case .callNotInterrupted: banner("Demo doorbell · Current call was not interrupted")
+    default: break
+    }
+  }
+  func finishTimerForDoorbellFixture() {
+    let args = ProcessInfo.processInfo.arguments
+    guard args.contains("--uitesting"),args.contains("--doorbell-fixture"),
+          let index = data.timers.firstIndex(where: { $0.id == selectedTimer }) else { return }
+    data.timers[index].deadline = Date().addingTimeInterval(-1)
+    data.timers[index].didAlert = false
+  }
+  func dismissDemoDoorbell() {
+    demoDoorbell.dismiss()
+    talking=false
+  }
+  private func reconcileDemoDoorbell() {
+    let presented = demoDoorbell.current != nil
+    demoDoorbell.reconcile(at:ProcessInfo.processInfo.systemUptime,
+      cameraAvailable:data.home.online,callInProgress:incomingCall || route == .call)
+    if presented, demoDoorbell.current == nil { talking=false }
+  }
   func interact() { lastInteraction = Date() }
   func command(_ command: HomeCommand) {
     do {
@@ -575,6 +621,7 @@ final class AppModel {
     } catch { self.error = error.localizedDescription }
   }
   func navigate(_ page: AppPage) {
+    if demoDoorbell.current != nil { dismissDemoDoorbell() }
     interact()
     #if !os(watchOS)
       if page == .calendar && connections.requested.contains(.calendar)
@@ -615,6 +662,7 @@ final class AppModel {
     route = .privacy
   }
   func lockPersonalAccess() {
+    dismissDemoDoorbell()
     personalSessionGeneration += 1
     #if !os(watchOS)
       connections.lock()
@@ -628,6 +676,7 @@ final class AppModel {
     toast = nil
   }
   func homeGesture() {
+    if demoDoorbell.current != nil { dismissDemoDoorbell(); return }
     interact()
     switch route {
     case .face: route = .personal
@@ -637,6 +686,7 @@ final class AppModel {
     }
   }
   func nextFace(_ delta: Int) {
+    guard demoDoorbell.current == nil else { return }
     faceDirection = delta
     let all = Face.allCases
     let index = all.firstIndex(of: data.face) ?? 0
@@ -653,6 +703,7 @@ final class AppModel {
   }
   func tick() {
     now = Date()
+    reconcileDemoDoorbell()
     #if !os(watchOS)
       connections.tick()
       if albumUpdates.shouldRefresh() {
