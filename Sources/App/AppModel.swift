@@ -316,9 +316,10 @@ final class AppModel {
     if args.contains("--screen-thermostat") { route = .thermostat }
     if args.contains("--screen-recipe") { route = .recipe }
     if args.contains("--uitesting"), args.contains("--reference-timer") {
-      var timer = Countdown(title: "15 min", seconds: 900)
+      let long = args.contains("--reference-timer-long")
+      var timer = Countdown(title: long ? "24 hours":"15 min", seconds: long ? 86_400:900)
       timer.deadline = nil
-      timer.pausedRemaining = 656
+      timer.pausedRemaining = long ? 86_399:656
       data.timers = [timer]
       selectedTimer = timer.id
       route = .app(.timers)

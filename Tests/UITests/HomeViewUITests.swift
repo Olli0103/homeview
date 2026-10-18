@@ -2141,3 +2141,71 @@ extension HomeViewUITests {
       name:"weather-ui05-unknown-values-bounds")
   }
 }
+
+extension HomeViewUITests {
+
+  private func assertTimerVisibleGlyphSeparation(_ data:Data) {
+    let image=UIImage(data:data)!.cgImage!,width=imageWidth(data),height=imageHeight(data)
+    var pixels=[UInt8](repeating:0,count:width*height*4)
+    pixels.withUnsafeMutableBytes {
+      let context=CGContext(data:$0.baseAddress,width:width,height:height,bitsPerComponent:8,
+        bytesPerRow:width*4,space:CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)!
+      context.draw(image,in:CGRect(x:0,y:0,width:width,height:height))
+    }
+    // Fixed central readout ROI excludes the orange perimeter and hidden controls.
+    // Test actual white/orange glyphs, not overlapping font-layout rectangles.
+    var whiteMaxY = -1,orangeMinY = height,whiteCount=0,orangeCount=0
+    for y in (height*28/100)..<(height*70/100) {
+      for x in (width*12/100)..<(width*88/100) {
+        let i=(y*width+x)*4,r=Int(pixels[i]),g=Int(pixels[i+1]),b=Int(pixels[i+2])
+        if r>235 && g>235 && b>235 { whiteMaxY=max(whiteMaxY,y);whiteCount+=1 }
+        if x>width/4 && x<width*3/4 && y>height*45/100
+          && r>200 && g>55 && g<210 && b<110 {
+          orangeMinY=min(orangeMinY,y);orangeCount+=1
+        }
+      }
+    }
+    XCTAssertGreaterThan(whiteCount,0)
+    XCTAssertGreaterThan(orangeCount,0)
+    XCTAssertLessThan(whiteMaxY,orangeMinY,"Rendered white countdown and orange title must be separated")
+  }
+  private func imageWidth(_ data:Data) -> Int { UIImage(data:data)!.cgImage!.width }
+  private func imageHeight(_ data:Data) -> Int { UIImage(data:data)!.cgImage!.height }
+  private func verifyTimerReadoutBounds(value:String,title:String,name:String) {
+    let countdown=app.staticTexts["timer.countdown"],caption=app.staticTexts["timer.title"]
+    XCTAssertTrue(countdown.waitForExistence(timeout:5))
+    XCTAssertEqual(countdown.label,value)
+    XCTAssertEqual(caption.label,title)
+    viewportShot(name)
+    let frame=app.otherElements["reference.viewport"].frame
+    let inner=frame.insetBy(dx:frame.width*0.15,dy:12)
+    XCTAssertTrue(inner.contains(countdown.frame),"Countdown must stay clear of perimeter ticks")
+    XCTAssertTrue(inner.contains(caption.frame),"Timer caption must stay inside the dial")
+    XCTAssertLessThan(countdown.frame.midY,caption.frame.midY,"Readout must precede the title")
+    assertTimerVisibleGlyphSeparation(viewportBytes("glyph-proof-"+name))
+  }
+  @objc func testRestingTimerReferenceFitsAndTouchRevealsItsRealControls() {
+    launch(["--reference-timer","--reference-resting"])
+    XCTAssertFalse(app.buttons["timer.pause"].exists)
+    verifyTimerReadoutBounds(value:"10:56",title:"15 MIN",name:"timer-ui14-reference-resting")
+    let frame=app.staticTexts["timer.countdown"].frame
+    app.coordinate(withNormalizedOffset:.zero)
+      .withOffset(CGVector(dx:frame.midX-app.frame.minX,dy:frame.midY-app.frame.minY)).tap()
+    XCTAssertTrue(app.buttons["Resume timer"].waitForExistence(timeout:3))
+    XCTAssertEqual(app.staticTexts["timer.countdown"].label,"10:56")
+    viewportShot("timer-ui14-reference-controls-revealed")
+  }
+  @objc func testLongTimerReadoutFitsWithoutChangingItsPausedValue() {
+    launch(["--reference-timer","--reference-timer-long","--reference-resting"])
+    verifyTimerReadoutBounds(value:"23:59:59",title:"24 HOURS",name:"timer-ui14-long-readout")
+    XCTAssertFalse(app.buttons["timer.pause"].exists)
+    let frame=app.staticTexts["timer.countdown"].frame
+    app.coordinate(withNormalizedOffset:.zero)
+      .withOffset(CGVector(dx:frame.midX-app.frame.minX,dy:frame.midY-app.frame.minY)).tap()
+    XCTAssertTrue(app.buttons["Resume timer"].waitForExistence(timeout:3))
+    XCTAssertEqual(app.staticTexts["timer.countdown"].label,"23:59:59")
+    tap("timer.delete")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+  }
+}
