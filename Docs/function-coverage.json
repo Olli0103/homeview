@@ -319,7 +319,7 @@
       "PHOTO-01"
     ],
     "current": [
-      "Bis zehn bewusst gewählte Bilder, lokale 30-Sekunden-Rotation und manueller Shared-Album-Import sind vorhanden. Kein kontinuierlicher Albumabgleich."
+      "Bis zehn bewusst gewählte Bilder, lokale Rotation und ein ausdrücklich freigegebenes, begrenzt aktualisiertes Shared Album sind implementiert. Updates nur bei aktiver App; privater Katalog nur nach Geräteauthentifizierung. Originale Galerie-/Wechselregeln und reale PhotoKit-Abnahme offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -332,7 +332,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded synthetic selected-album updates, removals, revocation, persistence and actual photo-preview action checked; see Docs/selected-album-updates.md",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -350,7 +350,7 @@
       "PHOTO-01"
     ],
     "current": [
-      "Bis zehn bewusst gewählte Bilder, lokale 30-Sekunden-Rotation und manueller Shared-Album-Import sind vorhanden. Kein kontinuierlicher Albumabgleich."
+      "Bis zehn bewusst gewählte Bilder, lokale Rotation und ein ausdrücklich freigegebenes, begrenzt aktualisiertes Shared Album sind implementiert. Updates nur bei aktiver App; privater Katalog nur nach Geräteauthentifizierung. Originale Galerie-/Wechselregeln und reale PhotoKit-Abnahme offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -363,7 +363,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded synthetic selected-album updates, removals, revocation, persistence and actual photo-preview action checked; see Docs/selected-album-updates.md",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },

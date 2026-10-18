@@ -188,3 +188,18 @@ Fix, keine in main übernommenen Diagnoseänderungen und kein erfolgreicher
 Depth-PASS. Host-Instanzerkennung ist ausdrücklich kein kompletter PNG-/App-
 Rendernachweis. [Befunde und Grenzen](photo-native-boundary.md). Der zuvor geprüfte
 Glas-/Kopfschutzstand bleibt unverändert; keine erneuten unveränderten UI-Tests.
+
+
+## Begrenzte Aktualisierung eines freigegebenen Albums
+
+[d3bee86](https://github.com/Olli0103/homeview/commit/d3bee86b265ce64cab98a6c5fd0d569b8d3ca096),
+integriert in [6994bde](https://github.com/Olli0103/homeview/commit/6994bde8db180bad27baa86e6941925c5792472f):
+private Albumliste erst nach Geräteauthentifizierung, getrennte ausdrückliche
+Freigabe genau einer laufenden Bildschirmquelle, begrenzte Vordergrundupdates,
+Entfernen/Entziehen/Neustart und atomare Fotoauswahl. 128 Modelltests, nach beiden
+Codecommits erneut bestanden; acht aktuelle gezielte UI-Ausführungen und fünf
+SDKs auf identischen 130 Quellen. Der vorausgehende breite Lauf mit 31
+bestandenen und drei fehlgeschlagenen Ausführungen bleibt getrennt und wird
+nicht als aktuelle Vollsuite umetikettiert. Seine betroffenen Abläufe bestehen
+nach der Accessibility-/Testeingabekorrektur. [Nachweise und eigene Bilder](selected-album-updates.md).
+#11 bleibt offen für Originalwechselregeln und reale PhotoKit-/Geräteabnahme.

@@ -264,7 +264,7 @@ Abnahme: Ein dokumentierter synthetischer Bewegungs-/Distanzverlauf schaltet sta
 <a id="photo-01"></a>
 ### PHOTO-01: Foto-Galerie und geteilte Alben vervollständigen
 
-Bis zehn bewusst gewählte Bilder, lokale 30-Sekunden-Rotation und manueller Shared-Album-Import sind vorhanden. Kein kontinuierlicher Albumabgleich.
+Bis zehn bewusst gewählte Bilder, lokale Rotation und ein ausdrücklich freigegebenes, begrenzt aktualisiertes Shared Album sind implementiert. Updates nur bei aktiver App; privater Katalog nur nach Geräteauthentifizierung. Originale Galerie-/Wechselregeln und reale PhotoKit-Abnahme offen.
 
 Offen:
 
