@@ -23,6 +23,16 @@ enum PhotoLayoutFixture {
       if background {
         context.setFillColor(CGColor(red: 0.05, green: 0.13, blue: 0.2, alpha: 1))
         context.fill(CGRect(x: 0, y: 0, width: width, height: height))
+        if kind=="sparse-depth" {
+          // Own asymmetric backdrop, so a misregistered glass texture cannot
+          // pass just because both sampled areas are one uniform color.
+          context.setFillColor(CGColor(red:0.04,green:0.36,blue:0.34,alpha:1))
+          for y in stride(from:0,to:height,by:80) {
+            for x in stride(from:0,to:width,by:80) where (x/80+y/80)%2==0 {
+              context.fill(CGRect(x:x,y:y,width:80,height:80))
+            }
+          }
+        }
       }
       context.setFillColor(CGColor(red: 0.85, green: 0.36, blue: 0.10, alpha: 1))
       for r in subjects {

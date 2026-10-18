@@ -48,7 +48,7 @@ struct SelectedPhotoPreview: View {
   }
 }
 
-/// Public runtime font coverage, refracting the same explicitly selected photo.
+/// Own geometric or public runtime glyphs refract the explicitly selected photo.
 /// No saved font outlines and no foreground/Depth approximation.
 struct PhotoGlassClock: View {
   let time: String
@@ -63,7 +63,12 @@ struct PhotoGlassClock: View {
           args.indices.contains(i + 1) else { return "glass" }
     return args[i + 1]
   }
-  private var glyphs: some View {
+  @ViewBuilder private var glyphs: some View {
+    let digits=time.compactMap(\.wholeNumberValue)
+    if composition.clockFrame != nil, digits.count==4,
+       digits.allSatisfy({(0...9).contains($0)}) {
+      PhotoTallGlyphs(digits:digits,height:600*composition.clockRect.height)
+    } else {
     Text(time).font(.system(size: 181, weight: .regular, design: .rounded))
       .tracking(-10).lineLimit(1).minimumScaleFactor(0.65)
       // Public runtime glyphs and the matte-backed expanded band share the
@@ -74,6 +79,7 @@ struct PhotoGlassClock: View {
                    y: 1.4 * composition.clockRect.height / 0.32)
       .frame(width: 540, height: 200 * composition.clockRect.height / 0.32)
       .foregroundStyle(.white)
+    }
   }
   var body: some View {
     Group {
