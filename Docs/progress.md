@@ -18,6 +18,12 @@ freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetz
 | [Adaptive hohe Foto-Uhr mit vorhandener Matte](photo-adaptive.md) | 143 | 20 | 5 |
 | [Eigene hohe Foto-Konturen und Zehneratlas](photo-glyphs.md) | 143 | 22 | 5 |
 
+Ein getrennter [nativer Mac-Adapterlauf](photo-native-mac.md) auf dem eigenen
+gebauten Demo-Porträt liefert nun eine tatsächliche Vordergrund-PNG mit brauchbarem
+Alpha und eine nicht leere Modellmaske. Ein qualifizierter nativer Adapterlauf,
+kein neuer App-Bild-/iOS-/Gerätenachweis und keine neue Gesamtsuite. Der vorherige
+abgebrochene Assetladeversuch bleibt getrennt dokumentiert.
+
 Jede Zeile bezeichnet einen eigenen gebundenen Quellenstand, keine aufsummierte
 aktuelle Vollsuite. Original-/Geräteabnahmen bleiben wie in den Einzelbelegen
 offen. Der spätere planare Prismenprototyp ist wegen einer ungeklärten früheren

@@ -383,7 +383,8 @@
     ],
     "current": [
       "Automatische Motiv-/Ausschnittbewertung, vollständiges Bild bei Randmotiven und manuelle Korrektur je Bild samt Speicherung/Reset sind implementiert und synthetisch geprüft.",
-      "Größere Uhrbänder nur bei vorhandener Maske/Vordergrundebene und automatischer Rahmung, weiterhin höchstens18% Maskenabdeckung. Eigene asymmetrische Alpha-Fixture tatsächlich gerendert; ohne Matte/manuell/Letterbox kompakt. Docs/photo-adaptive.md."
+      "Größere Uhrbänder nur bei vorhandener Maske/Vordergrundebene und automatischer Rahmung, weiterhin höchstens18% Maskenabdeckung. Eigene asymmetrische Alpha-Fixture tatsächlich gerendert; ohne Matte/manuell/Letterbox kompakt. Docs/photo-adaptive.md.",
+      "Ein getrennter Mac-Kommandozeilenlauf des unveränderten Adapters liefert am eigenen gebauten Demo-Porträt erstmals eine tatsächliche Vordergrund-PNG mit nutzbarem Alpha und Modellmaske. Docs/photo-native-mac.md. Kein App-Render-, iOS- oder allgemeiner Vision-/Geräte-PASS."
     ],
     "parity_accepted": false,
     "issue_urls": [

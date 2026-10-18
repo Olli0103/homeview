@@ -1,0 +1,177 @@
+{
+  "source_commit": "24aabbca037b1057560627a073d78dc79482a4d4",
+  "source_digest": "1b3e42944cf7444e977fd80e1574dd5f433b9116d6d26da2f0b7b465749e7b5e",
+  "source_files_unchanged": 134,
+  "scope": "macOS native commandline adapter on own compiled demo asset, not launched app or iOS device acceptance",
+  "host": {
+    "os": "macOS 27.0.1",
+    "build": "26A434",
+    "architecture": "arm64"
+  },
+  "native_adapter_enum_slice_unmodified": true,
+  "native_source_sha256": "319171c10f4af75ca7886ef80adb4073c0cc305dcfa36792d7674fbd50691588",
+  "adapter_slice_sha256": "bb767619678c17838f68b07e73bf23edd5403bbcd7ef356aa86859a11da750ae",
+  "prefrozen_source_bundle_files": {
+    "NativeSubjectExtractor.host.swift": "f1acada3bbed4a6aab2004aca8e6409f6f2c8768758e8796f32c140c2f1eff8d",
+    "PhotoPlacement.swift": "dd6d5a9204f8487ac58d9e3d6da62996516152b22e359bf4afdee0a93f26471e",
+    "PhotoMaskRasterizer.swift": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c",
+    "ProbeMain.run-2.swift": "f368bdde103321411895f065b01c624825a90a8bd43738f870aebe0798d160e7",
+    "OwnNativePhotoProbe.app/Contents/Info.plist": "7866d273dbdc511c5894332cf2dbdd2e3eece017c1d729960bd2d6ede42721c5",
+    "OwnNativePhotoProbe.app/Contents/Resources/Assets.car": "e2b6a21644471539bd8cfef9a8c4c1df89358a5c2c63a2f115f93c65fcee0b4a"
+  },
+  "wrapper_path": "photo-native-mac-probe.swift",
+  "wrapper_sha256": "f368bdde103321411895f065b01c624825a90a8bd43738f870aebe0798d160e7",
+  "binary_sha256": "8da04af15ceb1605ab98bf8ed0e56169a5429c505c158e9a641901d97d8f50e6",
+  "compiler_target": "arm64-apple-macosx26.0",
+  "input_tiff_bits_per_sample": [
+    8,
+    8,
+    8
+  ],
+  "result": {
+    "aspect": 1,
+    "candidate_band_coverages": {
+      "bottom": 0.5730046041405068,
+      "full_band": 0.363848767806766,
+      "middle": 0.3925045880421134,
+      "top": 0.15860861586013716
+    },
+    "composition": {
+      "anchor": "top",
+      "clock_rect": [
+        0.05,
+        0.07,
+        0.9,
+        0.32
+      ],
+      "coverage": 0.15860861586013716,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "depth_enabled": true,
+      "destination": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "protected_coverage": 0.16815150720680536,
+      "retention": 1
+    },
+    "diagnostic": "face_results_1_accepted_1_foreground_encoded",
+    "foreground_bytes": 1164674,
+    "foreground_present": true,
+    "input_bytes": 9442380,
+    "input_preparation": "Own probe bundle NSImage(named: DemoPhotoPortraitV1).tiffRepresentation; copied built own asset catalog, same demo API path, no thumbnail for single selection",
+    "input_sha256": "a2b5a9462a5afb0b8724967fd067bcaf4133eaf0bc8e74c64d39c1522cce3b79",
+    "mask_height": 128,
+    "mask_present": true,
+    "mask_total": 1333434,
+    "mask_width": 128,
+    "protected_regions": [
+      [
+        0.3712298057973385,
+        0.17396904006600378,
+        0.22416987866163257,
+        0.2672794707119465
+      ]
+    ],
+    "scope": "Mac commandline adapter on own built demo asset; not launched app/iOS/hardware acceptance"
+  },
+  "decoded_alpha": {
+    "input_pixels": [
+      1254,
+      1254
+    ],
+    "input_mode": "RGB",
+    "foreground_pixels": [
+      1254,
+      1254
+    ],
+    "foreground_mode": "RGBA",
+    "alpha_min": 0,
+    "alpha_max": 255,
+    "alpha_zero": 1055216,
+    "alpha_opaque": 486579,
+    "alpha_partial": 30721,
+    "total_pixels": 1572516,
+    "foreground_sha256": "a66b77abff5c527cefade003777122010a9bc61360fd8078cc59486ac51ef8f2",
+    "source_and_binary_unchanged": true
+  },
+  "native_adapter_execution_passed_for_this_own_asset": true,
+  "actual_foreground_png_reviewed_upright": true,
+  "foreground_alpha_preview_is_not_raw_cvbuffer": true,
+  "composition_is_model_decision_not_observed_app_render": true,
+  "mac_app_ui_render_observed": false,
+  "physical_ios_device_tested": false,
+  "ios_simulator_foreground_repaired": false,
+  "general_vision_quality_or_original_parity_accepted": false,
+  "production_sources_changed": false,
+  "new_core_ui_or_sdk_suite_claimed": false,
+  "real_libraries_accounts_or_homekit_used": false,
+  "history": {
+    "run1": {
+      "exit_code": -6,
+      "vision_called": false,
+      "boundary": "fixture asset loader before analysis",
+      "exception": "NSInvalidArgumentException",
+      "reason": "NSBundle imageForResource selector unavailable",
+      "wrapper_sha256_postrun": "a8c37989116f62799731ea4f60fcad4491cb27d771277ff3e29e178a85a6852f",
+      "wrapper_prefrozen": false,
+      "native_adapter_and_core_sources_prefrozen": true,
+      "log_sha256": "c4f4cbc9821640a85437e85d0ed0d9a4d9949a096987c4ebad567e212bae0787",
+      "binary_sha256": "4fb69a9096c3d73988c10c893a86fa9985a09daa645869a8e70e8d1e2cbf6ad9"
+    },
+    "run2_native_executions": 1,
+    "note": "Run1 aborted in the fixture loader before Vision. Run2 uses NSImage(named:) and the same copied own compiled asset catalog in an isolated probe bundle; no application framework was patched."
+  },
+  "own_images": [
+    {
+      "path": "Docs/screenshots/goal-20261018/photo-native-mac-input-preview.png",
+      "sha256": "0d35fc1dbf380a0972e8ec0c9100eccaa275dc2e9c76d47a56e5eb085e224703",
+      "pixels": [
+        1254,
+        1254
+      ],
+      "source": "Own Mac demo asset and native adapter run2",
+      "not_a_launched_app_screenshot": true
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/photo-native-mac-portrait-foreground.png",
+      "sha256": "a66b77abff5c527cefade003777122010a9bc61360fd8078cc59486ac51ef8f2",
+      "pixels": [
+        1254,
+        1254
+      ],
+      "source": "Own Mac demo asset and native adapter run2",
+      "not_a_launched_app_screenshot": true
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/photo-native-mac-foreground-alpha-channel.png",
+      "sha256": "e22b7eb84c7071031c3043822f4fe1e7f824b82bb2f92a404af485c68793bbb8",
+      "pixels": [
+        1254,
+        1254
+      ],
+      "source": "Own Mac demo asset and native adapter run2",
+      "not_a_launched_app_screenshot": true
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/photo-native-mac-native-foreground-contact.jpg",
+      "sha256": "9a156fa7792acab98616c7a602d8e3bf5b0cce883d0d6d7374928c1149bde2f3",
+      "pixels": [
+        1260,
+        450
+      ],
+      "source": "Own Mac demo asset and native adapter run2",
+      "not_a_launched_app_screenshot": true
+    }
+  ],
+  "logs": {
+    "compile_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native_run_sha256": "105c3f2092c7672a4dd82655c3f49d8b17beae0210511112518ad3c1ba5fca20"
+  }
+}
