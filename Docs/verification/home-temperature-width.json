@@ -1,0 +1,548 @@
+{
+  "feature_commit": "aa84afacd89d219e3926779e02c16f0bad2f6435",
+  "integrated_commit": "cdf77989d0ad0d9d6c995c95d2163e6d897e4690",
+  "source_digest": "caa6ef24adae89dc5c84bc077fc68661448a7d7c57cac80c640d36cfef82f797",
+  "source_files": 142,
+  "source_matches_feature_merge_and_worktree": true,
+  "base": "4b9fa4281be59e317240e252640bd9af1c241309",
+  "predeclared_contract": {
+    "base": "4b9fa4281be59e317240e252640bd9af1c241309",
+    "scope": "Own public system-font drawing calibration for observed UI07 value68 only: spacing/width, no private outlines/font assets. Retain corrected cap height and positions; no full original glyph-shape acceptance.",
+    "reference_normalized_union_width": 0.2983425414364641,
+    "reference_individual_digit_width": 0.13996316758747698,
+    "reference_normalized_digit_gap": 0.01841620626151013,
+    "current_published_normalized_union_width": 0.3121859296482412,
+    "current_gap_pixels": 36,
+    "current_native_pixels": 1592,
+    "proposed_kerning_design_points": -2.125,
+    "proposed_horizontal_scale": 0.967,
+    "proposed_visual_offset_design_points": [
+      1,
+      13.5
+    ],
+    "font_family_size_weight_unchanged": true,
+    "native_contract": {
+      "ROI": [
+        0.12,
+        0.13,
+        0.63,
+        0.42
+      ],
+      "outside_ROI_changed_pixels": 0,
+      "union_width_bounds": [
+        0.2953425414364641,
+        0.3013425414364641
+      ],
+      "each_digit_width_bounds": [
+        0.13696316758747698,
+        0.14296316758747699
+      ],
+      "gap_bounds": [
+        0.015416206261510131,
+        0.02141620626151013
+      ],
+      "top_bounds": [
+        0.185,
+        0.1905
+      ],
+      "bottom_bounds": [
+        0.383,
+        0.389
+      ],
+      "center_x_bounds": [
+        0.3365,
+        0.341
+      ],
+      "height_retained_normalized_uncertainty": 0.002
+    },
+    "no_private_reference_pixels_or_contours_published": true,
+    "source_digest": "caa6ef24adae89dc5c84bc077fc68661448a7d7c57cac80c640d36cfef82f797",
+    "source_files": 142,
+    "source_archive_sha256": "22381a1468f21d825430ab57a4e4380e9ebd34611cf9c69668fc20091c4566af"
+  },
+  "only_source_delta": "Sources/App/Faces.swift: kerning(-2.125), scaleEffect(x:0.967,y:1), offset x1 instead of x2 before existing maxframe",
+  "font_family_size_weight_design_unchanged": true,
+  "vertical_placement_height_full_control_frame_and_handlers_unchanged": true,
+  "all_other_App_Core_tests_resources_and_shader_bytes_unchanged": true,
+  "independent_image_measurements": {
+    "source_digest": "caa6ef24adae89dc5c84bc077fc68661448a7d7c57cac80c640d36cfef82f797",
+    "source_files": 142,
+    "UI_executions": 10,
+    "failed_skipped_runtime_warnings": 0,
+    "full_native_input_files": 20,
+    "inputs_unchanged": true,
+    "all86_PNG_decoded": true,
+    "devices": [
+      {
+        "device": "iPad",
+        "all43_PNG_decoded": true,
+        "measurements": [
+          {
+            "state": "viewport-home-modular-intercom-reference",
+            "all_changed_pixels": 25026,
+            "outside_ROI_changed_pixels": 0,
+            "before": {
+              "components": [
+                {
+                  "area": 35762,
+                  "bbox": [
+                    558,
+                    299,
+                    788,
+                    615
+                  ]
+                },
+                {
+                  "area": 34907,
+                  "bbox": [
+                    291,
+                    299,
+                    522,
+                    615
+                  ]
+                }
+              ],
+              "bbox": [
+                291,
+                299,
+                788,
+                615
+              ],
+              "top": 0.1878140703517588,
+              "bottom": 0.3863065326633166,
+              "center_x": 0.33888190954773867,
+              "width": 0.3121859296482412,
+              "height": 0.1984924623115578
+            },
+            "after": {
+              "components": [
+                {
+                  "area": 34581,
+                  "bbox": [
+                    555,
+                    299,
+                    777,
+                    615
+                  ]
+                },
+                {
+                  "area": 33734,
+                  "bbox": [
+                    302,
+                    299,
+                    525,
+                    615
+                  ]
+                }
+              ],
+              "bbox": [
+                302,
+                299,
+                777,
+                615
+              ],
+              "top": 0.1878140703517588,
+              "bottom": 0.3863065326633166,
+              "center_x": 0.33888190954773867,
+              "width": 0.29836683417085424,
+              "height": 0.1984924623115578,
+              "individual_digit_widths": [
+                0.14007537688442212,
+                0.13944723618090452
+              ],
+              "gap": 0.018844221105527637
+            },
+            "checks": {
+              "outsideROI_exact0": true,
+              "top": true,
+              "bottom": true,
+              "center_x": true,
+              "union_width": true,
+              "each_digit_width": true,
+              "gap": true,
+              "height_retained": true
+            }
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "all_changed_pixels": 25013,
+            "outside_ROI_changed_pixels": 0,
+            "before": {
+              "components": [
+                {
+                  "area": 35795,
+                  "bbox": [
+                    558,
+                    299,
+                    788,
+                    615
+                  ]
+                },
+                {
+                  "area": 34914,
+                  "bbox": [
+                    291,
+                    299,
+                    522,
+                    615
+                  ]
+                }
+              ],
+              "bbox": [
+                291,
+                299,
+                788,
+                615
+              ],
+              "top": 0.1878140703517588,
+              "bottom": 0.3863065326633166,
+              "center_x": 0.33888190954773867,
+              "width": 0.3121859296482412,
+              "height": 0.1984924623115578
+            },
+            "after": {
+              "components": [
+                {
+                  "area": 34608,
+                  "bbox": [
+                    555,
+                    299,
+                    777,
+                    615
+                  ]
+                },
+                {
+                  "area": 33752,
+                  "bbox": [
+                    302,
+                    299,
+                    525,
+                    615
+                  ]
+                }
+              ],
+              "bbox": [
+                302,
+                299,
+                777,
+                615
+              ],
+              "top": 0.1878140703517588,
+              "bottom": 0.3863065326633166,
+              "center_x": 0.33888190954773867,
+              "width": 0.29836683417085424,
+              "height": 0.1984924623115578,
+              "individual_digit_widths": [
+                0.14007537688442212,
+                0.13944723618090452
+              ],
+              "gap": 0.018844221105527637
+            },
+            "checks": {
+              "outsideROI_exact0": true,
+              "top": true,
+              "bottom": true,
+              "center_x": true,
+              "union_width": true,
+              "each_digit_width": true,
+              "gap": true,
+              "height_retained": true
+            }
+          }
+        ],
+        "contract_passed": true,
+        "local_target_RGBA_PNG_exact": true,
+        "cold4_launches32_full_RGBA_PNG_exact": true,
+        "moving_positive": true,
+        "reduced_pair_exact": true,
+        "night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 2486355,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 2486355,
+            "wrong_primary_pixels": 0
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "all43_PNG_decoded": true,
+        "measurements": [
+          {
+            "state": "viewport-home-modular-intercom-reference",
+            "all_changed_pixels": 11497,
+            "outside_ROI_changed_pixels": 0,
+            "before": {
+              "components": [
+                {
+                  "area": 18472,
+                  "bbox": [
+                    397,
+                    213,
+                    562,
+                    438
+                  ]
+                },
+                {
+                  "area": 18035,
+                  "bbox": [
+                    207,
+                    213,
+                    372,
+                    438
+                  ]
+                }
+              ],
+              "bbox": [
+                207,
+                213,
+                562,
+                438
+              ],
+              "top": 0.18783068783068782,
+              "bottom": 0.3862433862433862,
+              "center_x": 0.3390652557319224,
+              "width": 0.31305114638447973,
+              "height": 0.1984126984126984
+            },
+            "after": {
+              "components": [
+                {
+                  "area": 17864,
+                  "bbox": [
+                    395,
+                    213,
+                    554,
+                    438
+                  ]
+                },
+                {
+                  "area": 17433,
+                  "bbox": [
+                    215,
+                    213,
+                    375,
+                    438
+                  ]
+                }
+              ],
+              "bbox": [
+                215,
+                213,
+                554,
+                438
+              ],
+              "top": 0.18783068783068782,
+              "bottom": 0.3862433862433862,
+              "center_x": 0.3390652557319224,
+              "width": 0.29894179894179895,
+              "height": 0.1984126984126984,
+              "individual_digit_widths": [
+                0.14109347442680775,
+                0.1402116402116402
+              ],
+              "gap": 0.01763668430335097
+            },
+            "checks": {
+              "outsideROI_exact0": true,
+              "top": true,
+              "bottom": true,
+              "center_x": true,
+              "union_width": true,
+              "each_digit_width": true,
+              "gap": true,
+              "height_retained": true
+            }
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "all_changed_pixels": 11490,
+            "outside_ROI_changed_pixels": 0,
+            "before": {
+              "components": [
+                {
+                  "area": 18485,
+                  "bbox": [
+                    397,
+                    213,
+                    562,
+                    438
+                  ]
+                },
+                {
+                  "area": 18036,
+                  "bbox": [
+                    207,
+                    213,
+                    372,
+                    438
+                  ]
+                }
+              ],
+              "bbox": [
+                207,
+                213,
+                562,
+                438
+              ],
+              "top": 0.18783068783068782,
+              "bottom": 0.3862433862433862,
+              "center_x": 0.3390652557319224,
+              "width": 0.31305114638447973,
+              "height": 0.1984126984126984
+            },
+            "after": {
+              "components": [
+                {
+                  "area": 17873,
+                  "bbox": [
+                    395,
+                    213,
+                    554,
+                    438
+                  ]
+                },
+                {
+                  "area": 17436,
+                  "bbox": [
+                    215,
+                    213,
+                    375,
+                    438
+                  ]
+                }
+              ],
+              "bbox": [
+                215,
+                213,
+                554,
+                438
+              ],
+              "top": 0.18783068783068782,
+              "bottom": 0.3862433862433862,
+              "center_x": 0.3390652557319224,
+              "width": 0.29894179894179895,
+              "height": 0.1984126984126984,
+              "individual_digit_widths": [
+                0.14109347442680775,
+                0.1402116402116402
+              ],
+              "gap": 0.01763668430335097
+            },
+            "checks": {
+              "outsideROI_exact0": true,
+              "top": true,
+              "bottom": true,
+              "center_x": true,
+              "union_width": true,
+              "each_digit_width": true,
+              "gap": true,
+              "height_retained": true
+            }
+          }
+        ],
+        "contract_passed": true,
+        "local_target_RGBA_PNG_exact": true,
+        "cold4_launches32_full_RGBA_PNG_exact": true,
+        "moving_positive": true,
+        "reduced_pair_exact": true,
+        "night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 1261722,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 1261722,
+            "wrong_primary_pixels": 0
+          }
+        ]
+      }
+    ],
+    "selected_native_representatives": 34,
+    "contacts": [
+      "Docs/screenshots/goal-20261018/home-temperature-width-iPad-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/home-temperature-width-iPad-own-contact-2.jpg",
+      "Docs/screenshots/goal-20261018/home-temperature-width-iPhone-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/home-temperature-width-iPhone-own-contact-2.jpg"
+    ],
+    "Original_glyph_width_shape_or_hardware_accepted": false
+  },
+  "UI_executions": 10,
+  "UI_failed": 0,
+  "UI_skipped": 0,
+  "UI_runtime_warnings": 0,
+  "selected_methods": [
+    "testHomePrismColdLaunchesKeepFrozenPixelsExact",
+    "testHomePrismMotionStopsWithReduceMotion",
+    "testHomePrismNightHasNoBlueGlassLeak",
+    "testHomeGlassControlsRemainInteractive",
+    "testHomeModularIntercomReferenceMarkAndLocalDestination"
+  ],
+  "pilot_executions2_not_added": true,
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T12:34:14.044411+00:00",
+      "ended": "2026-10-18T12:34:26.983857+00:00"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T12:34:26.984361+00:00",
+      "ended": "2026-10-18T12:34:40.392307+00:00"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T12:34:40.392824+00:00",
+      "ended": "2026-10-18T12:34:51.507703+00:00"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T12:34:51.508136+00:00",
+      "ended": "2026-10-18T12:35:03.395355+00:00"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T12:35:03.395786+00:00",
+      "ended": "2026-10-18T12:35:10.530585+00:00"
+    }
+  ],
+  "full_native_input_files": 20,
+  "all_native_inputs_before_after_exact": true,
+  "App_Test16_product_files_exact_to_visual_pilot": true,
+  "all86_native_PNG_decoded": true,
+  "actual_final_native_representatives_viewed": 34,
+  "actual_final_contacts_viewed": 4,
+  "actual_pilot_own_comparison_viewed": true,
+  "actual_private_UI07_comparison_viewed_not_published": true,
+  "four_day_night_outside_temperature_ROI_changed_pixels": 0,
+  "each_device4cold32frames_full_RGBA_PNG_exact": true,
+  "both_local_target_PNG_RGBA_exact": true,
+  "moving_positive_controls_different": true,
+  "reduced_pairs_exact": true,
+  "whole_night_wrong_primary_pixels": 0,
+  "actual_OS_switch_checks_not_repeated_on_this_payload": true,
+  "prior_actual_OS_evidence": "prisms-system-reduce-motion.json, distinct earlier App payload, not newly counted",
+  "no_private_reference_raster_font_contours_or_original_shader": true,
+  "no_real_homes_accounts_libraries_devices_communication_or_system_alarms": true,
+  "no_frozen_RGB_tolerance": true,
+  "no_full_Original_glyph_shape_other_values_lighting_hardware_or_current_full_suite_acceptance": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/home-temperature-width-manifest.json"
+}
