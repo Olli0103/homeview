@@ -1650,6 +1650,41 @@
       ],
       "core_repeated_after_commit": true,
       "full_ui_suite_claimed": false
+    },
+    {
+      "checkpoint": "modular-clock-detail-integrated",
+      "commit": "01aa86d5ce9e4830cad4ba8f3d34b100e692acda",
+      "source_digest": "256a9c09fe4b5b7ccf5f4c2879ac75f381a682ffbd5f5a5f3b3ea26a75a49e4b",
+      "files_verified": 142,
+      "core_passed": 166,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "full_ui_suite_claimed": false,
+      "image_assessment_history_and_expanded_supplement": "modular-clock.json"
     }
   ],
   "all_sources_match_committed_bytes": true
