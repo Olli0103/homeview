@@ -2,10 +2,18 @@ import CoreGraphics
 import Foundation
 import ImageIO
 import UniformTypeIdentifiers
+import CoreImage
+#if os(macOS)
+import AppKit
+#elseif canImport(UIKit)
+import UIKit
+#endif
 
 /// Original geometric fixtures. Only instantiated behind --uitesting.
 enum PhotoLayoutFixture {
+  @MainActor
   static func make(_ kind: String) -> (bytes: Data, analysis: PhotoAnalysis)? {
+    if kind == "native-alpha-replay" { return nativeAlphaReplay() }
     guard ["top", "edges", "dense", "sparse-depth"].contains(kind) else { return nil }
     let width = kind == "edges" ? 800 : 600
     let height = kind == "edges" ? 400 : 600
@@ -56,5 +64,35 @@ enum PhotoLayoutFixture {
     return (bytes, PhotoAnalysis(aspect: Double(width)/Double(height),
                                  mask: PhotoSubjectMask(width: side, height: side, values: values),
                                  foreground: image(background: false)))
+  }
+  /// Replay of a Mac-produced alpha from our own generated portrait. This is
+  /// deterministic test input, never an iOS extraction or production fallback.
+  @MainActor
+  private static func nativeAlphaReplay() -> (bytes: Data, analysis: PhotoAnalysis)? {
+    let portrait: CGImage?
+    let matte: CGImage?
+    #if os(macOS)
+      portrait = NSImage(named:DemoPhotoAssets.portrait)?.cgImage(forProposedRect:nil,context:nil,hints:nil)
+      matte = NSImage(named:"DemoPortraitNativeAlphaReplayV1")?.cgImage(forProposedRect:nil,context:nil,hints:nil)
+    #elseif canImport(UIKit)
+      portrait = UIImage(named:DemoPhotoAssets.portrait)?.cgImage
+      matte = UIImage(named:"DemoPortraitNativeAlphaReplayV1")?.cgImage
+    #else
+      portrait = nil;matte = nil
+    #endif
+    guard let portrait, let matte,
+          portrait.width == matte.width, portrait.height == matte.height else { return nil }
+    let image = CIImage(cgImage:portrait)
+    let alpha = CIImage(cgImage:matte,options:[.colorSpace:NSNull()])
+    let context = CIContext(options:[.useSoftwareRenderer:true])
+    let clear = CIImage(color:.clear).cropped(to:image.extent)
+    let foreground = image.applyingFilter("CIBlendWithMask",
+      parameters:[kCIInputBackgroundImageKey:clear,kCIInputMaskImageKey:alpha])
+    guard let mask = PhotoMaskRasterizer.make(alpha,context:context),
+          let bytes = context.pngRepresentation(of:image,format:.RGBA8,colorSpace:CGColorSpaceCreateDeviceRGB()),
+          let cutout = context.pngRepresentation(of:foreground,format:.RGBA8,colorSpace:CGColorSpaceCreateDeviceRGB())
+    else { return nil }
+    return (bytes,.init(aspect:Double(portrait.width)/Double(portrait.height),
+      mask:mask,foreground:cutout,diagnostic:"fixture_mac_native_alpha_replay"))
   }
 }

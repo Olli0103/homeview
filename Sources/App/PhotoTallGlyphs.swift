@@ -70,7 +70,7 @@ struct PhotoTallGlyphs: View {
   let digits:[Int]
   let height:CGFloat
   private var unit: CGFloat {
-    400 / digits.reduce(CGFloat.zero) { $0 + ($1==1 ? 0.75:1) }
+    CGFloat(PhotoClockGlyphLayout.unit(for:digits) ?? 0)
   }
   var body: some View {
     HStack(spacing:120) {

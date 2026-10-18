@@ -20,5 +20,18 @@
       1254
     ],
     "mode": "RGB"
+  },
+  {
+    "asset_name": "DemoPortraitNativeAlphaReplayV1",
+    "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/image.png",
+    "sha256": "6a494569e8a377f4fe6a1d21cb6bda8024c25848dc78f905a2fe58f660d833ab",
+    "origin": "Deterministic grayscale RGB copy of the alpha channel of the Mac native foreground PNG from our own generated DemoPhotoPortraitV1, 2026-10-18. UITesting replay only; not an iOS native extraction or production fallback.",
+    "decoded_size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "source_foreground_sha256": "a66b77abff5c527cefade003777122010a9bc61360fd8078cc59486ac51ef8f2",
+    "source_owned_portrait_sha256": "a23cc0c3f9bd409029e2e4451a771d9dceb91821fd2a32dbdaaac8ca0e3f47d7"
   }
 ]
