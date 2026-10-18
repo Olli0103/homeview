@@ -753,6 +753,29 @@ final class HomeViewUITests: XCTestCase {
     tap("reminder.Test groceries")
     XCTAssertTrue(app.buttons["reminder.Test groceries"].exists)
   }
+  func testHomeModularIntercomReferenceMarkAndLocalDestination() {
+    XCUIDevice.shared.orientation = .portrait
+    launch(["--face","Home Modular"])
+    viewportShot("home-modular-intercom-reference")
+    let intercom=app.buttons.matching(NSPredicate(format:"label CONTAINS %@","Intercom")).firstMatch
+    XCTAssertTrue(intercom.waitForExistence(timeout:5))
+    let f=intercom.frame
+    XCTAssertTrue(app.otherElements["reference.viewport"].frame.contains(f))
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:f.midX,dy:f.midY)).tap()
+    XCTAssertTrue(app.textFields["intercom.input"].waitForExistence(timeout:5))
+    viewportShot("home-modular-intercom-local-destination-no-send")
+    // Do not send/record; only verify the local synthetic destination.
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    let pixels=viewportPixels(viewportBytes("home-modular-intercom-night-primary"))
+    var lit=0,wrong=0
+    for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+      lit+=1
+      if Double(pixels[i+1])>Double(pixels[i])*0.4 || Double(pixels[i+2])>Double(pixels[i])*0.4 { wrong+=1 }
+    }
+    XCTAssertGreaterThan(lit,100)
+    XCTAssertEqual(wrong,0)
+  }
+
   func testHomeGridIntercomReferenceMarkAndMatchedState() {
     XCUIDevice.shared.orientation = .portrait
     launch(["--page","Home"])
