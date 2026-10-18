@@ -1,0 +1,351 @@
+{
+  "feature_commit": "e76fc33ee8ee36b0b444d25c19f699bd9da34fb2",
+  "integrated_commit": "dc2860fdc036ccdd3ae6231769dd2e70e0aec96b",
+  "source_digest": "6750246c7ddb1bb6bf13ab32797f291aaa2c49b5d95bebfabc5cf557f701c44d",
+  "source_files": 142,
+  "source_matches_feature_merge_and_worktree": true,
+  "base": "2b5131133fd6ce19bc87232b5b4264f4b871a37d",
+  "predeclared_contract": {
+    "base": "2b5131133fd6ce19bc87232b5b4264f4b871a37d",
+    "scope": "Blue theme0 only: own prism shader tint G .37->.40, R.40/B.95 unchanged. All shape/phase/specular/reflection equations, alpha, otherthemes and App/Core/test source bytes retained.",
+    "preflight": "Existing own public Metal shader supports palette calibration; no new library/texture/private shader or contours.",
+    "baseline_summary": [
+      {
+        "image": "Original_UI07",
+        "size": [
+          543,
+          544
+        ],
+        "blue_dominant_pixels": 270288,
+        "median_R_minus_G": 0.0,
+        "mean_R_minus_G": 0
+      },
+      {
+        "image": "Own_current_iPad",
+        "size": [
+          1592,
+          1592
+        ],
+        "blue_dominant_pixels": 2276840,
+        "median_R_minus_G": 6.0,
+        "mean_R_minus_G": 6.7321032659299735
+      }
+    ],
+    "native_contract": {
+      "blue_background_selector": "B>R+35 and B>G+35 and B>100 and R<220 and G<220",
+      "minimum_blue_samples": 1000,
+      "reference_median_R_minus_G": 0,
+      "reference_mean_absolute_R_minus_G": 0,
+      "candidate_abs_median_R_minus_G_max": 1,
+      "candidate_mean_absolute_R_minus_G_max": 1.5,
+      "minimum_median_error_reduction_fraction": 0.75,
+      "minimum_mean_absolute_error_reduction_fraction": 0.75,
+      "unchanged_eroded_old_RGB255_samples": true,
+      "erosion_native_pixels": 1,
+      "minimum_eroded_white_samples": 1000,
+      "local_Intercom_destination_RGBA_PNG_exact": true,
+      "unchanged_atlas_targets": [
+        "viewport-UI01",
+        "viewport-UI08",
+        "viewport-UI10",
+        "viewport-UI12",
+        "viewport-UI05",
+        "viewport-UI45",
+        "viewport-UI13",
+        "viewport-UI26"
+      ],
+      "native_cold_motion_night_touch_required": true
+    },
+    "no_Original_brightness_geometry_full_optics_color_management_or_hardware_acceptance": true,
+    "no_private_reference_raster_or_contours": true,
+    "source_digest": "6750246c7ddb1bb6bf13ab32797f291aaa2c49b5d95bebfabc5cf557f701c44d",
+    "source_files": 142,
+    "source_archive_sha256": "466e624722c847d41dda225fee046ffdc4d7ac7e7b44b57093a732d592903f50"
+  },
+  "source_scope": {
+    "source_digest": "6750246c7ddb1bb6bf13ab32797f291aaa2c49b5d95bebfabc5cf557f701c44d",
+    "changed_files": [
+      "Sources/App/PrismScene.metal"
+    ],
+    "all141_other_source_files_and_tests_byte_exact": true,
+    "only_theme0_G_literal37_to40": true,
+    "all_geometry_motion_other_themes_alpha_and_shader_equations_unchanged": true
+  },
+  "independent_image_measurements": {
+    "mode": "final",
+    "source_digest": "6750246c7ddb1bb6bf13ab32797f291aaa2c49b5d95bebfabc5cf557f701c44d",
+    "source_files": 142,
+    "UI_executions": 14,
+    "failed_skipped_runtime_warnings": 0,
+    "inputs_unchanged": true,
+    "all_native_PNG_decoded": 146,
+    "devices": [
+      {
+        "device": "iPad",
+        "all_PNG_decoded": true,
+        "measurements": [
+          {
+            "state": "viewport-home-modular-intercom-reference",
+            "changed_pixels": 2369709,
+            "eroded_old_composited_white255_samples": 92037,
+            "eroded_old_composited_white255_changed_pixels": 0,
+            "white_core_check_passed": true,
+            "before_blue_stats": {
+              "blue_dominant_pixels": 2276840,
+              "median_R_minus_G": 6.0,
+              "mean_R_minus_G": 6.7321032659299735,
+              "mean_absolute_R_minus_G": 6.732115563675972
+            },
+            "after_blue_stats": {
+              "blue_dominant_pixels": 2275986,
+              "median_R_minus_G": 0.0,
+              "mean_R_minus_G": -0.18562724023785734,
+              "mean_absolute_R_minus_G": 0.20079780807087566
+            },
+            "median_error_reduction_fraction": 1.0,
+            "mean_absolute_error_reduction_fraction": 0.9701731489645978,
+            "blue_balance_contract_passed": true,
+            "contract_passed": true
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "changed_pixels": 2364545,
+            "eroded_old_composited_white255_samples": 92246,
+            "eroded_old_composited_white255_changed_pixels": 0,
+            "white_core_check_passed": true,
+            "contract_passed": true
+          }
+        ],
+        "contract_passed": true,
+        "local_target_RGBA_PNG_exact": true,
+        "cold4_launches32_full_RGBA_PNG_exact": true,
+        "moving_positive": true,
+        "reduced_pair_exact": true,
+        "initial_restored_RGBA_exact": true,
+        "actual_glyph_padding_taps_and_explicit62pt_frames_passed": true,
+        "unchanged_atlas": [
+          {
+            "state": "viewport-UI01",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI08",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI10",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI12",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI05",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI45",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI13",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI26",
+            "RGBA_PNG_exact": true
+          }
+        ],
+        "all8_other_atlas_RGBA_PNG_exact": true,
+        "night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 2486543,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 2486543,
+            "wrong_primary_pixels": 0
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "all_PNG_decoded": true,
+        "measurements": [
+          {
+            "state": "viewport-home-modular-intercom-reference",
+            "changed_pixels": 1201322,
+            "eroded_old_composited_white255_samples": 45147,
+            "eroded_old_composited_white255_changed_pixels": 0,
+            "white_core_check_passed": true,
+            "before_blue_stats": {
+              "blue_dominant_pixels": 1160235,
+              "median_R_minus_G": 6.0,
+              "mean_R_minus_G": 6.71691424582089,
+              "mean_absolute_R_minus_G": 6.716934931285472
+            },
+            "after_blue_stats": {
+              "blue_dominant_pixels": 1159844,
+              "median_R_minus_G": 0.0,
+              "mean_R_minus_G": -0.18546114822338178,
+              "mean_absolute_R_minus_G": 0.20163746158966206
+            },
+            "median_error_reduction_fraction": 1.0,
+            "mean_absolute_error_reduction_fraction": 0.9699807332284112,
+            "blue_balance_contract_passed": true,
+            "contract_passed": true
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "changed_pixels": 1199226,
+            "eroded_old_composited_white255_samples": 45236,
+            "eroded_old_composited_white255_changed_pixels": 0,
+            "white_core_check_passed": true,
+            "contract_passed": true
+          }
+        ],
+        "contract_passed": true,
+        "local_target_RGBA_PNG_exact": true,
+        "cold4_launches32_full_RGBA_PNG_exact": true,
+        "moving_positive": true,
+        "reduced_pair_exact": true,
+        "initial_restored_RGBA_exact": true,
+        "actual_glyph_padding_taps_and_explicit62pt_frames_passed": true,
+        "unchanged_atlas": [
+          {
+            "state": "viewport-UI01",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI08",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI10",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI12",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI05",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI45",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI13",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI26",
+            "RGBA_PNG_exact": true
+          }
+        ],
+        "all8_other_atlas_RGBA_PNG_exact": true,
+        "night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 1261963,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 1261963,
+            "wrong_primary_pixels": 0
+          }
+        ]
+      }
+    ],
+    "all_contracts_passed": true,
+    "selected_native_representatives": 64,
+    "contacts": [
+      "Docs/screenshots/goal-20261018/prism-blue-balance-iPad-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/prism-blue-balance-iPad-own-contact-2.jpg",
+      "Docs/screenshots/goal-20261018/prism-blue-balance-iPad-own-contact-3.jpg",
+      "Docs/screenshots/goal-20261018/prism-blue-balance-iPhone-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/prism-blue-balance-iPhone-own-contact-2.jpg",
+      "Docs/screenshots/goal-20261018/prism-blue-balance-iPhone-own-contact-3.jpg"
+    ],
+    "Original_full_brightness_geometry_optics_colour_management_or_hardware_accepted": false
+  },
+  "UI_executions": 14,
+  "UI_failed": 0,
+  "UI_skipped": 0,
+  "UI_runtime_warnings": 0,
+  "selected_methods": [
+    "testHomePrismColdLaunchesKeepFrozenPixelsExact",
+    "testHomePrismMotionStopsWithReduceMotion",
+    "testHomePrismNightHasNoBlueGlassLeak",
+    "testHomeGlassControlsRemainInteractive",
+    "testHomeModularIntercomReferenceMarkAndLocalDestination",
+    "testHomeModularThermostatArrowDrawingKeepsControlFramesAndState",
+    "testVisualReferenceAtlas"
+  ],
+  "pilot1_not_added": true,
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T14:08:33.711562+00:00",
+      "ended": "2026-10-18T14:08:46.882616+00:00"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T14:08:46.883037+00:00",
+      "ended": "2026-10-18T14:09:00.195359+00:00"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T14:09:00.195860+00:00",
+      "ended": "2026-10-18T14:09:11.042782+00:00"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T14:09:11.043204+00:00",
+      "ended": "2026-10-18T14:09:22.688968+00:00"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T14:09:22.689419+00:00",
+      "ended": "2026-10-18T14:09:30.070279+00:00"
+    }
+  ],
+  "full_native_input_files": 20,
+  "all_native_inputs_before_after_exact": true,
+  "App_Test16_product_files_exact_to_visual_pilot": true,
+  "actual_final_native_representatives_viewed": 64,
+  "actual_final_contacts_viewed": 6,
+  "actual_pilot_own_contact_viewed": true,
+  "actual_private_UI07_comparison_viewed_not_published": true,
+  "unaffected8_atlas_baseline_source_digest": "80e5aa0d370cb462227aa824b084a2bb5eeed8b9a1e4c5bdd2f36705f901e131",
+  "unaffected_atlas_is_immediate_published_predecessor": true,
+  "not_all_Atlas_or_all_palette_themes_compared": true,
+  "blue_metric_is_nominal_raster_RGB_not_colour_management_or_total_parity": true,
+  "colour_metric_bounds_not_tolerance_for_exact_cold_motion_or_other_Atlas_comparisons": true,
+  "held_marker_shadow_prototypes_not_included": true,
+  "actual_OS_switch_checks_not_repeated_on_this_payload": true,
+  "prior_actual_OS_evidence": "prisms-system-reduce-motion.json, older App payload, not newly counted",
+  "no_private_reference_raster_font_contours_or_original_shader": true,
+  "no_real_homes_accounts_libraries_devices_communication_or_system_alarms": true,
+  "no_frozen_RGB_tolerance": true,
+  "no_full_Original_brightness_geometry_optics_colour_management_hardware_or_current_full_suite_acceptance": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/prism-blue-balance-manifest.json"
+}
