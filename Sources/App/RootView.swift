@@ -83,7 +83,8 @@ struct RootView: View {
         .frame(width: 600, height: 600)
         .background(.white).clipShape(RoundedRectangle(cornerRadius: 84, style: .continuous))
         // Night mode includes activity, status banners and toasts, not only the screen.
-        .saturation(model.data.night ? 0 : 1).colorMultiply(model.data.night ? .red : .white)
+        .saturation(model.data.night ? 0 : 1)
+        .colorMultiply(model.data.night ? Color(red: 1, green: 0, blue: 0) : .white)
         .environment(\.colorScheme, .light)
         .scaleEffect(edge / 600)
         .frame(width: edge, height: edge)
