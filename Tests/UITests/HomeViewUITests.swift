@@ -1927,6 +1927,44 @@ final class HomeViewUITests: XCTestCase {
     let red=stride(from:0,to:sky.count,by:4).map { sky[$0] }
     XCTAssertLessThan(red.max()!,100,"The predefined clear-sky region must contain blue sky, not white clouds")
   }
+  func testModularLargeDateAndTemperatureRenderForOneAndTwoDigitDays() {
+    for day in [1,13,30] {
+      launch(["--face","Modular","--reference-zone","UTC","--reference-date",
+        String(format:"2026-04-%02dT10:09:30Z",day)])
+      XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.staticTexts["modular.weather.temperature"].firstMatch.label,"54°")
+      let png=viewportBytes("modular-night-primary-day-\(day)")
+      let image=UIImage(data:png)!.cgImage!
+      let date=image.cropping(to:CGRect(x:Double(image.width)*0.06,y:Double(image.height)*0.18,
+        width:Double(image.width)*0.42,height:Double(image.height)*0.30).integral)!
+      var pixels=[UInt8](repeating:0,count:date.width*date.height*4)
+      pixels.withUnsafeMutableBytes {
+        let context=CGContext(data:$0.baseAddress,width:date.width,height:date.height,
+          bitsPerComponent:8,bytesPerRow:date.width*4,space:CGColorSpaceCreateDeviceRGB(),
+          bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)!
+        context.draw(date,in:CGRect(x:0,y:0,width:date.width,height:date.height))
+      }
+      let ink=stride(from:0,to:pixels.count,by:4).filter {
+        max(pixels[$0],max(pixels[$0+1],pixels[$0+2]))<70
+      }.count
+      XCTAssertGreaterThan(ink,1000,"The actual date must contain visible dark ink for day \(day)")
+      print("MODULAR_LIGHT_EDGE day=\(day) actual_date_ink=\(ink)")
+      app.terminate()
+    }
+  }
+  func testModularNightWholeViewportContainsNoColorLeak() {
+    launch(["--face","Modular"])
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    let pixels=[UInt8](viewportPixels(viewportBytes("modular-night-primary-viewport"),inset:0))
+    var lit=0,wrong=0
+    for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+      lit+=1
+      if Double(pixels[i+1])>Double(pixels[i])*0.4 ||
+        Double(pixels[i+2])>Double(pixels[i])*0.4 { wrong+=1 }
+    }
+    XCTAssertGreaterThan(lit,100)
+    XCTAssertEqual(wrong,0,"The night treatment must include the entire native viewport")
+  }
   func testModularWeatherReferenceFieldsRender() {
     launch(["--face","Modular"])
     XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
