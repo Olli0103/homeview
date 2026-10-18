@@ -1,0 +1,612 @@
+{
+  "code_commit": "571ad9cb8089ef95fc3f5c82e9cd0130e4d9f5f8",
+  "feature_commit": "d57fe9f0f64f4574562fa4a6a9dcdd85d48cea48",
+  "source_digest": "3a45a1e8a7db4edc64266c51531ece8fd86225d3951eb24becf318d75e0327f6",
+  "source_files": 133,
+  "source_matches_feature_and_merge_bytes": true,
+  "changed_sources_since_timer_selection": [
+    "Sources/App/AppModel.swift",
+    "Sources/App/Everyday.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "production_timer_algorithms_limit_and_sorting_changed": false,
+  "accessibility_count_and_container_added": true,
+  "container_preserves_child_controls": true,
+  "synthetic_twelve_paused_fixture_requires_uitesting": true,
+  "core_passed": 139,
+  "core_repeated_after_feature_and_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 8,
+  "unique_cases": 4,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T03:01:43.130065+00:00",
+      "ended": "2026-10-18T03:01:45.551507+00:00",
+      "log_sha256": "9261849a370c196890901cdb44bacd361d3e0ae6017475ae7ca1c3fcba523130"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T03:01:45.552056+00:00",
+      "ended": "2026-10-18T03:01:47.118871+00:00",
+      "log_sha256": "d5c4d41a82333193f569a440d6259a6f14fc7dd8d8704ad2dd03c36b14a614d5"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T03:01:47.120071+00:00",
+      "ended": "2026-10-18T03:01:48.636021+00:00",
+      "log_sha256": "23061713fa87f9781cc77c9b9da37a4bf21607bf14b04d5e3bf4b63235ac39ee"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T03:01:48.636494+00:00",
+      "ended": "2026-10-18T03:01:50.046443+00:00",
+      "log_sha256": "99612938f66fd3a5fd3ff9ff6f8a435b6940fd3648614766c3b6f65bf202ce56"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T03:01:50.047166+00:00",
+      "ended": "2026-10-18T03:01:51.428572+00:00",
+      "log_sha256": "e441a526f9ad945785d453900fd468866d13a50700af6f3c0bc1b163b4126069"
+    }
+  ],
+  "full_ui_suite_claimed": false,
+  "ui_scope": [
+    "native horizontal last/first/middle selection among12,13reject unchangedchoice,delete last gives11/fallback",
+    "normal start+11adds yields12,13reject count12 and selectedUUIDunchanged",
+    "existing3timer fallback/delete preserved",
+    "existing independent run/pause preserved"
+  ],
+  "target_safe_inset_logical_points": 40,
+  "target_comparison_precision": "Both CGRect bounds normalized to Float32 precision observed in AX reports; no bitmap tolerance or reduced gutter.",
+  "pixel_checks": [
+    {
+      "device": "iPad",
+      "kind": "selected chip",
+      "state": "last",
+      "pixels": [
+        172,
+        110
+      ],
+      "white_ink_pixels": 714,
+      "padding_rgb_mean": 64.0,
+      "unselected_same_style_control_rgb_mean": 25.0,
+      "contrast": 39.0,
+      "control_state": "timer-chip-restored-101 in current same-source three-timer regression",
+      "input_png_sha256": "033a8358a74052bb851b9441dbdcd02de45a26eca9d543d5374878ff125f570b"
+    },
+    {
+      "device": "iPad",
+      "kind": "selected chip",
+      "state": "first",
+      "pixels": [
+        172,
+        110
+      ],
+      "white_ink_pixels": 750,
+      "padding_rgb_mean": 64.0,
+      "unselected_same_style_control_rgb_mean": 25.0,
+      "contrast": 39.0,
+      "control_state": "timer-chip-restored-101 in current same-source three-timer regression",
+      "input_png_sha256": "d54bece5feb7357e31743d75a1d47768e793f24f38c9b776e44dbe117fd46d8a"
+    },
+    {
+      "device": "iPad",
+      "kind": "selected chip",
+      "state": "middle",
+      "pixels": [
+        180,
+        110
+      ],
+      "white_ink_pixels": 867,
+      "padding_rgb_mean": 64.0,
+      "unselected_same_style_control_rgb_mean": 25.0,
+      "contrast": 39.0,
+      "control_state": "timer-chip-restored-101 in current same-source three-timer regression",
+      "input_png_sha256": "8b5b1d046c2ea5d98240533c87e0e829caa88b00a894cd9d7b3b99492525cf88"
+    },
+    {
+      "device": "iPad",
+      "kind": "selected chip",
+      "state": "delete-fallback",
+      "pixels": [
+        164,
+        110
+      ],
+      "white_ink_pixels": 660,
+      "padding_rgb_mean": 64.0,
+      "unselected_same_style_control_rgb_mean": 25.0,
+      "contrast": 39.0,
+      "control_state": "timer-chip-restored-101 in current same-source three-timer regression",
+      "input_png_sha256": "63c2bd0148ef36913c7c74a9edc804af8c36fe8f04820f8016f4a5afe5bd77b3"
+    },
+    {
+      "device": "iPad",
+      "kind": "three-timer preserved",
+      "state": "restored-fallback",
+      "changed_rgb_channels": 0,
+      "historical_source_digest": "e4e5a933fc8f898bbb90c2576b87ed279f8934fad08e07c3f91dd0c8bd152a51",
+      "historical_png_sha256": "31bb49197ab860810d2f5415c73bffe4342d0f19f0890ccc8e9eb65010ef95c7",
+      "current_png_sha256": "31bb49197ab860810d2f5415c73bffe4342d0f19f0890ccc8e9eb65010ef95c7"
+    },
+    {
+      "device": "iPad",
+      "kind": "three-timer preserved",
+      "state": "tea",
+      "changed_rgb_channels": 0,
+      "historical_source_digest": "e4e5a933fc8f898bbb90c2576b87ed279f8934fad08e07c3f91dd0c8bd152a51",
+      "historical_png_sha256": "f29162246153f1d2e4cb42be8b8c2d4045f0e639b1de806e730767e9fc51aece",
+      "current_png_sha256": "f29162246153f1d2e4cb42be8b8c2d4045f0e639b1de806e730767e9fc51aece"
+    },
+    {
+      "device": "iPad",
+      "kind": "three-timer preserved",
+      "state": "after-delete-fallback",
+      "changed_rgb_channels": 0,
+      "historical_source_digest": "e4e5a933fc8f898bbb90c2576b87ed279f8934fad08e07c3f91dd0c8bd152a51",
+      "historical_png_sha256": "a94937d9eb0b20c3ae280b9e69ca4c5bff0f6f8142bd993ca11299cf4e8bca12",
+      "current_png_sha256": "a94937d9eb0b20c3ae280b9e69ca4c5bff0f6f8142bd993ca11299cf4e8bca12"
+    },
+    {
+      "device": "iPad",
+      "kind": "three-timer preserved",
+      "state": "pasta-preserved",
+      "changed_rgb_channels": 0,
+      "historical_source_digest": "e4e5a933fc8f898bbb90c2576b87ed279f8934fad08e07c3f91dd0c8bd152a51",
+      "historical_png_sha256": "f2547c588d9bc02b2cd977c27ecc07ca2c9ddd0871337ea78bc2d472b8164c4c",
+      "current_png_sha256": "f2547c588d9bc02b2cd977c27ecc07ca2c9ddd0871337ea78bc2d472b8164c4c"
+    },
+    {
+      "device": "iPhone",
+      "kind": "selected chip",
+      "state": "last",
+      "pixels": [
+        123,
+        79
+      ],
+      "white_ink_pixels": 434,
+      "padding_rgb_mean": 64.0,
+      "unselected_same_style_control_rgb_mean": 25.0,
+      "contrast": 39.0,
+      "control_state": "timer-chip-restored-101 in current same-source three-timer regression",
+      "input_png_sha256": "55ffdb6d9dd2bce309854b5fdd8a4e3e6ff5b011b0578ab6a54ff5cf26e52e59"
+    },
+    {
+      "device": "iPhone",
+      "kind": "selected chip",
+      "state": "first",
+      "pixels": [
+        124,
+        79
+      ],
+      "white_ink_pixels": 456,
+      "padding_rgb_mean": 64.0,
+      "unselected_same_style_control_rgb_mean": 25.0,
+      "contrast": 39.0,
+      "control_state": "timer-chip-restored-101 in current same-source three-timer regression",
+      "input_png_sha256": "b79988b073d9d6e42c0efa036946532b8e45239e9d0cf558131349e9ed9597de"
+    },
+    {
+      "device": "iPhone",
+      "kind": "selected chip",
+      "state": "middle",
+      "pixels": [
+        128,
+        79
+      ],
+      "white_ink_pixels": 539,
+      "padding_rgb_mean": 64.0,
+      "unselected_same_style_control_rgb_mean": 25.0,
+      "contrast": 39.0,
+      "control_state": "timer-chip-restored-101 in current same-source three-timer regression",
+      "input_png_sha256": "3647cce271a30a7e4670899ae9877c3bb1b9a1f60f8915a4e29bdfcc2f1d7ad6"
+    },
+    {
+      "device": "iPhone",
+      "kind": "selected chip",
+      "state": "delete-fallback",
+      "pixels": [
+        118,
+        79
+      ],
+      "white_ink_pixels": 413,
+      "padding_rgb_mean": 64.0,
+      "unselected_same_style_control_rgb_mean": 25.0,
+      "contrast": 39.0,
+      "control_state": "timer-chip-restored-101 in current same-source three-timer regression",
+      "input_png_sha256": "b85efe102cc451a97beb86aab8c3bdb8ee9286d66f0c846e0fe6cb9f1146aed8"
+    },
+    {
+      "device": "iPhone",
+      "kind": "three-timer preserved",
+      "state": "restored-fallback",
+      "changed_rgb_channels": 0,
+      "historical_source_digest": "e4e5a933fc8f898bbb90c2576b87ed279f8934fad08e07c3f91dd0c8bd152a51",
+      "historical_png_sha256": "829476b100ad02ef33d51a1a3461f077ba32ba0fe489127b8d56417737d68d46",
+      "current_png_sha256": "829476b100ad02ef33d51a1a3461f077ba32ba0fe489127b8d56417737d68d46"
+    },
+    {
+      "device": "iPhone",
+      "kind": "three-timer preserved",
+      "state": "tea",
+      "changed_rgb_channels": 0,
+      "historical_source_digest": "e4e5a933fc8f898bbb90c2576b87ed279f8934fad08e07c3f91dd0c8bd152a51",
+      "historical_png_sha256": "974459d5387837907df08140ac03df00cd626bf8a8655c6f6ef457b62452d896",
+      "current_png_sha256": "974459d5387837907df08140ac03df00cd626bf8a8655c6f6ef457b62452d896"
+    },
+    {
+      "device": "iPhone",
+      "kind": "three-timer preserved",
+      "state": "after-delete-fallback",
+      "changed_rgb_channels": 0,
+      "historical_source_digest": "e4e5a933fc8f898bbb90c2576b87ed279f8934fad08e07c3f91dd0c8bd152a51",
+      "historical_png_sha256": "1184cdb8f4c997de4a606a179ecbd5554bfefe6cb76e657fd7f4ef8fe04732cb",
+      "current_png_sha256": "1184cdb8f4c997de4a606a179ecbd5554bfefe6cb76e657fd7f4ef8fe04732cb"
+    },
+    {
+      "device": "iPhone",
+      "kind": "three-timer preserved",
+      "state": "pasta-preserved",
+      "changed_rgb_channels": 0,
+      "historical_source_digest": "e4e5a933fc8f898bbb90c2576b87ed279f8934fad08e07c3f91dd0c8bd152a51",
+      "historical_png_sha256": "04f8a14e6a3dd8367866393014a7b3c113c4bc7907691628016b40c692d070b4",
+      "current_png_sha256": "04f8a14e6a3dd8367866393014a7b3c113c4bc7907691628016b40c692d070b4"
+    }
+  ],
+  "three_timer_chip_checks": {
+    "probe_sha256": "c59a9200d49d11c112c9b84a18936631e533280408327c0e0cb250d65efe1c5d",
+    "rows": [
+      {
+        "device": "iPad",
+        "state": "restored",
+        "selected": 103,
+        "selected_padding_contrast_over_other_chips": 39.0,
+        "chips": [
+          {
+            "id": 101,
+            "pixels": [
+              180,
+              110
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 769,
+            "sha256": "6447fa5bf9ad68c7521afc85e06b4c08f484c775dc80ae5571c7482cab6bd870"
+          },
+          {
+            "id": 102,
+            "pixels": [
+              180,
+              110
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 820,
+            "sha256": "4b014936741ac666e14fe78bab6f7a8f519b92fce5e7ae08893dd8b8bbc08374"
+          },
+          {
+            "id": 103,
+            "pixels": [
+              172,
+              110
+            ],
+            "padding_rgb_mean": 64.0,
+            "white_ink_pixels": 745,
+            "sha256": "0f7e4d6461092ae0bff28918a1f464baa41c9d39a79686cf25c527a6fbc0dc79"
+          }
+        ]
+      },
+      {
+        "device": "iPad",
+        "state": "tea",
+        "selected": 101,
+        "selected_padding_contrast_over_other_chips": 39.0,
+        "chips": [
+          {
+            "id": 101,
+            "pixels": [
+              180,
+              110
+            ],
+            "padding_rgb_mean": 64.0,
+            "white_ink_pixels": 809,
+            "sha256": "6f068a43e96b617d89d644b13d3e417e87c75464ea7ae7a6e23f5f026be64d1b"
+          },
+          {
+            "id": 102,
+            "pixels": [
+              180,
+              110
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 820,
+            "sha256": "4b014936741ac666e14fe78bab6f7a8f519b92fce5e7ae08893dd8b8bbc08374"
+          },
+          {
+            "id": 103,
+            "pixels": [
+              172,
+              110
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 712,
+            "sha256": "186e0fdc86dff17d12fc9634875633e06a8072096e00016519d02c185aa10d45"
+          }
+        ]
+      },
+      {
+        "device": "iPad",
+        "state": "deleted",
+        "selected": 103,
+        "selected_padding_contrast_over_other_chips": 39.0,
+        "chips": [
+          {
+            "id": 102,
+            "pixels": [
+              180,
+              110
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 820,
+            "sha256": "7f1fae3ac3637ff8a1602d6cddc8d01994b344e8ae2f066562f49faf7fcf6043"
+          },
+          {
+            "id": 103,
+            "pixels": [
+              172,
+              110
+            ],
+            "padding_rgb_mean": 64.0,
+            "white_ink_pixels": 745,
+            "sha256": "0f7e4d6461092ae0bff28918a1f464baa41c9d39a79686cf25c527a6fbc0dc79"
+          }
+        ]
+      },
+      {
+        "device": "iPad",
+        "state": "pasta",
+        "selected": 102,
+        "selected_padding_contrast_over_other_chips": 39.0,
+        "chips": [
+          {
+            "id": 102,
+            "pixels": [
+              180,
+              110
+            ],
+            "padding_rgb_mean": 64.0,
+            "white_ink_pixels": 867,
+            "sha256": "c810658dd113d94113f1c74a5adbf143695bd93f9d783b9b88cec5193034f5c0"
+          },
+          {
+            "id": 103,
+            "pixels": [
+              172,
+              110
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 712,
+            "sha256": "186e0fdc86dff17d12fc9634875633e06a8072096e00016519d02c185aa10d45"
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "state": "restored",
+        "selected": 103,
+        "selected_padding_contrast_over_other_chips": 39.0,
+        "chips": [
+          {
+            "id": 101,
+            "pixels": [
+              128,
+              79
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 501,
+            "sha256": "ff01a865ab0cfe5e63a326ef3779526a7ba2e45463e898dc78c362c3ae378292"
+          },
+          {
+            "id": 102,
+            "pixels": [
+              128,
+              79
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 529,
+            "sha256": "006273d1346d678c05bfe78dd8846631d05f95bd088e62868a1ce28bac734cbb"
+          },
+          {
+            "id": 103,
+            "pixels": [
+              124,
+              79
+            ],
+            "padding_rgb_mean": 64.0,
+            "white_ink_pixels": 447,
+            "sha256": "25a7187c6c5c04db874a6300f33e17892c899420216dea58bd7964c51803554d"
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "state": "tea",
+        "selected": 101,
+        "selected_padding_contrast_over_other_chips": 39.0,
+        "chips": [
+          {
+            "id": 101,
+            "pixels": [
+              128,
+              79
+            ],
+            "padding_rgb_mean": 64.0,
+            "white_ink_pixels": 517,
+            "sha256": "1c83c5e33bbd2be87d5b5a666b9506659d8761a529b112c04a706ca71afc5fca"
+          },
+          {
+            "id": 102,
+            "pixels": [
+              128,
+              79
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 529,
+            "sha256": "006273d1346d678c05bfe78dd8846631d05f95bd088e62868a1ce28bac734cbb"
+          },
+          {
+            "id": 103,
+            "pixels": [
+              124,
+              79
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 439,
+            "sha256": "d7f7d6111c89fe2e593393d4743bba3b831735945d16a19fcaa33b435a1573b2"
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "state": "deleted",
+        "selected": 103,
+        "selected_padding_contrast_over_other_chips": 39.0,
+        "chips": [
+          {
+            "id": 102,
+            "pixels": [
+              128,
+              79
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 529,
+            "sha256": "d6203beb512a9f2d48ea022d92af7d4bbc1454847c2e15c7eb769aada2d61977"
+          },
+          {
+            "id": 103,
+            "pixels": [
+              124,
+              79
+            ],
+            "padding_rgb_mean": 64.0,
+            "white_ink_pixels": 447,
+            "sha256": "25a7187c6c5c04db874a6300f33e17892c899420216dea58bd7964c51803554d"
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "state": "pasta",
+        "selected": 102,
+        "selected_padding_contrast_over_other_chips": 39.0,
+        "chips": [
+          {
+            "id": 102,
+            "pixels": [
+              128,
+              79
+            ],
+            "padding_rgb_mean": 64.0,
+            "white_ink_pixels": 547,
+            "sha256": "f08cbbf2eacdbbad1e9dc76a48c6c8397abfe908b90e00db671fe7afff0e5785"
+          },
+          {
+            "id": 103,
+            "pixels": [
+              124,
+              79
+            ],
+            "padding_rgb_mean": 25.0,
+            "white_ink_pixels": 439,
+            "sha256": "d7f7d6111c89fe2e593393d4743bba3b831735945d16a19fcaa33b435a1573b2"
+          }
+        ]
+      }
+    ]
+  },
+  "selected12_chip_control": "Unselected same-style chip from same-source3timer regression, not Original image",
+  "native_images_reviewed_both_devices": true,
+  "original_maximum_order_or_layout_accepted": false,
+  "background_restart_clockchange_or_hardware_accepted": false,
+  "full_voiceover_accepted": false,
+  "system_alarms_executed": false,
+  "real_accounts_or_homekit_used": false,
+  "history": {
+    "initial1bb": {
+      "source_digest": "1bb47d580f1cfbac894881364f9d3ec366a6331241beaad341fc49e499f37dbf",
+      "passed": 1,
+      "failed": 1,
+      "cause": "ExactDouble containment assertion failed; originalrun did not record its rectangles. Separate38a diagnostic reproduced the numerical mismatch."
+    },
+    "frame38a": {
+      "source_digest": "38a6d4f6b49c799a294af734a2d28838379cbbd0e40a9d648f73b8e3d45d9446",
+      "passed": 0,
+      "failed": 1,
+      "diagnosis": "Same unchanged app/condition separately reproduced group.x11.999999999999991 vsviewport12. Those recorded coordinates belong to thisdiagnostic, not an original1bb frame receipt."
+    },
+    "geometryE7": {
+      "source_digest": "e7e76dd4e1246b9380e6da9a49dcb59fc8a7985d0302174b9f80ca48b2e7deda",
+      "passed": 2,
+      "failed": 0,
+      "only_pilot": true
+    },
+    "stricterBAB": {
+      "source_digest": "bab86a9645a7cbc5b0b758cc77a5a37117aca99235d5b9588dfc7cfbb90b0bdc",
+      "passed": 6,
+      "failed": 2,
+      "cause": "iPad strictgutter reveal assertedfalse; originalrun lacked targetcoordinates. Separate8e diagnostic recorded Float32 rounding. iPhone4passed; Appsource wasunchanged."
+    },
+    "gutter8e": {
+      "source_digest": "8e24f5f770f187d1a70d9e8447c910f27a116940c6458dbde1865880c67c2955",
+      "passed": 0,
+      "failed": 1,
+      "target_max_x": 754.933349609375,
+      "double_safe_max_x": 754.9333333333334,
+      "float32_safe_max_x": 754.933349609375,
+      "matching_exactly_at_reported_precision": true
+    },
+    "current_narrowed_iPad": {
+      "passed": 1,
+      "source_digest": "3a45a1e8a7db4edc64266c51531ece8fd86225d3951eb24becf318d75e0327f6",
+      "not_added_to_final_counts": true
+    }
+  },
+  "old_failures_not_relabelled_or_added_to_final_counts": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/timer-overflow-manifest.json",
+  "logs": {
+    "timer-overflow-ax-candidate-core.log": "859bdc540b0a5d0e608cab30c3857b4d748164b3f40ac92603ece3da705917f6",
+    "timer-overflow-feature-post-commit-core.log": "4b71d8cea8b25752a8465905e00a63c1cd1098272701c237159df9a740c91977",
+    "timer-overflow-integrated-core.log": "df5e1632d1bafea8f53a216bd2b8ea7b287e95abd86017b2d22e86439f3746f9",
+    "timer-overflow-ax-candidate-build.log": "a255d0dc34603cdf25395a937476348dc393803b2327a3d9d5833e131e304b1a",
+    "timer-overflow-ax-candidate-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "581de4f152c347f887f24517ded7f41e41aa4c3059de1d7e691eca191c2b5d1e",
+    "iPhone": "13c97e308b35168cd8c8bfaff68625446f418ac058430fa32fc6e651be2a7cc2"
+  }
+}

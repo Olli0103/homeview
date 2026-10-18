@@ -843,7 +843,7 @@ Abhängigkeiten: SYS-03.
 <a id="day-03"></a>
 ### DAY-03: Mehrere Timer und große Countdown-Ansicht vollständig abnehmen
 
-UI14-Geometrie und vorhandene Inaktivitätsregel begrenzt geprüft. Mehrtimer-Status/Titelüberlagerung und schlecht lesbare Chips korrigiert; Auswahl/Löschen sowie zwei unabhängige laufende/pausierte Zähler mit drittem pausierten Timer nativ geprüft. Einzel-Timer-Bilder bleiben exakt unverändert. Fristen/Alarmadapter, Auswahl-Fallback und Sortierung unverändert; Original-Mehrtimerlayout, Vollumfang, Hintergrund/Neustart/Zeitwechsel und Hardware offen.
+UI14, Inaktivität und Mehrtimer-Anordnung begrenzt geprüft. Zusätzlich eigene Zwölf-Timer-Grenze, horizontales Auswählen/Löschen und Ablehnung von Nummer13 ohne Auswahlverlust nativ validiert. Bestehende Drei-Timerbilder exakt erhalten. Timer-/Grenz-/Sortierlogik unverändert; Originalmaximum/-layout, gleichzeitiger Ablauf, Hintergrund/Neustart/Zeitwechsel, Systemabgleich und Hardware offen.
 
 Offen:
 
