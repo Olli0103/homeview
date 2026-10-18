@@ -163,7 +163,9 @@ struct TimerView: View {
                 symbol: "trash", color: .white.opacity(0.14), foreground: .white, size: 62,
                 label: "Delete timer"
               ) { model.removeTimer(t.id) }.accessibilityIdentifier("timer.delete")
-            }.padding(.bottom, 90)
+            // The 44pt choices row plus 10pt bottom inset uses 54pt of the
+            // former 90pt gap. Keep status/actions clear of the central title.
+            }.padding(.bottom, model.data.timers.count > 1 ? 36:90)
             if model.data.timers.count > 1 {
               ScrollView(.horizontal) {
                 HStack {
@@ -171,12 +173,15 @@ struct TimerView: View {
                     Button {
                       model.selectedTimer = timer.id
                     } label: {
-                      Text(timer.display(at: model.now)).font(.system(size: 18)).padding(10)
+                      Text(timer.display(at: model.now)).font(.system(size: 18)).foregroundStyle(.white).padding(10)
                         .background(.white.opacity(timer.id == t.id ? 0.25 : 0.1), in: Capsule())
                     }
+                    .accessibilityIdentifier("timer.select."+timer.id.uuidString)
+                    .accessibilityLabel(timer.title+" timer, "+timer.display(at:model.now))
+                    .accessibilityValue(timer.id == t.id ? "Selected":"Not selected")
                   }
                 }.padding(.horizontal, 40)
-              }.padding(.bottom, 24)
+              }.frame(height:44).padding(.bottom,10)
             }
           }
         }
