@@ -435,3 +435,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: begrenzte Flow-Dauerbeobachtung
 
 [Flow-Zusatznachweis](flow-five-minute.md): je Simulator fünf echte Minuten mit festen Ziffern und drei bewegten/farbigen Körperpaaren; zwei native Ausführungen. Getrennt601 Simulationssekunden am unveränderten40×40-Gitter in drei Impulsszenarien. Keine neue App-Implementierung, SDK-/Gesamtsuiten-/Original-/Hardwareabnahme.
+
+
+## 18. Oktober: Flow nach kontrolliertem Hintergrundwechsel
+
+[Lifecycle-Zusatz](flow-lifecycle.md): zwei native Ausführungen mit je drei explizit rückgelesenen Hintergrundzuständen,weiterer Körperbewegung und realem Flow→Fade→Flow. Reduzierte Körper vor/nach Rückkehr exakt;22 eigene PNGs gesichtet. Frühere Home-Tastendruck-Fehler bleiben ungeklärt. App unverändert,keine Energie-/Original-/Hardwareabnahme.

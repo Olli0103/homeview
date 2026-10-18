@@ -1,0 +1,56 @@
+extension HomeViewUITests {
+  @objc func testFlowBodyMotionReturnsAfterBackgroundAndFaceRoundTrip() throws {
+    #if targetEnvironment(simulator)
+    var states=[[String:Any]](),pairs=[(Data,Data)]()
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences")
+    defer { settings.terminate() }
+    func backgroundAndReactivate(_ name:String) {
+      settings.launch()
+      XCTAssertTrue(settings.wait(for:.runningForeground,timeout:5))
+      let moved=XCTNSPredicateExpectation(predicate:NSPredicate { _,_ in self.app.state != .runningForeground && self.app.state != .notRunning },object:nil)
+      XCTAssertEqual(XCTWaiter.wait(for:[moved],timeout:5),.completed)
+      Thread.sleep(forTimeInterval:2)
+      let state=app.state
+      states.append(["phase":name,"background_state":state.rawValue,"uptime":ProcessInfo.processInfo.systemUptime])
+      XCTAssertNotEqual(state,.notRunning,"This is an activation test, not an implicit process restart")
+      XCTAssertNotEqual(state,.runningForeground)
+      app.activate()
+      XCTAssertEqual(app.state,.runningForeground)
+      XCTAssertTrue(app.otherElements["face.Flow"].waitForExistence(timeout:5))
+    }
+    launch(["--face","Flow","--animation-test","--flow-fixed-glyphs"])
+    for cycle in 0..<2 {
+      backgroundAndReactivate("moving-\(cycle)")
+      let first=viewportBytes("flow-lifecycle-resume-\(cycle)-start")
+      Thread.sleep(forTimeInterval:1.2)
+      pairs.append((first,viewportBytes("flow-lifecycle-resume-\(cycle)-later")))
+    }
+    let viewport=app.otherElements["reference.viewport"]
+    viewport.coordinate(withNormalizedOffset:CGVector(dx:0.8,dy:0.5)).press(forDuration:0.05,
+      thenDragTo:viewport.coordinate(withNormalizedOffset:CGVector(dx:0.2,dy:0.5)))
+    XCTAssertTrue(app.otherElements["face.Fade"].waitForExistence(timeout:5))
+    _=viewportBytes("flow-lifecycle-real-fade-destination")
+    viewport.coordinate(withNormalizedOffset:CGVector(dx:0.2,dy:0.5)).press(forDuration:0.05,
+      thenDragTo:viewport.coordinate(withNormalizedOffset:CGVector(dx:0.8,dy:0.5)))
+    XCTAssertTrue(app.otherElements["face.Flow"].waitForExistence(timeout:5))
+    let returned=viewportBytes("flow-lifecycle-face-return-start")
+    Thread.sleep(forTimeInterval:1.2)
+    pairs.append((returned,viewportBytes("flow-lifecycle-face-return-later")))
+    launch(["--face","Flow","--animation-test","--flow-fixed-glyphs","--reduce-motion"])
+    let frozen=viewportBytes("flow-lifecycle-reduced-before")
+    backgroundAndReactivate("reduced")
+    let after=viewportBytes("flow-lifecycle-reduced-after")
+    Thread.sleep(forTimeInterval:1.2)
+    let later=viewportBytes("flow-lifecycle-reduced-later")
+    launch(["--face","Flow","--flow-fixed-glyphs","--flow-mask"])
+    let mask=viewportBytes("flow-lifecycle-own-mask")
+    for pair in pairs { XCTAssertNotEqual(fixedFlowBodyPixels(pair.0,mask:mask),fixedFlowBodyPixels(pair.1,mask:mask)) }
+    XCTAssertEqual(fixedFlowBodyPixels(frozen,mask:mask),fixedFlowBodyPixels(after,mask:mask))
+    XCTAssertEqual(fixedFlowBodyPixels(after,mask:mask),fixedFlowBodyPixels(later,mask:mask))
+    let attachment=XCTAttachment(data:try JSONSerialization.data(withJSONObject:states,options:[.prettyPrinted,.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="flow-lifecycle-background-states";attachment.lifetime = .keepAlways;add(attachment)
+    #else
+    throw XCTSkip("Synthetic fixture restricted to managed simulators")
+    #endif
+  }
+}
