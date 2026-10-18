@@ -41,7 +41,7 @@ static float3 prismSlab(float3 behind,float2 world,float2 center,float angle,
     float2 world=(uv-0.5)*600.0;
     world+=float2(sin(time*0.07)*4.0,(cos(time*0.06)-1.0)*3.0);
     float rotation=sin(time*0.035)*0.012;
-    float3 tint=theme<0.5 ? float3(0.40,0.37,0.95):float3(0.07,0.60,0.66);
+    float3 tint=theme<0.5 ? float3(0.40,0.40,0.95):float3(0.07,0.60,0.66);
     if(theme>1.5) tint=float3(0.70,0.71,0.65);
     float3 scene=tint*0.65;
     scene=prismSlab(scene,world,float2(-80,-140),0.75+rotation,float2(350,85),tint,0.98);
