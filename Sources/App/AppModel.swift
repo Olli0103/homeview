@@ -324,6 +324,17 @@ final class AppModel {
       selectedTimer = timer.id
       route = .app(.timers)
     }
+    if args.contains("--uitesting"), args.contains("--multiple-timers-fixture") {
+      let fixtures:[(String,Double,Double)] = [("Tea",300,180),("Pasta",600,480),("Bread",900,600)]
+      data.timers=fixtures.enumerated().map { index,value in
+        var timer=Countdown(title:value.0,seconds:value.1)
+        timer.id=UUID(uuidString:String(format:"00000000-0000-0000-0000-%012d",index+101))!
+        timer.deadline=nil;timer.pausedRemaining=value.2
+        return timer
+      }
+      selectedTimer=nil
+      route = .app(.timers)
+    }
     #if !os(watchOS)
       if args.contains("--uitesting"), let index = args.firstIndex(of: "--photo-layout-fixture"),
          args.indices.contains(index + 1), let fixture = PhotoLayoutFixture.make(args[index+1]) {
