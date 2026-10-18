@@ -63,7 +63,7 @@ struct HomeModularFace: View {
               } label: {
                 Text("\(model.data.home.temperature)").font(
                   .system(size: 164, weight: .medium, design: .rounded)
-                ).frame(maxWidth: .infinity, maxHeight: .infinity)
+                ).offset(x:2,y:13.5).frame(maxWidth: .infinity, maxHeight: .infinity)
                   .contentShape(Rectangle())
               }.accessibilityIdentifier("home.thermostat")
               HStack(alignment: .center) {
