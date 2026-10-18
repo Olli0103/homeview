@@ -467,18 +467,20 @@ struct CalendarFace: View {
   @Environment(AppModel.self) private var model
   var body: some View {
     let month = model.monthLayout
+    let accent = Color(red: 0.992, green: 0.322, blue: 0.322)
+    let dayColor = Color(red: 0, green: 0.4, blue: 1)
     ZStack {
       Color(white: 0.92)
-      FaceDateNumber(value: model.dateLabel("d"), size: 460)
-        .foregroundStyle(Color(red: 1, green: 0.3, blue: 0.3)).position(x: 274, y: 339)
+      FaceDateNumber(value: model.dateLabel("d"), size: 460, calendarStyle: true)
+        .foregroundStyle(accent).position(x: 274, y: 339)
         .accessibilityHidden(true)
       VStack(spacing: 22) {
         HStack {
           Text(model.dateLabel("MMMM yyyy"))
           Spacer()
           Text(model.clock, style: .time).environment(\.timeZone, model.displayTimeZone)
-        }.font(.system(size: 37, weight: .medium)).foregroundStyle(
-          Color(red: 1, green: 0.3, blue: 0.3))
+        }.padding(.horizontal, 5).font(.system(size: 37, weight: .medium)).foregroundStyle(
+          accent)
         VStack(spacing: 14) {
           HStack(spacing: 0) {
             ForEach(Array(["S", "M", "T", "W", "T", "F", "S"].enumerated()), id: \.offset) {
@@ -495,19 +497,22 @@ struct CalendarFace: View {
               let selected = month.day(at: i) == month.selectedDay
               Text("\(month.displayDay(at: i))").font(.system(size: 37, weight: .medium))
                 .frame(width: 60, height: 53)
-                .background(
-                  selected ? Color(red: 0, green: 0.16, blue: 0.36) : .clear, in: Circle()
-                )
+                .background {
+                  if selected {
+                    Circle().fill(Color(red: 0, green: 0.141, blue: 0.322))
+                      .frame(width: 64, height: 64)
+                  }
+                }
                 .foregroundStyle(
                   selected
-                    ? .white : Color(red: 0, green: 0.36, blue: 1).opacity(current ? 1 : 0.27)
+                    ? .white : dayColor.opacity(current ? 1 : 0.27)
                 )
                 .accessibilityIdentifier(
                   selected ? "calendar.face.selected" : "calendar.face.cell.\(i)")
                 .accessibilityValue(selected ? "Today":"")
             }
           }
-        }.padding(.top, 12).foregroundStyle(Color(red: 0, green: 0.36, blue: 1))
+        }.padding(.top, 12).foregroundStyle(dayColor)
       }.padding(.horizontal, 48).padding(.top, 43).padding(.bottom, 42).frame(
         maxHeight: .infinity, alignment: .top)
     }.onTapGesture { model.navigate(.calendar) }
@@ -519,10 +524,11 @@ struct CalendarFace: View {
 private struct FaceDateNumber: View {
   let value: String
   let size: CGFloat
+  var calendarStyle = false
   var body: some View {
     Group {
       if value == "1" {
-        DateOneGlyph().frame(width: size * 0.315, height: size * 0.72)
+        DateOneGlyph(calendarStyle: calendarStyle).frame(width: size * 0.315, height: size * 0.72)
       } else {
         Text(value).font(.system(size: size, weight: .medium, design: .rounded))
           .lineLimit(1).minimumScaleFactor(0.55)
@@ -531,7 +537,30 @@ private struct FaceDateNumber: View {
   }
 }
 private struct DateOneGlyph: Shape {
+  var calendarStyle = false
   func path(in rect: CGRect) -> Path {
+    // UI08 uses a narrower stem and shallower shoulder than UI01. Keep the
+    // existing Modular silhouette unchanged; these are own native primitives.
+    if calendarStyle {
+      var p = Path()
+      p.move(to: CGPoint(x: 0.68, y: 0))
+      p.addLine(to: CGPoint(x: 0.92, y: 0))
+      p.addQuadCurve(to: CGPoint(x: 0.98, y: 0.025), control: CGPoint(x: 0.98, y: 0))
+      p.addLine(to: CGPoint(x: 0.98, y: 0.975))
+      p.addQuadCurve(to: CGPoint(x: 0.92, y: 1), control: CGPoint(x: 0.98, y: 1))
+      p.addLine(to: CGPoint(x: 0.68, y: 1))
+      p.addQuadCurve(to: CGPoint(x: 0.63, y: 0.975), control: CGPoint(x: 0.63, y: 1))
+      p.addLine(to: CGPoint(x: 0.63, y: 0.16))
+      p.addLine(to: CGPoint(x: 0.12, y: 0.31))
+      p.addQuadCurve(to: CGPoint(x: 0.015, y: 0.275), control: CGPoint(x: 0.015, y: 0.31))
+      p.addLine(to: CGPoint(x: 0.015, y: 0.235))
+      p.addQuadCurve(to: CGPoint(x: 0.055, y: 0.19), control: CGPoint(x: 0.015, y: 0.21))
+      p.addLine(to: CGPoint(x: 0.61, y: 0.02))
+      p.addQuadCurve(to: CGPoint(x: 0.68, y: 0), control: CGPoint(x: 0.65, y: 0))
+      p.closeSubpath()
+      return p.applying(CGAffineTransform(scaleX: rect.width, y: rect.height))
+        .offsetBy(dx: rect.minX, dy: rect.minY)
+    }
     var p = Path()
     p.move(to: CGPoint(x: 0.68, y: 0))
     p.addLine(to: CGPoint(x: 0.94, y: 0))
