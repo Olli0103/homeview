@@ -430,3 +430,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: Systemschalter am aktuellen App-Paket
 
 [Zusatznachweis](prisms-current-system-reduce-motion.md): zwei native Läufe auf exakt dem veröffentlichten Palette-App-Paket; je Gerät16 ganze Standbilder exakt über zwei echte OS-Schalterzyklen,40 eigene PNGs gesichtet und Ausgangswert aus rückgelesen. App-/Standard-Testquellen unverändert; keine neue SDK-/Gesamtsuiten-/Original-/Hardwareabnahme.
+
+
+## 18. Oktober: begrenzte Flow-Dauerbeobachtung
+
+[Flow-Zusatznachweis](flow-five-minute.md): je Simulator fünf echte Minuten mit festen Ziffern und drei bewegten/farbigen Körperpaaren; zwei native Ausführungen. Getrennt601 Simulationssekunden am unveränderten40×40-Gitter in drei Impulsszenarien. Keine neue App-Implementierung, SDK-/Gesamtsuiten-/Original-/Hardwareabnahme.

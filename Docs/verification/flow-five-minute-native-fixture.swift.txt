@@ -1,0 +1,49 @@
+extension HomeViewUITests {
+  // Optional long-running synthetic simulator proof; intentionally outside the default suite.
+  @objc func testFlowGlassKeepsMovingInsideFixedGlyphsForFiveWallClockMinutes() throws {
+    #if targetEnvironment(simulator)
+    launch(["--face","Flow","--animation-test","--flow-fixed-glyphs"])
+    let start=ProcessInfo.processInfo.systemUptime
+    var pairs=[(Data,Data)](),timings=[[String:Double]]()
+    for seconds in [60.0,180.0,300.0] {
+      while ProcessInfo.processInfo.systemUptime-start < seconds {
+        Thread.sleep(forTimeInterval:max(0,min(10,seconds-(ProcessInfo.processInfo.systemUptime-start))))
+      }
+      let before=ProcessInfo.processInfo.systemUptime-start
+      let first=viewportBytes("flow-five-minute-\(Int(seconds))-start")
+      Thread.sleep(forTimeInterval:1.2)
+      let second=viewportBytes("flow-five-minute-\(Int(seconds))-later")
+      pairs.append((first,second))
+      timings.append(["requested_seconds":seconds,"first_capture_not_before":before,
+        "second_capture_completed_after":ProcessInfo.processInfo.systemUptime-start])
+      XCTAssertGreaterThanOrEqual(before,seconds)
+    }
+    launch(["--face","Flow","--flow-fixed-glyphs","--reduce-motion"])
+    let frozen=viewportBytes("flow-five-minute-reduced-start")
+    Thread.sleep(forTimeInterval:1.2)
+    let frozenLater=viewportBytes("flow-five-minute-reduced-later")
+    launch(["--face","Flow","--flow-fixed-glyphs","--flow-mask"])
+    let mask=viewportBytes("flow-five-minute-own-mask")
+    for (index,pair) in pairs.enumerated() {
+      let first=fixedFlowBodyPixels(pair.0,mask:mask)
+      let second=fixedFlowBodyPixels(pair.1,mask:mask)
+      XCTAssertNotEqual(first,second,"Fluid must still move inside unchanged own glyph bodies at checkpoint \(index)")
+      for pixels in [first,second] {
+        let p=[UInt8](pixels)
+        var colored=0
+        for i in stride(from:0,to:p.count,by:4) {
+          let rgb=[Int(p[i]),Int(p[i+1]),Int(p[i+2])]
+          if rgb.max()!>70 && rgb.max()!-rgb.min()!>35 { colored+=1 }
+        }
+        XCTAssertGreaterThan(Double(colored)/Double(max(1,p.count/4)),0.12,
+          "The own glyph interiors must retain visible color, not just changing monochrome noise")
+      }
+    }
+    XCTAssertEqual(fixedFlowBodyPixels(frozen,mask:mask),fixedFlowBodyPixels(frozenLater,mask:mask))
+    let attachment=XCTAttachment(data:try JSONSerialization.data(withJSONObject:timings,options:[.prettyPrinted,.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="flow-five-minute-monotonic-timings";attachment.lifetime = .keepAlways;add(attachment)
+    #else
+    throw XCTSkip("Optional synthetic proof is restricted to managed simulators")
+    #endif
+  }
+}

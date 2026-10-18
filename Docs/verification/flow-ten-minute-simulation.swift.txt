@@ -1,0 +1,39 @@
+import Foundation
+@main struct Probe {
+ static func main() throws {
+  let output=URL(fileURLWithPath:CommandLine.arguments[1],isDirectory:true)
+  try FileManager.default.createDirectory(at:output,withIntermediateDirectories:false)
+  let checkpoints:Set<Int>=[600,1200,2400,6000,12000]
+  var reports:[[String:Any]]=[]
+  for mode in ["idle","bounded-touch-bursts","extreme-alternating-touch"] {
+   var sim=FlowSimulation(side:40)
+   var previous:[SIMD3<Float>]=[]
+   for step in 1...12020 {
+    let sign:Float=(step/120)%2==0 ? 1 : -1
+    let impulse:SIMD2<Float>
+    if mode=="idle" { impulse = .zero }
+    else if mode=="bounded-touch-bursts" { impulse = step%400<40 ? SIMD2(0.4*sign,-0.2*sign) : .zero }
+    else { impulse = SIMD2(sign*Float.greatestFiniteMagnitude,-sign*Float.greatestFiniteMagnitude) }
+    sim.step(time:Float(step-1)/20,delta:0.05,impulse:impulse)
+    if step==12000 { previous=sim.dye }
+    if checkpoints.contains(step) || step==12020 {
+     let allFinite=sim.velocity.allSatisfy{$0.x.isFinite && $0.y.isFinite} && sim.dye.allSatisfy{$0.x.isFinite && $0.y.isFinite && $0.z.isFinite}
+     let bounded=sim.dye.allSatisfy{(0...1).contains($0.x) && (0...1).contains($0.y) && (0...1).contains($0.z)}
+     let wall=sim.velocity==FlowSimulation.velocityBoundary(sim.velocity,side:sim.side)
+     let channels=(0..<3).map { c -> [String:Any] in
+      let vals=sim.dye.map{Double($0[c])}.sorted();let mean=vals.reduce(0,+)/Double(vals.count)
+      return ["min":vals.first!,"max":vals.last!,"range":vals.last!-vals.first!,"p05":vals[vals.count/20],"p95":vals[vals.count*19/20],"mean":mean,"variance":vals.map{pow($0-mean,2)}.reduce(0,+)/Double(vals.count)]
+     }
+     let rangePass=channels.prefix(2).allSatisfy{($0["range"] as! Double)>0.25}
+     let live=step==12020 ? previous != sim.dye : true
+     let row:[String:Any] = ["mode":mode,"steps":step,"simulated_seconds":Double(step)/20,"side":sim.side,"finite":allFinite,"RGB_in_0_to_1":bounded,"wall_boundary_exact":wall,"existing_R_G_range_above_025":rangePass,"channels":channels,"late_one_second_dye_changed":live]
+     reports.append(row)
+     let bytes=sim.dye.flatMap { [UInt8(min(255,max(0,$0.x*255))),UInt8(min(255,max(0,$0.y*255))),UInt8(min(255,max(0,$0.z*255)))] }
+     try Data(bytes).write(to:output.appendingPathComponent("\(mode)-\(step).rgb"))
+     print(mode,step,allFinite,bounded,wall,rangePass,live);fflush(stdout)
+    }
+   }
+  }
+  let data=try JSONSerialization.data(withJSONObject:reports,options:[.prettyPrinted,.sortedKeys]);try data.write(to:output.appendingPathComponent("metrics.json"))
+ }
+}
