@@ -222,3 +222,10 @@ vollständige Original-Unterbrechungsabnahme; HomeKit bleibt gesperrt.
 139 Modelltests, zwölf gezielte iPad-/iPhone-Ausführungen und fünf SDKs auf
 identischen Quellen. [Eigene Bilder, Umfang und Grenzen](calendar-critical-dates.md).
 #22 bleibt offen; sichtbare UI08-Geometrie wird getrennt korrigiert.
+
+
+## Kalender-UI08-Geometrie
+
+Kalender-Eins, Kopfzeile, Heute-Kreis und lokale Farben getrennt kalibriert.
+139 Modelltests, zehn gezielte UI-Ausführungen und fünf SDKs; Modular-Form
+unverändert. [Eigener Bildvergleich und offene Grenzen](calendar-ui08.md). #22 offen.

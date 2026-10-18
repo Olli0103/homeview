@@ -1,0 +1,112 @@
+{
+  "code_commit": "eb308e8ab853cf5449916fc42f72070867ace8a3",
+  "feature_commit": "2fc2a65023ab0d34e9429aa75a7768f9c490acec",
+  "source_digest": "55382a5975a50de93888821303f4d41a94f6093f2cbd6af69a9e64824067fe6d",
+  "source_files": 133,
+  "source_before_after_match": true,
+  "source_matches_feature_and_merge_bytes": true,
+  "core_passed": 139,
+  "core_repeated_after_feature_and_merge_commit": true,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    },
+    {
+      "device": "iPhone",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS 27.0 / 24A434"
+    }
+  ],
+  "ui_executions": 10,
+  "unique_cases": 5,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:35:54.344056+00:00",
+      "ended": "2026-10-18T00:35:59.807044+00:00",
+      "log_sha256": "473c31e8ba7cfa4afbebf8156c8a4fb17f53aaa5c64884ca935de8ea81b79f66"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T00:35:59.807527+00:00",
+      "ended": "2026-10-18T00:36:04.203293+00:00",
+      "log_sha256": "269f5cc3f8a3e344a4b793f714fdc88669edf36d2ddc776d7fc2ec801fee0b41"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:36:04.203826+00:00",
+      "ended": "2026-10-18T00:36:08.380891+00:00",
+      "log_sha256": "f320cc1b154bb70bfe8690ff67fdcf073399760561acc09d5857a4f05a6a6c58"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:36:08.381385+00:00",
+      "ended": "2026-10-18T00:36:12.569699+00:00",
+      "log_sha256": "30a13bfe152ced4e33ed4418981bf9b8e102bc2d3080a5c0e3fe55591d7b0972"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T00:36:12.570186+00:00",
+      "ended": "2026-10-18T00:36:13.917258+00:00",
+      "log_sha256": "44fd8ee70bfcaf70eb8201c4453b78db5c04d444921d56a4b2f924ace045a69b"
+    }
+  ],
+  "full_ui_suite_claimed": false,
+  "ui_scope": [
+    "April UI08 reference month",
+    "leap day and six-week August",
+    "local year boundary in Los Angeles and Kiritimati",
+    "agenda selection independent of face local today",
+    "unchanged Modular date-one and real editor interaction"
+  ],
+  "visual_review_both_devices": true,
+  "original_visual_accepted": false,
+  "original_selection_policy_accepted": false,
+  "other_locales_accepted": false,
+  "hardware_or_eventkit_accepted": false,
+  "real_calendar_store_accessed": false,
+  "modular_default_shape_unchanged": true,
+  "calendar_changes": [
+    "narrower stem and shallower rounded shoulder using own native geometry",
+    "five-point additional header inset without changing grid geometry",
+    "64-point today circle independent of text cell height",
+    "local calendar red, blue and navy calibration"
+  ],
+  "remaining_original_gaps": [
+    "exact typography and edge rendering",
+    "other dates and locales not original-accepted",
+    "full original selection policy unproved"
+  ],
+  "screenshot_manifest": "../screenshots/goal-20261018/calendar-ui08-manifest.json",
+  "own_comparison": "../screenshots/goal-20261018/calendar-ui08-own-comparison.json",
+  "pilot_not_added_to_current_counts": true,
+  "logs": {
+    "calendar-ui08-calibrated-core.log": "a9dcae073c752104eca807595629e03e803edc24d52446be1cc7b87117d0fbe3",
+    "calendar-ui08-feature-post-commit-core.log": "5a9e91044c2e406643d85c0137e72c58d08bc375c96f87f513eb5572d3ef693e",
+    "calendar-ui08-integrated-core.log": "53de5b80f07ef6b369086d482b817889f0e6f4155f27bfdae6db66cd007a37a1",
+    "calendar-ui08-calibrated-build.log": "c34b0c4dd66584ac37d5d127610193309e9219d522c224c486d33e3b81a8e217",
+    "calendar-ui08-calibrated-sdks.log": "29abdc23e9a985e5535b0306837457c24b5ff441a6c1fe70f2dc92545fc4fd3f"
+  },
+  "terminal_summary_hashes": {
+    "iPad": "a58efff10cae2640bee6d08d680090d7a61dc7b0769bb1da125b8ad1f5b7cfe9",
+    "iPhone": "2df21526d8d6cb8bbb3b9c894821c16004d3737af60b40c98828c4bdc42582cd"
+  }
+}

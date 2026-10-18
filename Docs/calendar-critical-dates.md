@@ -40,7 +40,12 @@ Alle 14 eigenen Viewports beider Größen wurden gesichtet.
 
 ![Eigene synthetische Kalenderansichten](screenshots/goal-20261018/calendar-critical-contact.jpg)
 
-## Offene Originalabweichungen
+## Historische Originalabweichungen dieses Prüfschritts
+
+Die nachfolgende [getrennte UI08-Kalibrierung](calendar-ui08.md) korrigiert Eins,
+Kopfzeile, Heute-Kreis und lokale Farben. Die folgenden Angaben gehören zum
+oben belegten unveränderten Datums-Prüfstand.
+
 
 UI08 bleibt der belegte englische, sonntags beginnende Aprilzustand. Der direkte
 private Bildvergleich zeigt noch eine zu breite große rote Eins mit zu tiefer
