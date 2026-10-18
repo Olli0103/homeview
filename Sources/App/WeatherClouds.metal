@@ -58,7 +58,9 @@ static float3 weatherScene(float2 uv,float time,float cover,float night) {
         float layeredLight=0.18+0.82*exp(-(density*0.40+nearShadow*0.50+farShadow*0.90)*2.6);
         float nightLight=0.30+0.70*exp(-nearShadow*2.1);
         float light=mix(nightLight,layeredLight,daylight);
-        float3 color=mix(float3(0.45,0.54,0.67),float3(1.0,0.995,0.98),light);
+        // Lift only the daylight shadow floor; keep density, light and night unchanged.
+        float3 shadow=mix(float3(0.45,0.54,0.67),float3(0.64,0.72,0.83),daylight);
+        float3 color=mix(shadow,float3(1.0,0.995,0.98),light);
         color*=1.0-smoothstep(0.05,0.45,uv.y)*0.16;
         color=mix(color,color*float3(0.34,0.39,0.57),night*0.7);
         float opacity=1.0-exp(-density*0.85);
