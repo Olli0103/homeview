@@ -28,6 +28,32 @@ struct HomeModularFace: View {
   var body: some View {
     ZStack {
       PrismBackground(theme: model.data.theme)
+      tileComposition
+    }.foregroundStyle(.white).buttonStyle(.plain)
+  }
+  @ViewBuilder private var tileComposition: some View {
+    #if os(visionOS)
+    tiles
+    #else
+    if #available(macOS 26.0, *) {
+      tiles.environment(\.hostedHomeGlass,true)
+        .backgroundPreferenceValue(HomeGlassAnchors.self) { surfaces in
+          GeometryReader { geometry in
+            GlassEffectContainer(spacing:0) {
+              ZStack(alignment:.topLeading) {
+                ForEach(Array(surfaces.enumerated()),id:\.offset) { entry in
+                  let rect=geometry[entry.element.bounds]
+                  entry.element.material.frame(width:rect.width,height:rect.height)
+                    .position(x:rect.midX,y:rect.midY)
+                }
+              }.frame(width:geometry.size.width,height:geometry.size.height)
+            }
+          }.allowsHitTesting(false).accessibilityHidden(true)
+        }
+    } else { tiles }
+    #endif
+  }
+  private var tiles: some View {
       VStack(spacing: 10) {
         HStack(spacing: 10) {
           Tile(glass: true) {
@@ -93,7 +119,6 @@ struct HomeModularFace: View {
           .accessibilityIdentifier("home.entrylight")
         }
       }.padding(10)
-    }.foregroundStyle(.white).buttonStyle(.plain)
   }
   private func homeTile(
     _ icon: String, _ title: String, _ subtitle: String, action: @escaping () -> Void

@@ -284,6 +284,22 @@ final class HomeViewUITests: XCTestCase {
     tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "66°")
   }
+  // Regression for material-composition drift: retain exact equality, including
+  // across independent cold launches. No retry or RGB tolerance.
+  func testHomePrismColdLaunchesKeepFrozenPixelsExact() {
+    defer { app.terminate() }
+    var first:Data?
+    for cycle in 0..<4 {
+      launch(["--face","Home Modular","--animation-test","--reduce-motion"])
+      for frame in 0..<8 {
+        if frame>0 { Thread.sleep(forTimeInterval:1.5) }
+        let pixels=viewportPixels(viewportBytes("home-prism-cold-c\(cycle)-frozen-\(frame)"))
+        if let first { XCTAssertEqual(pixels,first,"Frozen viewport changed at cold launch \(cycle), frame \(frame)") }
+        else { first=pixels }
+      }
+      app.terminate()
+    }
+  }
   func testHomePrismMotionStopsWithReduceMotion() {
     launch(["--face","Home Modular","--animation-test"])
     let moving=viewportPixels(viewportBytes("home-prism-moving-start"))
