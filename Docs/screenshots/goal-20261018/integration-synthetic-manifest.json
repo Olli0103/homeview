@@ -1,0 +1,458 @@
+[
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testAlbumDisconnectStopsFurtherRefreshAndBackgroundLocksPrivateChoices()",
+    "state": "screen-album-disconnected-no-old-copies",
+    "sha256": "e963d06cf3b14bc8f89c0e7db3c0c4eb00705209ea6ffc85ae93a6b4da79264f",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-01.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testAlbumWindowPersistsAndRestoresOnlyTheKnownScopeWithoutCatalogueReads()",
+    "state": "screen-album-scoped-cache-after-relaunch",
+    "sha256": "d508541a10a4e329007f89a46ce8480e4d827e9c5eee45f18d3a802e9ce9c905",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-02.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testCalendarYearBoundaryFollowsTheChosenTimeZoneNotUTC()",
+    "state": "screen-calendar-local-january1-kiritimati",
+    "sha256": "8c071228f2e2528bf219566c983400cbae940204748de1339e48fca3e33f6d67",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-03.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testConnectedMusicAndWeatherDoNotUseHomeKit()",
+    "state": "connected-weather-fixture",
+    "sha256": "420d23daa6fdb7621910bfaac4a8cb0373ae8050f279b888e5bf0bba2c1be7b9",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-04.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testDemoDoorbellBackgroundDoesNotRestoreTheOldPersonalPage()",
+    "state": "screen-doorbell-background-personal-page-stays-locked",
+    "sha256": "2248d3bb2c94a8f9916a4f1294e80a2b6c8dc10c70cfa1796386e5324bf50f27",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-05.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testDemoDoorbellPreservesTheRunningTimerAndBlocksUnderlyingControls()",
+    "state": "screen-doorbell-dismiss-running-timer-preserved",
+    "sha256": "68c3e69f7e243904cfad85422bacfb2f67af14462f1d5a48371a93ffa6a8c2ae",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-06.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testHorizontalDominantTopDiagonalChangesFaceInsteadOfOpeningAssistant()",
+    "state": "screen-navigation-diagonal-horizontal-after",
+    "sha256": "aa7bda8506b73c1826b797f2702cd1d7fd55f227c5f46825d36d6528b73179e6",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-07.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testLocalTimersReloadOwnStoredDeadlinesAfterProcessRestart()",
+    "state": "screen-timer-lifecycle-restart-peers-preserved",
+    "sha256": "5b982d7b1b7a235691bb6a817830441dc7c59193b7e12f809679ca2cc0728d73",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-08.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "state": "modular-weather-missing-opened-city",
+    "sha256": "6c63d949e5619252771fb6d7c2115815c6ebecd15f58dbce8f5acb3a7f7f5cbf",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-09.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testMultipleTimerFallbackAndDeletionKeepTheDisplayedChoice()",
+    "state": "screen-timer-selection-pasta-preserved",
+    "sha256": "bad524f84fd0ec338ca861ca741fc7cfda3a5355073dc08194b9b1cb5207ace7",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-10.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testNativeBrowserRecipeExtractionCookingAndPinning()",
+    "state": "native-browser-recipe-library",
+    "sha256": "4b4661f677ba986b94e87fc8d78bd8a75ab1b14c49e6ec9c81bcc17d0fc410bc",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-11.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testPersonalMediaLayoutPersistsOnlyForItsProfile()",
+    "state": "personal-ui16-other-profile-unchanged",
+    "sha256": "e74f62f140e3e9167f468de3478e4bda4161fed80f10ee0e65fff29f9101ab30",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-12.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testPersonalWeatherGridScrollKeepsSourceLayoutAndOpensWeather()",
+    "state": "screen-personal-ui41-weather-grid-scrolled",
+    "sha256": "db60c5895f4013a0e019f21833ee2d48798f78f95ee954ae10d72c32529fefbd",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-13.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testPhotoManualCropCanOverrideAndRestoreFullImageFraming()",
+    "state": "photo-layout-manual-crop",
+    "sha256": "0716786bfb496337084d6003f6b2bcdb44864325a9de50a30a93bd9575bc2800",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-14.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testPhotoNativeAlphaReplayUsesReadableMediumTopAndActuallyOccludesInk()",
+    "state": "screen-photo-ink-replay-glass",
+    "sha256": "eb3a60aeeabdc05185c4c109d02087492af1aa304ee83584034e0e6fd6ffe1a1",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-15.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testRunningTimerContinuesWithHiddenControlsAndPausesAfterTouch()",
+    "state": "screen-timer-idle-running-then-paused",
+    "sha256": "cd6d4d8e3e4440254732859574f1bf9d26b9bebaf9fb9fd846267293cee00e61",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-16.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testUnknownFaceWidgetPreservesSiblingChoicesAndStyleAcrossRestart()",
+    "state": "face-recovery-future-widget-after-process-restart",
+    "sha256": "8a447846b20ec5b15f0ec218b16b9f489f882e72ef8fbcaa40e78caaf0ad751b",
+    "pixels": [
+      1592,
+      1592
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-17.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testViewportEdgeGesturesOpenTheirActualDestinations()",
+    "state": "screen-gesture-top-left-opens-assistant",
+    "sha256": "791ab5254b7e46c3eef8b7299d6c98d89c4d76781cc0f56c4716975345ab3529",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-18.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPad",
+    "test": "HomeViewUITests/testWeatherLateCityResultCannotDismissReopenedEditor()",
+    "state": "weather-app-late-result-new-editor-preserved",
+    "sha256": "1a61009ac38c466f63dcdc722fa4843ea86297faef2b4f7c23856caa08dfce22",
+    "pixels": [
+      1640,
+      2360
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPad-19.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testAlbumDisconnectStopsFurtherRefreshAndBackgroundLocksPrivateChoices()",
+    "state": "screen-album-disconnected-no-old-copies",
+    "sha256": "86442cb7dc11f6e8c3f29c272f7b6b291edba8fe81b04fcf1e860ee8b1981632",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-01.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testAlbumWindowPersistsAndRestoresOnlyTheKnownScopeWithoutCatalogueReads()",
+    "state": "screen-album-scoped-cache-after-relaunch",
+    "sha256": "a0c6248754cabbed55a67476993d3fc8a0f0e05d16c46d7416523c48c12725dd",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-02.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testCalendarYearBoundaryFollowsTheChosenTimeZoneNotUTC()",
+    "state": "screen-calendar-local-january1-kiritimati",
+    "sha256": "363f897d6c3218361fe0d25c2d32009a5f7ae671b23c7960a1b3dec5f254fb2f",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-03.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testConnectedMusicAndWeatherDoNotUseHomeKit()",
+    "state": "connected-weather-fixture",
+    "sha256": "0289068a1d0b2c25edc3f7a0a68a2c6cfd0449c489f475c04478a319902b3129",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-04.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testDemoDoorbellBackgroundDoesNotRestoreTheOldPersonalPage()",
+    "state": "screen-doorbell-background-personal-page-stays-locked",
+    "sha256": "bf37ce3a405b7a913bb18289623881a29b6bcecd78b9d09cbb7cfe418e72261b",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-05.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testDemoDoorbellPreservesTheRunningTimerAndBlocksUnderlyingControls()",
+    "state": "screen-doorbell-dismiss-running-timer-preserved",
+    "sha256": "54b478bd47113643dd5e6133f97580dc50d83d41e26ef621924dce17d8fb5e5e",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-06.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testHorizontalDominantTopDiagonalChangesFaceInsteadOfOpeningAssistant()",
+    "state": "screen-navigation-diagonal-horizontal-after",
+    "sha256": "1bf4c1369b6e4b62ad3f4c4c7db114a6e3b2a688c8be3824ede737abb8fbfbdf",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-07.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testLocalTimersReloadOwnStoredDeadlinesAfterProcessRestart()",
+    "state": "screen-timer-lifecycle-restart-peers-preserved",
+    "sha256": "2df545c5c3a70a8f321f66acb55843935c698e5a880fd0b40f09f570bb183cab",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-08.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testModularWeatherConnectedAndMissingValuesStayVisibleWithoutDemoFallback()",
+    "state": "modular-weather-missing-opened-city",
+    "sha256": "4a70731fa2a887c965b9127f9dd1d0da93ce0d1ecd51e6a43ea801662e7817d6",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-09.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testMultipleTimerFallbackAndDeletionKeepTheDisplayedChoice()",
+    "state": "screen-timer-selection-pasta-preserved",
+    "sha256": "242d516c97689ffc286ef57ac8fb985ad2e300b3ccbcf21c7379c60a20b46838",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-10.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testNativeBrowserRecipeExtractionCookingAndPinning()",
+    "state": "native-browser-recipe-library",
+    "sha256": "a5f1705bdc353ff03cd9750318f6b7ff44a8dee7d4b6dc7a6cf301fded95b1f9",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-11.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testPersonalMediaLayoutPersistsOnlyForItsProfile()",
+    "state": "personal-ui16-other-profile-unchanged",
+    "sha256": "f152ff94bc8e52bc9e8e6a84504205b58fc1d6212464c0cff23db94c2949c735",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-12.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testPersonalWeatherGridScrollKeepsSourceLayoutAndOpensWeather()",
+    "state": "screen-personal-ui41-weather-grid-scrolled",
+    "sha256": "92c7064195c11494ee984c9c3185b563199c2c91b2238400233a26b4a9644ecc",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-13.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testPhotoManualCropCanOverrideAndRestoreFullImageFraming()",
+    "state": "photo-layout-manual-crop",
+    "sha256": "960b5daa70a50622d4ae3d75966fc94acc0b632441a87ddadb765856a22d8399",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-14.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testPhotoNativeAlphaReplayUsesReadableMediumTopAndActuallyOccludesInk()",
+    "state": "screen-photo-ink-replay-glass",
+    "sha256": "fa463e613afd07a93ac91d159eda67ca8a6f12c28afa391b683dddc05da8175e",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-15.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testRunningTimerContinuesWithHiddenControlsAndPausesAfterTouch()",
+    "state": "screen-timer-idle-running-then-paused",
+    "sha256": "54f9ecfd3299dae335d885f01461fb60da1e4621e17bcd51005979761b45a51c",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-16.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testUnknownFaceWidgetPreservesSiblingChoicesAndStyleAcrossRestart()",
+    "state": "face-recovery-future-widget-after-process-restart",
+    "sha256": "be892aba6809d22cae7ed2eea0943df4cf807cbabea9d2ec2ab252a167529560",
+    "pixels": [
+      1134,
+      1134
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-17.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testViewportEdgeGesturesOpenTheirActualDestinations()",
+    "state": "screen-gesture-top-left-opens-assistant",
+    "sha256": "9863431d79d37608b5742b1bc63960059d20e62d5dbd8c3ee0e64eb4c2a2ba0e",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-18.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  },
+  {
+    "device": "iPhone",
+    "test": "HomeViewUITests/testWeatherLateCityResultCannotDismissReopenedEditor()",
+    "state": "weather-app-late-result-new-editor-preserved",
+    "sha256": "46150e7ad2fa231e585c3c11085e32eb7584626eba64349de21e0900e1f48451",
+    "pixels": [
+      1206,
+      2622
+    ],
+    "path": "Docs/screenshots/goal-20261018/integration-synthetic-iPhone-19.png",
+    "source_digest": "1b40f13de0e05ee1ea8f155e0de3546a8754641c2dca8ded6c262dee1ba8ac7a"
+  }
+]

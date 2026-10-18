@@ -5,6 +5,16 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Gemeinsamer begrenzter Integrationstest · 18. Oktober 2026
+
+[40 synthetische UI-Ausführungen](integration-synthetic.md) auf unverändertem
+App-Stand: 20 ausgewählte Fälle je iPad/iPhone, keine Fehler/Skips oder
+XCTest-Runtime-Warnungen. 38 repräsentative eigene PNGs über sechs Kontaktbögen
+gesichtet. Keine Vollsuite: vier native Systemalarmfälle ausgeschlossen, weitere
+112 Fälle nicht ausgewählt. Frühere 166 Modelltests und fünf SDK-Builds gehören
+zum identischen Digest; keine fünf weiteren SDK-Builds dieses Laufs behauptet.
+Original-/Hardwarekriterien und die historische QA-01-Abnahme bleiben unverändert.
+
 ### Zusätzliche begrenzte Nachweise · 18. Oktober 2026
 
 | Paket | Modelltests | Gezielte UI-Ausführungen | SDK-Builds |
