@@ -450,3 +450,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: begrenzte UI05-Lichtspur
 
 [Getrennte eigene Zeichenebene](weather-light-overlay.md):166 Modelltests,22 gezielte iPad-/iPhone-Fälle und fünf SDKs bestanden;78 eigene PNGs auf16 unterschiedlichen Kontaktbögen gesichtet. Ursprüngliche Lichtprofil-/Exaktgrenzen erfüllt,alter Wolken-/Glasshader bytegleich. Zwei direkte Shaderwege wegen Fremdpixeln zurückgehalten;keine RGB-Toleranz. Bildschirmillustration,keine neue physikalische Lichtverdeckung/Brechung oder vollständige Original-/Hardwareabnahme.
+
+
+## 18. Oktober: obere UI05-Wolkenlücke
+
+[Begrenzter eigener Dichte-/Farbschritt](weather-top-clouds.md):166 Modelltests,22 gezielte iPad-/iPhone-Fälle und fünf SDKs bestanden;78 eigene PNGs auf16 unterschiedlichen Kontaktbögen gesichtet. Ursprüngliche Lücken-/Kontrast-, Wolken-/Licht- und Exaktgrenzen erfüllt. Erster Versuch wegen Verdunklung einer bestehenden Wolkenregion zurückgehalten; keine Grenzlockerung. Keine vollständige Original-/Hardware-/Farbverwaltungsabnahme.
