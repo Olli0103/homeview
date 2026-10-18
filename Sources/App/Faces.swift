@@ -302,6 +302,10 @@ struct LandscapeArt: View {
 }
 struct PhotoFace: View {
   @Environment(AppModel.self) private var model
+  private var unoccludedTestControl: Bool {
+    let args=ProcessInfo.processInfo.arguments
+    return args.contains("--uitesting") && args.contains("--photo-depth-unoccluded-control")
+  }
   private func layer(_ bytes: Data) -> some View {
     let composition = model.photoComposition
     let width = 600 * composition.destination.width / composition.crop.width
@@ -333,12 +337,18 @@ struct PhotoFace: View {
       } else {
       PhotoGlassClock(time: model.dateLabel("hh mm"), spokenTime: model.dateLabel("h:mm"),
         bytes: model.photoData, composition: model.photoComposition)
-        .position(x: 300, y: 600 * model.photoComposition.clock.centerY)
+        .position(x: 300, y: 600 * (model.photoComposition.clockRect.y + model.photoComposition.clockRect.height/2))
       }
       // Depth uses the selected image's real segmentation, not a fabricated
       // foreground triangle over the fallback landscape.
-      if model.photoComposition.depthEnabled, let foreground = model.photoForegroundData {
+      if model.photoComposition.depthEnabled, !unoccludedTestControl,
+         let foreground = model.photoForegroundData {
         layer(foreground).allowsHitTesting(false)
+      }
+      if ProcessInfo.processInfo.arguments.contains("--uitesting") {
+        Text(verbatim:"height=\(model.photoComposition.clockRect.height);y=\(model.photoComposition.clockRect.y);coverage=\(model.photoComposition.coverage)")
+          .font(.system(size:1)).foregroundStyle(.clear).allowsHitTesting(false)
+          .accessibilityIdentifier("photo.clock.geometry.test")
       }
       if ProcessInfo.processInfo.arguments.contains("--uitesting") {
         let assetIDs=model.data.albumDisplay?.cache.map(\.assetID) ?? []
