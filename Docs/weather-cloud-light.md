@@ -1,5 +1,8 @@
 # Tageswolken: Körper und gerichtete Eigenverschattung
 
+Nachfolgender eigener [UI05-Geometrie-/Symbolschritt](weather-ui05-layout.md).
+Die folgenden Ergebnisse bleiben am Wolken-Quellstand gebunden.
+
 18. Oktober 2026 · [FACE-12 / #21](https://github.com/Olli0103/homeview/issues/21).
 Integriert in [84d87fd](https://github.com/Olli0103/homeview/commit/84d87fd9dd3a46c6db2a32672a35caeada8e888f).
 Begrenzter eigener Renderer-Schritt, keine Originalabnahme.

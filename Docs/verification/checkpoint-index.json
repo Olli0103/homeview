@@ -1026,6 +1026,41 @@
       "core_repeated_after_commit": true,
       "post_commit_core_log_sha256": "97c033bed596edf45bb9c0d1b54b285cf22abcd067229425add79852c23c89a9",
       "full_ui_suite_claimed": false
+    },
+    {
+      "checkpoint": "weather-ui05-integrated",
+      "commit": "c97a4e928a87e64df90f986d081abe30cd7bfbe6",
+      "source_digest": "a418c3e04495531b21047e9e40c30912e741c44b0a5d791c2766c64b065ebc4a",
+      "files_verified": 133,
+      "core_passed": 139,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "41128562cdd512a77dcc1267b25baa3353e31a33c0f9a4d3049969ca0fce4ee1",
+      "full_ui_suite_claimed": false
     }
   ],
   "all_sources_match_committed_bytes": true

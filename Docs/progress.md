@@ -245,3 +245,11 @@ veröffentlichten Quellenbelegen abgeglichen: Profil-Layouts/Albumvorschau, Fade
 Numerals/Rasteruhr, Prismen/Glaskacheln und Metal-Wetter. Historische Testergebnisse
 bleiben beim jeweiligen Prüfstand; kein parity_accepted, Originalkriterium oder
 Issue-State wurde dadurch auf erledigt gesetzt.
+
+
+## Wetter-UI05-Geometrie und Symbole
+
+Uhr, Gradzeichen, Detailspalten und öffentliche Symbole getrennt korrigiert.
+139 Modelltests, zehn gezielte UI-Ausführungen und fünf SDKs; Demo/Celsius/unbekannte
+Werte vollständig sichtbar. Vorgabegemäße freie Himmelsregion pixelgleich zum
+vorherigen Wolkenstand. [Eigene Bilder und Grenzen](weather-ui05-layout.md). #21 offen.
