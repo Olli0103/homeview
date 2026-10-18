@@ -1927,6 +1927,33 @@ final class HomeViewUITests: XCTestCase {
     let red=stride(from:0,to:sky.count,by:4).map { sky[$0] }
     XCTAssertLessThan(red.max()!,100,"The predefined clear-sky region must contain blue sky, not white clouds")
   }
+  func testModularWeatherCityCaptionKeepsVisibleDataProvenance() {
+    for connected in [false,true] {
+      let state=connected ? "connected":"demo"
+      launch(["--face","Modular"]+(connected ? ["--page","Settings"]:[]))
+      if connected { connectService("Weather");tap("nav.faces") }
+      XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+      let city=app.staticTexts["modular.weather.city"].firstMatch
+      let condition=app.staticTexts["modular.weather.condition"].firstMatch
+      XCTAssertTrue(city.waitForExistence(timeout:5))
+      XCTAssertEqual(city.label,connected ? "Fixture City":"San Francisco")
+      XCTAssertEqual(condition.label.contains("Demo"),!connected)
+      let data=viewportBytes("modular-city-"+state)
+      let viewport=app.otherElements["reference.viewport"].frame
+      let row=app.otherElements["modular.weather.cityRow"].firstMatch.frame
+      let geometry:[String:Double]=["x":Double((row.minX-viewport.minX)/viewport.width),
+        "y":Double((row.minY-viewport.minY)/viewport.height),
+        "width":Double(row.width/viewport.width),"height":Double(row.height/viewport.height)]
+      let attachment=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:geometry,options:.sortedKeys),
+        uniformTypeIdentifier:"public.json")
+      attachment.name="modular-city-"+state+"-row";attachment.lifetime = .keepAlways;add(attachment)
+      let native=XCTAttachment(screenshot:city.screenshot());native.name="modular-city-"+state+"-native-caption"
+      native.lifetime = .keepAlways;add(native)
+      XCTAssertFalse(data.isEmpty)
+      print("MODULAR_CITY state=\(state) city=\(city.label) condition=\(condition.label)")
+      app.terminate()
+    }
+  }
   func testWeatherFaceOpensDistinctCityScreen() {
     launch(["--face","Weather"])
     XCTAssertTrue(app.otherElements["face.Weather"].waitForExistence(timeout:5))
