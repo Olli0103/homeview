@@ -66,6 +66,9 @@ struct PhotoGlassClock: View {
   private var glyphs: some View {
     Text(time).font(.system(size: 181, weight: .regular, design: .rounded))
       .tracking(-10).lineLimit(1).minimumScaleFactor(0.65)
+      // Taller public runtime glyphs, still inside the existing protected clock
+      // band. Full-height Original typography needs its separate matte contract.
+      .scaleEffect(x: 1, y: 1.4)
       .frame(width: 540, height: 200).foregroundStyle(.white)
   }
   var body: some View {
