@@ -62,6 +62,45 @@ struct PhotoSubjectMask: Sendable {
   func retention(_ crop: PhotoRect) -> Double {
     total > 0 ? min(1, Double(sample(crop).sum) / Double(total)) : 1
   }
+  private func strength(x: Int, y: Int) -> Double {
+    let stride = width + 1
+    let right = sums[(y+1)*stride+x+1] - sums[y*stride+x+1]
+    let left = sums[(y+1)*stride+x] - sums[y*stride+x]
+    return Double(right-left) / 255
+  }
+  private func interpolatedStrength(x: Double, y: Double) -> Double {
+    let px = min(Double(width-1), max(0, x*Double(width)-0.5))
+    let py = min(Double(height-1), max(0, y*Double(height)-0.5))
+    let x0 = Int(floor(px)), y0 = Int(floor(py))
+    let x1 = min(width-1, x0+1), y1 = min(height-1, y0+1)
+    let fx = px-Double(x0), fy = py-Double(y0)
+    let top = strength(x:x0,y:y0)*(1-fx) + strength(x:x1,y:y0)*fx
+    let bottom = strength(x:x0,y:y1)*(1-fx) + strength(x:x1,y:y1)*fx
+    return top*(1-fy) + bottom*fy
+  }
+  func inkCoverage(_ glyphs: [PhotoClockInkRaster], crop: PhotoRect) -> PhotoClockInkCoverage? {
+    guard glyphs.count == 4, let first = glyphs.first,
+          crop.valid, crop == crop.intersection(.full),
+          glyphs.allSatisfy({ $0.width == first.width && $0.height == first.height }) else { return nil }
+    var totalInk = 0.0, totalHidden = 0.0, fractions: [Double] = []
+    for glyph in glyphs {
+      var ink = 0.0, hidden = 0.0
+      for y in 0..<glyph.height {
+        for x in 0..<glyph.width {
+          let weight = Double(glyph.values[y*glyph.width+x])
+          guard weight > 0 else { continue }
+          let sx = crop.x + (Double(x)+0.5)/Double(glyph.width)*crop.width
+          let sy = crop.y + (Double(y)+0.5)/Double(glyph.height)*crop.height
+          ink += weight
+          hidden += weight * interpolatedStrength(x:sx,y:sy)
+        }
+      }
+      guard ink > 0 else { return nil }
+      fractions.append(min(1,max(0,hidden/ink)))
+      totalInk += ink; totalHidden += hidden
+    }
+    return .init(overall:min(1,max(0,totalHidden/totalInk)),perDigit:fractions)
+  }
 }
 
 enum PhotoClockPosition: String, Codable, CaseIterable, Identifiable, Sendable {
@@ -106,14 +145,25 @@ struct PhotoComposition: Equatable, Sendable {
   var protectedCoverage = 0.0
   /// An optional larger band is only selected with a usable foreground matte.
   var clockFrame: PhotoRect?
+  var clockInkCoverage: PhotoClockInkCoverage?
   var clockRect: PhotoRect { clockFrame ?? clock.rect }
 }
 
 enum PhotoPlacement {
+  static func expansionFrames(for position: PhotoClockPosition) -> [PhotoRect] {
+    let mediumY: Double = switch position {
+      case .automatic, .top: 0.05
+      case .middle: 0.22
+      case .bottom: 0.39
+    }
+    return [.init(x:0.05,y:0.05,width:0.90,height:0.90),
+            .init(x:0.05,y:mediumY,width:0.90,height:0.56)]
+  }
   /// Ranking, candidate positions and thresholds are our own choices, not Apple's rules.
   static func choose(aspect: Double, mask: PhotoSubjectMask?,
                      protectedRegions: [PhotoRect] = [], foregroundAvailable: Bool = true,
-                     adjustment: PhotoAdjustment = .init()) -> PhotoComposition {
+                     adjustment: PhotoAdjustment = .init(),
+                     inkCandidates: [PhotoClockInkCandidate]? = nil) -> PhotoComposition {
     guard aspect.isFinite, (0.0001...10_000).contains(aspect) else { return .init() }
     // Rectangles are explicit protection hints, not a fabricated segmentation mask.
     // Too many hints conservatively protect the complete image instead of dropping faces.
@@ -207,22 +257,26 @@ enum PhotoPlacement {
        adjustment.automaticCrop,
        expanded.destination == .full, let mask {
       // Own bounded candidates informed by the tall reference states, not a
-      // claim about Apple's placement algorithm. Keep the same occlusion limit.
-      for height in [0.90, 0.56] {
-        let mediumY: Double = switch expanded.clock {
-          case .automatic, .top: 0.05
-          case .middle: 0.22
-          case .bottom: 0.39
-        }
-        let rect = PhotoRect(x:0.05,y:height == 0.90 ? 0.05:mediumY,
-                             width:0.90,height:height)
+      // claim about Apple's placement algorithm. Legacy callers retain the
+      // rectangle limit; supplied ink evidence uses the explicit ink policy.
+      for rect in expansionFrames(for:expanded.clock) {
         let source = PhotoRect(x:expanded.crop.x+rect.x*expanded.crop.width,
           y:expanded.crop.y+rect.y*expanded.crop.height,
           width:rect.width*expanded.crop.width,height:rect.height*expanded.crop.height)
         let coverage = mask.coverage(source)
-        guard coverage <= 0.18 else { continue }
+        var ink: PhotoClockInkCoverage?
+        if let inkCandidates {
+          let matches = inkCandidates.filter { $0.frame == rect }
+          guard matches.count == 1,
+                let measured = mask.inkCoverage(matches[0].glyphs,crop:expanded.crop),
+                measured.allowed else { continue }
+          ink = measured
+        } else {
+          guard coverage <= 0.18 else { continue }
+        }
         expanded.clockFrame = rect
         expanded.coverage = coverage
+        expanded.clockInkCoverage = ink
         expanded.protectedCoverage = min(1,protected.reduce(0) { sum, region in
           let r=region.intersection(expanded.crop)
           guard r.valid else { return sum }

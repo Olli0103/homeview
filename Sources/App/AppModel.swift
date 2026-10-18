@@ -102,6 +102,7 @@ final class AppModel {
   private var photoChangedAt = Date()
   var photoCount: Int { gallery.count }
   var photoCaption: String {
+    if photoAnalysis?.diagnostic == "fixture_mac_native_alpha_replay" { return "DEMO · MASK REPLAY" }
     let title = data.albumDisplay?.album.title ?? data.photoGalleryTitle ?? "PHOTOS"
     return gallery.count > 1 ? "\(title.uppercased()) · \(photoIndex + 1) OF \(gallery.count)" : title.uppercased()
   }
@@ -122,6 +123,14 @@ final class AppModel {
   private var photoAnalysis: PhotoAnalysis?
   private var photoAnalysisTask: Task<Void, Never>?
   private var photoKey: String?
+  #if !os(watchOS)
+    private var photoInkKey = ""
+    private var photoInkCandidates: [PhotoClockInkCandidate] = []
+    private(set) var photoInkRevision = 0
+    var photoInkControlImage: CGImage? {
+      PhotoClockInkRasterizer.controlImage(photoInkCandidates.first { $0.frame == photoComposition.clockFrame })
+    }
+  #endif
   var photoAnalysisDiagnostic: String { photoAnalysis?.diagnostic ?? "none" }
   var photoProtectedRegionCount: Int { photoAnalysis?.protectedRegions.count ?? 0 }
   var photoAdjustment: PhotoAdjustment {
@@ -139,10 +148,25 @@ final class AppModel {
   }
   private func updatePhotoComposition() {
     guard let photoAnalysis else { photoComposition = .init(); return }
+    var candidates: [PhotoClockInkCandidate]?
+    #if !os(watchOS)
+      if photoAnalysis.mask != nil, photoForegroundData != nil {
+        let key = dateLabel("hh mm")
+        if key != photoInkKey {
+          photoInkCandidates = PhotoClockGlyphLayout.digits(in:key).map {
+            PhotoClockInkRasterizer.candidates(digits:$0)
+          } ?? []
+          photoInkKey = key
+          photoInkRevision += 1
+        }
+        candidates = photoInkCandidates
+      }
+    #endif
     photoComposition = PhotoPlacement.choose(
       aspect: photoAnalysis.aspect, mask: photoAnalysis.mask,
       protectedRegions: photoAnalysis.protectedRegions,
-      foregroundAvailable: photoForegroundData != nil, adjustment: photoAdjustment)
+      foregroundAvailable: photoForegroundData != nil, adjustment: photoAdjustment,
+      inkCandidates:candidates)
   }
   var now = Date()
   var referenceClock: Bool
@@ -159,7 +183,12 @@ final class AppModel {
     private var nativeAlarms = NativeAlarmService()
   #endif
   private var toastTask: Task<Void, Never>?
-  var clock: Date { referenceClock ? (testReferenceDate ?? Fixtures.date) : now }
+  private let photoClockTestStart = ProcessInfo.processInfo.systemUptime
+  private var photoClockTestStep = 0
+  var clock: Date {
+    let base = referenceClock ? (testReferenceDate ?? Fixtures.date) : now
+    return base.addingTimeInterval(Double(photoClockTestStep)*60)
+  }
   var recipe: RecipeDocument {
     get { data.recipe }
     set {
@@ -741,6 +770,14 @@ final class AppModel {
   }
   func tick() {
     now = Date()
+    let args = ProcessInfo.processInfo.arguments
+    if args.contains("--uitesting"), args.contains("--fast-photo-clock") {
+      photoClockTestStep = Int((ProcessInfo.processInfo.systemUptime-photoClockTestStart)/3)
+    }
+    #if !os(watchOS)
+      if photoAnalysis?.mask != nil, photoForegroundData != nil,
+         dateLabel("hh mm") != photoInkKey { updatePhotoComposition() }
+    #endif
     reconcileDemoDoorbell()
     #if !os(watchOS)
       connections.tick()
