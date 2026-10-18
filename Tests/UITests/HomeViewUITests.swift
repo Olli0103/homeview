@@ -2095,3 +2095,49 @@ extension HomeViewUITests {
     viewportShot("calendar-face-keeps-local-today-after-agenda-navigation")
   }
 }
+
+extension HomeViewUITests {
+  private func verifyWeatherFaceBounds(temperature:String,wind:String,humidity:String,aqi:String,name:String) {
+    let root=app.otherElements["reference.viewport"]
+    XCTAssertTrue(root.waitForExistence(timeout:5))
+    let safe=root.frame.insetBy(dx:8,dy:8)
+    let clock=app.staticTexts["weather.face.clock"],number=app.staticTexts["weather.temperature"]
+    XCTAssertTrue(clock.exists)
+    XCTAssertEqual(number.label,temperature)
+    XCTAssertTrue(safe.contains(clock.frame),"Clock must remain inside the native face")
+    XCTAssertTrue(safe.contains(number.frame),"Temperature must remain inside the native face")
+    XCTAssertLessThan(clock.frame.maxY,number.frame.minY,"Clock and temperature must not overlap")
+    for (label,value) in [("Sunset",nil),("Wind",Optional(wind)),("Humidity",Optional(humidity)),("AQI",Optional(aqi))] {
+      let detail=app.staticTexts["weather.detail."+label]
+      XCTAssertTrue(detail.exists)
+      if let value { XCTAssertEqual(detail.label,value) }
+      XCTAssertTrue(safe.contains(detail.frame),"Clipped metric "+label)
+      XCTAssertTrue(safe.contains(app.staticTexts[label].frame),"Clipped caption "+label)
+    }
+    viewportShot(name)
+  }
+  @objc func testWeatherFaceMetricsFitDemoCelsiusAndUnknownValues() {
+    launch(["--face","Weather"])
+    verifyWeatherFaceBounds(temperature:"54°",wind:"7 mph",humidity:"76%",aqi:"21",
+      name:"weather-ui05-demo-bounds")
+    launch(["--face","Weather","--page","Settings"])
+    connectService("Weather")
+    let celsius=app.segmentedControls["weather.units"].buttons["°C / km/h"]
+    XCTAssertTrue(celsius.waitForExistence(timeout:5))
+    for _ in 0..<8 where !celsius.isHittable
+      || celsius.frame.maxY > app.otherElements["reference.viewport"].frame.maxY - 45 {
+      app.scrollViews.firstMatch.swipeUp()
+    }
+    celsius.tap()
+    XCTAssertTrue(celsius.isSelected)
+    tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["weather.source"].label.contains("°C / km/h"))
+    verifyWeatherFaceBounds(temperature:"13°",wind:"13 km/h",humidity:"70%",aqi:"—",
+      name:"weather-ui05-connected-celsius-bounds")
+    launch(["--face","Weather","--page","Settings","--weather-missing"])
+    connectService("Weather");tap("nav.faces")
+    XCTAssertFalse(app.staticTexts["weather.source"].label.hasPrefix("Demo"))
+    verifyWeatherFaceBounds(temperature:"—",wind:"—",humidity:"—",aqi:"—",
+      name:"weather-ui05-unknown-values-bounds")
+  }
+}
