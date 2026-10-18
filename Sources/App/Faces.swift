@@ -98,7 +98,8 @@ struct HomeModularFace: View {
           }.frame(width: 383)
           VStack(spacing: 10) {
             AnalogClock(
-              date: model.clock, timeZone: model.displayTimeZone, tint: .white, numbered: false
+              date: model.clock, timeZone: model.displayTimeZone, tint: .white, numbered: false,
+              majorTickLength:18
             ).background {
               HomeGlassSurface(shape:Circle()).allowsHitTesting(false).accessibilityHidden(true)
             }

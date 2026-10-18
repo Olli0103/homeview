@@ -137,6 +137,7 @@ struct AnalogClock: View {
   var minuteReach = 0.84
   var secondsReach = 0.99
   var lightEdgeInk = false
+  var majorTickLength = 10.0
   var body: some View {
     MotionTimeline { _ in clock(date: model.referenceClock ? date : Date()) }
   }
@@ -147,7 +148,7 @@ struct AnalogClock: View {
       for i in 0..<60 where showTicks && (numbered || i % 5 == 0) {
         let a = Double(i) * .pi / 30 - .pi / 2
         let outer = CGPoint(x: center.x + r * cos(a), y: center.y + r * sin(a))
-        let innerR = r - (i % 5 == 0 ? 10.0 : 6.0)
+        let innerR = r - (i % 5 == 0 ? majorTickLength : 6.0)
         let inner = CGPoint(x: center.x + innerR * cos(a), y: center.y + innerR * sin(a))
         var p = Path()
         p.move(to: inner)
