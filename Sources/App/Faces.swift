@@ -146,7 +146,8 @@ struct ModularFace: View {
         }.frame(maxWidth: .infinity, alignment: .leading)
       }.buttonStyle(.plain)
     case "Clock":
-      AnalogClock(date: model.clock, timeZone: model.displayTimeZone).frame(maxWidth: .infinity)
+      AnalogClock(date: model.clock, timeZone: model.displayTimeZone,
+        embossedHands:true,lightEdgeInk:true).frame(maxWidth: .infinity)
         .offset(x: 4, y: -7)
     case "Music":
       VStack(alignment: .leading, spacing: 6) {
