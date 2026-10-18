@@ -8,6 +8,10 @@ import SwiftUI
 final class AppModel {
   #if !os(watchOS)
     let connections = DeviceConnections()
+    private let albumPhotoProvider: any AlbumPhotoProvider
+    let albumCatalogue: AlbumCatalogueSession
+    let albumUpdates: AlbumDisplaySession
+    private var albumRefreshTask: Task<Void,Never>?
   #endif
   let demoDoorbell = DemoDoorbell()
   private let repeatedDoorbellFixtureID = UUID()
@@ -98,7 +102,18 @@ final class AppModel {
   private var photoChangedAt = Date()
   var photoCount: Int { gallery.count }
   var photoCaption: String {
-    gallery.count > 1 ? "PHOTOS · \(photoIndex + 1) OF \(gallery.count)" : "PHOTOS"
+    let title = data.albumDisplay?.album.title ?? data.photoGalleryTitle ?? "PHOTOS"
+    return gallery.count > 1 ? "\(title.uppercased()) · \(photoIndex + 1) OF \(gallery.count)" : title.uppercased()
+  }
+  var hasPhotoSelection: Bool {
+    photoData != nil || data.photoSelection == .single || data.photoSelection == .gallery
+      || data.photoSelection == .album || !data.photoIDs.isEmpty
+  }
+  var photoSelectionStatus: String {
+    #if !os(watchOS)
+      if data.albumDisplay != nil { return albumUpdates.status }
+    #endif
+    return "Selected photos are unavailable."
   }
   var photoData: Data? = nil
   var photoForegroundData: Data? = nil
@@ -190,6 +205,13 @@ final class AppModel {
   var authorized: Bool { profile != nil && simulatedPresence }
   init() {
     let args = ProcessInfo.processInfo.arguments
+    #if !os(watchOS)
+      let albumProvider = makeAlbumPhotoProvider()
+      albumPhotoProvider = albumProvider
+      albumCatalogue = AlbumCatalogueSession(provider:albumProvider)
+      albumUpdates = AlbumDisplaySession(provider:albumProvider)
+      if args.contains("--uitesting") { albumUpdates.minimumInterval = 1 }
+    #endif
     let testID: UUID? = {
       guard args.contains("--uitesting"), let i = args.firstIndex(of: "--persistence-test"),
         args.indices.contains(i + 1)
@@ -237,6 +259,13 @@ final class AppModel {
         storeRecoveryNote = "Original saved data is unchanged. This file could not be safely opened; changes are not saved."
       }
     }
+    #if !os(watchOS)
+      if testID != nil,args.contains("--uitesting"),args.contains("--legacy-photo-file-fixture"),
+         let fixture=PhotoLayoutFixture.make("top") {
+        try? FileManager.default.createDirectory(at:dir,withIntermediateDirectories:true)
+        try? fixture.bytes.write(to:dir.appendingPathComponent("selected-photo.data"),options:.atomic)
+      }
+    #endif
     if let i = args.firstIndex(of: "--face"), args.indices.contains(i + 1),
       let face = Face(rawValue: args[i + 1])
     {
@@ -247,17 +276,26 @@ final class AppModel {
     {
       route = .app(page)
     }
-    if !ephemeral {
-      if let selected = try? Data(contentsOf: dir.appendingPathComponent("selected-photo.data")) {
-        showPhoto(selected)
+    var restoredPhotoFiles: [String:Data] = [:]
+    if !ephemeral && !storeReadOnly {
+      let storedFiles = data.photoSelection == .single || data.photoSelection == .gallery
+        || data.photoSelection == .album || (data.photoSelection == .legacy && !data.photoIDs.isEmpty)
+      if storedFiles {
+        let limit = data.photoSelection == .single ? 40_000_000 : 5_000_000
+        let budget = data.photoSelection == .single ? 40_000_000 : 30_000_000
+        var used = 0
+        for id in data.photoIDs.prefix(10) {
+          guard let bytes = storedPhoto(id,limit:limit),used+bytes.count <= budget else { continue }
+          restoredPhotoFiles[id] = bytes;used += bytes.count
+          gallery.append(bytes)
+        }
+        if let first=gallery.first { showPhoto(first) }
+      } else if data.photoSelection == .legacy {
+        let file=dir.appendingPathComponent("selected-photo.data")
+        if let selected=boundedPhotoFile(file,limit:40_000_000) {
+          gallery=[selected];showPhoto(selected)
+        }
       }
-    }
-    if !ephemeral {
-      gallery = data.photoIDs.prefix(10).compactMap { id in
-        guard UUID(uuidString: id) != nil else { return nil }
-        return try? Data(contentsOf: dir.appendingPathComponent("photos/" + id + ".jpg"))
-      }
-      if let first = gallery.first { showPhoto(first) }
     }
     if args.contains("--screen-thermostat") { route = .thermostat }
     if args.contains("--screen-recipe") { route = .recipe }
@@ -280,36 +318,40 @@ final class AppModel {
         if args.contains("--photo-layout-settings") { route = .app(.settings) }
       }
     #endif
+    #if !os(watchOS)
+      albumUpdates.apply = { [weak self] album,photos in
+        guard let self else { return false }
+        let saved = self.storePhotos(photos.map(\.bytes),selection:album == nil ? .none:.album,
+          title:album?.title,album:album,assets:photos,navigate:false)
+        if album == nil && !saved {
+          // Stop displaying disconnected copies even when storage is unwritable.
+          self.data.albumDisplay = nil;self.data.photoSelection = .none
+          self.data.photoIDs = [];self.data.photoGalleryTitle = nil
+          self.gallery = [];self.photoIndex = 0;self.showPhoto(nil)
+        }
+        return saved
+      }
+      if let grant=data.albumDisplay {
+        let cached=grant.cache.compactMap { reference -> AlbumPhoto? in
+          restoredPhotoFiles[reference.fileID].map {
+            AlbumPhoto(id:reference.assetID,revision:reference.revision,bytes:$0)
+          }
+        }
+        albumUpdates.restore(grant,photos:cached)
+      }
+    #endif
   }
   func setPhoto(_ bytes: Data?) {
     guard (bytes?.count ?? 0) <= 40_000_000 else {
       error = "Choose a photo smaller than 40 MB."
       return
     }
-    gallery = []
-    photoIndex = 0
-    data.photoIDs = []
-    showPhoto(bytes)
-    if !ephemeral {
-      let url = store.deletingLastPathComponent().appendingPathComponent("selected-photo.data")
-      let maskURL = store.deletingLastPathComponent().appendingPathComponent(
-        "selected-photo-mask.png")
-      if FileManager.default.fileExists(atPath: maskURL.path) {
-        try? FileManager.default.removeItem(at: maskURL)
-      }
-      do {
-        try FileManager.default.createDirectory(
-          at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-        if let bytes {
-          try bytes.write(to: url, options: .atomic)
-        } else if FileManager.default.fileExists(atPath: url.path) {
-          try FileManager.default.removeItem(at: url)
-        }
-      } catch { self.error = "Could not save the selected photo." }
-    }
-    data.face = .photos
-    persist()
-    route = .face
+    guard storePhotos(bytes.map { [$0] } ?? [],selection:bytes == nil ? .none:.single,
+      title:nil,album:nil,assets:[],navigate:true) else { return }
+    #if !os(watchOS)
+      albumRefreshTask?.cancel()
+      albumUpdates.stop(clearDisplay:false)
+    #endif
   }
   private func showPhoto(_ bytes: Data?) {
     photoAnalysisTask?.cancel()
@@ -350,43 +392,19 @@ final class AppModel {
       photoAnalysisFinished = true
     #endif
   }
-  func setGallery(_ images: [Data]) {
-    guard !images.isEmpty, images.count <= 10,
-      images.allSatisfy({ !$0.isEmpty && $0.count <= 5_000_000 }),
-      images.reduce(0, { $0 + $1.count }) <= 30_000_000
-    else {
-      error = "Choose up to ten photos, at most 30 MB in total."
-      return
-    }
-    let ids = images.map { _ in UUID().uuidString }
-    let folder = store.deletingLastPathComponent().appendingPathComponent("photos")
-    let oldIDs = data.photoIDs
-    if !ephemeral {
-      do {
-        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-        for (id, bytes) in zip(ids, images) {
-          try bytes.write(to: folder.appendingPathComponent(id + ".jpg"), options: .atomic)
-        }
-        var candidate = data
-        candidate.photoIDs = ids
-        candidate.face = .photos
-        try JSONEncoder().encode(candidate).write(to: store, options: .atomic)
-      } catch {
-        for id in ids {
-          try? FileManager.default.removeItem(at: folder.appendingPathComponent(id + ".jpg"))
-        }
-        self.error = "Could not save the selected photos. Your previous selection is unchanged."
-        return
-      }
-      for id in oldIDs where UUID(uuidString: id) != nil {
-        try? FileManager.default.removeItem(at: folder.appendingPathComponent(id + ".jpg"))
-      }
-    }
-    gallery = images
-    photoIndex = 0
-    data.photoIDs = ids
+  @discardableResult
+  func setGallery(_ images: [Data], title: String? = nil) -> Bool {
+    guard !images.isEmpty else { error = "Choose at least one photo.";return false }
+    guard storePhotos(images,selection:.gallery,title:title,album:nil,assets:[],navigate:true) else { return false }
+    #if !os(watchOS)
+      albumRefreshTask?.cancel()
+      albumUpdates.stop(clearDisplay:false)
+    #endif
+    return true
+  }
+  func openPhotoFace() {
     data.face = .photos
-    showPhoto(images[0])
+    persist()
     route = .face
   }
   func nextPhoto() {
@@ -394,6 +412,132 @@ final class AppModel {
     photoIndex = (photoIndex + 1) % gallery.count
     showPhoto(gallery[photoIndex])
   }
+  private func boundedPhotoFile(_ file:URL,limit:Int) -> Data? {
+    guard let size=(try? FileManager.default.attributesOfItem(atPath:file.path)[.size]) as? NSNumber,
+          size.intValue > 0,size.intValue <= limit,
+          let bytes=try? Data(contentsOf:file),bytes.count <= limit,
+          let source=CGImageSourceCreateWithData(bytes as CFData,nil),
+          let properties=CGImageSourceCopyPropertiesAtIndex(source,0,nil) as? [CFString:Any],
+          let width=properties[kCGImagePropertyPixelWidth] as? Double,
+          let height=properties[kCGImagePropertyPixelHeight] as? Double,
+          width.isFinite,height.isFinite,width>0,height>0,width*height <= 16_000_000 else { return nil }
+    return bytes
+  }
+  private func storedPhoto(_ id:String,limit:Int) -> Data? {
+    guard UUID(uuidString:id) != nil else { return nil }
+    return boundedPhotoFile(store.deletingLastPathComponent().appendingPathComponent("photos/"+id+".jpg"),limit:limit)
+  }
+  /// New identities + an atomic metadata commit prevent old selected-photo.data
+  /// from resurfacing after removal, an empty linked album, or a failed write.
+  private func storePhotos(_ images:[Data],selection:PhotoSelectionKind,title:String?,
+                           album:DisplayAlbum?,assets:[AlbumPhoto],navigate:Bool) -> Bool {
+    guard !storeReadOnly else {
+      error = "Saved data is read-only. The photo selection was not changed."
+      return false
+    }
+    let single=selection == .single
+    guard images.count <= (single ? 1:10),
+          images.allSatisfy({ !$0.isEmpty && $0.count <= (single ? 40_000_000:5_000_000) }),
+          images.reduce(0,{$0+$1.count}) <= (single ? 40_000_000:30_000_000),
+          album == nil || (album!.valid && assets.count == images.count) else {
+      error = "Choose up to ten photos, at most 30 MB in total."
+      return false
+    }
+    let reusable = gallery == images && data.photoIDs.count == images.count
+    let ids = reusable ? data.photoIDs : images.map { _ in UUID().uuidString }
+    var candidate=data
+    candidate.photoSelection=selection
+    candidate.photoIDs=ids
+    candidate.photoGalleryTitle=title.map { String($0.prefix(120)) }
+    candidate.albumDisplay=album.map { descriptor in
+      AlbumDisplayGrant(album:descriptor,approvedForDisplay:true,
+        cache:zip(assets,ids).map { AlbumCacheReference(assetID:$0.0.id,revision:$0.0.revision,fileID:$0.1) })
+    }
+    if navigate { candidate.face = .photos }
+    let oldIDs=data.photoIDs
+    let folder=store.deletingLastPathComponent().appendingPathComponent("photos",isDirectory:true)
+    if !ephemeral {
+      do {
+        try FileManager.default.createDirectory(at:folder,withIntermediateDirectories:true)
+        if !reusable {
+          for (id,bytes) in zip(ids,images) { try bytes.write(to:folder.appendingPathComponent(id+".jpg"),options:.atomic) }
+        }
+        try JSONEncoder().encode(candidate).write(to:store,options:.atomic)
+      } catch {
+        if !reusable {
+          for id in ids { try? FileManager.default.removeItem(at:folder.appendingPathComponent(id+".jpg")) }
+        }
+        self.error = "Could not save the photos. The previous selection is unchanged."
+        return false
+      }
+    }
+    data=candidate
+    if !ephemeral {
+      for id in oldIDs where UUID(uuidString:id) != nil && !ids.contains(id) {
+        try? FileManager.default.removeItem(at:folder.appendingPathComponent(id+".jpg"))
+      }
+      let legacy=store.deletingLastPathComponent().appendingPathComponent("selected-photo.data")
+      if FileManager.default.fileExists(atPath:legacy.path) { try? FileManager.default.removeItem(at:legacy) }
+    }
+    if !reusable || photoData != images.first {
+      let current=photoData.flatMap { images.firstIndex(of:$0) } ?? 0
+      gallery=images;photoIndex=current
+      showPhoto(images.indices.contains(current) ? images[current]:nil)
+    }
+    if navigate { route = .face }
+    return true
+  }
+
+  #if !os(watchOS)
+  func requestAlbumUnlock() {
+    pendingPage = .settings
+    route = .deviceUnlock
+  }
+  func loadAlbumChoices() async {
+    let generation=personalSessionGeneration
+    await albumCatalogue.load { [weak self] in
+      self?.connections.personalUnlocked == true && self?.personalSessionGeneration == generation
+    }
+  }
+  func importAlbumOnce(_ album:DisplayAlbum) async {
+    guard connections.personalUnlocked,albumCatalogue.albums.contains(album) else { return }
+    let generation=personalSessionGeneration
+    do {
+      let batch=try await albumPhotoProvider.readAlbum(album.id,known:[])
+      guard !Task.isCancelled,connections.personalUnlocked,personalSessionGeneration == generation else { return }
+      let values=batch.orderedIDs.compactMap { id in batch.photos.first { $0.id == id }?.bytes }
+      guard !values.isEmpty else { error="No photos could be imported.";return }
+      _ = setGallery(values,title:album.title)
+    } catch {
+      guard !Task.isCancelled,connections.personalUnlocked,personalSessionGeneration == generation else { return }
+      self.error="The selected album could not be imported."
+    }
+  }
+  func linkAlbumForDisplay(_ album:DisplayAlbum) {
+    guard connections.personalUnlocked,albumCatalogue.albums.contains(album) else { return }
+    if albumUpdates.select(album,deviceAuthenticated:connections.personalUnlocked,explicitDisplayConsent:true) {
+      data.face = .photos;persist();route = .face
+      refreshDisplayAlbum()
+    }
+  }
+  func refreshDisplayAlbum() {
+    guard !albumUpdates.busy else { return }
+    albumRefreshTask?.cancel()
+    albumRefreshTask=Task { await albumUpdates.refresh(force:true) }
+  }
+  func disconnectDisplayAlbum() {
+    albumRefreshTask?.cancel()
+    albumUpdates.stop()
+  }
+  func setAlbumDisplayActive(_ value:Bool) {
+    if !value { albumRefreshTask?.cancel() }
+    albumUpdates.setActive(value)
+  }
+  var albumFixtureReport:String? { (albumPhotoProvider as? FixtureAlbumPhotoProvider)?.report }
+  func changeAlbumFixture() { (albumPhotoProvider as? FixtureAlbumPhotoProvider)?.changeWindow() }
+  func revokeAlbumFixture() { (albumPhotoProvider as? FixtureAlbumPhotoProvider)?.revoke() }
+  #endif
+
   private func preserveOriginalStore(_ bytes: Data) throws {
     let folder = store.deletingLastPathComponent().appendingPathComponent("State Recovery", isDirectory: true)
     try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
@@ -498,6 +642,7 @@ final class AppModel {
   func signIn(_ name: String) {
     #if !os(watchOS)
       connections.lock()
+      albumCatalogue.invalidate()
     #endif
     guard Fixtures.profiles.contains(name) else { return }
     profile = name
@@ -521,6 +666,7 @@ final class AppModel {
     personalSessionGeneration += 1
     #if !os(watchOS)
       connections.lock()
+      albumCatalogue.invalidate()
     #endif
     profile = nil
     assistantInput = ""
@@ -560,6 +706,9 @@ final class AppModel {
     reconcileDemoDoorbell()
     #if !os(watchOS)
       connections.tick()
+      if albumUpdates.shouldRefresh() {
+        albumRefreshTask=Task { await albumUpdates.refresh() }
+      }
     #endif
     let photoInterval =
       ProcessInfo.processInfo.arguments.contains("--fast-photo-rotation") ? 3.0 : 30.0

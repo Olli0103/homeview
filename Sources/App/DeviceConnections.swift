@@ -146,7 +146,7 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
       let context = LAContext()
       return
         (try? await context.evaluatePolicy(
-          .deviceOwnerAuthentication, localizedReason: "Show your connected calendar and reminders."
+          .deviceOwnerAuthentication, localizedReason: "Show connected personal content and choose shared albums."
         )) == true
     #else
       return false
@@ -256,7 +256,7 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
       sunset: Fixtures.date, utcOffset: 0, observedAt: observed,
       sunrise: nil,isDay: !stale,cloudCover:clear ? 0 : 40,hourly:hours)
   }
-  func unlock() async -> Bool { true }
+  func unlock() async -> Bool { !ProcessInfo.processInfo.arguments.contains("--device-unlock-denied") }
 }
 
 extension DeviceConnections {

@@ -18,6 +18,61 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(button.waitForExistence(timeout: 5), "Missing \(id)")
     button.tap()
   }
+  func scrollPhotoControlFullyIntoView(_ element:XCUIElement) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"]
+    for _ in 0..<24 {
+      let safe=scroll.frame.intersection(viewport.frame).insetBy(dx:0,dy:40)
+      let target=element.frame
+      if element.isHittable && safe.contains(target) { break }
+      // Full flicks overshoot a short phone viewport and oscillate around the
+      // target. Drag only the measured gap, then hold to stop scroll inertia.
+      // Use the content gutter: a central drag can be captured by a Slider.
+      let gap:CGFloat
+      if target.isEmpty { gap=safe.height*0.6 }
+      else if target.minY<safe.minY { gap = -(safe.minY-target.minY+14) }
+      else { gap=target.maxY-safe.maxY+14 }
+      let distance=min(max(abs(gap),24),safe.height*0.6)*(gap<0 ? -1:1)
+      let start=app.coordinate(withNormalizedOffset:.zero).withOffset(
+        CGVector(dx:safe.minX+15,dy:safe.midY+distance/2))
+      let end=app.coordinate(withNormalizedOffset:.zero).withOffset(
+        CGVector(dx:safe.minX+15,dy:safe.midY-distance/2))
+      start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    XCTAssertTrue(scroll.frame.intersection(viewport.frame).insetBy(dx:0,dy:40).contains(element.frame))
+  }
+  func openSyntheticAlbumChoices() {
+    let load=app.buttons["photos.shared.load"]
+    scrollPhotoControlFullyIntoView(load)
+    load.tap()
+    if app.buttons["device.unlock"].waitForExistence(timeout:2) {
+      tap("device.unlock")
+      scrollPhotoControlFullyIntoView(load)
+      load.tap()
+    }
+    XCTAssertTrue(app.buttons["photos.shared.fixture"].waitForExistence(timeout:6))
+  }
+  func linkSyntheticAlbum(_ id:String = "fixture") {
+    let menu=app.buttons["photos.shared."+id]
+    scrollPhotoControlFullyIntoView(menu)
+    menu.press(forDuration:1.0)
+    let identified=app.buttons["photos.shared.link."+id]
+    let action=identified.exists ? identified:app.buttons["Keep updated on this display"]
+    XCTAssertTrue(action.waitForExistence(timeout:5))
+    action.tap()
+    XCTAssertTrue(app.otherElements["face.Photos"].waitForExistence(timeout:8))
+  }
+  func waitForPhotoMetadata(_ value:String) {
+    let layout=app.staticTexts["photo.layout.test"]
+    expectation(for:NSPredicate(format:"label CONTAINS %@",value),evaluatedWith:layout)
+    waitForExpectations(timeout:10)
+  }
+  func albumSettings() { tap("nav.controls");tap("controls.settings") }
+  func albumFixtureReport() -> String {
+    let report=app.staticTexts["photos.shared.fixture.report"]
+    scrollPhotoControlFullyIntoView(report)
+    return report.label
+  }
   func shot(_ name: String) {
     let attachment = XCTAttachment(screenshot: app.screenshot())
     attachment.name = name
@@ -41,7 +96,9 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertEqual(music.frame.midX,facetime.frame.midX,accuracy:2)
     XCTAssertEqual(messages.frame.midX,home.frame.midX,accuracy:2)
     XCTAssertGreaterThan(music.frame.minY,facetime.frame.maxY)
-    XCTAssertTrue(app.staticTexts["Photos"].exists)
+    let photo=app.buttons["personal.photos.open"]
+    XCTAssertTrue(photo.isHittable)
+    XCTAssertEqual(photo.label,"Photos")
     shot("personal-observed-favorites-and-icons")
     tap("all.apps")
     XCTAssertTrue(app.buttons["app.Calendar"].isHittable)
@@ -732,7 +789,7 @@ final class HomeViewUITests: XCTestCase {
   func testNativeDemoPhotoSelectionWithoutOpeningPhotoLibrary() {
     launch(["--page", "Settings"])
     let button = app.buttons["photos.demo"]
-    for _ in 0..<8 where !button.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    scrollPhotoControlFullyIntoView(button)
     button.tap()
     XCTAssertTrue(app.otherElements["face.Photos"].waitForExistence(timeout: 8))
     XCTAssertTrue(app.staticTexts["PHOTOS"].exists)
@@ -1738,13 +1795,147 @@ final class HomeViewUITests: XCTestCase {
 
   func testSharedAlbumImportUsesOnlySyntheticPhotos() {
     launch(["--page", "Settings"])
-    let load = app.buttons["photos.shared.load"]
-    for _ in 0..<24 where !load.isHittable { app.scrollViews.firstMatch.swipeUp() }
-    load.tap()
+    openSyntheticAlbumChoices()
+    scrollPhotoControlFullyIntoView(app.buttons["photos.shared.fixture"])
     tap("photos.shared.fixture")
     XCTAssertTrue(app.staticTexts["photo.index"].waitForExistence(timeout: 8))
     XCTAssertTrue(app.staticTexts["photo.index"].label.contains("OF 2"))
     shot("connected-shared-album-fixture")
+  }
+
+  func testAlbumLiveWindowDropsRemovedPhotosAndShowsEmptyWithoutDemoSubstitution() {
+    launch(["--page","Settings"])
+    openSyntheticAlbumChoices();linkSyntheticAlbum()
+    waitForPhotoMetadata("assets=fixture-a,fixture-b")
+    viewportShot("album-linked-initial-two")
+    albumSettings()
+    let change=app.buttons["photos.shared.fixture.change"]
+    scrollPhotoControlFullyIntoView(change);change.tap()
+    tap("nav.faces")
+    waitForPhotoMetadata("assets=fixture-b,fixture-c")
+    XCTAssertFalse(app.staticTexts["photo.layout.test"].label.contains("fixture-a"))
+    viewportShot("album-new-window-old-photo-removed")
+    albumSettings()
+    scrollPhotoControlFullyIntoView(change);change.tap()
+    tap("nav.faces")
+    waitForPhotoMetadata("assets=none;picture=false")
+    XCTAssertTrue(app.descendants(matching:.any)["photo.album.empty"].exists)
+    XCTAssertFalse(app.staticTexts["LANDSCAPE · DEMO ALBUM"].exists)
+    viewportShot("album-empty-is-not-demo-photo")
+  }
+  func testAlbumSourceSwitchAndPersonalPreviewUseOnlyTheSelectedAlbum() {
+    launch(["--page","Settings"])
+    openSyntheticAlbumChoices();linkSyntheticAlbum()
+    waitForPhotoMetadata("assets=fixture-a,fixture-b")
+    albumSettings();openSyntheticAlbumChoices();linkSyntheticAlbum("second")
+    waitForPhotoMetadata("album=second;assets=fixture-c")
+    XCTAssertTrue(app.staticTexts["photo.index"].label.contains("SECOND SYNTHETIC ALBUM"))
+    tap("nav.apps")
+    let preview=app.buttons["personal.photos.open"]
+    XCTAssertTrue(preview.waitForExistence(timeout:5))
+    shot("album-selected-personal-preview")
+    preview.tap()
+    waitForPhotoMetadata("album=second;assets=fixture-c")
+    viewportShot("album-second-scope-after-preview-touch")
+  }
+  func testAlbumDisconnectStopsFurtherRefreshAndBackgroundLocksPrivateChoices() {
+    launch(["--page","Settings"])
+    openSyntheticAlbumChoices();linkSyntheticAlbum()
+    waitForPhotoMetadata("assets=fixture-a,fixture-b")
+    albumSettings()
+    let stop=app.buttons["photos.shared.disconnect"]
+    scrollPhotoControlFullyIntoView(stop);stop.tap()
+    let before=albumFixtureReport()
+    let change=app.buttons["photos.shared.fixture.change"]
+    scrollPhotoControlFullyIntoView(change);change.tap()
+    Thread.sleep(forTimeInterval:2.2)
+    let after=albumFixtureReport()
+    func reads(_ report:String)->String { report.split(separator:";").first { $0.hasPrefix("reads=") }.map(String.init) ?? "missing" }
+    XCTAssertEqual(reads(before),reads(after))
+    XCUIDevice.shared.press(.home)
+    app.activate()
+    XCTAssertTrue(app.buttons["photos.shared.load"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.buttons["photos.shared.load"].label,"Unlock shared albums")
+    XCTAssertFalse(app.buttons["photos.shared.fixture"].exists)
+    XCTAssertTrue(albumFixtureReport().contains("catalogue=1"))
+    tap("nav.faces")
+    waitForPhotoMetadata("selection=none;album=none")
+    viewportShot("album-disconnected-no-old-copies")
+  }
+  func testAlbumWindowPersistsAndRestoresOnlyTheKnownScopeWithoutCatalogueReads() {
+    let id=UUID().uuidString
+    launch(["--page","Settings","--persistence-test",id,"--reset-test-store"])
+    openSyntheticAlbumChoices();linkSyntheticAlbum()
+    waitForPhotoMetadata("assets=fixture-a,fixture-b")
+    albumSettings()
+    let change=app.buttons["photos.shared.fixture.change"]
+    scrollPhotoControlFullyIntoView(change);change.tap()
+    tap("nav.faces");waitForPhotoMetadata("assets=fixture-b,fixture-c")
+    app.terminate()
+    launch(["--persistence-test",id,"--album-fixture-window","changed"])
+    waitForPhotoMetadata("album=fixture;assets=fixture-b,fixture-c")
+    albumSettings()
+    let report=albumFixtureReport()
+    XCTAssertTrue(report.contains("fixture-only;catalogue=0;permission=0"),report)
+    XCTAssertTrue(report.contains("album=fixture"),report)
+    tap("nav.faces")
+    viewportShot("album-scoped-cache-after-relaunch")
+  }
+  func testAlbumRevocationAndRemovalCannotResurrectALegacySinglePhotoFile() {
+    let id=UUID().uuidString
+    launch(["--page","Settings","--persistence-test",id,"--reset-test-store"])
+    openSyntheticAlbumChoices();linkSyntheticAlbum()
+    waitForPhotoMetadata("assets=fixture-a,fixture-b")
+    albumSettings()
+    let revoke=app.buttons["photos.shared.fixture.revoke"]
+    scrollPhotoControlFullyIntoView(revoke);revoke.tap()
+    tap("nav.faces");waitForPhotoMetadata("selection=none;album=none;assets=none;picture=false")
+    app.terminate()
+    launch(["--persistence-test",id,"--album-fixture-denied","--legacy-photo-file-fixture","--face","Photos"])
+    waitForPhotoMetadata("selection=none;album=none;assets=none;picture=false")
+    XCTAssertTrue(app.staticTexts["LANDSCAPE · DEMO ALBUM"].exists)
+    viewportShot("album-revoked-legacy-file-does-not-return")
+  }
+  func testEmptyLinkedAlbumSurvivesRestartWithoutAnOldPhotoOrInventedDemo() {
+    let id=UUID().uuidString
+    launch(["--page","Settings","--persistence-test",id,"--reset-test-store","--album-fixture-window","empty"])
+    openSyntheticAlbumChoices();linkSyntheticAlbum()
+    waitForPhotoMetadata("album=fixture;assets=none;picture=false")
+    XCTAssertTrue(app.descendants(matching:.any)["photo.album.empty"].exists)
+    app.terminate()
+    launch(["--persistence-test",id,"--album-fixture-window","empty","--legacy-photo-file-fixture"])
+    waitForPhotoMetadata("selection=album;album=fixture;assets=none;picture=false")
+    XCTAssertFalse(app.staticTexts["LANDSCAPE · DEMO ALBUM"].exists)
+    XCTAssertTrue(app.descendants(matching:.any)["photo.album.empty"].exists)
+    viewportShot("album-empty-after-relaunch-no-legacy-resurrection")
+  }
+  func testAlbumCatalogueRequiresActualDeviceUnlockNotADemoProfile() {
+    launch(["--page","Settings","--device-unlock-denied"])
+    let load=app.buttons["photos.shared.load"]
+    scrollPhotoControlFullyIntoView(load);load.tap()
+    tap("device.unlock")
+    XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout:5))
+    app.alerts.buttons["OK"].tap()
+    albumSettings()
+    XCTAssertFalse(app.buttons["photos.shared.fixture"].exists)
+    let report=albumFixtureReport()
+    XCTAssertTrue(report.contains("catalogue=0;permission=0;reads=0"),report)
+  }
+  func testReadOnlyRecoveredSnapshotCannotBeOverwrittenByAlbumConnection() {
+    let id=UUID().uuidString
+    launch(["--page","Settings","--persistence-test",id,"--reset-test-store","--state-future-fixture"])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    openSyntheticAlbumChoices()
+    let menu=app.buttons["photos.shared.fixture"]
+    scrollPhotoControlFullyIntoView(menu);menu.press(forDuration:1)
+    let action=app.buttons["Keep updated on this display"]
+    XCTAssertTrue(action.waitForExistence(timeout:5));action.tap()
+    XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout:5))
+    app.alerts.buttons["OK"].tap()
+    XCTAssertTrue(albumFixtureReport().contains("reads=0"))
+    app.terminate()
+    launch(["--page","Settings","--persistence-test",id])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists,"The unsupported source must remain untouched")
   }
 
 }

@@ -29,6 +29,25 @@ struct ImportedPhoto: View {
   }
 }
 
+/// Only explicitly exported photos are shared with this display.
+struct SelectedPhotoPreview: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    GeometryReader { geometry in
+      if let bytes=model.photoData {
+        ImportedPhoto(data:bytes).frame(width:geometry.size.width,height:geometry.size.height).clipped()
+      } else if model.hasPhotoSelection {
+        ZStack {
+          Color.black
+          Image(systemName:"photo.on.rectangle").font(.system(size:38)).foregroundStyle(.gray)
+        }
+      } else {
+        LandscapeArt()
+      }
+    }
+  }
+}
+
 /// Public runtime font coverage, refracting the same explicitly selected photo.
 /// No saved font outlines and no foreground/Depth approximation.
 struct PhotoGlassClock: View {
