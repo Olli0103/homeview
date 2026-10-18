@@ -923,6 +923,112 @@ final class HomeViewUITests: XCTestCase {
     }
     viewportShot("photo-owned-glyph-atlas")
   }
+  func testPhotoInkRasterMatchesRenderedOwnPathsWithoutMirroring() {
+    for fixture in ["sparse-depth","top"] {
+      let args = ["--photo-layout-fixture",fixture,"--photo-depth-unoccluded-control"]
+      launch(args+["--photo-clock-test-mode","stencil"])
+      let vectorData = viewportBytes("photo-ink-vector-"+fixture)
+      let image = UIImage(data:vectorData)!.cgImage!,w=image.width,h=image.height
+      let vector = [UInt8](viewportPixels(vectorData,inset:0))
+      app.terminate()
+      launch(args+["--photo-ink-raster-control"])
+      let raster = [UInt8](viewportPixels(viewportBytes("photo-ink-raster-"+fixture),inset:0))
+      var white = [Int](repeating:0,count:128*128)
+      var counts = white
+      for y in 0..<h {
+        for x in 0..<w {
+          let cell = min(127,y*128/h)*128+min(127,x*128/w),i=(y*w+x)*4
+          counts[cell] += 1
+          if (0..<3).allSatisfy({vector[i+$0]>245}) { white[cell] += 1 }
+        }
+      }
+      var intersection=0,union=0
+      var digitIntersection=[Int](repeating:0,count:4),digitUnion=digitIntersection
+      // Fixed independent regions of the reference-clock 10 09. In particular,
+      // mirrored 1/9 must not hide behind the almost symmetric zero bodies.
+      let columns=[0.05..<0.19,0.19..<0.40,0.55..<0.77,0.77..<0.95]
+      for y in 0..<128 {
+        for x in 0..<128 {
+          let cell=y*128+x
+          let vectorInk=white[cell]*2>counts[cell]
+          let px=min(w-1,Int((Double(x)+0.5)/128*Double(w)))
+          let py=min(h-1,Int((Double(y)+0.5)/128*Double(h)))
+          let rasterInk=raster[(py*w+px)*4]>127
+          if vectorInk && rasterInk { intersection += 1 }
+          if vectorInk || rasterInk { union += 1 }
+          for digit in 0..<4 where columns[digit].contains((Double(x)+0.5)/128) {
+            if vectorInk && rasterInk { digitIntersection[digit] += 1 }
+            if vectorInk || rasterInk { digitUnion[digit] += 1 }
+          }
+        }
+      }
+      let iou=Double(intersection)/Double(max(1,union))
+      print("PHOTO_INK_ALIGNMENT fixture=\(fixture) intersection=\(intersection) union=\(union) iou=\(iou)")
+      XCTAssertGreaterThan(union,100)
+      XCTAssertGreaterThanOrEqual(iou,0.90,"Measured matrix and visible own glyphs must align, without a display flip")
+      for digit in 0..<4 {
+        let fraction=Double(digitIntersection[digit])/Double(max(1,digitUnion[digit]))
+        print("PHOTO_INK_DIGIT_ALIGNMENT fixture=\(fixture) digit=\(digit) iou=\(fraction)")
+        XCTAssertGreaterThanOrEqual(fraction,0.90)
+      }
+      app.terminate()
+    }
+  }
+  func testPhotoNativeAlphaReplayUsesReadableMediumTopAndActuallyOccludesInk() {
+    let args=["--photo-layout-fixture","native-alpha-replay"]
+    launch(args+["--photo-clock-test-mode","background"])
+    let bgData=viewportBytes("photo-ink-replay-background")
+    let bg=[UInt8](viewportPixels(bgData,inset:0))
+    app.terminate()
+    launch(args+["--photo-clock-test-mode","stencil","--photo-depth-unoccluded-control"])
+    let unoccluded=viewportBytes("photo-ink-replay-unoccluded")
+    let image=UIImage(data:unoccluded)!.cgImage!,w=image.width,h=image.height
+    let stencil=[UInt8](viewportPixels(unoccluded,inset:0))
+    app.terminate()
+    launch(args+["--photo-clock-test-mode","stencil"])
+    let geometry=app.staticTexts["photo.clock.geometry.test"].label
+    XCTAssertTrue(geometry.contains("height=0.56;y=0.05;"),geometry)
+    let layout=app.staticTexts["photo.layout.test"].label
+    XCTAssertTrue(layout.contains("fixture_mac_native_alpha_replay"),layout)
+    XCTAssertTrue(layout.contains("depth=true;foreground=true;"),layout)
+    let meta=app.staticTexts["photo.clock.ink.test"].label
+    print("PHOTO_INK_REPLAY \(geometry) \(meta)")
+    let actual=[UInt8](viewportPixels(viewportBytes("photo-ink-replay-occluded-stencil"),inset:0))
+    var crossed=0,restored=0
+    // Fixed interior of this own portrait's opaque head, not its soft edge.
+    for y in Int(Double(h)*0.29)..<Int(Double(h)*0.38) {
+      for x in Int(Double(w)*0.585)..<Int(Double(w)*0.595) {
+        let i=(y*w+x)*4
+        if (0..<3).allSatisfy({stencil[i+$0]>245}) &&
+           (0..<3).contains(where:{bg[i+$0]<190}) {
+          crossed += 1
+          if (0..<3).allSatisfy({abs(Int(actual[i+$0])-Int(bg[i+$0]))<=2}) { restored += 1 }
+        }
+      }
+    }
+    print("PHOTO_INK_REPLAY_ALPHA crossed=\(crossed) restored=\(restored)")
+    XCTAssertGreaterThan(crossed,100)
+    XCTAssertEqual(restored,crossed)
+    app.terminate()
+    launch(args)
+    viewportShot("photo-ink-replay-glass")
+  }
+  func testPhotoInkIsRecomputedWhenTheDisplayedMinuteChanges() {
+    launch(["--photo-layout-fixture","native-alpha-replay","--fast-photo-clock"])
+    let initial=app.staticTexts["photo.clock.ink.test"].label
+    XCTAssertFalse(initial.contains("ink=-1"),initial)
+    let first=viewportBytes("photo-ink-clock-before")
+    let changed=NSPredicate { _,_ in self.app.staticTexts["photo.clock.ink.test"].label != initial }
+    expectation(for:changed,evaluatedWith:nil)
+    waitForExpectations(timeout:6)
+    let next=app.staticTexts["photo.clock.ink.test"].label
+    XCTAssertFalse(next.contains("ink=-1"),next)
+    XCTAssertNotEqual(initial.components(separatedBy:";")[0],next.components(separatedBy:";")[0])
+    XCTAssertNotEqual(initial.components(separatedBy:";")[1],next.components(separatedBy:";")[1])
+    let second=viewportBytes("photo-ink-clock-after")
+    XCTAssertNotEqual(viewportPixels(first,inset:0),viewportPixels(second,inset:0))
+    print("PHOTO_INK_CLOCK before=\(initial) after=\(next)")
+  }
   func testPhotoFullHeightMatteActuallyOccludesClockInkWithoutMirroring() {
     let fixture=["--photo-layout-fixture","sparse-depth"]
     launch(fixture+["--photo-clock-test-mode","background"])
