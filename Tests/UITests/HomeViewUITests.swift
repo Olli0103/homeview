@@ -2565,3 +2565,84 @@ extension HomeViewUITests {
     viewportShot("timer-overflow-normal-add-limit-preserved")
   }
 }
+
+extension HomeViewUITests {
+  private func startOwnedLifecycleBread(storeID:String) -> Int {
+    launch(["--persistence-test",storeID,"--multiple-timers-fixture"])
+    verifyTimerChoice(103,title:"BREAD",value:"10:00")
+    XCTAssertEqual(timerChoicesContainer.value as? String,"3 timers")
+    XCTAssertEqual(app.staticTexts["timer.systemStatus"].label,"Foreground timer")
+    tap("timer.pause")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Pause timer")
+    expectation(for:NSPredicate(format:"label != %@","10:00"),evaluatedWith:app.staticTexts["timer.countdown"])
+    waitForExpectations(timeout:6)
+    return timerSelectionSeconds()
+  }
+  private func waitForLifecycleRemaining(atMost seconds:Int) {
+    XCTAssertTrue(seconds>0 && seconds<3600)
+    // These fixtures stay below one hour; fixed-width MM:SS sorts numerically.
+    let limit=String(format:"%02d:%02d",seconds/60,seconds%60)
+    expectation(for:NSPredicate(format:"label <= %@",limit),evaluatedWith:app.staticTexts["timer.countdown"])
+    waitForExpectations(timeout:6)
+    XCTAssertLessThanOrEqual(timerSelectionSeconds(),seconds)
+  }
+  private func recordLifecycleElapsed(_ name:String,before:Int,uptime:Double) {
+    let after=timerSelectionSeconds(),elapsed=ProcessInfo.processInfo.systemUptime-uptime
+    XCTAssertGreaterThan(after,0)
+    XCTAssertGreaterThanOrEqual(before-after,4)
+    // The app samples Date on a one-second pulse and rounds displayed seconds
+    // upward; this is a coarse local elapsed-time check, not Original timing.
+    XCTAssertLessThanOrEqual(abs(Double(before-after)-elapsed),3)
+    let report:[String:Any] = ["before_seconds":before,"after_seconds":after,
+      "observed_monotonic_elapsed_seconds":elapsed,"display_drop_seconds":before-after,
+      "allowed_pulse_rounding_observation_seconds":3,"system_alarm_requested":false]
+    let data=try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys])
+    let attachment=XCTAttachment(data:data,uniformTypeIdentifier:"public.json")
+    attachment.name="timer-lifecycle-"+name+"-metrics";attachment.lifetime = .keepAlways;add(attachment)
+  }
+  private func verifyLifecyclePausedPeersAndStopBread() {
+    timerChoice(101).tap();verifyTimerChoice(101,title:"TEA",value:"03:00")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    timerChoice(102).tap();verifyTimerChoice(102,title:"PASTA",value:"08:00")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    timerChoice(103).tap();verifyTimerChoice(103,title:"BREAD")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Pause timer")
+    tap("timer.pause")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+  }
+  @objc func testLocalTimersKeepElapsedTimeAndPausedPeersAcrossBackground() {
+    let id=UUID().uuidString
+    _=startOwnedLifecycleBread(storeID:id)
+    viewportShot("timer-lifecycle-before-background")
+    let before=timerSelectionSeconds(),uptime=ProcessInfo.processInfo.systemUptime
+    XCUIDevice.shared.press(.home)
+    Thread.sleep(forTimeInterval:4)
+    app.activate()
+    XCTAssertTrue(app.staticTexts["timer.countdown"].waitForExistence(timeout:6))
+    waitForLifecycleRemaining(atMost:before-4)
+    XCTAssertEqual(timerChoicesContainer.value as? String,"3 timers")
+    verifyTimerChoice(103,title:"BREAD")
+    recordLifecycleElapsed("background",before:before,uptime:uptime)
+    viewportShot("timer-lifecycle-after-background")
+    verifyLifecyclePausedPeersAndStopBread()
+    viewportShot("timer-lifecycle-background-peers-preserved")
+  }
+  @objc func testLocalTimersReloadOwnStoredDeadlinesAfterProcessRestart() {
+    let id=UUID().uuidString
+    _=startOwnedLifecycleBread(storeID:id)
+    viewportShot("timer-lifecycle-before-process-restart")
+    let before=timerSelectionSeconds(),uptime=ProcessInfo.processInfo.systemUptime
+    app.terminate()
+    Thread.sleep(forTimeInterval:3)
+    // No fixture and no reset flag: the new process must read this UUID store.
+    launch(["--persistence-test",id,"--page","Timers"])
+    XCTAssertEqual(timerChoicesContainer.value as? String,"3 timers")
+    waitForLifecycleRemaining(atMost:before-4)
+    verifyTimerChoice(103,title:"BREAD")
+    XCTAssertEqual(app.staticTexts["timer.systemStatus"].label,"Foreground timer")
+    recordLifecycleElapsed("process-restart",before:before,uptime:uptime)
+    viewportShot("timer-lifecycle-after-process-restart")
+    verifyLifecyclePausedPeersAndStopBread()
+    viewportShot("timer-lifecycle-restart-peers-preserved")
+  }
+}
