@@ -535,7 +535,7 @@
     "functions": [
       "F020"
     ],
-    "current": "Sechs-Wochen-Matrix samt Schaltjahr, sechs Wochen belegtem August und lokalem Jahres-/Zeitzonenwechsel auf iPad/iPhone geprüft. Agenda-Auswahl ändert nicht das lokale Heute des Faces. Originalgeometrie, Schrift, weitere Locales und Original-Auswahlregeln bleiben offen.",
+    "current": "Kritische Kalenderdaten synthetisch nativ geprüft; Kalender-Eins, Kopfzeilenabstand, Heute-Kreis und lokale Farben näher an UI08 kalibriert. Modular-Form unverändert. Exakte Typografie, weitere Locales und vollständige Original-Auswahlregeln bleiben offen.",
     "tasks": [
       "Geometrie, Schrift, Auswahl und Locale gegen alle verfügbaren Referenzzustände prüfen",
       "Monats-/Jahreswechsel, Schaltjahre und Zeitzonenübergang prüfen",
@@ -548,7 +548,7 @@
     "issue_url": "https://github.com/Olli0103/homeview/issues/22",
     "issue_number": 22,
     "state": "open",
-    "implementation_note": "calendar-critical-dates.md;139 Core,12 gezielte UI-Ausführungen,5 SDKs. Synthetische Testuhr; kein EventKit-/Hardware-PASS."
+    "implementation_note": "calendar-critical-dates.md und calendar-ui08.md; aktueller Geometriestand139Core/10gezielteUI/5SDK, keinOriginal-/Hardware-PASS."
   },
   {
     "key": "HOME-01",

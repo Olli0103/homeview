@@ -956,6 +956,41 @@
       "core_repeated_after_commit": true,
       "post_commit_core_log_sha256": "dbb7606b60538914e6551e7039ac93327f43161232dd5de3783c7d12df2e2ad0",
       "full_ui_suite_claimed": false
+    },
+    {
+      "checkpoint": "calendar-ui08-integrated",
+      "commit": "eb308e8ab853cf5449916fc42f72070867ace8a3",
+      "source_digest": "55382a5975a50de93888821303f4d41a94f6093f2cbd6af69a9e64824067fe6d",
+      "files_verified": 133,
+      "core_passed": 139,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "53de5b80f07ef6b369086d482b817889f0e6f4155f27bfdae6db66cd007a37a1",
+      "full_ui_suite_claimed": false
     }
   ],
   "all_sources_match_committed_bytes": true

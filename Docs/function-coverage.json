@@ -598,7 +598,7 @@
       "FACE-13"
     ],
     "current": [
-      "Sechs-Wochen-Matrix samt Schaltjahr, sechs Wochen belegtem August und lokalem Jahres-/Zeitzonenwechsel auf iPad/iPhone geprüft. Agenda-Auswahl ändert nicht das lokale Heute des Faces. Originalgeometrie, Schrift, weitere Locales und Original-Auswahlregeln bleiben offen."
+      "Kritische Kalenderdaten synthetisch nativ geprüft; Kalender-Eins, Kopfzeilenabstand, Heute-Kreis und lokale Farben näher an UI08 kalibriert. Modular-Form unverändert. Exakte Typografie, weitere Locales und vollständige Original-Auswahlregeln bleiben offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -612,7 +612,7 @@
     "implementation_status": "partial",
     "acceptance": {
       "functional": "bounded synthetic month, leap-year, local-year and agenda/face checks passed; full original policy remains pending",
-      "visual": "pending original-state comparison",
+      "visual": "bounded UI08 geometry/color correction reviewed; exact typography, other states and locales remain pending",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
     "completion_criteria": [
