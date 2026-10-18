@@ -235,7 +235,7 @@ Abhängigkeiten: SYS-03.
 <a id="face-05"></a>
 ### FACE-05: Persönlichen Home Screen und App-Anordnung abnehmen
 
-Persönlicher Screen mit Demo-Profilen liegt über unscharfem Face. Vollständige originale Anordnung und Einstellungen sind nicht abgenommen.
+Profilgetrennte eigene Layouts, vier Favoriten, Medien-/Wetterraster und lokale Speicherung sind synthetisch geprüft. Foto-Vorschau und explizit freigegebenes Album sind ergänzt. Vollständige Originalvarianten, echte Mehrnutzeridentität, Accounts und genaue Licht-/Rasterdetails bleiben offen.
 
 Offen:
 
@@ -372,7 +372,7 @@ Abhängigkeiten: FLOW-02.
 <a id="face-09"></a>
 ### FACE-09: Fade-Verlauf und zeitabhängige Ziffern abgleichen
 
-Zeitabhängiges Ein-/Ausblenden ist eine eigene Interpolation aus Einzelbildern.
+Eigener konischer Fade-Verlauf und Reduce Motion sind pixelbasiert geprüft; Zeigerlängen, schmaler Ansatz, Relief und Ziffernanordnung wurden getrennt nach UI12 kalibriert. Exakte Originalzeitkurve, weitere Übergänge, Licht und Schrift bleiben offen.
 
 Offen:
 
@@ -387,7 +387,7 @@ Abhängigkeiten: BASE-02.
 <a id="face-10"></a>
 ### FACE-10: Numerals-Typografie und analoge Uhrvarianten kalibrieren
 
-Native Zeiger sind vorhanden, Numerals verwendet angenäherte Systemtypografie und Positionen.
+Numerals verwendet kalibrierte öffentliche gerundete Runtime-Typografie, längeren Minutenzeiger, Relief und offene Nabe; die alternative Home-Rasteruhr wurde getrennt angepasst. Exakte Originalschrift, alle Uhrzeiten/Stile und Lichtdetails bleiben offen.
 
 Offen:
 
@@ -402,7 +402,7 @@ Abhängigkeiten: PUB-01, BASE-02.
 <a id="face-11"></a>
 ### FACE-11: Prismen-Hintergrund und analoge Materialschichten angleichen
 
-Home-Modular-Stile haben eigene bewegte Prismen. Originalrenderpfad, Metallreflexionen und weiche Zeigerschatten sind nicht gleichwertig belegt.
+Eigene analytische Prismen mit Kantenrelief und Reflexionsbändern sowie öffentliche Glaskacheln auf unterstützten Plattformen sind geprüft. Touch, Nacht und Reduce Motion wurden begrenzt validiert. Exakte Originalkonturen/-phasen/-schatten, andere Materialfallbacks und physische Leistung bleiben offen.
 
 Offen:
 
@@ -417,7 +417,7 @@ Abhängigkeiten: BASE-02.
 <a id="face-12"></a>
 ### FACE-12: Wetterdaten, Wolken, Regen und Frost vollständig abnehmen
 
-Open-Meteo ist bewusst anschließbar. Wolken sind eigener Canvas-Effekt; Regen/Frost und vollständige Originalzustände fehlen.
+Bewusst anschließbares Open-Meteo, unbekannte statt erfundener Werte und getrennte Wetter-App sind geprüft. Eigene Metal-Wolken und gemeinsame durchscheinende Glasziffern ersetzen die alten Canvas-Flecken; Tageswolkenkörper und Eigenverschattung wurden getrennt vergröbert und gedämpft. Originalformen, Brechung, Übergänge, Regen/Frost und physische Leistung bleiben offen.
 
 Offen:
 

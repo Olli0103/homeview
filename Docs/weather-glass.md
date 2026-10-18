@@ -1,5 +1,8 @@
 # Wetter-Glasziffern nach UI05
 
+Nachfolgender, separat geprüfter [Tageswolken-/Lichtschritt](weather-cloud-light.md).
+Die folgenden Zahlen bleiben an ihrem historischen Quellstand gebunden.
+
 17. Oktober 2026 - [#21](https://github.com/Olli0103/homeview/issues/21).
 
 Die Produktreferenz UI05 zeigt durchscheinende Glasziffern, kein nahezu deckendes
