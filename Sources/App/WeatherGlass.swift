@@ -9,12 +9,12 @@ struct WeatherGlassTemperature: View {
   let night: Float
   private var number: Text {
     if value.hasSuffix("°") {
-      return Text("\(Text(String(value.dropLast())).font(.system(size:size,weight:.regular)))\(Text("°").font(.system(size:size*0.76,weight:.regular)).baselineOffset(size*0.18))")
+      return Text("\(Text(String(value.dropLast())).font(.system(size:size,weight:.regular)))\(Text("°").font(.system(size:size*0.86,weight:.regular)).baselineOffset(size*0.12))")
     }
     return Text(value).font(.system(size:size,weight:.regular))
   }
   var body: some View {
-    number.tracking(-10)
+    number.tracking(-4)
       .lineLimit(1).minimumScaleFactor(0.6).foregroundStyle(.white).blur(radius:1.4)
       .visualEffect { content,geometry in
         let bounds=geometry.frame(in:.named("weather-face"))

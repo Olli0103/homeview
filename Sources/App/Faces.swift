@@ -369,28 +369,32 @@ struct WeatherFace: View {
             systemImage: model.connections.weatherSymbol)
           Text(
             model.connections.weatherHighLow)
-        }.font(.system(size: 28, weight: .medium))
+        }.font(.system(size: 28, weight: .medium)).offset(y: inApp ? 0 : -3)
         Spacer(minLength: 0)
-        Text(model.clock, style: .time).font(.system(size: 47, weight: .semibold))
+        Text(model.clock, style: .time).font(.system(size: inApp ? 47 : 48, weight: .semibold))
           .environment(\.timeZone, model.displayTimeZone)
+          .offset(x: inApp ? 0 : -4, y: inApp ? 0 : -12)
+          .accessibilityIdentifier("weather.face.clock")
       }
       WeatherGlassTemperature(value:model.connections.weatherTemperature,
-        size:inApp ? 170 : model.data.far ? 260:236,phase:phase,
+        size:inApp ? 170 : model.data.far ? 260:241,phase:phase,
         cover:Float(WeatherBackdrop.cloudCover(model.connections.weather,demo:model.connections.weatherDemo)),
         night:model.connections.weather?.isDay == false ? 1:0)
         .padding(.top,-40)
       Spacer(minLength: 0)
       if !model.data.far {
         HStack(alignment: .top, spacing: 8) {
-          detail("sunset", model.connections.weatherDemo ? "7:32 PM" : model.connections.weather?.sunsetLabel ?? "—", "Sunset")
+          detail("sunset.fill", model.connections.weatherDemo ? "7:32 PM" : model.connections.weather?.sunsetLabel ?? "—", "Sunset")
           detail(
             "wind", model.connections.weatherUnits.wind(model.connections.weatherDemo ? 7 : model.connections.weather?.wind),
             "Wind")
           detail(
-            "humidity", humidity,
+            "humidity.fill", humidity,
             "Humidity")
-          detail("aqi.medium", model.connections.weatherDemo ? "21":"—", "AQI")
+          detail("aqi.low", model.connections.weatherDemo ? "21":"—", "AQI")
         }.padding(.bottom, inApp ? 44 : 4)
+          .padding(.leading, inApp ? 0 : -17).padding(.trailing, inApp ? 0 : -33)
+          .offset(y: inApp ? 0 : 5)
       }
     }.padding(inApp ? 30 : 45).foregroundStyle(.white)
       .shadow(color:.black.opacity(0.18),radius:1,x:0,y:1).background(WeatherBackdrop(
@@ -415,10 +419,10 @@ struct WeatherFace: View {
   }
   private func detail(_ s: String, _ value: String, _ label: String) -> some View {
     VStack(spacing: 3) {
-      Image(systemName: s).font(.system(size: inApp ? 32 : 40, weight: .light)).frame(height: inApp ? 40 : 52)
+      Image(systemName: s).font(.system(size: inApp ? 32 : 44, weight: .light)).frame(height: inApp ? 40 : 72).accessibilityHidden(true)
       Text(value).font(.system(size: inApp ? 22 : 27, weight: .medium)).lineLimit(1).minimumScaleFactor(0.7)
         .accessibilityIdentifier("weather.detail."+label)
-      Text(label).font(.system(size: inApp ? 21 : 27)).lineLimit(1).minimumScaleFactor(0.7)
+      Text(label).font(.system(size: inApp ? 21 : 29)).lineLimit(1).minimumScaleFactor(0.7)
     }.frame(maxWidth: .infinity)
   }
 }
