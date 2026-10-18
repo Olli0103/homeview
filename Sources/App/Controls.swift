@@ -135,7 +135,7 @@ struct SettingsView: View {
           ValueAdjuster(value: model.data.home.fanSpeed, label: "Mock fan speed") {
             model.command(.fanSpeed($0))
           }
-          Button("Simulate doorbell") { model.route = .camera(0) }.font(.system(size: 23))
+          Button("Simulate doorbell") { model.simulateDoorbell() }.font(.system(size: 23))
             .accessibilityIdentifier("settings.doorbell")
           Button("Simulate incoming call") { model.incomingCall = true }.font(.system(size: 23))
             .accessibilityIdentifier("settings.call")
