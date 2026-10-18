@@ -1931,7 +1931,7 @@
       "DAY-03"
     ],
     "current": [
-      "Lokale Timer und iOS/iPadOS-AlarmKit-Anbindung mit Pause/Fortsetzen/Löschen sind vorhanden, Simulatorprüfungen bestehen."
+      "Lokale und angebundene Timer sind vorhanden. Drei synthetische Timer nativ geprüft: Auswahl/Ersatzwahl nach Laden/Löschen, zwei unabhängig laufende und pausierte Zähler, dritter unberührt pausiert. Mehrtimer-Statusüberlagerung/Chipkontrast korrigiert; Fristen/Alarmadapter, bestehender Auswahl-Fallback und Sortierung unverändert. Begrenzter Prüfschritt: Docs/timer-selection.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1944,7 +1944,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded synthetic three-timer selection/deletion and independent run/pause passed; expiry, full count range, system reconciliation and lifecycle remain pending",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -1962,7 +1962,7 @@
       "DAY-03"
     ],
     "current": [
-      "Countdown und Randring nach UI14 begrenzt kalibriert; lange Anzeige bleibt innerhalb der Randstriche. Ruhender Referenzzustand, Einblenden per echtem Touch, lokale Bedienung, Rezepttimer und Demo-Türklingel-Rückkehr sind geprüft. Produktive Fristen/Alarmadapter unverändert; vollständige Original-, Mehrtimer-, Neustart-/Zeitwechsel- und Hardwareabnahme bleiben offen."
+      "UI14-Geometrie begrenzt korrigiert und vorhandene Inaktivitätsregel nativ geprüft. Aktueller Mehrtimer-Schritt erhält die einzelnen10:56/23:59:59-Bilder auf iPad/iPhone exakt; Status und Titel bei mehreren Timern getrennt, Chips lesbar und unter Randstrichen. Originaltiming/-Mehrtimerlayout und Hardware bleiben offen. Docs/timer-ui14.md, Docs/timer-idle.md, Docs/timer-selection.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1975,7 +1975,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "bounded synthetic paused reference, long readout, control touch and local timer/recipe/doorbell regression passed; system reconciliation remains pending",
+      "functional": "bounded synthetic reference, long readout, touch/idle and independent multi-timer regression passed; full lifecycle/system reconciliation remains pending",
       "visual": "bounded UI14 correction from approximate front crop; exact typography and calibrated display limits remain pending",
       "device_service": "pending where required; classify explicitly before acceptance"
     },

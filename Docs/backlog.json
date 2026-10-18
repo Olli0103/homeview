@@ -1202,7 +1202,7 @@
       "F063",
       "F064"
     ],
-    "current": "Countdown und Randring nach UI14 begrenzt kalibriert; lange Anzeige bleibt innerhalb der Randstriche. Zusätzlich vorhandenes Vier-Sekunden-Ausblenden, Touch-Fristneustart und Weiterlaufen bei verborgenen Bedienelementen nativ mit synthetischen Timern geprüft. Produktive Fristen/Alarmadapter unverändert; exaktes Originaltiming, vollständige Original-, Mehrtimer-, Neustart-/Zeitwechsel- und Hardwareabnahme bleiben offen.",
+    "current": "UI14-Geometrie und vorhandene Inaktivitätsregel begrenzt geprüft. Mehrtimer-Status/Titelüberlagerung und schlecht lesbare Chips korrigiert; Auswahl/Löschen sowie zwei unabhängige laufende/pausierte Zähler mit drittem pausierten Timer nativ geprüft. Einzel-Timer-Bilder bleiben exakt unverändert. Fristen/Alarmadapter, Auswahl-Fallback und Sortierung unverändert; Original-Mehrtimerlayout, Vollumfang, Hintergrund/Neustart/Zeitwechsel und Hardware offen.",
     "tasks": [
       "Gleichzeitige Timer, Ablauf, Neusortierung und Rückkehr aus Hintergrund testen",
       "Große Randstriche, Steuerungsverbergen und Überlauf kalibrieren",
@@ -1215,7 +1215,7 @@
     "issue_url": "https://github.com/Olli0103/homeview/issues/49",
     "issue_number": 49,
     "state": "open",
-    "implementation_note": "timer-ui14.md: früherer Geometrieschritt. timer-idle.md:139Core/4gezielteUI/5SDK, vorhandene Inaktivitätsregel nativ geprüft; kein Systemalarm-/Originaltiming-/Hardware-PASS."
+    "implementation_note": "timer-ui14.md und timer-idle.md bleiben frühere getrennte Prüfschritte. timer-selection.md:139Core/8gezielteUI/5SDK, Layout/Chipkontrast und unabhängige Zähler; kein Original-/Systemalarm-/Hardware-PASS."
   },
   {
     "key": "DAY-04",
