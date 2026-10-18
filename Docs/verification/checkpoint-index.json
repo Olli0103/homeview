@@ -885,6 +885,42 @@
       "post_commit_core_log_sha256": "16d30056132152c1ce1fb81142bcebdc87f2fb859c5560b333fa327c2c9cd6f4",
       "supporting_failed_broad_run_is_separate": "selected-album-updates.json",
       "no_full_current_ui_suite_claim": true
+    },
+    {
+      "checkpoint": "demo-doorbell-integrated",
+      "commit": "e906d0eef473f095e64358938978a3f03d512d5a",
+      "source_digest": "a39992c86491f1ffdf48913002619ab4c400efc44db8ac6ddd069387c772543f",
+      "files_verified": 132,
+      "core_passed": 135,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 9,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        },
+        {
+          "device": "iPhone",
+          "passed": 9,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS 27.0 / 24A434"
+        }
+      ],
+      "sdk_builds": [
+        "iOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "core_repeated_after_commit": true,
+      "post_commit_core_log_sha256": "105860b709bdcc58f670cacf874c8f284b4002b414339b539d19122a05ab2ce2",
+      "full_ui_suite_claimed": false,
+      "supplementary_same_source_checkpoint": "doorbell-camera-regression"
     }
   ],
   "all_sources_match_committed_bytes": true

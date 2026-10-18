@@ -526,7 +526,7 @@ Abhängigkeiten: HOME-01.
 <a id="cam-02"></a>
 ### CAM-02: Türklingel-Ereignis und Unterbrechungsregeln umsetzen
 
-Türklingel kann über Settings simuliert werden. Kein echtes Klingelereignis.
+Synthetische Türklingel als begrenztes Overlay ohne Navigationsersatz implementiert und geprüft: Wiederholung, Ablauf, Timer/Kochschritt, Offline/Anruf und Hintergrundsperre. Keine echte Eventquelle oder Kameraanbindung; Originalprioritäten und Hardware offen.
 
 Offen:
 

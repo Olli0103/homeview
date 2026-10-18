@@ -203,3 +203,15 @@ bestandenen und drei fehlgeschlagenen Ausführungen bleibt getrennt und wird
 nicht als aktuelle Vollsuite umetikettiert. Seine betroffenen Abläufe bestehen
 nach der Accessibility-/Testeingabekorrektur. [Nachweise und eigene Bilder](selected-album-updates.md).
 #11 bleibt offen für Originalwechselregeln und reale PhotoKit-/Geräteabnahme.
+
+
+## Begrenzte synthetische Türklingel-Unterbrechung
+
+[e906d0e](https://github.com/Olli0103/homeview/commit/e906d0eef473f095e64358938978a3f03d512d5a)
+integriert die eigene Demo-Ereignislogik, ohne Timer, Kochschritt oder Face-Route
+zu ersetzen. Wiederholung, endliche Anzeige, Offline-/Anrufvorrang und
+Hintergrundsperre sind begrenzt behandelt. 135 Modelltests, nach Merge erneut,
+18 gezielte iPad-/iPhone-Ausführungen (inklusive normaler Kamera-Regression) und
+fünf SDK-Builds auf denselben 132 Quellen. Die Album-Neuerung wurde dabei mitgeprüft. [Eigene Bilder und Grenzen](demo-doorbell-interruption.md).
+#28 bleibt offen: kein echtes Klingelereignis, keine Stream-/Hardware- oder
+vollständige Original-Unterbrechungsabnahme; HomeKit bleibt gesperrt.
