@@ -47,6 +47,7 @@ struct CalendarView: View {
                       == calendar.component(.month, from: model.clock) ? .black : .gray)
             }
           }.accessibilityIdentifier("calendar.day.\(i)")
+            .accessibilityValue(day == i ? "Selected":"")
         }
       }.frame(maxWidth: .infinity).padding(.top, 16).padding(.bottom, 2)
       ScrollView {

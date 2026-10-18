@@ -146,6 +146,8 @@ final class AppModel {
   }
   var now = Date()
   var referenceClock: Bool
+  private let testReferenceDate: Date?
+  private let testReferenceTimeZone: TimeZone?
   var lastInteraction = Date()
   var idleSeconds = 120.0
   let audio = LocalAudioEngine()
@@ -157,7 +159,7 @@ final class AppModel {
     private var nativeAlarms = NativeAlarmService()
   #endif
   private var toastTask: Task<Void, Never>?
-  var clock: Date { referenceClock ? Fixtures.date : now }
+  var clock: Date { referenceClock ? (testReferenceDate ?? Fixtures.date) : now }
   var recipe: RecipeDocument {
     get { data.recipe }
     set {
@@ -193,7 +195,9 @@ final class AppModel {
     }
     persist()
   }
-  var displayTimeZone: TimeZone { referenceClock ? TimeZone(secondsFromGMT: 0)! : .current }
+  var displayTimeZone: TimeZone {
+    referenceClock ? (testReferenceTimeZone ?? TimeZone(secondsFromGMT:0)!) : .current
+  }
   var monthLayout: MonthLayout { MonthLayout(date: clock, timeZone: displayTimeZone) }
   func dateLabel(_ format: String) -> String {
     let f = DateFormatter()
@@ -205,6 +209,18 @@ final class AppModel {
   var authorized: Bool { profile != nil && simulatedPresence }
   init() {
     let args = ProcessInfo.processInfo.arguments
+    // Fixed clocks never read a calendar store and cannot override a normal
+    // app launch. The reference clock toggle retains its existing semantics.
+    testReferenceDate = {
+      guard args.contains("--uitesting"), let i=args.firstIndex(of:"--reference-date"),
+            args.indices.contains(i+1),args[i+1].count<=64 else { return nil }
+      return ISO8601DateFormatter().date(from:args[i+1])
+    }()
+    testReferenceTimeZone = {
+      guard args.contains("--uitesting"),let i=args.firstIndex(of:"--reference-zone"),
+            args.indices.contains(i+1),args[i+1].count<=128 else { return nil }
+      return TimeZone(identifier:args[i+1])
+    }()
     #if !os(watchOS)
       let albumProvider = makeAlbumPhotoProvider()
       albumPhotoProvider = albumProvider
