@@ -1,0 +1,638 @@
+{
+  "feature_commit": "01da21e00e141c92791d8fa8a336dda0671238c3",
+  "integrated_commit": "bc7c56f09763bf6f02e9981210d219cb6efed3b6",
+  "source_digest": "da3db8fca31e78d81ba8561af197fc7f96928f3eb4529724e62cf1eeab893d12",
+  "source_files": 142,
+  "changed_app_source": "Sources/App/HomeScreens.swift",
+  "test_instrumentation_file": "Tests/UITests/HomeViewUITests.swift",
+  "before_app_bytes_identical_to": "004d65162be5558c508da8f648ba85a849123092",
+  "before_source_digest": "4faed1c90230c1d006625e2e2d535f3dcd85fa94130aec5d83c038cc9623c612",
+  "before_source_archive_sha256": "c8f07997e610bb1181818a1751a3a6653fb46641a73c91c290daf41b5d2a4a27",
+  "candidate_source_archive_sha256": "35a0365d6ceadac0affc15509629974e0cbd18ae12a0b358f4d24821d3a34a7c",
+  "implementation": "Seven independent rounded-bar primitives and circular clip;45x45design points,3point down; original SF image hidden but layout box preserved. Only HomeGrid waveform ink replaced. Fonts/colors/clock/tile/camera/other screens not edited.",
+  "contract": {
+    "base_commit": "004d65162be5558c508da8f648ba85a849123092",
+    "scope": "Only 3x3 Home Grid Intercom icon silhouette; independent simple SwiftUI geometry, no reference raster/contour copied into app. Preserve existing SF image layout footprint using hidden placeholder overlay. All typography, tile geometry/colors, states and other screens unchanged.",
+    "private_observation": "UI13 seven symmetric vertical bars with circular silhouette; existing public SF waveform has six asymmetric bars. Reference normalized icon width/height approx0.0748/0.0747 of viewport; centerXapprox0.825,centerYapprox0.121. Direct default-on own capture used; later after-toggle representative is not matching reference light state.",
+    "existing_solution": "Retain public SF Symbols for all other icons and placeholder layout; existing waveform appearance does not match observed seven symmetric bar mark. User explicitly requests custom native replica.",
+    "preprototype_own_criteria": {
+      "ROI": [
+        0.76,
+        0.06,
+        0.93,
+        0.2
+      ],
+      "outside_ROI_changed_pixels": 0,
+      "actual_mark_vertical_components": 7,
+      "actual_mark_normalized_width_range": [
+        0.073,
+        0.077
+      ],
+      "actual_mark_normalized_height_range": [
+        0.073,
+        0.077
+      ],
+      "actual_mark_normalized_centerX_range": [
+        0.823,
+        0.827
+      ],
+      "actual_mark_normalized_centerY_range": [
+        0.118,
+        0.123
+      ],
+      "preserve_other_sources": "All outside HomeScreens.swift and own UI test instrumentation byte-identical; other face body bytes unchanged.",
+      "entry_on_return_pixels_identical": true,
+      "night_primary_wrong_pixels": 0,
+      "real_tap_destination": "Intercom synthetic input/send button exists, never sent or recorded."
+    },
+    "not_claimed": "No full original symbol/vector/typography/hardware/live Intercom acceptance; no private ref image publication; held prism unchanged."
+  },
+  "own_image_metrics": {
+    "label": "grid-intercom-final-ui",
+    "contract_sha256": "d7c7192a1dc97ecab877fdb7bfcb488795dd5dd273d6c906eb5b12a8c5e142a0",
+    "metrics": [
+      {
+        "device": "iPad",
+        "state": "entry-on",
+        "roi": [
+          0.76,
+          0.06,
+          0.93,
+          0.2
+        ],
+        "actual_components": 7,
+        "bars": [
+          {
+            "first": 45,
+            "last": 52,
+            "top": 71,
+            "bottom": 120
+          },
+          {
+            "first": 64,
+            "last": 70,
+            "top": 50,
+            "bottom": 142
+          },
+          {
+            "first": 82,
+            "last": 89,
+            "top": 39,
+            "bottom": 152
+          },
+          {
+            "first": 101,
+            "last": 108,
+            "top": 37,
+            "bottom": 155
+          },
+          {
+            "first": 120,
+            "last": 126,
+            "top": 39,
+            "bottom": 152
+          },
+          {
+            "first": 138,
+            "last": 145,
+            "top": 50,
+            "bottom": 142
+          },
+          {
+            "first": 157,
+            "last": 163,
+            "top": 71,
+            "bottom": 121
+          }
+        ],
+        "normalized_bbox_width": 0.07474874371859297,
+        "normalized_bbox_height": 0.07474874371859297,
+        "normalized_center": [
+          0.8256909547738693,
+          0.12091708542713568
+        ],
+        "checks": {
+          "outside_icon_zero": true,
+          "alpha_unchanged": true,
+          "seven_components": true,
+          "width": true,
+          "height": true,
+          "centerX": true,
+          "centerY": true
+        },
+        "before_sha256": "d81247b79c5dcea636581ab5a292567c66000d2c3d3e4ad38d47f2065c0e0d1b",
+        "after_sha256": "b69d44432f28081cac28154b4fa831cacccb472ffafa352b9093bbf08720c3b8"
+      },
+      {
+        "device": "iPad",
+        "state": "entry-off",
+        "roi": [
+          0.76,
+          0.06,
+          0.93,
+          0.2
+        ],
+        "actual_components": 7,
+        "bars": [
+          {
+            "first": 45,
+            "last": 52,
+            "top": 71,
+            "bottom": 120
+          },
+          {
+            "first": 64,
+            "last": 70,
+            "top": 50,
+            "bottom": 142
+          },
+          {
+            "first": 82,
+            "last": 89,
+            "top": 39,
+            "bottom": 152
+          },
+          {
+            "first": 101,
+            "last": 108,
+            "top": 37,
+            "bottom": 155
+          },
+          {
+            "first": 120,
+            "last": 126,
+            "top": 39,
+            "bottom": 152
+          },
+          {
+            "first": 138,
+            "last": 145,
+            "top": 50,
+            "bottom": 142
+          },
+          {
+            "first": 157,
+            "last": 163,
+            "top": 71,
+            "bottom": 121
+          }
+        ],
+        "normalized_bbox_width": 0.07474874371859297,
+        "normalized_bbox_height": 0.07474874371859297,
+        "normalized_center": [
+          0.8256909547738693,
+          0.12091708542713568
+        ],
+        "checks": {
+          "outside_icon_zero": true,
+          "alpha_unchanged": true,
+          "seven_components": true,
+          "width": true,
+          "height": true,
+          "centerX": true,
+          "centerY": true
+        },
+        "before_sha256": "0958ca3e49e8c28964603176090b658fcbdd73b0622d9e94ef1b7ad78ef87eb5",
+        "after_sha256": "11563c3ea4c94db5b137670c4571f437e0e4026aa954982f1090ed934e689692"
+      },
+      {
+        "device": "iPad",
+        "state": "entry-on-return",
+        "roi": [
+          0.76,
+          0.06,
+          0.93,
+          0.2
+        ],
+        "actual_components": 7,
+        "bars": [
+          {
+            "first": 45,
+            "last": 52,
+            "top": 71,
+            "bottom": 120
+          },
+          {
+            "first": 64,
+            "last": 70,
+            "top": 50,
+            "bottom": 142
+          },
+          {
+            "first": 82,
+            "last": 89,
+            "top": 39,
+            "bottom": 152
+          },
+          {
+            "first": 101,
+            "last": 108,
+            "top": 37,
+            "bottom": 155
+          },
+          {
+            "first": 120,
+            "last": 126,
+            "top": 39,
+            "bottom": 152
+          },
+          {
+            "first": 138,
+            "last": 145,
+            "top": 50,
+            "bottom": 142
+          },
+          {
+            "first": 157,
+            "last": 163,
+            "top": 71,
+            "bottom": 121
+          }
+        ],
+        "normalized_bbox_width": 0.07474874371859297,
+        "normalized_bbox_height": 0.07474874371859297,
+        "normalized_center": [
+          0.8256909547738693,
+          0.12091708542713568
+        ],
+        "checks": {
+          "outside_icon_zero": true,
+          "alpha_unchanged": true,
+          "seven_components": true,
+          "width": true,
+          "height": true,
+          "centerX": true,
+          "centerY": true
+        },
+        "before_sha256": "d81247b79c5dcea636581ab5a292567c66000d2c3d3e4ad38d47f2065c0e0d1b",
+        "after_sha256": "b69d44432f28081cac28154b4fa831cacccb472ffafa352b9093bbf08720c3b8"
+      },
+      {
+        "device": "iPad",
+        "state": "viewport-grid-intercom-local-destination-no-send",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPad",
+        "state": "on-return",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPhone",
+        "state": "entry-on",
+        "roi": [
+          0.76,
+          0.06,
+          0.93,
+          0.2
+        ],
+        "actual_components": 7,
+        "bars": [
+          {
+            "first": 32,
+            "last": 36,
+            "top": 51,
+            "bottom": 86
+          },
+          {
+            "first": 45,
+            "last": 50,
+            "top": 36,
+            "bottom": 101
+          },
+          {
+            "first": 58,
+            "last": 63,
+            "top": 29,
+            "bottom": 108
+          },
+          {
+            "first": 72,
+            "last": 76,
+            "top": 27,
+            "bottom": 110
+          },
+          {
+            "first": 85,
+            "last": 89,
+            "top": 29,
+            "bottom": 108
+          },
+          {
+            "first": 98,
+            "last": 102,
+            "top": 36,
+            "bottom": 101
+          },
+          {
+            "first": 111,
+            "last": 115,
+            "top": 52,
+            "bottom": 85
+          }
+        ],
+        "normalized_bbox_width": 0.07407407407407407,
+        "normalized_bbox_height": 0.07407407407407407,
+        "normalized_center": [
+          0.8253968253968254,
+          0.12081128747795414
+        ],
+        "checks": {
+          "outside_icon_zero": true,
+          "alpha_unchanged": true,
+          "seven_components": true,
+          "width": true,
+          "height": true,
+          "centerX": true,
+          "centerY": true
+        },
+        "before_sha256": "8eb113f59d58bd9f76bc33629cf4bd00f8b1dc4566990f2bbc3d094bda566094",
+        "after_sha256": "76754d71436916eede65f8e1f35f7afd8f1158e9c7a4c76ae8b80a4f407fbb38"
+      },
+      {
+        "device": "iPhone",
+        "state": "entry-off",
+        "roi": [
+          0.76,
+          0.06,
+          0.93,
+          0.2
+        ],
+        "actual_components": 7,
+        "bars": [
+          {
+            "first": 32,
+            "last": 36,
+            "top": 51,
+            "bottom": 86
+          },
+          {
+            "first": 45,
+            "last": 50,
+            "top": 36,
+            "bottom": 101
+          },
+          {
+            "first": 58,
+            "last": 63,
+            "top": 29,
+            "bottom": 108
+          },
+          {
+            "first": 72,
+            "last": 76,
+            "top": 27,
+            "bottom": 110
+          },
+          {
+            "first": 85,
+            "last": 89,
+            "top": 29,
+            "bottom": 108
+          },
+          {
+            "first": 98,
+            "last": 102,
+            "top": 36,
+            "bottom": 101
+          },
+          {
+            "first": 111,
+            "last": 115,
+            "top": 52,
+            "bottom": 85
+          }
+        ],
+        "normalized_bbox_width": 0.07407407407407407,
+        "normalized_bbox_height": 0.07407407407407407,
+        "normalized_center": [
+          0.8253968253968254,
+          0.12081128747795414
+        ],
+        "checks": {
+          "outside_icon_zero": true,
+          "alpha_unchanged": true,
+          "seven_components": true,
+          "width": true,
+          "height": true,
+          "centerX": true,
+          "centerY": true
+        },
+        "before_sha256": "ab8821e25a2068ba18cc313eb91d6e11cd65caf64bccc9fdc3c786cf0f7be2a8",
+        "after_sha256": "ae78789feb7a4328bfbf17c6bc4a0c000d24a6665771d90800d99f49deadf2ed"
+      },
+      {
+        "device": "iPhone",
+        "state": "entry-on-return",
+        "roi": [
+          0.76,
+          0.06,
+          0.93,
+          0.2
+        ],
+        "actual_components": 7,
+        "bars": [
+          {
+            "first": 32,
+            "last": 36,
+            "top": 51,
+            "bottom": 86
+          },
+          {
+            "first": 45,
+            "last": 50,
+            "top": 36,
+            "bottom": 101
+          },
+          {
+            "first": 58,
+            "last": 63,
+            "top": 29,
+            "bottom": 108
+          },
+          {
+            "first": 72,
+            "last": 76,
+            "top": 27,
+            "bottom": 110
+          },
+          {
+            "first": 85,
+            "last": 89,
+            "top": 29,
+            "bottom": 108
+          },
+          {
+            "first": 98,
+            "last": 102,
+            "top": 36,
+            "bottom": 101
+          },
+          {
+            "first": 111,
+            "last": 115,
+            "top": 52,
+            "bottom": 85
+          }
+        ],
+        "normalized_bbox_width": 0.07407407407407407,
+        "normalized_bbox_height": 0.07407407407407407,
+        "normalized_center": [
+          0.8253968253968254,
+          0.12081128747795414
+        ],
+        "checks": {
+          "outside_icon_zero": true,
+          "alpha_unchanged": true,
+          "seven_components": true,
+          "width": true,
+          "height": true,
+          "centerX": true,
+          "centerY": true
+        },
+        "before_sha256": "8eb113f59d58bd9f76bc33629cf4bd00f8b1dc4566990f2bbc3d094bda566094",
+        "after_sha256": "76754d71436916eede65f8e1f35f7afd8f1158e9c7a4c76ae8b80a4f407fbb38"
+      },
+      {
+        "device": "iPhone",
+        "state": "viewport-grid-intercom-local-destination-no-send",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPhone",
+        "state": "on-return",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      }
+    ],
+    "all_own_checks_passed": true
+  },
+  "baseline_ui_executions2_not_added_to_final6": true,
+  "pilot_ui_executions2_not_added_to_final6": true,
+  "pilot_and_final_source_identical": true,
+  "ui_executions": 6,
+  "unique_cases": 3,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0 / 24A434",
+      "summary_sha256": "349f393210fd8a95e7347f99f23cdf5a8e06aa8430d1b0a71c88bbe05af9a45c",
+      "log_sha256": "a69102bdf02a61030239cb6e993361595d3f50cef0cf4e6cdd583417f4ff2d6b"
+    },
+    {
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0 / 24A434",
+      "summary_sha256": "a67b7b92498148af28de59c6cd16badd730e97a2a9435d98773623af7e12273b",
+      "log_sha256": "2580b9e914a81b191008f5fa1c658b81a920ac4df5311b07eb494ec2d5da900e"
+    }
+  ],
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T08:59:52.157614+00:00",
+      "ended": "2026-10-18T09:00:10.931463+00:00",
+      "log_sha256": "86a6b3f0d4e4020cbd0e47df8e1c9f3fead436d7e63b40c1e03654cc2cf43836"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T09:00:10.931976+00:00",
+      "ended": "2026-10-18T09:00:25.495441+00:00",
+      "log_sha256": "d3e1477397a0498235562355995ca130d74b4f35ed34ce2cba1d7c759bdacff4"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T09:00:25.495958+00:00",
+      "ended": "2026-10-18T09:00:37.624268+00:00",
+      "log_sha256": "8d50c929caaf142df9eeb8a224158c94a8059b9210a862cc9318cbf5e12a11f4"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T09:00:37.624967+00:00",
+      "ended": "2026-10-18T09:00:50.851989+00:00",
+      "log_sha256": "ccf84a384c1829c957eac54fd3e2e84c903f0a8eab99030dc9f82443307ba637"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T09:00:50.852581+00:00",
+      "ended": "2026-10-18T09:00:58.918998+00:00",
+      "log_sha256": "09e46a04d05ad8815dc0c15c08527f70d4a005836254d41abbc520cd99c6074f"
+    }
+  ],
+  "own_final_pngs_actually_viewed": 42,
+  "own_before_cropped_pngs_actually_viewed": 10,
+  "contacts": [
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-final-iPad-all-1.jpg",
+      "sha256": "4073188238edc15d5a5eaee5f3a3d67498179e0db1afc63ecc90df9a6630b40a"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-final-iPad-all-2.jpg",
+      "sha256": "e3ca158e4bb4e524de7fe39b7e2993766dc08f79efa49765ad440e9a1d98c30d"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-final-iPad-all-3.jpg",
+      "sha256": "c89a33b590c745b878e0a092f23c9d80fae19490baeb4cb554d0aba7c1c4a772"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-final-iPhone-all-1.jpg",
+      "sha256": "d7d9479c449b07b123aa246c89c13b81227e9afbda578b34817ddd9fabbf7dbf"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-final-iPhone-all-2.jpg",
+      "sha256": "c8781ef87f39703116ef85c0a8769bb1842970af61a11a462318ab38076a6061"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-final-iPhone-all-3.jpg",
+      "sha256": "0ecb13ecfa9f37549724d1021cc7833a6a50b34f0f5ba5d721ea443e06c67941"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-own-detail.jpg",
+      "sha256": "743db895a86eb7cbcd439e752569b6addd2c06ec26b8d07312a3bca70d3b5189"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-prototype-ui-iPad-before-contact.jpg",
+      "sha256": "24635a03a2219c0690cc9c8e27f4b2d5848ef847d119b43de20d734628106b13"
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/grid-intercom-prototype-ui-iPhone-before-contact.jpg",
+      "sha256": "9506fd0a9da9706a71f9acba9f5c9129c812e10eca0f961e4ed1c198611060d5"
+    }
+  ],
+  "six_day_viewports_outside_icon_changed_pixels": 0,
+  "actual_seven_components_both_devices_all_three_day_states": true,
+  "entry_on_return_png_byte_and_pixel_equal_both_devices": true,
+  "local_Intercom_destination_png_byte_and_pixel_equal_to_before": true,
+  "night_wrong_primary_color_pixels": 0,
+  "no_RGB_tolerance_added": true,
+  "no_private_reference_image_or_contour_copied": true,
+  "qualified_first_build_harness_failure": "First prototype build invoked a relative project from Research cwd, exit66 before compilation; log retained. Explicit absolute project/worktree invocation succeeded without source change.",
+  "function_ledger_only_current_append": true,
+  "function_ledger_parity_status_acceptance_criteria_unchanged": true,
+  "original_full_ui_hardware_or_real_intercom_acceptance": false,
+  "real_homes_libraries_devices_system_alarms_or_announcements_used": false,
+  "held_prism_prototype_unchanged": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/home-grid-intercom-manifest.json"
+}
