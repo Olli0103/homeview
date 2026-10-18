@@ -5,6 +5,23 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Gesamter vorhandener synthetischer Bestand · 18. Oktober 2026
+
+[268 erfolgreiche UI-Ausführungen](all-synthetic.md), 134 je Gerät auf
+`2cc29b37`; vier native AlarmKit-Fälle ausgeschlossen. 724 PNGs dekodiert,
+242 repräsentative Bilder auf 28 Kontaktbögen gesichtet. Beide Querformat-
+Appaufnahmen bleiben ausdrücklich qualifiziert, nicht als saubere Bilder
+akzeptiert. Getrennter [Rotationsnachweis](orientation-capture.md), keine neue
+Original-/Hardwareabnahme und keine Umdeutung der historischen QA-01-Schließung.
+
+### Rotation ohne fehlerhaften App-Ausschnitt · 18. Oktober 2026
+
+[Verstärkter Rotationstest](orientation-capture.md): sechs gezielte UI-Ausführungen
+und 166 Modelltests bestanden. Nur Testcode geändert; echte Touch-/Zielwertprüfung,
+beide Querformatrichtungen, beide Hochformatrückkehrwege. Neue vollständige
+Bildschirmaufnahmen statt abgeschnittener App-Screenshots. Ursprüngliche
+Diagnosefehler bleiben getrennt dokumentiert; keine neue Originalabnahme.
+
 ### Gemeinsamer begrenzter Integrationstest · 18. Oktober 2026
 
 [40 synthetische UI-Ausführungen](integration-synthetic.md) auf unverändertem

@@ -1685,6 +1685,70 @@
       "core_repeated_after_commit": true,
       "full_ui_suite_claimed": false,
       "image_assessment_history_and_expanded_supplement": "modular-clock.json"
+    },
+    {
+      "checkpoint": "all-existing-synthetic-20261018",
+      "commit": "2cc29b374ba7576f78e6f7508e46197fd17d7e5a",
+      "source_digest": "256a9c09fe4b5b7ccf5f4c2879ac75f381a682ffbd5f5a5f3b3ea26a75a49e4b",
+      "files_verified": 142,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 134,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS27.0 / 24A434",
+          "summary_sha256": "eba11d7ee0111ffecc0dbf578d90907f6b1a53c1c28fd9324aadd8bc7ab9f670",
+          "log_sha256": "ae1a1a363e9e821ad2c79daf614abf753baac9729cecfda23664f2476b0332d8"
+        },
+        {
+          "device": "iPhone",
+          "passed": 134,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS27.0 / 24A434",
+          "summary_sha256": "7b23c8ccc4e3766bc47f2108821a3886d2ebb2bbc0a321e0c75c02e2610d4781",
+          "log_sha256": "29eb20959efdbbdab1ccf7423b2902e906419aec39173e5086262b39026e3949"
+        }
+      ],
+      "ui_executions": 268,
+      "complete_all_ui_suite_claimed": false,
+      "landscape_image_gate_qualified": true,
+      "new_sdk_builds": 0
+    },
+    {
+      "checkpoint": "orientation-screen-20261018",
+      "commit": "0b24240cf2c502f6f6f31de15bc93c43767b5275",
+      "feature_commit": "abadefa6eabb9da239f65140f54180beb5c3fe38",
+      "source_digest": "8b54636ba5c9a986feee3bca52d8496c1bcd0faf0d119e44c1ebdc6e2b22f802",
+      "files_verified": 142,
+      "core_passed": 166,
+      "ui_executions": 6,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "summary_sha256": "d308cedfd956e13c44ad0502e582d24108fea719db3f5e84ab37397e2464b2d2",
+          "log_sha256": "4f393bb5c87c166368ab668f12bc00b509898b6020154dac0c05c8f9779197db"
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "summary_sha256": "a9b1e249cd7160b0b00fd945519d7402cbd92921dc37b3b8b4ee3dcb10a6f86c",
+          "log_sha256": "e65b19c47b4f33e46072bef6a416aa45fa2dcfdfe34d4b2566d03d8cadf12d97"
+        }
+      ],
+      "app_bytes_unchanged_from": "2cc29b374ba7576f78e6f7508e46197fd17d7e5a",
+      "new_five_sdk_sweep_claimed": false,
+      "full_ui_original_or_hardware_suite_claimed": false
     }
   ],
   "all_sources_match_committed_bytes": true
