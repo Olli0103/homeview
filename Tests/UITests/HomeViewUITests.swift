@@ -883,6 +883,46 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertLessThanOrEqual(bottom,0.39,"No glyph may exceed the existing protected layout")
     print("PHOTO_TYPE_INK top=\(top) bottom=\(bottom) height=\(bottom-top)")
   }
+  func testAllTenOwnedPhotoGlyphsRenderInsideTheirNativeTiles() {
+    launch(["--face","Photos","--photo-glyph-atlas"])
+    for digit in 0..<10 {
+      let tile=app.descendants(matching:.any).matching(identifier:"photo.glyph.\(digit)").firstMatch
+      XCTAssertTrue(tile.waitForExistence(timeout:5))
+      let data=tile.screenshot().pngRepresentation
+      let attachment=XCTAttachment(data:data,uniformTypeIdentifier:"public.png")
+      attachment.name="photo-glyph-tile-\(digit)";attachment.lifetime = .keepAlways;add(attachment)
+      let image=UIImage(data:data)!.cgImage!,w=image.width,h=image.height
+      let pixels=[UInt8](viewportPixels(data,inset:0))
+      var count=0,left=w,right=0,top=h,bottom=0
+      for y in 0..<h {
+        for x in 0..<w {
+          let i=(y*w+x)*4
+          if (0..<3).allSatisfy({pixels[i+$0]>245}) {
+            count += 1;left=min(left,x);right=max(right,x+1)
+            top=min(top,y);bottom=max(bottom,y+1)
+          }
+        }
+      }
+      XCTAssertGreaterThan(count,100)
+      XCTAssertGreaterThanOrEqual(left,2);XCTAssertLessThanOrEqual(right,w-2)
+      XCTAssertGreaterThanOrEqual(top,2);XCTAssertLessThanOrEqual(bottom,h-2)
+      let counters:[Double]=digit==0 ? [0.5]:digit==8 ? [0.25,0.75]:digit==9 ? [0.25]:digit==6 ? [0.75]:[]
+      for y in counters {
+        let i=(Int(Double(h)*y)*w+w/2)*4
+        XCTAssertTrue((0..<3).allSatisfy { pixels[i+$0]<20 },"Counter must remain visibly open in glyph \(digit)")
+      }
+      if digit==9 || digit==6 {
+        for y in [0.36,0.46,0.56] {
+          let px=digit==9 ? 0.82:0.18,py=digit==9 ? y:1-y
+          let i=(Int(Double(h)*py)*w+Int(Double(w)*px))*4
+          XCTAssertTrue((0..<3).allSatisfy { pixels[i+$0]>230 },
+            "Bowl and shaft must be visibly united in glyph \(digit)")
+        }
+      }
+      print("PHOTO_OWN_GLYPH digit=\(digit) white=\(count) bounds=\(left),\(top),\(right),\(bottom)")
+    }
+    viewportShot("photo-owned-glyph-atlas")
+  }
   func testPhotoFullHeightMatteActuallyOccludesClockInkWithoutMirroring() {
     let fixture=["--photo-layout-fixture","sparse-depth"]
     launch(fixture+["--photo-clock-test-mode","background"])
@@ -901,6 +941,7 @@ final class HomeViewUITests: XCTestCase {
     let actual=[UInt8](viewportPixels(viewportBytes("photo-adaptive-full-alpha-occlusion"),inset:0))
     XCTAssertEqual(actual.count,bg.count)
     var covered=0,coveredChanges=0,outsideChanges=0
+    var glassSamples=0,glassTransmitted=0,opaqueMatches=0
     var inkRows:[Int]=[]
     var left=w,right=0
     for y in Int(Double(h)*0.02)..<Int(Double(h)*0.98) {
@@ -920,6 +961,16 @@ final class HomeViewUITests: XCTestCase {
                   (0..<3).contains(where:{abs(Int(actual[i+$0])-Int(bg[i+$0]))>3}) {
           outsideChanges += 1
         }
+        let nearSubject=nx>=0.11 && nx<=0.26 && ny>=0.15 && ny<=0.45
+        let neighbors=[i,i-12,i+12,i-w*12,i+w*12]
+        if ink && !nearSubject &&
+           neighbors.allSatisfy({j in (0..<3).allSatisfy {stencil[j+$0]>245}}) {
+          glassSamples += 1
+          let error=(0..<3).map {abs(Int(actual[i+$0])-Int(bg[i+$0]))}.max()!
+          let opaqueError=(0..<3).map {abs(Int(stencil[i+$0])-Int(bg[i+$0]))}.max()!
+          if error<=45 { glassTransmitted += 1 }
+          if opaqueError<=45 { opaqueMatches += 1 }
+        }
       }
       if rowInk>10 { inkRows.append(y) }
     }
@@ -933,6 +984,11 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertGreaterThan(covered,100,"The independent stencil must prove ink exists behind the subject")
     XCTAssertEqual(coveredChanges,0,"Actual foreground must occlude every sampled covered ink pixel")
     XCTAssertGreaterThan(outsideChanges,1000,"The unoccluded glass clock must remain visibly rendered")
+    XCTAssertGreaterThan(glassSamples,500)
+    XCTAssertGreaterThan(Double(glassTransmitted)/Double(max(1,glassSamples)),0.8,
+      "Own large glyph bodies must transmit the correctly registered patterned backdrop")
+    XCTAssertLessThan(Double(opaqueMatches)/Double(max(1,glassSamples)),0.05)
+    print("PHOTO_OWN_GLASS samples=\(glassSamples) transmitted=\(glassTransmitted) opaqueMatches=\(opaqueMatches)")
     print("PHOTO_ADAPTIVE_ALPHA covered=\(covered) coveredChanges=\(coveredChanges) outsideChanges=\(outsideChanges) top=\(top) bottom=\(bottom) left=\(Double(left)/Double(w)) right=\(Double(right)/Double(w))")
   }
   func testPhotoMediumMatteBandHasVisibleInkWithinItsOwnGeometry() {
