@@ -363,6 +363,10 @@ struct PhotoFace: View {
         ).tracking(2).lineLimit(1).minimumScaleFactor(0.6)
           .foregroundStyle(.white.opacity(0.7)).padding(28).accessibilityIdentifier("photo.index")
       }
+      if ProcessInfo.processInfo.arguments.contains("--uitesting") &&
+         ProcessInfo.processInfo.arguments.contains("--photo-glyph-atlas") {
+        PhotoTallGlyphAtlas()
+      }
     }.coordinateSpace(name: "photo-face").clipped().onTapGesture { model.nextPhoto() }
   }
 }
