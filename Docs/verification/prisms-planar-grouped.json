@@ -1,0 +1,556 @@
+{
+  "feature_commit": "619c3e58924b41c8386b40b4e340edba5ac43bdc",
+  "integrated_commit": "568b7a3a3b55a732dff615d9e0be7b4b4c57ec3b",
+  "source_digest": "97f17a6e310c495627f9e7aa4486591d50c98347d4a12aa7cae8e77c2682d1bf",
+  "source_files": 142,
+  "source_matches_feature_merge_and_worktree": true,
+  "source_archive_sha256": "d5b12b35f2b4a02f8c138b07309f205bab8174705db711b888ea4746bb53d06e",
+  "app_deltas": [
+    "Sources/App/Design.swift",
+    "Sources/App/Faces.swift",
+    "Sources/App/PrismScene.metal"
+  ],
+  "test_delta": "Tests/UITests/HomeViewUITests.swift",
+  "newer_icons_clock_typography_Root_night_and_other_face_bodies_preserved": true,
+  "original_motion_night_touch_assertions_byte_unchanged": true,
+  "strict_cold_regression": "4 independent cold launches x8 frames/device, exact original inner80 comparator; saved entire viewport independently PNG/RGBA exact, no retry or tolerance.",
+  "selected_cases": [
+    "testHomePrismColdLaunchesKeepFrozenPixelsExact",
+    "testHomePrismMotionStopsWithReduceMotion",
+    "testHomePrismNightHasNoBlueGlassLeak",
+    "testHomeGlassControlsRemainInteractive",
+    "testAlternateHomeClockSceneAndThermostat",
+    "testHomeModularIntercomReferenceMarkAndLocalDestination",
+    "testHomeGridIntercomReferenceMarkAndMatchedState",
+    "testVisualReferenceAtlas"
+  ],
+  "ui_executions": 16,
+  "ui_failed": 0,
+  "ui_skipped": 0,
+  "ui_runtime_warnings": 0,
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "core_logs": [
+    {
+      "file": "prism-grouped-core.log",
+      "sha256": "101cd1c8fdee8f81794932363e339a764c06329d3b12f25cfb3779b7f712b11a",
+      "retained_privately": true
+    },
+    {
+      "file": "prism-grouped-post-feature-core.log",
+      "sha256": "ea358eaf9effe0f1e2e86c5e717c3340d6d169df5985c149d5b0201685894615",
+      "retained_privately": true
+    },
+    {
+      "file": "prism-grouped-integrated-core.log",
+      "sha256": "6ff85ad2794fb63ab18d75c612ae3f42a16122b413495001084efaf164b2bbf4",
+      "retained_privately": true
+    }
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T11:22:02.176888+00:00",
+      "ended": "2026-10-18T11:22:14.701436+00:00"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T11:22:14.701969+00:00",
+      "ended": "2026-10-18T11:22:28.256549+00:00"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T11:22:28.257048+00:00",
+      "ended": "2026-10-18T11:22:39.304034+00:00"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T11:22:39.304489+00:00",
+      "ended": "2026-10-18T11:22:51.166601+00:00"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T11:22:51.167048+00:00",
+      "ended": "2026-10-18T11:22:58.186446+00:00"
+    }
+  ],
+  "full_native_input_payload": [
+    {
+      "path": "protocol-tools/checkpoint-prism-grouped.py",
+      "sha256": "f27bf2ab16bac3c13eec1a4dc2edf8e38b220537866d80da6637ce011ffcc1f4",
+      "bytes": 885
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+      "sha256": "5c06bf1aefc6e1b00e1f8b536585e5e1515412f0bb0643c1655e0e44ff622c27",
+      "bytes": 15933
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+      "sha256": "807a52a8a579e6020367af0e30b28c74b6f35a61b50ffed4e3a9f75102c52f3d",
+      "bytes": 23236
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+      "sha256": "a186d2d61b422922ebe7290db8ec71bde2965ecc005ac2b0b87def49547db714",
+      "bytes": 14750264
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+      "sha256": "3d22808d25142dd7a07d3e433469647fcfb8183551b086f4dba996cbc3799320",
+      "bytes": 72992
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "sha256": "2324adc4313db320d4175aeda2f0f3328f02c492d861c3d63d18d729135c2abc",
+      "bytes": 28337624
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+      "sha256": "5d0ae1299f10c952717359018876b7250fab1303c8cd4fa7f9a94a820161d702",
+      "bytes": 2301
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+      "bytes": 8
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+      "sha256": "f2057b1f2a2cf088de0afe2e520011a7b03fd1c5e8013528314b610a50a0eab9",
+      "bytes": 33144
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+      "sha256": "1ff01b1d919f66c008a91a1762610baaf49ef705214530f0e8d07c17ec5d519a",
+      "bytes": 65072
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+      "bytes": 176444
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/HomeViewUITests-Runner",
+      "sha256": "d776d95c3da519cf802b9e58794802128cd158160db68471c703005522b37337",
+      "bytes": 179264
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/Info.plist",
+      "sha256": "7f4aa0cce89bea569b93dff27192c410567474560af25978ea3e0823c23d0a93",
+      "bytes": 10917
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/PkgInfo",
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+      "bytes": 8
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/PlugIns/HomeViewUITests.xctest/HomeViewUITests",
+      "sha256": "0bc9dfc170aecf8cbc8dce81f1ff445a0bb599e14aab53506db7a796b1c38ef6",
+      "bytes": 2461024
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/PlugIns/HomeViewUITests.xctest/Info.plist",
+      "sha256": "1fef141d6671eaa2d99d12027685d24fb822ca37a5c63f5748b9cb8dd8a70326",
+      "bytes": 1738
+    },
+    {
+      "path": "HomeViewReplica_iphonesimulator27.0-arm64-x86_64.xctestrun",
+      "sha256": "6f8f5e0838097ea17e70ac7fa244a491cd73b162ed0d16f59816dc4c44c2f353",
+      "bytes": 5019
+    },
+    {
+      "path": "protocol-tools/prism-grouped-plan.json",
+      "sha256": "d607f630191ff963ee9a10427a4132842fce03075fe449c1d6180f94881f5f2c",
+      "bytes": 1628
+    },
+    {
+      "path": "protocol-tools/run-prism-grouped-both.py",
+      "sha256": "5fbfdc6e58ea1417eec03649e2ec045f85b28f2c0c889e4b0fc3e9f90ec8e35f",
+      "bytes": 3124
+    }
+  ],
+  "full_native_input_payload_before_after_exact": true,
+  "own_image_checks": {
+    "source_digest": "97f17a6e310c495627f9e7aa4486591d50c98347d4a12aa7cae8e77c2682d1bf",
+    "source_files": 142,
+    "ui_executions": 16,
+    "ui_failed": 0,
+    "ui_skipped": 0,
+    "ui_runtime_warnings": 0,
+    "full_payload_files": 19,
+    "full_payload_unchanged": true,
+    "all154_native_pngs_decoded": true,
+    "devices": [
+      {
+        "device": "iPad",
+        "all_native_pngs_decoded": 77,
+        "cold_frames": 32,
+        "cold_launches": 4,
+        "cold_full_rgba_and_png_exact": true,
+        "moving": {
+          "changed_pixels": 556763,
+          "max_channel_delta": 71,
+          "changed_channels": 1209544
+        },
+        "reduced": {
+          "changed_pixels": 0,
+          "max_channel_delta": 0,
+          "changed_channels": 0
+        },
+        "whole_viewport_night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 2486355,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 2486355,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "grid-intercom-night-primary",
+            "whole_viewport_lit": 2481120,
+            "wrong_primary_pixels": 0
+          }
+        ],
+        "preserved_baseline_pairs": [
+          {
+            "state": "viewport-grid-intercom-entry-on",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-grid-intercom-entry-off",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-grid-intercom-entry-on-return",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "grid-intercom-night-primary",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-grid-intercom-local-destination-no-send",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-home-modular-intercom-local-destination-no-send",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI01",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI08",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI10",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI12",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI47",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI05",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI14",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI26",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI25",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          }
+        ],
+        "opaque_temperature_core_pixels": 60197,
+        "opaque_temperature_core_changed_pixels": 0
+      },
+      {
+        "device": "iPhone",
+        "all_native_pngs_decoded": 77,
+        "cold_frames": 32,
+        "cold_launches": 4,
+        "cold_full_rgba_and_png_exact": true,
+        "moving": {
+          "changed_pixels": 306708,
+          "max_channel_delta": 68,
+          "changed_channels": 636801
+        },
+        "reduced": {
+          "changed_pixels": 0,
+          "max_channel_delta": 0,
+          "changed_channels": 0
+        },
+        "whole_viewport_night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 1261722,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 1261722,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "grid-intercom-night-primary",
+            "whole_viewport_lit": 1259008,
+            "wrong_primary_pixels": 0
+          }
+        ],
+        "preserved_baseline_pairs": [
+          {
+            "state": "viewport-grid-intercom-entry-on",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-grid-intercom-entry-off",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-grid-intercom-entry-on-return",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "grid-intercom-night-primary",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-grid-intercom-local-destination-no-send",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-home-modular-intercom-local-destination-no-send",
+            "png_bytes_equal": true,
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI01",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI08",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI10",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI12",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI47",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI05",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI14",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI26",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          },
+          {
+            "state": "viewport-UI25",
+            "png_bytes_equal": true,
+            "baseline": "all-synthetic-primary-ui source2cc29b37",
+            "changed_pixels": 0,
+            "max_channel_delta": 0,
+            "changed_channels": 0
+          }
+        ],
+        "opaque_temperature_core_pixels": 29653,
+        "opaque_temperature_core_changed_pixels": 0
+      }
+    ],
+    "contacts": [
+      "Docs/screenshots/goal-20261018/prism-grouped-iPad-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/prism-grouped-iPad-own-contact-2.jpg",
+      "Docs/screenshots/goal-20261018/prism-grouped-iPad-own-contact-3.jpg",
+      "Docs/screenshots/goal-20261018/prism-grouped-iPhone-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/prism-grouped-iPhone-own-contact-2.jpg",
+      "Docs/screenshots/goal-20261018/prism-grouped-iPhone-own-contact-3.jpg"
+    ],
+    "representatives_selected": 70,
+    "original_or_hardware_accepted": false
+  },
+  "native_own_pngs_decoded": 154,
+  "actual_native_representatives_viewed": 70,
+  "actual_own_contacts_viewed": 6,
+  "private_original_review": "UI07 frontal and UI45 perspective viewed separately. Remaining contours/light/refraction/hand details; no Original or perspective pixel acceptance.",
+  "control_experiment": {
+    "source_digest": "729a5b2b65d41ca75ec86a6b9a2ea7a8fab204f78c5d0a9aee9276df0d0dcfa3",
+    "methods_completed": 4,
+    "all160_pngs_decoded": true,
+    "same_App_Test_binary": true,
+    "normal_cold_launches": 8,
+    "normal_original_failure_states": {
+      "A": 52,
+      "B": 12
+    },
+    "normal_adjacent_transitions": 3,
+    "hosted_cold_launches": 8,
+    "hosted_frozen_frames": 64,
+    "hosted_all_full_rgba_exact": true,
+    "opaque_glyph_core29653_exact": true,
+    "root_cause_scope": "Controlled evidence supports this App material composition correction; internal UIKit cause not established."
+  },
+  "earlier_evidence_not_added_to_final16": {
+    "old_held_candidate": "0cba351e09b9254d42807417de4a6ac9fc8abf24",
+    "old9pass1failure_retained": true,
+    "unmodified_App_serial_paired_serial": "Exact original7256pixel/7857channel pair reproduced; both states also present on solo cold launches. Parallelism alone insufficient.",
+    "glass_ablation": "Native glass64frames52A12B; noGlass64/64 across8coldstarts exact. NoGlass visibly removes lenses and is not an accepted fix.",
+    "actual_OS_reduce_motion": "One true OS Settings pilot: native Context true verified; optics change, first pair2674pixels differs max2. Restored/readback false. Full hypothesis matrix not admitted.",
+    "whole_content_group": "64/64 static but font/symbols appear softer; rejected, leading to separate material-only host.",
+    "pilot": "Separate visual pilot40PNGs/16hosted exact and29653glyphcore exact, not added to final16."
+  },
+  "setup_failures_retained": {
+    "Xcode_iterations1": "Pretest CLI rejection,0native tests.",
+    "environment_override": "Build failed; SDKpublic getter-only verified, no private EnvironmentKey workaround.",
+    "Settings_outer_touch": "Native harness failure before system-reduced frames; final off readback.",
+    "Settings_inner_guard": "Native harness failure before tap: observed inner switch exceeds outer by2points. Narrow AX geometry correction, not RGB tolerance; successful single roundtrip retained.",
+    "archive_collision": "One earlier private zip used basename-colliding paths; retained, corrected unique-path v2 allentriesSHAverified; no native data/source change.",
+    "ignored_SDK_receipt": "Evidence/builds.json is ignored rather than tracked; git restore attempt stopped set-e before source commit. Actual5SDK receipt copied privately; no source or test change."
+  },
+  "no_system_defaults_private_API_or_host_setting_changes": true,
+  "simulator_reduce_motion_restored_false": true,
+  "no_real_homes_accounts_libraries_hardware_system_alarms_or_communication": true,
+  "no_internal_UIKit_original_hardware_or_full_current_suite_acceptance": true,
+  "old_held_source_and_failed_result_not_relabelled": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/prism-grouped-manifest.json"
+}

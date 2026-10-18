@@ -385,3 +385,8 @@ normale Temperaturschrift und visuelle Feldpositionen statt Layout-Padding.
 Demo außerhalb Wetterbereich exakt pixelgleich. Verbundene/fehlende Werte und
 reale Widget-Tap-Ziele geprüft. Originalschrift, Symbolbild, Licht und Hardware
 bleiben offen; #5/#21 unverändert offen.
+
+
+## 18. Oktober: planare Prismen und getrennte native Glasschicht
+
+[Geprüfter Schritt](prisms-planar-grouped.md): 166 Modelltests,16 gezielte UI-Ausführungen,5 SDKs; je Gerät vier Kaltstarts mit acht exakten Standbildern. Quellen und vollständige native Inputs eingefroren. Kontrollversuche und frühere Fehlbelege getrennt erhalten. Original-/Hardwareabnahme und #20 bleiben offen.
