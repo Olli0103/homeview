@@ -1,0 +1,676 @@
+{
+  "images": [
+    {
+      "device": "iPad",
+      "state": "prism-home-modular-reference",
+      "test": "HomeViewUITests/testHomeGlassControlsRemainInteractive()",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "bf9ef113de7cae62dc07eaa9cade4625182ad35d266b27b6b69fbe1893e30e8a",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-01.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "grid-intercom-night-primary",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "374c3969a788aea38b41446f781ae05ab6ab5546a30b7925469536f33e54e93d",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-02.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-grid-intercom-local-destination-no-send",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "df48bf750681fc56aa3b21b4a53801ac4e5d10c622fc9141723ab05367c4b133",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-03.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-grid-intercom-local-destination-no-send",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "2baf661a86953e2b0229277ecfaf62479d24411884823772b5f497a235eb7f58",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-04.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-grid-intercom-entry-on-return",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "37c5fb104e486d553073da33f69bc7d7da8abfff1abfff9d175cb167712a17d8",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-05.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-grid-intercom-entry-on-return",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "b69d44432f28081cac28154b4fa831cacccb472ffafa352b9093bbf08720c3b8",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-06.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-grid-intercom-entry-off",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "d1df3c48e3617f8d84ee6ea263aeb6771281c82fc472e830b8c53d8ebc0d0411",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-07.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-grid-intercom-entry-off",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "11563c3ea4c94db5b137670c4571f437e0e4026aa954982f1090ed934e689692",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-08.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-grid-intercom-entry-on",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "37c5fb104e486d553073da33f69bc7d7da8abfff1abfff9d175cb167712a17d8",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-09.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-grid-intercom-entry-on",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "b69d44432f28081cac28154b4fa831cacccb472ffafa352b9093bbf08720c3b8",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-10.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "home-modular-intercom-night-primary",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "3649f00a7a5547da78339e97147137aba7ffd65f0138aee9c2cc734efac4a113",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-11.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-home-modular-intercom-local-destination-no-send",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "df48bf750681fc56aa3b21b4a53801ac4e5d10c622fc9141723ab05367c4b133",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-12.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-home-modular-intercom-local-destination-no-send",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "2baf661a86953e2b0229277ecfaf62479d24411884823772b5f497a235eb7f58",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-13.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-home-modular-intercom-reference",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "bf9ef113de7cae62dc07eaa9cade4625182ad35d266b27b6b69fbe1893e30e8a",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-14.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-home-modular-intercom-reference",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "5321421ca1140f39f2c515cf0086c6e2d3033cf7c5180db16fbd9dcf6c377f36",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-15.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "home-prism-reduced-later",
+      "test": "HomeViewUITests/testHomePrismMotionStopsWithReduceMotion()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "5321421ca1140f39f2c515cf0086c6e2d3033cf7c5180db16fbd9dcf6c377f36",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-16.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "home-prism-reduced-start",
+      "test": "HomeViewUITests/testHomePrismMotionStopsWithReduceMotion()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "5321421ca1140f39f2c515cf0086c6e2d3033cf7c5180db16fbd9dcf6c377f36",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-17.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "home-prism-moving-later",
+      "test": "HomeViewUITests/testHomePrismMotionStopsWithReduceMotion()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "bedfb7487dbbb8eda58d517b15e6d77768cde24ee2294493a92b34ac1f0d459b",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-18.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "home-prism-moving-start",
+      "test": "HomeViewUITests/testHomePrismMotionStopsWithReduceMotion()",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "6dc7c85eb4ba7e1f5afc1b383203fd0365b019fdfaf06ce0ee5766dcfaee3d74",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPad-19.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "prism-home-modular-reference",
+      "test": "HomeViewUITests/testHomeGlassControlsRemainInteractive()",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "c3eef1d8013cc3484a7bce465e58882fa68ad44383129193527cb167950efd69",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-20.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "grid-intercom-night-primary",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "f1234deda1140d07588b85531e9d3886b1ab746b71b0f01eb3880de96f95431e",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-21.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-grid-intercom-local-destination-no-send",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "29bdbbb33c5b42830bc88bef7f232e237cb9a9ac2f0e3486d2fd74d5c67b7b81",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-22.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-grid-intercom-local-destination-no-send",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "48a3ed2e5c942295b509a9abe91dd1dac79f17320f2cfb664dec40146baa83c4",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-23.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-grid-intercom-entry-on-return",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "ed227f9a3a455d941dcaf0406d66457f7b37b495b005d87f43b8e56ee2ce0d2d",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-24.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-grid-intercom-entry-on-return",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "76754d71436916eede65f8e1f35f7afd8f1158e9c7a4c76ae8b80a4f407fbb38",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-25.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-grid-intercom-entry-off",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "4e0b544859419a401591716c03e71f4f2e9ba2c3fb4b44a296dc6a94f1cd59f3",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-26.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-grid-intercom-entry-off",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "ae78789feb7a4328bfbf17c6bc4a0c000d24a6665771d90800d99f49deadf2ed",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-27.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-grid-intercom-entry-on",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "ed227f9a3a455d941dcaf0406d66457f7b37b495b005d87f43b8e56ee2ce0d2d",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-28.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-grid-intercom-entry-on",
+      "test": "HomeViewUITests/testHomeGridIntercomReferenceMarkAndMatchedState()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "76754d71436916eede65f8e1f35f7afd8f1158e9c7a4c76ae8b80a4f407fbb38",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-29.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "home-modular-intercom-night-primary",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "ef8bc949e6f703468aac6d55842a75d999e158827f1c3da1e9692b58fa8ec706",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-30.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-home-modular-intercom-local-destination-no-send",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "29bdbbb33c5b42830bc88bef7f232e237cb9a9ac2f0e3486d2fd74d5c67b7b81",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-31.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-home-modular-intercom-local-destination-no-send",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "48a3ed2e5c942295b509a9abe91dd1dac79f17320f2cfb664dec40146baa83c4",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-32.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-home-modular-intercom-reference",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "07e8d0c6d12bfa24ef4d23afed8db59323f2ae239fa6eceb9cfb79dfb8f3f3da",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-33.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-home-modular-intercom-reference",
+      "test": "HomeViewUITests/testHomeModularIntercomReferenceMarkAndLocalDestination()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "f815827c60ce58db7e9ba843ce6191babcd534b35654e05a7839b20ce32c204f",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-34.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "home-prism-reduced-later",
+      "test": "HomeViewUITests/testHomePrismMotionStopsWithReduceMotion()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "f815827c60ce58db7e9ba843ce6191babcd534b35654e05a7839b20ce32c204f",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-35.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "home-prism-reduced-start",
+      "test": "HomeViewUITests/testHomePrismMotionStopsWithReduceMotion()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "f815827c60ce58db7e9ba843ce6191babcd534b35654e05a7839b20ce32c204f",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-36.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "home-prism-moving-later",
+      "test": "HomeViewUITests/testHomePrismMotionStopsWithReduceMotion()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "37b87dd1e218e524689441c91514bee189b18c1da3272eca6c0be699337cf6f6",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-37.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPhone",
+      "state": "home-prism-moving-start",
+      "test": "HomeViewUITests/testHomePrismMotionStopsWithReduceMotion()",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "1c2515f3b7b9ed3909c558c1e370355e098e35189fa90ed093d714874b8d56b8",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-final-iPhone-38.png",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "scope": "clean-final-native"
+    },
+    {
+      "device": "iPad",
+      "state": "grid-intercom-night-primary",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPad-01.png",
+      "sha256": "374c3969a788aea38b41446f781ae05ab6ab5546a30b7925469536f33e54e93d",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-grid-intercom-local-destination-no-send",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPad-02.png",
+      "sha256": "2baf661a86953e2b0229277ecfaf62479d24411884823772b5f497a235eb7f58",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-grid-intercom-entry-on-return",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPad-03.png",
+      "sha256": "b69d44432f28081cac28154b4fa831cacccb472ffafa352b9093bbf08720c3b8",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-grid-intercom-entry-off",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPad-04.png",
+      "sha256": "11563c3ea4c94db5b137670c4571f437e0e4026aa954982f1090ed934e689692",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-grid-intercom-entry-on",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPad-05.png",
+      "sha256": "b69d44432f28081cac28154b4fa831cacccb472ffafa352b9093bbf08720c3b8",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPad",
+      "state": "home-modular-intercom-night-primary",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPad-06.png",
+      "sha256": "e5fe0c7f6660e59d12f2b8eab458f81d3f6e4a3a4a2560f2191cf33a941cec1e",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-home-modular-intercom-local-destination-no-send",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPad-07.png",
+      "sha256": "2baf661a86953e2b0229277ecfaf62479d24411884823772b5f497a235eb7f58",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-home-modular-intercom-reference",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPad-08.png",
+      "sha256": "5906d22b02ee94bb8b13c3ca5ede8430289a62faddb3a00b590b07a0b04fd894",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPhone",
+      "state": "grid-intercom-night-primary",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPhone-01.png",
+      "sha256": "f1234deda1140d07588b85531e9d3886b1ab746b71b0f01eb3880de96f95431e",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-grid-intercom-local-destination-no-send",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPhone-02.png",
+      "sha256": "48a3ed2e5c942295b509a9abe91dd1dac79f17320f2cfb664dec40146baa83c4",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-grid-intercom-entry-on-return",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPhone-03.png",
+      "sha256": "76754d71436916eede65f8e1f35f7afd8f1158e9c7a4c76ae8b80a4f407fbb38",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-grid-intercom-entry-off",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPhone-04.png",
+      "sha256": "ae78789feb7a4328bfbf17c6bc4a0c000d24a6665771d90800d99f49deadf2ed",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-grid-intercom-entry-on",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPhone-05.png",
+      "sha256": "76754d71436916eede65f8e1f35f7afd8f1158e9c7a4c76ae8b80a4f407fbb38",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPhone",
+      "state": "home-modular-intercom-night-primary",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPhone-06.png",
+      "sha256": "232fdad248e21050fc1b50a21ecd0009f6134cdbeb3be04ccaf265feecea447f",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-home-modular-intercom-local-destination-no-send",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPhone-07.png",
+      "sha256": "48a3ed2e5c942295b509a9abe91dd1dac79f17320f2cfb664dec40146baa83c4",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-home-modular-intercom-reference",
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-before-iPhone-08.png",
+      "sha256": "9fcb7590717a10b52a3b5e986d794304ae2b5c2398f5678b4d12fa58479852e1",
+      "source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+      "scope": "before-native-crop"
+    }
+  ],
+  "contacts": [
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPad-all-1.jpg",
+      "sha256": "7a13785ac96c6609bf1def14a0c77b1841c51bdd1d3262d832dc5c34d0702d65",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPad-all-2.jpg",
+      "sha256": "18c485b4f0666d0981c927c6fd7d843262be06d39af752cec7eed2dd5cab10ac",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPad-all-3.jpg",
+      "sha256": "b1a63094b2ed4a87c1d963a54a1f9db78ba450ff66f1f7d16f5ea6bf19070205",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPhone-all-1.jpg",
+      "sha256": "3b895e35a26ac637437405f4894d897bd8b60a2f8325f1672f7255b51018e77e",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPhone-all-2.jpg",
+      "sha256": "6f8447788bd4baeadec89032387364fbfa8ee7af93d71adf92290a22a6169ed0",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPhone-all-3.jpg",
+      "sha256": "46fd809d40dce28fabf9babf45d057eb12da287b3d4afd89cd42d35e635fd2b9",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-own-detail.jpg",
+      "sha256": "3a4740acd57743913c96262217473adc1cc944187b8533eefff60dd9f4a7ab8b",
+      "pilot_detail": true
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-prototype-ui-iPad-before-contact-1.jpg",
+      "sha256": "165536e29c02d476bad1c89cf00b47791b0336d41a60e809e9331e0ec7103e78",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-prototype-ui-iPhone-before-contact-1.jpg",
+      "sha256": "6c7a6bb225969bbc8f8e2b11faa2bda68ada45d63dae0c8217b424141a34a75f",
+      "pilot_detail": false
+    }
+  ],
+  "final_native_pngs_actually_viewed": 38,
+  "before_native_crops_actually_viewed": 16,
+  "no_private_reference_images_in_publication": true
+}

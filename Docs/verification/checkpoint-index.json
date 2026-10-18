@@ -1823,6 +1823,80 @@
         }
       ],
       "full_original_or_hardware_suite_claimed": false
+    },
+    {
+      "checkpoint": "home-modular-intercom-20261018",
+      "commit": "0d5551eeb12f2ba3dae5820fd10302631460a0a8",
+      "feature_commit": "9161e1f756518cc5f6aa108d6fbcc16585a94dfb",
+      "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+      "files_verified": 142,
+      "core_passed": 166,
+      "ui_executions": 8,
+      "ui": [
+        {
+          "device": "iPad",
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS27.0 / 24A434",
+          "summary_sha256": "034c9d0679fb8051537e12e4aaf10646b9e28069b9662d8a50b95bba454b74f0",
+          "log_sha256": "4a09a516584a2c05a4f54103efe354025799292b14702668e83af038d82d6910"
+        },
+        {
+          "device": "iPhone",
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": 0,
+          "runtime": "iOS27.0 / 24A434",
+          "summary_sha256": "8d742bbd9d795e01411a71b6f57fd5f297750dfb821af8b0aae7ae133c39060f",
+          "log_sha256": "58b91ffe17655059eab67a8f70ff2c755d4a29abbae640bf8d5c5947d3e1df69"
+        }
+      ],
+      "sdk_builds": [
+        {
+          "platform": "iOS",
+          "sdk": "iphonesimulator",
+          "exit_code": 0,
+          "started": "2026-10-18T09:23:36.769670+00:00",
+          "ended": "2026-10-18T09:23:41.354567+00:00",
+          "log_sha256": "2dafe1284a7a10e8bc04d89827a8dd8199ac3cdfdd60dcd1d0294ae4fbfc6edf"
+        },
+        {
+          "platform": "macOS",
+          "sdk": "macosx",
+          "exit_code": 0,
+          "started": "2026-10-18T09:23:41.355094+00:00",
+          "ended": "2026-10-18T09:23:44.794662+00:00",
+          "log_sha256": "e271bd1f477756462004cb1c20e062a7887358ed77852129a3ace23a272c1635"
+        },
+        {
+          "platform": "tvOS",
+          "sdk": "appletvsimulator",
+          "exit_code": 0,
+          "started": "2026-10-18T09:23:44.795205+00:00",
+          "ended": "2026-10-18T09:23:47.932711+00:00",
+          "log_sha256": "95ad837d9f194b86b8fee55aee63d59f5f23b3286aacca246e1157363c1b781a"
+        },
+        {
+          "platform": "visionOS",
+          "sdk": "xrsimulator",
+          "exit_code": 0,
+          "started": "2026-10-18T09:23:47.933192+00:00",
+          "ended": "2026-10-18T09:23:51.353344+00:00",
+          "log_sha256": "50de13bac8b52850cfe6192384ce52befee661914274ef63add78c85609e3cd5"
+        },
+        {
+          "platform": "watchOS",
+          "sdk": "watchsimulator",
+          "exit_code": 0,
+          "started": "2026-10-18T09:23:51.353786+00:00",
+          "ended": "2026-10-18T09:23:52.571368+00:00",
+          "log_sha256": "1d96aebf6fbe17af265d4c66bfbbb028b941e64954e74b6c31b4425aa339e019"
+        }
+      ],
+      "full_original_or_hardware_suite_claimed": false
     }
   ],
   "all_sources_match_committed_bytes": true

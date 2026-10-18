@@ -1,0 +1,469 @@
+{
+  "feature_commit": "9161e1f756518cc5f6aa108d6fbcc16585a94dfb",
+  "integrated_commit": "0d5551eeb12f2ba3dae5820fd10302631460a0a8",
+  "source_digest": "eed06353a8f187e0baceed37af9845d3695695ad49631f40d0af7b0b6be9de40",
+  "source_files": 142,
+  "source_matches_feature_and_merge": true,
+  "app_source_deltas": [
+    "Sources/App/Design.swift",
+    "Sources/App/Faces.swift",
+    "Sources/App/HomeScreens.swift"
+  ],
+  "test_instrumentation": "Tests/UITests/HomeViewUITests.swift",
+  "before_app_bytes_identical_to": "dbc9b7b144a3a1130d8f340041394419b7a47e3f",
+  "before_source_digest": "375265175ec04b54d831e5cebdf31073c27f1c510e7c0c658cec026765280929",
+  "before_archive_sha256": "6ed4b464cc334c6f43c5936c550d5422eee2373f85578f4461a3e9166fd99a0f",
+  "final_archive_sha256": "701e11c0457b605c9825bc866dc4301f311bcf17b46112c1db825a0e85a01cf5",
+  "same_exact_bar_path_reused": true,
+  "all_original_Design_bytes_retained_as_prefix": true,
+  "HomeGrid_only_internal_alias_change_and_private_shape_removal": true,
+  "all_other_Face_bytes_and_prism_glass_surface_shader_resources_unchanged": true,
+  "implementation": "Home Modular44point square,offset2/-3,publicblackshadow.20/radius.65/y.6. Hidden SF symbol retains layout box. HomeGrid existing45point/y3 unchanged. Independent own bar path; no private contours.",
+  "contract": {
+    "base_commit": "dbc9b7b144a3a1130d8f340041394419b7a47e3f",
+    "scope": "Home Modular white Intercom icon shape and fine dark cast edge only. Share exact previously published7bar path; Home Grid renderer pixels must remain exact. No prism or glass-surface source change.",
+    "private_observation": "UI07 seven white symmetric bars in circular silhouette with fine dark cast edge; current public SF symbol six asymmetric bars. Measured white-core reference width.0737,height.0717,center.1750/.7675; own current6bars width.0791,height.0892,center.1715/.7726. Measurements diagnostic, not copied contours.",
+    "existing_solution": "Use own independently implemented seven-bar component from published Home Grid, not another custom icon/library. Keep public SF hidden layout footprint.",
+    "planned_graphics": "Move same bar path unchanged to shared Design.swift under neutral internal IntercomMark; Home Grid45x45offsetY3 unchanged. Home Modular44x44offsetX2Y-3 and subtle public SwiftUI black shadow(.20,radius.65,x0,y.6). Only homeTile waveform branch.",
+    "own_criteria_before_prototype": {
+      "home_modular_ROI": [
+        0.12,
+        0.715,
+        0.23,
+        0.825
+      ],
+      "outside_ROI_changed_pixels": 0,
+      "actual_white_core_components": 7,
+      "white_core_width_range": [
+        0.07,
+        0.076
+      ],
+      "white_core_height_range": [
+        0.069,
+        0.075
+      ],
+      "centerX_range": [
+        0.173,
+        0.177
+      ],
+      "centerY_range": [
+        0.765,
+        0.77
+      ],
+      "whole_Home_Grid_on_off_on_return_night_png_byte_and_pixel_equal": true,
+      "local_destination_png_byte_and_pixel_equal": true,
+      "night_wrong_primary_color_pixels": 0,
+      "actual_local_tap": true,
+      "published_prism_motion_and_reduce_motion_exact_test": true
+    },
+    "not_accepted": "No private contour/raster/shader reuse, no global original/glass/parity/hardware/live services acceptance; held planar-prism prototype stays held and unmodified."
+  },
+  "own_image_metrics": {
+    "label": "modular-intercom-final-clean-ui",
+    "contract_sha256": "4839ec2d85bd21f35bf975184a0823c448dd5f4e531d38a9b281bee214aa1caa",
+    "metrics": [
+      {
+        "device": "iPad",
+        "state": "viewport-home-modular-intercom-reference",
+        "outside_icon_zero": true,
+        "before_sha256": "5906d22b02ee94bb8b13c3ca5ede8430289a62faddb3a00b590b07a0b04fd894",
+        "after_sha256": "5321421ca1140f39f2c515cf0086c6e2d3033cf7c5180db16fbd9dcf6c377f36",
+        "white_core_components": 7,
+        "bars": [
+          {
+            "first": 31,
+            "last": 37,
+            "top": 58,
+            "bottom": 106
+          },
+          {
+            "first": 49,
+            "last": 55,
+            "top": 37,
+            "bottom": 127
+          },
+          {
+            "first": 67,
+            "last": 73,
+            "top": 27,
+            "bottom": 137
+          },
+          {
+            "first": 86,
+            "last": 91,
+            "top": 25,
+            "bottom": 139
+          },
+          {
+            "first": 104,
+            "last": 110,
+            "top": 27,
+            "bottom": 137
+          },
+          {
+            "first": 122,
+            "last": 128,
+            "top": 37,
+            "bottom": 127
+          },
+          {
+            "first": 140,
+            "last": 146,
+            "top": 59,
+            "bottom": 106
+          }
+        ],
+        "normalized_width": 0.0728643216080402,
+        "normalized_height": 0.0722361809045226,
+        "normalized_center": [
+          0.17587939698492464,
+          0.7666457286432161
+        ],
+        "shape_checks": {
+          "seven": true,
+          "width": true,
+          "height": true,
+          "centerX": true,
+          "centerY": true
+        }
+      },
+      {
+        "device": "iPad",
+        "state": "home-modular-intercom-night-primary",
+        "outside_icon_zero": true,
+        "before_sha256": "e5fe0c7f6660e59d12f2b8eab458f81d3f6e4a3a4a2560f2191cf33a941cec1e",
+        "after_sha256": "3649f00a7a5547da78339e97147137aba7ffd65f0138aee9c2cc734efac4a113"
+      },
+      {
+        "device": "iPad",
+        "state": "viewport-grid-intercom-entry-on",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPad",
+        "state": "viewport-grid-intercom-entry-off",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPad",
+        "state": "viewport-grid-intercom-entry-on-return",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPad",
+        "state": "viewport-grid-intercom-local-destination-no-send",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPad",
+        "state": "grid-intercom-night-primary",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPad",
+        "state": "viewport-home-modular-intercom-local-destination-no-send",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPhone",
+        "state": "viewport-home-modular-intercom-reference",
+        "outside_icon_zero": true,
+        "before_sha256": "9fcb7590717a10b52a3b5e986d794304ae2b5c2398f5678b4d12fa58479852e1",
+        "after_sha256": "f815827c60ce58db7e9ba843ce6191babcd534b35654e05a7839b20ce32c204f",
+        "white_core_components": 7,
+        "bars": [
+          {
+            "first": 22,
+            "last": 26,
+            "top": 42,
+            "bottom": 74
+          },
+          {
+            "first": 35,
+            "last": 38,
+            "top": 26,
+            "bottom": 89
+          },
+          {
+            "first": 48,
+            "last": 51,
+            "top": 19,
+            "bottom": 97
+          },
+          {
+            "first": 61,
+            "last": 64,
+            "top": 17,
+            "bottom": 98
+          },
+          {
+            "first": 74,
+            "last": 77,
+            "top": 19,
+            "bottom": 97
+          },
+          {
+            "first": 87,
+            "last": 90,
+            "top": 26,
+            "bottom": 90
+          },
+          {
+            "first": 100,
+            "last": 103,
+            "top": 42,
+            "bottom": 74
+          }
+        ],
+        "normalized_width": 0.07231040564373897,
+        "normalized_height": 0.07231040564373897,
+        "normalized_center": [
+          0.17548500881834214,
+          0.7663139329805997
+        ],
+        "shape_checks": {
+          "seven": true,
+          "width": true,
+          "height": true,
+          "centerX": true,
+          "centerY": true
+        }
+      },
+      {
+        "device": "iPhone",
+        "state": "home-modular-intercom-night-primary",
+        "outside_icon_zero": true,
+        "before_sha256": "232fdad248e21050fc1b50a21ecd0009f6134cdbeb3be04ccaf265feecea447f",
+        "after_sha256": "ef8bc949e6f703468aac6d55842a75d999e158827f1c3da1e9692b58fa8ec706"
+      },
+      {
+        "device": "iPhone",
+        "state": "viewport-grid-intercom-entry-on",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPhone",
+        "state": "viewport-grid-intercom-entry-off",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPhone",
+        "state": "viewport-grid-intercom-entry-on-return",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPhone",
+        "state": "viewport-grid-intercom-local-destination-no-send",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPhone",
+        "state": "grid-intercom-night-primary",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      },
+      {
+        "device": "iPhone",
+        "state": "viewport-home-modular-intercom-local-destination-no-send",
+        "pixel_identical": true,
+        "png_byte_identical": true
+      }
+    ],
+    "all_own_checks_passed": true
+  },
+  "motion_image_check": [
+    {
+      "device": "iPad",
+      "moving_pixels_differ": true,
+      "reduce_motion_pixels_exactly_equal": true,
+      "moving_sha256": [
+        "6dc7c85eb4ba7e1f5afc1b383203fd0365b019fdfaf06ce0ee5766dcfaee3d74",
+        "bedfb7487dbbb8eda58d517b15e6d77768cde24ee2294493a92b34ac1f0d459b"
+      ],
+      "frozen_sha256": [
+        "5321421ca1140f39f2c515cf0086c6e2d3033cf7c5180db16fbd9dcf6c377f36",
+        "5321421ca1140f39f2c515cf0086c6e2d3033cf7c5180db16fbd9dcf6c377f36"
+      ],
+      "held_planar_prism_failure_still_unexplained": true
+    },
+    {
+      "device": "iPhone",
+      "moving_pixels_differ": true,
+      "reduce_motion_pixels_exactly_equal": true,
+      "moving_sha256": [
+        "1c2515f3b7b9ed3909c558c1e370355e098e35189fa90ed093d714874b8d56b8",
+        "37b87dd1e218e524689441c91514bee189b18c1da3272eca6c0be699337cf6f6"
+      ],
+      "frozen_sha256": [
+        "f815827c60ce58db7e9ba843ce6191babcd534b35654e05a7839b20ce32c204f",
+        "f815827c60ce58db7e9ba843ce6191babcd534b35654e05a7839b20ce32c204f"
+      ],
+      "held_planar_prism_failure_still_unexplained": true
+    }
+  ],
+  "ui_executions": 8,
+  "unique_cases": 4,
+  "ui": [
+    {
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0 / 24A434",
+      "summary_sha256": "034c9d0679fb8051537e12e4aaf10646b9e28069b9662d8a50b95bba454b74f0",
+      "log_sha256": "4a09a516584a2c05a4f54103efe354025799292b14702668e83af038d82d6910"
+    },
+    {
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "runtime": "iOS27.0 / 24A434",
+      "summary_sha256": "8d742bbd9d795e01411a71b6f57fd5f297750dfb821af8b0aae7ae133c39060f",
+      "log_sha256": "58b91ffe17655059eab67a8f70ff2c755d4a29abbae640bf8d5c5947d3e1df69"
+    }
+  ],
+  "selected_cases": [
+    "testHomeModularIntercomReferenceMarkAndLocalDestination",
+    "testHomeGridIntercomReferenceMarkAndMatchedState",
+    "testHomeGlassControlsRemainInteractive",
+    "testHomePrismMotionStopsWithReduceMotion"
+  ],
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T09:23:36.769670+00:00",
+      "ended": "2026-10-18T09:23:41.354567+00:00",
+      "log_sha256": "2dafe1284a7a10e8bc04d89827a8dd8199ac3cdfdd60dcd1d0294ae4fbfc6edf"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T09:23:41.355094+00:00",
+      "ended": "2026-10-18T09:23:44.794662+00:00",
+      "log_sha256": "e271bd1f477756462004cb1c20e062a7887358ed77852129a3ace23a272c1635"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T09:23:44.795205+00:00",
+      "ended": "2026-10-18T09:23:47.932711+00:00",
+      "log_sha256": "95ad837d9f194b86b8fee55aee63d59f5f23b3286aacca246e1157363c1b781a"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T09:23:47.933192+00:00",
+      "ended": "2026-10-18T09:23:51.353344+00:00",
+      "log_sha256": "50de13bac8b52850cfe6192384ce52befee661914274ef63add78c85609e3cd5"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T09:23:51.353786+00:00",
+      "ended": "2026-10-18T09:23:52.571368+00:00",
+      "log_sha256": "1d96aebf6fbe17af265d4c66bfbbb028b941e64954e74b6c31b4425aa339e019"
+    }
+  ],
+  "prior_separate_runs_not_added": [
+    {
+      "label": "modular-intercom-baseline-ui",
+      "ui_executions": 4,
+      "not_added_to_final8": true,
+      "results_sha256": "bc493307847a0ac396f79b961b57d38c5aad47288f53053f3c794e3f1994b9bb"
+    },
+    {
+      "label": "modular-intercom-prototype-ui",
+      "ui_executions": 4,
+      "not_added_to_final8": true,
+      "results_sha256": "5539db34766ce3c2910029513d623823fc3a9429e9e3c7f9a0f7dc32d103ad31"
+    },
+    {
+      "label": "modular-intercom-final-ui",
+      "ui_executions": 8,
+      "not_added_to_final8": true,
+      "results_sha256": "1b575bd7832356a87b994a249bb9aa255954a4afec3ea6b0aefc178b2be8251c"
+    }
+  ],
+  "final_format_qualification": "Initial accepted drawing source733e had one extra trailing LF. Preserved initial runs and local old feature ref; final EED source only removes that LF. All8UI166Core5SDK repeated on exact clean committed source, counters not added.",
+  "initial_metadata_assessment_tool_failure": "Initial external assessment used system Python lacking PIL; corrected venv reading saved native images, no app source or native assertion changed.",
+  "final_native_pngs_actually_viewed": 38,
+  "before_native_crops_actually_viewed": 16,
+  "contacts": [
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPad-all-1.jpg",
+      "sha256": "7a13785ac96c6609bf1def14a0c77b1841c51bdd1d3262d832dc5c34d0702d65",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPad-all-2.jpg",
+      "sha256": "18c485b4f0666d0981c927c6fd7d843262be06d39af752cec7eed2dd5cab10ac",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPad-all-3.jpg",
+      "sha256": "b1a63094b2ed4a87c1d963a54a1f9db78ba450ff66f1f7d16f5ea6bf19070205",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPhone-all-1.jpg",
+      "sha256": "3b895e35a26ac637437405f4894d897bd8b60a2f8325f1672f7255b51018e77e",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPhone-all-2.jpg",
+      "sha256": "6f8447788bd4baeadec89032387364fbfa8ee7af93d71adf92290a22a6169ed0",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-clean-iPhone-all-3.jpg",
+      "sha256": "46fd809d40dce28fabf9babf45d057eb12da287b3d4afd89cd42d35e635fd2b9",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-own-detail.jpg",
+      "sha256": "3a4740acd57743913c96262217473adc1cc944187b8533eefff60dd9f4a7ab8b",
+      "pilot_detail": true
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-prototype-ui-iPad-before-contact-1.jpg",
+      "sha256": "165536e29c02d476bad1c89cf00b47791b0336d41a60e809e9331e0ec7103e78",
+      "pilot_detail": false
+    },
+    {
+      "path": "Docs/screenshots/goal-20261018/modular-intercom-prototype-ui-iPhone-before-contact-1.jpg",
+      "sha256": "6c7a6bb225969bbc8f8e2b11faa2bda68ada45d63dae0c8217b424141a34a75f",
+      "pilot_detail": false
+    }
+  ],
+  "home_modular_day_and_night_outside_symbol_changed_pixels": 0,
+  "HomeGrid_five_states_each_device_exact_png_and_pixel_pairs": 10,
+  "both_local_intercom_destinations_png_byte_equal_to_before": true,
+  "night_wrong_primary_color_pixels": 0,
+  "no_RGB_error_tolerance_added": true,
+  "no_original_full_ui_hardware_or_real_intercom_acceptance": true,
+  "no_real_homes_libraries_devices_announcements_or_system_alarms_used": true,
+  "held_planar_prism_prototype_and_unexplained_failure_unchanged": true,
+  "F022_only_current_append_status_parity_acceptance_criteria_unchanged": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/home-modular-intercom-manifest.json"
+}
