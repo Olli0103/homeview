@@ -401,6 +401,55 @@ final class HomeViewUITests: XCTestCase {
     tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "72°")
   }
+  private func exerciseFaceConfigurationRecovery(_ mode:String) {
+    let id=UUID().uuidString
+    print("FACE_CONFIGURATION_STORE mode=\(mode) id=\(id)")
+    launch(["--persistence-test",id,"--face-configuration-fixture",mode])
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["store.readOnly"].exists)
+    let initial=viewportBytes("face-recovery-"+mode+"-loaded")
+    let image=UIImage(data:initial)!.cgImage!,w=image.width,h=image.height
+    let pixels=[UInt8](viewportPixels(initial,inset:0))
+    var sage=0,samples=0
+    // Blank top-center paint, above all complications and away from corners.
+    for y in Int(Double(h)*0.025)..<Int(Double(h)*0.055) {
+      for x in Int(Double(w)*0.45)..<Int(Double(w)*0.55) {
+        let i=(y*w+x)*4;samples += 1
+        if Int(pixels[i])-Int(pixels[i+2])>15 &&
+           Int(pixels[i+1])-Int(pixels[i+2])>20 { sage += 1 }
+      }
+    }
+    XCTAssertGreaterThan(samples,100)
+    XCTAssertEqual(sage,samples,"Recovered per-face Sage paint must actually render, not the default Mist paint")
+    func checkEditor() {
+      app.otherElements["face.Modular"].press(forDuration:1)
+      XCTAssertTrue(app.buttons["editor.done"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.buttons["Sage style"].value as? String,"Selected")
+      XCTAssertTrue(app.buttons["widget.0"].label.contains(mode=="legacy" ? "Weather":"Date"))
+      XCTAssertTrue(app.buttons["widget.1"].label.contains("Clock"))
+      XCTAssertTrue(app.buttons["widget.2"].label.contains("Timer"))
+    }
+    checkEditor()
+    viewportShot("face-recovery-"+mode+"-editor")
+    // A real editor action persists the recovered state through the normal writer.
+    app.buttons["Sage style"].tap()
+    tap("editor.done")
+    app.terminate()
+    // No fixture and no reset flag. The second process must read stored choices.
+    launch(["--persistence-test",id])
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    let reloaded=viewportBytes("face-recovery-"+mode+"-after-process-restart")
+    XCTAssertEqual(viewportPixels(initial,inset:0),viewportPixels(reloaded,inset:0))
+    checkEditor()
+    tap("editor.done")
+    print("FACE_CONFIGURATION_RESTART mode=\(mode) whole_viewport_identical=true")
+  }
+  func testLegacyFaceConfigurationRecoversAndSurvivesProcessRestart() {
+    exerciseFaceConfigurationRecovery("legacy")
+  }
+  func testUnknownFaceWidgetPreservesSiblingChoicesAndStyleAcrossRestart() {
+    exerciseFaceConfigurationRecovery("future-widget")
+  }
   func testFaceEditorChangesFaceAndWidget() {
     launch(["--face", "Modular"])
     shot("UI01-modular")
