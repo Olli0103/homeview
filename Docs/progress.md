@@ -420,3 +420,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: Zeigerrelief, Minutenlänge und offene Nabe
 
 [Begrenzte UI07-Korrektur](home-clock-hand-relief.md):166Modelltests,14gezielteUI,5SDK.NurschmaleZeigeransätze,vorhandenesRelief,MinutenlängeundeigeneRingnabe.AußerhalbZeigerbereiche0Pixeländerung,dreiMarkierungsausschnitteundachtandereAtlasziele jeGerätexakt.Originalkonturen/Licht/Hardwarebleibenoffen.
+
+
+## 18. Oktober: R/G-Balance der blauen Prismenpalette
+
+[Ein-Wert-Kalibrierung](prism-blue-balance.md):166Modelltests,14gezielteUI,5SDK.BegrenzterR/G-Median6→0;weißeRasterkernprobenundachtandereAtlaszielejeGerätexakt.Schattenprototypzurückgehalten;keineGesamt-Original-/Helligkeits-/Hardwareabnahme.
