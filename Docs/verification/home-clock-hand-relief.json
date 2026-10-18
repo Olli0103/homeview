@@ -1,0 +1,479 @@
+{
+  "feature_commit": "df04cbf842e7dd14c87d57ef1e694ace273ceb8b",
+  "integrated_commit": "520957c9406df3d8c1ba3789bb5a38ebaa49db31",
+  "source_digest": "80e5aa0d370cb462227aa824b084a2bb5eeed8b9a1e4c5bdd2f36705f901e131",
+  "source_files": 142,
+  "source_matches_feature_merge_and_worktree": true,
+  "base": "3dfd98d0c0ff83121945efcefbcbe940569d543c",
+  "predeclared_contract": {
+    "base": "3dfd98d0c0ff83121945efcefbcbe940569d543c",
+    "scope": "Small HomeModular existing embossedHands/minuteReach.96 plus optional analytic hollowHub. No extracted Original contours. Other clock defaults including filledhub remain unchanged.",
+    "preflight": "Existing own AnalogClock embossedHands renderer used by Fade is available; no new drawing library or private contours.",
+    "only_expected_delta": "Design optional hollowHub false and draw-context hole/ring path; Faces smallclock uses existing embossedHands/minuteReach and hollowHub:true.",
+    "reference_UI07_coarse_minute_tip_normalized": [
+      0.9447513812154696,
+      0.09191176470588236
+    ],
+    "native_contract": {
+      "whole_clock_ROI": [
+        0.66,
+        0,
+        1,
+        0.34
+      ],
+      "outside_clock_ROI_changed_pixels": 0,
+      "changed_pixels_only_in_2_public_hand_stroke_boxes": true,
+      "own_public_hand_geometry": {
+        "center": [
+          496.5,
+          103.25
+        ],
+        "radius": 85.79,
+        "hours": 10.158333333333333,
+        "minutes": 9.5,
+        "hourReach": 0.56,
+        "minuteReach": 0.96,
+        "old_backtail": 8,
+        "shadow_margin_design_points": 12.5,
+        "design_edge": 600
+      },
+      "unchanged_axis_tick_ROIs": {
+        "12": [
+          0.815,
+          0.018,
+          0.841,
+          0.075
+        ],
+        "3": [
+          0.928,
+          0.16,
+          0.982,
+          0.184
+        ],
+        "9": [
+          0.672,
+          0.16,
+          0.725,
+          0.184
+        ]
+      },
+      "axis_tick_crop_RGBA_exact": true,
+      "added_bright_minute_tip_ROI": [
+        0.925,
+        0.075,
+        0.958,
+        0.12
+      ],
+      "added_bright_minute_tip_maxX_bounds": [
+        0.936,
+        0.952
+      ],
+      "added_bright_minute_tip_minY_bounds": [
+        0.083,
+        0.101
+      ],
+      "added_bright_threshold": 235,
+      "added_pixel_requires_previous_not_bright": true,
+      "native_touch_cold_motion_night_required": true,
+      "hollow_hub": {
+        "center_design": [
+          496.5,
+          103.25
+        ],
+        "center3x3_pixels_not_bright": true,
+        "bright_threshold": 235,
+        "ring_sample_radius_design": 2.3,
+        "ring8_samples_at_least6_bright": true,
+        "own_outer_radius_design": "max(3,r*.035)",
+        "own_hole_radius_fraction": 0.55
+      },
+      "unchanged_atlas_targets": [
+        "viewport-UI01",
+        "viewport-UI08",
+        "viewport-UI10",
+        "viewport-UI12",
+        "viewport-UI05",
+        "viewport-UI45",
+        "viewport-UI13",
+        "viewport-UI26"
+      ],
+      "unchanged_atlas_baseline": "home-clock-hour-marks-calibrated-final-ui/source289d: immediate published previous App"
+    },
+    "no_Original_hub_full_hand_contours_lighting_or_hardware_acceptance": true,
+    "no_private_reference_raster_or_contours": true,
+    "first_pilot_source_faac_kept": true,
+    "source_digest": "80e5aa0d370cb462227aa824b084a2bb5eeed8b9a1e4c5bdd2f36705f901e131",
+    "source_files": 142,
+    "source_archive_sha256": "8fc70894457a1564f359bc05f7df8d5eb608184719a652a9efa1587481a1ef8e"
+  },
+  "source_scope": {
+    "changed_files": [
+      "Sources/App/Design.swift",
+      "Sources/App/Faces.swift"
+    ],
+    "source_digest": "80e5aa0d370cb462227aa824b084a2bb5eeed8b9a1e4c5bdd2f36705f901e131",
+    "all140_other_source_files_and_existing_tests_byte_exact": true,
+    "all_other_AnalogClock_callsite_bytes_unchanged": true,
+    "default_filledHub_false_branch_preserves_prior_two_fills": true,
+    "small_HomeModular_uses_embossedHands_minute96_major18_hollowHub": true,
+    "only_new_drawing_is_own_analytic_ring_and_evenodd_hole": true
+  },
+  "independent_image_measurements": {
+    "mode": "final",
+    "source_digest": "80e5aa0d370cb462227aa824b084a2bb5eeed8b9a1e4c5bdd2f36705f901e131",
+    "source_files": 142,
+    "UI_executions": 14,
+    "failed_skipped_runtime_warnings": 0,
+    "inputs_unchanged": true,
+    "all_native_PNG_decoded": 146,
+    "devices": [
+      {
+        "device": "iPad",
+        "all_PNG_decoded": true,
+        "measurements": [
+          {
+            "state": "viewport-home-modular-intercom-reference",
+            "changed_pixels": 10127,
+            "outside_clock_ROI_changed_pixels": 0,
+            "outside_2_public_hand_boxes_changed_pixels": 0,
+            "axis_tick_crops": [
+              {
+                "axis": "12",
+                "RGBA_exact": true
+              },
+              {
+                "axis": "3",
+                "RGBA_exact": true
+              },
+              {
+                "axis": "9",
+                "RGBA_exact": true
+              }
+            ],
+            "added_bright_tip_pixels": 246,
+            "added_bright_tip_bbox": [
+              1475,
+              149,
+              1506,
+              170
+            ],
+            "added_bright_tip_maxX": 0.9459798994974874,
+            "added_bright_tip_minY": 0.0935929648241206,
+            "tip_bounds_passed": true,
+            "contract_passed": true,
+            "hub": {
+              "center3x3_bright_pixels": 0,
+              "bright_ring_samples_of8": 8,
+              "passed": true
+            }
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "changed_pixels": 9506,
+            "outside_clock_ROI_changed_pixels": 0,
+            "outside_2_public_hand_boxes_changed_pixels": 0,
+            "axis_tick_crops": [
+              {
+                "axis": "12",
+                "RGBA_exact": true
+              },
+              {
+                "axis": "3",
+                "RGBA_exact": true
+              },
+              {
+                "axis": "9",
+                "RGBA_exact": true
+              }
+            ],
+            "added_bright_tip_pixels": 247,
+            "added_bright_tip_bbox": [
+              1475,
+              149,
+              1506,
+              170
+            ],
+            "added_bright_tip_maxX": 0.9459798994974874,
+            "added_bright_tip_minY": 0.0935929648241206,
+            "tip_bounds_passed": true,
+            "contract_passed": true,
+            "hub": {
+              "center3x3_bright_pixels": 0,
+              "bright_ring_samples_of8": 8,
+              "passed": true
+            }
+          }
+        ],
+        "contract_passed": true,
+        "local_target_RGBA_PNG_exact": true,
+        "cold4_launches32_full_RGBA_PNG_exact": true,
+        "moving_positive": true,
+        "reduced_pair_exact": true,
+        "initial_restored_RGBA_exact": true,
+        "actual_glyph_padding_taps_and_explicit62pt_frames_passed": true,
+        "night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 2486355,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 2486355,
+            "wrong_primary_pixels": 0
+          }
+        ],
+        "unchanged_atlas": [
+          {
+            "state": "viewport-UI01",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI08",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI10",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI12",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI05",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI45",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI13",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI26",
+            "RGBA_PNG_exact": true
+          }
+        ],
+        "all8_other_atlas_RGBA_PNG_exact": true
+      },
+      {
+        "device": "iPhone",
+        "all_PNG_decoded": true,
+        "measurements": [
+          {
+            "state": "viewport-home-modular-intercom-reference",
+            "changed_pixels": 5003,
+            "outside_clock_ROI_changed_pixels": 0,
+            "outside_2_public_hand_boxes_changed_pixels": 0,
+            "axis_tick_crops": [
+              {
+                "axis": "12",
+                "RGBA_exact": true
+              },
+              {
+                "axis": "3",
+                "RGBA_exact": true
+              },
+              {
+                "axis": "9",
+                "RGBA_exact": true
+              }
+            ],
+            "added_bright_tip_pixels": 124,
+            "added_bright_tip_bbox": [
+              1052,
+              106,
+              1073,
+              120
+            ],
+            "added_bright_tip_maxX": 0.9462081128747796,
+            "added_bright_tip_minY": 0.09347442680776014,
+            "tip_bounds_passed": true,
+            "contract_passed": true,
+            "hub": {
+              "center3x3_bright_pixels": 0,
+              "bright_ring_samples_of8": 8,
+              "passed": true
+            }
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "changed_pixels": 4635,
+            "outside_clock_ROI_changed_pixels": 0,
+            "outside_2_public_hand_boxes_changed_pixels": 0,
+            "axis_tick_crops": [
+              {
+                "axis": "12",
+                "RGBA_exact": true
+              },
+              {
+                "axis": "3",
+                "RGBA_exact": true
+              },
+              {
+                "axis": "9",
+                "RGBA_exact": true
+              }
+            ],
+            "added_bright_tip_pixels": 125,
+            "added_bright_tip_bbox": [
+              1052,
+              106,
+              1073,
+              121
+            ],
+            "added_bright_tip_maxX": 0.9462081128747796,
+            "added_bright_tip_minY": 0.09347442680776014,
+            "tip_bounds_passed": true,
+            "contract_passed": true,
+            "hub": {
+              "center3x3_bright_pixels": 0,
+              "bright_ring_samples_of8": 8,
+              "passed": true
+            }
+          }
+        ],
+        "contract_passed": true,
+        "local_target_RGBA_PNG_exact": true,
+        "cold4_launches32_full_RGBA_PNG_exact": true,
+        "moving_positive": true,
+        "reduced_pair_exact": true,
+        "initial_restored_RGBA_exact": true,
+        "actual_glyph_padding_taps_and_explicit62pt_frames_passed": true,
+        "night": [
+          {
+            "state": "home-prism-night",
+            "whole_viewport_lit": 1261722,
+            "wrong_primary_pixels": 0
+          },
+          {
+            "state": "home-modular-intercom-night-primary",
+            "whole_viewport_lit": 1261722,
+            "wrong_primary_pixels": 0
+          }
+        ],
+        "unchanged_atlas": [
+          {
+            "state": "viewport-UI01",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI08",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI10",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI12",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI05",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI45",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI13",
+            "RGBA_PNG_exact": true
+          },
+          {
+            "state": "viewport-UI26",
+            "RGBA_PNG_exact": true
+          }
+        ],
+        "all8_other_atlas_RGBA_PNG_exact": true
+      }
+    ],
+    "all_contracts_passed": true,
+    "selected_native_representatives": 64,
+    "contacts": [
+      "Docs/screenshots/goal-20261018/home-clock-hand-relief-iPad-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/home-clock-hand-relief-iPad-own-contact-2.jpg",
+      "Docs/screenshots/goal-20261018/home-clock-hand-relief-iPad-own-contact-3.jpg",
+      "Docs/screenshots/goal-20261018/home-clock-hand-relief-iPhone-own-contact-1.jpg",
+      "Docs/screenshots/goal-20261018/home-clock-hand-relief-iPhone-own-contact-2.jpg",
+      "Docs/screenshots/goal-20261018/home-clock-hand-relief-iPhone-own-contact-3.jpg"
+    ],
+    "Original_full_hands_hub_lighting_or_hardware_accepted": false
+  },
+  "UI_executions": 14,
+  "UI_failed": 0,
+  "UI_skipped": 0,
+  "UI_runtime_warnings": 0,
+  "selected_methods": [
+    "testHomePrismColdLaunchesKeepFrozenPixelsExact",
+    "testHomePrismMotionStopsWithReduceMotion",
+    "testHomePrismNightHasNoBlueGlassLeak",
+    "testHomeGlassControlsRemainInteractive",
+    "testHomeModularIntercomReferenceMarkAndLocalDestination",
+    "testHomeModularThermostatArrowDrawingKeepsControlFramesAndState",
+    "testVisualReferenceAtlas"
+  ],
+  "first_hand_only_pilot1_and_hub_pilot1_not_added": true,
+  "first_hand_only_source_digest": "faac5b3432eec9dd86a6c9cb66d3070a1a7ec833c3914857ca2121b21fcf0ba5",
+  "first_hand_only_bounds_passed_but_hub_refined_after_Original_detail": true,
+  "core_passed": 166,
+  "core_repeated_after_feature_and_merge": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T13:33:55.151209+00:00",
+      "ended": "2026-10-18T13:34:08.078583+00:00"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-18T13:34:08.079048+00:00",
+      "ended": "2026-10-18T13:34:21.619070+00:00"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T13:34:21.619553+00:00",
+      "ended": "2026-10-18T13:34:32.574791+00:00"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T13:34:32.575198+00:00",
+      "ended": "2026-10-18T13:34:44.382332+00:00"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-18T13:34:44.382794+00:00",
+      "ended": "2026-10-18T13:34:51.090124+00:00"
+    }
+  ],
+  "full_native_input_files": 20,
+  "all_native_inputs_before_after_exact": true,
+  "App_Test16_product_files_exact_to_visual_pilot": true,
+  "actual_final_native_representatives_viewed": 64,
+  "actual_final_contacts_viewed": 6,
+  "actual_current_pilot_own_contact_viewed": true,
+  "actual_private_UI07_comparison_viewed_not_published": true,
+  "unaffected8_atlas_baseline_source_digest": "289dcd19d6aa819475582b289e9d1352b565b4f857bdebb237c8c2072cbb0ccc",
+  "unaffected_atlas_is_immediate_published_predecessor": true,
+  "not_all_Atlas_or_all_App_pixels_compared": true,
+  "actual_OS_switch_checks_not_repeated_on_this_payload": true,
+  "prior_actual_OS_evidence": "prisms-system-reduce-motion.json, older App payload, not newly counted",
+  "no_private_reference_raster_font_contours_or_original_shader": true,
+  "no_real_homes_accounts_libraries_devices_communication_or_system_alarms": true,
+  "no_frozen_RGB_tolerance": true,
+  "no_full_Original_hand_hub_contours_lighting_hardware_or_current_full_suite_acceptance": true,
+  "screenshot_manifest": "../screenshots/goal-20261018/home-clock-hand-relief-manifest.json"
+}
