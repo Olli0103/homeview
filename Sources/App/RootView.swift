@@ -24,13 +24,23 @@ struct RootView: View {
       VStack(spacing: 12) {
         Spacer(minLength: 0)
         ZStack {
-          screen.id(String(describing: model.route)).transition(
+          screen.id(String(describing: model.route))
+          .allowsHitTesting(model.demoDoorbell.current == nil)
+          .accessibilityHidden(model.demoDoorbell.current != nil)
+          .transition(
             animate ? screenTransition : .identity
           )
           .animation(
             animate ? .spring(response: 0.43, dampingFraction: 0.92) : nil, value: model.route
           )
-          if model.route == .face
+          if let bell = model.demoDoorbell.current {
+            CameraDetail(index:bell.cameraIndex,doorbell:true,
+              onClose:{ model.dismissDemoDoorbell() },
+              onGrid:{ model.dismissDemoDoorbell();model.navigate(.cameras) })
+              .transition(.opacity).accessibilityElement(children:.contain)
+              .accessibilityIdentifier("doorbell.overlay")
+          }
+          if model.route == .face && model.demoDoorbell.current == nil
             && (model.playing || model.podcastPlaying || model.connections.musicPlaying
               || model.data.timers.contains(where: { $0.remaining(at: model.now) > 0 }))
           {
@@ -91,6 +101,7 @@ struct RootView: View {
         .simultaneousGesture(TapGesture().onEnded { model.interact() })
         HStack(spacing: 24) {
           Button {
+            model.dismissDemoDoorbell()
             model.route = .face
           } label: {
             Image(systemName: "rectangle.on.rectangle")
@@ -104,17 +115,35 @@ struct RootView: View {
             .gray
           ).accessibilityIdentifier("mock.badge")
           Button {
+            model.dismissDemoDoorbell()
             model.route = .assistant
           } label: {
             Image(systemName: "waveform")
           }.accessibilityLabel("Assistant").accessibilityIdentifier("nav.assistant")
           Button {
+            model.dismissDemoDoorbell()
             model.route = .controlCenter
           } label: {
             Image(systemName: "switch.2")
           }.accessibilityLabel("Control Center").accessibilityIdentifier("nav.controls")
         }.font(.system(size: 18)).foregroundStyle(.white.opacity(0.7)).buttonStyle(.plain).frame(
           height: 30)
+        if ProcessInfo.processInfo.arguments.contains("--uitesting"),
+           ProcessInfo.processInfo.arguments.contains("--doorbell-fixture") {
+          VStack(spacing:2) {
+          HStack {
+            Button("Bell") { model.simulateDoorbell() }.accessibilityIdentifier("fixture.doorbell.new")
+            Button("Repeat ID") { model.simulateDoorbell(repeatFixture:true) }.accessibilityIdentifier("fixture.doorbell.repeat")
+            Button("Offline") { model.data.home.online = false }.accessibilityIdentifier("fixture.doorbell.offline")
+            Button("Call") { model.incomingCall = true }.accessibilityIdentifier("fixture.doorbell.call")
+            Button("Finish timer") { model.finishTimerForDoorbellFixture() }
+              .accessibilityIdentifier("fixture.doorbell.finishTimer")
+          }.font(.system(size:12)).foregroundStyle(.white)
+          Text(verbatim:model.doorbellFixtureRoute).font(.system(size:1))
+            .foregroundStyle(.clear).allowsHitTesting(false)
+            .accessibilityIdentifier("fixture.doorbell.route")
+          }
+        }
         if model.storeReadOnly {
           Text("Read-only saved data · Changes are temporary")
             .font(.system(size: 12)).foregroundStyle(.orange)
@@ -140,10 +169,11 @@ struct RootView: View {
     }
     .onReceive(pulse) { _ in model.tick() }
     .onChange(of: model.route) { _, route in if route == .privacy { model.lockPersonalAccess() } }
+    .onChange(of:model.incomingCall) { _,incoming in if incoming { model.dismissDemoDoorbell() } }
     .onChange(of: model.data.keepDisplayOn) { _, enabled in
       model.display.apply(enabled: enabled && scenePhase == .active)
     }
-    .onDisappear { model.display.apply(enabled: false) }
+    .onDisappear { model.dismissDemoDoorbell();model.display.apply(enabled: false) }
     .onChange(of: scenePhase) { _, phase in
       model.display.apply(enabled: model.data.keepDisplayOn && phase == .active)
       if phase == .active {
