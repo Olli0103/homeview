@@ -109,6 +109,7 @@ struct AnalogClock: View {
   var hourReach = 0.56
   var minuteReach = 0.84
   var secondsReach = 0.99
+  var lightEdgeInk = false
   var body: some View {
     MotionTimeline { _ in clock(date: model.referenceClock ? date : Date()) }
   }
@@ -129,9 +130,13 @@ struct AnalogClock: View {
           style: StrokeStyle(lineWidth: numbered ? 1.8 : 4, lineCap: .round))
       }
       if numbered {
+        var numeralContext=context
+        if lightEdgeInk {
+          numeralContext.addFilter(.shadow(color:.white.opacity(0.35),radius:0.65,x:0,y:0.2))
+        }
         for n in 1...12 {
           let a = Double(n) * .pi / 6 - .pi / 2
-          context.draw(
+          numeralContext.draw(
             Text("\(n)").font(.system(size: r * 0.24, weight: .medium)).foregroundStyle(tint),
             at: CGPoint(x: center.x + r * 0.77 * cos(a), y: center.y + r * 0.77 * sin(a)))
         }
@@ -142,6 +147,10 @@ struct AnalogClock: View {
       let s = reading.seconds
       let hands = handColor ?? tint
       func hand(angle: Double, length: Double, width: Double, color: Color) {
+        var bodyContext=context
+        if lightEdgeInk {
+          bodyContext.addFilter(.shadow(color:.white.opacity(0.35),radius:0.65,x:0,y:0.2))
+        }
         var path = Path()
         path.move(to: CGPoint(x: center.x - 8 * cos(angle), y: center.y - 8 * sin(angle)))
         path.addLine(
@@ -154,20 +163,22 @@ struct AnalogClock: View {
           var stem = Path()
           stem.move(to: center)
           stem.addLine(to: CGPoint(x: center.x + neck * cos(angle), y: center.y + neck * sin(angle)))
-          context.stroke(stem, with: .color(color), style: StrokeStyle(lineWidth: width * 0.25, lineCap: .round))
+          bodyContext.stroke(stem, with: .color(color), style: StrokeStyle(lineWidth: width * 0.25, lineCap: .round))
           path = Path()
           path.move(to: CGPoint(x: center.x + neck * cos(angle), y: center.y + neck * sin(angle)))
           path.addLine(to: CGPoint(x: center.x + length * cos(angle), y: center.y + length * sin(angle)))
-          var shadow=context
-          shadow.addFilter(.shadow(color:.black.opacity(0.28),radius:1.5,x:1.2,y:2))
-          shadow.stroke(path,with:.color(color),style:style)
+          if !lightEdgeInk {
+            var shadow=context
+            shadow.addFilter(.shadow(color:.black.opacity(0.28),radius:1.5,x:1.2,y:2))
+            shadow.stroke(path,with:.color(color),style:style)
+          }
           let perpendicular=CGPoint(x:-sin(angle)*width*0.5,y:cos(angle)*width*0.5)
-          context.stroke(path,with:.linearGradient(
+          bodyContext.stroke(path,with:.linearGradient(
             Gradient(colors:[color.mix(with:.white,by:0.18),color,color.mix(with:.black,by:0.12)]),
             startPoint:CGPoint(x:center.x-perpendicular.x,y:center.y-perpendicular.y),
             endPoint:CGPoint(x:center.x+perpendicular.x,y:center.y+perpendicular.y)),style:style)
         } else {
-          context.stroke(path,with:.color(color),style:style)
+          bodyContext.stroke(path,with:.color(color),style:style)
         }
       }
       hand(angle: h * .pi / 6 - .pi / 2, length: r * hourReach, width: r * 0.065, color: hands)
