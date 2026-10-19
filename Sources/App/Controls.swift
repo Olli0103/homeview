@@ -179,14 +179,51 @@ struct AssistantView: View {
   @State private var showingCapabilities = false
   @State private var voice = VoiceInputController()
   var body: some View {
-    VStack(alignment: .leading, spacing: 22) {
+    VStack(alignment: .leading, spacing:model.assistantUsesAI ? 8:22) {
       AppHeader()
       Button("Capabilities and limits") { showingCapabilities=true }
         .font(.system(size:18)).disabled(voice.busy).accessibilityIdentifier("assistant.capabilities")
         .padding(.horizontal,34)
-      Text(model.assistantReply).font(.system(size: 35, weight: .medium)).padding(.horizontal, 34)
-        .frame(maxHeight: .infinity, alignment: .top).padding(.top, 24).accessibilityIdentifier(
-          "assistant.reply")
+      if model.assistantUsesAI {
+        VStack(alignment:.leading,spacing:8) {
+          HStack {
+            Text("On-device answers · No actions").font(.system(size:17,weight:.semibold))
+            Spacer()
+            Button(model.assistantAI.busy ? "Stop":"New") {
+              model.assistantAI.clear(status:model.assistantAI.busy
+                ? "Stopped. Conversation cleared; no action was taken.":"Conversation cleared. Nothing is saved.")
+            }.accessibilityIdentifier("assistant.ai.reset")
+          }
+          Text(model.assistantAI.status).font(.system(size:14)).foregroundStyle(.gray)
+            .accessibilityIdentifier("assistant.ai.status")
+        }.padding(.horizontal,34)
+        ScrollViewReader { reader in
+          ScrollView {
+            VStack(alignment:.leading,spacing:18) {
+              ForEach(Array(model.assistantAI.exchanges.enumerated()),id:\.element.id) { index,exchange in
+                VStack(alignment:.leading,spacing:8) {
+                  Text(exchange.question).font(.system(size:19,weight:.semibold))
+                    .accessibilityIdentifier("assistant.ai.question.\(index)")
+                  Text(exchange.answer).font(.system(size:24))
+                    .accessibilityIdentifier("assistant.ai.answer.\(index)")
+                }.frame(maxWidth:.infinity,alignment:.leading).id(exchange.id)
+              }
+              if let question=model.assistantAI.pendingQuestion {
+                Text(question).font(.system(size:19,weight:.semibold))
+                ProgressView().accessibilityIdentifier("assistant.ai.thinking")
+              }
+            }.padding(.horizontal,34).padding(.vertical,8)
+          }.onChange(of:model.assistantAI.exchanges.count) { _,_ in
+            if let id=model.assistantAI.exchanges.last?.id { reader.scrollTo(id,anchor:.bottom) }
+          }
+        }.frame(maxHeight:.infinity)
+      } else {
+        ScrollView {
+          Text(model.assistantReply).font(.system(size:35,weight:.medium))
+            .frame(maxWidth:.infinity,alignment:.leading).padding(.horizontal,34)
+            .padding(.top,24).accessibilityIdentifier("assistant.reply")
+        }.frame(maxHeight:.infinity)
+      }
       if VoiceInputController.supported {
         VStack(alignment: .leading, spacing: 8) {
           HStack {
@@ -205,7 +242,7 @@ struct AssistantView: View {
               Label(
                 voice.recording ? "Stop" : "Speak",
                 systemImage: voice.recording ? "stop.circle.fill" : "mic.circle.fill")
-            }.disabled(voice.busy && !voice.recording).accessibilityIdentifier("assistant.voice")
+            }.disabled((voice.busy && !voice.recording) || model.assistantAI.busy).accessibilityIdentifier("assistant.voice")
             if voice.busy || voice.phase == .ready {
               Button("Cancel") {
                 voice.cancel()
@@ -228,11 +265,11 @@ struct AssistantView: View {
           .onSubmit { submitted() }.accessibilityIdentifier("assistant.input")
         RoundButton(symbol: "arrow.up", color: .blue, foreground: .white, label: "Send request") {
           submitted()
-        }.disabled(voice.busy || text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        }.disabled(voice.busy || model.assistantAI.busy || text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
           .accessibilityIdentifier("assistant.send")
       }.padding(20).background(.gray.opacity(0.09), in: RoundedRectangle(cornerRadius: 28)).padding(
         .horizontal, 30)
-      Text("Local demo assistant · Not connected to Siri AI").font(.system(size: 16))
+      Text(model.assistantUsesAI ? "Apple on-device text · Not Siri · No cloud fallback":"Local demo assistant · Not connected to Siri AI").font(.system(size: 16))
         .foregroundStyle(.gray).padding(.horizontal, 34).padding(.bottom, 24)
     }.background(.white).foregroundStyle(.black)
       .sheet(isPresented:$showingCapabilities) { AssistantCapabilitiesView() }
@@ -247,14 +284,14 @@ struct AssistantView: View {
           && voiceDraftGeneration == model.personalSessionGeneration
         voice.cancel()
         if restore { text = draftBeforeVoice }
+        model.assistantAI.clear()
       }
   }
   private func submitted() {
-    guard !voice.busy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+    guard !voice.busy,!model.assistantAI.busy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
     voice.cancel()
     model.assistantInput = text
     model.runAssistant()
-    text = ""
   }
 }
 struct FaceTimeLanding: View {

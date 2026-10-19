@@ -309,27 +309,30 @@ enum AssistantIntent: Equatable {
   case timer(Int)
   case recipe, calendar, music, unknown
   init(_ input: String) {
-    let s = input.lowercased()
-    let n = s.split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }.first
-    if s.contains("good night") || s.contains("gute nacht") {
+    let s=input.lowercased().trimmingCharacters(in:.whitespacesAndNewlines)
+      .trimmingCharacters(in:CharacterSet(charactersIn:".!?"))
+      .split(whereSeparator: { $0.isWhitespace }).joined(separator:" ")
+    guard s.count<=AssistantLimits.transcriptCharacters else { self = .unknown;return }
+    if ["good night","gute nacht"].contains(s) {
       self = .scene("Good Night")
-    } else if s.contains("good morning") {
+    } else if ["good morning","guten morgen"].contains(s) {
       self = .scene("Good Morning")
-    } else if s.contains("temperature") || s.contains("temperatur") {
-      self = n.map { .temperature($0) } ?? .unknown
-    } else if s.contains("light") || s.contains("licht") {
+    } else if s.range(of:#"^(?:(?:set (?:the )?)?temperature (?:to )?|temperatur (?:auf )?)[0-9]{1,3}$"#,options:.regularExpression) != nil,
+      let value=s.split(separator:" ").last.flatMap({Int($0)}) {
+      self = .temperature(value)
+    } else if ["light","lights","licht","toggle lights","toggle the light","toggle entryway light"].contains(s) {
       self = .light
-    } else if s.contains("timer") {
-      self = .timer(min(1440, max(1, n ?? 5)))
-    } else if s.contains("recipe") || s.contains("soup") || s.contains("rezept") {
+    } else if s.range(of:#"^(?:set a timer for |set timer for |timer )[0-9]{1,12} minutes?$"#,options:.regularExpression) != nil,
+      let n=s.split(separator:" ").compactMap({Int($0)}).first {
+      // Legacy parser value only; runEverydayCommand validates actual durations first.
+      self = .timer(min(1440,max(1,n)))
+    } else if ["recipe","show recipe","show the recipe","soup","rezept","zeige rezept"].contains(s) {
       self = .recipe
-    } else if s.contains("calendar") || s.contains("kalender") {
+    } else if ["calendar","open calendar","show calendar","kalender","öffne kalender"].contains(s) {
       self = .calendar
-    } else if s.contains("music") || s.contains("musik") {
+    } else if ["music","musik","toggle music","toggle playback"].contains(s) {
       self = .music
-    } else {
-      self = .unknown
-    }
+    } else { self = .unknown }
   }
 }
 

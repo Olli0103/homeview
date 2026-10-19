@@ -31,6 +31,8 @@ final class AppModel {
   var error: String? = nil
   private(set) var storeReadOnly = false
   private(set) var storeRecoveryNote: String?
+  let assistantAI = AssistantConversation(provider:makeAssistantAnswers())
+  private(set) var assistantUsesAI = false
   var assistantInput = ""
   private(set) var personalSessionGeneration = 0
   var assistantReply = "What can I help you with?"
@@ -747,12 +749,8 @@ final class AppModel {
     }
   }
   func signIn(_ name: String) {
-    #if !os(watchOS)
-      recipeHandoff.stop()
-      connections.lock()
-      albumCatalogue.invalidate()
-    #endif
     guard Fixtures.profiles.contains(name) else { return }
+    lockPersonalAccess()
     profile = name
     if data.personal[name] == nil {
       data.personal[name] = PersonalContent()
@@ -770,6 +768,8 @@ final class AppModel {
     route = .privacy
   }
   func lockPersonalAccess() {
+    assistantAI.deselect()
+    assistantUsesAI=false
     #if !os(watchOS)
       recipeHandoff.stop()
     #endif
@@ -1104,8 +1104,17 @@ final class AppModel {
     assistantInput = ""
     return true
   }
+  func selectAssistantAnswers(_ enabled:Bool) {
+    assistantAI.deselect();assistantUsesAI=enabled
+    if enabled { assistantAI.select() }
+  }
   func runAssistant() {
+    guard !Task.isCancelled else { return }
     interact()
+    if assistantUsesAI {
+      if assistantAI.ask(assistantInput) { assistantInput="" }
+      return
+    }
     if runEverydayCommand() { return }
     switch AssistantIntent(assistantInput) {
     case .scene(let s):

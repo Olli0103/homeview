@@ -3617,3 +3617,63 @@ extension HomeViewUITests {
     viewportShot("recipe-handoff-background-pending-cleared")
   }
 }
+
+extension HomeViewUITests {
+  private func chooseSyntheticOnDeviceAnswers() {
+    tap("nav.assistant");tap("assistant.capabilities")
+    tap("assistant.provider.ondevice");tap("assistant.capabilities.done")
+    XCTAssertTrue(app.staticTexts["assistant.ai.status"].waitForExistence(timeout:5))
+  }
+  private func askSyntheticQuestion(_ prompt:String) {
+    let field=app.textFields["assistant.input"];field.tap();field.typeText(prompt);tap("assistant.send")
+  }
+  func testOnDeviceAnswersNeedExplicitChoiceKeepDialogueAndNeverExecuteCommands() {
+    launch(["--assistant-ai-fixture","ready"])
+    tap("nav.assistant");XCTAssertFalse(app.staticTexts["assistant.ai.status"].exists)
+    tap("assistant.capabilities")
+    XCTAssertTrue(app.staticTexts["assistant.provider.availability"].label.contains("Not selected"))
+    viewportShot("ondevice-explicit-provider-choice")
+    tap("assistant.provider.ondevice");tap("assistant.capabilities.done")
+    askSyntheticQuestion("Set a timer for 5 minutes")
+    let first=app.staticTexts["assistant.ai.answer.0"]
+    XCTAssertTrue(first.waitForExistence(timeout:5));XCTAssertTrue(first.label.contains("Synthetic answer"))
+    askSyntheticQuestion("What was the fictional recipe called?")
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.1"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.1"].label.contains("Moon Soup"))
+    viewportShot("ondevice-synthetic-followup-answer-only")
+    tap("nav.faces");drawer();tap("app.Timers")
+    XCTAssertFalse(app.staticTexts["timer.countdown"].exists);XCTAssertTrue(app.buttons["timer.start"].exists)
+    tap("nav.assistant");XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+  }
+  func testOnDeviceUnavailableAndFailureAreExplicitWithoutCloudFallback() {
+    launch(["--assistant-ai-fixture","unavailable"]);chooseSyntheticOnDeviceAnswers()
+    askSyntheticQuestion("hello")
+    XCTAssertTrue(app.staticTexts["assistant.ai.status"].label.contains("unavailable"))
+    XCTAssertTrue(app.staticTexts["assistant.ai.status"].label.contains("No cloud fallback"))
+    XCTAssertEqual(app.textFields["assistant.input"].value as? String,"hello")
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    viewportShot("ondevice-unavailable-draft-retained")
+    launch(["--assistant-ai-fixture","error"]);chooseSyntheticOnDeviceAnswers()
+    askSyntheticQuestion("Synthetic question")
+    let status=app.staticTexts["assistant.ai.status"]
+    XCTAssertTrue(status.waitForExistence(timeout:5))
+    XCTAssertTrue(status.label.contains("could not answer"));XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    viewportShot("ondevice-failure-context-cleared")
+  }
+  func testOnDeviceStopAndBackgroundDiscardPendingConversation() {
+    launch(["--assistant-ai-fixture","slow"]);chooseSyntheticOnDeviceAnswers()
+    askSyntheticQuestion("Synthetic slow question")
+    XCTAssertEqual(app.buttons["assistant.ai.reset"].label,"Stop")
+    XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
+    tap("assistant.ai.reset")
+    XCTAssertTrue(app.staticTexts["assistant.ai.status"].label.contains("Stopped"))
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    viewportShot("ondevice-stopped-no-late-answer")
+    askSyntheticQuestion("Another synthetic slow question")
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertTrue(app.buttons["nav.assistant"].waitForExistence(timeout:5));tap("nav.assistant")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    viewportShot("ondevice-background-provider-reset")
+  }
+}
