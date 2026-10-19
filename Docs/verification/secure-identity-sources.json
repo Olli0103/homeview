@@ -1,0 +1,138 @@
+[
+  {
+    "url": "https://support.apple.com/en-us/102381",
+    "final_url": "https://support.apple.com/en-us/102381",
+    "title": "About Face ID advanced technology",
+    "published": "2026-09-18",
+    "retrieved": "2026-10-19T18:33:42.780Z",
+    "cache_sha256": "960b227df515ef34e76d047b70106e9ebb7442667b56ad1fad479f1b4ef6893d",
+    "quotations": [
+      "Data that is processed and analyzed in the Secure Exclave cannot be accessed by iOS, apps, the user, or Apple.",
+      "Apps are notified only as to whether the authentication is successful. Apps can’t access Face ID data associated with the enrolled face."
+    ]
+  },
+  {
+    "url": "https://support.apple.com/guide/security/face-id-security-sec067eb0c9e/web",
+    "title": "Biometric security",
+    "retrieved": "2026-10-19T18:33:42.575Z",
+    "cache_sha256": "f905f7dac432aee8816872fd2988af75d06d507670e43e3d03b9daee8f59dbf2"
+  },
+  {
+    "url": "https://developer.apple.com/documentation/localauthentication/lacontext",
+    "title": "LAContext",
+    "accessed": "2026-10-19",
+    "cached_json_sha256": "48b8116ff26d8896838bc32c65ed4c33ee9bc85947f870293cb9c4633179de0b",
+    "abstract": [
+      {
+        "text": "A mechanism for evaluating authentication policies and access controls.",
+        "type": "text"
+      }
+    ],
+    "platforms": [
+      {
+        "introducedAt": "8.0",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "8.0",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "13.1",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "10.10",
+        "name": "macOS"
+      },
+      {
+        "introducedAt": "1.0",
+        "name": "visionOS"
+      },
+      {
+        "introducedAt": "3.0",
+        "name": "watchOS"
+      }
+    ]
+  },
+  {
+    "url": "https://developer.apple.com/documentation/cryptokit/secureenclave",
+    "title": "SecureEnclave",
+    "accessed": "2026-10-19",
+    "cached_json_sha256": "94d27019989c43d33f30030887985c035264994341a1855c3823017a28adf837",
+    "abstract": [
+      {
+        "text": "A representation of a device’s hardware-based key manager.",
+        "type": "text"
+      }
+    ],
+    "platforms": [
+      {
+        "introducedAt": "13.0",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "13.0",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "13.0",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "10.15",
+        "name": "macOS"
+      },
+      {
+        "introducedAt": "13.0",
+        "name": "tvOS"
+      },
+      {
+        "introducedAt": "1.0",
+        "name": "visionOS"
+      },
+      {
+        "introducedAt": "6.0",
+        "name": "watchOS"
+      }
+    ]
+  },
+  {
+    "url": "https://developer.apple.com/documentation/localauthentication/lapolicy/deviceownerauthentication",
+    "title": "LAPolicy.deviceOwnerAuthentication",
+    "accessed": "2026-10-19",
+    "cached_json_sha256": "bfc6ca38d9c5067097f6091032ecd57ec22e5cf66003125d5b23facb446f6fdb",
+    "abstract": [
+      {
+        "text": "User authentication with biometry, Apple Watch, or the device passcode.",
+        "type": "text"
+      }
+    ],
+    "platforms": [
+      {
+        "introducedAt": "9.0",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "9.0",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "13.1",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "10.11",
+        "name": "macOS"
+      },
+      {
+        "introducedAt": "1.0",
+        "name": "visionOS"
+      },
+      {
+        "introducedAt": "3.0",
+        "name": "watchOS"
+      }
+    ]
+  }
+]

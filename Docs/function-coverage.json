@@ -3063,7 +3063,7 @@
       "SYS-06"
     ],
     "current": [
-      "Keine eigene Gesicht-/Stimmidentifikation in Secure Exclaves und keine belegte öffentliche Gleichwertigkeit."
+      "API-/Hardwaregrenze dokumentiert: LocalAuthentication liefert Geräteauthentifizierung, keine benannte Gesicht-/Stimmidentität. SecureEnclave-P256 ist Schlüsselverwaltung, kein App-Biometrieruntime. Keine belegte öffentliche Secure-Exclave-Gleichwertigkeit; F098 bleibt unerfüllt. Docs/secure-identity-boundary.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3076,9 +3076,9 @@
     "target": "iPad core",
     "implementation_status": "blocked",
     "acceptance": {
-      "functional": "pending",
+      "functional": "blocked: documentation/classification complete, no proven public app-owned Secure-Exclave biometric-processing route; F098 not implemented",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "Compile-only public API shapes checked on five SDKs; tvOS LAContext explicitly unavailable. No hardware authentication/key/biometric processing acceptance."
     },
     "completion_criteria": [
       "Anforderung bleibt unerfüllt, sofern kein nachgewiesener öffentlicher Weg existiert. LocalAuthentication wird nicht als eigener Secure-Exclaves-Port ausgegeben."

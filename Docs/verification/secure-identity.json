@@ -1,0 +1,171 @@
+{
+  "date": "2026-10-19",
+  "issue": 69,
+  "scope": "Documentation/public-API boundary only; F098 remains blocked and parity false",
+  "verdict": {
+    "verdict": "PASS_for_compile_only_classification",
+    "code_commit": "d04f453ff1bc5143e844e1a60ed92d8b05e93818",
+    "typechecked": 9,
+    "expected_unavailable": 1,
+    "no_runtime_functions_called": true,
+    "no_keys_generated": true,
+    "no_authentication_performed": true,
+    "inputs_unchanged": true
+  },
+  "API_probes": [
+    {
+      "sdk": "macosx",
+      "version": "27.0",
+      "target": "arm64-apple-macos15.0",
+      "probe": "auth",
+      "source": "Docs/verification/secure-identity-auth-shape.swift",
+      "sha256": "84bfe2a440b28b9cd5fc770d76524a1a39a015f851539a093c0f099d826bb994",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    },
+    {
+      "sdk": "macosx",
+      "version": "27.0",
+      "target": "arm64-apple-macos15.0",
+      "probe": "key",
+      "source": "Docs/verification/secure-identity-key-shape.swift",
+      "sha256": "a14a8b0d86a99ad8b25e12e6b992535bb14259637ec051925107318e7ad1d749",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    },
+    {
+      "sdk": "iphonesimulator",
+      "version": "27.0",
+      "target": "arm64-apple-ios27.0-simulator",
+      "probe": "auth",
+      "source": "Docs/verification/secure-identity-auth-shape.swift",
+      "sha256": "84bfe2a440b28b9cd5fc770d76524a1a39a015f851539a093c0f099d826bb994",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    },
+    {
+      "sdk": "iphonesimulator",
+      "version": "27.0",
+      "target": "arm64-apple-ios27.0-simulator",
+      "probe": "key",
+      "source": "Docs/verification/secure-identity-key-shape.swift",
+      "sha256": "a14a8b0d86a99ad8b25e12e6b992535bb14259637ec051925107318e7ad1d749",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    },
+    {
+      "sdk": "appletvsimulator",
+      "version": "27.0",
+      "target": "arm64-apple-tvos27.0-simulator",
+      "probe": "auth",
+      "source": "Docs/verification/secure-identity-auth-shape.swift",
+      "sha256": "84bfe2a440b28b9cd5fc770d76524a1a39a015f851539a093c0f099d826bb994",
+      "exit_code": 1,
+      "outcome": "expected_unavailable"
+    },
+    {
+      "sdk": "appletvsimulator",
+      "version": "27.0",
+      "target": "arm64-apple-tvos27.0-simulator",
+      "probe": "key",
+      "source": "Docs/verification/secure-identity-key-shape.swift",
+      "sha256": "a14a8b0d86a99ad8b25e12e6b992535bb14259637ec051925107318e7ad1d749",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    },
+    {
+      "sdk": "watchsimulator",
+      "version": "27.0",
+      "target": "arm64-apple-watchos27.0-simulator",
+      "probe": "auth",
+      "source": "Docs/verification/secure-identity-auth-shape.swift",
+      "sha256": "84bfe2a440b28b9cd5fc770d76524a1a39a015f851539a093c0f099d826bb994",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    },
+    {
+      "sdk": "watchsimulator",
+      "version": "27.0",
+      "target": "arm64-apple-watchos27.0-simulator",
+      "probe": "key",
+      "source": "Docs/verification/secure-identity-key-shape.swift",
+      "sha256": "a14a8b0d86a99ad8b25e12e6b992535bb14259637ec051925107318e7ad1d749",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    },
+    {
+      "sdk": "xrsimulator",
+      "version": "27.0",
+      "target": "arm64-apple-xros27.0-simulator",
+      "probe": "auth",
+      "source": "Docs/verification/secure-identity-auth-shape.swift",
+      "sha256": "84bfe2a440b28b9cd5fc770d76524a1a39a015f851539a093c0f099d826bb994",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    },
+    {
+      "sdk": "xrsimulator",
+      "version": "27.0",
+      "target": "arm64-apple-xros27.0-simulator",
+      "probe": "key",
+      "source": "Docs/verification/secure-identity-key-shape.swift",
+      "sha256": "a14a8b0d86a99ad8b25e12e6b992535bb14259637ec051925107318e7ad1d749",
+      "exit_code": 0,
+      "outcome": "typechecks"
+    }
+  ],
+  "source_audit": [
+    {
+      "path": "Sources/App/DeviceConnections.swift",
+      "sha256": "c173eef48a1bbc51ec626a9947d9a4865c0b1fb84240828102910a4bb7da262f",
+      "role": "Boolean device-owner authentication, not named profile identity"
+    },
+    {
+      "path": "Sources/App/LocalResetView.swift",
+      "sha256": "c64d522a8dc63a54bb10258a2facd6206e435e405c4bd97281467407351eb3fe",
+      "role": "Separate device-owner authentication for local reset; test fixture separated"
+    },
+    {
+      "path": "Sources/App/HomeScreens.swift",
+      "sha256": "b98bd0d2d43576e189ed06cab792135bccad596d0ba266b8baab538140ec41b0",
+      "role": "Explicit manual demo profile choice; no camera/biometric recognition claim"
+    },
+    {
+      "path": "Sources/App/NativePhotos.swift",
+      "sha256": "f1cbc292eef06facdac9b0245c628d3e72d104c9cec5b29566d5e37c626d72d3",
+      "role": "Selected image face rectangles protect composition; not identity recognition or biometric enrollment"
+    },
+    {
+      "path": "Sources/App/NativeVoice.swift",
+      "sha256": "d90732a4e2f262050d66c497d6fa8ae11b6e08213c5dfb1fd9f8c7ac38a2c2af",
+      "role": "On-device transcription draft, no speaker identity enrollment"
+    },
+    {
+      "path": "Sources/App/AppModel.swift",
+      "sha256": "ad6eccdf09fe34811c12a7e4526e79a7bf8acd17c3213fab212ebba94ea8e614",
+      "role": "Demo profile selection and device-authenticated source access separate; CryptoKit hashing is not biometric processing"
+    },
+    {
+      "path": "Package.swift",
+      "sha256": "87aa9830cf40dae5b18d58ff685509d42e0d7ad8003c295f627b175d514a7537",
+      "role": "FeedKit dependency, no app-owned biometric enrollment model dependency"
+    }
+  ],
+  "application_source_digest": "9ffbda97eaf9479200564f0f8dd4f2a8be7e4fd7b138b8bdc60c40d56cea40a7",
+  "application_source_files_unchanged": 189,
+  "application_base_commit": "91ff54fc8b5ed61036d0aa5bcd5ee9844eb5fcd5",
+  "no_new_app_build_or_UI_run_claimed": true,
+  "archive": {
+    "name": "secure-identity-research-inputs.zip",
+    "entries": 61,
+    "sha256": "969b9a8e947f961cb1c19c14e98ca01f48f391dc456e6c2d9f9bfc4f3e3b1d12",
+    "all_entries_read_back": true
+  },
+  "no_authentication_performed": true,
+  "no_keys_generated": true,
+  "no_face_or_voice_templates_created": true,
+  "no_camera_or_microphone_started": true,
+  "Home_constructed": false,
+  "hardware_biometric_or_enclave_acceptance": false,
+  "reference_parity_accepted": false
+}
