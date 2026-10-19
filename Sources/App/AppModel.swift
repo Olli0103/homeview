@@ -196,13 +196,14 @@ final class AppModel {
   }
   func adjustPhoto(_ adjustment: PhotoAdjustment) {
     guard let photoKey else { return }
-    if data.photoAdjustments.count >= 100, data.photoAdjustments[photoKey] == nil,
-       let oldestKey = data.photoAdjustments.keys.sorted().first {
-      data.photoAdjustments.removeValue(forKey: oldestKey)
-    }
-    data.photoAdjustments[photoKey] = adjustment
+    guard updateLocalControls({
+      if $0.photoAdjustments.count >= 100,$0.photoAdjustments[photoKey] == nil,
+         let oldestKey=$0.photoAdjustments.keys.sorted().first {
+        $0.photoAdjustments.removeValue(forKey:oldestKey)
+      }
+      $0.photoAdjustments[photoKey]=adjustment
+    }) else { return }
     updatePhotoComposition()
-    persist()
   }
   private func updatePhotoComposition() {
     guard let photoAnalysis else { photoComposition = .init(); return }
@@ -597,8 +598,7 @@ final class AppModel {
     return true
   }
   func openPhotoFace() {
-    data.face = .photos
-    persist()
+    guard updateLocalControls({ $0.face = .photos }) else { return }
     route = .face
   }
   func nextPhoto() {
