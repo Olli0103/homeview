@@ -293,7 +293,7 @@ struct FindMyView: View {
           Button("Open Apple's Find Devices website") { openFindDevices() }
             .font(.system(size:21,weight:.medium)).frame(maxWidth:.infinity,minHeight:72)
             .accessibilityIdentifier("findmy.apple.website")
-        }.padding(.horizontal,30).padding(.bottom,24)
+        }.padding(.horizontal,30).padding(.bottom,96)
       }
     }.background(.white).foregroundStyle(.black)
   }
