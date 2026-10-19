@@ -1,0 +1,667 @@
+{
+  "date": "2026-10-19",
+  "code_commit": "03652d834d286eee10ad34233439b0f6c1076467",
+  "source_digest": "e4c7137d3b687082983feabd3f4b3794dcfae389aaf21cca56675e6647a88f0e",
+  "core_tests": 171,
+  "UI_executions": 22,
+  "UI_checkpoints": [
+    {
+      "source_digest": "f98492502a5e035be086720cb1bb72e6e8524ab721758db7966482f509a830db",
+      "executions": 16,
+      "per_device": 8
+    },
+    {
+      "source_digest": "e4c7137d3b687082983feabd3f4b3794dcfae389aaf21cca56675e6647a88f0e",
+      "executions": 6,
+      "per_device": 3
+    }
+  ],
+  "UI_failures": 0,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "devices": [
+    {
+      "deviceName": "iPad Air 11-inch (M4)",
+      "osVersion": "27.0",
+      "osBuildNumber": "24A434",
+      "platform": "iOS Simulator"
+    },
+    {
+      "deviceName": "iPhone 18 Pro",
+      "osVersion": "27.0",
+      "osBuildNumber": "24A434",
+      "platform": "iOS Simulator"
+    }
+  ],
+  "frozen_compiled_inputs_per_checkpoint": [
+    21,
+    21
+  ],
+  "compiled_archive_readback": true,
+  "checks": [
+    {
+      "name": "iPad-native-summary",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-controls-persisted-values",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-controls-keepawake-released",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-controls-readonly-rollback",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-connected-music-fixture",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-connected-weather-fixture",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-offline-error-state",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-fade-conic-reference-time",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-fade-conic-phase-zero",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-fade-conic-phase-quarter",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-fade-conic-reduced-zero",
+      "passed": true
+    },
+    {
+      "name": "iPad-image-fade-conic-reduced-later",
+      "passed": true
+    },
+    {
+      "name": "iPad-integrated-Fade-reference-exact",
+      "passed": true
+    },
+    {
+      "name": "iPad-Fade-moving-positive",
+      "passed": true
+    },
+    {
+      "name": "iPad-Fade-reduced-still",
+      "passed": true
+    },
+    {
+      "name": "iPhone-native-summary",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-controls-persisted-values",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-controls-keepawake-released",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-controls-readonly-rollback",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-connected-music-fixture",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-connected-weather-fixture",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-offline-error-state",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-fade-conic-reference-time",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-fade-conic-phase-zero",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-fade-conic-phase-quarter",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-fade-conic-reduced-zero",
+      "passed": true
+    },
+    {
+      "name": "iPhone-image-fade-conic-reduced-later",
+      "passed": true
+    },
+    {
+      "name": "iPhone-integrated-Fade-reference-exact",
+      "passed": true
+    },
+    {
+      "name": "iPhone-Fade-moving-positive",
+      "passed": true
+    },
+    {
+      "name": "iPhone-Fade-reduced-still",
+      "passed": true
+    },
+    {
+      "name": "iPad-refined-UI-summary",
+      "passed": true
+    },
+    {
+      "name": "iPhone-refined-UI-summary",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "device": "iPad",
+      "state": "connected-weather-fixture",
+      "sha256": "634f75eb1298be69602813a081f67f80af3dc13452128d87db374c711549f439",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-connected-weather-fixture.png"
+    },
+    {
+      "device": "iPad",
+      "state": "connected-music-fixture",
+      "sha256": "f1120a8e0ff414fbf8a9d8e49a1deb16fdefa010fd01c5230b7cd2552ef86d72",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-connected-music-fixture.png"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-phase-quarter",
+      "sha256": "44a0a9decc29b03a7ea21ec75e837c10cdfaa3233c2adc78a84ad7945500b1b5",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-fade-conic-phase-quarter.png"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-phase-zero",
+      "sha256": "770385ec6a05ce82d31fb52ef81e567dfb5324a07c7b384206df38565c81e566",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-fade-conic-phase-zero.png"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-reference-time",
+      "sha256": "9589f1ebcee50e2749454599636f9e7f5fdeb145e1cf3b2d17dcbe987fc28cc3",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-fade-conic-reference-time.png"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-reduced-later",
+      "sha256": "770385ec6a05ce82d31fb52ef81e567dfb5324a07c7b384206df38565c81e566",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-fade-conic-reduced-later.png"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-reduced-zero",
+      "sha256": "770385ec6a05ce82d31fb52ef81e567dfb5324a07c7b384206df38565c81e566",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-fade-conic-reduced-zero.png"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-controls-keepawake-released",
+      "sha256": "25297c537ce2e2ebcfa46b43f2f19ce4b458ce3d033be393154cee1e25eff623",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-screen-controls-keepawake-released.png"
+    },
+    {
+      "device": "iPad",
+      "state": "controls-keepawake-released",
+      "sha256": "32d502e77e6ca913a818d397c45caac677928394ca8021f1f3b4d84372dabc0b",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-controls-keepawake-released.png"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-controls-persisted-values",
+      "sha256": "74242e9697d0976efa234ed2525b7fe56188258bc62ccf2a92008d4ac34c6a52",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-screen-controls-persisted-values.png"
+    },
+    {
+      "device": "iPad",
+      "state": "controls-persisted-values",
+      "sha256": "c363d3fe6a779ba6080eae4db5e4749fe3349b6ea9bf1372fd15eed2f28df28f",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-controls-persisted-values.png"
+    },
+    {
+      "device": "iPad",
+      "state": "offline-error-state",
+      "sha256": "c4a878a0c0f2659f63aee49f6d186a95fecfe47a43179e19df62fbe20ad5779b",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-offline-error-state.png"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-controls-readonly-rollback",
+      "sha256": "76081241df3bb54f770577c096205fc897f9edfd9fd8a84856764c3ed752ff79",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-screen-controls-readonly-rollback.png"
+    },
+    {
+      "device": "iPad",
+      "state": "controls-readonly-rollback",
+      "sha256": "c01163ade64783a4e87986c9cd6338c4910d67d37a671b584a40631e287df764",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPad-controls-readonly-rollback.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "connected-weather-fixture",
+      "sha256": "b8fa58b1881f1ea74ee26a9a6675a5983138d4b748e0ccf843ec1b894fbd5a1f",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-connected-weather-fixture.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "connected-music-fixture",
+      "sha256": "2c28ce09b3663b23429139aa17ac2186d1fe1db9cbf6da6a573ef9f5dc69366f",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-connected-music-fixture.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-phase-quarter",
+      "sha256": "f2477a792ffb46e3eb52b74f194c2106b2eca58ec57580a7f5b994b8f934584d",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-fade-conic-phase-quarter.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-phase-zero",
+      "sha256": "40a28c52a5c13481bc427dca3e0f18a2efc3e31b095fd2935fd0c73fa8579e70",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-fade-conic-phase-zero.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-reference-time",
+      "sha256": "67b11a6ca46d99e431e0d7dd1eeaa2315488770908e3323f04e22f9b07521312",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-fade-conic-reference-time.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-reduced-later",
+      "sha256": "40a28c52a5c13481bc427dca3e0f18a2efc3e31b095fd2935fd0c73fa8579e70",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-fade-conic-reduced-later.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-reduced-zero",
+      "sha256": "40a28c52a5c13481bc427dca3e0f18a2efc3e31b095fd2935fd0c73fa8579e70",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-fade-conic-reduced-zero.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-controls-keepawake-released",
+      "sha256": "9adaa245381ce47c8a01ea6f18c8cc5bb2ca23d4a35a300f1f4eee75fffcba44",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-screen-controls-keepawake-released.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "controls-keepawake-released",
+      "sha256": "0a8c7ff5cdc371702eedfa10e1454efe9552d20a4e7881fc77bdf4d9064a80ca",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-controls-keepawake-released.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-controls-persisted-values",
+      "sha256": "73a97a8f10ddc3d848e2d6527485b75b056bc619da38c9da6f1c63bf09d07145",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-screen-controls-persisted-values.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "controls-persisted-values",
+      "sha256": "c5317b4394ff7312b677654efaa09d6056cc8bf343e2e780cf9f44200773af65",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-controls-persisted-values.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "offline-error-state",
+      "sha256": "c4330afc60ba03606d353faf82bf0e622474938b2b46e5b28e8da23e3077dcbf",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-offline-error-state.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-controls-readonly-rollback",
+      "sha256": "047b879443280d860990b703aa7d82cedfd7fbfbcc5339752834903a1c106aaf",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-screen-controls-readonly-rollback.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "controls-readonly-rollback",
+      "sha256": "b326c73622a7e4c1f6aecc82f06fd73debca00162219bdd749bed0d8cda41b92",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-20261019/iPhone-controls-readonly-rollback.png"
+    },
+    {
+      "device": "iPad",
+      "state": "camera-demo-night-offline",
+      "sha256": "8f5a157ae044c1e3acbed16cdd06ab905462387e051300d1189ba3540bc3b7e1",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPad-camera-demo-night-offline.png"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-camera-demo-face-four-stills",
+      "sha256": "247e59c6fc6d2db94ae46a63e2ef680be740264142826fbd25995d3d2313f13e",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPad-screen-camera-demo-face-four-stills.png"
+    },
+    {
+      "device": "iPad",
+      "state": "camera-demo-face-four-stills",
+      "sha256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPad-camera-demo-face-four-stills.png"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-controls-keepawake-released",
+      "sha256": "23ba86d693ea048fea6e25b1c9353a8eb1e9ad2bffbf9586c4dbeaaa3bb8903e",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPad-screen-controls-keepawake-released.png"
+    },
+    {
+      "device": "iPad",
+      "state": "controls-keepawake-released",
+      "sha256": "32d502e77e6ca913a818d397c45caac677928394ca8021f1f3b4d84372dabc0b",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPad-controls-keepawake-released.png"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-controls-persisted-values",
+      "sha256": "7528f240f14a99b7344a2008c5d7d92d724e1b68658ac7404433ac4d37123af2",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPad-screen-controls-persisted-values.png"
+    },
+    {
+      "device": "iPad",
+      "state": "controls-persisted-values",
+      "sha256": "c363d3fe6a779ba6080eae4db5e4749fe3349b6ea9bf1372fd15eed2f28df28f",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPad-controls-persisted-values.png"
+    },
+    {
+      "device": "iPad",
+      "state": "offline-error-state",
+      "sha256": "0bb6e19ed3a0993e533d7aa35d045bd001880dd0a83156acd43c183bf44f4ee6",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPad-offline-error-state.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "camera-demo-night-offline",
+      "sha256": "e8ec1abfb75a4d7a9d4c64c727f5a928cad2e32cc9976a68da240627701e82cf",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPhone-camera-demo-night-offline.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-camera-demo-face-four-stills",
+      "sha256": "0e3d06a96ad83d69517be903492475b981ddb0c4085e1ddd056a60e734f4c1da",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPhone-screen-camera-demo-face-four-stills.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "camera-demo-face-four-stills",
+      "sha256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPhone-camera-demo-face-four-stills.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-controls-keepawake-released",
+      "sha256": "0cb66edd53b2b660632185325de38b2ac19ffd991ff10a6bccb37fef68eaf847",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPhone-screen-controls-keepawake-released.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "controls-keepawake-released",
+      "sha256": "0a8c7ff5cdc371702eedfa10e1454efe9552d20a4e7881fc77bdf4d9064a80ca",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPhone-controls-keepawake-released.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-controls-persisted-values",
+      "sha256": "625be56652e93c77ebf0c5f3aa2a2c94ed81477f681f14ceb60d6ab5c3407e1d",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPhone-screen-controls-persisted-values.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "controls-persisted-values",
+      "sha256": "c5317b4394ff7312b677654efaa09d6056cc8bf343e2e780cf9f44200773af65",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPhone-controls-persisted-values.png"
+    },
+    {
+      "device": "iPhone",
+      "state": "offline-error-state",
+      "sha256": "e8db7e6ee3359a1142b3a8b7e6ff45dac5644505a1ff2f19643802e202060b3a",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "path": "Docs/screenshots/issues-offline-20261019/iPhone-offline-error-state.png"
+    }
+  ],
+  "music_search_regression": {
+    "before": "Three deterministic tests fail with five assertions on source0a3cfd45815d941f36bcd062d814211528e445eab9547e5574f222533f984f36",
+    "after": "Same three tests pass on fixed04f33aadc4e9c67b479a44bcb3ee3d41152a72b6124758f328e3ef855f113479 and are included in integrated171",
+    "scope": "Search success,error and cleanup only. Pending play/resume and broader media policy are not claimed."
+  },
+  "review": {
+    "decoded_PNGs": 44,
+    "inspected_contact_sheets": 10
+  },
+  "persistence": "UUID-owned app stores; isolated UserDefaults suites with injected synthetic provider; no real libraries/accounts or Home construction",
+  "failed_runs_preserved": [
+    "Initial UI harness relocated __TESTROOT__ incorrectly: zero test execution; retained.",
+    "Next UI selection passed2/failed2 per device: localized nonbreaking whitespace before%. Exact numeric values retained in corrected test.",
+    "Earlier separate Fade four-pixel selection remains failed; native backdrop qualification documented separately."
+  ],
+  "reference_readback": [
+    {
+      "id": "S01",
+      "archive_read": "2026-10-19",
+      "sha256": "d3d5bc6ebce729dbf4783e676cf34eb5906b0b8c61b1d2da01a82df8aa5c2673"
+    },
+    {
+      "id": "P02",
+      "archive_read": "2026-10-19",
+      "sha256": "a1235f32f9a760dd26acab13f4ef17ad0c9ee40387687dac90d489dcc4f77fcf"
+    }
+  ],
+  "limits": [
+    "Simulator iOS27; no physical hardware or real-account result",
+    "Original Settings hierarchy, Home integration, full product parity and pending Music play/resume remain open",
+    "No compiler-warning-free or whole-suite UI claim"
+  ]
+}

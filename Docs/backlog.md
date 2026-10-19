@@ -1359,3 +1359,8 @@ Abhängigkeiten: BASE-01.
 [function-coverage.json](function-coverage.json) weist jede der 105 Ausgangsfunktionen einem oder mehreren Paketen zu. [backlog.json](backlog.json) enthält Aufgaben und Abnahmekriterien maschinenlesbar. Keine der 105 Funktionen wird hier als vollständig originalgleich abgenommen ausgegeben.
 
 Apple Home bleibt bis zur ausdrücklich fortgesetzten Einrichtung gesperrt. Persönliche Accounts, Kommunikation und Kameras sind keine automatischen Testziele. Nicht verfügbare Siri-, HKSV-, Intercom-, Find-My-, Secure-Exclaves- und PCC-Fähigkeiten bleiben sichtbar blockiert.
+
+
+## Abschluss 19. Oktober 2026
+
+[SYS-02 / #65](settings-state.md) ist im bilanzierten App-Control-Umfang abgeschlossen. Die drei Musik-Suchfehler sind unter [QA-05](music-search-lifecycle.md) behoben; #67/#80 bleiben für ihre breiteren Kriterien offen. Die [Fade-Flächenkorrektur](fade-surface-tones.md) ist geliefert; #18 bleibt für Originalzeitkurve und weitere Details offen. Apple Home bleibt deaktiviert.
