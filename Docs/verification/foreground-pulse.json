@@ -1,0 +1,236 @@
+{
+  "date": "2026-10-20",
+  "issue": 81,
+  "status": "partial_issue_remains_open",
+  "product_commit": "6e571a8e651254bf917101029c9afd64c60481cc",
+  "baseline_commit": "951364c257d4b55081efcd0d2c1ca50f84bf8186",
+  "source_files": 197,
+  "source_digest": "0383d64324dace9235b9bca8ce527fb5bec943dc72432e5b7889bef851dc152e",
+  "preparation": {
+    "compile_exit_code": 1,
+    "assertions_executed": 0,
+    "cause": "Probe used read-only macOS Reduce Motion EnvironmentKey and wrong AppPage.timer case; fixed probe uses existing --reduce-motion flag and AppPage.timers. No product change or real system setting."
+  },
+  "native_results": [
+    {
+      "checkpoint": "foreground-pulse-baseline-v2",
+      "assertions": 11,
+      "checks": {
+        "active_clock_pulse_advances": true,
+        "background_clock_has_no_repeated_tick": false,
+        "background_does_not_emit_foreground_expiry": false,
+        "display_wake_remained_disabled": true,
+        "inactive_clock_has_no_repeated_tick": false,
+        "no_registered_system_alarm_ids": true,
+        "overdue_timer_reconciles_after_resume": true,
+        "reduce_motion_launch_flag_keeps_semantic_clock_alive": true,
+        "removed_root_has_no_repeated_tick": true,
+        "resumed_clock_pulse_advances": true,
+        "resumed_expiry_receipt_is_saved": true
+      },
+      "failed": [
+        "background_clock_has_no_repeated_tick",
+        "background_does_not_emit_foreground_expiry",
+        "inactive_clock_has_no_repeated_tick"
+      ],
+      "observations": {
+        "background_clock_advance_seconds": 2.6580660343170166,
+        "inactive_clock_advance_seconds": 2.6327130794525146
+      },
+      "binary_sha256": "2bd78e680ed718696001e769397a65afd97e3a70361d3dbefe46f5852937e805",
+      "actual_RootView": true,
+      "actual_AppModel": true,
+      "synthetic_scene_phase": true
+    },
+    {
+      "checkpoint": "foreground-pulse-final",
+      "assertions": 11,
+      "checks": {
+        "active_clock_pulse_advances": true,
+        "background_clock_has_no_repeated_tick": true,
+        "background_does_not_emit_foreground_expiry": true,
+        "display_wake_remained_disabled": true,
+        "inactive_clock_has_no_repeated_tick": true,
+        "no_registered_system_alarm_ids": true,
+        "overdue_timer_reconciles_after_resume": true,
+        "reduce_motion_launch_flag_keeps_semantic_clock_alive": true,
+        "removed_root_has_no_repeated_tick": true,
+        "resumed_clock_pulse_advances": true,
+        "resumed_expiry_receipt_is_saved": true
+      },
+      "failed": [],
+      "observations": {
+        "background_clock_advance_seconds": 0,
+        "inactive_clock_advance_seconds": 0
+      },
+      "binary_sha256": "3ad78b04fa99e484284dbdcbcd6e6ed6618901224e054280a26a70e19978f5fd",
+      "actual_RootView": true,
+      "actual_AppModel": true,
+      "synthetic_scene_phase": true
+    }
+  ],
+  "native_assertions_per_execution": 11,
+  "native_total_executions": 2,
+  "native_historical_failed_assertions": 3,
+  "native_final_failed_assertions": 0,
+  "UI_results": [
+    {
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "compiled_inputs": 26
+    },
+    {
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "compiled_inputs": 26
+    }
+  ],
+  "UI_total_executions": 4,
+  "UI_unique_cases": 2,
+  "UI_new_cases": 0,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "Core_new_tests": 0,
+  "Core_historical_tests": 291,
+  "Core_historical_commit": "5f12a7f7b75ca4c0de25cc59ddb8929bef3fb960",
+  "Core_test_files_unchanged": 68,
+  "decoded_PNGs": 20,
+  "contacts_viewed": 2,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPad-viewport-timer-lifecycle-background-peers-preserved.png",
+      "sha256": "9dc91d1d45ef6719059d2860384318ee86cf4d83f4d564fbb6001894fed5c9b0",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPad-viewport-timer-lifecycle-after-background.png",
+      "sha256": "69c1fbc6c824ffcd4c5385a6ab58344a5b4b39d1fcb6823e6456b5f03add1df3",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPad-viewport-timer-lifecycle-before-background.png",
+      "sha256": "5809567f3cec99b743de812d5aa8ea71b57e28d0170db9e2d1cc158cefaaab45",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPad-viewport-timer-idle-running-then-paused.png",
+      "sha256": "88dc1436cca0c94d37531ef3999f38b2ad401fac72bbbc2dab499cceb8608c61",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPad-viewport-timer-idle-running-hidden.png",
+      "sha256": "3806a1930bff3de3f2e79380700fb9d87bfa7f1095c15007793412f8c491c37b",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPhone-viewport-timer-lifecycle-background-peers-preserved.png",
+      "sha256": "dd050c2400eaadc15c15479868cae4cc5c69652e1ffa3986dcd54fb8fcc80cc7",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPhone-viewport-timer-lifecycle-after-background.png",
+      "sha256": "82fce47e30a89c22bfc11975e0b4e7aa1a27cb24f41549efc206d5114bb53f81",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPhone-viewport-timer-lifecycle-before-background.png",
+      "sha256": "ffbb950e33c4478edc34b161da45fa9b0fca06130f1ef9af106559a1335ff83a",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPhone-viewport-timer-idle-running-then-paused.png",
+      "sha256": "72bc09bcf5c007a6cc84cf6007a968bc6d2dffd8c47a9d8e32d8cad82749a905",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/foreground-pulse/iPhone-viewport-timer-idle-running-hidden.png",
+      "sha256": "47e273c60dffe088d61047d6a155a0c17e306eed41d68ab6aa82850a10cb1da5",
+      "device": "iPhone"
+    }
+  ],
+  "archives": {
+    "foreground-pulse-baseline": {
+      "archive": "foreground-pulse-baseline-inputs.zip",
+      "sha256": "8b1bb15fbbea83988797a97e06673c7416317b8f0b644aa49bff1313e9cf6cc3",
+      "entries": 298,
+      "commit": "951364c257d4b55081efcd0d2c1ca50f84bf8186",
+      "all_entries_read_back": true
+    },
+    "foreground-pulse-baseline-v2": {
+      "archive": "foreground-pulse-baseline-v2-inputs.zip",
+      "sha256": "7e2e6522560d87eb0d0a6e9ce7fd2396fa1744479c25b60b1c088441566c8ecd",
+      "entries": 302,
+      "commit": "951364c257d4b55081efcd0d2c1ca50f84bf8186",
+      "all_entries_read_back": true
+    },
+    "foreground-pulse-final": {
+      "archive": "foreground-pulse-final-inputs.zip",
+      "sha256": "1ed7f5ce727ba8d064bec441be17cc1523a6de925c0b3ff18541b092843d8f42",
+      "entries": 302,
+      "commit": "6e571a8e651254bf917101029c9afd64c60481cc",
+      "all_entries_read_back": true
+    },
+    "foreground-pulse-ui": {
+      "archive": "foreground-pulse-ui-inputs.zip",
+      "entries": 223,
+      "sha256": "5a62760d9da4699deaaa37c000cb3486feec4a59d4390055426efecb1c6a3189",
+      "all_entries_read_back": true
+    }
+  },
+  "contract": {
+    "date": "2026-10-20",
+    "issue": 81,
+    "baseline_commit": "951364c257d4b55081efcd0d2c1ca50f84bf8186",
+    "scope": "Actual offscreen macOS RootView and AppModel; explicitly injected scenePhase; simulator regression of foreground and elapsed-deadline semantics",
+    "required": [
+      "active semantic clock advances",
+      "inactive/background clock does not repeatedly tick",
+      "no local foreground-timer expiry effect in background",
+      "expired deadlines and saved receipt reconcile after foreground return",
+      "Reduce Motion does not freeze semantic time",
+      "removed root stops ticks"
+    ],
+    "solution_preflight": "Existing Apple Combine TimerPublisher/Autoconnect subscription lifecycle and Empty publisher suffice; no new timer library, scheduler or custom execution system.",
+    "unproved": [
+      "Physical scene transitions and OS suspension",
+      "CPU/GPU/frame-time/energy budgets",
+      "WatchRoot lifecycle",
+      "All animation work or nine camera feeds",
+      "Physical/iPad hardware acceptance"
+    ],
+    "no_real_accounts_Home_audio_system_alarms_or_activities": true,
+    "frozen_before_product_edit": true
+  },
+  "implementation": "RootView subscribes to its Combine Autoconnect clock only for active ScenePhase and an Empty publisher otherwise. Foreground transition calls actual model.tick/synchronizeTimerActivity once for elapsed wall-clock deadlines. No timer deadline, Core, MotionTimeline, WatchRoot or hardware setting change.",
+  "measurement_limit": "Observed application model clock updates in an actual native offscreen RootView/AppModel with explicitly injected ScenePhase. Not a measured CPU/GPU/wakeup/energy or physical OS suspension result. --reduce-motion is the existing launch flag, not the real system setting.",
+  "real_personal_data_used": false,
+  "Home_constructed": false,
+  "system_activity_created": false,
+  "audio_asset_present": false
+}
