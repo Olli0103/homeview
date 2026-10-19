@@ -4889,3 +4889,22 @@ extension HomeViewUITests {
     shot("footer-44pt-outer-edge-actions-assistant")
   }
 }
+
+extension HomeViewUITests {
+  func testWorldClockTwoCalendarDaysAheadIsNotLabelledTomorrow() {
+    launch(["--page","World Clock","--reference-zone","Etc/GMT+12",
+      "--reference-date","2026-01-01T11:30:00Z"])
+    tap("world.add")
+    let search=app.textFields["world.search"]
+    search.tap();search.typeText("Auckland")
+    tap("world.choose.Pacific/Auckland")
+    app.swipeUp()
+    let row=app.otherElements["world.row.Pacific/Auckland"]
+    XCTAssertTrue(row.waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["world.time.Pacific/Auckland"].exists)
+    viewportShot("world-date-two-days-before-assertion")
+    XCTAssertTrue(row.staticTexts["2 days ahead"].exists,
+      "Auckland is Jan2 while the UTC-12 reference is Dec31; not merely next day")
+    XCTAssertFalse(row.staticTexts["Next day"].exists)
+  }
+}
