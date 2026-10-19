@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-19",
+  "issue": 72,
+  "code_commit": "eac3461e91cc3260fd80106914990fbb01621b6b",
+  "source_digest": "309d70321595c4aa96cb3bbfb3651d785618af555c9cf98dcc88826434d8cccc",
+  "source_files": 176,
+  "core_tests": 229,
+  "core_failures": 0,
+  "new_core_scalar_tests": 3,
+  "UI": [
+    {
+      "device": "iPad",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    },
+    {
+      "device": "iPhone",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    }
+  ],
+  "compiled_inputs": 23,
+  "input_readback_equal": true,
+  "installed_apps_read_back": true,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "public_surface_typechecks": [
+    {
+      "platform": "iOS",
+      "passed": true,
+      "expected_success": true,
+      "executed": false
+    },
+    {
+      "platform": "macOS",
+      "passed": true,
+      "expected_success": true,
+      "executed": false
+    },
+    {
+      "platform": "visionOS",
+      "passed": true,
+      "expected_success": true,
+      "executed": false
+    },
+    {
+      "platform": "watchOS",
+      "passed": true,
+      "expected_success": true,
+      "executed": false
+    },
+    {
+      "platform": "tvOS",
+      "passed": true,
+      "expected_success": true,
+      "executed": false
+    },
+    {
+      "platform": "MacCatalyst-surface",
+      "passed": true,
+      "expected_success": true,
+      "executed": false
+    },
+    {
+      "platform": "tvOS-battery-negative",
+      "passed": true,
+      "expected_success": false,
+      "executed": false
+    }
+  ],
+  "host_read": {
+    "actualDeliveryMeasured": false,
+    "adapterDictionarySerialized": false,
+    "adequacy": "not available",
+    "batteryMonitoringChanged": false,
+    "chargingControlInvoked": false,
+    "reportedAdapterWatts": 140
+  },
+  "generator_byte_equivalent": true,
+  "decoded_images": 6,
+  "visually_reviewed_contacts": 2,
+  "published_images": [
+    {
+      "path": "Docs/verification/power-adapter-images/iPad-viewport-power-capability-return-no-home-connection.png",
+      "sha256": "0e8af4f1b5f77c55936987f4eb782d5fea811111b63801c665e2b0233630bde0"
+    },
+    {
+      "path": "Docs/verification/power-adapter-images/iPad-power-capability-explicitly-unavailable.png",
+      "sha256": "4927a77cc2cc7b153d1b3715cb3d634f63160e0a865600d669cdf7b203a76e0d"
+    },
+    {
+      "path": "Docs/verification/power-adapter-images/iPhone-viewport-power-capability-return-no-home-connection.png",
+      "sha256": "94361202e9a43f2f329621ee980a0156033c3c7b6af387e420b5a34324758220"
+    },
+    {
+      "path": "Docs/verification/power-adapter-images/iPhone-power-capability-explicitly-unavailable.png",
+      "sha256": "de7f819a096a6e7c245a485b59d051122162486c123b1e969abcd7765f9e50da"
+    }
+  ],
+  "archive": {
+    "entries": 199,
+    "sha256": "db1dc65ba3048d4d8e42da20bc2ad05bc1ae2b8d1ba4d3b2173e9fb743f96de1",
+    "read_back_all_entries": true,
+    "external_name": "power-capability-ui-final-inputs.zip"
+  },
+  "physical_adapter_swap_test": false,
+  "adequacy_measured": false,
+  "original_F102_parity": false,
+  "home_constructed": false
+}
