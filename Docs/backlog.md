@@ -1074,7 +1074,7 @@ Abhängigkeiten: BASE-01.
 <a id="sys-04"></a>
 ### SYS-04: Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen
 
-Abmelden, Hintergrund und Inaktivitätsrückkehr sperren verbundene Daten. Tatsächliches Weggehen wird nicht erkannt.
+Abmelden, Hintergrund und Inaktivitäts-Timeout sperren verbundene Daten. Entfernen der aktiven RootView widerruft jetzt ebenfalls die persönliche Sitzung; vorübergehende Scene-Inaktivität allein erhält sie. [Begrenzte Reproduktion und Gegenprüfung](root-disappearance-privacy.md). Tatsächliches Weggehen und physische Snapshots bleiben ungeprüft.
 
 Offen:
 

@@ -2969,7 +2969,8 @@
     "current": [
       "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen.",
       "Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen.",
-      "Zusätzliche späte Play-/Resume-Erfolge/-Fehler sind generationsgebunden, native Playerübergabe serialisiert. Das ist keine vollständige Gast-/Präsenz-/Medienpolicy; Docs/music-playback-lifecycle.md."
+      "Zusätzliche späte Play-/Resume-Erfolge/-Fehler sind generationsgebunden, native Playerübergabe serialisiert. Das ist keine vollständige Gast-/Präsenz-/Medienpolicy; Docs/music-playback-lifecycle.md.",
+      "Aktive RootView-Entfernung sperrt die persönliche Sitzung und bereinigt Cache/Profile/Entwürfe. Native tatsächliche Lifecycle-Gegenprobe; keine physische Snapshot-/Präsenzabnahme. Docs/root-disappearance-privacy.md."
     ],
     "parity_accepted": false,
     "issue_urls": [

@@ -1,0 +1,38 @@
+{
+  "exit_code": 0,
+  "binary_sha256": "b2f74adf426f136683b16515937395272e0c5ad477fc0d3a5c580272d04758ac",
+  "result": {
+    "actual_RootView": true,
+    "assertions": 14,
+    "audio_asset_present": false,
+    "checks": {
+      "active_root_keeps_unlocked_fixture": true,
+      "actual_root_disappeared_while_phase_active": true,
+      "disappearance_clears_assistant_draft": false,
+      "disappearance_clears_calendar_cache": false,
+      "disappearance_clears_message_draft": false,
+      "disappearance_clears_profile": false,
+      "disappearance_gates_personal_route": false,
+      "disappearance_invalidates_generation": false,
+      "disappearance_revokes_authentication": false,
+      "display_wake_disabled": true,
+      "inactive_does_not_revoke_authentication": true,
+      "inactive_keeps_cache_and_drafts": true,
+      "locking_does_not_delete_saved_fixture": true,
+      "no_system_alarm_ids": true
+    },
+    "failed": [
+      "disappearance_clears_assistant_draft",
+      "disappearance_clears_calendar_cache",
+      "disappearance_clears_message_draft",
+      "disappearance_clears_profile",
+      "disappearance_gates_personal_route",
+      "disappearance_invalidates_generation",
+      "disappearance_revokes_authentication"
+    ],
+    "owned_uuid": "83FF7725-813B-4380-A962-BFB6EB97DB9C",
+    "physical_window_scene_test": false,
+    "synthetic_scene_phase": true,
+    "verdict": "FAIL"
+  }
+}

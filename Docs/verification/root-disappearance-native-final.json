@@ -1,0 +1,30 @@
+{
+  "exit_code": 0,
+  "binary_sha256": "566380a688394876ff492cc7fca9be2089c77d4f3cf8081bcd64aa93485bd818",
+  "result": {
+    "actual_RootView": true,
+    "assertions": 14,
+    "audio_asset_present": false,
+    "checks": {
+      "active_root_keeps_unlocked_fixture": true,
+      "actual_root_disappeared_while_phase_active": true,
+      "disappearance_clears_assistant_draft": true,
+      "disappearance_clears_calendar_cache": true,
+      "disappearance_clears_message_draft": true,
+      "disappearance_clears_profile": true,
+      "disappearance_gates_personal_route": true,
+      "disappearance_invalidates_generation": true,
+      "disappearance_revokes_authentication": true,
+      "display_wake_disabled": true,
+      "inactive_does_not_revoke_authentication": true,
+      "inactive_keeps_cache_and_drafts": true,
+      "locking_does_not_delete_saved_fixture": true,
+      "no_system_alarm_ids": true
+    },
+    "failed": [],
+    "owned_uuid": "A62AF2AD-A635-48CA-8BAA-73A1FD4663BE",
+    "physical_window_scene_test": false,
+    "synthetic_scene_phase": true,
+    "verdict": "PASS"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-19",
+  "issue": 67,
+  "status": "partial_issue_remains_open",
+  "product_commit": "a54e1dc5eaa6e1829de0a2526d97f846cfd7ce1c",
+  "baseline_commit": "cada125d3a10f22aa3e541aec28604f4e939a24b",
+  "source_files": 190,
+  "source_digest": "bb94e3bf9f55b20a1f12cf9de650fcc41eab32adf22b28fe0ae8c36c1f4a09c1",
+  "native_assertions": 14,
+  "native_failures_before": 7,
+  "native_failures_after": 0,
+  "native_actual_RootView_lifecycle": true,
+  "native_scene_phase": "explicit synthetic active/inactive environment",
+  "native_physical_window_or_OS_scene": false,
+  "native_preparation_failure": {
+    "executed_cases": 0,
+    "reason": "Whitespace typo in external probe; corrected only probe in new baseline-v2 checkpoint."
+  },
+  "UI_executions": 4,
+  "UI_unique_cases": 2,
+  "UI_failures": 0,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "UI_scope": "Existing background calendar and readout regressions, not root-disappearance interaction on iOS.",
+  "compiled_inputs": 22,
+  "installed_App_byte_readback": true,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "Core_tests_new": 0,
+  "Core_tests_historical": 282,
+  "Core_historical_product_commit": "987f6fdb5573e5d6fb49812b5a6cc6479d74d633",
+  "Core_scope": "Core sources and tests unchanged; no prior run relabeled as current.",
+  "images": [
+    {
+      "path": "Docs/screenshots/root-disappearance/iPad-1.png",
+      "sha256": "ff0e25515f87a0743fcc495b4cb576ff01b5736d81026922b41009d4529d8966",
+      "device": "iPad",
+      "description": "screen-answer-readout-background-locked-no-resume_0_EDABC90C-81A9-4B29-BCFC-74342C4A1C7E.png"
+    },
+    {
+      "path": "Docs/screenshots/root-disappearance/iPad-2.png",
+      "sha256": "86057f411c8b71b7005725962b5358ecbebac33073edcb23c33c2807cfc3b232",
+      "device": "iPad",
+      "description": "viewport-answer-readout-background-locked-no-resume_0_B0B4D3A1-224D-49EE-BC7D-45BC2880B744.png"
+    },
+    {
+      "path": "Docs/screenshots/root-disappearance/iPad-3.png",
+      "sha256": "d6c511a9b699fa193a1066563d0c517e18d426b45e7b453644377b4cdbec3669",
+      "device": "iPad",
+      "description": "privacy-calendar-locked-after-background_0_374ACC6A-B533-4D25-882D-E594A2A75CB1.png"
+    },
+    {
+      "path": "Docs/screenshots/root-disappearance/iPhone-1.png",
+      "sha256": "d57f78b20af5a0194bdf9d237798242a4c3f14d5c1daf4b43c46467bedd24008",
+      "device": "iPhone",
+      "description": "screen-answer-readout-background-locked-no-resume_0_1D049138-D7C6-4468-B266-07929FB8159E.png"
+    },
+    {
+      "path": "Docs/screenshots/root-disappearance/iPhone-2.png",
+      "sha256": "6aa5f2557a3a40f1e3f754b40f84017b788452215f593730f09014d15cb5303a",
+      "device": "iPhone",
+      "description": "viewport-answer-readout-background-locked-no-resume_0_562FA4AE-20A1-441F-A3BC-F6FD5912B012.png"
+    },
+    {
+      "path": "Docs/screenshots/root-disappearance/iPhone-3.png",
+      "sha256": "a05957736803ae5dd236932ee0f0106603310b37d60a034709d8ff70e16d3e2f",
+      "device": "iPhone",
+      "description": "privacy-calendar-locked-after-background_0_47C38E16-E679-4CFD-8613-208BB9E0E396.png"
+    }
+  ],
+  "decoded_pngs": 6,
+  "viewed_contacts": 2,
+  "visual_scope": "Synthetic locked calendar and readout-locked/empty-draft states only; not full assistant keyboard layout, original geometry, inactive overlay or physical snapshot.",
+  "archives": {
+    "root-disappearance-baseline-v2": {
+      "archive": "root-disappearance-baseline-v2-inputs.zip",
+      "sha256": "ae3c39a9c4341334a329bb39f63bd09455ee57a2443718e6c3238f2a8c33948f",
+      "entries": 290
+    },
+    "root-disappearance-final": {
+      "archive": "root-disappearance-final-inputs.zip",
+      "sha256": "6b34614bbcaf42cf36bbfd763cd109c4d617d62d48c44aee6ad6bc3e30390932",
+      "entries": 290
+    },
+    "root-disappearance-ui": {
+      "archive": "root-disappearance-ui-inputs.zip",
+      "sha256": "314b7cd7078b4fa764f8e9a3b7504240d2d726bd7f9503228f62c0b89c9cee11",
+      "entries": 212
+    }
+  },
+  "real_personal_data": false,
+  "Home_constructed": false,
+  "physical_authentication_or_presence_acceptance": false
+}
