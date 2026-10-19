@@ -2,6 +2,13 @@ import Foundation
 #if !os(watchOS) && !os(tvOS)
 @preconcurrency import AVFoundation
 
+// Retain-only bridge: no utterance property is read or mutated off its owner.
+// Keeps ObjectIdentifier unique until the queued MainActor callback is handled.
+private final class UtteranceCallbackLifetime:@unchecked Sendable {
+  private let utterance:AVSpeechUtterance
+  init(_ utterance:AVSpeechUtterance) { self.utterance=utterance }
+}
+
 @MainActor final class SystemAnswerSpeech:NSObject,AnswerSpeechBackend,AVSpeechSynthesizerDelegate {
   private var synth:AVSpeechSynthesizer?
   private var active:ObjectIdentifier?
@@ -50,10 +57,12 @@ import Foundation
     let callback=completion;active=nil;completion=nil;deactivate();callback?(success)
   }
   nonisolated func speechSynthesizer(_ synthesizer:AVSpeechSynthesizer,didFinish utterance:AVSpeechUtterance) {
-    let id=ObjectIdentifier(utterance);Task { @MainActor [weak self] in self?.finished(id,success:true) }
+    let id=ObjectIdentifier(utterance),lifetime=UtteranceCallbackLifetime(utterance)
+    Task { @MainActor [weak self] in withExtendedLifetime(lifetime) { self?.finished(id,success:true) } }
   }
   nonisolated func speechSynthesizer(_ synthesizer:AVSpeechSynthesizer,didCancel utterance:AVSpeechUtterance) {
-    let id=ObjectIdentifier(utterance);Task { @MainActor [weak self] in self?.finished(id,success:false) }
+    let id=ObjectIdentifier(utterance),lifetime=UtteranceCallbackLifetime(utterance)
+    Task { @MainActor [weak self] in withExtendedLifetime(lifetime) { self?.finished(id,success:false) } }
   }
 }
 #endif
