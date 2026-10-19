@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-19",
+  "issue": 56,
+  "issue_state": "OPEN",
+  "code_commit": "3fda41ee98aa15682930f5a413c9754ac993dbeb",
+  "source_digest": "0acfb1d9a1e83b720a6c80667a2b343f23ab5506e68bf9334be58192cca1a979",
+  "core_tests": 198,
+  "core_failures": 0,
+  "new_codec_tests": 9,
+  "boundary_reproduction": {
+    "source_digest": "17f798eee2c27606372ff09b3594a2034b5e6aec382b8007a58152a160093972",
+    "tests_before": 2,
+    "failures_before": 2,
+    "unexpected_errors_before": 2,
+    "failures_after": 0,
+    "before_code_path": "Docs/verification/recipe-handoff-boundary-before.swift",
+    "before_code_sha256": "3fc601833211aff8adb211bae681053ea8e236db91085544b0413b183004ab6e",
+    "before_archive_readback": true
+  },
+  "UI_checkpoints": [
+    {
+      "id": "recipe-handoff-pilot",
+      "source_digest": "c3ab3ffeb23015cc8c478c22dd94bf1e1821aab88ec7c52975f627e9a154b7e9",
+      "methods": [
+        "testRecipeHandoffResumesExactStepOnlyAfterExplicitUnlockAndNeverStartsTimer",
+        "testRecipeHandoffRejectsMissingRecipeAndUnsupportedVersion",
+        "testRecipeHandoffDeniedUnlockAndReadOnlyStoreCannotContinue",
+        "testRecipeHandoffUnavailableOfferKeepsCookingState",
+        "testRecipeIngredientsCookingAndInlineTimer"
+      ],
+      "results": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "deviceName": "iPad Air 11-inch (M4)",
+            "modelName": "iPad Air 11-inch (M4)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": []
+        },
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "deviceName": "iPhone 18 Pro",
+            "modelName": "iPhone 18 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": []
+        }
+      ],
+      "qualification": "Five selected cases/device passed; later boundary tests exposed two codec limits not covered by this pilot.",
+      "all_inputs_unchanged": true
+    },
+    {
+      "id": "recipe-handoff-final",
+      "source_digest": "2de96b98cf969afb54d0d97d3deb6848b068e71d7ae3aa57b60b47de0650b4cb",
+      "methods": [
+        "testRecipeHandoffResumesExactStepOnlyAfterExplicitUnlockAndNeverStartsTimer",
+        "testRecipeHandoffRejectsMissingRecipeAndUnsupportedVersion",
+        "testRecipeHandoffDeniedUnlockAndReadOnlyStoreCannotContinue",
+        "testRecipeHandoffBackgroundDropsPendingTransferAndDoesNotResumeIt"
+      ],
+      "results": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "deviceName": "iPad Air 11-inch (M4)",
+            "modelName": "iPad Air 11-inch (M4)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": []
+        },
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "deviceName": "iPhone 18 Pro",
+            "modelName": "iPhone 18 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": []
+        }
+      ],
+      "qualification": "Four affected cases/device passed after boundary/privacy/platform declaration corrections, including background revocation.",
+      "all_inputs_unchanged": true
+    },
+    {
+      "id": "recipe-handoff-controls-final",
+      "source_digest": "0acfb1d9a1e83b720a6c80667a2b343f23ab5506e68bf9334be58192cca1a979",
+      "methods": [
+        "testRecipeHandoffResumesExactStepOnlyAfterExplicitUnlockAndNeverStartsTimer"
+      ],
+      "results": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "deviceName": "iPad Air 11-inch (M4)",
+            "modelName": "iPad Air 11-inch (M4)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": []
+        },
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "deviceName": "iPhone 18 Pro",
+            "modelName": "iPhone 18 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": []
+        }
+      ],
+      "qualification": "One affected case/device passed after removing success toast; actual Finish action reaches cover; no automatic timer.",
+      "all_inputs_unchanged": true
+    }
+  ],
+  "UI_executions_across_qualified_checkpoints": 20,
+  "unique_selected_methods_per_device": 6,
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "built_activity_declarations": [
+    {
+      "platform": "iOS",
+      "receiving_activity_types": [
+        "org.example.homeview.recipe.v1"
+      ]
+    },
+    {
+      "platform": "macOS",
+      "receiving_activity_types": [
+        "org.example.homeview.recipe.v1"
+      ]
+    },
+    {
+      "platform": "tvOS",
+      "receiving_activity_types": []
+    },
+    {
+      "platform": "visionOS",
+      "receiving_activity_types": []
+    },
+    {
+      "platform": "watchOS",
+      "receiving_activity_types": []
+    }
+  ],
+  "compiled_input_files_per_checkpoint": 23,
+  "final_compiled_archive_readback": true,
+  "final_compiled_archive_sha256": "cab8ffc90fd15d90e19a3c6e9c3519c37187beabb7b5c902eb6a167827a5cae0",
+  "installed_app_readback": {
+    "iPad": true,
+    "iPhone": true
+  },
+  "image_review": {
+    "decoded": 68,
+    "selected_reviewed": 36,
+    "contact_sheets": 10,
+    "published": [
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-awaits-explicit-accept.png",
+        "sha256": "a72751d01b5570640aa5aaaf73af006552ce901d8fe79899116028607285fbae"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-background-pending-cleared.png",
+        "sha256": "1cc5b8de729248e993867cfbcf31eab96f07e03687ad16d17a68e548ca904325"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-clearly-unavailable-no-send.png",
+        "sha256": "95b10cf555febc378a760235e3c4e59ec87fb43139a390de4fc7e7924c9bebad"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-missing-local-recipe.png",
+        "sha256": "4bc953609c0a380d32b899c3c548b19d0767f0db97fa6984d4a5cee7f4609c54"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-readonly-not-resumed.png",
+        "sha256": "45e7d538781c9fd487898f649e5274887636fde15e3cf8fb3238de7ecf4e84f6"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-resumed-local-step-three.png",
+        "sha256": "6e28977ec0d80e09dff4660f789057a536a8989084b9c38bf69f4efbacf079d0"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-unlock-denied.png",
+        "sha256": "19d8f62ee6924acaadde7d90b38d8806b2cc1c814d7dfc07331aafc95f556534"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-unsupported-version.png",
+        "sha256": "bca15a2bf7f9727065d2812ab741fdf4d18c0561bb9f769dd9aaa91f1ff93934"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPhone-viewport-recipe-handoff-awaits-explicit-accept.png",
+        "sha256": "ae02604e881f9f284784b974a912a18a061ec9949526b6d0ce5e97a48c40126a"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPhone-viewport-recipe-handoff-background-pending-cleared.png",
+        "sha256": "c75721355e0158ad905774683456d3ed0d9b9d8e29d3d5a5416655589d90ed4c"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPhone-viewport-recipe-handoff-clearly-unavailable-no-send.png",
+        "sha256": "d9faef920c8c73313af60a287b04db9c94141212877d9f9233c8bb0d40022ac9"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPhone-viewport-recipe-handoff-missing-local-recipe.png",
+        "sha256": "87a9bb65c3409b5ef75a45822043f595cae66b0fa4004c6f39f654a248a7bfeb"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPhone-viewport-recipe-handoff-readonly-not-resumed.png",
+        "sha256": "9f2b2a7c34a3bc6a7ec67df77957d74ba85414f3538c8b0bc8ea40d6ee318ad9"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPhone-viewport-recipe-handoff-resumed-local-step-three.png",
+        "sha256": "fe106b8e51ee0ca93f8015bbea52738c6f7ee65440b900192fd44e420cdd81f9"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPhone-viewport-recipe-handoff-unlock-denied.png",
+        "sha256": "47e0ba2c1b7ada450563bb17201e544193608e1534010171991de81bd8e38b01"
+      },
+      {
+        "path": "Docs/screenshots/recipe-handoff/iPhone-viewport-recipe-handoff-unsupported-version.png",
+        "sha256": "5fe256706d6adbe29d7ff826b44ea31767defb0fbc81afe4cef2ad93c0cff977"
+      }
+    ],
+    "qualification": "Early positive pilot/final step3 toast masked Finish. Those are historical, not accepted as clean controls. Latest positive screenshots and actual Finish interaction use no success toast."
+  },
+  "public_API_source": {
+    "url": "https://developer.apple.com/documentation/foundation/implementing-handoff-in-your-app",
+    "read_date": "2026-10-19"
+  },
+  "limits": [
+    "No real2-device, OS transport/delivery or physical authentication acceptance",
+    "Own same-app activity only, not Apple system universal recipe handoff",
+    "No Universal Link domain/service configured or claimed",
+    "No native NSUserActivity construction/broadcast in automated tests; only own encoded synthetic input",
+    "No real recipes, Photos/accounts/homes, sends or timers created by receiving transfer",
+    "iOS/macOS native activity declarations only; Watch/tvOS/visionOS do not advertise receiving this activity"
+  ]
+}
