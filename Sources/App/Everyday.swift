@@ -435,6 +435,7 @@ struct MusicView: View {
     VStack(spacing: 17) {
       DemoAlbumCover().frame(width: 270, height: 270).clipped()
         .clipShape(RoundedRectangle(cornerRadius: 18)).shadow(radius: 20)
+        .overlay(alignment: .bottomTrailing) { MusicArtworkInfoButton(source: .demo) }
       HStack {
         VStack(alignment: .leading, spacing: 5) {
           Text(Fixtures.songs[model.song]).font(.system(size: 25, weight: .semibold))

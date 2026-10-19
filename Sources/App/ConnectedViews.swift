@@ -222,6 +222,7 @@ struct DeviceMusicView: View {
         let song = model.connections.tracks[index]
         artwork(song.artwork).frame(width: 200, height: 200).clipShape(
           RoundedRectangle(cornerRadius: 20))
+          .overlay(alignment: .bottomTrailing) { MusicArtworkInfoButton(source: .catalog) }
         Text(song.title).font(.system(size: 27, weight: .semibold)).lineLimit(1)
           .accessibilityIdentifier("music.current.title")
         Text(song.artist).font(.system(size: 20)).opacity(0.7)
