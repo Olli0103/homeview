@@ -1,0 +1,250 @@
+{
+  "date": "2026-10-19",
+  "issue": 38,
+  "issue_stays_open": true,
+  "code_commit": "3ec156062dd089ff2f64ad88166865e9e3db3036",
+  "source_digest": "6d5d85198673e5448116867425e136aa8a5a407d5044fd278e46cca040843023",
+  "source_files": 183,
+  "Core_tests": 246,
+  "Core_failures": 0,
+  "Core_source_and_test_bytes_unchanged_since_run": true,
+  "delivery_UI_executions": 16,
+  "delivery_unique_methods": 7,
+  "delivery_UI_checkpoints": [
+    "assistant-input-release",
+    "assistant-input-readable"
+  ],
+  "delivery_UI_failures": 0,
+  "delivery_UI_skips": 0,
+  "delivery_UI_runtime_warnings": [],
+  "UI_qualification": "14 executions plus two stronger long-text visibility executions. The latter changes only the UI test. Not a single repeated full suite.",
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "SDK_product_source_byte_equivalent": true,
+  "generator": {
+    "code_commit": "e4b57064f86a1ca70ab1bec2b760d11e4f420e32",
+    "project_byte_equivalent": true,
+    "Python_AST_valid": true,
+    "clean_before_after": true
+  },
+  "images": [
+    {
+      "device": "iPad",
+      "checkpoint": "assistant-input-release",
+      "path": "Docs/verification/assistant-input-images/iPad-assistant-keyboard-portrait-screen.png",
+      "sha256": "f933ff38463370d2fa7ff42735037e377b264bb1696e21ffc2cc7c875eff260e"
+    },
+    {
+      "device": "iPad",
+      "checkpoint": "assistant-input-release",
+      "path": "Docs/verification/assistant-input-images/iPad-assistant-keyboard-landscape-screen.png",
+      "sha256": "6e9f1d3e11164a80ff173eb51f7aceaf72e34b52dfda45d0e640e17820dd3884"
+    },
+    {
+      "device": "iPad",
+      "checkpoint": "assistant-input-release",
+      "path": "Docs/verification/assistant-input-images/iPad-native-voice-preview-mock.png",
+      "sha256": "00d0e0fc34ff1d5a1b598aa0a048b4d3835a8687638b60966f631b5585d4b927"
+    },
+    {
+      "device": "iPad",
+      "checkpoint": "assistant-input-readable",
+      "path": "Docs/verification/assistant-input-images/iPad-viewport-answer-readout-long-answer-active.png",
+      "sha256": "87d90bf14f38a2a84218ec4555f010a02730c2c823f43316204304440c757be5"
+    },
+    {
+      "device": "iPhone",
+      "checkpoint": "assistant-input-release",
+      "path": "Docs/verification/assistant-input-images/iPhone-assistant-keyboard-portrait-screen.png",
+      "sha256": "d1f9113a4d33e1d24d847c6ebb17427967cfbd38dd762d74788be99d080d2af4"
+    },
+    {
+      "device": "iPhone",
+      "checkpoint": "assistant-input-release",
+      "path": "Docs/verification/assistant-input-images/iPhone-assistant-keyboard-landscape-screen.png",
+      "sha256": "e35bc90764a893e280c3aa2ca2b4e3775c03943ba5dbeb64afbad626a089de83"
+    },
+    {
+      "device": "iPhone",
+      "checkpoint": "assistant-input-release",
+      "path": "Docs/verification/assistant-input-images/iPhone-native-voice-preview-mock.png",
+      "sha256": "21b21f3d3455e90e24195c4d97d9343af117e1f13fccf404ed38f8d8e63bf16d"
+    },
+    {
+      "device": "iPhone",
+      "checkpoint": "assistant-input-readable",
+      "path": "Docs/verification/assistant-input-images/iPhone-viewport-answer-readout-long-answer-active.png",
+      "sha256": "e6e08c252a70b16a57dcdc2d4fb58b02e04f98e1aba5775c5f79314e79077389"
+    },
+    {
+      "device": "iPad",
+      "checkpoint": "assistant-input-baseline",
+      "path": "Docs/verification/assistant-input-images/iPad-before-landscape-scaled-input.png",
+      "sha256": "efa0eacb3b759f5f6554b612672e753b8faada69694191546593d027ec7612c0"
+    }
+  ],
+  "delivery_PNGs_decoded": 24,
+  "delivery_contact_sheets_reviewed": 4,
+  "historical_checkpoints": [
+    {
+      "id": "assistant-input-baseline",
+      "source_digest": "795486a6ea5da5f3dd2576c2fbcf403ca5ae1a9d6e85d244b15a98f3d9b7e500",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 183,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-baseline-inputs.zip",
+      "archive_entries": 205,
+      "archive_sha256": "0dde3af3e2eab5b6ff3e54c972dee5960665373e4f49f4de75b601a6dfdff317",
+      "all_archive_entries_read_back": true
+    },
+    {
+      "id": "assistant-input-responsive",
+      "source_digest": "15975c50990bf4b0c4257e018a17809b4d27afb959e90e9c49925c0febf30601",
+      "passed": 6,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 183,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-responsive-inputs.zip",
+      "archive_entries": 205,
+      "archive_sha256": "e27be7640e26432e27ff5e2a74e0d6ebae25bdd163e2de21ae109b9f28e086a3",
+      "all_archive_entries_read_back": true
+    },
+    {
+      "id": "assistant-input-qualified",
+      "source_digest": "edec388a795972b70a96c5be2cf5c0fc09308babd702e1bb9a88f4bc9457a85a",
+      "passed": 9,
+      "failed": 7,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 183,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-qualified-inputs.zip",
+      "archive_entries": 205,
+      "archive_sha256": "7a6a428c9347d1b06f775b68258b058a3442d83486a1688daa9b288fa4f68484",
+      "all_archive_entries_read_back": true
+    },
+    {
+      "id": "assistant-input-cancel",
+      "source_digest": "021237d2edf258f9215cc0b21dde26b4b22d400f938409d7f29a1c4e679dd01a",
+      "passed": 1,
+      "failed": 3,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 183,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-cancel-inputs.zip",
+      "archive_entries": 205,
+      "archive_sha256": "e46b6a628de384ab30a91bc784f515b3993579c5eed2bc8403ced92ad5efc4c5",
+      "all_archive_entries_read_back": true
+    },
+    {
+      "id": "assistant-input-native",
+      "source_digest": "c15a2081b4b132edbabe0204b503f892142813deb9a4ba11e51df61a497deea1",
+      "passed": 0,
+      "failed": 4,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 184,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-native-inputs.zip",
+      "archive_entries": 206,
+      "archive_sha256": "d56824b76497f6888a36f3faf2b617aea64bd39c3f8f97f58f4a5b8f060c1a2e",
+      "all_archive_entries_read_back": true
+    },
+    {
+      "id": "assistant-input-focused",
+      "source_digest": "c168bdac23d696df99672a9429812b4c211df2c70f981634417a142b229d4388",
+      "passed": 1,
+      "failed": 3,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 184,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-focused-inputs.zip",
+      "archive_entries": 206,
+      "archive_sha256": "d9a954234be182cdbdc759d84f2d9bd996f20b6db778bc2ae59ab14b408306c0",
+      "all_archive_entries_read_back": true
+    },
+    {
+      "id": "assistant-input-bounded",
+      "source_digest": "8de8f48c172d8856ff87e97d3412fbce7a22c8c2bb5c76dfb41d1b194f5584e7",
+      "passed": 1,
+      "failed": 3,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 183,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-bounded-inputs.zip",
+      "archive_entries": 205,
+      "archive_sha256": "5e5012edbacdd4e2c2ea288be65f78c32440e95dbfc4909bc32b1dcf93b6332d",
+      "all_archive_entries_read_back": true
+    },
+    {
+      "id": "assistant-input-release",
+      "source_digest": "6347f0c1afd9f49eddb0f949e9a499c6c34e692c0cf0707ac15af6f1a86675ba",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 183,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-release-inputs.zip",
+      "archive_entries": 205,
+      "archive_sha256": "75ffca62210a94d140daae4e4c6bea804671bff1b208677658e269e3771bf617",
+      "all_archive_entries_read_back": true
+    },
+    {
+      "id": "assistant-input-readable",
+      "source_digest": "6d5d85198673e5448116867425e136aa8a5a407d5044fd278e46cca040843023",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_files": 183,
+      "compiled_inputs": 22,
+      "archive": "assistant-input-readable-inputs.zip",
+      "archive_entries": 205,
+      "archive_sha256": "81755ae32baa0cb4815c042e00ffc484bc2d8ac5df7f1c6d19b2aa58cf1234b3",
+      "all_archive_entries_read_back": true
+    }
+  ],
+  "historical_total_executions": 57,
+  "historical_total_failed_executions": 22,
+  "platform_archive": {
+    "name": "assistant-input-platform-products.zip",
+    "entries": 51,
+    "sha256": "b1522cc9f45bebfdc7b4c00ba6aa4f6243d514706174e973cb6c14b2f11df108",
+    "all_entries_read_back": true
+  },
+  "Escape_and_raw_Return_hardware_gate_passed": false,
+  "native_field_adapter_delivered": false,
+  "OS_control_center_or_physical_accessibility_acceptance": false,
+  "original_F048_F049_parity": false,
+  "Home_constructed": false,
+  "real_microphone_or_native_AI_used_in_UI": false
+}
