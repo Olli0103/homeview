@@ -4517,3 +4517,64 @@ extension HomeViewUITests {
     viewportShot("voice-owned-background-context-cleared",assistantRectangle:true)
   }
 }
+
+extension HomeViewUITests {
+  private func dismissLocalWriteError() {
+    XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout:5))
+    XCTAssertTrue(app.alerts.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","Original saved data is unchanged")).firstMatch.exists)
+    app.alerts.buttons["OK"].tap()
+  }
+  @objc func testReadOnlyFaceStyleAndSlotEditsKeepCurrentSelections() {
+    let id=UUID().uuidString
+    print("WRITE_BOUNDARY_EDITOR_ID="+id)
+    launch(["--persistence-test",id,"--state-future-fixture","--face","Modular"])
+    app.otherElements["face.Modular"].press(forDuration:1)
+    XCTAssertTrue(app.buttons["editor.done"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.buttons["Mist style"].value as? String,"Selected")
+    tap("Sage style");dismissLocalWriteError()
+    XCTAssertEqual(app.buttons["Mist style"].value as? String,"Selected")
+    let previous=app.buttons["widget.0"].label
+    tap("widget.0");tap("complication.choose.Clock");dismissLocalWriteError()
+    XCTAssertTrue(app.buttons["complications.done"].exists,"Failed slot write must retain the originating picker")
+    tap("complications.done")
+    XCTAssertEqual(app.buttons["widget.0"].label,previous)
+    viewportShot("write-boundary-readonly-face-and-slot-unchanged")
+    tap("editor.done")
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    app.terminate();launch(["--persistence-test",id])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+  }
+  @objc func testReadOnlyRecipePinKeepsUnpinnedCookingContext() {
+    let id=UUID().uuidString
+    print("WRITE_BOUNDARY_RECIPE_ID="+id)
+    launch(["--persistence-test",id,"--state-future-fixture","--screen-recipe"])
+    tap("recipe.start");tap("cooking.next")
+    let previous=app.staticTexts["cooking.text"].label
+    XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Not pinned")
+    tap("recipe.pin");dismissLocalWriteError()
+    XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Not pinned")
+    XCTAssertEqual(app.staticTexts["cooking.text"].label,previous)
+    viewportShot("write-boundary-readonly-recipe-unpinned-context-kept")
+    app.terminate();launch(["--persistence-test",id,"--screen-recipe"])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    tap("recipe.start")
+    XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Not pinned")
+  }
+  @objc func testRecipePinUnpinDoesNotCrashAndSurvivesProcessRestart() {
+    let id=UUID().uuidString
+    print("WRITE_BOUNDARY_RECIPE_POSITIVE_ID="+id)
+    launch(["--persistence-test",id,"--screen-recipe"])
+    tap("recipe.start")
+    XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Not pinned")
+    tap("recipe.pin");XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Pinned")
+    tap("recipe.pin");XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Not pinned")
+    tap("recipe.pin");XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Pinned")
+    viewportShot("write-boundary-recipe-pinned-after-unpin-retry")
+    app.terminate();launch(["--persistence-test",id,"--screen-recipe"])
+    tap("recipe.start");XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Pinned")
+    tap("recipe.pin");XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Not pinned")
+    app.terminate();launch(["--persistence-test",id,"--screen-recipe"])
+    tap("recipe.start");XCTAssertEqual(app.buttons["recipe.pin"].value as? String,"Not pinned")
+    viewportShot("write-boundary-recipe-unpinned-after-process-restart")
+  }
+}

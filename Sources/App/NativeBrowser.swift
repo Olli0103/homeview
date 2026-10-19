@@ -212,8 +212,8 @@ struct NativeBrowserView: View {
               VStack(spacing: 12) {
                 ForEach(candidates) { recipe in
                   Button {
+                    guard model.setRecipe(recipe) else { return }
                     candidates = []
-                    model.recipe = recipe
                     model.route = .recipe
                   } label: {
                     VStack(alignment: .leading, spacing: 7) {
@@ -287,8 +287,7 @@ struct NativeBrowserView: View {
           guard ticket == importGeneration, pageTicket == browser.pageGeneration,
             !Task.isCancelled, model.route == .app(.safari) else { return }
           if values.count == 1 {
-            model.recipe = values[0]
-            model.route = .recipe
+            if model.setRecipe(values[0]) { model.route = .recipe }
           } else { candidates = values }
         } catch {
           guard ticket == importGeneration, !Task.isCancelled, model.route == .app(.safari) else { return }
@@ -335,8 +334,7 @@ struct RecipeLibraryView: View {
           Text("Recent & Pinned").font(.system(size: 30, weight: .bold))
           ForEach(recipes) { recipe in
             Button {
-              model.recipe = recipe
-              model.route = .recipe
+              if model.setRecipe(recipe) { model.route = .recipe }
             } label: {
               HStack {
                 Image(systemName: "fork.knife").font(.system(size: 30)).foregroundStyle(.orange)

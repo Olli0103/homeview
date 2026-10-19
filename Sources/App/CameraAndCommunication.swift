@@ -185,10 +185,7 @@ struct MessagesView: View {
         RoundButton(
           symbol: "arrow.up", color: .blue, foreground: .white, label: "Send demo message"
         ) {
-          if !text.isEmpty {
-            model.messages.append(text)
-            text = ""
-          }
+          if !text.isEmpty,model.appendLocalMessage(text) { text = "" }
         }
       }.padding(30)
       SystemMessageButton(draft: text)

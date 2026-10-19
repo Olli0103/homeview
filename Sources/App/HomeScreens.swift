@@ -221,8 +221,7 @@ private struct PersonalHomeEditor: View {
   private func update(_ edit:(inout PersonalHomeConfiguration)->Void) {
     guard model.profile==profile else { dismiss();return }
     var value=configuration;edit(&value)
-    guard model.data.setPersonalHome(value,for:profile) else { return }
-    model.persist()
+    model.updateLocalControls { $0.setPersonalHome(value,for:profile) }
   }
   var body: some View {
     VStack(alignment:.leading,spacing:20) {
