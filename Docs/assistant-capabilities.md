@@ -2,7 +2,11 @@
 
 19. Oktober 2026 · [AI-09, #41](https://github.com/Olli0103/homeview/issues/41).
 
-## Was die App tatsächlich anbietet
+## Aktueller Stand nach #33
+
+Die Informationsansicht bietet inzwischen zusätzlich die ausdrückliche Auswahl **Apple on-device answers** mit Anbieter-/Datenschutzhinweis, Live-Verfügbarkeit und Gesprächsgrenzen. Nur der konkrete lokale SystemLanguageModel-Pfad, keine Cloud-Ausweichroute. Öffnen oder Auswählen sendet keinen Entwurf. Die Einzelheiten und aktuelle Prüfung stehen in [assistant-local.md](assistant-local.md). Die folgenden Angaben und 181/8-Testnachweise beschreiben den früheren Befehlsmodus-Stand und bleiben als historischer Nachweis erhalten. Andere Aktionen sind inzwischen auf vollständige begrenzte Formulierungen statt Schlüsselwortsuche beschränkt.
+
+## Früherer Stand vor #33
 
 Die Informationsansicht im Assistenten zeigt den vorhandenen lokalen Befehlsparser, nicht einen angeblich verbundenen Siri-/LLM-Dienst. Ausgewählte Timer- und Kochschrittbefehle sind Deutsch/Englisch; andere Aktionen haben nur begrenzte Schlüsselwörter. Antworten sind bislang Englisch. Das ist keine allgemeine zweisprachige Unterhaltung oder Allgemeinwissensauskunft.
 
@@ -19,7 +23,7 @@ F052 bleibt eine **Referenz-/Dienstabhängigkeit**, keine abgenommene Siri-Parit
 - P01: [Apple-Produktseite](https://www.apple.com/apple-homeview/), Veröffentlichung Oktober 2026, Snapshot 16. Oktober. Die gelesenen Angaben nennen zunächst Englisch und mögliche Nutzungslimits.
 - P03: [Apple-Pressemitteilung](https://www.apple.com/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home/), datiert **13. Oktober 2026**, derselbe Snapshot. Die Fußnote nennt Beta in Software 27.2, tägliche Grenzen bestimmter serverbasierter Modelle und später kostenpflichtigen erweiterten Zugang. Sie enthält keine konkrete tägliche Zahl und keinen künftigen Preis.
 
-Diese zeitgebundenen Referenzangaben werden nicht in unsere Sprachunterstützung, Preise oder Verfügbarkeitszusagen umgedeutet. Quelltexte und Originalmaterial bleiben im privaten Recherchebestand. Für die Informationsansicht sind vorhandene SwiftUI-/Speech-APIs ausreichend; es wird kein eigener Dienst oder SDK-Ersatz gebaut. Der eigentliche Anbieter-/Datenschutzentscheid aus #33 bleibt offen und ist keine Voraussetzung, um den jetzigen Nicht-Anschluss wahrheitsgemäß anzuzeigen.
+Diese zeitgebundenen Referenzangaben werden nicht in unsere Sprachunterstützung, Preise oder Verfügbarkeitszusagen umgedeutet. Quelltexte und Originalmaterial bleiben im privaten Recherchebestand. Für die Informationsansicht sind vorhandene SwiftUI-/Speech-APIs ausreichend; es wird kein eigener Dienst oder SDK-Ersatz gebaut. Der damalige Anbieter-/Datenschutzentscheid aus #33 war zu diesem Prüfzeitpunkt offen; der aktuelle optionale lokale Pfad ist oben verlinkt.
 
 ## Prüfung
 

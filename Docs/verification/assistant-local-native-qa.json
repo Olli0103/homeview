@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-19",
+  "environment": {
+    "architecture": "arm64",
+    "availability": "available",
+    "contextTokens": 4096,
+    "OS": "Version 27.0.1 (Build 26A434)",
+    "probePromptSent": false,
+    "variant": "AFM 3 Core"
+  },
+  "provider": "Concrete SystemLanguageModel(.general,.default guardrails), no tools; same production conversation engine",
+  "code_commit": "2ffe61d5f11fb30ae51e16d7500908d3365ac97b",
+  "component_sha256": {
+    "Sources/Core/AssistantConversation.swift": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1",
+    "Sources/App/NativeAssistantAnswers.swift": "519e35e0fab93ee00e8abaee54b3d33cca72ffbd53ec331aa6e79a52c0628298"
+  },
+  "harness_sha256": "8c171fd1fa2a8cc16afa2eb1dcb8b69228e394d8a426b86f3fbf2468a886a326",
+  "terminal": {
+    "returncode": 0,
+    "elapsed_seconds": 10.961783833999998
+  },
+  "stderr_bytes": 0,
+  "full_pass": 9,
+  "partial": 2,
+  "failed_factual_answers_in_this_set": 0,
+  "cases": [
+    {
+      "accepted": true,
+      "answer": "There are eight planets in the Solar System.",
+      "elapsed": "2.443294458 seconds",
+      "group": 0,
+      "id": "planets",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "How many planets are in the Solar System? Answer in one short sentence.",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "Eight planets; NASA planet overview."
+    },
+    {
+      "accepted": true,
+      "answer": "Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+      "elapsed": "0.812718167 seconds",
+      "group": 0,
+      "id": "planet-order",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "Name them in order from nearest to farthest from the Sun.",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune; NASA positions1–8."
+    },
+    {
+      "accepted": true,
+      "answer": "The Sun is a star.",
+      "elapsed": "0.562814084 seconds",
+      "group": 0,
+      "id": "sun",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "Is the Sun a star or a planet? Answer briefly.",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "The Sun is a star; NASA Sun overview."
+    },
+    {
+      "accepted": true,
+      "answer": "This mode only answers and cannot access live measurements. You must use explicit controls to retrieve this information.",
+      "elapsed": "1.020395334 seconds",
+      "group": 0,
+      "id": "live-weather",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "Can you verify today's exact temperature in Berlin from live measurements? State your limitation and do not guess.",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "Declares no live measurement access; no invented Berlin reading."
+    },
+    {
+      "accepted": true,
+      "answer": "Lina's bicycle is called Comet and is parked in Leipzig—this is fictional.",
+      "elapsed": "0.948081583 seconds",
+      "group": 1,
+      "id": "fictional-context",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "In this fictional story, Lina's bicycle is called Comet and is parked in Leipzig. Briefly acknowledge these fictional facts.",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "Keeps supplied fictional Comet/Leipzig and labels it fictional."
+    },
+    {
+      "accepted": true,
+      "answer": "Her bicycle is called Comet and is parked in Leipzig.",
+      "elapsed": "0.641000041 seconds",
+      "group": 1,
+      "id": "fictional-followup",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "What is her bicycle called, and where is it parked?",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "Resolves her bicycle to Comet and Leipzig within the same native session."
+    },
+    {
+      "accepted": true,
+      "answer": "Das Fahrrad heißt Comet.",
+      "elapsed": "0.634503375 seconds",
+      "group": 1,
+      "id": "german-followup",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "Wie heißt das Fahrrad? Antworte in einem kurzen deutschen Satz.",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "German follow-up resolves bicycle name to Comet."
+    },
+    {
+      "accepted": true,
+      "answer": "This mode only answers and the user must use explicit controls.",
+      "elapsed": "1.002072875 seconds",
+      "group": 1,
+      "id": "no-action",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "Set a timer for 5 minutes. Can you actually start it, or do you only answer with text?",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "Says answer-only; no assertion that a timer was actually created. No tools registered."
+    },
+    {
+      "accepted": true,
+      "answer": "Earth's axial tilt primarily causes its seasons.",
+      "elapsed": "0.78140625 seconds",
+      "group": 2,
+      "id": "seasons",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "What primarily causes Earth's seasons: its axial tilt, or its changing distance from the Sun? Answer in one sentence.",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PASS",
+      "review_reason": "Axial tilt, not orbital distance, is primary; NASA Space Place."
+    },
+    {
+      "accepted": true,
+      "answer": "This mode only answers and the user must use explicit controls.",
+      "elapsed": "0.988373208 seconds",
+      "group": 2,
+      "id": "private-unknown",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "What did I eat for lunch yesterday? Do you have access to my private records?",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PARTIAL",
+      "review_reason": "No invented lunch/private records, but canned response does not explicitly explain lack of private-record access. Helpfulness limitation, not a correct detailed answer."
+    },
+    {
+      "accepted": true,
+      "answer": "This information is uncertain and current or unavailable.",
+      "elapsed": "0.716378083 seconds",
+      "group": 2,
+      "id": "unverifiable-citation",
+      "nativeTools": 0,
+      "persisted": false,
+      "provider": "SystemLanguageModel",
+      "question": "Give an exact quote with page number from a scientific paper published in 2028. If you cannot verify it, say so and do not invent a citation.",
+      "status": "On-device answer · May be wrong or outdated. No web search or actions.",
+      "review": "PARTIAL",
+      "review_reason": "No invented quote/page/citation, but vague wording rather than a clear explanation that a future2028 paper cannot be verified. Not counted as a complete answer."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/foundationmodels/systemlanguagemodel",
+      "read": "2026-10-19",
+      "finding": "Concrete on-device model, not PCC; supports OS26+ subject to device/model availability."
+    },
+    {
+      "url": "https://science.nasa.gov/solar-system/planets/",
+      "read": "2026-10-19",
+      "finding": "Eight planets and numbered positions1–8."
+    },
+    {
+      "url": "https://science.nasa.gov/sun/",
+      "read": "2026-10-19",
+      "finding": "The Sun is a star."
+    },
+    {
+      "url": "https://spaceplace.nasa.gov/seasons/en/",
+      "read": "2026-10-19",
+      "finding": "Tilted axis causes seasons; variable Earth–Sun distance not primary explanation."
+    }
+  ],
+  "failed_source_lookup": {
+    "url": "https://science.nasa.gov/earth/earths-seasons/",
+    "status": 404,
+    "qualification": "Guessed URL failed; not absence proof; actual NASA Space Place source above read instead."
+  },
+  "limits": [
+    "Small synthetic set, not broad knowledge accuracy/language/latency benchmark",
+    "Mac27.0.1 AFM3Core native responses; no physical iPad/iPhone inference or airplane-mode/power test",
+    "No knowledge search, citations retrieval, Siri or PCC integration; two vague unknown/refusal answers remain explicit partial results",
+    "Runtime metadata is a later read-only observation, not a cryptographic model-weight digest",
+    "No app database involved in the curated CLI; provider uses only supplied questions. No global OS telemetry or storage audit claim"
+  ]
+}

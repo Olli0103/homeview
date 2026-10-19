@@ -1269,7 +1269,9 @@
       "AI-01"
     ],
     "current": [
-      "Lokaler Parser versteht wenige Befehle. Kein allgemeiner Wissensdienst oder natürlicher Mehrturn-Dialog."
+      "Optionaler konkret lokaler Apple SystemLanguageModel-Pfad, ausdrücklich gewählt und ohne Tools/Aktionen/Cloud-Ausweichroute; begrenzter temporärer Mehrturn-Dialog.",
+      "Echter Mac-Modelllauf mit elf synthetischen Fragen/Nachfragen: neun vollständig erfüllt, zwei vage PARTIAL. Quellen-/Fehlerprüfung und tatsächliche Ausgaben dokumentiert; keine breite Faktenqualitäts- oder Siri/PCC-Paritätszusage. Docs/assistant-local.md.",
+      "214 Modelltests, externe Abbruch-/Deadlineprüfung, qualifizierte Simulator-Fixtures und fünf SDKs. Physische iPad-Inferenz, Flugmodus, Latenz/Energie bleiben unbewiesen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1282,9 +1284,9 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded optional on-device conversation, explicit choice and errors verified; nine full and two partial curated answers disclosed",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "actual Mac27.0.1 AFM3Core inference; physical iPad/iPhone model availability/performance not measured"
     },
     "completion_criteria": [
       "Kuratiertes Fragen-/Dialogset mit Quellen- und Fehlerprüfung; synthetische Daten, kein behauptetes Siri oder Private Cloud Compute."
@@ -1362,7 +1364,9 @@
       "AI-01"
     ],
     "current": [
-      "Lokaler Parser versteht wenige Befehle. Kein allgemeiner Wissensdienst oder natürlicher Mehrturn-Dialog."
+      "Optionaler konkret lokaler Apple SystemLanguageModel-Pfad, ausdrücklich gewählt und ohne Tools/Aktionen/Cloud-Ausweichroute; begrenzter temporärer Mehrturn-Dialog.",
+      "Echter Mac-Modelllauf mit elf synthetischen Fragen/Nachfragen: neun vollständig erfüllt, zwei vage PARTIAL. Quellen-/Fehlerprüfung und tatsächliche Ausgaben dokumentiert; keine breite Faktenqualitäts- oder Siri/PCC-Paritätszusage. Docs/assistant-local.md.",
+      "214 Modelltests, externe Abbruch-/Deadlineprüfung, qualifizierte Simulator-Fixtures und fünf SDKs. Physische iPad-Inferenz, Flugmodus, Latenz/Energie bleiben unbewiesen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1375,9 +1379,9 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded optional on-device conversation, explicit choice and errors verified; nine full and two partial curated answers disclosed",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "actual Mac27.0.1 AFM3Core inference; physical iPad/iPhone model availability/performance not measured"
     },
     "completion_criteria": [
       "Kuratiertes Fragen-/Dialogset mit Quellen- und Fehlerprüfung; synthetische Daten, kein behauptetes Siri oder Private Cloud Compute."
