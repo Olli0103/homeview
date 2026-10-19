@@ -4714,6 +4714,20 @@ extension HomeViewUITests {
 }
 
 extension HomeViewUITests {
+  private func setTimerActivityEnabled(_ on:Bool) {
+    let control=app.switches["timer.activity.enabled"],expected=on ? "1":"0"
+    XCTAssertTrue(control.waitForExistence(timeout:5));XCTAssertTrue(control.isHittable)
+    if control.value as? String != expected {
+      // UIKit exposes the label and trailing switch as one wide AX row.
+      // Its midpoint is the label, not the visible switch control.
+      let frame=control.frame
+      XCTAssertTrue(app.frame.contains(frame));XCTAssertGreaterThan(frame.width,44)
+      control.coordinate(withNormalizedOffset:.zero)
+        .withOffset(CGVector(dx:frame.width-25,dy:frame.height/2)).tap()
+    }
+    expectation(for:NSPredicate(format:"value == %@",expected),evaluatedWith:control)
+    waitForExpectations(timeout:5)
+  }
   private func openTimerActivitySettings() {
     let button=app.buttons["settings.timer-activity"]
     scrollPhotoControlFullyIntoView(button);button.tap()
@@ -4732,12 +4746,12 @@ extension HomeViewUITests {
     let id=UUID().uuidString,args=["--persistence-test",id,"--timer-activity-fixture","--page","Settings"]
     launch(args);openTimerActivitySettings()
     let enabled=app.switches["timer.activity.enabled"]
-    XCTAssertEqual(enabled.value as? String,"0");enabled.tap()
+    XCTAssertEqual(enabled.value as? String,"0");setTimerActivityEnabled(true)
     XCTAssertEqual(enabled.value as? String,"1")
     createOwnActivityTimer();expectTimerActivityStatus("Synthetic timer activity (active)")
     XCTAssertTrue(app.staticTexts["timer.activity.status"].label.contains("No system activity created"))
     shot("timer-live-activity-synthetic-opted-in")
-    enabled.tap();expectTimerActivityStatus("Synthetic timer activity (ended)")
+    setTimerActivityEnabled(false);expectTimerActivityStatus("Synthetic timer activity (ended)")
     XCTAssertEqual(enabled.value as? String,"0")
     shot("timer-live-activity-synthetic-off")
     app.terminate();launch(args);openTimerActivitySettings()
@@ -4746,14 +4760,14 @@ extension HomeViewUITests {
   }
   func testTimerActivityRestartKeepsPreferenceButRequiresExplicitNewStart() {
     let id=UUID().uuidString,args=["--persistence-test",id,"--timer-activity-fixture","--page","Settings"]
-    launch(args);openTimerActivitySettings();app.switches["timer.activity.enabled"].tap()
+    launch(args);openTimerActivitySettings();setTimerActivityEnabled(true)
     createOwnActivityTimer();expectTimerActivityStatus("Synthetic timer activity (active)")
     app.terminate();launch(args);openTimerActivitySettings()
     XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"1")
     expectTimerActivityStatus("Start a timer or choose")
     tap("timer.activity.show");expectTimerActivityStatus("Synthetic timer activity (active)")
     shot("timer-live-activity-synthetic-explicit-restart")
-    app.switches["timer.activity.enabled"].tap();expectTimerActivityStatus("Synthetic timer activity (ended)")
+    setTimerActivityEnabled(false);expectTimerActivityStatus("Synthetic timer activity (ended)")
   }
 }
 
@@ -4765,7 +4779,7 @@ extension HomeViewUITests {
   func testOwnTimerSystemActivityReadbackPauseAndExplicitCleanup() {
     let id=UUID().uuidString
     launch(["--persistence-test",id,"--timer-activity-system-test","--page","Settings"])
-    openTimerActivitySettings();app.switches["timer.activity.enabled"].tap()
+    openTimerActivitySettings();setTimerActivityEnabled(true)
     createOwnActivityTimer()
     let started=expectOwnSystemActivity(1,0)
     if started {
@@ -4780,7 +4794,7 @@ extension HomeViewUITests {
       XCUIDevice.shared.press(.home)
       let outside=XCTAttachment(screenshot:XCUIScreen.main.screenshot());outside.name="timer-system-activity-outside-app";outside.lifetime = .keepAlways;add(outside)
       app.activate()
-      if app.switches["timer.activity.enabled"].value as? String=="1" {app.switches["timer.activity.enabled"].tap()}
+      if app.switches["timer.activity.enabled"].value as? String=="1" {setTimerActivityEnabled(false)}
       let cleaned=expectOwnSystemActivity(0,0,0)
       shot("timer-system-activity-own-registry-cleaned")
       XCTAssertTrue(paused,"Actual ActivityKit registry did not reflect pause")
@@ -4788,7 +4802,7 @@ extension HomeViewUITests {
       XCTAssertTrue(cleaned,"Own ActivityKit registry was not empty after explicit opt-out")
     } else {
       shot("timer-system-activity-request-not-established")
-      if app.switches["timer.activity.enabled"].value as? String=="1" {app.switches["timer.activity.enabled"].tap()}
+      if app.switches["timer.activity.enabled"].value as? String=="1" {setTimerActivityEnabled(false)}
       XCTAssertTrue(expectOwnSystemActivity(0,0,0),"Owned failed-start experiment did not clean up")
     }
     XCTAssertTrue(started,"No own ActivityKit system activity established; not an outside-app visibility PASS")
