@@ -1333,7 +1333,8 @@
       "AI-03"
     ],
     "current": [
-      "Parser führt einzelne lokale Szenen-, Timer- oder Navigationsbefehle aus."
+      "Explicit local plan preview and separate expiring confirmation now execute only mock temperature, mock brightness and foreground demo countdowns. Each dependent step requires confirmed saved-state read-back; failure, unverified persistence and cancellation stop remaining steps. Stable execution tickets prevent same-plan replay. Docs/action-plans.md.",
+      "Synthetic software acceptance passed: 254 Core tests, actual AppModel 10 scenarios/81 assertions, six iPad/iPhone UI executions including middle offline failure and restart, four saved stores and five SDK builds. Original personal/Home service behavior remains unimplemented; no Home connection."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1346,7 +1347,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Synthetic local action-plan software acceptance passed; original personal/Home behavior not accepted. See Docs/action-plans.md.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
