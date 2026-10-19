@@ -25,6 +25,9 @@ final class DeviceConnectionTests: XCTestCase {
     var weatherReply: CheckedContinuation<WeatherReading, any Error>?
     var weatherValue: WeatherReading?
     var delayWeather = false
+    var searchReplies: [String:CheckedContinuation<[DeviceTrack], any Error>] = [:]
+    var onSearch: ((String)->Void)?
+    var pauseCalls = 0
     func authorized(_ kind: DataConnection) -> Bool { hasPermission }
     func authorizePersonal(_ kind: DataConnection) async throws {
       permissionRequests += 1
@@ -79,10 +82,15 @@ final class DeviceConnectionTests: XCTestCase {
       if !ignoreReminderWrites { reminderItems.removeAll { $0.id == id } }
     }
     func authorizeMusic() async throws {}
-    func searchMusic(_ text: String) async throws -> [DeviceTrack] { [] }
+    func searchMusic(_ text: String) async throws -> [DeviceTrack] {
+      try await withCheckedThrowingContinuation { reply in
+        searchReplies[text] = reply
+        onSearch?(text)
+      }
+    }
     func playMusic(_ index: Int) async throws {}
     func resumeMusic() async throws {}
-    func pauseMusic() {}
+    func pauseMusic() { pauseCalls += 1 }
     var musicPlaying: Bool { false }
     var musicTime: Double { 0 }
     func weather(_ city: String) async throws -> WeatherReading {
@@ -157,6 +165,55 @@ final class DeviceConnectionTests: XCTestCase {
     let next = DeviceConnections(provider:provider,testing:false,defaults:defaults)
     await next.restore()
     XCTAssertTrue(next.requested.isEmpty)
+  }
+
+  func testLateMusicSearchFailureCannotReplaceDisconnectedStatus() async {
+    let provider = Provider();let session = DeviceConnections(provider:provider)
+    await session.connect(.music)
+    let started = expectation(description:"old search")
+    provider.onSearch = { _ in started.fulfill() }
+    let task = Task { await session.searchMusic("old") }
+    await fulfillment(of:[started],timeout:2)
+    session.disconnect(.music)
+    provider.searchReplies["old"]?.resume(throwing:CocoaError(.fileReadUnknown))
+    await task.value
+    XCTAssertEqual(session.status[.music],"Disconnected")
+    XCTAssertTrue(session.tracks.isEmpty)
+    XCTAssertFalse(session.busy.contains(.music))
+  }
+  func testOldMusicSearchCleanupCannotFinishANewerSearch() async {
+    let provider = Provider();let session = DeviceConnections(provider:provider)
+    await session.connect(.music)
+    let oldStarted = expectation(description:"old search")
+    let newStarted = expectation(description:"new search")
+    provider.onSearch = { text in (text == "old" ? oldStarted:newStarted).fulfill() }
+    let old = Task { await session.searchMusic("old") }
+    await fulfillment(of:[oldStarted],timeout:2)
+    session.disconnect(.music);await session.connect(.music)
+    let current = Task { await session.searchMusic("new") }
+    await fulfillment(of:[newStarted],timeout:2)
+    provider.searchReplies["old"]?.resume(throwing:CocoaError(.fileReadUnknown))
+    await old.value
+    XCTAssertTrue(session.busy.contains(.music))
+    XCTAssertEqual(session.status[.music],"Connected · synthetic source")
+    provider.searchReplies["new"]?.resume(returning:[DeviceTrack(id:"new",title:"Synthetic",artist:"Fixture",artwork:nil)])
+    await current.value
+    XCTAssertFalse(session.busy.contains(.music))
+    XCTAssertEqual(session.tracks.map(\.id),["new"])
+  }
+  func testCancelledMusicSearchCannotInstallResultsOrPauseAudio() async {
+    let provider = Provider();let session = DeviceConnections(provider:provider)
+    await session.connect(.music)
+    let started = expectation(description:"cancelled search")
+    provider.onSearch = { _ in started.fulfill() }
+    let task = Task { await session.searchMusic("cancel") }
+    await fulfillment(of:[started],timeout:2)
+    task.cancel()
+    provider.searchReplies["cancel"]?.resume(returning:[DeviceTrack(id:"stale",title:"Synthetic",artist:"Fixture",artwork:nil)])
+    await task.value
+    XCTAssertTrue(session.tracks.isEmpty)
+    XCTAssertEqual(provider.pauseCalls,0)
+    XCTAssertFalse(session.busy.contains(.music))
   }
 
   func testWeatherNeverFallsBackToDemoAfterFailedConnection() async {
