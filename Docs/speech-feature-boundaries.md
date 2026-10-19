@@ -4,6 +4,8 @@
 
 **Recherche und Quellprüfung, keine Hilfsmittel-/Hardwareabnahme. #74 bleibt offen; F104/F105 bleiben ohne Parity.** Diese Funktionen sind nicht durch ein einziges Textfeld erfüllt.
 
+**Fortschritt nach diesem Quellbefund:** [Eigener App-Shortcut-Einstieg](assistant-app-shortcut.md) mit Compilermetadaten und direkter nativer Body-/Root-Prüfung. Die unten beschriebene fehlende Registrierung gilt für den datierten Stand `441f78a`; tatsächliche Systemausführung bleibt offen.
+
 ## Eigener Lieferumfang
 
 | Funktion | Tatsächlicher HomeView-Code | Was daraus nicht folgt |

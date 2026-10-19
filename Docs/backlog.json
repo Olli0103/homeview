@@ -1860,7 +1860,7 @@
       "F104",
       "F105"
     ],
-    "current": "Eigene Text-/On-device-Speech-/Antwortausgabe von OS-Live-Speech, Live-Captions und Vocal Shortcuts getrennt; RTT, App-Intent-Einstieg und eigene Medienuntertitel einzeln offen. Recherche mit Plattformmatrix, keine Hilfsmittel-/Hardwareabnahme.",
+    "current": "Eigene parameterlose App-Shortcut-Öffnung für iOS/macOS/visionOS mit Compilermetadaten und nativer Body-/Root-Prüfung; echte Siri-/Shortcuts-/Geräteausführung offen. Live Speech/Captions/Vocal Shortcuts und RTT/Medienuntertitel weiterhin getrennt bilanziert.",
     "tasks": [
       "App-eigene und OS-bereitgestellte Unterstützung getrennt erfassen",
       "Öffentliche App-Intents/Shortcuts und Untertitel für eigene Medien prüfen",
@@ -1876,7 +1876,9 @@
     "state": "open",
     "progress_evidence": [
       "Docs/speech-feature-boundaries.md",
-      "Docs/verification/speech-feature-boundaries.json"
+      "Docs/verification/speech-feature-boundaries.json",
+      "Docs/assistant-app-shortcut.md",
+      "Docs/verification/assistant-app-shortcut.json"
     ]
   },
   {

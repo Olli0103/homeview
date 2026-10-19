@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-20",
+  "issue": 74,
+  "status": "partial_issue_remains_open",
+  "product_commit": "e8c2a2d312324b035257104346983885bac88566",
+  "source_files": 198,
+  "source_digest": "245653c3a6e60b32948c0e272cf0d8abac382dae30fbde27c0faec5de50cc929",
+  "native_assertions": 20,
+  "native_checks": {
+    "consumed_request_does_not_replay": true,
+    "declared_immediate_foreground_mode": true,
+    "declared_local_device_authentication": true,
+    "deferred_warm_request_opens_on_active": true,
+    "expired_request_does_not_open": true,
+    "future_timestamp_does_not_open": true,
+    "initial_inactive_root_does_not_consume": true,
+    "no_system_alarm_ids": true,
+    "nonfinite_request_not_enqueued": true,
+    "one_declared_app_shortcut": true,
+    "open_does_not_write_saved_data": true,
+    "open_keeps_unsent_draft_and_reply": true,
+    "pre_root_perform_only_queues_UI_request": true,
+    "pre_root_request_opens_after_foreground": true,
+    "precancelled_perform_does_not_enqueue": true,
+    "reattached_root_consumes_fresh_request": true,
+    "warm_inactive_request_waits": true,
+    "warm_open_does_not_start_answer_or_playback": true,
+    "warm_open_does_not_unlock_personal_session": true,
+    "warm_perform_opens_existing_root": true
+  },
+  "native_binary_sha256": "030e9b90cabc04ebbb345b654b785077cf84e2a56237cd06cd4aec112d1aa172",
+  "native_scope": "Actual AppIntent.perform body, RootView and AppModel, synthetic ScenePhase and own UUID store; not OS invocation/authentication or a process cold start",
+  "UI_results": [
+    {
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_total_executions": 4,
+  "UI_unique_cases": 2,
+  "UI_new_cases": 0,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "metadata_readback": [
+    {
+      "platform": "iOS",
+      "file": "version.json",
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4",
+      "bytes": 53
+    },
+    {
+      "platform": "iOS",
+      "file": "extract.actionsdata",
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053",
+      "bytes": 1764
+    },
+    {
+      "platform": "macOS",
+      "file": "version.json",
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4",
+      "bytes": 53
+    },
+    {
+      "platform": "macOS",
+      "file": "extract.actionsdata",
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053",
+      "bytes": 1764
+    },
+    {
+      "platform": "visionOS",
+      "file": "version.json",
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4",
+      "bytes": 53
+    },
+    {
+      "platform": "visionOS",
+      "file": "extract.actionsdata",
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053",
+      "bytes": 1764
+    },
+    {
+      "platform": "tvOS",
+      "own_intent_present": false
+    },
+    {
+      "platform": "watchOS",
+      "own_intent_present": false
+    }
+  ],
+  "Core_new_tests": 0,
+  "Core_historical_tests": 291,
+  "Core_historical_commit": "5f12a7f7b75ca4c0de25cc59ddb8929bef3fb960",
+  "Core_test_files_unchanged": 68,
+  "decoded_PNGs": 6,
+  "contacts_viewed": 2,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/assistant-app-shortcut/iPad-assistant-draft-cleared-after-background.png",
+      "sha256": "6159b6fa2e0362733f19e2c4bfed229e98df5029474ef76a4d42276030ae8dcc",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-app-shortcut/iPad-assistant-keyboard-landscape-screen.png",
+      "sha256": "314d3afa14698d544e63301b563e3e21c1d25ef2798d767b60b3ce85dd01f3c6",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-app-shortcut/iPad-assistant-keyboard-portrait-screen.png",
+      "sha256": "7f7dfe53db2a3b4829095af3fcddcf4d4d611de463b54c986fbddec1ab6cd389",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-app-shortcut/iPhone-assistant-draft-cleared-after-background.png",
+      "sha256": "dbba06a0eba5fd3ae6bf64344273b29bed8b61f7b55b505f0d6c44a509f170cb",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-app-shortcut/iPhone-assistant-keyboard-landscape-screen.png",
+      "sha256": "f004abc7a270b10bc6926b600c511ff56be2100809946ea81a715ef7f0faaf94",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-app-shortcut/iPhone-assistant-keyboard-portrait-screen.png",
+      "sha256": "c8d005b2ebd863f23d100398d47e974961e763088df33cf4cd4196f10d32d3ea",
+      "device": "iPhone"
+    }
+  ],
+  "archives": {
+    "native": {
+      "archive": "assistant-app-shortcut-native-inputs.zip",
+      "sha256": "fffca60d2731029212ff07f51931991f3414e911a875bce3ba6ff26686d76c73",
+      "entries": 304,
+      "commit": "e8c2a2d312324b035257104346983885bac88566",
+      "all_entries_read_back": true
+    },
+    "sdk-metadata": {
+      "archive": "assistant-app-shortcut-sdk-metadata.zip",
+      "sha256": "1d35bc510de3eb9050df3a6b04be24eeb5be44c5024673ba1e3a367a87de44e8",
+      "entries": 210,
+      "all_entries_read_back": true,
+      "executable_binding": [
+        {
+          "platform": "iOS",
+          "executable_sha256": "813f20521925177f74aaa09c62fa31e7e08ed6717fc89035d0e0869505af7f73",
+          "bytes": 40224,
+          "executed_in_this_SDK_lane": false
+        },
+        {
+          "platform": "macOS",
+          "executable_sha256": "295a253c40f8649d106c59616d8ac0b021c48d8b362ec24d4dec6a8bbd256c80",
+          "bytes": 40224,
+          "executed_in_this_SDK_lane": false
+        },
+        {
+          "platform": "visionOS",
+          "executable_sha256": "eb8ccb597aff85da4b15ea808e19e5347f8ae00a2bc0e7c52a8d11c1ccb6d324",
+          "bytes": 40224,
+          "executed_in_this_SDK_lane": false
+        }
+      ]
+    },
+    "UI": {
+      "archive": "assistant-app-shortcut-ui-inputs.zip",
+      "entries": 226,
+      "sha256": "da3e06228209f15b7603642d4df8a054bce2af7ff3c270e54af5d0b6c8eb1b43",
+      "all_entries_read_back": true
+    }
+  },
+  "implementation": "Payload-free short-lived MainActor request from parameterless App Intent; only active RootView consumes once, shares footer action, expires after30s monotonic uptime. Immediate foreground/local-device-authentication declaration; older macOS uses openAppWhenRun compatibility property. No automatic capture/send/readout/unlock.",
+  "unproved": [
+    "System Siri/Shortcuts invocation and install/discovery",
+    "Actual locked-device authentication policy enforcement",
+    "Actual OS process cold start",
+    "Physical/acoustic voice use",
+    "macOS15 runtime",
+    "Multiwindow selection",
+    "tvOS/watchOS entry, deliberately not provided",
+    "Remaining F104/F105 OS features"
+  ],
+  "real_personal_data_used": false,
+  "Home_constructed": false,
+  "system_activity_created": false,
+  "OS_assistive_settings_changed": false
+}
