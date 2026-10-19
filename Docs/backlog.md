@@ -1181,7 +1181,9 @@ Abnahme: Face-Editor, Sperre, Timer, Kamera, Rezept und Verbindungen sind ohne p
 <a id="sys-11"></a>
 ### SYS-11: Live Speech, Captions, RTT und Shortcuts pro Plattform klären
 
-Texteingabe und eigene On-device-Spracherkennung vorhanden. Live Captions, RTT und Vocal Shortcuts sind nicht vollständig integriert.
+Eigene Text-/On-device-Speech-/Antwortausgabe von OS-Live-Speech, Live-Captions und Vocal Shortcuts getrennt; RTT, App-Intent-Einstieg und eigene Medienuntertitel einzeln offen. Recherche mit Plattformmatrix, keine Hilfsmittel-/Hardwareabnahme.
+
+[Plattformmatrix, öffentliche API-Pfade und offene Einzelabnahmen](speech-feature-boundaries.md).
 
 Offen:
 
