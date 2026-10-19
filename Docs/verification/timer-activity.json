@@ -1,0 +1,295 @@
+{
+  "date": "2026-10-19",
+  "issue": 51,
+  "status": "bounded_implementation_verified_issue_open",
+  "product_commit": "96f2d9a34c570702be86e9d8c9633f5ccde05fdd",
+  "current_test_commit": "377e76fb2765c18d08942bbc3a2e917868959aae",
+  "source_files": 197,
+  "source_digest": "3c5d0b1176f02a8854420e7b52a5096bb28cefd09e7791ce65e41354c277c1bc",
+  "source_equivalence": {
+    "Core": {
+      "files_unchanged": 68,
+      "qualification": "Core plus Core tests only"
+    },
+    "native": {
+      "files_unchanged": 196,
+      "qualification": "All captured product/resource/project/generator inputs unchanged; UITest-only changes excluded"
+    },
+    "SDK": {
+      "files_unchanged": 196,
+      "qualification": "All captured product/resource/project/generator inputs unchanged; UITest-only changes excluded"
+    }
+  },
+  "Core": {
+    "tests": 291,
+    "failures": 0,
+    "new_cases": 9,
+    "commit": "5f12a7f7b75ca4c0de25cc59ddb8929bef3fb960",
+    "qualification": "Full run bound to historical checkpoint; current Core and test bytes equal"
+  },
+  "native": {
+    "assertions": 25,
+    "failures": 0,
+    "commit": "416031046234aff46acf0550eb6ab198114f2b1c",
+    "backend": "Production Fixture backend only; no system ActivityKit or acoustics in native probe"
+  },
+  "SDK": {
+    "builds": 5,
+    "commit": "96f2d9a34c570702be86e9d8c9633f5ccde05fdd",
+    "platforms": [
+      "iOS",
+      "macOS",
+      "tvOS",
+      "visionOS",
+      "watchOS"
+    ],
+    "qualification": "Compilation only. Native ActivityKit adapter enabled on iOS/iPadOS, not Mac/tvOS/visionOS/watchOS."
+  },
+  "UI": {
+    "unique_cases": 3,
+    "total_historical": {
+      "executions": 13,
+      "passed": 8,
+      "failed": 5,
+      "skipped": 0,
+      "runtime_warnings": 0
+    },
+    "effective_functional_executions": 4,
+    "effective_system_executions": 2,
+    "effective_system_checkpoints": {
+      "iPhone": "timer-activity-system-v6",
+      "iPad": "timer-activity-system-ipad-v8"
+    },
+    "system_scope": "Actual own ActivityKit registry start, pause, resume and cleanup to zero on both simulators; generic no-title payload. No foreign activities operated."
+  },
+  "visual": {
+    "exported_pngs_decoded": 24,
+    "additional_failure_video_frames": 1,
+    "contacts_viewed": 7,
+    "outside_full_frames_viewed": 4,
+    "iPhone": "Bounded PASS: own compact Dynamic Island icon and countdown visible on stable Home screen at v6. No expanded/minimal/LockScreen/original/hardware acceptance.",
+    "iPad": "Registry PASS, stable Home screen observed at v8; no activity presentation visible there. iPad Lock Screen appearance NOT assessed.",
+    "historical_capture_failures": "Both v5 outside images caught Home animation; not visibility evidence. v6 iPad asserted foreground state too early, then fresh owned opt-out store launched; final v8 waits actual state and verifies registry cleanup before final assertion.",
+    "selected_images": [
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPad-synthetic-timer-live-activity-synthetic-off.png",
+        "sha256": "b924139b75c7fc046536e3618ff81cf636487812a7824eed436282206e46252f",
+        "checkpoint": "timer-activity-ui-v5",
+        "device": "iPad",
+        "state": "timer-live-activity-synthetic-off"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPad-synthetic-timer-live-activity-synthetic-opted-in.png",
+        "sha256": "20e467bd0c1bef27e2a5561e2c19a791ce8c6a30c220d383a780523596fce55d",
+        "checkpoint": "timer-activity-ui-v5",
+        "device": "iPad",
+        "state": "timer-live-activity-synthetic-opted-in"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPad-synthetic-timer-live-activity-synthetic-explicit-restart.png",
+        "sha256": "20e467bd0c1bef27e2a5561e2c19a791ce8c6a30c220d383a780523596fce55d",
+        "checkpoint": "timer-activity-ui-v5",
+        "device": "iPad",
+        "state": "timer-live-activity-synthetic-explicit-restart"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPhone-synthetic-timer-live-activity-synthetic-off.png",
+        "sha256": "a7233d435778133c772a240dbe5442affcee74d7c70cdad808fa083818aa2f8a",
+        "checkpoint": "timer-activity-ui-v5",
+        "device": "iPhone",
+        "state": "timer-live-activity-synthetic-off"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPhone-synthetic-timer-live-activity-synthetic-opted-in.png",
+        "sha256": "724206b5c7a1fab87d6efaf2c8602b7aab3fa1c410cdf75ca0a4972d6ba40f10",
+        "checkpoint": "timer-activity-ui-v5",
+        "device": "iPhone",
+        "state": "timer-live-activity-synthetic-opted-in"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPhone-synthetic-timer-live-activity-synthetic-explicit-restart.png",
+        "sha256": "ebe88ee4f7f40771d522445ad36763f117d56c0e80dd0c3a875ea6f19900cfe0",
+        "checkpoint": "timer-activity-ui-v5",
+        "device": "iPhone",
+        "state": "timer-live-activity-synthetic-explicit-restart"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPhone-system-timer-system-activity-own-registry-cleaned.png",
+        "sha256": "8192853e4baee0ec3380608121a7da29690cb375bd4dc8c5c88ad84c559844a9",
+        "checkpoint": "timer-activity-system-v6",
+        "device": "iPhone",
+        "state": "timer-system-activity-own-registry-cleaned"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPhone-system-timer-system-activity-outside-app.png",
+        "sha256": "d81f5bcfd2262484b9440779465b0975aaa77fff16ac9c09b822d3b1c93df39e",
+        "checkpoint": "timer-activity-system-v6",
+        "device": "iPhone",
+        "state": "timer-system-activity-outside-app"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPhone-system-timer-system-activity-own-registry-paused.png",
+        "sha256": "e848ba043d57b447193f87a7d9b4272ffe20b7a51b1a4c8ecbcf3492ec10ab1c",
+        "checkpoint": "timer-activity-system-v6",
+        "device": "iPhone",
+        "state": "timer-system-activity-own-registry-paused"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPhone-system-timer-system-activity-own-registry-running.png",
+        "sha256": "9f13d24ea358c36022e920faa4fbd1f95e5322d946dcf47c7f39c32c9fe27e44",
+        "checkpoint": "timer-activity-system-v6",
+        "device": "iPhone",
+        "state": "timer-system-activity-own-registry-running"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPad-system-timer-system-activity-own-registry-cleaned.png",
+        "sha256": "4efe3c3f9910189937e00fb5f230f1adaa883e80f49824caa71d413f4824d245",
+        "checkpoint": "timer-activity-system-ipad-v8",
+        "device": "iPad",
+        "state": "timer-system-activity-own-registry-cleaned"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPad-system-timer-system-activity-outside-app.png",
+        "sha256": "9060fb27e3c83b550ccad194a8903b980197b361ac851eaa613500f98e52225a",
+        "checkpoint": "timer-activity-system-ipad-v8",
+        "device": "iPad",
+        "state": "timer-system-activity-outside-app"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPad-system-timer-system-activity-own-registry-paused.png",
+        "sha256": "7685872b859dc4ee3eeeb40a3975270705634848f661f9f7e7bc6274afdbfd6a",
+        "checkpoint": "timer-activity-system-ipad-v8",
+        "device": "iPad",
+        "state": "timer-system-activity-own-registry-paused"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/iPad-system-timer-system-activity-own-registry-running.png",
+        "sha256": "1178f8eb43797cf35a45e58c408e7f8db829e63a7a533930549506022e4359c9",
+        "checkpoint": "timer-activity-system-ipad-v8",
+        "device": "iPad",
+        "state": "timer-system-activity-own-registry-running"
+      },
+      {
+        "path": "Docs/screenshots/timer-live-activity/historical-toggle-row-midpoint.png",
+        "sha256": "d98732a015b2b44a61411fffbabfe02cfebb2d87a6149445bd6d3851405b21bc",
+        "checkpoint": "timer-activity-ui-v4",
+        "scope": "Historical failed pointer target, not a product rendering failure"
+      }
+    ]
+  },
+  "preparation_failures": {
+    "preliminary_macro": {
+      "executed_cases": 0,
+      "scope": "Split multi-variable declarations under Observation macro."
+    },
+    "first_builds": {
+      "Core_executions": 0,
+      "UI_executions": 0,
+      "cause": "Test helper visibility and ActivityKit handle actor isolation."
+    },
+    "v2_builds": {
+      "UI_executions": 0,
+      "cause": "Widget bundle ID not prefixed with host."
+    },
+    "v3_UI_build": {
+      "UI_executions": 0,
+      "cause": "Unsupported XCTest initializer label."
+    },
+    "native_v2": {
+      "executed_cases": 0,
+      "cause": "Throwing Boolean autoclosure in external probe."
+    },
+    "native_v3": {
+      "executed_cases": 0,
+      "cause": "External batch-mode link missing temporary objects; exact compiler cause unknown, reverted invocation."
+    },
+    "v7_plan": {
+      "executed_cases": 0,
+      "build_started": false
+    },
+    "iPad_only_sealer": {
+      "executed_cases": 0,
+      "scope": "Generic two-device image sealer stopped after decoding iPad because iPhone folder intentionally absent; remaining archive stage resumed without rewriting contact."
+    }
+  },
+  "archives": {
+    "timer-activity-first-build-failures.zip": {
+      "archive": "timer-activity-first-build-failures.zip",
+      "entries": 208,
+      "sha256": "17728315a227498eeb631f48b9a7082a177208a2ef0cfc224cc593e179166964",
+      "all_entries_read_back": true
+    },
+    "timer-activity-v2-build-failures.zip": {
+      "archive": "timer-activity-v2-build-failures.zip",
+      "entries": 203,
+      "sha256": "bda2cbdd4bb30d3cbe603661172a85170b09603c255f484281b535c721811bfe",
+      "all_entries_read_back": true
+    },
+    "timer-activity-v3-ui-compile-failure.zip": {
+      "archive": "timer-activity-v3-ui-compile-failure.zip",
+      "entries": 201,
+      "sha256": "4e1f446c17960fd63a25cf03acbd914ec422bb566ea60fbbc51ec5c92aa602c2",
+      "all_entries_read_back": true
+    },
+    "timer-activity-core-v2-inputs.zip": {
+      "archive": "timer-activity-core-v2-inputs.zip",
+      "entries": 205,
+      "sha256": "bdfcd6840f923dda469c729c20468c6531faf90758e290d521a726c0c4447b65",
+      "all_entries_read_back": true
+    },
+    "timer-activity-native-v4-inputs.zip": {
+      "archive": "timer-activity-native-v4-inputs.zip",
+      "entries": 301,
+      "sha256": "3089cf00a7610b52f5d4e39b560ca98314cc324a4f5508be94536fec37e8d7e8",
+      "all_entries_read_back": true
+    },
+    "timer-activity-v3-sdk-inputs.zip": {
+      "archive": "timer-activity-v3-sdk-inputs.zip",
+      "entries": 259,
+      "sha256": "6196f6bdb70be221cffded6795f3882fb940573ba7ef65bd5a8805058b3860ac",
+      "all_entries_read_back": true
+    },
+    "timer-activity-ui-v4-inputs.zip": {
+      "archive": "timer-activity-ui-v4-inputs.zip",
+      "entries": 223,
+      "sha256": "3cc56abd297b8811df111a6e3fc415cf4f85ecb888fa808e2f334058a06dd26f",
+      "all_entries_read_back": true
+    },
+    "timer-activity-ui-v5-inputs.zip": {
+      "archive": "timer-activity-ui-v5-inputs.zip",
+      "entries": 223,
+      "sha256": "2d50dbde7a9f1f75a30dede3fe42e20ded286d73e01915c9e848054594c0f970",
+      "all_entries_read_back": true
+    },
+    "timer-activity-system-v5-inputs.zip": {
+      "archive": "timer-activity-system-v5-inputs.zip",
+      "entries": 223,
+      "sha256": "d8a3444ab743ae0317f3ce1b838af0782b553add1603dc8c5d1bf62b26362d09",
+      "all_entries_read_back": true
+    },
+    "timer-activity-system-v6-inputs.zip": {
+      "archive": "timer-activity-system-v6-inputs.zip",
+      "entries": 223,
+      "sha256": "f04a5bf22bf4cdd9784e1bbbfdc0556ddda7ac6f9f38947fa2079d47c26ef1be",
+      "all_entries_read_back": true
+    },
+    "timer-activity-system-ipad-v8-inputs.zip": {
+      "archive": "timer-activity-system-ipad-v8-inputs.zip",
+      "entries": 223,
+      "sha256": "c695be7d0af9fea345c14edd86efefb876700ea30e2390aefae4a0ee439da2b6",
+      "all_entries_read_back": true
+    }
+  },
+  "privacy": "Only counts, earliest deadline and minimum paused seconds. No timer titles, IDs, profiles, messages, calendar or account fields. Off revokes RAM consent independently of save; failed durable off is explicitly session-only with retry.",
+  "limitations": [
+    "No alarm/chime or guaranteed background alert",
+    "Stale content is not autonomous expiry cleanup while app is suspended",
+    "ActivityKit system duration limit; Apple documents eight hours active and up to four more on Lock Screen",
+    "Physical devices, iPad Lock Screen, expanded/minimal, paired-device mirroring, multiple-window policy, power/energy, live permission revocation and force-quit/crash matrix unproved",
+    "Already handed-off OS updates are not atomically undone; serialized latest-state convergence after completion only"
+  ],
+  "real_personal_data_used": false,
+  "Home_constructed": false,
+  "real_system_activities_used": true,
+  "system_activities_scope": "Only own synthetic timers on named iPad/iPhone simulators; final own registry zero on each"
+}

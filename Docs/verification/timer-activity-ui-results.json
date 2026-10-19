@@ -1,0 +1,109 @@
+[
+  {
+    "checkpoint": "timer-activity-ui-v4",
+    "source_digest": "9c5e7427ed6efed55156f14f35dce305c8d4b7c206473f8f65d9ffd031b41a22",
+    "compiled_inputs": 26,
+    "executions": [
+      {
+        "device": "iPad",
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 65
+      },
+      {
+        "device": "iPhone",
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 65
+      }
+    ]
+  },
+  {
+    "checkpoint": "timer-activity-ui-v5",
+    "source_digest": "5001aa28cb6a68e1c16c3d14fdc864db5847e8b9e40ffaea918e86c713da5adf",
+    "compiled_inputs": 26,
+    "executions": [
+      {
+        "device": "iPad",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 0
+      },
+      {
+        "device": "iPhone",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 0
+      }
+    ]
+  },
+  {
+    "checkpoint": "timer-activity-system-v5",
+    "source_digest": "5001aa28cb6a68e1c16c3d14fdc864db5847e8b9e40ffaea918e86c713da5adf",
+    "compiled_inputs": 26,
+    "executions": [
+      {
+        "device": "iPad",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 0
+      },
+      {
+        "device": "iPhone",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 0
+      }
+    ]
+  },
+  {
+    "checkpoint": "timer-activity-system-v6",
+    "source_digest": "ae3d774b83d970d220bd2bae3e168b71dbf99453bff1f0ddf16f77e8f96c4ff6",
+    "compiled_inputs": 26,
+    "executions": [
+      {
+        "device": "iPad",
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 65
+      },
+      {
+        "device": "iPhone",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 0
+      }
+    ]
+  },
+  {
+    "checkpoint": "timer-activity-system-ipad-v8",
+    "source_digest": "3c5d0b1176f02a8854420e7b52a5096bb28cefd09e7791ce65e41354c277c1bc",
+    "compiled_inputs": 26,
+    "executions": [
+      {
+        "device": "iPad",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": 0,
+        "exit_code": 0
+      }
+    ]
+  }
+]

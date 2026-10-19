@@ -853,7 +853,7 @@ Abhängigkeiten: SYS-12.
 <a id="day-05"></a>
 ### DAY-05: Live Activities für Timer und zulässige Aktivitäten implementieren
 
-App-interne Aktivitätsleiste ist vorhanden. Keine vollständige ActivityKit-Erweiterung für andere Apps oder Sperrbildschirm.
+Eigene opt-in Timer-Live-Activity mit WidgetKit-Erweiterung ergänzt. Tatsächlicher System-Read-back auf iPad/iPhone, kompakte iPhone-Anzeige außerhalb der App gesichtet. iPad-Lock-Screen, Hardware und suspendierte Ablaufmatrix bleiben offen. [Quellengebundene Teilumsetzung und historische Fehler](timer-live-activity.md).
 
 Offen:
 

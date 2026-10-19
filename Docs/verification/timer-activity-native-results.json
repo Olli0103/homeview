@@ -1,0 +1,40 @@
+{
+  "exit_code": 0,
+  "binary_sha256": "17b8ff1a88a52dc6c26d9a3d7c2aa4e86f3eb37a22ae4abc0d7a500185fe60ce",
+  "result": {
+    "acoustic_test": false,
+    "actual_AppModel": true,
+    "assertions": 25,
+    "backend": "Fixture only; no ActivityKit system activity",
+    "checks": {
+      "actual_authorized_reset_succeeds": true,
+      "actual_projection_one_running_timer": true,
+      "actual_restart_stays_off": true,
+      "canary_unchanged": true,
+      "default_opt_out": true,
+      "explicit_preference_saved": true,
+      "explicit_restart_action_can_start": true,
+      "explicit_saved_timer_starts_fixture": true,
+      "explicit_show_cannot_bypass_session_revocation": true,
+      "failed_opt_out_save_does_not_keep_runtime_consent": true,
+      "failed_opt_out_save_is_visible": true,
+      "failed_opt_out_save_still_ends_fixture": true,
+      "generic_public_timer_may_continue_after_personal_lock": true,
+      "no_system_alarm_ids": true,
+      "old_saved_preference_not_falsely_claimed_off": true,
+      "original_store_unchanged_on_failure": true,
+      "projection_has_no_title_or_profile": true,
+      "reset_clears_timer_consent_and_activity": true,
+      "restart_does_not_implicitly_request_new_activity": true,
+      "restart_remembers_enabled_preference": true,
+      "retry_saves_off_and_clears_pending": true,
+      "saved_expired_timer_ends_activity": true,
+      "saved_pause_projects_paused_state": true,
+      "unsaved_timer_not_projected": true,
+      "unsaved_timer_rejected": true
+    },
+    "failed": [],
+    "owned_uuid": "48D58A9F-6144-44F8-8C9C-90FE227CA8DF",
+    "verdict": "PASS"
+  }
+}

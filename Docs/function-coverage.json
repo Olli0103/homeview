@@ -2058,7 +2058,8 @@
       "DAY-05"
     ],
     "current": [
-      "App-interne Aktivitätsleiste ist vorhanden. Keine vollständige ActivityKit-Erweiterung für andere Apps oder Sperrbildschirm."
+      "App-interne Aktivitätsleiste bleibt separat. Eigene opt-in Timer-Live-Activity über öffentliche ActivityKit-/WidgetKit-Erweiterung für iOS/iPadOS ergänzt; nur generische Zähler/Fristen, keine privaten Titel.",
+      "Start/Pause/Fortsetzen/Cleanup mit tatsächlichem Registry-Read-back auf beiden Simulatoren; kompakte Dynamic Island außerhalb der iPhone-App sichtbar. iPad-Home-Screen zeigt keine Aktivität; Lock Screen, Hardware, suspendierter Ablauf und Originalumfang unbewiesen. Docs/timer-live-activity.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2071,9 +2072,9 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
-      "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "functional": "bounded own timer software lifecycle, persistence and simulator system registry passed; broader matrix pending",
+      "visual": "bounded compact iPhone Dynamic Island observed; iPad Lock Screen, expanded/minimal and original comparison pending",
+      "device_service": "iPhone/iPad simulator registry passed; physical and paired-device acceptance pending"
     },
     "completion_criteria": [
       "Auf unterstütztem Simulator und Hardware außerhalb der App sichtbar, Pause/Ende konsistent und keine verwaisten Aktivitäten."

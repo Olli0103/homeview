@@ -1262,7 +1262,7 @@
     "functions": [
       "F066"
     ],
-    "current": "App-interne Aktivitätsleiste ist vorhanden. Keine vollständige ActivityKit-Erweiterung für andere Apps oder Sperrbildschirm.",
+    "current": "Eigene opt-in ActivityKit-/WidgetKit-Timeranzeige mit generischem Payload implementiert; 291 Coretests, 25 native Fixture-Assertions und fünf SDKs. Tatsächliche Registry Start/Pause/Fortsetzen/Cleanup auf iPad/iPhone geprüft; iPhone kompakt außerhalb der App sichtbar. iPad-Lock-Screen, Hardware, suspendierter Ablauf und vollständige Matrix offen. Docs/timer-live-activity.md.",
     "tasks": [
       "Öffentliche ActivityKit-Unterstützung pro Ziel prüfen",
       "Eigene Timeraktivität mit Statuswechsel, Ablauf und Cleanup implementieren",
@@ -1275,7 +1275,11 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/51",
     "issue_number": 51,
-    "state": "open"
+    "state": "in_progress",
+    "progress_evidence": [
+      "Docs/timer-live-activity.md",
+      "Docs/verification/timer-activity.json"
+    ]
   },
   {
     "key": "DAY-06",
