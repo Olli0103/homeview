@@ -103,6 +103,62 @@ final class DeviceConnectionTests: XCTestCase {
     }
   }
 
+  func testPersistedConnectionRevocationSurvivesSessionRecreation() async {
+    let suite = "org.example.homeview.tests.connections." + UUID().uuidString
+    let defaults = UserDefaults(suiteName: suite)!
+    defer { defaults.removePersistentDomain(forName: suite) }
+    let provider = Provider()
+    provider.weatherValue = WeatherReading(city:"Berlin",temperature:68,high:70,low:50,humidity:50,wind:10,code:0,sunset:nil,utcOffset:0,observedAt:Date())
+    let session = DeviceConnections(provider:provider,testing:false,defaults:defaults)
+    session.weatherUnits = .celsius
+    for kind in DataConnection.allCases {
+      await session.connect(kind)
+      XCTAssertTrue(defaults.bool(forKey:"HomeView.connected." + kind.rawValue))
+    }
+    XCTAssertEqual(provider.eventReads,0)
+    XCTAssertEqual(provider.reminderReads,0)
+    let requests = provider.permissionRequests
+    let restored = DeviceConnections(provider:provider,testing:false,defaults:defaults)
+    await restored.restore()
+    XCTAssertEqual(restored.enabled,Set(DataConnection.allCases))
+    XCTAssertEqual(restored.weatherUnits,.celsius)
+    XCTAssertEqual(restored.city,"Berlin")
+    XCTAssertEqual(provider.permissionRequests,requests)
+    XCTAssertEqual(provider.eventReads,0)
+    XCTAssertEqual(provider.reminderReads,0)
+    for kind in DataConnection.allCases {
+      restored.disconnect(kind)
+      XCTAssertFalse(defaults.bool(forKey:"HomeView.connected." + kind.rawValue))
+    }
+    let disconnected = DeviceConnections(provider:provider,testing:false,defaults:defaults)
+    await disconnected.restore()
+    XCTAssertTrue(disconnected.enabled.isEmpty)
+    XCTAssertTrue(disconnected.requested.isEmpty)
+    XCTAssertNil(disconnected.weather)
+    XCTAssertEqual(provider.permissionRequests,requests)
+  }
+  func testLatePermissionCannotPersistARevokedConnection() async {
+    let suite = "org.example.homeview.tests.connections." + UUID().uuidString
+    let defaults = UserDefaults(suiteName:suite)!
+    defer { defaults.removePersistentDomain(forName:suite) }
+    let provider = Provider();provider.delayAuthorization = true
+    let session = DeviceConnections(provider:provider,testing:false,defaults:defaults)
+    let started = expectation(description:"permission suspended")
+    provider.onStart = { started.fulfill() }
+    let task = Task { await session.connect(.calendar) }
+    await fulfillment(of:[started],timeout:2)
+    session.disconnect(.calendar)
+    provider.authorizationReply?.resume()
+    await task.value
+    XCTAssertFalse(defaults.bool(forKey:"HomeView.connected.Calendar"))
+    XCTAssertEqual(session.status[.calendar],"Disconnected")
+    XCTAssertTrue(session.enabled.isEmpty)
+    XCTAssertEqual(provider.eventReads,0)
+    let next = DeviceConnections(provider:provider,testing:false,defaults:defaults)
+    await next.restore()
+    XCTAssertTrue(next.requested.isEmpty)
+  }
+
   func testWeatherNeverFallsBackToDemoAfterFailedConnection() async {
     let provider = Provider(); let session = DeviceConnections(provider: provider)
     XCTAssertTrue(session.weatherDemo)
