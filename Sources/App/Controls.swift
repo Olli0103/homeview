@@ -176,10 +176,14 @@ struct AssistantView: View {
   @State private var voiceDraftGeneration = 0
   @State private var draftBeforeVoice = ""
   @State private var language = "de-DE"
+  @State private var showingCapabilities = false
   @State private var voice = VoiceInputController()
   var body: some View {
     VStack(alignment: .leading, spacing: 22) {
       AppHeader()
+      Button("Capabilities and limits") { showingCapabilities=true }
+        .font(.system(size:18)).disabled(voice.busy).accessibilityIdentifier("assistant.capabilities")
+        .padding(.horizontal,34)
       Text(model.assistantReply).font(.system(size: 35, weight: .medium)).padding(.horizontal, 34)
         .frame(maxHeight: .infinity, alignment: .top).padding(.top, 24).accessibilityIdentifier(
           "assistant.reply")
@@ -231,6 +235,7 @@ struct AssistantView: View {
       Text("Local demo assistant · Not connected to Siri AI").font(.system(size: 16))
         .foregroundStyle(.gray).padding(.horizontal, 34).padding(.bottom, 24)
     }.background(.white).foregroundStyle(.black)
+      .sheet(isPresented:$showingCapabilities) { AssistantCapabilitiesView() }
       .onChange(of: voice.transcript) { _, value in if !value.isEmpty { text = value } }
       .onChange(of: scenePhase) { _, phase in
         if phase == .background || (phase != .active && voice.phase != .preparing) {

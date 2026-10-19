@@ -3511,3 +3511,31 @@ extension HomeViewUITests {
     viewportShot("rss-connected-music-resume-focus")
   }
 }
+
+
+extension HomeViewUITests {
+  func testAssistantCapabilitiesExplainLocalScopeAndLeaveDraftUnsent() {
+    launch()
+    tap("nav.assistant")
+    let request=app.textFields["assistant.input"]
+    request.tap();request.typeText("Timer auf 90 Sekunden")
+    tap("assistant.capabilities")
+    let service=app.staticTexts["assistant.capabilities.service"]
+    XCTAssertTrue(service.waitForExistence(timeout:5))
+    XCTAssertTrue(service.label.contains("No Siri AI or cloud AI provider"))
+    XCTAssertTrue(app.staticTexts["assistant.capabilities.languages"].label.contains("Replies are currently English"))
+    let limits=app.staticTexts["assistant.capabilities.limits"]
+    for _ in 0..<6 where !limits.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(limits.label.contains("30 seconds"));XCTAssertTrue(limits.label.contains("1000 characters"))
+    shot("assistant-capability-limits")
+    let subscriptions=app.staticTexts["assistant.capabilities.subscriptions"]
+    for _ in 0..<6 where !subscriptions.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(subscriptions.label.contains("No cloud AI quota or subscription"))
+    XCTAssertTrue(subscriptions.label.contains("Apple Home is not connected"))
+    tap("assistant.capabilities.done")
+    XCTAssertEqual(request.value as? String,"Timer auf 90 Sekunden")
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    XCTAssertFalse(app.buttons["assistant.voice.cancel"].exists)
+    viewportShot("assistant-capability-return-unsent-draft")
+  }
+}
