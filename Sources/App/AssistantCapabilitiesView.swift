@@ -27,6 +27,8 @@ struct AssistantCapabilitiesView: View {
             "Uses this device’s SystemLanguageModel only. No cloud fallback, API key, subscription, web search or app-data access. Only your explicitly sent text and this temporary conversation enter the model. Answers can be wrong or outdated; verify important facts. Requires a supported device, OS and ready Apple Intelligence model. HomeView does not enable it or download a model.",id:"ondevice")
           entry("Conversation limits",
             "Up to 4 exchanges and 6000 characters in total; 1000 per question, 4000 per answer, up to 400 generated tokens and 45 seconds per response. The system context may fill sooner. Stop, New, leaving the assistant, background, lock and profile changes discard the entire conversation. Nothing is saved. No automatic retry or cloud fallback.",id:"context")
+          entry("History and device continuation · Not available",
+            "This is HomeView’s temporary on-device conversation, not your Siri history. Nothing is saved or synced to iCloud or another device. New clears this conversation; Stop also discards a pending reply. Leaving the assistant, background, lock and profile changes clear it too. A new app launch starts empty. HomeView cannot read or delete your Siri history.",id:"history")
           entry("Local commands · Available",
             "A limited command parser, not a conversational AI. No Siri AI or cloud AI provider is connected. On-device answers are a separate optional mode.",id:"service")
           entry("Languages",

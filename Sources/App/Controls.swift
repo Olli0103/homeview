@@ -215,6 +215,9 @@ struct AssistantView: View {
                 ? "Stopped. Conversation cleared; no action was taken.":"Conversation cleared. Nothing is saved.")
             }.accessibilityIdentifier("assistant.ai.reset")
           }
+          Text("Temporary · Not Siri history · No device sync")
+            .font(.system(size:12)).foregroundStyle(.gray)
+            .accessibilityIdentifier("assistant.ai.history.scope")
           Text(model.assistantAI.status).font(.system(size:14)).foregroundStyle(.gray)
             .accessibilityIdentifier("assistant.ai.status")
         }.padding(.horizontal,34)
