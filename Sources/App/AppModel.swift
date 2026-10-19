@@ -1047,7 +1047,7 @@ final class AppModel {
   #if !os(watchOS)
   @discardableResult
   func applyRecipeTransfer(_ transfer:RecipeTransfer) -> Bool {
-    guard connections.personalUnlocked else { return false }
+    guard !Task.isCancelled,connections.personalUnlocked else { return false }
     do {
       let target=try RecipeContinuity.resolve(transfer,recipes:[data.recipe]+data.pinnedRecipes)
       let previous=data
