@@ -733,15 +733,9 @@ Abgeschlossen am19.Oktober2026 im Informationsumfang: Eigene Informationsansicht
 <a id="com-01"></a>
 ### COM-01: FaceTime-Annahme und aktive Anrufsteuerung als API-Lücke bilanzieren
 
-Annehmen, Ablehnen und aktive Anrufansicht sind lokale Simulation. Es gibt keine Kontrolle über laufende FaceTime-Anrufe.
+Abgeschlossen am 19. Oktober 2026 im API-Abgrenzungs- und Produkttrennungsumfang. Aktionsweiser [Fähigkeitsbericht](facetime-control-boundary.md), eigene CallKit-/LiveCommunicationKit-Typen und tatsächliche Systemübergabe bleiben getrennt. Die lokale Vorschau ist standardmäßig geschlossen; eingehende/aktive Demo und Mikrofon-/Videowerte nennen die Simulation ausdrücklich.
 
-Offen:
-
-- Öffentliche Unterstützung für eingehende und aktive FaceTime-Sitzungen prüfen
-- Eigene CallKit-/Videoengine nicht als FaceTime ausgeben
-- Unzugängliche Steuerelemente im normalen Produktpfad klar trennen oder deaktivieren
-
-Abnahme: Fähigkeitsbericht je Aktion; ein animierter Mockanruf ist keine Live-Abnahme. Automatische Tests platzieren keine Anrufe.
+Sechs iPad-/iPhone-Ausführungen, fünf SDK-Builds und zehn einzeln bilanzierte API-Typprüfungen. Keine echten Anrufe, Kamera, Mikrofon oder Systemtransaktionen. Die Existenz von Aktionstypen beweist keine FaceTime-Steuerrechte. F053/F054 bleiben blocked/parity=false; dies ist keine Original- oder Live-Abnahme.
 
 Abhängigkeiten: BASE-01.
 

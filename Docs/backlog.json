@@ -1057,10 +1057,11 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/42",
     "issue_number": 42,
-    "state": "open",
+    "state": "completed",
     "progress_evidence": [
       "Docs/facetime-control-boundary.md"
-    ]
+    ],
+    "implementation_note": "Abgeschlossen ist der explizite API-Abgrenzungsauftrag und die Trennung der lokalen Simulation, nicht FaceTime-Livefunktion. F053/F054 bleiben blocked/parity=false. Doc-Beleg ddeaf87; sechs UI-Ausführungen, fünf SDK-Builds und zehn getrennt bilanziert erfolgreiche/unverfügbare Typprüfungen; keine echten Anrufe."
   },
   {
     "key": "COM-02",
