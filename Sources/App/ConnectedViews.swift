@@ -164,7 +164,7 @@ struct DeviceRemindersView: View {
 struct DeviceMusicView: View {
   @Environment(AppModel.self) private var model
   @State private var query = ""
-  @State private var browsing = true
+  @State private var browsing = false
   @FocusState private var queryFocused: Bool
   var body: some View {
     VStack(spacing: 12) {
@@ -197,7 +197,7 @@ struct DeviceMusicView: View {
             Image(systemName: "backward.fill")
           }
           Button {
-            Task { await model.connections.toggleMusic() }
+            model.togglePlayback()
           } label: {
             Image(systemName: model.connections.musicPlaying ? "pause.fill" : "play.fill")
           }.accessibilityIdentifier("music.connected.play").accessibilityLabel(

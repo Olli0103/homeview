@@ -116,6 +116,8 @@ extension Snapshot {
     output.faceConfigurations = table("faceConfigurations",limit:Face.allCases.count)
     let widgets = value("widgets",fallback.widgets)
     output.widgets = widgets.count == 4 && widgets.allSatisfy({ $0.count <= 80 }) ? widgets : fallback.widgets
+    let podcasts = value("podcasts",fallback.podcasts)
+    output.podcasts = podcasts.normalized
     output.worldClockZones = WorldCity.normalized(value("worldClockZones",fallback.worldClockZones))
     return output
   }
