@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-19",
+  "issue": 80,
+  "status": "partial_issue_remains_open",
+  "code_commit": "e20c843b0dcd94789266f3d4b8d0a95454ad687e",
+  "production_code_commit": "f489aef5982df122c5a4770917234e78f2650642",
+  "source_digest": "55e2686bae524db87f57429900730a2ab0b55d13fe3ebe957c1406639d4edbfc",
+  "source_files": 189,
+  "native": {
+    "verdict": "PASS",
+    "cases": 3,
+    "assertions": 55,
+    "target": "f489aef5982df122c5a4770917234e78f2650642",
+    "compiled_source_matches_git": true,
+    "clean_before_after": true,
+    "synthetic_images_only": true
+  },
+  "archives": {
+    "photo-write-baseline": {
+      "entries": 112,
+      "sha256": "c92f12d42b413f495f4d5213d089a276c68c462e9fcf1bf2fdef0011e8465594",
+      "all_entries_read_back": true,
+      "cases": 3,
+      "failed_cases": 3,
+      "failed_assertions": 10,
+      "source_commit": "0eccf62e9d1d650f1fbaf38d43f26c52e04aef58"
+    },
+    "photo-write-final": {
+      "entries": 113,
+      "sha256": "9ba62eb221b9139cfa59708131dcb1a49aec31e5a41858f7965038a9bc895e96",
+      "all_entries_read_back": true
+    }
+  },
+  "UI_checkpoints": [
+    {
+      "id": "photo-write-ui",
+      "code_commit": "f489aef5982df122c5a4770917234e78f2650642",
+      "passed": 5,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "5ab2093051224e59c3a3efa01ddb520be323fdc32196285e392802c84743b724",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_app_read_back": true,
+      "archive": "photo-write-ui-inputs.zip",
+      "entries": 211,
+      "sha256": "f3989a3362cb2087a8a1335034f30a725bb21a8b77932f6f4ebc0efbc11e3a6d",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "photo-write-diagnostic-safe",
+      "code_commit": "d5bd711148e836023bbf41d7adaf4a7ef92379ca",
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "0109d063c6d1d556e2239e7a85a28fae1c99659568f96da0afb6d90346a2ff7f",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_app_read_back": true,
+      "archive": "photo-write-diagnostic-safe-inputs.zip",
+      "entries": 211,
+      "sha256": "0fb61e4102dbdad44b2c21b6e3ac4f0f711908a0021514bb52e0f5304d423cc5",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "photo-write-crop",
+      "code_commit": "e20c843b0dcd94789266f3d4b8d0a95454ad687e",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "55e2686bae524db87f57429900730a2ab0b55d13fe3ebe957c1406639d4edbfc",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_app_read_back": true,
+      "archive": "photo-write-crop-inputs.zip",
+      "entries": 211,
+      "sha256": "fa6232c3bda36030ba5776d8deda1173a99d27b47ec845b5d053efbfe92a5512",
+      "all_entries_read_back": true
+    }
+  ],
+  "UI_executions": 10,
+  "UI_successful_executions": 8,
+  "UI_historical_failures": 2,
+  "UI_unique_methods": 3,
+  "UI_final_revision_executions": 2,
+  "UI_qualification": "Initial full selection 5PASS/1FAIL; targeted diagnostic 1PASS/1FAIL; final affected crop selection 2PASS. Production unchanged after policy; no relabeled complete final-revision suite.",
+  "SDK_code_commit": "f489aef5982df122c5a4770917234e78f2650642",
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "PNGs_decoded": 24,
+  "contact_sheets_reviewed": 4,
+  "individual_failure_image_reviewed": true,
+  "selected_images": [
+    {
+      "path": "Docs/verification/photo-write-images/iPad-photo-layout-manual-top-after-relaunch.png",
+      "checkpoint": "photo-write-ui",
+      "sha256": "9237cde60202d05af9a070aa4ab46bba1f0f5b3147566099d8fe577b00c734ad"
+    },
+    {
+      "path": "Docs/verification/photo-write-images/iPad-viewport-photo-write-rotation-disabled.png",
+      "checkpoint": "photo-write-ui",
+      "sha256": "b1a88c51881d79b9c27aa94617868f0bf255aa4b0c6e634112ec5542f07e1a01"
+    },
+    {
+      "path": "Docs/verification/photo-write-images/iPad-viewport-photo-write-rotation-disabled-after-restart.png",
+      "checkpoint": "photo-write-ui",
+      "sha256": "3a2e9a173a043976305dd38183eed268a701c1bc3cd1cfe71ea041710047a3b4"
+    },
+    {
+      "path": "Docs/verification/photo-write-images/iPad-photo-layout-manual-crop.png",
+      "checkpoint": "photo-write-crop",
+      "sha256": "9f37d275a9bc209a80049f4981af26e9c7fce67da164e18cc8b31c338441a0d4"
+    },
+    {
+      "path": "Docs/verification/photo-write-images/iPhone-photo-layout-manual-top-after-relaunch.png",
+      "checkpoint": "photo-write-ui",
+      "sha256": "b1627a19e2a988e8cd5c8157b757eedb513177f500f2399a8e2db93de4253f23"
+    },
+    {
+      "path": "Docs/verification/photo-write-images/iPhone-viewport-photo-write-rotation-disabled.png",
+      "checkpoint": "photo-write-ui",
+      "sha256": "c5a1b4cdd0cc98fbc277d79b1145015da4977773b8aa599d113e6f670ab47b03"
+    },
+    {
+      "path": "Docs/verification/photo-write-images/iPhone-viewport-photo-write-rotation-disabled-after-restart.png",
+      "checkpoint": "photo-write-ui",
+      "sha256": "0d838876f9bd700176ee50b3fd52fa70b32836621bc5e7b9dd281e8fefe9cc1e"
+    },
+    {
+      "path": "Docs/verification/photo-write-images/iPhone-photo-layout-manual-crop.png",
+      "checkpoint": "photo-write-crop",
+      "sha256": "1707fcbcd79d917906476866845ed2ca18c09da2ece991533040199888072a67"
+    },
+    {
+      "path": "Docs/verification/photo-write-images/iPad-historical-clipped-switch-diagnostic.png",
+      "checkpoint": "photo-write-diagnostic-safe",
+      "sha256": "f5fed7143c541daf6e6816f6809bf9484aaa1d671fa1c38662faee2c605318ef",
+      "historical_failure": true
+    }
+  ],
+  "host_rotation_stores": [
+    {
+      "device": "iPad",
+      "uuid": "F87049FD-33E8-45D9-9A5C-64EE945FCC57",
+      "sha256": "a00c1eb2e6b504e9f85f11dd72be59b18129469af9155419b3e7cfabee0277d5",
+      "rotatePhotos": false,
+      "photo_selection": "gallery",
+      "photo_ID_count": 2
+    },
+    {
+      "device": "iPhone",
+      "uuid": "B1B5BC6A-65D6-4D55-A654-DC082A8EE871",
+      "sha256": "ed62add6cdafe38fdea35758e2b1814b373c98f2b323242c08120b8995949326",
+      "rotatePhotos": false,
+      "photo_selection": "gallery",
+      "photo_ID_count": 2
+    }
+  ],
+  "native_equivalence": "Only test diagnostics and measured full-visibility interaction changed after the policy; all production sources unchanged. Native product/SDK results remain pinned to policy revision.",
+  "retained_failure": "iPad crop automatic switch remained 1; slider absent. Actual screenshot shows switch clipped below rounded viewport despite old isHittable guard. Existing measured viewport helper and explicit switch-off assertion fix test interaction; expected crop/reset outcomes retained.",
+  "rotation_qualification": "Binding now uses existing commit/rollback helper; normal off/restart is actually UI-tested. Rotation was not a fourth native reproduced baseline failure.",
+  "Core_qualification": "Historical pinned 264-test full PASS; 66 Core/CoreTests file bytes unchanged, no new full run.",
+  "real_photo_library_accessed": false,
+  "synthetic_images_only": true,
+  "Home_constructed": false,
+  "physical_acceptance": false
+}

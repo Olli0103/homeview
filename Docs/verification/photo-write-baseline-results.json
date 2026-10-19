@@ -1,0 +1,75 @@
+[
+  {
+    "assertions": 12,
+    "case": "existing_adjustment",
+    "checks": {
+      "adjustment_unchanged": false,
+      "canary_unchanged": true,
+      "composition_unchanged": false,
+      "display_photo_unchanged": true,
+      "failure_visible": true,
+      "original_bytes_unchanged": true,
+      "photo_bytes_unchanged": true,
+      "previous_entries_preserved": false,
+      "restart_matches_original": true,
+      "restart_original_photo": true,
+      "route_unchanged": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "adjustment_unchanged",
+      "composition_unchanged",
+      "previous_entries_preserved",
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "C877F074-7E0C-4370-A94B-E45BB165E836",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 12,
+    "case": "capacity_adjustment",
+    "checks": {
+      "adjustment_unchanged": false,
+      "canary_unchanged": true,
+      "composition_unchanged": false,
+      "display_photo_unchanged": true,
+      "failure_visible": true,
+      "original_bytes_unchanged": true,
+      "photo_bytes_unchanged": true,
+      "previous_entries_preserved": false,
+      "restart_matches_original": true,
+      "restart_original_photo": true,
+      "route_unchanged": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "adjustment_unchanged",
+      "composition_unchanged",
+      "previous_entries_preserved",
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "C20E5D18-6973-45F5-8EDD-4737566994E4",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 9,
+    "case": "open_face",
+    "checks": {
+      "canary_unchanged": true,
+      "display_photo_unchanged": true,
+      "failure_visible": true,
+      "original_bytes_unchanged": true,
+      "photo_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_original_photo": true,
+      "route_unchanged": false,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "route_unchanged",
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "37FC6268-A5CF-45C9-B78D-DDA958640DCE",
+    "verdict": "FAIL"
+  }
+]
