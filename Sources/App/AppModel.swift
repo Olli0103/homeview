@@ -25,6 +25,7 @@ final class AppModel {
   var faceDirection = 1
   var data: Snapshot
   var route: Route = .face
+  var showingIntroduction=false
   var profile: String? = nil
   var pendingPage: AppPage? = nil
   var toast: String? = nil
@@ -665,6 +666,31 @@ final class AppModel {
   }
   private func writableStore() -> Bool {
     guard !storeReadOnly else { error = storeRecoveryNote; return false }
+    return true
+  }
+  func presentIntroductionOnLaunch() {
+    let args=ProcessInfo.processInfo.arguments
+    guard !storeReadOnly,data.introduction == .pending,
+      !args.contains("--uitesting") || args.contains("--setup-introduction-fixture") else { return }
+    showingIntroduction=true
+  }
+  @discardableResult
+  func endIntroduction(deferred:Bool,openConnections:Bool=false)->Bool {
+    // An informational sheet must never trap a recovered/read-only app.
+    if deferred && storeReadOnly { showingIntroduction=false;return true }
+    let previous=data.introduction
+    data.introduction=deferred && previous != .completed ? .deferred:.completed
+    guard persist() else {
+      data.introduction=previous
+      if deferred {
+        showingIntroduction=false
+        error="Introduction closed without saving. It may appear again after restart."
+        return true
+      }
+      return false
+    }
+    showingIntroduction=false
+    if openConnections { route = .app(.settings) }
     return true
   }
   func updateLocalControls(_ change: (inout Snapshot) -> Void) {

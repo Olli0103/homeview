@@ -223,6 +223,7 @@ struct PersonalContent: Codable, Sendable {
 }
 
 struct Snapshot: Codable, Sendable {
+  var introduction = SetupIntroduction.pending
   var personal: [String: PersonalContent] = [:]
   var personalHomeConfigurations: [String: PersonalHomeConfiguration] = [:]
   var version = 1

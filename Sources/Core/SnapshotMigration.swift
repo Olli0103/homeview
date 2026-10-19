@@ -46,6 +46,7 @@ extension Snapshot {
       }
       return result
     }
+    output.introduction = value("introduction",fallback.introduction)
     output.personal = table("personal", limit: 6)
     let homeConfigurations: [String: PersonalHomeConfiguration] = table("personalHomeConfigurations", limit: 6,
       validKey: { Fixtures.profiles.contains($0) })

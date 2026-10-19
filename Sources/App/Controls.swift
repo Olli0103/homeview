@@ -112,6 +112,8 @@ struct SettingsView: View {
             }.accessibilityIdentifier("settings.keepawake").accessibilityValue(
               model.display.active ? "On" : "Off")
           }
+          Button("Welcome and service overview") { model.showingIntroduction=true }
+            .font(.system(size:23)).accessibilityIdentifier("settings.introduction")
           Button("Power adapter information") { showingPowerCapabilities=true }
             .font(.system(size:23)).accessibilityIdentifier("settings.power")
           setting("Reference clock", model.referenceClock) { model.referenceClock.toggle() }

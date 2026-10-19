@@ -159,7 +159,11 @@ struct RootView: View {
     }
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
 
+    .sheet(isPresented:Binding(get:{model.showingIntroduction},set:{model.showingIntroduction=$0})) {
+      SetupIntroductionView()
+    }
     .task {
+      model.presentIntroductionOnLaunch()
       model.setAnswerSpeechForeground(scenePhase == .active)
       model.installRecipeHandoffFixture()
       model.setAlbumDisplayActive(scenePhase == .active)
