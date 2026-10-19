@@ -38,3 +38,14 @@ Der erste Plattformlauf scheiterte außerdem am auf tvOS nicht verfügbaren Slid
 [Quellenbindung und Ergebnisse](verification/answer-readout.json) · [separater finaler Gate-Bericht](verification/answer-readout-release-gate.json).
 
 Offen bleiben physische iPad-Audiowege, echte LA-/Anruf-/Kopfhörerereignisse, Hörqualität, Hardwarelatenz/-energie und Originalstimmen-Parität. Ein SDK-/Simulator-PASS ersetzt diese Geräteabnahmen nicht. Die eigene manuelle öffentliche Readout-Funktion ist davon ausdrücklich getrennt; Apple Home bleibt deaktiviert.
+
+## Gezielten nativen Gate-Lauf wiederholen
+
+Der [Probequelltext](verification/answer-readout-native-probe.swift) benötigt die [Read-only-Zugriffe](verification/answer-readout-native-accessors.swift) im selben Swift-File wie der unveränderte Backend-Präfix. Auf einem unterstützten Mac lässt sich die veröffentlichte Version so in einem eigenen externen Verzeichnis prüfen. Der Test verwendet ausschließlich synthetischen Text und Lautstärke null, keine Mikrofone oder Geräteauthentifizierung:
+
+```sh
+speech_review_root=$(mktemp -d /Volumes/Extern/Research/answer-readout.XXXXXX)
+cat Sources/App/NativeAnswerSpeech.swift Docs/verification/answer-readout-native-accessors.swift > "$speech_review_root/NativeInspected.swift"
+xcrun swiftc -parse-as-library -swift-version 6 -target arm64-apple-macos15.0 Sources/Core/AnswerSpeechSession.swift "$speech_review_root/NativeInspected.swift" Sources/App/LocalAudioEngine.swift Docs/verification/answer-readout-native-probe.swift -o "$speech_review_root/probe"
+"$speech_review_root/probe"
+```
