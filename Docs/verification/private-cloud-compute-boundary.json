@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-19",
+  "issue": 70,
+  "scope": "Research/availability/privacy boundary only; F099 remains blocked, not implemented",
+  "baseline": {
+    "head": "f6b8b0e2a0f10dadf095a8b28e71262c3879a9d4",
+    "status": ""
+  },
+  "product_source_digest": "168c537c0e3d41b44555f67f085ac93525f08a557e8aa0f1a9ee5c2474215911",
+  "unchanged_inputs": 168,
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/foundationmodels/privatecloudcomputelanguagemodel",
+      "fetched_at": "2026-10-19T11:47:42.965Z",
+      "status": 200,
+      "private_receipt_sha256": "08dd1347c419acbbccbae8f7ad8b587faf5e81c8cd1d22af1c07e7bef9e96e01"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/foundationmodels/adding-server-side-intelligence-with-private-cloud-compute",
+      "fetched_at": "2026-10-19T11:47:43.836Z",
+      "status": 200,
+      "private_receipt_sha256": "8fc78031ad2bba83db0da71881aac45d820eb694391fb557eca0aa2bbe4bca67"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.private-cloud-compute",
+      "fetched_at": "2026-10-19T11:47:53.864Z",
+      "status": 200,
+      "private_receipt_sha256": "30953d56cf28a2bd7e22eb9684b157b8b46a9975d6c27c77cdd0602adc12c72b"
+    },
+    {
+      "url": "https://developer.apple.com/private-cloud-compute/",
+      "fetched_at": "2026-10-19T11:48:31.792Z",
+      "status": 200,
+      "private_receipt_sha256": "42e020445a23fc780cce8a56887d59ad8785ae2062d9ac46256e9e86b4d3505c"
+    },
+    {
+      "url": "https://security.apple.com/blog/private-cloud-compute/",
+      "fetched_at": "2026-10-19T11:48:32.486Z",
+      "status": 200,
+      "private_receipt_sha256": "76fc3b762cf9a10b1e249a981cca861ef52be670783ba3b871222cff79257cd7"
+    }
+  ],
+  "failed_source_lookup": {
+    "url": "https://security.apple.com/private-cloud-compute/",
+    "status": 404,
+    "qualification": "Short guessed URL; actual official blog URL read, not absence proof"
+  },
+  "typechecks": [
+    {
+      "platform": "iOS",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-target",
+        "arm64-apple-ios26.1",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk",
+        "<external-review>/pcc-surface.swift"
+      ],
+      "expected_success": true,
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "executed": false
+    },
+    {
+      "platform": "macOS",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-target",
+        "arm64-apple-macos15.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk",
+        "<external-review>/pcc-surface.swift"
+      ],
+      "expected_success": true,
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "executed": false
+    },
+    {
+      "platform": "visionOS",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-target",
+        "arm64-apple-xros26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/XROS.platform/Developer/SDKs/XROS27.0.sdk",
+        "<external-review>/pcc-surface.swift"
+      ],
+      "expected_success": true,
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "executed": false
+    },
+    {
+      "platform": "watchOS",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-target",
+        "arm64-apple-watchos26.0-simulator",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/WatchSimulator.platform/Developer/SDKs/WatchSimulator27.0.sdk",
+        "<external-review>/pcc-surface.swift"
+      ],
+      "expected_success": true,
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "executed": false
+    },
+    {
+      "platform": "tvOS-negative",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-target",
+        "arm64-apple-tvos27.0-simulator",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator27.0.sdk",
+        "<external-review>/pcc-tvos-negative.swift"
+      ],
+      "expected_success": false,
+      "returncode": 1,
+      "passed": true,
+      "stderr": "<external-review>/pcc-tvos-negative.swift:2:31: error: 'PrivateCloudComputeLanguageModel' is unavailable in tvOS\n1 | import FoundationModels\n2 | func unsupportedTVPCC(_ model:PrivateCloudComputeLanguageModel) {}\n  |                               `- error: 'PrivateCloudComputeLanguageModel' is unavailable in tvOS\n3 | \n\nFoundationModels.PrivateCloudComputeLanguageModel:3:20: note: 'PrivateCloudComputeLanguageModel' has been explicitly marked unavailable here\n1 | @available(iOS 27.0, macOS 27.0, watchOS 27.0, *)\n2 | @available(tvOS, unavailable)\n3 | final public class PrivateCloudComputeLanguageModel : Sendable {\n  |                    `- note: 'PrivateCloudComputeLanguageModel' has been explicitly marked unavailable here\n4 |     @objc deinit\n5 | }\n",
+      "executed": false
+    }
+  ],
+  "native_model_constructed": false,
+  "session_executed": false,
+  "PCC_request_sent": false,
+  "quota_queried": false,
+  "account_eligibility_checked": false,
+  "entitlement_requested_or_added": false,
+  "own_app_provider": "Concrete SystemLanguageModel only, no PCC constructor/entitlement path in production sources",
+  "limits": [
+    "Compiler success is not managed-entitlement grant, actual device support, service availability or live inference proof",
+    "Watch27 public declaration is not proof that every watch device is eligible",
+    "No costs, limits, quotas, signing identities or account rights were queried or changed",
+    "Apple privacy architecture claims attributed to vendor, not independently audited here",
+    "No product sources changed; previous Core/SDK passes not new PCC tests"
+  ]
+}

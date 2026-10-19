@@ -3086,7 +3086,9 @@
       "SYS-07"
     ],
     "current": [
-      "Keine nachgewiesene allgemeine PCC-Anbindung der App."
+      "OS27SDK/öffentliche Apple-Dokumentation belegen PrivateCloudComputeLanguageModel, aber verwaltetes Entitlement, Entwickler-/Geräte-/Regions-/Netz-/Kontingentvoraussetzungen. Kein allgemeiner frei zugänglicher Siri-Backenddienst.",
+      "Researchabschluss#70: vier unterstützte SDK-Typprüfungen, tvOS-negative Prüfung; keine Modellkonstruktion, Anfrage oder Kontingentabfrage ausgeführt. Docs/private-cloud-compute-boundary.md.",
+      "App bleibt beim ausdrücklich gewählten lokalen SystemLanguageModel, ohne Cloud-Ausweichroute. PCC-Zugangsberechtigung, Adapter und Live-Abnahme fehlen; F099 bleibt blockiert, nicht als Produktparität abgenommen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3099,9 +3101,9 @@
     "target": "iPad core",
     "implementation_status": "blocked",
     "acceptance": {
-      "functional": "pending",
+      "functional": "API/provider boundary research complete; PCC integration remains unimplemented",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "managed entitlement/account eligibility and real service/device acceptance unproved; no PCC instance/request executed"
     },
     "completion_criteria": [
       "Dokumentierter unterstützter API-Pfad oder sichtbare offene Originalgrenze. Ein externer LLM-Aufruf gilt niemals als PCC."
