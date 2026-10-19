@@ -258,6 +258,10 @@ struct FindMyView: View {
       Text("Local demo · No Apple location data")
         .font(.system(size:20,weight:.semibold)).multilineTextAlignment(.center)
         .accessibilityIdentifier("findmy.demo.scope")
+      if !websiteStatus.isEmpty {
+        Text(websiteStatus).font(.system(size:17)).multilineTextAlignment(.center)
+          .padding(.horizontal,24).accessibilityIdentifier("findmy.website.status")
+      }
       ScrollView {
         VStack(spacing:16) {
           ZStack {
@@ -283,16 +287,12 @@ struct FindMyView: View {
           Text("The demo tone uses this device only, never an AirTag.")
             .font(.system(size:18)).foregroundStyle(.secondary)
           Divider()
-          Button("Open Apple's Find Devices website") { openFindDevices() }
-            .font(.system(size:21,weight:.medium)).frame(maxWidth:.infinity,minHeight:72)
-            .accessibilityIdentifier("findmy.apple.website")
           Text("This website is for Apple devices. Use Apple's Find My app for AirTags or shared people. It opens outside HomeView; no locations are imported here.")
             .font(.system(size:18)).foregroundStyle(.secondary)
             .accessibilityIdentifier("findmy.website.scope")
-          if !websiteStatus.isEmpty {
-            Text(websiteStatus).font(.system(size:18))
-              .accessibilityIdentifier("findmy.website.status")
-          }
+          Button("Open Apple's Find Devices website") { openFindDevices() }
+            .font(.system(size:21,weight:.medium)).frame(maxWidth:.infinity,minHeight:72)
+            .accessibilityIdentifier("findmy.apple.website")
         }.padding(.horizontal,30).padding(.bottom,24)
       }
     }.background(.white).foregroundStyle(.black)
