@@ -1001,9 +1001,11 @@ final class AppModel {
   }
   func interact() { lastInteraction = Date() }
   func command(_ command: HomeCommand) {
+    guard writableStore() else { return }
+    var candidate=data.home
     do {
-      try data.home.transact(command, authorized: canControlMockSecurity)
-      persist()
+      try candidate.transact(command,authorized:canControlMockSecurity)
+      updateLocalControls { $0.home=candidate }
     } catch { self.error = error.localizedDescription }
   }
   func navigate(_ page: AppPage) {

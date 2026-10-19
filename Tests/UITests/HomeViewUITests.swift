@@ -1752,9 +1752,12 @@ final class HomeViewUITests: XCTestCase {
     print("FUTURE_TEST_ID=" + id)
     launch(["--persistence-test", id, "--reset-test-store", "--state-future-fixture", "--screen-thermostat"])
     XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    let previous=app.staticTexts["thermostat.value"].label
     tap("thermostat.up")
     XCTAssertTrue(app.alerts.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","Original saved data is unchanged")).firstMatch.waitForExistence(timeout:5))
     app.alerts.buttons["OK"].tap()
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,previous,"A rejected write must not change the displayed mock value")
+    viewportShot("mock-write-readonly-value-unchanged")
     app.terminate()
     launch(["--persistence-test", id, "--screen-thermostat"])
     XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
