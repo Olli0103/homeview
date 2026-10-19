@@ -49,6 +49,16 @@ final class LocalAudioEngine: @unchecked Sendable {
       }
     }
   }
+  /// Queue barrier: pending demo playback is stopped before a readout may start.
+  /// An already playing timer chime retains priority and rejects the readout.
+  func prepareForSpeech() async -> Bool {
+    await withCheckedContinuation { continuation in
+      queue.async { [self] in
+        music?.stop();podcast?.stop()
+        continuation.resume(returning:chime?.isPlaying != true)
+      }
+    }
+  }
   func stopMusic() { queue.async { [self] in music?.stop() } }
   func stopPodcast() { queue.async { [self] in podcast?.stop() } }
   func setVolume(_ volume: Float) {

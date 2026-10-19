@@ -68,6 +68,7 @@ import FoundationModels
     if mode=="error" { throw CancellationError() }
     try Task.checkCancellation();guard ticket==resetGeneration else { throw CancellationError() }
     questions.append(prompt)
+    if mode=="long" { return String(String(repeating:"Synthetic long answer. ",count:200).prefix(4000)) }
     if questions.count==1 { return "Synthetic answer: the fictional recipe is named Moon Soup. No action was taken." }
     return "Synthetic follow-up: Moon Soup. This is a fixture, not a native model answer."
   }

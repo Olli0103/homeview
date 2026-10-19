@@ -177,19 +177,36 @@ struct AssistantView: View {
   @State private var draftBeforeVoice = ""
   @State private var language = "de-DE"
   @State private var showingCapabilities = false
+  @State private var showingAnswerSpeechSettings=false
+  @State private var voiceInitiating=false
   @State private var voice = VoiceInputController()
   var body: some View {
     VStack(alignment: .leading, spacing:model.assistantUsesAI ? 8:22) {
       AppHeader()
-      Button("Capabilities and limits") { showingCapabilities=true }
-        .font(.system(size:18)).disabled(voice.busy).accessibilityIdentifier("assistant.capabilities")
-        .padding(.horizontal,34)
+      HStack(spacing:12) {
+        Button("Capabilities and limits") { showingCapabilities=true }
+          .disabled(voice.busy || voiceInitiating).accessibilityIdentifier("assistant.capabilities")
+        Spacer(minLength:0)
+        Button(model.answerSpeech.speaking ? "Stop":model.connections.personalUnlocked ? "Read":"Unlock readout") {
+          if model.answerSpeech.speaking { model.stopAnswerSpeech() }
+          else { Task { await model.readAssistantAnswer() } }
+        }.disabled(voice.busy || voiceInitiating || model.preparingAnswerSpeech || model.assistantAI.busy)
+          .accessibilityIdentifier("answer.speech.read")
+        Button { showingAnswerSpeechSettings=true } label: { Image(systemName:"speaker.wave.2") }
+          .accessibilityLabel("Answer voice settings").accessibilityIdentifier("answer.speech.settings")
+          .disabled(voice.busy || voiceInitiating || model.preparingAnswerSpeech)
+      }.font(.system(size:15)).padding(.horizontal,34)
+      if model.showAnswerSpeechStatus {
+        Text(model.answerSpeech.status).font(.system(size:12)).foregroundStyle(.gray)
+          .padding(.horizontal,34).accessibilityIdentifier("answer.speech.status")
+      }
       if model.assistantUsesAI {
         VStack(alignment:.leading,spacing:8) {
           HStack {
             Text("On-device answers · No actions").font(.system(size:17,weight:.semibold))
             Spacer()
             Button(model.assistantAI.busy ? "Stop":"New") {
+              model.stopAnswerSpeech()
               model.assistantAI.clear(status:model.assistantAI.busy
                 ? "Stopped. Conversation cleared; no action was taken.":"Conversation cleared. Nothing is saved.")
             }.accessibilityIdentifier("assistant.ai.reset")
@@ -236,7 +253,8 @@ struct AssistantView: View {
                 voiceDraftGeneration = model.personalSessionGeneration
                 text = ""
                 model.stopAudioForVoice()
-                Task { await voice.start(locale: language) }
+                voiceInitiating=true
+                Task { await voice.start(locale:language);voiceInitiating=false }
               }
             } label: {
               Label(
@@ -273,6 +291,7 @@ struct AssistantView: View {
         .foregroundStyle(.gray).padding(.horizontal, 34).padding(.bottom, 24)
     }.background(.white).foregroundStyle(.black)
       .sheet(isPresented:$showingCapabilities) { AssistantCapabilitiesView() }
+      .sheet(isPresented:$showingAnswerSpeechSettings) { AnswerSpeechSettingsView() }
       .onChange(of: voice.transcript) { _, value in if !value.isEmpty { text = value } }
       .onChange(of: scenePhase) { _, phase in
         if phase == .background || (phase != .active && voice.phase != .preparing) {
@@ -285,6 +304,7 @@ struct AssistantView: View {
         voice.cancel()
         if restore { text = draftBeforeVoice }
         model.assistantAI.clear()
+        model.stopAnswerSpeech()
       }
   }
   private func submitted() {

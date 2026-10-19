@@ -160,6 +160,7 @@ struct RootView: View {
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
 
     .task {
+      model.setAnswerSpeechForeground(scenePhase == .active)
       model.installRecipeHandoffFixture()
       model.setAlbumDisplayActive(scenePhase == .active)
       await model.connections.restore()
@@ -173,26 +174,27 @@ struct RootView: View {
     .onChange(of:model.cookingInProgress) { _,active in if !active { model.recipeHandoff.stop() } }
     .onChange(of:model.route) { old,new in
       if old == .handoff,new != .handoff { model.recipeHandoff.cancelPending() }
-      if old == .assistant,new != .assistant { model.assistantAI.clear() }
+      if old == .assistant,new != .assistant { model.assistantAI.clear();model.stopAnswerSpeech() }
     }
     .onReceive(pulse) { _ in model.tick() }
     #if os(iOS) || os(tvOS) || os(visionOS)
       .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.interruptionNotification)) { _ in
-        model.pauseFeedPodcast()
+        model.stopAnswerSpeech();model.pauseFeedPodcast()
       }
       .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.routeChangeNotification)) { note in
-        if (note.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt)==AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue { model.pauseFeedPodcast() }
+        if (note.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt)==AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue { model.stopAnswerSpeech();model.pauseFeedPodcast() }
       }
     #endif
     .onChange(of: model.route) { _, route in if route == .privacy { model.lockPersonalAccess() } }
-    .onChange(of:model.incomingCall) { _,incoming in if incoming { model.dismissDemoDoorbell();model.pauseFeedPodcast() } }
+    .onChange(of:model.incomingCall) { _,incoming in if incoming { model.stopAnswerSpeech();model.dismissDemoDoorbell();model.pauseFeedPodcast() } }
     .onChange(of: model.data.keepDisplayOn) { _, enabled in
       model.display.apply(enabled: enabled && scenePhase == .active)
     }
     .onChange(of: model.connections.personalUnlocked) { _, unlocked in
-      if !unlocked { model.albumCatalogue.invalidate();model.recipeHandoff.stop() }
+      if !unlocked { model.stopAnswerSpeech();model.albumCatalogue.invalidate();model.recipeHandoff.stop() }
     }
     .onDisappear {
+      model.setAnswerSpeechForeground(false)
       model.recipeHandoff.stop()
       model.dismissDemoDoorbell()
       model.pauseFeedPodcast()
@@ -200,6 +202,7 @@ struct RootView: View {
       model.setAlbumDisplayActive(false)
     }
     .onChange(of: scenePhase) { _, phase in
+      model.setAnswerSpeechForeground(phase == .active)
       if phase != .active { model.recipeHandoff.stopOffering() }
       model.setAlbumDisplayActive(phase == .active)
       model.display.apply(enabled: model.data.keepDisplayOn && phase == .active)
