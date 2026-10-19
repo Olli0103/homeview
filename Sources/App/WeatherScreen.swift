@@ -170,10 +170,10 @@ private struct WeatherCitySheet: View {
         .font(.callout).foregroundStyle(.secondary).accessibilityIdentifier("weather.app.city.status")
       Button("Update weather") {
         let requestedCity=draft
-        let ticket=sessionID
+        let ticket=sessionID,reset=model.localResetGeneration
         model.connections.city=requestedCity
         Task {
-          await model.connections.connect(.weather)
+          await model.connectService(.weather,expectedResetGeneration:reset)
           guard ticket==sessionID,model.connections.city==requestedCity,!Task.isCancelled else { return }
           if model.connections.weather != nil && !model.connections.weatherFetchFailed { dismiss() }
         }

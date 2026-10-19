@@ -47,6 +47,8 @@ extension Snapshot {
       return result
     }
     output.introduction = value("introduction",fallback.introduction)
+    // A present malformed/null field must never fall back to stale legacy grants.
+    output.connectionConsent = stored["connectionConsent"] == nil ? nil:value("connectionConsent",Set<DataConnection>())
     output.personal = table("personal", limit: 6)
     let homeConfigurations: [String: PersonalHomeConfiguration] = table("personalHomeConfigurations", limit: 6,
       validKey: { Fixtures.profiles.contains($0) })

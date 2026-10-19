@@ -224,6 +224,8 @@ struct PersonalContent: Codable, Sendable {
 
 struct Snapshot: Codable, Sendable {
   var introduction = SetupIntroduction.pending
+  /// Missing is legacy defaults; an explicit empty set forbids automatic restoration.
+  var connectionConsent:Set<DataConnection>?
   var personal: [String: PersonalContent] = [:]
   var personalHomeConfigurations: [String: PersonalHomeConfiguration] = [:]
   var version = 1

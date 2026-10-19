@@ -20,9 +20,10 @@ struct ConnectionControls: View {
             let on = model.connections.enabled.contains(kind)
             Button(on ? "Disconnect" : "Connect") {
               if on {
-                model.connections.disconnect(kind)
+                _ = model.disconnectService(kind)
               } else {
-                Task { await model.connections.connect(kind, date: model.clock, timeZone: model.displayTimeZone) }
+                let reset=model.localResetGeneration
+                Task { await model.connectService(kind,expectedResetGeneration:reset) }
               }
             }.disabled(model.connections.busy.contains(kind))
               .accessibilityIdentifier("connect.\(kind.rawValue)")
@@ -31,7 +32,7 @@ struct ConnectionControls: View {
             .foregroundStyle(.gray)
             .accessibilityIdentifier("connection.status.\(kind.rawValue)")
           if model.connections.requested.contains(kind), !model.connections.enabled.contains(kind) {
-            Button("Disconnect") { model.connections.disconnect(kind) }
+            Button("Disconnect") { _ = model.disconnectService(kind) }
               .accessibilityIdentifier("connection.forget.\(kind.rawValue)")
           }
           if kind == .weather {
@@ -49,7 +50,10 @@ struct ConnectionControls: View {
             Link("Weather data by Open-Meteo", destination: URL(string: "https://open-meteo.com/")!)
               .font(.system(size: 15))
             if model.connections.requested.contains(.weather) {
-              Button("Update weather") { Task { await model.connections.connect(.weather) } }
+              Button("Update weather") {
+                let reset=model.localResetGeneration
+                Task { await model.connectService(.weather,expectedResetGeneration:reset) }
+              }
                 .disabled(model.connections.busy.contains(.weather)).accessibilityIdentifier("weather.update")
             }
           }

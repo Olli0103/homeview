@@ -159,15 +159,19 @@ struct RootView: View {
     }
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
 
+    .sheet(isPresented:Binding(get:{model.showingLocalReset},set:{ if !$0 { model.cancelLocalReset() } })) {
+      LocalResetView()
+    }
     .sheet(isPresented:Binding(get:{model.showingIntroduction},set:{model.showingIntroduction=$0})) {
       SetupIntroductionView()
     }
     .task {
+      model.localResetForeground=scenePhase == .active
       model.presentIntroductionOnLaunch()
       model.setAnswerSpeechForeground(scenePhase == .active)
       model.installRecipeHandoffFixture()
       model.setAlbumDisplayActive(scenePhase == .active)
-      await model.connections.restore()
+      await model.connections.restore(allowed:model.data.connectionConsent)
       model.reconcileSystemAlarms()
       model.display.apply(enabled: model.data.keepDisplayOn && scenePhase == .active)
     }
@@ -198,6 +202,7 @@ struct RootView: View {
       if !unlocked { model.stopAnswerSpeech();model.albumCatalogue.invalidate();model.recipeHandoff.stop() }
     }
     .onDisappear {
+      model.localResetForeground=false
       model.setAnswerSpeechForeground(false)
       model.recipeHandoff.stop()
       model.dismissDemoDoorbell()
@@ -206,6 +211,7 @@ struct RootView: View {
       model.setAlbumDisplayActive(false)
     }
     .onChange(of: scenePhase) { _, phase in
+      model.localResetForeground=phase == .active
       model.setAnswerSpeechForeground(phase == .active)
       if phase != .active { model.recipeHandoff.stopOffering() }
       model.setAlbumDisplayActive(phase == .active)

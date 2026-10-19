@@ -3925,3 +3925,137 @@ extension HomeViewUITests {
     viewportShot("setup-explicit-later-connect-and-disconnect")
   }
 }
+
+
+extension HomeViewUITests {
+  private func resetStoreReceipt(_ id:String,_ scenario:String) {
+    let data=try! JSONSerialization.data(withJSONObject:["storeID":id,"scenario":scenario])
+    let receipt=XCTAttachment(data:data,uniformTypeIdentifier:"public.json")
+    receipt.name="local-reset-store-"+scenario;receipt.lifetime = .keepAlways;add(receipt)
+  }
+  private func openResetReview() {
+    let button=app.buttons["settings.reset"]
+    XCTAssertTrue(button.waitForExistence(timeout:5));button.tap()
+    XCTAssertTrue(app.staticTexts["reset.scope"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["reset.source"].label.contains("OS permissions remain"))
+    XCTAssertFalse(app.textFields["reset.confirmation"].exists)
+  }
+  private func authenticateSyntheticReset() {
+    let button=app.buttons["reset.authenticate"]
+    for _ in 0..<6 { if button.isHittable { break };app.scrollViews.firstMatch.swipeUp() }
+    button.tap()
+    XCTAssertTrue(app.textFields["reset.confirmation"].waitForExistence(timeout:5))
+  }
+  private func scrollResetControlFullyIntoView(_ element:XCUIElement) {
+    let scroll=app.scrollViews.containing(element.elementType,identifier:element.identifier).firstMatch
+    XCTAssertTrue(scroll.waitForExistence(timeout:5))
+    for _ in 0..<12 {
+      let safe=scroll.frame.insetBy(dx:0,dy:20),target=element.frame
+      if element.isHittable && safe.contains(target) { break }
+      let gap:CGFloat = target.minY<safe.minY ? -(safe.minY-target.minY+14):target.maxY-safe.maxY+14
+      let distance=min(max(abs(gap),24),safe.height*0.6)*(gap<0 ? -1:1)
+      let start=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:safe.minX+12,dy:safe.midY+distance/2))
+      let end=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:safe.minX+12,dy:safe.midY-distance/2))
+      start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    XCTAssertTrue(scroll.frame.insetBy(dx:0,dy:20).contains(element.frame))
+  }
+  private func typeResetConfirmation(_ value:String) {
+    let field=app.textFields["reset.confirmation"]
+    scrollResetControlFullyIntoView(field)
+    field.tap();field.typeText(value+"\n")
+  }
+  func testLocalResetSeparateAuthenticationExactConfirmationAndDurableEmptyRestart() {
+    let id=UUID().uuidString;resetStoreReceipt(id,"success")
+    launch(["--page","Settings","--persistence-test",id,"--reset-content-fixture",
+      "--legacy-photo-file-fixture","--setup-introduction-fixture"])
+    openResetReview();shot("reset-review-before-auth-no-deletion")
+    tap("reset.cancel")
+    XCTAssertTrue(app.buttons["settings.reset"].exists)
+    openResetReview();authenticateSyntheticReset()
+    typeResetConfirmation("RESETx")
+    XCTAssertFalse(app.buttons["reset.confirm"].isEnabled)
+    let field=app.textFields["reset.confirmation"];field.tap()
+    field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:6)+"RESET\n")
+    XCTAssertTrue(app.buttons["reset.confirm"].isEnabled)
+    tap("reset.confirm")
+    XCTAssertTrue(app.staticTexts["settings.reset.status"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["settings.reset.status"].label.contains("Local app content reset"))
+    XCTAssertFalse(app.staticTexts["reset.scope"].exists)
+    viewportShot("reset-complete-source-permissions-retained")
+    app.terminate();app.launch()
+    XCTAssertTrue(app.staticTexts["setup.scope"].waitForExistence(timeout:15))
+    XCTAssertEqual(app.staticTexts["setup.step"].label,"Step 1 of 3")
+    shot("reset-restart-fresh-introduction-no-old-data")
+    tap("setup.later")
+    XCTAssertTrue(app.buttons["settings.reset"].waitForExistence(timeout:5))
+  }
+  func testLocalResetDeniedAuthenticationAndBackgroundRevokeWithoutClearingData() {
+    let denied=UUID().uuidString;resetStoreReceipt(denied,"denied")
+    launch(["--page","Settings","--persistence-test",denied,"--reset-content-fixture","--device-unlock-denied"])
+    openResetReview()
+    let authenticate=app.buttons["reset.authenticate"]
+    for _ in 0..<6 { if authenticate.isHittable { break };app.scrollViews.firstMatch.swipeUp() }
+    authenticate.tap()
+    expectation(for:NSPredicate(format:"label CONTAINS %@","not granted"),evaluatedWith:app.staticTexts["reset.status"])
+    waitForExpectations(timeout:5)
+    XCTAssertFalse(app.textFields["reset.confirmation"].exists)
+    shot("reset-denied-auth-no-content-deleted");tap("reset.cancel")
+    let background=UUID().uuidString;resetStoreReceipt(background,"background")
+    launch(["--page","Settings","--persistence-test",background,"--reset-content-fixture"])
+    openResetReview();authenticateSyntheticReset()
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertTrue(app.buttons["reset.authenticate"].waitForExistence(timeout:8))
+    XCTAssertFalse(app.textFields["reset.confirmation"].exists)
+    shot("reset-background-requires-fresh-authentication");tap("reset.cancel")
+  }
+  func testLocalResetReadOnlyNewerStateIsNotDiscarded() {
+    let id=UUID().uuidString;resetStoreReceipt(id,"readonly")
+    launch(["--page","Settings","--persistence-test",id,"--state-future-fixture"])
+    openResetReview();authenticateSyntheticReset();typeResetConfirmation("RESET")
+    tap("reset.confirm")
+    XCTAssertTrue(app.staticTexts["reset.status"].label.contains("read-only"))
+    XCTAssertTrue(app.textFields["reset.confirmation"].exists)
+    shot("reset-newer-state-preserved-not-overwritten");tap("reset.cancel")
+  }
+}
+
+
+extension HomeViewUITests {
+  func testLocalResetCleanupRetryPreservesNewContentAcrossRestart() {
+    let id=UUID().uuidString;resetStoreReceipt(id,"cleanup")
+    launch(["--page","Settings","--persistence-test",id,"--reset-content-fixture","--reset-fifo-fixture"])
+    openResetReview();authenticateSyntheticReset();typeResetConfirmation("RESET");tap("reset.confirm")
+    XCTAssertTrue(app.staticTexts["settings.reset.status"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["settings.reset.status"].label.contains("Cleanup needs attention"))
+    shot("reset-partial-cleanup-explicit-not-full-success")
+    // Create new user work after the logical reset. Retrying old cleanup must
+    // keep this new timer, not call reset a second time.
+    drawer();tap("app.Timers");tap("timer.start")
+    XCTAssertTrue(app.staticTexts["timer.countdown"].waitForExistence(timeout:5))
+    app.terminate();app.launch()
+    XCTAssertTrue(app.buttons["settings.reset"].waitForExistence(timeout:15))
+    XCTAssertTrue(app.staticTexts["settings.reset.status"].label.contains("previous reset cleanup"))
+    openResetReview()
+    XCTAssertTrue(app.staticTexts["reset.cleanup.scope"].exists)
+    authenticateSyntheticReset();typeResetConfirmation("RESET")
+    XCTAssertFalse(app.buttons["reset.confirm"].exists)
+    // A host-only observer removes the deliberately injected FIFO from the
+    // exact inode-verified retired test directory, never from real app data.
+    let folder=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+    try! FileManager.default.createDirectory(at:folder,withIntermediateDirectories:true)
+    let signal=folder.appendingPathComponent("reset-control-"+id+".json")
+    let ack=folder.appendingPathComponent("reset-control-"+id+".ack")
+    try! JSONSerialization.data(withJSONObject:["storeID":id,"job":ProcessInfo.processInfo.environment["HOMEVIEW_RESET_JOB"] ?? "missing-job"]).write(to:signal,options:.atomic)
+    expectation(for:NSPredicate { _,_ in FileManager.default.fileExists(atPath:ack.path) },evaluatedWith:nil)
+    waitForExpectations(timeout:15)
+    tap("reset.cleanup")
+    XCTAssertTrue(app.staticTexts["settings.reset.status"].label.contains("Current app content is unchanged"))
+    viewportShot("reset-retry-cleans-only-retired-files")
+    drawer();tap("app.Timers")
+    XCTAssertTrue(app.staticTexts["timer.countdown"].waitForExistence(timeout:5))
+    app.terminate();app.launch()
+    XCTAssertTrue(app.buttons["settings.reset"].waitForExistence(timeout:15))
+    XCTAssertFalse(app.staticTexts["settings.reset.status"].label.contains("previous reset cleanup"))
+  }
+}

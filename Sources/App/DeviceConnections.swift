@@ -138,6 +138,11 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
       0
     #endif
   }
+  func resetLocalCaches() {
+    #if canImport(MusicKit) && (os(iOS) || os(macOS) || os(visionOS))
+      if musicCreated { music.resetLocalCaches() }
+    #endif
+  }
   func weather(_ city: String) async throws -> WeatherReading {
     try await WeatherService().fetch(city: city)
   }

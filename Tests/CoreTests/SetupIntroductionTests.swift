@@ -27,4 +27,18 @@ final class SetupIntroductionTests:XCTestCase {
       XCTAssertEqual(read.introduction,.pending);XCTAssertTrue(read.night)
     }
   }
+  func testMissingConsentIsLegacyButMalformedPresentConsentFailsClosed() throws {
+    XCTAssertNil(try Snapshot.decodeMigrating(Data(#"{"version":1}"#.utf8)).connectionConsent)
+    for value in ["null","true","{}","[\"unknown service\"]"] {
+      let bytes=Data("{\"version\":1,\"connectionConsent\":\(value)}".utf8)
+      XCTAssertEqual(try Snapshot.decodeMigrating(bytes).connectionConsent,[])
+    }
+  }
+  func testExplicitEmptyAndSelectedConsentRoundTrip() throws {
+    for choice:Set<DataConnection> in [[],[.calendar],[.music,.weather]] {
+      var state=Snapshot();state.connectionConsent=choice
+      XCTAssertEqual(try Snapshot.decodeMigrating(JSONEncoder().encode(state)).connectionConsent,choice)
+    }
+  }
+
 }
