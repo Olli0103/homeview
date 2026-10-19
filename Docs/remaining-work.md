@@ -13,7 +13,7 @@ Farbfläche, danach Raster/Icons und Wetteransicht. Der Videoentwurf wurde verwo
 - GPU-Fluid und Performancepfad (#17); Wetterzustände mit fehlenden Werten statt erfundener Daten (#21).
 - Galerie-/Album-Update-Lifecycle (#11), Profil-Layouts (#9), geteilte Panel- und Gastfreigaben mit echter Modellautorisierung (#8/#68).
 - Frei zugängliche Podcast-Feeds mit eigenem Audio-Testfeed (#59), explizite öffentliche Sprachausgabe (#40), eigene Live Activities (#51) und Rezept-Continuity (#56).
-- Einrichtungs-/Fähigkeitsführung (#71), echte App-Einstellungen (#65), Quellen-/Sprachen-/Grenzenanzeige (#41).
+- Einrichtungs-/Fähigkeitsführung (#71), Quellen-/Sprachen-/Grenzenanzeige (#41).
 - Echten Assistenten nur mit bewusster Anbieter-/Datenschutzwahl (#33); Aktionsplaner und reiche Antworten hängen daran (#35/#36). Keine kostenpflichtige Anbieterannahme oder Übernahme von Gateway-Credentials in die App.
 - Weitere Fehler-/Gast-/Medienpfade und späte Antworten (#67/#80) bleiben zu prüfen; die neuen Kalender-/Reminder- und Speicherprüfungen sind kein pauschaler PASS für jeden Provider.
 
@@ -87,7 +87,7 @@ Farbfläche, danach Raster/Icons und Wetteransicht. Der Videoentwurf wurde verwo
 | [#62](https://github.com/Olli0103/homeview/issues/62) | Gast- und Peer-to-peer-AirPlay separat klären | Reale Hardware, bewusst verbundenes Konto oder zweites Testgerät für die verlangte Abnahme nötig. |
 | [#63](https://github.com/Olli0103/homeview/issues/63) | Medien- und Anruf-Handoff pro Inhaltstyp abgrenzen | Reale Hardware, bewusst verbundenes Konto oder zweites Testgerät für die verlangte Abnahme nötig. |
 | [#64](https://github.com/Olli0103/homeview/issues/64) | Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen | Reale Hardware, bewusst verbundenes Konto oder zweites Testgerät für die verlangte Abnahme nötig. |
-| [#65](https://github.com/Olli0103/homeview/issues/65) | Control Center und Settings mit echten Zuständen abgleichen | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |
+| [#65](https://github.com/Olli0103/homeview/issues/65) | Control Center und Settings mit echten Zuständen abgleichen | Abgeschlossen im bilanzierten App-Control-Umfang; [Nachweis](settings-state.md). Vollständige Original-/Hardware-Abnahme bleibt separat. |
 | [#66](https://github.com/Olli0103/homeview/issues/66) | Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen | Assets/Rechte, echte Identitätsbindung oder öffentliche API-/Hardwarefähigkeit noch nicht nachgewiesen. |
 | [#67](https://github.com/Olli0103/homeview/issues/67) | Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen | Datenschutzteile umgesetzt; reale Präsenz, weitere Medienregeln und physische Snapshot-Abnahme offen. |
 | [#68](https://github.com/Olli0103/homeview/issues/68) | Gastberechtigungen für Haus, Wetter, Timer und Musik definieren | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |

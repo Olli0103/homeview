@@ -2820,7 +2820,8 @@
       "SYS-02"
     ],
     "current": [
-      "Control Center steuert Mock-Netzstatus, Nacht/Fernansicht, lokale Displayabdunklung und App-Audiolautstärke. Kein systemweites WLAN-/Helligkeits-Panel."
+      "Control Center steuert Mock-Netzstatus, Nacht/Fernansicht, lokale Displayabdunklung und App-Audiolautstärke. Kein systemweites WLAN-/Helligkeits-Panel.",
+      "App-Control-Zustände bilanziert und robust gespeichert: Mock/App/OS klar getrennt, transaktionaler Rollback bei Speicherfehlern, native Keep-awake-Anzeige, persistenter Verbindungswiderruf, Offline-Status ohne Inhaltsüberdeckung. 171 Coretests, 16 Integrations- und sechs gezielte Nachprüfungen auf iPad/iPhone sowie fünf SDKs; zwei getrennt gebundene UI-Quellstände. Docs/settings-state.md. Vollständige Originaldarstellung und Hardware bleiben separat offen; keine Home-Anbindung."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2833,7 +2834,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Bounded app-control state/readback, durable revocation and write-failure rollback verified. Full original options and hardware remain separate.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -2851,7 +2852,8 @@
       "SYS-02"
     ],
     "current": [
-      "Control Center steuert Mock-Netzstatus, Nacht/Fernansicht, lokale Displayabdunklung und App-Audiolautstärke. Kein systemweites WLAN-/Helligkeits-Panel."
+      "Control Center steuert Mock-Netzstatus, Nacht/Fernansicht, lokale Displayabdunklung und App-Audiolautstärke. Kein systemweites WLAN-/Helligkeits-Panel.",
+      "App-Control-Zustände bilanziert und robust gespeichert: Mock/App/OS klar getrennt, transaktionaler Rollback bei Speicherfehlern, native Keep-awake-Anzeige, persistenter Verbindungswiderruf, Offline-Status ohne Inhaltsüberdeckung. 171 Coretests, 16 Integrations- und sechs gezielte Nachprüfungen auf iPad/iPhone sowie fünf SDKs; zwei getrennt gebundene UI-Quellstände. Docs/settings-state.md. Vollständige Originaldarstellung und Hardware bleiben separat offen; keine Home-Anbindung."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2864,7 +2866,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Bounded app-control state/readback, durable revocation and write-failure rollback verified. Full original options and hardware remain separate.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -2944,7 +2946,8 @@
       "SYS-04"
     ],
     "current": [
-      "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen."
+      "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen.",
+      "Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen."
     ],
     "parity_accepted": false,
     "issue_urls": [

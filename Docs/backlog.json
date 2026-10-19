@@ -1601,7 +1601,7 @@
       "F091",
       "F092"
     ],
-    "current": "Control Center steuert Mock-Netzstatus, Nacht/Fernansicht, lokale Displayabdunklung und App-Audiolautstärke. Kein systemweites WLAN-/Helligkeits-Panel.",
+    "current": "App-Control-Zustände bilanziert und robust gespeichert: Mock/App/OS klar getrennt, transaktionaler Rollback bei Speicherfehlern, native Keep-awake-Anzeige, persistenter Verbindungswiderruf, Offline-Status ohne Inhaltsüberdeckung. 171 Coretests, 16 Integrations- und sechs gezielte Nachprüfungen auf iPad/iPhone sowie fünf SDKs; zwei getrennt gebundene UI-Quellstände. Docs/settings-state.md. Vollständige Originaldarstellung und Hardware bleiben separat offen; keine Home-Anbindung.",
     "tasks": [
       "Originalumfang und öffentlich steuerbare Einstellungen separat erfassen",
       "Simulationen, App-Werte und OS-Zustände sprachlich unterscheiden",
@@ -1614,7 +1614,16 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/65",
     "issue_number": 65,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-19",
+      "evidence": [
+        "Docs/settings-state.md",
+        "Docs/verification/issues-20261019.json",
+        "Docs/verification/issues-20261019-source.json"
+      ],
+      "scope": "App-control state persistence/readback, rollback and explicitly inventoried capability boundaries only; no original/hardware/Home acceptance."
+    }
   },
   {
     "key": "SYS-03",
@@ -1668,7 +1677,8 @@
     "state": "in_progress",
     "progress_evidence": [
       "Docs/iteration-20261017.md"
-    ]
+    ],
+    "implementation_note": " Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen."
   },
   {
     "key": "SYS-05",
@@ -1979,7 +1989,7 @@
     "issue_url": "https://github.com/Olli0103/homeview/issues/80",
     "issue_number": 80,
     "state": "open",
-    "implementation_note": "Begrenzte gespeicherte Face-Feldwiederherstellung nach unverändertem Decoder-Befund: Docs/face-configuration-recovery.md;166Core/8gezielteUI/5SDK, vier eigene UUID-Teststände mit Originaldateien/Prozessrestart geprüft. Keine vollständige Editor-/Migrations-/Original-/Hardwareabnahme."
+    "implementation_note": "Begrenzte gespeicherte Face-Feldwiederherstellung nach unverändertem Decoder-Befund: Docs/face-configuration-recovery.md;166Core/8gezielteUI/5SDK, vier eigene UUID-Teststände mit Originaldateien/Prozessrestart geprüft. Keine vollständige Editor-/Migrations-/Original-/Hardwareabnahme. Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen."
   },
   {
     "key": "QA-06",

@@ -460,3 +460,10 @@ bleiben offen; #5/#21 unverändert offen.
 ## Fade-Flächenfarbe · 19. Oktober 2026
 
 Fade-Grundfläche heller/neutraler an UI12 angenähert: acht unveränderte Farbziele, Kanalfehler10.92→1.17;166Core/8gezielteUI/5SDK. Native Schwarz-/Weiß-Kontrolle erklärt die vier ursprünglich fehlgeschlagenen Randpixel. Vorab eingefrorene hintergrundunabhängige5x5-Kerne bleiben RGBA-exakt, keine RGB-Toleranz; Erstfehlschlag bleibt dokumentiert. Docs/fade-surface-tones.md. Originalzeitkurve/weitere Phasen/Typografie/Licht/Hardware offen; Issue18 bleibt offen.
+
+
+## App-Zustände und späte Musik-Suchen · 19. Oktober 2026
+
+App-Control-Zustände bilanziert und robust gespeichert: Mock/App/OS klar getrennt, transaktionaler Rollback bei Speicherfehlern, native Keep-awake-Anzeige, persistenter Verbindungswiderruf, Offline-Status ohne Inhaltsüberdeckung. 171 Coretests, 16 Integrations- und sechs gezielte Nachprüfungen auf iPad/iPhone sowie fünf SDKs; zwei getrennt gebundene UI-Quellstände. Docs/settings-state.md. Vollständige Originaldarstellung und Hardware bleiben separat offen; keine Home-Anbindung.
+
+Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen.
