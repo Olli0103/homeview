@@ -1552,7 +1552,9 @@
       "AI-07"
     ],
     "current": [
-      "Kein Zugriff auf Siri-App-/iCloud-Dialoghistorie und keine geräteübergreifende Dialogfortsetzung."
+      "Own temporary on-device conversation explicitly labelled not Siri history/no device sync; no Siri archive access or cross-device continuation.",
+      "New/Stop/session exit/background/lock/profile changes discard app-managed context; UUID Snapshot restart and actual Alex→Jamie isolation verified. See Docs/dialog-history-boundary.md.",
+      "Own persisted/cloud history is design-only, not enabled or represented as Siri sync. Original F050 remains unfulfilled."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1565,9 +1567,9 @@
     "target": "iPad core",
     "implementation_status": "blocked",
     "acceptance": {
-      "functional": "pending",
+      "functional": "AI-07 clarification complete; original Siri/iCloud continuation unavailable in this build.",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "No Siri history accessed; no CloudKit account/remote sync/two-device test. Own local isolation/deletion verified separately."
     },
     "completion_criteria": [
       "Kein vermeintlicher Apple-Verlauf aus lokalen Demos. Falls eigener Verlauf freigegeben wird, Isolation, Löschung und Konfliktfälle prüfen."

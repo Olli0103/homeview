@@ -1,0 +1,207 @@
+{
+  "date": "2026-10-19",
+  "issue": 39,
+  "code_commit": "7d94ee85f319a0dd5e5b527afbb58ed239e4bb39",
+  "source_digest": "0db15c2c123264c469edf97f3efd85293901a7fe73ed2f299f1330c1aeea0735",
+  "Core_test_qualification": "Core and Core tests unchanged from229/0 power-capability run; no new Core run claimed.",
+  "source_qualification": {
+    "final_source": "0db15c2c123264c469edf97f3efd85293901a7fe73ed2f299f1330c1aeea0735",
+    "initial_UI_and_SDK_source": "12fcbe44681a9455c4f657d4b0fd7444af73ee83846a89428de0e7498f97a665",
+    "only_changed": [
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "product_sources_byte_identical": true,
+    "core_matches_229_test_run": true,
+    "generator_byte_equivalent": true,
+    "python_AST_valid": true
+  },
+  "UI_initial": {
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "qualification": "3 methods/device; first restart was ephemeral and first profile transition anonymous to Jamie, retained as pilot not final persistent-profile proof."
+  },
+  "UI_final": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "methods": [
+      "testDialogScopeNewAndSameLaunchArgumentsRestartNeverRestoreHistory",
+      "testDialogCapabilityBoundaryAndProfileIsolation"
+    ],
+    "qualification": "2 methods/device; actual owned UUID Snapshot persisted, same restart arguments/no reset, Alex to Jamie."
+  },
+  "unchanged_compiled_inputs_per_checkpoint": 22,
+  "installed_app_bytes_read_back": true,
+  "actual_stored_snapshot_readback": [
+    {
+      "device": "iPad",
+      "owned_test_store": "57BF6E81-AA01-4ECD-82EA-C40C200A08DF",
+      "files": 1,
+      "bytes": 2056,
+      "sha256": "dfeeaebbd2894d995d2d55d8bda8c929bae3e118334f6cc0c45ee89fcedc230b",
+      "persisted_synthetic_Alex_present": true,
+      "no_assistant_fields": true,
+      "no_question_or_answer_canaries": true,
+      "same_arguments_no_reset": true
+    },
+    {
+      "device": "iPhone",
+      "owned_test_store": "30C5CB81-AB21-4E06-9140-DA01143954F3",
+      "files": 1,
+      "bytes": 2056,
+      "sha256": "9a99f78e99eb349a4512481b3bd40400eea6435012fb6e2390af234f8448f6d1",
+      "persisted_synthetic_Alex_present": true,
+      "no_assistant_fields": true,
+      "no_question_or_answer_canaries": true,
+      "same_arguments_no_reset": true
+    }
+  ],
+  "external_Core_context_gate": [
+    {
+      "id": "cleared-A-no-late-return",
+      "passed": true
+    },
+    {
+      "id": "clear-A-does-not-reset-independent-B",
+      "passed": true
+    },
+    {
+      "id": "successor-does-not-inherit-cleared-context",
+      "passed": true
+    },
+    {
+      "id": "deselection-revokes-requests-and-content",
+      "passed": true
+    },
+    {
+      "id": "new-owner-has-no-context-or-selection",
+      "passed": true
+    }
+  ],
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "public_API_typechecks": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "executed": false
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "executed": false
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "executed": false
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "executed": false
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "executed": false
+    },
+    {
+      "platform": "MacCatalyst",
+      "exit_code": 0,
+      "executed": false
+    }
+  ],
+  "archives": [
+    {
+      "name": "dialog-boundary-final-inputs.zip",
+      "entries": 198,
+      "sha256": "7bb96baea34ed4b5f2e73de26b418b845047a45d318f3412033ed45fb2db3dfb",
+      "all_entries_read_back": true
+    },
+    {
+      "name": "dialog-boundary-persistence-final-inputs.zip",
+      "entries": 198,
+      "sha256": "d1bf933fc7685008ce7f524170b523e84c7d253d64220a9bd4427390406b5c6f",
+      "all_entries_read_back": true
+    }
+  ],
+  "decoded_PNGs": 36,
+  "reviewed_contacts": 4,
+  "images": [
+    {
+      "path": "Docs/verification/dialog-history-images/iPad-viewport-ondevice-background-provider-reset.png",
+      "sha256": "2619b2c75e3b0c82b6c6b804e33db0fea1e819ef949d3ca90cc9b485997844b9"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPad-viewport-ondevice-stopped-no-late-answer.png",
+      "sha256": "81b81a3c9700839279d2ca1182795b3f03c2f060ba2942d3f1c4fa52fdfd8829"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPhone-viewport-ondevice-background-provider-reset.png",
+      "sha256": "01c02eeef3cc8b40b4913bde134c8ab1d992b5bb61a2f9b6b83bf23d22e61b48"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPhone-viewport-ondevice-stopped-no-late-answer.png",
+      "sha256": "3417c1ef37f9a04c552cf868248b27cf1952b4081c52698c280e65c0126bb3e4"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPad-viewport-dialog-profile-switch-no-inherited-conversation.png",
+      "sha256": "8787bc336c6b9f85ee82c71a414fa1d6ca3b9fdecc41677ce809b450c712987d"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPad-viewport-dialog-process-restart-no-history-restored.png",
+      "sha256": "b5196b147edf127131719d6baac3fa5678f727d0ac636199b28377bb9bae191c"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPad-viewport-dialog-new-cleared-provider-and-visible-context.png",
+      "sha256": "ae476f89b254f85a443f87c66fcd8513401f874bbf53e4e0243528a1eb702e24"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPhone-viewport-dialog-profile-switch-no-inherited-conversation.png",
+      "sha256": "4859d6025fed22fa6c7e4c20e1b4acf0aa2ae490c96b71b3f36c6e304c714922"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPhone-dialog-capabilities-no-siri-import-or-device-sync.png",
+      "sha256": "e846a112b67300e67394b46632d3171d6b069598a63de9f19d10dd728cce108d"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPhone-viewport-dialog-process-restart-no-history-restored.png",
+      "sha256": "212ee014c9ad283830e43701ac6d89afe5dcd1147ce660eea433f9a991c39063"
+    },
+    {
+      "path": "Docs/verification/dialog-history-images/iPhone-viewport-dialog-new-cleared-provider-and-visible-context.png",
+      "sha256": "1254c75dc69136af9c650e53e476c5dba02926f690955a888f0c52002e0b537a"
+    }
+  ],
+  "image_qualification": "iPad capability screenshot is scrolled beyond the heading, not full-entry layout proof; not selected. iPhone full sheet and scope/reset viewports selected. Some full images include system keyboard.",
+  "Siri_history_access": false,
+  "CloudKit_requests": false,
+  "cloud_account_queried": false,
+  "persisted_or_cross_device_history_implemented": false,
+  "original_F050_parity": false,
+  "Home_constructed": false
+}
