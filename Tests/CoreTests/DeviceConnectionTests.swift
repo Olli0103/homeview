@@ -5,6 +5,9 @@ import XCTest
 final class DeviceConnectionTests: XCTestCase {
   private final class Provider: DeviceDataProvider {
     var hasPermission = true
+    var revoked:Set<DataConnection> = []
+    var delayReminders=false
+    var reminderReply:CheckedContinuation<[DeviceReminder],any Error>?
     var permissionRequests = 0
     var queriedInterval: DateInterval?
     var delayUnlock = false
@@ -35,7 +38,7 @@ final class DeviceConnectionTests: XCTestCase {
     var playbackReply: CheckedContinuation<Void, any Error>?
     var resumeReply: CheckedContinuation<Void, any Error>?
     var onPlayback: (() -> Void)?
-    func authorized(_ kind: DataConnection) -> Bool { hasPermission }
+    func authorized(_ kind: DataConnection) -> Bool { hasPermission && !revoked.contains(kind) }
     func authorizePersonal(_ kind: DataConnection) async throws {
       permissionRequests += 1
       if delayAuthorization {
@@ -62,6 +65,7 @@ final class DeviceConnectionTests: XCTestCase {
     }
     func reminders() async throws -> [DeviceReminder] {
       reminderReads += 1
+      if delayReminders { return try await withCheckedThrowingContinuation { reminderReply=$0;onStart?() } }
       return reminderItems
     }
     func addReminder(_ title: String) async throws -> String {
@@ -126,6 +130,71 @@ final class DeviceConnectionTests: XCTestCase {
         }
       }
       return unlockGranted
+    }
+  }
+
+  func testPersonalSourceRevocationPollingClearsOnlyRevokedCalendarAndRequiresReconnect() async {
+    let p=Provider()
+    let session=DeviceConnections(provider:p)
+    _ = await session.unlock();await session.connect(.calendar);await session.connect(.reminders)
+    XCTAssertFalse(session.events.isEmpty);XCTAssertFalse(session.reminders.isEmpty)
+    let reads=p.eventReads,requests=p.permissionRequests
+    p.revoked.insert(.calendar);session.tick()
+    XCTAssertTrue(session.events.isEmpty);XCTAssertFalse(session.enabled.contains(.calendar))
+    XCTAssertTrue(session.requested.contains(.calendar));XCTAssertTrue(session.personalUnlocked)
+    XCTAssertFalse(session.reminders.isEmpty);XCTAssertTrue(session.enabled.contains(.reminders))
+    XCTAssertEqual(p.eventReads,reads);XCTAssertEqual(p.permissionRequests,requests)
+    p.revoked.remove(.calendar);session.tick()
+    XCTAssertTrue(session.events.isEmpty);XCTAssertFalse(session.enabled.contains(.calendar))
+    await session.connect(.calendar);XCTAssertFalse(session.events.isEmpty)
+  }
+  func testPersonalSourceRevocationPollingClearsOnlyRevokedReminders() async {
+    let p=Provider();let s=DeviceConnections(provider:p)
+    _ = await s.unlock();await s.connect(.calendar);await s.connect(.reminders)
+    let reads=p.reminderReads;p.revoked.insert(.reminders);s.tick()
+    XCTAssertTrue(s.reminders.isEmpty);XCTAssertFalse(s.enabled.contains(.reminders))
+    XCTAssertFalse(s.events.isEmpty);XCTAssertTrue(s.enabled.contains(.calendar))
+    XCTAssertTrue(s.personalUnlocked);XCTAssertEqual(p.reminderReads,reads)
+  }
+  func testPersonalSourceRevocationDropsLateCalendarWithoutWaitingForPoll() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock()
+    p.delayEvents=true;let started=expectation(description:"calendar read suspended");p.onStart={started.fulfill()}
+    let read=Task { await s.connect(.calendar) };await fulfillment(of:[started],timeout:2)
+    p.revoked.insert(.calendar);try XCTUnwrap(p.eventReply).resume(returning:[Provider.event]);await read.value
+    XCTAssertTrue(s.events.isEmpty);XCTAssertFalse(s.enabled.contains(.calendar))
+    XCTAssertTrue(s.requested.contains(.calendar));XCTAssertFalse(s.busy.contains(.calendar))
+  }
+  func testPersonalSourceRevocationDropsLateRemindersWithoutWaitingForPoll() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock()
+    p.delayReminders=true;let started=expectation(description:"reminder read suspended");p.onStart={started.fulfill()}
+    let read=Task { await s.connect(.reminders) };await fulfillment(of:[started],timeout:2)
+    p.revoked.insert(.reminders);try XCTUnwrap(p.reminderReply).resume(returning:p.reminderItems);await read.value
+    XCTAssertTrue(s.reminders.isEmpty);XCTAssertFalse(s.enabled.contains(.reminders))
+    XCTAssertTrue(s.requested.contains(.reminders));XCTAssertFalse(s.busy.contains(.reminders))
+  }
+  func testPersonalSourceRevocationPreventsAllNewReminderWrites() async {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.reminders)
+    let item=s.reminders[0],reads=p.reminderReads;p.revoked.insert(.reminders)
+    let added=await s.addReminder("Synthetic revoked draft");await s.completeReminder(item);await s.removeReminder(item)
+    XCTAssertFalse(added);XCTAssertEqual(p.reminderWrites,0);XCTAssertEqual(p.reminderReads,reads)
+    XCTAssertTrue(s.reminders.isEmpty);XCTAssertFalse(s.enabled.contains(.reminders))
+  }
+  func testPersonalSourceRevocationAfterSubmittedWriteStartsNoPrivateReadback() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.reminders)
+    let reads=p.reminderReads;p.delayReminderWrite=true
+    let started=expectation(description:"write already submitted");p.onStart={started.fulfill()}
+    let write=Task { await s.addReminder("Synthetic already submitted item") };await fulfillment(of:[started],timeout:2)
+    p.revoked.insert(.reminders);try XCTUnwrap(p.writeReply).resume();let confirmed=await write.value
+    XCTAssertFalse(confirmed);XCTAssertEqual(p.reminderWrites,1);XCTAssertEqual(p.reminderReads,reads)
+    XCTAssertTrue(s.reminders.isEmpty);XCTAssertFalse(s.enabled.contains(.reminders))
+    XCTAssertEqual(p.reminderItems.count,2,"Already submitted provider write is not falsely claimed rolled back")
+  }
+  func testPersonalSourceRevocationRechecksPermissionAfterAuthorizationReturns() async {
+    for kind in [DataConnection.calendar,.reminders] {
+      let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock()
+      p.revoked.insert(kind);await s.connect(kind)
+      XCTAssertEqual(p.permissionRequests,1);XCTAssertEqual(p.eventReads,0);XCTAssertEqual(p.reminderReads,0)
+      XCTAssertFalse(s.enabled.contains(kind));XCTAssertTrue(s.requested.contains(kind))
     }
   }
 
