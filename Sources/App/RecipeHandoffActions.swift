@@ -8,6 +8,7 @@ extension AppModel {
     route=cookingInProgress ? .cooking:.recipe
   }
   func offerRecipeHandoff() async {
+    guard !Task.isCancelled else { return }
     guard cookingInProgress else { recipeHandoff.status="Start cooking before offering a recipe.";return }
     guard RecipeHandoffController.canPublish else {
       do { try recipeHandoff.offer(RecipeContinuity.make(recipe:recipe,step:cookingStep)) }
@@ -22,25 +23,25 @@ extension AppModel {
     defer { if recipeHandoff.generation==ticket { recipeHandoff.busy=false } }
     if document != (try? RecipeContinuity.fingerprint(.soup)),!connections.personalUnlocked {
       let unlocked=await connections.unlock()
-      guard personalSessionGeneration==generation,recipeHandoff.generation==ticket else { return }
+      guard !Task.isCancelled,personalSessionGeneration==generation,recipeHandoff.generation==ticket else { return }
       guard unlocked else { recipeHandoff.status="Device unlock was not granted. Nothing was sent.";return }
     }
-    guard personalSessionGeneration==generation,recipeHandoff.generation==ticket,
+    guard !Task.isCancelled,personalSessionGeneration==generation,recipeHandoff.generation==ticket,
       route == .handoff,cookingInProgress,document == (try? RecipeContinuity.fingerprint(recipe)) else { return }
     do { try recipeHandoff.offer(RecipeContinuity.make(recipe:recipe,step:cookingStep)) }
     catch { recipeHandoff.status="This recipe cannot be offered." }
   }
   func acceptRecipeHandoff() async {
-    guard let transfer=recipeHandoff.incoming else { return }
+    guard !Task.isCancelled,let transfer=recipeHandoff.incoming else { return }
     let ticket=recipeHandoff.generation;let session=personalSessionGeneration
     recipeHandoff.busy=true
     defer { if recipeHandoff.generation==ticket { recipeHandoff.busy=false } }
     if !connections.personalUnlocked {
       let unlocked=await connections.unlock()
-      guard recipeHandoff.generation==ticket,personalSessionGeneration==session else { return }
+      guard !Task.isCancelled,recipeHandoff.generation==ticket,personalSessionGeneration==session else { return }
       guard unlocked else { recipeHandoff.status="Device unlock was not granted. Nothing was changed.";return }
     }
-    guard recipeHandoff.generation==ticket,personalSessionGeneration==session,
+    guard !Task.isCancelled,recipeHandoff.generation==ticket,personalSessionGeneration==session,
       connections.personalUnlocked,recipeHandoff.incoming==transfer,route == .handoff else { return }
     if applyRecipeTransfer(transfer) { recipeHandoff.cancelPending() }
   }
