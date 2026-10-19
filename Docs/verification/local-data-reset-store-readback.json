@@ -1,0 +1,258 @@
+[
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPad",
+    "scenario": "cleanup",
+    "storeID": "3B1B6372-4E3A-4279-AFCF-6E751D90645E",
+    "files": [
+      "mock-state.json",
+      "reset-cleanup.json"
+    ],
+    "bytes": 1970,
+    "sha256": "e4d6505e763659f21387d351537259c28cc2baba316f52b086be8d3fb471efa3",
+    "expected_state_verified": true,
+    "qualification": "Initial iPad helper-focus failure: cleanup record deliberately remains, one new timer persisted. Closing checkpoint proves successful retry separately."
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPad",
+    "scenario": "background",
+    "storeID": "2AD7F902-F7A8-4E28-A9EF-03CD7C06F571",
+    "files": [
+      "State Recovery/original-b008a3afa32141758dba6749341f2bb892456e1448503c07eeaa91872ffcfe9c.json",
+      "State Recovery/reset-fixture.json",
+      "mock-state.json",
+      "photos/orphan.jpg"
+    ],
+    "bytes": 2265,
+    "sha256": "214bcd977486f13e4d6744e348b5d56a692beb206499a8143dcdaf3aecd9f873",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPad",
+    "scenario": "denied",
+    "storeID": "9DB12CB5-3D8C-47DC-997A-0373F22FFC79",
+    "files": [
+      "State Recovery/original-ee7da62312c8410d28e5593db08b28a140fbd30dc5b664f1000e8eb7e8db093a.json",
+      "State Recovery/reset-fixture.json",
+      "mock-state.json",
+      "photos/orphan.jpg"
+    ],
+    "bytes": 2265,
+    "sha256": "ee7da62312c8410d28e5593db08b28a140fbd30dc5b664f1000e8eb7e8db093a",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPad",
+    "scenario": "readonly",
+    "storeID": "D8A7BC02-5138-4FC4-B8E2-6C43B339831E",
+    "files": [
+      "mock-state.json"
+    ],
+    "bytes": 14,
+    "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPad",
+    "scenario": "success",
+    "storeID": "39B20B67-7A16-4389-9C3F-9468C6940EB1",
+    "files": [
+      "mock-state.json",
+      "selected-photo.data"
+    ],
+    "bytes": 1827,
+    "sha256": "402afee18f7199fe2053c154df770b9265d20e09f7cf110bf4c2bf561a1f6815",
+    "expected_state_verified": true,
+    "qualification": "Legacy fixture explicitly rewrote a new synthetic selected-photo.data at restart; not a deletion failure or clean-disk restart proof."
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPhone",
+    "scenario": "cleanup",
+    "storeID": "5240567A-2F43-4EC3-A37F-5C36C2E8DB05",
+    "files": [
+      "mock-state.json"
+    ],
+    "bytes": 1970,
+    "sha256": "d886938ebd2a41cde3214ab4e91f2ba5c092940615a76a5347f7348d3bbd6f2a",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPhone",
+    "scenario": "background",
+    "storeID": "89D3E211-FFB3-451B-A407-135587F30252",
+    "files": [
+      "State Recovery/original-54c12e54f4e410ce4d07c5d28ccab89bd5fa7006d58f3e83ef93adf0afc228fa.json",
+      "State Recovery/reset-fixture.json",
+      "mock-state.json",
+      "photos/orphan.jpg"
+    ],
+    "bytes": 2265,
+    "sha256": "92242d707f5b0b9523a2f2c3ef4a53a5dc3ac63d2c74ef7765c62c5df58a9106",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPhone",
+    "scenario": "denied",
+    "storeID": "3E483ADF-4640-4479-918D-407ED69F868F",
+    "files": [
+      "State Recovery/reset-fixture.json",
+      "mock-state.json",
+      "photos/orphan.jpg"
+    ],
+    "bytes": 2265,
+    "sha256": "638643a2ec43b7020e3f8bc6e6b7d757f09cd7100240e2d677cce58bc9b1975c",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPhone",
+    "scenario": "readonly",
+    "storeID": "F08C7468-7535-4990-A221-BCCADBAEE074",
+    "files": [
+      "mock-state.json"
+    ],
+    "bytes": 14,
+    "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-qualified",
+    "device": "iPhone",
+    "scenario": "success",
+    "storeID": "E638F6E5-36A9-43ED-9780-7BADC4981820",
+    "files": [
+      "mock-state.json",
+      "selected-photo.data"
+    ],
+    "bytes": 1827,
+    "sha256": "2ffb9073663076e9523647c9d8f47810693c818eb93fc3be3b76a72fd86a1c5d",
+    "expected_state_verified": true,
+    "qualification": "Legacy fixture explicitly rewrote a new synthetic selected-photo.data at restart; not a deletion failure or clean-disk restart proof."
+  },
+  {
+    "checkpoint": "local-reset-closure",
+    "device": "iPad",
+    "scenario": "cleanup",
+    "storeID": "9BC6EEAF-262D-47DD-ACCE-9368F362367B",
+    "files": [
+      "mock-state.json"
+    ],
+    "bytes": 1970,
+    "sha256": "6fdc26d2ce3bbe58149787f10f917a1bbf298003eb92489bccfb2fb75ad87baa",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-closure",
+    "device": "iPhone",
+    "scenario": "cleanup",
+    "storeID": "DFAE9DDC-6555-40B4-8BC4-E18720D0BB92",
+    "files": [
+      "mock-state.json"
+    ],
+    "bytes": 1970,
+    "sha256": "282f5c7e6497d06ed362dad39c6b9c686623bb46b03ce1fab9506926abb9574e",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-durable",
+    "device": "iPad",
+    "scenario": "success",
+    "storeID": "B4E17BEE-A18E-4E3A-8140-BEBF5CBE3F82",
+    "files": [
+      "mock-state.json"
+    ],
+    "bytes": 1827,
+    "sha256": "7ec023801b47d5cc0b332e058a3e91af5a227fd813713c3fc92c410114a7342c",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-durable",
+    "device": "iPhone",
+    "scenario": "success",
+    "storeID": "F00873A8-18B9-44C9-92CC-A2D104B7DD35",
+    "files": [
+      "mock-state.json"
+    ],
+    "bytes": 1827,
+    "sha256": "690b5917b06f99a7ae37d2288eae78f1cd1e5c9fb9d101c65bf8aa67dd0987cd",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-disclosure",
+    "device": "iPad",
+    "scenario": "background",
+    "storeID": "DE79967C-D321-4A73-B105-BCEDECBC0146",
+    "files": [
+      "State Recovery/reset-fixture.json",
+      "mock-state.json",
+      "photos/orphan.jpg"
+    ],
+    "bytes": 2265,
+    "sha256": "1585ad465b27a70c3df2a3c102d2d04366013895cfbd98c6e4cc11bc32f4484b",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-disclosure",
+    "device": "iPad",
+    "scenario": "denied",
+    "storeID": "A5B64686-761F-4682-BB75-87FFE90EFFC8",
+    "files": [
+      "State Recovery/reset-fixture.json",
+      "mock-state.json",
+      "photos/orphan.jpg"
+    ],
+    "bytes": 2265,
+    "sha256": "ff1e77c394777419d095b2bfa441847a94088195367829f9608caea839be65f2",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-disclosure",
+    "device": "iPhone",
+    "scenario": "background",
+    "storeID": "572926F9-F765-4D62-9B1D-DB94A1AB8A32",
+    "files": [
+      "State Recovery/reset-fixture.json",
+      "mock-state.json",
+      "photos/orphan.jpg"
+    ],
+    "bytes": 2265,
+    "sha256": "b19153c3f8afd5b5ed601086d67dd091730f6f6ddf3fa51b40fb9945766dbe50",
+    "expected_state_verified": true,
+    "qualification": ""
+  },
+  {
+    "checkpoint": "local-reset-disclosure",
+    "device": "iPhone",
+    "scenario": "denied",
+    "storeID": "DADC28A6-7D22-44F5-98A3-70337DDEAD5C",
+    "files": [
+      "State Recovery/reset-fixture.json",
+      "mock-state.json",
+      "photos/orphan.jpg"
+    ],
+    "bytes": 2265,
+    "sha256": "e1348280fd5fe8af468b5e7c5019aac0247ed416df1f3d6b5ae95906fa5738a0",
+    "expected_state_verified": true,
+    "qualification": ""
+  }
+]

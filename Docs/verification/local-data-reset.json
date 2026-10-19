@@ -1,0 +1,250 @@
+{
+  "date": "2026-10-19",
+  "issue": 71,
+  "code_commit": "a5052e534ffcd30da312320ec5a8dcd3163349d7",
+  "source_digest": "9413223f73632f1a5ff494adad09728cc20e584786e64fefc1220e043841df97",
+  "source_files": 183,
+  "Core_tests": 245,
+  "Core_failures": 0,
+  "UI": [
+    {
+      "id": "local-reset-pilot",
+      "source_digest": "42ab50a9ed0ce84d544b9858996d793ba50b0390f727d732a4d1f9031c057a54",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "installed_apps_read_back": true,
+      "compiled_inputs": 22
+    },
+    {
+      "id": "local-reset-qualified",
+      "source_digest": "27ea0bc2b92a4f3fb8742bb6fc48e50d5bd4d90e5fb690b3d1c2e4833471893e",
+      "passed": 7,
+      "failed": 1,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "installed_apps_read_back": true,
+      "compiled_inputs": 22
+    },
+    {
+      "id": "local-reset-closure",
+      "source_digest": "3fc8892086f37b77d3d7c7ee5f1072d2266f50288dc6f1ae832731415b5770b8",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "installed_apps_read_back": true,
+      "compiled_inputs": 22
+    },
+    {
+      "id": "local-reset-durable",
+      "source_digest": "1292800a77490ad9fe3d855a4e7cb31740bccbef98d8c6dee781a8de4efc6009",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "installed_apps_read_back": true,
+      "compiled_inputs": 22
+    },
+    {
+      "id": "local-reset-disclosure",
+      "source_digest": "9413223f73632f1a5ff494adad09728cc20e584786e64fefc1220e043841df97",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "installed_apps_read_back": true,
+      "compiled_inputs": 22
+    }
+  ],
+  "UI_total_executions": 20,
+  "UI_passed": 19,
+  "UI_failed_retained": 1,
+  "distinct_UI_methods": 4,
+  "final_native_gate": {
+    "verdict": "PASS",
+    "target": "a5052e534ffcd30da312320ec5a8dcd3163349d7",
+    "clean_before_after": true,
+    "appmodel_scenarios": 17,
+    "appmodel_assertions": 68,
+    "restore_assertions": 6,
+    "filesystem_scenarios": 7,
+    "all_inputs_unchanged": true,
+    "actual_audio_volume": 0,
+    "physical_audio_or_LA_verified": false,
+    "Home_constructed": false
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "generator": {
+    "byte_equivalent": true,
+    "Python_AST_valid": true
+  },
+  "owned_UI_stores_read_back": 18,
+  "decoded_PNGs": 50,
+  "selected_PNGs": 16,
+  "selected_contacts_reviewed": 2,
+  "images": [
+    {
+      "device": "iPad",
+      "path": "Docs/verification/local-data-reset-images/iPad-reset-restart-fresh-introduction-no-old-data.png",
+      "checkpoint": "local-reset-durable",
+      "sha256": "75842e2c6b71c8ae9ba6ac6a1fadb9aeeec4f65d5886e2088fccd0a0eed6dca3"
+    },
+    {
+      "device": "iPad",
+      "path": "Docs/verification/local-data-reset-images/iPad-viewport-reset-complete-source-permissions-retained.png",
+      "checkpoint": "local-reset-durable",
+      "sha256": "9a8a581377f35981b8b834220c2c43f9fc5a770fbe78f2ec106358a1c9dbe826"
+    },
+    {
+      "device": "iPad",
+      "path": "Docs/verification/local-data-reset-images/iPad-reset-review-before-auth-no-deletion.png",
+      "checkpoint": "local-reset-durable",
+      "sha256": "584453da2fe1299761a8d33ddacc9319eaca1e6fa395aca51334c03c39865dc9"
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/verification/local-data-reset-images/iPhone-reset-restart-fresh-introduction-no-old-data.png",
+      "checkpoint": "local-reset-durable",
+      "sha256": "9f1a4de352ae8f1c7fc510824a2ab981b264837782195717afbb51ba27bfec03"
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/verification/local-data-reset-images/iPhone-viewport-reset-complete-source-permissions-retained.png",
+      "checkpoint": "local-reset-durable",
+      "sha256": "fcfe8c72fc6c1f945dffc3318bece0fa47152eb3bb0d6d4da635fb4a3c38304d"
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/verification/local-data-reset-images/iPhone-reset-review-before-auth-no-deletion.png",
+      "checkpoint": "local-reset-durable",
+      "sha256": "bdb2cf9cc26661425e433479b47b097baccca8881ffb1b40170788e58cbc9143"
+    },
+    {
+      "device": "iPad",
+      "path": "Docs/verification/local-data-reset-images/iPad-viewport-reset-retry-cleans-only-retired-files.png",
+      "checkpoint": "local-reset-closure",
+      "sha256": "e5a7ec3981f686a2ef458cfa1a5ca78b47973b1654dde4a1299a7f002b86b8e4"
+    },
+    {
+      "device": "iPad",
+      "path": "Docs/verification/local-data-reset-images/iPad-reset-partial-cleanup-explicit-not-full-success.png",
+      "checkpoint": "local-reset-closure",
+      "sha256": "90aaa49204bcab7b82916b9bd0fefd7812230415cd7a72146c75c7acfd45f174"
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/verification/local-data-reset-images/iPhone-viewport-reset-retry-cleans-only-retired-files.png",
+      "checkpoint": "local-reset-closure",
+      "sha256": "1b677053c6c999abce60eba5eedfac587d7b6f98a649498419587a2314eafb64"
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/verification/local-data-reset-images/iPhone-reset-partial-cleanup-explicit-not-full-success.png",
+      "checkpoint": "local-reset-closure",
+      "sha256": "e533a6cd96aefd7a4fa1c4bcbeec88d501e87a256dc6b819cc7ab947ba5087c6"
+    },
+    {
+      "device": "iPad",
+      "path": "Docs/verification/local-data-reset-images/iPad-reset-newer-state-preserved-not-overwritten.png",
+      "checkpoint": "local-reset-qualified",
+      "sha256": "9a9e41659f5875d56cd3cf92a44c72320d0a5b318c051937df6225454a380777"
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/verification/local-data-reset-images/iPhone-reset-newer-state-preserved-not-overwritten.png",
+      "checkpoint": "local-reset-qualified",
+      "sha256": "8b4316bd9347a5c76e687d4201526b8fa31cae399c79e2e727b918a931ab0b23"
+    },
+    {
+      "device": "iPad",
+      "path": "Docs/verification/local-data-reset-images/iPad-reset-background-requires-fresh-authentication.png",
+      "checkpoint": "local-reset-disclosure",
+      "sha256": "ba9281e728a2320bbb169dfff9b11ff1480c0e7f89ac00b579c4438a7c5b18ec"
+    },
+    {
+      "device": "iPad",
+      "path": "Docs/verification/local-data-reset-images/iPad-reset-denied-auth-no-content-deleted.png",
+      "checkpoint": "local-reset-disclosure",
+      "sha256": "f3a1c64c10532a8915e7881b73868d3dc80f841e4e72e5621afafea3f0b98f5a"
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/verification/local-data-reset-images/iPhone-reset-background-requires-fresh-authentication.png",
+      "checkpoint": "local-reset-disclosure",
+      "sha256": "46cfa5d8e579edf69264b70e6feebd75478ff323a201b8f3a26610f311352496"
+    },
+    {
+      "device": "iPhone",
+      "path": "Docs/verification/local-data-reset-images/iPhone-reset-denied-auth-no-content-deleted.png",
+      "checkpoint": "local-reset-disclosure",
+      "sha256": "43bae76825474e2e37609b0541929880911929602e7e75d13ae32d6945db7821"
+    }
+  ],
+  "checkpoint_archives": [
+    {
+      "name": "local-reset-pilot-inputs.zip",
+      "entries": 205,
+      "sha256": "6b2a3087615de72cc5e006ac6fb93ae58bf670100009002bbded4d9edfb591ff",
+      "all_entries_read_back": true
+    },
+    {
+      "name": "local-reset-qualified-inputs.zip",
+      "entries": 205,
+      "sha256": "495cd88948b88043d5e803be231e4c9057c767accf812cc529013be7e9b5e4ed",
+      "all_entries_read_back": true
+    },
+    {
+      "name": "local-reset-closure-inputs.zip",
+      "entries": 205,
+      "sha256": "c868f6bd8d26034cc0700d07250010363f026a3dfee4efb461e015782501771d",
+      "all_entries_read_back": true
+    },
+    {
+      "name": "local-reset-durable-inputs.zip",
+      "entries": 205,
+      "sha256": "cb5e657bb04c6c2faaa3e81edf3ac42e0db57889df938fc69a1088efe13b9aa2",
+      "all_entries_read_back": true
+    },
+    {
+      "name": "local-reset-disclosure-inputs.zip",
+      "entries": 205,
+      "sha256": "98abccaac5a27a59f57754243303e8c0b9aa266d48507e147709cb642ba352c3",
+      "all_entries_read_back": true
+    }
+  ],
+  "release_archive": {
+    "name": "local-data-reset-release-inputs.zip",
+    "entries": 318,
+    "sha256": "b4591d404a873ce9712a116198c8bcf50ba2696f7fdad45312ced5cc3fe2a789",
+    "all_entries_read_back": true
+  },
+  "actual_demo_audio_volume": 0,
+  "physical_LA_alarm_or_acoustic_acceptance": false,
+  "real_source_accounts_modified": false,
+  "OS_permissions_revoked": false,
+  "Home_constructed": false,
+  "original_F101_parity": false
+}

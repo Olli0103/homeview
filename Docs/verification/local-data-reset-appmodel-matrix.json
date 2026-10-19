@@ -1,0 +1,461 @@
+[
+  {
+    "scenario": "consent-order",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "multi-consent-restart-stable-0",
+        "passed": true
+      },
+      {
+        "id": "multi-consent-restart-stable-1",
+        "passed": true
+      },
+      {
+        "id": "multi-consent-restart-stable-2",
+        "passed": true
+      },
+      {
+        "id": "multi-consent-restart-stable-3",
+        "passed": true
+      },
+      {
+        "id": "multi-consent-restart-stable-4",
+        "passed": true
+      },
+      {
+        "id": "multi-consent-restart-stable-5",
+        "passed": true
+      },
+      {
+        "id": "no-order-only-recovery-copies",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "54503D58-B698-4B34-B8B1-0DC630BF2EB7"
+  },
+  {
+    "scenario": "ordinary",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "normal-reset-commits",
+        "passed": true
+      },
+      {
+        "id": "fresh-local-state-no-old-content-or-consents",
+        "passed": true
+      },
+      {
+        "id": "transient-state-and-voice-preferences-cleared",
+        "passed": true
+      },
+      {
+        "id": "no-photos-recovery-or-journal-left",
+        "passed": true
+      },
+      {
+        "id": "actual-new-AppModel-restart-stays-empty",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "917322D7-6016-412F-9149-4F8ED73CA20D"
+  },
+  {
+    "scenario": "no-auth",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "confirmation-without-auth-rejected",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "916F80EC-21BD-49F3-878B-E09BC977712F"
+  },
+  {
+    "scenario": "pre-cancelled-auth",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "pre-cancelled-auth-no-authority",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "37476D67-2170-4397-9BD4-7D4CA295C953"
+  },
+  {
+    "scenario": "queued-auth-revoked",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "queued-old-auth-cannot-revive-after-background-session",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "6A8F4EAC-6DEE-4802-A63D-3AF55E58E8A0"
+  },
+  {
+    "scenario": "wrong-confirmation",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "whole-confirmation-rejects-lowercase",
+        "passed": true
+      },
+      {
+        "id": "whole-confirmation-rejects-suffix",
+        "passed": true
+      },
+      {
+        "id": "whole-confirmation-rejects-leading-space",
+        "passed": true
+      },
+      {
+        "id": "whole-confirmation-rejects-newline",
+        "passed": true
+      },
+      {
+        "id": "whole-confirmation-rejects-NUL",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "FB6F4EAE-6A92-4187-B305-FE733DAEBE41"
+  },
+  {
+    "scenario": "expired",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "expired-proof-rejected",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "6FBF8510-3448-4B26-882C-1B40353F3528"
+  },
+  {
+    "scenario": "denied",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "denied-auth-no-confirmation-authority",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "28D5CA91-A990-49D1-8069-14AC8022AB8E"
+  },
+  {
+    "scenario": "readonly",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "newer-store-preserved",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "10E0DCC8-4DDB-42E2-80CF-372695956D19"
+  },
+  {
+    "scenario": "pending-alarm",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "in-flight-system-request-not-forgotten",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "644BA280-D182-4DB8-8403-3505EDDF2CA1"
+  },
+  {
+    "scenario": "registered-alarm",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "registered-alarm-ledger-retained",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "E2229C25-8E49-4931-BFBB-995458D240CD"
+  },
+  {
+    "scenario": "write-fail",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "swap-failure-preserves-old-state",
+        "passed": true
+      },
+      {
+        "id": "no-prepared-stage-residue",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 28,
+    "stderrSHA256": "3b07e91765711dcf05ff4c753c85e7eabfb66a66ba0b8c8c24ff706529d5d64f",
+    "owned_test_store": "575F0847-51AC-49EE-970F-9DFDEBEE5F14"
+  },
+  {
+    "scenario": "fsync-fail",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "swap-failure-preserves-old-state",
+        "passed": true
+      },
+      {
+        "id": "no-prepared-stage-residue",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 28,
+    "stderrSHA256": "70b48ff76ca7851953e068116f0b2abd4c4a0c845fe261ea2f740057cf7f8721",
+    "owned_test_store": "B08B74F9-D880-42D9-B2B0-3D5444E0B7C3"
+  },
+  {
+    "scenario": "swap-fail",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "swap-failure-preserves-old-state",
+        "passed": true
+      },
+      {
+        "id": "no-prepared-stage-residue",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 27,
+    "stderrSHA256": "3f68a5c178013812802e1789f8e286ed5aaf76000f1391a84238399235bc18d3",
+    "owned_test_store": "C45A6902-5BD8-45CB-AA2D-10ED86C40448"
+  },
+  {
+    "scenario": "replace-retired",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "retired-path-replacement-not-full-success",
+        "passed": true
+      },
+      {
+        "id": "wrong-inode-retry-never-deletes-replacement-canary",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 28,
+    "stderrSHA256": "8c8890ff0b77057d637f16407693c36c29e2bab7d802a7992eccf60f4b130fb4",
+    "owned_test_store": "876210C6-D765-4042-8282-2924240FD40A"
+  },
+  {
+    "scenario": "retarget-root",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "storage-path-change-blocks-future-writes",
+        "passed": true
+      },
+      {
+        "id": "replacement-canary-untouched-and-persist-refused",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 28,
+    "stderrSHA256": "8c8890ff0b77057d637f16407693c36c29e2bab7d802a7992eccf60f4b130fb4",
+    "owned_test_store": "C7AE6C44-973B-4DD3-A001-80B0C40F7C15"
+  },
+  {
+    "scenario": "audio",
+    "returncode": 0,
+    "cases": [
+      {
+        "id": "opening-review-no-delete-no-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "auth-alone-no-delete-or-data-unlock",
+        "passed": true
+      },
+      {
+        "id": "real-demo-music-and-chime-clients-volume-zero",
+        "passed": true
+      },
+      {
+        "id": "audio-reset-commits",
+        "passed": true
+      },
+      {
+        "id": "real-old-audio-clients-released-no-late-chime",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "fault_attested": true,
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owned_test_store": "E1194FCF-F379-4A3B-8FA4-A3486ABF89D0"
+  }
+]

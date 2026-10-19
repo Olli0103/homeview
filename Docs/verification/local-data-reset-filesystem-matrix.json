@@ -1,0 +1,77 @@
+[
+  {
+    "mode": "ordinary",
+    "result": {
+      "committed": true,
+      "currentPathHasDefault": true,
+      "oldFilesRemoved": true,
+      "originalBytesStillAtInputPath": false,
+      "storagePathOwned": true
+    },
+    "passed": true,
+    "interposed_at_exact_boundary": false
+  },
+  {
+    "mode": "write-fail",
+    "result": {
+      "committed": false,
+      "originalBytesStillAtInputPath": true
+    },
+    "passed": true,
+    "interposed_at_exact_boundary": true
+  },
+  {
+    "mode": "fsync-fail",
+    "result": {
+      "committed": false,
+      "originalBytesStillAtInputPath": true
+    },
+    "passed": true,
+    "interposed_at_exact_boundary": true
+  },
+  {
+    "mode": "swap-fail",
+    "result": {
+      "committed": false,
+      "originalBytesStillAtInputPath": true
+    },
+    "passed": true,
+    "interposed_at_exact_boundary": true
+  },
+  {
+    "mode": "replace-retired",
+    "result": {
+      "committed": true,
+      "currentPathHasDefault": true,
+      "oldFilesRemoved": false,
+      "originalBytesStillAtInputPath": false,
+      "storagePathOwned": true
+    },
+    "passed": true,
+    "interposed_at_exact_boundary": true
+  },
+  {
+    "mode": "retarget-parent",
+    "result": {
+      "committed": true,
+      "currentPathHasDefault": false,
+      "oldFilesRemoved": true,
+      "originalBytesStillAtInputPath": false,
+      "storagePathOwned": false
+    },
+    "passed": true,
+    "interposed_at_exact_boundary": true
+  },
+  {
+    "mode": "retarget-root",
+    "result": {
+      "committed": true,
+      "currentPathHasDefault": false,
+      "oldFilesRemoved": true,
+      "originalBytesStillAtInputPath": false,
+      "storagePathOwned": false
+    },
+    "passed": true,
+    "interposed_at_exact_boundary": true
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "iPad-partial-focus",
+    "result": "FAIL retained",
+    "detail": "Qualified cleanup textfield was only partially visible; isHittable did not guarantee tap-center within sheet. Test-only measured full-bounds helper repaired; affected cleanup case passed on both devices."
+  },
+  {
+    "id": "fault-environment",
+    "result": "FAIL/incomplete retained",
+    "detail": "Two external gate attempts prepared injection environment but omitted env=env from AppModel subprocess. No fault was attested and normal reset occurred. Corrected orchestrator passes environment and requires explicit C fault/race stderr marker. Product code unchanged for this repair."
+  },
+  {
+    "id": "consent-array-order",
+    "result": "repaired",
+    "detail": "Three owned UI recovery copies had no semantic field change; two had only consent array-order differences, one was currently identical after later serialization. Added canonical set ordering and Core test; six actual native AppModel restarts now produce no order-only copies."
+  },
+  {
+    "id": "legacy-fixture-reinjection",
+    "result": "test qualification repaired",
+    "detail": "Legacy reader fixture deliberately writes selected-photo.data on every launch. Old success restart is not clean-disk proof; durable checkpoint removes that injection before restart and reads only mock-state.json."
+  },
+  {
+    "id": "revoked-auth-disclosure",
+    "result": "repaired",
+    "detail": "Authorization was correctly revoked but historical Authenticated text remained. Current UI derives expired/cleared disclosure; two closing UI cases pass."
+  },
+  {
+    "id": "single-service-disconnect",
+    "result": "hypothesis discarded",
+    "detail": "Original per-kind disconnect did not revoke other previously consented services; this is not itself a consent bug. Reset now explicitly cancels entire restore. External controls verify both ordinary single-service behavior and global reset revocation."
+  },
+  {
+    "id": "initial-compile",
+    "result": "FAIL retained",
+    "detail": "An initializer read an observed property before data initialization; replaced with a local constant before successful final builds."
+  },
+  {
+    "id": "interposer-development",
+    "result": "helper failure, not product evidence",
+    "detail": "Initial dlsym-based development hook failed a native process with empty output; original signal was not recorded. Direct self-image original calls work, and final runs attest each fault. No product root cause is inferred."
+  },
+  {
+    "id": "development-native-vacuous-assertion",
+    "result": "discarded before execution",
+    "detail": "An unexecuted development harness had a constant-false namespace predicate. Release harness uses actual before/after sibling-name comparison; that development assertion is not counted as proof."
+  }
+]
