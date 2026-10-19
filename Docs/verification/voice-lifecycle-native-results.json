@@ -1,0 +1,72 @@
+[
+  {
+    "case": "timer_transcripts",
+    "exit_code": 0,
+    "result": {
+      "assertions": 32,
+      "case": "timer_transcripts",
+      "permission_states_unchanged": true,
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "ambiguity_and_error",
+    "exit_code": 0,
+    "result": {
+      "assertions": 21,
+      "case": "ambiguity_and_error",
+      "permission_states_unchanged": true,
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "cooking_transcripts",
+    "exit_code": 0,
+    "result": {
+      "assertions": 36,
+      "case": "cooking_transcripts",
+      "permission_states_unchanged": true,
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "queued_context",
+    "exit_code": 0,
+    "result": {
+      "assertions": 9,
+      "case": "queued_context",
+      "permission_states_unchanged": true,
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "controller_cancel_and_terminals",
+    "exit_code": 0,
+    "result": {
+      "assertions": 8,
+      "case": "controller_cancel_and_terminals",
+      "permission_states_unchanged": true,
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "context_and_failure_scope",
+    "exit_code": 0,
+    "result": {
+      "assertions": 9,
+      "case": "context_and_failure_scope",
+      "permission_states_unchanged": true,
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "recording_deadline",
+    "exit_code": 0,
+    "result": {
+      "assertions": 5,
+      "case": "recording_deadline",
+      "permission_states_unchanged": true,
+      "verdict": "PASS"
+    }
+  }
+]
