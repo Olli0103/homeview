@@ -1,0 +1,451 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "status": "partial_issue_remains_open",
+  "product_commit": "4c932da4ba034c0a4abfbed10439913b5bf921ee",
+  "baseline_test_commit": "be9974458e64cfc364dd07bc5baaa5c5886a4680",
+  "baseline_product_equivalent_to": "d427325cc9a0afd198160aed547158e9b6f52f57",
+  "source_files": 200,
+  "source_digest": "1a046022617133a572ce756ae3d97b277f91bf4e07d1869e2abbd0194c0b9ed7",
+  "UI_results": [
+    {
+      "checkpoint": "cooking-hit-regions-baseline",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "cooking-hit-regions-baseline",
+      "device": "iPhone",
+      "passed": 1,
+      "failed": 2,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "cooking-hit-regions-final",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 2,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "cooking-hit-regions-final",
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 2,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_total_executions": 22,
+  "UI_passed": 15,
+  "UI_failed_historical": 7,
+  "UI_unique_cases": 4,
+  "UI_final_executions": 8,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "SDK_commit": "4c932da4ba034c0a4abfbed10439913b5bf921ee",
+  "Core_new_tests": 0,
+  "Core_historical_tests": 297,
+  "Core_historical_commit": "6c69a688e01033698c76bc441be08eeece5cc65d",
+  "Core_test_files_unchanged": 70,
+  "audit_findings": {
+    "cooking-hit-regions-baseline/iPad/recipe-hit-region-cooking-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          386.7833251953125,
+          281.8066711425781,
+          46.433349609375,
+          9.286651611328125
+        ],
+        "identifier": "",
+        "label": "Step 1 of 3"
+      }
+    ],
+    "cooking-hit-regions-baseline/iPad/recipe-hit-region-cover-all-findings": [],
+    "cooking-hit-regions-baseline/iPad/recipe-hit-region-ingredients-all-findings": [],
+    "cooking-hit-regions-baseline/iPhone/recipe-hit-region-cooking-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          190.0800018310547,
+          290.7699890136719,
+          22.050003051757812,
+          4.410003662109375
+        ],
+        "identifier": "",
+        "label": "Step 1 of 3"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          34.05000000000001,
+          488.1699999999999,
+          139.44,
+          13.650000000000091
+        ],
+        "identifier": "cooking.handoff",
+        "label": "Continue on another device"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          34.05000000000001,
+          514.4200000000001,
+          150.14999999999995,
+          16.799999999999955
+        ],
+        "identifier": "cooking.timer",
+        "label": "Start 5-minute timer"
+      }
+    ],
+    "cooking-hit-regions-baseline/iPhone/recipe-hit-region-cover-all-findings": [],
+    "cooking-hit-regions-baseline/iPhone/recipe-hit-region-ingredients-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          316.6000061035156,
+          270.27001953125,
+          18.05999755859375
+        ],
+        "identifier": "ingredient.0",
+        "label": "1 butternut squash, peeled and cubed"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          348.5199890136719,
+          136.9199981689453,
+          18.05999755859375
+        ],
+        "identifier": "ingredient.1",
+        "label": "1 onion, chopped"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          380.44000244140625,
+          119.07000732421875,
+          18.05999755859375
+        ],
+        "identifier": "ingredient.2",
+        "label": "2 tbsp olive oil"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          412.3599853515625,
+          176.61000061035156,
+          18.05999755859375
+        ],
+        "identifier": "ingredient.3",
+        "label": "3 cups vegetable stock"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          444.2799987792969,
+          150.99000549316406,
+          18.05999755859375
+        ],
+        "identifier": "ingredient.4",
+        "label": "2 fresh sage leaves"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          476.20001220703125,
+          129.15000915527344,
+          18.05999755859375
+        ],
+        "identifier": "ingredient.5",
+        "label": "Salt and pepper"
+      }
+    ],
+    "cooking-hit-regions-final/iPad/recipe-hit-region-cooking-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          386.7833251953125,
+          281.8066711425781,
+          46.433349609375,
+          9.286651611328125
+        ],
+        "identifier": "",
+        "label": ""
+      }
+    ],
+    "cooking-hit-regions-final/iPad/recipe-hit-region-cover-all-findings": [],
+    "cooking-hit-regions-final/iPad/recipe-hit-region-ingredients-all-findings": [],
+    "cooking-hit-regions-final/iPhone/recipe-hit-region-cooking-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          190.0800018310547,
+          290.7699890136719,
+          22.050003051757812,
+          4.410003662109375
+        ],
+        "identifier": "",
+        "label": ""
+      }
+    ],
+    "cooking-hit-regions-final/iPhone/recipe-hit-region-cover-all-findings": [],
+    "cooking-hit-regions-final/iPhone/recipe-hit-region-ingredients-all-findings": [],
+    "cooking-hit-regions-final-v2/iPad/recipe-hit-region-cooking-all-findings": [],
+    "cooking-hit-regions-final-v2/iPad/recipe-hit-region-cover-all-findings": [],
+    "cooking-hit-regions-final-v2/iPad/recipe-hit-region-ingredients-all-findings": [],
+    "cooking-hit-regions-final-v2/iPhone/recipe-hit-region-cooking-all-findings": [],
+    "cooking-hit-regions-final-v2/iPhone/recipe-hit-region-cover-all-findings": [],
+    "cooking-hit-regions-final-v2/iPhone/recipe-hit-region-ingredients-all-findings": []
+  },
+  "cover_pixel_results": [
+    {
+      "device": "iPad",
+      "size": [
+        1592,
+        1592
+      ],
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "before_sha256": "9a8c61fb19132b472e534b0dc673d7b394548a97451aa402e9ab763a2b62b150",
+      "after_sha256": "9a8c61fb19132b472e534b0dc673d7b394548a97451aa402e9ab763a2b62b150"
+    },
+    {
+      "device": "iPhone",
+      "size": [
+        1134,
+        1134
+      ],
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "before_sha256": "2e46684318b77132c81183d70c8cd717afe56f09e5070a1c64b38f84e9069622",
+      "after_sha256": "2e46684318b77132c81183d70c8cd717afe56f09e5070a1c64b38f84e9069622"
+    }
+  ],
+  "decoded_PNGs": 50,
+  "contacts_viewed": 6,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-before-viewport-recipe-hit-region-cover.png",
+      "sha256": "9a8c61fb19132b472e534b0dc673d7b394548a97451aa402e9ab763a2b62b150",
+      "checkpoint": "cooking-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-before-viewport-recipe-hit-region-ingredients.png",
+      "sha256": "fff8c234e3e2997406b5951722b909c45ff627c70d4fbecb488563d8d91cc95e",
+      "checkpoint": "cooking-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-before-viewport-recipe-hit-region-cooking.png",
+      "sha256": "cd414d89e467ed66f4d1072cd06b1044917be924f8b107ad89a1c263ed0b83ba",
+      "checkpoint": "cooking-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-after-viewport-recipe-hit-region-cover.png",
+      "sha256": "9a8c61fb19132b472e534b0dc673d7b394548a97451aa402e9ab763a2b62b150",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-after-viewport-recipe-hit-region-ingredients.png",
+      "sha256": "ab81c43d0a32978b168e3ba1d4feb371d9e9f35f2f0e157346445b901c25fa5d",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-after-viewport-recipe-hit-region-cooking.png",
+      "sha256": "fc05f2c750c881130224f48dd0e9dced63dddc7e2fecaeab8bc5515d32ae6e99",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-after-viewport-recipe-ingredients-checked-edge.png",
+      "sha256": "d5f0a1e200b6b5b4e3876c83430ed3454bcc6689acf2b914a49c45353f18fb5b",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-after-viewport-recipe-cooking-progress-after-edge-actions.png",
+      "sha256": "c7d97d4f928a82cfdb5a30a761e5423e72bf149bb45266718f7e5212be165224",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPad-after-viewport-recipe-timer-created-by-edge-action.png",
+      "sha256": "da480d2b37dcb28ccab0a423eb6d5fbf56612d1833adaad5b30f2346bc92ddfb",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-before-viewport-recipe-hit-region-cover.png",
+      "sha256": "2e46684318b77132c81183d70c8cd717afe56f09e5070a1c64b38f84e9069622",
+      "checkpoint": "cooking-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-before-viewport-recipe-hit-region-ingredients.png",
+      "sha256": "0cbe64e67f09a9cfd5146610a1581a802ac5b198a5442cf04ab04ec0bbcf0249",
+      "checkpoint": "cooking-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-before-viewport-recipe-hit-region-cooking.png",
+      "sha256": "41597220a4f1044aa5004d264e14bb352ec2fd802b37086ecd87eb55ed8b5b50",
+      "checkpoint": "cooking-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-after-viewport-recipe-hit-region-cover.png",
+      "sha256": "2e46684318b77132c81183d70c8cd717afe56f09e5070a1c64b38f84e9069622",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-after-viewport-recipe-hit-region-ingredients.png",
+      "sha256": "d5d3e8ceeae0a210aca178dd3533d15229778f6bf3620adb40e0a68fe2b6bf72",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-after-viewport-recipe-hit-region-cooking.png",
+      "sha256": "cbc49619687ac3587731d5586646f73bd26ea0d73a362fdc72d2d1697ec1ffef",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-after-viewport-recipe-ingredients-checked-edge.png",
+      "sha256": "71836241b89d798e127baab480fe2d90975d8a5daa75a3d06b604591d9996b74",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-after-viewport-recipe-cooking-progress-after-edge-actions.png",
+      "sha256": "ef94d0b4d9940ed413badccae894894d0fa727c9078013060627afba8c3cb4c5",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/recipe-hit-regions/iPhone-after-viewport-recipe-timer-created-by-edge-action.png",
+      "sha256": "c7880680ef0422f1819d2b873d8bd2c41514f0a6520ba140bec168fc26b0ea8b",
+      "checkpoint": "cooking-hit-regions-final-v2",
+      "device": "iPhone"
+    }
+  ],
+  "archives": {
+    "cooking-hit-regions-baseline": {
+      "archive": "cooking-hit-regions-baseline-inputs.zip",
+      "sha256": "7a2a363a9917c8c8dc76a24ddece41d7b76a7db840bb4232fc3b3340790aa7a7",
+      "entries": 228,
+      "all_entries_read_back": true
+    },
+    "cooking-hit-regions-final": {
+      "archive": "cooking-hit-regions-final-inputs.zip",
+      "sha256": "cae4a207a3195ef62779869cf70e4ee28de0552ed5632ca2b5cf4977bc56766a",
+      "entries": 228,
+      "all_entries_read_back": true
+    },
+    "cooking-hit-regions-final-v2": {
+      "archive": "cooking-hit-regions-final-v2-inputs.zip",
+      "sha256": "a1b2e69e1ea5042ded2976951a5d9cd6a5ea0eeb7d5735f1432947b4107468f8",
+      "entries": 228,
+      "all_entries_read_back": true
+    }
+  },
+  "implementation": "Reference-canvas scale passed through Environment; ingredient rows and two cooking action labels use ceil(44/scale) canvas-point heights. Decorative progress dots drawn in Canvas, full progress information attached to existing Step text. No audit exclusions.",
+  "failure_history": "Baseline: iPad cooking passive node; iPhone six ingredient rows, two cooking action labels and passive node. Candidate1 fixes all eight actual action findings, but frame rounding leaves 43.78/43.89-point measured heights and accessibilityHidden leaves an empty tiny generic node. Four failures retained. Final uses upward canvas-point rounding and noninteractive Canvas decoration; unchanged frame assertion (1e-6-point numerical tolerance), complete unfiltered audit and real edge actions pass on both devices.",
+  "functional_proof": [
+    "First ingredient top-edge check and bottom-edge uncheck",
+    "Scrolled final ingredient bottom-edge check",
+    "Cooking timer bottom edge starts actual own foreground 5-minute timer",
+    "Handoff top edge opens own offer dialog, offer never submitted",
+    "Existing progress text updates Step 1 of 3 to Step 2 of 3",
+    "Timer list contains actual Step 1 timer with positive remaining time at most 300 seconds"
+  ],
+  "visual_scope": "Recipe cover full viewport unchanged; ingredient/cooking layouts deliberately grow, no pixel-preservation claim for those states.",
+  "unproved": [
+    "Actual VoiceOver/Voice Control/Switch Control/AssistiveTouch/Zoom sessions",
+    "Full focus/announcements/Dynamic Type/contrast/original/physical-device acceptance",
+    "Hit-region audit of other screens or the Handoff dialog",
+    "Actual two-device transfer"
+  ],
+  "real_personal_data_used": false,
+  "Home_constructed": false,
+  "system_activity_created": false
+}
