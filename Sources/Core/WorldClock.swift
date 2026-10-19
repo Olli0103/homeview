@@ -41,6 +41,14 @@ struct WorldClockReading: Sendable {
   let dayDifference: Int
   let offset: String
   let daylight: Bool
+  var dayRelation: String? {
+    switch dayDifference {
+    case 0: nil
+    case -1: "Previous day"
+    case 1: "Next day"
+    default: "\(abs(dayDifference)) days \(dayDifference < 0 ? "behind" : "ahead")"
+    }
+  }
   init(city: WorldCity, instant: Date, referenceZone: TimeZone, locale: Locale = .current) {
     let formatter = DateFormatter()
     formatter.locale = locale

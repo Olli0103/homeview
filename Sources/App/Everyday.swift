@@ -532,8 +532,8 @@ struct WorldClockView: View {
                 VStack(alignment: .leading, spacing: 4) {
                   Text(city.name).font(.system(size: 25, weight: .medium))
                   Text(reading.date + " · " + reading.offset).font(.system(size: 13))
-                  if reading.dayDifference != 0 {
-                    Text(reading.dayDifference < 0 ? "Previous day" : "Next day")
+                  if let relation=reading.dayRelation {
+                    Text(relation)
                       .font(.system(size: 13, weight: .semibold))
                   }
                 }
