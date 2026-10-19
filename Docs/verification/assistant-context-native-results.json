@@ -1,0 +1,56 @@
+[
+  {
+    "case": "model_entry",
+    "exit_code": 0,
+    "result": {
+      "assertions": 18,
+      "case": "model_entry",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "text_only",
+    "exit_code": 0,
+    "result": {
+      "assertions": 23,
+      "case": "text_only",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "denied_auth",
+    "exit_code": 0,
+    "result": {
+      "assertions": 4,
+      "case": "denied_auth",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "inactive_queued",
+    "exit_code": 0,
+    "result": {
+      "assertions": 7,
+      "case": "inactive_queued",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "authentication_inactive",
+    "exit_code": 0,
+    "result": {
+      "assertions": 5,
+      "case": "authentication_inactive",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "draft_and_plan",
+    "exit_code": 0,
+    "result": {
+      "assertions": 6,
+      "case": "draft_and_plan",
+      "verdict": "PASS"
+    }
+  }
+]
