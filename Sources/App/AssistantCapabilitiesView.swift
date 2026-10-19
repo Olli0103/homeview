@@ -33,6 +33,8 @@ struct AssistantCapabilitiesView: View {
             "This is HomeView’s temporary on-device conversation, not your Siri history. Nothing is saved or synced to iCloud or another device. New clears this conversation; Stop also discards a pending reply. Leaving the assistant, background, lock and profile changes clear it too. A new app launch starts empty. HomeView cannot read or delete your Siri history.",id:"history")
           entry("Local commands · Available",
             "A limited command parser, not a conversational AI. No Siri AI or cloud AI provider is connected. On-device answers are a separate optional mode.",id:"service")
+          entry("Confirmed local demo plans",
+            "Start with ‘plan:’ and separate 2–6 steps with semicolons, for example ‘plan: temperature 72; brightness 30; timer for 90 seconds’. Only mock temperature/brightness and foreground demo timers are supported. Sending shows a preview; Run demo plan confirms it separately. Every step depends on confirmed read-back of its predecessor. Plans are not atomic and are not resumed after restart. No system-alarm scheduling, personal accounts, messages, calls, scenes or security actions.",id:"plans")
           entry("Languages",
             "Selected German and English timer and cooking-step commands. Other actions use explicit limited phrases, not arbitrary keywords. Replies are currently English in command mode. On-device answer languages depend on the system model; this is not Siri.",id:"languages")
           entry("Try these commands",
