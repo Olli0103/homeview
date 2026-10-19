@@ -1,0 +1,24 @@
+{
+  "assertions": 15,
+  "checks": {
+    "all_new_writes_blocked": true,
+    "both_caches_loaded": true,
+    "calendar_cache_cleared": true,
+    "calendar_survives_reminder_revocation": true,
+    "current_read_cleans_own_busy": true,
+    "current_read_still_commits": true,
+    "denied_reminder_cache_cleared": true,
+    "explicit_reconnect_loads_again": true,
+    "late_return_cleans_busy": true,
+    "late_return_rechecks_live_permission": true,
+    "old_error_cannot_clear_new_busy": true,
+    "old_error_cannot_replace_new_status": true,
+    "other_source_and_device_auth_preserved": true,
+    "permission_return_is_not_reconnect": true,
+    "poll_neither_reads_nor_prompts": true
+  },
+  "failed": [],
+  "verdict": "PASS",
+  "target": "025185e1bac0bf275759c2cd7231f1e588fa7891",
+  "binary_sha256": "9c35e6ebfe9876c2a8e8629918ad0c42e62c7a9a8040707e363939bbf2e7820f"
+}
