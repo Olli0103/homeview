@@ -28,6 +28,9 @@ final class DeviceConnectionTests: XCTestCase {
     var searchReplies: [String:CheckedContinuation<[DeviceTrack], any Error>] = [:]
     var onSearch: ((String)->Void)?
     var pauseCalls = 0
+    var musicPermissionRequests=0
+    var playCalls=0
+    var resumeCalls=0
     var delayPlayback = false
     var playbackReply: CheckedContinuation<Void, any Error>?
     var resumeReply: CheckedContinuation<Void, any Error>?
@@ -85,7 +88,12 @@ final class DeviceConnectionTests: XCTestCase {
       reminderWrites += 1
       if !ignoreReminderWrites { reminderItems.removeAll { $0.id == id } }
     }
-    func authorizeMusic() async throws {}
+    func authorizeMusic() async throws {
+      musicPermissionRequests+=1
+      if delayAuthorization {
+        try await withCheckedThrowingContinuation { authorizationReply=$0;onStart?() }
+      }
+    }
     func searchMusic(_ text: String) async throws -> [DeviceTrack] {
       try await withCheckedThrowingContinuation { reply in
         searchReplies[text] = reply
@@ -93,9 +101,11 @@ final class DeviceConnectionTests: XCTestCase {
       }
     }
     func playMusic(_ index: Int) async throws {
+      playCalls+=1
       if delayPlayback { try await withCheckedThrowingContinuation { playbackReply=$0;onPlayback?() } }
     }
     func resumeMusic() async throws {
+      resumeCalls+=1
       if delayPlayback { try await withCheckedThrowingContinuation { resumeReply=$0;onPlayback?() } }
     }
     func pauseMusic() { pauseCalls += 1 }
@@ -128,7 +138,9 @@ final class DeviceConnectionTests: XCTestCase {
     let session = DeviceConnections(provider:provider,testing:false,defaults:defaults)
     session.weatherUnits = .celsius
     for kind in DataConnection.allCases {
+      if kind == .music { _ = await session.unlock() }
       await session.connect(kind)
+      if kind == .music { session.lock() }
       XCTAssertTrue(defaults.bool(forKey:"HomeView.connected." + kind.rawValue))
     }
     XCTAssertEqual(provider.eventReads,0)
@@ -142,6 +154,8 @@ final class DeviceConnectionTests: XCTestCase {
     XCTAssertEqual(provider.permissionRequests,requests)
     XCTAssertEqual(provider.eventReads,0)
     XCTAssertEqual(provider.reminderReads,0)
+    XCTAssertFalse(restored.musicAccessAllowed)
+    XCTAssertFalse(restored.guestMusicShared)
     for kind in DataConnection.allCases {
       restored.disconnect(kind)
       XCTAssertFalse(defaults.bool(forKey:"HomeView.connected." + kind.rawValue))
@@ -177,7 +191,7 @@ final class DeviceConnectionTests: XCTestCase {
 
   func testLateMusicSearchFailureCannotReplaceDisconnectedStatus() async {
     let provider = Provider();let session = DeviceConnections(provider:provider)
-    await session.connect(.music)
+    _ = await session.unlock();await session.connect(.music)
     let started = expectation(description:"old search")
     provider.onSearch = { _ in started.fulfill() }
     let task = Task { await session.searchMusic("old") }
@@ -191,7 +205,7 @@ final class DeviceConnectionTests: XCTestCase {
   }
   func testOldMusicSearchCleanupCannotFinishANewerSearch() async {
     let provider = Provider();let session = DeviceConnections(provider:provider)
-    await session.connect(.music)
+    _ = await session.unlock();await session.connect(.music)
     let oldStarted = expectation(description:"old search")
     let newStarted = expectation(description:"new search")
     provider.onSearch = { text in (text == "old" ? oldStarted:newStarted).fulfill() }
@@ -211,16 +225,17 @@ final class DeviceConnectionTests: XCTestCase {
   }
   func testCancelledMusicSearchCannotInstallResultsOrPauseAudio() async {
     let provider = Provider();let session = DeviceConnections(provider:provider)
-    await session.connect(.music)
+    _ = await session.unlock();await session.connect(.music)
     let started = expectation(description:"cancelled search")
     provider.onSearch = { _ in started.fulfill() }
     let task = Task { await session.searchMusic("cancel") }
     await fulfillment(of:[started],timeout:2)
+    let pausesAtCancellation=provider.pauseCalls
     task.cancel()
     provider.searchReplies["cancel"]?.resume(returning:[DeviceTrack(id:"stale",title:"Synthetic",artist:"Fixture",artwork:nil)])
     await task.value
     XCTAssertTrue(session.tracks.isEmpty)
-    XCTAssertEqual(provider.pauseCalls,0)
+    XCTAssertEqual(provider.pauseCalls,pausesAtCancellation)
     XCTAssertFalse(session.busy.contains(.music))
   }
 
@@ -469,7 +484,7 @@ final class DeviceConnectionTests: XCTestCase {
 
 extension DeviceConnectionTests {
   private func seedPlayback(_ provider:Provider,_ session:DeviceConnections) async {
-    await session.connect(.music)
+    _ = await session.unlock();await session.connect(.music)
     let started=expectation(description:"synthetic search entered")
     provider.onSearch={ _ in started.fulfill() }
     let search=Task { await session.searchMusic("seed") }
@@ -564,5 +579,108 @@ extension DeviceConnectionTests {
     XCTAssertEqual(s.city,"Berlin");XCTAssertEqual(s.weatherUnits,.fahrenheit)
     XCTAssertNil(defaults.object(forKey:"HomeView.connected.Calendar"))
     XCTAssertEqual(defaults.string(forKey:"HomeView.reminders.ownedCalendarID"),"SYNTHETIC_SOURCE_LIST_ID")
+  }
+}
+
+extension DeviceConnectionTests {
+  func testUnsharedMusicIsNotReadableOrSearchableAfterDeviceLock() async {
+    let provider=Provider()
+    // Use one explicitly owned synthetic provider, not a system account.
+    let connected=DeviceConnections(provider:provider)
+    _ = await connected.unlock();await connected.connect(.music)
+    var searches=0
+    provider.onSearch = { text in
+      searches+=1
+      provider.searchReplies.removeValue(forKey:text)?.resume(returning:[DeviceTrack(id:"private-queue",title:"SYNTHETIC_OWNER_QUEUE",artist:"Synthetic",artwork:nil)])
+    }
+    defer { provider.onSearch=nil }
+    await connected.searchMusic("owner selection")
+    XCTAssertEqual(connected.tracks.count,1,"Positive authenticated source control")
+    connected.lock();searches=0
+    XCTAssertTrue(connected.tracks.isEmpty,"No implicit guest sharing of the owner's queue")
+    await connected.searchMusic("guest search")
+    XCTAssertEqual(searches,0,"Locked guest cannot invoke an account-backed search without authority")
+    XCTAssertTrue(connected.tracks.isEmpty,"Private search results cannot reappear after lock")
+  }
+}
+
+extension DeviceConnectionTests {
+  private func prepareImmediateMusic(_ p:Provider,_ c:DeviceConnections) async {
+    _ = await c.unlock();await c.connect(.music)
+    p.onSearch = { text in p.searchReplies.removeValue(forKey:text)?.resume(returning:[DeviceTrack(id:text,title:"SYNTHETIC_SHARED_QUEUE",artist:"Synthetic",artwork:nil)]) }
+    await c.searchMusic("approved queue");await c.playMusic(0)
+  }
+  func testGuestCannotConnectOrCreateMusicSharingWithoutDeviceAuthentication() async {
+    let p=Provider()
+    let session=DeviceConnections(provider:p)
+    await session.connect(.music)
+    XCTAssertEqual(p.musicPermissionRequests,0);XCTAssertFalse(session.enabled.contains(.music))
+    XCTAssertFalse(session.requested.contains(.music));XCTAssertFalse(session.setGuestMusicSharing(true))
+    XCTAssertFalse(session.guestMusicShared);XCTAssertFalse(session.musicAccessAllowed)
+  }
+  func testExplicitCurrentQueueSharingSurvivesLockButNeverSharesSearchAndCanBeRevoked() async {
+    let p=Provider()
+    let session=DeviceConnections(provider:p)
+    await prepareImmediateMusic(p,session);defer { p.onSearch=nil }
+    XCTAssertTrue(session.setGuestMusicSharing(true));session.lock()
+    XCTAssertTrue(session.guestMusicShared);XCTAssertTrue(session.musicAccessAllowed);XCTAssertFalse(session.musicSearchAllowed)
+    XCTAssertEqual(session.tracks.map(\.id),["approved queue"])
+    var guestSearches=0
+    p.onSearch = { text in guestSearches+=1;p.searchReplies.removeValue(forKey:text)?.resume(returning:[]) }
+    await session.searchMusic("not approved")
+    XCTAssertEqual(guestSearches,0)
+    let before=p.playCalls;await session.playMusic(0);XCTAssertEqual(p.playCalls,before+1)
+    XCTAssertTrue(session.setGuestMusicSharing(false));XCTAssertFalse(session.musicAccessAllowed);XCTAssertTrue(session.tracks.isEmpty)
+    let revoked=p.playCalls;await session.playMusic(0);await session.toggleMusic();XCTAssertEqual(p.playCalls,revoked);XCTAssertEqual(p.resumeCalls,0)
+    XCTAssertTrue(p.pauseCalls>0)
+  }
+  func testNewSearchAndBackgroundSessionEndCannotReuseGuestQueueConsent() async {
+    let p=Provider()
+    let c=DeviceConnections(provider:p)
+    await prepareImmediateMusic(p,c);defer { p.onSearch=nil }
+    XCTAssertTrue(c.setGuestMusicSharing(true))
+    await c.searchMusic("different queue")
+    XCTAssertFalse(c.guestMusicShared);XCTAssertEqual(c.tracks.map(\.id),["different queue"])
+    await c.playMusic(0);XCTAssertTrue(c.setGuestMusicSharing(true));c.lock()
+    c.endGuestMusicSession()
+    XCTAssertFalse(c.guestMusicShared);XCTAssertTrue(c.tracks.isEmpty);XCTAssertNil(c.currentTrack)
+  }
+  func testSourcePermissionRevocationImmediatelyBlocksGuestAccessAndPollingClearsQueue() async {
+    let p=Provider();let session=DeviceConnections(provider:p)
+    await prepareImmediateMusic(p,session);defer { p.onSearch=nil }
+    XCTAssertTrue(session.setGuestMusicSharing(true));session.lock();p.hasPermission=false
+    XCTAssertFalse(session.musicAccessAllowed)
+    let plays=p.playCalls;await session.playMusic(0);XCTAssertEqual(p.playCalls,plays)
+    session.pollMusic()
+    XCTAssertFalse(session.guestMusicShared);XCTAssertTrue(session.tracks.isEmpty);XCTAssertNil(session.currentTrack)
+    XCTAssertTrue(session.status[.music]?.contains("revoked") == true)
+  }
+  func testLockDuringMusicPermissionAndLateSearchCannotRestorePrivateQueue() async throws {
+    let p=Provider();let session=DeviceConnections(provider:p)
+    _ = await session.unlock();p.delayAuthorization=true
+    let permission=expectation(description:"actual owned music permission entered");p.onStart={permission.fulfill()}
+    let connect=Task { await session.connect(.music) };await fulfillment(of:[permission],timeout:2)
+    session.lock();try XCTUnwrap(p.authorizationReply).resume();await connect.value
+    XCTAssertFalse(session.enabled.contains(.music));XCTAssertFalse(session.busy.contains(.music))
+    p.delayAuthorization=false;_ = await session.unlock();await session.connect(.music)
+    let searchStarted=expectation(description:"actual owned search entered");p.onSearch={_ in searchStarted.fulfill()}
+    let search=Task {await session.searchMusic("stale private queue")};await fulfillment(of:[searchStarted],timeout:2)
+    session.lock();try XCTUnwrap(p.searchReplies["stale private queue"]).resume(returning:[DeviceTrack(id:"stale",title:"PRIVATE_CANARY",artist:"Synthetic",artwork:nil)])
+    await search.value
+    XCTAssertTrue(session.tracks.isEmpty);XCTAssertNil(session.currentTrack);XCTAssertFalse(session.busy.contains(.music))
+    p.onSearch=nil;p.onStart=nil
+  }
+  func testReconnectAndFreshSessionNeverInheritGuestSharing() async {
+    let p=Provider();let session=DeviceConnections(provider:p)
+    await prepareImmediateMusic(p,session);defer { p.onSearch=nil }
+    XCTAssertTrue(session.setGuestMusicSharing(true));session.disconnect(.music)
+    XCTAssertFalse(session.guestMusicShared);XCTAssertTrue(session.tracks.isEmpty)
+    await session.connect(.music)
+    XCTAssertFalse(session.guestMusicShared);XCTAssertNil(session.currentTrack)
+    await session.searchMusic("new authorized queue");await session.playMusic(0)
+    XCTAssertTrue(session.setGuestMusicSharing(true));session.resetLocalPreferences()
+    XCTAssertFalse(session.guestMusicShared);XCTAssertTrue(session.tracks.isEmpty);XCTAssertTrue(session.enabled.isEmpty)
+    let fresh=DeviceConnections(provider:Provider())
+    XCTAssertFalse(fresh.guestMusicShared);XCTAssertTrue(fresh.tracks.isEmpty)
   }
 }

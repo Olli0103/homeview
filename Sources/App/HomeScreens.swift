@@ -64,7 +64,7 @@ struct PersonalView: View {
               .accessibilityIdentifier("personal.photos.open")
           }.accessibilityElement(children:.contain)
             .accessibilityIdentifier("personal.photos.layout")
-          if model.playing || model.connections.musicPlaying || model.podcastPlaying
+          if model.playing || model.musicIsPlaying || model.podcastPlaying
             || model.data.timers.contains(where:{$0.remaining(at:model.now)>0}) { ActivityStrip() }
           Spacer(minLength:0)
           allAppsButton
@@ -258,7 +258,7 @@ struct ActivityStrip: View {
   @Environment(AppModel.self) private var model
   var body: some View {
     HStack {
-      if model.connections.musicPlaying, let index = model.connections.currentTrack,
+      if model.connections.musicAccessAllowed,model.connections.musicPlaying, let index = model.connections.currentTrack,
         model.connections.tracks.indices.contains(index)
       {
         Button {
@@ -492,15 +492,15 @@ struct LockView: View {
       ).accessibilityIdentifier("lock.state")
       Text("Mock lock · Demo profile required").font(.system(size: 20)).foregroundStyle(.gray)
       Pill(
-        title: model.authorized
-          ? (model.data.home.locked ? "Unlock" : "Lock") : "Choose Demo Profile",
-        symbol: model.authorized ? "lock.open" : "person.crop.circle"
+        title: model.canControlMockSecurity
+          ? (model.data.home.locked ? "Unlock" : "Lock") : "Authenticate Device",
+        symbol: model.canControlMockSecurity ? "lock.open" : "lock.shield"
       ) {
-        if model.authorized {
+        if model.canControlMockSecurity {
           model.command(.lock)
         } else {
           model.pendingPage = .home
-          model.route = .privacy
+          model.route = .deviceUnlock
         }
       }.accessibilityIdentifier("lock.action")
       Spacer()

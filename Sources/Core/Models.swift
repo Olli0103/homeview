@@ -5,7 +5,7 @@ enum HomeError: Error, Equatable, LocalizedError {
   var errorDescription: String? {
     switch self {
     case .offline: "The mock home is offline. No changes were made."
-    case .unauthorized: "Unlock the demo profile to control the front door."
+    case .unauthorized: "Device authentication is required for this mock security action."
     case .invalidValue: "That value is outside the supported range."
     case .notFound: "This accessory is unavailable."
     }
@@ -95,6 +95,7 @@ struct MockHome: Codable, Equatable, Sendable {
   var audit: [String] = []
   mutating func transact(_ command: HomeCommand, authorized: Bool = false) throws {
     guard online else { throw HomeError.offline }
+    guard !command.requiresDeviceAuthentication || authorized else { throw HomeError.unauthorized }
     switch command {
     case .temperature(let t):
       guard (50...90).contains(t) else { throw HomeError.invalidValue }
@@ -157,6 +158,11 @@ enum HomeCommand: Sendable {
   case lock
   case blinds(Double)
   case scene(String)
+  var requiresDeviceAuthentication:Bool {
+    if case .lock = self { return true }
+    if case .scene(let name) = self { return name == "Good Night" }
+    return false
+  }
   var description: String {
     switch self {
     case .temperature(let t): "Thermostat set to \(t)°"

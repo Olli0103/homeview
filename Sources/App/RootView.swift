@@ -50,7 +50,7 @@ struct RootView: View {
               .accessibilityIdentifier("doorbell.overlay")
           }
           if model.route == .face && model.demoDoorbell.current == nil
-            && (model.playing || model.podcastPlaying || model.connections.musicPlaying
+            && (model.playing || model.podcastPlaying || model.musicIsPlaying
               || model.data.timers.contains(where: { $0.remaining(at: model.now) > 0 }))
           {
             VStack {
@@ -218,6 +218,7 @@ struct RootView: View {
     .onDisappear {
       model.localResetForeground=false
       model.setAnswerSpeechForeground(false)
+      model.connections.endGuestMusicSession()
       model.recipeHandoff.stop()
       model.dismissDemoDoorbell()
       model.pauseFeedPodcast()
@@ -233,6 +234,7 @@ struct RootView: View {
       if phase == .active {
         model.reconcileSystemAlarms()
       } else if phase == .background {
+        model.connections.endGuestMusicSession()
         model.recipeHandoff.stop()
         model.pauseFeedPodcast()
         model.persist()

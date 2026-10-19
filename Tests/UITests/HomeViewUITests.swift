@@ -420,8 +420,16 @@ final class HomeViewUITests: XCTestCase {
     tap("app.Home")
     tap("grid.lock")
     XCTAssertEqual(app.staticTexts["lock.state"].label, "Locked")
+    XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device","A demo profile cannot authorize a security action")
+    tap("lock.action")
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:5))
+    shot("guest-policy-demo-profile-not-device-auth")
+    tap("device.unlock")
+    tap("grid.lock")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked","Authentication never performs the security action automatically")
     tap("lock.action")
     XCTAssertEqual(app.staticTexts["lock.state"].label, "Unlocked")
+    viewportShot("guest-policy-explicit-authenticated-mock-lock")
   }
   func testRecipeIngredientsCookingAndInlineTimer() {
     launch(["--screen-recipe"])
@@ -1950,6 +1958,12 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(button.waitForExistence(timeout: 8))
     for _ in 0..<18 where !button.isHittable { app.scrollViews.firstMatch.swipeUp() }
     button.tap()
+    if name == "Apple Music",app.buttons["device.unlock"].waitForExistence(timeout:2) {
+      tap("device.unlock")
+      XCTAssertTrue(button.waitForExistence(timeout:8))
+      for _ in 0..<18 where !button.isHittable { app.scrollViews.firstMatch.swipeUp() }
+      button.tap() // Authentication does not itself connect or share a source.
+    }
     let status = app.staticTexts["connection.status." + name]
     expectation(
       for: NSPredicate(format: "label CONTAINS %@", success ? "Connected" : "Access unavailable"),
@@ -4356,5 +4370,61 @@ extension HomeViewUITests {
     XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
     XCTAssertFalse(app.staticTexts["assistant.ai.question.0"].exists)
     viewportShot("assistant-context-route-exit-cleared",assistantRectangle:true)
+  }
+}
+
+extension HomeViewUITests {
+  private func prepareExplicitGuestMusicQueue() {
+    launch(["--page","Settings"])
+    connectService("Apple Music")
+    drawer();tap("app.Music")
+    let field=app.textFields["music.search.input"]
+    XCTAssertTrue(field.waitForExistence(timeout:5));field.tap();field.typeText("sample");tap("music.search");tap("music.result.0")
+    XCTAssertEqual(app.staticTexts["music.current.title"].label,"Connected fixture song")
+    drawer();tap("app.Settings")
+    let share=app.buttons["guest.music.share"]
+    scrollPhotoControlFullyIntoView(share);share.tap()
+    XCTAssertTrue(app.staticTexts["guest.music.status"].label.contains("Current queue shared"))
+    let guest=app.buttons["guest.music.use"];scrollPhotoControlFullyIntoView(guest);guest.tap()
+    XCTAssertTrue(app.staticTexts["music.current.title"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["music.current.title"].label,"Connected fixture song")
+    XCTAssertFalse(app.textFields["music.search.input"].exists)
+    XCTAssertFalse(app.buttons["music.browse"].exists)
+    viewportShot("guest-policy-only-explicit-shared-queue-no-search")
+  }
+  func testGuestMusicSharingRequiresDeviceOwnerAndRevocationStopsTheGuestQueue() {
+    prepareExplicitGuestMusicQueue()
+    tap("music.connected.play")
+    XCTAssertEqual(app.buttons["music.connected.play"].label,"Play")
+    tap("music.connected.play")
+    XCTAssertEqual(app.buttons["music.connected.play"].label,"Pause")
+    drawer();tap("app.Settings")
+    XCTAssertFalse(app.buttons["guest.music.share"].exists,"A guest cannot extend or change the sharing grant")
+    let auth=app.buttons["guest.music.authenticate"];scrollPhotoControlFullyIntoView(auth);auth.tap();tap("device.unlock")
+    let revoke=app.buttons["guest.music.share"];scrollPhotoControlFullyIntoView(revoke)
+    XCTAssertEqual(revoke.label,"Stop guest sharing");revoke.tap()
+    XCTAssertTrue(app.staticTexts["guest.music.status"].label.contains("sharing is off"))
+    XCTAssertFalse(app.buttons["guest.music.use"].exists)
+    shot("guest-policy-owner-explicit-revocation")
+    XCUIDevice.shared.press(.home);app.activate()
+    drawer();tap("app.Music")
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:8))
+    XCTAssertFalse(app.staticTexts["music.current.title"].exists)
+    XCTAssertFalse(app.textFields["music.search.input"].exists)
+    viewportShot("guest-policy-revoked-source-locked")
+  }
+  func testGuestMusicBackgroundRevokesSharingAndAssistantCannotResumePrivateSource() {
+    prepareExplicitGuestMusicQueue()
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:8))
+    XCTAssertFalse(app.staticTexts["music.current.title"].exists)
+    XCTAssertFalse(app.textFields["music.search.input"].exists)
+    viewportShot("guest-policy-background-cleared-shared-source")
+    tap("nav.assistant")
+    let field=app.textFields["assistant.input"];field.tap();field.typeText("music");tap("assistant.send")
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["music.current.title"].exists)
+    XCTAssertFalse(app.buttons["music.connected.play"].exists)
+    viewportShot("guest-policy-assistant-cannot-resume-locked-source")
   }
 }
