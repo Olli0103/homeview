@@ -1459,7 +1459,7 @@
     "functions": [
       "F083"
     ],
-    "current": "Podcasts spielt einen synthetischen Demo-Ton. Kein Apple-Podcasts-Katalog, keine persönlichen Abos.",
+    "current": "Explizite öffentliche HTTPS-RSS-Feeds mit FeedKit10.9.4 und AVPlayer, gespeicherter Position, Seek/Pause/Resume, Fehlerpfaden und Aktivitätsrückkehr. Keine Apple-Podcasts-Abos oder Accountsync.",
     "tasks": [
       "Bestehende gepflegte Feed-/Playerlösungen vor Eigenbau prüfen",
       "Öffentliche RSS-Episoden, Metadaten, Dauer, Fortsetzen und Fehler behandeln",
@@ -1470,7 +1470,8 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/59",
     "issue_number": 59,
-    "state": "open"
+    "state": "completed",
+    "completion": "Eigener RSS-Testumfang erfüllt; Docs/public-podcast-feeds.md und verification/podcast-rss.json. Keine Original-/Hardwareparität."
   },
   {
     "key": "MEDIA-04",

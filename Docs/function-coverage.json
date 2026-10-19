@@ -2572,7 +2572,8 @@
       "MEDIA-03"
     ],
     "current": [
-      "Podcasts spielt einen synthetischen Demo-Ton. Kein Apple-Podcasts-Katalog, keine persönlichen Abos."
+      "Explizite öffentliche HTTPS-RSS-Feeds mit FeedKit10.9.4 und AVPlayer, gespeicherter Position, Seek/Pause/Resume, Fehlerpfaden und Aktivitätsrückkehr. Keine Apple-Podcasts-Abos oder Accountsync.",
+      "#59 ist im ausdrücklich eigenen RSS-Teilumfang abgeschlossen. Apple-Podcasts-Originaldienst bleibt nicht gleichwertig."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2585,13 +2586,14 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Own explicit RSS scope passed; qualified native checkpoints. Apple Podcasts account sync not implemented.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
     "completion_criteria": [
       "Eigener Testfeed und eigene Audiofixtures mit Seek, Pause, Navigation und Neustart. Kein behaupteter Zugriff auf private Podcast-Abos."
-    ]
+    ],
+    "verification": "Docs/verification/podcast-rss.json"
   },
   {
     "id": "F084",

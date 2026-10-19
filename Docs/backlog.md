@@ -988,16 +988,9 @@ Abhängigkeiten: MEDIA-01, PUB-01.
 <a id="media-03"></a>
 ### MEDIA-03: Podcasts durch echte frei zugängliche Feedwiedergabe ergänzen
 
-Podcasts spielt einen synthetischen Demo-Ton. Kein Apple-Podcasts-Katalog, keine persönlichen Abos.
+Abgeschlossen am 19. Oktober 2026 im eigenen öffentlichen RSS-Umfang: Explizite öffentliche HTTPS-RSS-Feeds mit FeedKit10.9.4 und AVPlayer, gespeicherter Position, Seek/Pause/Resume, Fehlerpfaden und Aktivitätsrückkehr. Keine Apple-Podcasts-Abos oder Accountsync.
 
-Offen:
-
-- Bestehende gepflegte Feed-/Playerlösungen vor Eigenbau prüfen
-- Öffentliche RSS-Episoden, Metadaten, Dauer, Fortsetzen und Fehler behandeln
-- Eigene Feeds von Apple-Podcasts-Accountsync trennen
-- Audiofokus und Aktivitätsleiste integrieren
-
-Abnahme: Eigener Testfeed und eigene Audiofixtures mit Seek, Pause, Navigation und Neustart. Kein behaupteter Zugriff auf private Podcast-Abos.
+[Umsetzung und Grenzen](public-podcast-feeds.md) · [Quellgebundene Tests](verification/podcast-rss.json). Apple-Podcasts-Originalparität und physische Audio-/AirPlay-Abnahme sind nicht damit behauptet.
 
 <a id="media-04"></a>
 ### MEDIA-04: Weitere Medien und Drittanbieter-Angebote auf Zugriffsmöglichkeiten prüfen

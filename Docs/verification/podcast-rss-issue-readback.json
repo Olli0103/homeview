@@ -1,0 +1,27 @@
+{
+  "assignees": [],
+  "body": "<!-- homeview-backlog:MEDIA-03 -->\n\n## Ziel\n\nPodcasts durch echte frei zugängliche Feedwiedergabe ergänzen.\n\n## Stand\n\nExplizite öffentliche HTTPS-RSS-Feeds mit FeedKit10.9.4 und nativer AVPlayer-Wiedergabe, lokalen Metadaten und gespeicherter Position. Demo bleibt getrennt; kein Apple-Podcasts-Katalog oder private Abos.\n\nPriorität: P1. Typ: implementation. Bereich: media.\n\n## Referenzumfang\n\n- F083: Apple Podcasts\n\n## Konkrete Arbeit\n\n- [x] Bestehende gepflegte Feed-/Playerlösungen vor Eigenbau prüfen\n- [x] Öffentliche RSS-Episoden, Metadaten, Dauer, Fortsetzen und Fehler behandeln\n- [x] Eigene Feeds von Apple-Podcasts-Accountsync trennen\n- [x] Audiofokus und Aktivitätsleiste integrieren\n\n## Abnahme\n\nEigener Testfeed und eigene Audiofixtures mit Seek, Pause, Navigation und Neustart. Kein behaupteter Zugriff auf private Podcast-Abos.\n\n## Testgrenze\n\nAutomatisierte Tests verwenden synthetische persönliche Daten und MockHome. Apple Home bleibt gesperrt, bis der Eigentümer die Einrichtung ausdrücklich fortsetzt. Keine Nachrichten oder Anrufe automatisch ausführen. Persönliche Accounts und physische Geräte werden gesondert und bewusst abgenommen.\n\nStand: 17. Oktober 2026. Quellen und ursprüngliche Referenzbilder werden nicht mit veröffentlicht. Build-Erfolg ist keine Originalgleichheit. Vollständige Zuordnung in [Docs/function-coverage.json](https://github.com/Olli0103/homeview/blob/main/Docs/function-coverage.json).\n\n## Abschluss · 19. Oktober 2026\n\nUmgesetzt und veröffentlicht: expliziter Feedabruf, begrenzte Metadaten, unbekannte Dauer ohne Ersatzwert, ±15-Sekunden-Seek, Pause/Resume, lokale Neustartposition ohne Autoplay, Fehler-/Entfernenpfade und Aktivitätsrückkehr. Music-Rückkehr öffnet den ausgewählten Player; direkter Music-Resume pausiert Podcastaudio über den gemeinsamen App-Pfad.\n\n181 Modell-/Transporttests, sechs unterschiedliche ausgewählte UI-Fälle je Gerät über qualifizierte Checkpoints und fünf arm64-SDK-Builds. Der finale betroffene3-Fälle-Lauf je iPad/iPhone ist grün. Frühere fehlgeschlagene Piloten bleiben als solche im Nachweis; keine behauptete grüne Vollsuite. Alle Eingaben vor/nach unverändert und installierte Appbytes zurückgelesen.\n\n[Umfang und Grenzen](https://github.com/Olli0103/homeview/blob/main/Docs/public-podcast-feeds.md) · [Quellgebundene Ergebnisse](https://github.com/Olli0103/homeview/blob/main/Docs/verification/podcast-rss.json).\n\nDer ausdrücklich formulierte eigene RSS-Testumfang ist abgeschlossen. Apple-Podcasts-Accountsync, physische Audio-/AirPlay-/Langzeitabnahme und Original-Parität sind nicht behauptet. Allgemeine ausstehende asynchrone Music-Races und Gastpolicy bleiben in #67/#80. Keine Home-Anbindung.\n",
+  "labels": [
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rIFqg",
+      "name": "type:implementation",
+      "description": "",
+      "color": "0e8a16"
+    },
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rIHQQ",
+      "name": "priority:P1",
+      "description": "",
+      "color": "d93f0b"
+    },
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rIRwQ",
+      "name": "area:media",
+      "description": "",
+      "color": "1d76db"
+    }
+  ],
+  "number": 59,
+  "state": "CLOSED",
+  "title": "[MEDIA-03] Podcasts durch echte frei zugängliche Feedwiedergabe ergänzen"
+}

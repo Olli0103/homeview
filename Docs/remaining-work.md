@@ -6,13 +6,13 @@
 
 Zuerst die sichtbare Apple-HomeView-Kopie korrigieren: Flow-Ziffern/Stencil/Glas und
 Farbfläche, danach Raster/Icons und Wetteransicht. Der Videoentwurf wurde verworfen,
-#15 ist wieder offen. Keine weitere Funktionsbreite vor diesem visuellen Abgleich.
+#15 ist wieder offen. Die damalige visuelle Priorität ist kein Abschlussnachweis. Am 19. Oktober hat der Eigentümer ausdrücklich das fortlaufende Abarbeiten der Issues bestätigt: umsetzbare Fehler und Softwarepakete werden nacheinander bearbeitet, ohne Home-Anbindung. Die noch offenen visuellen Kriterien bleiben in ihrer Bilanz.
 
 ## Nachgeordnete weitere Softwarearbeit
 
 - GPU-Fluid und Performancepfad (#17); Wetterzustände mit fehlenden Werten statt erfundener Daten (#21).
 - Galerie-/Album-Update-Lifecycle (#11), Profil-Layouts (#9), geteilte Panel- und Gastfreigaben mit echter Modellautorisierung (#8/#68).
-- Frei zugängliche Podcast-Feeds mit eigenem Audio-Testfeed (#59), explizite öffentliche Sprachausgabe (#40), eigene Live Activities (#51) und Rezept-Continuity (#56).
+- Explizite öffentliche Sprachausgabe (#40), eigene Live Activities (#51) und Rezept-Continuity (#56).
 - Einrichtungs-/Fähigkeitsführung (#71), Quellen-/Sprachen-/Grenzenanzeige (#41).
 - Echten Assistenten nur mit bewusster Anbieter-/Datenschutzwahl (#33); Aktionsplaner und reiche Antworten hängen daran (#35/#36). Keine kostenpflichtige Anbieterannahme oder Übernahme von Gateway-Credentials in die App.
 - Weitere Fehler-/Gast-/Medienpfade und späte Antworten (#67/#80) bleiben zu prüfen; die neuen Kalender-/Reminder- und Speicherprüfungen sind kein pauschaler PASS für jeden Provider.
@@ -81,7 +81,7 @@ Farbfläche, danach Raster/Icons und Wetteransicht. Der Videoentwurf wurde verwo
 | [#56](https://github.com/Olli0103/homeview/issues/56) | Rezept-Handoff über öffentliche Continuity-Technik implementieren | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |
 | [#57](https://github.com/Olli0103/homeview/issues/57) | MusicKit-Suche, Bibliothek und Player produktiv abnehmen | Reale Hardware, bewusst verbundenes Konto oder zweites Testgerät für die verlangte Abnahme nötig. |
 | [#58](https://github.com/Olli0103/homeview/issues/58) | Animiertes Artwork und Lyrics pro öffentlicher Fähigkeit entscheiden | Assets/Rechte, echte Identitätsbindung oder öffentliche API-/Hardwarefähigkeit noch nicht nachgewiesen. |
-| [#59](https://github.com/Olli0103/homeview/issues/59) | Podcasts durch echte frei zugängliche Feedwiedergabe ergänzen | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |
+| [#59](https://github.com/Olli0103/homeview/issues/59) | Podcasts durch echte frei zugängliche Feedwiedergabe ergänzen | Abgeschlossen: eigener öffentlicher RSS-Umfang mit nativer Wiedergabe. Keine Apple-Podcasts-Accountsync-/Hardwareparität; [Nachweise](public-podcast-feeds.md). |
 | [#60](https://github.com/Olli0103/homeview/issues/60) | Weitere Medien und Drittanbieter-Angebote auf Zugriffsmöglichkeiten prüfen | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |
 | [#61](https://github.com/Olli0103/homeview/issues/61) | AirPlay-Routenauswahl und Mehrraumwiedergabe abnehmen | Reale Hardware, bewusst verbundenes Konto oder zweites Testgerät für die verlangte Abnahme nötig. |
 | [#62](https://github.com/Olli0103/homeview/issues/62) | Gast- und Peer-to-peer-AirPlay separat klären | Reale Hardware, bewusst verbundenes Konto oder zweites Testgerät für die verlangte Abnahme nötig. |
