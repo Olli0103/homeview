@@ -3183,7 +3183,8 @@
       "SYS-09"
     ],
     "current": [
-      "Keine nachgewiesene Erkennung der Adapterleistung oder äquivalente Stromwarnung."
+      "Settings → Power adapter information explicitly reports adapter adequacy unavailable; no battery-based wattage or insufficient-power inference.",
+      "macOS optionally shows only OS-reported adapter wattage metadata; observed 140 W is not measured delivery or adequate-power proof. See Docs/power-adapter-capability.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3196,9 +3197,9 @@
     "target": "iPad core",
     "implementation_status": "blocked",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Explicit-unavailable branch of SYS-09 fulfilled; original insufficient-adapter warning remains unimplemented.",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "Read-only macOS adapter field observed; no physical adapter comparison or sufficiency measurement."
     },
     "completion_criteria": [
       "Nachgewiesener Messpfad mit geeigneten Adaptern oder explizit nicht verfügbar. SDK-Build erfüllt keinen Hardwaretest."
