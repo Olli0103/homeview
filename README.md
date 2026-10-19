@@ -17,7 +17,7 @@ swift test --scratch-path "$HOME/Library/Developer/HomeViewPublicBuild/CoreTests
 python3 Scripts/build_platforms.py
 ```
 
-The default build cache is under the current user's Library/Developer/HomeViewPublicBuild. Override HOMEVIEW_BUILD_DIR to use another suitable volume. Choose your own signing team and bundle identifier for physical-device use. MusicKit needs appropriate capabilities and service provisioning. Nothing in this repository provides credentials or account access.
+The default build cache is under the current user's Library/Developer/HomeViewPublicBuild. Override HOMEVIEW_BUILD_DIR to use another suitable volume. Choose your own signing team and bundle identifier for physical-device use. Keep the embedded timer widget bundle identifier prefixed with the host app identifier. MusicKit needs appropriate capabilities and service provisioning. Nothing in this repository provides credentials or account access.
 
 ## Current scope
 
@@ -25,6 +25,7 @@ The default build cache is under the current user's Library/Developer/HomeViewPu
 - Editable faces and per-face complication persistence, photos, calendar, weather, timers, alarms, recipes, browser, music, mirror and local communication simulations.
 - Opt-in EventKit, MusicKit, selected-photo/shared-album import, public weather, on-device Speech and explicit Messages/FaceTime system handoffs where supported.
 - Explicit public RSS podcast feeds with native playback and saved positions; no Apple Podcasts account sync.
+- Opt-in own-timer Live Activity on iOS/iPadOS, without private titles; [verified scope and open device/Lock Screen gates](Docs/timer-live-activity.md). Not an alarm service.
 - Mock smart home only. No real home discovery. No automatic message sending or calls.
 
 ## Parity backlog

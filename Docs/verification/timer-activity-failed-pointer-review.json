@@ -1,0 +1,14 @@
+{
+  "source_event_sha256": "c95a2360f92f45b2b64ea1d0111e8192a447e274ab6ec212dd675d757da8afbb",
+  "observed_tap": {
+    "x": 201.0,
+    "y": 210.0
+  },
+  "source_frame": "iPhone-toggle-failure.png",
+  "frame_sha256": "d98732a015b2b44a61411fffbabfe02cfebb2d87a6149445bd6d3851405b21bc",
+  "frame_viewed": true,
+  "observation": "Tap at x201 y210 hit center of full accessible row, left of the visible trailing native switch. Value remains off. Correct test pointer target; retain all state assertions.",
+  "tests_executed": 4,
+  "passed": 0,
+  "failed": 4
+}
