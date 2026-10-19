@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-19",
+  "issue": 80,
+  "status": "partial_issue_remains_open",
+  "code_commit": "483284bffbebebd25c35603903c6ad6628a101c0",
+  "baseline_code_commit": "34bc072797db3bf2f9913b019b8870fb45604ff1",
+  "baseline_production_equivalent_to": "bd53901810ae2a1ecf056a1747f9b3d857d108d0",
+  "baseline_tests": 6,
+  "baseline_failed_tests": 6,
+  "baseline_failed_assertions": 21,
+  "source_digest": "ac7de87babbaddbbc195908158accb7ae7283dc1117a3e9b130fda7f510c6d05",
+  "source_files": 189,
+  "Core_tests": 279,
+  "Core_failures": 0,
+  "new_Core_cases": 6,
+  "native_assertions": 22,
+  "native_new_cancellation_assertions": 7,
+  "native_retained_permission_assertions": 15,
+  "archives": {
+    "personal-cancel-baseline": {
+      "target": "34bc072797db3bf2f9913b019b8870fb45604ff1",
+      "entries": 197,
+      "sha256": "407050fa4999421988ddd255a821cc0037e6a2b7f7f053539278041a5d32c93c",
+      "all_entries_read_back": true,
+      "tests": 6,
+      "failed_assertions": 21
+    },
+    "personal-cancel-final": {
+      "target": "483284bffbebebd25c35603903c6ad6628a101c0",
+      "entries": 197,
+      "sha256": "76ddaa6d84f89989339b3351cd2ad991bb7ec9dccacc10ef7b6e0a1839b6937f",
+      "all_entries_read_back": true,
+      "tests": 279,
+      "failed_assertions": 0
+    },
+    "personal-cancel-native": {
+      "entries": 17,
+      "sha256": "52352cf6fd55b10ed630463f955e67a2bc39d67fb2d7b0bd0e9d1739c5ff2d35",
+      "all_entries_read_back": true
+    }
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "new_UI_executions": 0,
+  "new_images": 0,
+  "UI_qualification": "No UI sources or view interactions changed. No new UI run or relabeled prior UI results. Prior personal-source regression remains separately bound to its previous product/test revisions.",
+  "scope": "Explicit Task cancellation blocks new reminder provider calls, follow-on readback and installation of late personal results/errors. Prior cache/status retained. Already submitted external writes cannot be undone.",
+  "Home_constructed": false,
+  "real_personal_data_used": false,
+  "physical_acceptance": false
+}

@@ -1,0 +1,31 @@
+{
+  "assertions": 22,
+  "checks": {
+    "all_new_writes_blocked": true,
+    "both_caches_loaded": true,
+    "calendar_cache_cleared": true,
+    "calendar_survives_reminder_revocation": true,
+    "cancelled_before_submit_calls_no_writes": true,
+    "cancelled_before_submit_keeps_prior_status": true,
+    "cancelled_before_submit_starts_no_readback": true,
+    "cancelled_error_keeps_cache_and_enabled": true,
+    "cancelled_error_restores_status": true,
+    "cancelled_read_cannot_install": true,
+    "cancelled_read_restores_status": true,
+    "current_read_cleans_own_busy": true,
+    "current_read_still_commits": true,
+    "denied_reminder_cache_cleared": true,
+    "explicit_reconnect_loads_again": true,
+    "late_return_cleans_busy": true,
+    "late_return_rechecks_live_permission": true,
+    "old_error_cannot_clear_new_busy": true,
+    "old_error_cannot_replace_new_status": true,
+    "other_source_and_device_auth_preserved": true,
+    "permission_return_is_not_reconnect": true,
+    "poll_neither_reads_nor_prompts": true
+  },
+  "failed": [],
+  "verdict": "PASS",
+  "target": "483284bffbebebd25c35603903c6ad6628a101c0",
+  "binary_sha256": "fd2f8ca883ce606110a3cba845a92e75a68068a7760c36243a42e8f6fdcf4c61"
+}
