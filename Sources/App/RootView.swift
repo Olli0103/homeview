@@ -51,7 +51,7 @@ struct RootView: View {
             .padding(.top, 6).accessibilityIdentifier("compact.activity")
           }
           Color.black.opacity((1 - model.data.screenBrightness) * 0.45).allowsHitTesting(false)
-          if !model.data.home.online {
+          if !model.data.home.online && model.route != .controlCenter {
             VStack {
               Text("Mock home offline").font(.system(size: 16, weight: .semibold)).padding(10)
                 .background(.orange, in: Capsule())
