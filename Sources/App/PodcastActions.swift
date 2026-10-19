@@ -45,6 +45,7 @@ extension AppModel {
     podcastPlayer.stop();podcastPlaying=false
   }
   func toggleFeedPodcast() {
+    stopAnswerSpeech()
     guard let episode=data.podcasts.selectedEpisode else { return }
     connections.pauseMusic();audioGeneration+=1;startingMusic=false;startingPodcast=false
     playing=false;audio.stopMusic();audio.stopPodcast()

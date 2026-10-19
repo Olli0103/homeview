@@ -3677,3 +3677,104 @@ extension HomeViewUITests {
     viewportShot("ondevice-background-provider-reset")
   }
 }
+
+extension HomeViewUITests {
+  private func unlockSyntheticReadout() {
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
+    tap("answer.speech.read")
+    expectation(for:NSPredicate(format:"label == %@","Read"),evaluatedWith:app.buttons["answer.speech.read"])
+    waitForExpectations(timeout:5)
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("nothing has been played"))
+  }
+  private func startSyntheticReadout() {
+    tap("answer.speech.read")
+    expectation(for:NSPredicate(format:"label == %@","Stop"),evaluatedWith:app.buttons["answer.speech.read"])
+    waitForExpectations(timeout:5)
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("Reading"))
+  }
+  func testAnswerReadoutChoiceRateExplicitUnlockAndStop() {
+    launch(["--answer-speech-fixture"]);tap("nav.assistant");tap("answer.speech.settings")
+    let voice=app.buttons["answer.speech.voice"]
+    XCTAssertTrue(voice.waitForExistence(timeout:5));voice.tap();tap("Synthetic English Two")
+    let language=app.buttons["answer.speech.language"];language.tap();tap("de-DE")
+    XCTAssertTrue(app.buttons["answer.speech.voice"].label.contains("Synthetic Deutsch"))
+    let before=app.staticTexts["answer.speech.rate.label"].label
+    app.sliders["answer.speech.rate"].adjust(toNormalizedSliderPosition:0.8)
+    XCTAssertNotEqual(app.staticTexts["answer.speech.rate.label"].label,before)
+    shot("answer-readout-system-voice-rate-choice")
+    tap("answer.speech.settings.done")
+    unlockSyntheticReadout();viewportShot("answer-readout-unlock-does-not-speak")
+    startSyntheticReadout();viewportShot("answer-readout-explicit-speaking")
+    tap("answer.speech.read")
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("stopped"))
+  }
+  func testAnswerReadoutUnavailableDeniedAndMutedDoNotSpeak() {
+    launch(["--answer-speech-fixture","--answer-speech-unavailable"]);tap("nav.assistant")
+    tap("answer.speech.read")
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("available system voice"))
+    viewportShot("answer-readout-no-voice-no-unlock")
+    launch(["--answer-speech-fixture","--device-unlock-denied"]);tap("nav.assistant")
+    tap("answer.speech.read")
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("not granted"))
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
+    viewportShot("answer-readout-unlock-denied")
+    launch(["--answer-speech-fixture"]);tap("nav.assistant");tap("answer.speech.settings")
+    let mute=app.switches["answer.speech.mute"]
+    for _ in 0..<4 where !mute.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(mute.waitForExistence(timeout:5));mute.tap();tap("answer.speech.settings.done")
+    tap("answer.speech.read")
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("muted"))
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
+    viewportShot("answer-readout-muted-no-unlock")
+  }
+  func testLongAnswerReadoutPausesDemoMusicAndSettingsKeepAnswer() {
+    launch(["--answer-speech-fixture","--assistant-ai-fixture","long","--page","Music"])
+    tap("player.play")
+    expectation(for:NSPredicate(format:"label == %@","Pause"),evaluatedWith:app.buttons["player.play"])
+    waitForExpectations(timeout:8)
+    chooseSyntheticOnDeviceAnswers();askSyntheticQuestion("Synthetic long answer, please")
+    let answer=app.staticTexts["assistant.ai.answer.0"]
+    XCTAssertTrue(answer.waitForExistence(timeout:5));XCTAssertGreaterThan(answer.label.count,3000)
+    tap("answer.speech.settings");tap("answer.speech.settings.done")
+    XCTAssertTrue(answer.exists);XCTAssertGreaterThan(answer.label.count,3000)
+    unlockSyntheticReadout();startSyntheticReadout();viewportShot("answer-readout-long-answer-active")
+    tap("nav.faces");drawer();tap("app.Music")
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    tap("nav.assistant");XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+  }
+  func testAnswerReadoutBackgroundLocksAndNeverResumes() {
+    launch(["--answer-speech-fixture"]);tap("nav.assistant")
+    unlockSyntheticReadout();startSyntheticReadout()
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertTrue(app.buttons["nav.assistant"].waitForExistence(timeout:5));tap("nav.assistant")
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("stopped"))
+    viewportShot("answer-readout-background-locked-no-resume")
+  }
+  func testTimerChimeInterruptsAnswerReadoutAndTimerCompletes() {
+    launch(["--answer-speech-fixture"]);tap("nav.assistant");unlockSyntheticReadout()
+    askSyntheticQuestion("set a timer for 8 seconds")
+    startSyntheticReadout()
+    expectation(for:NSPredicate(format:"label == %@","Read"),evaluatedWith:app.buttons["answer.speech.read"])
+    waitForExpectations(timeout:12)
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("stopped"))
+    viewportShot("answer-readout-timer-interrupt-no-resume")
+    tap("nav.faces");drawer();tap("app.Timers")
+    XCTAssertEqual(app.staticTexts["timer.title"].label,"DONE")
+  }
+  func testMicrophonePreviewStopsReadoutWithoutImplicitSendOrResume() {
+    launch(["--answer-speech-fixture"]);tap("nav.assistant")
+    unlockSyntheticReadout();startSyntheticReadout();tap("assistant.voice")
+    XCTAssertTrue(app.staticTexts["assistant.voice.status"].label.contains("Synthetic"))
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
+    XCTAssertFalse(app.buttons["answer.speech.read"].isEnabled)
+    tap("assistant.voice")
+    XCTAssertEqual(app.textFields["assistant.input"].value as? String,"temperature 72")
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("What can I help"))
+    viewportShot("answer-readout-microphone-draft-no-resume")
+  }
+}

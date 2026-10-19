@@ -31,6 +31,12 @@ final class AppModel {
   var error: String? = nil
   private(set) var storeReadOnly = false
   private(set) var storeRecoveryNote: String?
+  let answerSpeech = AnswerSpeechSession(backend:makeAnswerSpeechBackend())
+  var answerSpeechAttempt=0
+  var authorizingAnswerSpeech=false
+  var showAnswerSpeechStatus=false
+  var preparingAnswerSpeech=false
+  var answerSpeechForeground=false
   let assistantAI = AssistantConversation(provider:makeAssistantAnswers())
   private(set) var assistantUsesAI = false
   var assistantInput = ""
@@ -768,6 +774,7 @@ final class AppModel {
     route = .privacy
   }
   func lockPersonalAccess() {
+    stopAnswerSpeech()
     assistantAI.deselect()
     assistantUsesAI=false
     #if !os(watchOS)
@@ -1105,11 +1112,13 @@ final class AppModel {
     return true
   }
   func selectAssistantAnswers(_ enabled:Bool) {
+    stopAnswerSpeech()
     assistantAI.deselect();assistantUsesAI=enabled
     if enabled { assistantAI.select() }
   }
   func runAssistant() {
     guard !Task.isCancelled else { return }
+    stopAnswerSpeech()
     interact()
     if assistantUsesAI {
       if assistantAI.ask(assistantInput) { assistantInput="" }
@@ -1154,6 +1163,7 @@ final class AppModel {
     assistantInput = ""
   }
   func playChime() {
+    stopAnswerSpeech()
     Task {
       if !(await audio.playChime(volume: Float(data.volume))) {
         error = "The demo sound could not be played."
@@ -1161,6 +1171,7 @@ final class AppModel {
     }
   }
   func stopAudioForVoice() {
+    stopAnswerSpeech()
     #if !os(watchOS)
       pauseFeedPodcast()
     #endif
@@ -1176,6 +1187,7 @@ final class AppModel {
     audio.stopPodcast()
   }
   func togglePlayback() {
+    stopAnswerSpeech()
     #if !os(watchOS)
       pauseFeedPodcast()
     #endif
@@ -1210,6 +1222,7 @@ final class AppModel {
     }
   }
   func togglePodcast() {
+    stopAnswerSpeech()
     #if !os(watchOS)
       if data.podcasts.selectedEpisode != nil { toggleFeedPodcast();return }
     #endif
