@@ -1,6 +1,6 @@
-# Introduction and connected services · #71 (in progress)
+# Introduction and connected services · #71
 
-19 October 2026. First implementation package; **local reset is still not delivered and #71 remains open**. This is an independent prototype introduction, not Apple's setup/owner pairing or app-store UI.
+19 October 2026. Introduction, explicit connection lifecycle and [authenticated local reset](local-data-reset.md) delivered as the software setup package. This is an independent prototype introduction, not Apple's setup/owner pairing or app-store UI.
 
 ## Delivered
 
@@ -20,6 +20,8 @@ No permission is requested by paging through or dismissing the introduction. Cal
 - Five final native SDK builds passed after the failure-escape correction. The earlier UI checkpoint differs only in the guarded AppModel storage-failure path; it is not relabeled a current full UI-suite run.22 UI compiled inputs unchanged before/after and installed apps read back.16 PNGs decoded on two reviewed contacts;8 selected images published. Generator regenerated externally byte-identically; Python AST checked. No changed Node/POSIX/Linux suite applies to this Apple Swift package.
 - 201-entry UI source/compiled-input ZIP read back; separate final-source/native-gate/five-product archive also read back entry by entry, exact counts/digests in receipt. These are software/simulator proofs, not original visual parity or physical ownership/permissions acceptance.
 
-## Still open in #71
+## Local reset delivered
 
-Local reset must not forget registered/in-flight system alarms, source permissions or app-owned photo/recovery files, and late writers must not refill cleared state. The current welcome sheet deliberately offers no pretend reset button. Descriptor-anchored atomic-exchange/cleanup work exists only as an external prototype; its two early filesystem primitive smokes are not product acceptance and use a Snapshot type stub. Integration, account preference isolation, synchronized cleanup-race checks and end-to-end UI/error tests remain to do.
+Settings now offers a separately authenticated, short-lived, exact-confirmation local reset. Old imported files/recovery copies and late writers are handled; outstanding native scheduling/registered alarm IDs block reset rather than being forgotten. Incomplete old-file cleanup is explicit and can be retried after restart without deleting new content. [Implementation, final verification and limits](local-data-reset.md).
+
+The introduction proof above remains its original checkpoint. Reset has separate current-code receipts and images. Physical permissions/accounts/owner binding and original reference parity remain separate; Home stays disconnected.
