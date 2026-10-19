@@ -7,7 +7,9 @@ extension AppModel {
   }
   func setAnswerSpeechForeground(_ active:Bool) {
     answerSpeechForeground=active
-    if !active { assistantAI.clear() }
+    // A system authentication prompt is inactive, not a background lock.
+    // Keep the selected answer for the required later explicit read tap.
+    if !active,!authorizingAnswerSpeech { assistantAI.clear() }
     #if !os(watchOS)
       if !active { discardDemoPlan() }
     #endif
