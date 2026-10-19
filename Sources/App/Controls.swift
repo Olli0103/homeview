@@ -185,6 +185,10 @@ struct AssistantView: View {
     nonmutating set { model.assistantInput = newValue }
   }
   @FocusState private var typing:Bool
+  private var canEdit:Bool {
+    scenePhase == .active && model.route == .assistant
+      && model.demoDoorbell.current == nil && !model.incomingCall
+  }
   @State private var voiceDraftGeneration = 0
   @State private var draftBeforeVoice = ""
   @State private var language = "de-DE"
@@ -296,11 +300,10 @@ struct AssistantView: View {
         }
       }
       HStack {
-        TextField("Type a request", text: Binding(get: { text }, set: { text = $0 })).textFieldStyle(.plain).font(.system(size: 25))
+        TextField("Type a request", text: Binding(get: { text }, set: { if canEdit { text = $0 } })).textFieldStyle(.plain).font(.system(size: 25))
           .focused($typing).submitLabel(.send)
           .onSubmit { submitted() }.accessibilityIdentifier("assistant.input")
           .frame(minHeight:44)
-          .onKeyPress(.escape) { typing=false;return .handled }
         if typing {
           Button { typing=false } label: { Image(systemName:"keyboard.chevron.compact.down").frame(width:44,height:44) }
             .buttonStyle(.plain).accessibilityLabel("Dismiss keyboard")
@@ -335,7 +338,7 @@ struct AssistantView: View {
       }
   }
   private func submitted() {
-    guard !voice.busy,!model.assistantAI.busy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+    guard canEdit,!voice.busy,!model.assistantAI.busy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
     voice.cancel()
     model.assistantInput = text
     model.runAssistant()

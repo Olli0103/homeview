@@ -20,14 +20,14 @@ struct RootView: View {
   }
   @State private var assistantFocusRequest=0
   private let pulse = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-  var body: some View {
+  private var viewportContent: some View {
     GeometryReader { geo in
       let edge = max(150, min(geo.size.width - 24, geo.size.height - 64))
       // The assistant is an input surface, not a scaled clock face. Keep
       // native-sized controls above the keyboard, using available width.
       let assistantLayout = model.route == .assistant
       let contentWidth = assistantLayout ? max(150,min(796,geo.size.width-24)):600
-      let contentHeight = assistantLayout ? max(150,min(796,geo.size.height-64)):600
+      let contentHeight = assistantLayout ? max(150,min(796,geo.size.height-96)):600
       let displayedWidth = assistantLayout ? contentWidth:edge
       let displayedHeight = assistantLayout ? contentHeight:edge
       VStack(spacing: 12) {
@@ -125,7 +125,9 @@ struct RootView: View {
           } label: {
             Image(systemName: "waveform")
           }.accessibilityLabel("Assistant").accessibilityIdentifier("nav.assistant")
-            .keyboardShortcut("s",modifiers:[.command,.shift])
+            #if !os(tvOS)
+              .keyboardShortcut("s",modifiers:[.command,.shift])
+            #endif
           Button {
             model.dismissDemoDoorbell()
             model.route = .controlCenter
@@ -158,6 +160,9 @@ struct RootView: View {
         Spacer(minLength: 0)
       }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+  }
+  var body: some View {
+    viewportContent
     .overlay {
       if scenePhase != .active {
         ZStack {
@@ -262,7 +267,7 @@ struct RootView: View {
       DragGesture(minimumDistance: 45).onEnded { value in
         model.interact()
         // One dominant axis owns each completed drag. Existing distances and
-        // edge regions stay in the displayed square's coordinate system.
+        // edge regions stay in the displayed viewport's coordinate system.
         switch ViewportNavigationIntent.choose(startX:value.startLocation.x,
           startY:value.startLocation.y,dx:value.translation.width,dy:value.translation.height,
           width:width,height:height,isFace:model.route == .face) {

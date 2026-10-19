@@ -7,6 +7,25 @@ final class HomeViewUITests: XCTestCase {
   var app = XCUIApplication()
   override func setUp() {
     continueAfterFailure = false
+    XCUIDevice.shared.orientation = .portrait
+  }
+  override func tearDown() {
+    // XCTest failures can abort before a Swift defer executes. Always restore
+    // device orientation so one failed landscape case cannot taint later cases.
+    XCUIDevice.shared.orientation = .portrait
+    super.tearDown()
+  }
+  func rotateAssistantDevice(_ orientation:UIDeviceOrientation) {
+    XCUIDevice.shared.orientation=orientation
+    let until=Date().addingTimeInterval(8)
+    var stable=0
+    while Date()<until {
+      let f=app.frame
+      stable = (orientation.isLandscape ? f.width>f.height:f.height>f.width) ? stable+1:0
+      if stable>=3 { break }
+      RunLoop.current.run(until:Date().addingTimeInterval(0.2))
+    }
+    XCTAssertGreaterThanOrEqual(stable,3)
   }
   func launch(_ extra: [String] = []) {
     app.launchArguments = ["--uitesting", "--reference-clock"] + extra
@@ -1782,23 +1801,22 @@ final class HomeViewUITests: XCTestCase {
     tap("nav.assistant");XCTAssertEqual(field.value as? String,"temperature 73")
   }
 
-  func testAssistantKeyboardShortcutEscapeAndExplicitReturn() {
-    XCUIDevice.shared.orientation = .landscapeLeft
-    defer { XCUIDevice.shared.orientation = .portrait }
+  func testAssistantShortcutDismissalAndSoftwareKeyboardSend() {
     launch()
+    rotateAssistantDevice(.landscapeLeft)
     app.typeKey("s",modifierFlags:[.command,.shift])
     let field=app.textFields["assistant.input"]
     XCTAssertTrue(field.waitForExistence(timeout:5))
     field.typeText("temperature 73")
-    app.typeKey(XCUIKeyboardKey.escape,modifierFlags:[])
+    tap("assistant.keyboard.dismiss")
     expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:app.buttons["assistant.keyboard.dismiss"])
     waitForExpectations(timeout:5)
     XCTAssertEqual(field.value as? String,"temperature 73")
     XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
     app.typeKey("s",modifierFlags:[.command,.shift])
     XCTAssertTrue(app.buttons["assistant.keyboard.dismiss"].waitForExistence(timeout:5))
-    // Return is explicitly labelled Send; Escape, focus and route changes never send.
-    app.typeKey(XCUIKeyboardKey.return,modifierFlags:[])
+    // Return is explicitly labelled Send; dismissal, focus and route changes never send.
+    field.typeText("\n")
     XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("73"))
     tap("nav.faces");tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label,"73°")
@@ -1807,12 +1825,21 @@ final class HomeViewUITests: XCTestCase {
   func testAssistantViewportGesturesAndContentScrollDoNotSend() {
     XCUIDevice.shared.orientation = .portrait
     defer { XCUIDevice.shared.orientation = .portrait }
-    launch()
     for orientation in [UIDeviceOrientation.portrait,.landscapeLeft] {
-      XCUIDevice.shared.orientation=orientation
+      launch()
+      rotateAssistantDevice(orientation)
       tap("nav.faces")
       func drag(_ x:Double,_ y:Double,_ dx:Double,_ dy:Double) {
-        let f=app.otherElements["reference.viewport"].frame
+        let viewport=app.otherElements["reference.viewport"]
+        var f=viewport.frame,previous=CGRect.null,stable=0
+        let until=Date().addingTimeInterval(6)
+        while Date()<until {
+          f=viewport.frame
+          stable = app.frame.contains(f) && f==previous ? stable+1:0;previous=f
+          if stable>=3 { break }
+          RunLoop.current.run(until:Date().addingTimeInterval(0.2))
+        }
+        XCTAssertGreaterThanOrEqual(stable,3,"Gesture coordinates need a settled, on-screen viewport")
         let origin=app.coordinate(withNormalizedOffset:.zero)
         origin.withOffset(CGVector(dx:f.minX+x*f.width,dy:f.minY+y*f.height))
           .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:f.minX+dx*f.width,dy:f.minY+dy*f.height)),withVelocity:.slow,thenHoldForDuration:0.2)
@@ -1823,6 +1850,10 @@ final class HomeViewUITests: XCTestCase {
       field.tap();field.typeText("temperature 73")
       let scroll=app.scrollViews["assistant.content"]
       XCTAssertTrue(scroll.exists)
+      // A phone's compact landscape keyboard prioritizes its composer. Expose
+      // the document with the same explicit dismissal offered to the user.
+      if scroll.frame.isEmpty { tap("assistant.keyboard.dismiss") }
+      XCTAssertGreaterThan(scroll.frame.height,0)
       scroll.swipeUp();scroll.swipeDown()
       XCTAssertTrue(field.exists)
       XCTAssertEqual(field.value as? String,"temperature 73")
@@ -1832,10 +1863,9 @@ final class HomeViewUITests: XCTestCase {
       XCTAssertFalse(field.exists)
       tap("nav.assistant")
       XCTAssertEqual(field.value as? String,"temperature 73")
+      tap("assistant.keyboard.dismiss")
       tap("nav.faces");tap("home.thermostat")
       XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
-      tap("nav.assistant")
-      field.tap();app.typeKey("a",modifierFlags:[.command]);app.typeKey(XCUIKeyboardKey.delete,modifierFlags:[])
     }
   }
 
