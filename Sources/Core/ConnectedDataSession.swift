@@ -126,6 +126,7 @@ final class DeviceConnections {
           throw CalendarAgendaError.permissionRequired
         }
         guard generation[kind] == ticket, !Task.isCancelled else { return }
+        guard personalSourceAvailable(kind) else { return }
       }
       switch kind {
       case .calendar:
@@ -133,11 +134,13 @@ final class DeviceConnections {
         let interval = CalendarAgenda.day(containing: date, timeZone: timeZone)
         let values = try await provider.events(from: interval.start, to: interval.end)
         guard generation[kind] == ticket else { return }
+        guard personalSourceAvailable(kind) else { return }
         if personalUnlocked { events = try CalendarAgenda.events(values, in: interval) }
       case .reminders:
         guard personalUnlocked else { break }
         let values = try await provider.reminders()
         guard generation[kind] == ticket else { return }
+        guard personalSourceAvailable(kind) else { return }
         if personalUnlocked { reminders = values }
       case .music:
         if requestPermission { try await provider.authorizeMusic() }
@@ -293,6 +296,7 @@ final class DeviceConnections {
   private func editReminder(_ action: () async throws -> String,
                             verify: ([DeviceReminder], String) -> Bool) async -> Bool {
     guard personalUnlocked, enabled.contains(.reminders), !busy.contains(.reminders) else { return false }
+    guard personalSourceAvailable(.reminders) else { return false }
     generation[.reminders, default: 0] += 1
     let ticket = generation[.reminders]
     busy.insert(.reminders)
@@ -300,8 +304,10 @@ final class DeviceConnections {
     do {
       let id = try await action()
       guard generation[.reminders] == ticket, personalUnlocked else { return false }
+      guard personalSourceAvailable(.reminders) else { return false }
       let values = try await provider.reminders()
       guard generation[.reminders] == ticket, personalUnlocked else { return false }
+      guard personalSourceAvailable(.reminders) else { return false }
       reminders = values
       let confirmed = verify(values, id)
       status[.reminders] = confirmed
@@ -391,7 +397,27 @@ final class DeviceConnections {
     musicPlaying = provider.musicPlaying
     musicTime = provider.musicTime
   }
+  /// Authorization status only: no permission prompt or personal read. Keep the
+  /// user's connection choice, but require explicit reconnect after revocation.
+  private func personalSourceAvailable(_ kind: DataConnection) -> Bool {
+    guard kind == .calendar || kind == .reminders else { return true }
+    guard provider.authorized(kind) else {
+      generation[kind, default: 0] += 1
+      busy.remove(kind)
+      enabled.remove(kind)
+      if kind == .calendar { events = [] } else { reminders = [] }
+      status[kind] = kind == .calendar
+        ? CalendarAgendaError.permissionRequired.localizedDescription
+        : "Reminders access changed. Connect again in Settings."
+      return false
+    }
+    return true
+  }
   func tick() {
+    for kind in [DataConnection.calendar, .reminders]
+    where enabled.contains(kind) || busy.contains(kind) {
+      _ = personalSourceAvailable(kind)
+    }
     pollMusic()
     if enabled.contains(.weather), Date().timeIntervalSince(lastWeatherFetch) > 900,
       !busy.contains(.weather)

@@ -198,6 +198,31 @@ final class DeviceConnectionTests: XCTestCase {
     }
   }
 
+  func testPersonalSourceRevocationOldReadCannotClearNewBusyOrInstallIntoReconnectedSession() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();p.delayReminders=true
+    let first=expectation(description:"old read");p.onStart={first.fulfill()}
+    let old=Task { await s.connect(.reminders) };await fulfillment(of:[first],timeout:2)
+    let oldReply=try XCTUnwrap(p.reminderReply)
+    p.revoked.insert(.reminders);s.tick();XCTAssertFalse(s.busy.contains(.reminders));XCTAssertTrue(s.reminders.isEmpty)
+    p.revoked.remove(.reminders)
+    let second=expectation(description:"explicit new read");p.onStart={second.fulfill()}
+    let current=Task { await s.connect(.reminders) };await fulfillment(of:[second],timeout:2)
+    oldReply.resume(returning:[DeviceReminder(id:"old",title:"Synthetic stale old session",completed:false)])
+    await old.value;XCTAssertTrue(s.busy.contains(.reminders));XCTAssertTrue(s.reminders.isEmpty)
+    try XCTUnwrap(p.reminderReply).resume(returning:p.reminderItems);await current.value
+    XCTAssertFalse(s.busy.contains(.reminders));XCTAssertEqual(s.reminders.map(\.id),["private"])
+    XCTAssertTrue(s.enabled.contains(.reminders));XCTAssertEqual(p.permissionRequests,2)
+  }
+  func testPersonalSourceRevocationDuringReminderReadbackCannotConfirmOrExposeIt() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.reminders)
+    p.delayReminders=true;let started=expectation(description:"already submitted write readback");p.onStart={started.fulfill()}
+    let write=Task { await s.addReminder("Synthetic submitted before revocation") };await fulfillment(of:[started],timeout:2)
+    p.revoked.insert(.reminders);try XCTUnwrap(p.reminderReply).resume(returning:p.reminderItems)
+    let confirmed=await write.value;XCTAssertFalse(confirmed);XCTAssertTrue(s.reminders.isEmpty)
+    XCTAssertFalse(s.enabled.contains(.reminders));XCTAssertEqual(p.reminderWrites,1)
+    XCTAssertEqual(p.reminderItems.count,2);XCTAssertFalse(s.busy.contains(.reminders))
+  }
+
   func testPersistedConnectionRevocationSurvivesSessionRecreation() async {
     let suite = "org.example.homeview.tests.connections." + UUID().uuidString
     let defaults = UserDefaults(suiteName: suite)!
