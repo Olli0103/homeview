@@ -5,6 +5,17 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Weitere Medien: API-/Rechtematrix ·19.Oktober2026
+
+[#60 im Rechercheumfang abgeschlossen](media-service-boundaries.md): Hörbücher,
+Classical, News, TV und Drittanbieter-Audio/-Video mit getrennten öffentlichen
+Teilpfaden, Rechten und Systemhostgrenzen. Sieben öffentliche Dokumentationen,
+SDK-Headerprüfung und erfolgreicher **nicht ausgeführter** iOS-Typcheck. Keine
+Bibliotheken, Konten, Geräte oder Käufe berührt. Öffentliche, noch nicht gebaute
+Adapter bleiben Softwarearbeit und F084/F085 ohne Original-PASS.
+Alle82 Titel/Zustände neu geprüft: zehn geschlossen,72offen. Weiter mit #56:
+eigener Rezept-Handoff über öffentliche Continuity, weiterhin ohne Home.
+
 ### Späte Musik-Starts und Resume ·19.Oktober2026
 
 [Vier reproduzierte Status-/Auswahlfehler behoben](music-playback-lifecycle.md),

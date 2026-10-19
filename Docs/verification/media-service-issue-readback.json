@@ -1,0 +1,27 @@
+{
+  "assignees": [],
+  "body": "<!-- homeview-backlog:MEDIA-04 -->\n\n## Ziel\n\nWeitere Medien und Drittanbieter-Angebote auf Zugriffsmöglichkeiten prüfen.\n\n## Stand\n\nÖffentliche Teilpfade und Rechte für alle fünf Angebote geprüft: MediaPlayer-Hörbuch-/Legacy-Medienqueries, MusicKit-Katalog, zugängliche AVPlayer-Assets, Publisher-News-API und CarPlay-Systemhost. Keine Original-App- oder Konto-Einbettung behauptet.\n\nPriorität: P2. Typ: research. Bereich: media.\n\n## Referenzumfang\n\n- F084: Audiobooks, Classical Music, News, TV vom iPhone\n- F085: Kompatible Drittanbieter-Audio-/Video-Apps\n\n## Konkrete Arbeit\n\n- [x] Je Angebot öffentliche Daten-/Playback-/Handoff-Schnittstellen mit Rechten auflisten\n- [x] App-Start, Remote-Wiedergabe und eingebettete Wiedergabe getrennt bewerten\n- [x] Fehlende Angebote nicht als implementiert durch ein Icon zählen\n\n## Abnahme\n\nUnterfunktionen haben nachgewiesenen unterstützten Pfad oder eine konkrete API-/Hardwareblockade. Keine pauschale Universal-Medienzusage.\n\n## Abhängigkeiten\n\n[BASE-01](https://github.com/Olli0103/homeview/blob/main/Docs/backlog.md#base-01)\n\n## Testgrenze\n\nAutomatisierte Tests verwenden synthetische persönliche Daten und MockHome. Apple Home bleibt gesperrt, bis der Eigentümer die Einrichtung ausdrücklich fortsetzt. Keine Nachrichten oder Anrufe automatisch ausführen. Persönliche Accounts und physische Geräte werden gesondert und bewusst abgenommen.\n\nStand: 17. Oktober 2026. Quellen und ursprüngliche Referenzbilder werden nicht mit veröffentlicht. Build-Erfolg ist keine Originalgleichheit. Vollständige Zuordnung in [Docs/function-coverage.json](https://github.com/Olli0103/homeview/blob/main/Docs/function-coverage.json).\n\n## Rechercheabschluss · 19. Oktober 2026\n\n[Angebots-/Rechte-/Umsetzungsmatrix und direkte Quellen](https://github.com/Olli0103/homeview/blob/main/Docs/media-service-boundaries.md) · [Prüfbeleg](https://github.com/Olli0103/homeview/blob/main/Docs/verification/media-service-boundaries.json).\n\nSieben aktuelle öffentliche Apple-Dokumentationsseiten direkt gelesen; relevante SDK-Oberfläche in Xcode27/iPhoneSimulator27 erfolgreich nur typgeprüft. Der Probe wird nicht ausgeführt: keine Bibliothek, Berechtigung, Konto, Kauf oder reales Gerät berührt. Die zusätzliche geratene movies()-Dokumentationsadresse lieferte404; das wird ausdrücklich nicht als API-Verbot ausgegeben. Tatsächlich vorhandene generische Movie-/TVShow-Filter sind im Probe enthalten.\n\nApp-/Linkstart, eigene eingebettete/Remote-Wiedergabe und eigener NSUserActivity-Handoff sind getrennt von fremden Appoberflächen und privaten Sitzungen. Apples aktuelle CarPlay-Seite nennt HomeView-Kompatibilität, gewährt unserer normalen iPad-App damit aber keine Systemhostrechte zum Einbetten anderer Apps. Keine pauschale Universal-Medienzusage.\n\nDer **Rechercheauftrag** ist abgeschlossen. Eigener Hörbuch-/Video-Bibliotheksadapter und spezielle Ansichten bleiben mögliche, noch nicht implementierte Softwarearbeit und werden nicht als Hardwareblockaden versteckt. F084/F085 bleiben ohne Original-/Account-/Geräte-PASS. Es wurde kein neues Medienangebot allein durch ein Icon als vorhanden ausgegeben. Home bleibt getrennt.\n",
+  "labels": [
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rIEUQ",
+      "name": "type:research",
+      "description": "",
+      "color": "0e8a16"
+    },
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rINiQ",
+      "name": "priority:P2",
+      "description": "",
+      "color": "fbca04"
+    },
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rIRwQ",
+      "name": "area:media",
+      "description": "",
+      "color": "1d76db"
+    }
+  ],
+  "number": 60,
+  "state": "CLOSED",
+  "title": "[MEDIA-04] Weitere Medien und Drittanbieter-Angebote auf Zugriffsmöglichkeiten prüfen"
+}

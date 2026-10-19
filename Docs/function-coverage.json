@@ -2607,7 +2607,8 @@
       "MEDIA-04"
     ],
     "current": [
-      "Audiobooks, Classical, News, TV und beliebige Drittanbieter-Apps sind nicht gleichwertig eingebettet."
+      "Fünf Angebote mit öffentlichen Teilpfaden, Rechtevoraussetzungen und Systemhostgrenzen bilanziert.7aktuelle Apple-Dokumentationen und erfolgreicher iOS-Compile-only-Probe. Keine neue Medienintegration; unimplementierte öffentliche Adapter bleiben Softwarearbeit.",
+      "Hörbuch-/Video-Teilpfade über MediaPlayer/AVFoundation sind mögliche Softwarearbeit, nicht pauschal API-blockiert. Normale iPad-App ist kein universeller CarPlay-/HomeView-Systemhost; fremde App-/Konto-Einbettung nicht implementiert."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2620,13 +2621,14 @@
     "target": "iPad core",
     "implementation_status": "research",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Research matrix completed; public API probe not executed; no runtime/original integration accepted.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
     "completion_criteria": [
       "Unterfunktionen haben nachgewiesenen unterstützten Pfad oder eine konkrete API-/Hardwareblockade. Keine pauschale Universal-Medienzusage."
-    ]
+    ],
+    "verification": "Docs/verification/media-service-boundaries.json"
   },
   {
     "id": "F085",
@@ -2638,7 +2640,8 @@
       "MEDIA-04"
     ],
     "current": [
-      "Audiobooks, Classical, News, TV und beliebige Drittanbieter-Apps sind nicht gleichwertig eingebettet."
+      "Fünf Angebote mit öffentlichen Teilpfaden, Rechtevoraussetzungen und Systemhostgrenzen bilanziert.7aktuelle Apple-Dokumentationen und erfolgreicher iOS-Compile-only-Probe. Keine neue Medienintegration; unimplementierte öffentliche Adapter bleiben Softwarearbeit.",
+      "Hörbuch-/Video-Teilpfade über MediaPlayer/AVFoundation sind mögliche Softwarearbeit, nicht pauschal API-blockiert. Normale iPad-App ist kein universeller CarPlay-/HomeView-Systemhost; fremde App-/Konto-Einbettung nicht implementiert."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2651,13 +2654,14 @@
     "target": "iPad core",
     "implementation_status": "research",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Research matrix completed; public API probe not executed; no runtime/original integration accepted.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
     "completion_criteria": [
       "Unterfunktionen haben nachgewiesenen unterstützten Pfad oder eine konkrete API-/Hardwareblockade. Keine pauschale Universal-Medienzusage."
-    ]
+    ],
+    "verification": "Docs/verification/media-service-boundaries.json"
   },
   {
     "id": "F086",
