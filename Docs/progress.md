@@ -5,6 +5,16 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Späte Musik-Starts und Resume ·19.Oktober2026
+
+[Vier reproduzierte Status-/Auswahlfehler behoben](music-playback-lifecycle.md),
+zusätzlich serialisierte native Playerübergabe und generationsgebundener nativer
+Songcache.189 Modelltests (darunter vier Reproduktionen und vier Backend-Gatefälle),
+vier gezielte native Ausführungen und fünf arm64SDKs bestanden. Acht eigene Bilder
+gesichtet; genaue Quellbindung statt Live-MusicKit-/Hardwarebehauptung.
+#80/#67 bleiben für ihre übrigen Kriterien offen; vollständige neue Issuebodies
+zurückgelesen. Der Auftrag geht mit #60 weiter, ohne Home-Anbindung.
+
 ### Assistentenverfügbarkeit, Sprachen und Grenzen ·19.Oktober2026
 
 [#41 abgeschlossen](https://github.com/Olli0103/homeview/issues/41): lokale

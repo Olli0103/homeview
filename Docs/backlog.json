@@ -1662,7 +1662,7 @@
     "functions": [
       "F095"
     ],
-    "current": "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen.",
+    "current": "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen. Vier zusätzliche Play-/Resume-Zustandsfehler und die native Playerübergabe korrigiert; 189Core/4UI/5SDK. Übrige Kriterien bleiben offen; Docs/music-playback-lifecycle.md.",
     "tasks": [
       "Sperre an bewiesene Präsenzquelle koppeln, falls verfügbar",
       "Vorschauen, Kalender, Reminder, Assistentenverlauf und Medienkontext beim Sperren bereinigen",
@@ -1977,7 +1977,7 @@
     "priority": "P1",
     "kind": "validation",
     "functions": [],
-    "current": "Lokale Zustände und ausgewählte Neustart-/Offlinefälle sind getestet. Vollständige Daten- und Lifecycle-Matrix fehlt.",
+    "current": "Lokale Zustände und ausgewählte Neustart-/Offlinefälle sind getestet. Vollständige Daten- und Lifecycle-Matrix fehlt. Vier zusätzliche Play-/Resume-Zustandsfehler und die native Playerübergabe korrigiert; 189Core/4UI/5SDK. Übrige Kriterien bleiben offen; Docs/music-playback-lifecycle.md.",
     "tasks": [
       "Face-/Slot-/Galerie-/Timer-/Rezept-/Profilmigration mit alten und beschädigten Daten prüfen",
       "Verbindungsabbrüche und spätes Providerergebnis nach Abmelden/Navigation simulieren",

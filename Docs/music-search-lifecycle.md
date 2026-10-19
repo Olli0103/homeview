@@ -14,4 +14,4 @@ Die drei Tests steuern Providerantworten direkt über Continuations, ohne künst
 
 [Quellbindung, Geräte und Ergebnisse](verification/issues-20261019.json).
 
-Der asynchrone Play-/Resume-Pfad und die allgemeine Medien-/Sperrpolicy werden mit diesem Suchfix nicht als gelöst ausgegeben. #67/#80 bleiben für ihre breiteren Kriterien offen. Apple Home bleibt deaktiviert.
+Der asynchrone Play-/Resume-Pfad wurde mit diesem damaligen Suchfix nicht abgenommen. Der nachfolgende [gezielte Play-/Resume-Fix](music-playback-lifecycle.md) korrigiert vier zusätzlich reproduzierte Zustandsfehler und die native Playerübergabe. Die allgemeine Medien-/Sperrpolicy bleibt darüber hinaus offen. #67/#80 bleiben für ihre breiteren Kriterien offen. Apple Home bleibt deaktiviert.
