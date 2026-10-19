@@ -314,6 +314,8 @@ struct CookingView: View {
               "cooking.text")
         }.padding(.horizontal, 35).padding(.top, 16)
       }.frame(maxHeight: .infinity)
+      Button("Continue on another device") { model.presentRecipeHandoff() }
+        .font(.system(size:18)).padding(.horizontal,35).accessibilityIdentifier("cooking.handoff")
       if let minutes = model.recipe.steps[model.cookingStep].minutes {
         Button {
           if model.addTimer(

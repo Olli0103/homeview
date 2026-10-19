@@ -160,11 +160,18 @@ struct RootView: View {
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
 
     .task {
+      model.installRecipeHandoffFixture()
       model.setAlbumDisplayActive(scenePhase == .active)
       await model.connections.restore()
       model.reconcileSystemAlarms()
       model.display.apply(enabled: model.data.keepDisplayOn && scenePhase == .active)
     }
+    .onContinueUserActivity(RecipeContinuity.activityType) { activity in
+      model.receiveRecipeHandoff(type:activity.activityType,data:activity.userInfo?["payload"] as? Data ?? Data())
+    }
+    .onChange(of:model.cookingStep) { _,step in model.recipeHandoff.update(recipe:model.recipe,step:step) }
+    .onChange(of:model.cookingInProgress) { _,active in if !active { model.recipeHandoff.stop() } }
+    .onChange(of:model.route) { old,new in if old == .handoff,new != .handoff { model.recipeHandoff.cancelPending() } }
     .onReceive(pulse) { _ in model.tick() }
     #if os(iOS) || os(tvOS) || os(visionOS)
       .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.interruptionNotification)) { _ in
@@ -180,20 +187,23 @@ struct RootView: View {
       model.display.apply(enabled: enabled && scenePhase == .active)
     }
     .onChange(of: model.connections.personalUnlocked) { _, unlocked in
-      if !unlocked { model.albumCatalogue.invalidate() }
+      if !unlocked { model.albumCatalogue.invalidate();model.recipeHandoff.stop() }
     }
     .onDisappear {
+      model.recipeHandoff.stop()
       model.dismissDemoDoorbell()
       model.pauseFeedPodcast()
       model.display.apply(enabled: false)
       model.setAlbumDisplayActive(false)
     }
     .onChange(of: scenePhase) { _, phase in
+      if phase != .active { model.recipeHandoff.stopOffering() }
       model.setAlbumDisplayActive(phase == .active)
       model.display.apply(enabled: model.data.keepDisplayOn && phase == .active)
       if phase == .active {
         model.reconcileSystemAlarms()
       } else if phase == .background {
+        model.recipeHandoff.stop()
         model.pauseFeedPodcast()
         model.persist()
         model.lockPersonalAccess()
@@ -267,6 +277,7 @@ struct RootView: View {
     case .recipe: RecipeCover()
     case .ingredients: IngredientsView()
     case .cooking: CookingView()
+    case .handoff: RecipeHandoffView()
     case .assistant: AssistantView()
     case .editor: FaceEditor()
     case .controlCenter: ControlCenterView()

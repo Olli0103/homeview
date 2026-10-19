@@ -3539,3 +3539,81 @@ extension HomeViewUITests {
     viewportShot("assistant-capability-return-unsent-draft")
   }
 }
+
+
+extension HomeViewUITests {
+  func testRecipeHandoffResumesExactStepOnlyAfterExplicitUnlockAndNeverStartsTimer() {
+    launch(["--recipe-handoff-fixture","valid"])
+    XCTAssertTrue(app.buttons["recipe.handoff.accept"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["cooking.text"].exists)
+    viewportShot("recipe-handoff-awaits-explicit-accept")
+    tap("recipe.handoff.accept")
+    let text=app.staticTexts["cooking.text"]
+    XCTAssertTrue(text.waitForExistence(timeout:5));XCTAssertTrue(text.label.hasPrefix("Blend until smooth"))
+    XCTAssertTrue(app.staticTexts["Step 3"].exists)
+    viewportShot("recipe-handoff-resumed-local-step-three")
+    XCTAssertEqual(app.buttons["cooking.next"].label,"Finish")
+    tap("cooking.next")
+    XCTAssertTrue(app.buttons["recipe.start"].waitForExistence(timeout:5))
+    tap("nav.faces")
+    XCTAssertFalse(app.descendants(matching:.any)["compact.activity"].exists)
+    drawer();tap("app.Timers")
+    XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
+    XCTAssertTrue(app.buttons["timer.start"].exists)
+  }
+  func testRecipeHandoffRejectsMissingRecipeAndUnsupportedVersion() {
+    launch(["--recipe-handoff-fixture","version"])
+    XCTAssertTrue(app.staticTexts["recipe.handoff.status"].label.contains("version is not supported"))
+    XCTAssertFalse(app.buttons["recipe.handoff.accept"].exists)
+    XCTAssertFalse(app.staticTexts["cooking.text"].exists)
+    viewportShot("recipe-handoff-unsupported-version")
+    launch(["--recipe-handoff-fixture","missing"])
+    tap("recipe.handoff.accept")
+    XCTAssertTrue(app.staticTexts["recipe.handoff.status"].label.contains("not available on this device"))
+    XCTAssertFalse(app.staticTexts["cooking.text"].exists)
+    viewportShot("recipe-handoff-missing-local-recipe")
+  }
+  func testRecipeHandoffDeniedUnlockAndReadOnlyStoreCannotContinue() {
+    launch(["--recipe-handoff-fixture","valid","--device-unlock-denied"])
+    tap("recipe.handoff.accept")
+    XCTAssertTrue(app.staticTexts["recipe.handoff.status"].label.contains("unlock was not granted"))
+    XCTAssertFalse(app.staticTexts["cooking.text"].exists)
+    viewportShot("recipe-handoff-unlock-denied")
+    let id=UUID().uuidString
+    launch(["--recipe-handoff-fixture","valid","--persistence-test",id,"--reset-test-store","--state-future-fixture"])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    tap("recipe.handoff.accept")
+    XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout:5));app.alerts.buttons["OK"].tap()
+    XCTAssertTrue(app.staticTexts["recipe.handoff.status"].label.contains("could not be saved"))
+    XCTAssertFalse(app.staticTexts["cooking.text"].exists)
+    viewportShot("recipe-handoff-readonly-not-resumed")
+    app.terminate();launch(["--persistence-test",id])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+  }
+  func testRecipeHandoffUnavailableOfferKeepsCookingState() {
+    launch(["--screen-recipe"])
+    tap("recipe.start");tap("cooking.next")
+    XCTAssertTrue(app.staticTexts["cooking.text"].label.hasPrefix("Add the squash"))
+    tap("cooking.handoff");tap("recipe.handoff.offer")
+    XCTAssertTrue(app.staticTexts["recipe.handoff.status"].label.contains("unavailable here"))
+    XCTAssertTrue(app.staticTexts["recipe.handoff.status"].label.contains("No recipe was sent"))
+    XCTAssertFalse(app.buttons["recipe.handoff.stop"].exists)
+    viewportShot("recipe-handoff-clearly-unavailable-no-send")
+    tap("recipe.handoff.done")
+    XCTAssertTrue(app.staticTexts["cooking.text"].label.hasPrefix("Add the squash"))
+    XCTAssertTrue(app.staticTexts["Step 2"].exists)
+  }
+}
+
+
+extension HomeViewUITests {
+  func testRecipeHandoffBackgroundDropsPendingTransferAndDoesNotResumeIt() {
+    launch(["--recipe-handoff-fixture","valid"])
+    XCTAssertTrue(app.buttons["recipe.handoff.accept"].waitForExistence(timeout:5))
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertFalse(app.buttons["recipe.handoff.accept"].exists)
+    XCTAssertFalse(app.staticTexts["cooking.text"].exists)
+    XCTAssertTrue(app.staticTexts["recipe.handoff.status"].label.contains("No recipe is being offered"))
+    viewportShot("recipe-handoff-background-pending-cleared")
+  }
+}
