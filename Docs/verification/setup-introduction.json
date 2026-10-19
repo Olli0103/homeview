@@ -1,0 +1,181 @@
+{
+  "date": "2026-10-19",
+  "issue": 71,
+  "issue_completed": false,
+  "code_commit": "83cdbfdd69fc0f36f0ad798d790e22890bff223b",
+  "source_digest": "ffd83ceb91321e96816670a3d06d8e40b1b7baaa289d8c07ef5945accdfd4908",
+  "source_files": 179,
+  "Core_tests": 232,
+  "Core_failures": 0,
+  "Core_qualification": "Full232 run followed by stronger legacy-personal-data assertion in same3 introduction tests:3/3passed; productCore unchanged.",
+  "UI": {
+    "checkpoint": "setup-introduction-ready",
+    "source": "3a3037e13ab2ce235a13710ee58258824963e0043feeb12951f9ca716f4d6dc8",
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "qualification": "Final subsequent product difference only AppModel refusal-to-save/close path; actual production native gate covers it. No new final fullUI-suite claim."
+  },
+  "native_production_gate": {
+    "verdict": "PASS",
+    "target": "83cdbfdd69fc0f36f0ad798d790e22890bff223b",
+    "parents": [
+      "17c2f9ff79515302797df59fe400d8e330759186"
+    ],
+    "language_gates": "Apple-only Swift; no changed Node/POSIX/bash/dash/Linux suite. Generator Python AST/byte regeneration checked separately.",
+    "native_cases": [
+      {
+        "scenario": "ordinary",
+        "cases": [
+          {
+            "id": "new-owned-store-starts-pending",
+            "passed": true
+          },
+          {
+            "id": "opening-introduction-no-connection-effect",
+            "passed": true
+          },
+          {
+            "id": "deferred-is-durable",
+            "passed": true
+          },
+          {
+            "id": "deferred-restart-stays-closed",
+            "passed": true
+          },
+          {
+            "id": "completed-is-durable",
+            "passed": true
+          },
+          {
+            "id": "closing-reopened-intro-keeps-completed-choice",
+            "passed": true
+          },
+          {
+            "id": "completed-restart-no-permission-or-connection",
+            "passed": true
+          }
+        ],
+        "returncode": 0,
+        "stderrBytes": 0
+      },
+      {
+        "scenario": "writefail",
+        "cases": [
+          {
+            "id": "failed-completion-not-recorded",
+            "passed": true
+          },
+          {
+            "id": "failed-deferral-still-closes",
+            "passed": true
+          },
+          {
+            "id": "failure-does-not-pretend-durable-success",
+            "passed": true
+          }
+        ],
+        "returncode": 0,
+        "stderrBytes": 0
+      },
+      {
+        "scenario": "readonly",
+        "cases": [
+          {
+            "id": "read-only-does-not-auto-trap-in-introduction",
+            "passed": true
+          },
+          {
+            "id": "manual-read-only-introduction-can-close",
+            "passed": true
+          },
+          {
+            "id": "newer-store-bytes-preserved",
+            "passed": true
+          }
+        ],
+        "returncode": 0,
+        "stderrBytes": 0
+      }
+    ],
+    "unchanged_inputs": 82,
+    "clean_before_after": true,
+    "Home_constructed": false
+  },
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "generator_byte_equivalent": true,
+  "Python_AST_valid": true,
+  "decoded_PNGs": 16,
+  "reviewed_contacts": 2,
+  "images": [
+    {
+      "path": "Docs/verification/setup-introduction-images/iPad-viewport-setup-can-reopen-after-completion-without-home.png",
+      "sha256": "eb04d1a5f8a9b5f6c021ff3ea92cbc694c53e6c0ecba92d2d48906eede9eaf25"
+    },
+    {
+      "path": "Docs/verification/setup-introduction-images/iPad-setup-services-no-permissions-or-store.png",
+      "sha256": "5847013471d2d6a168d25b337036e59561edf17a552257a190d937dfdc2ad747"
+    },
+    {
+      "path": "Docs/verification/setup-introduction-images/iPad-setup-first-device-and-mock-scope.png",
+      "sha256": "e55dc18d56b0cdcaf3cb263cdc355c6720e8e3c53d2f9a0a1ae1a4fde0da8f95"
+    },
+    {
+      "path": "Docs/verification/setup-introduction-images/iPad-viewport-setup-explicit-later-connect-and-disconnect.png",
+      "sha256": "4c46ca79059b563d499ecd34496a22663509e2b8a3e417fc4a31dfc7e685033a"
+    },
+    {
+      "path": "Docs/verification/setup-introduction-images/iPhone-viewport-setup-can-reopen-after-completion-without-home.png",
+      "sha256": "4e1974ef4991465404c0eb213cd428c0903dedc0b13d8eb63545d1b69be4b86c"
+    },
+    {
+      "path": "Docs/verification/setup-introduction-images/iPhone-setup-services-no-permissions-or-store.png",
+      "sha256": "920ff07fdefa9e86bb253242314d64082b88e86966df748aae446b920e9e55a5"
+    },
+    {
+      "path": "Docs/verification/setup-introduction-images/iPhone-setup-first-device-and-mock-scope.png",
+      "sha256": "9c688b24510ea3d934fb46fb91984f381f045088571dfd0f745b4a67b501326a"
+    },
+    {
+      "path": "Docs/verification/setup-introduction-images/iPhone-viewport-setup-explicit-later-connect-and-disconnect.png",
+      "sha256": "953a06d90991879f7a6fe4cbf1a980650f57e9ef486cff8256ef2e35de928253"
+    }
+  ],
+  "UI_inputs_unchanged": 22,
+  "UI_installed_apps_read_back": true,
+  "UI_archive": {
+    "entries": 201,
+    "sha256": "7961171095967cbb6a50ab0d9e54c5a2a555cb0b9cd0ed1ad13fdc9e6195fb11"
+  },
+  "final_archive": {
+    "entries": 244,
+    "sha256": "4ac3acd8baca4f8ca5e1600fa3171087e1023d5e11a2ec4dec0af83ee17e3be2",
+    "all_entries_read_back": true
+  },
+  "reset_implemented": false,
+  "real_personal_accounts_used": false,
+  "physical_device_acceptance": false,
+  "Home_constructed": false
+}
