@@ -1167,7 +1167,7 @@ Abhängigkeiten: BASE-01.
 <a id="sys-10"></a>
 ### SYS-10: Accessibility über alle zentralen Flows abnehmen
 
-Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme.
+Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme. Benanntes Control für den ruhenden Timer ergänzt, ohne sichtbare Geometrie zu verändern. [Begrenzte Reproduktion, Gegenprüfung und offene Hilfsmittel-Lanes](timer-accessible-controls.md).
 
 Offen:
 

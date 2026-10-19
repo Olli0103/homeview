@@ -1,0 +1,40 @@
+[
+  {
+    "device": "iPad",
+    "region": [
+      0,
+      0,
+      1592,
+      1592
+    ],
+    "decoded_space": "RGB channel bytes, no ICC transform",
+    "fixture": "reference-timer paused10:56/reference-resting/reference-clock; entire captured viewport, no mask",
+    "tolerance": 0,
+    "changed_pixels": 0,
+    "changed_channels": 0,
+    "changed_bbox": null,
+    "baseline_sha256": "b4ef61b443b7a33f59544d94dd762fdaddbd1b9b437fe5cfd480ef2b18ab71fe",
+    "candidate_sha256": "b4ef61b443b7a33f59544d94dd762fdaddbd1b9b437fe5cfd480ef2b18ab71fe",
+    "verdict": "PASS",
+    "scope": "Observed strict static-viewport preservation only; not original rendering or physical accessibility acceptance"
+  },
+  {
+    "device": "iPhone",
+    "region": [
+      0,
+      0,
+      1134,
+      1134
+    ],
+    "decoded_space": "RGB channel bytes, no ICC transform",
+    "fixture": "reference-timer paused10:56/reference-resting/reference-clock; entire captured viewport, no mask",
+    "tolerance": 0,
+    "changed_pixels": 0,
+    "changed_channels": 0,
+    "changed_bbox": null,
+    "baseline_sha256": "b4746fc937eae97707ef0fb0e32ed480fa419ac3ba4a710d08f79a495b110554",
+    "candidate_sha256": "b4746fc937eae97707ef0fb0e32ed480fa419ac3ba4a710d08f79a495b110554",
+    "verdict": "PASS",
+    "scope": "Observed strict static-viewport preservation only; not original rendering or physical accessibility acceptance"
+  }
+]

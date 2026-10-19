@@ -1833,7 +1833,7 @@
     "functions": [
       "F103"
     ],
-    "current": "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme.",
+    "current": "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme. Ruhender Timer besitzt jetzt ein benanntes Accessibility-Control mit aktuellem Wert statt ausschließlich anonymem Flächentipp; zwei Vorherfehler, sechs finale UI-Ausführungen und fünf SDKs. Statischer Viewport auf beiden Geräten pixelgleich; echte Hilfsmittel-/Fokusabnahme bleibt offen. Docs/timer-accessible-controls.md.",
     "tasks": [
       "VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen",
       "Zoom/Dynamic Type sowie Kontrast und reduzierte Bewegung abnehmen",
@@ -1844,7 +1844,11 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/73",
     "issue_number": 73,
-    "state": "open"
+    "state": "in_progress",
+    "progress_evidence": [
+      "Docs/timer-accessible-controls.md",
+      "Docs/verification/accessible-timer.json"
+    ]
   },
   {
     "key": "SYS-11",
