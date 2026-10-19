@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-19",
+  "issue": 80,
+  "status": "partial_issue_remains_open",
+  "code_commit": "819ee8ffd01bc0d735f520458205ceed92cf4f4c",
+  "source_digest": "5f2fc194bb439ee7dd9b263ea02818908eb10192833e91ab9fda67c95dafd0f3",
+  "source_files": 189,
+  "native": {
+    "verdict": "PASS",
+    "cases": 5,
+    "assertions": 72,
+    "target": "819ee8ffd01bc0d735f520458205ceed92cf4f4c",
+    "compiled_source_matches_git": true,
+    "clean_before_after": true,
+    "audio_asset_present": false,
+    "acoustic_playback_tested": false,
+    "privacy_failure_control": true
+  },
+  "archives": {
+    "expiry-write-baseline-fixed": {
+      "entries": 124,
+      "sha256": "6e9bee4ac360728d3fa84db78e7ed13227d1101c31d2d85e77ae812d26ca89d1",
+      "all_entries_read_back": true,
+      "cases": 4,
+      "failed_cases": 2,
+      "failed_assertions": 9,
+      "negative_cases_passed": 2,
+      "source_commit": "46cc6724e55c981c251edbc06bdf89870b53e065",
+      "acoustic_playback_tested": false,
+      "audio_asset_present": false
+    },
+    "expiry-write-final": {
+      "entries": 118,
+      "sha256": "16a5b5271a85eb8b9b83ba50c172877c2a0c2cf7953db5bc2eca3612f386a969",
+      "all_entries_read_back": true
+    }
+  },
+  "UI_executions": 6,
+  "UI_unique_methods": 3,
+  "UI_failed": 0,
+  "UI_skipped": 0,
+  "UI_runtime_warnings": [],
+  "UI_compiled_inputs": 22,
+  "UI_installed_app_read_back": true,
+  "UI_archive": {
+    "file": "expiry-write-ui-inputs.zip",
+    "entries": 211,
+    "sha256": "6569b0fc46cb1d13739fa581fda720f79a8a3a387887050e98894485cf4e968f",
+    "all_entries_read_back": true
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "PNGs_decoded": 20,
+  "contact_sheets_reviewed": 2,
+  "selected_images": [
+    {
+      "path": "Docs/verification/expiry-write-images/iPad-viewport-doorbell-with-visible-timer-completion.png",
+      "sha256": "f592061593085c92d9d6c9f6476b931bb1256280a41fe7bfaa4849b266d3c9af"
+    },
+    {
+      "path": "Docs/verification/expiry-write-images/iPad-viewport-timer-lifecycle-after-process-restart.png",
+      "sha256": "8b302e912b8c7c3d0d29da79278d451f5554203e9b11a85cb1d394fa78661cb6"
+    },
+    {
+      "path": "Docs/verification/expiry-write-images/iPad-viewport-answer-readout-timer-interrupt-no-resume.png",
+      "sha256": "bedf723b48756fb018e269d842f52a73480e3fb18cd23f836d5ee6c08e65dfbe"
+    },
+    {
+      "path": "Docs/verification/expiry-write-images/iPhone-viewport-doorbell-with-visible-timer-completion.png",
+      "sha256": "27e7b65fa46ffecf45c2fe80de7759609a9e5c15ab0ab66c428b8eeafe566d83"
+    },
+    {
+      "path": "Docs/verification/expiry-write-images/iPhone-viewport-timer-lifecycle-after-process-restart.png",
+      "sha256": "7b324c5367908e85ccd7d7232e88d79c218b2ca8182a4ab26c9c50cade894061"
+    },
+    {
+      "path": "Docs/verification/expiry-write-images/iPhone-viewport-answer-readout-timer-interrupt-no-resume.png",
+      "sha256": "43ef932f52aefa31cbdc5d3b63a84045ccb239b3164dfd5a48e561d05e91f140"
+    }
+  ],
+  "Core_qualification": "Historical pinned 264-test full PASS; 66 Core/CoreTests file bytes unchanged, no new full run.",
+  "scope": "Local marker-before-banner/readout-interruption/chime-request order; not atomic speaker/OS delivery. Crash after marker before effect may omit notification. Native AlarmKit operation/save reconciliation remains open.",
+  "acoustic_playback_tested": false,
+  "UI_readout_backend": "synthetic manual fixture; own demo tone in Simulator only",
+  "Home_constructed": false,
+  "real_accounts_used": false,
+  "physical_acceptance": false
+}

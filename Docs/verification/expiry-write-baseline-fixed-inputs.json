@@ -1,0 +1,511 @@
+{
+  "archive": "expiry-write-baseline-inputs.zip",
+  "entries": 124,
+  "sha256": "6e9bee4ac360728d3fa84db78e7ed13227d1101c31d2d85e77ae812d26ca89d1",
+  "all_entries_read_back": true,
+  "cases": 4,
+  "failed_cases": 2,
+  "failed_assertions": 9,
+  "negative_cases_passed": 2,
+  "source_commit": "46cc6724e55c981c251edbc06bdf89870b53e065",
+  "acoustic_playback_tested": false,
+  "audio_asset_present": false,
+  "files": [
+    {
+      "name": "compile-input/0-AlternateHomeFace.swift",
+      "sha256": "9280c2c1756be456b9220411e2407f038f4615101e36c6c65d8b6f29bf18d436"
+    },
+    {
+      "name": "compile-input/1-AnswerSpeechActions.swift",
+      "sha256": "dbcdc1c7bf1d4eac236b7c6c036a46f69dea1e1d4b5313d9a5971e49be788843"
+    },
+    {
+      "name": "compile-input/2-AnswerSpeechSettingsView.swift",
+      "sha256": "91398c25ab36ccd5d5aff40430984db48133c8295be50f48904bd324e0c99cea"
+    },
+    {
+      "name": "compile-input/3-AppIcons.swift",
+      "sha256": "171f5456c6adb64a55285419afdd277213d2c97c89c07b725584a40039e61f06"
+    },
+    {
+      "name": "compile-input/4-AppModelInspected.swift",
+      "sha256": "786e8f30830cc7eceaa121d4101687a1df39714f51c0da37e94fb0c0dd920c28"
+    },
+    {
+      "name": "compile-input/5-AssistantCapabilitiesView.swift",
+      "sha256": "0da50445e0e94221acaedabdb96974d9915622fd57cae142d0a81718e9115179"
+    },
+    {
+      "name": "compile-input/6-AssistantPlanView.swift",
+      "sha256": "9c083a44eb02821d1f12d26f2b07a1aa0a33a6ffa63cbb24754bc697127e3cc0"
+    },
+    {
+      "name": "compile-input/7-AssistantVoiceSession.swift",
+      "sha256": "4d78f414284434a1d7cbf0dfac3a708974338a7831abd6d4fe9b44273dde9559"
+    },
+    {
+      "name": "compile-input/8-BrowserNavigationFixture.swift",
+      "sha256": "179e863f55bcb4d0171d9ee874cc10c0dea9d9576fb465309056539d7417ebac"
+    },
+    {
+      "name": "compile-input/9-CameraAndCommunication.swift",
+      "sha256": "f0c59523a9cabdbbee1f0c0b042a1d09591ac7e1632a6c259670681a2ec86e0f"
+    },
+    {
+      "name": "compile-input/10-ConnectedViews.swift",
+      "sha256": "8efc7d49667f5f899981b35c223dc4116c3505f807273799018894628cc83bcf"
+    },
+    {
+      "name": "compile-input/11-Controls.swift",
+      "sha256": "a76cc6aae14c1c4ee981b01ccae1f7d2722ea019d1a33f0bc1c3f6f98b7f60c6"
+    },
+    {
+      "name": "compile-input/12-Design.swift",
+      "sha256": "50df3f149472970525939be1b4d7d627749791c888176287ae228f3317169151"
+    },
+    {
+      "name": "compile-input/13-DeviceConnections.swift",
+      "sha256": "c173eef48a1bbc51ec626a9947d9a4865c0b1fb84240828102910a4bb7da262f"
+    },
+    {
+      "name": "compile-input/14-DisplayWakeController.swift",
+      "sha256": "85ea8ea5f21007bb518c5e6e9d4046b063db80d36fed682d9eff5c5047f277e7"
+    },
+    {
+      "name": "compile-input/15-Everyday.swift",
+      "sha256": "741280fe2faa86c015286d0db0331cc45f50c7b53084cfac02bea31944dd4e99"
+    },
+    {
+      "name": "compile-input/16-FaceEditor.swift",
+      "sha256": "e9a59dbe3ff0981570875eb3b79a6b8b496d38006538cb1b79d0a6fc3b1f2fc8"
+    },
+    {
+      "name": "compile-input/17-Faces.swift",
+      "sha256": "72a1aaacd674435d89d0866e8009723ec502ac8cced4a3cbc8a0847e258b216c"
+    },
+    {
+      "name": "compile-input/18-FlowDigitContours.swift",
+      "sha256": "c05e80a4379d75b141d886ae25794e0fa8129b639f472eac9d6b3426c38a0fc0"
+    },
+    {
+      "name": "compile-input/19-HomeScreens.swift",
+      "sha256": "b98bd0d2d43576e189ed06cab792135bccad596d0ba266b8baab538140ec41b0"
+    },
+    {
+      "name": "compile-input/20-LocalAudioEngine.swift",
+      "sha256": "1c2b3284f90ea3965d3d287b7d0131a0e350c55bd5fecdde2268bde0aa5697c0"
+    },
+    {
+      "name": "compile-input/21-LocalResetView.swift",
+      "sha256": "c64d522a8dc63a54bb10258a2facd6206e435e405c4bd97281467407351eb3fe"
+    },
+    {
+      "name": "compile-input/22-Motion.swift",
+      "sha256": "291c8b848fbfe31f3f178b4e9e6bfc48b983bef0938bdfa1c43118d56575bf66"
+    },
+    {
+      "name": "compile-input/23-NativeAlarms.swift",
+      "sha256": "03605fbcdb0d0d496cb017745b77e64b98a3526a546cedc4eea2ce17d2209a8b"
+    },
+    {
+      "name": "compile-input/24-NativeAnswerSpeech.swift",
+      "sha256": "1ee1550a609d60a04215f562311b630d0db9bb666e9ad8b42341112f7f4f89c3"
+    },
+    {
+      "name": "compile-input/25-NativeAssistantAnswers.swift",
+      "sha256": "69113df39041d856d0ad7f12512a14ce7c10b9119f959e2742b2b6dd4b2b323f"
+    },
+    {
+      "name": "compile-input/26-NativeBrowser.swift",
+      "sha256": "dabc7d44011f434907d4f0071c62e11f131e121f7ddb6412e52c1355a96a7b62"
+    },
+    {
+      "name": "compile-input/27-NativeMirror.swift",
+      "sha256": "1c4db3aafb84f65b4b75687001d2573f3a5c803fbb59158d977b06799ccd3197"
+    },
+    {
+      "name": "compile-input/28-NativePhotos.swift",
+      "sha256": "3c5b76bb48dd98a11d7b687f6ff714a728f1ba459bf870ace4f4c80314c3d5dd"
+    },
+    {
+      "name": "compile-input/29-NativeServices.swift",
+      "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+    },
+    {
+      "name": "compile-input/30-NativeViewportMarker.swift",
+      "sha256": "965fe9f7e058d31405a90b6262c4c3ca273872ec9fd803a58e8ea1c67a8cf159"
+    },
+    {
+      "name": "compile-input/31-NativeVoice.swift",
+      "sha256": "d90732a4e2f262050d66c497d6fa8ae11b6e08213c5dfb1fd9f8c7ac38a2c2af"
+    },
+    {
+      "name": "compile-input/32-PhotoClockInkRasterizer.swift",
+      "sha256": "fa6142f1cfbc4f695ef7896255d67da069a02628e17f975fc3fed0faf00b9fdb"
+    },
+    {
+      "name": "compile-input/33-PhotoLayoutFixture.swift",
+      "sha256": "841bff3090e57e9a7b2d9a801a6fcc40f22485d24fceec8d9377d8dfee89dc5a"
+    },
+    {
+      "name": "compile-input/34-PhotoTallGlyphs.swift",
+      "sha256": "3be93d1957a68adbf00c0d1c173d5467a512cf5207ee2cfd03db8b9eff56384b"
+    },
+    {
+      "name": "compile-input/35-PodcastActions.swift",
+      "sha256": "5e776c0138f8df0a5a96d1540d33941b7b686a38d7ae68a7ef7b01d3dda0c43a"
+    },
+    {
+      "name": "compile-input/36-PodcastPlayback.swift",
+      "sha256": "0232ca33b26878ef02cc33dc8d5dba0093730ba75cec77e8445127e1119981c3"
+    },
+    {
+      "name": "compile-input/37-PowerCapabilitiesView.swift",
+      "sha256": "6db8c594bbc0531a0d711092605ab65755d7000be07406da42a53933ebea843b"
+    },
+    {
+      "name": "compile-input/38-RecipeHandoffActions.swift",
+      "sha256": "7f7ac10fe8481582991b6f6fbcbec3e4877a371647882c35cc97cf15bb5e168a"
+    },
+    {
+      "name": "compile-input/39-RecipeHandoffController.swift",
+      "sha256": "f2e94c008c001a8773b652fe2b79c5d000cc14c1da5d3382924fe0a20f512adc"
+    },
+    {
+      "name": "compile-input/40-RecipeHandoffView.swift",
+      "sha256": "debd0e112a2f82e7ce7c4247c7110930b72e59765942c5023d80db0cf9d34c34"
+    },
+    {
+      "name": "compile-input/41-RootView.swift",
+      "sha256": "ec3e35a3eb3cfc033c2cf559fbcfcf4876c8848d28729d25cfa9778c31147306"
+    },
+    {
+      "name": "compile-input/42-SetupIntroductionView.swift",
+      "sha256": "445550bc5030c8bafbaaa33df6fe8ae05692b85fab81b00d4982d153e4c3f107"
+    },
+    {
+      "name": "compile-input/43-SharedAlbums.swift",
+      "sha256": "67da476ec1b41dadf26bb95a70c360aca85f25e0d9e8c1cd2a62a90d3ba918bb"
+    },
+    {
+      "name": "compile-input/44-SystemActions.swift",
+      "sha256": "3926f604d07302035c0d9a2f0c30456d07a09af943098461b4c9434b45dc95a2"
+    },
+    {
+      "name": "compile-input/45-WatchRoot.swift",
+      "sha256": "d3956c7168752c689fb057535b104a40dc80b36812662feef52aadb89cdf2bde"
+    },
+    {
+      "name": "compile-input/46-WeatherGlass.swift",
+      "sha256": "854237c5249b506a84d1a2dffde5026ea1cf6d926a496adf046f70843fa07c56"
+    },
+    {
+      "name": "compile-input/47-WeatherScreen.swift",
+      "sha256": "41721225ea8b1ebdb4da3fd84357d327cc0f7cfa704503cebe55d24d1dc8e42c"
+    },
+    {
+      "name": "compile-input/48-WeatherService.swift",
+      "sha256": "3921ee5426399c326610cfa4f25d27e6baf2018f6a827210edfbef8ae692be78"
+    },
+    {
+      "name": "compile-input/49-AlbumDisplay.swift",
+      "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573"
+    },
+    {
+      "name": "compile-input/50-AnswerSpeechSession.swift",
+      "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e"
+    },
+    {
+      "name": "compile-input/51-AssistantConversation.swift",
+      "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1"
+    },
+    {
+      "name": "compile-input/52-AssistantLimits.swift",
+      "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584"
+    },
+    {
+      "name": "compile-input/53-BrowserPolicy.swift",
+      "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+    },
+    {
+      "name": "compile-input/54-CalendarAgenda.swift",
+      "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+    },
+    {
+      "name": "compile-input/55-ConicGradientModel.swift",
+      "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3"
+    },
+    {
+      "name": "compile-input/56-ConnectedDataSession.swift",
+      "sha256": "ad6a9865495f738878bf10f50b8bb1bed8b86934849e64312d30f6ddddc1f7ee"
+    },
+    {
+      "name": "compile-input/57-ConnectedModels.swift",
+      "sha256": "cb011d1d322c46a8424d04e8a9e858b7d723ef76abb8ab88c2f1ed4d5bedc42c"
+    },
+    {
+      "name": "compile-input/58-DataConnection.swift",
+      "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+    },
+    {
+      "name": "compile-input/59-DemoActionPlan.swift",
+      "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11"
+    },
+    {
+      "name": "compile-input/60-DemoDoorbell.swift",
+      "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398"
+    },
+    {
+      "name": "compile-input/61-EverydayVoiceCommand.swift",
+      "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c"
+    },
+    {
+      "name": "compile-input/62-FaceConfiguration.swift",
+      "sha256": "f28b9987306361df114cf24d81a0ca909c8f1a9866fd1708f07a2fe7a8bb6386"
+    },
+    {
+      "name": "compile-input/63-FlowSimulation.swift",
+      "sha256": "11dc99bb0d648625c37a17c5a78ec4a618c69c44370d91373da63e038ea21494"
+    },
+    {
+      "name": "compile-input/64-FlowTypography.swift",
+      "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+    },
+    {
+      "name": "compile-input/65-GuestAccessPolicy.swift",
+      "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+    },
+    {
+      "name": "compile-input/66-LocalStateReset.swift",
+      "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb"
+    },
+    {
+      "name": "compile-input/67-Models.swift",
+      "sha256": "d9eea85036d3574edeb4f84aa7d56a7f7ed39578b84c7ba28fe575c11c6f0939"
+    },
+    {
+      "name": "compile-input/68-MusicPlaybackGate.swift",
+      "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5"
+    },
+    {
+      "name": "compile-input/69-PersonalHomeConfiguration.swift",
+      "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc"
+    },
+    {
+      "name": "compile-input/70-PhotoClockInk.swift",
+      "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9"
+    },
+    {
+      "name": "compile-input/71-PhotoMaskRasterizer.swift",
+      "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+    },
+    {
+      "name": "compile-input/72-PhotoPlacement.swift",
+      "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae"
+    },
+    {
+      "name": "compile-input/73-PodcastFeedParser.swift",
+      "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e"
+    },
+    {
+      "name": "compile-input/74-PodcastFeedTransport.swift",
+      "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97"
+    },
+    {
+      "name": "compile-input/75-PodcastLibrary.swift",
+      "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+    },
+    {
+      "name": "compile-input/76-PowerAdapterInformation.swift",
+      "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616"
+    },
+    {
+      "name": "compile-input/77-RecipeParser.swift",
+      "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
+    },
+    {
+      "name": "compile-input/78-RecipeTransfer.swift",
+      "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+    },
+    {
+      "name": "compile-input/79-SetupIntroduction.swift",
+      "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8"
+    },
+    {
+      "name": "compile-input/80-SnapshotMigration.swift",
+      "sha256": "dfa7b3bc15215b18498a4c2e9881816db40017027d84fc66b847cd5298fd2e47"
+    },
+    {
+      "name": "compile-input/81-ViewportNavigationIntent.swift",
+      "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341"
+    },
+    {
+      "name": "compile-input/82-WeatherData.swift",
+      "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+    },
+    {
+      "name": "compile-input/83-WorldClock.swift",
+      "sha256": "418016a859f09e373daa4971031d9363a561831395b77f9d5ec28a45790ee828"
+    },
+    {
+      "name": "compile-input/84-PersistenceWriteGate.swift",
+      "sha256": "2848795cdcc208c1f4761e6e26f65a0e2c30139300196fb9f0dbfe94273013d7"
+    },
+    {
+      "name": "compile-input/85-FeedKit.o",
+      "sha256": "80b5b8937feb1c8a8ffafc8612d4fb7f259ddf161e1ed3a21df3c08460c218c1"
+    },
+    {
+      "name": "compile-input/86-XMLKit.o",
+      "sha256": "d970e1cd6efa7703359a46552df8dd80e37bda490657b2f0fc5775fad02df74a"
+    },
+    {
+      "name": "compile-input/87-compile.py",
+      "sha256": "6c3fc82252bc52153f71b6b345114d016613c7160c6288a516d569ea5875fe98"
+    },
+    {
+      "name": "gate/inputs-after.json",
+      "sha256": "2ad5ab1f81d07e9ee3c669bdec561306ca97a00883111958e020f452c9abab50"
+    },
+    {
+      "name": "gate/run.py",
+      "sha256": "27ff16bfcde171ec40d63b3c3cb6cef9e204800b48375c935a576462744523af"
+    },
+    {
+      "name": "gate/already_delivered-command.json",
+      "sha256": "0d243b9d3711e41a8cda049e25bce47b48864f72dae1b282cc95190dccbef558"
+    },
+    {
+      "name": "gate/paused_timer.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "gate/alarm_due.stdout",
+      "sha256": "aeacbc793a3fba247ab05848da26fbb17e39f5524f8a43c609869eaf1c6ad634"
+    },
+    {
+      "name": "gate/timer_due.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "gate/timer_due.stdout",
+      "sha256": "15b8ccf2c58f932d3d46aea7437e394f73fed4bc09cb0bdf3738684c38387b2b"
+    },
+    {
+      "name": "gate/alarm_due.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "gate/paused_timer.stdout",
+      "sha256": "76c841781ad59648ff7308c0ff1c260be5b15da569d16252671cb73ff34233fb"
+    },
+    {
+      "name": "gate/results.json",
+      "sha256": "085c55f4b7fd70444411b2fc92a3670a65f616e68c93cdd8ca1f7c2ee7959202"
+    },
+    {
+      "name": "gate/AppModelInspected.swift",
+      "sha256": "786e8f30830cc7eceaa121d4101687a1df39714f51c0da37e94fb0c0dd920c28"
+    },
+    {
+      "name": "gate/compile.log",
+      "sha256": "d2be195ce000d55a6dff1c1148835367f9f41ae1aeca848cc62e712cd98e0eec"
+    },
+    {
+      "name": "gate/execution-inputs-after.json",
+      "sha256": "b489974ccb4b75f4e221ba6a3fe773bd6629f4bdc3775c63f4eaf6c59ab43659"
+    },
+    {
+      "name": "gate/PersistenceWriteGate.swift",
+      "sha256": "2848795cdcc208c1f4761e6e26f65a0e2c30139300196fb9f0dbfe94273013d7"
+    },
+    {
+      "name": "gate/inputs-before.json",
+      "sha256": "2ad5ab1f81d07e9ee3c669bdec561306ca97a00883111958e020f452c9abab50"
+    },
+    {
+      "name": "gate/already_delivered.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "gate/timer_due-command.json",
+      "sha256": "9714daa00348747dbf251e79c6680935d449bca45340824df0efe1ec31245866"
+    },
+    {
+      "name": "gate/command.json",
+      "sha256": "e3ba962be9825dbcd4017c38298d4386f622d43c3caa7d88dec1215bf9383089"
+    },
+    {
+      "name": "gate/compile.py",
+      "sha256": "6c3fc82252bc52153f71b6b345114d016613c7160c6288a516d569ea5875fe98"
+    },
+    {
+      "name": "gate/paused_timer-command.json",
+      "sha256": "dc297df5490e807d89959756ba4b66f4212c8e94325da796a48650a54ece99cb"
+    },
+    {
+      "name": "gate/pinned-target.json",
+      "sha256": "eb4c8764e57e7e30de0443690cbac81ad4d807feeb0309041aced20a6d7ad4d4"
+    },
+    {
+      "name": "gate/alarm_due-command.json",
+      "sha256": "6b10e6f05f5001ed09de707a738a13ccedbd83a23e88aa250a1460fc0c48495e"
+    },
+    {
+      "name": "gate/execution-inputs-before.json",
+      "sha256": "b489974ccb4b75f4e221ba6a3fe773bd6629f4bdc3775c63f4eaf6c59ab43659"
+    },
+    {
+      "name": "gate/already_delivered.stdout",
+      "sha256": "0af9d6e2e82e37401500d846b3f1da9a692bf40307e0f928c8a3f2caf7b6b6ad"
+    },
+    {
+      "name": "gate/PersistenceWriteGate.app/Contents/Info.plist",
+      "sha256": "53a40826a326f0b2ac5e68c71e51497f213fd664b3760ed9f006ba5eb71c2d68"
+    },
+    {
+      "name": "gate/PersistenceWriteGate.app/Contents/MacOS/PersistenceWriteGate",
+      "sha256": "47f770434f4e7abc611084ca2d34ee4da5465f9f0a62f611351d9a3ea87d354b"
+    },
+    {
+      "name": "preparation-failed/inputs-after.json",
+      "sha256": "03b5c3f712d3391b584cf71410ade8ac2b9ca24e63b312c32e806edd4703ecd1"
+    },
+    {
+      "name": "preparation-failed/run.py",
+      "sha256": "27ff16bfcde171ec40d63b3c3cb6cef9e204800b48375c935a576462744523af"
+    },
+    {
+      "name": "preparation-failed/AppModelInspected.swift",
+      "sha256": "786e8f30830cc7eceaa121d4101687a1df39714f51c0da37e94fb0c0dd920c28"
+    },
+    {
+      "name": "preparation-failed/compile.log",
+      "sha256": "9ff7c3425c0a8f6b1378cdf9a6727ec0c25c3f5bb37ceb81d2333fe278a43158"
+    },
+    {
+      "name": "preparation-failed/PersistenceWriteGate.swift",
+      "sha256": "b888686d2a38b4e675f20cdc2ba861bff370a29626404a0437b3c13f9dcb2bd6"
+    },
+    {
+      "name": "preparation-failed/inputs-before.json",
+      "sha256": "03b5c3f712d3391b584cf71410ade8ac2b9ca24e63b312c32e806edd4703ecd1"
+    },
+    {
+      "name": "preparation-failed/command.json",
+      "sha256": "5c9068219e0d0b6563d466ea957392c9d9451245b9d0aacc3a70427ad987be0a"
+    },
+    {
+      "name": "preparation-failed/compile.py",
+      "sha256": "6c3fc82252bc52153f71b6b345114d016613c7160c6288a516d569ea5875fe98"
+    },
+    {
+      "name": "preparation-failed/preparation-failure.json",
+      "sha256": "d7679efa94823dc6e6ed2c53dd336384f9caacac2b73cdca5c4fff94411043a0"
+    },
+    {
+      "name": "preparation-failed/PersistenceWriteGate.app/Contents/Info.plist",
+      "sha256": "53a40826a326f0b2ac5e68c71e51497f213fd664b3760ed9f006ba5eb71c2d68"
+    }
+  ]
+}
