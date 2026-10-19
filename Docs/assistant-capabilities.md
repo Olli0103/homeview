@@ -20,3 +20,9 @@ F052 bleibt eine **Referenz-/Dienstabhängigkeit**, keine abgenommene Siri-Parit
 - P03: [Apple-Pressemitteilung](https://www.apple.com/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home/), datiert **13. Oktober 2026**, derselbe Snapshot. Die Fußnote nennt Beta in Software 27.2, tägliche Grenzen bestimmter serverbasierter Modelle und später kostenpflichtigen erweiterten Zugang. Sie enthält keine konkrete tägliche Zahl und keinen künftigen Preis.
 
 Diese zeitgebundenen Referenzangaben werden nicht in unsere Sprachunterstützung, Preise oder Verfügbarkeitszusagen umgedeutet. Quelltexte und Originalmaterial bleiben im privaten Recherchebestand. Für die Informationsansicht sind vorhandene SwiftUI-/Speech-APIs ausreichend; es wird kein eigener Dienst oder SDK-Ersatz gebaut. Der eigentliche Anbieter-/Datenschutzentscheid aus #33 bleibt offen und ist keine Voraussetzung, um den jetzigen Nicht-Anschluss wahrheitsgemäß anzuzeigen.
+
+## Prüfung
+
+181 Modell-/Transporttests, acht gezielte native Ausführungen (vier je iPad/iPhone) und fünf arm64-SDK-Builds bestanden. Informationsansicht erhält den ungesendeten Entwurf und die alte Antwort unverändert; keine Aufnahme und kein implizites Senden. Bestehende bilinguale Timer, Hintergrund-/Navigationsentwürfe und synthetischer Voice-Abbruch/Berechtigungsfehler bleiben geprüft. Zehn eigene PNGs vollständig dekodiert und auf zwei Kontaktbögen gesichtet; sechs davon veröffentlicht. Der volle iPhone-Rückkehr-Screen zeigt zusätzlich einen systemeigenen Tastaturhinweis; dieser ist kein Appfehler oder sauberer tastaturfreier Gesamtbildnachweis.
+
+[Quellenbindung, Methoden und Ergebnisse](verification/assistant-capabilities.json). F052 bleibt Original-Dienstabhängigkeit; abgeschlossen ist die ehrliche eigene Verfügbarkeits-/Sprachen-/Grenzenanzeige.

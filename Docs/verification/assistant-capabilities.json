@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-19",
+  "issue": 41,
+  "code_commit": "666fb92dd61edbe64ca698cd16fd2ce5263c0526",
+  "source_digest": "69edeb117d7bfb56fbbb74205ef950b3b01449aa10edbaa3a22a51f7e3ce7b91",
+  "core_tests": 181,
+  "core_failures": 0,
+  "UI_methods": [
+    "testAssistantCapabilitiesExplainLocalScopeAndLeaveDraftUnsent",
+    "testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend",
+    "testBilingualTimerCommandUsesSecondsAndAmbiguityDoesNotAddTimer",
+    "testVoiceCancelAndDeniedPermissionKeepTypingAvailable"
+  ],
+  "UI_executions": 8,
+  "UI_results": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    },
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    }
+  ],
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "all_compiled_inputs_unchanged": true,
+  "compiled_input_files": 23,
+  "installed_app_readback": {
+    "iPad": true,
+    "iPhone": true
+  },
+  "compiled_archive_readback": true,
+  "compiled_archive_sha256": "53d0e86dd77c1260dd353a0c41ecea3273ae9e47de24d8987b5136c1afa62da8",
+  "images_decoded_and_reviewed": 10,
+  "public_images": [
+    {
+      "path": "Docs/screenshots/assistant-capabilities/iPad-assistant-capability-limits.png",
+      "sha256": "cabcc77de2343efdf3fb44a127d2f1d722312cf2876c34386a34963dd8096916"
+    },
+    {
+      "path": "Docs/screenshots/assistant-capabilities/iPad-screen-assistant-capability-return-unsent-draft.png",
+      "sha256": "467a65f9d7854950f223ad8fcec853f542380144f40c4802ae3ec64926b0246c"
+    },
+    {
+      "path": "Docs/screenshots/assistant-capabilities/iPad-viewport-assistant-capability-return-unsent-draft.png",
+      "sha256": "18e2b9de6a347871646d23893c6cd8deb38b64d799c3f6a2714691278d0c481c"
+    },
+    {
+      "path": "Docs/screenshots/assistant-capabilities/iPhone-assistant-capability-limits.png",
+      "sha256": "5baf513b4e4c3d150f8c968fdfa0882e02aabf46d95f1148923009c505d5a6a2"
+    },
+    {
+      "path": "Docs/screenshots/assistant-capabilities/iPhone-screen-assistant-capability-return-unsent-draft.png",
+      "sha256": "0318fa2783dde1e0303ab36567e68e98db54d27d2faa45ee96759eb8a6505243"
+    },
+    {
+      "path": "Docs/screenshots/assistant-capabilities/iPhone-viewport-assistant-capability-return-unsent-draft.png",
+      "sha256": "dcb7792ee336d59ab480ca86586b5cbd981abd6ed3917df2cee28352cf5b8ccb"
+    }
+  ],
+  "reference_source_review": {
+    "snapshot_date": "2026-10-16",
+    "review_date": "2026-10-19",
+    "live_reverified": false,
+    "publication_P01": "2026-10",
+    "publication_P03": "2026-10-13",
+    "source_digests": [
+      {
+        "source": "Quellen/Apple/P01-product.md",
+        "sha256": "c21febd4a175668127ffb0cf49cfdb6cc770b047ed3b29a8c4a39b7907311465"
+      },
+      {
+        "source": "Quellen/Apple/newsroom-live-extract.md",
+        "sha256": "d4154313c7f7dc47e3334e146db7699f0d52e4cdcbc79c1626133139c6504898"
+      },
+      {
+        "source": "Quellen/quellen.json",
+        "sha256": "7650e42215b42a36899ee4c002661de7a7adab0bc72236609495d0e7592aaeec"
+      },
+      {
+        "source": "Referenz/01-Produkt-und-Originalverhalten.md",
+        "sha256": "63801d8ca84508e180e6dccb7138d524ba9e2fb03f10c8dfbbb85fb5a13d87b6"
+      }
+    ]
+  },
+  "limits": [
+    "Read-only disclosure of current local functionality; not new Siri, general-purpose AI or cloud provider integration",
+    "No subscription/pricing/usage promise inferred from dated Apple source",
+    "No physical recognition or sound-input quality claim",
+    "No Home connection or personal-account access"
+  ]
+}
