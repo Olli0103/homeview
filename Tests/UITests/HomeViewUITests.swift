@@ -1449,13 +1449,13 @@ final class HomeViewUITests: XCTestCase {
   func testPhotoManualCropCanOverrideAndRestoreFullImageFraming() {
     launch(["--photo-layout-fixture", "edges", "--photo-layout-settings"])
     let automatic = app.switches["photos.crop.auto"]
-    for _ in 0..<18 where !automatic.isHittable { app.scrollViews.firstMatch.swipeUp() }
-    XCTAssertTrue(automatic.isHittable)
+    scrollPhotoControlFullyIntoView(automatic)
     automatic.tap()
+    XCTAssertEqual(automatic.value as? String,"0","The actual framing switch must be off before a manual slider can appear")
     let horizontal = app.sliders["photos.crop.horizontal"]
     viewportShot("photo-write-crop-after-automatic-toggle")
     print("PHOTO_CROP_STATE auto=\(String(describing:automatic.value)) horizontal_exists=\(horizontal.exists) horizontal_frame=\(horizontal.exists ? horizontal.frame:.zero) viewport=\(app.otherElements["reference.viewport"].frame)")
-    for _ in 0..<4 where !horizontal.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    scrollPhotoControlFullyIntoView(horizontal)
     if !horizontal.isHittable {
       viewportShot("photo-write-crop-slider-not-hittable")
       print("PHOTO_CROP_ACTUAL_UI="+app.debugDescription)
@@ -1469,8 +1469,7 @@ final class HomeViewUITests: XCTestCase {
     tap("nav.controls")
     tap("controls.settings")
     let reset = app.buttons["photos.layout.reset"]
-    for _ in 0..<18 where !reset.isHittable { app.scrollViews.firstMatch.swipeUp() }
-    XCTAssertTrue(reset.isHittable)
+    scrollPhotoControlFullyIntoView(reset)
     reset.tap()
     tap("nav.faces")
     XCTAssertTrue(layout.label.contains("full=true"), layout.label)
