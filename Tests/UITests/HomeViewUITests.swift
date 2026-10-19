@@ -4940,3 +4940,50 @@ extension HomeViewUITests {
     try auditRecipeHitRegions("cooking")
   }
 }
+
+extension HomeViewUITests {
+  private func tapRecipeTargetEdge(_ button:XCUIElement,bottom:Bool=false) {
+    XCTAssertTrue(button.waitForExistence(timeout:5));XCTAssertTrue(button.isHittable)
+    let f=button.frame
+    XCTAssertGreaterThanOrEqual(f.height,44-0.000_001)
+    XCTAssertGreaterThanOrEqual(f.width,44-0.000_001)
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(
+      dx:f.midX-app.frame.minX,dy:(bottom ? f.maxY-2:f.minY+2)-app.frame.minY)).tap()
+  }
+  func testRecipeAccessibleProgressAndNativeEdgeActions() {
+    launch(["--screen-recipe"]);tap("recipe.ingredients")
+    let first=app.buttons["ingredient.0"],second=app.buttons["ingredient.1"]
+    XCTAssertTrue(first.waitForExistence(timeout:5));XCTAssertEqual(first.value as? String,"Unchecked")
+    XCTAssertTrue(first.frame.intersection(second.frame).isNull)
+    tapRecipeTargetEdge(first)
+    XCTAssertEqual(first.value as? String,"Checked")
+    viewportShot("recipe-ingredients-checked-edge")
+    tapRecipeTargetEdge(first,bottom:true);XCTAssertEqual(first.value as? String,"Unchecked")
+    let last=app.buttons["ingredient.5"],list=app.scrollViews.firstMatch
+    XCTAssertTrue(list.exists)
+    for _ in 0..<3 where !list.frame.insetBy(dx:-0.5,dy:-0.5).contains(last.frame) {list.swipeUp()}
+    XCTAssertTrue(list.frame.insetBy(dx:-0.5,dy:-0.5).contains(last.frame))
+    tapRecipeTargetEdge(last,bottom:true);XCTAssertEqual(last.value as? String,"Checked")
+    app.terminate();launch(["--screen-recipe"]);tap("recipe.start")
+    let step=app.staticTexts["cooking.step"]
+    XCTAssertTrue(step.waitForExistence(timeout:5));XCTAssertEqual(step.label,"Step 1 of 3")
+    let timer=app.buttons["cooking.timer"],handoff=app.buttons["cooking.handoff"]
+    XCTAssertTrue(timer.frame.intersection(handoff.frame).isNull)
+    tapRecipeTargetEdge(timer,bottom:true)
+    tapRecipeTargetEdge(handoff)
+    XCTAssertTrue(app.buttons["recipe.handoff.offer"].waitForExistence(timeout:5))
+    // Only open the local handoff sheet; do not offer an activity or unlock.
+    tap("recipe.handoff.done");tap("cooking.next")
+    XCTAssertEqual(app.staticTexts["cooking.step"].label,"Step 2 of 3")
+    viewportShot("recipe-cooking-progress-after-edge-actions")
+    tap("nav.faces");drawer();tap("app.Timers")
+    XCTAssertTrue(app.staticTexts["timer.countdown"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["timer.title"].label.contains("STEP 1"))
+    XCTAssertEqual(app.staticTexts["timer.systemStatus"].label,"Foreground timer")
+    let fields=app.staticTexts["timer.countdown"].label.split(separator:":").compactMap {Int($0)}
+    XCTAssertEqual(fields.count,2)
+    let remaining=fields.reduce(0){$0*60+$1}
+    XCTAssertGreaterThan(remaining,0);XCTAssertLessThanOrEqual(remaining,300)
+    viewportShot("recipe-timer-created-by-edge-action")
+  }
+}

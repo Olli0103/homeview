@@ -276,7 +276,9 @@ struct RecipeCover: View {
 }
 struct IngredientsView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
   @State private var checked: Set<Int> = []
+  private var minimumHitHeight:CGFloat {44 / max(0.01,canvasScale)}
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       AppHeader(title: "Ingredients")
@@ -292,7 +294,10 @@ struct IngredientsView: View {
                 Text(model.recipe.ingredients[i]).strikethrough(checked.contains(i))
                 Spacer()
               }.font(.system(size: 24))
+                .frame(maxWidth:.infinity,minHeight:minimumHitHeight,alignment:.leading)
+                .contentShape(Rectangle())
             }.accessibilityIdentifier("ingredient.\(i)")
+              .accessibilityValue(checked.contains(i) ? "Checked":"Unchecked")
           }
         }.padding(32)
       }
@@ -304,6 +309,8 @@ struct IngredientsView: View {
 }
 struct CookingView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitHeight:CGFloat {44 / max(0.01,canvasScale)}
   var body: some View {
     VStack(alignment: .leading, spacing: 20) {
       VStack(spacing: 7) {
@@ -313,18 +320,23 @@ struct CookingView: View {
             Circle().fill(index == model.cookingStep ? Color.black : Color.gray.opacity(0.4)).frame(
               width: 7, height: 7)
           }
-        }.accessibilityLabel("Step \(model.cookingStep+1) of \(model.recipe.steps.count)")
+        }.accessibilityHidden(true)
       }
       ScrollView {
         VStack(alignment: .leading, spacing: 14) {
           Text("Step \(model.cookingStep+1)").font(.system(size: 18)).foregroundStyle(.gray)
+            .accessibilityLabel("Step \(model.cookingStep+1) of \(model.recipe.steps.count)")
+            .accessibilityIdentifier("cooking.step")
           Text(model.recipe.steps[model.cookingStep].text).font(.system(size: 30, weight: .regular))
             .lineSpacing(6).frame(maxWidth: .infinity, alignment: .leading).accessibilityIdentifier(
               "cooking.text")
         }.padding(.horizontal, 35).padding(.top, 16)
       }.frame(maxHeight: .infinity)
-      Button("Continue on another device") { model.presentRecipeHandoff() }
-        .font(.system(size:18)).padding(.horizontal,35).accessibilityIdentifier("cooking.handoff")
+      Button { model.presentRecipeHandoff() } label: {
+        Text("Continue on another device").font(.system(size:18))
+          .frame(maxWidth:.infinity,minHeight:minimumHitHeight,alignment:.leading)
+          .contentShape(Rectangle())
+      }.padding(.horizontal,35).accessibilityIdentifier("cooking.handoff")
       if let minutes = model.recipe.steps[model.cookingStep].minutes {
         Button {
           if model.addTimer(
@@ -336,6 +348,8 @@ struct CookingView: View {
           Label("Start \(minutes)-minute timer", systemImage: "timer").font(
             .system(size: 22, weight: .semibold)
           ).foregroundStyle(.orange)
+            .frame(maxWidth:.infinity,minHeight:minimumHitHeight,alignment:.leading)
+            .contentShape(Rectangle())
         }.padding(.horizontal, 35).accessibilityIdentifier("cooking.timer")
       }
       HStack(spacing: 16) {
