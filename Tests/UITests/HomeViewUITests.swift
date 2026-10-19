@@ -853,6 +853,9 @@ final class HomeViewUITests: XCTestCase {
     let status=app.staticTexts["findmy.website.status"]
     XCTAssertTrue(status.waitForExistence(timeout:3))
     XCTAssertEqual(status.label,"Find Devices website not opened in tests")
+    let viewport=app.otherElements["reference.viewport"].frame
+    XCTAssertGreaterThan(status.frame.minY,viewport.minY)
+    XCTAssertLessThan(status.frame.maxY,viewport.maxY)
     XCTAssertTrue(app.staticTexts["findmy.website.scope"].label.contains("no locations are imported"))
     XCTAssertEqual(app.staticTexts["findmy.demo.scope"].label,"Local demo · No Apple location data")
     shot("findmy-boundary-website-handoff-guard")
