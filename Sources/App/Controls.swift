@@ -221,15 +221,23 @@ struct AssistantView: View {
           .accessibilityIdentifier("assistant.examples")
       }
       HStack(spacing:12) {
-        Button("Capabilities and limits") { showingCapabilities=true }
+        Button { showingCapabilities=true } label: {
+          Text("Capabilities and limits").frame(minWidth:44,minHeight:44)
+            .contentShape(Rectangle())
+        }
           .disabled(voice.busy || voiceInitiating).accessibilityIdentifier("assistant.capabilities")
         Spacer(minLength:0)
-        Button(model.answerSpeech.speaking ? "Stop":model.connections.personalUnlocked ? "Read":"Unlock readout") {
+        Button {
           if model.answerSpeech.speaking { model.stopAnswerSpeech() }
           else { Task { await model.readAssistantAnswer() } }
+        } label: {
+          Text(model.answerSpeech.speaking ? "Stop":model.connections.personalUnlocked ? "Read":"Unlock readout")
+            .frame(minWidth:44,minHeight:44).contentShape(Rectangle())
         }.disabled(voice.busy || voiceInitiating || model.preparingAnswerSpeech || model.assistantAI.busy)
           .accessibilityIdentifier("answer.speech.read")
-        Button { showingAnswerSpeechSettings=true } label: { Image(systemName:"speaker.wave.2") }
+        Button { showingAnswerSpeechSettings=true } label: {
+          Image(systemName:"speaker.wave.2").frame(width:44,height:44).contentShape(Rectangle())
+        }
           .accessibilityLabel("Answer voice settings").accessibilityIdentifier("answer.speech.settings")
           .disabled(voice.busy || voiceInitiating || model.preparingAnswerSpeech)
       }.font(.system(size:15)).padding(.horizontal,34)
