@@ -32,6 +32,7 @@ protocol DeviceDataProvider: AnyObject {
 final class DeviceConnections {
   private let provider: any DeviceDataProvider
   private let testing: Bool
+  private let defaults: UserDefaults
   private var generation: [DataConnection: Int] = [:]
   private var unlockGeneration = 0
   private(set) var enabled: Set<DataConnection> = []
@@ -58,16 +59,17 @@ final class DeviceConnections {
     }
   }
   var weatherUnits = WeatherUnits.fahrenheit {
-    didSet { if !testing { UserDefaults.standard.set(weatherUnits.rawValue, forKey: "HomeView.weather.units") } }
+    didSet { if !testing { defaults.set(weatherUnits.rawValue, forKey: "HomeView.weather.units") } }
   }
   private(set) var weatherFetchFailed = false
   private var lastWeatherFetch = Date.distantPast
-  init(provider: any DeviceDataProvider, testing: Bool = true) {
+  init(provider: any DeviceDataProvider, testing: Bool = true, defaults: UserDefaults = .standard) {
+    self.defaults = defaults
     self.testing = testing
     self.provider = provider
     if !testing {
-      city = UserDefaults.standard.string(forKey: "HomeView.weather.city") ?? "Berlin"
-      weatherUnits = WeatherUnits(rawValue: UserDefaults.standard.string(forKey: "HomeView.weather.units") ?? "") ?? .fahrenheit
+      city = defaults.string(forKey: "HomeView.weather.city") ?? "Berlin"
+      weatherUnits = WeatherUnits(rawValue: defaults.string(forKey: "HomeView.weather.units") ?? "") ?? .fahrenheit
     }
   }
   func connect(_ kind: DataConnection, date: Date = Date(),
@@ -114,8 +116,8 @@ final class DeviceConnections {
       enabled.insert(kind)
       status[kind] = testing ? "Connected · synthetic source" : "Connected"
       if !testing {
-        UserDefaults.standard.set(true, forKey: "HomeView.connected." + kind.rawValue)
-        if kind == .weather { UserDefaults.standard.set(city, forKey: "HomeView.weather.city") }
+        defaults.set(true, forKey: "HomeView.connected." + kind.rawValue)
+        if kind == .weather { defaults.set(city, forKey: "HomeView.weather.city") }
       }
     } catch {
       guard generation[kind] == ticket else { return }
@@ -138,7 +140,7 @@ final class DeviceConnections {
   func restore() async {
     guard !testing else { return }
     for kind in DataConnection.allCases
-    where UserDefaults.standard.bool(forKey: "HomeView.connected." + kind.rawValue) {
+    where defaults.bool(forKey: "HomeView.connected." + kind.rawValue) {
       if provider.authorized(kind) {
         await connect(kind, requestPermission: false)
       } else {
@@ -163,7 +165,7 @@ final class DeviceConnections {
       musicPlaying = false
     case .weather: weather = nil; weatherFetchFailed = false
     }
-    if !testing { UserDefaults.standard.set(false, forKey: "HomeView.connected." + kind.rawValue) }
+    if !testing { defaults.set(false, forKey: "HomeView.connected." + kind.rawValue) }
   }
   func unlock() async -> Bool {
     unlockGeneration += 1

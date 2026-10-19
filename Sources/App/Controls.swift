@@ -42,33 +42,32 @@ struct ControlCenterView: View {
         control(
           "wifi", model.data.home.online ? "Mock Online" : "Mock Offline", model.data.home.online
         ) {
-          model.data.home.online.toggle()
-          model.persist()
+          model.updateLocalControls { $0.home.online.toggle() }
         }.accessibilityIdentifier("controls.online")
         control("moon.fill", "Night Mode", model.data.night) {
-          model.data.night.toggle()
-          model.persist()
+          model.updateLocalControls { $0.night.toggle() }
         }.accessibilityIdentifier("controls.night")
         control("person.fill.viewfinder", model.data.far ? "Far View" : "Near View", model.data.far)
         {
-          model.data.far.toggle()
-          model.persist()
-        }
+          model.updateLocalControls { $0.far.toggle() }
+        }.accessibilityIdentifier("controls.distance")
       }.frame(height: 125)
       ValueAdjuster(value: model.data.screenBrightness * 100, label: "Display dimming") {
-        model.data.screenBrightness = $0 / 100
-        model.persist()
+        let value = $0 / 100
+        model.updateLocalControls { $0.screenBrightness = value }
       }
-      ValueAdjuster(value: model.data.volume * 100, label: "Volume") {
-        model.data.volume = $0 / 100
-        model.audio.setVolume(Float(model.data.volume))
-        model.persist()
+      ValueAdjuster(value: model.data.volume * 100, label: "Demo audio") {
+        let value = $0 / 100
+        model.updateLocalControls { $0.volume = value }
       }
       HStack(spacing: 16) {
         Pill(title: "Mirror", symbol: "person.crop.rectangle") { model.navigate(.mirror) }
         Pill(title: "Settings", symbol: "gearshape") { model.navigate(.settings) }
           .accessibilityIdentifier("controls.settings")
       }
+      Text("App-only dimming and demo audio. Wi-Fi, screen brightness and system volume are unchanged.")
+        .font(.system(size: 15)).foregroundStyle(.secondary)
+        .accessibilityIdentifier("controls.scope")
       Spacer(minLength: 0)
     }.padding(.horizontal, 30).background(Color(white: 0.95)).foregroundStyle(.black)
   }
@@ -81,7 +80,7 @@ struct ControlCenterView: View {
         Text(label).font(.system(size: 17, weight: .medium))
       }.frame(maxWidth: .infinity, maxHeight: .infinity).background(
         active ? .lilac : .white, in: RoundedRectangle(cornerRadius: 27))
-    }.buttonStyle(.plain)
+    }.buttonStyle(.plain).accessibilityValue(active ? "On" : "Off")
   }
 }
 struct SettingsView: View {
@@ -102,9 +101,7 @@ struct SettingsView: View {
           ).font(.system(size: 18)).foregroundStyle(.gray)
           if model.display.supported {
             Button {
-              model.data.keepDisplayOn.toggle()
-              model.display.apply(enabled: model.data.keepDisplayOn)
-              model.persist()
+              model.updateLocalControls { $0.keepDisplayOn.toggle() }
             } label: {
               HStack {
                 Text("Keep Display On")
@@ -116,12 +113,10 @@ struct SettingsView: View {
           }
           setting("Reference clock", model.referenceClock) { model.referenceClock.toggle() }
           setting("Night mode", model.data.night) {
-            model.data.night.toggle()
-            model.persist()
+            model.updateLocalControls { $0.night.toggle() }
           }
           setting("Far-view layout", model.data.far) {
-            model.data.far.toggle()
-            model.persist()
+            model.updateLocalControls { $0.far.toggle() }
           }
           setting("Profile present", model.simulatedPresence) {
             if model.authorized { model.signOut() } else { model.route = .privacy }
