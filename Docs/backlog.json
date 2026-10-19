@@ -1151,10 +1151,11 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/46",
     "issue_number": 46,
-    "state": "open",
+    "state": "completed",
     "progress_evidence": [
       "Docs/findmy-data-boundary.md"
-    ]
+    ],
+    "implementation_note": "Abgeschlossen ist der explizite Daten-/Systemübergabe-Abgrenzungsauftrag und die dauerhafte Demoqualifikation, nicht die originale Find-My-Ortung. F059 bleibt blocked/parity=false. Doc-Beleg cd34aea, finale Oberfläche f698a78. 14 UI-Ausführungen/13 Erfolge/ein historischer Fehler/zwei finale betroffene Erfolge; fünf finale SDKs, zehn einzeln bilanzierte Typprüfungen ohne Ausführung."
   },
   {
     "key": "DAY-01",
