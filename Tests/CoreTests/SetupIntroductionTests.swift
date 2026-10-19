@@ -41,4 +41,14 @@ final class SetupIntroductionTests:XCTestCase {
     }
   }
 
+  func testEquivalentConsentOrderDoesNotCreateFalseRecoveryDifferences() throws {
+    let first=Data(#"{"version":1,"connectionConsent":["Calendar","Apple Music","Reminders","Weather"]}"#.utf8)
+    let second=Data(#"{"connectionConsent":["Weather","Reminders","Apple Music","Calendar"],"version":1}"#.utf8)
+    XCTAssertEqual(try Snapshot.canonicalBytes(first),try Snapshot.canonicalBytes(second))
+    var state=try Snapshot.decodeMigrating(first)
+    state.connectionConsent=[.calendar,.reminders,.music,.weather]
+    let encoded=try JSONEncoder().encode(state)
+    XCTAssertEqual(try Snapshot.canonicalBytes(encoded),try Snapshot.canonicalBytes(JSONEncoder().encode(Snapshot.decodeMigrating(encoded))))
+  }
+
 }

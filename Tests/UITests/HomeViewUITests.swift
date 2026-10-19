@@ -3983,7 +3983,11 @@ extension HomeViewUITests {
     XCTAssertTrue(app.staticTexts["settings.reset.status"].label.contains("Local app content reset"))
     XCTAssertFalse(app.staticTexts["reset.scope"].exists)
     viewportShot("reset-complete-source-permissions-retained")
-    app.terminate();app.launch()
+    app.terminate()
+    // The legacy reader fixture intentionally rewrites a source file at every
+    // launch. Stop injecting new bytes before proving reset restart retention.
+    app.launchArguments.removeAll { $0=="--legacy-photo-file-fixture" }
+    app.launch()
     XCTAssertTrue(app.staticTexts["setup.scope"].waitForExistence(timeout:15))
     XCTAssertEqual(app.staticTexts["setup.step"].label,"Step 1 of 3")
     shot("reset-restart-fresh-introduction-no-old-data")

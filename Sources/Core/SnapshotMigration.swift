@@ -128,7 +128,7 @@ extension Snapshot {
     guard var object = try JSONSerialization.jsonObject(with: bytes) as? [String: Any] else {
       throw SnapshotReadError.malformed
     }
-    for key in ["nativeTimerIDs","nativeAlarmIDs"] {
+    for key in ["nativeTimerIDs","nativeAlarmIDs","connectionConsent"] {
       if let values = object[key] as? [String] { object[key] = values.sorted() }
     }
     return try JSONSerialization.data(withJSONObject: object, options: [.sortedKeys])
