@@ -3632,7 +3632,7 @@ extension HomeViewUITests {
     tap("nav.assistant");XCTAssertFalse(app.staticTexts["assistant.ai.status"].exists)
     tap("assistant.capabilities")
     XCTAssertTrue(app.staticTexts["assistant.provider.availability"].label.contains("Not selected"))
-    viewportShot("ondevice-explicit-provider-choice")
+    shot("ondevice-explicit-provider-choice")
     tap("assistant.provider.ondevice");tap("assistant.capabilities.done")
     askSyntheticQuestion("Set a timer for 5 minutes")
     let first=app.staticTexts["assistant.ai.answer.0"]
