@@ -4,6 +4,31 @@ import XCTest
 final class WorldClockTests: XCTestCase {
   private func date(_ iso: String) -> Date { ISO8601DateFormatter().date(from: iso)! }
   private func city(_ zone: String) -> WorldCity { WorldCity.catalogue.first { $0.zone == zone }! }
+  func testAucklandCanBeTwoCalendarDatesAheadOfUTCMinusTwelve() {
+    let reading=WorldClockReading(city:city("Pacific/Auckland"),
+      instant:date("2026-01-01T11:30:00Z"),referenceZone:TimeZone(identifier:"Etc/GMT+12")!,
+      locale:Locale(identifier:"en_GB"))
+    XCTAssertEqual(reading.date,"Fri 2 Jan")
+    XCTAssertEqual(reading.time,"00:30")
+    XCTAssertEqual(reading.dayDifference,2)
+    XCTAssertEqual(reading.dayRelation,"2 days ahead")
+  }
+  func testDateRelationRetainsSingleDayLabelsAndHandlesReverseExtreme() {
+    let utc=TimeZone(secondsFromGMT:0)!,locale=Locale(identifier:"en_GB")
+    func reading(_ zone:String,_ instant:String)->WorldClockReading {
+      WorldClockReading(city:city(zone),instant:date(instant),referenceZone:utc,locale:locale)
+    }
+    XCTAssertEqual(reading("Pacific/Auckland","2026-01-01T23:30:00Z").dayRelation,"Next day")
+    XCTAssertEqual(reading("Pacific/Honolulu","2026-01-01T00:30:00Z").dayRelation,"Previous day")
+    XCTAssertNil(reading("Europe/Berlin","2026-01-01T12:00:00Z").dayRelation)
+    // Synthetic IANA city validates the reverse formatter boundary; it is not
+    // claimed as an additional selectable city in the current curated list.
+    let reverse=WorldClockReading(city:WorldCity(name:"Synthetic UTC-12",zone:"Etc/GMT+12",latitude:0,longitude:-180),
+      instant:date("2026-01-01T10:30:00Z"),referenceZone:TimeZone(identifier:"Pacific/Kiritimati")!,locale:locale)
+    XCTAssertEqual(reverse.date,"Wed 31 Dec")
+    XCTAssertEqual(reverse.dayDifference,-2)
+    XCTAssertEqual(reverse.dayRelation,"2 days behind")
+  }
   func testFractionalOffsetsAndOppositeDatesUseZoneRules() {
     let instant = date("2026-01-01T00:30:00Z"), utc = TimeZone(secondsFromGMT: 0)!
     let locale = Locale(identifier: "en_GB")
