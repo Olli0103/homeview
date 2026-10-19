@@ -121,6 +121,10 @@ struct TimerView: View {
   private var selected: Countdown? {
     model.data.timers.first(where: { $0.id == model.selectedTimer }) ?? model.data.timers.last
   }
+  private func showControls() {
+    controlsVisible = true
+    model.interact()
+  }
   var body: some View {
     ZStack {
       Color.black
@@ -188,15 +192,20 @@ struct TimerView: View {
                 .accessibilityValue("\(model.data.timers.count) timers")
             }
           }
+        } else {
+          Button(action:showControls) {
+            Color.clear.contentShape(Rectangle())
+          }.frame(maxWidth:.infinity,maxHeight:.infinity)
+            .accessibilityLabel("Show timer controls")
+            .accessibilityValue(t.display(at:model.now))
+            .accessibilityHint("Shows pause, resume and delete controls.")
+            .accessibilityIdentifier("timer.revealControls")
         }
       } else {
         timerSetup
       }
     }.buttonStyle(.plain)
-      .onTapGesture {
-        controlsVisible = true
-        model.interact()
-      }
+      .onTapGesture(perform:showControls)
       .onChange(of: model.now) { _, now in
         if !testsKeepControlsVisible,
           now.timeIntervalSince(model.lastInteraction) > 4
