@@ -7,6 +7,9 @@ extension AppModel {
   }
   func setAnswerSpeechForeground(_ active:Bool) {
     answerSpeechForeground=active
+    #if !os(watchOS)
+      if !active { discardDemoPlan() }
+    #endif
     // Device authentication may temporarily make the scene inactive. It never
     // starts speech: successful authorization only enables a second explicit tap.
     if !active,!authorizingAnswerSpeech { stopAnswerSpeech() }

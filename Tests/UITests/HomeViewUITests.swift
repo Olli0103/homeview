@@ -4220,3 +4220,111 @@ extension HomeViewUITests {
     XCTAssertFalse(app.staticTexts["settings.reset.status"].label.contains("previous reset cleanup"))
   }
 }
+
+extension HomeViewUITests {
+  func revealPlanControl(_ element:XCUIElement) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let scroll=app.scrollViews["assistant.content"],viewport=app.otherElements["reference.viewport"]
+    var observations:[[String:Any]]=[]
+    func record(_ safe:CGRect,_ target:CGRect) {
+      func box(_ f:CGRect)->[Double] { [f.minX,f.minY,f.width,f.height] }
+      observations.append(["safe":box(safe),"target":box(target),"hittable":element.isHittable])
+    }
+    func attach() {
+      let attachment=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:observations,options:[.prettyPrinted,.sortedKeys]),uniformTypeIdentifier:"public.json")
+      attachment.name="plan-control-"+element.identifier.replacingOccurrences(of:".",with:"-");attachment.lifetime = .keepAlways;add(attachment)
+      shot("plan-control-"+element.identifier.replacingOccurrences(of:".",with:"-"))
+    }
+    for _ in 0..<24 {
+      let safe=scroll.frame.intersection(viewport.frame).insetBy(dx:8,dy:16),target=element.frame
+      record(safe,target)
+      if !target.isEmpty && safe.contains(target) { attach();return }
+      let gap=target.minY<safe.minY ? -(safe.minY-target.minY+12):target.maxY-safe.maxY+12
+      let distance=min(max(abs(gap),24),safe.height*0.5)*(gap<0 ? -1:1)
+      let origin=app.coordinate(withNormalizedOffset:.zero)
+      origin.withOffset(CGVector(dx:safe.midX,dy:safe.midY+distance/2))
+        .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:safe.midX,dy:safe.midY-distance/2)),withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    attach()
+    XCTFail("Plan control is not fully visible: "+element.identifier)
+  }
+  func activatePlanControl(_ element:XCUIElement) {
+    revealPlanControl(element)
+    if element.isHittable { element.tap() }
+    else {
+      // The native button can have false AX hittability while fully rendered.
+      // Require contained bounds, deliver a real coordinate tap, and assert its
+      // actual state transition in the caller rather than weakening the result.
+      let frame=element.frame,appFrame=app.frame
+      XCTAssertTrue(appFrame.contains(frame))
+      app.coordinate(withNormalizedOffset:.zero).withOffset(
+        CGVector(dx:frame.midX-appFrame.minX,dy:frame.midY-appFrame.minY)).tap()
+    }
+  }
+  func previewSyntheticPlan(_ request:String) {
+    tap("nav.assistant")
+    let input=app.textFields["assistant.input"]
+    input.tap();input.typeText(request);tap("assistant.send")
+    XCTAssertTrue(app.staticTexts["assistant.plan.status"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["assistant.plan.status"].label.contains("Nothing has run"))
+  }
+  func runSyntheticPlan() {
+    let confirm=app.buttons["assistant.plan.confirm"]
+    activatePlanControl(confirm)
+  }
+  func testDemoPlanPreviewCancellationAndUnsafeWholeRequestNeverAct() {
+    launch()
+    previewSyntheticPlan("plan: temperature 72; brightness 30")
+    let cancel=app.buttons["assistant.plan.cancel"]
+    activatePlanControl(cancel)
+    XCTAssertTrue(app.staticTexts["assistant.plan.status"].label.contains("Cancelled"))
+    XCTAssertFalse(app.buttons["assistant.plan.confirm"].exists)
+    let input=app.textFields["assistant.input"]
+    input.tap();input.typeText("plan: temperature 72; call Alex");tap("assistant.send")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("No actions taken"))
+    XCTAssertFalse(app.buttons["assistant.plan.confirm"].exists)
+    if app.buttons["assistant.keyboard.dismiss"].exists { tap("assistant.keyboard.dismiss") }
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+    shot("plan-preview-cancel-unsafe-request-no-thermostat-change")
+  }
+  func testDemoPlanExplicitConfirmationPersistsEachStepAndNeverReplaysOnRestart() {
+    let storeID=UUID().uuidString;print("PLAN_SUCCESS_STORE_ID="+storeID)
+    launch(["--persistence-test",storeID,"--reset-test-store"])
+    previewSyntheticPlan("plan: temperature 72; brightness 30; timer for 1 hour named Synthetic plan timer")
+    revealPlanControl(app.buttons["assistant.plan.confirm"])
+    viewportShot("plan-three-step-preview-no-execution",assistantRectangle:true)
+    runSyntheticPlan()
+    expectation(for:NSPredicate(format:"label CONTAINS %@","All 3"),evaluatedWith:app.staticTexts["assistant.plan.status"])
+    waitForExpectations(timeout:8)
+    for index in 0..<3 { XCTAssertTrue(app.staticTexts["assistant.plan.step.\(index)"].label.hasPrefix("Confirmed")) }
+    XCTAssertFalse(app.buttons["assistant.plan.confirm"].exists)
+    revealPlanControl(app.staticTexts["assistant.plan.status"])
+    viewportShot("plan-all-three-saved-readbacks",assistantRectangle:true)
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"72°")
+    app.terminate();launch(["--persistence-test",storeID,"--screen-thermostat"])
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"72°")
+    tap("nav.assistant");XCTAssertFalse(app.buttons["assistant.plan.confirm"].exists)
+    XCTAssertFalse(app.staticTexts["assistant.plan.status"].exists)
+    shot("plan-restart-no-pending-plan-or-auto-replay")
+  }
+  func testDemoPlanRealMockOfflineMiddleFailureKeepsFirstTimerAndSkipsDependentStep() {
+    let storeID=UUID().uuidString;print("PLAN_PARTIAL_STORE_ID="+storeID)
+    launch(["--persistence-test",storeID,"--reset-test-store"])
+    tap("nav.controls");tap("controls.online")
+    previewSyntheticPlan("plan: timer for 1 hour named First local step; temperature 72; brightness 30")
+    runSyntheticPlan()
+    expectation(for:NSPredicate(format:"label CONTAINS %@","1 of 3"),evaluatedWith:app.staticTexts["assistant.plan.status"])
+    waitForExpectations(timeout:8)
+    XCTAssertTrue(app.staticTexts["assistant.plan.step.0"].label.hasPrefix("Confirmed"))
+    XCTAssertTrue(app.staticTexts["assistant.plan.step.1"].label.hasPrefix("Failed"))
+    XCTAssertTrue(app.staticTexts["assistant.plan.step.2"].label.contains("Previous step was not confirmed"))
+    XCTAssertFalse(app.buttons["assistant.plan.confirm"].exists)
+    revealPlanControl(app.staticTexts["assistant.plan.step.2"])
+    viewportShot("plan-middle-offline-one-confirmed-one-failed-one-not-run",assistantRectangle:true)
+    app.terminate();launch(["--persistence-test",storeID,"--screen-thermostat"])
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+    tap("nav.assistant");XCTAssertFalse(app.staticTexts["assistant.plan.status"].exists)
+  }
+}

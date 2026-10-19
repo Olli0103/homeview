@@ -255,6 +255,7 @@ struct AssistantView: View {
             .frame(maxWidth:.infinity,alignment:.leading).padding(.horizontal,34)
             .padding(.top,24).accessibilityIdentifier("assistant.reply")
       }
+      if model.demoPlan != nil { AssistantPlanView() }
       if VoiceInputController.supported {
         VStack(alignment: .leading, spacing: 8) {
           HStack {
@@ -275,7 +276,7 @@ struct AssistantView: View {
               Label(
                 voice.recording ? "Stop" : "Speak",
                 systemImage: voice.recording ? "stop.circle.fill" : "mic.circle.fill")
-            }.disabled((voice.busy && !voice.recording) || model.assistantAI.busy).accessibilityIdentifier("assistant.voice")
+            }.disabled((voice.busy && !voice.recording) || model.assistantAI.busy || model.demoPlanBusy).accessibilityIdentifier("assistant.voice")
             if voice.busy || voice.phase == .ready {
               Button("Cancel") {
                 voice.cancel()
@@ -311,7 +312,7 @@ struct AssistantView: View {
         }
         RoundButton(symbol: "arrow.up", color: .blue, foreground: .white, label: "Send request") {
           submitted()
-        }.disabled(voice.busy || model.assistantAI.busy || text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        }.disabled(voice.busy || model.assistantAI.busy || model.demoPlanBusy || text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
           .accessibilityIdentifier("assistant.send")
       }.padding(20).background(.gray.opacity(0.09), in: RoundedRectangle(cornerRadius: 28)).padding(
         .horizontal, 30)
@@ -338,10 +339,11 @@ struct AssistantView: View {
       }
   }
   private func submitted() {
-    guard canEdit,!voice.busy,!model.assistantAI.busy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+    guard canEdit,!voice.busy,!model.assistantAI.busy,!model.demoPlanBusy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
     voice.cancel()
     model.assistantInput = text
     model.runAssistant()
+    if model.demoPlan?.phase == .preview { typing=false }
   }
 }
 struct FaceTimeLanding: View {

@@ -22,6 +22,12 @@ final class AppModel {
     let albumCatalogue: AlbumCatalogueSession
     let albumUpdates: AlbumDisplaySession
     private var albumRefreshTask: Task<Void,Never>?
+    private(set) var demoPlan:DemoActionPlan?
+    private var demoPlanTask:Task<Void,Never>?
+    private var demoPlanGeneration=0
+    // A boundary before claim/mutation lets revocation stop the next step.
+    @ObservationIgnored private var demoPlanBeforeStep:@MainActor () async -> Void = { await Task.yield() }
+    var demoPlanBusy:Bool { demoPlan?.busy == true }
   #endif
   let demoDoorbell = DemoDoorbell()
   private let repeatedDoorbellFixtureID = UUID()
@@ -997,6 +1003,9 @@ final class AppModel {
     route = .privacy
   }
   func lockPersonalAccess() {
+    #if !os(watchOS)
+      discardDemoPlan()
+    #endif
     localResetAttempt+=1;localResetAuthorizedSession=nil;localResetAuthorizationDeadline=nil
     localResetAuthorizing=false
     stopAnswerSpeech()
@@ -1341,10 +1350,146 @@ final class AppModel {
     return true
   }
   func selectAssistantAnswers(_ enabled:Bool) {
+    #if !os(watchOS)
+      discardDemoPlan()
+    #endif
     stopAnswerSpeech()
     assistantAI.deselect();assistantUsesAI=enabled
     if enabled { assistantAI.select() }
   }
+  #if !os(watchOS)
+  private var demoPlanContextActive:Bool {
+    // Root updates this scene-active flag for all assistant interaction.
+    answerSpeechForeground && route == .assistant && !assistantUsesAI
+      && demoDoorbell.current == nil && !incomingCall
+  }
+  func discardDemoPlan(restoreDraft:Bool=false) {
+    let previous=demoPlan
+    demoPlanGeneration+=1;demoPlanTask?.cancel();demoPlanTask=nil
+    demoPlan=nil
+    if restoreDraft,let previous,previous.context==personalSessionGeneration,
+      answerSpeechForeground,assistantInput.isEmpty,previous.phase == .preview {
+      assistantInput=previous.request
+    }
+  }
+  func cancelDemoPlan() {
+    demoPlanGeneration+=1;demoPlanTask?.cancel();demoPlanTask=nil
+    guard var plan=demoPlan else { return }
+    plan.cancel();demoPlan=plan;assistantReply=plan.note
+  }
+  private func prepareDemoPlanIfRequested()->Bool {
+    if demoPlanBusy {
+      assistantReply="Cancel the running demo plan before sending another request."
+      return true
+    }
+    switch DemoActionPlan.parse(assistantInput,context:personalSessionGeneration,
+      uptime:ProcessInfo.processInfo.systemUptime) {
+    case .notAPlan: return false
+    case .rejected(let message):
+      discardDemoPlan();assistantReply=message
+    case .proposal(let plan):
+      discardDemoPlan()
+      guard demoPlanContextActive else {
+        assistantReply="Open the active Assistant to review a local demo plan. Nothing ran."
+        return true
+      }
+      demoPlan=plan
+      assistantReply="Review the local demo plan below. Sending only creates a preview; no step has run."
+    }
+    assistantInput=""
+    return true
+  }
+  @discardableResult
+  func confirmDemoPlan(id:UUID)->Bool {
+    guard !Task.isCancelled,var plan=demoPlan else { return false }
+    guard !storeReadOnly else {
+      plan.cancel(note:"Saved state is read-only. No plan step ran.")
+      demoPlan=plan;assistantReply=plan.note;return false
+    }
+    guard let token=plan.confirm(id:id,context:personalSessionGeneration,
+      uptime:ProcessInfo.processInfo.systemUptime,active:demoPlanContextActive) else {
+      demoPlan=plan;assistantReply=plan.note;return false
+    }
+    stopAnswerSpeech();interact();demoPlan=plan
+    let generation=demoPlanGeneration,context=personalSessionGeneration
+    demoPlanTask=Task { [weak self] in
+      while let self {
+        await self.demoPlanBeforeStep()
+        guard !Task.isCancelled,self.demoPlanGeneration==generation,
+          self.personalSessionGeneration==context,self.demoPlan?.id==id else { return }
+        guard self.demoPlanContextActive else { self.discardDemoPlan();return }
+        guard var current=self.demoPlan,let step=current.claimNext(token:token) else { break }
+        self.demoPlan=current
+        // Local mutation, persistence and read-back contain no await. Cancellation
+        // can stop the next step, but cannot invent rollback of a committed one.
+        let outcome=self.applyDemoPlanStep(step)
+        guard self.demoPlanGeneration==generation,var result=self.demoPlan,result.id==id else { return }
+        result.record(step:step.id,token:token,result:outcome)
+        self.demoPlan=result;self.assistantReply=result.note
+        if !result.busy { break }
+      }
+      if let self,self.demoPlanGeneration==generation { self.demoPlanTask=nil }
+    }
+    return true
+  }
+  private var canonicalPlanStore:Data {
+    get throws {
+      let descriptor=Darwin.open(store.path,O_RDONLY|O_NOFOLLOW|O_NONBLOCK|O_CLOEXEC)
+      guard descriptor>=0 else { throw SnapshotReadError.malformed }
+      let handle=FileHandle(fileDescriptor:descriptor,closeOnDealloc:true)
+      defer { try? handle.close() }
+      var info=stat()
+      guard fstat(descriptor,&info)==0,(info.st_mode & mode_t(S_IFMT))==mode_t(S_IFREG),
+        info.st_size>=0,info.st_size<=32_000_000 else { throw SnapshotReadError.oversized }
+      let bytes=try handle.read(upToCount:32_000_001) ?? Data()
+      guard bytes.count<=32_000_000 else { throw SnapshotReadError.oversized }
+      return try Snapshot.canonicalBytes(bytes)
+    }
+  }
+  private func applyDemoPlanStep(_ step:DemoActionPlan.Step)->DemoActionPlan.Result {
+    guard demoPlanContextActive,!storeReadOnly else { return .failed("Local demo authorization is no longer active.") }
+    let previous=data
+    var candidate=data
+    do {
+      switch step.operation {
+      case .temperature(let value):try candidate.home.transact(.temperature(value))
+      case .brightness(let value):try candidate.home.transact(.brightness(Double(value)))
+      case .foregroundTimer(let seconds,let title):
+        guard candidate.timers.count<12,!candidate.timers.contains(where:{$0.id==step.id}) else {
+          return .failed("Timer limit or duplicate step identifier. No duplicate timer was created.")
+        }
+        var timer=Countdown(title:title,seconds:Double(seconds));timer.id=step.id
+        candidate.timers.append(timer)
+      }
+    } catch {
+      return .failed("The mock home is offline or the local value was rejected. No change for this step.")
+    }
+    data=candidate
+    let acknowledged=persist()
+    if ephemeral {
+      guard acknowledged else { data=previous;return .failed("The in-memory demo step could not be saved.") }
+      if case .foregroundTimer = step.operation { selectedTimer=step.id }
+      return .confirmed(step.operation.summary+" · In-memory demo state read back")
+    }
+    do {
+      let actual=try canonicalPlanStore
+      let expected=try Snapshot.canonicalBytes(JSONEncoder().encode(candidate))
+      if actual==expected {
+        if case .foregroundTimer = step.operation { selectedTimer=step.id }
+        if error=="Could not save local demo state." { error=nil }
+        return .confirmed(step.operation.summary+" · Saved local state read back")
+      }
+      if !acknowledged,actual == (try Snapshot.canonicalBytes(JSONEncoder().encode(previous))) {
+        data=previous
+        return .failed("The save failed; read-back confirms the previous saved state. No saved change for this step.")
+      }
+    } catch { /* A failed acknowledgement is not proof that a write had no effect. */ }
+    if !acknowledged { data=previous }
+    storeReadOnly=true
+    storeRecoveryNote="A demo-plan write could not be verified. Restart and recover saved state before writing again."
+    return .unverified("Saved state could not be verified. Further steps stopped; no automatic retry. Restart recovery is required.")
+  }
+  #endif
   func runAssistant() {
     guard !Task.isCancelled else { return }
     stopAnswerSpeech()
@@ -1353,6 +1498,9 @@ final class AppModel {
       if assistantAI.ask(assistantInput) { assistantInput="" }
       return
     }
+    #if !os(watchOS)
+      if prepareDemoPlanIfRequested() { return }
+    #endif
     if runEverydayCommand() { return }
     switch AssistantIntent(assistantInput) {
     case .scene(let s):
