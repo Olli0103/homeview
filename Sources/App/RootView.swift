@@ -224,6 +224,11 @@ struct RootView: View {
       model.pauseFeedPodcast()
       model.display.apply(enabled: false)
       model.setAlbumDisplayActive(false)
+      model.lockPersonalAccess()
+      if case .app(let page) = model.route, page.isPersonal {
+        model.pendingPage = page
+        model.route = .privacy
+      }
     }
     .onChange(of: scenePhase) { _, phase in
       model.localResetForeground=phase == .active
