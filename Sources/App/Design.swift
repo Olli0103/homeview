@@ -1,5 +1,14 @@
 import SwiftUI
 
+private struct NativeCanvasScaleKey:EnvironmentKey { static let defaultValue:CGFloat=1 }
+extension EnvironmentValues {
+  /// The reference canvas transform, not the physical screen's pixel scale.
+  var nativeCanvasScale:CGFloat {
+    get {self[NativeCanvasScaleKey.self]}
+    set {self[NativeCanvasScaleKey.self]=newValue}
+  }
+}
+
 extension Color {
   static let timerAccent = Color(red: 1, green: 145.0 / 255, blue: 47.0 / 255)
   static let mist = Color(red: 146.0 / 255, green: 171.0 / 255, blue: 177.0 / 255)

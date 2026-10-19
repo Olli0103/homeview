@@ -105,6 +105,7 @@ struct RootView: View {
         .saturation(model.data.night ? 0 : 1)
         .colorMultiply(model.data.night ? Color(red: 1, green: 0, blue: 0) : .white)
         .environment(\.colorScheme, .light)
+        .environment(\.nativeCanvasScale, assistantLayout ? 1:edge / 600)
         .scaleEffect(assistantLayout ? 1:edge / 600)
         .frame(width: displayedWidth, height: displayedHeight)
         .overlay {
