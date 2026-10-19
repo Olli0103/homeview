@@ -1,0 +1,171 @@
+{
+  "date": "2026-10-20",
+  "issue": 74,
+  "status": "research_partial_issue_remains_open",
+  "code_commit": "441f78a078d1c6e81c966478b6064a2320245ad8",
+  "source_files": 197,
+  "source_digest": "0383d64324dace9235b9bca8ce527fb5bec943dc72432e5b7889bef851dc152e",
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://support.apple.com/en-us/105018",
+      "final_url": "https://support.apple.com/en-us/105018",
+      "status": 200,
+      "retrieval_sha256": "5c2448e951e7f88f67ba8d384a2dc9e4a25086d5d14f3b1764c8cf31caffac62",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S2",
+      "url": "https://support.apple.com/guide/ipad/get-live-captions-of-spoken-audio-ipad0bbca12e/ipados",
+      "final_url": "https://support.apple.com/guide/ipad/get-live-captions-of-spoken-audio-ipad0bbca12e/ipados",
+      "status": 200,
+      "retrieval_sha256": "3ae418140b9bc0ca884d01dcc465eb58818caf176ac20b21d4b39e5d31989b05",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S3",
+      "url": "https://support.apple.com/guide/iphone/get-live-captions-of-spoken-audio-iphe0990f7bb/ios",
+      "final_url": "https://support.apple.com/guide/iphone/get-live-captions-of-spoken-audio-iphe0990f7bb/ios",
+      "status": 200,
+      "retrieval_sha256": "e46572e18c99394bfffb014ce701cca3a7ca5678c0794059ed5d9a7a86c9b277",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S4",
+      "url": "https://support.apple.com/guide/mac-help/get-live-captions-of-spoken-audio-mchldd11f4fd/mac",
+      "final_url": "https://support.apple.com/guide/mac-help/get-live-captions-of-spoken-audio-mchldd11f4fd/mac",
+      "status": 200,
+      "retrieval_sha256": "4a475053659cfc627a4079e60c39c497e8af929828ef121a2bc819f18e860064",
+      "retrieval_truncated": true,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S5",
+      "url": "https://support.apple.com/guide/apple-vision-pro/live-captions-tan0b3d5c0c9/visionos",
+      "final_url": "https://support.apple.com/guide/apple-vision-pro/live-captions-tan0b3d5c0c9/visionos",
+      "status": 200,
+      "retrieval_sha256": "483efb2a4533f8be4893b892a2e69388084f10dbe50bfa56fca29afa7e320539",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S6",
+      "url": "https://support.apple.com/en-us/guide/mac-help/mchlf4b091e8/mac",
+      "final_url": "https://support.apple.com/en-us/guide/mac-help/mchlf4b091e8/mac",
+      "status": 200,
+      "retrieval_sha256": "6f21aed1f77f1ec29947cca91c7b0cba034698b6b0a421ce508206dd08a1b204",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S7",
+      "url": "https://support.apple.com/guide/iphone/use-vocal-shortcuts-iph7f242ea2c/ios",
+      "final_url": "https://support.apple.com/guide/iphone/use-vocal-shortcuts-iph7f242ea2c/ios",
+      "status": 200,
+      "retrieval_sha256": "73a0e6a1ddcdf254bde5e737f2a7cc60fd43905726cba4ef917ac4010911a9e7",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S8",
+      "url": "https://support.apple.com/guide/ipad/use-vocal-shortcuts-ipaddc8c53732/ipados",
+      "final_url": "https://support.apple.com/guide/ipad/use-vocal-shortcuts-ipaddc8c53732/ipados",
+      "status": 200,
+      "retrieval_sha256": "2378ea752bfadc9a22781efd26d89ff11d4c940bc9ee26c2c34d5379339d2917",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S9",
+      "url": "https://support.apple.com/guide/mac-help/use-vocal-shortcuts-mchlf4548bb6/mac",
+      "final_url": "https://support.apple.com/guide/mac-help/use-vocal-shortcuts-mchlf4548bb6/mac",
+      "status": 200,
+      "retrieval_sha256": "343a0223a6c593f5721d850b35f472c73cf2e1bb8accf1e0015063006e4a8e9e",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S10",
+      "url": "https://support.apple.com/guide/apple-vision-pro/use-vocal-shortcuts-tan268d29519/visionos",
+      "final_url": "https://support.apple.com/guide/apple-vision-pro/use-vocal-shortcuts-tan268d29519/visionos",
+      "status": 200,
+      "retrieval_sha256": "3e38eb06b73a961b82884b0fb2ee9fb2dec3e0c556808341e41e3452b96fca50",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S11",
+      "url": "https://developer.apple.com/documentation/appintents/app-shortcuts",
+      "final_url": "https://developer.apple.com/documentation/appintents/app-shortcuts",
+      "status": 200,
+      "retrieval_sha256": "f4a8734d169754872b9772e50cc9edb61f64fa3529c9e7a056f344a3fcf90cd6",
+      "retrieval_truncated": true,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S12",
+      "url": "https://developer.apple.com/documentation/avfoundation/selecting-subtitles-and-alternative-audio-tracks",
+      "final_url": "https://developer.apple.com/documentation/avfoundation/selecting-subtitles-and-alternative-audio-tracks",
+      "status": 200,
+      "retrieval_sha256": "cecf8ac9198299096f67ed3e68a5a0dcd6dc0f0199a1ace0c28aa0bf1705a735",
+      "retrieval_truncated": true,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    },
+    {
+      "id": "S13",
+      "url": "https://support.apple.com/guide/ipad/aside/ipadceadad54/27/ipados/27",
+      "final_url": "https://support.apple.com/guide/ipad/aside/ipadceadad54/27/ipados/27",
+      "status": 200,
+      "retrieval_sha256": "068aaf4460b3dd34bfd74630ed65bb64b7a72d10373f08bffbb05ab4ed4bf1df",
+      "retrieval_truncated": false,
+      "read_scope": "Named sections in Docs/speech-feature-boundaries.md, not all linked pages"
+    }
+  ],
+  "code_absences": {
+    "AppIntent_or_AppShortcutsProvider": {
+      "pattern": "\\b(?:AppIntent|AppShortcutsProvider)\\b",
+      "matching_source_files": [],
+      "scope": "Current Sources text search plus cited implementation inspection; not a universal Apple API absence proof"
+    },
+    "legible_selection_API": {
+      "pattern": "\\.legible\\b|AVMediaSelectionGroup|AVMediaSelectionOption",
+      "matching_source_files": [],
+      "scope": "Current Sources text search plus cited implementation inspection; not a universal Apple API absence proof"
+    },
+    "own_RTT_mentions": {
+      "pattern": "\\bRTT\\b",
+      "matching_source_files": [],
+      "scope": "Current Sources text search plus cited implementation inspection; not a universal Apple API absence proof"
+    }
+  },
+  "public_SDK_inspection": {
+    "SDK": "macOS27.0",
+    "module": "AppIntents",
+    "swiftinterface_sha256": "0c8b05843c1a30fa9faddd2c10318257b9e72e2280597146338a4f45123204ab",
+    "contracts_found": [
+      "AppIntent",
+      "AppShortcutsProvider",
+      "AppShortcut",
+      "supportedModes"
+    ],
+    "runtime_or_other_platform_compilation_claim": false
+  },
+  "limitations": [
+    "No actual system-assistive-tool session or setting activation",
+    "No RTT/carrier/account/call proof",
+    "No app shortcut registered or executed",
+    "No media subtitle playback/track-selection proof",
+    "Unclassified platform cells remain unknown, not unavailable",
+    "S1 article is dated December14,2023; not an exhaustive current hardware list",
+    "Some normal fetches returned navigation or incomplete bodies; main-content fetches used where recorded",
+    "Search provider 429 and zero results do not establish unsupported APIs"
+  ],
+  "new_builds": 0,
+  "new_tests": 0,
+  "new_hardware_checks": 0,
+  "Home_constructed": false,
+  "real_personal_data_used": false
+}

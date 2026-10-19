@@ -3256,7 +3256,7 @@
       "SYS-11"
     ],
     "current": [
-      "Texteingabe und eigene On-device-Spracherkennung vorhanden. Live Captions, RTT und Vocal Shortcuts sind nicht vollständig integriert."
+      "Eigene Text-/On-device-Speech-/Antwortausgabe von OS-Live-Speech, Live-Captions und Vocal Shortcuts getrennt; RTT, App-Intent-Einstieg und eigene Medienuntertitel einzeln offen. Recherche mit Plattformmatrix, keine Hilfsmittel-/Hardwareabnahme."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3275,6 +3275,10 @@
     },
     "completion_criteria": [
       "Nachgewiesene Nutzbarkeit je Zielplattform und Hilfsmittel oder konkrete Blockade. Ein Textfeld erfüllt nicht sämtliche F105-Unterfunktionen."
+    ],
+    "progress_evidence": [
+      "Docs/speech-feature-boundaries.md",
+      "Docs/verification/speech-feature-boundaries.json"
     ]
   },
   {
@@ -3287,7 +3291,7 @@
       "SYS-11"
     ],
     "current": [
-      "Texteingabe und eigene On-device-Spracherkennung vorhanden. Live Captions, RTT und Vocal Shortcuts sind nicht vollständig integriert."
+      "Eigene Text-/On-device-Speech-/Antwortausgabe von OS-Live-Speech, Live-Captions und Vocal Shortcuts getrennt; RTT, App-Intent-Einstieg und eigene Medienuntertitel einzeln offen. Recherche mit Plattformmatrix, keine Hilfsmittel-/Hardwareabnahme."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3306,6 +3310,10 @@
     },
     "completion_criteria": [
       "Nachgewiesene Nutzbarkeit je Zielplattform und Hilfsmittel oder konkrete Blockade. Ein Textfeld erfüllt nicht sämtliche F105-Unterfunktionen."
+    ],
+    "progress_evidence": [
+      "Docs/speech-feature-boundaries.md",
+      "Docs/verification/speech-feature-boundaries.json"
     ]
   }
 ]
