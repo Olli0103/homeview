@@ -278,7 +278,7 @@ struct IngredientsView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var canvasScale
   @State private var checked: Set<Int> = []
-  private var minimumHitHeight:CGFloat {44 / max(0.01,canvasScale)}
+  private var minimumHitHeight:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       AppHeader(title: "Ingredients")
@@ -310,17 +310,18 @@ struct IngredientsView: View {
 struct CookingView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var canvasScale
-  private var minimumHitHeight:CGFloat {44 / max(0.01,canvasScale)}
+  private var minimumHitHeight:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   var body: some View {
+    let stepCount=model.recipe.steps.count,currentStep=model.cookingStep
     VStack(alignment: .leading, spacing: 20) {
       VStack(spacing: 7) {
         AppHeader(title: model.recipe.title)
-        HStack(spacing: 7) {
-          ForEach(model.recipe.steps.indices, id: \.self) { index in
-            Circle().fill(index == model.cookingStep ? Color.black : Color.gray.opacity(0.4)).frame(
-              width: 7, height: 7)
+        Canvas { context,_ in
+          for index in 0..<stepCount {
+            let dot=Path(ellipseIn:CGRect(x:index*14,y:0,width:7,height:7))
+            context.fill(dot,with:.color(index == currentStep ? .black:.gray.opacity(0.4)))
           }
-        }.accessibilityHidden(true)
+        }.frame(width:CGFloat(max(0,stepCount*14-7)),height:7).allowsHitTesting(false)
       }
       ScrollView {
         VStack(alignment: .leading, spacing: 14) {
