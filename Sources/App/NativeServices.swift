@@ -184,14 +184,21 @@ enum NativeServiceError: Error, LocalizedError {
   @MainActor
   final class NativeMusicService {
     private var results: MusicItemCollection<Song> = []
+    private var searchGeneration = 0
+    private let playback = MusicPlaybackGate(pause: { ApplicationMusicPlayer.shared.pause() })
     func search(_ text: String) async throws -> [DeviceTrack] {
+      searchGeneration += 1;let ticket=searchGeneration
+      try Task.checkCancellation()
       guard await MusicAuthorization.request() == .authorized else {
         throw NativeServiceError.permissionDenied
       }
+      guard searchGeneration==ticket,!Task.isCancelled else { throw CancellationError() }
       var request = MusicCatalogSearchRequest(term: text, types: [Song.self])
       request.limit = 20
-      results = try await request.response().songs
-      return results.map {
+      let songs = try await request.response().songs
+      guard searchGeneration==ticket,!Task.isCancelled else { throw CancellationError() }
+      results = songs
+      return songs.map {
         DeviceTrack(
           id: $0.id.rawValue, title: $0.title, artist: $0.artistName,
           artwork: $0.artwork?.url(width: 512, height: 512))
@@ -199,14 +206,19 @@ enum NativeServiceError: Error, LocalizedError {
     }
     func play(index: Int) async throws {
       guard results.indices.contains(index) else { throw HomeError.notFound }
-      let player = ApplicationMusicPlayer.shared
-      player.queue = .init(for: [results[index]])
-      try await player.play()
+      let song=results[index]
+      try await playback.run {
+        let player=ApplicationMusicPlayer.shared
+        player.queue = .init(for:[song])
+        try await player.play()
+      }
     }
-    func pause() { ApplicationMusicPlayer.shared.pause() }
+    func pause() { searchGeneration += 1;playback.stop() }
     var isPlaying: Bool { ApplicationMusicPlayer.shared.state.playbackStatus == .playing }
     var playbackTime: Double { ApplicationMusicPlayer.shared.playbackTime }
-    func resume() async throws { try await ApplicationMusicPlayer.shared.play() }
+    func resume() async throws {
+      try await playback.run { try await ApplicationMusicPlayer.shared.play() }
+    }
     func authorize() async throws {
       guard await MusicAuthorization.request() == .authorized else {
         throw NativeServiceError.permissionDenied
