@@ -1459,7 +1459,7 @@
       "AI-05"
     ],
     "current": [
-      "Spracheingabe startet nur durch bewussten Knopf. Keine Siri-Wakeword-Übernahme oder Hintergrundaufnahme."
+      "Explicit Speak activation only; opening Assistant does not record. Public App Shortcuts, regional iPhone side-button entry and OS Vocal Shortcuts distinguished; none configured here. Native idle probe and UI disclosure verified. See Docs/wakeword-boundary.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1472,7 +1472,7 @@
     "target": "iPad core",
     "implementation_status": "blocked",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Boundary/classification task verified with continuing blocked state. No Siri or custom wakeword activation implementation accepted.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
