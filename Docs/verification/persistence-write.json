@@ -1,0 +1,242 @@
+{
+  "date": "2026-10-19",
+  "issue": 80,
+  "status": "partial_issue_remains_open",
+  "code_commit": "2c964b6a9993b89de9db63a36a24f5a61f9ff90b",
+  "native_policy_code_commit": "accabd6c11121dc1d5e424ffa207672048878171",
+  "source_digest": "f31f74ae48c7a54db83e4c042ebb23b495690c45e64f5c2d2dea3d4bf7a39a69",
+  "source_files": 189,
+  "native": {
+    "verdict": "PASS",
+    "cases": 11,
+    "assertions": 103,
+    "target": "accabd6c11121dc1d5e424ffa207672048878171",
+    "clean_before_after": true,
+    "compiled_source_matches_git": true
+  },
+  "baseline": {
+    "entries": 132,
+    "sha256": "5e4cb436ebede8e71a49a309a9779fa7077d530c3754b3edf2d9cf9de14c82d6",
+    "all_entries_read_back": true,
+    "source_commit": "ec2a92ea3efb344bc1ec7c1dbc2b73088bacd0b7",
+    "scenarios": 9,
+    "process_aborts": 1,
+    "completed_failures": 8,
+    "failed_assertions": 10
+  },
+  "native_archive": {
+    "entries": 137,
+    "sha256": "19c2dd84ce1cce1fc89d9f38bccbf5cfc2780869c004c3da1c3634db57a6a7da",
+    "all_entries_read_back": true
+  },
+  "UI_checkpoints": [
+    {
+      "id": "persistence-write",
+      "code_commit": "accabd6c11121dc1d5e424ffa207672048878171",
+      "passed": 4,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "43c84844daeff8e87b983d35caf239ce647e3386af6a9507ee81f2d242db2534",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_app_readback": true,
+      "archive": "persistence-write-inputs.zip",
+      "entries": 211,
+      "sha256": "39498bd960038d27de7f08145f2f008f8c5042b6c88f687d234cd888a6a3791f",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "persistence-write-settled",
+      "code_commit": "57ec676b5b5ed2ed14844a5aea1d465100149299",
+      "passed": 4,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "76ce10378eb2c5dd504ffabafbe090670bc22a0f877be27f6316ea88ebb17bc7",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_app_readback": true,
+      "archive": "persistence-write-settled-inputs.zip",
+      "entries": 211,
+      "sha256": "49e34e31140f4fc3b6762c7b829ab8716414f5ec7c2f808eb963710af116a33a",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "persistence-write-picker",
+      "code_commit": "2c964b6a9993b89de9db63a36a24f5a61f9ff90b",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "f31f74ae48c7a54db83e4c042ebb23b495690c45e64f5c2d2dea3d4bf7a39a69",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_app_readback": true,
+      "archive": "persistence-write-picker-inputs.zip",
+      "entries": 211,
+      "sha256": "d023d84963247e2df7d49604b480b8bd3d6d9b792ae5013a973f3b0fb03dbf77",
+      "all_entries_read_back": true
+    }
+  ],
+  "UI_qualification": "Three distinct methods across separately pinned revisions. First two checkpoints retain two failures each; final affected picker rerun passes twice. Recipe tests passed on previous revision; only picker error presentation changed afterward. No relabeled complete final-revision suite.",
+  "UI_executions": 14,
+  "UI_passed": 10,
+  "UI_failed_historical": 4,
+  "UI_current_revision_executions": 2,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "Core_qualification": "66 Core and CoreTests files unchanged from historical pinned 264-test PASS; no new full Core run.",
+  "native_equivalence": {
+    "changed": [
+      "Sources/App/FaceEditor.swift",
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "AppModel_and_other_mutator_sources_unchanged": true,
+    "qualification": "Native product remains at policy commit; subsequent production change only presents failure locally inside picker and retains its editing context. Final affected UI and five SDK builds separately bound."
+  },
+  "PNGs_decoded": 36,
+  "contact_sheets_reviewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/verification/persistence-write-images/iPad-viewport-write-boundary-slot-after-save-error.png",
+      "checkpoint": "persistence-write-picker",
+      "sha256": "4aa107bdc621ff4eca6c3827ea7172b01b211145381e78c99169a09bdc285bdf"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPad-viewport-write-boundary-readonly-face-and-slot-unchanged.png",
+      "checkpoint": "persistence-write-picker",
+      "sha256": "46a620a195ce3662d7059d5d2ada47ab5826f7a72e6faffe604b7978caef71a4"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPad-viewport-write-boundary-readonly-recipe-unpinned-context-kept.png",
+      "checkpoint": "persistence-write-settled",
+      "sha256": "30cc194829aed4755548f060e95ba249a1173371f536907aa86fb6f3dcbe28e5"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPad-viewport-write-boundary-recipe-pinned-after-unpin-retry.png",
+      "checkpoint": "persistence-write-settled",
+      "sha256": "2cb70dbc61d4f0398890567769f9b46b1b51fa64b98709a43339836879b79d7e"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPad-viewport-write-boundary-recipe-unpinned-after-process-restart.png",
+      "checkpoint": "persistence-write-settled",
+      "sha256": "cd414d89e467ed66f4d1072cd06b1044917be924f8b107ad89a1c263ed0b83ba"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPhone-viewport-write-boundary-slot-after-save-error.png",
+      "checkpoint": "persistence-write-picker",
+      "sha256": "0ba27b44ccddb57e53087740e2348c0d5d631a11c3fc4fd7dc076e4346e2fad2"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPhone-viewport-write-boundary-readonly-face-and-slot-unchanged.png",
+      "checkpoint": "persistence-write-picker",
+      "sha256": "360746469004a6c4069b5f64cbb61e4df2838d5f92ee82f81f562099eae0e433"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPhone-viewport-write-boundary-readonly-recipe-unpinned-context-kept.png",
+      "checkpoint": "persistence-write-settled",
+      "sha256": "de485528c75a78b1731f9330e7cb6b5c9d3974d03997184205e19fda21b64c4e"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPhone-viewport-write-boundary-recipe-pinned-after-unpin-retry.png",
+      "checkpoint": "persistence-write-settled",
+      "sha256": "2f0c42640eff6a5ecabe59cdcceca13f440e71e076baa0641ff0481010147140"
+    },
+    {
+      "path": "Docs/verification/persistence-write-images/iPhone-viewport-write-boundary-recipe-unpinned-after-process-restart.png",
+      "checkpoint": "persistence-write-settled",
+      "sha256": "41597220a4f1044aa5004d264e14bb352ec2fd802b37086ecd87eb55ed8b5b50"
+    }
+  ],
+  "host_stores": [
+    {
+      "device": "iPad",
+      "uuid": "717E53EF-4511-4223-93A4-1DA91D1AFB77",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+      "future_bytes_unchanged": true
+    },
+    {
+      "device": "iPhone",
+      "uuid": "8421838D-5E4E-47F4-A718-18FA68045685",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+      "future_bytes_unchanged": true
+    }
+  ],
+  "Home_constructed": false,
+  "real_accounts_used": false,
+  "physical_device_accepted": false,
+  "initial_UI_host_store_readback": [
+    {
+      "device": "iPad",
+      "case": "EDITOR",
+      "uuid": "6A53797B-B6B6-400F-B4BF-44BAEEBA2668",
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+      "future_bytes_preserved": true,
+      "final_unpinned": false
+    },
+    {
+      "device": "iPad",
+      "case": "RECIPE",
+      "uuid": "89730778-CDC4-4E68-8199-12FAAA42D3E8",
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+      "future_bytes_preserved": true,
+      "final_unpinned": false
+    },
+    {
+      "device": "iPad",
+      "case": "RECIPE_POSITIVE",
+      "uuid": "93477D35-4992-4460-8BFE-358B2A7C131F",
+      "sha256": "5840d0aba2513b1b4d27aac7d73441d858a21ccd5a6cac0e86a4c9a562ad362f",
+      "future_bytes_preserved": false,
+      "final_unpinned": true
+    },
+    {
+      "device": "iPhone",
+      "case": "EDITOR",
+      "uuid": "261A206F-B806-48D6-AAD8-D7AA0D3CC7C3",
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+      "future_bytes_preserved": true,
+      "final_unpinned": false
+    },
+    {
+      "device": "iPhone",
+      "case": "RECIPE",
+      "uuid": "6B0C9013-EC9E-4319-AB7B-74835FF28512",
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+      "future_bytes_preserved": true,
+      "final_unpinned": false
+    },
+    {
+      "device": "iPhone",
+      "case": "RECIPE_POSITIVE",
+      "uuid": "BECAF1EC-028B-46E7-9429-2EA0D30747FE",
+      "sha256": "bd481be9939ef2d7a1e1c249c2dd810d398d6da0b6d7a20e90a69ea08df5fe56",
+      "future_bytes_preserved": false,
+      "final_unpinned": true
+    }
+  ],
+  "UI_unique_methods": 3
+}

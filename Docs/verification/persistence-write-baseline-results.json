@@ -1,0 +1,141 @@
+[
+  {
+    "assertions": 5,
+    "case": "pin",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "7A2A59DC-E940-4A20-B612-35368990ACC9",
+    "verdict": "FAIL"
+  },
+  {
+    "case": "unpin",
+    "verdict": "PROCESS_ABORT",
+    "exit_code": -6,
+    "reason": "Swift simultaneous access in AppModel.pinRecipe removeAll closure reads computed recipe while data is modified",
+    "fault_recovered": true
+  },
+  {
+    "assertions": 5,
+    "case": "next_face",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "3C4BB93F-A555-47DF-8900-A81244FC44F5",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 5,
+    "case": "world_add",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "A8F2F39F-353A-428C-B8D7-D1988C243A2C",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 5,
+    "case": "world_remove",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "9D56FEA5-846F-4A99-A45D-DB8B9421E3B2",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 6,
+    "case": "replace_recipe",
+    "checks": {
+      "canary_unchanged": true,
+      "cooking_context_unchanged": false,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "cooking_context_unchanged",
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "44B429F2-883F-4F0A-B027-F02B066B240B",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 5,
+    "case": "messages",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "1C17B5E1-D007-458C-95BF-CE1F32896AD5",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 5,
+    "case": "reminders",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "18274FA6-1489-45FA-97DF-AAEE17241D3A",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 6,
+    "case": "new_profile",
+    "checks": {
+      "canary_unchanged": true,
+      "no_unsaved_new_profile": false,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "no_unsaved_new_profile",
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "5818DB95-417D-456F-9780-A26A39599B4A",
+    "verdict": "FAIL"
+  }
+]
