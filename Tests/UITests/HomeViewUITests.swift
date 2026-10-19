@@ -4712,3 +4712,47 @@ extension HomeViewUITests {
     viewportShot("photo-write-rotation-disabled-after-restart")
   }
 }
+
+extension HomeViewUITests {
+  private func openTimerActivitySettings() {
+    let button=app.buttons["settings.timer-activity"]
+    scrollPhotoControlFullyIntoView(button);button.tap()
+    XCTAssertTrue(app.switches["timer.activity.enabled"].waitForExistence(timeout:5))
+  }
+  private func expectTimerActivityStatus(_ text:String) {
+    expectation(for:NSPredicate(format:"label CONTAINS %@",text),evaluatedWith:app.staticTexts["timer.activity.status"])
+    waitForExpectations(timeout:8)
+  }
+  private func createOwnActivityTimer() {
+    tap("timer.activity.done");tap("nav.faces");drawer();tap("app.Timers");tap("timer.start")
+    XCTAssertTrue(app.buttons["timer.pause"].waitForExistence(timeout:5))
+    tap("nav.controls");tap("controls.settings");openTimerActivitySettings()
+  }
+  func testTimerActivityExplicitOptInAndOptOutPersistWithoutImplicitSystemActivity() {
+    let id=UUID().uuidString,args=["--persistence-test",id,"--timer-activity-fixture","--page","Settings"]
+    launch(args);openTimerActivitySettings()
+    let enabled=app.switches["timer.activity.enabled"]
+    XCTAssertEqual(enabled.value as? String,"0");enabled.tap()
+    XCTAssertEqual(enabled.value as? String,"1")
+    createOwnActivityTimer();expectTimerActivityStatus("Synthetic timer activity (active)")
+    XCTAssertTrue(app.staticTexts["timer.activity.status"].label.contains("No system activity created"))
+    shot("timer-live-activity-synthetic-opted-in")
+    enabled.tap();expectTimerActivityStatus("Synthetic timer activity (ended)")
+    XCTAssertEqual(enabled.value as? String,"0")
+    shot("timer-live-activity-synthetic-off")
+    app.terminate();launch(args);openTimerActivitySettings()
+    XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"0")
+    XCTAssertFalse(app.buttons["timer.activity.show"].isEnabled)
+  }
+  func testTimerActivityRestartKeepsPreferenceButRequiresExplicitNewStart() {
+    let id=UUID().uuidString,args=["--persistence-test",id,"--timer-activity-fixture","--page","Settings"]
+    launch(args);openTimerActivitySettings();app.switches["timer.activity.enabled"].tap()
+    createOwnActivityTimer();expectTimerActivityStatus("Synthetic timer activity (active)")
+    app.terminate();launch(args);openTimerActivitySettings()
+    XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"1")
+    expectTimerActivityStatus("Start a timer or choose")
+    tap("timer.activity.show");expectTimerActivityStatus("Synthetic timer activity (active)")
+    shot("timer-live-activity-synthetic-explicit-restart")
+    app.switches["timer.activity.enabled"].tap();expectTimerActivityStatus("Synthetic timer activity (ended)")
+  }
+}

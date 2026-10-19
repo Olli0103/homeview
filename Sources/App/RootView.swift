@@ -181,6 +181,7 @@ struct RootView: View {
       SetupIntroductionView()
     }
     .task {
+      model.setTimerActivityForeground(scenePhase == .active)
       model.localResetForeground=scenePhase == .active
       model.presentIntroductionOnLaunch()
       model.setAnswerSpeechForeground(scenePhase == .active)
@@ -198,7 +199,7 @@ struct RootView: View {
     .onChange(of:model.route) { old,new in
       if old == .handoff,new != .handoff { model.recipeHandoff.cancelPending() }
     }
-    .onReceive(pulse) { _ in model.tick() }
+    .onReceive(pulse) { _ in model.tick();model.synchronizeTimerActivity() }
     #if os(iOS) || os(tvOS) || os(visionOS)
       .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.interruptionNotification)) { _ in
         model.stopAnswerSpeech();model.pauseFeedPodcast()
@@ -216,6 +217,7 @@ struct RootView: View {
       if !unlocked { model.stopAnswerSpeech();model.albumCatalogue.invalidate();model.recipeHandoff.stop() }
     }
     .onDisappear {
+      model.setTimerActivityForeground(false)
       model.localResetForeground=false
       model.setAnswerSpeechForeground(false)
       model.connections.endGuestMusicSession()
@@ -231,6 +233,7 @@ struct RootView: View {
       }
     }
     .onChange(of: scenePhase) { _, phase in
+      model.setTimerActivityForeground(phase == .active)
       model.localResetForeground=phase == .active
       model.setAnswerSpeechForeground(phase == .active)
       if phase != .active { model.recipeHandoff.stopOffering() }

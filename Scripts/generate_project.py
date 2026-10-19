@@ -18,13 +18,13 @@ for rel,kind in [('Resources/Assets.xcassets','folder.assetcatalog'),('Resources
 products=[];targets=[];schemes=[]
 package=obj('FeedKitPackage','{isa = XCRemoteSwiftPackageReference; repositoryURL = '+q('https://github.com/nmdias/FeedKit.git')+'; requirement = {kind = exactVersion; version = 10.9.4;};}')
 feedproduct=obj('FeedKitProduct','{isa = XCSwiftPackageProductDependency; package = '+package+'; productName = FeedKit;}')
-def make_target(name,platform,sources,uitest=False):
-    product=name+('.xctest' if uitest else '.app');pid=obj('product'+name,'{isa = PBXFileReference; explicitFileType = '+('wrapper.cfbundle' if uitest else 'wrapper.application')+'; path = '+q(product)+'; sourceTree = BUILT_PRODUCTS_DIR;}');products.append(pid)
+def make_target(name,platform,sources,uitest=False,widget=False):
+    product=name+('.xctest' if uitest else '.appex' if widget else '.app');pid=obj('product'+name,'{isa = PBXFileReference; explicitFileType = '+('wrapper.cfbundle' if uitest else 'wrapper.app-extension' if widget else 'wrapper.application')+'; path = '+q(product)+'; sourceTree = BUILT_PRODUCTS_DIR;}');products.append(pid)
     src=[]
     for f in sources:src.append(obj(name+f,'{isa = PBXBuildFile; fileRef = '+uid(f)+';}'))
     sp=obj(name+'sources','{isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = '+arr(src)+'; runOnlyForDeploymentPostprocessing = 0;}')
     res=[]
-    if not uitest:
+    if not uitest and not widget:
         for f in ['Resources/Assets.xcassets','Resources/demo-tone.wav','Resources/podcast-test-audio.wav','Resources/FeedKit-LICENSE.txt']:res.append(obj(name+f,'{isa = PBXBuildFile; fileRef = '+uid(f)+';}'))
     rp=obj(name+'resources','{isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = '+arr(res)+'; runOnlyForDeploymentPostprocessing = 0;}')
     frameworks=[obj(name+'FeedKitLink','{isa = PBXBuildFile; productRef = '+feedproduct+';}')] if name=='HomeViewReplica' else []
@@ -33,6 +33,7 @@ def make_target(name,platform,sources,uitest=False):
     if platform=='universal':settings.update({'INFOPLIST_FILE':'Resources/MainInfo.plist','INFOPLIST_FILE[sdk=appletv*]':'Resources/Info.plist','INFOPLIST_FILE[sdk=xr*]':'Resources/Info.plist','SDKROOT':'auto','SUPPORTED_PLATFORMS':'(iphoneos, iphonesimulator, macosx, xros, xrsimulator, appletvos, appletvsimulator)','TARGETED_DEVICE_FAMILY':'1,2','TARGETED_DEVICE_FAMILY[sdk=appletv*]':'3','TARGETED_DEVICE_FAMILY[sdk=xr*]':'7','TARGETED_DEVICE_FAMILY[sdk=macosx*]':'','IPHONEOS_DEPLOYMENT_TARGET':'26.1','MACOSX_DEPLOYMENT_TARGET':'15.0','TVOS_DEPLOYMENT_TARGET':'26.0','XROS_DEPLOYMENT_TARGET':'26.0','SUPPORTS_MACCATALYST':'YES','ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphone*]':'AppIcon','INFOPLIST_KEY_UIApplicationSceneManifest_Generation':'YES','INFOPLIST_KEY_UILaunchScreen_Generation':'YES','INFOPLIST_KEY_UISupportedInterfaceOrientations':'UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight','INFOPLIST_KEY_NSAlarmKitUsageDescription':'Schedule timers and alarms you explicitly create in HomeView.','INFOPLIST_KEY_ITSAppUsesNonExemptEncryption':'NO'})
     if platform=='watch':settings.update({'SDKROOT':'watchos','SUPPORTED_PLATFORMS':'(watchos, watchsimulator)','TARGETED_DEVICE_FAMILY':'4','WATCHOS_DEPLOYMENT_TARGET':'26.0','INFOPLIST_KEY_WKApplication':'YES','INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp':'YES'})
     if uitest:settings.update({'SDKROOT':'iphoneos','SUPPORTED_PLATFORMS':'(iphoneos, iphonesimulator)','TARGETED_DEVICE_FAMILY':'1,2','IPHONEOS_DEPLOYMENT_TARGET':'26.1','TEST_TARGET_NAME':'HomeViewReplica'})
+    if widget:settings.update({'SDKROOT':'iphoneos','SUPPORTED_PLATFORMS':'(iphoneos, iphonesimulator)','TARGETED_DEVICE_FAMILY':'1,2','IPHONEOS_DEPLOYMENT_TARGET':'26.1','GENERATE_INFOPLIST_FILE':'NO','INFOPLIST_FILE':'Resources/TimerWidgetInfo.plist','SKIP_INSTALL':'YES','APPLICATION_EXTENSION_API_ONLY':'YES','SUPPORTS_MACCATALYST':'NO','INFOPLIST_KEY_CFBundleDisplayName':'HomeView Timers'})
     configs=[]
     for conf in ['Debug','Release']:
         s=dict(settings);s['SWIFT_OPTIMIZATION_LEVEL']='-Onone' if conf=='Debug' else '-O';s['DEBUG_INFORMATION_FORMAT']='dwarf';s['SWIFT_ACTIVE_COMPILATION_CONDITIONS']='DEBUG' if conf=='Debug' else ''
@@ -42,10 +43,18 @@ def make_target(name,platform,sources,uitest=False):
     if uitest:
         proxy=obj('testproxy','{isa = PBXContainerItemProxy; containerPortal = '+uid('project')+'; proxyType = 1; remoteGlobalIDString = '+uid('HomeViewReplica')+'; remoteInfo = HomeViewReplica;}')
         deps.append(obj('testdep','{isa = PBXTargetDependency; target = '+uid('HomeViewReplica')+'; targetProxy = '+proxy+';}'))
-    tid=obj(name,'{isa = PBXNativeTarget; buildConfigurationList = '+cl+'; buildPhases = '+arr([sp,fp,rp])+'; buildRules = (); dependencies = '+arr(deps)+'; packageProductDependencies = '+arr([feedproduct] if name=='HomeViewReplica' else [])+'; name = '+q(name)+'; productName = '+q(name)+'; productReference = '+pid+'; productType = '+q('com.apple.product-type.bundle.ui-testing' if uitest else 'com.apple.product-type.application')+';}');targets.append(tid)
+    phases=[sp,fp,rp]
+    if name=='HomeViewReplica':
+        embed=obj('timerwidgetembedfile','{isa = PBXBuildFile; fileRef = '+uid('productHomeViewTimerWidget')+'; platformFilters = (ios); settings = {ATTRIBUTES = (RemoveHeadersOnCopy);};}')
+        phases.append(obj('timerwidgetembed','{isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = ""; dstSubfolderSpec = 13; files = '+arr([embed])+'; name = "Embed Timer Widget"; runOnlyForDeploymentPostprocessing = 0;}'))
+        proxy=obj('timerwidgetproxy','{isa = PBXContainerItemProxy; containerPortal = '+uid('project')+'; proxyType = 1; remoteGlobalIDString = '+uid('HomeViewTimerWidget')+'; remoteInfo = HomeViewTimerWidget;}')
+        deps.append(obj('timerwidgetdep','{isa = PBXTargetDependency; platformFilters = (ios); target = '+uid('HomeViewTimerWidget')+'; targetProxy = '+proxy+';}'))
+    tid=obj(name,'{isa = PBXNativeTarget; buildConfigurationList = '+cl+'; buildPhases = '+arr(phases)+'; buildRules = (); dependencies = '+arr(deps)+'; packageProductDependencies = '+arr([feedproduct] if name=='HomeViewReplica' else [])+'; name = '+q(name)+'; productName = '+q(name)+'; productReference = '+pid+'; productType = '+q('com.apple.product-type.bundle.ui-testing' if uitest else 'com.apple.product-type.app-extension' if widget else 'com.apple.product-type.application')+';}');targets.append(tid)
     return tid
-make_target('HomeViewReplica','universal',files)
+make_target('HomeViewReplica','universal',[f for f in files if not f.startswith('Sources/Widgets/')])
+make_target('HomeViewTimerWidget','ios',[f for f in files if f.split('/')[-1] in ['TimerLiveActivity.swift','HomeViewTimerAttributes.swift','HomeViewTimerWidget.swift']],widget=True)
 watchfiles=[f for f in files if f.split('/')[-1] in ['Models.swift','GuestAccessPolicy.swift','DataConnection.swift','SetupIntroduction.swift','SnapshotMigration.swift','AlbumDisplay.swift','PersonalHomeConfiguration.swift','EverydayVoiceCommand.swift','AssistantLimits.swift','AssistantConversation.swift','NativeAssistantAnswers.swift','AnswerSpeechSession.swift','NativeAnswerSpeech.swift','AnswerSpeechActions.swift','WorldClock.swift','DemoDoorbell.swift','PodcastLibrary.swift','PhotoPlacement.swift','PhotoClockInk.swift','FaceConfiguration.swift','ConnectedModels.swift','HomeViewApp.swift','AppModel.swift','WatchRoot.swift','LocalAudioEngine.swift','DisplayWakeController.swift']]
+watchfiles += [f for f in files if f.split('/')[-1] in ['TimerLiveActivity.swift','NativeTimerLiveActivity.swift']]
 make_target('HomeViewWatch','watch',watchfiles)
 make_target('HomeViewUITests','ios',['Tests/UITests/HomeViewUITests.swift'],True)
 pg=obj('products','{isa = PBXGroup; children = '+arr(products)+'; name = Products; sourceTree = "<group>";}')
