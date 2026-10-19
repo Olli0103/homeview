@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-19",
+  "issue": 80,
+  "status": "partial_issue_remains_open",
+  "code_commit": "66f6ad0cb5e4fe9bb6c88b4c2c93e49db047231e",
+  "source_digest": "9ffbda97eaf9479200564f0f8dd4f2a8be7e4fd7b138b8bdc60c40d56cea40a7",
+  "source_files": 189,
+  "native": {
+    "verdict": "PASS",
+    "cases": 6,
+    "assertions": 78,
+    "target": "66f6ad0cb5e4fe9bb6c88b4c2c93e49db047231e",
+    "clean_before_after": true,
+    "compiled_source_matches_git": true,
+    "system_alarms_enabled": false
+  },
+  "archives": {
+    "timer-write-baseline": {
+      "entries": 121,
+      "sha256": "1aacd0d37c2d63a397e8ad954ca4abab596893cda44927192b36b12ee2932c0e",
+      "all_entries_read_back": true,
+      "cases": 6,
+      "failed_assertions": 6,
+      "source_commit": "60115ecbadc7f5b66511ff031b58e7481f62dd7e"
+    },
+    "timer-write-final": {
+      "entries": 113,
+      "sha256": "3a9c5248220ec9c1f712310c65ed960afb9b95e0a5333ce74fb0ef39ba2f31c3",
+      "all_entries_read_back": true,
+      "native_cases_executed": 4,
+      "native_passed": 3,
+      "native_failed": 1,
+      "reason": "Harness targeted existing disabled 07:00 demo alarm rather than appended enabled 10:30 alarm, and assumed one alarm despite both existing. Requested-effect assertion wrong; all actual rollback/persist/restart checks passed. Remaining two cases not executed."
+    },
+    "timer-write-corrected": {
+      "entries": 122,
+      "sha256": "640c0fb853d3675b723d1dd774aab6961e6320b7bc61ce526f39037de93fd83c",
+      "all_entries_read_back": true
+    }
+  },
+  "UI_passed": 6,
+  "UI_unique_methods": 3,
+  "UI_failures": 0,
+  "UI_skipped": 0,
+  "UI_runtime_warnings": [],
+  "UI_compiled_inputs": 22,
+  "UI_inputs_unchanged": true,
+  "installed_app_bytes_read_back": true,
+  "UI_archive": {
+    "name": "timer-write-ui-inputs.zip",
+    "entries": 211,
+    "sha256": "ae2caa1b5648d37397eca569bab269d48bf03d554b8af132340dd9270e1d03b4",
+    "all_entries_read_back": true
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "PNGs_decoded": 26,
+  "contact_sheets_reviewed": 2,
+  "selected_images": [
+    {
+      "path": "Docs/verification/timer-write-images/iPad-viewport-timer-selection-tea-paused.png",
+      "sha256": "0e45f73db3bf5e88513ffcc4916c59b972709e16a85de17dd06cd47524b00e63"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPad-viewport-timer-selection-tea-still-paused.png",
+      "sha256": "10f91efd27c8f8664126d92ccb1de38b886a700e5745a71ebaa89765f9ea34f1"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPad-viewport-timer-lifecycle-before-process-restart.png",
+      "sha256": "5809567f3cec99b743de812d5aa8ea71b57e28d0170db9e2d1cc158cefaaab45"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPad-viewport-timer-lifecycle-after-process-restart.png",
+      "sha256": "7175081f31d604ecc531f130b1467ca56f676bd42bf59175a00944a2c017e5bb"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPad-viewport-timer-lifecycle-restart-peers-preserved.png",
+      "sha256": "23cb955d74495b3604ac280fdfdc0a474834473a9cb8f293e1fe6686b622f037"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPhone-viewport-timer-selection-tea-paused.png",
+      "sha256": "1d0c2e69d2e50112a70cf23d8af67291414a5e8cce4fae3c0d0c4bd9a2869069"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPhone-viewport-timer-selection-tea-still-paused.png",
+      "sha256": "e3ec06c517c0c07da6f8fd3b87e6127550927a03d96e01e314426bd42a937dc8"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPhone-viewport-timer-lifecycle-before-process-restart.png",
+      "sha256": "416b7a47744e39398e6ccc0b7e5e63b435c3e7622296177fd0eae62738ed2f00"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPhone-viewport-timer-lifecycle-after-process-restart.png",
+      "sha256": "50591c932596d135ea08f1b103f04f6db791b96c2da8450c684d521887d7b851"
+    },
+    {
+      "path": "Docs/verification/timer-write-images/iPhone-viewport-timer-lifecycle-restart-peers-preserved.png",
+      "sha256": "e5f1d60cdf29829e52c891284c8ec0475dbe7825204a6facf69ec008de25a12c"
+    }
+  ],
+  "Core_qualification": "Historical pinned 264-test full PASS; all 66 Core/CoreTests file bytes unchanged, no new full Core run.",
+  "retained_harness_failures": [
+    "Initial UI prefix collided with native gate folder and failed before any UI execution; separate fresh timer-write-ui prefix used.",
+    "First post-fix native gate: three timer PASS, one requested-effect assertion wrong for existing disabled demo alarm and incorrect one-alarm assumption. Other rollback/save/restart checks passed; two cases not executed. Corrected fresh gate targets newly appended alarm and preserves existing peer. No product change made to satisfy assertion."
+  ],
+  "native_system_alarm_qualification": "Foreground/local operations only. Existing registered native pause/resume/cancel ordering remains separate, as do scheduling completion/persistence races; no atomic system-alarm rollback or physical alarm acceptance.",
+  "system_alarms_requested": false,
+  "Home_constructed": false,
+  "real_accounts_used": false
+}

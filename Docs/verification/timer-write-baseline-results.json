@@ -1,0 +1,110 @@
+[
+  {
+    "assertions": 7,
+    "case": "pause_timer",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "E5DA3150-C7C2-4F6C-AA45-ED62F6924F59",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 7,
+    "case": "resume_timer",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "AE01BB87-BDB5-4059-9277-C36807E4363C",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 7,
+    "case": "remove_timer",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "EB98C2E2-B840-4AEB-AD4B-C13E8C165BD7",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 7,
+    "case": "disable_alarm",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "3726C1BB-C723-4972-AB44-D252AC365853",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 7,
+    "case": "enable_alarm",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "93466B0E-7E3A-4179-AE0A-568F699CFDBB",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 7,
+    "case": "remove_alarm",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "879A029B-EFD1-4081-BC23-5585DA8EADA8",
+    "verdict": "FAIL"
+  }
+]
