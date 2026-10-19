@@ -4437,6 +4437,11 @@ extension HomeViewUITests {
     XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
     tap("assistant.voice")
     XCTAssertEqual(app.textFields["assistant.input"].value as? String,transcript)
+    let preview=app.staticTexts["assistant.voice.preview"]
+    XCTAssertTrue(preview.waitForExistence(timeout:5));XCTAssertEqual(preview.label,transcript)
+    let viewport=app.otherElements["reference.viewport"].frame
+    XCTAssertGreaterThan(preview.frame.height,0)
+    XCTAssertTrue(viewport.insetBy(dx:8,dy:8).contains(preview.frame),"The complete named-command preview must be visible, not just its AX text")
     XCTAssertTrue(app.buttons["assistant.send"].isEnabled)
   }
   func testVoiceNamedTimerAndAmbiguousTranscriptNeedExplicitSend() {
