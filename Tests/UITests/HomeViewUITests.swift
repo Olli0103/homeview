@@ -3778,3 +3778,27 @@ extension HomeViewUITests {
     viewportShot("answer-readout-microphone-draft-no-resume")
   }
 }
+
+extension HomeViewUITests {
+  func testPowerCapabilityIsExplicitlyUnavailableWithoutPowerGuesses() {
+    launch(["--page","Settings"])
+    let power=app.buttons["settings.power"]
+    for _ in 0..<5 where !power.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    tap("settings.power")
+    let assessment=app.staticTexts["power.assessment"]
+    XCTAssertTrue(assessment.waitForExistence(timeout:5))
+    XCTAssertEqual(assessment.label,"Adapter adequacy: Not available")
+    let policy=app.staticTexts["power.noheuristics"]
+    XCTAssertTrue(policy.label.contains("battery percentage"));XCTAssertTrue(policy.label.contains("No adapter warning"))
+    XCTAssertTrue(app.staticTexts["power.platform"].label.contains("does not turn on battery monitoring"))
+    let limits=app.staticTexts["power.limits"]
+    for _ in 0..<5 where !limits.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(limits.label.contains("not an independent measurement"))
+    XCTAssertFalse(app.buttons["power.refresh"].exists)
+    shot("power-capability-explicitly-unavailable")
+    tap("power.capabilities.done")
+    XCTAssertTrue(app.buttons["settings.power"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["Mock home only"].exists)
+    viewportShot("power-capability-return-no-home-connection")
+  }
+}

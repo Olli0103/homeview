@@ -85,6 +85,7 @@ struct ControlCenterView: View {
 }
 struct SettingsView: View {
   @Environment(AppModel.self) private var model
+  @State private var showingPowerCapabilities=false
   var body: some View {
     VStack(spacing: 12) {
       AppHeader(title: "Settings")
@@ -111,6 +112,8 @@ struct SettingsView: View {
             }.accessibilityIdentifier("settings.keepawake").accessibilityValue(
               model.display.active ? "On" : "Off")
           }
+          Button("Power adapter information") { showingPowerCapabilities=true }
+            .font(.system(size:23)).accessibilityIdentifier("settings.power")
           setting("Reference clock", model.referenceClock) { model.referenceClock.toggle() }
           setting("Night mode", model.data.night) {
             model.updateLocalControls { $0.night.toggle() }
@@ -154,6 +157,7 @@ struct SettingsView: View {
         }.padding(32)
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
+      .sheet(isPresented:$showingPowerCapabilities) { PowerCapabilitiesView() }
   }
   private func setting(_ title: String, _ on: Bool, action: @escaping () -> Void) -> some View {
     Button(action: action) {
