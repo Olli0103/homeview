@@ -292,12 +292,20 @@ struct AssistantView: View {
             }
             Spacer()
             Picker("Language", selection: $language) {
-              Text("Deutsch").tag("de-DE")
-              Text("English").tag("en-US")
-            }.labelsHidden().disabled(voiceInitiating || voice.busy).frame(maxWidth: 150)
+              Text("Deutsch").lineLimit(1).tag("de-DE")
+              Text("English").lineLimit(1).tag("en-US")
+            }.labelsHidden().font(.system(size:18)).disabled(voiceInitiating || voice.busy).frame(maxWidth: 150)
           }.font(.system(size: 21, weight: .medium))
           Text(voice.status).font(.system(size: 16)).foregroundStyle(voice.recording ? .red : .gray)
             .accessibilityIdentifier("assistant.voice.status")
+          if voice.phase == .ready,voiceSession.active,!text.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty {
+            VStack(alignment:.leading,spacing:6) {
+              Text("Draft to send").font(.system(size:14,weight:.semibold)).foregroundStyle(.gray)
+              Text(text).font(.system(size:21)).fixedSize(horizontal:false,vertical:true)
+                .accessibilityIdentifier("assistant.voice.preview")
+            }.padding(12).frame(maxWidth:.infinity,alignment:.leading)
+              .background(.gray.opacity(0.07),in:RoundedRectangle(cornerRadius:12))
+          }
         }.padding(.horizontal, 34)
       }
       }
