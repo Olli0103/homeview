@@ -5094,3 +5094,81 @@ extension HomeViewUITests {
     viewportShot("recipe-timer-created-by-edge-action")
   }
 }
+
+
+extension HomeViewUITests {
+  private func auditAssistantHitRegions(_ state:String) throws {
+    viewportShot("assistant-hit-region-"+state,assistantRectangle:true)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let element=issue.element,frame=element?.frame ?? .zero
+      reports.append(["identifier":element?.identifier ?? "","label":element?.label ?? "",
+        "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let attachment=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="assistant-hit-region-"+state+"-all-findings";attachment.lifetime = .keepAlways;add(attachment)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered assistant hit-region audit found \(reports.count) issues: \(reports)")
+  }
+
+  private func launchAssistantHitRegionProbe() {
+    launch(["--answer-speech-fixture","--device-unlock-denied"])
+    tap("nav.assistant")
+    if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
+  }
+  func testAssistantInitialAutomaticHitRegionAudit() throws {
+    launchAssistantHitRegionProbe();try auditAssistantHitRegions("initial")
+  }
+  func testAssistantCardActionsAutomaticHitRegionAudit() throws {
+    launchAssistantHitRegionProbe();selectAnswerExample("knowledge")
+    revealPlanControl(app.buttons["assistant.card.source.museum"])
+    try auditAssistantHitRegions("card-actions")
+  }
+  func testAssistantSourceAutomaticHitRegionAudit() throws {
+    launchAssistantHitRegionProbe();selectAnswerExample("knowledge")
+    activatePlanControl(app.buttons["assistant.card.source.museum"])
+    XCTAssertTrue(app.buttons["assistant.card.source.done"].waitForExistence(timeout:5))
+    try auditAssistantHitRegions("source")
+  }
+  func testAssistantCapabilitiesAutomaticHitRegionAudit() throws {
+    launchAssistantHitRegionProbe();tap("assistant.capabilities")
+    XCTAssertTrue(app.buttons["assistant.capabilities.done"].waitForExistence(timeout:5))
+    try auditAssistantHitRegions("capabilities")
+  }
+  private func tapAssistantControlEdge(_ button:XCUIElement,bottom:Bool=false) {
+    XCTAssertTrue(button.waitForExistence(timeout:5))
+    let f=button.frame
+    XCTAssertGreaterThanOrEqual(f.width,44-0.000_001)
+    XCTAssertGreaterThanOrEqual(f.height,44-0.000_001)
+    XCTAssertTrue(app.frame.contains(f))
+    let origin=app.coordinate(withNormalizedOffset:.zero)
+    origin.withOffset(CGVector(dx:f.midX-app.frame.minX,dy:(bottom ? f.maxY-2:f.minY+2)-app.frame.minY)).tap()
+  }
+  func testAssistantRecipeActionActualOuterEdge() {
+    launchAssistantHitRegionProbe()
+    let input=app.textFields["assistant.input"],draft="set a timer for 5 minutes"
+    input.tap();input.typeText(draft);selectAnswerExample("recipe")
+    let open=app.buttons["assistant.card.openRecipe"];revealPlanControl(open)
+    viewportShot("assistant-hit-region-recipe-before-edge",assistantRectangle:true)
+    tapAssistantControlEdge(open)
+    XCTAssertTrue(app.buttons["recipe.ingredients"].waitForExistence(timeout:5))
+    viewportShot("assistant-hit-region-recipe-edge-opened")
+    tap("nav.faces");drawer();tap("app.Timers")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
+  }
+  func testAssistantSourceAndDoneActualOuterEdges() {
+    launchAssistantHitRegionProbe();selectAnswerExample("knowledge")
+    let source=app.buttons["assistant.card.source.museum"];revealPlanControl(source)
+    viewportShot("assistant-hit-region-source-before-edge",assistantRectangle:true)
+    tapAssistantControlEdge(source)
+    XCTAssertTrue(app.buttons["assistant.card.source.done"].waitForExistence(timeout:5))
+    viewportShot("assistant-hit-region-done-before-edge",assistantRectangle:true)
+    tapAssistantControlEdge(app.buttons["assistant.card.source.done"],bottom:true)
+    XCTAssertFalse(responseElement("assistant.card.source.open").exists)
+    activatePlanControl(app.buttons["assistant.card.followup.agenda"])
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("sample agenda"))
+    viewportShot("assistant-hit-region-source-edge-followup",assistantRectangle:true)
+  }
+}
