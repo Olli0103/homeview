@@ -291,10 +291,15 @@ struct AssistantView: View {
               .accessibilityIdentifier("assistant.voice.cancel")
             }
             Spacer()
-            Picker("Language", selection: $language) {
-              Text("Deutsch").lineLimit(1).tag("de-DE")
-              Text("English").lineLimit(1).tag("en-US")
-            }.labelsHidden().font(.system(size:18)).disabled(voiceInitiating || voice.busy).frame(maxWidth: 150)
+            Menu {
+              Button("Deutsch") { language="de-DE" }
+              Button("English") { language="en-US" }
+            } label: {
+              Label(language == "de-DE" ? "DE":"EN",systemImage:"chevron.down")
+                .font(.system(size:18)).fixedSize().frame(minWidth:64,minHeight:44)
+            }.disabled(voiceInitiating || voice.busy)
+              .accessibilityLabel(language == "de-DE" ? "Input language: Deutsch":"Input language: English")
+              .accessibilityIdentifier("assistant.voice.language")
           }.font(.system(size: 21, weight: .medium))
           Text(voice.status).font(.system(size: 16)).foregroundStyle(voice.recording ? .red : .gray)
             .accessibilityIdentifier("assistant.voice.status")

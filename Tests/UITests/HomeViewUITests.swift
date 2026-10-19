@@ -4435,7 +4435,9 @@ extension HomeViewUITests {
     XCTAssertTrue(app.staticTexts["assistant.voice.status"].waitForExistence(timeout:5))
     XCTAssertTrue(app.staticTexts["assistant.voice.status"].label.contains("Synthetic"))
     XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
+    XCTAssertFalse(app.buttons["assistant.voice.language"].isEnabled,"Capture locale cannot change during recording")
     tap("assistant.voice")
+    XCTAssertTrue(app.buttons["assistant.voice.language"].isEnabled)
     XCTAssertEqual(app.textFields["assistant.input"].value as? String,transcript)
     let preview=app.staticTexts["assistant.voice.preview"]
     XCTAssertTrue(preview.waitForExistence(timeout:5));XCTAssertEqual(preview.label,transcript)
@@ -4457,6 +4459,10 @@ extension HomeViewUITests {
     tap("timer.pause")
     viewportShot("voice-owned-named-timer-created")
     launch(["--voice-transcript","set a timer"]);tap("nav.assistant")
+    let language=app.buttons["assistant.voice.language"]
+    XCTAssertEqual(language.label,"Input language: Deutsch")
+    language.tap();tap("English")
+    XCTAssertEqual(language.label,"Input language: English")
     stopSyntheticVoicePreview("set a timer");tap("assistant.send")
     XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("Specify"))
     tap("nav.faces");drawer();tap("app.Timers")
