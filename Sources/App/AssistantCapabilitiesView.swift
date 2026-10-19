@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct AssistantCapabilitiesView: View {
+  @Environment(AppModel.self) private var model
   @Environment(\.dismiss) private var dismiss
   var body: some View {
     VStack(spacing:0) {
@@ -11,10 +12,25 @@ struct AssistantCapabilitiesView: View {
       }.padding(24)
       ScrollView {
         VStack(alignment:.leading,spacing:22) {
+          VStack(alignment:.leading,spacing:12) {
+            Text("Choose how Send works").font(.headline)
+            Text("Commands can act on the local demo. On-device answers only generate text, never actions. Selection does not send your draft or save a conversation.")
+            Button(model.assistantUsesAI ? "Use local commands":"Local commands selected") {
+              model.selectAssistantAnswers(false)
+            }.accessibilityIdentifier("assistant.provider.local")
+            Button(model.assistantUsesAI ? "Check on-device availability again":"Use Apple on-device answers") {
+              model.selectAssistantAnswers(true)
+            }.accessibilityIdentifier("assistant.provider.ondevice")
+            Text(model.assistantAI.availability.message).accessibilityIdentifier("assistant.provider.availability")
+          }
+          entry("Apple on-device answers · Optional",
+            "Uses this device’s SystemLanguageModel only. No cloud fallback, API key, subscription, web search or app-data access. Only your explicitly sent text and this temporary conversation enter the model. Answers can be wrong or outdated; verify important facts. Requires a supported device, OS and ready Apple Intelligence model. HomeView does not enable it or download a model.",id:"ondevice")
+          entry("Conversation limits",
+            "Up to 4 exchanges and 6000 characters in total; 1000 per question, 4000 per answer, up to 400 generated tokens and 45 seconds per response. The system context may fill sooner. Stop, New, leaving the assistant, background, lock and profile changes discard the entire conversation. Nothing is saved. No automatic retry or cloud fallback.",id:"context")
           entry("Local commands · Available",
-            "A limited command parser, not a conversational AI. No Siri AI or cloud AI provider is connected.",id:"service")
+            "A limited command parser, not a conversational AI. No Siri AI or cloud AI provider is connected. On-device answers are a separate optional mode.",id:"service")
           entry("Languages",
-            "Selected German and English timer and cooking-step commands. Other actions use limited keywords. Replies are currently English. This is not general German or English conversation support.",id:"languages")
+            "Selected German and English timer and cooking-step commands. Other actions use explicit limited phrases, not arbitrary keywords. Replies are currently English in command mode. On-device answer languages depend on the system model; this is not Siri.",id:"languages")
           entry("Try these commands",
             "Timer auf 90 Sekunden · set a timer for 5 minutes\nNächster Schritt · next step (after starting a recipe)",id:"examples")
           entry("Voice input",

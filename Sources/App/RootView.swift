@@ -171,7 +171,10 @@ struct RootView: View {
     }
     .onChange(of:model.cookingStep) { _,step in model.recipeHandoff.update(recipe:model.recipe,step:step) }
     .onChange(of:model.cookingInProgress) { _,active in if !active { model.recipeHandoff.stop() } }
-    .onChange(of:model.route) { old,new in if old == .handoff,new != .handoff { model.recipeHandoff.cancelPending() } }
+    .onChange(of:model.route) { old,new in
+      if old == .handoff,new != .handoff { model.recipeHandoff.cancelPending() }
+      if old == .assistant,new != .assistant { model.assistantAI.clear() }
+    }
     .onReceive(pulse) { _ in model.tick() }
     #if os(iOS) || os(tvOS) || os(visionOS)
       .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.interruptionNotification)) { _ in
