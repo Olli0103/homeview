@@ -1,0 +1,381 @@
+{
+  "date": "2026-10-20",
+  "issue": 36,
+  "status": "partial_issue_remains_open",
+  "product_commit": "80ad73b9767367337b451c32f26bbafdade0eeaa",
+  "initial_commit": "add551cad72607140096b485ffd021ead1805993",
+  "source_files": 206,
+  "source_digest": "9cf2b69f990f27649bc79b438635f115243417c01c37a088f8374d7c2770df42",
+  "Core_tests": 301,
+  "Core_commit": "add551cad72607140096b485ffd021ead1805993",
+  "Core_current_byte_identical_files": 72,
+  "native_AppModel": {
+    "assertions": 44,
+    "checks": {
+      "agenda_draft_not_sent": true,
+      "agenda_exact_document": true,
+      "agenda_no_pending_actions": true,
+      "agenda_no_state_mutation": true,
+      "agenda_readout_text_matches": true,
+      "AI_mode_cannot_select_or_execute_cards": true,
+      "all_state_unchanged": true,
+      "empty_draft_not_sent": true,
+      "empty_exact_document": true,
+      "empty_no_pending_actions": true,
+      "empty_no_state_mutation": true,
+      "empty_readout_text_matches": true,
+      "explicit_recipe_opens_only_bundled_route": true,
+      "failure_draft_not_sent": true,
+      "failure_exact_document": true,
+      "failure_no_pending_actions": true,
+      "failure_no_state_mutation": true,
+      "failure_readout_text_matches": true,
+      "inactive_selection_and_action_rejected": true,
+      "knowledge_draft_not_sent": true,
+      "knowledge_exact_document": true,
+      "knowledge_no_pending_actions": true,
+      "knowledge_no_state_mutation": true,
+      "knowledge_readout_text_matches": true,
+      "loading_draft_not_sent": true,
+      "loading_exact_document": true,
+      "loading_no_pending_actions": true,
+      "loading_no_state_mutation": true,
+      "loading_readout_text_matches": true,
+      "lock_discards_document_and_draft": true,
+      "navigation_discards_document": true,
+      "new_sent_question_discards_document": true,
+      "no_system_IDs": true,
+      "non_recipe_document_cannot_open": true,
+      "outside_assistant_rejected": true,
+      "plain_answer_does_not_become_card": true,
+      "plain_answer_no_state_mutation": true,
+      "recipe_action_keeps_draft": true,
+      "recipe_action_no_state_mutation": true,
+      "recipe_draft_not_sent": true,
+      "recipe_exact_document": true,
+      "recipe_no_pending_actions": true,
+      "recipe_no_state_mutation": true,
+      "recipe_readout_text_matches": true
+    },
+    "failed": [],
+    "verdict": "PASS"
+  },
+  "native_product_methods_replaced": false,
+  "native_read_only_URL_accessor_appended": true,
+  "UI_results": [
+    {
+      "checkpoint": "assistant-response-cards-pilot",
+      "device": "iPad",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-response-cards-pilot",
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad",
+      "passed": 7,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone",
+      "passed": 7,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_final_executions": 14,
+  "UI_final_unique_methods": 7,
+  "UI_total_executions": 22,
+  "UI_total_passed": 20,
+  "UI_historical_failed": 2,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "SDK_commit": "80ad73b9767367337b451c32f26bbafdade0eeaa",
+  "generator": {
+    "generator_outputs_identical": [
+      "Resources/MainInfo.plist",
+      "HomeViewReplica.xcodeproj/project.pbxproj",
+      "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
+      "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewWatch.xcscheme"
+    ],
+    "Python_AST_valid": true,
+    "core_and_tests_unchanged": 72,
+    "Core_tests": 301,
+    "Core_commit": "add551cad72607140096b485ffd021ead1805993",
+    "final_commit": "80ad73b9767367337b451c32f26bbafdade0eeaa"
+  },
+  "reference_contract": {
+    "issue": 36,
+    "base_commit": "000b125e98455dcf2f83d3e5a05a814ab592dff6",
+    "original_states": [
+      {
+        "id": "UI17",
+        "sha256": "f7468ffea23356cbed1d9f4d7fa00f37243a978c22610a7df9d759549ae6c4af",
+        "observed": "White response with grouped colored calendar rows"
+      },
+      {
+        "id": "UI18",
+        "sha256": "90baec5fbc8d4e5f837ec0b9bb435f627be0ac86f29d6f35d66c0cce96c8492b",
+        "observed": "White knowledge text, source chips and blue illustrative image"
+      },
+      {
+        "id": "UI24",
+        "sha256": "904e0eab5704a7d33f9b0a84c6ac420fab783676093d4ba93bc7e225dc58d78f",
+        "observed": "White response with recipe preview image"
+      }
+    ],
+    "choice": "Own explicitly bundled display examples; no Siri orb/assets, personal context, external image retrieval, or live search. Closed enum/source/action registry; provider/user text remains plain text. Only explicit recipe button navigates. Draft preserved.",
+    "functional": [
+      "knowledge/source sheet/follow-up",
+      "agenda semantics",
+      "recipe explicit action and no implicit timer/draft execution",
+      "loading/empty/error previews",
+      "new Send/navigation/background remove card"
+    ],
+    "visual": "Inspect narrow/wide native images for text/image/card visibility above pinned composer; no pixel or original-parity claim",
+    "source": {
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co416960/album-of-cyanotypes-of-british-and-foreign-ferns",
+      "retrieved": "2026-10-20 Europe/Berlin",
+      "status": 200,
+      "excerpt": "The cyanotype process was invented by Sir John Herschel (1792-1871) in 1842 and derived from his observations on the light sensitivity of iron salts.",
+      "asset_used": false
+    },
+    "unproved": [
+      "Actual VoiceOver and physical devices",
+      "Live dynamic data/API cards",
+      "Original geometry/animation/focus/voice equivalence"
+    ],
+    "Home": false
+  },
+  "decoded_PNGs": 136,
+  "contacts_viewed": 4,
+  "additional_full_resolution_images_viewed": 8,
+  "image_findings": "Pilot source sheets visibly dark under black text. Final source sheets on both devices white and readable with Done independently reachable. Narrow knowledge/recipe pictures and native grouped agenda inspected; scroll position intentionally puts earlier text above the viewport. Composer remains separate. No original pixel/contrast/VoiceOver claim.",
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-before-assistant-card-source-no-auto-browser.png",
+      "sha256": "87e7880369f80053d36abc6fa6cd85c99040426e64c222a01055553d49ecee60",
+      "checkpoint": "assistant-response-cards-pilot",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-viewport-assistant-card-knowledge-image.png",
+      "sha256": "36936127acc1cd4334f3d5323082eed14fc14cdeae40198a93175105b20707b9",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-assistant-card-source-no-auto-browser.png",
+      "sha256": "12cffdd639b0d311fc96b81561e9c077ce6ff330a12d3882fada80571bdebafe",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-viewport-assistant-card-agenda.png",
+      "sha256": "8387513183dd53bd72318b2bd1f82db80d231d9a5be64f265036368fae6f3be2",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-viewport-assistant-card-recipe-explicit-action.png",
+      "sha256": "74aa96c74208df21f6e82eee0a75fb571a519c93862e5352a513b3a1098cc175",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-viewport-assistant-card-loading.png",
+      "sha256": "c0a1a1b01527b70f3bf6c9aa8b3a0a544ce777bc237bbdb6004a1970b6ba813b",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-viewport-assistant-card-empty.png",
+      "sha256": "b66c0723d9f612aa39583d726a5d2185a27a2e57e8ec82c4101aca0cf14660c0",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-viewport-assistant-card-failure.png",
+      "sha256": "003dd0abda72949ea9a0447506ffb22b9250de6b01487958cf752fb03aa7cd3c",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-assistant-card-completed-voice-draft-kept-unsent.png",
+      "sha256": "0c8618c4f82c3c861dea6d23a5ab09e72bf2d03fa1068b597e349e6566ac9bd9",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-assistant-keyboard-portrait-screen.png",
+      "sha256": "5e856c21f253afa21964fd9fae51105d96fe877b0e81299e307e2c5105452e5e",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPad-after-assistant-keyboard-landscape-screen.png",
+      "sha256": "2965f802a02be494f12a879285d7adc0453d0e8760246f4aa5e69d65135b905a",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-before-assistant-card-source-no-auto-browser.png",
+      "sha256": "ea7852e5f289090570c31b6b2a2ca6bea9ce0cd1fae346a4568f8a2a60835fab",
+      "checkpoint": "assistant-response-cards-pilot",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-viewport-assistant-card-knowledge-image.png",
+      "sha256": "32f1015235961ea231d713868d1b5750dbf41510255c08f22b0d4c81525cfd32",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-assistant-card-source-no-auto-browser.png",
+      "sha256": "4144bec6b1ce50e187602f5509a619d33c04f56f7780acb7bd8b74ef107aeaa4",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-viewport-assistant-card-agenda.png",
+      "sha256": "b5d4a69271306d8b5430642161cce7b0ace81cd0de6735554e94c1f5b1540679",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-viewport-assistant-card-recipe-explicit-action.png",
+      "sha256": "8d169a539d41cf765b7b5135387182ecf0e29b4450d7c3cbd34d56437b40fad9",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-viewport-assistant-card-loading.png",
+      "sha256": "5f8911ce13ade847705ff61e8d425172a81e1bbb4ff6a88e2e9fa92bdd1a2f3d",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-viewport-assistant-card-empty.png",
+      "sha256": "d089e83d675d6fa43bdccf3ca1563ec820efa9d30796cfdb4d0b1bed91b038f5",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-viewport-assistant-card-failure.png",
+      "sha256": "30d4a05df182b726cba015fda88290382e4237dc5bd83b32358882901a79aea3",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-assistant-card-completed-voice-draft-kept-unsent.png",
+      "sha256": "d08c7554bc4a86166fba82a7a0bf83f7218a151a431ac31880c9d2dc9cfa7e43",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-assistant-keyboard-portrait-screen.png",
+      "sha256": "a4b5c1d55432c2df3dffeebe903e92106dcd514bede27f2778b8c2d2437b0f97",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-response-cards/iPhone-after-assistant-keyboard-landscape-screen.png",
+      "sha256": "f004abc7a270b10bc6926b600c511ff56be2100809946ea81a715ef7f0faaf94",
+      "checkpoint": "assistant-response-cards-final",
+      "device": "iPhone"
+    }
+  ],
+  "archives": {
+    "assistant-response-cards-pilot": {
+      "archive": "assistant-response-cards-pilot-inputs.zip",
+      "sha256": "694486f7f27a52ef1bf148e7cbc8d73a944db22ad6a4eab9c038d52af2aa4ad3",
+      "entries": 234,
+      "all_entries_read_back": true
+    },
+    "assistant-response-cards-final": {
+      "archive": "assistant-response-cards-final-inputs.zip",
+      "sha256": "d3c4502eedaa9d6da2618ada52ffd98cc1ed5d6cbc3b4c486e8abd212010e23a",
+      "entries": 234,
+      "all_entries_read_back": true
+    },
+    "core": {
+      "archive": "assistant-response-cards-core-inputs.zip",
+      "target": "add551cad72607140096b485ffd021ead1805993",
+      "entries": 214,
+      "sha256": "cd012aa54288c61d39a010a2f0adf215f23503a65b6c8b9be7da66c6451fbe48",
+      "all_entries_read_back": true,
+      "tests": 301,
+      "failed": 0,
+      "skipped": 0
+    },
+    "native-preparation": {
+      "archive": "assistant-response-cards-native-preparation-inputs.zip",
+      "entries": 309,
+      "sha256": "8b1d39e747591557e5a16fda55be7d662d2d811fc86d38d0dc21ec9e129aa0a9",
+      "all_entries_read_back": true,
+      "exit_code": 1,
+      "application_processes": 0,
+      "assertions": 0,
+      "reason": "Probe attempted inaccessible assistantUsesAI setter; product build unaffected"
+    },
+    "native-final": {
+      "archive": "assistant-response-cards-native-inputs.zip",
+      "entries": 317,
+      "sha256": "04870ecd089db8dd028831a525796973004aaab80fb8d977b99552fbd4a32e70",
+      "all_entries_read_back": true,
+      "application_processes": 1,
+      "assertions": 44,
+      "failed": 0
+    }
+  },
+  "preparation_failure": "First native probe compilation attempted a private mode setter: zero app processes/assertions. Public selection method used in final; no product-access guard weakened.",
+  "review_fix": "Selecting an example cancels a ready voice session without restoring its older typed draft. Final synthetic voice case proves completed text preserved and not acted on until explicit Send. Not claimed as a baseline UI reproduction.",
+  "unproved": [
+    "Actual VoiceOver/Switch Control/focus/announcements/Dynamic Type/full contrast/physical device acceptance",
+    "Dynamic live API or personal calendar/message cards",
+    "Original layout, animations or visual parity",
+    "Activating the external museum Link in the app",
+    "Acoustic output of complete rich-card content"
+  ],
+  "actual_external_source_Link_activated": false,
+  "real_personal_data_used": false,
+  "microphone_capture": false,
+  "system_alarm_authorization": false,
+  "Home_constructed": false,
+  "system_activity_created": false
+}

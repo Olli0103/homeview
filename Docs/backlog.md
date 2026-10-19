@@ -651,7 +651,9 @@ Abhängigkeiten: AI-01, HOME-01.
 <a id="ai-04"></a>
 ### AI-04: Antwortansicht mit Text, Bildern und Karten vervollständigen
 
-Weiße lokale Antwortansicht und einfache Antworten sind vorhanden, keine vollständigen dynamischen Karten.
+Eigene gebündelte Wissens-/Bild-, Quellen-, Agenda- und Rezeptkarten sowie Lade-/Leer-/Fehlerbeispiele vorhanden. Entwürfe bleiben ungesendet; nur expliziter Rezeptbutton navigiert. Keine persönlichen oder dynamischen API-Ergebnisse. Tatsächliche VoiceOver-/Hardware- und Originalabnahme bleiben offen.
+
+[Lokale Karten und Grenzen](assistant-response-cards.md).
 
 Offen:
 

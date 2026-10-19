@@ -901,7 +901,7 @@
     "functions": [
       "F046"
     ],
-    "current": "Weiße lokale Antwortansicht und einfache Antworten sind vorhanden, keine vollständigen dynamischen Karten.",
+    "current": "Eigene gebündelte Wissens-/Bild-, Quellen-, Agenda- und Rezeptkarten sowie Lade-/Leer-/Fehlerbeispiele vorhanden. Entwürfe bleiben ungesendet; nur expliziter Rezeptbutton navigiert. Keine persönlichen oder dynamischen API-Ergebnisse. Tatsächliche VoiceOver-/Hardware- und Originalabnahme bleiben offen.",
     "tasks": [
       "Referenztypen für Text, Bilder, Quellen und Aktionskarten erfassen",
       "Lade-, Leer-, Fehler- und Folgefragenzustände umsetzen",
@@ -914,7 +914,11 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/36",
     "issue_number": 36,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/assistant-response-cards.md",
+      "Docs/verification/assistant-response-cards.json"
+    ]
   },
   {
     "key": "AI-05",
