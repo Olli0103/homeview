@@ -649,6 +649,12 @@ final class AppModel {
     guard !storeReadOnly else { error = storeRecoveryNote; return false }
     return true
   }
+  func updateLocalControls(_ change: (inout Snapshot) -> Void) {
+    let previous = data
+    change(&data)
+    guard persist() else { data = previous; return }
+    if data.volume != previous.volume { audio.setVolume(Float(data.volume)) }
+  }
   @discardableResult
   func persist() -> Bool {
     guard !ephemeral else { return true }

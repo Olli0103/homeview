@@ -3294,3 +3294,76 @@ extension HomeViewUITests {
     }
   }
 }
+
+extension HomeViewUITests {
+  private func controlPercent(_ name: String) -> String {
+    (app.sliders[name].value as? String ?? "").filter { !$0.isWhitespace }
+  }
+  @objc func testLocalControlsPersistWithNativeKeepAwakeReadback() {
+    let id = UUID().uuidString
+    launch(["--page", "Settings", "--persistence-test", id, "--reset-test-store"])
+    let wake = app.buttons["settings.keepawake"]
+    XCTAssertEqual(wake.value as? String, "Off")
+    wake.tap()
+    expectation(for: NSPredicate(format: "value == %@", "On"), evaluatedWith: wake)
+    waitForExpectations(timeout: 5)
+    tap("nav.controls")
+    XCTAssertTrue(app.staticTexts["controls.scope"].exists)
+    XCTAssertEqual(app.buttons["controls.online"].value as? String, "On")
+    tap("controls.online"); tap("controls.night"); tap("controls.distance")
+    XCTAssertFalse(app.staticTexts["Mock home offline"].exists,
+      "The control itself shows offline; a second banner must not cover the header")
+    app.buttons["Decrease Display dimming"].tap()
+    app.buttons["Decrease Demo audio"].tap()
+    XCTAssertEqual(controlPercent("Display dimming"), "90%")
+    XCTAssertEqual(controlPercent("Demo audio"), "45%")
+    viewportShot("controls-persisted-values")
+    app.terminate()
+    launch(["--page", "Settings", "--persistence-test", id])
+    expectation(for: NSPredicate(format: "value == %@", "On"), evaluatedWith: app.buttons["settings.keepawake"])
+    waitForExpectations(timeout: 5)
+    XCUIDevice.shared.press(.home); app.activate()
+    expectation(for: NSPredicate(format: "value == %@", "On"), evaluatedWith: app.buttons["settings.keepawake"])
+    waitForExpectations(timeout: 5)
+    tap("nav.controls")
+    XCTAssertEqual(app.buttons["controls.online"].value as? String, "Off")
+    XCTAssertEqual(app.buttons["controls.night"].value as? String, "On")
+    XCTAssertEqual(app.buttons["controls.distance"].value as? String, "On")
+    XCTAssertEqual(controlPercent("Display dimming"), "90%")
+    XCTAssertEqual(controlPercent("Demo audio"), "45%")
+    tap("controls.online"); tap("controls.night"); tap("controls.distance")
+    tap("controls.settings")
+    app.buttons["settings.keepawake"].tap()
+    expectation(for: NSPredicate(format: "value == %@", "Off"), evaluatedWith: app.buttons["settings.keepawake"])
+    waitForExpectations(timeout: 5)
+    viewportShot("controls-keepawake-released")
+  }
+  @objc func testReadOnlyControlChangesRollBackBeforeNativeEffects() {
+    let id = UUID().uuidString
+    launch(["--page", "Settings", "--persistence-test", id, "--reset-test-store", "--state-future-fixture"])
+    XCTAssertEqual(app.buttons["settings.keepawake"].value as? String, "Off")
+    app.buttons["settings.keepawake"].tap()
+    XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 5))
+    app.alerts.buttons["OK"].tap()
+    XCTAssertEqual(app.buttons["settings.keepawake"].value as? String, "Off")
+    tap("nav.controls")
+    for identifier in ["controls.online", "controls.night", "controls.distance"] {
+      let previous = app.buttons[identifier].value as? String
+      tap(identifier)
+      XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 5))
+      app.alerts.buttons["OK"].tap()
+      XCTAssertEqual(app.buttons[identifier].value as? String, previous)
+    }
+    for (name,expected) in [("Display dimming", "100%"), ("Demo audio", "55%")] {
+      app.buttons["Decrease " + name].tap()
+      XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 5))
+      app.alerts.buttons["OK"].tap()
+      XCTAssertEqual(controlPercent(name), expected)
+    }
+    viewportShot("controls-readonly-rollback")
+    app.terminate()
+    launch(["--page", "Settings", "--persistence-test", id])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    XCTAssertEqual(app.buttons["settings.keepawake"].value as? String, "Off")
+  }
+}
