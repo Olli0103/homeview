@@ -4328,3 +4328,33 @@ extension HomeViewUITests {
     tap("nav.assistant");XCTAssertFalse(app.staticTexts["assistant.plan.status"].exists)
   }
 }
+
+extension HomeViewUITests {
+  func testAssistantContextBoundaryIsVisibleAndUsesOnlySentText() {
+    launch(["--assistant-ai-fixture","ready"])
+    tap("nav.assistant");tap("assistant.capabilities")
+    let context=app.staticTexts["assistant.capabilities.personalContext"]
+    XCTAssertTrue(context.waitForExistence(timeout:5))
+    for _ in 0..<8 where !context.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(context.label.contains("only the text you explicitly Send"))
+    XCTAssertTrue(context.label.contains("Device unlock, a demo profile and a connected source do not grant model access"))
+    shot("assistant-context-no-personal-or-screen-sharing")
+    // Return to the provider controls instead of tapping an offscreen element.
+    for _ in 0..<8 where !app.buttons["assistant.provider.ondevice"].isHittable { app.scrollViews.firstMatch.swipeDown() }
+    tap("assistant.provider.ondevice");tap("assistant.capabilities.done")
+    let scope=app.staticTexts["assistant.ai.context.scope"]
+    XCTAssertTrue(scope.waitForExistence(timeout:5))
+    XCTAssertEqual(scope.label,"Only text you Send · No app data or screen access")
+    let prompt="What can you see on my calendar and other apps?"
+    askSyntheticQuestion(prompt)
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["assistant.ai.question.0"].label,prompt)
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].label.contains("Synthetic answer"))
+    if app.buttons["assistant.keyboard.dismiss"].exists { tap("assistant.keyboard.dismiss") }
+    viewportShot("assistant-context-explicit-text-synthetic-answer",assistantRectangle:true)
+    tap("nav.faces");tap("nav.assistant")
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    XCTAssertFalse(app.staticTexts["assistant.ai.question.0"].exists)
+    viewportShot("assistant-context-route-exit-cleared",assistantRectangle:true)
+  }
+}

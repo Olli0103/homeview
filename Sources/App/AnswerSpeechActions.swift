@@ -7,6 +7,7 @@ extension AppModel {
   }
   func setAnswerSpeechForeground(_ active:Bool) {
     answerSpeechForeground=active
+    if !active { assistantAI.clear() }
     #if !os(watchOS)
       if !active { discardDemoPlan() }
     #endif

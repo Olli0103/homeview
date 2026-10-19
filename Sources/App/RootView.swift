@@ -197,9 +197,6 @@ struct RootView: View {
     .onChange(of:model.cookingInProgress) { _,active in if !active { model.recipeHandoff.stop() } }
     .onChange(of:model.route) { old,new in
       if old == .handoff,new != .handoff { model.recipeHandoff.cancelPending() }
-      if old == .assistant,new != .assistant {
-        model.discardDemoPlan(restoreDraft:true);model.assistantAI.clear();model.stopAnswerSpeech()
-      }
     }
     .onReceive(pulse) { _ in model.tick() }
     #if os(iOS) || os(tvOS) || os(visionOS)

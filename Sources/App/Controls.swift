@@ -186,8 +186,7 @@ struct AssistantView: View {
   }
   @FocusState private var typing:Bool
   private var canEdit:Bool {
-    scenePhase == .active && model.route == .assistant
-      && model.demoDoorbell.current == nil && !model.incomingCall
+    scenePhase == .active && model.assistantInteractionActive
   }
   @State private var voiceDraftGeneration = 0
   @State private var draftBeforeVoice = ""
@@ -233,6 +232,9 @@ struct AssistantView: View {
           Text("Temporary · Not Siri history · No device sync")
             .font(.system(size:12)).foregroundStyle(.gray)
             .accessibilityIdentifier("assistant.ai.history.scope")
+          Text("Only text you Send · No app data or screen access")
+            .font(.system(size:12)).foregroundStyle(.gray)
+            .accessibilityIdentifier("assistant.ai.context.scope")
           Text(model.assistantAI.status).font(.system(size:14)).foregroundStyle(.gray)
             .accessibilityIdentifier("assistant.ai.status")
         }.padding(.horizontal,34)
