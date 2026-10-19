@@ -28,6 +28,10 @@ final class DeviceConnectionTests: XCTestCase {
     var searchReplies: [String:CheckedContinuation<[DeviceTrack], any Error>] = [:]
     var onSearch: ((String)->Void)?
     var pauseCalls = 0
+    var delayPlayback = false
+    var playbackReply: CheckedContinuation<Void, any Error>?
+    var resumeReply: CheckedContinuation<Void, any Error>?
+    var onPlayback: (() -> Void)?
     func authorized(_ kind: DataConnection) -> Bool { hasPermission }
     func authorizePersonal(_ kind: DataConnection) async throws {
       permissionRequests += 1
@@ -88,8 +92,12 @@ final class DeviceConnectionTests: XCTestCase {
         onSearch?(text)
       }
     }
-    func playMusic(_ index: Int) async throws {}
-    func resumeMusic() async throws {}
+    func playMusic(_ index: Int) async throws {
+      if delayPlayback { try await withCheckedThrowingContinuation { playbackReply=$0;onPlayback?() } }
+    }
+    func resumeMusic() async throws {
+      if delayPlayback { try await withCheckedThrowingContinuation { resumeReply=$0;onPlayback?() } }
+    }
     func pauseMusic() { pauseCalls += 1 }
     var musicPlaying: Bool { false }
     var musicTime: Double { 0 }
@@ -455,5 +463,46 @@ final class DeviceConnectionTests: XCTestCase {
     XCTAssertEqual(provider.reminderReads, readsBeforeLock)
     XCTAssertTrue(connections.reminders.isEmpty)
     XCTAssertFalse(connections.busy.contains(.reminders))
+  }
+}
+
+
+extension DeviceConnectionTests {
+  private func seedPlayback(_ provider:Provider,_ session:DeviceConnections) async {
+    await session.connect(.music)
+    let started=expectation(description:"synthetic search entered")
+    provider.onSearch={ _ in started.fulfill() }
+    let search=Task { await session.searchMusic("seed") }
+    await fulfillment(of:[started],timeout:2)
+    provider.searchReplies["seed"]?.resume(returning:[DeviceTrack(id:"own",title:"Synthetic song",artist:"Fixture",artwork:nil)])
+    await search.value
+  }
+  func testPlaybackFailureAfterDisconnectCannotRestoreStatus() async {
+    let p=Provider();let s=DeviceConnections(provider:p);await seedPlayback(p,s)
+    p.delayPlayback=true;let entered=expectation(description:"play entered");p.onPlayback={entered.fulfill()}
+    let play=Task { await s.playMusic(0) };await fulfillment(of:[entered],timeout:2)
+    s.disconnect(.music);p.playbackReply?.resume(throwing:CocoaError(.fileReadUnknown));await play.value
+    XCTAssertEqual(s.status[.music],"Disconnected");XCTAssertNil(s.currentTrack)
+  }
+  func testPlaybackSuccessAfterDisconnectCannotRestoreSelection() async {
+    let p=Provider();let s=DeviceConnections(provider:p);await seedPlayback(p,s)
+    p.delayPlayback=true;let entered=expectation(description:"play entered");p.onPlayback={entered.fulfill()}
+    let play=Task { await s.playMusic(0) };await fulfillment(of:[entered],timeout:2)
+    s.disconnect(.music);p.playbackReply?.resume();await play.value
+    XCTAssertNil(s.currentTrack);XCTAssertTrue(s.tracks.isEmpty);XCTAssertFalse(s.musicPlaying)
+  }
+  func testCancelledPlaybackCannotSelectTrack() async {
+    let p=Provider();let s=DeviceConnections(provider:p);await seedPlayback(p,s)
+    p.delayPlayback=true;let entered=expectation(description:"play entered");p.onPlayback={entered.fulfill()}
+    let play=Task { await s.playMusic(0) };await fulfillment(of:[entered],timeout:2)
+    play.cancel();p.playbackReply?.resume();await play.value
+    XCTAssertNil(s.currentTrack)
+  }
+  func testResumeFailureAfterDisconnectCannotRestoreStatus() async {
+    let p=Provider();let s=DeviceConnections(provider:p);await seedPlayback(p,s);await s.playMusic(0)
+    p.delayPlayback=true;let entered=expectation(description:"resume entered");p.onPlayback={entered.fulfill()}
+    let play=Task { await s.toggleMusic() };await fulfillment(of:[entered],timeout:2)
+    s.disconnect(.music);p.resumeReply?.resume(throwing:CocoaError(.fileReadUnknown));await play.value
+    XCTAssertEqual(s.status[.music],"Disconnected");XCTAssertNil(s.currentTrack)
   }
 }
