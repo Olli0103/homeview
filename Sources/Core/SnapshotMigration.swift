@@ -6,7 +6,7 @@ extension Snapshot {
   /// Repair only the damaged field/item. The caller must preserve the original
   /// bytes before persisting a normalized snapshot; unknown versions fail closed.
   static func decodeMigrating(_ bytes: Data) throws -> Snapshot {
-    guard bytes.count <= 32_000_000 else { throw SnapshotReadError.oversized }
+    guard bytes.count <= LocalStateFileReader.maximumBytes else { throw SnapshotReadError.oversized }
     guard let stored = try JSONSerialization.jsonObject(with: bytes) as? [String: Any] else {
       throw SnapshotReadError.malformed
     }
