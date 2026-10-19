@@ -1717,7 +1717,7 @@
     "functions": [
       "F098"
     ],
-    "current": "Keine eigene Gesicht-/Stimmidentifikation in Secure Exclaves und keine belegte öffentliche Gleichwertigkeit.",
+    "current": "Öffentliche API-/Hardwaregrenze mit Apple-Quellen und zehn Compile-only-Prüfungen (neun Typformen, eine belegte tvOS-Sperre) dokumentiert. F098 bleibt blocked/parity_accepted=false; kein eigener Secure-Exclaves-Port oder Template-Enrollment.",
     "tasks": [
       "Öffentliche Geräteauthentifizierung von eigener biometrischer Datenverarbeitung unterscheiden",
       "Keine Gesicht-/Stimmtemplates aus Demos erzeugen",
@@ -1729,7 +1729,10 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/69",
     "issue_number": 69,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/secure-identity-boundary.md"
+    ]
   },
   {
     "key": "SYS-07",
