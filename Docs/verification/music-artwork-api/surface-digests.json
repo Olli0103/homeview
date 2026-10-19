@@ -1,0 +1,75 @@
+{
+  "iphonesimulator": {
+    "MediaPlayer_header_sha256": "fb4bbf5163a04ed8d53b789e2ce8106b9b0c9491371eaca4ca29aa1fff8a9585",
+    "MusicKit_public_interfaces": [
+      {
+        "name": "x86_64-apple-ios-simulator.swiftinterface",
+        "sha256": "5167ca8bff85b41405c3fad9d7ce7c03013fffd5245bb6244890ca19ffb085a3"
+      },
+      {
+        "name": "arm64-apple-ios-simulator.swiftinterface",
+        "sha256": "925eab349c9a77db416d5d5fca616716d020074065dc7a7a861e0a34a4ccd143"
+      }
+    ]
+  },
+  "macosx": {
+    "MediaPlayer_header_sha256": "fb4bbf5163a04ed8d53b789e2ce8106b9b0c9491371eaca4ca29aa1fff8a9585",
+    "MusicKit_public_interfaces": [
+      {
+        "name": "arm64e-apple-ios-macabi.swiftinterface",
+        "sha256": "853d9cfc7ace1390921fac5e750e8400cfe07a4e8b5ec7a7f9e0c2cb430f7584"
+      },
+      {
+        "name": "x86_64-apple-ios-macabi.swiftinterface",
+        "sha256": "10c5ef73bc0e1cab2639e364941ccc3474419aea462bf242fe9464802ae971bf"
+      },
+      {
+        "name": "arm64e-apple-macos.swiftinterface",
+        "sha256": "157e39c37fa38f79e4b65b29ac7cb7ea909647d9bbaca8882bd48f5390f93b70"
+      },
+      {
+        "name": "x86_64-apple-macos.swiftinterface",
+        "sha256": "31d0b3138a0b73a720fc64a6a5ccc9c5eff47afd03b87dde44247649b5192178"
+      }
+    ]
+  },
+  "appletvsimulator": {
+    "MediaPlayer_header_sha256": "fb4bbf5163a04ed8d53b789e2ce8106b9b0c9491371eaca4ca29aa1fff8a9585",
+    "MusicKit_public_interfaces": [
+      {
+        "name": "x86_64-apple-tvos-simulator.swiftinterface",
+        "sha256": "4c038a333f3b24a0349cdb5c6f74209a32c9ccb93c9e33d88178b1e9301b6c58"
+      },
+      {
+        "name": "arm64-apple-tvos-simulator.swiftinterface",
+        "sha256": "e937053f0599786bcb60d8c40a91bdd8cbef90159b30618cfdabe616b3502473"
+      }
+    ]
+  },
+  "xrsimulator": {
+    "MediaPlayer_header_sha256": "fb4bbf5163a04ed8d53b789e2ce8106b9b0c9491371eaca4ca29aa1fff8a9585",
+    "MusicKit_public_interfaces": [
+      {
+        "name": "x86_64-apple-xros-simulator.swiftinterface",
+        "sha256": "6702347bf8438d8ad540284e20efe3082368de8160ea7f6d5885f25a4cf6c2ca"
+      },
+      {
+        "name": "arm64-apple-xros-simulator.swiftinterface",
+        "sha256": "5a8b143319668f4a9b8e8abb9024ff5dd4abd5a949ac7b1509583d5d5548e7f8"
+      }
+    ]
+  },
+  "watchsimulator": {
+    "MediaPlayer_header_sha256": "fb4bbf5163a04ed8d53b789e2ce8106b9b0c9491371eaca4ca29aa1fff8a9585",
+    "MusicKit_public_interfaces": [
+      {
+        "name": "arm64-apple-watchos-simulator.swiftinterface",
+        "sha256": "c8063a4c924f5746aae8e102263e2c23762fd8c7cb489986fcde61142f99e662"
+      },
+      {
+        "name": "x86_64-apple-watchos-simulator.swiftinterface",
+        "sha256": "4e4121201b4e93088d40c7c2a2b01b04255da30963f8e86c3223d1711f32bdf2"
+      }
+    ]
+  }
+}

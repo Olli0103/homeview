@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-19",
+  "issue": 58,
+  "status": "partial_issue_remains_open",
+  "code_commit": "54b2727817cd8e7b43159d022860e2a80a982794",
+  "source_digest": "eeed5376c4ea934c553e6fdc371442a10bd1c60c2a13ee039e3ea31fd9d51717",
+  "source_files": 190,
+  "API_typechecks": {
+    "typechecks": 15,
+    "compiled": 13,
+    "explicitly_unavailable": 2,
+    "functions_executed": 0,
+    "live_accounts_or_media_accessed": false,
+    "all_expected_outcomes": true
+  },
+  "API_archive": {
+    "entries": 29,
+    "sha256": "a87ca32bb6a2de940a3a998429f56a96995332ec7dd85e8a5e3cb724dbfe9adb",
+    "all_entries_read_back": true
+  },
+  "UI_checkpoints": [
+    {
+      "id": "music-artwork-ui",
+      "code_commit": "fa526fdcadcfb7617960bd993b3691fa126de49f",
+      "UI_executions": 6,
+      "UI_failures": 0,
+      "UI_skips": 0,
+      "UI_runtime_warnings": [],
+      "source_digest": "087ce2915f745fa3bfebfa938cc25d6db3d166384a8f56766df7b337893bc026",
+      "source_files": 190,
+      "compiled_inputs": 22,
+      "installed_app_read_back": true,
+      "archive": "music-artwork-ui-inputs.zip",
+      "archive_entries": 212,
+      "archive_sha256": "60b29adef6a196cd4994ebdf80ebb5db5779d84a63db128128047ebda06a2c4e",
+      "all_entries_read_back": true,
+      "visual_review": "FAIL black title on dark sheet"
+    },
+    {
+      "id": "music-artwork-readable",
+      "code_commit": "54b2727817cd8e7b43159d022860e2a80a982794",
+      "UI_executions": 6,
+      "UI_failures": 0,
+      "UI_skips": 0,
+      "UI_runtime_warnings": [],
+      "source_digest": "eeed5376c4ea934c553e6fdc371442a10bd1c60c2a13ee039e3ea31fd9d51717",
+      "source_files": 190,
+      "compiled_inputs": 22,
+      "installed_app_read_back": true,
+      "archive": "music-artwork-readable-inputs.zip",
+      "archive_entries": 212,
+      "archive_sha256": "cb8f72abdfabd185ed74fb2c59668aa7713d8c4efacb82bd5220c8f5e418bd23",
+      "all_entries_read_back": true,
+      "visual_review": "PASS at inspected scope: consistent light sheet and readable title/body"
+    }
+  ],
+  "UI_total_executions": 12,
+  "UI_successful_executions": 12,
+  "UI_unique_methods": 3,
+  "UI_final_revision_executions": 6,
+  "historical_visual_failure_checkpoints": 1,
+  "final_visual_review": "Inspected title/body/readability and source-specific state in actual final images; no general contrast, Dynamic Type, original-parity or physical-device acceptance.",
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "PNGs_decoded": 12,
+  "contact_sheets_reviewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/verification/music-artwork-images/iPad-music-artwork-reduced-motion-information.png",
+      "checkpoint": "music-artwork-readable",
+      "historical_visual_failure": false,
+      "sha256": "f07727250e8087021dd790b5ea41d984a4191cac26c3b4fe1624b1bec55ed220"
+    },
+    {
+      "path": "Docs/verification/music-artwork-images/iPad-music-artwork-catalog-information.png",
+      "checkpoint": "music-artwork-readable",
+      "historical_visual_failure": false,
+      "sha256": "454e90356d3582d4a8f860d42c6fe851d305222764d980e5ea75646bb2c3e6e6"
+    },
+    {
+      "path": "Docs/verification/music-artwork-images/iPad-music-artwork-demo-information.png",
+      "checkpoint": "music-artwork-readable",
+      "historical_visual_failure": false,
+      "sha256": "f06248bd6b52dbe1670e2d248208616c43f7780d49a348fe11783bb8f72aac87"
+    },
+    {
+      "path": "Docs/verification/music-artwork-images/iPad-historical-black-title-music-artwork-catalog-information.png",
+      "checkpoint": "music-artwork-ui",
+      "historical_visual_failure": true,
+      "sha256": "3101653b27d402772d2c0260a8be4f5275dc52f72cedad792856e9266be0e6c4"
+    },
+    {
+      "path": "Docs/verification/music-artwork-images/iPhone-music-artwork-reduced-motion-information.png",
+      "checkpoint": "music-artwork-readable",
+      "historical_visual_failure": false,
+      "sha256": "d0d4fdebf0d765cb8dbab0817738f4b21a99d0999399d8a22d050dbedb68cd86"
+    },
+    {
+      "path": "Docs/verification/music-artwork-images/iPhone-music-artwork-catalog-information.png",
+      "checkpoint": "music-artwork-readable",
+      "historical_visual_failure": false,
+      "sha256": "e85f46db3a8df1df4702733669140a731e77bdde79a5ae02dfa39068bb36e988"
+    },
+    {
+      "path": "Docs/verification/music-artwork-images/iPhone-music-artwork-demo-information.png",
+      "checkpoint": "music-artwork-readable",
+      "historical_visual_failure": false,
+      "sha256": "a2ad3ffd46d74d3a677f1e94e3b8df029bb94e3f311b1e07063fe73330e98efe"
+    },
+    {
+      "path": "Docs/verification/music-artwork-images/iPhone-historical-black-title-music-artwork-catalog-information.png",
+      "checkpoint": "music-artwork-ui",
+      "historical_visual_failure": true,
+      "sha256": "b2b156ab3b0cdaf6e4e20e519240099e6d6981654c61f6f28cd346dc0e849da2"
+    }
+  ],
+  "Core_qualification": "66 Core/CoreTests files byte-identical to historical pinned 279-test PASS at483284b; no new Core run.",
+  "functions_executed_for_API_probe": 0,
+  "new_lyrics_import": false,
+  "new_animated_artwork_playback": false,
+  "new_animation_video_cache_bytes": 0,
+  "Home_constructed": false,
+  "real_accounts_used": false,
+  "physical_acceptance": false
+}
