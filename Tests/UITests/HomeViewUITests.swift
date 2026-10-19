@@ -4795,7 +4795,8 @@ extension HomeViewUITests {
       let springboard=XCUIApplication(bundleIdentifier:"com.apple.springboard")
       springboard.activate()
       XCTAssertTrue(springboard.wait(for:.runningForeground,timeout:10))
-      XCTAssertNotEqual(app.state,.runningForeground)
+      let outsideReady=XCTWaiter.wait(for:[XCTNSPredicateExpectation(
+        predicate:NSPredicate { [self] _,_ in app.state != .runningForeground },object:nil)],timeout:10) == .completed
       let outside=XCTAttachment(screenshot:springboard.screenshot());outside.name="timer-system-activity-outside-app";outside.lifetime = .keepAlways;add(outside)
       app.activate()
       if app.switches["timer.activity.enabled"].value as? String=="1" {setTimerActivityEnabled(false)}
@@ -4804,6 +4805,7 @@ extension HomeViewUITests {
       XCTAssertTrue(paused,"Actual ActivityKit registry did not reflect pause")
       XCTAssertTrue(resumed,"Actual ActivityKit registry did not reflect resume")
       XCTAssertTrue(cleaned,"Own ActivityKit registry was not empty after explicit opt-out")
+      XCTAssertTrue(outsideReady,"HomeView did not leave the foreground before outside capture")
     } else {
       shot("timer-system-activity-request-not-established")
       if app.switches["timer.activity.enabled"].value as? String=="1" {setTimerActivityEnabled(false)}
