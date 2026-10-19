@@ -4011,6 +4011,8 @@ extension HomeViewUITests {
     XCUIDevice.shared.press(.home);app.activate()
     XCTAssertTrue(app.buttons["reset.authenticate"].waitForExistence(timeout:8))
     XCTAssertFalse(app.textFields["reset.confirmation"].exists)
+    XCTAssertTrue(app.staticTexts["reset.status"].label.contains("Authentication expired or was cleared"))
+    XCTAssertFalse(app.staticTexts["reset.status"].label.hasPrefix("Authenticated."))
     shot("reset-background-requires-fresh-authentication");tap("reset.cancel")
   }
   func testLocalResetReadOnlyNewerStateIsNotDiscarded() {

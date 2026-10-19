@@ -20,6 +20,12 @@ struct LocalResetView:View {
   @Environment(AppModel.self) private var model
   @State private var confirmation=""
   @FocusState private var confirming:Bool
+  private var disclosedStatus:String {
+    if !model.localResetAuthorized,model.localResetStatus.hasPrefix("Authenticated.") {
+      return "Authentication expired or was cleared. Authenticate again before resetting or retrying cleanup."
+    }
+    return model.localResetStatus
+  }
   var body:some View {
     VStack(spacing:0) {
       HStack {
@@ -40,7 +46,7 @@ struct LocalResetView:View {
           }
           Text("Authentication expires after 60 seconds and is revoked on background, lock or profile change.")
             .font(.callout).foregroundStyle(.gray)
-          Text(model.localResetStatus).accessibilityIdentifier("reset.status")
+          Text(disclosedStatus).accessibilityIdentifier("reset.status")
           if model.localResetAuthorized {
             TextField("Type RESET exactly",text:$confirmation)
               .focused($confirming).submitLabel(.done).onSubmit { confirming=false }
