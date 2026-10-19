@@ -113,11 +113,19 @@ final class DeviceConnections {
     }
     requested.insert(kind)
     let wasEnabled = enabled.contains(kind)
+    let previousStatus = status[kind]
     busy.insert(kind)
     generation[kind, default: 0] += 1
     let ticket = generation[kind]
     status[kind] = "Connecting…"
-    defer { if generation[kind] == ticket { busy.remove(kind) } }
+    defer {
+      if generation[kind] == ticket {
+        busy.remove(kind)
+        if Task.isCancelled, kind == .calendar || kind == .reminders {
+          status[kind] = previousStatus ?? "Not connected"
+        }
+      }
+    }
     do {
       if kind == .calendar || kind == .reminders {
         if requestPermission {
@@ -133,13 +141,13 @@ final class DeviceConnections {
         guard personalUnlocked else { break }
         let interval = CalendarAgenda.day(containing: date, timeZone: timeZone)
         let values = try await provider.events(from: interval.start, to: interval.end)
-        guard generation[kind] == ticket else { return }
+        guard generation[kind] == ticket, !Task.isCancelled else { return }
         guard personalSourceAvailable(kind) else { return }
         if personalUnlocked { events = try CalendarAgenda.events(values, in: interval) }
       case .reminders:
         guard personalUnlocked else { break }
         let values = try await provider.reminders()
-        guard generation[kind] == ticket else { return }
+        guard generation[kind] == ticket, !Task.isCancelled else { return }
         guard personalSourceAvailable(kind) else { return }
         if personalUnlocked { reminders = values }
       case .music:
@@ -162,6 +170,7 @@ final class DeviceConnections {
       }
     } catch {
       guard generation[kind] == ticket else { return }
+      if Task.isCancelled, kind == .calendar || kind == .reminders { return }
       if kind == .weather && wasEnabled { enabled.insert(kind) } else { enabled.remove(kind) }
       if kind == .weather { weatherFetchFailed = true }
       status[kind] =
@@ -295,7 +304,7 @@ final class DeviceConnections {
   }
   private func editReminder(_ action: () async throws -> String,
                             verify: ([DeviceReminder], String) -> Bool) async -> Bool {
-    guard personalUnlocked, enabled.contains(.reminders), !busy.contains(.reminders) else { return false }
+    guard !Task.isCancelled, personalUnlocked, enabled.contains(.reminders), !busy.contains(.reminders) else { return false }
     guard personalSourceAvailable(.reminders) else { return false }
     generation[.reminders, default: 0] += 1
     let ticket = generation[.reminders]
@@ -303,10 +312,10 @@ final class DeviceConnections {
     defer { if generation[.reminders] == ticket { busy.remove(.reminders) } }
     do {
       let id = try await action()
-      guard generation[.reminders] == ticket, personalUnlocked else { return false }
+      guard generation[.reminders] == ticket, personalUnlocked, !Task.isCancelled else { return false }
       guard personalSourceAvailable(.reminders) else { return false }
       let values = try await provider.reminders()
-      guard generation[.reminders] == ticket, personalUnlocked else { return false }
+      guard generation[.reminders] == ticket, personalUnlocked, !Task.isCancelled else { return false }
       guard personalSourceAvailable(.reminders) else { return false }
       reminders = values
       let confirmed = verify(values, id)
@@ -315,7 +324,7 @@ final class DeviceConnections {
         : "Change not confirmed. The current source state is shown; no automatic retry."
       return confirmed
     } catch {
-      guard generation[.reminders] == ticket, personalUnlocked else { return false }
+      guard generation[.reminders] == ticket, personalUnlocked, !Task.isCancelled else { return false }
       status[.reminders] = (error as? ReminderStoreError)?.localizedDescription
         ?? "The reminder could not be saved. Refresh to check its state."
       return false
