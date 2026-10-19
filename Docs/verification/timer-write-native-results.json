@@ -1,0 +1,134 @@
+[
+  {
+    "assertions": 13,
+    "case": "pause_timer",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "requested_effect_only": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_changes_state": true,
+      "retry_has_no_error": true,
+      "retry_stored_exactly": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": true,
+      "unrelated_peers_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "F93632BF-42CF-4CBB-B53A-16034FB2504F",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 13,
+    "case": "resume_timer",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "requested_effect_only": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_changes_state": true,
+      "retry_has_no_error": true,
+      "retry_stored_exactly": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": true,
+      "unrelated_peers_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "FA2E3D5E-90E8-4E00-9AA1-4D44F8F604D4",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 13,
+    "case": "remove_timer",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "requested_effect_only": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_changes_state": true,
+      "retry_has_no_error": true,
+      "retry_stored_exactly": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": true,
+      "unrelated_peers_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "6C1D3BB3-E574-43FA-8531-BDF175D3089D",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 13,
+    "case": "disable_alarm",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "requested_effect_only": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_changes_state": true,
+      "retry_has_no_error": true,
+      "retry_stored_exactly": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": true,
+      "unrelated_peers_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "60E52905-B491-437B-9E86-345E7DDC8744",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 13,
+    "case": "enable_alarm",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "requested_effect_only": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_changes_state": true,
+      "retry_has_no_error": true,
+      "retry_stored_exactly": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": true,
+      "unrelated_peers_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "F6948A79-080B-42F0-AC5D-F7F68E07E708",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 13,
+    "case": "remove_alarm",
+    "checks": {
+      "fault_canary_unchanged": true,
+      "no_native_ids": true,
+      "original_bytes_unchanged": true,
+      "requested_effect_only": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_changes_state": true,
+      "retry_has_no_error": true,
+      "retry_stored_exactly": true,
+      "save_error_visible": true,
+      "selection_unchanged": true,
+      "snapshot_unchanged": true,
+      "unrelated_peers_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "6FB0F7BA-33B8-4D4D-9DF3-7C28128D6ECE",
+    "verdict": "PASS"
+  }
+]

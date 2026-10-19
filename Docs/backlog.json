@@ -1978,7 +1978,7 @@
     "priority": "P1",
     "kind": "validation",
     "functions": [],
-    "current": "Lokale Zustände und ausgewählte Neustart-/Offlinefälle sind getestet. Vollständige Daten- und Lifecycle-Matrix fehlt. Vier zusätzliche Play-/Resume-Zustandsfehler und die native Playerübergabe korrigiert; 189Core/4UI/5SDK. Übrige Kriterien bleiben offen; Docs/music-playback-lifecycle.md.",
+    "current": "Begrenzte Migration, späte Musikantworten sowie lokale Rezept-/Face-/Profil- und Vordergrund-Timer-Schreibfehler sind quellengebunden geprüft und korrigiert. Vollständige Daten-/Lifecycle-/Native-Alarm-Matrix bleibt offen.",
     "tasks": [
       "Face-/Slot-/Galerie-/Timer-/Rezept-/Profilmigration mit alten und beschädigten Daten prüfen",
       "Verbindungsabbrüche und spätes Providerergebnis nach Abmelden/Navigation simulieren",
@@ -1991,8 +1991,12 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/80",
     "issue_number": 80,
-    "state": "open",
-    "implementation_note": "Begrenzte gespeicherte Face-Feldwiederherstellung nach unverändertem Decoder-Befund: Docs/face-configuration-recovery.md;166Core/8gezielteUI/5SDK, vier eigene UUID-Teststände mit Originaldateien/Prozessrestart geprüft. Keine vollständige Editor-/Migrations-/Original-/Hardwareabnahme. Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen."
+    "state": "in_progress",
+    "implementation_note": "Begrenzte gespeicherte Face-Feldwiederherstellung nach unverändertem Decoder-Befund: Docs/face-configuration-recovery.md;166Core/8gezielteUI/5SDK, vier eigene UUID-Teststände mit Originaldateien/Prozessrestart geprüft. Keine vollständige Editor-/Migrations-/Original-/Hardwareabnahme. Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen.",
+    "progress_evidence": [
+      "Docs/persistence-write-boundaries.md",
+      "Docs/timer-write-boundaries.md"
+    ]
   },
   {
     "key": "QA-06",
