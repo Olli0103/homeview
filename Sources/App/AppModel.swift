@@ -33,7 +33,15 @@ final class AppModel {
   private let repeatedDoorbellFixtureID = UUID()
   var faceDirection = 1
   var data: Snapshot
-  var route: Route = .face
+  var route: Route = .face {
+    didSet {
+      guard oldValue == .assistant,route != .assistant else { return }
+      assistantAI.clear();stopAnswerSpeech()
+      #if !os(watchOS)
+        discardDemoPlan(restoreDraft:true)
+      #endif
+    }
+  }
   var showingIntroduction=false
   private(set) var localResetGeneration=0
   var showingLocalReset=false
@@ -1349,7 +1357,14 @@ final class AppModel {
     assistantInput = ""
     return true
   }
+  /// Model authorization, not merely a hidden/disabled UI control. No profile,
+  /// source permission or device unlock grants implicit assistant context access.
+  var assistantInteractionActive:Bool {
+    answerSpeechForeground && route == .assistant
+      && demoDoorbell.current == nil && !incomingCall
+  }
   func selectAssistantAnswers(_ enabled:Bool) {
+    guard !enabled || assistantInteractionActive else { return }
     #if !os(watchOS)
       discardDemoPlan()
     #endif
@@ -1360,8 +1375,7 @@ final class AppModel {
   #if !os(watchOS)
   private var demoPlanContextActive:Bool {
     // Root updates this scene-active flag for all assistant interaction.
-    answerSpeechForeground && route == .assistant && !assistantUsesAI
-      && demoDoorbell.current == nil && !incomingCall
+    assistantInteractionActive && !assistantUsesAI
   }
   func discardDemoPlan(restoreDraft:Bool=false) {
     let previous=demoPlan
@@ -1491,7 +1505,7 @@ final class AppModel {
   }
   #endif
   func runAssistant() {
-    guard !Task.isCancelled else { return }
+    guard !Task.isCancelled,assistantInteractionActive else { return }
     stopAnswerSpeech()
     interact()
     if assistantUsesAI {
