@@ -3664,6 +3664,10 @@ extension HomeViewUITests {
     let request=app.textFields["assistant.input"]
     request.tap();request.typeText("Timer auf 90 Sekunden")
     tap("assistant.capabilities")
+    let activation=app.staticTexts["assistant.capabilities.activation"]
+    XCTAssertTrue(activation.waitForExistence(timeout:5))
+    for _ in 0..<6 where !activation.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    shot("assistant-activation-no-wakeword-or-auto-recording")
     let service=app.staticTexts["assistant.capabilities.service"]
     XCTAssertTrue(service.waitForExistence(timeout:5))
     XCTAssertTrue(service.label.contains("No Siri AI or cloud AI provider"))
@@ -3680,6 +3684,7 @@ extension HomeViewUITests {
     XCTAssertEqual(request.value as? String,"Timer auf 90 Sekunden")
     XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
     XCTAssertFalse(app.buttons["assistant.voice.cancel"].exists)
+    XCTAssertEqual(app.staticTexts["assistant.voice.status"].label,"Tap to speak · On-device only")
     viewportShot("assistant-capability-return-unsent-draft",assistantRectangle:true)
   }
 }

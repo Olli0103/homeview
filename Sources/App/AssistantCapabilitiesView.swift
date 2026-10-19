@@ -23,6 +23,8 @@ struct AssistantCapabilitiesView: View {
             }.accessibilityIdentifier("assistant.provider.ondevice")
             Text(model.assistantAI.availability.message).accessibilityIdentifier("assistant.provider.availability")
           }
+          entry("Siri and wakewords · Not connected",
+            "HomeView does not listen for Siri, Hey Siri or a custom wakeword. Opening the app or Assistant does not start a recording. Tap Speak to start voice input, then review the draft and tap Send. There is no automatic wakeword or background listener.",id:"activation")
           entry("Apple on-device answers · Optional",
             "Uses this device’s SystemLanguageModel only. No cloud fallback, API key, subscription, web search or app-data access. Only your explicitly sent text and this temporary conversation enter the model. Answers can be wrong or outdated; verify important facts. Requires a supported device, OS and ready Apple Intelligence model. HomeView does not enable it or download a model.",id:"ondevice")
           entry("Conversation limits",
