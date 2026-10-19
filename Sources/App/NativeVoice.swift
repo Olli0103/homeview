@@ -78,7 +78,7 @@ import Observation
               result(
                 response?.bestTranscription.formattedString ?? "", response?.isFinal ?? false,
                 error == nil
-                  ? nil : "Speech recognition stopped. You can edit the text or try again.")
+                  ? nil : "Speech recognition stopped.")
             }
             input.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
               sink.append(buffer)
@@ -145,6 +145,8 @@ final class VoiceInputController {
     #endif
   }
   func start(locale: String) async {
+    // An already-cancelled old caller must not clear or replace a newer capture.
+    guard !Task.isCancelled else { return }
     cancel()
     let ticket = generation
     phase = .preparing
@@ -158,8 +160,12 @@ final class VoiceInputController {
         return
       }
       phase = .listening
-      transcript = "temperature 72"
       status = "Synthetic voice input · No microphone used"
+      let args=ProcessInfo.processInfo.arguments
+      let index=args.firstIndex(of:"--voice-transcript")
+      let text=index.flatMap { args.indices.contains($0+1) ? args[$0+1]:nil } ?? "temperature 72"
+      receive(text:text,final:false,problem:nil,ticket:ticket)
+      if phase == .listening { armDeadline(ticket:ticket) }
       return
     }
     #if canImport(Speech) && (os(iOS) || os(macOS))
@@ -169,6 +175,7 @@ final class VoiceInputController {
         }
       }
       guard generation == ticket else { return }
+      guard !Task.isCancelled else { cancel();return }
       guard speechAllowed else {
         fail("Speech permission was not granted. You can type a request.")
         return
@@ -180,6 +187,7 @@ final class VoiceInputController {
         micAllowed = await AVCaptureDevice.requestAccess(for: .audio)
       #endif
       guard generation == ticket else { return }
+      guard !Task.isCancelled else { cancel();return }
       guard micAllowed else {
         fail("Microphone permission was not granted. You can type a request.")
         return
@@ -188,24 +196,14 @@ final class VoiceInputController {
       self.capture = capture
       let problem = await capture.start(locale: locale) { [weak self] text, final, problem in
         Task { @MainActor [weak self] in
-          guard let self, self.generation == ticket else { return }
-          if !text.isEmpty { self.transcript = String(text.prefix(AssistantLimits.transcriptCharacters)) }
-          if final || problem != nil {
-            self.deadline?.cancel()
-            self.capture?.cancel()
-            self.capture = nil
-            self.phase = self.transcript.isEmpty ? .failed : .ready
-            self.status =
-              self.transcript.isEmpty
-              ? (problem ?? "No speech detected. Try again or type a request.")
-              : "Review the text, then tap Send."
-          }
+          self?.receive(text:text,final:final,problem:problem,ticket:ticket)
         }
       }
       guard generation == ticket else {
         capture.cancel()
         return
       }
+      guard !Task.isCancelled else { cancel();return }
       if let problem {
         fail(problem)
         return
@@ -214,21 +212,46 @@ final class VoiceInputController {
       guard phase == .preparing else { return }
       phase = .listening
       status = "Listening… Tap Stop when finished."
-      deadline = Task { [weak self] in
-        do { try await Task.sleep(for: .seconds(AssistantLimits.recordingSeconds)) } catch { return }
-        guard let self, self.generation == ticket else { return }
-        self.finish()
-      }
+      armDeadline(ticket:ticket)
     #else
       fail("Voice input is unavailable on this target. You can type a request.")
     #endif
+  }
+  private func armDeadline(ticket:Int) {
+    deadline?.cancel()
+    deadline=Task { [weak self] in
+      do { try await Task.sleep(for:.seconds(AssistantLimits.recordingSeconds)) } catch { return }
+      guard let self,self.generation==ticket else { return }
+      self.finish()
+    }
+  }
+  private func receive(text:String,final:Bool,problem:String?,ticket:Int) {
+    guard generation==ticket,phase == .preparing || phase == .listening || phase == .finishing else { return }
+    if let problem { fail(problem+" No speech draft was retained. Type a request or try again.");return }
+    guard text.count<=AssistantLimits.transcriptCharacters else {
+      fail("Voice input exceeded \(AssistantLimits.transcriptCharacters) characters. No speech draft was retained. Type a request or try again.");return
+    }
+    if final,text.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty {
+      fail("No final speech text was received. Type a request or try again.");return
+    }
+    if !text.isEmpty { transcript=text }
+    if final {
+      deadline?.cancel();deadline=nil
+      #if canImport(Speech) && (os(iOS) || os(macOS))
+        capture?.cancel();capture=nil
+      #endif
+      if transcript.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty {
+        fail("No speech detected. Try again or type a request.")
+      } else { phase = .ready;status="Review the text, then tap Send." }
+    }
   }
   func finish() {
     guard recording else { return }
     deadline?.cancel()
     if synthetic {
-      phase = .ready
-      status = "Review the text, then tap Send."
+      let problem=ProcessInfo.processInfo.arguments.contains("--voice-recognition-error")
+        ? "Speech recognition stopped.":nil
+      receive(text:transcript,final:true,problem:problem,ticket:generation)
       return
     }
     phase = .finishing
@@ -240,17 +263,11 @@ final class VoiceInputController {
     deadline = Task { [weak self] in
       do { try await Task.sleep(for: .seconds(6)) } catch { return }
       guard let self, self.generation == ticket else { return }
-      #if canImport(Speech) && (os(iOS) || os(macOS))
-        self.capture?.cancel()
-        self.capture = nil
-      #endif
-      self.phase = self.transcript.isEmpty ? .failed : .ready
-      self.status =
-        self.transcript.isEmpty
-        ? "No speech detected. Try again or type a request." : "Review the text, then tap Send."
+      self.fail("Voice input did not finish. No speech draft was retained. Type a request or try again.")
     }
   }
   private func fail(_ message: String) {
+    deadline?.cancel();deadline=nil;transcript=""
     #if canImport(Speech) && (os(iOS) || os(macOS))
       capture?.cancel()
       capture = nil

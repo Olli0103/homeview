@@ -45,6 +45,8 @@ struct AssistantCapabilitiesView: View {
             VoiceInputController.supported
               ? "Deutsch (de-DE) or English (en-US). On-device recognition only. Availability depends on this device and its installed language support. Speak requests permission and checks availability; typing remains available."
               : "Voice input is unavailable on this platform. Type a request instead.",id:"voice")
+          entry("Voice preview and cancellation",
+            "Queued capture belongs to this Assistant session. Leaving, background, lock, profile/mode changes and call/doorbell coverage cancel it. Recognition errors, missing final text and oversized transcripts discard the speech draft; your earlier typed draft remains available in the same session. No transcript is sent automatically. Review the finished draft and tap Send. Physical recognition quality and permission timing still require device acceptance.",id:"voiceLifecycle")
           entry("Input limits",
             "Voice capture: up to \(AssistantLimits.recordingSeconds) seconds; transcript: \(AssistantLimits.transcriptCharacters) characters. Recording only creates a draft. Review it and tap Send to act.",id:"limits")
           entry("Timer limits",

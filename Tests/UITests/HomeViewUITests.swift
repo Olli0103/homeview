@@ -4428,3 +4428,81 @@ extension HomeViewUITests {
     viewportShot("guest-policy-assistant-cannot-resume-locked-source")
   }
 }
+
+extension HomeViewUITests {
+  private func stopSyntheticVoicePreview(_ transcript:String) {
+    tap("assistant.voice")
+    XCTAssertTrue(app.staticTexts["assistant.voice.status"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["assistant.voice.status"].label.contains("Synthetic"))
+    XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
+    tap("assistant.voice")
+    XCTAssertEqual(app.textFields["assistant.input"].value as? String,transcript)
+    XCTAssertTrue(app.buttons["assistant.send"].isEnabled)
+  }
+  func testVoiceNamedTimerAndAmbiguousTranscriptNeedExplicitSend() {
+    let command="Timer auf 90 Sekunden namens Synthetic Tea"
+    launch(["--voice-transcript",command]);tap("nav.assistant")
+    stopSyntheticVoicePreview(command)
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    viewportShot("voice-owned-timer-ready-no-action",assistantRectangle:true)
+    tap("assistant.send")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("90 seconds"))
+    tap("nav.faces");drawer();tap("app.Timers")
+    XCTAssertEqual(app.staticTexts["timer.title"].label,"SYNTHETIC TEA")
+    tap("timer.pause")
+    viewportShot("voice-owned-named-timer-created")
+    launch(["--voice-transcript","set a timer"]);tap("nav.assistant")
+    stopSyntheticVoicePreview("set a timer");tap("assistant.send")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("Specify"))
+    tap("nav.faces");drawer();tap("app.Timers")
+    XCTAssertTrue(app.buttons["timer.start"].exists);XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
+    viewportShot("voice-owned-ambiguous-transcript-no-timer")
+  }
+  func testVoiceCookingStepRemainsPreviewUntilSend() {
+    let command="nächster schritt"
+    launch(["--screen-recipe","--voice-transcript",command]);tap("recipe.start")
+    XCTAssertTrue(app.staticTexts["cooking.text"].label.contains("olive oil"))
+    tap("nav.assistant");stopSyntheticVoicePreview(command)
+    XCTAssertTrue(app.textFields["assistant.input"].exists);XCTAssertFalse(app.staticTexts["cooking.text"].exists)
+    viewportShot("voice-owned-cooking-step-ready-no-action",assistantRectangle:true)
+    tap("assistant.send")
+    XCTAssertTrue(app.staticTexts["cooking.text"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["cooking.text"].label.contains("squash"))
+    viewportShot("voice-owned-cooking-step-explicitly-advanced")
+  }
+  func testVoiceRecognitionErrorAndOverflowDiscardSpeechAndRetainTypedFallback() {
+    let partial="Timer auf 90 Sekunden namens Synthetic Partial"
+    launch(["--voice-transcript",partial,"--voice-recognition-error"]);tap("nav.assistant")
+    let field=app.textFields["assistant.input"];field.tap();field.typeText("temperature 71")
+    tap("assistant.voice")
+    XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
+    tap("assistant.voice")
+    let status=app.staticTexts["assistant.voice.status"]
+    expectation(for:NSPredicate(format:"label CONTAINS %@","No speech draft was retained"),evaluatedWith:status)
+    waitForExpectations(timeout:5)
+    XCTAssertEqual(field.value as? String,"temperature 71")
+    viewportShot("voice-owned-error-retains-typed-fallback",assistantRectangle:true)
+    tap("assistant.send");tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"71°")
+    drawer();tap("app.Timers");XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
+    launch(["--voice-transcript",String(repeating:"x",count:1001)]);tap("nav.assistant");tap("assistant.voice")
+    expectation(for:NSPredicate(format:"label CONTAINS %@","exceeded 1000"),evaluatedWith:app.staticTexts["assistant.voice.status"])
+    waitForExpectations(timeout:5)
+    XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
+    XCTAssertTrue(["","Type a request"].contains(app.textFields["assistant.input"].value as? String ?? "invalid"))
+    viewportShot("voice-owned-overflow-rejected-not-truncated",assistantRectangle:true)
+  }
+  func testVoiceContextLossCancelsCaptureAndDiscardsOldTranscript() {
+    launch(["--voice-transcript","Timer auf 90 Sekunden namens Synthetic Abandoned"]);tap("nav.assistant")
+    let field=app.textFields["assistant.input"];field.tap();field.typeText("temperature 73")
+    tap("assistant.voice");tap("nav.faces");tap("nav.assistant")
+    XCTAssertEqual(field.value as? String,"temperature 73")
+    XCTAssertEqual(app.staticTexts["assistant.voice.status"].label,"Tap to speak · On-device only")
+    tap("assistant.voice");XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertTrue(field.waitForExistence(timeout:8))
+    XCTAssertTrue(["","Type a request"].contains(field.value as? String ?? "invalid"))
+    XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
+    XCTAssertEqual(app.staticTexts["assistant.voice.status"].label,"Tap to speak · On-device only")
+    viewportShot("voice-owned-background-context-cleared",assistantRectangle:true)
+  }
+}
