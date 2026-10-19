@@ -424,16 +424,18 @@ final class AppModel {
         #endif
       } catch { self.error="The owned reset fixture could not be prepared." }
     }
-    if !ephemeral, FileManager.default.fileExists(atPath: store.path) {
+    if !ephemeral {
       do {
-        let bytes = try Data(contentsOf: store)
-        let saved = try Snapshot.decodeMigrating(bytes)
-        let normalized = try JSONEncoder().encode(saved)
-        if try Snapshot.canonicalBytes(bytes) != Snapshot.canonicalBytes(normalized) {
-          try preserveOriginalStore(bytes)
-          storeRecoveryNote = "Supported saved fields recovered. The original file was preserved."
+        // Missing is fresh state; dangling links and unsafe nodes are not missing.
+        if let bytes=try LocalStateFileReader.read(store) {
+          let saved = try Snapshot.decodeMigrating(bytes)
+          let normalized = try JSONEncoder().encode(saved)
+          if try Snapshot.canonicalBytes(bytes) != Snapshot.canonicalBytes(normalized) {
+            try preserveOriginalStore(bytes)
+            storeRecoveryNote = "Supported saved fields recovered. The original file was preserved."
+          }
+          data = saved
         }
-        data = saved
       } catch {
         storeReadOnly = true
         storeRecoveryNote = "Original saved data is unchanged. This file could not be safely opened; changes are not saved."
@@ -771,14 +773,14 @@ final class AppModel {
     let digest = SHA256.hash(data: bytes).map { String(format: "%02x", $0) }.joined()
     let backup = folder.appendingPathComponent("original-" + digest + ".json")
     if FileManager.default.fileExists(atPath: backup.path) {
-      guard try Data(contentsOf: backup) == bytes else { throw SnapshotReadError.malformed }
+      guard try LocalStateFileReader.read(backup) == bytes else { throw SnapshotReadError.malformed }
     } else {
       let existing = try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
       guard existing.filter({ $0.lastPathComponent.hasPrefix("original-") }).count < 8 else {
         throw SnapshotReadError.oversized
       }
       try bytes.write(to: backup, options: .atomic)
-      guard try Data(contentsOf: backup) == bytes else { throw SnapshotReadError.malformed }
+      guard try LocalStateFileReader.read(backup) == bytes else { throw SnapshotReadError.malformed }
     }
   }
   private func writableStore() -> Bool {
@@ -1530,15 +1532,7 @@ final class AppModel {
   }
   private var canonicalPlanStore:Data {
     get throws {
-      let descriptor=Darwin.open(store.path,O_RDONLY|O_NOFOLLOW|O_NONBLOCK|O_CLOEXEC)
-      guard descriptor>=0 else { throw SnapshotReadError.malformed }
-      let handle=FileHandle(fileDescriptor:descriptor,closeOnDealloc:true)
-      defer { try? handle.close() }
-      var info=stat()
-      guard fstat(descriptor,&info)==0,(info.st_mode & mode_t(S_IFMT))==mode_t(S_IFREG),
-        info.st_size>=0,info.st_size<=32_000_000 else { throw SnapshotReadError.oversized }
-      let bytes=try handle.read(upToCount:32_000_001) ?? Data()
-      guard bytes.count<=32_000_000 else { throw SnapshotReadError.oversized }
+      guard let bytes=try LocalStateFileReader.read(store) else { throw SnapshotReadError.malformed }
       return try Snapshot.canonicalBytes(bytes)
     }
   }
