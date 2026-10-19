@@ -3867,3 +3867,61 @@ extension HomeViewUITests {
     viewportShot("dialog-profile-switch-no-inherited-conversation")
   }
 }
+
+
+extension HomeViewUITests {
+  private func finishSetupSteps() {
+    XCTAssertTrue(app.staticTexts["setup.step"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["setup.step"].label,"Step 1 of 3")
+    tap("setup.next");tap("setup.next")
+    XCTAssertEqual(app.staticTexts["setup.step"].label,"Step 3 of 3")
+    XCTAssertTrue(app.staticTexts["setup.permission"].label.contains("Nothing on this page requests permission"))
+  }
+  func testIntroductionDeferralCompletionAndRestartPreserveExplicitChoice() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--setup-introduction-fixture"])
+    XCTAssertTrue(app.staticTexts["setup.scope"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["setup.scope"].label.contains("Apple Home stays disconnected"))
+    XCTAssertTrue(app.staticTexts["setup.nostore"].label.contains("cannot install"))
+    shot("setup-first-device-and-mock-scope")
+    tap("setup.next")
+    XCTAssertTrue(app.staticTexts["setup.owner"].label.contains("not authentication"))
+    tap("setup.back");tap("setup.later")
+    XCTAssertFalse(app.staticTexts["setup.step"].exists)
+    app.terminate();app.launch()
+    XCTAssertTrue(app.buttons["nav.controls"].waitForExistence(timeout:15))
+    XCTAssertFalse(app.staticTexts["setup.step"].exists)
+    tap("nav.controls");tap("controls.settings");tap("settings.introduction")
+    finishSetupSteps();shot("setup-services-no-permissions-or-store")
+    tap("setup.finish")
+    app.terminate();app.launch()
+    XCTAssertTrue(app.buttons["nav.controls"].waitForExistence(timeout:15))
+    XCTAssertFalse(app.staticTexts["setup.step"].exists)
+    tap("nav.controls");tap("controls.settings");tap("settings.introduction")
+    XCTAssertEqual(app.staticTexts["setup.step"].label,"Step 1 of 3")
+    tap("setup.later")
+    viewportShot("setup-can-reopen-after-completion-without-home")
+  }
+  func testIntroductionDeniedServiceCanDisconnectAndConnectLater() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--setup-introduction-fixture","--connection-denied"])
+    finishSetupSteps();tap("setup.settings")
+    XCTAssertTrue(app.buttons["settings.introduction"].waitForExistence(timeout:5))
+    connectService("Calendar",success:false)
+    XCTAssertEqual(app.buttons["connect.Calendar"].label,"Connect")
+    XCTAssertTrue(app.staticTexts["connections.home.locked"].label.contains("disconnected"))
+    tap("connection.forget.Calendar")
+    XCTAssertEqual(app.staticTexts["connection.status.Calendar"].label,"Disconnected")
+    viewportShot("setup-denied-connection-forgotten-not-home")
+    app.terminate()
+    app.launchArguments.removeAll { $0=="--connection-denied" }
+    app.launch()
+    XCTAssertTrue(app.buttons["nav.controls"].waitForExistence(timeout:15))
+    XCTAssertFalse(app.staticTexts["setup.step"].exists)
+    tap("nav.controls");tap("controls.settings");connectService("Calendar")
+    XCTAssertEqual(app.buttons["connect.Calendar"].label,"Disconnect")
+    tap("connect.Calendar")
+    XCTAssertEqual(app.staticTexts["connection.status.Calendar"].label,"Disconnected")
+    viewportShot("setup-explicit-later-connect-and-disconnect")
+  }
+}
