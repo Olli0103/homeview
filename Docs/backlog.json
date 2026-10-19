@@ -1435,7 +1435,7 @@
     "functions": [
       "F079"
     ],
-    "current": "Statische Cover werden angezeigt. Keine allgemeine Original-Lyrics- oder animierte-Artwork-Integration.",
+    "current": "Statische Cover und quellspezifische Information zu fehlenden Lyrics/Animationen. Öffentliche Pfade getrennt geprüft: MusicKit-Bild/hasLyrics, optionaler MediaPlayer-Lyrics-Text und eigene lokale animierte Now-Playing-Assets. Keine Animationen/Lyrics importiert; eigener Medienadapter und tatsächliche Wiedergabe bleiben offen. Docs/music-artwork-and-lyrics.md.",
     "tasks": [
       "Offiziell verfügbare Felder/Rechte und Animationstransporte prüfen",
       "Nicht verfügbare Lyrics ehrlich ausweisen",
@@ -1449,7 +1449,10 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/58",
     "issue_number": 58,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/music-artwork-and-lyrics.md"
+    ]
   },
   {
     "key": "MEDIA-03",
