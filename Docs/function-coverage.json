@@ -1583,7 +1583,9 @@
       "AI-08"
     ],
     "current": [
-      "On-device Speech verarbeitet Eingabe, eine expressive anpassbare Antwortstimme ist nicht gleichwertig umgesetzt."
+      "Eigene manuelle OS-Sprachsynthese mit Sprache/Stimme/Tempo0.35–0.65, Mute/Stop und Geräteauthentifizierung vor separatem Read-Schritt; keine Siri-Stimmenidentität oder Personal-Voice-Klone.",
+      "226 Modelltests, zwölf qualifizierte Simulator-Ausführungen, echter Mac-PCM-/4000-Zeichen-Nachweis, reale stumme Backend-Gates und fünf SDKs. Frühen nativen Queue-Start nach Stop in vier Versuchen reproduziert und durch Clientfreigabe korrigiert. Docs/answer-readout.md.",
+      "Physische iPad-Audiowege/LA/Anruf-/Kopfhörerereignisse, Hörqualität/Hardwarelatenz/Energie und Original-Stimmenparität bleiben unbewiesen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1596,9 +1598,9 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded manual ordinary-system-voice readout/focus/privacy gate verified; no automatic replay",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "real Mac synthesis and volume0 backend, synthetic iPad/iPhone focus/lock; physical iPad audio routes/authentication unproved"
     },
     "completion_criteria": [
       "Sprachausgabe mit langen Antworten, Abbruch und gleichzeitigen Timern/Musik abnehmen. Keine Ausgabe privater Inhalte im gesperrten Zustand."

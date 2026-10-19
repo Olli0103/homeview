@@ -33,3 +33,7 @@ Der native Pfad benötigt unterstützte iOS-/macOS-/visionOS-26+-Geräte mit ver
 [Quellenbindung und Prüfergebnisse](verification/assistant-local.json) · [separater Gate-Bericht](verification/assistant-local-release-gate.json) · [echter QA-Harness](verification/assistant-local-native-qa.swift).
 
 Das ist eine vorhandene lokale Antwortfunktion mit ausdrücklich begrenztem Kontext, **keine** Garantie allgemeiner Faktenrichtigkeit, Original-Siri-Parität, physischer iPad-Latenz, Flugmodusfähigkeit oder Energieeffizienz. Die beiden vagen Antworten, native Modellfehler und Geräteabhängigkeit werden nicht versteckt.
+
+## Nachfolgende manuelle Sprachausgabe
+
+Die separat wählbare [Antwortstimme](answer-readout.md) wurde anschließend ergänzt. Sie liest nur die letzte fertige Antwort nach Geräteauthentifizierung und zusätzlichem ausdrücklichem Read; keine automatische Ausgabe oder Weitergabe an einen anderen LLM. Die oben dokumentierten Modellantworten und ihre zwei PARTIAL-Ergebnisse bleiben unverändert.
