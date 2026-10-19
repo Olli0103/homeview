@@ -1,0 +1,249 @@
+{
+  "date": "2026-10-19",
+  "issue": 59,
+  "code_commit": "fed9dc1276f16a6b77fa63ffc93c674e7549d25b",
+  "source_digest": "6d7f8505f03c5c524f3aa63d095c6e4b91d51f03bffa5b53005483f99ef11191",
+  "core_tests": 181,
+  "core_failures": 0,
+  "core_scope": "171 existing +10 RSS metadata/URL/migration/actual injected URLSession transport tests; no external requests. Core source unchanged after that test run.",
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "UI_checkpoints": [
+    {
+      "id": "podcast-feeds-final",
+      "source_digest": "1fba25a050bb3ea81234c6057f6c7ef5afde70a56482d5adfa9144670337a27b",
+      "methods": [
+        "testPublicPodcastRSSNativeSeekPauseNavigationAndRelaunch",
+        "testPublicPodcastFeedErrorsRemovalAndBackgroundNeverAutoplayDemo",
+        "testPodcastFailedHTTPSLoadKeepsSelectionAndMusicTakesAudioFocus",
+        "testPodcastTransportPersistsThroughNavigation",
+        "testConnectedMusicAndWeatherDoNotUseHomeKit"
+      ],
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 4,
+          "failed": 1,
+          "skipped": 0,
+          "runtimeWarnings": [],
+          "failures": [
+            "XCTAssertLessThan failed: (\"10\") is not less than (\"10\")"
+          ]
+        },
+        {
+          "device": "iPhone",
+          "passed": 4,
+          "failed": 1,
+          "skipped": 0,
+          "runtimeWarnings": [],
+          "failures": [
+            "XCTAssertLessThan failed: (\"10\") is not less than (\"10\")"
+          ]
+        }
+      ],
+      "qualification": "Four passing methods per device; seek/navigation reached the target but final absolute-time assertion failed.",
+      "all_inputs_unchanged": true
+    },
+    {
+      "id": "podcast-feeds-seek-final",
+      "source_digest": "1a5a28c3e1281a0aa8a00eabcc0c0b37a89c98169e74c40e5f76c2556dc9325b",
+      "methods": [
+        "testPublicPodcastRSSNativeSeekPauseNavigationAndRelaunch"
+      ],
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": [],
+          "failures": []
+        }
+      ],
+      "qualification": "Passing replacement checks relative15-second backward seek; app source unchanged from preceding checkpoint.",
+      "all_inputs_unchanged": true
+    },
+    {
+      "id": "podcast-feeds-focus-final",
+      "source_digest": "aca21c9dbbb5f770349d57015326efdeeb9b691561e0ec2c1158d2d5e92a90c8",
+      "methods": [
+        "testConnectedMusicResumeTakesFocusFromNativePodcast",
+        "testConnectedMusicAndWeatherDoNotUseHomeKit",
+        "testPublicPodcastRSSNativeSeekPauseNavigationAndRelaunch"
+      ],
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 2,
+          "failed": 1,
+          "skipped": 0,
+          "runtimeWarnings": [],
+          "failures": [
+            "Failed to get matching snapshot: No matches found for Elements matching predicate '\"music.connected.play\" IN identifiers' from input {(\n    Button, identifier: 'close', label: 'Close',\n    Button, identifier: 'music.search', label: 'Search',\n    Button, identifier: 'nav.faces', label: 'Faces',\n    Button, identifier: 'nav.apps', label: 'Apps',\n    Button, identifier: 'nav.assistant', label: 'Assistant',\n    Button, identifier: 'nav.controls', label: 'Control Center',\n    Button, identifier: 'music.result.0', label: 'Connected fixture song, Synthetic Artist',\n    Button, identifier: 'music.result.1', label: 'Second fixture song, Synthetic Artist'\n)}"
+          ]
+        },
+        {
+          "device": "iPhone",
+          "passed": 2,
+          "failed": 1,
+          "skipped": 0,
+          "runtimeWarnings": [],
+          "failures": [
+            "Failed to get matching snapshot: No matches found for Elements matching predicate '\"music.connected.play\" IN identifiers' from input {(\n    Button, identifier: 'close', label: 'Close',\n    Button, identifier: 'music.search', label: 'Search',\n    Button, identifier: 'nav.faces', label: 'Faces',\n    Button, identifier: 'nav.apps', label: 'Apps',\n    Button, identifier: 'nav.assistant', label: 'Assistant',\n    Button, identifier: 'nav.controls', label: 'Control Center',\n    Button, identifier: 'music.result.0', label: 'Connected fixture song, Synthetic Artist',\n    Button, identifier: 'music.result.1', label: 'Second fixture song, Synthetic Artist'\n)}"
+          ]
+        }
+      ],
+      "qualification": "Connected music return exposed existing always-browse state; failed resume cases retained.",
+      "all_inputs_unchanged": true
+    },
+    {
+      "id": "podcast-feeds-resume-final",
+      "source_digest": "6d7f8505f03c5c524f3aa63d095c6e4b91d51f03bffa5b53005483f99ef11191",
+      "methods": [
+        "testConnectedMusicResumeTakesFocusFromNativePodcast",
+        "testConnectedMusicAndWeatherDoNotUseHomeKit",
+        "testPublicPodcastRSSNativeSeekPauseNavigationAndRelaunch"
+      ],
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": [],
+          "failures": []
+        }
+      ],
+      "qualification": "Final affected cases pass after current-player navigation and shared audio switch.",
+      "all_inputs_unchanged": true
+    }
+  ],
+  "earlier_failed_pilots_preserved": [
+    "pilot: activity identifiers inherited from container",
+    "diagnostic: actual native playing state proved; same missing child identifier"
+  ],
+  "unique_selected_methods_per_device": 6,
+  "unique_selected_method_scope": "Six unique methods across qualified checkpoints, not a single all-green final full-suite run. The final source reruns the3 affected methods/device.",
+  "compiled_input_files_frozen": 23,
+  "compiled_archive_readback": true,
+  "compiled_archive_sha256": "b1d20b6c6f9e2893f950e2de5b53f8a6f08197e39458a372a22c8e851c2c4668",
+  "installed_app_readback": {
+    "iPad": true,
+    "iPhone": true
+  },
+  "image_review": {
+    "decoded_final_images": 20,
+    "decoded_earlier_qualified_images": 28,
+    "decoded_seek_followup_images": 12,
+    "selected_reviewed_views": 26,
+    "public_images": [
+      {
+        "path": "Docs/screenshots/podcast-rss/iPad-viewport-rss-connected-music-resume-focus.png",
+        "sha256": "e3c58b1816d59554889228329daeba2f4362a03c444fc087fa15050e91962568"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPad-viewport-rss-failed-load-keeps-real-selection.png",
+        "sha256": "ad2f3fad8f4d2e0866996b76f1a916cde23ca0bfac6daf394dec59dd7085ed45"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPad-viewport-rss-music-focus-pauses-podcast.png",
+        "sha256": "291ba0ed96fe2b22218d687f005277877cc20f7700169df229e47ac57213efa7"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPad-viewport-rss-podcast-background-paused.png",
+        "sha256": "e91d65ce750a3d7824fc6db7c508e592a8aff1f55ed4162c5808aa0f84515d37"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPad-viewport-rss-podcast-face-before-return.png",
+        "sha256": "1b24b8e6cb1c3d224d83a608874c1a52b8ce6a227b0e3bb59b110fb2c9c6c8d7"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPad-viewport-rss-podcast-paused-native-seek.png",
+        "sha256": "705fe5642453892f10edcafc9fb5d58b0d6b0e75c1ed59a2e1f55b6cdfa1005f"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPad-viewport-rss-podcast-removed-explicit-demo.png",
+        "sha256": "3085f03a8306787bd308ea150a40d29a3902232b75bf4bd6bf2a379272f8e897"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPad-viewport-rss-podcast-resumed-navigation.png",
+        "sha256": "ff13864946e8e2783b60c45328c639aef19bbbd33921a5d07bd0b61a00ca9596"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPhone-viewport-rss-connected-music-resume-focus.png",
+        "sha256": "8a51841c99379f87baef208872a68f800f577350aacb4ca0f39e81e29bc5b196"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPhone-viewport-rss-failed-load-keeps-real-selection.png",
+        "sha256": "56f69208c11359fa5d9efa5b2967424aed51ad1edd1faf370c7d78d9b7bd389f"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPhone-viewport-rss-music-focus-pauses-podcast.png",
+        "sha256": "c7c3ef2d40dc5e93f7ed1631d5ba6411251a790970ab6d9d7079cf306cf802ba"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPhone-viewport-rss-podcast-background-paused.png",
+        "sha256": "03878baf3bd4b0c86172bc954e6e529bd77946923f108c97ca39ba306bdece1a"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPhone-viewport-rss-podcast-face-before-return.png",
+        "sha256": "c52a9baf5a2e2dcc808ca091e79436d50398f84d70bba293064f536151c417d5"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPhone-viewport-rss-podcast-paused-native-seek.png",
+        "sha256": "5669f1b3dd4a566f0769f39fc122ef3542690d7606ba846167a1d57083725396"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPhone-viewport-rss-podcast-removed-explicit-demo.png",
+        "sha256": "650cfdce9583bbc168d1b69472ec7316b0dcb436160ece33673d38c1904054cd"
+      },
+      {
+        "path": "Docs/screenshots/podcast-rss/iPhone-viewport-rss-podcast-resumed-navigation.png",
+        "sha256": "11b2ddd480656ce12cc973d6aaea1fb74f201794ad927d174c05ac657f41c2b9"
+      }
+    ]
+  },
+  "limits": [
+    "No actual public-network feed or live Apple Music account used",
+    "No Apple Podcasts account/subscription import",
+    "No physical speaker, AirPlay, long-background playback or original visual parity proof",
+    "General pending Music play/resume race and guest/media policy remain #67/#80, not solved by synchronous focus-path tests",
+    "Home adapter remains construction-disabled"
+  ]
+}

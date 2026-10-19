@@ -17,3 +17,9 @@ Hintergrund-Streaming, Downloadverwaltung, Apple-Podcasts-Katalog, private Abos 
 Der nur unter beiden Testargumenten `--uitesting --podcast-fixture` sichtbare Testfeed enthält zwei frei erfundene Folgen. Exakt deren Fixture-URLs werden ausschließlich im Testmodus auf das gebündelte eigene WAV abgebildet. Andere Feedfehler werden nicht auf Testaudio umgebogen. Das WAV enthält 60 Sekunden selbst erzeugten 220-Hz-Sinuston, mono, 16 kHz/16 Bit; weder Sprache noch fremde Aufnahmen. Es ist ein Funktionssignal, keine Musik.
 
 Automatische Prüfungen verwenden ausschließlich diese Daten und isolierte Teststores. Die zusätzlichen URLSession-Transporttests injizieren ein privates URLProtocol; sie prüfen den echten Client bei Erfolg, HTTP 503 und deklariertem Übermaß, ohne eine externe Anfrage. Das ist keine Live-Feed-, Apple-Account- oder Hardwareabnahme. Apple Home bleibt deaktiviert.
+
+## Nachweise
+
+181 Modell-/Transporttests bestanden. Sechs unterschiedliche ausgewählte native Fälle je iPad/iPhone sind über die dokumentierten Checkpoints abgedeckt. Der letzte Quellenstand wiederholt die drei vom zusätzlichen Musikfix betroffenen Fälle je Gerät erfolgreich; keine erfundene durchgehend grüne Gesamtsuite. Alle fünf arm64-SDK-Builds bestehen. 48 Bilder der qualifizierten ursprünglichen/letzten Läufe plus zwölf Bilder des gesonderten Seek-Folgelaufs dekodiert; 26 ausgewählte Zustände auf Kontaktbögen gesichtet. 16 eigene Viewport-PNGs sind veröffentlicht.
+
+[Quellenbindung und vollständige Checkpoint-Ergebnisse](verification/podcast-rss.json). Fehlgeschlagene Piloten bleiben fehlgeschlagen: zuerst überdeckte Accessibility-IDs, danach eine falsche absolute Zeitannahme im Test und zuletzt der tatsächliche Music-Rückkehrfehler. Keine nachträgliche Umdeutung in PASS. Allgemeine noch ausstehende Music-Play-/Resume-Races und Gast-/Medienpolicy aus #67/#80 werden damit nicht pauschal freigegeben.
