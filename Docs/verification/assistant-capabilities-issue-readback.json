@@ -1,0 +1,27 @@
+{
+  "assignees": [],
+  "body": "<!-- homeview-backlog:AI-09 -->\n\n## Ziel\n\nDienstverfügbarkeit, Sprachen und Limits sichtbar machen.\n\n## Stand\n\nDie Informationsansicht zeigt den lokalen Parser, ausgewählte Deutsch-/Englischbefehle, englische Antworten, On-device-Speech-Voraussetzungen und tatsächlich erzwungene Eingabegrenzen. Kein Cloud-/Siri-Dienst oder KI-Abo ist konfiguriert.\n\nPriorität: P2. Typ: research. Bereich: assistant.\n\n## Referenzumfang\n\n- F052: Englisch-Beta, Nutzungslimits und spätere kostenpflichtige Erweiterung\n\n## Konkrete Arbeit\n\n- [x] Quelle und Datum der Referenzangaben prüfen\n- [x] Eigene tatsächlich unterstützte Sprachen und Limits getrennt anzeigen\n- [x] Keine fremden Abos, Gratiszusagen oder künftigen Preise übernehmen\n\n## Abnahme\n\nF052 ist als Referenz-/Dienstabhängigkeit bilanziert. Jede eigene Nutzungsgrenze entspricht dem implementierten Anbieter.\n\n## Abhängigkeiten\n\n[AI-01](https://github.com/Olli0103/homeview/blob/main/Docs/backlog.md#ai-01), [BASE-01](https://github.com/Olli0103/homeview/blob/main/Docs/backlog.md#base-01)\n\n## Testgrenze\n\nAutomatisierte Tests verwenden synthetische persönliche Daten und MockHome. Apple Home bleibt gesperrt, bis der Eigentümer die Einrichtung ausdrücklich fortsetzt. Keine Nachrichten oder Anrufe automatisch ausführen. Persönliche Accounts und physische Geräte werden gesondert und bewusst abgenommen.\n\nStand: 17. Oktober 2026. Quellen und ursprüngliche Referenzbilder werden nicht mit veröffentlicht. Build-Erfolg ist keine Originalgleichheit. Vollständige Zuordnung in [Docs/function-coverage.json](https://github.com/Olli0103/homeview/blob/main/Docs/function-coverage.json).\n\n## Abschluss · 19. Oktober 2026\n\n[Implementierte Anzeige und datierter Quellenabgleich](https://github.com/Olli0103/homeview/blob/main/Docs/assistant-capabilities.md) · [Quellgebundene Tests](https://github.com/Olli0103/homeview/blob/main/Docs/verification/assistant-capabilities.json).\n\nP01/P03 wurden direkt im vorhandenen16.-Oktober-Quellensnapshot geprüft; P03 ist vom13.Oktober. Keine heutige Live-Verfügbarkeitszusage. Die dokumentierten ursprünglichen Englisch-/Beta-/Dienstlimits werden nicht auf den eigenen Parser oder heutige Preise übertragen. Keine numerische fremde Quote oder künftiger Preis erfunden. F052 bleibt ausdrücklich Original-Dienstabhängigkeit, keine Siri-Parität.\n\nEigene Limits sind an gemeinsame tatsächlich benutzte Konstanten gebunden:30Sekunden Aufnahme,1000Zeichen Transkript,300Zeichen Timerauftrag,1Sekunde–24Stunden Timerdauer. Die Grenzen werden nicht erweitert. Die Informationsansicht erzeugt weder Aufnahme noch Send; Entwurf und vorherige Antwort bleiben erhalten. Keine Home-Anbindung.\n\n181 Modell-/Transporttests,8 gezielte native Ausführungen (4je Gerät) ohne Fehler/Skips/XCTest-Runtime-Warnungen und5arm64SDKs bestanden. Echte Sprachqualität bleibt separat. #33/AI-01 bleibt für eine tatsächliche Anbieter-/Datenschutzwahl offen; dieser Anschluss ist nicht nötig, um den aktuellen Nicht-Anschluss und die vorhandenen Grenzen wahrheitsgemäß anzuzeigen. Der abgegrenzte Informationsauftrag ist abgeschlossen.\n",
+  "labels": [
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rIEUQ",
+      "name": "type:research",
+      "description": "",
+      "color": "0e8a16"
+    },
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rINiQ",
+      "name": "priority:P2",
+      "description": "",
+      "color": "fbca04"
+    },
+    {
+      "id": "LA_kwDOVNXeuM8AAAAC9rIPWQ",
+      "name": "area:assistant",
+      "description": "",
+      "color": "1d76db"
+    }
+  ],
+  "number": 41,
+  "state": "CLOSED",
+  "title": "[AI-09] Dienstverfügbarkeit, Sprachen und Limits sichtbar machen"
+}

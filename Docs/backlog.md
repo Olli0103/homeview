@@ -726,17 +726,9 @@ Abhängigkeiten: AI-01.
 <a id="ai-09"></a>
 ### AI-09: Dienstverfügbarkeit, Sprachen und Limits sichtbar machen
 
-Originalangaben zu Beta, Sprache und kommerziellen Limits sind keine Fähigkeiten unseres lokalen Parsers.
+Abgeschlossen am19.Oktober2026 im Informationsumfang: Eigene Informationsansicht für lokalen Befehlsumfang, ausgewählte deutsche/englische Befehle, englische Antworten und tatsächlich erzwungene Aufnahme-/Transkript-/Timergrenzen. Kein konfigurierter Cloud-/Siri-Dienst oder KI-Abo.
 
-Offen:
-
-- Quelle und Datum der Referenzangaben prüfen
-- Eigene tatsächlich unterstützte Sprachen und Limits getrennt anzeigen
-- Keine fremden Abos, Gratiszusagen oder künftigen Preise übernehmen
-
-Abnahme: F052 ist als Referenz-/Dienstabhängigkeit bilanziert. Jede eigene Nutzungsgrenze entspricht dem implementierten Anbieter.
-
-Abhängigkeiten: AI-01, BASE-01.
+[Anzeige, datierter Referenzabgleich und Grenzen](assistant-capabilities.md) · [Quellgebundene Tests](verification/assistant-capabilities.json). F052 bleibt Original-Dienstabhängigkeit; kein tatsächlicher Siri-/Cloud-Anschluss aus #33 behauptet.
 
 <a id="com-01"></a>
 ### COM-01: FaceTime-Annahme und aktive Anrufsteuerung als API-Lücke bilanzieren
