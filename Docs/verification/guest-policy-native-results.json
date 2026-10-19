@@ -1,0 +1,56 @@
+[
+  {
+    "case": "role_matrix_security",
+    "exit_code": 0,
+    "result": {
+      "assertions": 15,
+      "case": "role_matrix_security",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "private_music",
+    "exit_code": 0,
+    "result": {
+      "assertions": 11,
+      "case": "private_music",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "shared_queue",
+    "exit_code": 0,
+    "result": {
+      "assertions": 17,
+      "case": "shared_queue",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "background_lifetime",
+    "exit_code": 0,
+    "result": {
+      "assertions": 11,
+      "case": "background_lifetime",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "denied_owner",
+    "exit_code": 0,
+    "result": {
+      "assertions": 6,
+      "case": "denied_owner",
+      "verdict": "PASS"
+    }
+  },
+  {
+    "case": "fresh_session",
+    "exit_code": 0,
+    "result": {
+      "assertions": 4,
+      "case": "fresh_session",
+      "verdict": "PASS"
+    }
+  }
+]

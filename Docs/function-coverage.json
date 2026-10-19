@@ -3031,7 +3031,8 @@
       "SYS-05"
     ],
     "current": [
-      "Gastpfad und einzelne persönliche Gates existieren, vollständige Policy für verbundene Quellen fehlt."
+      "Explicit local guest/source policy now enforces device authentication for mock security and account-backed music, separates demo profiles from authority, and permits only explicitly shared current music queues (not search) for guests. Revocation, background, new search, reconnect and reset revoke sharing. Unshared metadata and direct/assistant/widget paths are model-gated. Docs/guest-policy.md.",
+      "Synthetic software acceptance: 264 Core tests with 66 matrix cells, actual AppModel six scenarios/64 assertions, ten successful UI executions over two checkpoints and five final SDK builds. Real Home/communication remains disconnected; household identity, physical account/device and original parity remain unaccepted."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3044,7 +3045,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Current guest/source policy passed synthetic model and touch-based E2E acceptance; original service/hardware parity remains unaccepted. See Docs/guest-policy.md.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
