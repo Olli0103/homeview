@@ -189,7 +189,7 @@ final class VoiceInputController {
       let problem = await capture.start(locale: locale) { [weak self] text, final, problem in
         Task { @MainActor [weak self] in
           guard let self, self.generation == ticket else { return }
-          if !text.isEmpty { self.transcript = String(text.prefix(1000)) }
+          if !text.isEmpty { self.transcript = String(text.prefix(AssistantLimits.transcriptCharacters)) }
           if final || problem != nil {
             self.deadline?.cancel()
             self.capture?.cancel()
@@ -215,7 +215,7 @@ final class VoiceInputController {
       phase = .listening
       status = "Listening… Tap Stop when finished."
       deadline = Task { [weak self] in
-        do { try await Task.sleep(for: .seconds(30)) } catch { return }
+        do { try await Task.sleep(for: .seconds(AssistantLimits.recordingSeconds)) } catch { return }
         guard let self, self.generation == ticket else { return }
         self.finish()
       }

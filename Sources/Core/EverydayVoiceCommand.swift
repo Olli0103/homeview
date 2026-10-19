@@ -21,7 +21,7 @@ enum EverydayVoiceCommand: Equatable {
     }
     guard words.contains("timer") else { self = .unrelated; return }
     let help = "Specify one timer with a duration, for example ‘set a timer for 5 minutes’ or ‘Timer auf 90 Sekunden’."
-    guard raw.count <= 300, !words.contains(where: { ["not","no","don't","dont","nicht","kein","keinen","keine","stop","cancel","delete","lösche","abbrechen"].contains($0) }) else {
+    guard raw.count <= AssistantLimits.timerRequestCharacters, !words.contains(where: { ["not","no","don't","dont","nicht","kein","keinen","keine","stop","cancel","delete","lösche","abbrechen"].contains($0) }) else {
       self = .clarify("No timer changed. Use the timer controls to pause, cancel or delete."); return
     }
     var durationText = text
@@ -56,7 +56,7 @@ enum EverydayVoiceCommand: Equatable {
       total += number * unit
       index += 2
     }
-    guard total.isFinite, total >= 1, total <= 86400, total.rounded() == total else {
+    guard total.isFinite, total >= 1, total <= Double(AssistantLimits.timerSeconds), total.rounded() == total else {
       self = .clarify("Use a duration from 1 second to 24 hours, in whole seconds."); return
     }
     let seconds = Int(total)
