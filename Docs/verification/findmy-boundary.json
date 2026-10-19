@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-19",
+  "issue": 46,
+  "status": "bounded_capability_decision_complete_original_function_blocked",
+  "code_commit": "f698a78231a5908e83a5eb959503a29d14298ed8",
+  "source_digest": "8dca2803d17ea0bc2115156fd606a006ca1c8b544b49fcd0d857254eb6d9a067",
+  "source_files": 190,
+  "API_typechecks": {
+    "typechecks": 10,
+    "compiled": 7,
+    "explicit_unavailability": 3,
+    "functions_executed": 0,
+    "all_expected_outcomes": true,
+    "FindMy_data_access_proven": false
+  },
+  "API_archive": {
+    "entries": 23,
+    "sha256": "bb8c5ab076a26ecabcdb102fc9486d7df3cd2df9a6cec983e2d65d0a91494cc9",
+    "all_entries_read_back": true
+  },
+  "UI_checkpoints": [
+    {
+      "id": "findmy-ui",
+      "code_commit": "5e9e8b9c8cfba4519593386da136fdd42995ad9c",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "9392696d4c06dbeacd6882c1a86e99e441d377eb494b465f5184d3083b4912f8",
+      "source_files": 190,
+      "compiled_inputs": 22,
+      "installed_app_read_back": true,
+      "archive": "findmy-ui-inputs.zip",
+      "archive_entries": 212,
+      "archive_sha256": "0bff46a6615cf9b7987a94d2ee03c8886faf1aa6ebacce22abce9620b7cbb07d",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "findmy-feedback",
+      "code_commit": "17e33538e386a5a35b89e0f10a2c9dda763db046",
+      "passed": 5,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "588a6e96fae3b17dcec0f07e4919189b737c9f255a41ca8077657295b25b5ee6",
+      "source_files": 190,
+      "compiled_inputs": 22,
+      "installed_app_read_back": true,
+      "archive": "findmy-feedback-inputs.zip",
+      "archive_entries": 212,
+      "archive_sha256": "042165482cee2637100a4f6b2e38a22898eebe31ca952945c78228cbd025470f",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "findmy-final-handoff",
+      "code_commit": "f698a78231a5908e83a5eb959503a29d14298ed8",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "8dca2803d17ea0bc2115156fd606a006ca1c8b544b49fcd0d857254eb6d9a067",
+      "source_files": 190,
+      "compiled_inputs": 22,
+      "installed_app_read_back": true,
+      "archive": "findmy-final-handoff-inputs.zip",
+      "archive_entries": 212,
+      "archive_sha256": "3247994b99dca6cbd6bfdba2a42b8dd7e373f0b67b543e6d180bfbb25fcd1bc7",
+      "all_entries_read_back": true
+    }
+  ],
+  "UI_executions": 14,
+  "UI_successful_executions": 13,
+  "UI_historical_failures": 1,
+  "UI_unique_methods": 3,
+  "UI_final_revision_executions": 2,
+  "historical_manual_feedback_failure_checkpoints": 1,
+  "UI_qualification": "First full selection6PASS but feedback below viewport. Feedback refinement5PASS/1FAIL; final affected handoff selection2PASS. Only bottom scroll space changed after intermediate; other successes remain separately pinned, not relabeled as complete final-revision suite.",
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "PNGs_exported_decoded": 13,
+  "contact_sheets_reviewed": 6,
+  "individual_failure_recording_frame_reviewed": true,
+  "selected_images": [
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPad-findmy-boundary-website-handoff-guard.png",
+      "checkpoint": "findmy-final-handoff",
+      "historical_feedback_failure": false,
+      "sha256": "fed0098fe32ee1c929251a018e769506a86224ba7fb35a1b36b7c8874d74a0fd"
+    },
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPad-findmy-boundary-schematic-not-live.png",
+      "checkpoint": "findmy-feedback",
+      "historical_feedback_failure": false,
+      "sha256": "24cb7b4148be118f330188c498f0c97f289408a4cb430df0d64a738de7728f3a"
+    },
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPad-findmy-boundary-local-tone-request-only.png",
+      "checkpoint": "findmy-feedback",
+      "historical_feedback_failure": false,
+      "sha256": "cd3ca7accf414805832508830e3de38329c9aea1f7314d5f86ac7263fe0a7077"
+    },
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPad-historical-hidden-feedback-findmy-boundary-website-handoff-guard.png",
+      "checkpoint": "findmy-ui",
+      "historical_feedback_failure": true,
+      "sha256": "eec29babf18d6a8a4df6562bfa2cce8c710791af5128b7d0cf0fd181b9bd5876"
+    },
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPhone-findmy-boundary-website-handoff-guard.png",
+      "checkpoint": "findmy-final-handoff",
+      "historical_feedback_failure": false,
+      "sha256": "9065df7d27e6526400cedebff8db15ad47ba138602c08f3f20fdc62ebfef81cf"
+    },
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPhone-findmy-boundary-schematic-not-live.png",
+      "checkpoint": "findmy-feedback",
+      "historical_feedback_failure": false,
+      "sha256": "489b789ed4705bc5bb80e66a1f8755e1238718a3fe746b3ca74c6cf8479a19e7"
+    },
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPhone-findmy-boundary-local-tone-request-only.png",
+      "checkpoint": "findmy-feedback",
+      "historical_feedback_failure": false,
+      "sha256": "e8641e062423d0bea4a554d53287572d7462cfc2d76ac53756f759aec867749f"
+    },
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPhone-historical-hidden-feedback-findmy-boundary-website-handoff-guard.png",
+      "checkpoint": "findmy-ui",
+      "historical_feedback_failure": true,
+      "sha256": "abfc0e2fb4ccd9a896ba66cfa84c60306aab2fa0d704bb1742c29312d512195c"
+    },
+    {
+      "path": "Docs/verification/findmy-boundary-images/iPhone-historical-last-action-touch-frame.png",
+      "sha256": "245d15c92ba55bab5eef484c6a5fd0f1276e614177c7dd1aaad3ca91fdce9c88",
+      "historical_failure": true,
+      "qualification": "Frame decoded at 33 seconds from retained failed Simulator recording. Label visible; full touch frame could not enter helper safe inset."
+    }
+  ],
+  "Core_qualification": "66 Core/CoreTests files byte-identical to historical pinned279-test PASS at483284b; no new Core run.",
+  "AppModel_and_actual_LocalAudioEngine_unchanged": true,
+  "probe_functions_executed": 0,
+  "real_locations_or_accounts_read": false,
+  "website_opened_in_UI_tests": false,
+  "radio_or_location_permission_requested": false,
+  "remote_accessory_contacted": false,
+  "acoustic_playback_accepted": false,
+  "Home_constructed": false,
+  "F059_parity_accepted": false,
+  "physical_acceptance": false
+}

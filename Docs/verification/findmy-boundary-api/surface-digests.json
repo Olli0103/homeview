@@ -1,0 +1,64 @@
+{
+  "iphonesimulator": [
+    {
+      "name": "System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h",
+      "sha256": "53b5d93419ec740c82d5fc8d6d10e55ef60e90be785ea62ae912f3518edafe33"
+    },
+    {
+      "name": "System/Library/Frameworks/NearbyInteraction.framework/Modules/NearbyInteraction.swiftmodule/x86_64-apple-ios-simulator.swiftinterface",
+      "sha256": "63845f0eff820416ceedcf64e84d017b13e561aed8fa0750bdc84c07a5286480"
+    },
+    {
+      "name": "System/Library/Frameworks/NearbyInteraction.framework/Modules/NearbyInteraction.swiftmodule/arm64-apple-ios-simulator.swiftinterface",
+      "sha256": "a99d3dd5bef5a14a43f4000c9b3e829ac4a5ad3d0ca850c1d6fbf20dcf4405fd"
+    }
+  ],
+  "macosx": [
+    {
+      "name": "System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h",
+      "sha256": "53b5d93419ec740c82d5fc8d6d10e55ef60e90be785ea62ae912f3518edafe33"
+    },
+    {
+      "name": "System/Library/Frameworks/NearbyInteraction.framework/Modules/NearbyInteraction.swiftmodule/arm64e-apple-ios-macabi.swiftinterface",
+      "sha256": "025de09dcd0e01bbe09a95d43f3f4bfcd3a408a879876df75977f62b666dc35b"
+    },
+    {
+      "name": "System/Library/Frameworks/NearbyInteraction.framework/Modules/NearbyInteraction.swiftmodule/x86_64-apple-ios-macabi.swiftinterface",
+      "sha256": "73b09f6b668c34f753316495687f065a56838719dc372be59889455815e667fd"
+    },
+    {
+      "name": "System/Library/Frameworks/NearbyInteraction.framework/Modules/NearbyInteraction.swiftmodule/arm64e-apple-macos.swiftinterface",
+      "sha256": "37c2f2aa48fb4e2c51f8562c71f071243a208067d1c19781f2106b1ba7411a67"
+    },
+    {
+      "name": "System/Library/Frameworks/NearbyInteraction.framework/Modules/NearbyInteraction.swiftmodule/x86_64-apple-macos.swiftinterface",
+      "sha256": "2d984b9ce9a5a4378cd499d2be8db8009a1805b5f68d553cb5d4fafef2cfeffd"
+    }
+  ],
+  "appletvsimulator": [
+    {
+      "name": "System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h",
+      "sha256": "53b5d93419ec740c82d5fc8d6d10e55ef60e90be785ea62ae912f3518edafe33"
+    }
+  ],
+  "xrsimulator": [
+    {
+      "name": "System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h",
+      "sha256": "53b5d93419ec740c82d5fc8d6d10e55ef60e90be785ea62ae912f3518edafe33"
+    }
+  ],
+  "watchsimulator": [
+    {
+      "name": "System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h",
+      "sha256": "53b5d93419ec740c82d5fc8d6d10e55ef60e90be785ea62ae912f3518edafe33"
+    },
+    {
+      "name": "System/Library/Frameworks/NearbyInteraction.framework/Modules/NearbyInteraction.swiftmodule/arm64-apple-watchos-simulator.swiftinterface",
+      "sha256": "4ed96cf83aa25b0a5f2f9d6bb5d13814526e381b169979ff01d2e547bb047da1"
+    },
+    {
+      "name": "System/Library/Frameworks/NearbyInteraction.framework/Modules/NearbyInteraction.swiftmodule/x86_64-apple-watchos-simulator.swiftinterface",
+      "sha256": "d83fa2ca12881deea499be02dac0344692315e0c798d9a7be6192f2be5c2c065"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "platform": "iOS",
+    "sdk": "iphonesimulator",
+    "version": "27.0",
+    "probe": "OwnDeviceLocation",
+    "source_sha256": "6bbe22b693c285bb09364f36c7542864ffb5582b68d91701710e4147ec78fe3d",
+    "exit_code": 0
+  },
+  {
+    "platform": "iOS",
+    "sdk": "iphonesimulator",
+    "version": "27.0",
+    "probe": "OwnNearbyPeer",
+    "source_sha256": "75add75bd2eb50550b245c38c56dfc2e6de90a575ca86735ec9e7945f2766303",
+    "exit_code": 0
+  },
+  {
+    "platform": "macOS",
+    "sdk": "macosx",
+    "version": "27.0",
+    "probe": "OwnDeviceLocation",
+    "source_sha256": "6bbe22b693c285bb09364f36c7542864ffb5582b68d91701710e4147ec78fe3d",
+    "exit_code": 0
+  },
+  {
+    "platform": "macOS",
+    "sdk": "macosx",
+    "version": "27.0",
+    "probe": "OwnNearbyPeer",
+    "source_sha256": "75add75bd2eb50550b245c38c56dfc2e6de90a575ca86735ec9e7945f2766303",
+    "exit_code": 1
+  },
+  {
+    "platform": "tvOS",
+    "sdk": "appletvsimulator",
+    "version": "27.0",
+    "probe": "OwnDeviceLocation",
+    "source_sha256": "6bbe22b693c285bb09364f36c7542864ffb5582b68d91701710e4147ec78fe3d",
+    "exit_code": 0
+  },
+  {
+    "platform": "tvOS",
+    "sdk": "appletvsimulator",
+    "version": "27.0",
+    "probe": "OwnNearbyPeer",
+    "source_sha256": "75add75bd2eb50550b245c38c56dfc2e6de90a575ca86735ec9e7945f2766303",
+    "exit_code": 1
+  },
+  {
+    "platform": "visionOS",
+    "sdk": "xrsimulator",
+    "version": "27.0",
+    "probe": "OwnDeviceLocation",
+    "source_sha256": "6bbe22b693c285bb09364f36c7542864ffb5582b68d91701710e4147ec78fe3d",
+    "exit_code": 0
+  },
+  {
+    "platform": "visionOS",
+    "sdk": "xrsimulator",
+    "version": "27.0",
+    "probe": "OwnNearbyPeer",
+    "source_sha256": "75add75bd2eb50550b245c38c56dfc2e6de90a575ca86735ec9e7945f2766303",
+    "exit_code": 1
+  },
+  {
+    "platform": "watchOS",
+    "sdk": "watchsimulator",
+    "version": "27.0",
+    "probe": "OwnDeviceLocation",
+    "source_sha256": "6bbe22b693c285bb09364f36c7542864ffb5582b68d91701710e4147ec78fe3d",
+    "exit_code": 0
+  },
+  {
+    "platform": "watchOS",
+    "sdk": "watchsimulator",
+    "version": "27.0",
+    "probe": "OwnNearbyPeer",
+    "source_sha256": "75add75bd2eb50550b245c38c56dfc2e6de90a575ca86735ec9e7945f2766303",
+    "exit_code": 0
+  }
+]

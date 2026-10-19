@@ -1139,7 +1139,7 @@
     "functions": [
       "F059"
     ],
-    "current": "Find-My-Ansicht ist eine lokale Simulation ohne Zugriff auf Apple-Ortungsdaten.",
+    "current": "Öffentliche Geräte-Webübergabe, Find-My-Zubehörprogramm, eigene Geräteortung und nahe Peer-Interaktion sind getrennt bilanziert. Schematische Demo ist dauerhaft als nicht live markiert; lokaler Ton meldet nur Anforderung, Apple-Weblink importiert keine Standorte. F059 bleibt blocked/parity=false. Docs/findmy-data-boundary.md.",
     "tasks": [
       "Öffentliche Lesemöglichkeiten pro Datentyp prüfen",
       "Kein privates API, Account-Scraping oder erfundene Livepositionen hinzufügen",
@@ -1151,7 +1151,10 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/46",
     "issue_number": 46,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/findmy-data-boundary.md"
+    ]
   },
   {
     "key": "DAY-01",
