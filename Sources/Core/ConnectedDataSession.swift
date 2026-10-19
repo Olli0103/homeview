@@ -121,7 +121,7 @@ final class DeviceConnections {
     defer {
       if generation[kind] == ticket {
         busy.remove(kind)
-        if Task.isCancelled, kind == .calendar || kind == .reminders {
+        if Task.isCancelled {
           status[kind] = previousStatus ?? "Not connected"
         }
       }
@@ -161,7 +161,7 @@ final class DeviceConnections {
         weather = reading
         weatherFetchFailed = false
       }
-      guard generation[kind] == ticket else { return }
+      guard generation[kind] == ticket, !Task.isCancelled else { return }
       enabled.insert(kind)
       status[kind] = testing ? "Connected · synthetic source" : "Connected"
       if !testing {
@@ -169,8 +169,7 @@ final class DeviceConnections {
         if kind == .weather { defaults.set(city, forKey: "HomeView.weather.city") }
       }
     } catch {
-      guard generation[kind] == ticket else { return }
-      if Task.isCancelled, kind == .calendar || kind == .reminders { return }
+      guard generation[kind] == ticket, !Task.isCancelled else { return }
       if kind == .weather && wasEnabled { enabled.insert(kind) } else { enabled.remove(kind) }
       if kind == .weather { weatherFetchFailed = true }
       status[kind] =
