@@ -1,0 +1,82 @@
+[
+  {
+    "platform": "iOS",
+    "sdk": "iphonesimulator",
+    "version": "27.0",
+    "probe": "OwnCallKitActions",
+    "source_sha256": "9c1542386dc0f7ad6031e354492c9826906d5c901496c6a5907aa5a15a37dded",
+    "exit_code": 0
+  },
+  {
+    "platform": "iOS",
+    "sdk": "iphonesimulator",
+    "version": "27.0",
+    "probe": "OwnVoIPManager",
+    "source_sha256": "68f55decf21952398dc858daeeb0b2635cc8097732fb7e147b4c6e7fd604a0b4",
+    "exit_code": 0
+  },
+  {
+    "platform": "macOS",
+    "sdk": "macosx",
+    "version": "27.0",
+    "probe": "OwnCallKitActions",
+    "source_sha256": "9c1542386dc0f7ad6031e354492c9826906d5c901496c6a5907aa5a15a37dded",
+    "exit_code": 1
+  },
+  {
+    "platform": "macOS",
+    "sdk": "macosx",
+    "version": "27.0",
+    "probe": "OwnVoIPManager",
+    "source_sha256": "68f55decf21952398dc858daeeb0b2635cc8097732fb7e147b4c6e7fd604a0b4",
+    "exit_code": 1
+  },
+  {
+    "platform": "tvOS",
+    "sdk": "appletvsimulator",
+    "version": "27.0",
+    "probe": "OwnCallKitActions",
+    "source_sha256": "9c1542386dc0f7ad6031e354492c9826906d5c901496c6a5907aa5a15a37dded",
+    "exit_code": 1
+  },
+  {
+    "platform": "tvOS",
+    "sdk": "appletvsimulator",
+    "version": "27.0",
+    "probe": "OwnVoIPManager",
+    "source_sha256": "68f55decf21952398dc858daeeb0b2635cc8097732fb7e147b4c6e7fd604a0b4",
+    "exit_code": 1
+  },
+  {
+    "platform": "visionOS",
+    "sdk": "xrsimulator",
+    "version": "27.0",
+    "probe": "OwnCallKitActions",
+    "source_sha256": "9c1542386dc0f7ad6031e354492c9826906d5c901496c6a5907aa5a15a37dded",
+    "exit_code": 0
+  },
+  {
+    "platform": "visionOS",
+    "sdk": "xrsimulator",
+    "version": "27.0",
+    "probe": "OwnVoIPManager",
+    "source_sha256": "68f55decf21952398dc858daeeb0b2635cc8097732fb7e147b4c6e7fd604a0b4",
+    "exit_code": 0
+  },
+  {
+    "platform": "watchOS",
+    "sdk": "watchsimulator",
+    "version": "27.0",
+    "probe": "OwnCallKitActions",
+    "source_sha256": "9c1542386dc0f7ad6031e354492c9826906d5c901496c6a5907aa5a15a37dded",
+    "exit_code": 0
+  },
+  {
+    "platform": "watchOS",
+    "sdk": "watchsimulator",
+    "version": "27.0",
+    "probe": "OwnVoIPManager",
+    "source_sha256": "68f55decf21952398dc858daeeb0b2635cc8097732fb7e147b4c6e7fd604a0b4",
+    "exit_code": 0
+  }
+]
