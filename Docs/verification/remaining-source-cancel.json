@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-19",
+  "issue": 80,
+  "status": "partial_issue_remains_open",
+  "code_commit": "987f6fdb5573e5d6fb49812b5a6cc6479d74d633",
+  "baseline_code_commit": "6e4d20443cb1339d164ac8ec63002000da693e90",
+  "baseline_production_equivalent_to": "464486df96b3e0f33314d345c61a43764c1db3fd",
+  "baseline_tests": 3,
+  "baseline_failed_tests": 3,
+  "baseline_failed_assertions": 6,
+  "source_digest": "d45cc1defd6373ecb0f9d667dc3ccba910e9a09e935df57a48e59e9414435b55",
+  "source_files": 190,
+  "Core_tests": 282,
+  "Core_failures": 0,
+  "new_Core_cases": 3,
+  "native_assertions": 28,
+  "native_new_source_cancellation_assertions": 6,
+  "native_retained_cancellation_permission_assertions": 22,
+  "archives": {
+    "remaining-source-cancel-baseline": {
+      "target": "6e4d20443cb1339d164ac8ec63002000da693e90",
+      "entries": 198,
+      "sha256": "91fb6d81774d711d02699d9c9a45fcebf194542ee226b4aabfab39ef3e96b6d8",
+      "all_entries_read_back": true,
+      "tests": 3,
+      "failed_assertions": 6
+    },
+    "remaining-source-cancel-final": {
+      "target": "987f6fdb5573e5d6fb49812b5a6cc6479d74d633",
+      "entries": 198,
+      "sha256": "70d1017cd596bd006464bb111463ca1f58a1884f2f416cde55eacaeaec538b3c",
+      "all_entries_read_back": true,
+      "tests": 282,
+      "failed_assertions": 0
+    },
+    "remaining-source-cancel-native": {
+      "entries": 17,
+      "sha256": "1d467dfa817931730309cb5b8cada0bc51bc640b52d21d3a9886dc05c11f1059",
+      "all_entries_read_back": true
+    }
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "new_UI_executions": 0,
+  "new_images": 0,
+  "UI_qualification": "No UI sources or view interactions changed. No new UI run or relabeled prior UI results. Prior personal-source regression remains separately bound to its previous product/test revisions.",
+  "scope": "Cancelled music authorization cannot newly enable the source or set its restore preference; cancelled weather completion/error restores prior status without a false failed-fetch mark. Successful cancelled weather data was already rejected before this fix. Prior OS permission, saved requested consent and initial queue pause/clear are not rolled back.",
+  "Home_constructed": false,
+  "real_personal_data_used": false,
+  "physical_acceptance": false
+}
