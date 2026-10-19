@@ -9,6 +9,8 @@ final class AppModel {
   #if !os(watchOS)
     let connections = DeviceConnections()
     let podcastPlayer = PodcastPlaybackController()
+    let recipeHandoff = RecipeHandoffController()
+    var recipeHandoffFixtureInstalled = false
     var podcastStatus = "Public RSS feeds · No Apple Podcasts account sync"
     var podcastLoading = false
     var podcastFeedGeneration = 0
@@ -197,6 +199,9 @@ final class AppModel {
   var recipe: RecipeDocument {
     get { data.recipe }
     set {
+      #if !os(watchOS)
+        recipeHandoff.stop()
+      #endif
       data.recipe = newValue
       data.pinnedRecipe = data.pinnedRecipes.contains(where: { $0.id == newValue.id })
       cookingStep = 0
@@ -743,6 +748,7 @@ final class AppModel {
   }
   func signIn(_ name: String) {
     #if !os(watchOS)
+      recipeHandoff.stop()
       connections.lock()
       albumCatalogue.invalidate()
     #endif
@@ -764,6 +770,9 @@ final class AppModel {
     route = .privacy
   }
   func lockPersonalAccess() {
+    #if !os(watchOS)
+      recipeHandoff.stop()
+    #endif
     dismissDemoDoorbell()
     personalSessionGeneration += 1
     #if !os(watchOS)
@@ -1035,6 +1044,23 @@ final class AppModel {
       }
     #endif
   }
+  #if !os(watchOS)
+  @discardableResult
+  func applyRecipeTransfer(_ transfer:RecipeTransfer) -> Bool {
+    guard connections.personalUnlocked else { return false }
+    do {
+      let target=try RecipeContinuity.resolve(transfer,recipes:[data.recipe]+data.pinnedRecipes)
+      let previous=data
+      data.recipe=target;data.pinnedRecipe=data.pinnedRecipes.contains { $0.id==target.id }
+      guard persist() else { data=previous;recipeHandoff.status="Recipe could not be saved. Nothing was changed.";return false }
+      cookingStep=transfer.step;cookingInProgress=true;route = .cooking
+      return true
+    } catch {
+      recipeHandoff.status=(error as? LocalizedError)?.errorDescription ?? "Recipe handoff is unavailable."
+      return false
+    }
+  }
+  #endif
   func startCooking() {
     guard !recipe.steps.isEmpty else { error = "This recipe has no cooking steps."; return }
     cookingStep = 0

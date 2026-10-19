@@ -146,7 +146,7 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
       let context = LAContext()
       return
         (try? await context.evaluatePolicy(
-          .deviceOwnerAuthentication, localizedReason: "Show connected personal content and choose shared albums."
+          .deviceOwnerAuthentication, localizedReason: "Unlock personal content in HomeView."
         )) == true
     #else
       return false
