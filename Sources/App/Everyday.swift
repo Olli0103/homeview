@@ -341,7 +341,8 @@ struct CookingView: View {
         }.accessibilityIdentifier("cooking.next")
         RoundButton(symbol: model.data.pinnedRecipe ? "pin.fill" : "pin", label: "Pin recipe") {
           model.pinRecipe()
-        }
+        }.accessibilityIdentifier("recipe.pin")
+          .accessibilityValue(model.data.pinnedRecipe ? "Pinned":"Not pinned")
       }.padding(30)
     }.background(.white).foregroundStyle(.black)
   }
@@ -360,7 +361,6 @@ struct RemindersView: View {
               Button {
                 if let i = model.reminders.firstIndex(where: { $0.id == item.id }) {
                   model.reminders[i].completed.toggle()
-                  model.persist()
                 }
               } label: {
                 HStack(spacing: 16) {
@@ -372,7 +372,6 @@ struct RemindersView: View {
               }.accessibilityIdentifier("reminder.\(item.title)")
               Button {
                 model.reminders.removeAll { $0.id == item.id }
-                model.persist()
               } label: {
                 Image(systemName: "minus.circle").foregroundStyle(.gray)
               }.accessibilityLabel("Delete \(item.title)")
@@ -386,11 +385,7 @@ struct RemindersView: View {
           .accessibilityIdentifier("reminder.input")
         RoundButton(symbol: "plus", color: .orange.opacity(0.2), label: "Add reminder") {
           let s = newItem.trimmingCharacters(in: .whitespacesAndNewlines)
-          if !s.isEmpty {
-            model.reminders.append(ReminderItem(title: s))
-            newItem = ""
-            model.persist()
-          }
+          if !s.isEmpty,model.addLocalReminder(s) { newItem = "" }
         }.accessibilityIdentifier("reminder.add")
       }.padding(30)
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)

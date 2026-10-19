@@ -119,7 +119,6 @@ struct FaceEditor: View {
         Text("Faces").font(.system(size: 30, weight: .bold))
         Spacer()
         Button("Done") {
-          model.persist()
           model.route = .face
         }
         .accessibilityIdentifier("editor.done")
@@ -132,8 +131,7 @@ struct FaceEditor: View {
                 Button {
                   selection = nil
                   highlightedSlot = nil
-                  model.data.face = face
-                  model.persist()
+                  model.updateLocalControls { $0.face = face }
                 } label: {
                   Text(face.rawValue).font(.system(size: 17, weight: .medium))
                     .padding(.horizontal, 18).frame(height: 48)
@@ -152,10 +150,12 @@ struct FaceEditor: View {
               Spacer()
               ForEach(0..<2) { i in
                 Button {
-                  model.data.editConfiguration(for: model.data.face) { $0.theme = i }
-                  // Home panels retain their legacy color binding.
-                  if [.home, .homeClock].contains(model.data.face) { model.data.theme = i }
-                  model.persist()
+                  let selected=model.data.face
+                  model.updateLocalControls {
+                    $0.editConfiguration(for:selected) { $0.theme = i }
+                    // Home panels retain their legacy color binding.
+                    if [.home,.homeClock].contains(selected) { $0.theme=i }
+                  }
                 } label: {
                   Circle().fill(
                     face == .modular
@@ -213,9 +213,9 @@ struct FaceEditor: View {
           ScrollView {
             ForEach(slot.choices) { kind in
               Button {
-                model.data.setComplication(kind, for: selected.face, slot: slot)
-                model.persist()
-                selection = nil
+                if model.updateLocalControls({ $0.setComplication(kind,for:selected.face,slot:slot) }) {
+                  selection = nil
+                }
               } label: {
                 HStack {
                   Text(kind.rawValue)
@@ -279,8 +279,7 @@ struct FaceEditor: View {
         Spacer()
         ForEach(0..<2) { i in
           Button {
-            model.data.editConfiguration(for: .flow) { $0.flowTypeface = i }
-            model.persist()
+            model.updateLocalControls { $0.editConfiguration(for:.flow) { $0.flowTypeface=i } }
           } label: {
             Text(i == 0 ? "I" : "II").frame(width: 55, height: 38)
               .background(
@@ -294,8 +293,7 @@ struct FaceEditor: View {
         isOn: Binding(
           get: { model.data.configuration(for: .flow).flowBackground },
           set: { value in
-            model.data.editConfiguration(for: .flow) { $0.flowBackground = value }
-            model.persist()
+            model.updateLocalControls { $0.editConfiguration(for:.flow) { $0.flowBackground=value } }
           })
       ).accessibilityIdentifier("flow.background")
     }.font(.system(size: 20)).padding(.horizontal, 32)

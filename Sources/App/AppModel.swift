@@ -129,8 +129,7 @@ final class AppModel {
     }
     set {
       guard authorized, let name = profile else { return }
-      data.personal[name, default: PersonalContent()].messages = newValue
-      persist()
+      updateLocalControls { $0.personal[name, default: PersonalContent()].messages = newValue }
     }
   }
   var reminders: [ReminderItem] {
@@ -140,9 +139,18 @@ final class AppModel {
     }
     set {
       guard authorized, let name = profile else { return }
-      data.personal[name, default: PersonalContent()].reminders = newValue
-      persist()
+      updateLocalControls { $0.personal[name, default: PersonalContent()].reminders = newValue }
     }
+  }
+  @discardableResult
+  func addLocalReminder(_ title:String) -> Bool {
+    guard authorized,let name=profile else { return false }
+    return updateLocalControls { $0.personal[name,default:PersonalContent()].reminders.append(ReminderItem(title:title)) }
+  }
+  @discardableResult
+  func appendLocalMessage(_ text:String) -> Bool {
+    guard authorized,let name=profile else { return false }
+    return updateLocalControls { $0.personal[name,default:PersonalContent()].messages.append(text) }
   }
   var simulatedPresence = true
   var ringLight = true
@@ -241,41 +249,48 @@ final class AppModel {
   }
   var recipe: RecipeDocument {
     get { data.recipe }
-    set {
-      #if !os(watchOS)
-        recipeHandoff.stop()
-      #endif
-      data.recipe = newValue
-      data.pinnedRecipe = data.pinnedRecipes.contains(where: { $0.id == newValue.id })
-      cookingStep = 0
-      cookingInProgress = false
-      persist()
-    }
+    set { setRecipe(newValue) }
+  }
+  @discardableResult
+  func setRecipe(_ value:RecipeDocument) -> Bool {
+    guard updateLocalControls({
+      $0.recipe=value
+      $0.pinnedRecipe=$0.pinnedRecipes.contains { $0.id == value.id }
+    }) else { return false }
+    #if !os(watchOS)
+      recipeHandoff.stop()
+    #endif
+    cookingStep=0;cookingInProgress=false
+    return true
   }
   func addWorldCity(_ zone: String) {
     guard data.worldClockZones.count < 12,
       WorldCity.catalogue.contains(where: { $0.zone == zone }),
       !data.worldClockZones.contains(zone) else { return }
-    data.worldClockZones.append(zone)
-    persist()
+    updateLocalControls { $0.worldClockZones.append(zone) }
   }
   func removeWorldCity(_ zone: String) {
-    data.worldClockZones.removeAll { $0 == zone }
-    persist()
+    updateLocalControls { $0.worldClockZones.removeAll { $0 == zone } }
   }
-  func pinRecipe() {
-    if data.pinnedRecipes.contains(where: { $0.id == recipe.id }) {
-      data.pinnedRecipes.removeAll { $0.id == recipe.id }
-      data.pinnedRecipe = false
-    } else {
-      guard data.pinnedRecipes.count < 50 else {
-        error = "You can save up to 50 recipes."
-        return
+  @discardableResult
+  func pinRecipe() -> Bool {
+    // Capture the selected document before a mutating access to Snapshot.
+    // Reading the computed recipe inside removeAll overlaps data's write access.
+    let selected=recipe
+    if data.pinnedRecipes.contains(where: { $0.id == selected.id }) {
+      return updateLocalControls {
+        $0.pinnedRecipes.removeAll { $0.id == selected.id }
+        $0.pinnedRecipe=false
       }
-      data.pinnedRecipes.append(recipe)
-      data.pinnedRecipe = true
     }
-    persist()
+    guard data.pinnedRecipes.count < 50 else {
+      error = "You can save up to 50 recipes."
+      return false
+    }
+    return updateLocalControls {
+      $0.pinnedRecipes.append(selected)
+      $0.pinnedRecipe=true
+    }
   }
   var displayTimeZone: TimeZone {
     referenceClock ? (testReferenceTimeZone ?? TimeZone(secondsFromGMT:0)!) : .current
@@ -920,11 +935,14 @@ final class AppModel {
     if openConnections { route = .app(.settings) }
     return true
   }
-  func updateLocalControls(_ change: (inout Snapshot) -> Void) {
+  @discardableResult
+  func updateLocalControls(_ change: (inout Snapshot) -> Void) -> Bool {
+    guard writableStore() else { return false }
     let previous = data
     change(&data)
-    guard persist() else { data = previous; return }
+    guard persist() else { data = previous; return false }
     if data.volume != previous.volume { audio.setVolume(Float(data.volume)) }
+    return true
   }
   @discardableResult
   func persist() -> Bool {
@@ -1011,11 +1029,10 @@ final class AppModel {
   func signIn(_ name: String) {
     guard Fixtures.profiles.contains(name) else { return }
     lockPersonalAccess()
-    profile = name
     if data.personal[name] == nil {
-      data.personal[name] = PersonalContent()
-      persist()
+      guard updateLocalControls({ $0.personal[name] = PersonalContent() }) else { return }
     }
+    profile = name
     simulatedPresence = true
     route = pendingPage.map { .app($0) } ?? .personal
     pendingPage = nil
@@ -1064,11 +1081,10 @@ final class AppModel {
   }
   func nextFace(_ delta: Int) {
     guard demoDoorbell.current == nil else { return }
-    faceDirection = delta
     let all = Face.allCases
     let index = all.firstIndex(of: data.face) ?? 0
-    data.face = all[(index + delta + all.count) % all.count]
-    persist()
+    guard updateLocalControls({ $0.face = all[(index + delta + all.count) % all.count] }) else { return }
+    faceDirection = delta
   }
   func banner(_ value: String) {
     toast = value
