@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-19",
+  "issue": 60,
+  "kind": "Research and compile-only API-surface check, not new runtime integration",
+  "reviewed_offerings": [
+    "Audiobooks",
+    "Classical Music",
+    "News",
+    "TV/video",
+    "Third-party audio/video"
+  ],
+  "public_sources": [
+    {
+      "url": "https://developer.apple.com/documentation/musickit",
+      "status": 200,
+      "fetchedAt": "2026-10-19T10:10:30.175Z",
+      "truncated": true,
+      "returned_text_sha256": "3abb2c4d8a0b93f733dbe6bd361a1684e07794c74e8a037ca5565043c323479c"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/avfoundation/avplayer",
+      "status": 200,
+      "fetchedAt": "2026-10-19T10:10:31.482Z",
+      "truncated": true,
+      "returned_text_sha256": "55c1e5b86d3449582b5b24e918ea4d8e175c1f6b22ba745fedaf64b603dc94c9"
+    },
+    {
+      "url": "https://developer.apple.com/carplay/",
+      "status": 200,
+      "fetchedAt": "2026-10-19T10:10:31.986Z",
+      "truncated": true,
+      "returned_text_sha256": "1bcca49718dcc02f765fbef86619acc046b92bca7ac4e76db21dbcea28372ece"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/foundation/nsuseractivity",
+      "status": 200,
+      "fetchedAt": "2026-10-19T10:10:35.078Z",
+      "truncated": true,
+      "returned_text_sha256": "929cb2588bec9ccdf078cddb9ac7d6a34b3aee196e66b2bc7719d9a43195b2bd"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/mediaplayer/mpmediaquery/audiobooks()",
+      "status": 200,
+      "fetchedAt": "2026-10-19T10:11:46.909Z",
+      "truncated": false,
+      "returned_text_sha256": "c26a1daa589772b7de4ff7a81c26491bb4737332e16bd17a84f86442f2017792"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/mediaplayer/mpmediaitem/asseturl",
+      "status": 200,
+      "fetchedAt": "2026-10-19T10:11:50.132Z",
+      "truncated": false,
+      "returned_text_sha256": "018c2442c4d42a09547900c0f4a2d05079367fc9359a5e5b57c0dc4a35a80461"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/applenewsapi",
+      "status": 200,
+      "fetchedAt": "2026-10-19T10:11:51.145Z",
+      "truncated": true,
+      "returned_text_sha256": "fd41c8476a3fc593367daab6ef730e61f06e05bfa51eef993e0c1b16bc68ed0f"
+    }
+  ],
+  "failed_lookups": [
+    {
+      "index": 5,
+      "url": "https://developer.apple.com/documentation/mediaplayer/mpmediaquery/movies()",
+      "result": "404; not used as absence proof"
+    }
+  ],
+  "SDK": "iPhoneSimulator27.0",
+  "Xcode": "Xcode 27.0\nBuild version 27A266a",
+  "sdk_surface_digests": [
+    {
+      "path": "MediaPlayer.framework/Headers/MPMediaQuery.h",
+      "sha256": "2d7e055ddb12df2c3b81382865833d27930fb863a30e7a978666ee5fb74d34cd"
+    },
+    {
+      "path": "MediaPlayer.framework/Headers/MPMediaItem.h",
+      "sha256": "fb4bbf5163a04ed8d53b789e2ce8106b9b0c9491371eaca4ca29aa1fff8a9585"
+    },
+    {
+      "path": "MediaPlayer.framework/Headers/MPMediaLibrary.h",
+      "sha256": "9d413a9a9a99f4b60aef95fba74c6a8db0a61ab7d3d148392fc253adaf9bcbf3"
+    },
+    {
+      "path": "MusicKit.framework/Modules/MusicKit.swiftmodule/arm64-apple-ios-simulator.swiftinterface",
+      "sha256": "925eab349c9a77db416d5d5fca616716d020074065dc7a7a861e0a34a4ccd143"
+    }
+  ],
+  "probe": {
+    "path": "Docs/verification/media-api-surface.swift",
+    "source_sha256": "7e81fc6900751e9b8482560298b6523030fc3f4e98218d0f8d347e979783795b",
+    "exit_code": 0,
+    "target": "arm64-apple-ios26.1-simulator",
+    "executed": false,
+    "permissions_requested": false,
+    "libraries_queried": false
+  },
+  "application_code_changed": false,
+  "new_integration_claimed": false,
+  "reference_parity_accepted": false,
+  "scope": [
+    "Public API candidates and prerequisites identified for all5 offerings",
+    "App/link launch, embedded/remote playback and own Handoff distinguished",
+    "Unimplemented public-API adapters remain software candidates, not invented API/hardware blocks",
+    "No arbitrary third-party app embedding, private Books/News+/TV+ library or universal system Handoff claimed",
+    "No Home integration"
+  ]
+}
