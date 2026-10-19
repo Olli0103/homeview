@@ -1,0 +1,31 @@
+# Eigener Rezept-Handoff
+
+19. Oktober 2026 · Teilumsetzung [DAY-10, #56](https://github.com/Olli0103/homeview/issues/56). **Issue bleibt offen:** die ausdrücklich verlangte Übergabe zwischen zwei bewusst eingerichteten realen Geräten ist noch nicht nachgewiesen.
+
+## Umgesetzt
+
+Die eigene App verwendet öffentliche `NSUserActivity`-Continuity, keinen neuen Synchronisationsserver. Erst „Continue on another device“ und „Offer via Handoff“ fordern ein Angebot an. Die Gegenstelle muss eine kompatible eigene HomeView-App mit demselben Rezept besitzen. Ein eingehender Vorgang zeigt zunächst nur eine allgemeine Anfrage; erst „Unlock and continue“ darf nach Geräteauthentifizierung ein lokales Rezept auswählen und den genauen Kochschritt öffnen. Ein Timer wird dabei nie automatisch gestartet.
+
+Der versionierte Payload enthält ausschließlich drei Werte: Protokollversion, SHA-256-Kennung des Rezept-/Quelleninhalts und nullbasierten Schritt. Titel, Quell-URLs, Zutaten, Anweisungen und Bilder werden nicht kopiert, geladen oder an einen Server geschickt. Die Kennung bindet Titel, Quelle, Zutaten und Kochschritte; sie ignoriert lokale UUIDs und dekorative Cover, damit unabhängig gespeicherte identische Inhalte zusammenpassen. Es wird nur unter dem aktuellen Rezept und den bis zu 50 gespeicherten Rezepten gesucht. Ein fehlendes/geändertes Rezept wird nicht durch die Suppe-Demo ersetzt oder automatisch aus dem Netz beschafft.
+
+Ein anderes Schema, falscher Activity-Typ, unerwartete Payloadfelder, mehr als 512 Bytes oder ein ungültiger Schritt werden abgewiesen. Unterstützt sind die vorhandenen Snapshot-Grenzen mit bis zu 200 Zutaten und 100 Schritten; die lokale, nicht übertragene Identitätsdarstellung ist ebenfalls begrenzt. Schreibgeschützte oder fehlgeschlagene lokale Speicherung lässt die bisherige Auswahl/Sitzung unverändert und zeigt keinen scheinbaren Erfolg. Persönliche Quelltexte werden nicht Teil der Fehleranzeigen.
+
+Rezeptwechsel, Profilwechsel, Gerätesperre, Ende des Kochens und Hintergrund widerrufen Angebote. Schon bei Inaktivität wird ein tatsächlich ausgehendes Angebot beendet; die vorübergehende Inaktivität des Authentifizierungsdialogs zerstört nicht ihre eigene eingehende Anfrage. Generationsprüfungen verhindern, dass ein später Entsperrabschluss einen neueren oder geschlossenen Vorgang fortsetzt. Hintergrund verwirft die offene Anfrage vollständig.
+
+## Öffentliche Technik und Grenzen
+
+[Apples Handoff-Anleitung](https://developer.apple.com/documentation/foundation/implementing-handoff-in-your-app), direkt gelesen am 19. Oktober 2026, beschreibt eigene Activity-Typen in `NSUserActivityTypes`, kleine Metadaten statt des Dokuments selbst und explizite Versionsprüfung. Wir deklarieren `org.example.homeview.recipe.v1` nur für die iOS-/macOS-Hauptapp. Der Projektgenerator erzeugt dafür `Resources/MainInfo.plist` aus der bestehenden Basis. Watch, tvOS, visionOS und Testbasis erhalten keine solche Empfängerdeklaration; alle fünf gebauten Produkte wurden zurückgelesen.
+
+Native App-zu-App-Handoff ist der gewählte Teilpfad. Es wird kein Universal-Link-Domainservice und keine Associated-Domains-Berechtigung vorgetäuscht. Für reale Fortsetzung braucht es passend signierte/eingerichtete eigene Apps und Geräte sowie aktivierte kompatible Systemfunktionen. Ein Aufruf von `becomeCurrent()` bestätigt weder eine Ziel-App noch eine erfolgte Übertragung. Die Oberfläche markiert deshalb nichts als zugestellt. Ein Simulator oder ein nicht unterstützter Sender zeigt ausdrücklich „unavailable“ und „No recipe was sent“.
+
+Automatische UI-Tests konstruieren/bewerben **keine** native User Activity. Sie geben nur selbst codierte fiktive Metadaten an denselben Codec-/Annahmepfad. Geräteauthentifizierung ist dort ein ausdrücklich synthetischer Provider, kein biometrischer Hardware-PASS. Das ist keine Apple-Systemübergabe fremder Apps oder privater Partnergerät-Bibliotheken. Apple Home bleibt deaktiviert.
+
+## Prüfung
+
+- 198 Modelltests bestanden, darunter neun neue Codec-/Datengrenzfälle. Zwei zusätzlich nach dem grünen Piloten eingeführte Randtests scheiterten zunächst: nur 21 lokale Kandidaten und zu enge Dokumentgrößen. Vorheriger Code/Hashes/Fehler bleiben erhalten. Danach werden der letzte der 50 gespeicherten Plätze und ein maximal gültiger vorhandener Snapshot verarbeitet, ohne dessen Text zu übertragen.
+- 20 erfolgreiche gezielte native Ausführungen über drei getrennt quellengebundene Checkpoints:10 Pilot-, 8 betroffene Folge- und 2 abschließende Kontrollfälle. Sechs unterschiedliche Methoden je iPad/iPhone insgesamt, **keine** neue aktuelle grüne Vollsuite behauptet.
+- Annahme und exakter Schritt 3, tatsächliches Finish, kein Autotimer, fehlendes Rezept, Schemafehler, verweigertes Entsperren, schreibgeschützter Speicher samt Neustart, Hintergrundabbruch und klar unverfügbarer Sender sind geprüft. Bestehender Zutaten-/Koch-/Timerablauf bleibt im Pilot belegt.
+- Fünf arm64-SDK-Builds und tatsächliche Activity-Typen in allen fünf Produkten geprüft. Je Checkpoint 23 Eingaben vor/nach unverändert und installierte Simulator-Appbytes zurückgelesen; finale Eingaben archiviert und vollständig zurückgelesen.
+- 68 eigene PNGs dekodiert;36 ausgewählte Zustände auf zehn Kontaktbögen gesichtet,16 Viewports veröffentlicht. Die frühe Erfolgsmeldung verdeckte kurz „Finish“. Sie wurde entfernt; der letzte Stand zeigt und betätigt den freien Knopf. Die älteren Bilder bleiben historische, nicht nachträglich saubere Kontrollnachweise.
+
+[Methoden, Quellenbindung und Ergebnisse](verification/recipe-handoff.json). Für die offene Abnahme sind anschließend zwei bewusst konfigurierte kompatible Geräte mit bereits lokal vorhandenem gleichen Rezept nötig: tatsächliches OS-Angebot öffnen, ausdrücklich entsperren/annehmen, Quelle/Schritt und echte Nichtverfügbarkeit prüfen. Diese Annahme wird nicht durch zwei Simulatoren ersetzt.
