@@ -4840,6 +4840,18 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["timer.pause"].waitForExistence(timeout:5))
     XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
     viewportShot("timer-hit-region-before-audit")
-    try app.performAccessibilityAudit(for:.hitRegion)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let element=issue.element,frame=element?.frame ?? .zero
+      reports.append(["identifier":element?.identifier ?? "", "label":element?.label ?? "",
+        "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,
+        "detail":issue.detailedDescription])
+      // Collect every finding, then fail on the entire unfiltered list below.
+      return true
+    }
+    let attachment=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="timer-hit-region-all-findings";attachment.lifetime = .keepAlways;add(attachment)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered automatic hit-region audit found \(reports.count) issues: \(reports)")
   }
 }
