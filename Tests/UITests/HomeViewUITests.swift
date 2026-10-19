@@ -4833,3 +4833,13 @@ extension HomeViewUITests {
     tap("timer.delete");XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:3))
   }
 }
+
+extension HomeViewUITests {
+  func testTimerVisibleControlsAutomaticHitRegionAudit() throws {
+    launch(["--reference-timer"])
+    XCTAssertTrue(app.buttons["timer.pause"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    viewportShot("timer-hit-region-before-audit")
+    try app.performAccessibilityAudit(for:.hitRegion)
+  }
+}
