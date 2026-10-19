@@ -4535,7 +4535,9 @@ extension HomeViewUITests {
     XCTAssertEqual(app.buttons["Mist style"].value as? String,"Selected")
     let previous=app.buttons["widget.0"].label
     tap("widget.0");tap("complication.choose.Clock");dismissLocalWriteError()
-    XCTAssertTrue(app.buttons["complications.done"].exists,"Failed slot write must retain the originating picker")
+    viewportShot("write-boundary-slot-after-save-error")
+    print("WRITE_BOUNDARY_SLOT_UI="+app.debugDescription)
+    XCTAssertTrue(app.buttons["complications.done"].waitForExistence(timeout:5),"Failed slot write must retain the originating picker")
     tap("complications.done")
     XCTAssertEqual(app.buttons["widget.0"].label,previous)
     viewportShot("write-boundary-readonly-face-and-slot-unchanged")
