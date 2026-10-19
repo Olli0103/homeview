@@ -60,3 +60,16 @@ import ActivityKit
   return UnavailableTimerActivityBackend()
   #endif
 }
+
+/// Read-only evidence for an explicitly owned synthetic system-activity run.
+@MainActor func timerActivitySystemFixtureReport()->String? {
+  let args=ProcessInfo.processInfo.arguments
+  guard args.contains("--uitesting"),args.contains("--timer-activity-system-test"),
+    let i=args.firstIndex(of:"--persistence-test"),args.indices.contains(i+1),UUID(uuidString:args[i+1]) != nil else {return nil}
+  #if canImport(ActivityKit) && os(iOS) && !targetEnvironment(macCatalyst)
+  let owned=Activity<HomeViewTimerAttributes>.activities.filter {$0.activityState == .active || $0.activityState == .stale}
+  return "Own activities=\(owned.count); running=\(owned.first?.content.state.runningCount ?? 0); paused=\(owned.first?.content.state.pausedCount ?? 0)"
+  #else
+  return "System timer activities unavailable on this platform."
+  #endif
+}
