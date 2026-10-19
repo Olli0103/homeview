@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-19",
+  "issue": 37,
+  "classification": "Documented continuing blocked F047 state; not Siri activation implementation",
+  "code_commit": "5649b6ad11b778c04d168bc421adccbc3b4fb793",
+  "source_digest": "e7d867680f382e931c5d6e66946c2529a7deca437b1527c09a30162a7cb20d72",
+  "source_files": 183,
+  "UI_executions": 2,
+  "UI_failures": 0,
+  "UI_skips": 0,
+  "UI_runtime_warnings": [],
+  "compiled_inputs_unchanged": 22,
+  "installed_apps_read_back": true,
+  "native_idle_probe": {
+    "assertions": 9,
+    "capture_created": false,
+    "hardware_or_real_recording_tested": false,
+    "native_idle_branch": true,
+    "permissions_unchanged": true,
+    "start_called": false
+  },
+  "native_voice_source_sha256": "bf5981b27eb4ca66bb2550d6f980d05193f56f4f610285d92663bb4bc0ca046d",
+  "native_probe_compilation_warning": "Existing installTap API is deprecated in macOS27; no recording was started",
+  "Core_source_unchanged_since_246_PASS": true,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "generator": {
+    "byte_equivalent": true,
+    "Python_AST_valid": true,
+    "code_commit": "5649b6ad11b778c04d168bc421adccbc3b4fb793",
+    "product_delta_only_activation_disclosure": true,
+    "Core_unchanged_since_246_PASS": true
+  },
+  "decoded_PNGs": 8,
+  "contact_sheets_reviewed": 2,
+  "images": [
+    {
+      "path": "Docs/verification/wakeword-images/iPad-assistant-activation-no-wakeword-or-auto-recording.png",
+      "sha256": "21a1cbd92eb3ef1fbe6ea03ed790f51449a0441a5a74b7e4a76859e2a03be092"
+    },
+    {
+      "path": "Docs/verification/wakeword-images/iPad-viewport-assistant-capability-return-unsent-draft.png",
+      "sha256": "d985d0071f2386d564a1ab3adfd1b580fd17852b90b21b05311d575998f5f65c"
+    },
+    {
+      "path": "Docs/verification/wakeword-images/iPhone-assistant-activation-no-wakeword-or-auto-recording.png",
+      "sha256": "71ead00a89a4fc81908de422664038f20725dff74fd69d2720e3e7153164a9ce"
+    },
+    {
+      "path": "Docs/verification/wakeword-images/iPhone-viewport-assistant-capability-return-unsent-draft.png",
+      "sha256": "7ecc41c9b687cdec85534037527a8087f13d65621e6781678761c3f54f50895e"
+    }
+  ],
+  "UI_archive": {
+    "name": "wakeword-disclosure-inputs.zip",
+    "entries": 205,
+    "sha256": "faac7fe9defbf5391aaa728a7963bfa7b9e94a4329f115aae260f4c6f485f4a1",
+    "all_entries_read_back": true
+  },
+  "native_probe_archive": {
+    "name": "wakeword-idle-inputs.zip",
+    "entries": 6,
+    "sha256": "1cc39332cbb00e647d3c788dd3901c14bd0500841d522625ab8ec9fbb140d4c8",
+    "all_entries_read_back": true
+  },
+  "original_F047_parity": false,
+  "Siri_or_AppShortcut_registered": false,
+  "custom_wakeword_enabled": false,
+  "side_button_entitlement_added": false,
+  "physical_recording_or_long_background_tested": false,
+  "Home_constructed": false
+}
