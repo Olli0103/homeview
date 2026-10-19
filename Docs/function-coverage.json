@@ -2121,7 +2121,8 @@
       "DAY-07"
     ],
     "current": [
-      "Lokale Weltuhr ist vorhanden, vollständige Zonenwahl und Tag-/Nachtverlauf sind offen."
+      "Lokale Weltuhr ist vorhanden, vollständige Zonenwahl und Tag-/Nachtverlauf sind offen.",
+      "Two-calendar-day distance at the date line now explicitly labelled; existing +/-1 labels retained. See Docs/world-clock-date-distance.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2140,6 +2141,10 @@
     },
     "completion_criteria": [
       "Zonen mit verschiedenen DST-Regeln und Tageswechsel zeigen richtige Zeit/Datum. Offlinebetrieb ohne feste UTC-Offsets."
+    ],
+    "progress_evidence": [
+      "Docs/world-clock-date-distance.md",
+      "Docs/verification/world-date-distance.json"
     ]
   },
   {

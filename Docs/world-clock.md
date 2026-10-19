@@ -15,3 +15,8 @@ Die Corefälle prüfen Kathmandu/Delhi, Adelaide, unterschiedliche europäische/
 Referenzgeometrie und ein originaler animierter Sonnenzeitverlauf bleiben eine gesonderte offene Sichtabnahme. Es werden weder Geräteortung noch Kalender, Konten oder Hausgeräte abgefragt.
 
 61 Modelltests, der beschriebene UI-Fall auf iPad und iPhone sowie fünf SDK-Builds bestanden. [Quellenbindung und Ergebnis](verification/world-contained.json). Die Prüfung deckte außerdem eine zunächst fehlende Touchfläche im Städte-Picker und eine vererbte Accessibility-Kennung auf; beide sind korrigiert.
+
+
+## Korrektur am 20. Oktober 2026
+
+[Mehr als ein Kalendertag Abstand](world-clock-date-distance.md) wird nun ausdrücklich gezählt; ursprüngliche Voriger-/Nächster-Tag-Fälle bleiben erhalten. Neuer begrenzter Nachweis mit 293 Modelltests, vier finalen UI-Ausführungen und fünf SDKs; die obigen 61 Tests bleiben historische Ergebnisse, keine Addition. Originalgeometrie und Sonnenverlauf weiter offen.
