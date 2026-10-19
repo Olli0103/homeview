@@ -108,6 +108,7 @@ struct FaceEditor: View {
   }
   @State private var selection: Selection?
   @State private var highlightedSlot: String?
+  @State private var slotSaveError:String?
   private var face: Face { model.data.face }
   private func select(_ slot: FaceSlot) {
     highlightedSlot = slot.id
@@ -202,7 +203,7 @@ struct FaceEditor: View {
         }.padding(.bottom, 28)
       }.accessibilityIdentifier("editor.content")
     }.foregroundStyle(.black).background(.white).buttonStyle(.plain)
-      .sheet(item: $selection) { selected in
+      .sheet(item:$selection,onDismiss:{ slotSaveError=nil }) { selected in
         let slot = selected.slot
         VStack(spacing: 16) {
           HStack {
@@ -215,6 +216,11 @@ struct FaceEditor: View {
               Button {
                 if model.updateLocalControls({ $0.setComplication(kind,for:selected.face,slot:slot) }) {
                   selection = nil
+                } else {
+                  // Present inside the picker. A root alert dismisses this
+                  // sheet and loses the user's still-valid editing context.
+                  slotSaveError=model.error ?? "Could not save this complication."
+                  model.error=nil
                 }
               } label: {
                 HStack {
@@ -229,6 +235,10 @@ struct FaceEditor: View {
             }
           }
         }.padding(24).foregroundStyle(.primary).presentationDetents([.medium, .large])
+          .alert("HomeView",isPresented:Binding(
+            get:{ slotSaveError != nil },set:{ if !$0 { slotSaveError=nil } })) {
+              Button("OK",role:.cancel) { slotSaveError=nil }
+            } message: { Text(slotSaveError ?? "") }
       }
   }
   private func colorLabel(_ index: Int) -> String {
