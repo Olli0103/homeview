@@ -3802,3 +3802,68 @@ extension HomeViewUITests {
     viewportShot("power-capability-return-no-home-connection")
   }
 }
+
+
+extension HomeViewUITests {
+  func testDialogScopeNewAndSameLaunchArgumentsRestartNeverRestoreHistory() {
+    let storeID=UUID().uuidString
+    let receipt=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["storeID":storeID]),uniformTypeIdentifier:"public.json")
+    receipt.name="dialog-persistent-store-id";receipt.lifetime = .keepAlways;add(receipt)
+    launch(["--persistence-test",storeID,"--assistant-ai-fixture","ready"])
+    tap("nav.apps");app.buttons["Choose profile"].tap();tap("profile.Alex")
+    chooseSyntheticOnDeviceAnswers()
+    XCTAssertTrue(app.staticTexts["assistant.ai.history.scope"].label.contains("Not Siri history"))
+    XCTAssertTrue(app.staticTexts["assistant.ai.history.scope"].label.contains("No device sync"))
+    askSyntheticQuestion("Fictional first profile question")
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].waitForExistence(timeout:5))
+    askSyntheticQuestion("Fictional follow up")
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.1"].waitForExistence(timeout:5))
+    tap("assistant.ai.reset")
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.1"].exists)
+    XCTAssertTrue(app.staticTexts["assistant.ai.status"].label.contains("Nothing is saved"))
+    askSyntheticQuestion("New independent question")
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].label.contains("Synthetic answer:"))
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.1"].exists)
+    viewportShot("dialog-new-cleared-provider-and-visible-context")
+    // Flush the ordinary Snapshot writer in the owned UUID test store, then
+    // relaunch the same arguments without resetting or creating another store.
+    XCUIDevice.shared.press(.home);app.activate()
+    app.terminate();app.launch()
+    XCTAssertTrue(app.buttons["nav.assistant"].waitForExistence(timeout:15));tap("nav.assistant")
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    XCTAssertTrue(app.staticTexts["assistant.reply"].exists)
+    tap("assistant.capabilities");tap("assistant.provider.ondevice");tap("assistant.capabilities.done")
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    viewportShot("dialog-process-restart-no-history-restored")
+  }
+  func testDialogCapabilityBoundaryAndProfileIsolation() {
+    launch(["--assistant-ai-fixture","ready"])
+    tap("nav.apps");app.buttons["Choose profile"].tap();tap("profile.Alex")
+    chooseSyntheticOnDeviceAnswers()
+    askSyntheticQuestion("Synthetic Alex-only question")
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].waitForExistence(timeout:5))
+    tap("assistant.capabilities")
+    let detail=app.staticTexts["assistant.capabilities.history"]
+    XCTAssertTrue(detail.waitForExistence(timeout:5))
+    for _ in 0..<8 { if detail.isHittable { break };app.scrollViews.firstMatch.swipeUp() }
+    XCTAssertTrue(detail.isHittable)
+    XCTAssertTrue(detail.label.contains("not your Siri history"))
+    XCTAssertTrue(detail.label.contains("Nothing is saved or synced to iCloud"))
+    XCTAssertTrue(detail.label.contains("cannot read or delete your Siri history"))
+    shot("dialog-capabilities-no-siri-import-or-device-sync")
+    tap("assistant.capabilities.done");tap("nav.apps")
+    app.buttons["Choose profile"].tap();tap("profile.Jamie")
+    tap("nav.assistant")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].exists)
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    tap("assistant.capabilities");tap("assistant.provider.ondevice");tap("assistant.capabilities.done")
+    XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
+    askSyntheticQuestion("Synthetic Jamie-only question")
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].label.contains("Synthetic answer:"))
+    XCTAssertFalse(app.staticTexts["Synthetic Alex-only question"].exists)
+    viewportShot("dialog-profile-switch-no-inherited-conversation")
+  }
+}
