@@ -1,0 +1,113 @@
+[
+  {
+    "acoustic_playback_tested": false,
+    "assertions": 14,
+    "audio_asset_present": false,
+    "case": "timer_due",
+    "checks": {
+      "canary_unchanged": true,
+      "event_only_after_successful_save": true,
+      "expected_write_error": true,
+      "no_banner_before_durable_commit": false,
+      "no_chime_request_before_durable_commit": false,
+      "no_duplicate_banner_across_failed_write_restart": false,
+      "no_repeat_after_committed_marker": true,
+      "no_system_alarm_IDs": true,
+      "one_chime_request_after_commit": true,
+      "original_bytes_unchanged": true,
+      "restart_reads_original": true,
+      "saved_marker_matches_model": true,
+      "selection_unchanged_on_failed_write": false,
+      "snapshot_unchanged_on_failed_write": false
+    },
+    "failed": [
+      "no_banner_before_durable_commit",
+      "no_chime_request_before_durable_commit",
+      "no_duplicate_banner_across_failed_write_restart",
+      "selection_unchanged_on_failed_write",
+      "snapshot_unchanged_on_failed_write"
+    ],
+    "owned_uuid": "53BB41A2-EC43-4720-870E-6C139094DBD9",
+    "verdict": "FAIL"
+  },
+  {
+    "acoustic_playback_tested": false,
+    "assertions": 14,
+    "audio_asset_present": false,
+    "case": "alarm_due",
+    "checks": {
+      "canary_unchanged": true,
+      "event_only_after_successful_save": true,
+      "expected_write_error": true,
+      "no_banner_before_durable_commit": false,
+      "no_chime_request_before_durable_commit": false,
+      "no_duplicate_banner_across_failed_write_restart": false,
+      "no_repeat_after_committed_marker": true,
+      "no_system_alarm_IDs": true,
+      "one_chime_request_after_commit": true,
+      "original_bytes_unchanged": true,
+      "restart_reads_original": true,
+      "saved_marker_matches_model": true,
+      "selection_unchanged_on_failed_write": true,
+      "snapshot_unchanged_on_failed_write": false
+    },
+    "failed": [
+      "no_banner_before_durable_commit",
+      "no_chime_request_before_durable_commit",
+      "no_duplicate_banner_across_failed_write_restart",
+      "snapshot_unchanged_on_failed_write"
+    ],
+    "owned_uuid": "B5CAD960-4F12-4258-8334-2DE7EC4EEDB1",
+    "verdict": "FAIL"
+  },
+  {
+    "acoustic_playback_tested": false,
+    "assertions": 14,
+    "audio_asset_present": false,
+    "case": "already_delivered",
+    "checks": {
+      "canary_unchanged": true,
+      "event_only_after_successful_save": true,
+      "expected_write_error": true,
+      "no_banner_before_durable_commit": true,
+      "no_chime_request_before_durable_commit": true,
+      "no_duplicate_banner_across_failed_write_restart": true,
+      "no_repeat_after_committed_marker": true,
+      "no_system_alarm_IDs": true,
+      "one_chime_request_after_commit": true,
+      "original_bytes_unchanged": true,
+      "restart_reads_original": true,
+      "saved_marker_matches_model": true,
+      "selection_unchanged_on_failed_write": true,
+      "snapshot_unchanged_on_failed_write": true
+    },
+    "failed": [],
+    "owned_uuid": "529657DB-648F-4A0E-AEC9-5E7CA0580098",
+    "verdict": "PASS"
+  },
+  {
+    "acoustic_playback_tested": false,
+    "assertions": 14,
+    "audio_asset_present": false,
+    "case": "paused_timer",
+    "checks": {
+      "canary_unchanged": true,
+      "event_only_after_successful_save": true,
+      "expected_write_error": true,
+      "no_banner_before_durable_commit": true,
+      "no_chime_request_before_durable_commit": true,
+      "no_duplicate_banner_across_failed_write_restart": true,
+      "no_repeat_after_committed_marker": true,
+      "no_system_alarm_IDs": true,
+      "one_chime_request_after_commit": true,
+      "original_bytes_unchanged": true,
+      "restart_reads_original": true,
+      "saved_marker_matches_model": true,
+      "selection_unchanged_on_failed_write": true,
+      "snapshot_unchanged_on_failed_write": true
+    },
+    "failed": [],
+    "owned_uuid": "E120C9C9-073B-4AD5-970E-BD7787FC4E82",
+    "verdict": "PASS"
+  }
+]
