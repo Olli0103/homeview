@@ -1620,7 +1620,7 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "68°")
   }
 
-  func viewportShot(_ name: String) {
+  func viewportShot(_ name: String, assistantRectangle:Bool=false) {
     let viewport = app.otherElements["reference.viewport"]
     XCTAssertTrue(viewport.waitForExistence(timeout: 5))
     let frame = viewport.frame
@@ -1631,7 +1631,15 @@ final class HomeViewUITests: XCTestCase {
       x: frame.minX * scale, y: frame.minY * scale, width: frame.width * scale,
       height: frame.height * scale
     ).integral
-    XCTAssertEqual(frame.width, frame.height, accuracy: 1)
+    if assistantRectangle {
+      XCTAssertTrue(app.scrollViews["assistant.content"].exists)
+      XCTAssertTrue(app.frame.contains(frame))
+      XCTAssertTrue(frame.contains(app.buttons["assistant.send"].frame))
+      XCTAssertGreaterThanOrEqual(frame.width,150)
+      XCTAssertGreaterThanOrEqual(frame.height,150)
+    } else {
+      XCTAssertEqual(frame.width, frame.height, accuracy: 1)
+    }
     guard let cropped = pixels.cropping(to: rect) else {
       XCTFail("Viewport crop failed")
       return
@@ -1725,6 +1733,112 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
     shot("store-future-version-readonly-after-relaunch")
   }
+  func testAssistantKeyboardGeometryAndUnsentRotation() {
+    XCUIDevice.shared.orientation = .portrait
+    defer { XCUIDevice.shared.orientation = .portrait }
+    launch()
+    tap("nav.assistant")
+    let field=app.textFields["assistant.input"]
+    field.tap();field.typeText("temperature 73")
+    var reports:[[String:Any]]=[]
+    for (name,orientation) in [("portrait",UIDeviceOrientation.portrait),("landscape",.landscapeLeft)] {
+      XCUIDevice.shared.orientation=orientation
+      let keyboard=app.keyboards.firstMatch
+      XCTAssertTrue(keyboard.waitForExistence(timeout:5))
+      let deadline=Date().addingTimeInterval(5)
+      var previous=CGRect.null,stable=0
+      while Date()<deadline {
+        let f=app.frame,v=app.otherElements["reference.viewport"].frame
+        let valid=(orientation.isLandscape ? f.width>f.height:f.height>f.width) && app.frame.contains(v)
+        stable = valid && v==previous ? stable+1:0;previous=v
+        if stable>=3 { break }
+        RunLoop.current.run(until:Date().addingTimeInterval(0.2))
+      }
+      XCTAssertGreaterThanOrEqual(stable,3)
+      let send=app.buttons["assistant.send"]
+      let screen=XCUIScreen.main.screenshot()
+      XCTAssertEqual(screen.image.size.width,app.frame.width)
+      XCTAssertEqual(screen.image.size.height,app.frame.height)
+      let picture=XCTAttachment(screenshot:screen);picture.name="assistant-keyboard-"+name+"-screen";picture.lifetime = .keepAlways;add(picture)
+      func box(_ f:CGRect)->[String:Double] { ["x":f.minX,"y":f.minY,"width":f.width,"height":f.height] }
+      reports.append(["orientation":name,"app":box(app.frame),"input":box(field.frame),"send":box(send.frame),"keyboard":box(keyboard.frame),"viewport":box(app.otherElements["reference.viewport"].frame)])
+      let attachment=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:reports,options:[.prettyPrinted,.sortedKeys]),uniformTypeIdentifier:"public.json")
+      attachment.name="assistant-keyboard-geometry-"+name;attachment.lifetime = .keepAlways;add(attachment)
+      XCTAssertEqual(field.value as? String,"temperature 73")
+      XCTAssertTrue(field.isHittable);XCTAssertTrue(send.isHittable)
+      XCTAssertGreaterThanOrEqual(send.frame.height,44)
+      XCTAssertGreaterThanOrEqual(send.frame.width,44)
+      XCTAssertTrue(app.frame.contains(field.frame));XCTAssertTrue(app.frame.contains(send.frame))
+      XCTAssertLessThanOrEqual(field.frame.maxY,keyboard.frame.minY)
+      XCTAssertLessThanOrEqual(send.frame.maxY,keyboard.frame.minY)
+      XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    }
+    tap("assistant.keyboard.dismiss")
+    XCTAssertFalse(app.keyboards.firstMatch.waitForExistence(timeout:1))
+    XCTAssertEqual(field.value as? String,"temperature 73")
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+    tap("nav.assistant");XCTAssertEqual(field.value as? String,"temperature 73")
+  }
+
+  func testAssistantKeyboardShortcutEscapeAndExplicitReturn() {
+    XCUIDevice.shared.orientation = .landscapeLeft
+    defer { XCUIDevice.shared.orientation = .portrait }
+    launch()
+    app.typeKey("s",modifierFlags:[.command,.shift])
+    let field=app.textFields["assistant.input"]
+    XCTAssertTrue(field.waitForExistence(timeout:5))
+    field.typeText("temperature 73")
+    app.typeKey(XCUIKeyboardKey.escape,modifierFlags:[])
+    expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:app.buttons["assistant.keyboard.dismiss"])
+    waitForExpectations(timeout:5)
+    XCTAssertEqual(field.value as? String,"temperature 73")
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    app.typeKey("s",modifierFlags:[.command,.shift])
+    XCTAssertTrue(app.buttons["assistant.keyboard.dismiss"].waitForExistence(timeout:5))
+    // Return is explicitly labelled Send; Escape, focus and route changes never send.
+    app.typeKey(XCUIKeyboardKey.return,modifierFlags:[])
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("73"))
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"73°")
+    shot("assistant-keyboard-explicit-send-only")
+  }
+  func testAssistantViewportGesturesAndContentScrollDoNotSend() {
+    XCUIDevice.shared.orientation = .portrait
+    defer { XCUIDevice.shared.orientation = .portrait }
+    launch()
+    for orientation in [UIDeviceOrientation.portrait,.landscapeLeft] {
+      XCUIDevice.shared.orientation=orientation
+      tap("nav.faces")
+      func drag(_ x:Double,_ y:Double,_ dx:Double,_ dy:Double) {
+        let f=app.otherElements["reference.viewport"].frame
+        let origin=app.coordinate(withNormalizedOffset:.zero)
+        origin.withOffset(CGVector(dx:f.minX+x*f.width,dy:f.minY+y*f.height))
+          .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:f.minX+dx*f.width,dy:f.minY+dy*f.height)),withVelocity:.slow,thenHoldForDuration:0.2)
+      }
+      drag(0.4,0.06,0.4,0.65)
+      let field=app.textFields["assistant.input"]
+      XCTAssertTrue(field.waitForExistence(timeout:5))
+      field.tap();field.typeText("temperature 73")
+      let scroll=app.scrollViews["assistant.content"]
+      XCTAssertTrue(scroll.exists)
+      scroll.swipeUp();scroll.swipeDown()
+      XCTAssertTrue(field.exists)
+      XCTAssertEqual(field.value as? String,"temperature 73")
+      XCTAssertFalse(app.buttons["controls.night"].exists)
+      drag(0.85,0.06,0.85,0.75)
+      XCTAssertTrue(app.buttons["controls.night"].waitForExistence(timeout:5))
+      XCTAssertFalse(field.exists)
+      tap("nav.assistant")
+      XCTAssertEqual(field.value as? String,"temperature 73")
+      tap("nav.faces");tap("home.thermostat")
+      XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+      tap("nav.assistant")
+      field.tap();app.typeKey("a",modifierFlags:[.command]);app.typeKey(XCUIKeyboardKey.delete,modifierFlags:[])
+    }
+  }
+
   func testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend() {
     launch()
     tap("nav.assistant")
@@ -3536,7 +3650,7 @@ extension HomeViewUITests {
     XCTAssertEqual(request.value as? String,"Timer auf 90 Sekunden")
     XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
     XCTAssertFalse(app.buttons["assistant.voice.cancel"].exists)
-    viewportShot("assistant-capability-return-unsent-draft")
+    viewportShot("assistant-capability-return-unsent-draft",assistantRectangle:true)
   }
 }
 
@@ -3640,7 +3754,7 @@ extension HomeViewUITests {
     askSyntheticQuestion("What was the fictional recipe called?")
     XCTAssertTrue(app.staticTexts["assistant.ai.answer.1"].waitForExistence(timeout:5))
     XCTAssertTrue(app.staticTexts["assistant.ai.answer.1"].label.contains("Moon Soup"))
-    viewportShot("ondevice-synthetic-followup-answer-only")
+    viewportShot("ondevice-synthetic-followup-answer-only",assistantRectangle:true)
     tap("nav.faces");drawer();tap("app.Timers")
     XCTAssertFalse(app.staticTexts["timer.countdown"].exists);XCTAssertTrue(app.buttons["timer.start"].exists)
     tap("nav.assistant");XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
@@ -3652,13 +3766,13 @@ extension HomeViewUITests {
     XCTAssertTrue(app.staticTexts["assistant.ai.status"].label.contains("No cloud fallback"))
     XCTAssertEqual(app.textFields["assistant.input"].value as? String,"hello")
     XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
-    viewportShot("ondevice-unavailable-draft-retained")
+    viewportShot("ondevice-unavailable-draft-retained",assistantRectangle:true)
     launch(["--assistant-ai-fixture","error"]);chooseSyntheticOnDeviceAnswers()
     askSyntheticQuestion("Synthetic question")
     let status=app.staticTexts["assistant.ai.status"]
     XCTAssertTrue(status.waitForExistence(timeout:5))
     XCTAssertTrue(status.label.contains("could not answer"));XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
-    viewportShot("ondevice-failure-context-cleared")
+    viewportShot("ondevice-failure-context-cleared",assistantRectangle:true)
   }
   func testOnDeviceStopAndBackgroundDiscardPendingConversation() {
     launch(["--assistant-ai-fixture","slow"]);chooseSyntheticOnDeviceAnswers()
@@ -3668,13 +3782,13 @@ extension HomeViewUITests {
     tap("assistant.ai.reset")
     XCTAssertTrue(app.staticTexts["assistant.ai.status"].label.contains("Stopped"))
     XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
-    viewportShot("ondevice-stopped-no-late-answer")
+    viewportShot("ondevice-stopped-no-late-answer",assistantRectangle:true)
     askSyntheticQuestion("Another synthetic slow question")
     XCUIDevice.shared.press(.home);app.activate()
     XCTAssertTrue(app.buttons["nav.assistant"].waitForExistence(timeout:5));tap("nav.assistant")
     XCTAssertTrue(app.staticTexts["assistant.reply"].waitForExistence(timeout:5))
     XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
-    viewportShot("ondevice-background-provider-reset")
+    viewportShot("ondevice-background-provider-reset",assistantRectangle:true)
   }
 }
 
@@ -3703,8 +3817,8 @@ extension HomeViewUITests {
     XCTAssertNotEqual(app.staticTexts["answer.speech.rate.label"].label,before)
     shot("answer-readout-system-voice-rate-choice")
     tap("answer.speech.settings.done")
-    unlockSyntheticReadout();viewportShot("answer-readout-unlock-does-not-speak")
-    startSyntheticReadout();viewportShot("answer-readout-explicit-speaking")
+    unlockSyntheticReadout();viewportShot("answer-readout-unlock-does-not-speak",assistantRectangle:true)
+    startSyntheticReadout();viewportShot("answer-readout-explicit-speaking",assistantRectangle:true)
     tap("answer.speech.read")
     XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
     XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("stopped"))
@@ -3714,12 +3828,12 @@ extension HomeViewUITests {
     tap("answer.speech.read")
     XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
     XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("available system voice"))
-    viewportShot("answer-readout-no-voice-no-unlock")
+    viewportShot("answer-readout-no-voice-no-unlock",assistantRectangle:true)
     launch(["--answer-speech-fixture","--device-unlock-denied"]);tap("nav.assistant")
     tap("answer.speech.read")
     XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("not granted"))
     XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
-    viewportShot("answer-readout-unlock-denied")
+    viewportShot("answer-readout-unlock-denied",assistantRectangle:true)
     launch(["--answer-speech-fixture"]);tap("nav.assistant");tap("answer.speech.settings")
     let mute=app.switches["answer.speech.mute"]
     for _ in 0..<4 where !mute.isHittable { app.scrollViews.firstMatch.swipeUp() }
@@ -3727,7 +3841,7 @@ extension HomeViewUITests {
     tap("answer.speech.read")
     XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("muted"))
     XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
-    viewportShot("answer-readout-muted-no-unlock")
+    viewportShot("answer-readout-muted-no-unlock",assistantRectangle:true)
   }
   func testLongAnswerReadoutPausesDemoMusicAndSettingsKeepAnswer() {
     launch(["--answer-speech-fixture","--assistant-ai-fixture","long","--page","Music"])
@@ -3739,7 +3853,7 @@ extension HomeViewUITests {
     XCTAssertTrue(answer.waitForExistence(timeout:5));XCTAssertGreaterThan(answer.label.count,3000)
     tap("answer.speech.settings");tap("answer.speech.settings.done")
     XCTAssertTrue(answer.exists);XCTAssertGreaterThan(answer.label.count,3000)
-    unlockSyntheticReadout();startSyntheticReadout();viewportShot("answer-readout-long-answer-active")
+    unlockSyntheticReadout();startSyntheticReadout();viewportShot("answer-readout-long-answer-active",assistantRectangle:true)
     tap("nav.faces");drawer();tap("app.Music")
     XCTAssertEqual(app.buttons["player.play"].label,"Play")
     tap("nav.assistant");XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
@@ -3752,7 +3866,7 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["nav.assistant"].waitForExistence(timeout:5));tap("nav.assistant")
     XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
     XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("stopped"))
-    viewportShot("answer-readout-background-locked-no-resume")
+    viewportShot("answer-readout-background-locked-no-resume",assistantRectangle:true)
   }
   func testTimerChimeInterruptsAnswerReadoutAndTimerCompletes() {
     launch(["--answer-speech-fixture"]);tap("nav.assistant");unlockSyntheticReadout()
@@ -3761,7 +3875,7 @@ extension HomeViewUITests {
     expectation(for:NSPredicate(format:"label == %@","Read"),evaluatedWith:app.buttons["answer.speech.read"])
     waitForExpectations(timeout:12)
     XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("stopped"))
-    viewportShot("answer-readout-timer-interrupt-no-resume")
+    viewportShot("answer-readout-timer-interrupt-no-resume",assistantRectangle:true)
     tap("nav.faces");drawer();tap("app.Timers")
     XCTAssertEqual(app.staticTexts["timer.title"].label,"DONE")
   }
@@ -3775,7 +3889,7 @@ extension HomeViewUITests {
     XCTAssertEqual(app.textFields["assistant.input"].value as? String,"temperature 72")
     XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
     XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("What can I help"))
-    viewportShot("answer-readout-microphone-draft-no-resume")
+    viewportShot("answer-readout-microphone-draft-no-resume",assistantRectangle:true)
   }
 }
 
@@ -3826,7 +3940,7 @@ extension HomeViewUITests {
     XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].waitForExistence(timeout:5))
     XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].label.contains("Synthetic answer:"))
     XCTAssertFalse(app.staticTexts["assistant.ai.answer.1"].exists)
-    viewportShot("dialog-new-cleared-provider-and-visible-context")
+    viewportShot("dialog-new-cleared-provider-and-visible-context",assistantRectangle:true)
     // Flush the ordinary Snapshot writer in the owned UUID test store, then
     // relaunch the same arguments without resetting or creating another store.
     XCUIDevice.shared.press(.home);app.activate()
@@ -3836,7 +3950,7 @@ extension HomeViewUITests {
     XCTAssertTrue(app.staticTexts["assistant.reply"].exists)
     tap("assistant.capabilities");tap("assistant.provider.ondevice");tap("assistant.capabilities.done")
     XCTAssertFalse(app.staticTexts["assistant.ai.answer.0"].exists)
-    viewportShot("dialog-process-restart-no-history-restored")
+    viewportShot("dialog-process-restart-no-history-restored",assistantRectangle:true)
   }
   func testDialogCapabilityBoundaryAndProfileIsolation() {
     launch(["--assistant-ai-fixture","ready"])
@@ -3864,7 +3978,7 @@ extension HomeViewUITests {
     XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].waitForExistence(timeout:5))
     XCTAssertTrue(app.staticTexts["assistant.ai.answer.0"].label.contains("Synthetic answer:"))
     XCTAssertFalse(app.staticTexts["Synthetic Alex-only question"].exists)
-    viewportShot("dialog-profile-switch-no-inherited-conversation")
+    viewportShot("dialog-profile-switch-no-inherited-conversation",assistantRectangle:true)
   }
 }
 

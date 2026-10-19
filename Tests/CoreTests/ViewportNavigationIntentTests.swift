@@ -67,4 +67,21 @@ final class ViewportNavigationIntentTests: XCTestCase {
       XCTAssertNil(action(0.4,0.13,0,200))
     }
   }
+  func testRectangularAssistantUsesItsActualWidthAndHeightForTopRegions() {
+    func pick(_ x:Double,_ y:Double,_ dx:Double=0,_ dy:Double=150)->ViewportNavigationAction? {
+      ViewportNavigationIntent.choose(startX:x,startY:y,dx:dx,dy:dy,width:796,height:302,isFace:false)
+    }
+    XCTAssertEqual(pick(400,25),.assistant)
+    XCTAssertEqual(pick(650,25),.controlCenter)
+    XCTAssertNil(pick(400,60),"Scrolling the document is not a top-edge gesture")
+    XCTAssertNil(pick(400,150,200,0))
+    XCTAssertNil(pick(400,25,200,150))
+    XCTAssertNil(pick(800,25))
+    XCTAssertNil(pick(400,303))
+    for bad in [0.0,-1,.nan,.infinity] {
+      XCTAssertNil(ViewportNavigationIntent.choose(startX:0,startY:0,dx:0,dy:150,width:bad,height:302,isFace:false))
+      XCTAssertNil(ViewportNavigationIntent.choose(startX:0,startY:0,dx:0,dy:150,width:796,height:bad,isFace:false))
+    }
+  }
+
 }

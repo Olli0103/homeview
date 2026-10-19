@@ -177,12 +177,14 @@ struct SettingsView: View {
   }
 }
 struct AssistantView: View {
+  var focusRequest=0
   @Environment(AppModel.self) private var model
   @Environment(\.scenePhase) private var scenePhase
   private var text: String {
     get { model.assistantInput }
     nonmutating set { model.assistantInput = newValue }
   }
+  @FocusState private var typing:Bool
   @State private var voiceDraftGeneration = 0
   @State private var draftBeforeVoice = ""
   @State private var language = "de-DE"
@@ -191,7 +193,10 @@ struct AssistantView: View {
   @State private var voiceInitiating=false
   @State private var voice = VoiceInputController()
   var body: some View {
-    VStack(alignment: .leading, spacing:model.assistantUsesAI ? 8:22) {
+    VStack(alignment: .leading, spacing:12) {
+      ScrollViewReader { reader in
+      ScrollView {
+      VStack(alignment: .leading, spacing:model.assistantUsesAI ? 8:22) {
       AppHeader()
       HStack(spacing:12) {
         Button("Capabilities and limits") { showingCapabilities=true }
@@ -227,8 +232,6 @@ struct AssistantView: View {
           Text(model.assistantAI.status).font(.system(size:14)).foregroundStyle(.gray)
             .accessibilityIdentifier("assistant.ai.status")
         }.padding(.horizontal,34)
-        ScrollViewReader { reader in
-          ScrollView {
             VStack(alignment:.leading,spacing:18) {
               ForEach(Array(model.assistantAI.exchanges.enumerated()),id:\.element.id) { index,exchange in
                 VStack(alignment:.leading,spacing:8) {
@@ -243,16 +246,10 @@ struct AssistantView: View {
                 ProgressView().accessibilityIdentifier("assistant.ai.thinking")
               }
             }.padding(.horizontal,34).padding(.vertical,8)
-          }.onChange(of:model.assistantAI.exchanges.count) { _,_ in
-            if let id=model.assistantAI.exchanges.last?.id { reader.scrollTo(id,anchor:.bottom) }
-          }
-        }.frame(maxHeight:.infinity)
       } else {
-        ScrollView {
           Text(model.assistantReply).font(.system(size:35,weight:.medium))
             .frame(maxWidth:.infinity,alignment:.leading).padding(.horizontal,34)
             .padding(.top,24).accessibilityIdentifier("assistant.reply")
-        }.frame(maxHeight:.infinity)
       }
       if VoiceInputController.supported {
         VStack(alignment: .leading, spacing: 8) {
@@ -262,6 +259,7 @@ struct AssistantView: View {
               if voice.recording {
                 voice.finish()
               } else {
+                typing=false
                 draftBeforeVoice = text
                 voiceDraftGeneration = model.personalSessionGeneration
                 text = ""
@@ -291,9 +289,23 @@ struct AssistantView: View {
             .accessibilityIdentifier("assistant.voice.status")
         }.padding(.horizontal, 34)
       }
+      }
+      }.accessibilityIdentifier("assistant.content")
+        .onChange(of:model.assistantAI.exchanges.count) { _,_ in
+          if let id=model.assistantAI.exchanges.last?.id { reader.scrollTo(id,anchor:.bottom) }
+        }
+      }
       HStack {
         TextField("Type a request", text: Binding(get: { text }, set: { text = $0 })).textFieldStyle(.plain).font(.system(size: 25))
+          .focused($typing).submitLabel(.send)
           .onSubmit { submitted() }.accessibilityIdentifier("assistant.input")
+          .frame(minHeight:44)
+          .onKeyPress(.escape) { typing=false;return .handled }
+        if typing {
+          Button { typing=false } label: { Image(systemName:"keyboard.chevron.compact.down").frame(width:44,height:44) }
+            .buttonStyle(.plain).accessibilityLabel("Dismiss keyboard")
+            .accessibilityIdentifier("assistant.keyboard.dismiss")
+        }
         RoundButton(symbol: "arrow.up", color: .blue, foreground: .white, label: "Send request") {
           submitted()
         }.disabled(voice.busy || model.assistantAI.busy || text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
@@ -303,6 +315,8 @@ struct AssistantView: View {
       Text(model.assistantUsesAI ? "Apple on-device text · Not Siri · No cloud fallback":"Local demo assistant · Not connected to Siri AI").font(.system(size: 16))
         .foregroundStyle(.gray).padding(.horizontal, 34).padding(.bottom, 24)
     }.background(.white).foregroundStyle(.black)
+      .onAppear { typing=true }
+      .onChange(of:focusRequest) { _,_ in typing=true }
       .sheet(isPresented:$showingCapabilities) { AssistantCapabilitiesView() }
       .sheet(isPresented:$showingAnswerSpeechSettings) { AnswerSpeechSettingsView() }
       .onChange(of: voice.transcript) { _, value in if !value.isEmpty { text = value } }

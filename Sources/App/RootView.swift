@@ -18,10 +18,18 @@ struct RootView: View {
     default: .opacity.combined(with: .scale(scale: 0.975))
     }
   }
+  @State private var assistantFocusRequest=0
   private let pulse = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   var body: some View {
     GeometryReader { geo in
       let edge = max(150, min(geo.size.width - 24, geo.size.height - 64))
+      // The assistant is an input surface, not a scaled clock face. Keep
+      // native-sized controls above the keyboard, using available width.
+      let assistantLayout = model.route == .assistant
+      let contentWidth = assistantLayout ? max(150,min(796,geo.size.width-24)):600
+      let contentHeight = assistantLayout ? max(150,min(796,geo.size.height-64)):600
+      let displayedWidth = assistantLayout ? contentWidth:edge
+      let displayedHeight = assistantLayout ? contentHeight:edge
       VStack(spacing: 12) {
         Spacer(minLength: 0)
         ZStack {
@@ -74,24 +82,24 @@ struct RootView: View {
           #endif
           if model.incomingCall { CallView(incoming: true) }
         }
-        .frame(width: 600, height: 600)
+        .frame(width: contentWidth, height: contentHeight)
         .background(.white).clipShape(RoundedRectangle(cornerRadius: 84, style: .continuous))
         // Night mode includes activity, status banners and toasts, not only the screen.
         .saturation(model.data.night ? 0 : 1)
         .colorMultiply(model.data.night ? Color(red: 1, green: 0, blue: 0) : .white)
         .environment(\.colorScheme, .light)
-        .scaleEffect(edge / 600)
-        .frame(width: edge, height: edge)
+        .scaleEffect(assistantLayout ? 1:edge / 600)
+        .frame(width: displayedWidth, height: displayedHeight)
         .overlay {
           if ProcessInfo.processInfo.arguments.contains("--uitesting") {
-            NativeViewportMarker().frame(width: edge, height: edge).allowsHitTesting(false)
+            NativeViewportMarker().frame(width: displayedWidth, height: displayedHeight).allowsHitTesting(false)
           }
         }
         #if !os(tvOS)
           // Faces have no scrolling content. Their drag must cancel underlying
           // tile taps; other screens keep normal scrolling and their bottom strip.
-          .highPriorityGesture(viewportNavigation(edge: edge), including: model.route == .face ? .all : .subviews)
-          .simultaneousGesture(viewportNavigation(edge: edge), including: model.route == .face ? .subviews : .all)
+          .highPriorityGesture(viewportNavigation(width: displayedWidth,height: displayedHeight), including: model.route == .face ? .all : .subviews)
+          .simultaneousGesture(viewportNavigation(width: displayedWidth,height: displayedHeight), including: model.route == .face ? .subviews : .all)
         #endif
         .simultaneousGesture(TapGesture().onEnded { model.interact() })
         HStack(spacing: 24) {
@@ -113,9 +121,11 @@ struct RootView: View {
           Button {
             model.dismissDemoDoorbell()
             model.route = .assistant
+            assistantFocusRequest+=1
           } label: {
             Image(systemName: "waveform")
           }.accessibilityLabel("Assistant").accessibilityIdentifier("nav.assistant")
+            .keyboardShortcut("s",modifiers:[.command,.shift])
           Button {
             model.dismissDemoDoorbell()
             model.route = .controlCenter
@@ -248,14 +258,14 @@ struct RootView: View {
     #endif
   }
   #if !os(tvOS)
-    private func viewportNavigation(edge: Double) -> some Gesture {
+    private func viewportNavigation(width: Double,height: Double) -> some Gesture {
       DragGesture(minimumDistance: 45).onEnded { value in
         model.interact()
         // One dominant axis owns each completed drag. Existing distances and
         // edge regions stay in the displayed square's coordinate system.
         switch ViewportNavigationIntent.choose(startX:value.startLocation.x,
           startY:value.startLocation.y,dx:value.translation.width,dy:value.translation.height,
-          edge:edge,isFace:model.route == .face) {
+          width:width,height:height,isFace:model.route == .face) {
         case .home: model.homeGesture()
         case .assistant: model.route = .assistant
         case .controlCenter: model.route = .controlCenter
@@ -294,7 +304,7 @@ struct RootView: View {
     case .ingredients: IngredientsView()
     case .cooking: CookingView()
     case .handoff: RecipeHandoffView()
-    case .assistant: AssistantView()
+    case .assistant: AssistantView(focusRequest:assistantFocusRequest)
     case .editor: FaceEditor()
     case .controlCenter: ControlCenterView()
     case .privacy: PrivacyView()
