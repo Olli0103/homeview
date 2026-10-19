@@ -1,0 +1,45 @@
+#if os(iOS) || os(macOS) || os(visionOS)
+import AppIntents
+import Foundation
+import Observation
+
+/// One short-lived, payload-free request. Only an active RootView may consume it.
+@MainActor @Observable final class AssistantShortcutRequest {
+  static let shared=AssistantShortcutRequest()
+  private(set) var revision:UInt64=0
+  @ObservationIgnored private var requestedAt:TimeInterval?
+  func request(at uptime:TimeInterval=ProcessInfo.processInfo.systemUptime) {
+    guard uptime.isFinite,uptime>=0 else { return }
+    requestedAt=uptime;revision &+= 1
+  }
+  func consume(at uptime:TimeInterval=ProcessInfo.processInfo.systemUptime)->Bool {
+    guard let requestedAt else { return false }
+    self.requestedAt=nil
+    let elapsed=uptime-requestedAt
+    return elapsed.isFinite && elapsed>=0 && elapsed<=30
+  }
+}
+
+struct OpenHomeViewAssistantIntent:AppIntent {
+  static var title:LocalizedStringResource { "Open HomeView Assistant" }
+  static var description:IntentDescription { "Open the request field. Does not send, record, play audio or unlock personal content." }
+  static var authenticationPolicy:IntentAuthenticationPolicy { .requiresLocalDeviceAuthentication }
+  // Compatibility for supported deployments before the foreground-modes API.
+  static var openAppWhenRun:Bool { true }
+  @available(iOS 26.0,macOS 26.0,visionOS 26.0,*)
+  static var supportedModes:IntentModes { .foreground(.immediate) }
+  @MainActor func perform() async throws -> some IntentResult {
+    try Task.checkCancellation()
+    AssistantShortcutRequest.shared.request()
+    return .result()
+  }
+}
+
+struct HomeViewAppShortcuts:AppShortcutsProvider {
+  static var appShortcuts:[AppShortcut] {
+    AppShortcut(intent:OpenHomeViewAssistantIntent(),
+      phrases:["Open \(.applicationName) assistant"],
+      shortTitle:"Open Assistant",systemImageName:"text.bubble")
+  }
+}
+#endif
