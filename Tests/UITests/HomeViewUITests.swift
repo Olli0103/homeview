@@ -2069,6 +2069,46 @@ final class HomeViewUITests: XCTestCase {
     tap("device.unlock")
     XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout: 5))
   }
+  func testDemoArtworkInformationIsExplicitAndNeverAutoplays() {
+    launch(["--page","Music"])
+    let info=app.buttons["music.artwork.info.demo"]
+    XCTAssertTrue(info.waitForExistence(timeout:5));XCTAssertTrue(info.isHittable)
+    XCTAssertGreaterThanOrEqual(info.frame.width,44)
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    info.tap()
+    XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Bundled demo player")
+    XCTAssertTrue(app.staticTexts["music.lyrics.availability"].label.contains("No lyrics are included"))
+    XCTAssertTrue(app.staticTexts["music.artwork.motion"].label.contains("No animated cover video"))
+    shot("music-artwork-demo-information")
+    tap("music.artwork.done")
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+  func testConnectedArtworkInformationKeepsTheExplicitQueuePlaying() {
+    launch(["--page","Settings"]);connectService("Apple Music")
+    drawer();tap("app.Music")
+    let search=app.textFields["music.search.input"];XCTAssertTrue(search.waitForExistence(timeout:5))
+    search.tap();search.typeText("Synthetic song");tap("music.search")
+    XCTAssertTrue(app.buttons["music.result.0"].waitForExistence(timeout:5));tap("music.result.0")
+    let play=app.buttons["music.connected.play"];XCTAssertEqual(play.label,"Pause")
+    let title=app.staticTexts["music.current.title"].label
+    let info=app.buttons["music.artwork.info.catalog"];XCTAssertTrue(info.waitForExistence(timeout:5))
+    XCTAssertTrue(info.isHittable);XCTAssertGreaterThanOrEqual(info.frame.width,44);info.tap()
+    XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Apple Music connection")
+    XCTAssertTrue(app.staticTexts["music.lyrics.availability"].label.contains("not supplied by this connection"))
+    XCTAssertTrue(app.staticTexts["music.artwork.availability"].label.contains("static cover images"))
+    shot("music-artwork-catalog-information")
+    tap("music.artwork.done")
+    XCTAssertEqual(play.label,"Pause");XCTAssertEqual(app.staticTexts["music.current.title"].label,title)
+  }
+  func testArtworkInformationWithReducedMotionNeverAddsAnimationOrLyrics() {
+    launch(["--page","Music","--reduce-motion"])
+    tap("music.artwork.info.demo")
+    XCTAssertTrue(app.staticTexts["music.artwork.motion"].label.contains("including with Reduce Motion"))
+    XCTAssertTrue(app.staticTexts["music.lyrics.availability"].label.contains("No sample text"))
+    shot("music-artwork-reduced-motion-information")
+    tap("music.artwork.done");XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+
   func testConnectedMusicAndWeatherDoNotUseHomeKit() {
     launch(["--page", "Settings"])
     connectService("Apple Music")
