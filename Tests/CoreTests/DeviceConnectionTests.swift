@@ -276,6 +276,41 @@ final class DeviceConnectionTests: XCTestCase {
     XCTAssertFalse(s.busy.contains(.calendar))
   }
 
+  func testRemainingSourceCancellationCannotEnableMusicAfterPermissionReturns() async throws {
+    let suite="org.example.homeview.tests.cancelled-source."+UUID().uuidString
+    let defaults=try XCTUnwrap(UserDefaults(suiteName:suite))
+    defer { defaults.removePersistentDomain(forName:suite) }
+    let p=Provider();let s=DeviceConnections(provider:p,testing:false,defaults:defaults)
+    _ = await s.unlock();p.delayAuthorization=true
+    let started=expectation(description:"owned music permission callback pending");p.onStart={started.fulfill()}
+    let connect=Task { await s.connect(.music) };await fulfillment(of:[started],timeout:2)
+    connect.cancel();try XCTUnwrap(p.authorizationReply).resume();await connect.value
+    XCTAssertFalse(s.enabled.contains(.music))
+    XCTAssertFalse(defaults.bool(forKey:"HomeView.connected.Apple Music"))
+    XCTAssertEqual(s.status[.music],"Not connected")
+    XCTAssertEqual(p.musicPermissionRequests,1,"An already submitted permission request is not rolled back")
+    XCTAssertTrue(s.requested.contains(.music));XCTAssertFalse(s.busy.contains(.music))
+  }
+  func testRemainingSourceCancellationWeatherErrorKeepsGoodReadingAndStatus() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p)
+    p.weatherValue=WeatherReading(city:"Synthetic weather",temperature:68,high:70,low:50,humidity:50,wind:10,code:0,sunset:nil,utcOffset:0,observedAt:Date())
+    await s.connect(.weather);let status=s.status[.weather]
+    p.delayWeather=true;let started=expectation(description:"weather refresh before cancelled error");p.onStart={started.fulfill()}
+    let refresh=Task { await s.connect(.weather) };await fulfillment(of:[started],timeout:2)
+    refresh.cancel();try XCTUnwrap(p.weatherReply).resume(throwing:CocoaError(.featureUnsupported));await refresh.value
+    XCTAssertFalse(s.weatherFetchFailed);XCTAssertEqual(s.status[.weather],status)
+    XCTAssertEqual(s.weather?.temperature,68);XCTAssertTrue(s.enabled.contains(.weather));XCTAssertFalse(s.busy.contains(.weather))
+  }
+  func testRemainingSourceCancellationWeatherSuccessAlreadyDropsDataButMustRestoreStatus() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);p.delayWeather=true
+    let started=expectation(description:"new weather read before cancellation");p.onStart={started.fulfill()}
+    let read=Task { await s.connect(.weather) };await fulfillment(of:[started],timeout:2)
+    read.cancel();let value=WeatherReading(city:"Synthetic cancelled weather",temperature:68,high:70,low:50,humidity:50,wind:10,code:0,sunset:nil,utcOffset:0,observedAt:Date())
+    try XCTUnwrap(p.weatherReply).resume(returning:value);await read.value
+    XCTAssertNil(s.weather);XCTAssertFalse(s.enabled.contains(.weather));XCTAssertFalse(s.weatherFetchFailed)
+    XCTAssertEqual(s.status[.weather],"Not connected");XCTAssertFalse(s.busy.contains(.weather))
+  }
+
   func testPersistedConnectionRevocationSurvivesSessionRecreation() async {
     let suite = "org.example.homeview.tests.connections." + UUID().uuidString
     let defaults = UserDefaults(suiteName: suite)!
