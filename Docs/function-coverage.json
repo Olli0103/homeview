@@ -1302,7 +1302,8 @@
       "AI-02"
     ],
     "current": [
-      "Kein Zugriff auf Nachrichtenhistorie oder systemweiten Siri-Kontext. Eigene Kalenderdaten sind bewusst anschließbar."
+      "Current assistant context policy is accepted only at its bounded software scope: exactly submitted text and temporary conversation, no calendar/reminder/photo/message/profile/screen enrichment, including after synthetic device unlock and source connection. Actual AppModel entry now rejects inactive/offscreen/covered calls and synchronously invalidates route context. Docs/assistant-context.md.",
+      "Personal Siri context and system-wide onscreen awareness remain blocked; no adapter, context-sharing purpose or original parity is claimed. Device authentication and source consent apply only to the separate connected views, never implicitly to the assistant."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1315,7 +1316,7 @@
     "target": "iPad core",
     "implementation_status": "blocked",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Current synthetic data-access boundary passed; original personal-context/onscreen function remains blocked. See Docs/assistant-context.md.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -1398,7 +1399,8 @@
       "AI-02"
     ],
     "current": [
-      "Kein Zugriff auf Nachrichtenhistorie oder systemweiten Siri-Kontext. Eigene Kalenderdaten sind bewusst anschließbar."
+      "Current assistant context policy is accepted only at its bounded software scope: exactly submitted text and temporary conversation, no calendar/reminder/photo/message/profile/screen enrichment, including after synthetic device unlock and source connection. Actual AppModel entry now rejects inactive/offscreen/covered calls and synchronously invalidates route context. Docs/assistant-context.md.",
+      "Personal Siri context and system-wide onscreen awareness remain blocked; no adapter, context-sharing purpose or original parity is claimed. Device authentication and source consent apply only to the separate connected views, never implicitly to the assistant."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1411,7 +1413,7 @@
     "target": "iPad core",
     "implementation_status": "blocked",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Current synthetic data-access boundary passed; original personal-context/onscreen function remains blocked. See Docs/assistant-context.md.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },

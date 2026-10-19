@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-19",
+  "issue": 34,
+  "code_commit": "259027b61c91e8f1dc23d70a567fd8bb0e024c1a",
+  "source_digest": "93535a8006bb2baa53bd77f5c7695917e084719a4f61198efb58e14ab4893d2b",
+  "source_files": 186,
+  "targeted_Core_tests": 42,
+  "targeted_Core_failures": 0,
+  "Core_254_inputs_unchanged": true,
+  "baseline": {
+    "target": "8d3d9c9f2d637e9ba778e8765475c567dd2649b2",
+    "archive": "assistant-context-baseline-inputs.zip",
+    "entries": 98,
+    "sha256": "233e14a858add02aba7c75651cae0f7a0a2766490155e4b06df5683d15b3e978",
+    "all_entries_read_back": true,
+    "result": {
+      "case": "offscreen_model_entry",
+      "route_is_face": true,
+      "scene_flag": false,
+      "temperature_after": 72,
+      "temperature_before": 68
+    },
+    "source_bytes_recovered_from_git_match_recorded_compile_manifest": true,
+    "qualification": "Historical baseline; no before-execution binary digest was recorded. Retained compiled product is archived, not a physical-device proof."
+  },
+  "native_gate": {
+    "verdict": "PASS",
+    "cases": 6,
+    "assertions": 63,
+    "inputs_unchanged": true,
+    "target": "259027b61c91e8f1dc23d70a567fd8bb0e024c1a",
+    "clean_before_after": true,
+    "compiled_source_matches_git": true
+  },
+  "native_archive": {
+    "name": "assistant-context-native-release-inputs.zip",
+    "entries": 122,
+    "sha256": "4486c1dcc6c8a1bf6e2b93adb798218bf82f7453adac81b8e2e470e5fcab888e",
+    "all_entries_read_back": true
+  },
+  "native_qualification": "Queued model task invalidation and authentication-prompt state sequence; controlled late completions separately in Core tests and delayed-response UI fixtures. No provider-entry signal or physical authentication is claimed by the queued case.",
+  "retained_native_failures": [
+    {
+      "id": "assistant-context-native",
+      "scope": "Compile only; fixture incorrectly compared non-Equatable personal-record arrays. Production unchanged by fixture repair."
+    },
+    {
+      "id": "assistant-context-native-qualified",
+      "scope": "Three passing cases then timeout waiting for slow fixture questions log. Source logs questions only after 30-second delay, longer than probe wait. Final queued test asserts owned pending state, not an invented provider-entry signal."
+    }
+  ],
+  "UI_checkpoints": [
+    {
+      "id": "assistant-context-delivery",
+      "passed_executions": 8,
+      "unique_methods": 4,
+      "failures": 0,
+      "skips": 0,
+      "runtime_warnings": [],
+      "source_digest": "998c36d69272df0538cb5a76b3cd2bd7341fc36b562b5d9c412aef067ce65e48",
+      "source_files": 186,
+      "compiled_inputs": 22,
+      "installed_apps_read_back": true,
+      "archive": "assistant-context-delivery-inputs.zip",
+      "archive_entries": 208,
+      "archive_sha256": "f5bc327c0895945ef39401e00107fbe7def2cad303f4a4d4e8dc1072cabd6fad",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "assistant-context-qualified",
+      "passed_executions": 4,
+      "unique_methods": 2,
+      "failures": 0,
+      "skips": 0,
+      "runtime_warnings": [],
+      "source_digest": "93535a8006bb2baa53bd77f5c7695917e084719a4f61198efb58e14ab4893d2b",
+      "source_files": 186,
+      "compiled_inputs": 22,
+      "installed_apps_read_back": true,
+      "archive": "assistant-context-qualified-inputs.zip",
+      "archive_entries": 208,
+      "archive_sha256": "fc1b6c207ef9446804335bfbf225ad83815de1d329d72e44db36c599fd87b381",
+      "all_entries_read_back": true
+    }
+  ],
+  "UI_successful_executions_total": 12,
+  "UI_current_revision_executions": 4,
+  "UI_unique_methods_total": 4,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "generator": {
+    "target": "259027b61c91e8f1dc23d70a567fd8bb0e024c1a",
+    "project_byte_equivalent": true,
+    "regenerated_paths": [
+      "HomeViewReplica.xcodeproj/project.pbxproj",
+      "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewWatch.xcscheme",
+      "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
+      "Resources/MainInfo.plist"
+    ],
+    "Python_AST_valid": true,
+    "Core_254_input_bytes_unchanged": true,
+    "targeted_boundary_tests": 42,
+    "targeted_failures": 0
+  },
+  "PNGs_decoded": 54,
+  "contact_sheets_reviewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/verification/assistant-context-images/iPad-viewport-assistant-context-explicit-text-synthetic-answer.png",
+      "sha256": "087dc074db7a3e965d5bc00763f978074ab9878d9df5e19e572b9f1c272f6ed2"
+    },
+    {
+      "path": "Docs/verification/assistant-context-images/iPad-viewport-assistant-context-route-exit-cleared.png",
+      "sha256": "a9a4c10ce7a007980ea8f3f5fe4f7d1db992896b9bc8ff4698ec7d4d75982b1f"
+    },
+    {
+      "path": "Docs/verification/assistant-context-images/iPad-viewport-ondevice-background-provider-reset.png",
+      "sha256": "33074445bede963c7fb7d90f0594399055af1336bded765c21f7f2ed36041e8e"
+    },
+    {
+      "path": "Docs/verification/assistant-context-images/iPad-viewport-ondevice-stopped-no-late-answer.png",
+      "sha256": "6875bf850573fde8724bc5051dd2038d091193ded262c627c09458c0632a596f"
+    },
+    {
+      "path": "Docs/verification/assistant-context-images/iPhone-viewport-assistant-context-explicit-text-synthetic-answer.png",
+      "sha256": "c49685a07af0d61c4896015657b7f76014591989aa62ac39a30f827749d40ea6"
+    },
+    {
+      "path": "Docs/verification/assistant-context-images/iPhone-viewport-assistant-context-route-exit-cleared.png",
+      "sha256": "9ed6b19a1f76da8edd06ba59107684440c11df6a3ccd2affce50e55b8ece5352"
+    },
+    {
+      "path": "Docs/verification/assistant-context-images/iPhone-viewport-ondevice-background-provider-reset.png",
+      "sha256": "d6ee0ec62be2cb9f6116495a3e389ca7851d09b6db96a9c3a4c67201df159c1c"
+    },
+    {
+      "path": "Docs/verification/assistant-context-images/iPhone-viewport-ondevice-stopped-no-late-answer.png",
+      "sha256": "cd5501d8094df3d45cc48eeb8904bac5019e721a8eb09cb4a6e2965c861c88da"
+    },
+    {
+      "path": "Docs/verification/assistant-context-images/iPhone-assistant-context-no-personal-or-screen-sharing.png",
+      "sha256": "661b05e05784076e23838760b2bf028935de2c1ec47b98266f990de21970a69e"
+    }
+  ],
+  "original_F042_F045_parity": false,
+  "personal_context_adapter_enabled": false,
+  "system_wide_screen_adapter_enabled": false,
+  "Home_constructed": false,
+  "real_model_quality_tested": false
+}
