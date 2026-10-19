@@ -112,6 +112,10 @@ struct SettingsView: View {
             }.accessibilityIdentifier("settings.keepawake").accessibilityValue(
               model.display.active ? "On" : "Off")
           }
+          Button("Reset local app content") { model.presentLocalReset() }
+            .font(.system(size:23)).accessibilityIdentifier("settings.reset")
+          Text(model.localResetStatus).font(.system(size:15)).foregroundStyle(.gray)
+            .accessibilityIdentifier("settings.reset.status")
           Button("Welcome and service overview") { model.showingIntroduction=true }
             .font(.system(size:23)).accessibilityIdentifier("settings.introduction")
           Button("Power adapter information") { showingPowerCapabilities=true }

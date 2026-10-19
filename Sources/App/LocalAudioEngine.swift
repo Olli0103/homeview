@@ -59,6 +59,12 @@ final class LocalAudioEngine: @unchecked Sendable {
       }
     }
   }
+  func stopAll() {
+    queue.async { [self] in
+      music?.stop();podcast?.stop();chime?.stop()
+      music=nil;podcast=nil;chime=nil
+    }
+  }
   func stopMusic() { queue.async { [self] in music?.stop() } }
   func stopPodcast() { queue.async { [self] in podcast?.stop() } }
   func setVolume(_ volume: Float) {

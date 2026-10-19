@@ -1,13 +1,6 @@
 import Foundation
 import Observation
 
-enum DataConnection: String, CaseIterable, Identifiable {
-  case calendar = "Calendar"
-  case reminders = "Reminders"
-  case music = "Apple Music"
-  case weather = "Weather"
-  var id: String { rawValue }
-}
 @MainActor
 protocol DeviceDataProvider: AnyObject {
   func authorized(_ kind: DataConnection) -> Bool
@@ -22,10 +15,15 @@ protocol DeviceDataProvider: AnyObject {
   func playMusic(_ index: Int) async throws
   func resumeMusic() async throws
   func pauseMusic()
+  func resetLocalCaches()
   var musicPlaying: Bool { get }
   var musicTime: Double { get }
   func weather(_ city: String) async throws -> WeatherReading
   func unlock() async -> Bool
+}
+
+extension DeviceDataProvider {
+  func resetLocalCaches() { pauseMusic() }
 }
 
 @MainActor @Observable
@@ -34,6 +32,7 @@ final class DeviceConnections {
   private let testing: Bool
   private let defaults: UserDefaults
   private var generation: [DataConnection: Int] = [:]
+  private var restoreGeneration = 0
   private var unlockGeneration = 0
   private var musicActionGeneration = 0
   private(set) var enabled: Set<DataConnection> = []
@@ -75,7 +74,7 @@ final class DeviceConnections {
   }
   func connect(_ kind: DataConnection, date: Date = Date(),
                timeZone: TimeZone = .current, requestPermission: Bool = true) async {
-    guard !busy.contains(kind) || kind == .calendar else { return }
+    guard !Task.isCancelled, !busy.contains(kind) || kind == .calendar else { return }
     requested.insert(kind)
     let wasEnabled = enabled.contains(kind)
     busy.insert(kind)
@@ -138,16 +137,32 @@ final class DeviceConnections {
       }
     }
   }
-  func restore() async {
-    guard !testing else { return }
-    for kind in DataConnection.allCases
-    where defaults.bool(forKey: "HomeView.connected." + kind.rawValue) {
+  func cancelRestoration() { restoreGeneration+=1 }
+  func restore(allowed:Set<DataConnection>?=nil) async {
+    guard !testing,!Task.isCancelled else { return }
+    let ticket=restoreGeneration
+    let choices=DataConnection.allCases.filter {
+      allowed?.contains($0) ?? defaults.bool(forKey:"HomeView.connected."+$0.rawValue)
+    }
+    for kind in choices {
+      guard ticket==restoreGeneration,!Task.isCancelled else { return }
       if provider.authorized(kind) {
         await connect(kind, requestPermission: false)
       } else {
         requested.insert(kind)
         status[kind] = "Access needed. Connect again."
       }
+    }
+  }
+  func resetLocalPreferences() {
+    cancelRestoration();lock()
+    for kind in DataConnection.allCases { disconnect(kind) }
+    provider.resetLocalCaches()
+    city="Berlin";weatherUnits = .fahrenheit;lastWeatherFetch = .distantPast
+    if !testing {
+      for kind in DataConnection.allCases { defaults.removeObject(forKey:"HomeView.connected."+kind.rawValue) }
+      defaults.removeObject(forKey:"HomeView.weather.city")
+      defaults.removeObject(forKey:"HomeView.weather.units")
     }
   }
   func disconnect(_ kind: DataConnection) {

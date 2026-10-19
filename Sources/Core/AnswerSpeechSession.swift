@@ -26,6 +26,10 @@ struct AnswerSpeechVoice:Identifiable,Equatable,Sendable {
   init(backend:any AnswerSpeechBackend) { self.backend=backend }
   var languages:[String] { Array(Set(voices.map(\.language))).sorted() }
   var languageVoices:[AnswerSpeechVoice] { voices.filter { $0.language==language } }
+  func resetPreferences() {
+    stop();voices=[];language="en-US";voiceID=nil;rate=0.5;muted=false
+    status="Readout is manual. Unlock this device before speaking; no Siri voice identity is promised."
+  }
   func loadVoices() {
     stop()
     voices=Array(backend.voices().prefix(500))

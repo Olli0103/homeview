@@ -38,6 +38,15 @@ import SwiftUI
       _ = try await manager.schedule(
         id: id, configuration: .alarm(schedule: schedule, attributes: attributes))
     }
+    func canResetLocalState() throws -> Bool {
+      let manager=AlarmManager.shared
+      switch manager.authorizationState {
+      case .notDetermined:return true
+      case .authorized:return try manager.alarms.isEmpty
+      case .denied:throw NativeServiceError.permissionDenied
+      @unknown default:throw NativeServiceError.unavailable
+      }
+    }
     func activeIDs() throws -> Set<UUID> { Set(try AlarmManager.shared.alarms.map(\.id)) }
     func scheduleTest(seconds: TimeInterval = 60) async throws -> UUID {
       let id = UUID()
@@ -55,6 +64,7 @@ import SwiftUI
 #endif
 
 struct NativeAlarmControls: View {
+  @Environment(AppModel.self) private var model
   @State private var status =
     "System alarm test is optional. Mock timers do not request authorization."
   #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
@@ -68,7 +78,9 @@ struct NativeAlarmControls: View {
       #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
         Button(alarmID == nil ? "Schedule 60-second system test alarm" : "Cancel system test alarm")
         {
+          model.nativeSchedulesInFlight+=1
           Task {
+            defer { model.nativeSchedulesInFlight-=1 }
             do {
               if let id = alarmID {
                 try service.cancel(id)

@@ -1,4 +1,7 @@
 import AVFoundation
+#if canImport(Darwin)
+import Darwin
+#endif
 import CryptoKit
 import ImageIO
 import Observation
@@ -26,6 +29,21 @@ final class AppModel {
   var data: Snapshot
   var route: Route = .face
   var showingIntroduction=false
+  private(set) var localResetGeneration=0
+  var showingLocalReset=false
+  var localResetCleanupPending=false
+  var localResetStatus="Authenticate, then confirm separately. Nothing is reset by opening this page."
+  var localResetAuthorizing=false
+  var localResetForeground=false
+  var nativeSchedulesInFlight=0
+  private var localResetAttempt=0
+  private var localResetAuthorizedSession:Int?
+  private var localResetAuthorizationDeadline:ContinuousClock.Instant?
+  var localResetRequestGeneration:Int { localResetAttempt }
+  var localResetAuthorized:Bool {
+    localResetAuthorizedSession==personalSessionGeneration && localResetAuthorizedSession != nil
+      && (localResetAuthorizationDeadline.map { ContinuousClock.now<$0 } ?? false)
+  }
   var profile: String? = nil
   var pendingPage: AppPage? = nil
   var toast: String? = nil
@@ -292,6 +310,11 @@ final class AppModel {
       if args.contains("--reset-test-store") { try? FileManager.default.removeItem(at: dir) }
     }
     store = dir.appendingPathComponent("mock-state.json")
+    let cleanupExists=FileManager.default.fileExists(atPath:dir.appendingPathComponent("reset-cleanup.json").path)
+    localResetCleanupPending=cleanupExists
+    if cleanupExists {
+      localResetStatus="A previous reset cleanup is incomplete. Open Reset to retry cleanup without resetting current content."
+    }
     data = Snapshot()
     // Synthetic corruption fixtures can only target an explicitly owned UUID test store.
     if testID != nil, args.contains("--uitesting"),
@@ -331,6 +354,29 @@ final class AppModel {
         try JSONSerialization.data(withJSONObject:object,options:[.sortedKeys])
           .write(to:store,options:.atomic)
       } catch { self.error = "The synthetic face configuration store could not be prepared." }
+    }
+    if testID != nil,args.contains("--uitesting"),args.contains("--reset-content-fixture"),
+       !FileManager.default.fileExists(atPath:store.path) {
+      do {
+        var seeded=Snapshot();seeded.introduction = .completed
+        seeded.connectionConsent=[.calendar,.music]
+        seeded.personal["Alex"]=PersonalContent()
+        seeded.personal["Alex"]!.messages=["SYNTHETIC_RESET_LOCAL_MESSAGE"]
+        seeded.timers=[Countdown(title:"Synthetic reset timer",seconds:3600)]
+        let bytes=try JSONEncoder().encode(seeded)
+        try FileManager.default.createDirectory(at:dir.appendingPathComponent("State Recovery"),withIntermediateDirectories:true)
+        try FileManager.default.createDirectory(at:dir.appendingPathComponent("photos"),withIntermediateDirectories:true)
+        try bytes.write(to:store,options:.atomic)
+        try bytes.write(to:dir.appendingPathComponent("State Recovery/reset-fixture.json"))
+        try Data("SYNTHETIC_ORPHAN_PHOTO_COPY".utf8).write(to:dir.appendingPathComponent("photos/orphan.jpg"))
+        #if canImport(Darwin) && !os(watchOS)
+          if args.contains("--reset-fifo-fixture") {
+            guard mkfifo(dir.appendingPathComponent("pending.pipe").path,mode_t(0o600))==0 else {
+              throw CocoaError(.fileWriteUnknown)
+            }
+          }
+        #endif
+      } catch { self.error="The owned reset fixture could not be prepared." }
     }
     if !ephemeral, FileManager.default.fileExists(atPath: store.path) {
       do {
@@ -668,6 +714,157 @@ final class AppModel {
     guard !storeReadOnly else { error = storeRecoveryNote; return false }
     return true
   }
+  #if !os(watchOS)
+  func presentLocalReset() {
+    localResetAttempt+=1;localResetAuthorizedSession=nil;localResetAuthorizing=false
+    localResetStatus=localResetCleanupPending
+      ? "A previous reset cleanup is incomplete. Authenticate and confirm to retry only that cleanup; current content is not reset again."
+      : "Authenticate, then confirm separately. Nothing is reset by opening this page."
+    interact();showingLocalReset=true
+  }
+  func cancelLocalReset() {
+    localResetAttempt+=1;localResetAuthorizedSession=nil;localResetAuthorizing=false
+    showingLocalReset=false
+  }
+  func authorizeLocalReset(expectedAttempt:Int) async {
+    guard !Task.isCancelled,expectedAttempt==localResetAttempt,localResetForeground,showingLocalReset,
+      route == .app(.settings),!localResetAuthorizing else { return }
+    interact()
+    localResetAttempt+=1;let attempt=localResetAttempt,session=personalSessionGeneration
+    localResetAuthorizing=true;localResetAuthorizedSession=nil
+    defer { if localResetAttempt==attempt { localResetAuthorizing=false } }
+    let granted=await authenticateLocalResetOwner()
+    // A native auth overlay may finish just before the scene becomes active.
+    for _ in 0..<100 {
+      guard !Task.isCancelled,localResetAttempt==attempt,personalSessionGeneration==session,
+        showingLocalReset,route == .app(.settings) else { return }
+      if localResetForeground { break }
+      try? await Task.sleep(nanoseconds:20_000_000)
+    }
+    guard !Task.isCancelled,localResetAttempt==attempt,personalSessionGeneration==session,
+      showingLocalReset,localResetForeground,route == .app(.settings) else { return }
+    if granted {
+      localResetAuthorizedSession=session
+      localResetAuthorizationDeadline=ContinuousClock.now.advanced(by:.seconds(60))
+      localResetStatus="Authenticated. Nothing has been reset. Type RESET, then use the separate reset button."
+    } else { localResetStatus="Device authentication was not granted. Nothing was reset." }
+  }
+  @discardableResult
+  func resetLocalAppData(confirmation:String)->Bool {
+    guard !Task.isCancelled,confirmation=="RESET",localResetAuthorized,
+      localResetForeground,showingLocalReset,route == .app(.settings) else {
+      localResetStatus="A fresh device authentication and exact RESET confirmation are required. Nothing was reset."
+      return false
+    }
+    guard !localResetCleanupPending else {
+      localResetStatus="Finish the pending cleanup first. A new reset must not discard its recovery record."
+      return false
+    }
+    guard !storeReadOnly else {
+      localResetStatus="This saved state is read-only or from a newer version. Nothing was reset; recover or export it first."
+      return false
+    }
+    guard nativeSchedulesInFlight==0 else {
+      localResetStatus="A system-alarm request is still in progress. Wait for it to finish or cancel it before resetting."
+      return false
+    }
+    guard data.nativeTimerIDs.isEmpty,data.nativeAlarmIDs.isEmpty else {
+      localResetStatus="Cancel the app’s registered system timers and alarms first. Reset will not forget or silently cancel them."
+      return false
+    }
+    #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
+      if systemAlarmsAllowed {
+        do { guard try nativeAlarms.canResetLocalState() else {
+          localResetStatus="HomeView still has a system alarm. Cancel it before resetting local data."
+          return false
+        } } catch {
+          localResetStatus="System-alarm state could not be verified. Nothing was reset. Resolve alarm access in system settings first."
+          return false
+        }
+      }
+    #endif
+    let fresh:Snapshot,removed:Bool,pathOwned:Bool
+    do {
+      if ephemeral {
+        var empty=Snapshot();empty.photoSelection = .none;empty.connectionConsent=[]
+        fresh=empty;removed=true;pathOwned=true
+      } else {
+        let result=try LocalStateReset.reset(directory:store.deletingLastPathComponent())
+        fresh=result.snapshot;removed=result.oldFilesRemoved;pathOwned=result.storagePathOwned
+      }
+    } catch LocalResetError.cleanupPending {
+      localResetCleanupPending=true
+      localResetStatus="A previous reset cleanup is incomplete. Retry that cleanup instead of resetting new content."
+      return false
+    } catch LocalResetError.storagePathChanged {
+      storeReadOnly=true;storeRecoveryNote="Storage identity changed during reset. Further local writes are blocked."
+      localResetStatus="Storage identity changed. Nothing further is written; restart recovery is required."
+      return false
+    } catch {
+      localResetStatus="Local data could not be replaced. The previous saved state was not reset."
+      return false
+    }
+    // No await between the synchronous file commit and revoking old actor writers.
+    localResetGeneration+=1;podcastFeedGeneration+=1;podcastLoading=false
+    podcastPlayer.stop();podcastPlaying=false;podcastStatus="Public RSS feeds · No Apple Podcasts account sync"
+    albumRefreshTask?.cancel();albumUpdates.stop(clearDisplay:false);albumCatalogue.invalidate()
+    lockPersonalAccess();connections.resetLocalPreferences()
+    audioGeneration+=1;startingMusic=false;startingPodcast=false
+    playing=false;audio.stopAll()
+    error=nil;storeRecoveryNote=nil
+    if !pathOwned {
+      storeReadOnly=true;storeRecoveryNote="Storage identity changed during reset. Further local writes are blocked."
+    }
+    data=fresh;gallery=[];photoIndex=0;showPhoto(nil)
+    pendingPage=nil;simulatedPresence=true
+    referenceClock=ProcessInfo.processInfo.arguments.contains("--reference-clock")
+    answerSpeech.resetPreferences();showAnswerSpeechStatus=false
+    localResetCleanupPending = !removed
+    selectedTimer=nil;cookingInProgress=false;cookingStep=0;song=0;progress=0
+    incomingCall=false;talking=false;intercomHistory=[];intercomText="Dinner is ready!"
+    muted=false;videoEnabled=true;ringLight=true;mirrorZoom=1
+    display.apply(enabled:false);audio.setVolume(Float(data.volume))
+    showingIntroduction=false;showingLocalReset=false;localResetAuthorizedSession=nil;localResetAttempt+=1
+    localResetStatus = !pathOwned
+      ? "New local state was prepared, but the storage path changed. Further writes are blocked; restart recovery is required."
+      : removed ? "Local app content reset. Source libraries and OS permissions were not deleted."
+      : "New local state is active, but old reset files or their cleanup record could not be fully removed. Cleanup needs attention."
+    interact();route = .app(.settings)
+    return true
+  }
+  @discardableResult
+  func retryLocalResetCleanup(confirmation:String)->Bool {
+    guard !Task.isCancelled,confirmation=="RESET",localResetAuthorized,
+      localResetForeground,showingLocalReset,route == .app(.settings),!storeReadOnly,
+      localResetCleanupPending else { return false }
+    let removed=LocalStateReset.retryCleanup(directory:store.deletingLastPathComponent())
+    localResetAuthorizedSession=nil;localResetAuthorizationDeadline=nil
+    if removed {
+      localResetCleanupPending=false
+      localResetStatus="Old reset files and their cleanup record removed. Current app content is unchanged."
+      showingLocalReset=false
+    } else {
+      localResetStatus="Old reset cleanup could not be fully verified. Its record is retained; current app content is unchanged."
+    }
+    return removed
+  }
+  func connectService(_ kind:DataConnection,expectedResetGeneration:Int) async {
+    guard !Task.isCancelled,expectedResetGeneration==localResetGeneration else { return }
+    let previous=data.connectionConsent
+    var choices=previous ?? connections.requested;choices.insert(kind)
+    data.connectionConsent=choices
+    guard persist() else { data.connectionConsent=previous;return }
+    await connections.connect(kind,date:clock,timeZone:displayTimeZone)
+  }
+  @discardableResult
+  func disconnectService(_ kind:DataConnection)->Bool {
+    let previous=data.connectionConsent
+    var choices=previous ?? connections.requested;choices.remove(kind)
+    data.connectionConsent=choices
+    guard persist() else { data.connectionConsent=previous;return false }
+    connections.disconnect(kind);return true
+  }
+  #endif
   func presentIntroductionOnLaunch() {
     let args=ProcessInfo.processInfo.arguments
     guard !storeReadOnly,data.introduction == .pending,
@@ -800,6 +997,8 @@ final class AppModel {
     route = .privacy
   }
   func lockPersonalAccess() {
+    localResetAttempt+=1;localResetAuthorizedSession=nil;localResetAuthorizationDeadline=nil
+    localResetAuthorizing=false
     stopAnswerSpeech()
     assistantAI.deselect()
     assistantUsesAI=false
@@ -907,7 +1106,7 @@ final class AppModel {
     }
     if changed { persist() }
     if route != .face && now.timeIntervalSince(lastInteraction) > idleSeconds && !incomingCall {
-      route = .face
+      if !showingLocalReset && !showingIntroduction { route = .face }
       lockPersonalAccess()
     }
   }
@@ -929,7 +1128,9 @@ final class AppModel {
     }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if systemAlarmsAllowed {
+        nativeSchedulesInFlight+=1
         Task {
+          defer { nativeSchedulesInFlight-=1 }
           do {
             try await nativeAlarms.scheduleTimer(id: timer.id, seconds: seconds, title: title)
             if data.timers.contains(where: { $0.id == timer.id }) {
@@ -1001,7 +1202,9 @@ final class AppModel {
     guard writableStore() else { return }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if systemAlarmsAllowed {
+        nativeSchedulesInFlight+=1
         Task {
+          defer { nativeSchedulesInFlight-=1 }
           do {
             try await nativeAlarms.scheduleAlarm(
               id: alarm.id, hour: alarm.hour, minute: alarm.minute)
@@ -1189,11 +1392,12 @@ final class AppModel {
     assistantInput = ""
   }
   func playChime() {
-    stopAnswerSpeech()
+    stopAnswerSpeech();let reset=localResetGeneration
     Task {
-      if !(await audio.playChime(volume: Float(data.volume))) {
-        error = "The demo sound could not be played."
-      }
+      guard !Task.isCancelled,reset==localResetGeneration else { return }
+      let played=await audio.playChime(volume:Float(data.volume))
+      guard !Task.isCancelled,reset==localResetGeneration else { return }
+      if !played { error="The demo sound could not be played." }
     }
   }
   func stopAudioForVoice() {

@@ -214,6 +214,11 @@ enum NativeServiceError: Error, LocalizedError {
       }
     }
     func pause() { searchGeneration += 1;playback.stop() }
+    func resetLocalCaches() {
+      searchGeneration+=1;playback.stop();results=[]
+      ApplicationMusicPlayer.shared.stop()
+      ApplicationMusicPlayer.shared.queue = .init(for:[Song]())
+    }
     var isPlaying: Bool { ApplicationMusicPlayer.shared.state.playbackStatus == .playing }
     var playbackTime: Double { ApplicationMusicPlayer.shared.playbackTime }
     func resume() async throws {

@@ -12,6 +12,10 @@ struct SetupIntroductionView:View {
       }.padding(24)
       ScrollView {
         VStack(alignment:.leading,spacing:20) {
+          if model.localResetCleanupPending {
+            Text("Old reset cleanup is incomplete. Open Settings → Reset to retry that cleanup without resetting new content.")
+              .foregroundStyle(.orange).accessibilityIdentifier("setup.cleanup.pending")
+          }
           Text("Step \(step+1) of 3").font(.callout).foregroundStyle(.gray)
             .accessibilityIdentifier("setup.step")
           if step==0 {

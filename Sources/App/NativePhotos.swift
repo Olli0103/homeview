@@ -140,6 +140,7 @@ struct NativePhotoControls: View {
         }.font(.system(size: 21))
           .onChange(of: selection) { _, items in
             loadTask?.cancel()
+            let reset=model.localResetGeneration
             loadTask = Task {
               do {
                 var images: [Data] = []
@@ -157,12 +158,14 @@ struct NativePhotoControls: View {
                   images.append(resized)
                 }
                 try Task.checkCancellation()
+                guard reset==model.localResetGeneration else { return }
                 if !images.isEmpty { model.setGallery(images) }
               } catch is CancellationError {} catch {
                 model.error = "Could not load the selected photos."
               }
             }
           }.onDisappear { loadTask?.cancel() }
+          .onChange(of:model.localResetGeneration) { _,_ in loadTask?.cancel();selection=[] }
       #endif
       SharedAlbumControls()
       Button("Use Demo Photo") {

@@ -506,3 +506,63 @@ extension DeviceConnectionTests {
     XCTAssertEqual(s.status[.music],"Disconnected");XCTAssertNil(s.currentTrack)
   }
 }
+
+
+extension DeviceConnectionTests {
+  func testGlobalRestoreRevocationStopsPreviouslyConnectedSuccessor() async throws {
+    let suite="HomeViewReset-"+UUID().uuidString
+    let defaults=try XCTUnwrap(UserDefaults(suiteName:suite))
+    defer { defaults.removePersistentDomain(forName:suite) }
+    defaults.set(true,forKey:"HomeView.connected.Calendar")
+    defaults.set(true,forKey:"HomeView.connected.Reminders")
+    let p=Provider();p.delayEvents=true
+    let c=DeviceConnections(provider:p,testing:false,defaults:defaults)
+    _ = await c.unlock()
+    let entered=expectation(description:"old restore calendar read")
+    p.onStart={entered.fulfill()}
+    let restore=Task { await c.restore() }
+    await fulfillment(of:[entered],timeout:2)
+    c.cancelRestoration();c.disconnect(.calendar)
+    p.eventReply?.resume(returning:[Provider.event]);await restore.value
+    XCTAssertEqual(p.reminderReads,0,"Revoked restore must not start the next personal service")
+    XCTAssertTrue(c.requested.isEmpty);XCTAssertTrue(c.enabled.isEmpty)
+  }
+}
+
+
+extension DeviceConnectionTests {
+  func testExplicitEmptyConsentOverridesOldDefaultsWithoutProviderRequests() async throws {
+    let suite="ResetConsent-"+UUID().uuidString
+    let defaults=try XCTUnwrap(UserDefaults(suiteName:suite))
+    defer { defaults.removePersistentDomain(forName:suite) }
+    for kind in DataConnection.allCases { defaults.set(true,forKey:"HomeView.connected."+kind.rawValue) }
+    let p=Provider()
+    let session=DeviceConnections(provider:p,testing:false,defaults:defaults)
+    await session.restore(allowed:[])
+    XCTAssertTrue(session.requested.isEmpty);XCTAssertTrue(session.enabled.isEmpty)
+    XCTAssertEqual(p.permissionRequests,0);XCTAssertEqual(p.reminderReads,0);XCTAssertEqual(p.eventReads,0)
+  }
+  func testExplicitConsentOnlyRestoresThatServiceNotOtherLegacyFlags() async throws {
+    let suite="ResetConsent-"+UUID().uuidString
+    let defaults=try XCTUnwrap(UserDefaults(suiteName:suite));defer { defaults.removePersistentDomain(forName:suite) }
+    for kind in DataConnection.allCases { defaults.set(true,forKey:"HomeView.connected."+kind.rawValue) }
+    let p=Provider()
+    let c=DeviceConnections(provider:p,testing:false,defaults:defaults)
+    await c.restore(allowed:[.calendar])
+    XCTAssertEqual(c.enabled,[.calendar]);XCTAssertEqual(c.requested,[.calendar])
+    XCTAssertEqual(p.permissionRequests,0);XCTAssertEqual(p.eventReads,0)
+  }
+  func testResetLocalPreferencesClearsCachesCityAndConnectionFlagsButNotSourceListIdentity() async throws {
+    let suite="ResetConsent-"+UUID().uuidString
+    let defaults=try XCTUnwrap(UserDefaults(suiteName:suite));defer { defaults.removePersistentDomain(forName:suite) }
+    defaults.set("Synthetic City",forKey:"HomeView.weather.city")
+    defaults.set("SYNTHETIC_SOURCE_LIST_ID",forKey:"HomeView.reminders.ownedCalendarID")
+    let p=Provider()
+    let s=DeviceConnections(provider:p,testing:false,defaults:defaults)
+    await s.connect(.calendar);s.resetLocalPreferences()
+    XCTAssertTrue(s.requested.isEmpty);XCTAssertTrue(s.enabled.isEmpty);XCTAssertFalse(s.personalUnlocked)
+    XCTAssertEqual(s.city,"Berlin");XCTAssertEqual(s.weatherUnits,.fahrenheit)
+    XCTAssertNil(defaults.object(forKey:"HomeView.connected.Calendar"))
+    XCTAssertEqual(defaults.string(forKey:"HomeView.reminders.ownedCalendarID"),"SYNTHETIC_SOURCE_LIST_ID")
+  }
+}
