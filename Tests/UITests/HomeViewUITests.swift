@@ -4796,7 +4796,7 @@ extension HomeViewUITests {
       springboard.activate()
       XCTAssertTrue(springboard.wait(for:.runningForeground,timeout:10))
       let outsideReady=XCTWaiter.wait(for:[XCTNSPredicateExpectation(
-        predicate:NSPredicate { [self] _,_ in app.state != .runningForeground },object:nil)],timeout:10) == .completed
+        predicate:NSPredicate(format:"state != %@",NSNumber(value:XCUIApplication.State.runningForeground.rawValue)),object:app)],timeout:10) == .completed
       let outside=XCTAttachment(screenshot:springboard.screenshot());outside.name="timer-system-activity-outside-app";outside.lifetime = .keepAlways;add(outside)
       app.activate()
       if app.switches["timer.activity.enabled"].value as? String=="1" {setTimerActivityEnabled(false)}
