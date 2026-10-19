@@ -835,6 +835,36 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertFalse(app.buttons["call.accept"].exists)
     XCTAssertFalse(app.buttons["call.demo.microphone"].exists)
   }
+  func testFindMySchematicDemoNeverClaimsALiveLocation() {
+    launch(["--page","Find My"])
+    XCTAssertEqual(app.staticTexts["findmy.demo.scope"].label,"Local demo · No Apple location data")
+    let map=app.descendants(matching:.any)["findmy.demo.map"]
+    XCTAssertTrue(map.exists);XCTAssertEqual(map.label,"Schematic demo map. No live location.")
+    XCTAssertTrue(app.staticTexts["Demo Keys"].exists)
+    XCTAssertTrue(app.staticTexts["Simulated item · Living Room"].exists)
+    XCTAssertFalse(app.staticTexts["findmy.website.status"].exists)
+    shot("findmy-boundary-schematic-not-live")
+  }
+  func testFindMyAppleWebsiteIsAnExplicitGuardedHandoffNotDataImport() {
+    launch(["--page","Find My"])
+    XCTAssertFalse(app.staticTexts["findmy.website.status"].exists)
+    let button=app.buttons["findmy.apple.website"]
+    scrollPhotoControlFullyIntoView(button);XCTAssertTrue(button.isHittable);button.tap()
+    let status=app.staticTexts["findmy.website.status"]
+    XCTAssertTrue(status.waitForExistence(timeout:3))
+    XCTAssertEqual(status.label,"Find Devices website not opened in tests")
+    XCTAssertTrue(app.staticTexts["findmy.website.scope"].label.contains("no locations are imported"))
+    XCTAssertEqual(app.staticTexts["findmy.demo.scope"].label,"Local demo · No Apple location data")
+    shot("findmy-boundary-website-handoff-guard")
+  }
+  func testFindMyToneReportsOnlyALocalRequestNotRemotePlayback() {
+    launch(["--page","Find My"])
+    let button=app.buttons["findmy.demo.sound"];scrollPhotoControlFullyIntoView(button);button.tap()
+    XCTAssertTrue(app.staticTexts["Local demo tone requested · No remote item contacted"].waitForExistence(timeout:3))
+    XCTAssertEqual(app.staticTexts["findmy.demo.scope"].label,"Local demo · No Apple location data")
+    shot("findmy-boundary-local-tone-request-only")
+  }
+
   func testMusicPlaybackAndTrackNavigation() {
     launch(["--page", "Music"])
     tap("player.play")

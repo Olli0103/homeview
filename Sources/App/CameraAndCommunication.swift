@@ -250,26 +250,62 @@ struct CallView: View {
 }
 struct FindMyView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.openURL) private var openURL
+  @State private var websiteStatus=""
   var body: some View {
-    VStack(spacing: 20) {
+    VStack(spacing: 14) {
       AppHeader(title: "Find My")
-      ZStack {
-        Color(red: 0.86, green: 0.91, blue: 0.85)
-        ForEach(0..<6) { i in
-          Rectangle().fill(.white.opacity(0.7)).frame(height: 12).rotationEffect(.degrees(-25))
-            .offset(y: CGFloat(i) * 68 - 180)
-        }
-        Image(systemName: "mappin.circle.fill").font(.system(size: 75)).foregroundStyle(.green)
-      }.frame(height: 240).clipShape(RoundedRectangle(cornerRadius: 25)).padding(.horizontal, 30)
-      Text("Demo Keys").font(.system(size: 33, weight: .semibold))
-      Text("Simulated item · Living Room").font(.system(size: 21)).foregroundStyle(.gray)
-      Pill(title: "Play Demo Sound", symbol: "speaker.wave.2.fill") {
-        model.playChime()
-        model.banner("Sound played on this device only")
-      }.padding(.horizontal, 32)
-      Text("No access to real AirTags, devices or people.").font(.system(size: 16)).foregroundStyle(
-        .gray)
-      Spacer()
+      Text("Local demo · No Apple location data")
+        .font(.system(size:20,weight:.semibold)).multilineTextAlignment(.center)
+        .accessibilityIdentifier("findmy.demo.scope")
+      ScrollView {
+        VStack(spacing:16) {
+          ZStack {
+            Color(red:0.86,green:0.91,blue:0.85)
+            ForEach(0..<6) { i in
+              Rectangle().fill(.white.opacity(0.7)).frame(height:12).rotationEffect(.degrees(-25))
+                .offset(y:CGFloat(i)*68-180)
+            }
+            Image(systemName:"mappin.circle.fill").font(.system(size:65)).foregroundStyle(.green)
+            VStack { Spacer();Text("SCHEMATIC DEMO · NOT LIVE")
+              .font(.system(size:17,weight:.semibold)).padding(10)
+              .background(.white.opacity(0.9),in:Capsule()).padding(12) }
+          }.frame(height:180).clipShape(RoundedRectangle(cornerRadius:25))
+            .accessibilityElement(children:.ignore)
+            .accessibilityLabel("Schematic demo map. No live location.")
+            .accessibilityIdentifier("findmy.demo.map")
+          Text("Demo Keys").font(.system(size:30,weight:.semibold))
+          Text("Simulated item · Living Room").font(.system(size:21)).foregroundStyle(.secondary)
+          Pill(title:"Play local demo tone",symbol:"speaker.wave.2.fill") {
+            model.playChime()
+            model.banner("Local demo tone requested · No remote item contacted")
+          }.accessibilityIdentifier("findmy.demo.sound")
+          Text("The demo tone uses this device only, never an AirTag.")
+            .font(.system(size:18)).foregroundStyle(.secondary)
+          Divider()
+          Button("Open Apple's Find Devices website") { openFindDevices() }
+            .font(.system(size:21,weight:.medium)).frame(maxWidth:.infinity,minHeight:72)
+            .accessibilityIdentifier("findmy.apple.website")
+          Text("This website is for Apple devices. Use Apple's Find My app for AirTags or shared people. It opens outside HomeView; no locations are imported here.")
+            .font(.system(size:18)).foregroundStyle(.secondary)
+            .accessibilityIdentifier("findmy.website.scope")
+          if !websiteStatus.isEmpty {
+            Text(websiteStatus).font(.system(size:18))
+              .accessibilityIdentifier("findmy.website.status")
+          }
+        }.padding(.horizontal,30).padding(.bottom,24)
+      }
     }.background(.white).foregroundStyle(.black)
+  }
+  private func openFindDevices() {
+    guard !ProcessInfo.processInfo.arguments.contains("--uitesting") else {
+      websiteStatus="Find Devices website not opened in tests";return
+    }
+    // Public Apple website, not a private native-app scheme or account API.
+    openURL(URL(string:"https://www.icloud.com/find/")!) { accepted in
+      websiteStatus=accepted
+        ? "Website handoff accepted · No location data returned to HomeView"
+        : "Find Devices website could not be opened."
+    }
   }
 }
