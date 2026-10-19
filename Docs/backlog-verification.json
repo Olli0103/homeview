@@ -1,15 +1,25 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-19",
   "repository": "https://github.com/Olli0103/homeview",
   "issue_packages": 82,
-  "open_issues_verified": 80,
-  "closed_issues_verified": 2,
-  "closed_numbers": [
+  "open_mapped_issues_verified": 75,
+  "closed_mapped_issues_verified": 7,
+  "closed_mapped_numbers": [
     1,
-    12
+    4,
+    12,
+    54,
+    55,
+    65,
+    76
   ],
   "reference_functions_mapped": 105,
-  "exact_titles_and_bodies_verified": true,
-  "labels_verified": true,
-  "scope": "Issue bookkeeping only. Closed packages do not establish full original product parity."
+  "all_mapped_titles_and_states_verified": true,
+  "targeted_full_body_label_state_readbacks": [
+    18,
+    65,
+    67,
+    80
+  ],
+  "scope": "Current issue bookkeeping and bounded proof updates only. Not full product parity. Non-backlog community issue83 is excluded from the82-package denominator."
 }
