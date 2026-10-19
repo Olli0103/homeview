@@ -53,6 +53,8 @@ private struct MusicArtworkInformation: View {
             Button("Done") { dismiss() }.accessibilityIdentifier("music.artwork.done")
           }
         }
-    }
+    }.foregroundStyle(Color.primary)
+      .environment(\.colorScheme, .light)
+      .preferredColorScheme(.light)
   }
 }
