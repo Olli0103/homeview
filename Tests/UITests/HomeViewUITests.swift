@@ -1454,7 +1454,7 @@ final class HomeViewUITests: XCTestCase {
     automatic.tap()
     let horizontal = app.sliders["photos.crop.horizontal"]
     viewportShot("photo-write-crop-after-automatic-toggle")
-    print("PHOTO_CROP_STATE auto=\(String(describing:automatic.value)) horizontal_exists=\(horizontal.exists) horizontal_frame=\(horizontal.frame) viewport=\(app.otherElements["reference.viewport"].frame)")
+    print("PHOTO_CROP_STATE auto=\(String(describing:automatic.value)) horizontal_exists=\(horizontal.exists) horizontal_frame=\(horizontal.exists ? horizontal.frame:.zero) viewport=\(app.otherElements["reference.viewport"].frame)")
     for _ in 0..<4 where !horizontal.isHittable { app.scrollViews.firstMatch.swipeUp() }
     if !horizontal.isHittable {
       viewportShot("photo-write-crop-slider-not-hittable")
