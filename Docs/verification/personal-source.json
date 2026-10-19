@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-19",
+  "issue": 67,
+  "status": "partial_issue_remains_open",
+  "code_commit": "f2db4880783d93ecbdf3f8993a8a10e3d7b6c7a1",
+  "production_code_commit": "025185e1bac0bf275759c2cd7231f1e588fa7891",
+  "baseline_code_commit": "f3ddb9f9c3ea195720923cea5bc805cdf5f2cdac",
+  "baseline_production_equivalent_to": "a257b7104f1d6239e34f3b2512762e1005a2fcf9",
+  "baseline_tests": 7,
+  "baseline_failed_tests": 7,
+  "baseline_failed_assertions": 23,
+  "source_digest": "45a42ef16c03dae0abc9047cc4b43bb1cecc04165b87bc898a10c02bc7394ca2",
+  "source_files": 189,
+  "Core_tests": 273,
+  "Core_failures": 0,
+  "new_Core_cases": 9,
+  "native_assertions": 15,
+  "archives": {
+    "personal-source-baseline": {
+      "entries": 197,
+      "sha256": "08e1d526aae722471cf74363670f35584ca563965c00fc19f66d51167dba82fc",
+      "all_entries_read_back": true,
+      "target": "f3ddb9f9c3ea195720923cea5bc805cdf5f2cdac",
+      "tests": 7,
+      "failed_tests": 7,
+      "failed_assertions": 23
+    },
+    "personal-source-final": {
+      "target": "025185e1bac0bf275759c2cd7231f1e588fa7891",
+      "entries": 197,
+      "sha256": "bd5657342fe2edbae206dd4969c39fce795cf220037f2839c2d8e2013f6337ef",
+      "all_entries_read_back": true,
+      "tests": 273,
+      "failed_tests": 0
+    },
+    "personal-source-native-fixed": {
+      "target": "025185e1bac0bf275759c2cd7231f1e588fa7891",
+      "entries": 23,
+      "sha256": "f078892bc06ec3e151cfd5899190ec12e83d753c269257d1c6c78cc4b8d612c9",
+      "all_entries_read_back": true,
+      "assertions": 15
+    }
+  },
+  "UI_checkpoints": [
+    {
+      "id": "personal-source-ui",
+      "code_commit": "025185e1bac0bf275759c2cd7231f1e588fa7891",
+      "passed": 6,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "compiled_inputs": 22,
+      "source_digest": "da0203c3a3078b1609d4960e279a4e9ae51ec70df46f3fc5f33a10f4bc818270",
+      "installed_app_read_back": true,
+      "archive": "personal-source-ui-inputs.zip",
+      "archive_entries": 211,
+      "archive_sha256": "34841f3d552bb081fe9a07000c44498ffdd02423b926791efc318783bcf18604",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "personal-source-reminders",
+      "code_commit": "f2db4880783d93ecbdf3f8993a8a10e3d7b6c7a1",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "compiled_inputs": 22,
+      "source_digest": "45a42ef16c03dae0abc9047cc4b43bb1cecc04165b87bc898a10c02bc7394ca2",
+      "installed_app_read_back": true,
+      "archive": "personal-source-reminders-inputs.zip",
+      "archive_entries": 211,
+      "archive_sha256": "15028ab06ca012924f5d53d3b0ed67bc0b1b68e4eedc84bf77ab7a95b8e073a4",
+      "all_entries_read_back": true
+    }
+  ],
+  "UI_executions": 12,
+  "UI_successful_executions": 10,
+  "UI_historical_failures": 2,
+  "UI_final_revision_executions": 4,
+  "UI_unique_methods": 4,
+  "UI_skipped": 0,
+  "UI_runtime_warnings": [],
+  "UI_installed_app_read_back": true,
+  "SDK_code_commit": "025185e1bac0bf275759c2cd7231f1e588fa7891",
+  "Core_native_code_commit": "025185e1bac0bf275759c2cd7231f1e588fa7891",
+  "production_equivalence_after_policy": "Only UI test helper changed; production and Core test sources unchanged. No relabeled complete final-revision UI, Core or SDK run.",
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "PNGs_decoded": 10,
+  "contact_sheets_reviewed": 4,
+  "individual_failure_frame_reviewed": true,
+  "selected_images": [
+    {
+      "path": "Docs/verification/personal-source-images/iPad-connected-calendar-fixture.png",
+      "checkpoint": "personal-source-ui",
+      "sha256": "3e2cc0c54431bf9b1559e526b806c5ce78f4b62c65a2d1d23aa17a1a233c24c4"
+    },
+    {
+      "path": "Docs/verification/personal-source-images/iPad-privacy-calendar-locked-after-background.png",
+      "checkpoint": "personal-source-ui",
+      "sha256": "d6c511a9b699fa193a1066563d0c517e18d426b45e7b453644377b4cdbec3669"
+    },
+    {
+      "path": "Docs/verification/personal-source-images/iPad-connected-reminders-fixture.png",
+      "checkpoint": "personal-source-reminders",
+      "sha256": "2e661c62ce96496868f6581c1976e51659037cbd7b9135574e5c999ec413da56"
+    },
+    {
+      "path": "Docs/verification/personal-source-images/iPad-reminder-readonly-source.png",
+      "checkpoint": "personal-source-reminders",
+      "sha256": "80e968041226e684e4216aa6817ebd9392c7b7437475001fba395bb3132543f3"
+    },
+    {
+      "path": "Docs/verification/personal-source-images/iPhone-connected-calendar-fixture.png",
+      "checkpoint": "personal-source-ui",
+      "sha256": "9f6d210a8d10e2f4dca43e149a0eb3f3e30189e90bce5e28c68c220d50c2b14e"
+    },
+    {
+      "path": "Docs/verification/personal-source-images/iPhone-privacy-calendar-locked-after-background.png",
+      "checkpoint": "personal-source-ui",
+      "sha256": "e4b490bef9014d8e29164fb4dd5ef582908b9a7085e271bfe72799b7c8e9c946"
+    },
+    {
+      "path": "Docs/verification/personal-source-images/iPhone-connected-reminders-fixture.png",
+      "checkpoint": "personal-source-reminders",
+      "sha256": "3c5bb4c16432a2e7e16338b25e4d48af88b6c420c152184057556c55b513bf64"
+    },
+    {
+      "path": "Docs/verification/personal-source-images/iPhone-reminder-readonly-source.png",
+      "checkpoint": "personal-source-reminders",
+      "sha256": "5e7f6c6fc64ddfb6a9ede84f2a015f493f043c2dbcc7739b2604034af6521335"
+    },
+    {
+      "path": "Docs/verification/personal-source-images/iPhone-historical-clipped-reminder-connect.png",
+      "sha256": "cd835c1858e8b71d0f453fa625c8b627d5fb061cbaefed564710190a71caa831",
+      "historical_failure": true,
+      "origin": "Frame decoded at 15 seconds from retained failure recording"
+    }
+  ],
+  "UI_qualification": "Normal calendar unlock, reminders CRUD/read-only source and background/fresh unlock. No live UI Settings permission revocation; that boundary is covered with controlled Core/native providers.",
+  "preserved_preparation_failures": [
+    "First external native compile failed assignment whitespace; zero scenarios",
+    "Initial UI preparation retained prior worktree; zero UI executions, corrected current-worktree build used before tests"
+  ],
+  "scope": "Observed source authorization revocation clears only affected caches, fences responses and prevents further reminder calls/readbacks. Already submitted external writes cannot be rolled back. No zero-latency/atomic OS authorization guarantee.",
+  "Home_constructed": false,
+  "real_personal_data_used": false,
+  "physical_acceptance": false
+}

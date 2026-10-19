@@ -1663,7 +1663,7 @@
     "functions": [
       "F095"
     ],
-    "current": "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen. Vier zusätzliche Play-/Resume-Zustandsfehler und die native Playerübergabe korrigiert; 189Core/4UI/5SDK. Übrige Kriterien bleiben offen; Docs/music-playback-lifecycle.md.",
+    "current": "Späte Entsperrungen/Antworten werden verworfen, persönliche Caches gelöscht, OS-Freigabe und tatsächliches Lesen getrennt. Tatsächliche Präsenz, Medienpolicy und Hardware-Snapshots fehlen. Vier zusätzliche Play-/Resume-Zustandsfehler und die native Playerübergabe korrigiert; 189Core/4UI/5SDK. Übrige Kriterien bleiben offen; Docs/music-playback-lifecycle.md. Quellenberechtigungen werden vor persönlicher Ergebnisübernahme und Reminder-Aktionen erneut geprüft; Widerruf leert den betroffenen Cache und entwertet alte Antworten. Quellengebundene Teilabnahme: Docs/personal-source-revocation.md.",
     "tasks": [
       "Sperre an bewiesene Präsenzquelle koppeln, falls verfügbar",
       "Vorschauen, Kalender, Reminder, Assistentenverlauf und Medienkontext beim Sperren bereinigen",
@@ -1679,7 +1679,8 @@
     "issue_number": 67,
     "state": "in_progress",
     "progress_evidence": [
-      "Docs/iteration-20261017.md"
+      "Docs/iteration-20261017.md",
+      "Docs/personal-source-revocation.md"
     ],
     "implementation_note": " Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen."
   },

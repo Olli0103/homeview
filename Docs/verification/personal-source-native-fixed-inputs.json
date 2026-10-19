@@ -1,0 +1,102 @@
+{
+  "archive": "personal-source-native-inputs.zip",
+  "target": "025185e1bac0bf275759c2cd7231f1e588fa7891",
+  "entries": 23,
+  "sha256": "f078892bc06ec3e151cfd5899190ec12e83d753c269257d1c6c78cc4b8d612c9",
+  "all_entries_read_back": true,
+  "assertions": 15,
+  "files": [
+    {
+      "name": "inputs/0-ConnectedDataSession.swift",
+      "sha256": "20defd51699175771eae4e503a67903099199876d3cf2842f7928d93006c2bc8"
+    },
+    {
+      "name": "inputs/1-ConnectedModels.swift",
+      "sha256": "cb011d1d322c46a8424d04e8a9e858b7d723ef76abb8ab88c2f1ed4d5bedc42c"
+    },
+    {
+      "name": "inputs/2-CalendarAgenda.swift",
+      "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+    },
+    {
+      "name": "inputs/3-WeatherData.swift",
+      "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+    },
+    {
+      "name": "inputs/4-DataConnection.swift",
+      "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+    },
+    {
+      "name": "inputs/5-GuestAccessPolicy.swift",
+      "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+    },
+    {
+      "name": "inputs/6-PermissionGate.swift",
+      "sha256": "dfa50020deeeacaa388a4fbe6cf0fb69b227fc86c1a97309ae67c29ee3b7ae1a"
+    },
+    {
+      "name": "personal-source-native/run.py",
+      "sha256": "abe131caa72a63071cdf6c9696bcc81e6f08da6bf1e28944be80b4c6b112f3e5"
+    },
+    {
+      "name": "personal-source-native/PermissionGate.swift",
+      "sha256": "e23baaf7625fea3c9993574d15476d25fd15651e20daf498e9c2de1ce220d5ed"
+    },
+    {
+      "name": "personal-source-native/compile.log",
+      "sha256": "01a844d1f80a1a6828934c1f9e6cbaf9e9cd70133fddbe158585230a1a5884f3"
+    },
+    {
+      "name": "personal-source-native/inputs-before.json",
+      "sha256": "76a3cf671de89d6de7df9ca22e9a3de04ea8d79ef86cb83259a7778ca303fc88"
+    },
+    {
+      "name": "personal-source-native/command.json",
+      "sha256": "1b53b2a666ce56a7f5da2dbb1e2f678132a2a76459663a09205c7ccbbdae315c"
+    },
+    {
+      "name": "personal-source-native/preparation-failure.json",
+      "sha256": "114348fca3443cf460b0008d9cf2980bcc517e8fa6f99170a4c35e5edcd0f6bf"
+    },
+    {
+      "name": "personal-source-native-fixed/inputs-after.json",
+      "sha256": "adeeffa0c488a4cdac3f57c78957256eccd593524c24857221802b3b640c7b0d"
+    },
+    {
+      "name": "personal-source-native-fixed/PermissionGate",
+      "sha256": "9c35e6ebfe9876c2a8e8629918ad0c42e62c7a9a8040707e363939bbf2e7820f"
+    },
+    {
+      "name": "personal-source-native-fixed/run.py",
+      "sha256": "abe131caa72a63071cdf6c9696bcc81e6f08da6bf1e28944be80b4c6b112f3e5"
+    },
+    {
+      "name": "personal-source-native-fixed/PermissionGate.swift",
+      "sha256": "dfa50020deeeacaa388a4fbe6cf0fb69b227fc86c1a97309ae67c29ee3b7ae1a"
+    },
+    {
+      "name": "personal-source-native-fixed/stdout",
+      "sha256": "c67a6cc180923d551442cb889e1bd6da52e40a4b32e3dd21ccef1a3bbbaf4731"
+    },
+    {
+      "name": "personal-source-native-fixed/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "personal-source-native-fixed/verdict.json",
+      "sha256": "2c6e79d3b5e9f98e968636c604feb8ec25cfac74dec2b774b58d2351559f6366"
+    },
+    {
+      "name": "personal-source-native-fixed/compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "personal-source-native-fixed/inputs-before.json",
+      "sha256": "adeeffa0c488a4cdac3f57c78957256eccd593524c24857221802b3b640c7b0d"
+    },
+    {
+      "name": "personal-source-native-fixed/command.json",
+      "sha256": "9f73707aa928c887252ce7b1316762e2a3efb0c3b594f16c5bae39fcfe05c901"
+    }
+  ]
+}
