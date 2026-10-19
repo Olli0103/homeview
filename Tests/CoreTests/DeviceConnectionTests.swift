@@ -223,6 +223,59 @@ final class DeviceConnectionTests: XCTestCase {
     XCTAssertEqual(p.reminderItems.count,2);XCTAssertFalse(s.busy.contains(.reminders))
   }
 
+  func testPersonalRequestCancellationDropsLateCalendarAndRestoresPriorStatus() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();p.delayEvents=true
+    let started=expectation(description:"calendar read before cancellation");p.onStart={started.fulfill()}
+    let read=Task { await s.connect(.calendar) };await fulfillment(of:[started],timeout:2)
+    read.cancel();try XCTUnwrap(p.eventReply).resume(returning:[Provider.event]);await read.value
+    XCTAssertTrue(s.events.isEmpty);XCTAssertFalse(s.enabled.contains(.calendar));XCTAssertFalse(s.busy.contains(.calendar))
+    XCTAssertEqual(s.status[.calendar],"Not connected")
+  }
+  func testPersonalRequestCancellationDropsLateRemindersAndRestoresPriorStatus() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();p.delayReminders=true
+    let started=expectation(description:"reminder read before cancellation");p.onStart={started.fulfill()}
+    let read=Task { await s.connect(.reminders) };await fulfillment(of:[started],timeout:2)
+    read.cancel();try XCTUnwrap(p.reminderReply).resume(returning:p.reminderItems);await read.value
+    XCTAssertTrue(s.reminders.isEmpty);XCTAssertFalse(s.enabled.contains(.reminders));XCTAssertFalse(s.busy.contains(.reminders))
+    XCTAssertEqual(s.status[.reminders],"Not connected")
+  }
+  func testPersonalRequestCancellationBeforeReminderActionsNeverCallsProvider() async {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.reminders)
+    let item=s.reminders[0],reads=p.reminderReads,status=s.status[.reminders]
+    let write=Task { let added=await s.addReminder("Synthetic cancelled draft");await s.completeReminder(item);await s.removeReminder(item);return added }
+    write.cancel();let confirmed=await write.value
+    XCTAssertFalse(confirmed);XCTAssertEqual(p.reminderWrites,0);XCTAssertEqual(p.reminderReads,reads)
+    XCTAssertEqual(s.reminders.map(\.id),[item.id]);XCTAssertEqual(s.status[.reminders],status)
+  }
+  func testPersonalRequestCancellationAfterSubmittedWriteStartsNoReadback() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.reminders)
+    let reads=p.reminderReads,status=s.status[.reminders];p.delayReminderWrite=true
+    let started=expectation(description:"submitted write before cancellation");p.onStart={started.fulfill()}
+    let write=Task { await s.addReminder("Synthetic submitted cancelled item") };await fulfillment(of:[started],timeout:2)
+    write.cancel();try XCTUnwrap(p.writeReply).resume();let confirmed=await write.value
+    XCTAssertFalse(confirmed);XCTAssertEqual(p.reminderWrites,1);XCTAssertEqual(p.reminderReads,reads)
+    XCTAssertEqual(s.reminders.map(\.id),["private"]);XCTAssertEqual(s.status[.reminders],status)
+    XCTAssertEqual(p.reminderItems.count,2,"An already submitted external write is not rolled back by cancellation")
+  }
+  func testPersonalRequestCancellationDuringReadbackDoesNotInstallOrConfirm() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.reminders)
+    let status=s.status[.reminders];p.delayReminders=true
+    let started=expectation(description:"submitted readback before cancellation");p.onStart={started.fulfill()}
+    let write=Task { await s.addReminder("Synthetic cancelled readback") };await fulfillment(of:[started],timeout:2)
+    write.cancel();try XCTUnwrap(p.reminderReply).resume(returning:p.reminderItems);let confirmed=await write.value
+    XCTAssertFalse(confirmed);XCTAssertEqual(s.reminders.map(\.id),["private"]);XCTAssertEqual(s.status[.reminders],status)
+    XCTAssertEqual(p.reminderWrites,1);XCTAssertEqual(p.reminderItems.count,2);XCTAssertFalse(s.busy.contains(.reminders))
+  }
+  func testPersonalRequestCancellationDropsLateErrorAndKeepsExistingCache() async throws {
+    let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.calendar)
+    let status=s.status[.calendar],ids=s.events.map(\.id);p.delayEvents=true
+    let started=expectation(description:"refresh before cancellation");p.onStart={started.fulfill()}
+    let read=Task { await s.refreshCalendar(Date()) };await fulfillment(of:[started],timeout:2)
+    read.cancel();try XCTUnwrap(p.eventReply).resume(throwing:CocoaError(.featureUnsupported));await read.value
+    XCTAssertEqual(s.events.map(\.id),ids);XCTAssertTrue(s.enabled.contains(.calendar));XCTAssertEqual(s.status[.calendar],status)
+    XCTAssertFalse(s.busy.contains(.calendar))
+  }
+
   func testPersistedConnectionRevocationSurvivesSessionRecreation() async {
     let suite = "org.example.homeview.tests.connections." + UUID().uuidString
     let defaults = UserDefaults(suiteName: suite)!
