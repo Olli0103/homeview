@@ -38,7 +38,10 @@ struct AssistantResponseView:View {
           .accessibilityIdentifier("assistant.card.image")
         Text("Butternut Squash Soup").font(.title2.bold())
         Text("Home Cookbook · 35 min · Serves 4").foregroundStyle(.secondary)
-        Button("Open bundled recipe",action:openRecipe).frame(minHeight:44)
+        Button(action:openRecipe) {
+          Text("Open bundled recipe").frame(minWidth:44,minHeight:44,alignment:.leading)
+            .contentShape(Rectangle())
+        }
           .accessibilityIdentifier("assistant.card.openRecipe")
       case .loading:
         ProgressView("Loading preview").accessibilityIdentifier("assistant.card.loading")
@@ -62,14 +65,22 @@ struct AssistantResponseView:View {
       if !document.followUps.isEmpty {
         Text("Explore another example").font(.headline)
         ForEach(document.followUps) { example in
-          Button(example.title) {selectExample(example)}.frame(minHeight:44)
+          Button {selectExample(example)} label: {
+            Text(verbatim:example.title).frame(minWidth:44,minHeight:44,alignment:.leading)
+              .contentShape(Rectangle())
+          }
             .accessibilityIdentifier("assistant.card.followup."+example.rawValue)
         }
       }
     }.frame(maxWidth:.infinity,alignment:.leading)
       .sheet(item:$source) { item in
         VStack(alignment:.leading,spacing:20) {
-          HStack {Text(item.title).font(.title2.bold());Spacer();Button("Done") {source=nil}.frame(minHeight:44).accessibilityIdentifier("assistant.card.source.done")}
+          HStack {
+            Text(item.title).font(.title2.bold());Spacer()
+            Button {source=nil} label: {
+              Text("Done").frame(minWidth:44,minHeight:44).contentShape(Rectangle())
+            }.accessibilityIdentifier("assistant.card.source.done")
+          }
           ScrollView {
             VStack(alignment:.leading,spacing:20) {
               Text(verbatim:item.detail)

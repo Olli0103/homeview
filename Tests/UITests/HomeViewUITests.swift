@@ -5167,8 +5167,32 @@ extension HomeViewUITests {
     viewportShot("assistant-hit-region-done-before-edge",assistantRectangle:true)
     tapAssistantControlEdge(app.buttons["assistant.card.source.done"],bottom:true)
     XCTAssertFalse(responseElement("assistant.card.source.open").exists)
-    activatePlanControl(app.buttons["assistant.card.followup.agenda"])
+    let followup=app.buttons["assistant.card.followup.agenda"]
+    revealPlanControl(followup);tapAssistantControlEdge(followup)
     XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("sample agenda"))
     viewportShot("assistant-hit-region-source-edge-followup",assistantRectangle:true)
+  }
+  func testAssistantHeaderControlsActualOuterEdges() {
+    launchAssistantHitRegionProbe()
+    let capabilities=app.buttons["assistant.capabilities"],read=app.buttons["answer.speech.read"],settings=app.buttons["answer.speech.settings"]
+    let controls=[capabilities,read,settings]
+    for control in controls {
+      XCTAssertGreaterThanOrEqual(control.frame.width,44-0.000_001)
+      XCTAssertGreaterThanOrEqual(control.frame.height,44-0.000_001)
+    }
+    for i in controls.indices {for j in controls.indices where i<j {
+      XCTAssertTrue(controls[i].frame.intersection(controls[j].frame).isNull)
+    }}
+    tapAssistantControlEdge(capabilities)
+    XCTAssertTrue(app.buttons["assistant.capabilities.done"].waitForExistence(timeout:5))
+    tap("assistant.capabilities.done")
+    tapAssistantControlEdge(settings,bottom:true)
+    XCTAssertTrue(app.buttons["answer.speech.settings.done"].waitForExistence(timeout:5))
+    tap("answer.speech.settings.done")
+    // Explicit denied-unlock fixture only; no real authentication or speech.
+    tapAssistantControlEdge(read,bottom:true)
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("not granted"))
+    XCTAssertEqual(read.label,"Unlock readout")
+    viewportShot("assistant-hit-region-header-edge-actions",assistantRectangle:true)
   }
 }
