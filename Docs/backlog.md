@@ -784,15 +784,9 @@ Abhängigkeiten: BASE-01.
 <a id="com-05"></a>
 ### COM-05: Find-My-Geräte, AirTags und Personen ehrlich abgrenzen
 
-Find-My-Ansicht ist eine lokale Simulation ohne Zugriff auf Apple-Ortungsdaten.
+Abgeschlossen am 19. Oktober 2026 im Daten-/Systemübergabe-Abgrenzungsumfang. [Fähigkeitsmatrix und getrennte Nachweise](findmy-data-boundary.md). Lokale Karte und Demoobjekt sind dauerhaft als nicht live gekennzeichnet; lokaler Ton meldet keine AirTag-Fernaktion. Die ausdrückliche Apple-Geräte-Webübergabe importiert keine Standorte oder Konten.
 
-Offen:
-
-- Öffentliche Lesemöglichkeiten pro Datentyp prüfen
-- Kein privates API, Account-Scraping oder erfundene Livepositionen hinzufügen
-- Unterstützten Systemübergang separat vom Datenzugriff bewerten
-
-Abnahme: Nicht verfügbare Originalfunktionen bleiben als solche im Parity-Bericht. Mockpositionen können nie als live erscheinen.
+14 UI-Ausführungen, 13 erfolgreich, ein historischer Sichtbarkeitsfehler; zwei finale Übergabefälle bestanden. Fünf finale SDK-Builds, zehn einzeln bilanzierte API-Typprüfungen ohne Ausführung. Keine realen Standorte, Peers, Accounts oder Hardware. F059 bleibt blocked/parity=false; keine originale Ortungs-/Fernsteuerfunktion wird als geliefert ausgegeben.
 
 Abhängigkeiten: BASE-01.
 
