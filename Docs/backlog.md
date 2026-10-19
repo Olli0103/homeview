@@ -882,7 +882,9 @@ Abnahme: Bewusst gesetzter Testalarm auf iPad löst auch außerhalb der App aus 
 <a id="day-07"></a>
 ### DAY-07: Weltuhr um Zonenwahl und Tag-/Nachtanzeige ergänzen
 
-Lokale Weltuhr ist vorhanden, vollständige Zonenwahl und Tag-/Nachtverlauf sind offen.
+Bis zwölf gespeicherte IANA-Städte, DST-/Datums-/Offsetanzeige und offline Sonnenstandsschätzung vorhanden. Mehrtägiger Kalenderabstand jetzt korrekt beschriftet; 293 Modelltests und begrenzte UI-Gegenprüfung. Originalgeometrie/Sonnenzeitverlauf bleiben offen.
+
+[Datumsgrenzen-Korrektur](world-clock-date-distance.md).
 
 Offen:
 

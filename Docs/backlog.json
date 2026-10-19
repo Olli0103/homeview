@@ -1311,7 +1311,7 @@
     "functions": [
       "F068"
     ],
-    "current": "Lokale Weltuhr ist vorhanden, vollständige Zonenwahl und Tag-/Nachtverlauf sind offen.",
+    "current": "Bis zwölf gespeicherte IANA-Städte, DST-/Datums-/Offsetanzeige und offline Sonnenstandsschätzung vorhanden. Mehrtägiger Kalenderabstand jetzt korrekt beschriftet; 293 Modelltests und begrenzte UI-Gegenprüfung. Originalgeometrie/Sonnenzeitverlauf bleiben offen.",
     "tasks": [
       "Zusätzliche Zeitzonen auswählen und persistent speichern",
       "Sommerzeit und Datumsunterschied sichtbar behandeln",
@@ -1321,7 +1321,11 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/53",
     "issue_number": 53,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/world-clock-date-distance.md",
+      "Docs/verification/world-date-distance.json"
+    ]
   },
   {
     "key": "DAY-08",

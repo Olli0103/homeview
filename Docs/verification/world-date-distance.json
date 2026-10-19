@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-20",
+  "issue": 53,
+  "status": "partial_issue_remains_open",
+  "product_commit": "05cb66c5db33a5fb603b9e094abfba5a1cd094da",
+  "baseline_test_commit": "ee65859d9ced1eba6026dbdb728f359579594eb2",
+  "baseline_product_equivalent_to": "f7b98f73bf8f9225595e6fb00cd9d0d8e18130e3",
+  "source_files": 198,
+  "source_digest": "6eb9aaa55787756cb345cbdfc33e4b6468d60ad34e3099c7fce1c98eee6e67cc",
+  "Core_tests": 293,
+  "Core_new_cases": 2,
+  "Core_failures": 0,
+  "Core_skips": 0,
+  "UI_results": [
+    {
+      "checkpoint": "world-date-distance-baseline",
+      "device": "iPad",
+      "passed": 0,
+      "failed": 1,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "world-date-distance-baseline",
+      "device": "iPhone",
+      "passed": 0,
+      "failed": 1,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "world-date-distance-final",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "world-date-distance-final",
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_total_executions": 6,
+  "UI_passed": 4,
+  "UI_failed_historical": 2,
+  "UI_unique_cases": 2,
+  "UI_new_cases": 1,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "decoded_PNGs": 12,
+  "contacts_viewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/world-date-distance/iPad-before-viewport-world-date-two-days-before-assertion.png",
+      "sha256": "784f20a00fb3d17f8f750386e19f9a720394603f0a7fba7de610cd863589dc82",
+      "device": "iPad",
+      "checkpoint": "world-date-distance-baseline"
+    },
+    {
+      "path": "Docs/screenshots/world-date-distance/iPhone-before-viewport-world-date-two-days-before-assertion.png",
+      "sha256": "176852f7089a6e0cca894a4af604ff5f1cbcb452bc67b2fdd81fddcfb11f99e4",
+      "device": "iPhone",
+      "checkpoint": "world-date-distance-baseline"
+    },
+    {
+      "path": "Docs/screenshots/world-date-distance/iPad-after-world-kathmandu-fractional-zone.png",
+      "sha256": "a141485043bcac0f93f94b39c0eb9a367b25468f0fa1d3d8de68763886633130",
+      "device": "iPad",
+      "checkpoint": "world-date-distance-final"
+    },
+    {
+      "path": "Docs/screenshots/world-date-distance/iPad-after-viewport-world-date-two-days-before-assertion.png",
+      "sha256": "a600481953900d32875320a9bac5eea689298978c0ee5d17a7aaf2dd6f02c316",
+      "device": "iPad",
+      "checkpoint": "world-date-distance-final"
+    },
+    {
+      "path": "Docs/screenshots/world-date-distance/iPhone-after-world-kathmandu-fractional-zone.png",
+      "sha256": "8662cadabd30a02cbeca71a57b3b002de0c353f2b3305998e1ec953716ab4503",
+      "device": "iPhone",
+      "checkpoint": "world-date-distance-final"
+    },
+    {
+      "path": "Docs/screenshots/world-date-distance/iPhone-after-viewport-world-date-two-days-before-assertion.png",
+      "sha256": "db5024a133cd0e20aaab1922b11f99471411e97c62f6ee041e426a32081f1b09",
+      "device": "iPhone",
+      "checkpoint": "world-date-distance-final"
+    }
+  ],
+  "archives": {
+    "Core": {
+      "target": "05cb66c5db33a5fb603b9e094abfba5a1cd094da",
+      "entries": 206,
+      "sha256": "f5e3a7048359c6e0872dc0420ecf057257726b2bd995249ce9e9e560ca1743eb",
+      "all_entries_read_back": true,
+      "tests": 293,
+      "failed_assertions": 0
+    },
+    "world-date-distance-baseline": {
+      "archive": "world-date-distance-baseline-inputs.zip",
+      "entries": 226,
+      "sha256": "9b90185034cb7f4d6c21e3d3600a29af4556d79e347539d64f89ae85cb44a9d6",
+      "all_entries_read_back": true
+    },
+    "world-date-distance-final": {
+      "archive": "world-date-distance-final-inputs.zip",
+      "entries": 226,
+      "sha256": "33d8bba399302a9e81f1b558636773148c88cf513f36e57ed8d047ed6f0fd822",
+      "all_entries_read_back": true
+    }
+  },
+  "fixture": {
+    "instant": "2026-01-01T11:30:00Z",
+    "reference_zone": "Etc/GMT+12",
+    "reference_date": "2025-12-31 23:30",
+    "target_zone": "Pacific/Auckland",
+    "target_date": "2026-01-02 00:30",
+    "calendar_day_difference": 2
+  },
+  "implementation": "Computed dayRelation preserves nil for same date and Previous day/Next day for +/-1; larger calendar differences display magnitude/direction. Existing WorldClockView uses relation in same style. No clock/date/zone/solar/persistence computation changed.",
+  "reverse_extreme_test": "Synthetic IANA UTC-12 city relative to Pacific/Kiritimati; model/formatter boundary only, not a new selectable catalogue city.",
+  "unproved": [
+    "Original world clock geometry and sun/night curve",
+    "Physical device/assistive-tool acceptance",
+    "Universal pixel equality outside changed day text, not claimed"
+  ],
+  "real_personal_data_used": false,
+  "Home_constructed": false,
+  "system_activity_created": false
+}
