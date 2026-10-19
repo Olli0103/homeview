@@ -4964,6 +4964,7 @@ extension HomeViewUITests {
     XCTAssertTrue(app.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","not a live search")).firstMatch.exists)
     shot("assistant-card-source-no-auto-browser")
     tap("assistant.card.source.done")
+    XCTAssertFalse(responseElement("assistant.card.source.open").exists)
     activatePlanControl(app.buttons["assistant.card.followup.agenda"])
     let event=responseElement("assistant.card.event.0")
     revealPlanControl(event)
@@ -5018,6 +5019,32 @@ extension HomeViewUITests {
     XCTAssertFalse(app.staticTexts["assistant.card.scope"].exists)
     XCTAssertTrue(app.textFields["assistant.input"].exists)
     shot("assistant-card-background-no-restored-result")
+  }
+  func testAssistantExampleKeepsCompletedVoiceDraftUnsent() {
+    let spoken="temperature 72",typed="OLD UNSENT TYPED DRAFT"
+    launch(["--voice-transcript",spoken]);tap("nav.assistant")
+    let input=app.textFields["assistant.input"]
+    input.tap();input.typeText(typed)
+    tap("assistant.voice")
+    XCTAssertTrue(app.staticTexts["assistant.voice.status"].label.contains("Synthetic"))
+    XCTAssertFalse(app.buttons["assistant.examples"].isEnabled)
+    XCTAssertFalse(app.buttons["assistant.send"].isEnabled)
+    tap("assistant.voice")
+    XCTAssertEqual(input.value as? String,spoken)
+    XCTAssertTrue(app.staticTexts["assistant.voice.preview"].waitForExistence(timeout:5))
+    selectAnswerExample("knowledge")
+    XCTAssertEqual(input.value as? String,spoken)
+    XCTAssertFalse(app.staticTexts["assistant.voice.preview"].exists)
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("1842"))
+    shot("assistant-card-completed-voice-draft-kept-unsent")
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+    tap("nav.assistant");XCTAssertEqual(input.value as? String,spoken)
+    tap("assistant.send")
+    XCTAssertFalse(app.staticTexts["assistant.card.scope"].exists)
+    if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"72°")
   }
 }
 

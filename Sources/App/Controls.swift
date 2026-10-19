@@ -404,7 +404,9 @@ struct AssistantView: View {
     if model.demoPlan?.phase == .preview { typing=false }
   }
   private func showExample(_ example:AssistantResponseExample) {
-    voiceSession.cancelAndRestore();typing=false
+    // A finished speech draft is already in the field. Keep it, not the older
+    // pre-recording draft; active capture cannot select examples.
+    voiceSession.cancel();typing=false
     model.showAssistantExample(example)
   }
 }
