@@ -1,0 +1,218 @@
+[
+  {
+    "assertions": 12,
+    "case": "temperature",
+    "checks": {
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "B0814F55-49B3-452B-B7FA-1B6228292BB8",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 12,
+    "case": "brightness",
+    "checks": {
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "85A7445F-44DA-4ADC-86CC-2406E6051AA9",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 12,
+    "case": "entry_light",
+    "checks": {
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "4054FD72-5A2A-47AF-9567-A205DFF29930",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 12,
+    "case": "compound_scene",
+    "checks": {
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "AEF67F77-0209-49F6-A154-DE892292DA76",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 12,
+    "case": "invalid_value",
+    "checks": {
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "41B146AA-1AFF-40F1-8890-492B99BAE883",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 12,
+    "case": "security_rejected",
+    "checks": {
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "C70DFC1E-BDD8-46D1-85F0-C13139559B2D",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 12,
+    "case": "offline_rejected",
+    "checks": {
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "1052D1C5-5B67-45D6-B302-18FCE0D2D5CB",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 14,
+    "case": "assistant_temperature",
+    "checks": {
+      "assistant_reports_error_not_success": true,
+      "assistant_retry_reports_success": true,
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "E7CB39B4-7CD5-4AB9-869B-43CA6EC19225",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 14,
+    "case": "assistant_lights",
+    "checks": {
+      "assistant_reports_error_not_success": true,
+      "assistant_retry_reports_success": true,
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "3451875D-DFF9-4DB5-9F25-43220B8FEFD8",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 14,
+    "case": "assistant_scene",
+    "checks": {
+      "assistant_reports_error_not_success": true,
+      "assistant_retry_reports_success": true,
+      "audit_exactly_once": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_retry": true,
+      "retry_expected_change": true,
+      "retry_expected_error": true,
+      "retry_saved_exactly": true,
+      "snapshot_unchanged": true,
+      "unrelated_snapshot_fields_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "0348F2DC-E4BC-40EF-A883-4EE6CC7AA30D",
+    "verdict": "PASS"
+  }
+]

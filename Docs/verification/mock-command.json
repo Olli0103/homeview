@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-19",
+  "issue": 80,
+  "status": "partial_issue_remains_open",
+  "code_commit": "420cdd78699591e9bd940db031f552c9b5c259e7",
+  "source_digest": "eaab9c2a479583e5fa8d758db24a02ae26de7808689b045c969011479505464f",
+  "source_files": 189,
+  "native": {
+    "verdict": "PASS",
+    "cases": 10,
+    "assertions": 126,
+    "target": "420cdd78699591e9bd940db031f552c9b5c259e7",
+    "compiled_source_matches_git": true,
+    "clean_before_after": true,
+    "Home_constructed": false
+  },
+  "archives": {
+    "mock-command-baseline": {
+      "entries": 133,
+      "sha256": "2731b9091d5b56d5df7e6ee76bd08efe3482527155de4d8a9a5b0aa96203d7cb",
+      "all_entries_read_back": true,
+      "cases": 10,
+      "failed_cases": 7,
+      "failed_assertions": 7,
+      "negative_cases_passed": 3,
+      "assistant_error_replies_already_correct": true,
+      "source_commit": "ce2582324792b8706426037be7b85e27a0a5c4b1"
+    },
+    "mock-command-final": {
+      "entries": 134,
+      "sha256": "ef084a00eb663183e33711b66ec46faad5bce428d92ba7dd60d59196faa32d73",
+      "all_entries_read_back": true
+    }
+  },
+  "UI_passed": 6,
+  "UI_unique_methods": 3,
+  "UI_failures": 0,
+  "UI_skipped": 0,
+  "UI_runtime_warnings": [],
+  "UI_compiled_inputs": 22,
+  "UI_inputs_unchanged": true,
+  "installed_app_bytes_read_back": true,
+  "UI_archive": {
+    "name": "mock-command-ui-inputs.zip",
+    "entries": 211,
+    "sha256": "9fe5eb1de5c9fc27130aaf4fe3881b5252f94d5641173f97d5c4627d1db19da4",
+    "all_entries_read_back": true
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "PNGs_decoded": 6,
+  "contact_sheets_reviewed": 2,
+  "selected_images": [
+    {
+      "path": "Docs/verification/mock-command-images/iPad-viewport-mock-write-readonly-value-unchanged.png",
+      "sha256": "0757e2bfe2921e795fc5e921154f2b1eac3015ae9db9d92f493afc4412cf575c"
+    },
+    {
+      "path": "Docs/verification/mock-command-images/iPad-store-future-version-readonly-after-relaunch.png",
+      "sha256": "70763020cc4e5cb774d5af78740bae17dd71b6c3bbaed693fb14197dcd0020c5"
+    },
+    {
+      "path": "Docs/verification/mock-command-images/iPhone-viewport-mock-write-readonly-value-unchanged.png",
+      "sha256": "2f118439d5cf00967fcc6cfc34114ddd66293fb4276ae30d0577edb7bcdaad8a"
+    },
+    {
+      "path": "Docs/verification/mock-command-images/iPhone-store-future-version-readonly-after-relaunch.png",
+      "sha256": "66f94073fb91a16443cd04caece5ec75695641e28fb08611641fe70bdf332769"
+    }
+  ],
+  "host_store_readback": [
+    {
+      "device": "iPad",
+      "uuid": "641ACA17-B3FC-40D3-AD6D-C4926528BE2A",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+      "future_bytes_unchanged": true
+    },
+    {
+      "device": "iPhone",
+      "uuid": "B78A21E0-9F10-4EBB-A595-629DF835B6BF",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+      "future_bytes_unchanged": true
+    }
+  ],
+  "Core_qualification": "Historical pinned 264-test full PASS; all 66 Core/CoreTests file bytes unchanged, no new full Core run.",
+  "hypothesis_qualification": "Assistant failure replies were already correct in all three baseline assistant cases. The reproduced seven failures are retained unsaved Snapshot/audit changes, not false success replies.",
+  "MockHome_only": true,
+  "real_Apple_Home_constructed": false,
+  "Home_field_qualification": "The native verdict Home_constructed=false refers to real Apple Home/HMHomeManager; an ordinary local MockHome value is intentionally used.",
+  "system_alarms_requested": false,
+  "real_accounts_used": false
+}
