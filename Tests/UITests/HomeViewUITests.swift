@@ -4860,9 +4860,9 @@ extension HomeViewUITests {
   private func tapFooterOuterEdge(_ id:String,_ edge:String) {
     let button=app.buttons[id]
     XCTAssertTrue(button.waitForExistence(timeout:5));XCTAssertTrue(button.isHittable)
-    // One representable CGFloat step handles frame subtraction rounding only.
+    // Frame conversion/subtraction can lose several ULPs; allow 1e-9pt only.
     let f=button.frame
-    XCTAssertGreaterThanOrEqual(f.width.nextUp,44);XCTAssertGreaterThanOrEqual(f.height.nextUp,44)
+    XCTAssertEqual(f.width,44,accuracy:0.000_000_001);XCTAssertEqual(f.height,44,accuracy:0.000_000_001)
     XCTAssertTrue(app.frame.contains(f))
     let point:CGVector
     switch edge {
@@ -4875,7 +4875,7 @@ extension HomeViewUITests {
   func testFooterTargetsAre44PointsNonoverlappingAndOuterEdgesNavigate() {
     launch(["--reference-timer"])
     let ids=["nav.faces","nav.apps","nav.assistant","nav.controls"],frames=ids.map {app.buttons[$0].frame}
-    for f in frames {XCTAssertGreaterThanOrEqual(f.width.nextUp,44);XCTAssertGreaterThanOrEqual(f.height.nextUp,44)}
+    for f in frames {XCTAssertEqual(f.width,44,accuracy:0.000_000_001);XCTAssertEqual(f.height,44,accuracy:0.000_000_001)}
     for i in frames.indices {for j in frames.indices where j>i {XCTAssertTrue(frames[i].intersection(frames[j]).isNull,"Footer targets must not overlap")}}
     // These y positions lie outside the footer's retained 30pt layout slot.
     tapFooterOuterEdge("nav.controls","top")
