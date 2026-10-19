@@ -4814,3 +4814,22 @@ extension HomeViewUITests {
     XCTAssertTrue(started,"No own ActivityKit system activity established; not an outside-app visibility PASS")
   }
 }
+
+extension HomeViewUITests {
+  func testHiddenTimerHasNamedAccessibleControlWithoutPreciseGesture() {
+    launch(["--reference-timer","--reference-resting","--timer-idle-test"])
+    let countdown=app.staticTexts["timer.countdown"]
+    XCTAssertTrue(countdown.waitForExistence(timeout:5));XCTAssertEqual(countdown.label,"10:56")
+    XCTAssertFalse(app.buttons["timer.pause"].exists);XCTAssertFalse(app.buttons["timer.delete"].exists)
+    viewportShot("timer-accessibility-resting-before-control")
+    let show=app.buttons["timer.revealControls"]
+    XCTAssertTrue(show.waitForExistence(timeout:3),"Hidden timer needs a named accessibility control, not only an anonymous surface gesture")
+    XCTAssertEqual(show.label,"Show timer controls");XCTAssertEqual(show.value as? String,"10:56")
+    show.tap()
+    XCTAssertTrue(app.buttons["timer.pause"].waitForExistence(timeout:3));XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    XCTAssertTrue(app.buttons["timer.delete"].exists)
+    XCTAssertEqual(countdown.label,"10:56")
+    viewportShot("timer-accessibility-controls-revealed")
+    tap("timer.delete");XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:3))
+  }
+}
