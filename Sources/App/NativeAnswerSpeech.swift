@@ -44,7 +44,12 @@ private final class UtteranceCallbackLifetime:@unchecked Sendable {
     synth?.speak(utterance)
   }
   func stop() {
-    active=nil;completion=nil;synth?.stopSpeaking(at:.immediate);deactivate()
+    active=nil;completion=nil
+    synth?.stopSpeaking(at:.immediate)
+    // A stop before native isSpeaking may leave a queued start. Release this
+    // request's client as well; the next readout creates a fresh synthesizer.
+    synth=nil
+    deactivate()
   }
   private func deactivate() {
     #if os(iOS) || os(visionOS)
@@ -54,7 +59,7 @@ private final class UtteranceCallbackLifetime:@unchecked Sendable {
   }
   private func finished(_ id:ObjectIdentifier,success:Bool) {
     guard active==id else { return }
-    let callback=completion;active=nil;completion=nil;deactivate();callback?(success)
+    let callback=completion;active=nil;completion=nil;synth=nil;deactivate();callback?(success)
   }
   nonisolated func speechSynthesizer(_ synthesizer:AVSpeechSynthesizer,didFinish utterance:AVSpeechUtterance) {
     let id=ObjectIdentifier(utterance),lifetime=UtteranceCallbackLifetime(utterance)
