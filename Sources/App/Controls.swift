@@ -189,12 +189,12 @@ struct AssistantView: View {
     scenePhase == .active && model.assistantInteractionActive
   }
   @State private var voiceDraftGeneration = 0
-  @State private var draftBeforeVoice = ""
   @State private var language = "de-DE"
   @State private var showingCapabilities = false
   @State private var showingAnswerSpeechSettings=false
-  @State private var voiceInitiating=false
-  @State private var voice = VoiceInputController()
+  @State private var voiceSession=AssistantVoiceSession()
+  private var voice:VoiceInputController { voiceSession.voice }
+  private var voiceInitiating:Bool { voiceSession.starting }
   var body: some View {
     VStack(alignment: .leading, spacing:12) {
       ScrollViewReader { reader in
@@ -267,30 +267,34 @@ struct AssistantView: View {
                 voice.finish()
               } else {
                 typing=false
-                draftBeforeVoice = text
-                voiceDraftGeneration = model.personalSessionGeneration
-                text = ""
-                model.stopAudioForVoice()
-                voiceInitiating=true
-                Task { await voice.start(locale:language);voiceInitiating=false }
+                let draft=text,session=model.personalSessionGeneration,mode=model.assistantUsesAI
+                let currentModel=model
+                voiceDraftGeneration=session
+                text="";model.stopAudioForVoice()
+                voiceSession.start(locale:language,isCurrent:{ [weak currentModel] in
+                  guard let currentModel else { return false }
+                  return currentModel.assistantInteractionActive
+                    && currentModel.personalSessionGeneration==session && currentModel.assistantUsesAI==mode
+                    && !currentModel.assistantAI.busy && !currentModel.demoPlanBusy
+                },onAborted:{ [weak currentModel] in
+                  guard let currentModel,currentModel.personalSessionGeneration==session else { return }
+                  currentModel.assistantInput=draft
+                })
               }
             } label: {
               Label(
                 voice.recording ? "Stop" : "Speak",
                 systemImage: voice.recording ? "stop.circle.fill" : "mic.circle.fill")
-            }.disabled((voice.busy && !voice.recording) || model.assistantAI.busy || model.demoPlanBusy).accessibilityIdentifier("assistant.voice")
-            if voice.busy || voice.phase == .ready {
-              Button("Cancel") {
-                voice.cancel()
-                text = draftBeforeVoice
-              }
+            }.disabled(voiceInitiating || (voice.busy && !voice.recording) || model.assistantAI.busy || model.demoPlanBusy).accessibilityIdentifier("assistant.voice")
+            if voiceInitiating || voice.busy || voice.phase == .ready {
+              Button("Cancel") { voiceSession.cancelAndRestore() }
               .accessibilityIdentifier("assistant.voice.cancel")
             }
             Spacer()
             Picker("Language", selection: $language) {
               Text("Deutsch").tag("de-DE")
               Text("English").tag("en-US")
-            }.labelsHidden().disabled(voice.busy).frame(maxWidth: 150)
+            }.labelsHidden().disabled(voiceInitiating || voice.busy).frame(maxWidth: 150)
           }.font(.system(size: 21, weight: .medium))
           Text(voice.status).font(.system(size: 16)).foregroundStyle(voice.recording ? .red : .gray)
             .accessibilityIdentifier("assistant.voice.status")
@@ -306,7 +310,7 @@ struct AssistantView: View {
         TextField("Type a request", text: Binding(get: { text }, set: { if canEdit { text = $0 } })).textFieldStyle(.plain).font(.system(size: 25))
           .focused($typing).submitLabel(.send)
           .onSubmit { submitted() }.accessibilityIdentifier("assistant.input")
-          .frame(minHeight:44)
+          .frame(minHeight:44).disabled(voiceInitiating || voice.busy)
         if typing {
           Button { typing=false } label: { Image(systemName:"keyboard.chevron.compact.down").frame(width:44,height:44) }
             .buttonStyle(.plain).accessibilityLabel("Dismiss keyboard")
@@ -314,7 +318,7 @@ struct AssistantView: View {
         }
         RoundButton(symbol: "arrow.up", color: .blue, foreground: .white, label: "Send request") {
           submitted()
-        }.disabled(voice.busy || model.assistantAI.busy || model.demoPlanBusy || text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        }.disabled(voiceSession.blocksSubmission || model.assistantAI.busy || model.demoPlanBusy || text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
           .accessibilityIdentifier("assistant.send")
       }.padding(20).background(.gray.opacity(0.09), in: RoundedRectangle(cornerRadius: 28)).padding(
         .horizontal, 30)
@@ -325,24 +329,40 @@ struct AssistantView: View {
       .onChange(of:focusRequest) { _,_ in typing=true }
       .sheet(isPresented:$showingCapabilities) { AssistantCapabilitiesView() }
       .sheet(isPresented:$showingAnswerSpeechSettings) { AnswerSpeechSettingsView() }
-      .onChange(of: voice.transcript) { _, value in if !value.isEmpty { text = value } }
+      .onChange(of:voice.transcript) { _,value in
+        if !value.isEmpty,canEdit,voiceSession.acceptsTranscript,
+          voiceDraftGeneration==model.personalSessionGeneration { text=value }
+      }
+      .onChange(of:voice.phase) { _,phase in if phase == .failed { voiceSession.failureObserved() } }
+      .onChange(of:model.personalSessionGeneration) { _,_ in
+        if voiceDraftGeneration != model.personalSessionGeneration { voiceSession.cancel() }
+      }
+      .onChange(of:model.assistantUsesAI) { _,_ in cancelVoiceIfContextInvalid() }
+      .onChange(of:model.assistantAI.busy) { _,_ in cancelVoiceIfContextInvalid() }
+      .onChange(of:model.demoPlanBusy) { _,_ in cancelVoiceIfContextInvalid() }
+      .onChange(of:model.incomingCall) { _,_ in cancelVoiceIfContextInvalid() }
+      .onChange(of:model.demoDoorbell.current?.id) { _,_ in cancelVoiceIfContextInvalid() }
       .onChange(of: scenePhase) { _, phase in
         if phase == .background || (phase != .active && voice.phase != .preparing) {
-          voice.cancel()
+          cancelVoiceForContextChange()
         }
       }
       .onDisappear {
-        let restore = voice.busy && scenePhase == .active
-          && voiceDraftGeneration == model.personalSessionGeneration
-        voice.cancel()
-        if restore { text = draftBeforeVoice }
+        cancelVoiceForContextChange()
         model.assistantAI.clear()
         model.stopAnswerSpeech()
       }
   }
+  private func cancelVoiceIfContextInvalid() {
+    if voiceSession.active && !voiceSession.contextIsCurrent { cancelVoiceForContextChange() }
+  }
+  private func cancelVoiceForContextChange() {
+    if voiceInitiating || voice.busy { voiceSession.cancelAndRestore() }
+    else { voiceSession.cancel() }
+  }
   private func submitted() {
-    guard canEdit,!voice.busy,!model.assistantAI.busy,!model.demoPlanBusy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
-    voice.cancel()
+    guard canEdit,!voiceSession.blocksSubmission,!model.assistantAI.busy,!model.demoPlanBusy, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+    voiceSession.cancel()
     model.assistantInput = text
     model.runAssistant()
     if model.demoPlan?.phase == .preview { typing=false }
