@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-19",
+  "issues": [
+    80,
+    67
+  ],
+  "code_commit": "638c93aabab60e8e700dbe0267ed407378cdcfda",
+  "source_digest": "c92f3bdefc09620abf56ffb006dfa74c11e9f43ccaddd4d0156aca2ff9f4c106",
+  "reproduction": {
+    "source_digest": "4039634e8800cd62bd38ff6abd6d9eb20a5d4c40f4c7daeedfba14ce3a48b767",
+    "new_tests": 4,
+    "failures_before": 4,
+    "failures_after": 0,
+    "affected_source_same_as_preceding_integrated_baseline": {
+      "Sources/Core/ConnectedDataSession.swift": true,
+      "Sources/App/NativeServices.swift": true
+    },
+    "original_failed_log_preserved": true,
+    "before_archive_readback": true
+  },
+  "core_tests": 189,
+  "core_failures": 0,
+  "new_gate_tests": 4,
+  "UI_methods": [
+    "testConnectedMusicAndWeatherDoNotUseHomeKit",
+    "testConnectedMusicResumeTakesFocusFromNativePodcast"
+  ],
+  "UI_executions": 4,
+  "UI_results": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    },
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    }
+  ],
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "all_native_inputs_unchanged": true,
+  "frozen_input_files": 23,
+  "compiled_archive_readback": true,
+  "compiled_archive_sha256": "18889060a6c0eed698ca13c137d1d973d43a5fc4c19359af020467f30b541521",
+  "installed_app_readback": {
+    "iPad": true,
+    "iPhone": true
+  },
+  "images_decoded_and_reviewed": 8,
+  "public_images": [
+    {
+      "path": "Docs/screenshots/music-lifecycle/iPad-viewport-rss-connected-music-resume-focus.png",
+      "sha256": "e3c58b1816d59554889228329daeba2f4362a03c444fc087fa15050e91962568"
+    },
+    {
+      "path": "Docs/screenshots/music-lifecycle/iPhone-viewport-rss-connected-music-resume-focus.png",
+      "sha256": "412c09502bf390c624d4db40a54cf587e7bcabf7c3c1f86e2fdcf3c4e1cdb2ad"
+    }
+  ],
+  "limits": [
+    "Deterministic model and injected-backend state/ordering proof, not an actual MusicKit account/hardware test",
+    "Native cache generation checks compiled/reviewed, not exercised with real catalog responses",
+    "Gate waits for old SDK request settlement before successor; no SDK timeout reliability promise",
+    "Guest/presence/snapshot and remaining migration/Offline matrix stay open",
+    "No Home integration"
+  ]
+}
