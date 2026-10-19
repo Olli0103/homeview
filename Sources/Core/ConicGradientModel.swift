@@ -7,11 +7,11 @@ enum ConicGradientModel {
     let color: SIMD3<Double>
   }
   static let fadeStops = [
-    Stop(location: 0, color: .init(0.82, 0.65, 0.64)),
-    Stop(location: 0.25, color: .init(0.69, 0.54, 0.54)),
-    Stop(location: 0.5, color: .init(0.82, 0.65, 0.64)),
-    Stop(location: 0.75, color: .init(0.89, 0.74, 0.73)),
-    Stop(location: 1, color: .init(0.82, 0.65, 0.64)),
+    Stop(location: 0, color: .init(0.812, 0.699, 0.688)),
+    Stop(location: 0.25, color: .init(0.753, 0.644, 0.634)),
+    Stop(location: 0.5, color: .init(0.812, 0.699, 0.688)),
+    Stop(location: 0.75, color: .init(0.872, 0.749, 0.737)),
+    Stop(location: 1, color: .init(0.812, 0.699, 0.688)),
   ]
   static func wrap(_ turns: Double) -> Double {
     guard turns.isFinite else { return 0 }

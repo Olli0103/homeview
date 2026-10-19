@@ -452,7 +452,7 @@
     "functions": [
       "F017"
     ],
-    "current": "Eigener konischer Fade-Verlauf und Reduce Motion sind pixelbasiert geprüft; Zeigerlängen, schmaler Ansatz, Relief und Ziffernanordnung wurden getrennt nach UI12 kalibriert. Exakte Originalzeitkurve, weitere Übergänge, Licht und Schrift bleiben offen.",
+    "current": "Eigener konischer Fade-Verlauf und Reduce Motion sind pixelbasiert geprüft; Zeigerlängen, schmaler Ansatz, Relief und Ziffernanordnung wurden getrennt nach UI12 kalibriert. Exakte Originalzeitkurve, weitere Übergänge, Licht und Schrift bleiben offen. Fade-Grundfläche heller/neutraler an UI12 angenähert: acht unveränderte Farbziele, Kanalfehler10.92→1.17;166Core/8gezielteUI/5SDK. Native Schwarz-/Weiß-Kontrolle erklärt die vier ursprünglich fehlgeschlagenen Randpixel. Vorab eingefrorene hintergrundunabhängige5x5-Kerne bleiben RGBA-exakt, keine RGB-Toleranz; Erstfehlschlag bleibt dokumentiert. Docs/fade-surface-tones.md. Originalzeitkurve/weitere Phasen/Typografie/Licht/Hardware offen; Issue18 bleibt offen.",
     "tasks": [
       "Konischen Verlauf mit definiertem Nullwinkel und Farbstops implementieren",
       "Ziffernrelief, Zeiger, Schatten und Ausblendfenster abstimmen",

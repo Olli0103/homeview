@@ -455,3 +455,8 @@ bleiben offen; #5/#21 unverändert offen.
 ## 18. Oktober: obere UI05-Wolkenlücke
 
 [Begrenzter eigener Dichte-/Farbschritt](weather-top-clouds.md):166 Modelltests,22 gezielte iPad-/iPhone-Fälle und fünf SDKs bestanden;78 eigene PNGs auf16 unterschiedlichen Kontaktbögen gesichtet. Ursprüngliche Lücken-/Kontrast-, Wolken-/Licht- und Exaktgrenzen erfüllt. Erster Versuch wegen Verdunklung einer bestehenden Wolkenregion zurückgehalten; keine Grenzlockerung. Keine vollständige Original-/Hardware-/Farbverwaltungsabnahme.
+
+
+## Fade-Flächenfarbe · 19. Oktober 2026
+
+Fade-Grundfläche heller/neutraler an UI12 angenähert: acht unveränderte Farbziele, Kanalfehler10.92→1.17;166Core/8gezielteUI/5SDK. Native Schwarz-/Weiß-Kontrolle erklärt die vier ursprünglich fehlgeschlagenen Randpixel. Vorab eingefrorene hintergrundunabhängige5x5-Kerne bleiben RGBA-exakt, keine RGB-Toleranz; Erstfehlschlag bleibt dokumentiert. Docs/fade-surface-tones.md. Originalzeitkurve/weitere Phasen/Typografie/Licht/Hardware offen; Issue18 bleibt offen.
