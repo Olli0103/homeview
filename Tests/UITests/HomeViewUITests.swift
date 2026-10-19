@@ -4760,7 +4760,7 @@ extension HomeViewUITests {
 extension HomeViewUITests {
   private func expectOwnSystemActivity(_ running:Int,_ paused:Int,_ count:Int=1) -> Bool {
     let predicate=NSPredicate(format:"label == %@","Own activities=\(count); running=\(running); paused=\(paused)")
-    return XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:predicate,evaluatedWith:app.staticTexts["timer.activity.system-report"])],timeout:10) == .completed
+    return XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:predicate,object:app.staticTexts["timer.activity.system-report"])],timeout:10) == .completed
   }
   func testOwnTimerSystemActivityReadbackPauseAndExplicitCleanup() {
     let id=UUID().uuidString
