@@ -5,6 +5,18 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Öffentliche RSS-Podcasts · 19. Oktober 2026
+
+[#59 abgeschlossen](https://github.com/Olli0103/homeview/issues/59): explizite Feeds,
+native Wiedergabe, Seek, Neustartposition ohne Autoplay und Aktivitätsrückkehr.
+Auch der Rückweg zum verbundenen Music-Player und dessen gemeinsamer Audiowechsel
+sind korrigiert. 181 Modell-/Transporttests, sechs ausgewählte Fälle je Gerät über
+qualifizierte Checkpoints und fünf arm64-SDK-Builds. Frühere Fehlversuche bleiben
+sichtbar; keine behauptete grüne Vollsuite oder Apple-Podcasts-Accountsync.
+[Umfang und Nachweise](public-podcast-feeds.md). Alle82 Backlog-Titel/Zustände neu
+abgeglichen: acht geschlossen,74 offen; Community#83 ist nicht im Nenner.
+Der fortlaufende Auftrag geht mit #41 weiter; Home bleibt ausgeschlossen.
+
 ### Home Modular Intercom-Zeichen · 18. Oktober 2026
 
 [Sieben weiße Balken nach UI07](home-modular-intercom.md): 166 Modelltests,
