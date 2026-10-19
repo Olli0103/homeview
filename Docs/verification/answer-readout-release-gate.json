@@ -1,0 +1,260 @@
+{
+  "verdict": "PASS",
+  "date": "2026-10-19",
+  "target": {
+    "head": "644781931f3acff8d0af92c9de44698927351ef8",
+    "parents": "ae931aec34c0c9bc66ab626100c20f059ae1c3bd",
+    "branch": "work/answer-speech",
+    "shallow": "false",
+    "status": "",
+    "changed": ":100644 100644 c1b2dc4 7991dba M\tHomeViewReplica.xcodeproj/project.pbxproj\n:100644 100644 b693f34 ca72387 M\tScripts/generate_project.py\n:000000 100644 0000000 703c203 A\tSources/App/AnswerSpeechActions.swift\n:000000 100644 0000000 a95c145 A\tSources/App/AnswerSpeechSettingsView.swift\n:100644 100644 08f1973 a09f0f2 M\tSources/App/AppModel.swift\n:100644 100644 b847391 898e759 M\tSources/App/Controls.swift\n:100644 100644 37537c5 37c02bb M\tSources/App/LocalAudioEngine.swift\n:000000 100644 0000000 c1a66a1 A\tSources/App/NativeAnswerSpeech.swift\n:100644 100644 f903437 c79b813 M\tSources/App/NativeAssistantAnswers.swift\n:100644 100644 ddd71c9 e0e16bf M\tSources/App/PodcastActions.swift\n:100644 100644 1649c98 04f46e2 M\tSources/App/RootView.swift\n:000000 100644 0000000 662dbc8 A\tSources/Core/AnswerSpeechSession.swift\n:000000 100644 0000000 01b73b0 A\tTests/CoreTests/AnswerSpeechSessionTests.swift\n:100644 100644 9c8f2ed 1c63d41 M\tTests/UITests/HomeViewUITests.swift\n"
+  },
+  "source_digest": "c6f9c8a18e0c4cc0316e5bee5f8e3c04e3eaa5dced0652e5cb169d7eedea706f",
+  "core_matrix": [
+    {
+      "id": "settings-never-start-or-replay",
+      "passed": true
+    },
+    {
+      "id": "locked-and-background-zero-start",
+      "passed": true
+    },
+    {
+      "id": "invalid-input-zero-start",
+      "passed": true
+    },
+    {
+      "id": "pre-cancel-zero-start",
+      "passed": true
+    },
+    {
+      "id": "late-old-events-cannot-finish-current",
+      "passed": true
+    },
+    {
+      "id": "mute-revokes-events-and-unmute-never-replays",
+      "passed": true
+    },
+    {
+      "id": "backend-error-sanitized-and-stopped",
+      "passed": true
+    },
+    {
+      "id": "retained-backend-callback-does-not-retain-owner",
+      "passed": true
+    }
+  ],
+  "actual_native_matrix": [
+    {
+      "coreStopped": true,
+      "id": "actual-backend-stop",
+      "inputCharacters": 4000,
+      "nativeCleared": true,
+      "nativeStarted": true,
+      "nativeStopped": true,
+      "passed": true,
+      "volume": 0
+    },
+    {
+      "id": "actual-backend-finish",
+      "passed": true,
+      "status": "Readout finished.",
+      "volume": 0
+    },
+    {
+      "id": "immediate-stop-no-queued-late-start",
+      "lateNativeStart": false,
+      "passed": true,
+      "retiredOwnerAliveSamples": 0,
+      "volume": 0
+    },
+    {
+      "id": "old-cancel-callback-does-not-stop-successor",
+      "passed": true,
+      "volume": 0
+    }
+  ],
+  "before_native_matrix": [
+    {
+      "coreStopped": true,
+      "id": "actual-backend-stop",
+      "inputCharacters": 4000,
+      "nativeCleared": true,
+      "nativeStarted": true,
+      "nativeStopped": true,
+      "passed": true,
+      "volume": 0
+    },
+    {
+      "id": "actual-backend-finish",
+      "passed": true,
+      "status": "Readout finished.",
+      "volume": 0
+    },
+    {
+      "id": "immediate-stop-no-queued-late-start",
+      "passed": false,
+      "volume": 0
+    },
+    {
+      "id": "old-cancel-callback-does-not-stop-successor",
+      "passed": true,
+      "volume": 0
+    }
+  ],
+  "before_queued_stop": {
+    "verdict": "FAIL",
+    "target": "ae931ae",
+    "native_gate_passed": 3,
+    "native_gate_total": 4,
+    "diagnostic_trials": 4,
+    "restarted_in_all_trials": true,
+    "restart_approx_ms": 2.1,
+    "core_already_stopped": true,
+    "test_volume": 0,
+    "root_cause": "stopSpeaking before native isSpeaking does not cancel queued start while the synthesizer owner remains retained",
+    "diagnostic_candidate": "stop plus release of synthesizer owner: four trials, zero weak-owner alive or speaking samples",
+    "scope": "New unpublished readout; existing main has no audio readout feature"
+  },
+  "before_diagnostic": [
+    {
+      "accepted": true,
+      "cleared": true,
+      "coreAtEnd": false,
+      "firstFalseMilliseconds": 0,
+      "nativeAtEnd": true,
+      "nativeBeforeStop": false,
+      "nativeImmediatelyAfterStop": false,
+      "restartMilliseconds": 2.136041,
+      "transitions": [
+        {
+          "milliseconds": 0.023375,
+          "nativeSpeaking": false
+        },
+        {
+          "milliseconds": 2.136041,
+          "nativeSpeaking": true
+        }
+      ],
+      "trial": 0
+    },
+    {
+      "accepted": true,
+      "cleared": true,
+      "coreAtEnd": false,
+      "firstFalseMilliseconds": 0,
+      "nativeAtEnd": true,
+      "nativeBeforeStop": false,
+      "nativeImmediatelyAfterStop": false,
+      "restartMilliseconds": 2.117709,
+      "transitions": [
+        {
+          "milliseconds": 0.008375,
+          "nativeSpeaking": false
+        },
+        {
+          "milliseconds": 2.117709,
+          "nativeSpeaking": true
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "accepted": true,
+      "cleared": true,
+      "coreAtEnd": false,
+      "firstFalseMilliseconds": 0,
+      "nativeAtEnd": true,
+      "nativeBeforeStop": false,
+      "nativeImmediatelyAfterStop": false,
+      "restartMilliseconds": 2.137959,
+      "transitions": [
+        {
+          "milliseconds": 0.008542,
+          "nativeSpeaking": false
+        },
+        {
+          "milliseconds": 2.137959,
+          "nativeSpeaking": true
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "accepted": true,
+      "cleared": true,
+      "coreAtEnd": false,
+      "firstFalseMilliseconds": 0,
+      "nativeAtEnd": true,
+      "nativeBeforeStop": false,
+      "nativeImmediatelyAfterStop": false,
+      "restartMilliseconds": 2.116125,
+      "transitions": [
+        {
+          "milliseconds": 0.0095,
+          "nativeSpeaking": false
+        },
+        {
+          "milliseconds": 2.116125,
+          "nativeSpeaking": true
+        }
+      ],
+      "trial": 3
+    }
+  ],
+  "candidate_discard_diagnostic": [
+    {
+      "cleared": true,
+      "coreStopped": true,
+      "ownerAliveSamples": 0,
+      "retiredSpeakingSamples": 0,
+      "trial": 0
+    },
+    {
+      "cleared": true,
+      "coreStopped": true,
+      "ownerAliveSamples": 0,
+      "retiredSpeakingSamples": 0,
+      "trial": 1
+    },
+    {
+      "cleared": true,
+      "coreStopped": true,
+      "ownerAliveSamples": 0,
+      "retiredSpeakingSamples": 0,
+      "trial": 2
+    },
+    {
+      "cleared": true,
+      "coreStopped": true,
+      "ownerAliveSamples": 0,
+      "retiredSpeakingSamples": 0,
+      "trial": 3
+    }
+  ],
+  "generator": {
+    "python_syntax_files": 3,
+    "results": [
+      {
+        "path": "Resources/MainInfo.plist",
+        "identical": true
+      },
+      {
+        "path": "HomeViewReplica.xcodeproj/project.pbxproj",
+        "identical": true
+      }
+    ],
+    "Python_suite": "absent; Swift native app plus generator",
+    "Node_plugin_POSIX_Linux_suites": "not applicable; no such runtime or changed scripts"
+  },
+  "scope": [
+    "Eight separate external Core cases plus four actual native backend cases, not an independent human reviewer or another agent",
+    "Native actual playback API used volume0 with synthetic text; no physical speaker/acoustic privacy test",
+    "Before all4 queued-stop trials restarted approximately2.1ms after stop while app state was stopped; real queue defect, not delayed false\u2192true state reset",
+    "Final immediate-stop case observes weak retired client, zero alive samples and zero late starts; new readout gets a fresh synthesizer",
+    "Retain-only callback lifetime bridge is preventative primitive review improvement, not a separately reproduced pointer-reuse UI bug",
+    "Read-only accessors appended to byte-exact production native prefix for inspection; no altered speech implementation in final native gate",
+    "No native LA authorization, live calls/headphone routes or physical iPad audio-session acceptance in these automated probes",
+    "No Node/plugin/POSIX/remote process boundary changed; no such extra suite. External stages/binaries retained deliberately as evidence"
+  ]
+}

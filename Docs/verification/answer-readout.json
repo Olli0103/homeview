@@ -1,0 +1,518 @@
+{
+  "date": "2026-10-19",
+  "issue": 40,
+  "code_commit": "644781931f3acff8d0af92c9de44698927351ef8",
+  "source_digest": "c6f9c8a18e0c4cc0316e5bee5f8e3c04e3eaa5dced0652e5cb169d7eedea706f",
+  "core_tests": 226,
+  "core_failures": 0,
+  "new_core_readout_tests": 12,
+  "Core_qualification": "Core sources unchanged since226 test run; native-only lifecycle corrections separately exercised.",
+  "UI_checkpoint": {
+    "id": "answer-speech-pilot",
+    "source_digest": "45ebb0ee3b4c13fac6b8f323718acc5cf262bc6809c3c1701c0d6c5acb9a3530",
+    "methods": [
+      "testAnswerReadoutChoiceRateExplicitUnlockAndStop",
+      "testAnswerReadoutUnavailableDeniedAndMutedDoNotSpeak",
+      "testLongAnswerReadoutPausesDemoMusicAndSettingsKeepAnswer",
+      "testAnswerReadoutBackgroundLocksAndNeverResumes",
+      "testTimerChimeInterruptsAnswerReadoutAndTimerCompletes",
+      "testMicrophonePreviewStopsReadoutWithoutImplicitSendOrResume"
+    ],
+    "results": [
+      {
+        "device": "iPad",
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "device": "iPhone",
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      }
+    ],
+    "all_23_inputs_unchanged": true,
+    "qualification": "Synthetic synthesis/unlock provider. Later only tvOS control guard and native lifecycle changed; not a new current full UI-suite claim."
+  },
+  "native_final_gate": [
+    {
+      "coreStopped": true,
+      "id": "actual-backend-stop",
+      "inputCharacters": 4000,
+      "nativeCleared": true,
+      "nativeStarted": true,
+      "nativeStopped": true,
+      "passed": true,
+      "volume": 0
+    },
+    {
+      "id": "actual-backend-finish",
+      "passed": true,
+      "status": "Readout finished.",
+      "volume": 0
+    },
+    {
+      "id": "immediate-stop-no-queued-late-start",
+      "lateNativeStart": false,
+      "passed": true,
+      "retiredOwnerAliveSamples": 0,
+      "volume": 0
+    },
+    {
+      "id": "old-cancel-callback-does-not-stop-successor",
+      "passed": true,
+      "volume": 0
+    }
+  ],
+  "external_Core_gate": [
+    {
+      "id": "settings-never-start-or-replay",
+      "passed": true
+    },
+    {
+      "id": "locked-and-background-zero-start",
+      "passed": true
+    },
+    {
+      "id": "invalid-input-zero-start",
+      "passed": true
+    },
+    {
+      "id": "pre-cancel-zero-start",
+      "passed": true
+    },
+    {
+      "id": "late-old-events-cannot-finish-current",
+      "passed": true
+    },
+    {
+      "id": "mute-revokes-events-and-unmute-never-replays",
+      "passed": true
+    },
+    {
+      "id": "backend-error-sanitized-and-stopped",
+      "passed": true
+    },
+    {
+      "id": "retained-backend-callback-does-not-retain-owner",
+      "passed": true
+    }
+  ],
+  "native_queued_before": [
+    {
+      "coreStopped": true,
+      "id": "actual-backend-stop",
+      "inputCharacters": 4000,
+      "nativeCleared": true,
+      "nativeStarted": true,
+      "nativeStopped": true,
+      "passed": true,
+      "volume": 0
+    },
+    {
+      "id": "actual-backend-finish",
+      "passed": true,
+      "status": "Readout finished.",
+      "volume": 0
+    },
+    {
+      "id": "immediate-stop-no-queued-late-start",
+      "passed": false,
+      "volume": 0
+    },
+    {
+      "id": "old-cancel-callback-does-not-stop-successor",
+      "passed": true,
+      "volume": 0
+    }
+  ],
+  "native_before_diagnostics": [
+    {
+      "accepted": true,
+      "cleared": true,
+      "coreAtEnd": false,
+      "firstFalseMilliseconds": 0,
+      "nativeAtEnd": true,
+      "nativeBeforeStop": false,
+      "nativeImmediatelyAfterStop": false,
+      "restartMilliseconds": 2.136041,
+      "transitions": [
+        {
+          "milliseconds": 0.023375,
+          "nativeSpeaking": false
+        },
+        {
+          "milliseconds": 2.136041,
+          "nativeSpeaking": true
+        }
+      ],
+      "trial": 0
+    },
+    {
+      "accepted": true,
+      "cleared": true,
+      "coreAtEnd": false,
+      "firstFalseMilliseconds": 0,
+      "nativeAtEnd": true,
+      "nativeBeforeStop": false,
+      "nativeImmediatelyAfterStop": false,
+      "restartMilliseconds": 2.117709,
+      "transitions": [
+        {
+          "milliseconds": 0.008375,
+          "nativeSpeaking": false
+        },
+        {
+          "milliseconds": 2.117709,
+          "nativeSpeaking": true
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "accepted": true,
+      "cleared": true,
+      "coreAtEnd": false,
+      "firstFalseMilliseconds": 0,
+      "nativeAtEnd": true,
+      "nativeBeforeStop": false,
+      "nativeImmediatelyAfterStop": false,
+      "restartMilliseconds": 2.137959,
+      "transitions": [
+        {
+          "milliseconds": 0.008542,
+          "nativeSpeaking": false
+        },
+        {
+          "milliseconds": 2.137959,
+          "nativeSpeaking": true
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "accepted": true,
+      "cleared": true,
+      "coreAtEnd": false,
+      "firstFalseMilliseconds": 0,
+      "nativeAtEnd": true,
+      "nativeBeforeStop": false,
+      "nativeImmediatelyAfterStop": false,
+      "restartMilliseconds": 2.116125,
+      "transitions": [
+        {
+          "milliseconds": 0.0095,
+          "nativeSpeaking": false
+        },
+        {
+          "milliseconds": 2.116125,
+          "nativeSpeaking": true
+        }
+      ],
+      "trial": 3
+    }
+  ],
+  "native_render": {
+    "five_case_result": [
+      {
+        "available": true,
+        "cancelAccepted": false,
+        "cancelRequested": false,
+        "complete": true,
+        "frames": 54928,
+        "id": "slow",
+        "inputCharacters": 41,
+        "lastMarkerEnd": 41,
+        "maxBufferFrames": 256,
+        "passed": true,
+        "peak": 0.519488513469696,
+        "personalVoice": false,
+        "rate": 0.3499999940395355,
+        "rms": 0.0404050474479115,
+        "sampleRate": 22050,
+        "skippedBuffers": 0,
+        "speakerPlayback": false,
+        "voiceLanguage": "en-US"
+      },
+      {
+        "available": true,
+        "cancelAccepted": false,
+        "cancelRequested": false,
+        "complete": true,
+        "frames": 27024,
+        "id": "fast",
+        "inputCharacters": 41,
+        "lastMarkerEnd": 41,
+        "maxBufferFrames": 256,
+        "passed": true,
+        "peak": 0.24218443036079407,
+        "personalVoice": false,
+        "rate": 0.6499999761581421,
+        "rms": 0.024925143023116172,
+        "sampleRate": 22050,
+        "skippedBuffers": 0,
+        "speakerPlayback": false,
+        "voiceLanguage": "en-US"
+      },
+      {
+        "available": true,
+        "cancelAccepted": false,
+        "cancelRequested": false,
+        "complete": true,
+        "frames": 8198688,
+        "id": "long",
+        "inputCharacters": 4000,
+        "lastMarkerEnd": 4000,
+        "maxBufferFrames": 256,
+        "passed": true,
+        "peak": 0.5090423226356506,
+        "personalVoice": false,
+        "rate": 0.5,
+        "rms": 0.04494302382692898,
+        "sampleRate": 22050,
+        "skippedBuffers": 0,
+        "speakerPlayback": false,
+        "voiceLanguage": "en-US"
+      },
+      {
+        "available": true,
+        "cancelAccepted": false,
+        "cancelRequested": true,
+        "complete": true,
+        "frames": 8198688,
+        "id": "cancel",
+        "inputCharacters": 4000,
+        "lastMarkerEnd": 4000,
+        "maxBufferFrames": 256,
+        "passed": false,
+        "peak": 0.5090423226356506,
+        "personalVoice": false,
+        "rate": 0.5,
+        "rms": 0.04494302382692898,
+        "sampleRate": 22050,
+        "skippedBuffers": 0,
+        "speakerPlayback": false,
+        "voiceLanguage": "en-US"
+      },
+      {
+        "available": true,
+        "cancelAccepted": false,
+        "cancelRequested": false,
+        "complete": true,
+        "frames": 65738,
+        "id": "german",
+        "inputCharacters": 47,
+        "lastMarkerEnd": 47,
+        "maxBufferFrames": 256,
+        "passed": true,
+        "peak": 0.781707763671875,
+        "personalVoice": false,
+        "rate": 0.5,
+        "rms": 0.11950641997104387,
+        "sampleRate": 22050,
+        "skippedBuffers": 0,
+        "speakerPlayback": false,
+        "voiceLanguage": "de-DE"
+      }
+    ],
+    "terminal": {
+      "returncode": 1,
+      "elapsed_seconds": 11.932126208
+    },
+    "qualification": "4of5; write-mode cancel FAIL retained. Actual speech stop is proven through separate final real backend volume0 cases.",
+    "prior_full_range_failure": [
+      {
+        "complete": true,
+        "frames": 503584,
+        "inputCharacters": 4000,
+        "lastMarkerEnd": 257,
+        "maxBufferFrames": 256,
+        "peak": 0.5090423226356506,
+        "personalVoice": false,
+        "rate": 0.5,
+        "rms": 0.04595386100370839,
+        "sampleRate": 22050,
+        "skippedBuffers": 0,
+        "speakerPlayback": false,
+        "voiceLanguage": "en-US"
+      }
+    ],
+    "corrected_full_range_pass": [
+      {
+        "complete": true,
+        "frames": 8198688,
+        "inputCharacters": 4000,
+        "lastMarkerEnd": 4000,
+        "maxBufferFrames": 256,
+        "peak": 0.5090423226356506,
+        "personalVoice": false,
+        "rate": 0.5,
+        "rms": 0.04494302382692898,
+        "sampleRate": 22050,
+        "skippedBuffers": 0,
+        "speakerPlayback": false,
+        "voiceLanguage": "en-US"
+      }
+    ],
+    "cause": "Empty intermediate buffer prematurely ended first harness; actual didFinish collects full4000 markers. App does not use empty-buffer completion."
+  },
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "prior_SDK_failure": {
+    "platform": "tvOS",
+    "exit_code": 65,
+    "reason": "Slider unavailable; fixed conditional platform guard",
+    "other_unrun_platforms_in_failed_loop": [
+      "visionOS",
+      "watchOS"
+    ]
+  },
+  "pilot_archive": {
+    "entries": 196,
+    "sha256": "140b82a363917f16695a3bfebc827b687c7d38b58887670dd10ffec2b7951a59",
+    "entry_readback": true
+  },
+  "final_archive": {
+    "sha256": "afb185060241b5abe2e62f40f9647b97ed82e5a82ecaf9a084cd974ff01c5d32",
+    "entries": 279,
+    "entry_readback": true
+  },
+  "installed_App_readback": {
+    "iPad": true,
+    "iPhone": true
+  },
+  "images": {
+    "decoded": 38,
+    "selected_reviewed": 20,
+    "contact_sheets": 4,
+    "published": [
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-background-locked-no-resume.png",
+        "sha256": "4689a13194f0eef260c27e92fe6cf96b519d0f8bd916a4c89e8c6bfd960dfa38"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-explicit-speaking.png",
+        "sha256": "a7f8e889f40c8adb69a1ce32970eeb51fdfa07c822c0a0f63cda7d02c927ecd8"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-unlock-does-not-speak.png",
+        "sha256": "79d1e060c4297bf78afde7dd770381757ef58cc75bb45c99f7456f5c18861816"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-full-answer-readout-system-voice-rate-choice.png",
+        "sha256": "c691647f5018202e0020017b1f26f879d412cca4048fd7d96cf0260bb22d5d57"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-muted-no-unlock.png",
+        "sha256": "ac34fcb734d8a78dbded0fd6eb2ed209875a506871fba92c875d727c0e50acb8"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-unlock-denied.png",
+        "sha256": "36b77cf52b86d4c0202b1c4a22fcde86e0ef756527359905da7c7eeb4c49e9aa"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-no-voice-no-unlock.png",
+        "sha256": "5045131abb063f256303ea86a7154d140454d9b2a76b01691a7e5aadc2674026"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-long-answer-active.png",
+        "sha256": "851f8bcf5f0a23a837ad0e3a85045f9edc68028faad916e16beead8766b4cf49"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-microphone-draft-no-resume.png",
+        "sha256": "816a356a62b1670de473133d27e2e34d4f847e21f9eface378f0aa44292b237f"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPad-viewport-answer-readout-timer-interrupt-no-resume.png",
+        "sha256": "2e20ca47ff16aa9ce1883f3514332f48600f4f26900547fcbb4bca2bc9eb5a53"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-background-locked-no-resume.png",
+        "sha256": "c50d26b4a8d828de686cb04549af9fd736dc02cdd40135e6b3a08be94bfb49b6"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-explicit-speaking.png",
+        "sha256": "ad35f1a24d5b2fa26dab0a6a5baff0be19e5cb3a25f9a567de328b85b58552cc"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-unlock-does-not-speak.png",
+        "sha256": "90ce1cd079d0095ee5895b821e748301b10153027d1000e365bc2fc19a15580b"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-full-answer-readout-system-voice-rate-choice.png",
+        "sha256": "6fceb9a50c929c5a0346ddc69dd137e0f791454e4db4fe9e58d9d2f5669a3bf6"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-muted-no-unlock.png",
+        "sha256": "b4aae7c5e829d864670233ab939a14b4cb6b0e38d4923bef030f15c545777e53"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-unlock-denied.png",
+        "sha256": "34296b9ee5c29aad3bef86d3086a747d43acd20c1f898fe9af2ba47b5f5acfec"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-no-voice-no-unlock.png",
+        "sha256": "614c4087c2950e9aa72d44e65db3b08b6fac895e24f426b270a6df7bd0acc888"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-long-answer-active.png",
+        "sha256": "9f469a32ea6c4fe9a9fd5506071a1ca761e5a0a08845277bbcb88e469dd0016f"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-microphone-draft-no-resume.png",
+        "sha256": "db550dfd874e0ae68bb20cea531cd61bdfa2249e244749d0388de151106b5d2c"
+      },
+      {
+        "path": "Docs/screenshots/answer-readout/iPhone-viewport-answer-readout-timer-interrupt-no-resume.png",
+        "sha256": "9d9668407bf431687a80abebf70e1205179f27aa367710ac896d8b81cc23b290"
+      }
+    ],
+    "qualification": "All own synthetic states. Expiry toast retained as actual app state, not clean toast-free reference."
+  },
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/avfaudio/avspeechsynthesizer",
+      "read": "2026-10-19"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/avfaudio/avspeechsynthesisvoice",
+      "read": "2026-10-19"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/avfaudio/avspeechsynthesizer/write(_:tobuffercallback:tomarkercallback:)",
+      "read": "2026-10-19"
+    }
+  ],
+  "limits": [
+    "No Original-Siri voice/expressive identity parity",
+    "No Personal Voice authorization or cloned voice use",
+    "Native Mac real playback API tested volume0; no physical acoustic or iPad audio-session observation",
+    "Physical LA/calls/headphone routes, latency/energy and platform-level acceptance remain open",
+    "Own app music/podcast focus, not universal control over foreign media applications",
+    "No cloud TTS endpoint configured by HomeView; OS owns available voice catalog and resources",
+    "No Home integration, microphone/account access or native system alarms in synthetic UI tests"
+  ]
+}
