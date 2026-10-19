@@ -203,7 +203,12 @@ struct RootView: View {
     .onChange(of:model.route) { old,new in
       if old == .handoff,new != .handoff { model.recipeHandoff.cancelPending() }
     }
-    .onReceive(pulse) { _ in model.tick();model.synchronizeTimerActivity() }
+    // Disconnect the timer subscription while inactive; dropping its callback
+    // alone would still leave the periodic publisher running.
+    .onReceive(scenePhase == .active ? pulse.eraseToAnyPublisher()
+      : Empty<Date,Never>().eraseToAnyPublisher()) { _ in
+      model.tick();model.synchronizeTimerActivity()
+    }
     #if os(iOS) || os(tvOS) || os(visionOS)
       .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.interruptionNotification)) { _ in
         model.stopAnswerSpeech();model.pauseFeedPodcast()
@@ -244,6 +249,8 @@ struct RootView: View {
       model.setAlbumDisplayActive(phase == .active)
       model.display.apply(enabled: model.data.keepDisplayOn && phase == .active)
       if phase == .active {
+        // Deadlines use wall time, so reconcile once before the next pulse.
+        model.tick();model.synchronizeTimerActivity()
         model.reconcileSystemAlarms()
       } else if phase == .background {
         model.connections.endGuestMusicSession()
