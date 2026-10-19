@@ -4792,7 +4792,11 @@ extension HomeViewUITests {
       tap("nav.controls");tap("controls.settings");openTimerActivitySettings()
       let resumed=expectOwnSystemActivity(1,0)
       XCUIDevice.shared.press(.home)
-      let outside=XCTAttachment(screenshot:XCUIScreen.main.screenshot());outside.name="timer-system-activity-outside-app";outside.lifetime = .keepAlways;add(outside)
+      let springboard=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+      springboard.activate()
+      XCTAssertTrue(springboard.wait(for:.runningForeground,timeout:10))
+      XCTAssertNotEqual(app.state,.runningForeground)
+      let outside=XCTAttachment(screenshot:springboard.screenshot());outside.name="timer-system-activity-outside-app";outside.lifetime = .keepAlways;add(outside)
       app.activate()
       if app.switches["timer.activity.enabled"].value as? String=="1" {setTimerActivityEnabled(false)}
       let cleaned=expectOwnSystemActivity(0,0,0)
