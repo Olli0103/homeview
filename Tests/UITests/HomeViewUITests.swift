@@ -1964,12 +1964,12 @@ final class HomeViewUITests: XCTestCase {
   func connectService(_ name: String, success: Bool = true) {
     let button = app.buttons["connect." + name]
     XCTAssertTrue(button.waitForExistence(timeout: 8))
-    for _ in 0..<18 where !button.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    scrollPhotoControlFullyIntoView(button)
     button.tap()
     if name == "Apple Music",app.buttons["device.unlock"].waitForExistence(timeout:2) {
       tap("device.unlock")
       XCTAssertTrue(button.waitForExistence(timeout:8))
-      for _ in 0..<18 where !button.isHittable { app.scrollViews.firstMatch.swipeUp() }
+      scrollPhotoControlFullyIntoView(button)
       button.tap() // Authentication does not itself connect or share a source.
     }
     let status = app.staticTexts["connection.status." + name]
