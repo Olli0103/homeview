@@ -1,0 +1,419 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "status": "partial_issue_remains_open",
+  "product_commit": "e6a7c5487a917282d7cbb103e07966adddb78563",
+  "final_test_commit": "28a059895d78979c2777e60925461a9a7ea17535",
+  "baseline_product_equivalent_to": "66a5de81219ac760dc71184e3f31a2410d11c5fd",
+  "source_files": 197,
+  "source_digest": "f9e5f6432896a67db38ed9dce239d1b947e0ee8d37244707e0bcb2a4dcfdddc0",
+  "UI_results": [
+    {
+      "checkpoint": "timer-hit-region-baseline",
+      "device": "iPad",
+      "passed": 0,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-baseline",
+      "device": "iPhone",
+      "passed": 0,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-all-baseline",
+      "device": "iPad",
+      "passed": 0,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-all-baseline",
+      "device": "iPhone",
+      "passed": 0,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-final",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-final",
+      "device": "iPhone",
+      "passed": 1,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-final-v2",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-final-v2",
+      "device": "iPhone",
+      "passed": 1,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-final-v3",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 26
+    },
+    {
+      "checkpoint": "timer-hit-region-final-v3",
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 26
+    }
+  ],
+  "UI_total_executions": 16,
+  "UI_passed": 10,
+  "UI_failed_historical": 6,
+  "UI_unique_cases": 2,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "SDK_commit": "e6a7c5487a917282d7cbb103e07966adddb78563",
+  "SDK_final_difference": "UITest-only CGFloat measurement correction; every other manifested file byte-identical",
+  "Core_new_tests": 0,
+  "Core_historical_tests": 291,
+  "Core_historical_commit": "5f12a7f7b75ca4c0de25cc59ddb8929bef3fb960",
+  "Core_test_files_unchanged": 68,
+  "audit_findings": {
+    "timer-hit-region-all-baseline/iPad": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          277.5,
+          991,
+          22,
+          18
+        ],
+        "identifier": "nav.faces",
+        "label": "Faces"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          327.5,
+          991.5,
+          18.5,
+          17.5
+        ],
+        "identifier": "nav.apps",
+        "label": "Apps"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          481.5,
+          991,
+          16.5,
+          18.5
+        ],
+        "identifier": "nav.assistant",
+        "label": "Assistant"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          526,
+          991.5,
+          17,
+          17
+        ],
+        "identifier": "nav.controls",
+        "label": "Control Center"
+      }
+    ],
+    "timer-hit-region-all-baseline/iPhone": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          67.66666666666666,
+          636.9999999999999,
+          22.000000000000014,
+          18
+        ],
+        "identifier": "nav.faces",
+        "label": "Faces"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          118.33333333333333,
+          637.3333333333333,
+          18.333333969116225,
+          17.33333396911621
+        ],
+        "identifier": "nav.apps",
+        "label": "Apps"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          272.66666666666663,
+          636.6666666666666,
+          16.33333396911621,
+          18.666667938232422
+        ],
+        "identifier": "nav.assistant",
+        "label": "Assistant"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          317.66666666666663,
+          637.6666666666666,
+          17,
+          16.666667938232422
+        ],
+        "identifier": "nav.controls",
+        "label": "Control Center"
+      }
+    ],
+    "timer-hit-region-final/iPad": [],
+    "timer-hit-region-final/iPhone": [],
+    "timer-hit-region-final-v2/iPad": [],
+    "timer-hit-region-final-v2/iPhone": [],
+    "timer-hit-region-final-v3/iPad": [],
+    "timer-hit-region-final-v3/iPhone": []
+  },
+  "pixel_contract": {
+    "date": "2026-10-20",
+    "baseline": "timer-hit-region-all-baseline",
+    "devices": [
+      "iPad",
+      "iPhone"
+    ],
+    "fixture": "reference-timer paused10:56/reference-clock, visible controls",
+    "unchanged_region": "Entire exported reference viewport, no mask",
+    "metric": "decoded RGB channels; zero changed pixels and channels required",
+    "intended_change_outside_region": "Footer buttons receive 44x44 native hit frames with spacing adjusted. Footer outer layout height30 retained so reference viewport position/size unchanged. Footer icon centers may change; no whole-screen pixel-equality claim.",
+    "frozen_before_product_change": true
+  },
+  "pixel_results": [
+    {
+      "device": "iPad",
+      "size": [
+        1592,
+        1592
+      ],
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "before_sha256": "42c81dd8a63d27b7a94f967c874987cc2f1a80f3d42af3947efe6ac03807a52b",
+      "after_sha256": "42c81dd8a63d27b7a94f967c874987cc2f1a80f3d42af3947efe6ac03807a52b"
+    },
+    {
+      "device": "iPhone",
+      "size": [
+        1134,
+        1134
+      ],
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "before_sha256": "168d816ef02fa9f80ab3aa68daa4a38b0a677a9cdcd3f853456465c511bc8d71",
+      "after_sha256": "168d816ef02fa9f80ab3aa68daa4a38b0a677a9cdcd3f853456465c511bc8d71"
+    }
+  ],
+  "decoded_PNGs": 28,
+  "contacts_viewed": 10,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPad-before-screen-timer-hit-region-before-audit.png",
+      "sha256": "7ed1f4594809cd16e09213d8200219596c0d4c06b355706de7927cb329c1bb2e",
+      "checkpoint": "timer-hit-region-all-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPad-before-viewport-timer-hit-region-before-audit.png",
+      "sha256": "42c81dd8a63d27b7a94f967c874987cc2f1a80f3d42af3947efe6ac03807a52b",
+      "checkpoint": "timer-hit-region-all-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPad-after-screen-timer-hit-region-before-audit.png",
+      "sha256": "6612d27d6375fc81134bb475ececed887f4e3ebc2955d5c39d1290ab0b157e1c",
+      "checkpoint": "timer-hit-region-final-v3",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPad-after-viewport-timer-hit-region-before-audit.png",
+      "sha256": "42c81dd8a63d27b7a94f967c874987cc2f1a80f3d42af3947efe6ac03807a52b",
+      "checkpoint": "timer-hit-region-final-v3",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPad-after-footer-44pt-outer-edge-actions-assistant.png",
+      "sha256": "99096873caebfd5820f7045dcddf5ceb645ab85b62a8e6cadc02913c2ba5f808",
+      "checkpoint": "timer-hit-region-final-v3",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPhone-before-screen-timer-hit-region-before-audit.png",
+      "sha256": "427b656a3da1560f65c5490192de2635f132dcfcfbcb232c2c0a0f31ffd3c29b",
+      "checkpoint": "timer-hit-region-all-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPhone-before-viewport-timer-hit-region-before-audit.png",
+      "sha256": "168d816ef02fa9f80ab3aa68daa4a38b0a677a9cdcd3f853456465c511bc8d71",
+      "checkpoint": "timer-hit-region-all-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPhone-after-screen-timer-hit-region-before-audit.png",
+      "sha256": "59d15875528ad32291be01414824eab6a5b50142b81816d876b3fb8a5b33f0a7",
+      "checkpoint": "timer-hit-region-final-v3",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPhone-after-viewport-timer-hit-region-before-audit.png",
+      "sha256": "168d816ef02fa9f80ab3aa68daa4a38b0a677a9cdcd3f853456465c511bc8d71",
+      "checkpoint": "timer-hit-region-final-v3",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/timer-hit-regions/iPhone-after-footer-44pt-outer-edge-actions-assistant.png",
+      "sha256": "2ec4c19a7670fcb816204391def30ccafd44ce9a0074d0210bf022c2081a5fae",
+      "checkpoint": "timer-hit-region-final-v3",
+      "device": "iPhone"
+    }
+  ],
+  "archives": {
+    "timer-hit-region-baseline": {
+      "archive": "timer-hit-region-baseline-inputs.zip",
+      "sha256": "3b1d5acee60388db49da18a546903ddcf6a01c2174c62b9d8c2f3bceefb1d2a9",
+      "entries": 223,
+      "all_entries_read_back": true
+    },
+    "timer-hit-region-all-baseline": {
+      "archive": "timer-hit-region-all-baseline-inputs.zip",
+      "sha256": "946b4b755844c46d17c51344f2575db47ef3ac08b1e9c693e0ecc51bf8091ed6",
+      "entries": 223,
+      "all_entries_read_back": true
+    },
+    "timer-hit-region-final": {
+      "archive": "timer-hit-region-final-inputs.zip",
+      "sha256": "6fbf3992d01f8a8edf5227ef04bb117efd6f27d1e628bd546fb0bf4f77151889",
+      "entries": 223,
+      "all_entries_read_back": true
+    },
+    "timer-hit-region-final-v2": {
+      "archive": "timer-hit-region-final-v2-inputs.zip",
+      "sha256": "f3e4ed19ecc3814ab7c9e101619b3510457207185a1940af49e1ff84d04e391f",
+      "entries": 223,
+      "all_entries_read_back": true
+    },
+    "timer-hit-region-final-v3": {
+      "archive": "timer-hit-region-final-v3-inputs.zip",
+      "sha256": "dedbe698c443ba8fe5b0fceea477bdedce2fc5a80cd35bb7120c032b62fa5c4c",
+      "entries": 223,
+      "all_entries_read_back": true
+    }
+  },
+  "implementation": "Four footer labels receive 44x44 native frames/content shapes and 8pt spacing; outer 30pt layout slot remains. No timer canvas or Core code change.",
+  "failure_history": "Default initial audit stops at first finding (two failures). Full collector then retains all four footer findings per device and asserts unfiltered list empty (two failures). First two finals: iPad two passed; iPhone audit passed, edge case failed before actions because 43.99999999999999<44. Only test measurement changed to one representable CGFloat step (.nextUp), which still lost several ULPs in converted coordinates; the second attempt also retained one iPhone failure before actions. Final test uses equality to 44 with a 1e-9-point numerical tolerance; no audit/route/edge assertions removed. Final repeats both cases on both devices.",
+  "unproved": [
+    "Other screens or hidden timer states in automatic hit-region audit",
+    "Actual VoiceOver/Voice Control/Switch Control/AssistiveTouch/Zoom sessions",
+    "Full focus/announcement/Dynamic Type/contrast/original/physical-device acceptance"
+  ],
+  "real_personal_data_used": false,
+  "Home_constructed": false,
+  "system_activity_created": false,
+  "viewport_screen_position_readback": [
+    {
+      "device": "iPad",
+      "before_rect_pixels": [
+        24,
+        354,
+        1616,
+        1946
+      ],
+      "after_rect_pixels": [
+        24,
+        354,
+        1616,
+        1946
+      ],
+      "position_and_size_identical": true
+    },
+    {
+      "device": "iPhone",
+      "before_rect_pixels": [
+        36,
+        723,
+        1170,
+        1857
+      ],
+      "after_rect_pixels": [
+        36,
+        723,
+        1170,
+        1857
+      ],
+      "position_and_size_identical": true
+    }
+  ]
+}
