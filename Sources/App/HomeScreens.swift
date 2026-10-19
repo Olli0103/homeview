@@ -490,7 +490,7 @@ struct LockView: View {
       Text(model.data.home.locked ? "Locked" : "Unlocked").font(
         .system(size: 45, weight: .semibold)
       ).accessibilityIdentifier("lock.state")
-      Text("Mock lock · Demo profile required").font(.system(size: 20)).foregroundStyle(.gray)
+      Text("Mock lock · Device authentication required").font(.system(size: 20)).foregroundStyle(.gray)
       Pill(
         title: model.canControlMockSecurity
           ? (model.data.home.locked ? "Unlock" : "Lock") : "Authenticate Device",
