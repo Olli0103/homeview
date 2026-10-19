@@ -3154,7 +3154,8 @@
       "SYS-08"
     ],
     "current": [
-      "Einzelne Verbindungsknöpfe sind vorhanden. Kein vollständiger Setup-Assistent und keine klar abgenommene Angebotsverwaltung."
+      "Optional three-step, permission-free introduction with persisted defer/completion/reopen, owner/demo profile and unavailable-service explanation; no app store or Home connection.",
+      "Synthetic denied/later connection/disconnect and storage-failure escape verified; local data reset remains unimplemented. See Docs/setup-and-services.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3167,7 +3168,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Introduction/connection lifecycle package verified; SYS-08 remains open for local reset.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
