@@ -4942,6 +4942,86 @@ extension HomeViewUITests {
 }
 
 extension HomeViewUITests {
+  private func selectAnswerExample(_ name:String) {
+    if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
+    revealPlanControl(app.buttons["assistant.examples"])
+    tap("assistant.examples");tap("assistant.example."+name)
+    XCTAssertTrue(app.staticTexts["assistant.card.scope"].waitForExistence(timeout:5))
+  }
+  private func responseElement(_ id:String)->XCUIElement {
+    app.descendants(matching:.any).matching(identifier:id).firstMatch
+  }
+  func testAssistantKnowledgeImageSourceAndAgendaFollowUp() {
+    launch();tap("nav.assistant");selectAnswerExample("knowledge")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("1842"))
+    let image=responseElement("assistant.card.image")
+    revealPlanControl(image)
+    XCTAssertTrue(image.label.contains("fern-like"))
+    viewportShot("assistant-card-knowledge-image",assistantRectangle:true)
+    let source=app.buttons["assistant.card.source.museum"]
+    activatePlanControl(source)
+    XCTAssertTrue(responseElement("assistant.card.source.open").waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","not a live search")).firstMatch.exists)
+    shot("assistant-card-source-no-auto-browser")
+    tap("assistant.card.source.done")
+    activatePlanControl(app.buttons["assistant.card.followup.agenda"])
+    let event=responseElement("assistant.card.event.0")
+    revealPlanControl(event)
+    XCTAssertTrue(event.label.contains("Riley"));XCTAssertTrue(event.label.contains("All day"))
+    XCTAssertFalse(app.buttons["assistant.card.openRecipe"].exists)
+    viewportShot("assistant-card-agenda",assistantRectangle:true)
+  }
+  func testAssistantRecipeCardPreservesDraftAndRequiresExplicitOpen() {
+    launch();tap("nav.assistant")
+    let draft="set a timer for 5 minutes",input=app.textFields["assistant.input"]
+    input.tap();input.typeText(draft)
+    selectAnswerExample("recipe")
+    XCTAssertEqual(input.value as? String,draft)
+    XCTAssertFalse(app.buttons["recipe.ingredients"].exists)
+    let open=app.buttons["assistant.card.openRecipe"]
+    revealPlanControl(open)
+    viewportShot("assistant-card-recipe-explicit-action",assistantRectangle:true)
+    activatePlanControl(open)
+    XCTAssertTrue(app.buttons["recipe.ingredients"].waitForExistence(timeout:5))
+    viewportShot("assistant-card-opened-bundled-recipe")
+    tap("nav.faces");drawer();tap("app.Timers")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
+    tap("nav.assistant");XCTAssertEqual(input.value as? String,draft)
+    XCTAssertFalse(app.staticTexts["assistant.card.scope"].exists)
+  }
+  func testAssistantLoadingEmptyFailureAndExplicitExampleRecovery() {
+    launch();tap("nav.assistant")
+    for (name,state) in [("loading","loading"),("empty","empty"),("failure","failure")] {
+      selectAnswerExample(name)
+      let status=responseElement("assistant.card."+state)
+      revealPlanControl(status)
+      viewportShot("assistant-card-"+state,assistantRectangle:true)
+      XCTAssertFalse(app.buttons["assistant.card.openRecipe"].exists)
+      XCTAssertFalse(app.buttons["assistant.card.source.museum"].exists)
+    }
+    activatePlanControl(app.buttons["assistant.card.followup.knowledge"])
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("1842"))
+  }
+  func testAssistantCardsClearOnSendNavigationAndBackground() {
+    launch();tap("nav.assistant");selectAnswerExample("recipe")
+    let input=app.textFields["assistant.input"]
+    input.tap();input.typeText("SYNTHETIC unknown question");tap("assistant.send")
+    XCTAssertFalse(app.staticTexts["assistant.card.scope"].exists)
+    XCTAssertFalse(app.buttons["assistant.card.openRecipe"].exists)
+    selectAnswerExample("agenda");tap("nav.faces");tap("nav.assistant")
+    XCTAssertFalse(app.staticTexts["assistant.card.scope"].exists)
+    selectAnswerExample("knowledge")
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertTrue(app.staticTexts["mock.badge"].waitForExistence(timeout:5))
+    tap("nav.assistant")
+    XCTAssertFalse(app.staticTexts["assistant.card.scope"].exists)
+    XCTAssertTrue(app.textFields["assistant.input"].exists)
+    shot("assistant-card-background-no-restored-result")
+  }
+}
+
+extension HomeViewUITests {
   private func tapRecipeTargetEdge(_ button:XCUIElement,bottom:Bool=false) {
     XCTAssertTrue(button.waitForExistence(timeout:5));XCTAssertTrue(button.isHittable)
     let f=button.frame
