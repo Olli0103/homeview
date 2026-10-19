@@ -51,13 +51,6 @@ struct RootView: View {
             .padding(.top, 6).accessibilityIdentifier("compact.activity")
           }
           Color.black.opacity((1 - model.data.screenBrightness) * 0.45).allowsHitTesting(false)
-          if !model.data.home.online && model.route != .controlCenter {
-            VStack {
-              Text("Mock home offline").font(.system(size: 16, weight: .semibold)).padding(10)
-                .background(.orange, in: Capsule())
-              Spacer()
-            }.padding(.top, 8).allowsHitTesting(false)
-          }
           if let toast = model.toast {
             VStack {
               Spacer()
@@ -112,8 +105,9 @@ struct RootView: View {
           } label: {
             Image(systemName: "circle.grid.3x3.fill")
           }.accessibilityLabel("Apps").accessibilityIdentifier("nav.apps")
-          Text("MOCK HOME").font(.system(size: 10, weight: .semibold)).tracking(2).foregroundStyle(
-            .gray
+          Text(model.data.home.online ? "MOCK HOME" : "MOCK OFFLINE")
+            .font(.system(size: 10, weight: .semibold)).tracking(2).foregroundStyle(
+            model.data.home.online ? Color.gray : Color.orange
           ).accessibilityIdentifier("mock.badge")
           Button {
             model.dismissDemoDoorbell()

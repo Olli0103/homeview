@@ -375,6 +375,7 @@ final class HomeViewUITests: XCTestCase {
     launch()
     tap("nav.controls")
     tap("controls.online")
+    XCTAssertEqual(app.staticTexts["mock.badge"].label, "MOCK OFFLINE")
     tap("nav.faces")
     tap("home.thermostat")
     tap("thermostat.up")
@@ -383,6 +384,8 @@ final class HomeViewUITests: XCTestCase {
         timeout: 3))
     app.alerts.buttons["OK"].tap()
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "68°")
+    XCTAssertFalse(app.staticTexts["Mock home offline"].exists,
+      "Offline status belongs in the shared status row, not over the thermostat title")
     shot("offline-error-state")
   }
   func testGuestPersonalContentGateAndMockLockAuthentication() {
@@ -3313,6 +3316,7 @@ extension HomeViewUITests {
     tap("controls.online"); tap("controls.night"); tap("controls.distance")
     XCTAssertFalse(app.staticTexts["Mock home offline"].exists,
       "The control itself shows offline; a second banner must not cover the header")
+    XCTAssertEqual(app.staticTexts["mock.badge"].label, "MOCK OFFLINE")
     app.buttons["Decrease Display dimming"].tap()
     app.buttons["Decrease Demo audio"].tap()
     XCTAssertEqual(controlPercent("Display dimming"), "90%")
