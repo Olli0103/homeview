@@ -34,6 +34,7 @@ def make_target(name,platform,sources,uitest=False,widget=False):
     if platform=='watch':settings.update({'SDKROOT':'watchos','SUPPORTED_PLATFORMS':'(watchos, watchsimulator)','TARGETED_DEVICE_FAMILY':'4','WATCHOS_DEPLOYMENT_TARGET':'26.0','INFOPLIST_KEY_WKApplication':'YES','INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp':'YES'})
     if uitest:settings.update({'SDKROOT':'iphoneos','SUPPORTED_PLATFORMS':'(iphoneos, iphonesimulator)','TARGETED_DEVICE_FAMILY':'1,2','IPHONEOS_DEPLOYMENT_TARGET':'26.1','TEST_TARGET_NAME':'HomeViewReplica'})
     if widget:settings.update({'SDKROOT':'iphoneos','SUPPORTED_PLATFORMS':'(iphoneos, iphonesimulator)','TARGETED_DEVICE_FAMILY':'1,2','IPHONEOS_DEPLOYMENT_TARGET':'26.1','GENERATE_INFOPLIST_FILE':'NO','INFOPLIST_FILE':'Resources/TimerWidgetInfo.plist','SKIP_INSTALL':'YES','APPLICATION_EXTENSION_API_ONLY':'YES','SUPPORTS_MACCATALYST':'NO','INFOPLIST_KEY_CFBundleDisplayName':'HomeView Timers'})
+    if widget:settings['PRODUCT_BUNDLE_IDENTIFIER']='org.example.HomeViewReplica.TimerWidget'
     configs=[]
     for conf in ['Debug','Release']:
         s=dict(settings);s['SWIFT_OPTIMIZATION_LEVEL']='-Onone' if conf=='Debug' else '-O';s['DEBUG_INFORMATION_FORMAT']='dwarf';s['SWIFT_ACTIVE_COMPILATION_CONDITIONS']='DEBUG' if conf=='Debug' else ''

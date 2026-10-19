@@ -4756,3 +4756,41 @@ extension HomeViewUITests {
     app.switches["timer.activity.enabled"].tap();expectTimerActivityStatus("Synthetic timer activity (ended)")
   }
 }
+
+extension HomeViewUITests {
+  private func expectOwnSystemActivity(_ running:Int,_ paused:Int,_ count:Int=1) -> Bool {
+    let predicate=NSPredicate(format:"label == %@","Own activities=\(count); running=\(running); paused=\(paused)")
+    return XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:predicate,evaluatedWith:app.staticTexts["timer.activity.system-report"])],timeout:10) == .completed
+  }
+  func testOwnTimerSystemActivityReadbackPauseAndExplicitCleanup() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--timer-activity-system-test","--page","Settings"])
+    openTimerActivitySettings();app.switches["timer.activity.enabled"].tap()
+    createOwnActivityTimer()
+    let started=expectOwnSystemActivity(1,0)
+    if started {
+      shot("timer-system-activity-own-registry-running")
+      tap("timer.activity.done");tap("nav.faces");drawer();tap("app.Timers");tap("timer.pause")
+      tap("nav.controls");tap("controls.settings");openTimerActivitySettings()
+      let paused=expectOwnSystemActivity(0,1)
+      shot("timer-system-activity-own-registry-paused")
+      tap("timer.activity.done");tap("nav.faces");drawer();tap("app.Timers");tap("timer.pause")
+      tap("nav.controls");tap("controls.settings");openTimerActivitySettings()
+      let resumed=expectOwnSystemActivity(1,0)
+      XCUIDevice.shared.press(.home)
+      let outside=XCTAttachment(screenshot:XCUIScreen.main.screenshot());outside.name="timer-system-activity-outside-app";outside.lifetime = .keepAlways;add(outside)
+      app.activate()
+      if app.switches["timer.activity.enabled"].value as? String=="1" {app.switches["timer.activity.enabled"].tap()}
+      let cleaned=expectOwnSystemActivity(0,0,0)
+      shot("timer-system-activity-own-registry-cleaned")
+      XCTAssertTrue(paused,"Actual ActivityKit registry did not reflect pause")
+      XCTAssertTrue(resumed,"Actual ActivityKit registry did not reflect resume")
+      XCTAssertTrue(cleaned,"Own ActivityKit registry was not empty after explicit opt-out")
+    } else {
+      shot("timer-system-activity-request-not-established")
+      if app.switches["timer.activity.enabled"].value as? String=="1" {app.switches["timer.activity.enabled"].tap()}
+      XCTAssertTrue(expectOwnSystemActivity(0,0,0),"Owned failed-start experiment did not clean up")
+    }
+    XCTAssertTrue(started,"No own ActivityKit system activity established; not an outside-app visibility PASS")
+  }
+}

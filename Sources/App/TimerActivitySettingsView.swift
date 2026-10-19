@@ -13,6 +13,10 @@ struct TimerActivitySettingsView:View {
             .disabled(!model.timerActivitiesEnabled)
             .accessibilityIdentifier("timer.activity.show")
           Text(model.timerLiveActivity.status).accessibilityIdentifier("timer.activity.status")
+          if model.timerLiveActivity.busy {ProgressView("Updating timer activity")}
+          if let report=timerActivitySystemFixtureReport() {
+            Text(report).accessibilityIdentifier("timer.activity.system-report")
+          }
           if model.timerActivityPreferenceSavePending {
             Text("Off for this app session. The preference could not be saved.")
             Button("Retry saving off preference") {model.setTimerLiveActivities(false)}
