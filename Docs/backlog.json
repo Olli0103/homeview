@@ -1045,7 +1045,7 @@
       "F053",
       "F054"
     ],
-    "current": "Annehmen, Ablehnen und aktive Anrufansicht sind lokale Simulation. Es gibt keine Kontrolle über laufende FaceTime-Anrufe.",
+    "current": "Aktionsweise öffentliche Fähigkeitsentscheidung und klare Trennung der lokalen Demo sind quellengebunden geprüft. Eigene CallKit-/LiveCommunicationKit-Typen beweisen keine FaceTime-Steuerrechte; normale Systemübergabe und explizite lokale Vorschau sind getrennt. F053/F054 bleiben blocked/parity=false. Docs/facetime-control-boundary.md.",
     "tasks": [
       "Öffentliche Unterstützung für eingehende und aktive FaceTime-Sitzungen prüfen",
       "Eigene CallKit-/Videoengine nicht als FaceTime ausgeben",
@@ -1057,7 +1057,10 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/42",
     "issue_number": 42,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/facetime-control-boundary.md"
+    ]
   },
   {
     "key": "COM-02",

@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-19",
+  "issue": 42,
+  "status": "bounded_capability_decision_complete_original_functions_blocked",
+  "code_commit": "c24563bcb9324eaa2fc9d99f69a16f80af9372a5",
+  "source_digest": "90c651d34135dab29b1f84eea3a5288508ae138cdf4c71bd32714c45ee9ad182",
+  "source_files": 190,
+  "API_typechecks": {
+    "typechecks": 10,
+    "compiled": 6,
+    "explicit_unavailability": 4,
+    "functions_executed": 0,
+    "all_expected_outcomes": true,
+    "FaceTime_control_proven": false
+  },
+  "API_archive": {
+    "entries": 23,
+    "sha256": "00c3cb90cd8d14200518bf4333ed6832165bb5c0e822096547c3d14ffe2eeb9b",
+    "all_entries_read_back": true
+  },
+  "UI_executions": 6,
+  "UI_unique_methods": 3,
+  "UI_failures": 0,
+  "UI_skips": 0,
+  "UI_runtime_warnings": [],
+  "UI_compiled_inputs": 22,
+  "UI_installed_app_read_back": true,
+  "UI_archive": {
+    "file": "facetime-ui-inputs.zip",
+    "entries": 212,
+    "sha256": "063f16853148a94555b5fe8ed0ece3b675368163560aec6242c978ae440c4290",
+    "all_entries_read_back": true
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "PNGs_decoded": 6,
+  "contact_sheets_reviewed": 2,
+  "selected_images": [
+    {
+      "path": "Docs/verification/facetime-boundary-images/iPad-facetime-boundary-normal-system-handoff.png",
+      "sha256": "8fdb300378a1f0ce48fcee2af051094143e74627b7c896090cec1178633549eb"
+    },
+    {
+      "path": "Docs/verification/facetime-boundary-images/iPad-UI27-incoming-demo-call.png",
+      "sha256": "c7dfefbf81bd9f8125e826ef39a89c83263cf43cc5f065d6eedc4516cbf03625"
+    },
+    {
+      "path": "Docs/verification/facetime-boundary-images/iPad-facetime-boundary-active-local-demo.png",
+      "sha256": "b87485bb9c13f3fd63ae51adb47a988428efb96c26713ab1e98628d2a11c48e3"
+    },
+    {
+      "path": "Docs/verification/facetime-boundary-images/iPhone-facetime-boundary-normal-system-handoff.png",
+      "sha256": "8f1ed01aba510ff7a7b0ae0652c0300400cb1c173cb829c9128068b6f12d7f88"
+    },
+    {
+      "path": "Docs/verification/facetime-boundary-images/iPhone-UI27-incoming-demo-call.png",
+      "sha256": "f46b509a2adbcad32d32ca923ec53948cfa0778f7cd15b6672ea28be8c48bb53"
+    },
+    {
+      "path": "Docs/verification/facetime-boundary-images/iPhone-facetime-boundary-active-local-demo.png",
+      "sha256": "5bf20451351e79a70f0d76c083239e8c82bd80837d8cb5d88f02a784e542e012"
+    }
+  ],
+  "Core_qualification": "66 Core/CoreTests files byte-identical to historical pinned 279-test PASS at483284b; no new Core run.",
+  "AppModel_and_actual_SystemActions_unchanged": true,
+  "probe_functions_executed": 0,
+  "real_calls_placed": false,
+  "real_calls_observed_or_controlled": false,
+  "camera_or_microphone_used": false,
+  "Home_constructed": false,
+  "original_F053_F054_parity_accepted": false,
+  "physical_acceptance": false
+}
