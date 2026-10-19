@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-19",
+  "issue": 50,
+  "policy_code_commit": "28bef0cf25143cef9a7367d0b7226de9c9c250e7",
+  "code_commit": "b00bf291c62677adeea6c7ccd13171b4d8a233cc",
+  "source_files": 189,
+  "source_digest": "bc915a02eb47d575ccb6ff9f50454c42723f09125bed58a7b9b97a0b193fe17f",
+  "Core_264_inputs_unchanged": true,
+  "Core_qualification": "Historical pinned 264-test full PASS; Core/test bytes identical, no invented rerun.",
+  "native_gate": {
+    "verdict": "PASS",
+    "cases": 7,
+    "assertions": 120,
+    "inputs_unchanged": true,
+    "target": "28bef0cf25143cef9a7367d0b7226de9c9c250e7",
+    "clean_before_after": true,
+    "compiled_source_matches_git": true
+  },
+  "native_gate_qualification": "Clean policy pin; final revisions add read-only draft rendering and compact Menu locale selection plus UI assertions. Exact view-only transform and all controller/owner/model/Core sources verified unchanged; no relabeled native rerun.",
+  "native_archive": {
+    "name": "voice-lifecycle-native-release-inputs.zip",
+    "entries": 127,
+    "sha256": "ec5345cf7b7805db07e2733ea70a86f5eaf3eb8945a66f869714ee611d9b9b1f",
+    "all_entries_read_back": true
+  },
+  "recording_deadline_observed_seconds": 30.01816075,
+  "recording_deadline_predeclared_window": [
+    29,
+    32
+  ],
+  "microphone_used": false,
+  "permission_states_unchanged": true,
+  "UI_checkpoints": [
+    {
+      "id": "voice-lifecycle-pilot",
+      "passed_executions": 10,
+      "unique_methods": 5,
+      "failures": 0,
+      "skips": 0,
+      "runtime_warnings": [],
+      "source_digest": "b321e5998d5ad1664ad996ad21c0f738e60ddcbf6eaee328ea3ac29e4d885a7e",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_apps_read_back": true,
+      "archive": "voice-lifecycle-pilot-inputs.zip",
+      "entries": 211,
+      "sha256": "0e38af314af056c497a8a4d98f3fe4bdc6df0337dd3c31612cb93ff8f21f8a36",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "voice-lifecycle-readable",
+      "passed_executions": 4,
+      "unique_methods": 2,
+      "failures": 0,
+      "skips": 0,
+      "runtime_warnings": [],
+      "source_digest": "dd5049e39aa2908996c711ce00ab10731f52dba518c4692b3458b797cf95288e",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_apps_read_back": true,
+      "archive": "voice-lifecycle-readable-inputs.zip",
+      "entries": 211,
+      "sha256": "ca0ee76f0dacdc9e8df708e489384f921cfb165e7caf3a05817121538a6dcba9",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "voice-lifecycle-language",
+      "passed_executions": 10,
+      "unique_methods": 5,
+      "failures": 0,
+      "skips": 0,
+      "runtime_warnings": [],
+      "source_digest": "bc915a02eb47d575ccb6ff9f50454c42723f09125bed58a7b9b97a0b193fe17f",
+      "source_files": 189,
+      "compiled_inputs": 22,
+      "installed_apps_read_back": true,
+      "archive": "voice-lifecycle-language-inputs.zip",
+      "entries": 211,
+      "sha256": "e43bad1c22b3317521cbd3e5ba3ac205393c26485c6517806e0d8b12dbadb5ab",
+      "all_entries_read_back": true
+    }
+  ],
+  "UI_successful_executions_total": 24,
+  "UI_final_revision_executions": 10,
+  "UI_unique_methods_total": 5,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "generator": {
+    "target": "28bef0cf25143cef9a7367d0b7226de9c9c250e7",
+    "project_byte_equivalent": true,
+    "regenerated_paths": [
+      "HomeViewReplica.xcodeproj/project.pbxproj",
+      "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewWatch.xcscheme",
+      "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
+      "Resources/MainInfo.plist"
+    ],
+    "Python_AST_valid": true,
+    "Core_264_inputs_unchanged": true
+  },
+  "readable_equivalence": {
+    "target": "b00bf291c62677adeea6c7ccd13171b4d8a233cc",
+    "native_policy_target": "28bef0cf25143cef9a7367d0b7226de9c9c250e7",
+    "changed": [
+      "Sources/App/Controls.swift",
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "exact_display_only_transform_verified": true,
+    "native_controller_session_model_Core_sources_unchanged": true,
+    "assistant_action_handlers_unchanged": true,
+    "production_change": "Wrapped exact-current draft preview and compact DE/EN Menu writing the same language state; native start/send/cancel/transcript handlers unchanged"
+  },
+  "PNGs_decoded": 84,
+  "contact_sheets_reviewed": 6,
+  "selected_images": [
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPad-viewport-voice-owned-timer-ready-no-action.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "0b66555acfcef256a31501b93d11b2e19cb7276b317be96aaf617cf8d8a406b7"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPad-viewport-voice-owned-named-timer-created.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "470bd2ae825e8d149bc4ef098a3070ce881f6819b52bb07993194bf790f05743"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPad-viewport-voice-owned-ambiguous-transcript-no-timer.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "1e3321a7adde02d3370b3ac2bb6bb02128953bb0cf3e01a1f742d89e474b9d09"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPad-viewport-voice-owned-cooking-step-ready-no-action.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "f2ae85da11f53eeb3c2be2dc95cb06754baa1be349aa254b509cb62fb4287e44"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPad-viewport-voice-owned-cooking-step-explicitly-advanced.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "4154d2367bed0ef8707d1fa61ccc5d75f244378c5c6dfead38ba174b9d6997bc"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPad-viewport-voice-owned-error-retains-typed-fallback.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "44677ab8576340c9de274fee9e87a02e5e766d5b0d36bb3d5313e3fb9710a9a7"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPad-viewport-voice-owned-overflow-rejected-not-truncated.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "99c54bad9befe1e736755aefb9e5cbacd872740826e283b966d5b159d96caab7"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPad-viewport-voice-owned-background-context-cleared.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "f934990c4a79d3c54285d58ad48a746c379da7c2f6a7d67a6d3ca0fd625bb3ab"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPhone-viewport-voice-owned-timer-ready-no-action.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "7c6bfa22eb9e7da657093c440272d9f3c0ee6936aa5e4252dc24b4c143f83510"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPhone-viewport-voice-owned-named-timer-created.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "8bca5483def807529739d18fb177e42ca5064ad77fe31990f319fcf899d395cc"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPhone-viewport-voice-owned-ambiguous-transcript-no-timer.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "d13d53632b1fc9a2af830bf2e753f5975d812164ceb12c227d664586386bd81a"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPhone-viewport-voice-owned-cooking-step-ready-no-action.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "3c25081d6fb3400fb09f53ca909040bfd155b4267e1117c1568594d83e22fc4b"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPhone-viewport-voice-owned-cooking-step-explicitly-advanced.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "1d179fcee4a7061b7487964b04c250f084cb5fb8099b3b69ea17dec29019fdd8"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPhone-viewport-voice-owned-error-retains-typed-fallback.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "6b60e024e713680784c857ccb662a5504fd831c86b62e03f525e1e86da79a11e"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPhone-viewport-voice-owned-overflow-rejected-not-truncated.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "d8e0d1e6760ae158bc0aa94b739c89033bc3bfa9fedbf04190027d0b7df974cb"
+    },
+    {
+      "path": "Docs/verification/voice-lifecycle-images/iPhone-viewport-voice-owned-background-context-cleared.png",
+      "checkpoint": "voice-lifecycle-language",
+      "sha256": "9b78a958f4bc946ece4b0375dcbf3d76f29a39f2d3556c2699e0d8d96341a96b"
+    }
+  ],
+  "baseline": {
+    "archive": "voice-lifecycle-baseline-inputs.zip",
+    "entries": 13,
+    "sha256": "9c6384354baa3c71d848267ce5d0f69f3cadff3e34a6dd1e1a46cdbf52a91656",
+    "all_entries_read_back": true,
+    "qualification": "Controlled caller-ordering baseline with actual VoiceInputController in synthetic mode, not a live microphone or observed UI timing run. No pre-execution binary digest was recorded."
+  },
+  "empty_final_development_baseline": {
+    "archive": "voice-empty-final-baseline-inputs.zip",
+    "entries": 7,
+    "sha256": "564de93e1e4887c656e60e7e2d0c29dd5fa8da3dd513d6fb21b3c014fcba6eb0",
+    "all_entries_read_back": true,
+    "qualification": "Development candidate: empty final callback wrongly retained the partial; actual synthetic controller path, not live recognition."
+  },
+  "development_owner_gate": {
+    "archive": "voice-lifecycle-owner-development-inputs.zip",
+    "entries": 10,
+    "sha256": "ab17e857c46c3083093610b74f89d277a32f46f875a3a38f867247ea50194c0d",
+    "all_entries_read_back": true,
+    "qualification": "Six-case development gate before the later empty-final correction; not the final seven-case acceptance."
+  },
+  "retained_visual_defect": "Initial ten UI executions passed, but phone image showed single-line clipping of the complete named request. Four affected executions verified the wrapped exact-current-input preview; images still showed narrow Deutsch wrapping. Compact DE/EN Menu added with full language choices and recording lock; final ten executions across both devices recorded separately. Original captures retained.",
+  "physical_recognition_accepted": false,
+  "original_F065_F075_parity": false,
+  "Home_constructed": false
+}

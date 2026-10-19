@@ -2027,7 +2027,7 @@
       "DAY-04"
     ],
     "current": [
-      "On-device-Sprache mit Vorschau kann den lokalen Parser bedienen. Rezeptschritte werden bisher per Taste gesteuert."
+      "Begrenzte deutsch/englische Timer- und Kochschrittbefehle nach ausdrücklichem Senden; besitzgebundene synthetische Sprachaufnahme mit lesbarer Vorschau und Fehler-/Abbruchgrenzen geprüft. Belege: Docs/voice-lifecycle.md. Physische Erkennung bleibt #75 offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2040,9 +2040,9 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "passed for bounded synthetic transcript/command/lifecycle contract; Docs/voice-lifecycle.md",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "physical speech recognition/permission timing and acoustic conditions remain unaccepted; #75"
     },
     "completion_criteria": [
       "Synthetische Transkripte ändern ausschließlich den erwarteten Timer/Schritt. Physische Erkennung gesondert in ruhiger/lauter Umgebung abnehmen."
@@ -2337,7 +2337,7 @@
       "DAY-04"
     ],
     "current": [
-      "On-device-Sprache mit Vorschau kann den lokalen Parser bedienen. Rezeptschritte werden bisher per Taste gesteuert."
+      "Begrenzte deutsch/englische Timer- und Kochschrittbefehle nach ausdrücklichem Senden; besitzgebundene synthetische Sprachaufnahme mit lesbarer Vorschau und Fehler-/Abbruchgrenzen geprüft. Belege: Docs/voice-lifecycle.md. Physische Erkennung bleibt #75 offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2350,9 +2350,9 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "passed for bounded synthetic transcript/command/lifecycle contract; Docs/voice-lifecycle.md",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "physical speech recognition/permission timing and acoustic conditions remain unaccepted; #75"
     },
     "completion_criteria": [
       "Synthetische Transkripte ändern ausschließlich den erwarteten Timer/Schritt. Physische Erkennung gesondert in ruhiger/lauter Umgebung abnehmen."

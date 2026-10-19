@@ -12,4 +12,8 @@ Spracherkennung erstellt weiterhin nur einen Entwurf. Erst Senden oder eine ausd
 
 76 Modelltests, drei gezielte UI-Fälle je iPad/iPhone und fünf SDK-Builds bestanden. UI: benannter 90-Sekunden-Timer, kein zweiter Timer bei unklarem Auftrag, deutsch/englische Kochschritte und bestehender Zutaten-/Kochtimerfluss. [Quellenbindung und Ergebnisse](verification/voice-final.json).
 
-Die automatische Prüfung verwendet synthetische Texte, keine Mikrofone. Reale Erkennung bei Musik, Entfernung oder Störgeräuschen bleibt in #50/#75 offen. Timer-Systemalarm und dessen physische Auslösung sind eine separate Abnahme.
+Die automatische Prüfung verwendet synthetische Texte, keine Mikrofone. Reale Erkennung bei Musik, Entfernung oder Störgeräuschen bleibt in #75 offen. Timer-Systemalarm und dessen physische Auslösung sind eine separate Abnahme.
+
+## Ergänzung am 19. Oktober 2026
+
+Die synthetische Software-Abnahme von #50 ist ergänzt: besitzgebundene Aufnahme/Start-Tasks, keine späten Fremdsitzungs-Transkripte, Fehler-/Längen-/Finalisierungsgrenzen, ausdrückliches Senden und vollständig lesbare Entwurfsvorschau. Sieben native Szenarien/120 Assertions sowie zehn finale UI-Ausführungen auf iPad/iPhone bestanden. Die 76 Modelltests oben sind der historische Parserstand, kein neuer Lauf. [Aktuelle Belege und genaue Grenzen](voice-lifecycle.md). Physische Sprachqualität und Originalgleichheit sind damit nicht abgenommen.
