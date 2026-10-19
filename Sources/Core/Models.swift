@@ -243,6 +243,7 @@ struct Snapshot: Codable, Sendable {
   var volume = 0.55
   var screenBrightness = 1.0
   var keepDisplayOn = false
+  var timerLiveActivitiesEnabled = false
   var photoIDs: [String] = []
   var photoSelection = PhotoSelectionKind.legacy
   var photoGalleryTitle: String?

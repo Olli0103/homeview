@@ -66,6 +66,7 @@ extension Snapshot {
     output.volume = min(1,max(0,value("volume",fallback.volume)))
     output.screenBrightness = min(1,max(0,value("screenBrightness",fallback.screenBrightness)))
     output.keepDisplayOn = value("keepDisplayOn",fallback.keepDisplayOn)
+    output.timerLiveActivitiesEnabled = value("timerLiveActivitiesEnabled",false)
     output.photoIDs = Array(value("photoIDs",fallback.photoIDs).filter { UUID(uuidString:$0) != nil }.prefix(10))
     // Missing means an older snapshot. A present but malformed discriminator
     // must not resurrect an unrelated legacy selected-photo.data file.

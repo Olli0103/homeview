@@ -1,0 +1,54 @@
+import Foundation
+
+@MainActor final class UnavailableTimerActivityBackend:TimerActivityBackend {
+  var supported:Bool { false }
+  func apply(_ state:TimerActivityState?,mayStart:@escaping @MainActor ()->Bool) async throws -> TimerActivityDelivery { .unavailable }
+}
+@MainActor final class FixtureTimerActivityBackend:TimerActivityBackend {
+  var supported:Bool { true }
+  private var active=false
+  func apply(_ state:TimerActivityState?,mayStart:@escaping @MainActor ()->Bool) async throws -> TimerActivityDelivery {
+    if state==nil { active=false;return .synthetic(active:false) }
+    if !active { guard mayStart() else {return .waitingForExplicitStart};active=true }
+    return .synthetic(active:active)
+  }
+}
+#if canImport(ActivityKit) && os(iOS) && !targetEnvironment(macCatalyst)
+import ActivityKit
+@MainActor final class NativeTimerActivityBackend:TimerActivityBackend {
+  var supported:Bool { true }
+  func apply(_ state:TimerActivityState?,mayStart:@escaping @MainActor ()->Bool) async throws -> TimerActivityDelivery {
+    let owned=Activity<HomeViewTimerAttributes>.activities
+    guard let state else {
+      for activity in owned { await activity.end(nil,dismissalPolicy:.immediate) }
+      return .ended
+    }
+    let content=ActivityContent(state:state,staleDate:state.deadline)
+    if let current=owned.first(where:{$0.activityState == .active || $0.activityState == .stale}) {
+      await current.update(content)
+      for duplicate in owned where duplicate.id != current.id {await duplicate.end(nil,dismissalPolicy:.immediate)}
+      return .active
+    }
+    for ended in owned {await ended.end(nil,dismissalPolicy:.immediate)}
+    guard mayStart() else {return .waitingForExplicitStart}
+    guard ActivityAuthorizationInfo().areActivitiesEnabled else {return .unavailable}
+    // No await between the live foreground/action fence and the public request.
+    _ = try Activity.request(attributes:HomeViewTimerAttributes(schemaVersion:1),content:content,pushType:nil)
+    return .active
+  }
+}
+#endif
+@MainActor func makeTimerActivityBackend()->any TimerActivityBackend {
+  let args=ProcessInfo.processInfo.arguments
+  if args.contains("--uitesting") {
+    if args.contains("--timer-activity-fixture") {return FixtureTimerActivityBackend()}
+    // Only an explicit synthetic, UUID-owned system-activity experiment may use ActivityKit.
+    let owned=args.firstIndex(of:"--persistence-test").flatMap {i in args.indices.contains(i+1) ? UUID(uuidString:args[i+1]):nil} != nil
+    if !owned || !args.contains("--timer-activity-system-test") {return UnavailableTimerActivityBackend()}
+  }
+  #if canImport(ActivityKit) && os(iOS) && !targetEnvironment(macCatalyst)
+  return NativeTimerActivityBackend()
+  #else
+  return UnavailableTimerActivityBackend()
+  #endif
+}

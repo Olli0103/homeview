@@ -65,6 +65,13 @@ final class AppModel {
   private(set) var storeReadOnly = false
   private(set) var storeRecoveryNote: String?
   let answerSpeech = AnswerSpeechSession(backend:makeAnswerSpeechBackend())
+  let timerLiveActivity=TimerLiveActivitySession(backend:makeTimerActivityBackend())
+  private var timerActivityForeground=false
+  private var committedActivityTimers:[TimerActivityInput]=[]
+  private var committedActivityEnabled=false
+  private var timerActivityRevoked=false
+  private(set) var timerActivityPreferenceSavePending=false
+  var timerActivitiesEnabled:Bool {committedActivityEnabled && !timerActivityRevoked}
   var answerSpeechAttempt=0
   var authorizingAnswerSpeech=false
   var showAnswerSpeechStatus=false
@@ -535,7 +542,33 @@ final class AppModel {
         albumUpdates.restore(grant,photos:cached)
       }
     #endif
+    committedActivityTimers=data.timers.map {TimerActivityInput(deadline:$0.deadline,pausedRemaining:$0.pausedRemaining)}
+    committedActivityEnabled=data.timerLiveActivitiesEnabled
   }
+  func setTimerActivityForeground(_ foreground:Bool) {
+    timerActivityForeground=foreground;synchronizeTimerActivity()
+  }
+  func synchronizeTimerActivity(requestStart:Bool=false) {
+    timerLiveActivity.synchronize(TimerActivityState.project(committedActivityTimers,at:Date()),
+      enabled:timerActivitiesEnabled && !storeReadOnly,foreground:timerActivityForeground,
+      requestStart:requestStart)
+  }
+  private func commitTimerActivityProjection() {
+    committedActivityTimers=data.timers.map {TimerActivityInput(deadline:$0.deadline,pausedRemaining:$0.pausedRemaining)}
+    committedActivityEnabled=data.timerLiveActivitiesEnabled
+    synchronizeTimerActivity()
+  }
+  func setTimerLiveActivities(_ enabled:Bool) {
+    // Revocation is effective now even if saving the preference is impossible.
+    if !enabled {timerActivityRevoked=true;synchronizeTimerActivity()}
+    guard updateLocalControls({$0.timerLiveActivitiesEnabled=enabled}) else {
+      if !enabled {timerActivityPreferenceSavePending=true}
+      return
+    }
+    timerActivityPreferenceSavePending=false;timerActivityRevoked = !enabled
+    synchronizeTimerActivity(requestStart:enabled)
+  }
+  func showTimerLiveActivity() {synchronizeTimerActivity(requestStart:true)}
   func setPhoto(_ bytes: Data?) {
     guard (bytes?.count ?? 0) <= 40_000_000 else {
       error = "Choose a photo smaller than 40 MB."
@@ -853,7 +886,7 @@ final class AppModel {
     if !pathOwned {
       storeReadOnly=true;storeRecoveryNote="Storage identity changed during reset. Further local writes are blocked."
     }
-    data=fresh;gallery=[];photoIndex=0;showPhoto(nil)
+    data=fresh;commitTimerActivityProjection();gallery=[];photoIndex=0;showPhoto(nil)
     pendingPage=nil;simulatedPresence=true
     referenceClock=ProcessInfo.processInfo.arguments.contains("--reference-clock")
     answerSpeech.resetPreferences();showAnswerSpeechStatus=false
@@ -946,12 +979,13 @@ final class AppModel {
   }
   @discardableResult
   func persist() -> Bool {
-    guard !ephemeral else { return true }
+    guard !ephemeral else { commitTimerActivityProjection();return true }
     guard writableStore() else { return false }
     do {
       try FileManager.default.createDirectory(
         at: store.deletingLastPathComponent(), withIntermediateDirectories: true)
       try JSONEncoder().encode(data).write(to: store, options: .atomic)
+      commitTimerActivityProjection()
       return true
     } catch { self.error = "Could not save local demo state."; return false }
   }
@@ -1182,6 +1216,7 @@ final class AppModel {
       selectedTimer = previousSelection
       return false
     }
+    synchronizeTimerActivity(requestStart:true)
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if systemAlarmsAllowed {
         nativeSchedulesInFlight+=1
@@ -1223,10 +1258,12 @@ final class AppModel {
         }
         // Keep the existing native-operation ordering separate. A local
         // rollback cannot undo an already performed system-alarm operation.
-        change(&data);persist();return
+        change(&data)
+        if persist(),!pause {synchronizeTimerActivity(requestStart:true)}
+        return
       }
     #endif
-    updateLocalControls(change)
+    if updateLocalControls(change),!pause {synchronizeTimerActivity(requestStart:true)}
   }
   func removeTimer(_ id: UUID) {
     guard writableStore() else { return }

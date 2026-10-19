@@ -86,6 +86,7 @@ struct ControlCenterView: View {
 struct SettingsView: View {
   @Environment(AppModel.self) private var model
   @State private var showingPowerCapabilities=false
+  @State private var showingTimerActivitySettings=false
   var body: some View {
     VStack(spacing: 12) {
       AppHeader(title: "Settings")
@@ -120,6 +121,10 @@ struct SettingsView: View {
             .font(.system(size:23)).accessibilityIdentifier("settings.introduction")
           Button("Power adapter information") { showingPowerCapabilities=true }
             .font(.system(size:23)).accessibilityIdentifier("settings.power")
+          if model.timerLiveActivity.supported {
+            Button("Timer Live Activities") {showingTimerActivitySettings=true}
+              .font(.system(size:23)).accessibilityIdentifier("settings.timer-activity")
+          }
           setting("Reference clock", model.referenceClock) { model.referenceClock.toggle() }
           setting("Night mode", model.data.night) {
             model.updateLocalControls { $0.night.toggle() }
@@ -164,6 +169,7 @@ struct SettingsView: View {
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
       .sheet(isPresented:$showingPowerCapabilities) { PowerCapabilitiesView() }
+      .sheet(isPresented:$showingTimerActivitySettings) {TimerActivitySettingsView()}
   }
   private func setting(_ title: String, _ on: Bool, action: @escaping () -> Void) -> some View {
     Button(action: action) {
