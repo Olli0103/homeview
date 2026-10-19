@@ -35,6 +35,7 @@ final class DeviceConnections {
   private let defaults: UserDefaults
   private var generation: [DataConnection: Int] = [:]
   private var unlockGeneration = 0
+  private var musicActionGeneration = 0
   private(set) var enabled: Set<DataConnection> = []
   private(set) var requested: Set<DataConnection> = []
   private(set) var busy: Set<DataConnection> = []
@@ -159,10 +160,12 @@ final class DeviceConnections {
     case .calendar: events = []
     case .reminders: reminders = []
     case .music:
+      musicActionGeneration += 1
       provider.pauseMusic()
       tracks = []
       currentTrack = nil
       musicPlaying = false
+      musicTime = 0
     case .weather: weather = nil; weatherFetchFailed = false
     }
     if !testing { defaults.set(false, forKey: "HomeView.connected." + kind.rawValue) }
@@ -264,6 +267,7 @@ final class DeviceConnections {
     do {
       let values = try await provider.searchMusic(String(query.prefix(200)))
       guard generation[.music] == ticket, enabled.contains(.music), !Task.isCancelled else { return }
+      musicActionGeneration += 1
       provider.pauseMusic()
       musicPlaying = false
       currentTrack = nil
@@ -274,25 +278,46 @@ final class DeviceConnections {
     }
   }
   func playMusic(_ index: Int) async {
-    guard enabled.contains(.music), tracks.indices.contains(index) else { return }
+    guard enabled.contains(.music), tracks.indices.contains(index), !Task.isCancelled else { return }
+    let connection = generation[.music]
+    musicActionGeneration += 1
+    let action = musicActionGeneration
+    let id = tracks[index].id
+    func current() -> Bool {
+      generation[.music] == connection && musicActionGeneration == action
+        && enabled.contains(.music) && !Task.isCancelled
+        && tracks.indices.contains(index) && tracks[index].id == id
+    }
     do {
       try await provider.playMusic(index)
+      guard current() else { return }
       currentTrack = index
       pollMusic()
     } catch {
+      guard current() else { return }
       status[.music] = "This song could not be played. Check your subscription and connection."
     }
   }
   func toggleMusic() async {
-    guard enabled.contains(.music) else { return }
-    if musicPlaying {
-      provider.pauseMusic()
-    } else {
-      do { try await provider.resumeMusic() } catch { status[.music] = "Playback unavailable." }
+    guard enabled.contains(.music), let index=currentTrack, tracks.indices.contains(index),
+      !Task.isCancelled else { return }
+    musicActionGeneration += 1
+    let action=musicActionGeneration;let connection=generation[.music]
+    if musicPlaying { provider.pauseMusic() }
+    else {
+      do { try await provider.resumeMusic() }
+      catch {
+        guard generation[.music]==connection,musicActionGeneration==action,
+          enabled.contains(.music),!Task.isCancelled else { return }
+        status[.music] = "Playback unavailable."
+      }
     }
+    guard generation[.music]==connection,musicActionGeneration==action,
+      enabled.contains(.music),!Task.isCancelled else { return }
     pollMusic()
   }
   func pauseMusic() {
+    musicActionGeneration += 1
     provider.pauseMusic()
     pollMusic()
   }
