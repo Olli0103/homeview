@@ -1,0 +1,169 @@
+[
+  {
+    "assertions": 6,
+    "case": "temperature",
+    "checks": {
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "6443952F-023B-4AFA-97E1-5735B6BA0CBB",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 6,
+    "case": "brightness",
+    "checks": {
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "41A545AA-4FE1-42C8-85C7-DDFFA8501731",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 6,
+    "case": "entry_light",
+    "checks": {
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "3BB58A0B-405F-49A1-AE19-E3FD4CC4C639",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 6,
+    "case": "compound_scene",
+    "checks": {
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "E1152071-13EA-47D8-A267-55A5515E4C95",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 6,
+    "case": "invalid_value",
+    "checks": {
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "F3FFC14F-2936-4A34-8874-2AC40299DDDA",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 6,
+    "case": "security_rejected",
+    "checks": {
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "B084E8FA-4F87-499C-8C2C-4196F38FF65D",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 6,
+    "case": "offline_rejected",
+    "checks": {
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "352152A1-B72F-400A-9D31-63A23C07C18A",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 7,
+    "case": "assistant_temperature",
+    "checks": {
+      "assistant_reports_error_not_success": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "2AFC2DB0-720F-4939-9DA1-8F8C4DD14FA3",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 7,
+    "case": "assistant_lights",
+    "checks": {
+      "assistant_reports_error_not_success": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "1A53EE57-0B9A-4ABA-A1A6-806EC5BFDD87",
+    "verdict": "FAIL"
+  },
+  {
+    "assertions": 7,
+    "case": "assistant_scene",
+    "checks": {
+      "assistant_reports_error_not_success": true,
+      "canary_unchanged": true,
+      "failure_reported": true,
+      "no_system_alarms": true,
+      "original_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "snapshot_unchanged": false
+    },
+    "failed": [
+      "snapshot_unchanged"
+    ],
+    "owned_uuid": "105B42ED-1550-462F-A73A-1783E81C33A1",
+    "verdict": "FAIL"
+  }
+]
