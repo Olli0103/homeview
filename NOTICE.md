@@ -5,7 +5,12 @@ provided under the [MIT License](LICENSE). The owner selected MIT on 17 October
 2026. Keep the copyright and permission notice when redistributing substantial
 portions of the project.
 
-The public repository contains no third-party Swift package dependencies.
+RSS parsing uses FeedKit 10.9.4, revision
+545aba8b9357fb00ffe51483b659519d96a9d635, including its XMLKit target.
+FeedKit is by Nuno Dias, licensed under MIT; the upstream notice is preserved in
+[Resources/FeedKit-LICENSE.txt](Resources/FeedKit-LICENSE.txt) and bundled with the
+app. SwiftPM resolves the pinned dependency; no third-party source archive is
+copied into this repository.
 The raster fixtures, app icon and demo tone are original project-generated
 assets. The procedural DemoAlbumCover in Sources/App/HomeScreens.swift is also
 original project artwork under MIT, not a copied or connected album cover; its
@@ -53,3 +58,8 @@ channel produced by the public native Mac foreground adapter from our own
 DemoPhotoPortraitV1. It is test-only replay data under the project license, not
 an extracted Apple asset, an iOS native-extraction result or a production
 segmentation fallback. Provenance: Docs/demo-photo-assets.json.
+
+The podcast-test-audio.wav fixture is a project-generated 60-second 220-Hz sine
+signal, mono PCM 16 kHz/16 Bit, under MIT. It contains no speech, borrowed music
+or private recording. It is mapped only to the two explicitly enabled synthetic
+RSS fixture episodes. Details: [public-podcast-feeds.md](Docs/public-podcast-feeds.md).

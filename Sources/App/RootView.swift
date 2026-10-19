@@ -1,3 +1,4 @@
+import AVFoundation
 import Combine
 import SwiftUI
 
@@ -48,7 +49,7 @@ struct RootView: View {
               ActivityStrip().frame(maxWidth: 300).background(.thinMaterial, in: Capsule())
               Spacer()
             }
-            .padding(.top, 6).accessibilityIdentifier("compact.activity")
+            .padding(.top, 6).accessibilityElement(children:.contain).accessibilityIdentifier("compact.activity")
           }
           Color.black.opacity((1 - model.data.screenBrightness) * 0.45).allowsHitTesting(false)
           if let toast = model.toast {
@@ -157,6 +158,7 @@ struct RootView: View {
       }
     }
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
+
     .task {
       model.setAlbumDisplayActive(scenePhase == .active)
       await model.connections.restore()
@@ -164,8 +166,16 @@ struct RootView: View {
       model.display.apply(enabled: model.data.keepDisplayOn && scenePhase == .active)
     }
     .onReceive(pulse) { _ in model.tick() }
+    #if os(iOS) || os(tvOS) || os(visionOS)
+      .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.interruptionNotification)) { _ in
+        model.pauseFeedPodcast()
+      }
+      .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.routeChangeNotification)) { note in
+        if (note.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt)==AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue { model.pauseFeedPodcast() }
+      }
+    #endif
     .onChange(of: model.route) { _, route in if route == .privacy { model.lockPersonalAccess() } }
-    .onChange(of:model.incomingCall) { _,incoming in if incoming { model.dismissDemoDoorbell() } }
+    .onChange(of:model.incomingCall) { _,incoming in if incoming { model.dismissDemoDoorbell();model.pauseFeedPodcast() } }
     .onChange(of: model.data.keepDisplayOn) { _, enabled in
       model.display.apply(enabled: enabled && scenePhase == .active)
     }
@@ -174,6 +184,7 @@ struct RootView: View {
     }
     .onDisappear {
       model.dismissDemoDoorbell()
+      model.pauseFeedPodcast()
       model.display.apply(enabled: false)
       model.setAlbumDisplayActive(false)
     }
@@ -183,6 +194,7 @@ struct RootView: View {
       if phase == .active {
         model.reconcileSystemAlarms()
       } else if phase == .background {
+        model.pauseFeedPodcast()
         model.persist()
         model.lockPersonalAccess()
         if case .app(let page) = model.route, page.isPersonal {

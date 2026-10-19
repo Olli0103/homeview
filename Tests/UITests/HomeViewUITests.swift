@@ -3371,3 +3371,143 @@ extension HomeViewUITests {
     XCTAssertEqual(app.buttons["settings.keepawake"].value as? String, "Off")
   }
 }
+
+extension HomeViewUITests {
+  private func podcastSeconds() -> Int {
+    let label=app.staticTexts["podcast.position"].label
+    let parts=label.components(separatedBy:" / ").first!.split(separator:":")
+    return parts.count==2 ? (Int(parts[0]) ?? -1000)*60+(Int(parts[1]) ?? -1000):-1000
+  }
+  @objc func testPublicPodcastRSSNativeSeekPauseNavigationAndRelaunch() {
+    let id=UUID().uuidString
+    let base=["--page","Podcasts","--podcast-fixture","--persistence-test",id]
+    launch(base+["--reset-test-store"])
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play Demo Episode")
+    tap("podcast.feeds");tap("podcast.feed.fixture")
+    let episode=app.buttons["podcast.episode.0"]
+    XCTAssertTrue(episode.waitForExistence(timeout:8));scrollPhotoControlFullyIntoView(episode);episode.tap()
+    XCTAssertEqual(app.staticTexts["podcast.title"].label,"Own Audio Episode One")
+    XCTAssertTrue(app.staticTexts["podcast.status"].label.contains("Paused"))
+    tap("podcast.play")
+    expectation(for:NSPredicate(format:"label == %@","Playing"),evaluatedWith:app.staticTexts["podcast.status"])
+    waitForExpectations(timeout:12)
+    tap("podcast.play")
+    XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    tap("podcast.forward")
+    XCTAssertGreaterThanOrEqual(podcastSeconds(),15)
+    XCTAssertLessThan(podcastSeconds(),22)
+    let position=podcastSeconds()
+    viewportShot("rss-podcast-paused-native-seek")
+    app.terminate();launch(base)
+    XCTAssertEqual(app.staticTexts["podcast.title"].label,"Own Audio Episode One")
+    XCTAssertEqual(podcastSeconds(),position,accuracy:1)
+    XCTAssertTrue(app.staticTexts["podcast.status"].label.contains("Paused"))
+    tap("podcast.play")
+    expectation(for:NSPredicate(format:"label == %@","Playing"),evaluatedWith:app.staticTexts["podcast.status"])
+    waitForExpectations(timeout:12)
+    tap("nav.faces")
+    viewportShot("rss-podcast-face-before-return")
+    XCTAssertTrue(app.buttons["activity.podcast"].waitForExistence(timeout:5))
+    tap("activity.podcast")
+    XCTAssertEqual(app.staticTexts["podcast.title"].label,"Own Audio Episode One")
+    tap("podcast.play")
+    XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    let beforeBackwardSeek=podcastSeconds()
+    tap("podcast.back")
+    XCTAssertEqual(podcastSeconds(),max(0,beforeBackwardSeek-15),accuracy:1)
+    viewportShot("rss-podcast-resumed-navigation")
+  }
+  @objc func testPublicPodcastFeedErrorsRemovalAndBackgroundNeverAutoplayDemo() {
+    launch(["--page","Podcasts","--podcast-fixture"])
+    tap("podcast.feeds")
+    let address=app.textFields["podcast.feed.url"]
+    address.tap();address.typeText("http://not-secure.example/rss\n")
+    tap("podcast.feed.load")
+    XCTAssertTrue(app.staticTexts["podcast.feed.status"].label.contains("HTTPS"))
+    tap("podcast.feed.fixture")
+    let episode=app.buttons["podcast.episode.0"]
+    XCTAssertTrue(episode.waitForExistence(timeout:8));scrollPhotoControlFullyIntoView(episode);episode.tap()
+    tap("podcast.play")
+    expectation(for:NSPredicate(format:"label == %@","Playing"),evaluatedWith:app.staticTexts["podcast.status"])
+    waitForExpectations(timeout:12)
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play")
+    XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    viewportShot("rss-podcast-background-paused")
+    tap("podcast.feeds")
+    let remove=app.buttons["podcast.feed.remove"]
+    scrollPhotoControlFullyIntoView(remove);remove.tap()
+    XCTAssertFalse(app.buttons["podcast.episode.0"].exists)
+    XCTAssertTrue(app.staticTexts["podcast.feed.status"].label.contains("removed"))
+    tap("podcast.feeds")
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play Demo Episode")
+    XCTAssertFalse(app.buttons["Pause podcast"].exists)
+    viewportShot("rss-podcast-removed-explicit-demo")
+  }
+}
+
+extension HomeViewUITests {
+  @objc func testPodcastFailedHTTPSLoadKeepsSelectionAndMusicTakesAudioFocus() {
+    launch(["--page","Podcasts","--podcast-fixture"])
+    tap("podcast.feeds");tap("podcast.feed.fixture")
+    let episode=app.buttons["podcast.episode.0"]
+    XCTAssertTrue(episode.waitForExistence(timeout:8));scrollPhotoControlFullyIntoView(episode);episode.tap()
+    tap("podcast.play")
+    expectation(for:NSPredicate(format:"label == %@","Playing"),evaluatedWith:app.staticTexts["podcast.status"])
+    waitForExpectations(timeout:12)
+    tap("podcast.feeds")
+    let address=app.textFields["podcast.feed.url"]
+    address.tap();address.typeText("https://fixtures.invalid/unavailable.xml\n")
+    tap("podcast.feed.load")
+    XCTAssertTrue(app.staticTexts["podcast.feed.status"].label.contains("could not be loaded"))
+    XCTAssertTrue(app.buttons["podcast.episode.0"].exists)
+    tap("podcast.feeds")
+    XCTAssertEqual(app.staticTexts["podcast.title"].label,"Own Audio Episode One")
+    XCTAssertFalse(app.buttons["Play Demo Episode"].exists)
+    viewportShot("rss-failed-load-keeps-real-selection")
+    XCTAssertEqual(app.staticTexts["podcast.status"].label,"Playing")
+    drawer();tap("app.Music");tap("player.play")
+    tap("nav.faces")
+    XCTAssertFalse(app.buttons["activity.podcast"].exists)
+    drawer()
+    let podcasts=app.buttons["app.Podcasts"]
+    for _ in 0..<10 where !podcasts.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    podcasts.tap()
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play")
+    XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    viewportShot("rss-music-focus-pauses-podcast")
+  }
+}
+
+
+extension HomeViewUITests {
+  @objc func testConnectedMusicResumeTakesFocusFromNativePodcast() {
+    launch(["--page","Settings","--podcast-fixture"])
+    connectService("Apple Music")
+    drawer();tap("app.Music")
+    let query=app.textFields["music.search.input"]
+    query.tap();query.typeText("sample");tap("music.search");tap("music.result.0")
+    XCTAssertEqual(app.buttons["music.connected.play"].label,"Pause")
+    drawer()
+    let podcasts=app.buttons["app.Podcasts"]
+    for _ in 0..<10 where !podcasts.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    podcasts.tap()
+    tap("podcast.feeds");tap("podcast.feed.fixture")
+    let episode=app.buttons["podcast.episode.0"]
+    XCTAssertTrue(episode.waitForExistence(timeout:8));scrollPhotoControlFullyIntoView(episode);episode.tap()
+    tap("podcast.play")
+    expectation(for:NSPredicate(format:"label == %@","Playing"),evaluatedWith:app.staticTexts["podcast.status"])
+    waitForExpectations(timeout:12)
+    drawer();tap("app.Music")
+    XCTAssertEqual(app.buttons["music.connected.play"].label,"Play")
+    tap("music.connected.play")
+    XCTAssertEqual(app.buttons["music.connected.play"].label,"Pause")
+    drawer()
+    let podcastReturn=app.buttons["app.Podcasts"]
+    for _ in 0..<10 where !podcastReturn.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    podcastReturn.tap()
+    XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play")
+    viewportShot("rss-connected-music-resume-focus")
+  }
+}

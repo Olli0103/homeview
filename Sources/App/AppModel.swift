@@ -8,6 +8,11 @@ import SwiftUI
 final class AppModel {
   #if !os(watchOS)
     let connections = DeviceConnections()
+    let podcastPlayer = PodcastPlaybackController()
+    var podcastStatus = "Public RSS feeds · No Apple Podcasts account sync"
+    var podcastLoading = false
+    var podcastFeedGeneration = 0
+
     private let albumPhotoProvider: any AlbumPhotoProvider
     let albumCatalogue: AlbumCatalogueSession
     let albumUpdates: AlbumDisplaySession
@@ -29,9 +34,9 @@ final class AppModel {
   var assistantReply = "What can I help you with?"
   var playing = false
   var podcastPlaying = false
-  private var startingMusic = false
-  private var startingPodcast = false
-  private var audioGeneration = 0
+  var startingMusic = false
+  var startingPodcast = false
+  var audioGeneration = 0
   var currentMusicTitle: String {
     #if !os(watchOS)
       if connections.enabled.contains(.music) {
@@ -811,6 +816,12 @@ final class AppModel {
     reconcileDemoDoorbell()
     #if !os(watchOS)
       connections.tick()
+      podcastPlayer.poll()
+      if data.podcasts.selectedEpisode != nil {
+        podcastPlaying=podcastPlayer.playing
+        if let id=podcastPlayer.episodeID,
+           abs((data.podcasts.positions[id] ?? 0)-podcastPlayer.position)>=5 { savePodcastPosition() }
+      }
       if albumUpdates.shouldRefresh() {
         albumRefreshTask=Task { await albumUpdates.refresh() }
       }
@@ -1116,6 +1127,9 @@ final class AppModel {
   }
   func stopAudioForVoice() {
     #if !os(watchOS)
+      pauseFeedPodcast()
+    #endif
+    #if !os(watchOS)
       connections.pauseMusic()
     #endif
     audioGeneration += 1
@@ -1127,6 +1141,9 @@ final class AppModel {
     audio.stopPodcast()
   }
   func togglePlayback() {
+    #if !os(watchOS)
+      pauseFeedPodcast()
+    #endif
     #if !os(watchOS)
       if connections.enabled.contains(.music) {
         if connections.currentTrack == nil {
@@ -1158,6 +1175,9 @@ final class AppModel {
     }
   }
   func togglePodcast() {
+    #if !os(watchOS)
+      if data.podcasts.selectedEpisode != nil { toggleFeedPodcast();return }
+    #endif
     #if !os(watchOS)
       connections.pauseMusic()
     #endif

@@ -8,7 +8,7 @@ Public source snapshot, 17 October 2026. Includes the spatial face editor, separ
 
 ## Build
 
-Requires macOS, Xcode 27 and its installed SDKs. No third-party Swift packages.
+Requires macOS, Xcode 27 and its installed SDKs. SwiftPM resolves the exact [FeedKit 10.9.4](https://github.com/nmdias/FeedKit/releases/tag/10.9.4) RSS parser dependency (MIT).
 
 ```sh
 python3 Scripts/generate_project.py
@@ -24,6 +24,7 @@ The default build cache is under the current user's Library/Developer/HomeViewPu
 - iPad and iPhone share the square display UI. Mac, TV and Vision targets share adapted views. Watch is a reduced companion.
 - Editable faces and per-face complication persistence, photos, calendar, weather, timers, alarms, recipes, browser, music, mirror and local communication simulations.
 - Opt-in EventKit, MusicKit, selected-photo/shared-album import, public weather, on-device Speech and explicit Messages/FaceTime system handoffs where supported.
+- Explicit public RSS podcast feeds with native playback and saved positions; no Apple Podcasts account sync.
 - Mock smart home only. No real home discovery. No automatic message sending or calls.
 
 ## Parity backlog

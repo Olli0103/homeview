@@ -253,6 +253,7 @@ struct Snapshot: Codable, Sendable {
   var pinnedRecipe = false
   var faceConfigurations: [String: FaceConfiguration] = [:]
   var widgets = ["Date", "Clock", "Music", "Weather"]
+  var podcasts = PodcastLibrary()
   var worldClockZones = WorldCity.defaults
 
 }

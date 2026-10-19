@@ -164,11 +164,11 @@ struct PersonalView: View {
           Image(systemName:podcast ? "mic.circle":"music.note").font(.system(size:27)).opacity(0.8)
         }
         if connectedMusic || podcast {
-          Text(connectedMusic ? "Connected Music":"Demo episode")
+          Text(connectedMusic ? "Connected Music":model.currentPodcastSource)
             .font(.system(size:16,weight:.medium)).opacity(0.75)
         }
         Button { model.navigate(podcast ? .podcasts:.music) } label: {
-          Text(connectedMusic ? "Open Music":podcast ? "A Quiet Morning":model.currentMusicTitle)
+          Text(connectedMusic ? "Open Music":podcast ? model.currentPodcastTitle:model.currentMusicTitle)
             .font(.system(size:20,weight:.medium)).lineLimit(2).frame(maxWidth:.infinity,alignment:.leading)
         }.accessibilityIdentifier(podcast ? "personal.podcast.open":"personal.music.open")
         if !podcast && !connectedMusic {
@@ -268,7 +268,7 @@ struct ActivityStrip: View {
         }
         Spacer()
         Button {
-          Task { await model.connections.toggleMusic() }
+          model.togglePlayback()
         } label: {
           Image(systemName: "pause.fill")
         }
@@ -289,7 +289,7 @@ struct ActivityStrip: View {
         Button {
           model.navigate(.podcasts)
         } label: {
-          Label("A Quiet Morning", systemImage: "mic.circle.fill")
+          Label(model.currentPodcastTitle, systemImage: "mic.circle.fill")
         }.accessibilityIdentifier("activity.podcast")
         Spacer()
         Button {
