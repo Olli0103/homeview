@@ -1,0 +1,78 @@
+{
+  "verdict": "PASS",
+  "target": {
+    "head": "2ffe61d5f11fb30ae51e16d7500908d3365ac97b",
+    "shallow": "false",
+    "parents": "062222155a980079e7eac03afd350ef42b38091b",
+    "branch": "work/assistant-local",
+    "status": "",
+    "changed": ":100644 100644 35719ac c1b2dc4 M\tHomeViewReplica.xcodeproj/project.pbxproj\n:100644 100644 a8f960c b693f34 M\tScripts/generate_project.py\n:100644 100644 cbd3576 08f1973 M\tSources/App/AppModel.swift\n:100644 100644 30a3d0b 7f155c7 M\tSources/App/AssistantCapabilitiesView.swift\n:100644 100644 83e32cf b847391 M\tSources/App/Controls.swift\n:000000 100644 0000000 f903437 A\tSources/App/NativeAssistantAnswers.swift\n:100644 100644 e5b8796 1649c98 M\tSources/App/RootView.swift\n:000000 100644 0000000 7e5e656 A\tSources/Core/AssistantConversation.swift\n:100644 100644 7df0dfd 2a90276 M\tSources/Core/Models.swift\n:000000 100644 0000000 4c7355a A\tTests/CoreTests/AssistantCommandBoundaryTests.swift\n:000000 100644 0000000 e1132f0 A\tTests/CoreTests/AssistantConversationTests.swift\n:100644 100644 5da39ad 9c8f2ed M\tTests/UITests/HomeViewUITests.swift\n"
+  },
+  "source_digest": "168c537c0e3d41b44555f67f085ac93525f08a557e8aa0f1a9ee5c2474215911",
+  "date": "2026-10-19",
+  "external_matrix": [
+    {
+      "passed": true,
+      "scenario": "no-choice-no-provider-effect"
+    },
+    {
+      "passed": true,
+      "scenario": "invalid-text-no-provider-effect"
+    },
+    {
+      "passed": true,
+      "scenario": "unavailable-no-fallback"
+    },
+    {
+      "passed": true,
+      "scenario": "old-success-cannot-replace-successor"
+    },
+    {
+      "passed": true,
+      "scenario": "old-error-cannot-reset-successor"
+    },
+    {
+      "passed": true,
+      "scenario": "elapsed-deadline-beats-delayed-timeout-callback"
+    },
+    {
+      "passed": true,
+      "scenario": "pre-cancel-no-provider-effect"
+    },
+    {
+      "passed": true,
+      "scenario": "cleared-owner-released-after-late-provider-settles"
+    }
+  ],
+  "generator": {
+    "python_syntax_files": 3,
+    "results": [
+      {
+        "path": "Resources/MainInfo.plist",
+        "identical": true
+      },
+      {
+        "path": "HomeViewReplica.xcodeproj/project.pbxproj",
+        "identical": true
+      }
+    ],
+    "generated_in_external_stage": true,
+    "Python_test_suite": "absent; native Swift app plus project generator",
+    "Node_suite_audit_plugin": "not applicable; no Node package, dependency or plugin changes",
+    "POSIX_and_Linux_suites": "not applicable; no changed POSIX scripts or remote process boundary"
+  },
+  "harness_sha256": "7081ea0a21921f57524c3582ec9a22c01d5b7fa7f5c80340df9fd55df001da08",
+  "zero_effect_boundaries": [
+    "No choice, invalid text, unavailable and pre-cancelled calls invoke no provider",
+    "Late successful or failed old generation cannot replace/reset successor",
+    "Absolute monotonic deadline rejects success even before delayed timeout callback runs",
+    "Discarded owner is released after canceled backend settles; fake provider continuation inventory empty"
+  ],
+  "scope": [
+    "Actual production AssistantConversation compiled with independent external fake provider; no private stores, accounts, native inference, network or child APIs in these matrix cases",
+    "Separate actual native provider QA below, and app UI zero-timer/choice/background/voice cases; no claim of universal OS process/CPU teardown or network packet monitoring",
+    "No new POSIX, Node/plugin, archive transport or remote process boundary; corresponding suites not applicable. Swift214 plus generator syntax/regeneration used",
+    "Fixture binaries and external generator stage retained as explicitly owned evidence, not claimed cleaned",
+    "Native answer accuracy and physical device timing are not a security-gate PASS"
+  ]
+}
