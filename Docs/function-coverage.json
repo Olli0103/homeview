@@ -1490,7 +1490,7 @@
       "AI-06"
     ],
     "current": [
-      "Obere Randgeste und Texteingabe sind implementiert. Nicht alle Referenzzustände oder Unterbrechungen sind vermessen."
+      "Own assistant uses an unscaled, keyboard-aware rectangular input surface; Send measures 48 points in tested iPad/iPhone portrait and landscape. Cmd-Shift-S, visible keyboard dismissal, unsent draft lifecycle and app-edge/scroll arbitration verified. See Docs/assistant-input.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1503,7 +1503,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Bounded own software input flow verified. Raw Escape/Return, physical assistive technology, OS-edge and original gesture acceptance remain open.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -1521,7 +1521,7 @@
       "AI-06"
     ],
     "current": [
-      "Obere Randgeste und Texteingabe sind implementiert. Nicht alle Referenzzustände oder Unterbrechungen sind vermessen."
+      "Own assistant uses an unscaled, keyboard-aware rectangular input surface; Send measures 48 points in tested iPad/iPhone portrait and landscape. Cmd-Shift-S, visible keyboard dismissal, unsent draft lifecycle and app-edge/scroll arbitration verified. See Docs/assistant-input.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1534,7 +1534,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Bounded own software input flow verified. Raw Escape/Return, physical assistive technology, OS-edge and original gesture acceptance remain open.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
