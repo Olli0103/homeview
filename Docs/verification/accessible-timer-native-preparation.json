@@ -1,0 +1,9 @@
+{
+  "compile_exit_code": 0,
+  "execution_exit_code": 2,
+  "assertions_executed": 0,
+  "press_action_executed": false,
+  "observed": "The selected NSAccessibilityProtocol traversal returned only the root AXGroup; named button not reached within five seconds.",
+  "root_cause": "Not established; do not infer what a real accessibility client or on-screen session exposes.",
+  "scope": "Preparation limitation of offscreen own AppKit probe, not a timer-product assertion and not actual VoiceOver/Switch Control/AssistiveTouch testing."
+}

@@ -3224,7 +3224,8 @@
       "SYS-10"
     ],
     "current": [
-      "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme."
+      "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme.",
+      "Ruhender Timer bietet benanntes SwiftUI-Button-Control samt aktuellem Countdown zum Einblenden. AX-Element/Touch und bisherige Idle-Regel in gestarteten iPad-/iPhone-Simulator-Apps geprüft; keine tatsächliche VoiceOver-/Voice-Control-/Switch-Control-/AssistiveTouch- oder Fokusabnahme. Docs/timer-accessible-controls.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
