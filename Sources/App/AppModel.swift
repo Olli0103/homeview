@@ -1200,30 +1200,34 @@ final class AppModel {
   }
   func toggleTimer(_ id: UUID) {
     guard writableStore() else { return }
-    guard let i = data.timers.firstIndex(where: { $0.id == id }) else { return }
+    guard let i=data.timers.firstIndex(where: { $0.id==id }) else { return }
+    let pause=data.timers[i].deadline != nil,at=now
+    let change:(inout Snapshot)->Void = { state in
+      if pause { state.timers[i].pause(at:at) }
+      else { state.timers[i].resume(at:at) }
+    }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeTimerIDs.contains(id) {
         do {
-          if data.timers[i].deadline == nil {
-            try nativeAlarms.resume(id)
-          } else {
-            try nativeAlarms.pause(id)
-          }
+          if pause { try nativeAlarms.pause(id) }
+          else { try nativeAlarms.resume(id) }
         } catch {
           self.error = "Could not update the system timer. \(error.localizedDescription)"
           return
         }
+        // Keep the existing native-operation ordering separate. A local
+        // rollback cannot undo an already performed system-alarm operation.
+        change(&data);persist();return
       }
     #endif
-    if data.timers[i].deadline == nil {
-      data.timers[i].resume(at: now)
-    } else {
-      data.timers[i].pause(at: now)
-    }
-    persist()
+    updateLocalControls(change)
   }
   func removeTimer(_ id: UUID) {
     guard writableStore() else { return }
+    let change:(inout Snapshot)->Void = {
+      $0.timers.removeAll { $0.id==id }
+      $0.nativeTimerIDs.remove(id)
+    }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeTimerIDs.contains(id) {
         do { try nativeAlarms.cancel(id) } catch {
@@ -1231,11 +1235,10 @@ final class AppModel {
             "The system alarm could not be cancelled. The timer was kept. \(error.localizedDescription)"
           return
         }
+        change(&data);persist();return
       }
     #endif
-    data.timers.removeAll { $0.id == id }
-    data.nativeTimerIDs.remove(id)
-    persist()
+    updateLocalControls(change)
   }
   func addAlarm(hour: Int, minute: Int) {
     guard writableStore() else { return }
@@ -1274,37 +1277,39 @@ final class AppModel {
   }
   func toggleAlarm(_ id: UUID) {
     guard writableStore() else { return }
-    guard let i = data.alarms.firstIndex(where: { $0.id == id }) else { return }
-    if data.alarms[i].enabled {
-      #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
-        if data.nativeAlarmIDs.contains(id) {
-          do { try nativeAlarms.cancel(id) } catch {
-            self.error = error.localizedDescription
-            return
-          }
-        }
-      #endif
-      data.nativeAlarmIDs.remove(id)
-      data.alarms[i].enabled = false
-    } else {
-      data.alarms[i].enabled = true
-      scheduleNativeAlarm(data.alarms[i])
+    guard let i=data.alarms.firstIndex(where: { $0.id==id }) else { return }
+    let enabled = !data.alarms[i].enabled
+    let change:(inout Snapshot)->Void = {
+      $0.alarms[i].enabled=enabled
+      if !enabled { $0.nativeAlarmIDs.remove(id) }
     }
-    persist()
+    #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
+      if !enabled,data.nativeAlarmIDs.contains(id) {
+        do { try nativeAlarms.cancel(id) } catch {
+          self.error=error.localizedDescription;return
+        }
+        change(&data);persist();return
+      }
+    #endif
+    guard updateLocalControls(change) else { return }
+    // Never queue even a permitted native schedule for an unsaved enable.
+    if enabled { scheduleNativeAlarm(data.alarms[i]) }
   }
   func removeAlarm(_ id: UUID) {
     guard writableStore() else { return }
+    let change:(inout Snapshot)->Void = {
+      $0.alarms.removeAll { $0.id==id }
+      $0.nativeAlarmIDs.remove(id)
+    }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeAlarmIDs.contains(id) {
         do { try nativeAlarms.cancel(id) } catch {
-          self.error = error.localizedDescription
-          return
+          self.error=error.localizedDescription;return
         }
+        change(&data);persist();return
       }
     #endif
-    data.alarms.removeAll { $0.id == id }
-    data.nativeAlarmIDs.remove(id)
-    persist()
+    updateLocalControls(change)
   }
   func reconcileSystemAlarms() {
     guard !storeReadOnly else { return }
