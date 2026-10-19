@@ -9,7 +9,7 @@ final class ConicGradientTests: XCTestCase {
     XCTAssertEqual(ConicGradientModel.turn(x: -1, y: 0), 0.75)
   }
   func testStopsAndWrapAreContinuousAtFullTurn() {
-    XCTAssertEqual(ConicGradientModel.sample(x: 1, y: 0, phase: 0), .init(0.69, 0.54, 0.54))
+    XCTAssertEqual(ConicGradientModel.sample(x: 1, y: 0, phase: 0), .init(0.753, 0.644, 0.634))
     let before = ConicGradientModel.sample(x: -0.000001, y: -1, phase: 0)
     let after = ConicGradientModel.sample(x: 0.000001, y: -1, phase: 0)
     for i in 0..<3 { XCTAssertEqual(before[i], after[i], accuracy: 0.00001) }

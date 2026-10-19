@@ -1,0 +1,508 @@
+{
+  "date": "2026-10-19",
+  "base": "59879f047bf804be96bf6ad012da5b8b6ec9cc71",
+  "source_digest": "747cec470ce9a5505c521c6bbf0901fbce64742b865e0f3dbd326a33d6b48338",
+  "core_tests": 166,
+  "UI_executions": 8,
+  "UI_per_device": 4,
+  "UI_failures": 0,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "compiled_inputs_unchanged": 30,
+  "compiled_archive_readback": true,
+  "checks": [
+    {
+      "name": "iPad-surface0",
+      "passed": true,
+      "RGB": [
+        218.0,
+        188.0,
+        185.0
+      ],
+      "reference": [
+        220.0,
+        190.0,
+        186.0
+      ]
+    },
+    {
+      "name": "iPad-surface1",
+      "passed": true,
+      "RGB": [
+        213,
+        183,
+        180
+      ],
+      "reference": [
+        215,
+        185,
+        182
+      ]
+    },
+    {
+      "name": "iPad-surface2",
+      "passed": true,
+      "RGB": [
+        207.0,
+        179.0,
+        176.0
+      ],
+      "reference": [
+        208.0,
+        179.0,
+        176.0
+      ]
+    },
+    {
+      "name": "iPad-surface3",
+      "passed": true,
+      "RGB": [
+        202.0,
+        173.0,
+        171.0
+      ],
+      "reference": [
+        202.0,
+        173.0,
+        171.0
+      ]
+    },
+    {
+      "name": "iPad-surface4",
+      "passed": true,
+      "RGB": [
+        195.0,
+        166.0,
+        164.0
+      ],
+      "reference": [
+        195.0,
+        167.0,
+        165.0
+      ]
+    },
+    {
+      "name": "iPad-surface5",
+      "passed": true,
+      "RGB": [
+        195.0,
+        167.0,
+        164.0
+      ],
+      "reference": [
+        194.0,
+        167.0,
+        164.0
+      ]
+    },
+    {
+      "name": "iPad-surface6",
+      "passed": true,
+      "RGB": [
+        203.0,
+        174.0,
+        171.0
+      ],
+      "reference": [
+        201.0,
+        173.0,
+        170.0
+      ]
+    },
+    {
+      "name": "iPad-surface7",
+      "passed": true,
+      "RGB": [
+        218.0,
+        188.0,
+        185.0
+      ],
+      "reference": [
+        215.0,
+        185.0,
+        182.0
+      ]
+    },
+    {
+      "name": "iPad-error-reduction",
+      "passed": true,
+      "old_MAE": 10.916666666666666,
+      "new_MAE": 1.1666666666666667
+    },
+    {
+      "name": "iPad-contrast-span",
+      "passed": true,
+      "value": 22.1404
+    },
+    {
+      "name": "iPad-qualified-hand0",
+      "passed": true,
+      "samples": 11059,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-qualified-hand1",
+      "passed": true,
+      "samples": 14757,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPad-moving-positive",
+      "passed": true
+    },
+    {
+      "name": "iPad-reduced-still",
+      "passed": true
+    },
+    {
+      "name": "iPad-Numerals-exact",
+      "passed": true
+    },
+    {
+      "name": "iPhone-surface0",
+      "passed": true,
+      "RGB": [
+        218.0,
+        188.0,
+        185.0
+      ],
+      "reference": [
+        220.0,
+        190.0,
+        186.0
+      ]
+    },
+    {
+      "name": "iPhone-surface1",
+      "passed": true,
+      "RGB": [
+        213,
+        183,
+        180
+      ],
+      "reference": [
+        215,
+        185,
+        182
+      ]
+    },
+    {
+      "name": "iPhone-surface2",
+      "passed": true,
+      "RGB": [
+        207.0,
+        179.0,
+        176.0
+      ],
+      "reference": [
+        208.0,
+        179.0,
+        176.0
+      ]
+    },
+    {
+      "name": "iPhone-surface3",
+      "passed": true,
+      "RGB": [
+        202.0,
+        173.0,
+        171.0
+      ],
+      "reference": [
+        202.0,
+        173.0,
+        171.0
+      ]
+    },
+    {
+      "name": "iPhone-surface4",
+      "passed": true,
+      "RGB": [
+        195.0,
+        166.0,
+        164.0
+      ],
+      "reference": [
+        195.0,
+        167.0,
+        165.0
+      ]
+    },
+    {
+      "name": "iPhone-surface5",
+      "passed": true,
+      "RGB": [
+        195.0,
+        167.0,
+        164.0
+      ],
+      "reference": [
+        194.0,
+        167.0,
+        164.0
+      ]
+    },
+    {
+      "name": "iPhone-surface6",
+      "passed": true,
+      "RGB": [
+        203.0,
+        174.0,
+        171.0
+      ],
+      "reference": [
+        201.0,
+        173.0,
+        170.0
+      ]
+    },
+    {
+      "name": "iPhone-surface7",
+      "passed": true,
+      "RGB": [
+        218.0,
+        188.0,
+        185.0
+      ],
+      "reference": [
+        215.0,
+        185.0,
+        182.0
+      ]
+    },
+    {
+      "name": "iPhone-error-reduction",
+      "passed": true,
+      "old_MAE": 10.958333333333334,
+      "new_MAE": 1.1666666666666667
+    },
+    {
+      "name": "iPhone-contrast-span",
+      "passed": true,
+      "value": 22.1404
+    },
+    {
+      "name": "iPhone-qualified-hand0",
+      "passed": true,
+      "samples": 5373,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-qualified-hand1",
+      "passed": true,
+      "samples": 7098,
+      "changed_pixels": 0
+    },
+    {
+      "name": "iPhone-moving-positive",
+      "passed": true
+    },
+    {
+      "name": "iPhone-reduced-still",
+      "passed": true
+    },
+    {
+      "name": "iPhone-Numerals-exact",
+      "passed": true
+    }
+  ],
+  "metrics": [
+    {
+      "device": "iPad",
+      "old_MAE": 10.916666666666666,
+      "new_MAE": 1.1666666666666667,
+      "images": 10
+    },
+    {
+      "device": "iPhone",
+      "old_MAE": 10.958333333333334,
+      "new_MAE": 1.1666666666666667,
+      "images": 10
+    }
+  ],
+  "screenshots": [
+    {
+      "device": "iPad",
+      "state": "UI45-large-clock-modular",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-UI45-large-clock-modular.png",
+      "sha256": "463d43951ce45d45fa07a0d45ecabbe179a49e6ce553307a1217d6dd1cfb710a"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-phase-quarter",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-fade-conic-phase-quarter.png",
+      "sha256": "44a0a9decc29b03a7ea21ec75e837c10cdfaa3233c2adc78a84ad7945500b1b5"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-phase-zero",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-fade-conic-phase-zero.png",
+      "sha256": "770385ec6a05ce82d31fb52ef81e567dfb5324a07c7b384206df38565c81e566"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-reference-time",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-fade-conic-reference-time.png",
+      "sha256": "9589f1ebcee50e2749454599636f9e7f5fdeb145e1cf3b2d17dcbe987fc28cc3"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-reduced-later",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-fade-conic-reduced-later.png",
+      "sha256": "770385ec6a05ce82d31fb52ef81e567dfb5324a07c7b384206df38565c81e566"
+    },
+    {
+      "device": "iPad",
+      "state": "fade-conic-reduced-zero",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-fade-conic-reduced-zero.png",
+      "sha256": "770385ec6a05ce82d31fb52ef81e567dfb5324a07c7b384206df38565c81e566"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-numerals-shared-fade-regression",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-screen-numerals-shared-fade-regression.png",
+      "sha256": "b215d89c0f5abe6bdced9e268e2e3a9988eac8a46e04620c3a33b65c7d309809"
+    },
+    {
+      "device": "iPad",
+      "state": "numerals-shared-fade-regression",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-numerals-shared-fade-regression.png",
+      "sha256": "9589f1ebcee50e2749454599636f9e7f5fdeb145e1cf3b2d17dcbe987fc28cc3"
+    },
+    {
+      "device": "iPad",
+      "state": "screen-numerals-reference-time",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-screen-numerals-reference-time.png",
+      "sha256": "1334d2d364a697df933cba7d0b48c673a978a2475072871327498611a62bfa07"
+    },
+    {
+      "device": "iPad",
+      "state": "numerals-reference-time",
+      "path": "Docs/screenshots/fade-surface-20261019/iPad-numerals-reference-time.png",
+      "sha256": "6d1e61a2d428e0ecdc7303a8740039eeaabdbb21604365fdffe52f6369594749"
+    },
+    {
+      "device": "iPhone",
+      "state": "UI45-large-clock-modular",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-UI45-large-clock-modular.png",
+      "sha256": "af5c2995350a8af078fc09cd3f5bed5f438cfd864b14ba435c35a75a3a8b0d6b"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-phase-quarter",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-fade-conic-phase-quarter.png",
+      "sha256": "f2477a792ffb46e3eb52b74f194c2106b2eca58ec57580a7f5b994b8f934584d"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-phase-zero",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-fade-conic-phase-zero.png",
+      "sha256": "40a28c52a5c13481bc427dca3e0f18a2efc3e31b095fd2935fd0c73fa8579e70"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-reference-time",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-fade-conic-reference-time.png",
+      "sha256": "67b11a6ca46d99e431e0d7dd1eeaa2315488770908e3323f04e22f9b07521312"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-reduced-later",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-fade-conic-reduced-later.png",
+      "sha256": "35f305548376abeeec5f9881f5ec082fee437a37bff3eb7faff301f112704232"
+    },
+    {
+      "device": "iPhone",
+      "state": "fade-conic-reduced-zero",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-fade-conic-reduced-zero.png",
+      "sha256": "35f305548376abeeec5f9881f5ec082fee437a37bff3eb7faff301f112704232"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-numerals-shared-fade-regression",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-screen-numerals-shared-fade-regression.png",
+      "sha256": "5c6fad7448a2a792e00d52b88ab0f004c08c164494e35614077183ad60629d30"
+    },
+    {
+      "device": "iPhone",
+      "state": "numerals-shared-fade-regression",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-numerals-shared-fade-regression.png",
+      "sha256": "67b11a6ca46d99e431e0d7dd1eeaa2315488770908e3323f04e22f9b07521312"
+    },
+    {
+      "device": "iPhone",
+      "state": "screen-numerals-reference-time",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-screen-numerals-reference-time.png",
+      "sha256": "bc7cbd16dd1d6ae9e31dc7934065473135c056594251524823382a8e4854b530"
+    },
+    {
+      "device": "iPhone",
+      "state": "numerals-reference-time",
+      "path": "Docs/screenshots/fade-surface-20261019/iPhone-numerals-reference-time.png",
+      "sha256": "41ea1aae224d66c6aa7d0b2cb0bbb4b97cb56bc50eff818875316905c30a4d61"
+    }
+  ],
+  "viewed": {
+    "decoded_PNGs": 20,
+    "native_contacts": 2,
+    "black_white_diagnostic_contacts": 2
+  },
+  "qualification": {
+    "original_selection_result": "FAILED: minute hand 4 changed pixels; retained, not relabelled",
+    "control_result": "Native unchanged Canvas on black/white: all four change with background. No-op preserves original samples.",
+    "rule": "Require same nominal dark class and exact black/white RGB across a full 5x5 neighbourhood. Masks frozen before final run. Exact candidate RGBA at every qualified pixel, no RGB tolerance.",
+    "samples": [
+      {
+        "device": "iPad",
+        "hand": 0,
+        "samples": 11059,
+        "sha256": "13fd070e2e23da6d8273f43e65c0abb8b09e6a21053dc4819dfbd6978843d1d3"
+      },
+      {
+        "device": "iPad",
+        "hand": 1,
+        "samples": 14757,
+        "sha256": "532369868e4ab07d6607174a49d0f03eacdb988c01c6e3ec795aac6d1673a78f"
+      },
+      {
+        "device": "iPhone",
+        "hand": 0,
+        "samples": 5373,
+        "sha256": "e8800c2102eb7d2e9090ba8d294fe042193d1929b05dafaf4487e88883ba71fb"
+      },
+      {
+        "device": "iPhone",
+        "hand": 1,
+        "samples": 7098,
+        "sha256": "f819193562ce92410c42cbc893db45a4f3b24761b0d1d6ed05d3b110979aa93c"
+      }
+    ]
+  },
+  "limits": [
+    "Nominal RGB from a single flat private UI12 frame; not colour-managed or full original parity.",
+    "No new original fade timing, typography, shadow or hardware acceptance.",
+    "No Home connection; unresolved weather degree candidate not included."
+  ]
+}
