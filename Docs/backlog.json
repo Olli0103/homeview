@@ -1994,7 +1994,7 @@
     "priority": "P1",
     "kind": "validation",
     "functions": [],
-    "current": "Begrenzte Migration, späte Musikantworten sowie lokale Rezept-/Face-/Profil- und Vordergrund-Timer-Schreibfehler sind quellengebunden geprüft und korrigiert. Vollständige Daten-/Lifecycle-/Native-Alarm-Matrix bleibt offen. Lokale Mock-Befehle behalten bei fehlgeschlagenem Write keine ungespeicherten Werte/Audit-Einträge; Fehlermeldungen waren bereits korrekt. Docs/mock-command-write-boundaries.md. Foto-Layout, Korrektur-Cache und Foto-Face-Wechsel werden bei Writefehlern nicht scheinbar übernommen; separate native/UI-Belege in Docs/photo-write-boundaries.md. Lokale Ablaufmarkierungen werden vor Hinweis/Chime-Anforderung gespeichert; Writefehler und Neustart sind separat geprüft. Docs/expiry-write-boundaries.md. Expliziter Task-Abbruch verhindert neue persönliche Provideraufrufe und späte Ergebnis-/Fehlerübernahme; Docs/personal-request-cancellation.md.",
+    "current": "Begrenzte Migration, späte Musikantworten sowie lokale Rezept-/Face-/Profil- und Vordergrund-Timer-Schreibfehler sind quellengebunden geprüft und korrigiert. Vollständige Daten-/Lifecycle-/Native-Alarm-Matrix bleibt offen. Lokale Mock-Befehle behalten bei fehlgeschlagenem Write keine ungespeicherten Werte/Audit-Einträge; Fehlermeldungen waren bereits korrekt. Docs/mock-command-write-boundaries.md. Foto-Layout, Korrektur-Cache und Foto-Face-Wechsel werden bei Writefehlern nicht scheinbar übernommen; separate native/UI-Belege in Docs/photo-write-boundaries.md. Lokale Ablaufmarkierungen werden vor Hinweis/Chime-Anforderung gespeichert; Writefehler und Neustart sind separat geprüft. Docs/expiry-write-boundaries.md. Expliziter Task-Abbruch verhindert neue persönliche Provideraufrufe und späte Ergebnis-/Fehlerübernahme; Docs/personal-request-cancellation.md. Abgebrochene Musikfreigabe übernimmt keinen neuen Verbindungs-/Wiederherstellungsstatus; Wetter-Abbruch restauriert vorherigen Status ohne falsche Fehlermarkierung. Docs/music-weather-request-cancellation.md.",
     "tasks": [
       "Face-/Slot-/Galerie-/Timer-/Rezept-/Profilmigration mit alten und beschädigten Daten prüfen",
       "Verbindungsabbrüche und spätes Providerergebnis nach Abmelden/Navigation simulieren",
@@ -2015,7 +2015,8 @@
       "Docs/mock-command-write-boundaries.md",
       "Docs/photo-write-boundaries.md",
       "Docs/expiry-write-boundaries.md",
-      "Docs/personal-request-cancellation.md"
+      "Docs/personal-request-cancellation.md",
+      "Docs/music-weather-request-cancellation.md"
     ]
   },
   {

@@ -1,0 +1,76 @@
+{
+  "archive": "remaining-source-cancel-native-inputs.zip",
+  "entries": 17,
+  "sha256": "1d467dfa817931730309cb5b8cada0bc51bc640b52d21d3a9886dc05c11f1059",
+  "all_entries_read_back": true,
+  "files": [
+    {
+      "name": "inputs/0-ConnectedDataSession.swift",
+      "sha256": "b30c1312e2cc268e75e8eeac389f50adf42c086f8df91218e4c2ccb5fd3438d1"
+    },
+    {
+      "name": "inputs/1-ConnectedModels.swift",
+      "sha256": "cb011d1d322c46a8424d04e8a9e858b7d723ef76abb8ab88c2f1ed4d5bedc42c"
+    },
+    {
+      "name": "inputs/2-CalendarAgenda.swift",
+      "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+    },
+    {
+      "name": "inputs/3-WeatherData.swift",
+      "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+    },
+    {
+      "name": "inputs/4-DataConnection.swift",
+      "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+    },
+    {
+      "name": "inputs/5-GuestAccessPolicy.swift",
+      "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+    },
+    {
+      "name": "inputs/6-PermissionGate.swift",
+      "sha256": "5117782019b63a9dea2172c2a1576ba2076482b9c43b67720a3aa038371b9780"
+    },
+    {
+      "name": "gate/inputs-after.json",
+      "sha256": "1be995a746befe8d5ca67b8a0613965c2a9ccbc6951573b3c9f84686740c52b2"
+    },
+    {
+      "name": "gate/PermissionGate",
+      "sha256": "eb79f627ef32fdecff2748f52beabc4753887e5a8b28502398a4e6e79e838026"
+    },
+    {
+      "name": "gate/run.py",
+      "sha256": "cb7627e0a1b314c0e767f1838d8bb0d6c0318267f67d396f6ae40f15d3e5edfe"
+    },
+    {
+      "name": "gate/PermissionGate.swift",
+      "sha256": "5117782019b63a9dea2172c2a1576ba2076482b9c43b67720a3aa038371b9780"
+    },
+    {
+      "name": "gate/stdout",
+      "sha256": "658b1a257215f54d479439f8c1e2e36fb86962509d4523ea95b1c4fdb7c5ccde"
+    },
+    {
+      "name": "gate/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "gate/verdict.json",
+      "sha256": "6576ee958698751cb01db561a168141c2859014f33c5e2852c45c1185c80792d"
+    },
+    {
+      "name": "gate/compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "gate/inputs-before.json",
+      "sha256": "1be995a746befe8d5ca67b8a0613965c2a9ccbc6951573b3c9f84686740c52b2"
+    },
+    {
+      "name": "gate/command.json",
+      "sha256": "dd014eb5cf5792cc954f445ac5cbc7a2a6078e3ad41fb4a145781427d2796fd8"
+    }
+  ]
+}
