@@ -4583,3 +4583,27 @@ extension HomeViewUITests {
     viewportShot("write-boundary-recipe-unpinned-after-process-restart")
   }
 }
+
+
+extension HomeViewUITests {
+  @objc func testPhotoRotationChoiceSurvivesRestartWithoutReselectingGallery() {
+    let id=UUID().uuidString
+    print("PHOTO_ROTATION_STORE_ID="+id)
+    launch(["--page","Settings","--persistence-test",id])
+    let gallery=app.buttons["photos.gallery"]
+    scrollPhotoControlFullyIntoView(gallery);gallery.tap()
+    XCTAssertTrue(app.staticTexts["photo.index"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["photo.index"].label.contains("OF 2"))
+    tap("nav.controls");tap("controls.settings")
+    let rotation=app.switches["photos.rotate"]
+    scrollPhotoControlFullyIntoView(rotation)
+    XCTAssertEqual(rotation.value as? String,"1")
+    rotation.tap();XCTAssertEqual(rotation.value as? String,"0")
+    viewportShot("photo-write-rotation-disabled")
+    app.terminate()
+    launch(["--page","Settings","--persistence-test",id])
+    scrollPhotoControlFullyIntoView(rotation)
+    XCTAssertEqual(rotation.value as? String,"0")
+    viewportShot("photo-write-rotation-disabled-after-restart")
+  }
+}

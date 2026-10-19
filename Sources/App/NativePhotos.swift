@@ -197,10 +197,9 @@ struct NativePhotoControls: View {
           "Rotate every 30 seconds",
           isOn: Binding(
             get: { model.data.rotatePhotos },
-            set: {
-              model.data.rotatePhotos = $0
-              model.persist()
-            }))
+            set: { value in
+              model.updateLocalControls { $0.rotatePhotos=value }
+            })).accessibilityIdentifier("photos.rotate")
       }
       if model.photoData != nil {
         if model.photoAnalysisFinished && model.photoForegroundData == nil {
