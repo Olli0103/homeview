@@ -987,17 +987,9 @@ Abgeschlossen am 19. Oktober 2026 im eigenen öffentlichen RSS-Umfang: Explizite
 <a id="media-04"></a>
 ### MEDIA-04: Weitere Medien und Drittanbieter-Angebote auf Zugriffsmöglichkeiten prüfen
 
-Audiobooks, Classical, News, TV und beliebige Drittanbieter-Apps sind nicht gleichwertig eingebettet.
+Recherche abgeschlossen am19.Oktober2026: Fünf Angebote mit öffentlichen Teilpfaden, Rechtevoraussetzungen und Systemhostgrenzen bilanziert.7aktuelle Apple-Dokumentationen und erfolgreicher iOS-Compile-only-Probe. Keine neue Medienintegration; unimplementierte öffentliche Adapter bleiben Softwarearbeit.
 
-Offen:
-
-- Je Angebot öffentliche Daten-/Playback-/Handoff-Schnittstellen mit Rechten auflisten
-- App-Start, Remote-Wiedergabe und eingebettete Wiedergabe getrennt bewerten
-- Fehlende Angebote nicht als implementiert durch ein Icon zählen
-
-Abnahme: Unterfunktionen haben nachgewiesenen unterstützten Pfad oder eine konkrete API-/Hardwareblockade. Keine pauschale Universal-Medienzusage.
-
-Abhängigkeiten: BASE-01.
+[Angebote, APIs, Rechte und aktueller Implementierungsstand](media-service-boundaries.md). Kein Original-App-, Account- oder Hardware-PASS für F084/F085.
 
 <a id="media-05"></a>
 ### MEDIA-05: AirPlay-Routenauswahl und Mehrraumwiedergabe abnehmen
