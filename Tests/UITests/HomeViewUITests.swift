@@ -4908,3 +4908,35 @@ extension HomeViewUITests {
     XCTAssertFalse(row.staticTexts["Next day"].exists)
   }
 }
+
+extension HomeViewUITests {
+  private func auditRecipeHitRegions(_ state:String) throws {
+    viewportShot("recipe-hit-region-"+state)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let element=issue.element,frame=element?.frame ?? .zero
+      reports.append(["identifier":element?.identifier ?? "","label":element?.label ?? "",
+        "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let attachment=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="recipe-hit-region-"+state+"-all-findings";attachment.lifetime = .keepAlways;add(attachment)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered recipe hit-region audit found \(reports.count) issues: \(reports)")
+  }
+  func testRecipeCoverAutomaticHitRegionAudit() throws {
+    launch(["--screen-recipe"])
+    XCTAssertTrue(app.buttons["recipe.ingredients"].waitForExistence(timeout:5))
+    try auditRecipeHitRegions("cover")
+  }
+  func testRecipeIngredientsAutomaticHitRegionAudit() throws {
+    launch(["--screen-recipe"]);tap("recipe.ingredients")
+    XCTAssertTrue(app.buttons["ingredient.0"].waitForExistence(timeout:5))
+    try auditRecipeHitRegions("ingredients")
+  }
+  func testRecipeCookingAutomaticHitRegionAudit() throws {
+    launch(["--screen-recipe"]);tap("recipe.start")
+    XCTAssertTrue(app.staticTexts["cooking.text"].waitForExistence(timeout:5))
+    try auditRecipeHitRegions("cooking")
+  }
+}
