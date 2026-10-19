@@ -3883,7 +3883,13 @@ extension HomeViewUITests {
     XCTAssertTrue(answer.waitForExistence(timeout:5));XCTAssertGreaterThan(answer.label.count,3000)
     tap("answer.speech.settings");tap("answer.speech.settings.done")
     XCTAssertTrue(answer.exists);XCTAssertGreaterThan(answer.label.count,3000)
-    unlockSyntheticReadout();startSyntheticReadout();viewportShot("answer-readout-long-answer-active",assistantRectangle:true)
+    unlockSyntheticReadout();startSyntheticReadout()
+    let document=app.scrollViews["assistant.content"]
+    for _ in 0..<8 where answer.frame.intersection(document.frame).height<44 { document.swipeUp() }
+    XCTAssertGreaterThanOrEqual(answer.frame.intersection(document.frame).height,44,
+      "Long text must be actually readable by scrolling, not only present in the AX tree")
+    XCTAssertLessThanOrEqual(document.frame.maxY,app.textFields["assistant.input"].frame.minY)
+    viewportShot("answer-readout-long-answer-active",assistantRectangle:true)
     tap("nav.faces");drawer();tap("app.Music")
     XCTAssertEqual(app.buttons["player.play"].label,"Play")
     tap("nav.assistant");XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
