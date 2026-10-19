@@ -19,6 +19,23 @@ struct RootView: View {
     }
   }
   @State private var assistantFocusRequest=0
+  private var assistantShortcutRevision:UInt64 {
+    #if os(iOS) || os(macOS) || os(visionOS)
+      AssistantShortcutRequest.shared.revision
+    #else
+      0
+    #endif
+  }
+  private func openAssistant() {
+    model.dismissDemoDoorbell()
+    model.route = .assistant
+    assistantFocusRequest+=1
+  }
+  private func consumeAssistantShortcut() {
+    #if os(iOS) || os(macOS) || os(visionOS)
+      if scenePhase == .active,AssistantShortcutRequest.shared.consume() { openAssistant() }
+    #endif
+  }
   private let pulse = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   private var viewportContent: some View {
     GeometryReader { geo in
@@ -121,9 +138,7 @@ struct RootView: View {
             model.data.home.online ? Color.gray : Color.orange
           ).accessibilityIdentifier("mock.badge")
           Button {
-            model.dismissDemoDoorbell()
-            model.route = .assistant
-            assistantFocusRequest+=1
+            openAssistant()
           } label: {
             Image(systemName: "waveform")
               .frame(width:44,height:44).contentShape(Rectangle())
@@ -189,6 +204,7 @@ struct RootView: View {
       model.localResetForeground=scenePhase == .active
       model.presentIntroductionOnLaunch()
       model.setAnswerSpeechForeground(scenePhase == .active)
+      consumeAssistantShortcut()
       model.installRecipeHandoffFixture()
       model.setAlbumDisplayActive(scenePhase == .active)
       await model.connections.restore(allowed:model.data.connectionConsent)
@@ -199,6 +215,7 @@ struct RootView: View {
       model.receiveRecipeHandoff(type:activity.activityType,data:activity.userInfo?["payload"] as? Data ?? Data())
     }
     .onChange(of:model.cookingStep) { _,step in model.recipeHandoff.update(recipe:model.recipe,step:step) }
+    .onChange(of:assistantShortcutRevision) { _,_ in consumeAssistantShortcut() }
     .onChange(of:model.cookingInProgress) { _,active in if !active { model.recipeHandoff.stop() } }
     .onChange(of:model.route) { old,new in
       if old == .handoff,new != .handoff { model.recipeHandoff.cancelPending() }
@@ -249,6 +266,7 @@ struct RootView: View {
       model.setAlbumDisplayActive(phase == .active)
       model.display.apply(enabled: model.data.keepDisplayOn && phase == .active)
       if phase == .active {
+        consumeAssistantShortcut()
         // Deadlines use wall time, so reconcile once before the next pulse.
         model.tick();model.synchronizeTimerActivity()
         model.reconcileSystemAlarms()
