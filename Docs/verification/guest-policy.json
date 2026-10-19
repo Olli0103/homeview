@@ -1,0 +1,205 @@
+{
+  "date": "2026-10-19",
+  "issue": 68,
+  "policy_code_commit": "7e71e9742d16a7242e30f1d0a4fa1e65dcf58d5c",
+  "code_commit": "a7e251272428b9dad985241f9adfca577d6d0649",
+  "source_files": 188,
+  "source_digest": "3b8b05b7382b4d6b5d323fd70b77b13975212bef46e7beaaee009cd004d459da",
+  "Core_tests": 264,
+  "Core_failures": 0,
+  "Core_inputs_unchanged_after_policy_pin": true,
+  "policy_matrix_cells": 66,
+  "native_gate": {
+    "verdict": "PASS",
+    "cases": 6,
+    "assertions": 64,
+    "inputs_unchanged": true,
+    "target": "7e71e9742d16a7242e30f1d0a4fa1e65dcf58d5c",
+    "clean_before_after": true,
+    "compiled_source_matches_git": true
+  },
+  "native_gate_qualification": "Native policy gate is at the prior clean policy pin. Final revision changes exactly one uninstantiated lock-view text literal; all model/Core/service inputs are byte-identical. Final view separately built and tested on both devices; not a claimed rerun of the native product.",
+  "native_archive": {
+    "name": "guest-policy-native-release-inputs.zip",
+    "entries": 121,
+    "sha256": "9c9c20132bee9f721420bb09af973a31d095479711067807bf56f1cdde704cec",
+    "all_entries_read_back": true
+  },
+  "UI_checkpoints": [
+    {
+      "id": "guest-policy-pilot",
+      "passed_executions": 8,
+      "unique_methods": 4,
+      "failures": 0,
+      "skips": 0,
+      "runtime_warnings": [],
+      "source_digest": "2283eddbcdfebad4649f6e81668c725bbf55523836c2dd50df3de75b495cc320",
+      "source_files": 188,
+      "compiled_inputs": 22,
+      "installed_apps_read_back": true,
+      "archive": "guest-policy-pilot-inputs.zip",
+      "entries": 210,
+      "sha256": "ab02dfde1c7c2137859cc119980e640f1f012a8628624368b3db9939ca0a22ab",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "guest-policy-disclosure",
+      "passed_executions": 2,
+      "unique_methods": 1,
+      "failures": 0,
+      "skips": 0,
+      "runtime_warnings": [],
+      "source_digest": "3b8b05b7382b4d6b5d323fd70b77b13975212bef46e7beaaee009cd004d459da",
+      "source_files": 188,
+      "compiled_inputs": 22,
+      "installed_apps_read_back": true,
+      "archive": "guest-policy-disclosure-inputs.zip",
+      "entries": 210,
+      "sha256": "ed369de4e08657fd94634b910fe93130856befcd8a5d3cd8eb5b2584b4d95a63",
+      "all_entries_read_back": true
+    }
+  ],
+  "UI_successful_executions_total": 10,
+  "UI_final_revision_executions": 2,
+  "UI_unique_methods_total": 4,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "generator": {
+    "target": "7e71e9742d16a7242e30f1d0a4fa1e65dcf58d5c",
+    "clean_before_after": true,
+    "project_byte_equivalent": true,
+    "regenerated_paths": [
+      "HomeViewReplica.xcodeproj/project.pbxproj",
+      "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewWatch.xcscheme",
+      "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
+      "Resources/MainInfo.plist"
+    ],
+    "Python_AST_valid": true
+  },
+  "disclosure_equivalence": {
+    "target": "a7e251272428b9dad985241f9adfca577d6d0649",
+    "prior_target": "7e71e9742d16a7242e30f1d0a4fa1e65dcf58d5c",
+    "changed": [
+      "Sources/App/HomeScreens.swift"
+    ],
+    "only_one_view_literal_changed": true,
+    "all_other_recorded_inputs_byte_equal": true,
+    "native_business_sources_unchanged": true,
+    "Core_264_inputs_unchanged": true
+  },
+  "PNGs_decoded": 42,
+  "contact_sheets_reviewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/verification/guest-policy-images/iPad-viewport-guest-policy-only-explicit-shared-queue-no-search.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "b1d65645cfa9362de7af0524d814fcd3bb509c157a7abc081aa63066f9604df4"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPad-viewport-guest-policy-background-cleared-shared-source.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "29cf8a728f8b8d6c35694c5ab5928fcccc89176154f93302cc2f6b92d7334655"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPad-viewport-guest-policy-assistant-cannot-resume-locked-source.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "29cf8a728f8b8d6c35694c5ab5928fcccc89176154f93302cc2f6b92d7334655"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPad-guest-policy-owner-explicit-revocation.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "54b9e2708ecc7323304b0a75afeaf48b6553e62b30a061851033811e2f1005f1"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPad-viewport-guest-policy-revoked-source-locked.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "29cf8a728f8b8d6c35694c5ab5928fcccc89176154f93302cc2f6b92d7334655"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPad-guest-policy-demo-profile-not-device-auth.png",
+      "checkpoint": "guest-policy-disclosure",
+      "sha256": "d6c511a9b699fa193a1066563d0c517e18d426b45e7b453644377b4cdbec3669"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPad-viewport-guest-policy-explicit-authenticated-mock-lock.png",
+      "checkpoint": "guest-policy-disclosure",
+      "sha256": "b398a8d5ba06d5d8b9853fa5e70e32aa9b047eb4b890e38117018df5fcc12c03"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPhone-viewport-guest-policy-only-explicit-shared-queue-no-search.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "b4399273eb2ff6c8c40cb608be1763f69fb4ae073b8fe198755e7d215433018c"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPhone-viewport-guest-policy-background-cleared-shared-source.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "bbae96df0e5d6ddbbe57a4085e06d415bbe2b6c98ec437b54e924bb94157bc9c"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPhone-viewport-guest-policy-assistant-cannot-resume-locked-source.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "bbae96df0e5d6ddbbe57a4085e06d415bbe2b6c98ec437b54e924bb94157bc9c"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPhone-guest-policy-owner-explicit-revocation.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "ddcac9d016c283b5f6bd17eaaf23086e0f6646103fe4f15b49a00431c5b7eeb1"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPhone-viewport-guest-policy-revoked-source-locked.png",
+      "checkpoint": "guest-policy-pilot",
+      "sha256": "bbae96df0e5d6ddbbe57a4085e06d415bbe2b6c98ec437b54e924bb94157bc9c"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPhone-guest-policy-demo-profile-not-device-auth.png",
+      "checkpoint": "guest-policy-disclosure",
+      "sha256": "510c10036a5ab6e2c00891fec973dcee0774f1f5c0b39d4418dbba90b9476e76"
+    },
+    {
+      "path": "Docs/verification/guest-policy-images/iPhone-viewport-guest-policy-explicit-authenticated-mock-lock.png",
+      "checkpoint": "guest-policy-disclosure",
+      "sha256": "2bd28a748fc4ffa7af796fa55527c8f04fe4fcae2a6e9f962bba79d26c4f935b"
+    }
+  ],
+  "baseline": {
+    "archive": "guest-policy-baseline-inputs.zip",
+    "entries": 69,
+    "sha256": "b862c1c7c91938ccf58f27afaeee433ddd104c64f9e400777002d9083aa18345",
+    "all_entries_read_back": true,
+    "failed_cases": 2,
+    "failed_assertions": 5,
+    "scope": "Actual prior guest music cache/search and security-scene defects; expected reproduction, retained."
+  },
+  "retained_core_pilot": {
+    "archive": "guest-policy-core-pilot-inputs.zip",
+    "entries": 69,
+    "sha256": "106320e80d2e3d5a04a9aff97f58c804ffd22567e2c559be9b044d5d60f191eb",
+    "all_entries_read_back": true,
+    "qualification": "Failed historical pilot; one legacy positive-control test had not yet authenticated its music connection. Exact pre-fix test bytes recovered from known edits and checked against its recorded SHA, not relabeled."
+  },
+  "retained_visual_defect": "Initial eight UI executions passed but image review found obsolete Demo profile required lock text. One literal corrected; original captures retained, new disclosure images and affected UI executions recorded separately.",
+  "original_F097_parity": false,
+  "real_household_identity_accepted": false,
+  "physical_service_authentication_accepted": false,
+  "Home_constructed": false
+}
