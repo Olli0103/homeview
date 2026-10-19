@@ -1133,30 +1133,34 @@ final class AppModel {
         progress = 0
       }
     }
-    var changed = false
-    for i in data.timers.indices
-    where !data.timers[i].didAlert && data.timers[i].remaining(at: now) <= 0 {
-      data.timers[i].didAlert = true
-      selectedTimer = data.timers[i].id
-      banner("\(data.timers[i].title) finished")
-      changed = true
-      if !data.nativeTimerIDs.contains(data.timers[i].id) { playChime() }
+    var candidate=data
+    var completions:[(timerID:UUID?,message:String,chime:Bool)]=[]
+    for i in candidate.timers.indices
+    where !candidate.timers[i].didAlert && candidate.timers[i].remaining(at:now)<=0 {
+      candidate.timers[i].didAlert=true
+      let timer=candidate.timers[i]
+      completions.append((timer.id,"\(timer.title) finished",!candidate.nativeTimerIDs.contains(timer.id)))
     }
-    let cal = Calendar.current
-    let day =
-      "\(cal.component(.year, from: now))-\(cal.ordinality(of: .day, in: .year, for: now) ?? 0)"
-    for i in data.alarms.indices where data.alarms[i].enabled && data.alarms[i].lastFiredDay != day
-    {
-      if cal.component(.hour, from: now) == data.alarms[i].hour
-        && cal.component(.minute, from: now) == data.alarms[i].minute
-      {
-        data.alarms[i].lastFiredDay = day
-        banner("Alarm")
-        if !data.nativeAlarmIDs.contains(data.alarms[i].id) { playChime() }
-        changed = true
+    let cal=Calendar.current
+    let day="\(cal.component(.year,from:now))-\(cal.ordinality(of:.day,in:.year,for:now) ?? 0)"
+    for i in candidate.alarms.indices
+    where candidate.alarms[i].enabled && candidate.alarms[i].lastFiredDay != day {
+      if cal.component(.hour,from:now)==candidate.alarms[i].hour
+        && cal.component(.minute,from:now)==candidate.alarms[i].minute {
+        candidate.alarms[i].lastFiredDay=day
+        completions.append((nil,"Alarm",!candidate.nativeAlarmIDs.contains(candidate.alarms[i].id)))
       }
     }
-    if changed { persist() }
+    // Commit the local receipt before any banner/readout interruption/chime
+    // request. A failed write must not acknowledge the same event twice after
+    // restart. This is not an atomic transaction with an OS alarm or speaker.
+    if !completions.isEmpty,updateLocalControls({ $0=candidate }) {
+      for completion in completions {
+        if let id=completion.timerID { selectedTimer=id }
+        banner(completion.message)
+        if completion.chime { playChime() }
+      }
+    }
     if route != .face && now.timeIntervalSince(lastInteraction) > idleSeconds && !incomingCall {
       if !showingLocalReset && !showingIntroduction { route = .face }
       lockPersonalAccess()
