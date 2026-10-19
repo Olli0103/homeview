@@ -1,0 +1,204 @@
+[
+  {
+    "assertions": 9,
+    "case": "pin",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "2B850FF3-8222-44E8-A319-1BC78F0976BD",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 9,
+    "case": "unpin",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "1488EC34-7662-4C5A-9326-CB553B030AA8",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 9,
+    "case": "next_face",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "3DFE20C1-E282-4A1F-B356-05B97F0463D1",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 9,
+    "case": "world_add",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "7EC6F612-9BA4-465F-B09E-9146E08715EF",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 9,
+    "case": "world_remove",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "5B3577D3-317F-4623-B2CE-B18CD3D69D4C",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 11,
+    "case": "replace_recipe",
+    "checks": {
+      "canary_unchanged": true,
+      "cooking_context_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true,
+      "successful_recipe_change_resets_cooking": true
+    },
+    "failed": [],
+    "owned_uuid": "B997FA40-4002-47C6-A046-C7BCF54DA48F",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 9,
+    "case": "messages",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "7C58D513-4411-472B-8621-29FD006DF78C",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 9,
+    "case": "reminders",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "2A07DFC2-CE80-49C2-94BC-54B92D71F554",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 11,
+    "case": "new_profile",
+    "checks": {
+      "canary_unchanged": true,
+      "no_unsaved_new_profile": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true,
+      "successful_new_profile_selected": true
+    },
+    "failed": [],
+    "owned_uuid": "48C91DA0-652E-41DD-86A7-216C5575F14B",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 9,
+    "case": "editor_controls",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "5D0D2D1B-5581-48AE-89B7-AD41062CB9D0",
+    "verdict": "PASS"
+  },
+  {
+    "assertions": 9,
+    "case": "typed_drafts",
+    "checks": {
+      "canary_unchanged": true,
+      "preserved_bytes_unchanged": true,
+      "restart_matches_original": true,
+      "restart_matches_saved_retry": true,
+      "retry_changes_expected_state": true,
+      "retry_has_no_error": true,
+      "retry_saved_exact_snapshot": true,
+      "save_error_visible": true,
+      "snapshot_unchanged": true
+    },
+    "failed": [],
+    "owned_uuid": "58393DD4-3C78-4B90-B1CF-F69237860601",
+    "verdict": "PASS"
+  }
+]
