@@ -36,7 +36,7 @@ final class AppModel {
   var route: Route = .face {
     didSet {
       guard oldValue == .assistant,route != .assistant else { return }
-      assistantAI.clear();stopAnswerSpeech()
+      assistantAI.clear();stopAnswerSpeech();assistantDocument=nil
       #if !os(watchOS)
         discardDemoPlan(restoreDraft:true)
       #endif
@@ -81,7 +81,8 @@ final class AppModel {
   private(set) var assistantUsesAI = false
   var assistantInput = ""
   private(set) var personalSessionGeneration = 0
-  var assistantReply = "What can I help you with?"
+  var assistantReply = "What can I help you with?" { didSet {assistantDocument=nil} }
+  private(set) var assistantDocument:AssistantResponseDocument?
   var playing = false
   var podcastPlaying = false
   var startingMusic = false
@@ -1452,7 +1453,7 @@ final class AppModel {
     #if !os(watchOS)
       discardDemoPlan()
     #endif
-    stopAnswerSpeech()
+    stopAnswerSpeech();assistantDocument=nil
     assistantAI.deselect();assistantUsesAI=enabled
     if enabled { assistantAI.select() }
   }
@@ -1582,6 +1583,7 @@ final class AppModel {
   #endif
   func runAssistant() {
     guard !Task.isCancelled,assistantInteractionActive else { return }
+    assistantDocument=nil
     stopAnswerSpeech()
     interact()
     if assistantUsesAI {
@@ -1628,6 +1630,22 @@ final class AppModel {
         "Try ‘set a timer for 5 minutes’, ‘temperature 70’, ‘good night’, ‘lights’, or ‘show recipe’. This is a local demo assistant, not Siri AI."
     }
     assistantInput = ""
+  }
+  func showAssistantExample(_ example:AssistantResponseExample) {
+    guard !Task.isCancelled,assistantInteractionActive,!assistantUsesAI else {return}
+    #if !os(watchOS)
+      guard !demoPlanBusy else {return}
+      discardDemoPlan()
+    #endif
+    stopAnswerSpeech();interact()
+    let document=example.document
+    assistantReply=document.text;assistantDocument=document
+    // Selecting a display example never sends, clears or executes a typed draft.
+  }
+  func openAssistantExampleRecipe() {
+    guard !Task.isCancelled,assistantInteractionActive,!assistantUsesAI,
+      assistantDocument?.recipeActionAvailable==true else {return}
+    interact();route = .recipe
   }
   func playChime() {
     stopAnswerSpeech();let reset=localResetGeneration

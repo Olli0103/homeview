@@ -207,6 +207,19 @@ struct AssistantView: View {
       ScrollView {
       VStack(alignment: .leading, spacing:model.assistantUsesAI ? 8:22) {
       AppHeader()
+      if !model.assistantUsesAI {
+        Menu {
+          ForEach(AssistantResponseExample.allCases) { example in
+            Button(example.title) {showExample(example)}
+              .accessibilityIdentifier("assistant.example."+example.rawValue)
+          }
+        } label: {
+          Label("Answer examples",systemImage:"rectangle.stack").font(.system(size:15))
+            .frame(minHeight:44)
+        }.padding(.horizontal,34).disabled(voice.busy || voiceInitiating || model.demoPlanBusy)
+          .accessibilityHint("Bundled examples, not personal or live results.")
+          .accessibilityIdentifier("assistant.examples")
+      }
       HStack(spacing:12) {
         Button("Capabilities and limits") { showingCapabilities=true }
           .disabled(voice.busy || voiceInitiating).accessibilityIdentifier("assistant.capabilities")
@@ -262,6 +275,10 @@ struct AssistantView: View {
           Text(model.assistantReply).font(.system(size:35,weight:.medium))
             .frame(maxWidth:.infinity,alignment:.leading).padding(.horizontal,34)
             .padding(.top,24).accessibilityIdentifier("assistant.reply")
+          if let document=model.assistantDocument {
+            AssistantResponseView(document:document,openRecipe:model.openAssistantExampleRecipe,
+              selectExample:showExample).padding(.horizontal,34)
+          }
       }
       if model.demoPlan != nil { AssistantPlanView() }
       if VoiceInputController.supported {
@@ -385,6 +402,10 @@ struct AssistantView: View {
     model.assistantInput = text
     model.runAssistant()
     if model.demoPlan?.phase == .preview { typing=false }
+  }
+  private func showExample(_ example:AssistantResponseExample) {
+    voiceSession.cancelAndRestore();typing=false
+    model.showAssistantExample(example)
   }
 }
 struct FaceTimeLanding: View {
