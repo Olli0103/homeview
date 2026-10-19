@@ -102,17 +102,19 @@ struct RootView: View {
           .simultaneousGesture(viewportNavigation(width: displayedWidth,height: displayedHeight), including: model.route == .face ? .subviews : .all)
         #endif
         .simultaneousGesture(TapGesture().onEnded { model.interact() })
-        HStack(spacing: 24) {
+        HStack(spacing: 8) {
           Button {
             model.dismissDemoDoorbell()
             model.route = .face
           } label: {
             Image(systemName: "rectangle.on.rectangle")
+              .frame(width:44,height:44).contentShape(Rectangle())
           }.accessibilityLabel("Faces").accessibilityIdentifier("nav.faces")
           Button {
             model.homeGesture()
           } label: {
             Image(systemName: "circle.grid.3x3.fill")
+              .frame(width:44,height:44).contentShape(Rectangle())
           }.accessibilityLabel("Apps").accessibilityIdentifier("nav.apps")
           Text(model.data.home.online ? "MOCK HOME" : "MOCK OFFLINE")
             .font(.system(size: 10, weight: .semibold)).tracking(2).foregroundStyle(
@@ -124,6 +126,7 @@ struct RootView: View {
             assistantFocusRequest+=1
           } label: {
             Image(systemName: "waveform")
+              .frame(width:44,height:44).contentShape(Rectangle())
           }.accessibilityLabel("Assistant").accessibilityIdentifier("nav.assistant")
             #if !os(tvOS)
               .keyboardShortcut("s",modifiers:[.command,.shift])
@@ -133,6 +136,7 @@ struct RootView: View {
             model.route = .controlCenter
           } label: {
             Image(systemName: "switch.2")
+              .frame(width:44,height:44).contentShape(Rectangle())
           }.accessibilityLabel("Control Center").accessibilityIdentifier("nav.controls")
         }.font(.system(size: 18)).foregroundStyle(.white.opacity(0.7)).buttonStyle(.plain).frame(
           height: 30)

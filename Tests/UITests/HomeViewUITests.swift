@@ -4855,3 +4855,36 @@ extension HomeViewUITests {
     XCTAssertTrue(reports.isEmpty,"Unfiltered automatic hit-region audit found \(reports.count) issues: \(reports)")
   }
 }
+
+extension HomeViewUITests {
+  private func tapFooterOuterEdge(_ id:String,_ edge:String) {
+    let button=app.buttons[id]
+    XCTAssertTrue(button.waitForExistence(timeout:5));XCTAssertTrue(button.isHittable)
+    let f=button.frame
+    XCTAssertGreaterThanOrEqual(f.width,44);XCTAssertGreaterThanOrEqual(f.height,44)
+    XCTAssertTrue(app.frame.contains(f))
+    let point:CGVector
+    switch edge {
+    case "top":point=CGVector(dx:f.midX-app.frame.minX,dy:f.minY+2-app.frame.minY)
+    case "right":point=CGVector(dx:f.maxX-2-app.frame.minX,dy:f.midY-app.frame.minY)
+    default:point=CGVector(dx:f.midX-app.frame.minX,dy:f.maxY-2-app.frame.minY)
+    }
+    app.coordinate(withNormalizedOffset:.zero).withOffset(point).tap()
+  }
+  func testFooterTargetsAre44PointsNonoverlappingAndOuterEdgesNavigate() {
+    launch(["--reference-timer"])
+    let ids=["nav.faces","nav.apps","nav.assistant","nav.controls"],frames=ids.map {app.buttons[$0].frame}
+    for f in frames {XCTAssertGreaterThanOrEqual(f.width,44);XCTAssertGreaterThanOrEqual(f.height,44)}
+    for i in frames.indices {for j in frames.indices where j>i {XCTAssertTrue(frames[i].intersection(frames[j]).isNull,"Footer targets must not overlap")}}
+    // These y positions lie outside the footer's retained 30pt layout slot.
+    tapFooterOuterEdge("nav.controls","top")
+    XCTAssertTrue(app.buttons["controls.settings"].waitForExistence(timeout:5))
+    tapFooterOuterEdge("nav.faces","top")
+    XCTAssertTrue(app.buttons["home.thermostat"].waitForExistence(timeout:5))
+    tapFooterOuterEdge("nav.apps","right")
+    XCTAssertTrue(app.buttons["all.apps"].waitForExistence(timeout:5))
+    tapFooterOuterEdge("nav.assistant","bottom")
+    XCTAssertTrue(app.descendants(matching:.any).matching(identifier:"assistant.input").firstMatch.waitForExistence(timeout:5))
+    shot("footer-44pt-outer-edge-actions-assistant")
+  }
+}
