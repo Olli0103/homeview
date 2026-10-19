@@ -5,6 +5,16 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Assistentenverfügbarkeit, Sprachen und Grenzen ·19.Oktober2026
+
+[#41 abgeschlossen](https://github.com/Olli0103/homeview/issues/41): lokale
+Fähigkeiten und Grenzen sichtbar, dieselben Grenzwerte in Anzeige und Code;
+Originalaussagen mit Snapshot-/Publikationsdatum getrennt.181 Modelltests,
+8native Ausführungen und5arm64SDKs bestanden, zehn eigene Bilder gesichtet.
+Kein neuer Siri-/Cloudanbieter oder KI-Abo. [Umfang](assistant-capabilities.md).
+Alle82 Titel/Zustände erneut geprüft: neun geschlossen,73offen. Der Auftrag
+geht mit tatsächlichen Play-/Resume-Races in #80/#67 weiter; Home bleibt getrennt.
+
 ### Öffentliche RSS-Podcasts · 19. Oktober 2026
 
 [#59 abgeschlossen](https://github.com/Olli0103/homeview/issues/59): explizite Feeds,

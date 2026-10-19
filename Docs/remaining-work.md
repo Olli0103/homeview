@@ -13,7 +13,7 @@ Farbfläche, danach Raster/Icons und Wetteransicht. Der Videoentwurf wurde verwo
 - GPU-Fluid und Performancepfad (#17); Wetterzustände mit fehlenden Werten statt erfundener Daten (#21).
 - Galerie-/Album-Update-Lifecycle (#11), Profil-Layouts (#9), geteilte Panel- und Gastfreigaben mit echter Modellautorisierung (#8/#68).
 - Explizite öffentliche Sprachausgabe (#40), eigene Live Activities (#51) und Rezept-Continuity (#56).
-- Einrichtungs-/Fähigkeitsführung (#71), Quellen-/Sprachen-/Grenzenanzeige (#41).
+- Einrichtungs-/Fähigkeitsführung (#71). Eigene Quellen-/Sprachen-/Grenzenanzeige (#41) ist erledigt; tatsächliche Cloud-/Siri-Verbindung bleibt getrennt.
 - Echten Assistenten nur mit bewusster Anbieter-/Datenschutzwahl (#33); Aktionsplaner und reiche Antworten hängen daran (#35/#36). Keine kostenpflichtige Anbieterannahme oder Übernahme von Gateway-Credentials in die App.
 - Weitere Fehler-/Gast-/Medienpfade und späte Antworten (#67/#80) bleiben zu prüfen; die neuen Kalender-/Reminder- und Speicherprüfungen sind kein pauschaler PASS für jeden Provider.
 
@@ -63,7 +63,7 @@ Farbfläche, danach Raster/Icons und Wetteransicht. Der Videoentwurf wurde verwo
 | [#38](https://github.com/Olli0103/homeview/issues/38) | Assistenten-Geste, Texteingabe und Entwurfserhalt abnehmen | In diesem Paket funktional weitergebaut und getestet; verbleibende Original-/Hardware-/breitere Fehlerabnahme offen. |
 | [#39](https://github.com/Olli0103/homeview/issues/39) | Dialogverlauf und geräteübergreifende Fortsetzung klären | Assets/Rechte, echte Identitätsbindung oder öffentliche API-/Hardwarefähigkeit noch nicht nachgewiesen. |
 | [#40](https://github.com/Olli0103/homeview/issues/40) | Antwortstimme, Tempo und Medienunterbrechungen ergänzen | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |
-| [#41](https://github.com/Olli0103/homeview/issues/41) | Dienstverfügbarkeit, Sprachen und Limits sichtbar machen | Weitere umsetzbare Software-/Integrationsarbeit; nicht in diesem Paket abgeschlossen. |
+| [#41](https://github.com/Olli0103/homeview/issues/41) | Dienstverfügbarkeit, Sprachen und Limits sichtbar machen | Abgeschlossen: eigene wahrheitsgemäße Sprachen-/Grenzenanzeige und datierter Quellenabgleich; kein Siri-Dienst. [Nachweise](assistant-capabilities.md). |
 | [#42](https://github.com/Olli0103/homeview/issues/42) | FaceTime-Annahme und aktive Anrufsteuerung als API-Lücke bilanzieren | Assets/Rechte, echte Identitätsbindung oder öffentliche API-/Hardwarefähigkeit noch nicht nachgewiesen. |
 | [#43](https://github.com/Olli0103/homeview/issues/43) | Center Stage auf geeigneter Kamera-Hardware prüfen | Reale Hardware, bewusst verbundenes Konto oder zweites Testgerät für die verlangte Abnahme nötig. |
 | [#44](https://github.com/Olli0103/homeview/issues/44) | Explizite Nachrichten- und Anruf-Systemübergaben abnehmen | Reale Hardware, bewusst verbundenes Konto oder zweites Testgerät für die verlangte Abnahme nötig. |

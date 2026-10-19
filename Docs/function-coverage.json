@@ -1610,7 +1610,8 @@
       "AI-09"
     ],
     "current": [
-      "Originalangaben zu Beta, Sprache und kommerziellen Limits sind keine Fähigkeiten unseres lokalen Parsers."
+      "Eigene Informationsansicht für lokalen Befehlsumfang, ausgewählte deutsche/englische Befehle, englische Antworten und tatsächlich erzwungene Aufnahme-/Transkript-/Timergrenzen. Kein konfigurierter Cloud-/Siri-Dienst oder KI-Abo.",
+      "P01/P03 im16.-Oktober-Snapshot direkt geprüft (P03:13.Oktober), keine aktuelle Live-Verfügbarkeitszusage. Keine fremde Quote oder künftigen Preise übernommen. #41 im Informationsumfang erledigt, F052 weiter Original-Dienstabhängigkeit."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1623,13 +1624,14 @@
     "target": "iPad core",
     "implementation_status": "research",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Own truthful disclosure passed; no Siri service equivalence claimed.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
     "completion_criteria": [
       "F052 ist als Referenz-/Dienstabhängigkeit bilanziert. Jede eigene Nutzungsgrenze entspricht dem implementierten Anbieter."
-    ]
+    ],
+    "verification": "Docs/verification/assistant-capabilities.json"
   },
   {
     "id": "F053",

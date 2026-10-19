@@ -1019,7 +1019,7 @@
     "functions": [
       "F052"
     ],
-    "current": "Originalangaben zu Beta, Sprache und kommerziellen Limits sind keine Fähigkeiten unseres lokalen Parsers.",
+    "current": "Eigene Informationsansicht für lokalen Befehlsumfang, ausgewählte deutsche/englische Befehle, englische Antworten und tatsächlich erzwungene Aufnahme-/Transkript-/Timergrenzen. Kein konfigurierter Cloud-/Siri-Dienst oder KI-Abo.",
     "tasks": [
       "Quelle und Datum der Referenzangaben prüfen",
       "Eigene tatsächlich unterstützte Sprachen und Limits getrennt anzeigen",
@@ -1032,7 +1032,8 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/41",
     "issue_number": 41,
-    "state": "open"
+    "state": "completed",
+    "completion": "Datierte P01/P03-Snapshotprüfung und eigene wahrheitsgemäße Anzeige erledigt; F052 bleibt Original-Dienstabhängigkeit. Docs/assistant-capabilities.md."
   },
   {
     "key": "COM-01",
