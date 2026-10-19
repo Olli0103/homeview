@@ -24,7 +24,7 @@ final class HomeViewCoreTests: XCTestCase {
     XCTAssertThrowsError(try home.transact(.temperature(49)))
     XCTAssertEqual(home, before)
   }
-  func testLockRequiresProfileAndSceneCannotUnlockIt() throws {
+  func testLockRequiresAuthorizationAndSceneCannotUnlockIt() throws {
     var home = MockHome()
     let before = home
     XCTAssertThrowsError(try home.transact(.lock)) {
@@ -33,14 +33,14 @@ final class HomeViewCoreTests: XCTestCase {
     XCTAssertEqual(home, before)
     try home.transact(.lock, authorized: true)
     XCTAssertFalse(home.locked)
-    try home.transact(.scene("Good Night"))
+    try home.transact(.scene("Good Night"),authorized:true)
     XCTAssertTrue(home.locked)
     try home.transact(.scene("Good Morning"))
     XCTAssertTrue(home.locked)
   }
   func testScenesApplyCompleteStateAndUnknownSceneIsRejected() throws {
     var home = MockHome()
-    try home.transact(.scene("Good Night"))
+    try home.transact(.scene("Good Night"),authorized:true)
     XCTAssertFalse(home.entryLight)
     XCTAssertFalse(home.bedroomLight)
     XCTAssertEqual(home.blinds, 0)

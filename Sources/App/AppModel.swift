@@ -83,6 +83,7 @@ final class AppModel {
   var currentMusicTitle: String {
     #if !os(watchOS)
       if connections.enabled.contains(.music) {
+        guard connections.musicAccessAllowed else { return "Apple Music · Locked" }
         if let index = connections.currentTrack, connections.tracks.indices.contains(index) {
           return connections.tracks[index].title
         }
@@ -94,6 +95,7 @@ final class AppModel {
   var currentMusicArtist: String {
     #if !os(watchOS)
       if connections.enabled.contains(.music) {
+        guard connections.musicAccessAllowed else { return "Device authentication required" }
         if let index = connections.currentTrack, connections.tracks.indices.contains(index) {
           return connections.tracks[index].artist
         }
@@ -104,7 +106,7 @@ final class AppModel {
   }
   var musicIsPlaying: Bool {
     #if !os(watchOS)
-      if connections.enabled.contains(.music) { return connections.musicPlaying }
+      if connections.enabled.contains(.music) { return connections.musicAccessAllowed && connections.musicPlaying }
     #endif
     return playing
   }
@@ -287,6 +289,13 @@ final class AppModel {
     return f.string(from: clock)
   }
   var authorized: Bool { profile != nil && simulatedPresence }
+  var canControlMockSecurity:Bool {
+    #if !os(watchOS)
+      GuestAccessPolicy.allows(.mockSecurity,role:connections.personalUnlocked ? .deviceAuthenticated:.guest)
+    #else
+      false
+    #endif
+  }
   init() {
     let args = ProcessInfo.processInfo.arguments
     // Fixed clocks never read a calendar store and cannot override a normal
@@ -864,11 +873,18 @@ final class AppModel {
   }
   func connectService(_ kind:DataConnection,expectedResetGeneration:Int) async {
     guard !Task.isCancelled,expectedResetGeneration==localResetGeneration else { return }
+    guard kind != .music || connections.personalUnlocked else {
+      error="Authenticate before connecting Apple Music. A demo profile is not device authentication.";return
+    }
     let previous=data.connectionConsent
     var choices=previous ?? connections.requested;choices.insert(kind)
     data.connectionConsent=choices
     guard persist() else { data.connectionConsent=previous;return }
     await connections.connect(kind,date:clock,timeZone:displayTimeZone)
+  }
+  func beginGuestMusicUse() {
+    guard connections.guestMusicShared,connections.musicAccessAllowed else { return }
+    lockPersonalAccess();pendingPage=nil;route = .app(.music)
   }
   @discardableResult
   func disconnectService(_ kind:DataConnection)->Bool {
@@ -968,7 +984,7 @@ final class AppModel {
   func interact() { lastInteraction = Date() }
   func command(_ command: HomeCommand) {
     do {
-      try data.home.transact(command, authorized: authorized)
+      try data.home.transact(command, authorized: canControlMockSecurity)
       persist()
     } catch { self.error = error.localizedDescription }
   }
@@ -978,6 +994,7 @@ final class AppModel {
     #if !os(watchOS)
       if page == .calendar && connections.requested.contains(.calendar)
         || page == .reminders && connections.requested.contains(.reminders)
+        || page == .music && connections.enabled.contains(.music) && !connections.musicAccessAllowed
       {
         pendingPage = page
         route = connections.personalUnlocked ? .app(page) : .deviceUnlock
@@ -1585,6 +1602,9 @@ final class AppModel {
     #endif
     #if !os(watchOS)
       if connections.enabled.contains(.music) {
+        guard connections.musicAccessAllowed else {
+          pendingPage = .music;route = .deviceUnlock;return
+        }
         if connections.currentTrack == nil {
           route = .app(.music)
         } else {

@@ -12,6 +12,8 @@ struct ConnectionControls: View {
         "Calendar and reminders are protected by your device authentication. Other Apple apps' private history is not imported."
       )
       .font(.system(size: 17)).foregroundStyle(.gray)
+      Text("Guests can use public weather, local timers, bundled media and public podcast feeds. Apple Music stays private unless an authenticated device holder explicitly shares the current queue. Sharing ends on background, new search, reconnect or app restart.")
+        .font(.system(size:16)).foregroundStyle(.gray).accessibilityIdentifier("guest.policy.summary")
       ForEach(DataConnection.allCases) { kind in
         VStack(alignment: .leading, spacing: 7) {
           HStack {
@@ -21,6 +23,8 @@ struct ConnectionControls: View {
             Button(on ? "Disconnect" : "Connect") {
               if on {
                 _ = model.disconnectService(kind)
+              } else if kind == .music && !model.connections.personalUnlocked {
+                model.pendingPage = .settings;model.route = .deviceUnlock
               } else {
                 let reset=model.localResetGeneration
                 Task { await model.connectService(kind,expectedResetGeneration:reset) }
@@ -34,6 +38,23 @@ struct ConnectionControls: View {
           if model.connections.requested.contains(kind), !model.connections.enabled.contains(kind) {
             Button("Disconnect") { _ = model.disconnectService(kind) }
               .accessibilityIdentifier("connection.forget.\(kind.rawValue)")
+          }
+          if kind == .music,model.connections.enabled.contains(.music) {
+            if model.connections.guestMusicShared {
+              Button("Continue as guest") { model.beginGuestMusicUse() }
+                .accessibilityIdentifier("guest.music.use")
+            }
+            Text(model.connections.guestMusicShared ? "Current queue shared · Search remains private":"Guest music sharing is off")
+              .font(.system(size:15)).accessibilityIdentifier("guest.music.status")
+            if model.connections.personalUnlocked {
+              Button(model.connections.guestMusicShared ? "Stop guest sharing":"Share current queue with guests") {
+                _ = model.connections.setGuestMusicSharing(!model.connections.guestMusicShared)
+              }.accessibilityIdentifier("guest.music.share")
+            } else {
+              Button("Authenticate to manage sharing") {
+                model.pendingPage = .settings;model.route = .deviceUnlock
+              }.accessibilityIdentifier("guest.music.authenticate")
+            }
           }
           if kind == .weather {
             TextField(
@@ -171,9 +192,19 @@ struct DeviceMusicView: View {
   @State private var browsing = false
   @FocusState private var queryFocused: Bool
   var body: some View {
+    Group {
+    if !model.connections.musicAccessAllowed {
+      if model.connections.personalUnlocked {
+        VStack(spacing:20) {
+          AppHeader(title:"Apple Music")
+          Text("Music source access is unavailable. Reconnect explicitly in Settings.")
+          Button("Open Settings") { model.navigate(.settings) }
+        }.padding(24)
+      } else { DeviceUnlockView() }
+    } else {
     VStack(spacing: 12) {
       AppHeader(title: "Apple Music", light: true)
-      if browsing || model.connections.currentTrack == nil {
+      if model.connections.personalUnlocked && (browsing || model.connections.currentTrack == nil) {
         HStack {
           TextField("Search Apple Music", text: $query).textFieldStyle(.plain).focused(
             $queryFocused
@@ -235,7 +266,7 @@ struct DeviceMusicView: View {
             }
           }
         }
-      } else {
+      } else if model.connections.personalUnlocked {
         Button("Browse Music") { browsing = true }.font(.system(size: 20))
           .accessibilityIdentifier("music.browse")
       }
@@ -247,6 +278,10 @@ struct DeviceMusicView: View {
         LinearGradient(
           colors: [.indigo, .black], startPoint: .topLeading, endPoint: .bottomTrailing)
       ).buttonStyle(.plain)
+    }
+    }.onChange(of:model.connections.personalUnlocked) { _,unlocked in
+      if !unlocked { query="";queryFocused=false;browsing=false }
+    }
   }
   private func search() {
     queryFocused = false

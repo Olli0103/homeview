@@ -20,6 +20,7 @@ import SwiftUI
             Button("Good Night") { model.command(.scene("Good Night")) }
             Button("Good Morning") { model.command(.scene("Good Morning")) }
           }
+          if let error=model.error { Text(error).foregroundStyle(.orange) }
           Section("Timers") {
             Button("5-minute timer") { model.addTimer(seconds: 300) }
             ForEach(model.data.timers) { t in Text(t.display(at: model.now)) }

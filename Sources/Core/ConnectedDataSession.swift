@@ -47,6 +47,36 @@ final class DeviceConnections {
   private(set) var musicTime = 0.0
   private(set) var weather: WeatherReading?
   private(set) var personalUnlocked = false
+  /// Explicitly approved current queue, RAM only. Not source/OS permission.
+  private(set) var guestMusicShared=false
+  private var accessRole:LocalAccessRole { personalUnlocked ? .deviceAuthenticated:.guest }
+  var musicAccessAllowed:Bool {
+    enabled.contains(.music) && provider.authorized(.music)
+      && GuestAccessPolicy.allows(.connectedMusicPlayback,role:accessRole,sharedMusicQueue:guestMusicShared)
+  }
+  var musicSearchAllowed:Bool {
+    enabled.contains(.music) && provider.authorized(.music)
+      && GuestAccessPolicy.allows(.connectedMusicSearch,role:accessRole)
+  }
+  @discardableResult
+  func setGuestMusicSharing(_ share:Bool)->Bool {
+    if share {
+      guard personalUnlocked,enabled.contains(.music),provider.authorized(.music),
+        !busy.contains(.music),let index=currentTrack,tracks.indices.contains(index) else {
+        status[.music]="Authenticate and choose a current queue before sharing it.";return false
+      }
+      guestMusicShared=true
+      status[.music]="Current queue shared with guests for this app session. Search is not shared."
+    } else {
+      let wasShared=guestMusicShared
+      guestMusicShared=false;generation[.music,default:0]+=1;musicActionGeneration+=1
+      busy.remove(.music);provider.pauseMusic();musicPlaying=false;musicTime=0
+      if !personalUnlocked { tracks=[];currentTrack=nil }
+      if wasShared { status[.music]="Guest queue sharing is off." }
+    }
+    return true
+  }
+  func endGuestMusicSession() { _ = setGuestMusicSharing(false) }
   var city = "Berlin" {
     didSet {
       guard city != oldValue else { return }
@@ -75,6 +105,12 @@ final class DeviceConnections {
   func connect(_ kind: DataConnection, date: Date = Date(),
                timeZone: TimeZone = .current, requestPermission: Bool = true) async {
     guard !Task.isCancelled, !busy.contains(kind) || kind == .calendar else { return }
+    if kind == .music {
+      guard !requestPermission || personalUnlocked else {
+        status[.music]="Authenticate before connecting Apple Music.";return
+      }
+      endGuestMusicSession();tracks=[];currentTrack=nil
+    }
     requested.insert(kind)
     let wasEnabled = enabled.contains(kind)
     busy.insert(kind)
@@ -103,7 +139,9 @@ final class DeviceConnections {
         let values = try await provider.reminders()
         guard generation[kind] == ticket else { return }
         if personalUnlocked { reminders = values }
-      case .music: try await provider.authorizeMusic()
+      case .music:
+        if requestPermission { try await provider.authorizeMusic() }
+        else if !provider.authorized(.music) { throw CalendarAgendaError.permissionRequired }
       case .weather:
         let queryCity = city
         lastWeatherFetch = Date()
@@ -175,6 +213,7 @@ final class DeviceConnections {
     case .calendar: events = []
     case .reminders: reminders = []
     case .music:
+      guestMusicShared=false
       musicActionGeneration += 1
       provider.pauseMusic()
       tracks = []
@@ -211,6 +250,10 @@ final class DeviceConnections {
     }
     events = []
     reminders = []
+    if !guestMusicShared {
+      endGuestMusicSession()
+      if requested.contains(.music) { status[.music]="Locked · authenticate to use Apple Music." }
+    }
   }
   func refreshCalendar(_ date: Date, timeZone: TimeZone = .current) async {
     if enabled.contains(.calendar), personalUnlocked {
@@ -273,34 +316,36 @@ final class DeviceConnections {
     }
   }
   func searchMusic(_ query: String) async {
-    guard enabled.contains(.music), !busy.contains(.music),
+    guard musicSearchAllowed, !busy.contains(.music),
       !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     else { return }
+    // A new search changes the queue; prior guest consent cannot follow it.
+    _ = setGuestMusicSharing(false)
     let ticket = generation[.music]
     busy.insert(.music)
     defer { if generation[.music] == ticket { busy.remove(.music) } }
     do {
       let values = try await provider.searchMusic(String(query.prefix(200)))
-      guard generation[.music] == ticket, enabled.contains(.music), !Task.isCancelled else { return }
+      guard generation[.music] == ticket, musicSearchAllowed, !Task.isCancelled else { return }
       musicActionGeneration += 1
       provider.pauseMusic()
       musicPlaying = false
       currentTrack = nil
       tracks = values
     } catch {
-      guard generation[.music] == ticket, enabled.contains(.music), !Task.isCancelled else { return }
+      guard generation[.music] == ticket, musicSearchAllowed, !Task.isCancelled else { return }
       status[.music] = "Music search unavailable. Check access and your subscription."
     }
   }
   func playMusic(_ index: Int) async {
-    guard enabled.contains(.music), tracks.indices.contains(index), !Task.isCancelled else { return }
+    guard musicAccessAllowed, tracks.indices.contains(index), !Task.isCancelled else { return }
     let connection = generation[.music]
     musicActionGeneration += 1
     let action = musicActionGeneration
     let id = tracks[index].id
     func current() -> Bool {
       generation[.music] == connection && musicActionGeneration == action
-        && enabled.contains(.music) && !Task.isCancelled
+        && musicAccessAllowed && !Task.isCancelled
         && tracks.indices.contains(index) && tracks[index].id == id
     }
     do {
@@ -314,7 +359,7 @@ final class DeviceConnections {
     }
   }
   func toggleMusic() async {
-    guard enabled.contains(.music), let index=currentTrack, tracks.indices.contains(index),
+    guard musicAccessAllowed, let index=currentTrack, tracks.indices.contains(index),
       !Task.isCancelled else { return }
     musicActionGeneration += 1
     let action=musicActionGeneration;let connection=generation[.music]
@@ -323,12 +368,12 @@ final class DeviceConnections {
       do { try await provider.resumeMusic() }
       catch {
         guard generation[.music]==connection,musicActionGeneration==action,
-          enabled.contains(.music),!Task.isCancelled else { return }
+          musicAccessAllowed,!Task.isCancelled else { return }
         status[.music] = "Playback unavailable."
       }
     }
     guard generation[.music]==connection,musicActionGeneration==action,
-      enabled.contains(.music),!Task.isCancelled else { return }
+      musicAccessAllowed,!Task.isCancelled else { return }
     pollMusic()
   }
   func pauseMusic() {
@@ -338,6 +383,11 @@ final class DeviceConnections {
   }
   func pollMusic() {
     guard enabled.contains(.music) else { return }
+    guard provider.authorized(.music) else {
+      endGuestMusicSession();tracks=[];currentTrack=nil
+      status[.music]="Music source permission was revoked.";return
+    }
+    guard musicAccessAllowed else { musicPlaying=false;musicTime=0;return }
     musicPlaying = provider.musicPlaying
     musicTime = provider.musicTime
   }
