@@ -260,15 +260,18 @@ final class DeviceConnections {
     else { return }
     let ticket = generation[.music]
     busy.insert(.music)
-    defer { busy.remove(.music) }
+    defer { if generation[.music] == ticket { busy.remove(.music) } }
     do {
       let values = try await provider.searchMusic(String(query.prefix(200)))
-      guard generation[.music] == ticket else { return }
+      guard generation[.music] == ticket, enabled.contains(.music), !Task.isCancelled else { return }
       provider.pauseMusic()
       musicPlaying = false
       currentTrack = nil
       tracks = values
-    } catch { status[.music] = "Music search unavailable. Check access and your subscription." }
+    } catch {
+      guard generation[.music] == ticket, enabled.contains(.music), !Task.isCancelled else { return }
+      status[.music] = "Music search unavailable. Check access and your subscription."
+    }
   }
   func playMusic(_ index: Int) async {
     guard enabled.contains(.music), tracks.indices.contains(index) else { return }
