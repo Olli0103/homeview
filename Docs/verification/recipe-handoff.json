@@ -2,8 +2,8 @@
   "date": "2026-10-19",
   "issue": 56,
   "issue_state": "OPEN",
-  "code_commit": "3fda41ee98aa15682930f5a413c9754ac993dbeb",
-  "source_digest": "0acfb1d9a1e83b720a6c80667a2b343f23ab5506e68bf9334be58192cca1a979",
+  "code_commit": "36e74f2766f1e3de3ad909e11e230759c6adcda9",
+  "source_digest": "49a34f32efa114a14ea8078fde23ed7c9f8d0a9f092df939d5d9edb897cfb44d",
   "core_tests": 198,
   "core_failures": 0,
   "new_codec_tests": 9,
@@ -147,9 +147,36 @@
       ],
       "qualification": "One affected case/device passed after removing success toast; actual Finish action reaches cover; no automatic timer.",
       "all_inputs_unchanged": true
+    },
+    {
+      "id": "recipe-handoff-cancellation-final",
+      "source_digest": "49a34f32efa114a14ea8078fde23ed7c9f8d0a9f092df939d5d9edb897cfb44d",
+      "methods": [
+        "testRecipeHandoffResumesExactStepOnlyAfterExplicitUnlockAndNeverStartsTimer",
+        "testRecipeHandoffDeniedUnlockAndReadOnlyStoreCannotContinue",
+        "testRecipeHandoffBackgroundDropsPendingTransferAndDoesNotResumeIt"
+      ],
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": []
+        },
+        {
+          "device": "iPhone",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "runtimeWarnings": []
+        }
+      ],
+      "qualification": "Three affected cases/device after independently reproduced cancellation bug fix. Earlier checkpoints retained, not relabelled as new fullsuite.",
+      "all_inputs_unchanged": true
     }
   ],
-  "UI_executions_across_qualified_checkpoints": 20,
+  "UI_executions_across_qualified_checkpoints": 26,
   "unique_selected_methods_per_device": 6,
   "SDKs": [
     {
@@ -201,15 +228,15 @@
   ],
   "compiled_input_files_per_checkpoint": 23,
   "final_compiled_archive_readback": true,
-  "final_compiled_archive_sha256": "cab8ffc90fd15d90e19a3c6e9c3519c37187beabb7b5c902eb6a167827a5cae0",
+  "final_compiled_archive_sha256": "ed09cabf76f5f40280e6f4dbc3131d967785d95d34e3cdb2ff3ef9355fbabb5a",
   "installed_app_readback": {
     "iPad": true,
     "iPhone": true
   },
   "image_review": {
-    "decoded": 68,
-    "selected_reviewed": 36,
-    "contact_sheets": 10,
+    "decoded": 88,
+    "selected_reviewed": 56,
+    "contact_sheets": 12,
     "published": [
       {
         "path": "Docs/screenshots/recipe-handoff/iPad-viewport-recipe-handoff-awaits-explicit-accept.png",
@@ -289,5 +316,14 @@
     "No native NSUserActivity construction/broadcast in automated tests; only own encoded synthetic input",
     "No real recipes, Photos/accounts/homes, sends or timers created by receiving transfer",
     "iOS/macOS native activity declarations only; Watch/tvOS/visionOS do not advertise receiving this activity"
-  ]
+  ],
+  "initial_code_commit": "3fda41ee98aa15682930f5a413c9754ac993dbeb",
+  "cancellation_release_gate": {
+    "before_passed": 9,
+    "after_passed": 11,
+    "total": 11,
+    "codec_cases_passed": 12,
+    "report": "Docs/verification/recipe-handoff-release-gate.json"
+  },
+  "final_archive_scope": "164 source files plus 23 compiled inputs, all 187 entries read back"
 }

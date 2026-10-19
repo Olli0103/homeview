@@ -2388,7 +2388,9 @@
       "DAY-10"
     ],
     "current": [
-      "Rezepte sind nur lokal gespeichert. Kein nachgewiesenes geräteübergreifendes Handoff."
+      "Eigener expliziter NSUserActivity-Pfad mit Rezept-/Quellen-Fingerprint und genauem Kochschritt; kein Rezepttext/Quell-URL/Timer-Autostart, nur bereits lokal vorhandenes Rezept.",
+      "Synthetische Annahme-, Versions-, Entsperr-, Speicherfehler-, Abbruch- und Hintergrundpfade nachgewiesen; native Aktivität wird in Tests nicht angeboten. Docs/recipe-handoff.md und getrennte Quellen-/Gate-Nachweise.",
+      "Reale Übergabe zwischen zwei bewusst eingerichteten kompatiblen Apps/Geräten und physische Authentifizierung sind weiterhin nicht nachgewiesen; Issue56 bleibt offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2401,9 +2403,9 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "bounded own local-recipe acceptance and failure paths verified; actual OS transport pending",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "pending real two-device OS transport and physical authentication; simulator unavailable state is not equivalent"
     },
     "completion_criteria": [
       "Zwei bewusst eingerichtete Testgeräte übernehmen Rezept/Schritt oder zeigen einen klaren Nichtverfügbarkeitszustand."
