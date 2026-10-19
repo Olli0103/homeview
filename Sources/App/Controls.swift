@@ -383,18 +383,29 @@ struct AssistantView: View {
 }
 struct FaceTimeLanding: View {
   @Environment(AppModel.self) private var model
+  @State private var previewExpanded=false
   var body: some View {
-    VStack(spacing: 18) {
+    VStack(spacing: 12) {
       AppHeader(title: "FaceTime")
       Image(systemName: "video.fill").font(.system(size: 60)).foregroundStyle(.green)
       Text("FaceTime").font(.system(size: 31, weight: .semibold))
       SystemFaceTimeAction().padding(.horizontal, 32)
-      Text("Calls open in FaceTime. The video engine cannot be embedded here.")
+      Text("Start calls in the FaceTime app. HomeView does not receive or control its calls.")
         .font(.system(size: 18)).multilineTextAlignment(.center).foregroundStyle(.gray)
       Divider()
-      Pill(title: "Simulate Incoming Call", symbol: "phone.fill", tint: .green, textColor: .white) {
-        model.incomingCall = true
-      }.accessibilityIdentifier("facetime.simulate")
+      Button { previewExpanded.toggle() } label: {
+        Label(previewExpanded ? "Hide local call preview":"Show local call preview",
+              systemImage:previewExpanded ? "chevron.up":"chevron.down")
+          .font(.system(size:18)).frame(maxWidth:.infinity,minHeight:70)
+      }.accessibilityIdentifier("facetime.demo.preview")
+      if previewExpanded {
+        Text("Local demo only. No call, camera or microphone connection.")
+          .font(.system(size:15)).foregroundStyle(.secondary)
+          .accessibilityIdentifier("facetime.demo.scope")
+        Pill(title: "Simulate Incoming Call", symbol: "phone.fill", tint: .gray, textColor: .white) {
+          model.incomingCall = true
+        }.accessibilityIdentifier("facetime.simulate")
+      }
       Spacer(minLength: 0)
     }.padding(.horizontal, 30).background(.white).foregroundStyle(.black)
   }

@@ -800,13 +800,40 @@ final class HomeViewUITests: XCTestCase {
   }
   func testCallAcceptAndEndWithoutNetwork() {
     launch(["--page", "FaceTime"])
+    XCTAssertFalse(app.buttons["facetime.simulate"].exists)
+    XCTAssertFalse(app.buttons["call.accept"].exists)
+    tap("facetime.demo.preview")
+    XCTAssertTrue(app.staticTexts["facetime.demo.scope"].exists)
     tap("facetime.simulate")
+    XCTAssertTrue(app.staticTexts["Incoming local demo · No connection"].exists)
+    XCTAssertFalse(app.buttons["call.demo.microphone"].exists)
     shot("UI27-incoming-demo-call")
     tap("call.accept")
     XCTAssertTrue(
       app.staticTexts["Local call simulation · No connection"].waitForExistence(timeout: 3))
+    XCTAssertEqual(app.buttons["call.demo.microphone"].value as? String,"On (demo)")
+    tap("call.demo.microphone")
+    XCTAssertEqual(app.buttons["call.demo.microphone"].value as? String,"Muted (demo)")
+    XCTAssertEqual(app.buttons["call.demo.video"].value as? String,"On (demo)")
+    tap("call.demo.video")
+    XCTAssertEqual(app.buttons["call.demo.video"].value as? String,"Off (demo)")
+    shot("facetime-boundary-active-local-demo")
     tap("call.end")
     XCTAssertTrue(app.buttons["all.apps"].waitForExistence(timeout: 3))
+  }
+  func testFaceTimeLocalPreviewCanCloseOrDeclineWithoutAConnection() {
+    launch(["--page","FaceTime"])
+    XCTAssertFalse(app.buttons["facetime.system"].isEnabled)
+    XCTAssertFalse(app.buttons["facetime.simulate"].exists)
+    shot("facetime-boundary-normal-system-handoff")
+    tap("facetime.demo.preview");XCTAssertTrue(app.buttons["facetime.simulate"].exists)
+    tap("facetime.demo.preview");XCTAssertFalse(app.buttons["facetime.simulate"].exists)
+    tap("facetime.demo.preview");tap("facetime.simulate")
+    XCTAssertTrue(app.staticTexts["Jamie · Demo"].exists)
+    tap("call.end")
+    XCTAssertTrue(app.buttons["all.apps"].waitForExistence(timeout:3))
+    XCTAssertFalse(app.buttons["call.accept"].exists)
+    XCTAssertFalse(app.buttons["call.demo.microphone"].exists)
   }
   func testMusicPlaybackAndTrackNavigation() {
     launch(["--page", "Music"])

@@ -203,10 +203,10 @@ struct CallView: View {
         colors: [.teal, Color(red: 0.1, green: 0.25, blue: 0.3)], startPoint: .topLeading,
         endPoint: .bottomTrailing)
       VStack(spacing: 20) {
-        Text(incoming ? "Jamie" : "Demo call with Jamie").font(.system(size: 36, weight: .semibold))
+        Text(incoming ? "Jamie · Demo" : "Demo call with Jamie").font(.system(size: 36, weight: .semibold))
           .padding(.top, 50)
         Text(
-          incoming ? "Incoming simulated FaceTime call" : "Local call simulation · No connection"
+          incoming ? "Incoming local demo · No connection" : "Local call simulation · No connection"
         ).font(.system(size: 19)).opacity(0.65)
         Spacer()
         Image(systemName: "person.crop.circle.fill").font(.system(size: 175)).foregroundStyle(
@@ -216,12 +216,16 @@ struct CallView: View {
           if !incoming {
             RoundButton(
               symbol: model.muted ? "mic.slash.fill" : "mic.fill", color: .white.opacity(0.2),
-              foreground: .white, size: 65, label: "Toggle microphone"
+              foreground: .white, size: 65, label: "Toggle demo microphone"
             ) { model.muted.toggle() }
+              .accessibilityIdentifier("call.demo.microphone")
+              .accessibilityValue(model.muted ? "Muted (demo)":"On (demo)")
             RoundButton(
               symbol: model.videoEnabled ? "video.fill" : "video.slash.fill",
-              color: .white.opacity(0.2), foreground: .white, size: 65, label: "Toggle video"
+              color: .white.opacity(0.2), foreground: .white, size: 65, label: "Toggle demo video"
             ) { model.videoEnabled.toggle() }
+              .accessibilityIdentifier("call.demo.video")
+              .accessibilityValue(model.videoEnabled ? "On (demo)":"Off (demo)")
           }
           RoundButton(
             symbol: "phone.down.fill", color: .red, foreground: .white, size: 65,
