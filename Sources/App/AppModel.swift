@@ -886,6 +886,7 @@ final class AppModel {
     if !pathOwned {
       storeReadOnly=true;storeRecoveryNote="Storage identity changed during reset. Further local writes are blocked."
     }
+    timerActivityRevoked=true;timerActivityPreferenceSavePending=false
     data=fresh;commitTimerActivityProjection();gallery=[];photoIndex=0;showPhoto(nil)
     pendingPage=nil;simulatedPresence=true
     referenceClock=ProcessInfo.processInfo.arguments.contains("--reference-clock")

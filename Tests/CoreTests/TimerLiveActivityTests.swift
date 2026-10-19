@@ -40,7 +40,7 @@ final class TimerLiveActivityTests:XCTestCase {
   for _ in 0..<1000 where s.busy {await Task.yield()}
   XCTAssertFalse(s.busy)
  }
- @MainActor func entered(_ p:ActivityBackendProbe) async {
+ @MainActor private func entered(_ p:ActivityBackendProbe) async {
   for _ in 0..<1000 where p.continuation==nil {await Task.yield()}
   XCTAssertNotNil(p.continuation)
  }
