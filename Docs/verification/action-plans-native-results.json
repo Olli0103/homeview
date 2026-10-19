@@ -1,0 +1,112 @@
+[
+  {
+    "case": "preview",
+    "exit_code": 0,
+    "result": {
+      "assertions": 7,
+      "case": "preview",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "9839CF1D-5F1F-4F2D-963E-23BA146579E6"
+    }
+  },
+  {
+    "case": "success_replay",
+    "exit_code": 0,
+    "result": {
+      "assertions": 11,
+      "case": "success_replay",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "D9CCFDFF-F30D-4F30-A79A-5D38F6F21953"
+    }
+  },
+  {
+    "case": "middle_failure",
+    "exit_code": 0,
+    "result": {
+      "assertions": 10,
+      "case": "middle_failure",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "6B4FDAD4-6F9B-4EEF-A725-0D1D73B20568"
+    }
+  },
+  {
+    "case": "expiry_context",
+    "exit_code": 0,
+    "result": {
+      "assertions": 7,
+      "case": "expiry_context",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "0123C9DA-2B53-4F27-88AF-0009F0FB5B4E"
+    }
+  },
+  {
+    "case": "cancel_prestart",
+    "exit_code": 0,
+    "result": {
+      "assertions": 7,
+      "case": "cancel_prestart",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "DB6E3E69-D48B-40D9-BEB5-7BBB329A242A"
+    }
+  },
+  {
+    "case": "cancel_midstep",
+    "exit_code": 0,
+    "result": {
+      "assertions": 7,
+      "case": "cancel_midstep",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "C46845D9-7BC3-4B9A-9488-53490264F8E6"
+    }
+  },
+  {
+    "case": "late_completion_new_plan",
+    "exit_code": 0,
+    "result": {
+      "assertions": 11,
+      "case": "late_completion_new_plan",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "A72A9ABB-65C5-4FE5-BFCF-21C62121CD0F"
+    }
+  },
+  {
+    "case": "save_failure",
+    "exit_code": 0,
+    "result": {
+      "assertions": 8,
+      "case": "save_failure",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "D42205E5-12A3-47BB-8343-144F439B26C6"
+    }
+  },
+  {
+    "case": "unverified_store",
+    "exit_code": 0,
+    "result": {
+      "assertions": 9,
+      "case": "unverified_store",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "0C8A396C-A7AC-4054-A98D-151333E1E83E"
+    }
+  },
+  {
+    "case": "ai_answer_only",
+    "exit_code": 0,
+    "result": {
+      "assertions": 4,
+      "case": "ai_answer_only",
+      "Home_constructed": false,
+      "real_system_timer_scheduled": false,
+      "storeID": "3834EFE5-3898-4D03-B6DA-D3C6F61BBF74"
+    }
+  }
+]

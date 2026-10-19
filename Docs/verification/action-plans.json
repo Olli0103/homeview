@@ -1,0 +1,167 @@
+{
+  "date": "2026-10-19",
+  "issue": 35,
+  "code_commit": "b4b0a9a8f147a89d2569192638f38ccb2af0a118",
+  "source_digest": "a09c9e5a54f696d80e1aeb4e3f55634a4148d1408667a02fedfec1ec6cadcb02",
+  "source_files": 186,
+  "Core_tests": 254,
+  "Core_failures": 0,
+  "Core_byte_equivalent_to_recorded_full_run": true,
+  "native_gate": {
+    "verdict": "PASS",
+    "cases": 10,
+    "assertions": 81,
+    "inputs_unchanged": true,
+    "target": "b4b0a9a8f147a89d2569192638f38ccb2af0a118",
+    "clean_before_after": true,
+    "compiled_source_matches_git": true
+  },
+  "native_gate_scope": "Actual AppModel, controlled pre-step scheduler, unique owned stores; no real Home or OS alarm scheduling",
+  "delivery_UI_executions": 6,
+  "delivery_unique_UI_methods": 3,
+  "delivery_UI_failures": 0,
+  "delivery_UI_skips": 0,
+  "delivery_UI_runtime_warnings": [],
+  "UI_checkpoint_qualification": "Two disjoint selections on identical source and compiled products; not six unique methods",
+  "UI_hittability_qualification": "AX hittability was false for visible controls; fully contained measured coordinates plus actual state transitions tested. Not physical assistive-technology acceptance.",
+  "installed_apps_read_back": true,
+  "compiled_inputs_per_checkpoint": 22,
+  "UI_owned_stores_read_back": 4,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "generator": {
+    "target": "b4b0a9a8f147a89d2569192638f38ccb2af0a118",
+    "clean_before_after": true,
+    "project_byte_equivalent": true,
+    "Python_AST_valid": true,
+    "Core_254_input_bytes_unchanged": true
+  },
+  "delivery_PNGs_decoded": 28,
+  "delivery_contact_sheets_reviewed": 4,
+  "images": [
+    {
+      "path": "Docs/verification/action-plans-images/iPad-viewport-plan-three-step-preview-no-execution.png",
+      "sha256": "016844796ad84e6a701fb6d4092e3700cc78f3eab13d5b5b1b61a85503ec60a9"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPad-viewport-plan-all-three-saved-readbacks.png",
+      "sha256": "367180224e4159320202eb9a733154da799495be4d0ce3797d626cf3e3cf4e4b"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPad-viewport-plan-middle-offline-one-confirmed-one-failed-one-not-run.png",
+      "sha256": "9b22315b018c61a148518f0ff4ee37a59491a9336e5fe0e1a2e0bfd0a9b7a5c9"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPad-plan-restart-no-pending-plan-or-auto-replay.png",
+      "sha256": "c5c3532f09cc5cc2bbb7da5fc98375f3cf5817a39332997e8fa331bb84ed0b98"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPad-plan-preview-cancel-unsafe-request-no-thermostat-change.png",
+      "sha256": "fb778af33a1d8879ec80d525ae7e0ed729796ae0c61f6f47d4371aea42109eb9"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPhone-viewport-plan-three-step-preview-no-execution.png",
+      "sha256": "d33b5eee2916da2c80e90432ab630b6cc4788bd6ca078947fc15562c45cb2426"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPhone-viewport-plan-all-three-saved-readbacks.png",
+      "sha256": "221408fdda2528e8d23695e56a5c77fdee750efdb506d9f25d102be99277442d"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPhone-viewport-plan-middle-offline-one-confirmed-one-failed-one-not-run.png",
+      "sha256": "096c65e7b6b195bf9f24111aaeac9af1a4ce686270e0cbfcd479b80eac0b4c3b"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPhone-plan-restart-no-pending-plan-or-auto-replay.png",
+      "sha256": "ce0a667a4a862955acee26282960234e8b63518d76c6f1a9ed6397ff821b4d8a"
+    },
+    {
+      "path": "Docs/verification/action-plans-images/iPhone-plan-preview-cancel-unsafe-request-no-thermostat-change.png",
+      "sha256": "2e88f134192e0ed451d931cbdc18d6f067a41e25250fd45f024c27bc0e66f459"
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "action-plans-pilot",
+      "source_digest": "478a8aab052f5da94fded271bc6e2dcc1b9c9577510b7aba62e4efb0c229ed50",
+      "passed": 0,
+      "failed": 6,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive": "action-plans-pilot-inputs.zip",
+      "entries": 208,
+      "sha256": "8950e069ad0f6b332c69a0ac908e24c90e217ae31585c5ee5c61e0ce10e14240",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "action-plans-scroll",
+      "source_digest": "c81e043b390f55f82cb8c820a9d4a1d4f8691303584d252830c14e2863758c32",
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive": "action-plans-scroll-inputs.zip",
+      "entries": 208,
+      "sha256": "19b7dac7961a998a75a74ac1526b2b5d98c935e4534eab24887a53dd37c2d8b0",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "action-plans-touch",
+      "source_digest": "a09c9e5a54f696d80e1aeb4e3f55634a4148d1408667a02fedfec1ec6cadcb02",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive": "action-plans-touch-inputs.zip",
+      "entries": 208,
+      "sha256": "4a09806b26c3c0ad084e9e4443597811e569a3d24b010c173ca7b78dc50e4690",
+      "all_entries_read_back": true
+    },
+    {
+      "id": "action-plans-delivery",
+      "source_digest": "a09c9e5a54f696d80e1aeb4e3f55634a4148d1408667a02fedfec1ec6cadcb02",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive": "action-plans-delivery-inputs.zip",
+      "entries": 208,
+      "sha256": "0777ffc9efcfb965a39622faadb64efa1ab6f1f2aeed940cf93fd94de8777950",
+      "all_entries_read_back": true
+    }
+  ],
+  "retained_UI_failures": 8,
+  "retained_native_development_failure": "Initial probe assumed initialization had already saved mock-state.json; failed before plan execution. Explicit owned baseline persist fixed only the harness.",
+  "diagnostic_export_note": "Dot-suffixed attachment names made the original glob miss two diagnostic attachments; they were recovered separately with unfiltered xcresulttool export, not regenerated or relabeled.",
+  "native_archive": {
+    "name": "action-plans-native-release-inputs.zip",
+    "entries": 130,
+    "sha256": "fc4e8fcef21adf2745d21f93a4ff9dde75c63b5391413984ef847a8088ec2a4a",
+    "all_entries_read_back": true
+  },
+  "system_timer_integration": false,
+  "personal_or_security_actions_admitted": false,
+  "AI_answer_only_preserved": true,
+  "original_F043_parity": false,
+  "Home_constructed": false
+}

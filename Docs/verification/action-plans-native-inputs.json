@@ -1,0 +1,652 @@
+[
+  {
+    "path": "bundle/NativePlanGate.app/Contents/Info.plist",
+    "sha256": "9035c3870d0ea0337769fca4288841f0d68e3a9dafae7542cbb0b16c73569d97",
+    "bytes": 387
+  },
+  {
+    "path": "bundle/NativePlanGate.app/Contents/MacOS/NativePlanGate",
+    "sha256": "d4ea8157fd6f632716e1f6a83fc74106980a1aa60238d4975ee0915cc0a7a49f",
+    "bytes": 22209840
+  },
+  {
+    "path": "bundle/NativePlanGate.app/Contents/Resources/demo-tone.wav",
+    "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+    "bytes": 176444
+  },
+  {
+    "path": "dependencies/FeedKit.o",
+    "sha256": "80b5b8937feb1c8a8ffafc8612d4fb7f259ddf161e1ed3a21df3c08460c218c1",
+    "bytes": 7212944
+  },
+  {
+    "path": "dependencies/XMLKit.o",
+    "sha256": "d970e1cd6efa7703359a46552df8dd80e37bda490657b2f0fc5775fad02df74a",
+    "bytes": 698736
+  },
+  {
+    "path": "final-run/ai_answer_only-command.json",
+    "sha256": "957bb9662c476213565899230240ec569b854a147b9ba2f0fc48a985807e8978",
+    "bytes": 336
+  },
+  {
+    "path": "final-run/ai_answer_only.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/ai_answer_only.stdout",
+    "sha256": "560aaa9bdd384970b2d000d5b1340181a84bcefc04dbdda84123f7df72a73e38",
+    "bytes": 151
+  },
+  {
+    "path": "final-run/cancel_midstep-command.json",
+    "sha256": "9f694705b0f72ad219b157ab23d3f600013bb260d13adfde901de6fe9c0aacc3",
+    "bytes": 297
+  },
+  {
+    "path": "final-run/cancel_midstep.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/cancel_midstep.stdout",
+    "sha256": "e4ae84f65bf9f2b8066c127a7776110971196c298658db2df6d5df8f0dd8874b",
+    "bytes": 151
+  },
+  {
+    "path": "final-run/cancel_prestart-command.json",
+    "sha256": "f0c9870b7c4bdce15b04379b305ac847d600a5c0a452a9b964ea27ed6ff6bcf7",
+    "bytes": 298
+  },
+  {
+    "path": "final-run/cancel_prestart.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/cancel_prestart.stdout",
+    "sha256": "375aaf9a5114e34d1d79a1b0567793abec049168347cd823fcf2d653d9fd39c3",
+    "bytes": 152
+  },
+  {
+    "path": "final-run/execution-inputs-after.json",
+    "sha256": "0fde635616cc8e4a8c238aef9b82a9ba4fd450becc02ade539c94c6c082dec6a",
+    "bytes": 692
+  },
+  {
+    "path": "final-run/execution-inputs-before.json",
+    "sha256": "0fde635616cc8e4a8c238aef9b82a9ba4fd450becc02ade539c94c6c082dec6a",
+    "bytes": 692
+  },
+  {
+    "path": "final-run/expiry_context-command.json",
+    "sha256": "ac9e3befbf9bbe1b17af33bfc94bd5d87bfaa6a18fb58e1d4bbffffa9706e175",
+    "bytes": 297
+  },
+  {
+    "path": "final-run/expiry_context.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/expiry_context.stdout",
+    "sha256": "c3b069c1a898ecd77d89ebaa261f4848ebdb038096321edd01e8e70df8fb2991",
+    "bytes": 151
+  },
+  {
+    "path": "final-run/late_completion_new_plan-command.json",
+    "sha256": "d174baf134984a5fc02b1f1f307f585225b59ad4e5a0a6955f0d03f91ce05f67",
+    "bytes": 307
+  },
+  {
+    "path": "final-run/late_completion_new_plan.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/late_completion_new_plan.stdout",
+    "sha256": "c8317e82937b68d63ac3eeeaf64a2f7ec87fb4e74e8038e8a535709aac63c660",
+    "bytes": 162
+  },
+  {
+    "path": "final-run/middle_failure-command.json",
+    "sha256": "c6376dad70ba8bb2dbeba5792199c5e37790c0327b8c326b32bcbc7849afe601",
+    "bytes": 297
+  },
+  {
+    "path": "final-run/middle_failure.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/middle_failure.stdout",
+    "sha256": "32053584586f3b7decf05b3b7b31c107f572b2f667e1b22d868f14110e17a03a",
+    "bytes": 152
+  },
+  {
+    "path": "final-run/pinned-target.json",
+    "sha256": "72eb2fa315c370b37d36c541afd4a4e5cee27f984bc210fada6fa958efcedc37",
+    "bytes": 128
+  },
+  {
+    "path": "final-run/preview-command.json",
+    "sha256": "b597e4bf1f5c8961689ce7265ddd888c3df10e9256059bed9c1deb877c18bea1",
+    "bytes": 290
+  },
+  {
+    "path": "final-run/preview.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/preview.stdout",
+    "sha256": "61d099dbd22be07f1886ecc23dac4a3d5c246a688bedf75ecf74e47e2c8dc7f7",
+    "bytes": 144
+  },
+  {
+    "path": "final-run/results.json",
+    "sha256": "b4f8e9896e58f859865ba0418e910da0f0090c1396c649c99047dd894a176393",
+    "bytes": 2704
+  },
+  {
+    "path": "final-run/save_failure-command.json",
+    "sha256": "0a619e4196f493417f0f0b74695b1852381789ccb11013ca9433770522e56927",
+    "bytes": 295
+  },
+  {
+    "path": "final-run/save_failure.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/save_failure.stdout",
+    "sha256": "1a0b962ec78d471c69e5e2a9cdd22029b83608532cb5601f0503aa855857a4b8",
+    "bytes": 149
+  },
+  {
+    "path": "final-run/success_replay-command.json",
+    "sha256": "33d417aad2121c62d6cd28a97e6134f42933d32546c9b7c6707631ac9d4398c1",
+    "bytes": 297
+  },
+  {
+    "path": "final-run/success_replay.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/success_replay.stdout",
+    "sha256": "e340f318a8b0cb88041f5cf6a539ce72a44125fca415e327d753abbc40fc1ec5",
+    "bytes": 152
+  },
+  {
+    "path": "final-run/unverified_store-command.json",
+    "sha256": "856efca644adff15c528f3d1f973bc7dc1a8d66ebf001f4f4dc6c5ede0941c3f",
+    "bytes": 299
+  },
+  {
+    "path": "final-run/unverified_store.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "final-run/unverified_store.stdout",
+    "sha256": "2edc0642cd67b30eee1491584fcbce112198becc68ba7f6d4651c72086076565",
+    "bytes": 153
+  },
+  {
+    "path": "final-run/verdict.json",
+    "sha256": "d3d0f99252716a41ac58ef9568cf95244b8487abb5280f13b38c28cb1f93f1d8",
+    "bytes": 87
+  },
+  {
+    "path": "gate/AppModelInspected.swift",
+    "sha256": "7eb728b8d86bf2619973b8521f79446530c7ebf192b23366b83f137dcebd8e9f",
+    "bytes": 68732
+  },
+  {
+    "path": "gate/NativePlanGate.swift",
+    "sha256": "2529e9f8a92567e69947f19a8326e1f59fd182344a9a66957d98efd004890e9e",
+    "bytes": 9986
+  },
+  {
+    "path": "gate/command.json",
+    "sha256": "3e75914eb807b30be733bc9a18142ece50646bafd47eec18ec193207b941dfbb",
+    "bytes": 7987
+  },
+  {
+    "path": "gate/compile.log",
+    "sha256": "3c1844aafef5f3bda4e79db3bef58930c8640c81156f587e68d5a5e728ae7e9f",
+    "bytes": 1314
+  },
+  {
+    "path": "gate/compile.py",
+    "sha256": "3b328d392cf41ecfeda8984063925ae81a18cdeb493c4527ae17087ec41bea1d",
+    "bytes": 2380
+  },
+  {
+    "path": "gate/inputs-after.json",
+    "sha256": "ac6bf365301358af5277b2b833b5d210c06c3ea295447b07e3588fdfe5d336cf",
+    "bytes": 16309
+  },
+  {
+    "path": "gate/inputs-before.json",
+    "sha256": "ac6bf365301358af5277b2b833b5d210c06c3ea295447b07e3588fdfe5d336cf",
+    "bytes": 16309
+  },
+  {
+    "path": "gate/run-final.py",
+    "sha256": "e0bcc173ce47752fb7c4c82b836aaea5fb316b667cb125a4ede79809976b407a",
+    "bytes": 2956
+  },
+  {
+    "path": "gate/run.py",
+    "sha256": "e70a3266531360abe3eabebe3157222e1de4fb8fa198919e890daf4f037d80f5",
+    "bytes": 1588
+  },
+  {
+    "path": "source/Sources/App/AlternateHomeFace.swift",
+    "sha256": "9280c2c1756be456b9220411e2407f038f4615101e36c6c65d8b6f29bf18d436",
+    "bytes": 2537
+  },
+  {
+    "path": "source/Sources/App/AnswerSpeechActions.swift",
+    "sha256": "e58e357589e7dcdae8bf23278fffec893ab2403d549a8f888c148ec33a183e39",
+    "bytes": 2860
+  },
+  {
+    "path": "source/Sources/App/AnswerSpeechSettingsView.swift",
+    "sha256": "91398c25ab36ccd5d5aff40430984db48133c8295be50f48904bd324e0c99cea",
+    "bytes": 2895
+  },
+  {
+    "path": "source/Sources/App/AppIcons.swift",
+    "sha256": "171f5456c6adb64a55285419afdd277213d2c97c89c07b725584a40039e61f06",
+    "bytes": 6506
+  },
+  {
+    "path": "source/Sources/App/AssistantCapabilitiesView.swift",
+    "sha256": "83980e20dae46c8f9e8b8d3fb4ee2ea03df35a38bc6b1eeb1a5e2ecd4d46550c",
+    "bytes": 5881
+  },
+  {
+    "path": "source/Sources/App/AssistantPlanView.swift",
+    "sha256": "9c083a44eb02821d1f12d26f2b07a1aa0a33a6ffa63cbb24754bc697127e3cc0",
+    "bytes": 2320
+  },
+  {
+    "path": "source/Sources/App/BrowserNavigationFixture.swift",
+    "sha256": "179e863f55bcb4d0171d9ee874cc10c0dea9d9576fb465309056539d7417ebac",
+    "bytes": 1826
+  },
+  {
+    "path": "source/Sources/App/CameraAndCommunication.swift",
+    "sha256": "470fee214cc4306575530c81eeb0c57ed9d29c31cbae5e3d283bf47597fed6ef",
+    "bytes": 11355
+  },
+  {
+    "path": "source/Sources/App/ConnectedViews.swift",
+    "sha256": "5401ba943477f08f4280fa6c9e069e797b7434881e7f1bbfe1adfa850ab539df",
+    "bytes": 11890
+  },
+  {
+    "path": "source/Sources/App/Controls.swift",
+    "sha256": "21014ad79f41db806449420664667d3e06fb362ac0235923ad946a962ef840b0",
+    "bytes": 24764
+  },
+  {
+    "path": "source/Sources/App/Design.swift",
+    "sha256": "50df3f149472970525939be1b4d7d627749791c888176287ae228f3317169151",
+    "bytes": 12145
+  },
+  {
+    "path": "source/Sources/App/DeviceConnections.swift",
+    "sha256": "c173eef48a1bbc51ec626a9947d9a4865c0b1fb84240828102910a4bb7da262f",
+    "bytes": 10355
+  },
+  {
+    "path": "source/Sources/App/DisplayWakeController.swift",
+    "sha256": "85ea8ea5f21007bb518c5e6e9d4046b063db80d36fed682d9eff5c5047f277e7",
+    "bytes": 1426
+  },
+  {
+    "path": "source/Sources/App/Everyday.swift",
+    "sha256": "27366891179ae72d79ebd7faba47f34a74bfc7ca7c1b55eae15a413840f55e6c",
+    "bytes": 27998
+  },
+  {
+    "path": "source/Sources/App/FaceEditor.swift",
+    "sha256": "64195338be3019f9c683fc2da1425c1f6e25ef8847169c6139735a9e1763134d",
+    "bytes": 12779
+  },
+  {
+    "path": "source/Sources/App/Faces.swift",
+    "sha256": "72a1aaacd674435d89d0866e8009723ec502ac8cced4a3cbc8a0847e258b216c",
+    "bytes": 32969
+  },
+  {
+    "path": "source/Sources/App/FlowDigitContours.swift",
+    "sha256": "c05e80a4379d75b141d886ae25794e0fa8129b639f472eac9d6b3426c38a0fc0",
+    "bytes": 4984
+  },
+  {
+    "path": "source/Sources/App/HomeScreens.swift",
+    "sha256": "6dd2b159100e658d97ca3b5b55e6336fdd71014310059454921aae795dd5c366",
+    "bytes": 24396
+  },
+  {
+    "path": "source/Sources/App/LocalAudioEngine.swift",
+    "sha256": "1c2b3284f90ea3965d3d287b7d0131a0e350c55bd5fecdde2268bde0aa5697c0",
+    "bytes": 2803
+  },
+  {
+    "path": "source/Sources/App/LocalResetView.swift",
+    "sha256": "c64d522a8dc63a54bb10258a2facd6206e435e405c4bd97281467407351eb3fe",
+    "bytes": 4610
+  },
+  {
+    "path": "source/Sources/App/Motion.swift",
+    "sha256": "291c8b848fbfe31f3f178b4e9e6bfc48b983bef0938bdfa1c43118d56575bf66",
+    "bytes": 6840
+  },
+  {
+    "path": "source/Sources/App/NativeAlarms.swift",
+    "sha256": "03605fbcdb0d0d496cb017745b77e64b98a3526a546cedc4eea2ce17d2209a8b",
+    "bytes": 4791
+  },
+  {
+    "path": "source/Sources/App/NativeAnswerSpeech.swift",
+    "sha256": "1ee1550a609d60a04215f562311b630d0db9bb666e9ad8b42341112f7f4f89c3",
+    "bytes": 4548
+  },
+  {
+    "path": "source/Sources/App/NativeAssistantAnswers.swift",
+    "sha256": "69113df39041d856d0ad7f12512a14ce7c10b9119f959e2742b2b6dd4b2b323f",
+    "bytes": 4502
+  },
+  {
+    "path": "source/Sources/App/NativeBrowser.swift",
+    "sha256": "8009f0fcb8d8a307a5a1e1691e87abd46f824267ef854ee37de431d90d71d73d",
+    "bytes": 16605
+  },
+  {
+    "path": "source/Sources/App/NativeMirror.swift",
+    "sha256": "1c4db3aafb84f65b4b75687001d2573f3a5c803fbb59158d977b06799ccd3197",
+    "bytes": 7807
+  },
+  {
+    "path": "source/Sources/App/NativePhotos.swift",
+    "sha256": "f1cbc292eef06facdac9b0245c628d3e72d104c9cec5b29566d5e37c626d72d3",
+    "bytes": 16618
+  },
+  {
+    "path": "source/Sources/App/NativeServices.swift",
+    "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd",
+    "bytes": 9889
+  },
+  {
+    "path": "source/Sources/App/NativeViewportMarker.swift",
+    "sha256": "965fe9f7e058d31405a90b6262c4c3ca273872ec9fd803a58e8ea1c67a8cf159",
+    "bytes": 1099
+  },
+  {
+    "path": "source/Sources/App/NativeVoice.swift",
+    "sha256": "bf5981b27eb4ca66bb2550d6f980d05193f56f4f610285d92663bb4bc0ca046d",
+    "bytes": 9602
+  },
+  {
+    "path": "source/Sources/App/PhotoClockInkRasterizer.swift",
+    "sha256": "fa6142f1cfbc4f695ef7896255d67da069a02628e17f975fc3fed0faf00b9fdb",
+    "bytes": 2839
+  },
+  {
+    "path": "source/Sources/App/PhotoLayoutFixture.swift",
+    "sha256": "841bff3090e57e9a7b2d9a801a6fcc40f22485d24fceec8d9377d8dfee89dc5a",
+    "bytes": 5078
+  },
+  {
+    "path": "source/Sources/App/PhotoTallGlyphs.swift",
+    "sha256": "3be93d1957a68adbf00c0d1c173d5467a512cf5207ee2cfd03db8b9eff56384b",
+    "bytes": 4224
+  },
+  {
+    "path": "source/Sources/App/PodcastActions.swift",
+    "sha256": "5e776c0138f8df0a5a96d1540d33941b7b686a38d7ae68a7ef7b01d3dda0c43a",
+    "bytes": 3778
+  },
+  {
+    "path": "source/Sources/App/PodcastPlayback.swift",
+    "sha256": "0232ca33b26878ef02cc33dc8d5dba0093730ba75cec77e8445127e1119981c3",
+    "bytes": 4535
+  },
+  {
+    "path": "source/Sources/App/PowerCapabilitiesView.swift",
+    "sha256": "6db8c594bbc0531a0d711092605ab65755d7000be07406da42a53933ebea843b",
+    "bytes": 3660
+  },
+  {
+    "path": "source/Sources/App/RecipeHandoffActions.swift",
+    "sha256": "7f7ac10fe8481582991b6f6fbcbec3e4877a371647882c35cc97cf15bb5e168a",
+    "bytes": 3676
+  },
+  {
+    "path": "source/Sources/App/RecipeHandoffController.swift",
+    "sha256": "f2e94c008c001a8773b652fe2b79c5d000cc14c1da5d3382924fe0a20f512adc",
+    "bytes": 2697
+  },
+  {
+    "path": "source/Sources/App/RecipeHandoffView.swift",
+    "sha256": "debd0e112a2f82e7ce7c4247c7110930b72e59765942c5023d80db0cf9d34c34",
+    "bytes": 1536
+  },
+  {
+    "path": "source/Sources/App/RootView.swift",
+    "sha256": "0c8857b55ab58deec714982f7afec7e25ddb429d77ee11bfeae7560e5614b9c8",
+    "bytes": 14907
+  },
+  {
+    "path": "source/Sources/App/SetupIntroductionView.swift",
+    "sha256": "445550bc5030c8bafbaaa33df6fe8ae05692b85fab81b00d4982d153e4c3f107",
+    "bytes": 4881
+  },
+  {
+    "path": "source/Sources/App/SharedAlbums.swift",
+    "sha256": "67da476ec1b41dadf26bb95a70c360aca85f25e0d9e8c1cd2a62a90d3ba918bb",
+    "bytes": 15263
+  },
+  {
+    "path": "source/Sources/App/SystemActions.swift",
+    "sha256": "3926f604d07302035c0d9a2f0c30456d07a09af943098461b4c9434b45dc95a2",
+    "bytes": 3500
+  },
+  {
+    "path": "source/Sources/App/WatchRoot.swift",
+    "sha256": "4d89d19b46fe5aceee5bd43d37cb29e1feb2bed4cff3a7faac16b5e1d2f47b98",
+    "bytes": 1277
+  },
+  {
+    "path": "source/Sources/App/WeatherGlass.swift",
+    "sha256": "854237c5249b506a84d1a2dffde5026ea1cf6d926a496adf046f70843fa07c56",
+    "bytes": 1168
+  },
+  {
+    "path": "source/Sources/App/WeatherScreen.swift",
+    "sha256": "41721225ea8b1ebdb4da3fd84357d327cc0f7cfa704503cebe55d24d1dc8e42c",
+    "bytes": 9266
+  },
+  {
+    "path": "source/Sources/App/WeatherService.swift",
+    "sha256": "3921ee5426399c326610cfa4f25d27e6baf2018f6a827210edfbef8ae692be78",
+    "bytes": 2337
+  },
+  {
+    "path": "source/Sources/Core/AlbumDisplay.swift",
+    "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573",
+    "bytes": 10693
+  },
+  {
+    "path": "source/Sources/Core/AnswerSpeechSession.swift",
+    "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e",
+    "bytes": 3700
+  },
+  {
+    "path": "source/Sources/Core/AssistantConversation.swift",
+    "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1",
+    "bytes": 5049
+  },
+  {
+    "path": "source/Sources/Core/AssistantLimits.swift",
+    "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584",
+    "bytes": 251
+  },
+  {
+    "path": "source/Sources/Core/BrowserPolicy.swift",
+    "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942",
+    "bytes": 1367
+  },
+  {
+    "path": "source/Sources/Core/CalendarAgenda.swift",
+    "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd",
+    "bytes": 1432
+  },
+  {
+    "path": "source/Sources/Core/ConicGradientModel.swift",
+    "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3",
+    "bytes": 1384
+  },
+  {
+    "path": "source/Sources/Core/ConnectedDataSession.swift",
+    "sha256": "c9fbeb3f50270f4b376ae42a04e31180c4c624d43464cc5eb6726c7648f65267",
+    "bytes": 15333
+  },
+  {
+    "path": "source/Sources/Core/ConnectedModels.swift",
+    "sha256": "cb011d1d322c46a8424d04e8a9e858b7d723ef76abb8ab88c2f1ed4d5bedc42c",
+    "bytes": 1010
+  },
+  {
+    "path": "source/Sources/Core/DataConnection.swift",
+    "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d",
+    "bytes": 244
+  },
+  {
+    "path": "source/Sources/Core/DemoActionPlan.swift",
+    "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11",
+    "bytes": 6817
+  },
+  {
+    "path": "source/Sources/Core/DemoDoorbell.swift",
+    "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398",
+    "bytes": 2014
+  },
+  {
+    "path": "source/Sources/Core/EverydayVoiceCommand.swift",
+    "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c",
+    "bytes": 4238
+  },
+  {
+    "path": "source/Sources/Core/FaceConfiguration.swift",
+    "sha256": "f28b9987306361df114cf24d81a0ca909c8f1a9866fd1708f07a2fe7a8bb6386",
+    "bytes": 8107
+  },
+  {
+    "path": "source/Sources/Core/FlowSimulation.swift",
+    "sha256": "11dc99bb0d648625c37a17c5a78ec4a618c69c44370d91373da63e038ea21494",
+    "bytes": 9267
+  },
+  {
+    "path": "source/Sources/Core/FlowTypography.swift",
+    "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa",
+    "bytes": 3569
+  },
+  {
+    "path": "source/Sources/Core/LocalStateReset.swift",
+    "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb",
+    "bytes": 7709
+  },
+  {
+    "path": "source/Sources/Core/Models.swift",
+    "sha256": "8ed3eb2fc88569e87a69bdbda9fc3d069a73d9911993b91259dc7f0d645a57d0",
+    "bytes": 15076
+  },
+  {
+    "path": "source/Sources/Core/MusicPlaybackGate.swift",
+    "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5",
+    "bytes": 1485
+  },
+  {
+    "path": "source/Sources/Core/PersonalHomeConfiguration.swift",
+    "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc",
+    "bytes": 2107
+  },
+  {
+    "path": "source/Sources/Core/PhotoClockInk.swift",
+    "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9",
+    "bytes": 2348
+  },
+  {
+    "path": "source/Sources/Core/PhotoMaskRasterizer.swift",
+    "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c",
+    "bytes": 941
+  },
+  {
+    "path": "source/Sources/Core/PhotoPlacement.swift",
+    "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae",
+    "bytes": 13992
+  },
+  {
+    "path": "source/Sources/Core/PodcastFeedParser.swift",
+    "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e",
+    "bytes": 2154
+  },
+  {
+    "path": "source/Sources/Core/PodcastFeedTransport.swift",
+    "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97",
+    "bytes": 1884
+  },
+  {
+    "path": "source/Sources/Core/PodcastLibrary.swift",
+    "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba",
+    "bytes": 2934
+  },
+  {
+    "path": "source/Sources/Core/PowerAdapterInformation.swift",
+    "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616",
+    "bytes": 639
+  },
+  {
+    "path": "source/Sources/Core/RecipeParser.swift",
+    "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da",
+    "bytes": 8475
+  },
+  {
+    "path": "source/Sources/Core/RecipeTransfer.swift",
+    "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4",
+    "bytes": 3400
+  },
+  {
+    "path": "source/Sources/Core/SetupIntroduction.swift",
+    "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8",
+    "bytes": 198
+  },
+  {
+    "path": "source/Sources/Core/SnapshotMigration.swift",
+    "sha256": "dfa7b3bc15215b18498a4c2e9881816db40017027d84fc66b847cd5298fd2e47",
+    "bytes": 7710
+  },
+  {
+    "path": "source/Sources/Core/ViewportNavigationIntent.swift",
+    "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341",
+    "bytes": 1260
+  },
+  {
+    "path": "source/Sources/Core/WeatherData.swift",
+    "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3",
+    "bytes": 6698
+  },
+  {
+    "path": "source/Sources/Core/WorldClock.swift",
+    "sha256": "418016a859f09e373daa4971031d9363a561831395b77f9d5ec28a45790ee828",
+    "bytes": 4783
+  }
+]
