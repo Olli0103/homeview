@@ -25,10 +25,10 @@ import Foundation
     m.showAssistantExample(.recipe);m.setAnswerSpeechForeground(false)
     m.openAssistantExampleRecipe();m.showAssistantExample(.knowledge)
     checks["inactive_selection_and_action_rejected"]=m.route == .assistant && m.assistantDocument==AssistantResponseExample.recipe.document
-    m.setAnswerSpeechForeground(true);m.assistantUsesAI=true
+    m.setAnswerSpeechForeground(true);m.selectAssistantAnswers(true)
     m.showAssistantExample(.knowledge);m.openAssistantExampleRecipe()
-    checks["AI_mode_cannot_select_or_execute_cards"]=m.route == .assistant && m.assistantDocument==AssistantResponseExample.recipe.document
-    m.assistantUsesAI=false;m.openAssistantExampleRecipe()
+    checks["AI_mode_cannot_select_or_execute_cards"]=m.route == .assistant && m.assistantDocument==nil
+    m.selectAssistantAnswers(false);m.showAssistantExample(.recipe);m.openAssistantExampleRecipe()
     checks["explicit_recipe_opens_only_bundled_route"]=m.route == .recipe && m.assistantDocument==nil
     checks["recipe_action_no_state_mutation"]=try state()==initial
     checks["recipe_action_keeps_draft"]=m.assistantInput==draft
