@@ -1,0 +1,248 @@
+{
+  "archive": "bounded-state-startup-fd-history.zip",
+  "entries": 60,
+  "sha256": "cb5acd4018f016ccdbaf98e35b6410f229f6b86f251aacb1963193a5b7b3a315",
+  "all_entries_read_back": true,
+  "files": [
+    {
+      "path": "production/LocalStateFileReader.swift",
+      "sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837"
+    },
+    {
+      "path": "bounded-state-startup-fd/inputs-after.json",
+      "sha256": "3a3094560bc600054a89b42229e14952210af0d5ba5536971c267dc20f84907f"
+    },
+    {
+      "path": "bounded-state-startup-fd/compile-commands.json",
+      "sha256": "95f7293ff9c07a4c0ecee318f213d508aada7eb362f7aa4db48f1bcaa76fa8ad"
+    },
+    {
+      "path": "bounded-state-startup-fd/run.py",
+      "sha256": "d77f3691dbdf8d2f70e653d4698242e0becb02ef744ff80137e1642b08b42d30"
+    },
+    {
+      "path": "bounded-state-startup-fd/replace-stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd/replace-stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd/race.c",
+      "sha256": "502d3f12d448a19f73a27eb4f7fc4e5dfb1e5dd605b18dddbfcc7fc648fc1218"
+    },
+    {
+      "path": "bounded-state-startup-fd/preparation-verdict.json",
+      "sha256": "25ed47a48a1d8ee2447280630e6642d81ef8b13ead1b2bb67258effe4fddc1c8"
+    },
+    {
+      "path": "bounded-state-startup-fd/inputs-before.json",
+      "sha256": "3a3094560bc600054a89b42229e14952210af0d5ba5536971c267dc20f84907f"
+    },
+    {
+      "path": "bounded-state-startup-fd/FDGate",
+      "sha256": "cdc31f937b6359800c38f5bbe15e31b85859c0bb2f583cb73df118c41d8573cb"
+    },
+    {
+      "path": "bounded-state-startup-fd/Race.dylib",
+      "sha256": "db697d9bc260277eaac42bc95542b464f803dd5dfbb0643ea6b079b09b451ef9"
+    },
+    {
+      "path": "bounded-state-startup-fd/FDGate.swift",
+      "sha256": "7d626032d213db35b489f98ba5c0ccfe05a1608f842cd27052618c864bc8cca4"
+    },
+    {
+      "path": "bounded-state-startup-fd/compile-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd/compile-0.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd/replace-command.json",
+      "sha256": "71b57ff394ad14d4efcce825b74019b5793ee26725d2b8a6faaa74db2d4b0621"
+    },
+    {
+      "path": "bounded-state-startup-fd/fixture-85e61e93-4289-4a5a-b4f3-217b69d4b0ba/state.json",
+      "sha256": "217264855fcca45021809afd8eecd70df5d3e562b1536edfea07795dcea79de2"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/inputs-after.json",
+      "sha256": "38c1f7d6527ac738db044abc09bfbafbee5da041fa5f0f465cedb9bc921975fc"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/compile-commands.json",
+      "sha256": "c925e1584f6c4d54cdb114a1e821fe79e487ea9b529a2cc3042da04068a6d3c5"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/run.py",
+      "sha256": "d77f3691dbdf8d2f70e653d4698242e0becb02ef744ff80137e1642b08b42d30"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/replace-stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/replace-stdout",
+      "sha256": "23bd95713f4155d656ff6c029c7a46ae484e52739e414e3241bdb4d40914147f"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/race.c",
+      "sha256": "6f7a797128ee4d0fb75fe3a9021cd185e3fbab443a9fc2c3f568dcb1bebe9c6e"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/verdict.json",
+      "sha256": "df9125bf28b17c481a772028f9730fec98187aa292f44788610e8f1f0cbff4e9"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/inputs-before.json",
+      "sha256": "38c1f7d6527ac738db044abc09bfbafbee5da041fa5f0f465cedb9bc921975fc"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/grow-command.json",
+      "sha256": "da5274c1f80c6ce387eed8d9f2d61ff3c79ec7d28b7e67e670be6dd91b06d054"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/FDGate",
+      "sha256": "cdc31f937b6359800c38f5bbe15e31b85859c0bb2f583cb73df118c41d8573cb"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/grow-stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/Race.dylib",
+      "sha256": "6e855b36be0647ad4a7c420b68d6f12bbf5bcf52b1cf4dba809c8645df309715"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/FDGate.swift",
+      "sha256": "7d626032d213db35b489f98ba5c0ccfe05a1608f842cd27052618c864bc8cca4"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/grow-stdout",
+      "sha256": "05c452a7cc345eec47e06da1f72a19fef3f88602dfc84477a4eb69945ec198c0"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/compile-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/compile-0.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/replace-command.json",
+      "sha256": "786906da4d27e2c24c347a3f4b07c860c398d293f64cfedc21250514c1bf1cce"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/fixture-9aa82f30-000a-4f0a-9e89-19477131fbf6/state.json",
+      "sha256": "6ea940611e5ed32f845a159af15bc4b4daa29808181cc0b44fcffdf4fc65cf1c"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/fixture-9aa82f30-000a-4f0a-9e89-19477131fbf6/state.json.fired",
+      "sha256": "66d3aa7536456a17d0ee9d7ce5c199d796fa3d0caba4d29589ecf393573a1ea0"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/fixture-afd73a6b-a286-4bac-992e-5e385955080e/state.json",
+      "sha256": "fe479425df54254f572c5f3ab265f5cf7ce77ed32fa04c8172ed8b6927681725"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/fixture-afd73a6b-a286-4bac-992e-5e385955080e/state.json.fired",
+      "sha256": "66d3aa7536456a17d0ee9d7ce5c199d796fa3d0caba4d29589ecf393573a1ea0"
+    },
+    {
+      "path": "bounded-state-startup-fd-v2/fixture-afd73a6b-a286-4bac-992e-5e385955080e/state.json.captured",
+      "sha256": "217264855fcca45021809afd8eecd70df5d3e562b1536edfea07795dcea79de2"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/inputs-after.json",
+      "sha256": "46ed1f6f0299887d3a62bff717e7641ab4fe57ddbd71d533af9e608d1490c4be"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/compile-commands.json",
+      "sha256": "c69ab2e593e074325527e428bffa7af06441c1d882239ca98c211d07bc16c462"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/run.py",
+      "sha256": "d77f3691dbdf8d2f70e653d4698242e0becb02ef744ff80137e1642b08b42d30"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/replace-stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/replace-stdout",
+      "sha256": "0930c096dcbf31ffbf3167da7ae80b4e16a4d50fb18a41238f852f75329fb936"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/race.c",
+      "sha256": "6f7a797128ee4d0fb75fe3a9021cd185e3fbab443a9fc2c3f568dcb1bebe9c6e"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/verdict.json",
+      "sha256": "4ee0d8485b3d21deab6ae91c10f24d49758704905fd8748115c67ed9548124d0"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/inputs-before.json",
+      "sha256": "46ed1f6f0299887d3a62bff717e7641ab4fe57ddbd71d533af9e608d1490c4be"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/grow-command.json",
+      "sha256": "d8c79bc266a01d2dfdb6c10cb0441a8707b8ff459af8d168a35d90b78b9988cf"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/FDGate",
+      "sha256": "6e2454e418080f6707b15f1c0c3abd404b7d7a1f7fa22f3d1c5de900ff52dcd8"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/grow-stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/Race.dylib",
+      "sha256": "38794f7058fc2be08bc20b847189a533549984e8b40d8fd626b4dc799879d2fd"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/FDGate.swift",
+      "sha256": "86bc852ac12c8fe0afc2ba1a96cbf3083580987d62dd34430dd3bd690950805f"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/grow-stdout",
+      "sha256": "412c207810540d24ef84319750b56df48c4b660ba348c3d7b151a4ac5bb27ee6"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/compile-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/compile-0.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/replace-command.json",
+      "sha256": "07855ecde5d9b059d3f38409e99af5443ba34fded9e05ca4306274d8c52974a5"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/fixture-5125740d-a609-41a5-9a3b-b39a62691e2a/state.json",
+      "sha256": "fe479425df54254f572c5f3ab265f5cf7ce77ed32fa04c8172ed8b6927681725"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/fixture-5125740d-a609-41a5-9a3b-b39a62691e2a/state.json.fired",
+      "sha256": "66d3aa7536456a17d0ee9d7ce5c199d796fa3d0caba4d29589ecf393573a1ea0"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/fixture-5125740d-a609-41a5-9a3b-b39a62691e2a/state.json.captured",
+      "sha256": "217264855fcca45021809afd8eecd70df5d3e562b1536edfea07795dcea79de2"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/fixture-a17aff0f-a3d3-44ca-b095-8f06e12ed4e7/state.json",
+      "sha256": "6ea940611e5ed32f845a159af15bc4b4daa29808181cc0b44fcffdf4fc65cf1c"
+    },
+    {
+      "path": "bounded-state-startup-fd-v3/fixture-a17aff0f-a3d3-44ca-b095-8f06e12ed4e7/state.json.fired",
+      "sha256": "66d3aa7536456a17d0ee9d7ce5c199d796fa3d0caba4d29589ecf393573a1ea0"
+    }
+  ]
+}

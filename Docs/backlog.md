@@ -1292,6 +1292,8 @@ Abnahme: Deterministische Regression ohne Datenausfluss, Cross-Profile-Leaks, do
 
 Abhängigkeiten: SYS-03.
 
+[Begrenzter Zustandsdatei-Reader: Start, Linkgrenzen und Gegenprüfung](bounded-state-startup.md).
+
 <a id="qa-06"></a>
 ### QA-06: Dauerleistung, Energie und Animation-Lifecycle vermessen
 

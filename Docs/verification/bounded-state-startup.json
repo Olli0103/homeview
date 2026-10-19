@@ -1,0 +1,370 @@
+{
+  "date": "2026-10-20",
+  "issue": 80,
+  "status": "partial_issue_remains_open",
+  "product_commit": "6c69a688e01033698c76bc441be08eeece5cc65d",
+  "Watch_target_correction_commit": "0cfb078ab90c5858836f04735d60086c761dc93b",
+  "delivery_source_files": 200,
+  "delivery_source_digest": "ff2e33da46aad8a6a03e458f06b789f4fd12cf64cae7f1e25ca51271c3309ad4",
+  "execution_source_digest": "4e683021095b62086964ee49ba109bedd2872b6e59a42695c92f2e5a79f3c815",
+  "changed_after_native_Core_UI_execution": [
+    "HomeViewReplica.xcodeproj/project.pbxproj",
+    "Scripts/generate_project.py"
+  ],
+  "all_Swift_tests_resources_Package_bytes_unchanged": true,
+  "Main_app_sources_build_phase_unchanged": true,
+  "baseline": {
+    "completed_processes": 5,
+    "completed_assertions": 28,
+    "failed_assertions": 5,
+    "failed_modes": [
+      "symlink",
+      "dangling"
+    ],
+    "FIFO_already_passed": true,
+    "directory_preparation_limit": {
+      "mode": "directory",
+      "AppModel_initializer_returned": true,
+      "assertions_executed": 0,
+      "observed_exit_code_not_recorded": true,
+      "cause": "Probe compared URL equality including directory hint; compare exact path in final probe."
+    },
+    "not_attempted": [
+      "oversized"
+    ],
+    "first_compile_preparation": {
+      "compile_exit_code": 1,
+      "assertions_executed": 0,
+      "cause": "Four missing spaces formed an unintended =! operator in the probe; only probe whitespace corrected, no product change."
+    }
+  },
+  "native_results": [
+    {
+      "mode": "regular",
+      "exit_code": 0,
+      "timed_out": false,
+      "checks": {
+        "healthy_saved_bytes_unchanged": true,
+        "healthy_store_writable_and_loaded": true,
+        "no_personal_unlock": true,
+        "no_system_alarm_ids": true
+      },
+      "failed": [],
+      "assertions": 4
+    },
+    {
+      "mode": "missing",
+      "exit_code": 0,
+      "timed_out": false,
+      "checks": {
+        "missing_store_is_fresh_writable_state": true,
+        "missing_store_not_created_by_read": true,
+        "no_personal_unlock": true,
+        "no_system_alarm_ids": true
+      },
+      "failed": [],
+      "assertions": 4
+    },
+    {
+      "mode": "symlink",
+      "exit_code": 0,
+      "timed_out": false,
+      "checks": {
+        "no_personal_unlock": true,
+        "no_system_alarm_ids": true,
+        "original_node_identity_unchanged": true,
+        "read_only_rejects_write": true,
+        "synthetic_canary_bytes_unchanged": true,
+        "unsafe_node_does_not_load_canary": true,
+        "unsafe_node_is_read_only": true
+      },
+      "failed": [],
+      "assertions": 7
+    },
+    {
+      "mode": "dangling",
+      "exit_code": 0,
+      "timed_out": false,
+      "checks": {
+        "dangling_target_stays_absent": true,
+        "no_personal_unlock": true,
+        "no_system_alarm_ids": true,
+        "original_node_identity_unchanged": true,
+        "read_only_rejects_write": true,
+        "unsafe_node_does_not_load_canary": true,
+        "unsafe_node_is_read_only": true
+      },
+      "failed": [],
+      "assertions": 7
+    },
+    {
+      "mode": "fifo",
+      "exit_code": 0,
+      "timed_out": false,
+      "checks": {
+        "no_personal_unlock": true,
+        "no_system_alarm_ids": true,
+        "original_node_identity_unchanged": true,
+        "read_only_rejects_write": true,
+        "unsafe_node_does_not_load_canary": true,
+        "unsafe_node_is_read_only": true
+      },
+      "failed": [],
+      "assertions": 6
+    },
+    {
+      "mode": "directory",
+      "exit_code": 0,
+      "timed_out": false,
+      "checks": {
+        "no_personal_unlock": true,
+        "no_system_alarm_ids": true,
+        "original_node_identity_unchanged": true,
+        "read_only_rejects_write": true,
+        "unsafe_node_does_not_load_canary": true,
+        "unsafe_node_is_read_only": true
+      },
+      "failed": [],
+      "assertions": 6
+    },
+    {
+      "mode": "oversized",
+      "exit_code": 0,
+      "timed_out": false,
+      "checks": {
+        "no_personal_unlock": true,
+        "no_system_alarm_ids": true,
+        "original_node_identity_unchanged": true,
+        "read_only_rejects_write": true,
+        "unsafe_node_does_not_load_canary": true,
+        "unsafe_node_is_read_only": true
+      },
+      "failed": [],
+      "assertions": 6
+    }
+  ],
+  "native_final_assertions": 40,
+  "Core_tests": 297,
+  "Core_new_cases": 4,
+  "Core_failures": 0,
+  "Core_skips": 0,
+  "UI_results": [
+    {
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_total_executions": 4,
+  "UI_unique_cases": 2,
+  "UI_new_cases": 0,
+  "SDK_initial_results": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 65
+    }
+  ],
+  "SDK_initial_watch_failure": "LocalStateFileReader absent from reduced Watch target source list, corrected in generator/project only",
+  "SDK_final_results": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "descriptor_probe": {
+    "final_assertions": 7,
+    "results": [
+      {
+        "assertions": 4,
+        "checks": {
+          "captured_original_unchanged": true,
+          "expected_read_outcome": true,
+          "interposer_fired_at_actual_fstat": true,
+          "replacement_canary_unchanged": true
+        },
+        "failed": [],
+        "mode": "replace",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 3,
+        "checks": {
+          "expected_read_outcome": true,
+          "growth_fixture_remains_oversized": true,
+          "interposer_fired_at_actual_fstat": true
+        },
+        "failed": [],
+        "mode": "grow",
+        "verdict": "PASS"
+      }
+    ],
+    "production_reader_sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837",
+    "first_crash_preparation": {
+      "replace_exit_code": -11,
+      "cause_not_established": true,
+      "observation": "Interposer child crashed before a JSON result. Corrected probe uses ordinary intra-image fstat binding instead of dlsym forwarding. Production reader unchanged.",
+      "assertions_reported": 0,
+      "assertions_executed": "unknown; child crashed before a completed result"
+    },
+    "second_probe_historical_failed_assertions": 2,
+    "second_failure": "Exact marker incorrectly expected16bytes instead of17; final derives exact size from frozen seed. Production reader unchanged across all three probes."
+  },
+  "decoded_PNGs": 8,
+  "contacts_viewed": 2,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/bounded-state-startup/iPad-store-corrupt-recipe-keeps-home-and-writes.png",
+      "sha256": "00ac55b99c56430f0227ad5e6171705aa8af6e17470e451abfd0e23a6dd23c79",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/bounded-state-startup/iPad-store-future-version-readonly-after-relaunch.png",
+      "sha256": "e6db9303d608fe79c8354bf97786cc95b1f910e89d920adaba72a07e590ae758",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/bounded-state-startup/iPad-viewport-mock-write-readonly-value-unchanged.png",
+      "sha256": "0757e2bfe2921e795fc5e921154f2b1eac3015ae9db9d92f493afc4412cf575c",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/bounded-state-startup/iPhone-store-corrupt-recipe-keeps-home-and-writes.png",
+      "sha256": "0412437fcff76e142a0c0e1d186e8ea8463069a2988824d19e3b22619659aafe",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/bounded-state-startup/iPhone-store-future-version-readonly-after-relaunch.png",
+      "sha256": "5d369f5760a0564ec189df995097aeb2f468bed5f998f89de6544021075b9f54",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/bounded-state-startup/iPhone-viewport-mock-write-readonly-value-unchanged.png",
+      "sha256": "2f118439d5cf00967fcc6cfc34114ddd66293fb4276ae30d0577edb7bcdaad8a",
+      "device": "iPhone"
+    }
+  ],
+  "archives": {
+    "bounded-state-startup-baseline": {
+      "archive": "bounded-state-startup-baseline-inputs.zip",
+      "entries": 301,
+      "sha256": "ebc6fa66d531835ef31ff033435e90b36e34efc1545ed0d48a205e37cdaaf108",
+      "all_entries_read_back": true
+    },
+    "bounded-state-startup-baseline-v2": {
+      "archive": "bounded-state-startup-baseline-v2-inputs.zip",
+      "entries": 323,
+      "sha256": "d43126c0cd6ac8e22a8a92a1187a19f2148fe0eda01528427eac61611c7de3b0",
+      "all_entries_read_back": true
+    },
+    "bounded-state-startup-final": {
+      "archive": "bounded-state-startup-final-inputs.zip",
+      "entries": 329,
+      "sha256": "d81404bc3a7c80abcb0341c3668716d9a17a39e896fca4e32099d713f302348d",
+      "all_entries_read_back": true
+    },
+    "bounded-state-startup-core-final": {
+      "target": "6c69a688e01033698c76bc441be08eeece5cc65d",
+      "entries": 208,
+      "sha256": "2325e321af634a1a0f9afd97f4fbc0924b35149c79e0cf98b48c2b8f2c780511",
+      "all_entries_read_back": true,
+      "tests": 297,
+      "failed_assertions": 0
+    },
+    "bounded-state-startup-fd-history": {
+      "archive": "bounded-state-startup-fd-history.zip",
+      "entries": 60,
+      "sha256": "cb5acd4018f016ccdbaf98e35b6410f229f6b86f251aacb1963193a5b7b3a315",
+      "all_entries_read_back": true
+    },
+    "bounded-state-startup-ui": {
+      "archive": "bounded-state-startup-ui-inputs.zip",
+      "entries": 228,
+      "sha256": "d8c71c8f27ee81cc262262965502a1b22c45b433e98ac744fc39ba911d47d188",
+      "all_entries_read_back": true
+    }
+  },
+  "contract": {
+    "date": "2026-10-20",
+    "issue": 80,
+    "baseline_commit": "247426870d265248decc045a0a88294a59791894",
+    "scope": "Actual AppModel initializer on own UUID stores; reuse existing descriptor-bound read pattern for startup and existing own-store readbacks",
+    "file_modes": [
+      "regular",
+      "missing",
+      "symlink to synthetic canary",
+      "dangling symlink",
+      "FIFO",
+      "directory",
+      "128000001-byte sparse file"
+    ],
+    "invariants": [
+      "Only missing final file produces fresh writable defaults",
+      "Healthy regular state loads unchanged",
+      "Unsafe nodes never load synthetic canary state and remain read-only",
+      "Original node and canary unchanged; no write permitted",
+      "Descriptor uses final-component O_NOFOLLOW, O_NONBLOCK, regular fstat, 32MB metadata and read-size bounds, close on all paths"
+    ],
+    "existing_solution_preflight": "canonicalPlanStore already contains Darwin open/fstat/FileHandle bounded-read logic; factor this existing public-API mechanism, no new library/service/tool.",
+    "limits": [
+      "Not a universal ancestor-symlink or hostile concurrent-writer defense",
+      "Not a measured startup deadline for arbitrary regular-file or network I/O",
+      "No physical device, permission or live-account claims",
+      "No rollback of external/system effects"
+    ],
+    "no_Home_real_accounts_audio_or_system_alarms": true,
+    "frozen_before_product_edit": true
+  },
+  "implementation": "Shared descriptor-bound 32MB leaf-nofollow/nonblocking regular-file reader. Only ENOENT means absent. Startup, canonical plan read-back and recovery byte verification use it. Read-only fence retained for unsafe state.",
+  "unproved": [
+    "Universal ancestor-symlink protection",
+    "Atomic snapshot against arbitrary hostile same-inode external writers",
+    "Global memory/startup-time guarantee for regular or network files",
+    "Physical devices, other provider/migration/offline/alarm matrices"
+  ],
+  "real_personal_data_used": false,
+  "Home_constructed": false,
+  "system_activity_created": false
+}
