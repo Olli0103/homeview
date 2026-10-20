@@ -6,6 +6,8 @@ import EventKit
 
 struct CalendarView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var selected: Int?
   private let labels = ["S", "M", "T", "W", "T", "F", "S"]
   private var calendar: Calendar {
@@ -28,7 +30,7 @@ struct CalendarView: View {
   }
   private var calendarContent: some View {
     VStack(alignment: .leading, spacing: 16) {
-      AppHeader(title: model.dateLabel("MMMM"))
+      AppHeader(title:model.dateLabel("MMMM"),closeSize:max(48,minimumHitSide))
       HStack(spacing: 6) {
         ForEach(0..<7) { i in
           Button {
@@ -45,7 +47,7 @@ struct CalendarView: View {
                     ? .white
                     : calendar.component(.month, from: date(i))
                       == calendar.component(.month, from: model.clock) ? .black : .gray)
-            }
+            }.frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
           }.accessibilityIdentifier("calendar.day.\(i)")
             .accessibilityValue(day == i ? "Selected":"")
         }
