@@ -299,7 +299,8 @@
       "FACE-06"
     ],
     "current": [
-      "Far/Near ist ein manueller Schalter. Flow bewegt sich und reagiert auf Touch, aber nicht auf echte Raumbewegung."
+      "Far/Near ist ein manueller Schalter. Flow bewegt sich und reagiert auf Touch, aber nicht auf echte Raumbewegung.",
+      "Öffentliche Sensor-/Frameworkkandidaten und bestehendes MediaPipe geprüft; eigene kennungsfreie synthetische Policy mit Hysterese, Mehrpersonen-/Quellenverlust-/Epochenschutz. 320 Modelltests (17 neue), separater 20-Zeilen-Verlauf/114 Assertions und fünf SDKs. Keine Kamera/Sensoren oder automatische UI angeschlossen; Far/Near und Flow-Touch bleiben manuell. F010/F016 nicht live/originalakzeptiert. Docs/presence-policy.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -318,6 +319,10 @@
     },
     "completion_criteria": [
       "Ein dokumentierter synthetischer Bewegungs-/Distanzverlauf schaltet stabil. Echte Sensorabnahme erfolgt separat und nur nach bewusster Freigabe; kein dauerhafter Kamerazugriff als stiller Default."
+    ],
+    "progress_evidence": [
+      "Docs/presence-policy.md",
+      "Docs/verification/presence-policy.json"
     ]
   },
   {
@@ -488,7 +493,8 @@
       "FACE-06"
     ],
     "current": [
-      "Far/Near ist ein manueller Schalter. Flow bewegt sich und reagiert auf Touch, aber nicht auf echte Raumbewegung."
+      "Far/Near ist ein manueller Schalter. Flow bewegt sich und reagiert auf Touch, aber nicht auf echte Raumbewegung.",
+      "Öffentliche Sensor-/Frameworkkandidaten und bestehendes MediaPipe geprüft; eigene kennungsfreie synthetische Policy mit Hysterese, Mehrpersonen-/Quellenverlust-/Epochenschutz. 320 Modelltests (17 neue), separater 20-Zeilen-Verlauf/114 Assertions und fünf SDKs. Keine Kamera/Sensoren oder automatische UI angeschlossen; Far/Near und Flow-Touch bleiben manuell. F010/F016 nicht live/originalakzeptiert. Docs/presence-policy.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -507,6 +513,10 @@
     },
     "completion_criteria": [
       "Ein dokumentierter synthetischer Bewegungs-/Distanzverlauf schaltet stabil. Echte Sensorabnahme erfolgt separat und nur nach bewusster Freigabe; kein dauerhafter Kamerazugriff als stiller Default."
+    ],
+    "progress_evidence": [
+      "Docs/presence-policy.md",
+      "Docs/verification/presence-policy.json"
     ]
   },
   {

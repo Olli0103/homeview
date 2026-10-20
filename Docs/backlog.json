@@ -242,7 +242,7 @@
       "F010",
       "F016"
     ],
-    "current": "Far/Near ist ein manueller Schalter. Flow bewegt sich und reagiert auf Touch, aber nicht auf echte Raumbewegung.",
+    "current": "Recherche und ausdrücklich synthetische Modellabnahme abgeschlossen. Öffentliche Sensor-/Frameworkkandidaten und bestehendes MediaPipe geprüft; eigene kennungsfreie synthetische Policy mit Hysterese, Mehrpersonen-/Quellenverlust-/Epochenschutz. 320 Modelltests (17 neue), separater 20-Zeilen-Verlauf/114 Assertions und fünf SDKs. Keine Kamera/Sensoren oder automatische UI angeschlossen; Far/Near und Flow-Touch bleiben manuell. F010/F016 nicht live/originalakzeptiert. Docs/presence-policy.md.",
     "tasks": [
       "Öffentliche Sensor-/Kameraoptionen auf der Zielhardware prüfen, vor Eigenbau vorhandene Lösungen bewerten",
       "Entfernung und Bewegung ohne Identitätsbehauptung modellieren",
@@ -253,7 +253,13 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/10",
     "issue_number": 10,
-    "state": "open"
+    "state": "completed",
+    "research_resolution": "completed_synthetic_policy_live_source_pending",
+    "progress_evidence": [
+      "Docs/presence-policy.md",
+      "Docs/verification/presence-policy.json",
+      "Docs/verification/presence-policy-trace.json"
+    ]
   },
   {
     "key": "PHOTO-01",

@@ -1,0 +1,425 @@
+{
+  "assertions": 114,
+  "failed_assertions": 0,
+  "row_count": 20,
+  "rows": [
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "selected",
+      "event": "manual_default",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 0
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "waiting",
+      "event": "explicit_synthetic_start",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 0
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "multi_person_far_dwell_0",
+      "failed": [],
+      "farthest_supplied_distance": 2.5999999046325684,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "synthetic",
+      "supplied_time": 0
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "multi_person_far_dwell_1",
+      "failed": [],
+      "farthest_supplied_distance": 2.5999999046325684,
+      "motion": [
+        0.5438088774681091,
+        -0.3107479512691498
+      ],
+      "origin": "synthetic",
+      "supplied_time": 0.5
+    },
+    {
+      "band": "far",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "multi_person_far_dwell_2",
+      "failed": [],
+      "farthest_supplied_distance": 2.5999999046325684,
+      "motion": [
+        0.6651490330696106,
+        -0.38008520007133484
+      ],
+      "origin": "synthetic",
+      "supplied_time": 1
+    },
+    {
+      "band": "far",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "hysteresis_band_holds_far",
+      "failed": [],
+      "farthest_supplied_distance": 1.7000000476837158,
+      "motion": [
+        0.6922236680984497,
+        -0.39555642008781433
+      ],
+      "origin": "synthetic",
+      "supplied_time": 1.5
+    },
+    {
+      "band": "far",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "near_dwell_0",
+      "failed": [],
+      "farthest_supplied_distance": 1,
+      "motion": [
+        0.6982648372650146,
+        -0.39900851249694824
+      ],
+      "origin": "synthetic",
+      "supplied_time": 2
+    },
+    {
+      "band": "far",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "near_dwell_1",
+      "failed": [],
+      "farthest_supplied_distance": 1,
+      "motion": [
+        0.6996128559112549,
+        -0.3997787833213806
+      ],
+      "origin": "synthetic",
+      "supplied_time": 2.5
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "near_dwell_2",
+      "failed": [],
+      "farthest_supplied_distance": 1,
+      "motion": [
+        0.6999136209487915,
+        -0.39995065331459045
+      ],
+      "origin": "synthetic",
+      "supplied_time": 3
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "unusable",
+      "event": "low_quality_manual_fallback",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 3.5
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "fresh_recovery_dwell_0",
+      "failed": [],
+      "farthest_supplied_distance": 2.5999999046325684,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "synthetic",
+      "supplied_time": 4
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "fresh_recovery_dwell_1",
+      "failed": [],
+      "farthest_supplied_distance": 2.5999999046325684,
+      "motion": [
+        0.5438088774681091,
+        -0.3107479512691498
+      ],
+      "origin": "synthetic",
+      "supplied_time": 4.5
+    },
+    {
+      "band": "far",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "fresh_recovery_dwell_2",
+      "failed": [],
+      "farthest_supplied_distance": 2.5999999046325684,
+      "motion": [
+        0.6651490330696106,
+        -0.38008520007133484
+      ],
+      "origin": "synthetic",
+      "supplied_time": 5
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "stale",
+      "event": "source_silence_manual_fallback",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 8
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "waiting",
+      "event": "source_replacement",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 8
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "waiting",
+      "event": "obsolete_token_cannot_poison_clock",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 1000
+    },
+    {
+      "band": "near",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "tracking",
+      "event": "new_source_still_accepts_own_clock",
+      "failed": [],
+      "farthest_supplied_distance": 1,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "synthetic",
+      "supplied_time": 8
+    },
+    {
+      "band": "far",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "selected",
+      "event": "explicit_manual_override",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 8.1
+    },
+    {
+      "band": "far",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "frame_acceptance": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "selected",
+      "event": "manual_override_rejects_late_result",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 8.5
+    },
+    {
+      "band": "far",
+      "checks": {
+        "band": true,
+        "condition": true,
+        "finite_bounded_motion": true,
+        "manual_motion_zero": true,
+        "origin": true
+      },
+      "condition": "selected",
+      "event": "manual_has_no_source_timeout",
+      "failed": [],
+      "farthest_supplied_distance": null,
+      "motion": [
+        0,
+        0
+      ],
+      "origin": "manual",
+      "supplied_time": 9
+    }
+  ],
+  "sensor_or_UI_execution": false,
+  "synthetic_only": true,
+  "time_note": "Supplied times are invented. The obsolete-token adversarial row intentionally supplies a future timestamp; rejection must not change the current source clock.",
+  "verdict": "PASS"
+}
