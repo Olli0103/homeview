@@ -1562,7 +1562,7 @@
     "functions": [
       "F087"
     ],
-    "current": "Keine eigene AirPlay-Empfänger- oder Gast-Discovery-Funktion nachgewiesen.",
+    "current": "Gastfreigabe, Discovery, Medienpfad und Empfängerrolle getrennt; Apple-TV-/Mac-/HomePod-Voraussetzungen dokumentiert. OS-Bedienweg definiert, experimentelle UxPlay-AWDL-Option weder installiert noch akzeptiert. Keine echte Gast-/Peer-to-peer-Abnahme; F087 bleibt ausdrücklich blockiert, normales WLAN-Streaming kein Ersatz.",
     "tasks": [
       "Hardware-/OS-Voraussetzungen für Gast- und Peer-to-peer-Betrieb dokumentieren",
       "Keine private Empfängerimplementierung als offizielle Fähigkeit darstellen",
@@ -1574,7 +1574,12 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/62",
     "issue_number": 62,
-    "state": "open"
+    "state": "completed",
+    "research_resolution": "completed_with_documented_blocked_original",
+    "progress_evidence": [
+      "Docs/guest-airplay-boundaries.md",
+      "Docs/verification/guest-airplay-boundaries.json"
+    ]
   },
   {
     "key": "MEDIA-07",

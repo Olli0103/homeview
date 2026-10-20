@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-20",
+  "issue": 62,
+  "status": "research_completed_with_documented_blocked_original",
+  "base_commit": "34b95f063c496e2bdd8feda769c0cbc236d652c9",
+  "F087_implementation_status": "blocked",
+  "parity_accepted": false,
+  "original_guest_test_sequence": "NOT_PERFORMED",
+  "ordinary_WLAN_streaming_accepted_as_P2P": false,
+  "questions_separated": [
+    "guest access policy",
+    "receiver discovery",
+    "actual media transport",
+    "sender versus receiver role"
+  ],
+  "official_main_texts": [
+    {
+      "url": "https://support.apple.com/guide/deployment/use-airplay-dep9151c4ace/web",
+      "sha256": "b316f116d46b55392e5cb41a190c599c0bf4961abfa5a9bbf722f777f8a11f6e",
+      "file": "guest-airplay-official-0.md",
+      "read_on": "2026-10-20"
+    },
+    {
+      "url": "https://support.apple.com/en-us/108046",
+      "sha256": "6520d020578064a10175dd81197a6c8a6ad24101289576d1ebbe22f232a3794b",
+      "file": "guest-airplay-official-1.md",
+      "read_on": "2026-10-20"
+    },
+    {
+      "url": "https://support.apple.com/guide/mac-help/stream-video-and-audio-with-airplay-mchld7e543a0/mac",
+      "sha256": "831efe4463e52eb280058660e80330c0679ff8712b8fc91c7e6ea8669244df7d",
+      "file": "guest-airplay-official-2.md",
+      "read_on": "2026-10-20"
+    },
+    {
+      "url": "https://support.apple.com/guide/homepod/let-others-play-audio-apdb68d3dec5/homepod",
+      "sha256": "3dae34e91c6630e77a2d75688f728fdda7e5ed76c3400a722b5bdc75a6c39bb1",
+      "file": "guest-airplay-official-3.md",
+      "read_on": "2026-10-20"
+    }
+  ],
+  "public_sender_API": {
+    "url": "https://developer.apple.com/documentation/avkit/avroutepickerview",
+    "full_DocC_sha256": "35c4caf4393266abb8e12f1326e6ba132c10b9df98d756bbca9a2ff6abfba696",
+    "external_file": "handoff-routepicker-official.json",
+    "scope": "nearby media receiver selection; not a receiver implementation"
+  },
+  "AppleTV_P2P_requirements": {
+    "receiver": "Apple TV HD tvOS9+ or Apple TV4K tvOS11+",
+    "sender": "late2012+ Apple devices using latest supported OS per cited Apple text; exact model/OS not tested",
+    "access": "Everyone permits infrastructure or P2P; local-network-only is distinct",
+    "authentication": "Require Device Authentication remains required; no unauthenticated guest promise"
+  },
+  "Mac_receiver": {
+    "system_receiver_not_HomeView": true,
+    "requirements": "macOS12+, iMacPro, Macmini2020+, other Mac2018+; sender iOS14 iPhone7+ / iPadOS14 listed compatible models",
+    "older_device_note": "Older SENDER may work at lower resolution under documented access settings; not universal old Mac receiver support",
+    "same_network_user_guide_not_a_P2P_test": true
+  },
+  "HomePod": {
+    "Everyone_nearby_policy_acknowledged": true,
+    "transport_not_inferred": true,
+    "Home_connection": false
+  },
+  "existing_option": {
+    "name": "UxPlay",
+    "pinned_commit": "4e95a9ec013c52d8555d88dbc55abe346e94d56e",
+    "url": "https://raw.githubusercontent.com/FDH2/UxPlay/4e95a9ec013c52d8555d88dbc55abe346e94d56e/README.md",
+    "readme_tool_payload_sha256": "ebdc7e9d1bb9b5572d2f430c50e19e0b30e2355232a2b65db2666bd118d1a17f",
+    "digest_scope": "Full web-fetch tool-read payload, not raw Git blob",
+    "documented_positive": "1.74 Experimental documents macOS-only direct AWDL client option with Bonjour",
+    "documented_limit": "AirPlay2 multi-room audio streaming not supported",
+    "installed": false,
+    "built": false,
+    "started": false,
+    "host_compatibility_tested": false,
+    "selected_or_accepted_for_user": false,
+    "public_Apple_receiver_API": false
+  },
+  "code_review": {
+    "paths": [
+      {
+        "path": "Sources/App/RootView.swift",
+        "sha256": "d20f208cbd6ddfeefdcffb23dd99b552a989b66c4422122a6247a8c72efbfdda"
+      },
+      {
+        "path": "Sources/App/NativeVoice.swift",
+        "sha256": "d90732a4e2f262050d66c497d6fa8ae11b6e08213c5dfb1fd9f8c7ac38a2c2af"
+      },
+      {
+        "path": "Sources/App/NativeServices.swift",
+        "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+      }
+    ],
+    "route_picker_implemented": false,
+    "existing_route_loss_pause_acknowledged": true,
+    "no_new_receiver_or_discovery": true
+  },
+  "future_guest_acceptance": {
+    "executed": false,
+    "requirements": [
+      "Exact sender/receiver models and supported OS versions",
+      "Deliberate guest permission and required device authentication",
+      "Actual discovery and media transport; SSID difference or beacon not sufficient",
+      "Audible owned fixture, actual route status, stop/missing/denied receiver and local return",
+      "Separate evidence for receiver categories and multiroom issue61"
+    ],
+    "issue61_remains_open": true
+  },
+  "source_files_unchanged": 206,
+  "source_digest": "5ee10ce5e55911d53a6f1b0d1d78b6c43cd79aa1f3498e270e2028e2caa4ac0c",
+  "new_builds": 0,
+  "new_UI_runs": 0,
+  "new_model_runs": 0,
+  "real_playback": false,
+  "route_picker_opened": false,
+  "discovery_started": false,
+  "receiver_started": false,
+  "network_or_radio_or_DNS_changed": false,
+  "accounts_or_permissions_changed": false,
+  "Home_constructed": false,
+  "preliminary_limits": [
+    "Initial search returned no results for one query, not proof of absence",
+    "GitHub HTML fetch truncated before full README and is not used for feature claims",
+    "Pinned full README tool-read payload was separately read; no application checkout/install"
+  ],
+  "closure_scope": "Original acceptance permits real guest sequence OR explicit blocked status. Research tasks complete; original F087 remains blocked and parity=false; issue61 not accepted.",
+  "archive": {
+    "archive": "guest-airplay-boundaries-inputs.zip",
+    "entries": 15,
+    "sha256": "4a635ab161cc615643a3a0a163d2fabbd44ed137b8958e21a916324fbb84150c",
+    "all_entries_read_back": true,
+    "files": [
+      {
+        "path": "evidence/guest-airplay-official-0.md",
+        "sha256": "b316f116d46b55392e5cb41a190c599c0bf4961abfa5a9bbf722f777f8a11f6e"
+      },
+      {
+        "path": "evidence/guest-airplay-official-1.md",
+        "sha256": "6520d020578064a10175dd81197a6c8a6ad24101289576d1ebbe22f232a3794b"
+      },
+      {
+        "path": "evidence/guest-airplay-official-2.md",
+        "sha256": "831efe4463e52eb280058660e80330c0679ff8712b8fc91c7e6ea8669244df7d"
+      },
+      {
+        "path": "evidence/guest-airplay-official-3.md",
+        "sha256": "3dae34e91c6630e77a2d75688f728fdda7e5ed76c3400a722b5bdc75a6c39bb1"
+      },
+      {
+        "path": "evidence/guest-airplay-official-index.json",
+        "sha256": "23b4f7cd9a903fda55af336a29bf3026ecd0dd99a7900ac46b31c59e2d532229"
+      },
+      {
+        "path": "evidence/guest-airplay-web-receipts.json",
+        "sha256": "cf0181b3c6a713fd92450bed44041aed0798bc46793ed1637f0ed7bbd1fd5838"
+      },
+      {
+        "path": "evidence/guest-airplay-uxplay-pinned-readme.md",
+        "sha256": "ebdc7e9d1bb9b5572d2f430c50e19e0b30e2355232a2b65db2666bd118d1a17f"
+      },
+      {
+        "path": "evidence/handoff-routepicker-official.json",
+        "sha256": "35c4caf4393266abb8e12f1326e6ba132c10b9df98d756bbca9a2ff6abfba696"
+      },
+      {
+        "path": "evidence/guest-airplay-boundaries-source.json",
+        "sha256": "cbc9dc2207592585ac54a303fdf01855f88b1e5208a6f9f55fc00afed52bd93e"
+      },
+      {
+        "path": "evidence/guest-airplay-boundaries-audit.json",
+        "sha256": "3246fc868772dabeb3e5f2843f242316cf4cfd088abecf61b9bf3f88e6cd1c1d"
+      },
+      {
+        "path": "evidence/deliver-guest-airplay-boundaries.py",
+        "sha256": "5c50f423ededfd22f784ff3de10f96fbcacce169f483549d0045c91b2e2c4105"
+      },
+      {
+        "path": "document/guest-airplay-boundaries.md",
+        "sha256": "83b0ac8f164162bd0b6b7b0518dfd93217b34e556b14c39056a44577cdb075e9"
+      },
+      {
+        "path": "source/Sources/App/RootView.swift",
+        "sha256": "d20f208cbd6ddfeefdcffb23dd99b552a989b66c4422122a6247a8c72efbfdda"
+      },
+      {
+        "path": "source/Sources/App/NativeVoice.swift",
+        "sha256": "d90732a4e2f262050d66c497d6fa8ae11b6e08213c5dfb1fd9f8c7ac38a2c2af"
+      },
+      {
+        "path": "source/Sources/App/NativeServices.swift",
+        "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+      }
+    ]
+  }
+}
