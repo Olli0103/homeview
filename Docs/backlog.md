@@ -1094,6 +1094,8 @@ Abhängigkeiten: BASE-01.
 <a id="sys-04"></a>
 ### SYS-04: Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen
 
+[Persönlicher Timeout auch auf dem Zifferblatt und während eingehender Demo-Anrufe](face-idle-privacy.md): Sitzungsschutz von sichtbarer Route getrennt; neue lokale Ablaufhinweise bleiben erhalten. Keine Präsenz-/Hardware-Snapshot-Abnahme.
+
 Abmelden, Hintergrund und Inaktivitäts-Timeout sperren verbundene Daten. Entfernen der aktiven RootView widerruft jetzt ebenfalls die persönliche Sitzung; vorübergehende Scene-Inaktivität allein erhält sie. [Begrenzte Reproduktion und Gegenprüfung](root-disappearance-privacy.md). Tatsächliches Weggehen und physische Snapshots bleiben ungeprüft.
 
 Offen:

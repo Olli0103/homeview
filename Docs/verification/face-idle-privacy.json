@@ -1,0 +1,860 @@
+{
+  "date": "2026-10-20",
+  "issue": 67,
+  "base_commit": "d12375aa3f775241440324adfeb8816be9084652",
+  "status": "bounded_fix_issue_open",
+  "source_digest": "6f07920f09b526ebad7ff2473f70db9747e31a20c0afba1127e1b13a67832a35",
+  "native_runs": [
+    {
+      "stage": "qualified-baseline",
+      "source_digest": "4d8820a6ff8df8e66b383cbcba27ae438cd153cbb3c4caaf296f0708999efd2d",
+      "verdict": {
+        "exit_code": 0,
+        "binary_sha256": "4a644c3a12b5e9f18e93a1e380f0d7477197eb80b15e9284a4782c4ae9c1354d",
+        "result": {
+          "actual_AppModel": true,
+          "actual_RootView_or_snapshot_test": false,
+          "actual_wait_or_presence_sensor": false,
+          "assertions": 39,
+          "audio_assets_or_playback": false,
+          "failed_assertions": 17,
+          "failed_scenarios": 5,
+          "owned_uuid": "B7799EE9-9308-4ECC-BBA4-2355780AF131",
+          "scenario_count": 10,
+          "scenarios": [
+            {
+              "checks": {
+                "clears_assistant_draft": false,
+                "clears_calendar_cache": false,
+                "clears_demo_profile": false,
+                "clears_message_draft": false,
+                "clears_reminder_cache": false,
+                "does_not_delete_saved_content": true,
+                "invalidates_session_once": false,
+                "keeps_face_route": true,
+                "revokes_device_authentication": false
+              },
+              "failed": [
+                "clears_assistant_draft",
+                "clears_calendar_cache",
+                "clears_demo_profile",
+                "clears_message_draft",
+                "clears_reminder_cache",
+                "invalidates_session_once",
+                "revokes_device_authentication"
+              ],
+              "name": "expired_face"
+            },
+            {
+              "checks": {
+                "no_repeated_revocation": true
+              },
+              "failed": [],
+              "name": "same_idle_period"
+            },
+            {
+              "checks": {
+                "banner_does_not_restore_calendar": false,
+                "banner_does_not_restore_profile": false,
+                "banner_does_not_unlock": false
+              },
+              "failed": [
+                "banner_does_not_restore_calendar",
+                "banner_does_not_restore_profile",
+                "banner_does_not_unlock"
+              ],
+              "name": "local_timer_banner_after_idle"
+            },
+            {
+              "checks": {
+                "does_not_invalidate_generation": true,
+                "keeps_authentication": true,
+                "keeps_calendar": true,
+                "keeps_drafts": true,
+                "keeps_face_route": true,
+                "keeps_profile": true,
+                "keeps_reminders": true
+              },
+              "failed": [],
+              "name": "fresh_face"
+            },
+            {
+              "checks": {
+                "clears_caches": true,
+                "clears_profile_and_drafts": true,
+                "invalidates_once": true,
+                "returns_to_face": true,
+                "revokes_authentication": true
+              },
+              "failed": [],
+              "name": "expired_personal_app"
+            },
+            {
+              "checks": {
+                "clears_profile": false,
+                "keeps_face": true,
+                "never_device_authenticated": true
+              },
+              "failed": [
+                "clears_profile"
+              ],
+              "name": "expired_demo_profile_only"
+            },
+            {
+              "checks": {
+                "clears_private_caches": false,
+                "invalidates_once": false,
+                "keeps_incoming_demo_call_display": true,
+                "revokes_private_authentication": false
+              },
+              "failed": [
+                "clears_private_caches",
+                "invalidates_once",
+                "revokes_private_authentication"
+              ],
+              "name": "incoming_demo_call_does_not_extend_private_session"
+            },
+            {
+              "checks": {
+                "clears_caches_after_exception": true,
+                "revokes_after_exception_ends": true
+              },
+              "failed": [],
+              "name": "incoming_demo_call_ended"
+            },
+            {
+              "checks": {
+                "fresh_tick_keeps_generation": true,
+                "new_session_allowed_before_deadline": true
+              },
+              "failed": [],
+              "name": "new_interaction_and_unlock"
+            },
+            {
+              "checks": {
+                "clears_new_caches": false,
+                "increments_for_new_period": false,
+                "revokes_new_session": false
+              },
+              "failed": [
+                "clears_new_caches",
+                "increments_for_new_period",
+                "revokes_new_session"
+              ],
+              "name": "second_idle_period"
+            }
+          ],
+          "synthetic_expired_lastInteraction": true,
+          "verdict": "FAIL"
+        }
+      }
+    },
+    {
+      "stage": "final",
+      "source_digest": "dde4d6b414de4c2392517ae791b840104c8aab6066f2b9a09377e568f4b8224a",
+      "verdict": {
+        "exit_code": 0,
+        "binary_sha256": "1d2bdf11a4b49dc2dced58a48f04c97e8085620a26e95844c4ed77994c8ea313",
+        "result": {
+          "actual_AppModel": true,
+          "actual_RootView_or_snapshot_test": false,
+          "actual_wait_or_presence_sensor": false,
+          "assertions": 39,
+          "audio_assets_or_playback": false,
+          "failed_assertions": 0,
+          "failed_scenarios": 0,
+          "owned_uuid": "EDBD6244-F334-40D4-B9B9-C9DDE46338B4",
+          "scenario_count": 10,
+          "scenarios": [
+            {
+              "checks": {
+                "clears_assistant_draft": true,
+                "clears_calendar_cache": true,
+                "clears_demo_profile": true,
+                "clears_message_draft": true,
+                "clears_reminder_cache": true,
+                "does_not_delete_saved_content": true,
+                "invalidates_session_once": true,
+                "keeps_face_route": true,
+                "revokes_device_authentication": true
+              },
+              "failed": [],
+              "name": "expired_face"
+            },
+            {
+              "checks": {
+                "no_repeated_revocation": true
+              },
+              "failed": [],
+              "name": "same_idle_period"
+            },
+            {
+              "checks": {
+                "banner_does_not_restore_calendar": true,
+                "banner_does_not_restore_profile": true,
+                "banner_does_not_unlock": true
+              },
+              "failed": [],
+              "name": "local_timer_banner_after_idle"
+            },
+            {
+              "checks": {
+                "does_not_invalidate_generation": true,
+                "keeps_authentication": true,
+                "keeps_calendar": true,
+                "keeps_drafts": true,
+                "keeps_face_route": true,
+                "keeps_profile": true,
+                "keeps_reminders": true
+              },
+              "failed": [],
+              "name": "fresh_face"
+            },
+            {
+              "checks": {
+                "clears_caches": true,
+                "clears_profile_and_drafts": true,
+                "invalidates_once": true,
+                "returns_to_face": true,
+                "revokes_authentication": true
+              },
+              "failed": [],
+              "name": "expired_personal_app"
+            },
+            {
+              "checks": {
+                "clears_profile": true,
+                "keeps_face": true,
+                "never_device_authenticated": true
+              },
+              "failed": [],
+              "name": "expired_demo_profile_only"
+            },
+            {
+              "checks": {
+                "clears_private_caches": true,
+                "invalidates_once": true,
+                "keeps_incoming_demo_call_display": true,
+                "revokes_private_authentication": true
+              },
+              "failed": [],
+              "name": "incoming_demo_call_does_not_extend_private_session"
+            },
+            {
+              "checks": {
+                "clears_caches_after_exception": true,
+                "revokes_after_exception_ends": true
+              },
+              "failed": [],
+              "name": "incoming_demo_call_ended"
+            },
+            {
+              "checks": {
+                "fresh_tick_keeps_generation": true,
+                "new_session_allowed_before_deadline": true
+              },
+              "failed": [],
+              "name": "new_interaction_and_unlock"
+            },
+            {
+              "checks": {
+                "clears_new_caches": true,
+                "increments_for_new_period": true,
+                "revokes_new_session": true
+              },
+              "failed": [],
+              "name": "second_idle_period"
+            }
+          ],
+          "synthetic_expired_lastInteraction": true,
+          "verdict": "PASS"
+        }
+      }
+    },
+    {
+      "stage": "timer-boundary",
+      "source_digest": "dde4d6b414de4c2392517ae791b840104c8aab6066f2b9a09377e568f4b8224a",
+      "verdict": {
+        "exit_code": 0,
+        "binary_sha256": "fb9d44723a1a1ffd643f2352ecdf596395f3ab9d14182b15f2b3dc024b229a27",
+        "result": {
+          "actual_AppModel": true,
+          "actual_RootView_or_snapshot_test": false,
+          "actual_wait_or_presence_sensor": false,
+          "assertions": 43,
+          "audio_assets_or_playback": false,
+          "failed_assertions": 1,
+          "failed_scenarios": 1,
+          "owned_uuid": "D32D8393-7DB6-4370-92C4-EF432E4832D4",
+          "scenario_count": 11,
+          "scenarios": [
+            {
+              "checks": {
+                "clears_assistant_draft": true,
+                "clears_calendar_cache": true,
+                "clears_demo_profile": true,
+                "clears_message_draft": true,
+                "clears_reminder_cache": true,
+                "does_not_delete_saved_content": true,
+                "invalidates_session_once": true,
+                "keeps_face_route": true,
+                "revokes_device_authentication": true
+              },
+              "failed": [],
+              "name": "expired_face"
+            },
+            {
+              "checks": {
+                "no_repeated_revocation": true
+              },
+              "failed": [],
+              "name": "same_idle_period"
+            },
+            {
+              "checks": {
+                "banner_does_not_restore_calendar": true,
+                "banner_does_not_restore_profile": true,
+                "banner_does_not_unlock": true
+              },
+              "failed": [],
+              "name": "local_timer_banner_after_idle"
+            },
+            {
+              "checks": {
+                "does_not_invalidate_generation": true,
+                "keeps_authentication": true,
+                "keeps_calendar": true,
+                "keeps_drafts": true,
+                "keeps_face_route": true,
+                "keeps_profile": true,
+                "keeps_reminders": true
+              },
+              "failed": [],
+              "name": "fresh_face"
+            },
+            {
+              "checks": {
+                "clears_caches": true,
+                "clears_profile_and_drafts": true,
+                "invalidates_once": true,
+                "returns_to_face": true,
+                "revokes_authentication": true
+              },
+              "failed": [],
+              "name": "expired_personal_app"
+            },
+            {
+              "checks": {
+                "clears_profile": true,
+                "keeps_face": true,
+                "never_device_authenticated": true
+              },
+              "failed": [],
+              "name": "expired_demo_profile_only"
+            },
+            {
+              "checks": {
+                "clears_private_caches": true,
+                "invalidates_once": true,
+                "keeps_incoming_demo_call_display": true,
+                "revokes_private_authentication": true
+              },
+              "failed": [],
+              "name": "incoming_demo_call_does_not_extend_private_session"
+            },
+            {
+              "checks": {
+                "clears_caches_after_exception": true,
+                "revokes_after_exception_ends": true
+              },
+              "failed": [],
+              "name": "incoming_demo_call_ended"
+            },
+            {
+              "checks": {
+                "fresh_tick_keeps_generation": true,
+                "new_session_allowed_before_deadline": true
+              },
+              "failed": [],
+              "name": "new_interaction_and_unlock"
+            },
+            {
+              "checks": {
+                "clears_new_caches": true,
+                "increments_for_new_period": true,
+                "revokes_new_session": true
+              },
+              "failed": [],
+              "name": "second_idle_period"
+            },
+            {
+              "checks": {
+                "does_not_clear_timer_collection": true,
+                "keeps_new_timer_banner": false,
+                "records_local_timer_expiry": true,
+                "still_revokes_private_session": true
+              },
+              "failed": [
+                "keeps_new_timer_banner"
+              ],
+              "name": "timer_expiry_same_tick_as_idle_lock"
+            }
+          ],
+          "synthetic_expired_lastInteraction": true,
+          "verdict": "FAIL"
+        }
+      }
+    },
+    {
+      "stage": "final-v2",
+      "source_digest": "6f07920f09b526ebad7ff2473f70db9747e31a20c0afba1127e1b13a67832a35",
+      "verdict": {
+        "exit_code": 0,
+        "binary_sha256": "2d93c791ca310fcf3d6de696a8f2be3a2565c9b25693cb7b47f6ccc2c7eaf965",
+        "result": {
+          "actual_AppModel": true,
+          "actual_RootView_or_snapshot_test": false,
+          "actual_wait_or_presence_sensor": false,
+          "assertions": 43,
+          "audio_assets_or_playback": false,
+          "failed_assertions": 0,
+          "failed_scenarios": 0,
+          "owned_uuid": "46595E16-8A73-4617-AF67-B1D605CE42D3",
+          "scenario_count": 11,
+          "scenarios": [
+            {
+              "checks": {
+                "clears_assistant_draft": true,
+                "clears_calendar_cache": true,
+                "clears_demo_profile": true,
+                "clears_message_draft": true,
+                "clears_reminder_cache": true,
+                "does_not_delete_saved_content": true,
+                "invalidates_session_once": true,
+                "keeps_face_route": true,
+                "revokes_device_authentication": true
+              },
+              "failed": [],
+              "name": "expired_face"
+            },
+            {
+              "checks": {
+                "no_repeated_revocation": true
+              },
+              "failed": [],
+              "name": "same_idle_period"
+            },
+            {
+              "checks": {
+                "banner_does_not_restore_calendar": true,
+                "banner_does_not_restore_profile": true,
+                "banner_does_not_unlock": true
+              },
+              "failed": [],
+              "name": "local_timer_banner_after_idle"
+            },
+            {
+              "checks": {
+                "does_not_invalidate_generation": true,
+                "keeps_authentication": true,
+                "keeps_calendar": true,
+                "keeps_drafts": true,
+                "keeps_face_route": true,
+                "keeps_profile": true,
+                "keeps_reminders": true
+              },
+              "failed": [],
+              "name": "fresh_face"
+            },
+            {
+              "checks": {
+                "clears_caches": true,
+                "clears_profile_and_drafts": true,
+                "invalidates_once": true,
+                "returns_to_face": true,
+                "revokes_authentication": true
+              },
+              "failed": [],
+              "name": "expired_personal_app"
+            },
+            {
+              "checks": {
+                "clears_profile": true,
+                "keeps_face": true,
+                "never_device_authenticated": true
+              },
+              "failed": [],
+              "name": "expired_demo_profile_only"
+            },
+            {
+              "checks": {
+                "clears_private_caches": true,
+                "invalidates_once": true,
+                "keeps_incoming_demo_call_display": true,
+                "revokes_private_authentication": true
+              },
+              "failed": [],
+              "name": "incoming_demo_call_does_not_extend_private_session"
+            },
+            {
+              "checks": {
+                "clears_caches_after_exception": true,
+                "revokes_after_exception_ends": true
+              },
+              "failed": [],
+              "name": "incoming_demo_call_ended"
+            },
+            {
+              "checks": {
+                "fresh_tick_keeps_generation": true,
+                "new_session_allowed_before_deadline": true
+              },
+              "failed": [],
+              "name": "new_interaction_and_unlock"
+            },
+            {
+              "checks": {
+                "clears_new_caches": true,
+                "increments_for_new_period": true,
+                "revokes_new_session": true
+              },
+              "failed": [],
+              "name": "second_idle_period"
+            },
+            {
+              "checks": {
+                "does_not_clear_timer_collection": true,
+                "keeps_new_timer_banner": true,
+                "records_local_timer_expiry": true,
+                "still_revokes_private_session": true
+              },
+              "failed": [],
+              "name": "timer_expiry_same_tick_as_idle_lock"
+            }
+          ],
+          "synthetic_expired_lastInteraction": true,
+          "verdict": "PASS"
+        }
+      }
+    }
+  ],
+  "archives": [
+    {
+      "archive": "face-idle-privacy-qualified-baseline-inputs.zip",
+      "sha256": "f6ed2c31a9eb4c578ba63679406d8122e71c077780044133533349f2faed7b78",
+      "entries": 315,
+      "all_entries_read_back": true,
+      "source_digest": "4d8820a6ff8df8e66b383cbcba27ae438cd153cbb3c4caaf296f0708999efd2d"
+    },
+    {
+      "archive": "face-idle-privacy-final-inputs.zip",
+      "sha256": "2ed51d1af5764dc49b32f4d98e420b54c676eae7ecfacee6f0f427710ba31a13",
+      "entries": 315,
+      "all_entries_read_back": true,
+      "source_digest": "dde4d6b414de4c2392517ae791b840104c8aab6066f2b9a09377e568f4b8224a"
+    },
+    {
+      "archive": "face-idle-privacy-timer-boundary-inputs.zip",
+      "sha256": "5819703267260f044ba8bcd02bc76da5acc3a70463ccb4758c3eeadcfb5816f7",
+      "entries": 315,
+      "all_entries_read_back": true,
+      "source_digest": "dde4d6b414de4c2392517ae791b840104c8aab6066f2b9a09377e568f4b8224a"
+    },
+    {
+      "archive": "face-idle-privacy-final-v2-inputs.zip",
+      "sha256": "0b4e694ed28d47b5ff7cba20cd17339853f0ade0730521f2f03585bd05d46c08",
+      "entries": 315,
+      "all_entries_read_back": true,
+      "source_digest": "6f07920f09b526ebad7ff2473f70db9747e31a20c0afba1127e1b13a67832a35"
+    },
+    {
+      "archive": "face-idle-privacy-ui-v2-inputs.zip",
+      "entries": 234,
+      "sha256": "9dd36bde3954212623f095f86dc2e9376847810ad4daac3ed12eaa1ceafd1a1b",
+      "all_entries_read_back": true
+    },
+    {
+      "archive": "face-idle-privacy-preparation-failure-inputs.zip",
+      "sha256": "b81fa7580a7f1d1098496613bf6926c16fe982e9f49ef77acc977d7e9c7688e9",
+      "entries": 310,
+      "all_entries_read_back": true,
+      "scenarios_executed": 0,
+      "reason": "Probe glob incorrectly included separate iOS Widget target in macOS host compile; actual main target excludes Sources/Widgets."
+    }
+  ],
+  "UI_results": [
+    {
+      "device": "iPad",
+      "exit_code": 0,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+              "deviceName": "iPad Air 11-inch (M4)",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 2,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792471131.257,
+        "passedTests": 2,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792471062.685,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 2
+      }
+    },
+    {
+      "device": "iPhone",
+      "exit_code": 0,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+              "deviceName": "iPhone 18 Pro",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 2,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792471126.199,
+        "passedTests": 2,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792471062.685,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 2
+      }
+    }
+  ],
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-face-idle-privacy/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=1,2",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-face-idle-privacy/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "macosx",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-face-idle-privacy/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "appletvsimulator",
+        "-destination",
+        "generic/platform=tvOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=3",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-face-idle-privacy/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "xrsimulator",
+        "-destination",
+        "generic/platform=visionOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=7",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-face-idle-privacy/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewWatch",
+        "-sdk",
+        "watchsimulator",
+        "-destination",
+        "generic/platform=watchOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=4",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "images": [
+    {
+      "path": "Docs/screenshots/face-idle-privacy/iPad-screen-answer-readout-background-locked-no-resume.png",
+      "sha256": "fdf857f3f91ff461135d5b7a6f7c0c3277f9558515c27f2cddc3d924a2d63bd4",
+      "size": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "path": "Docs/screenshots/face-idle-privacy/iPad-viewport-answer-readout-background-locked-no-resume.png",
+      "sha256": "1f18bde2d361746b33eb4610b7ddd63d7a6750a1ff9b532f9eba3e13652a2d69",
+      "size": [
+        1592,
+        1430
+      ]
+    },
+    {
+      "path": "Docs/screenshots/face-idle-privacy/iPad-privacy-calendar-locked-after-background.png",
+      "sha256": "f8df5d37cb3de0cd0c1bb287a4a655af8aa66e7f2c8aaf461ef7a85d1c03564f",
+      "size": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "path": "Docs/screenshots/face-idle-privacy/iPhone-screen-answer-readout-background-locked-no-resume.png",
+      "sha256": "3ddc90df3430c23f2168466402e44ceb1b6ee50d68677bf7769f1e0a9c618ae1",
+      "size": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "Docs/screenshots/face-idle-privacy/iPhone-viewport-answer-readout-background-locked-no-resume.png",
+      "sha256": "2f0c00a2cca6e9d141d04db9f1f68a4e575c11e584d09168ded13bbd14c969d7",
+      "size": [
+        1134,
+        1164
+      ]
+    },
+    {
+      "path": "Docs/screenshots/face-idle-privacy/iPhone-privacy-calendar-locked-after-background.png",
+      "sha256": "d5fb30394c56b61ed574bd3349cc57a99272dd783b6731909b3b6fe016403258",
+      "size": [
+        1206,
+        2622
+      ]
+    }
+  ],
+  "images_decoded": 6,
+  "contact_sheets_viewed": 2,
+  "full_images_viewed": 2,
+  "final_native_scenarios": 11,
+  "final_native_assertions": 43,
+  "original_cases_byte_identical": true,
+  "new_timer_case_added_before_timer_order_fix": true,
+  "UI_passed": 4,
+  "UI_scope": "Existing background/fresh-unlock and synthetic answer-readout regression, not actual 120-second idle or sensor test",
+  "inspection_suffix": "Read-only gateStoreURL only; actual production AppModel plus unmodified App/Core/Shared main-target sources, excludes separate widget and app entrypoint",
+  "native_clock": "lastInteraction deliberately set 600 seconds in past; no actual wait/presence/device authentication/snapshot evidence",
+  "timer_marker": "Own snapshot-only nativeTimerIDs entry suppresses chime branch; no OS alarm registration, audio asset or playback",
+  "preparation_compile_failure": "Wrong probe source glob included separate iOS widget in macOS host; zero scenarios; fixed to actual main target source membership; sealed",
+  "new_Core_runs": 0,
+  "limits": [
+    "Physical presence, system authentication, actual assistive technologies, app-switcher snapshots, broader media policy and original parity remain unverified",
+    "No new actual delayed provider request experiment; existing lock generation/cache clearing is exercised",
+    "No Home/accounts/permission prompts/camera/microphone/real calls/messages/system alarm registration or new Live Activities"
+  ]
+}
