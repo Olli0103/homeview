@@ -5324,8 +5324,14 @@ extension HomeViewUITests {
   private func revealWorldClockControl(_ element:XCUIElement) {
     XCTAssertTrue(element.waitForExistence(timeout:5))
     let list=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"]
+    var observations:[[String:Any]]=[]
+    func record(_ safe:CGRect,_ target:CGRect) {
+      observations.append(["safe":[Double(safe.minX),Double(safe.minY),Double(safe.width),Double(safe.height)],
+        "target":[Double(target.minX),Double(target.minY),Double(target.width),Double(target.height)]])
+    }
     for _ in 0..<12 {
-      let safe=list.frame.intersection(viewport.frame).insetBy(dx:4,dy:8),target=element.frame
+      let safe=list.frame.intersection(viewport.frame).insetBy(dx:4,dy:0),target=element.frame
+      record(safe,target)
       if !target.isEmpty && safe.contains(target) {break}
       let gap=target.minY<safe.minY ? -(safe.minY-target.minY+12):target.maxY-safe.maxY+12
       let distance=min(max(abs(gap),24),safe.height*0.5)*(gap<0 ? -1:1)
@@ -5333,7 +5339,15 @@ extension HomeViewUITests {
       origin.withOffset(CGVector(dx:safe.minX+8,dy:safe.midY+distance/2))
         .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:safe.minX+8,dy:safe.midY-distance/2)),withVelocity:.slow,thenHoldForDuration:0.2)
     }
-    XCTAssertTrue(list.frame.intersection(viewport.frame).insetBy(dx:4,dy:8).contains(element.frame))
+    // The first row is flush with the scroll view's top edge. Requiring an
+    // extra eight-point inset is not a product contract and cannot be reached
+    // by scrolling past the beginning. Retain full containment and actual
+    // two-point-inside edge taps, with the real rectangles attached.
+    let safe=list.frame.intersection(viewport.frame).insetBy(dx:4,dy:0)
+    record(safe,element.frame)
+    let geometry=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:observations,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    geometry.name="world-visible-"+element.identifier;geometry.lifetime = .keepAlways;add(geometry)
+    XCTAssertTrue(safe.contains(element.frame))
   }
   private func tapWorldClockEdge(_ button:XCUIElement,bottom:Bool=false) {
     XCTAssertTrue(button.waitForExistence(timeout:5))
