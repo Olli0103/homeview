@@ -42,7 +42,7 @@ struct RootView: View {
       let edge = max(150, min(geo.size.width - 24, geo.size.height - 64))
       // The assistant is an input surface, not a scaled clock face. Keep
       // native-sized controls above the keyboard, using available width.
-      let assistantLayout = model.route == .assistant
+      let assistantLayout = model.route == .assistant || model.route == .assistantRecipePreview
       let contentWidth = assistantLayout ? max(150,min(796,geo.size.width-24)):600
       let contentHeight = assistantLayout ? max(150,min(796,geo.size.height-96)):600
       let displayedWidth = assistantLayout ? contentWidth:edge
@@ -349,6 +349,7 @@ struct RootView: View {
     case .cooking: CookingView()
     case .handoff: RecipeHandoffView()
     case .assistant: AssistantView(focusRequest:assistantFocusRequest)
+    case .assistantRecipePreview: AssistantRecipeExampleView()
     case .editor: FaceEditor()
     case .controlCenter: ControlCenterView()
     case .privacy: PrivacyView()

@@ -39,7 +39,7 @@ struct AssistantResponseView:View {
         Text("Butternut Squash Soup").font(.title2.bold())
         Text("Home Cookbook · 35 min · Serves 4").foregroundStyle(.secondary)
         Button(action:openRecipe) {
-          Text("Open bundled recipe").frame(minWidth:44,minHeight:44,alignment:.leading)
+          Text("Read bundled recipe").frame(minWidth:44,minHeight:44,alignment:.leading)
             .contentShape(Rectangle())
         }
           .accessibilityIdentifier("assistant.card.openRecipe")
@@ -91,6 +91,53 @@ struct AssistantResponseView:View {
           .background(.white).foregroundStyle(.black).tint(.blue)
           .preferredColorScheme(.light)
       }
+  }
+}
+
+/// A separate read-only destination, never backed by the selected recipe.
+struct AssistantRecipeExampleView:View {
+  @Environment(AppModel.self) private var model
+  private let recipe=RecipeDocument.soup
+  var body:some View {
+    VStack(spacing:0) {
+      HStack(spacing:12) {
+        Button {model.interact();model.route = .assistant} label: {
+          Image(systemName:"chevron.left").frame(width:44,height:44).contentShape(Rectangle())
+        }.accessibilityLabel("Back to Assistant")
+          .accessibilityIdentifier("assistant.exampleRecipe.back")
+        Text("Recipe example").font(.headline)
+        Spacer(minLength:0)
+      }.padding(.horizontal,24).padding(.vertical,12)
+      Divider()
+      ScrollView {
+        VStack(alignment:.leading,spacing:18) {
+          SoupExampleIllustration().frame(height:160).clipShape(RoundedRectangle(cornerRadius:22))
+            .accessibilityLabel("Illustration of a bowl of soup")
+          Text(verbatim:recipe.title).font(.title.bold())
+            .accessibilityIdentifier("assistant.exampleRecipe.title")
+          Text("Read-only example. Your selected recipe and cooking progress stay unchanged.")
+            .font(.subheadline).foregroundStyle(.secondary)
+            .accessibilityIdentifier("assistant.exampleRecipe.scope")
+          Text(recipe.source+" · "+recipe.durationLabel+" · "+recipe.servingsLabel)
+            .font(.subheadline).foregroundStyle(.secondary)
+          Text("Ingredients").font(.title2.bold())
+          ForEach(recipe.ingredients.indices,id:\.self) { index in
+            Text(verbatim:recipe.ingredients[index]).font(.body)
+              .fixedSize(horizontal:false,vertical:true)
+              .accessibilityIdentifier("assistant.exampleRecipe.ingredient.\(index)")
+          }
+          Text("Steps").font(.title2.bold())
+          ForEach(recipe.steps.indices,id:\.self) { index in
+            VStack(alignment:.leading,spacing:8) {
+              Text("Step \(index+1)").font(.headline)
+              Text(verbatim:recipe.steps[index].text).font(.body)
+                .fixedSize(horizontal:false,vertical:true)
+            }.accessibilityElement(children:.combine)
+              .accessibilityIdentifier("assistant.exampleRecipe.step.\(index)")
+          }
+        }.frame(maxWidth:.infinity,alignment:.leading).padding(24)
+      }.accessibilityIdentifier("assistant.exampleRecipe.content")
+    }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
   }
 }
 

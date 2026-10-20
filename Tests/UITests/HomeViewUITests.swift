@@ -4983,8 +4983,9 @@ extension HomeViewUITests {
     revealPlanControl(open)
     viewportShot("assistant-card-recipe-explicit-action",assistantRectangle:true)
     activatePlanControl(open)
-    XCTAssertTrue(app.buttons["recipe.ingredients"].waitForExistence(timeout:5))
-    viewportShot("assistant-card-opened-bundled-recipe")
+    XCTAssertTrue(app.staticTexts["assistant.exampleRecipe.title"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["assistant.exampleRecipe.title"].label,"Butternut Squash Soup")
+    shot("assistant-card-opened-readonly-bundled-recipe")
     tap("nav.faces");drawer();tap("app.Timers")
     XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
     XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
@@ -5121,6 +5122,55 @@ extension HomeViewUITests {
     shot("assistant-recipe-target-after-open-with-canary-selected")
     XCTAssertTrue(app.staticTexts["Butternut Squash Soup"].waitForExistence(timeout:5))
     XCTAssertFalse(app.staticTexts["Second local recipe"].exists)
+    XCTAssertTrue(app.staticTexts["assistant.exampleRecipe.scope"].label.contains("Read-only"))
+    tapAssistantControlEdge(app.buttons["assistant.exampleRecipe.back"])
+    XCTAssertEqual(input.value as? String,draft)
+    if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
+    tap("nav.faces");drawer();tap("app.Recipes")
+    XCTAssertTrue(app.buttons["saved.Second local recipe"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.buttons["saved.Butternut Squash Soup"].exists)
+    shot("assistant-recipe-target-selected-canary-not-replaced")
+    app.terminate();launch(["--persistence-test",storeID]);drawer();tap("app.Recipes")
+    XCTAssertTrue(app.buttons["saved.Second local recipe"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.buttons["saved.Butternut Squash Soup"].exists)
+    shot("assistant-recipe-target-canary-after-restart")
+  }
+  private func revealReadonlyExampleText(_ element:XCUIElement) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let scroll=app.scrollViews["assistant.exampleRecipe.content"],viewport=app.otherElements["reference.viewport"]
+    for _ in 0..<16 {
+      let safe=scroll.frame.intersection(viewport.frame).insetBy(dx:8,dy:12),target=element.frame
+      if !target.isEmpty,safe.contains(target) {break}
+      let gap=target.minY<safe.minY ? -(safe.minY-target.minY+12):target.maxY-safe.maxY+12
+      let distance=min(max(abs(gap),20),safe.height*0.5)*(gap<0 ? -1:1)
+      let origin=app.coordinate(withNormalizedOffset:.zero)
+      origin.withOffset(CGVector(dx:safe.minX+10,dy:safe.midY+distance/2))
+        .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:safe.minX+10,dy:safe.midY-distance/2)),withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    XCTAssertGreaterThan(element.frame.height,0)
+    XCTAssertTrue(scroll.frame.intersection(viewport.frame).insetBy(dx:8,dy:12).contains(element.frame))
+  }
+  func testAssistantReadonlyRecipeNarrowWideAndBackKeepsDraft() {
+    launch();tap("nav.assistant")
+    let input=app.textFields["assistant.input"],draft="UNSENT RECIPE PREVIEW DRAFT"
+    input.tap();input.typeText(draft);selectAnswerExample("recipe")
+    activatePlanControl(app.buttons["assistant.card.openRecipe"])
+    XCTAssertTrue(app.staticTexts["assistant.exampleRecipe.title"].waitForExistence(timeout:5))
+    let ingredient=app.staticTexts["assistant.exampleRecipe.ingredient.0"]
+    for (name,orientation) in [("portrait",UIDeviceOrientation.portrait),("landscape",.landscapeLeft)] {
+      rotateAssistantDevice(orientation)
+      revealReadonlyExampleText(ingredient)
+      XCTAssertEqual(ingredient.label,"1 butternut squash, peeled and cubed")
+      let back=app.buttons["assistant.exampleRecipe.back"],frame=app.otherElements["reference.viewport"].frame
+      XCTAssertTrue(frame.contains(back.frame))
+      XCTAssertGreaterThanOrEqual(back.frame.width,44-0.000_001)
+      XCTAssertGreaterThanOrEqual(back.frame.height,44-0.000_001)
+      shot("assistant-readonly-recipe-"+name+"-visible-ingredient")
+    }
+    tapAssistantControlEdge(app.buttons["assistant.exampleRecipe.back"],bottom:true)
+    XCTAssertEqual(input.value as? String,draft)
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"Here is the bundled butternut squash soup recipe.")
+    XCTAssertFalse(app.buttons["assistant.card.openRecipe"].exists)
   }
 }
 
@@ -5180,8 +5230,9 @@ extension HomeViewUITests {
     let open=app.buttons["assistant.card.openRecipe"];revealPlanControl(open)
     viewportShot("assistant-hit-region-recipe-before-edge",assistantRectangle:true)
     tapAssistantControlEdge(open)
-    XCTAssertTrue(app.buttons["recipe.ingredients"].waitForExistence(timeout:5))
-    viewportShot("assistant-hit-region-recipe-edge-opened")
+    XCTAssertTrue(app.staticTexts["assistant.exampleRecipe.title"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["assistant.exampleRecipe.title"].label,"Butternut Squash Soup")
+    shot("assistant-hit-region-recipe-edge-readonly-preview")
     tap("nav.faces");drawer();tap("app.Timers")
     XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
     XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
