@@ -1395,3 +1395,7 @@ Einstellungen: zu kleine native Tasten und Mock-Regler sowie fehlende Boolean-AX
 ### Control-Center-Touchflächen · 20. Oktober 2026
 
 Control Center: native Mindestflächen für Close, lokale Regler und Pill-Tasten, scrollbarer Inhalt; zehn UI-Ausführungen, vier leere ungefilterte Auditlisten und 24 Randaktionen bestanden. Unterbrochener Testhelfer-Fehllauf separat erhalten, fünf SDKs bei bytegleichen Produktinputs. Keine echte Hilfsmittelabnahme oder Home-Anbindung. Docs/control-center-hit-regions.md. #73 bleibt offen.
+
+### Face-Editor-Touchflächen · 20. Oktober 2026
+
+Face-Editor: lokale Label-Mindestflächen, tatsächliche Flow-Zeilenaktion und geschützte Inline-Datum-Trefferfläche. 28 UI-Ausführungen über zwei bytegleiche Auswahlläufe, 14 leere ungefilterte Auditlisten, 38 native Rand-Taps und fünf SDKs. Vorherfehler erhalten; andere kleine Previewflächen, schmale Fenster und echte Hilfsmittel-/Originalabnahme offen. Docs/editor-hit-regions.md. #73 bleibt offen.
