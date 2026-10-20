@@ -35,3 +35,8 @@ Fünf aktuelle SDK-App-Builds bestanden. 206 Quellen-/Test-/Ressourcen-/Projekt-
 #64 und #80 bleiben OPEN; F089 partial/parity=false, F090 sowie sämtliche ursprünglichen Kriterien unverändert. Physische Frontkamera, echte Berechtigung/Unterbrechungen, tatsächliche Capture-Queue-/Treiberzeitfolgen, Orientierung/Spiegelung/Zoom/Ringlicht und Hardwarefreigabe sind nicht abgenommen. Kein allgemeiner Beweis für kamera-freie Zeitfenster nach jedem Stop und keine Abnahme aller View-/Task-Lifecycles. Auch [#43 / Center Stage](center-stage-boundaries.md) bleibt offen.
 
 Keine Kamera/Mikrofon-/Frame-/Accountdaten, reale Berechtigungsanfrage, Systemeinstellungen, Nachrichten/Anrufe, Systemalarme oder neuen Live Activities. Der bestehende ausdrückliche Use-Camera-Pfad wurde nicht aktiviert. **Keine Home-Anbindung.**
+
+
+## Spaeter noch nicht begonnener Starttask
+
+[Die eigene Besitzer-Task-Luecke vor Eintritt in start()](mirror-task-owner.md) ist separat reproduziert und korrigiert. Die obigen Ergebnisse bleiben an ihren urspruenglichen Checkpoint gebunden.
