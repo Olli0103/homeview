@@ -2,6 +2,38 @@ import CoreGraphics
 import UIKit
 import XCTest
 
+extension HomeViewUITests {
+  func testReadOnlyWorldCityKeepsPickerAndSearchUntilExplicitDone() {
+    let id=UUID().uuidString
+    print("WORLD_WRITE_BOUNDARY_STORE_ID="+id)
+    launch(["--page","World Clock","--persistence-test",id,"--state-future-fixture"])
+    XCTAssertTrue(app.staticTexts["4 of 12 cities"].exists)
+    tap("world.add")
+    let search=app.textFields["world.search"]
+    search.tap();search.typeText("Kathmandu")
+    tap("world.choose.Asia/Kathmandu")
+    dismissLocalWriteError()
+    viewportShot("world-write-readonly-after-rejection")
+    XCTAssertTrue(search.waitForExistence(timeout:3),"Rejected city save must retain its picker")
+    XCTAssertEqual(search.value as? String,"Kathmandu","Rejected city save must retain its search")
+    XCTAssertTrue(app.buttons["world.choose.Asia/Kathmandu"].exists)
+    tap("world.add") // Explicit Done is still available after a rejected save.
+    XCTAssertFalse(search.exists)
+    XCTAssertTrue(app.staticTexts["4 of 12 cities"].exists)
+    XCTAssertFalse(app.buttons["world.remove.Asia/Kathmandu"].exists)
+    viewportShot("world-write-explicit-done-no-city-added")
+    app.terminate()
+    launch(["--page","World Clock","--persistence-test",id])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    XCTAssertTrue(app.staticTexts["4 of 12 cities"].exists)
+    tap("world.add")
+    XCTAssertTrue(app.buttons["world.choose.Asia/Kathmandu"].exists)
+    viewportShot("world-write-restart-original-data-preserved")
+    let receipt=XCTAttachment(data:Data(id.utf8),uniformTypeIdentifier:"public.plain-text")
+    receipt.name="world-write-owned-store-id";receipt.lifetime = .keepAlways;add(receipt)
+  }
+}
+
 @MainActor
 final class HomeViewUITests: XCTestCase {
   var app = XCUIApplication()

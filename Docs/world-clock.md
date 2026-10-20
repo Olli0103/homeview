@@ -20,3 +20,8 @@ Referenzgeometrie und ein originaler animierter Sonnenzeitverlauf bleiben eine g
 ## Korrektur am 20. Oktober 2026
 
 [Mehr als ein Kalendertag Abstand](world-clock-date-distance.md) wird nun ausdrücklich gezählt; ursprüngliche Voriger-/Nächster-Tag-Fälle bleiben erhalten. Neuer begrenzter Nachweis mit 293 Modelltests, vier finalen UI-Ausführungen und fünf SDKs; die obigen 61 Tests bleiben historische Ergebnisse, keine Addition. Originalgeometrie und Sonnenverlauf weiter offen.
+
+
+## Abgelehntes Speichern
+
+[Der Staedte-Picker behaelt bei Schreibschutz seine Suche](world-clock-write-boundary.md); vier finale UI-Ausfuehrungen auf iPad/iPhone und fuenf SDKs. Originalgeometrie und Sonnenzeitverlauf bleiben offen.

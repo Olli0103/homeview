@@ -1,0 +1,500 @@
+{
+  "date": "2026-10-20",
+  "issue": 53,
+  "base_commit": "491a8d3fc19e27ff8047c1147043a5d73e283744",
+  "status": "bounded_fix_passed_issue_open",
+  "source_digest": "cc91f33cd834d57473e2d63b3f9084b4c1953f2a5dd68702cef5e48c0a981b26",
+  "runs": [
+    {
+      "stage": "baseline",
+      "source_digest": "b9dc28daec0ef613daacda2ca5e8a6f514b8a64425a5e24abe066e688fe1223b",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 1,
+                "passedTests": 0,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "finishTime": 1792464924.697,
+            "passedTests": 0,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792464900.307,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertTrue failed - Rejected city save must retain its picker",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 1,
+                "testIdentifierString": "HomeViewUITests/testReadOnlyWorldCityKeepsPickerAndSearchUntilExplicitDone()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testReadOnlyWorldCityKeepsPickerAndSearchUntilExplicitDone",
+                "testName": "testReadOnlyWorldCityKeepsPickerAndSearchUntilExplicitDone()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 1
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 1,
+                "passedTests": 0,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "finishTime": 1792464924.273,
+            "passedTests": 0,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792464900.294,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertTrue failed - Rejected city save must retain its picker",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 1,
+                "testIdentifierString": "HomeViewUITests/testReadOnlyWorldCityKeepsPickerAndSearchUntilExplicitDone()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testReadOnlyWorldCityKeepsPickerAndSearchUntilExplicitDone",
+                "testName": "testReadOnlyWorldCityKeepsPickerAndSearchUntilExplicitDone()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 1
+          }
+        }
+      ],
+      "own_readonly_state": [
+        {
+          "device": "iPad",
+          "owned_UUID": "856FDAFC-5B18-4B44-89B0-B70B5B7C71BD",
+          "exact_original_bytes": "{\"version\":99}",
+          "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+          "unchanged": true
+        },
+        {
+          "device": "iPhone",
+          "owned_UUID": "7B593ED3-DA3C-4BA3-B29E-EF037084EFDD",
+          "exact_original_bytes": "{\"version\":99}",
+          "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "source_digest": "cc91f33cd834d57473e2d63b3f9084b4c1953f2a5dd68702cef5e48c0a981b26",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 2,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792465065.704,
+            "passedTests": 2,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792464989.887,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 2
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 2,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792465062.83,
+            "passedTests": 2,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792464989.887,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 2
+          }
+        }
+      ],
+      "own_readonly_state": [
+        {
+          "device": "iPad",
+          "owned_UUID": "3F89DFB1-54A0-4000-B7D9-3667F9A1F8AB",
+          "exact_original_bytes": "{\"version\":99}",
+          "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+          "unchanged": true
+        },
+        {
+          "device": "iPhone",
+          "owned_UUID": "CCA70573-1FCD-4311-87C7-EE6053EB76F3",
+          "exact_original_bytes": "{\"version\":99}",
+          "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7",
+          "unchanged": true
+        }
+      ]
+    }
+  ],
+  "archives": [
+    {
+      "file": "world-write-baseline-inputs.zip",
+      "entries": 234,
+      "sha256": "2424ce46d8c385a7682eb0d5b29d63896fa992e677b21b7b8a4aca53ecc52632",
+      "all_entries_read_back": true,
+      "source_files": 206,
+      "compiled_inputs": 28
+    },
+    {
+      "file": "world-write-final-inputs.zip",
+      "entries": 234,
+      "sha256": "a8feaa404bb96928c38a7e2f80094650af845ce805e93d5cff4466758dd3482a",
+      "all_entries_read_back": true,
+      "source_files": 206,
+      "compiled_inputs": 28
+    }
+  ],
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-world-write-boundary/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=1,2",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-world-write-boundary/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "macosx",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-world-write-boundary/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "appletvsimulator",
+        "-destination",
+        "generic/platform=tvOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=3",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-world-write-boundary/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "xrsimulator",
+        "-destination",
+        "generic/platform=visionOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=7",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-world-write-boundary/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewWatch",
+        "-sdk",
+        "watchsimulator",
+        "-destination",
+        "generic/platform=watchOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=4",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "images": [
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPad-baseline-viewport-world-write-readonly-after-rejection.png",
+      "sha256": "e4154f1f9c4a753f0b38df30cb5899dfc740beb556c60ae30ae9653287159d6b",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPhone-baseline-viewport-world-write-readonly-after-rejection.png",
+      "sha256": "548bf2c5842a9830c4cf442d28b785418d7878556671c221af9ed9cfa1cb8c81",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPad-final-viewport-world-write-restart-original-data-preserved.png",
+      "sha256": "ce93a58f58b488f0a540e1b61043cf8eea7e791cb993af70d40ceb6c115f5612",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPad-final-viewport-world-write-explicit-done-no-city-added.png",
+      "sha256": "e4154f1f9c4a753f0b38df30cb5899dfc740beb556c60ae30ae9653287159d6b",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPad-final-viewport-world-write-readonly-after-rejection.png",
+      "sha256": "3f2c84cd49029a3a203a587434666106202947d1be7140468190b6b6eb5ac317",
+      "size": [
+        1494,
+        1494
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPad-final-world-kathmandu-fractional-zone.png",
+      "sha256": "196d470959a8f9dcd03adb38aad3d3af435e32db0b101e82c46344754796291e",
+      "size": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPhone-final-viewport-world-write-restart-original-data-preserved.png",
+      "sha256": "faec4f69ee9926916ee2823a07095c66a20e6667489dcfd5dc99deae2620c2a2",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPhone-final-viewport-world-write-explicit-done-no-city-added.png",
+      "sha256": "548bf2c5842a9830c4cf442d28b785418d7878556671c221af9ed9cfa1cb8c81",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPhone-final-viewport-world-write-readonly-after-rejection.png",
+      "sha256": "fb1a19a626c3b497b72aa26bdb121a02d247c3144fa9fbf437f9b10a0b6d17b8",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "path": "Docs/screenshots/world-clock-write-boundary/iPhone-final-world-kathmandu-fractional-zone.png",
+      "sha256": "9819fc8a2f8eccd17f38a35cba9e1cd99d5c17e2ef0f9960526ae362d19fb786",
+      "size": [
+        1206,
+        2622
+      ]
+    }
+  ],
+  "images_decoded": 20,
+  "contacts_viewed": 4,
+  "full_final_search_viewports_viewed": 2,
+  "final_UI_passed": 4,
+  "historical_UI_failed": 2,
+  "new_Core_or_separate_native_model_runs": 0,
+  "test_bytes_unchanged": true,
+  "product_scope": [
+    "Sources/App/AppModel.swift addWorldCity success result",
+    "Sources/App/Everyday.swift WorldClockView success-only continuation"
+  ],
+  "read_only_not_injected_filesystem_failure": true,
+  "original_function": {
+    "id": "F068",
+    "implementation_status": "partial",
+    "parity_accepted": false
+  },
+  "limits": [
+    "Original geometry and solar curve unaccepted",
+    "No new original/hardware/real assistive-tool acceptance",
+    "Synthetic UUID stores and simulator UI only",
+    "No Home, accounts, location, mic/camera/audio, permissions, real devices/system alarm/new Live Activities or system-clock settings"
+  ]
+}

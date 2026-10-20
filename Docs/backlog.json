@@ -1332,7 +1332,7 @@
     "functions": [
       "F068"
     ],
-    "current": "Bis zwölf gespeicherte IANA-Städte, DST-/Datums-/Offsetanzeige und offline Sonnenstandsschätzung vorhanden. Mehrtägiger Kalenderabstand jetzt korrekt beschriftet; 293 Modelltests und begrenzte UI-Gegenprüfung. Originalgeometrie/Sonnenzeitverlauf bleiben offen.",
+    "current": "Bis zwölf gespeicherte IANA-Städte, DST-/Datums-/Offsetanzeige und offline Sonnenstandsschätzung vorhanden. Mehrtägiger Kalenderabstand jetzt korrekt beschriftet; 293 Modelltests und begrenzte UI-Gegenprüfung. Originalgeometrie/Sonnenzeitverlauf bleiben offen. Schreibschutz-Ablehnung verwirft Picker/Suche nicht mehr; vier finale UI-Ausfuehrungen und fuenf SDKs geprueft. Docs/world-clock-write-boundary.md.",
     "tasks": [
       "Zusätzliche Zeitzonen auswählen und persistent speichern",
       "Sommerzeit und Datumsunterschied sichtbar behandeln",
@@ -1345,7 +1345,9 @@
     "state": "open",
     "progress_evidence": [
       "Docs/world-clock-date-distance.md",
-      "Docs/verification/world-date-distance.json"
+      "Docs/verification/world-date-distance.json",
+      "Docs/world-clock-write-boundary.md",
+      "Docs/verification/world-clock-write-boundary.json"
     ]
   },
   {

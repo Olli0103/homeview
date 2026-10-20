@@ -272,11 +272,12 @@ final class AppModel {
     cookingStep=0;cookingInProgress=false
     return true
   }
-  func addWorldCity(_ zone: String) {
+  @discardableResult
+  func addWorldCity(_ zone: String) -> Bool {
     guard data.worldClockZones.count < 12,
       WorldCity.catalogue.contains(where: { $0.zone == zone }),
-      !data.worldClockZones.contains(zone) else { return }
-    updateLocalControls { $0.worldClockZones.append(zone) }
+      !data.worldClockZones.contains(zone) else { return false }
+    return updateLocalControls { $0.worldClockZones.append(zone) }
   }
   func removeWorldCity(_ zone: String) {
     updateLocalControls { $0.worldClockZones.removeAll { $0 == zone } }
