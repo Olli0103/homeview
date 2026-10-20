@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-20",
+  "issue": 45,
+  "status": "feasibility_completed_original_function_blocked",
+  "F058_implementation_status": "blocked",
+  "parity_accepted": false,
+  "decision": "No supported third-party Apple Home Intercom send/target/acknowledgement API identified in the reviewed official documentation and public SDK interfaces. Original delivery remains unfulfilled. This is a bounded lack of evidence, not a universal theorem that no current/future path exists.",
+  "research_issue_acceptance": "The original issue explicitly accepts a documented blocked status in place of target readback. Closure concerns feasibility only, not delivery.",
+  "Xcode": "Xcode 27.0\nBuild version 27A266a",
+  "public_sdk_scan": {
+    "scope": "Read-only SDK System/Library/Frameworks .h in Headers or public .swiftinterface in Modules, resolved-file deduplication. Excludes PrivateFrameworks, PrivateHeaders, .private.swiftinterface and .package.swiftinterface. No framework instantiated.",
+    "pattern": "Intercom|INTERCOM|\\bintercom\\b",
+    "script_sha256": "34ec5ff39200ac5620cb10494e8f94df6716fb86f638f9bbe6aa9c38c57fda52",
+    "full_external_inventory_sha256": "b0752d78e2b62f790697ff05035b20b63bb82505b9171f9bf128aa2190318f14",
+    "SDKs": [
+      {
+        "sdk": "iphonesimulator",
+        "SDK_name": "iPhoneSimulator27.0.sdk",
+        "files": 4577,
+        "inventory_digest": "1f26a537a0019d25d14a9b7aa19b8834efbec9ed4f80a485ad01b7f429a72863",
+        "matches": [
+          {
+            "path": "System/Library/Frameworks/Matter.framework/Headers/MTRClusterConstants.h",
+            "line": 7443,
+            "text": "MTRDeviceTypeIDTypeIntercomID MTR_PROVISIONALLY_AVAILABLE = 0x00000140,"
+          }
+        ]
+      },
+      {
+        "sdk": "macosx",
+        "SDK_name": "MacOSX27.0.sdk",
+        "files": 6862,
+        "inventory_digest": "218e97c685c373d2f5378c5e3cb450fdf9cbfad747e26b20f3923b70d8df7e60",
+        "matches": [
+          {
+            "path": "System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Headers/MacErrors.h",
+            "line": 2291,
+            "text": "telBadIntercomID              = -10052, /* bad intercom ID specified */"
+          },
+          {
+            "path": "System/Library/Frameworks/IOBluetooth.framework/Versions/A/Headers/BluetoothAssignedNumbers.h",
+            "line": 649,
+            "text": "kBluetoothSDPUUID16ServiceClassIntercom\t\t\t\t\t\t\t\t\t= 0x1110,\t// 00001110-0000-1000-8000-00805f9b34fb"
+          },
+          {
+            "path": "System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/bluetooth/BluetoothAssignedNumbers.h",
+            "line": 649,
+            "text": "kBluetoothSDPUUID16ServiceClassIntercom\t\t\t\t\t\t\t\t\t= 0x1110,\t// 00001110-0000-1000-8000-00805f9b34fb"
+          },
+          {
+            "path": "System/Library/Frameworks/Matter.framework/Versions/A/Headers/MTRClusterConstants.h",
+            "line": 7443,
+            "text": "MTRDeviceTypeIDTypeIntercomID MTR_PROVISIONALLY_AVAILABLE = 0x00000140,"
+          }
+        ]
+      },
+      {
+        "sdk": "appletvsimulator",
+        "SDK_name": "AppleTVSimulator27.0.sdk",
+        "files": 3654,
+        "inventory_digest": "f6e14de8fbb0db0029fa04ba903325d267aaea9bb8afd46328037f2ac302b99a",
+        "matches": [
+          {
+            "path": "System/Library/Frameworks/Matter.framework/Headers/MTRClusterConstants.h",
+            "line": 7443,
+            "text": "MTRDeviceTypeIDTypeIntercomID MTR_PROVISIONALLY_AVAILABLE = 0x00000140,"
+          }
+        ]
+      },
+      {
+        "sdk": "xrsimulator",
+        "SDK_name": "XRSimulator27.0.sdk",
+        "files": 4398,
+        "inventory_digest": "f62b8eab9e91294839a0c3bfb03695d67cd409a66e66cf4eac06e9b522c187c2",
+        "matches": [
+          {
+            "path": "System/Library/Frameworks/Matter.framework/Headers/MTRClusterConstants.h",
+            "line": 7443,
+            "text": "MTRDeviceTypeIDTypeIntercomID MTR_PROVISIONALLY_AVAILABLE = 0x00000140,"
+          }
+        ]
+      },
+      {
+        "sdk": "watchsimulator",
+        "SDK_name": "WatchSimulator27.0.sdk",
+        "files": 3029,
+        "inventory_digest": "40fd30053dfe40544679a3a47d5b3c7e0049e38d7246d374ff3a3ed8fe2b80cf",
+        "matches": [
+          {
+            "path": "System/Library/Frameworks/Matter.framework/Headers/MTRClusterConstants.h",
+            "line": 7443,
+            "text": "MTRDeviceTypeIDTypeIntercomID MTR_PROVISIONALLY_AVAILABLE = 0x00000140,"
+          }
+        ]
+      }
+    ]
+  },
+  "symbol_classification": [
+    {
+      "symbol": "MTRDeviceTypeIDTypeIntercomID",
+      "classification": "Matter device-type numeric enum value 0x140, not a HomePod/Apple Home message-send method. Provisional macro is NS_UNAVAILABLE unless MTR_ENABLE_PROVISIONAL is enabled in MTRDefines.h; no such override applied."
+    },
+    {
+      "symbol": "kBluetoothSDPUUID16ServiceClassIntercom",
+      "classification": "Bluetooth SDP assigned service-class number 0x1110 in user/kernel public headers, not an Apple Home Intercom send/receive contract."
+    },
+    {
+      "symbol": "telBadIntercomID",
+      "classification": "Legacy Carbon telephony error code -10052, not a message-send API."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://support.apple.com/en-us/101606",
+      "scope": "User-facing Siri/Home Intercom: rooms/zones, receiving devices, Home members/speakers/notification preferences; not a third-party API contract.",
+      "retrieved": "2026-10-20 Europe/Berlin",
+      "receipt": "intercom-official-preflight-fetches.json"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/sirikit/messaging",
+      "data_url": "https://developer.apple.com/tutorials/data/documentation/sirikit/messaging.json",
+      "scope": "Own messaging service intents and app interaction donations, not Apple Home Intercom sending.",
+      "full_document_sha256": "df0d66499f04bb99196fe4865ee0ba6148030b2e8fe4ed6ac77537f97fa70d6d"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/homekit",
+      "data_url": "https://developer.apple.com/tutorials/data/documentation/homekit.json",
+      "scope": "Accessory configuration/control; entitlement and usage-description references. No Intercom send endpoint identified in this overview.",
+      "full_document_sha256": "13fd0d1c080e304551f261a8d1d09a91b4c66ce3038284ac7dfdfcc58e3b45f6"
+    },
+    {
+      "url": "https://developer.apple.com/apple-home/",
+      "scope": "HomeKit/Matter/Thread/EnergyKit and accessory ecosystems, not evidence of Apple Home Intercom send permission."
+    },
+    {
+      "url": "https://support.apple.com/guide/shortcuts/run-a-shortcut-from-a-url-apd624386f42/ios",
+      "scope": "Launch a named user shortcut with optional text. Not a documented Home Intercom endpoint, target catalogue or delivery receipt; no existing shortcut examined or run."
+    },
+    {
+      "url": "https://pyatv.dev/",
+      "scope": "Existing open-source option examined only: AirPlay streaming to HomePod; project explicitly describes private/reverse-engineered protocols. Not installed, selected, executed or planned as alternative delivery."
+    }
+  ],
+  "preliminary_failures": [
+    "Earlier exploratory scanner admitted private Swift interface filenames and substring false positives. Not accepted as strict public-only evidence; original receipt retained externally. Strict pass excludes private/package Swift interfaces and private header/framework paths and qualifies every match.",
+    "Attempted guessed Matter documentation URL returned 404; not used as API availability evidence.",
+    "Tech Talk10854 readability fetch returned navigation only; not cited as transcript evidence."
+  ],
+  "shortcuts_boundary": "The documented generic named-shortcut URL mechanism is not treated as proof of a reusable system Intercom action. No installed shortcut, recording, Home permission or actual recipient examined. Any owner-created workflow remains separately unproved and unimplemented.",
+  "permissions": "Apple user documentation assigns Intercom membership/speaker/notification preferences to Home Settings. HomeKit app entitlement and microphone/Siri permissions alone do not demonstrate Apple Intercom send entitlement. No user/device settings inspected.",
+  "target_readback": "Not performed; blocked. No sent/received/audio playback acknowledgement asserted.",
+  "existing_options": "pyatv documentation reviewed only. AirPlay/media streaming and reverse-engineered control are not substituted for Apple Home Intercom semantics. No alternative audio transport designed, installed or run; separate explicit authorization still required.",
+  "product_unchanged": {
+    "base_commit": "e1bf80a8be777f913907d80b386db9e430134f40",
+    "source_files": 206,
+    "source_digest": "56a9535f14ee6b207210cd0b9d4f59fbf7873473353f7729e8cd258a55efbe68",
+    "all_source_bytes_verified": true
+  },
+  "new_builds": 0,
+  "new_UI_executions": 0,
+  "new_AppModel_processes": 0,
+  "archive": {
+    "archive": "intercom-feasibility-inputs.zip",
+    "sha256": "8bf6719736a70e944fb83e1f8e4df314d0526afec4bc8fc53ac861e2259def3d",
+    "entries": 8,
+    "all_entries_read_back": true,
+    "files": [
+      {
+        "path": "scan-intercom-public-sdks.py",
+        "sha256": "34ec5ff39200ac5620cb10494e8f94df6716fb86f638f9bbe6aa9c38c57fda52"
+      },
+      {
+        "path": "intercom-public-sdk-strict.json",
+        "sha256": "b0752d78e2b62f790697ff05035b20b63bb82505b9171f9bf128aa2190318f14"
+      },
+      {
+        "path": "intercom-official-preflight-fetches.json",
+        "sha256": "95f2b4895e423dc9dcd956f38ee9d7f551d84c47a8c4abf2c7b60624f188faf9"
+      },
+      {
+        "path": "intercom-feasibility-web-results.json",
+        "sha256": "b07e0442d4a284a25eefd1a0f0ff1a42e53aef054c69f37f8557e8f6c5179287"
+      },
+      {
+        "path": "intercom-feasibility-more-web-results.json",
+        "sha256": "55761917e1dfdeaeb94d9c32f29d5934ce18a95ded5560985cd605d564a9ce1b"
+      },
+      {
+        "path": "intercom-feasibility-boundary-web-results.json",
+        "sha256": "f9495f8353c817042e9b58552f0ac123114319f566c2c1b89999a81ba825db57"
+      },
+      {
+        "path": "intercom-sirikit-messaging-official-full.json",
+        "sha256": "df0d66499f04bb99196fe4865ee0ba6148030b2e8fe4ed6ac77537f97fa70d6d"
+      },
+      {
+        "path": "intercom-homekit-overview-official-full.json",
+        "sha256": "13fd0d1c080e304551f261a8d1d09a91b4c66ce3038284ac7dfdfcc58e3b45f6"
+      }
+    ]
+  },
+  "Home_manager_instantiated": false,
+  "Home_discovery": false,
+  "real_device_addressed": false,
+  "microphone_recording": false,
+  "notification_sent": false,
+  "shortcut_executed": false,
+  "alternative_transport_implemented": false
+}

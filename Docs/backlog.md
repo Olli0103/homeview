@@ -771,7 +771,9 @@ Abnahme: Ohne bestätigten Benutzerknopf weder Versand noch Anruf. Keine Behaupt
 <a id="com-04"></a>
 ### COM-04: Intercom zu HomePods und persönlichen Geräten auf Machbarkeit prüfen
 
-Lokale Intercom-Ansicht versendet nicht an HomePods oder persönliche Geräte.
+Machbarkeitsprüfung abgeschlossen: In den geprüften öffentlichen Apple-Dokumenten und SDK-Schnittstellen ist kein unterstützter Drittanbieter-Sendepfad zu Apple Home Intercom belegt. Lokale Ansicht bleibt Simulation; Originalzustellung F058 blockiert, keine Zielbestätigung. Keine Home-Einrichtung oder eigene Audioalternative.
+
+[Öffentliche API-Nachweise und Blockade](intercom-public-feasibility.md).
 
 Offen:
 
