@@ -1716,7 +1716,8 @@
       "COM-02"
     ],
     "current": [
-      "Kein physischer Center-Stage-/Mehrpersonen-Test."
+      "Kein physischer Center-Stage-/Mehrpersonen-Test.",
+      "Public Center Stage format/enabled/active contracts and user/app/cooperative modes documented. Three positive typechecks and two expected public-API availability rejections, not hardware results. Actual target camera and multi-person framing remain unverified. Docs/center-stage-boundaries.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1735,6 +1736,10 @@
     },
     "completion_criteria": [
       "Bewusst gestartete Aufnahme auf unterstütztem Testgerät oder dokumentierter nicht verfügbarer Zustand. Keine Hardwarefähigkeit aus dem SDK-Build ableiten."
+    ],
+    "progress_evidence": [
+      "Docs/center-stage-boundaries.md",
+      "Docs/verification/center-stage-boundaries.json"
     ]
   },
   {

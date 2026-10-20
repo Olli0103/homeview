@@ -1088,7 +1088,7 @@
     "functions": [
       "F055"
     ],
-    "current": "Kein physischer Center-Stage-/Mehrpersonen-Test.",
+    "current": "Kein physischer Center-Stage-/Mehrpersonen-Test. Public Center Stage format/enabled/active contracts and user/app/cooperative modes documented. Three positive typechecks and two expected public-API availability rejections, not hardware results. Actual target camera and multi-person framing remain unverified. Docs/center-stage-boundaries.md.",
     "tasks": [
       "Öffentliche AVFoundation-Unterstützung und tatsächliche Zielkamera erfassen",
       "Verfügbarkeit, automatische Bildführung und Nutzerkontrolle prüfen",
@@ -1098,7 +1098,11 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/43",
     "issue_number": 43,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/center-stage-boundaries.md",
+      "Docs/verification/center-stage-boundaries.json"
+    ]
   },
   {
     "key": "COM-03",

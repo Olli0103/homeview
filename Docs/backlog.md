@@ -748,7 +748,9 @@ Abhängigkeiten: BASE-01.
 <a id="com-02"></a>
 ### COM-02: Center Stage auf geeigneter Kamera-Hardware prüfen
 
-Kein physischer Center-Stage-/Mehrpersonen-Test.
+Kein physischer Center-Stage-/Mehrpersonen-Test. Public Center Stage format/enabled/active contracts and user/app/cooperative modes documented. Three positive typechecks and two expected public-API availability rejections, not hardware results. Actual target camera and multi-person framing remain unverified. Docs/center-stage-boundaries.md.
+
+[Oeffentliche Vertraege und noch nicht ausgefuehrter Geraeteplan](center-stage-boundaries.md).
 
 Offen:
 
