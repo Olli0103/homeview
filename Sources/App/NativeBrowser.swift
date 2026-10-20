@@ -198,6 +198,9 @@ struct NativeBrowserView: View {
   private struct NativeBrowserContent: View {
     @Environment(AppModel.self) private var model
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.nativeCanvasScale) private var canvasScale
+    private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
+    @FocusState private var addressFocused:Bool
     @Bindable var browser: NativeBrowserController
     @State private var candidates: [RecipeDocument] = []
     @State private var importing = false
@@ -207,7 +210,7 @@ struct NativeBrowserView: View {
       Group {
         if !candidates.isEmpty {
           VStack(spacing: 20) {
-            AppHeader(title: "Choose a Recipe")
+            AppHeader(title: "Choose a Recipe",closeSize:max(48,minimumHitSide))
             ScrollView {
               VStack(spacing: 12) {
                 ForEach(candidates) { recipe in
@@ -227,36 +230,54 @@ struct NativeBrowserView: View {
                 }
               }.padding(30)
             }
-            Button("Cancel") { candidates = [] }.padding(24)
+            Button { candidates = [] } label: {
+              Text("Cancel").frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+                .contentShape(Rectangle())
+            }.padding(24)
               .accessibilityIdentifier("browser.cancelRecipes")
           }
         } else {
           VStack(spacing: 10) {
-            AppHeader(title: "Safari")
+            AppHeader(title: "Safari",closeSize:max(48,minimumHitSide))
             HStack(spacing: 12) {
               TextField("Website address", text: $browser.address).textFieldStyle(.plain).font(
                 .system(size: 18)
-              ).onSubmit { browser.openAddress() }.accessibilityIdentifier("browser.address")
+              ).focused($addressFocused)
+                .frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
+                .simultaneousGesture(TapGesture().onEnded {addressFocused=true})
+                .onSubmit { browser.openAddress() }.accessibilityIdentifier("browser.address")
                 #if !os(macOS)
                   .keyboardType(.URL).textInputAutocapitalization(.never).autocorrectionDisabled()
                 #endif
               if browser.loading {
-                RoundButton(symbol: "xmark", size: 38, label: "Stop loading") { browser.stop() }
+                RoundButton(symbol: "xmark", size:max(38,minimumHitSide), label: "Stop loading") { browser.stop() }
                   .accessibilityIdentifier("browser.stop")
               }
-              RoundButton(symbol: "arrow.clockwise", size: 38, label: "Load website") {
+              RoundButton(symbol: "arrow.clockwise", size:max(38,minimumHitSide), label: "Load website") {
                 browser.openAddress()
               }.accessibilityIdentifier("browser.load")
             }.padding(12).background(.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 15))
               .padding(.horizontal, 28)
             HStack(spacing: 14) {
-              Button { browser.webView.goBack() } label: { Image(systemName: "chevron.left") }
+              Button { browser.webView.goBack() } label: {
+                Image(systemName: "chevron.left").frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+                  .contentShape(Rectangle())
+              }
                 .disabled(!browser.canBack).accessibilityLabel("Back").accessibilityIdentifier("browser.back")
-              Button { browser.webView.goForward() } label: { Image(systemName: "chevron.right") }
+              Button { browser.webView.goForward() } label: {
+                Image(systemName: "chevron.right").frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+                  .contentShape(Rectangle())
+              }
                 .disabled(!browser.canForward).accessibilityLabel("Forward").accessibilityIdentifier("browser.forward")
               Spacer()
-              Button("Saved") { model.navigate(.recipes) }.accessibilityIdentifier("browser.saved")
-              Button(importing ? "Reading…" : "Read Recipe") { importRecipes() }
+              Button { model.navigate(.recipes) } label: {
+                Text("Saved").frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+                  .contentShape(Rectangle())
+              }.accessibilityIdentifier("browser.saved")
+              Button { importRecipes() } label: {
+                Text(importing ? "Reading…" : "Read Recipe")
+                  .frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
+              }
                 .fontWeight(.semibold).disabled(browser.loading || importing)
                 .accessibilityIdentifier("browser.recipe")
             }.font(.system(size: 19)).padding(.horizontal, 30)

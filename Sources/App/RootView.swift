@@ -86,7 +86,10 @@ struct RootView: View {
             }.allowsHitTesting(false)
           }
           #if !os(tvOS)
-            if model.route != .face {
+            // WebKit owns scrolling and links down to its lower edge. The
+            // invisible home strip otherwise consumes bottom-page touches.
+            // Browser Close and the native footer still provide navigation.
+            if model.route != .face && model.route != .app(.safari) {
               VStack {
               Spacer()
               Color.clear.frame(height: 16).contentShape(Rectangle())

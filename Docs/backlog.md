@@ -1193,6 +1193,8 @@ Lokale Kalender-Tageswahl: zwei sichtbare öffentliche Hitflächen-Audits je Ger
 
 Demo-Musik: drei sichtbare öffentliche Hitflächen-Audits je Gerät leer, pausierte Navigation/Info/Bibliothek/Close mit echten nativen Randaktionen geprüft. Fortschritt bleibt als benannter nicht interaktiver AX-Status lesbar; Play nur vermessen, keine Wiedergabe. Gesonderte spätere Ganzdisplay-Aufnahmen bei identischen Produktbytes. Keine tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/demo-music-hit-regions.md. [Befunde und Grenzen](demo-music-hit-regions.md).
 
+Browser: native Bedienflaechen und Kollision mit dem unteren Home-Gestenstreifen korrigiert; 14 finale UI-Ausfuehrungen, acht leere Auditlisten, 22 echte native Randaktionen und fuenf SDKs. Keine allgemeine Hilfsmittel-/Webdokument-Abnahme. [Befunde und Grenzen](browser-hit-regions.md).
+
 Offen:
 
 - VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen

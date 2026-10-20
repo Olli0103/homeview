@@ -21,3 +21,8 @@ Die UI-Prüfung verwendet ausschließlich gebündeltes HTML beziehungsweise eine
 Geprüft sind lokale Seitennavigation, Back/Forward, Offlinefehler, Stop, abgewiesene unsichere Adressen/externe Schemes und die bestehende DOM-Rezept-Übernahme bis Kochen/Anheften. Diese Testseiten sind kein Nachweis für die Erreichbarkeit beliebiger öffentlicher Websites oder alle realen Netzwerkfehler. tvOS und Watch erhalten weiterhin keinen behaupteten eingebetteten WebKit-Browser.
 
 Das bounded Navigations-/Inhalts-Paket ist damit abgeschlossen; allgemeine Original-UI- und Geräteabnahmen bleiben getrennt.
+
+
+## Native Bedienflaechen
+
+[Groessere native Trefferflaechen und der vom Browser ausgesparte untere Home-Gestenstreifen](browser-hit-regions.md) sind begrenzt geprueft. Transport-/Inhaltspolicy unveraendert; keine allgemeine Hilfsmittel- oder Webdokument-Abnahme.
