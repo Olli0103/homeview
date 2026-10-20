@@ -1,0 +1,138 @@
+import Foundation
+@MainActor
+  final class ControlledUnlockProvider: DeviceDataProvider {
+    var hasPermission = true
+    var revoked:Set<DataConnection> = []
+    var delayReminders=false
+    var reminderReply:CheckedContinuation<[DeviceReminder],any Error>?
+    var permissionRequests = 0
+    var queriedInterval: DateInterval?
+    var delayUnlock = false
+    var unlockCalls=0
+    var unlockGranted = true
+    var delayEvents = false
+    var delayReminderWrite = false
+    var delayAuthorization = false
+    var authorizationReply: CheckedContinuation<Void, any Error>?
+    var unlockReply: CheckedContinuation<Bool, Never>?
+    var eventReply: CheckedContinuation<[DeviceEvent], any Error>?
+    var writeReply: CheckedContinuation<Void, any Error>?
+    var onStart: (() -> Void)?
+    var reminderReads = 0
+    var reminderWrites = 0
+    var ignoreReminderWrites = false
+    var reminderItems = [DeviceReminder(id: "private", title: "Synthetic private reminder", completed: false)]
+    var eventReads = 0
+    var weatherReply: CheckedContinuation<WeatherReading, any Error>?
+    var weatherValue: WeatherReading?
+    var delayWeather = false
+    var searchReplies: [String:CheckedContinuation<[DeviceTrack], any Error>] = [:]
+    var onSearch: ((String)->Void)?
+    var pauseCalls = 0
+    var musicPermissionRequests=0
+    var playCalls=0
+    var resumeCalls=0
+    var delayPlayback = false
+    var playbackReply: CheckedContinuation<Void, any Error>?
+    var resumeReply: CheckedContinuation<Void, any Error>?
+    var onPlayback: (() -> Void)?
+    func authorized(_ kind: DataConnection) -> Bool { hasPermission && !revoked.contains(kind) }
+    func authorizePersonal(_ kind: DataConnection) async throws {
+      permissionRequests += 1
+      if delayAuthorization {
+        try await withCheckedThrowingContinuation {
+          authorizationReply = $0
+          onStart?()
+        }
+      }
+    }
+    func events(from: Date, to: Date) async throws -> [DeviceEvent] {
+      eventReads += 1
+      queriedInterval = DateInterval(start: from, end: to)
+      if delayEvents {
+        return try await withCheckedThrowingContinuation {
+          eventReply = $0
+          onStart?()
+        }
+      }
+      return [Self.event]
+    }
+    static var event: DeviceEvent {
+      DeviceEvent(id: "private", title: "Synthetic private meeting", start: Date(), end: Date(),
+                  location: "", calendar: "Test", cancelled: false)
+    }
+    func reminders() async throws -> [DeviceReminder] {
+      reminderReads += 1
+      if delayReminders { return try await withCheckedThrowingContinuation { reminderReply=$0;onStart?() } }
+      return reminderItems
+    }
+    func addReminder(_ title: String) async throws -> String {
+      reminderWrites += 1
+      if delayReminderWrite {
+        try await withCheckedThrowingContinuation {
+          writeReply = $0
+          onStart?()
+        }
+      }
+      let id = UUID().uuidString
+      if !ignoreReminderWrites { reminderItems.append(DeviceReminder(id: id, title: title, completed: false)) }
+      return id
+    }
+    func completeReminder(_ id: String, completed: Bool) async throws {
+      reminderWrites += 1
+      if !ignoreReminderWrites {
+        reminderItems = reminderItems.map {
+          $0.id == id ? DeviceReminder(id: id, title: $0.title, completed: completed) : $0
+        }
+      }
+    }
+    func removeReminder(_ id: String) async throws {
+      reminderWrites += 1
+      if !ignoreReminderWrites { reminderItems.removeAll { $0.id == id } }
+    }
+    func authorizeMusic() async throws {
+      musicPermissionRequests+=1
+      if delayAuthorization {
+        try await withCheckedThrowingContinuation { authorizationReply=$0;onStart?() }
+      }
+    }
+    func searchMusic(_ text: String) async throws -> [DeviceTrack] {
+      try await withCheckedThrowingContinuation { reply in
+        searchReplies[text] = reply
+        onSearch?(text)
+      }
+    }
+    func playMusic(_ index: Int) async throws {
+      playCalls+=1
+      if delayPlayback { try await withCheckedThrowingContinuation { playbackReply=$0;onPlayback?() } }
+    }
+    func resumeMusic() async throws {
+      resumeCalls+=1
+      if delayPlayback { try await withCheckedThrowingContinuation { resumeReply=$0;onPlayback?() } }
+    }
+    func pauseMusic() { pauseCalls += 1 }
+    var musicPlaying: Bool { false }
+    var musicTime: Double { 0 }
+    func weather(_ city: String) async throws -> WeatherReading {
+      if delayWeather {
+        return try await withCheckedThrowingContinuation { weatherReply = $0; onStart?() }
+      }
+      if let weatherValue { return weatherValue }
+      throw CocoaError(.featureUnsupported)
+    }
+    var unlockReplies:[Int:CheckedContinuation<Bool,Never>]=[:]
+    private var entryWaiters:[Int:[CheckedContinuation<Void,Never>]]=[:]
+    func waitForCalls(_ n:Int) async {
+      if unlockCalls>=n{return}
+      await withCheckedContinuation {entryWaiters[n,default:[]].append($0)}
+    }
+    func unlock() async -> Bool {
+      unlockCalls+=1
+      for key in Array(entryWaiters.keys) where key<=unlockCalls {
+        for waiter in entryWaiters.removeValue(forKey:key) ?? [] {waiter.resume()}
+      }
+      if !delayUnlock {return unlockGranted}
+      let ticket=unlockCalls
+      return await withCheckedContinuation {unlockReplies[ticket]=$0}
+    }
+  }

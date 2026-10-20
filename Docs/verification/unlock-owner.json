@@ -1,0 +1,586 @@
+{
+  "date": "2026-10-20",
+  "base_commit": "a7bae1636b3191243291595c37947c1aefda8185",
+  "source_digest": "dfd1cdd8d326d6537a79d35d750ada29a5a484037b5d6daca1594ea7933daddd",
+  "status": "bounded_fix_issues_open",
+  "changed_compiled_paths": [
+    "Sources/App/ConnectedViews.swift"
+  ],
+  "native_runs": [
+    {
+      "stage": "baseline",
+      "source_digest": "02c5895f84c00b55d79447affa92d9294a7f0aa58bde24b8f3d603514618e02e",
+      "result": {
+        "actual_AppModel_or_RootView": false,
+        "actual_DeviceConnections": true,
+        "actual_SwiftUI_or_OS_authentication": false,
+        "assertions": 40,
+        "failed_assertions": 8,
+        "failed_scenarios": 6,
+        "production_callback_with_completion_counter": true,
+        "scenario_count": 12,
+        "scenarios": [
+          {
+            "checks": {
+              "keeps_face_destination": true,
+              "no_late_error": true,
+              "no_private_authentication": false,
+              "zero_provider_calls": false
+            },
+            "failed": [
+              "no_private_authentication",
+              "zero_provider_calls"
+            ],
+            "name": "leave_before_child_entry"
+          },
+          {
+            "checks": {
+              "does_not_grant_abandoned_authentication": false,
+              "keeps_destination": true,
+              "no_late_error": true
+            },
+            "failed": [
+              "does_not_grant_abandoned_authentication"
+            ],
+            "name": "leave_pending_to_face"
+          },
+          {
+            "checks": {
+              "does_not_grant_abandoned_authentication": false,
+              "keeps_destination": true,
+              "no_late_error": true
+            },
+            "failed": [
+              "does_not_grant_abandoned_authentication"
+            ],
+            "name": "leave_pending_to_personal"
+          },
+          {
+            "checks": {
+              "new_request_succeeds": true,
+              "no_replaced_request_error": true,
+              "only_new_request_enters_provider": false,
+              "reaches_requested_app": true
+            },
+            "failed": [
+              "only_new_request_enters_provider"
+            ],
+            "name": "replacement_before_entry"
+          },
+          {
+            "checks": {
+              "new_authentication_survives": true,
+              "new_navigation_survives": true,
+              "no_leftover_error": false,
+              "no_old_error": false
+            },
+            "failed": [
+              "no_leftover_error",
+              "no_old_error"
+            ],
+            "name": "old_failure_while_replacement_pending"
+          },
+          {
+            "checks": {
+              "keeps_new_authentication": true,
+              "keeps_new_destination": true,
+              "no_old_error": true
+            },
+            "failed": [],
+            "name": "old_failure_after_new_success_control"
+          },
+          {
+            "checks": {
+              "no_error": true,
+              "pending_destination_cleared": true,
+              "requested_destination_opened": true,
+              "successful_authentication_retained": true
+            },
+            "failed": [],
+            "name": "ordinary_success_then_disappear"
+          },
+          {
+            "checks": {
+              "does_not_change_embedding_route": true,
+              "embedded_authentication_usable": true,
+              "no_error": true
+            },
+            "failed": [],
+            "name": "embedded_unlock_Calendar"
+          },
+          {
+            "checks": {
+              "does_not_change_embedding_route": true,
+              "embedded_authentication_usable": true,
+              "no_error": true
+            },
+            "failed": [],
+            "name": "embedded_unlock_Reminders"
+          },
+          {
+            "checks": {
+              "keeps_unlock_page": true,
+              "remains_locked": true,
+              "shows_current_error": true
+            },
+            "failed": [],
+            "name": "ordinary_denial_control"
+          },
+          {
+            "checks": {
+              "authentication_still_usable": true,
+              "no_error": true,
+              "reaches_destination": true
+            },
+            "failed": [],
+            "name": "inactive_prompt_phase_does_not_cancel"
+          },
+          {
+            "checks": {
+              "keeps_unlock_route": true,
+              "no_obsolete_error": false,
+              "stays_locked": true
+            },
+            "failed": [
+              "no_obsolete_error"
+            ],
+            "name": "background_with_root_session_lock"
+          }
+        ],
+        "symbolic_lifecycle_host": true,
+        "verdict": "FAIL"
+      },
+      "callback_receipt": {
+        "source": "Sources/App/ConnectedViews.swift",
+        "view_sha256": "1d4880d48c4a120f22dd01adbb87223890f64c17226a39354c4009294bab2980",
+        "tap_sha256": "f2f970e0ca9df89fa4fa1faaa161991eeabe4e4e4c014018e9ee82f8d511ff3c",
+        "tap_literal": "\n        Task {\n          let granted = await model.connections.unlock()\n          guard model.route == .deviceUnlock else { return }\n          if granted {\n            if let page = model.pendingPage {\n              model.route = .app(page)\n              model.pendingPage = nil\n            }\n          } else {\n            model.error = \"Personal access was not unlocked.\"\n          }\n        }\n      ",
+        "disappear_literal": "",
+        "scene_literal": "",
+        "cancel_literal": "",
+        "instrumentation": "Only defer model.taskFinished() inserted at Task entry; stripped bytes asserted equal original callback",
+        "host": "Symbolic MainActor owner + minimal route model, actual Core DeviceConnections; NOT actual SwiftUI or AppModel"
+      },
+      "archive": {
+        "artifact": "unlock-owner-baseline-inputs.zip",
+        "sha256": "6b9ef9d80f01f3303f7b46175b29eb4a840070c63a23a56db583b6908a5e9d26",
+        "entries": 55,
+        "all_entries_read_back": true
+      }
+    },
+    {
+      "stage": "final",
+      "source_digest": "dfd1cdd8d326d6537a79d35d750ada29a5a484037b5d6daca1594ea7933daddd",
+      "result": {
+        "actual_AppModel_or_RootView": false,
+        "actual_DeviceConnections": true,
+        "actual_SwiftUI_or_OS_authentication": false,
+        "assertions": 40,
+        "failed_assertions": 0,
+        "failed_scenarios": 0,
+        "production_callback_with_completion_counter": true,
+        "scenario_count": 12,
+        "scenarios": [
+          {
+            "checks": {
+              "keeps_face_destination": true,
+              "no_late_error": true,
+              "no_private_authentication": true,
+              "zero_provider_calls": true
+            },
+            "failed": [],
+            "name": "leave_before_child_entry"
+          },
+          {
+            "checks": {
+              "does_not_grant_abandoned_authentication": true,
+              "keeps_destination": true,
+              "no_late_error": true
+            },
+            "failed": [],
+            "name": "leave_pending_to_face"
+          },
+          {
+            "checks": {
+              "does_not_grant_abandoned_authentication": true,
+              "keeps_destination": true,
+              "no_late_error": true
+            },
+            "failed": [],
+            "name": "leave_pending_to_personal"
+          },
+          {
+            "checks": {
+              "new_request_succeeds": true,
+              "no_replaced_request_error": true,
+              "only_new_request_enters_provider": true,
+              "reaches_requested_app": true
+            },
+            "failed": [],
+            "name": "replacement_before_entry"
+          },
+          {
+            "checks": {
+              "new_authentication_survives": true,
+              "new_navigation_survives": true,
+              "no_leftover_error": true,
+              "no_old_error": true
+            },
+            "failed": [],
+            "name": "old_failure_while_replacement_pending"
+          },
+          {
+            "checks": {
+              "keeps_new_authentication": true,
+              "keeps_new_destination": true,
+              "no_old_error": true
+            },
+            "failed": [],
+            "name": "old_failure_after_new_success_control"
+          },
+          {
+            "checks": {
+              "no_error": true,
+              "pending_destination_cleared": true,
+              "requested_destination_opened": true,
+              "successful_authentication_retained": true
+            },
+            "failed": [],
+            "name": "ordinary_success_then_disappear"
+          },
+          {
+            "checks": {
+              "does_not_change_embedding_route": true,
+              "embedded_authentication_usable": true,
+              "no_error": true
+            },
+            "failed": [],
+            "name": "embedded_unlock_Calendar"
+          },
+          {
+            "checks": {
+              "does_not_change_embedding_route": true,
+              "embedded_authentication_usable": true,
+              "no_error": true
+            },
+            "failed": [],
+            "name": "embedded_unlock_Reminders"
+          },
+          {
+            "checks": {
+              "keeps_unlock_page": true,
+              "remains_locked": true,
+              "shows_current_error": true
+            },
+            "failed": [],
+            "name": "ordinary_denial_control"
+          },
+          {
+            "checks": {
+              "authentication_still_usable": true,
+              "no_error": true,
+              "reaches_destination": true
+            },
+            "failed": [],
+            "name": "inactive_prompt_phase_does_not_cancel"
+          },
+          {
+            "checks": {
+              "keeps_unlock_route": true,
+              "no_obsolete_error": true,
+              "stays_locked": true
+            },
+            "failed": [],
+            "name": "background_with_root_session_lock"
+          }
+        ],
+        "symbolic_lifecycle_host": true,
+        "verdict": "PASS"
+      },
+      "callback_receipt": {
+        "source": "Sources/App/ConnectedViews.swift",
+        "view_sha256": "53e719613545a8b5175a2275bd7c0c0cc6762c80163f0ef021e1b74935ec58c4",
+        "tap_sha256": "2cda7dd92505eeccfb19a99596c2fe076a5b089f8c8c581ce37d5766b6447a81",
+        "tap_literal": "\n        cancelUnlock()\n        unlockTask = Task {\n          guard !Task.isCancelled else { return }\n          let granted = await model.connections.unlock()\n          guard !Task.isCancelled, model.route == .deviceUnlock else { return }\n          if granted {\n            if let page = model.pendingPage {\n              model.route = .app(page)\n              model.pendingPage = nil\n            }\n          } else {\n            model.error = \"Personal access was not unlocked.\"\n          }\n        }\n      ",
+        "disappear_literal": " cancelUnlock() ",
+        "scene_literal": "\n        // A system authentication prompt may make the scene inactive.\n        if phase == .background { cancelUnlock() }\n      ",
+        "cancel_literal": "\n    unlockTask?.cancel()\n    unlockTask = nil\n  ",
+        "instrumentation": "Only defer model.taskFinished() inserted at Task entry; stripped bytes asserted equal original callback",
+        "host": "Symbolic MainActor owner + minimal route model, actual Core DeviceConnections; NOT actual SwiftUI or AppModel"
+      },
+      "archive": {
+        "artifact": "unlock-owner-final-inputs.zip",
+        "sha256": "8a5e1d003c4f43de006efbd61ce5eda1c3cd5c6d796e8d679b77b5b50bde3262",
+        "entries": 55,
+        "all_entries_read_back": true
+      }
+    }
+  ],
+  "native_scope": "Actual callback bodies and Core DeviceConnections, only completion-counter defer inserted and independently stripped; symbolic owner/model/phase host, NOT actual SwiftUI/AppModel/RootView/LocalAuthentication",
+  "root_contract": {
+    "base": "a7bae1636b3191243291595c37947c1aefda8185",
+    "source_inputs": [
+      {
+        "path": "Sources/App/ConnectedViews.swift",
+        "sha256": "7819c48991c7bd037a530f5c7a2676042ca3c366ae7f0be249847f7650dc663e"
+      },
+      {
+        "path": "Sources/App/RootView.swift",
+        "sha256": "7449ca82e7e2eb4b9f49054a1a619c23c3e41889a6608131679d2846739f962b"
+      },
+      {
+        "path": "Sources/App/AppModel.swift",
+        "sha256": "4da4e6d95681daa8810724773723423dfbf782303e7467f19f719482ae143aed"
+      },
+      {
+        "path": "Sources/Core/ConnectedDataSession.swift",
+        "sha256": "fd29e46ce98b302d5bb0fc557b838800b7b1604b14282c9f44e608e9dc7a3f4d"
+      }
+    ],
+    "reviewed_root_boundaries": [
+      "RootView privacy route observer locks; this boundary explained and invalidated the earlier isolated guest hypothesis. It is NOT omitted here: the departure cases deliberately use face/personal, not privacy.",
+      "AppModel.route didSet only cleans assistant departure. deviceUnlock to face/personal does not invoke a session lock there.",
+      "RootView itself remains appeared and active for ordinary in-app navigation. Its whole-root disappearance lock is not a per-page disappearance handler.",
+      "RootView background branch locks personal access; its app(page) route replacement does not match deviceUnlock. The background test applies actual Core lock before the synthetic page phase callback.",
+      "RootView inactive branch does not revoke authentication; a prompt-associated inactive phase must not cancel current request.",
+      "DeviceUnlockView is embedded by calendar/reminders with app(page) route. An entry guard route==deviceUnlock would break this existing path."
+    ],
+    "bounded_invariants": [
+      "No provider entry for a queued request cancelled by page departure or replacement",
+      "No grant from abandoned pending request",
+      "No obsolete error from replaced/cancelled caller, including background lock",
+      "Late old completion cannot invalidate newer successful authentication",
+      "Successful page disappearance does not revoke newly granted authority",
+      "Both embedded page unlock paths remain usable",
+      "Ordinary denial remains visible",
+      "Inactive prompt phase is not background cancellation"
+    ],
+    "scope": "Literal production button/action and lifecycle callback host seam; completion-only defer marker is independently stripped and byte-checked; actual Core DeviceConnections, controlled fake provider, symbolic owner/route model. Not real SwiftUI/AppModel/LocalAuthentication evidence."
+  },
+  "public_fixtures": [
+    {
+      "path": "Docs/verification/unlock-owner-probe.swift.txt",
+      "sha256": "0a547756ffe8e900fe03e604ff9c57d6560c03185a31e437d6721d7d03893123",
+      "native_input_sha256": "0a547756ffe8e900fe03e604ff9c57d6560c03185a31e437d6721d7d03893123",
+      "normalization": "Only final empty lines removed from public text copy; exact native input remains archived"
+    },
+    {
+      "path": "Docs/verification/unlock-owner-provider.swift.txt",
+      "sha256": "3bbcdb41473f14384953b6834e98c096fe4543c3e16713f2aebaf9087e59fbdf",
+      "native_input_sha256": "dd688c4b9dd7e7631e2b88f11439bda88ff4f500d71149360410cf169d60c815",
+      "normalization": "Only final empty lines removed from public text copy; exact native input remains archived"
+    },
+    {
+      "path": "Docs/verification/unlock-owner-baseline-callbacks.swift.txt",
+      "sha256": "4f9ceb530dc3b55af51fa5bd12e9ce915b922f65446419bab4da8f14e2c3efbe",
+      "native_input_sha256": "4f9ceb530dc3b55af51fa5bd12e9ce915b922f65446419bab4da8f14e2c3efbe",
+      "normalization": "Only final empty lines removed from public text copy; exact native input remains archived"
+    },
+    {
+      "path": "Docs/verification/unlock-owner-final-callbacks.swift.txt",
+      "sha256": "19ee496dc9c3d34bc34defc552667e6489f0ae97328b25aea41a5c60617d695b",
+      "native_input_sha256": "19ee496dc9c3d34bc34defc552667e6489f0ae97328b25aea41a5c60617d695b",
+      "normalization": "Only final empty lines removed from public text copy; exact native input remains archived"
+    }
+  ],
+  "UI_results": [
+    {
+      "device": "iPad",
+      "exit_code": 0,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+              "deviceName": "iPad Air 11-inch (M4)",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 4,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792476294.938,
+        "passedTests": 4,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792476128.923,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 4
+      }
+    },
+    {
+      "device": "iPhone",
+      "exit_code": 0,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+              "deviceName": "iPhone 18 Pro",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 4,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792476282.457,
+        "passedTests": 4,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792476128.923,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 4
+      }
+    }
+  ],
+  "final_UI_executions": 8,
+  "UI_scope": "Actual SwiftUI normal calendar/reminder success, synthetic authentication denial with zero album reads, background/fresh unlock; NOT controlled pending authentication departure",
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "new_Core_test_runs": 0,
+  "historical_Core_result": {
+    "commit": "a7bae1636b3191243291595c37947c1aefda8185",
+    "XCTest": 303,
+    "note": "Historical parent result only; all Core/Tests bytes unchanged. No new full-package run claimed."
+  },
+  "images": [
+    {
+      "path": "Docs/screenshots/unlock-owner/iPad-privacy-calendar-locked-after-background.png",
+      "sha256": "f8df5d37cb3de0cd0c1bb287a4a655af8aa66e7f2c8aaf461ef7a85d1c03564f",
+      "size": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-owner/iPad-connected-calendar-fixture.png",
+      "sha256": "923c3c4e27ad3f2bb3c7904057df3d13d4bd64b5d2fb52ab5ddc19e5b2e56ec2",
+      "size": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-owner/iPad-reminder-readonly-source.png",
+      "sha256": "69b3628fef405ff7accacb2aebb4bec378b87ca4c58927d03035dfcb71d2ffbb",
+      "size": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-owner/iPad-contact.png",
+      "sha256": "1d0649a47b669806b2b7d673a4b0b6efd74afdded58afbd2e1dffa998e7bf7d4"
+    },
+    {
+      "path": "Docs/screenshots/unlock-owner/iPhone-privacy-calendar-locked-after-background.png",
+      "sha256": "f5c4abe37b01b3fbb4a6d73c93c64d6f5ca205e6d6487466aae5a5a61f545399",
+      "size": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-owner/iPhone-connected-calendar-fixture.png",
+      "sha256": "84b4c74781bc9a30444c203ef7601d27be2a4e64e13967a7d87f84e0c2672ab6",
+      "size": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-owner/iPhone-reminder-readonly-source.png",
+      "sha256": "26e492c5a66f2cbf96ededc753f8e99043e8826cfa0ecc245be153ed12c260ac",
+      "size": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-owner/iPhone-contact.png",
+      "sha256": "fc6c59c6f0385b91f73ebe61cc488fecbc56175f6f276340fb8d3f0b0293f70d"
+    }
+  ],
+  "PNG_decoded": 6,
+  "archives": [
+    {
+      "artifact": "unlock-owner-baseline-inputs.zip",
+      "sha256": "6b9ef9d80f01f3303f7b46175b29eb4a840070c63a23a56db583b6908a5e9d26",
+      "entries": 55,
+      "all_entries_read_back": true
+    },
+    {
+      "artifact": "unlock-owner-final-inputs.zip",
+      "sha256": "8a5e1d003c4f43de006efbd61ce5eda1c3cd5c6d796e8d679b77b5b50bde3262",
+      "entries": 55,
+      "all_entries_read_back": true
+    },
+    {
+      "artifact": "unlock-owner-ui-final-inputs.zip",
+      "sha256": "2a2d6d4d7b6c2ad966f8e94273c96fc7406fa99ca2ff6e325d7659cbd88365cd",
+      "entries": 235,
+      "all_entries_read_back": true
+    }
+  ],
+  "limits": [
+    "No real LocalAuthentication prompt, biometrics or prompt-dismissal measurement",
+    "No real SwiftUI controlled-pending departure or replacement test",
+    "No physical presence/App Switcher snapshot/whole privacy parity acceptance",
+    "Task cancellation and stale-authority suppression do not establish native LAContext prompt cancellation",
+    "No Home, real personal account/content, camera/microphone, messaging/calls/system alarms/media playback"
+  ]
+}
