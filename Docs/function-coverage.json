@@ -3232,7 +3232,8 @@
       "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme.",
       "Ruhender Timer bietet benanntes SwiftUI-Button-Control samt aktuellem Countdown zum Einblenden. AX-Element/Touch und bisherige Idle-Regel in gestarteten iPad-/iPhone-Simulator-Apps geprüft; keine tatsächliche VoiceOver-/Voice-Control-/Switch-Control-/AssistiveTouch- oder Fokusabnahme. Docs/timer-accessible-controls.md.",
       "Weltuhr: drei sichtbare öffentliche Hitflächen-Audits pro Gerät ohne Restbefund; Add/Done, Auswahl, Entfernen und Schließen mit gemessenen nativen Mindestflächen und realen Randaktionen geprüft. Historische Fehlstände und Test-Scrollkorrektur getrennt dokumentiert. Keine tatsächliche Hilfsmittel-/Hardware-/Originalabnahme. Docs/world-clock-hit-regions.md.",
-      "Lokale Wecker: drei vollständige sichtbare Hitflächen-Audits pro Gerät leer; Ein/Aus, Add, konkretes Löschen und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Uhrzeitlabel und Off/On/Off als AX-Wert beobachtet, keine tatsächliche Hilfsmittel- oder Systemalarmabnahme. Docs/alarm-hit-regions.md."
+      "Lokale Wecker: drei vollständige sichtbare Hitflächen-Audits pro Gerät leer; Ein/Aus, Add, konkretes Löschen und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Uhrzeitlabel und Off/On/Off als AX-Wert beobachtet, keine tatsächliche Hilfsmittel- oder Systemalarmabnahme. Docs/alarm-hit-regions.md.",
+      "Lokale Erinnerungen: drei sichtbare öffentliche Hitflächen-Audits je Gerät leer; Erledigen, konkretes Löschen, Eingabefokus, Add und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Zusätzlichen Rand-Fokusfehler tatsächlich reproduziert und korrigiert. Nur Demoliste, keine verbundenen Quellen oder tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/reminder-hit-regions.md."
     ],
     "parity_accepted": false,
     "issue_urls": [

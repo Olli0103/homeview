@@ -1183,6 +1183,8 @@ Weltuhr: drei sichtbare öffentliche Hitflächen-Audits pro Gerät ohne Restbefu
 
 Lokale Wecker: drei vollständige sichtbare Hitflächen-Audits pro Gerät leer; Ein/Aus, Add, konkretes Löschen und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Uhrzeitlabel und Off/On/Off als AX-Wert beobachtet, keine tatsächliche Hilfsmittel- oder Systemalarmabnahme. Docs/alarm-hit-regions.md. [Befunde und Grenzen](alarm-hit-regions.md).
 
+Lokale Erinnerungen: drei sichtbare öffentliche Hitflächen-Audits je Gerät leer; Erledigen, konkretes Löschen, Eingabefokus, Add und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Zusätzlichen Rand-Fokusfehler tatsächlich reproduziert und korrigiert. Nur Demoliste, keine verbundenen Quellen oder tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/reminder-hit-regions.md. [Befunde und Grenzen](reminder-hit-regions.md).
+
 Offen:
 
 - VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen
