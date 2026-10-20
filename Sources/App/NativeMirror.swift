@@ -61,6 +61,7 @@ import SwiftUI
     private var captureWanted = false
     var session: AVCaptureSession { capture.session }
     func start() async {
+      guard !Task.isCancelled else { return }
       generation += 1
       let ticket = generation
       captureWanted = true
@@ -152,6 +153,7 @@ struct NativeMirrorView: View {
   @Environment(\.scenePhase) private var scenePhase
   #if canImport(AVFoundation) && (os(iOS) || os(macOS))
     @State private var camera: NativeMirrorController?
+    @State private var cameraStartTask: Task<Void, Never>?
   #endif
   var body: some View {
     ZStack {
@@ -173,12 +175,14 @@ struct NativeMirrorView: View {
             .black.opacity(0.5), in: Capsule()
           ).accessibilityIdentifier("mirror.mode")
           Button(camera?.running == true ? "Stop Camera" : "Use Camera") {
+            cameraStartTask?.cancel()
+            cameraStartTask = nil
             if camera?.running == true {
               camera?.stop()
             } else {
               let c = camera ?? NativeMirrorController()
               camera = c
-              Task { await c.start() }
+              cameraStartTask = Task { await c.start() }
             }
           }.font(.system(size: 18, weight: .medium)).disabled(camera?.busy == true)
             .accessibilityIdentifier("mirror.live")
@@ -212,11 +216,17 @@ struct NativeMirrorView: View {
     }.foregroundStyle(.white).buttonStyle(.plain)
       .onChange(of: scenePhase) { _, phase in
         #if canImport(AVFoundation) && (os(iOS) || os(macOS))
-          if phase == .background { camera?.stop() }
+          if phase == .background {
+            cameraStartTask?.cancel()
+            cameraStartTask = nil
+            camera?.stop()
+          }
         #endif
       }
       .onDisappear {
         #if canImport(AVFoundation) && (os(iOS) || os(macOS))
+          cameraStartTask?.cancel()
+          cameraStartTask = nil
           camera?.stop()
           camera = nil
         #endif

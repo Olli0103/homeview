@@ -2794,7 +2794,8 @@
     ],
     "current": [
       "AVFoundation-Vorschau startet bewusst und stoppt beim Verlassen. Zoom/Ringlicht sind UI-Effekte; Hardwarewirkung nicht geprüft.",
-      "Latest mirror capture intent protects newer starts from stale shared shutdowns; stopped/denied/failed intents retain cleanup and clear live state. Exact controller body with symbolic fake dependencies:12 native cases/45 assertions and five SDKs. Not real camera hardware acceptance. Docs/mirror-start-lifecycle.md."
+      "Latest mirror capture intent protects newer starts from stale shared shutdowns; stopped/denied/failed intents retain cleanup and clear live state. Exact controller body with symbolic fake dependencies:12 native cases/45 assertions and five SDKs. Not real camera hardware acceptance. Docs/mirror-start-lifecycle.md.",
+      "Mirror start Task is owner-bound/cancelled on replacement, Stop, background and leave; cancelled late entry returns before permission/capture. Exact source-callback host seam: 17 native scenarios / 68 assertions and five SDKs, not real SwiftUI/camera hardware acceptance. Docs/mirror-task-owner.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2816,7 +2817,9 @@
     ],
     "progress_evidence": [
       "Docs/mirror-start-lifecycle.md",
-      "Docs/verification/mirror-start-lifecycle.json"
+      "Docs/verification/mirror-start-lifecycle.json",
+      "Docs/mirror-task-owner.md",
+      "Docs/verification/mirror-task-owner.json"
     ]
   },
   {

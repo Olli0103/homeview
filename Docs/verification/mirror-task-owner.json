@@ -1,0 +1,2226 @@
+{
+  "date": "2026-10-20",
+  "issues": [
+    64,
+    80
+  ],
+  "base_commit": "7c1ebc11e2c02e6c32d1c6de25d37f1824610bfb",
+  "status": "bounded_task_owner_logic_fix_passed_physical_acceptance_open",
+  "source_digest": "8558c6374bdec8863e575b30be7283f7b9e7c76d6065d7c0cd0f934b8fe6f89b",
+  "runs": [
+    {
+      "stage": "mirror-owner-task-baseline",
+      "receipt": {
+        "source_digest": "671e7540153ef7a6b9b16363cab263a29c05eb61cc75c55ffa7a692b0f395603",
+        "literal_controller_sha256": "667d7c1830e990641f79db848c7dd8c0352da18eb24f73283ab803ac77dd944e",
+        "literal_callbacks_sha256": "97cc7f087b8c7dc3415ad0582573b0ec5bd088cd2e9f8013cec805680fa55060",
+        "native_input_files": 11,
+        "archive_entries": 217,
+        "archive_sha256": "f170566fb80dce93076ff02d4fe357b76ae973c6daedef1fea1cc9e2b788ca80",
+        "all_entries_read_back": true,
+        "scenarios_passed": 15,
+        "scenarios_failed": 2,
+        "assertions": 68,
+        "assertions_failed": 4,
+        "no_AVFoundation_import_or_link": true,
+        "no_real_camera_or_permission": true
+      },
+      "results": [
+        {
+          "assertions": [
+            {
+              "name": "pending start is busy, not live",
+              "passed": true
+            },
+            {
+              "name": "current success publishes live state",
+              "passed": true
+            },
+            {
+              "name": "success emits no stop",
+              "passed": true
+            },
+            {
+              "name": "explicit stop owns one shutdown and clears live state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "ordinary_success_stop",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "one fake permission decision",
+              "passed": true
+            },
+            {
+              "name": "denial starts no capture; cleanup stops are permitted",
+              "passed": true
+            },
+            {
+              "name": "denial is not live or busy",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "permission_denied",
+          "driverEvents": [
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Camera permission was not granted."
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "late permission grant does not start capture",
+              "passed": true
+            },
+            {
+              "name": "only explicit stop owns shutdown",
+              "passed": true
+            },
+            {
+              "name": "late grant does not resurrect live or busy state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "stop_before_permission_reply",
+          "driverEvents": [
+            "stop-request-1",
+            "permission-reply-true"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1",
+                "permission-reply-true"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "stopped latest intent retains late-result shutdown cleanup",
+              "passed": true
+            },
+            {
+              "name": "stopped controller stays stopped",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "stop_before_capture_reply",
+          "driverEvents": [
+            "start-request-1",
+            "stop-request-1",
+            "start-reply-1",
+            "stop-request-2"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-reply-1",
+                "stop-request-2"
+              ],
+              "driverStarts": 1,
+              "driverStops": 2,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply must not enqueue shutdown after newer start request",
+              "passed": true
+            },
+            {
+              "name": "old reply leaves pending current state alone",
+              "passed": true
+            },
+            {
+              "name": "newest success still owns published live state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "newer_start_after_stop_old_success",
+          "driverEvents": [
+            "start-request-1",
+            "stop-request-1",
+            "start-request-2",
+            "start-reply-1",
+            "start-reply-2",
+            "stop-request-2"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "newer start requested before old reply",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "old reply handled while newer request pending",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "newest reply handled",
+              "running": true,
+              "status": "Live camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2",
+                "stop-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 2,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply must not enqueue shutdown after newer start request",
+              "passed": true
+            },
+            {
+              "name": "old reply leaves pending current state alone",
+              "passed": true
+            },
+            {
+              "name": "newest success still owns published live state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "newer_start_after_stop_old_failure",
+          "driverEvents": [
+            "start-request-1",
+            "stop-request-1",
+            "start-request-2",
+            "start-reply-1",
+            "start-reply-2",
+            "stop-request-2"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "newer start requested before old reply",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "old reply handled while newer request pending",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "newest reply handled",
+              "running": true,
+              "status": "Live camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2",
+                "stop-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 2,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply must not enqueue shutdown after newer start request",
+              "passed": true
+            },
+            {
+              "name": "old reply leaves pending current state alone",
+              "passed": true
+            },
+            {
+              "name": "newest success still owns published live state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "overlapping_start_old_success",
+          "driverEvents": [
+            "start-request-1",
+            "start-request-2",
+            "start-reply-1",
+            "start-reply-2",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 0,
+              "name": "newer start requested before old reply",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2",
+                "start-reply-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 0,
+              "name": "old reply handled while newer request pending",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 0,
+              "name": "newest reply handled",
+              "running": true,
+              "status": "Live camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2",
+                "stop-request-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "current failure is visible, not live",
+              "passed": true
+            },
+            {
+              "name": "failure does not create a second capture request",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "current_capture_failure",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "SYNTHETIC_CURRENT_FAILURE"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply cannot stop while newer permission is pending",
+              "passed": true
+            },
+            {
+              "name": "latest denial starts no capture and is not live",
+              "passed": true
+            },
+            {
+              "name": "latest denial performs its own cleanup after decision",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "old_reply_then_latest_permission_denied",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "permission-reply-false",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "permission-reply-false",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Camera permission was not granted."
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply cannot stop a newer pending capture",
+              "passed": true
+            },
+            {
+              "name": "latest failure is not published as live",
+              "passed": true
+            },
+            {
+              "name": "latest failure performs its own cleanup after result",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "old_reply_then_latest_capture_failure",
+          "driverEvents": [
+            "start-request-1",
+            "start-request-2",
+            "start-reply-1",
+            "start-reply-2",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2",
+                "stop-request-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "SYNTHETIC_CURRENT_FAILURE"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "setup really reaches controller live state",
+              "passed": true
+            },
+            {
+              "name": "current denial/failure clears prior live state and owns shutdown",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "live_then_permission_denied",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Camera permission was not granted."
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "setup really reaches controller live state",
+              "passed": true
+            },
+            {
+              "name": "current denial/failure clears prior live state and owns shutdown",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "live_then_capture_failure",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "start-request-2",
+            "start-reply-2",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "start-request-2",
+                "start-reply-2",
+                "stop-request-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "SYNTHETIC_CURRENT_FAILURE"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "setup really precedes child Task entry",
+              "passed": true
+            },
+            {
+              "name": "departed/background owner dispatches no permission or capture attempt",
+              "passed": false
+            },
+            {
+              "name": "late queued child cannot resurrect live state",
+              "passed": false
+            },
+            {
+              "name": "navigation clears owner reference; background retains stopped controller",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_leave_before_task_body",
+          "driverEvents": [
+            "stop-request-1",
+            "start-request-1",
+            "start-reply-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": false,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "owner ended before child entry",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1",
+                "start-request-1",
+                "start-reply-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": true,
+              "status": "Live camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "setup really precedes child Task entry",
+              "passed": true
+            },
+            {
+              "name": "departed/background owner dispatches no permission or capture attempt",
+              "passed": false
+            },
+            {
+              "name": "late queued child cannot resurrect live state",
+              "passed": false
+            },
+            {
+              "name": "navigation clears owner reference; background retains stopped controller",
+              "passed": true
+            },
+            {
+              "name": "foreground transition does not auto-start a camera",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_background_before_task_body",
+          "driverEvents": [
+            "stop-request-1",
+            "start-request-1",
+            "start-reply-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": false,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "owner ended before child entry",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1",
+                "start-request-1",
+                "start-reply-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": true,
+              "status": "Live camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "visible/inactive owner preserves explicit capture intent",
+              "passed": true
+            },
+            {
+              "name": "source Stop/leave callback still shuts down once",
+              "passed": true
+            },
+            {
+              "name": "Stop action creates no second request",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_inactive_preserves_request",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "visible/inactive owner preserves explicit capture intent",
+              "passed": true
+            },
+            {
+              "name": "source Stop/leave callback still shuts down once",
+              "passed": true
+            },
+            {
+              "name": "Stop action creates no second request",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_live_button_stops",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "leave clears owner while permission was already pending",
+              "passed": true
+            },
+            {
+              "name": "late permission never dispatches capture",
+              "passed": true
+            },
+            {
+              "name": "source leave callback retains explicit shutdown",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_leaves_waiting_permission",
+          "driverEvents": [
+            "stop-request-1",
+            "permission-reply-true"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1",
+                "permission-reply-true"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        }
+      ],
+      "callback_seam": {
+        "button": {
+          "raw": "\n            if camera?.running == true {\n              camera?.stop()\n            } else {\n              let c = camera ?? NativeMirrorController()\n              camera = c\n              Task { await c.start() }\n            }\n          ",
+          "sha256": "8e87693dfc4d7b1fbe07e70a15c9617cc4103f046392f945f79910d43fcd1546"
+        },
+        "disappear": {
+          "raw": "\n        #if canImport(AVFoundation) && (os(iOS) || os(macOS))\n          camera?.stop()\n          camera = nil\n        #endif\n      ",
+          "sha256": "ff8f19faf90c9f5e6fa693a0dae935f8c4182bc76c5927b8a435998c3852914e",
+          "selected": "\n          camera?.stop()\n          camera = nil\n      "
+        },
+        "phase": {
+          "raw": "        #if canImport(AVFoundation) && (os(iOS) || os(macOS))\n          if phase == .background { camera?.stop() }\n        #endif\n      ",
+          "sha256": "7f22a363e595963b6b4762c67c19baba1f0b05413aa5cd09eb139c48d772a664",
+          "selected": "          if phase == .background { camera?.stop() }\n      "
+        },
+        "scope": "Exact source callback bodies; only outer AVFoundation/iOS/macOS compiler guards selected for this supported branch. Plain MainActor host properties replace SwiftUI State storage; not actual SwiftUI rendering/lifecycle delivery."
+      },
+      "native_inputs": [
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-baseline-literal-controller.swift.txt",
+          "sha256": "667d7c1830e990641f79db848c7dd8c0352da18eb24f73283ab803ac77dd944e",
+          "bytes": 1471
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-baseline-literal-callbacks.json",
+          "sha256": "97cc7f087b8c7dc3415ad0582573b0ec5bd088cd2e9f8013cec805680fa55060",
+          "bytes": 1271
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-baseline-literal-host.swift.txt",
+          "sha256": "11c3d6b2ad6e0d898a1a2ec4fcddbd94920f0b599fb706148294efed977f4df1",
+          "bytes": 625
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-start-qualified-stubs.swift",
+          "sha256": "5e0f5a9f3d9a705b6b67108229a6b559d95f10f4a6a2f25d612255092b6268db",
+          "bytes": 1549
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-cases.swift",
+          "sha256": "1034256d146b88f0746637707b80410fe19b642f1cd30504ee20507cee40748d",
+          "bytes": 10804
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-baseline-probe.swift",
+          "sha256": "30470e93e250d694f14955fffae3412902e13eee206d57bb5755c6dc65bbce28",
+          "bytes": 14452
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-baseline-probe",
+          "sha256": "aeac12cd9b91c2f8a66fff61c11b6380f21a9d8d3542267a5ae5f966d618806f",
+          "bytes": 346032
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-baseline-compile.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/run-mirror-owner-task-native.py",
+          "sha256": "4fd6d0575c2d529b6e972883ead291bb93ed7fc8175121f0f79e5eb3253c8e3e",
+          "bytes": 6272
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-baseline-compile.json",
+          "sha256": "ca3dc976848c948367e50749167bf6b0a99cee66242d832bb56854f6773bbda0",
+          "bytes": 427
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-baseline-own-executable-linked-libraries.txt",
+          "sha256": "ad2883de539d6ff23963cf4cd30f2274431938bbd95047c70adc41d581fdd0da",
+          "bytes": 1261
+        }
+      ],
+      "archive": {
+        "file": "mirror-owner-task-baseline-inputs.zip",
+        "entries": 217,
+        "sha256": "f170566fb80dce93076ff02d4fe357b76ae973c6daedef1fea1cc9e2b788ca80",
+        "all_entries_read_back": true
+      }
+    },
+    {
+      "stage": "mirror-owner-task-final",
+      "receipt": {
+        "source_digest": "8558c6374bdec8863e575b30be7283f7b9e7c76d6065d7c0cd0f934b8fe6f89b",
+        "literal_controller_sha256": "2840b8bc1601ac9904feb9ddf58f791a12e1a54d289f3e1983ed2218df049424",
+        "literal_callbacks_sha256": "4aa9a22d633deedab10c90cd87a75b32e6a606b6d809cbd9af535738674f3a3b",
+        "native_input_files": 11,
+        "archive_entries": 217,
+        "archive_sha256": "f4a947243572286a6c926152802414fbb57ad5a951f03f0bbea255f15d0b03e6",
+        "all_entries_read_back": true,
+        "scenarios_passed": 17,
+        "scenarios_failed": 0,
+        "assertions": 68,
+        "assertions_failed": 0,
+        "no_AVFoundation_import_or_link": true,
+        "no_real_camera_or_permission": true
+      },
+      "results": [
+        {
+          "assertions": [
+            {
+              "name": "pending start is busy, not live",
+              "passed": true
+            },
+            {
+              "name": "current success publishes live state",
+              "passed": true
+            },
+            {
+              "name": "success emits no stop",
+              "passed": true
+            },
+            {
+              "name": "explicit stop owns one shutdown and clears live state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "ordinary_success_stop",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "one fake permission decision",
+              "passed": true
+            },
+            {
+              "name": "denial starts no capture; cleanup stops are permitted",
+              "passed": true
+            },
+            {
+              "name": "denial is not live or busy",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "permission_denied",
+          "driverEvents": [
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Camera permission was not granted."
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "late permission grant does not start capture",
+              "passed": true
+            },
+            {
+              "name": "only explicit stop owns shutdown",
+              "passed": true
+            },
+            {
+              "name": "late grant does not resurrect live or busy state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "stop_before_permission_reply",
+          "driverEvents": [
+            "stop-request-1",
+            "permission-reply-true"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1",
+                "permission-reply-true"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "stopped latest intent retains late-result shutdown cleanup",
+              "passed": true
+            },
+            {
+              "name": "stopped controller stays stopped",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "stop_before_capture_reply",
+          "driverEvents": [
+            "start-request-1",
+            "stop-request-1",
+            "start-reply-1",
+            "stop-request-2"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-reply-1",
+                "stop-request-2"
+              ],
+              "driverStarts": 1,
+              "driverStops": 2,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply must not enqueue shutdown after newer start request",
+              "passed": true
+            },
+            {
+              "name": "old reply leaves pending current state alone",
+              "passed": true
+            },
+            {
+              "name": "newest success still owns published live state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "newer_start_after_stop_old_success",
+          "driverEvents": [
+            "start-request-1",
+            "stop-request-1",
+            "start-request-2",
+            "start-reply-1",
+            "start-reply-2",
+            "stop-request-2"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "newer start requested before old reply",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "old reply handled while newer request pending",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "newest reply handled",
+              "running": true,
+              "status": "Live camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2",
+                "stop-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 2,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply must not enqueue shutdown after newer start request",
+              "passed": true
+            },
+            {
+              "name": "old reply leaves pending current state alone",
+              "passed": true
+            },
+            {
+              "name": "newest success still owns published live state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "newer_start_after_stop_old_failure",
+          "driverEvents": [
+            "start-request-1",
+            "stop-request-1",
+            "start-request-2",
+            "start-reply-1",
+            "start-reply-2",
+            "stop-request-2"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "newer start requested before old reply",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "old reply handled while newer request pending",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "newest reply handled",
+              "running": true,
+              "status": "Live camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "stop-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2",
+                "stop-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 2,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply must not enqueue shutdown after newer start request",
+              "passed": true
+            },
+            {
+              "name": "old reply leaves pending current state alone",
+              "passed": true
+            },
+            {
+              "name": "newest success still owns published live state",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "overlapping_start_old_success",
+          "driverEvents": [
+            "start-request-1",
+            "start-request-2",
+            "start-reply-1",
+            "start-reply-2",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 0,
+              "name": "newer start requested before old reply",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": true,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2",
+                "start-reply-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 0,
+              "name": "old reply handled while newer request pending",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2"
+              ],
+              "driverStarts": 2,
+              "driverStops": 0,
+              "name": "newest reply handled",
+              "running": true,
+              "status": "Live camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2",
+                "stop-request-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "current failure is visible, not live",
+              "passed": true
+            },
+            {
+              "name": "failure does not create a second capture request",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "current_capture_failure",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "SYNTHETIC_CURRENT_FAILURE"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply cannot stop while newer permission is pending",
+              "passed": true
+            },
+            {
+              "name": "latest denial starts no capture and is not live",
+              "passed": true
+            },
+            {
+              "name": "latest denial performs its own cleanup after decision",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "old_reply_then_latest_permission_denied",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "permission-reply-false",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "permission-reply-false",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Camera permission was not granted."
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "old reply cannot stop a newer pending capture",
+              "passed": true
+            },
+            {
+              "name": "latest failure is not published as live",
+              "passed": true
+            },
+            {
+              "name": "latest failure performs its own cleanup after result",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "old_reply_then_latest_capture_failure",
+          "driverEvents": [
+            "start-request-1",
+            "start-request-2",
+            "start-reply-1",
+            "start-reply-2",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-request-2",
+                "start-reply-1",
+                "start-reply-2",
+                "stop-request-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "SYNTHETIC_CURRENT_FAILURE"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "setup really reaches controller live state",
+              "passed": true
+            },
+            {
+              "name": "current denial/failure clears prior live state and owns shutdown",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "live_then_permission_denied",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Camera permission was not granted."
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "setup really reaches controller live state",
+              "passed": true
+            },
+            {
+              "name": "current denial/failure clears prior live state and owns shutdown",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "live_then_capture_failure",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "start-request-2",
+            "start-reply-2",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 2,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "start-request-2",
+                "start-reply-2",
+                "stop-request-1"
+              ],
+              "driverStarts": 2,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "SYNTHETIC_CURRENT_FAILURE"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "setup really precedes child Task entry",
+              "passed": true
+            },
+            {
+              "name": "departed/background owner dispatches no permission or capture attempt",
+              "passed": true
+            },
+            {
+              "name": "late queued child cannot resurrect live state",
+              "passed": true
+            },
+            {
+              "name": "navigation clears owner reference; background retains stopped controller",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_leave_before_task_body",
+          "driverEvents": [
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 0,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "owner ended before child entry",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "setup really precedes child Task entry",
+              "passed": true
+            },
+            {
+              "name": "departed/background owner dispatches no permission or capture attempt",
+              "passed": true
+            },
+            {
+              "name": "late queued child cannot resurrect live state",
+              "passed": true
+            },
+            {
+              "name": "navigation clears owner reference; background retains stopped controller",
+              "passed": true
+            },
+            {
+              "name": "foreground transition does not auto-start a camera",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_background_before_task_body",
+          "driverEvents": [
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 0,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "owner ended before child entry",
+              "running": false,
+              "status": "Mock camera"
+            },
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "visible/inactive owner preserves explicit capture intent",
+              "passed": true
+            },
+            {
+              "name": "source Stop/leave callback still shuts down once",
+              "passed": true
+            },
+            {
+              "name": "Stop action creates no second request",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_inactive_preserves_request",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "visible/inactive owner preserves explicit capture intent",
+              "passed": true
+            },
+            {
+              "name": "source Stop/leave callback still shuts down once",
+              "passed": true
+            },
+            {
+              "name": "Stop action creates no second request",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_live_button_stops",
+          "driverEvents": [
+            "start-request-1",
+            "start-reply-1",
+            "stop-request-1"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "start-request-1",
+                "start-reply-1",
+                "stop-request-1"
+              ],
+              "driverStarts": 1,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        },
+        {
+          "assertions": [
+            {
+              "name": "leave clears owner while permission was already pending",
+              "passed": true
+            },
+            {
+              "name": "late permission never dispatches capture",
+              "passed": true
+            },
+            {
+              "name": "source leave callback retains explicit shutdown",
+              "passed": true
+            },
+            {
+              "name": "all fake replies settled",
+              "passed": true
+            }
+          ],
+          "case": "owner_leaves_waiting_permission",
+          "driverEvents": [
+            "stop-request-1",
+            "permission-reply-true"
+          ],
+          "fakePermissionRequests": 1,
+          "passed": true,
+          "realAVFoundationImported": false,
+          "realCameraOrSessionConstructed": false,
+          "states": [
+            {
+              "busy": false,
+              "driverEvents": [
+                "stop-request-1",
+                "permission-reply-true"
+              ],
+              "driverStarts": 0,
+              "driverStops": 1,
+              "name": "terminal",
+              "running": false,
+              "status": "Mock camera"
+            }
+          ]
+        }
+      ],
+      "callback_seam": {
+        "button": {
+          "raw": "\n            cameraStartTask?.cancel()\n            cameraStartTask = nil\n            if camera?.running == true {\n              camera?.stop()\n            } else {\n              let c = camera ?? NativeMirrorController()\n              camera = c\n              cameraStartTask = Task { await c.start() }\n            }\n          ",
+          "sha256": "7d5daabf75a27afecac2b2d02caa2911bb4532f99db95e47bbdb21ac2a69da3d"
+        },
+        "disappear": {
+          "raw": "\n        #if canImport(AVFoundation) && (os(iOS) || os(macOS))\n          cameraStartTask?.cancel()\n          cameraStartTask = nil\n          camera?.stop()\n          camera = nil\n        #endif\n      ",
+          "sha256": "56a534bc00ab0dfca1c5239f1ac9c296919dca4d77922ad29e4de45d1668e602",
+          "selected": "\n          cameraStartTask?.cancel()\n          cameraStartTask = nil\n          camera?.stop()\n          camera = nil\n      "
+        },
+        "phase": {
+          "raw": "        #if canImport(AVFoundation) && (os(iOS) || os(macOS))\n          if phase == .background {\n            cameraStartTask?.cancel()\n            cameraStartTask = nil\n            camera?.stop()\n          }\n        #endif\n      ",
+          "sha256": "16c67626578b3711ca19adc89a0bba1535718e46eb9bb63ca5cc1e4d3d356b60",
+          "selected": "          if phase == .background {\n            cameraStartTask?.cancel()\n            cameraStartTask = nil\n            camera?.stop()\n          }\n      "
+        },
+        "scope": "Exact source callback bodies; only outer AVFoundation/iOS/macOS compiler guards selected for this supported branch. Plain MainActor host properties replace SwiftUI State storage; not actual SwiftUI rendering/lifecycle delivery."
+      },
+      "native_inputs": [
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-final-literal-controller.swift.txt",
+          "sha256": "2840b8bc1601ac9904feb9ddf58f791a12e1a54d289f3e1983ed2218df049424",
+          "bytes": 1517
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-final-literal-callbacks.json",
+          "sha256": "4aa9a22d633deedab10c90cd87a75b32e6a606b6d809cbd9af535738674f3a3b",
+          "bytes": 1699
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-final-literal-host.swift.txt",
+          "sha256": "8526e552309e56a3a1365c8a8687fd8a5de255066169cb0dc91d8772fa047264",
+          "bytes": 877
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-start-qualified-stubs.swift",
+          "sha256": "5e0f5a9f3d9a705b6b67108229a6b559d95f10f4a6a2f25d612255092b6268db",
+          "bytes": 1549
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-cases.swift",
+          "sha256": "1034256d146b88f0746637707b80410fe19b642f1cd30504ee20507cee40748d",
+          "bytes": 10804
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-final-probe.swift",
+          "sha256": "a3a18aaa4316133906143a95ffcb86da739af72c7354ed1b92906e896691d1e6",
+          "bytes": 14750
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-final-probe",
+          "sha256": "de43ee6067c404d2575948e07a511180150bcb82a0bd8eed61c87d8752df5c53",
+          "bytes": 346224
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-final-compile.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/run-mirror-owner-task-native.py",
+          "sha256": "4fd6d0575c2d529b6e972883ead291bb93ed7fc8175121f0f79e5eb3253c8e3e",
+          "bytes": 6272
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-final-compile.json",
+          "sha256": "56a9dec37b8b3aca14d305d97d661be0b9ebbf780343a61827de100fb40f7706",
+          "bytes": 421
+        },
+        {
+          "file": "/Volumes/Extern/Research/homeview-goal-20261017/mirror-owner-task-final-own-executable-linked-libraries.txt",
+          "sha256": "08d38b5b27652cfa5a06697f43385fe5a044d9f36a1be887c178a74d426d7a02",
+          "bytes": 1258
+        }
+      ],
+      "archive": {
+        "file": "mirror-owner-task-final-inputs.zip",
+        "entries": 217,
+        "sha256": "f4a947243572286a6c926152802414fbb57ad5a951f03f0bbea255f15d0b03e6",
+        "all_entries_read_back": true
+      }
+    }
+  ],
+  "shared_inputs_identical": [
+    {
+      "file": "mirror-start-qualified-stubs.swift",
+      "sha256": "5e0f5a9f3d9a705b6b67108229a6b559d95f10f4a6a2f25d612255092b6268db"
+    },
+    {
+      "file": "mirror-owner-task-cases.swift",
+      "sha256": "1034256d146b88f0746637707b80410fe19b642f1cd30504ee20507cee40748d"
+    },
+    {
+      "file": "run-mirror-owner-task-native.py",
+      "sha256": "4fd6d0575c2d529b6e972883ead291bb93ed7fc8175121f0f79e5eb3253c8e3e"
+    }
+  ],
+  "previous_12_scenario_bodies_byte_identical_and_rerun": true,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-mirror-task-owner/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=1,2",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-mirror-task-owner/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "macosx",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-mirror-task-owner/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "appletvsimulator",
+        "-destination",
+        "generic/platform=tvOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=3",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-mirror-task-owner/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "xrsimulator",
+        "-destination",
+        "generic/platform=visionOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=7",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-mirror-task-owner/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewWatch",
+        "-sdk",
+        "watchsimulator",
+        "-destination",
+        "generic/platform=watchOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=4",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "final_scenarios": 17,
+  "final_assertions": 68,
+  "baseline_failed_scenarios": 2,
+  "baseline_failed_assertions": 4,
+  "source_scope": [
+    "NativeMirrorView owns and cancels its start Task",
+    "NativeMirrorController rejects cancelled entry before permission/generation/capture intent"
+  ],
+  "test_seam": "Exact extracted controller and three source callback bodies; select only known outer supported-capture compiler guards; plain MainActor host fields stand in for SwiftUI State. Real Swift Task/cancellation, symbolic capture and permission. Not actual SwiftUI lifecycle delivery or real AVFoundation.",
+  "real_camera_or_permission": false,
+  "probe_AVFoundation_import_or_link": false,
+  "new_Core_or_UI_runs": 0,
+  "new_images": 0,
+  "original_criteria_unchanged": true,
+  "F089": {
+    "implementation_status": "partial",
+    "parity_accepted": false
+  },
+  "F090": "unchanged",
+  "limits": [
+    "Physical camera/permission/driver and actual SwiftUI lifecycle delivery unverified",
+    "No general camera-free interval or every possible lifecycle acceptance",
+    "Selected supported iOS/macOS branch is not a Watch/visionOS runtime test",
+    "No Home/personal data/frames/microphone/system setting/call/message/system alarm/new Live Activities"
+  ]
+}
