@@ -2993,7 +2993,8 @@
       "Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen.",
       "Zusätzliche späte Play-/Resume-Erfolge/-Fehler sind generationsgebunden, native Playerübergabe serialisiert. Das ist keine vollständige Gast-/Präsenz-/Medienpolicy; Docs/music-playback-lifecycle.md.",
       "Aktive RootView-Entfernung sperrt die persönliche Sitzung und bereinigt Cache/Profile/Entwürfe. Native tatsächliche Lifecycle-Gegenprobe; keine physische Snapshot-/Präsenzabnahme. Docs/root-disappearance-privacy.md.",
-      "Persönliche Timeout-Sperre unabhängig von Face/incoming Demo call, einmal pro Ruhephase; frische Interaktion rearmt. Zehn tatsächliche AppModel-Vorherfälle mit17Assertionfehlern korrigiert; zusätzlicher gleicher-Tick-Timerbannerfehler korrigiert. Elf finale native Szenarien/43Assertions,vier Hintergrund-UI-Ausführungen und fünf SDKs. Synthetischer Zeitstempel,keine Präsenz-/Snapshot-/Hardwareabnahme. Docs/face-idle-privacy.md."
+      "Persönliche Timeout-Sperre unabhängig von Face/incoming Demo call, einmal pro Ruhephase; frische Interaktion rearmt. Zehn tatsächliche AppModel-Vorherfälle mit17Assertionfehlern korrigiert; zusätzlicher gleicher-Tick-Timerbannerfehler korrigiert. Elf finale native Szenarien/43Assertions,vier Hintergrund-UI-Ausführungen und fünf SDKs. Synthetischer Zeitstempel,keine Präsenz-/Snapshot-/Hardwareabnahme. Docs/face-idle-privacy.md.",
+      "Vorab abgebrochene Entsperranfragen kehren vor Provider- und Generationswechsel zurück; gültige oder noch laufende Anmeldungen bleiben erhalten. Drei native Vorherfehler/7 Assertions korrigiert, vier finale Szenarien/14 Assertions und 303 Modelltests. Gastmodus-Verdacht durch bestehende RootView-Sperre und tatsächliche UI-Gegenprüfung widerlegt; keine Gast-Produktänderung. Docs/unlock-pre-cancelled.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3015,7 +3016,9 @@
     ],
     "progress_evidence": [
       "Docs/face-idle-privacy.md",
-      "Docs/verification/face-idle-privacy.json"
+      "Docs/verification/face-idle-privacy.json",
+      "Docs/unlock-pre-cancelled.md",
+      "Docs/verification/unlock-pre-cancelled.json"
     ]
   },
   {

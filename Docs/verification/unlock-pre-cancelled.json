@@ -1,0 +1,511 @@
+{
+  "date": "2026-10-20",
+  "base_commit": "7008855a8b2547a22cac64424c06a4bc5e262b91",
+  "status": "bounded_fix_issues_open",
+  "source_digest": "02c5895f84c00b55d79447affa92d9294a7f0aa58bde24b8f3d603514618e02e",
+  "native_runs": [
+    {
+      "stage": "baseline",
+      "result": {
+        "actual_DeviceConnections": true,
+        "actual_OS_authentication": false,
+        "actual_SwiftUI": false,
+        "assertions": 14,
+        "failed_assertions": 7,
+        "failed_scenarios": 3,
+        "provider": "synthetic controlled continuation",
+        "scenario_count": 4,
+        "scenarios": [
+          {
+            "checks": {
+              "remains_locked": true,
+              "returns_false": true,
+              "zero_provider_entries": false
+            },
+            "failed": [
+              "zero_provider_entries"
+            ],
+            "name": "cancelled_before_entry"
+          },
+          {
+            "checks": {
+              "keeps_current_authentication": false,
+              "keeps_current_private_cache": false,
+              "no_additional_prompt": false,
+              "returns_false": true
+            },
+            "failed": [
+              "keeps_current_authentication",
+              "keeps_current_private_cache",
+              "no_additional_prompt"
+            ],
+            "name": "cancelled_job_preserves_existing_session"
+          },
+          {
+            "checks": {
+              "discarded_returns_false": true,
+              "legitimate_authentication_retained": false,
+              "legitimate_request_still_succeeds": false,
+              "only_legitimate_provider_entry": false
+            },
+            "failed": [
+              "legitimate_authentication_retained",
+              "legitimate_request_still_succeeds",
+              "only_legitimate_provider_entry"
+            ],
+            "name": "cancelled_job_cannot_supersede_legitimate_pending_request"
+          },
+          {
+            "checks": {
+              "fresh_request_succeeds": true,
+              "second_request_succeeds": true,
+              "third_request_succeeds": true
+            },
+            "failed": [],
+            "name": "ordinary_authentication_controls"
+          }
+        ],
+        "verdict": "FAIL"
+      },
+      "archive": {
+        "artifact": "pre-cancelled-unlock-baseline-inputs.zip",
+        "sha256": "cc4baae1b5e97d599779912c528d5eff3bf3f352966b283f9ac4bc2333dc5461",
+        "entries": 49,
+        "all_entries_read_back": true
+      }
+    },
+    {
+      "stage": "final",
+      "result": {
+        "actual_DeviceConnections": true,
+        "actual_OS_authentication": false,
+        "actual_SwiftUI": false,
+        "assertions": 14,
+        "failed_assertions": 0,
+        "failed_scenarios": 0,
+        "provider": "synthetic controlled continuation",
+        "scenario_count": 4,
+        "scenarios": [
+          {
+            "checks": {
+              "remains_locked": true,
+              "returns_false": true,
+              "zero_provider_entries": true
+            },
+            "failed": [],
+            "name": "cancelled_before_entry"
+          },
+          {
+            "checks": {
+              "keeps_current_authentication": true,
+              "keeps_current_private_cache": true,
+              "no_additional_prompt": true,
+              "returns_false": true
+            },
+            "failed": [],
+            "name": "cancelled_job_preserves_existing_session"
+          },
+          {
+            "checks": {
+              "discarded_returns_false": true,
+              "legitimate_authentication_retained": true,
+              "legitimate_request_still_succeeds": true,
+              "only_legitimate_provider_entry": true
+            },
+            "failed": [],
+            "name": "cancelled_job_cannot_supersede_legitimate_pending_request"
+          },
+          {
+            "checks": {
+              "fresh_request_succeeds": true,
+              "second_request_succeeds": true,
+              "third_request_succeeds": true
+            },
+            "failed": [],
+            "name": "ordinary_authentication_controls"
+          }
+        ],
+        "verdict": "PASS"
+      },
+      "archive": {
+        "artifact": "pre-cancelled-unlock-final-inputs.zip",
+        "sha256": "cf9eb7047a0e7bf14d8ca68abbcfc97361e43d9da34940f885ce334e50f0e92b",
+        "entries": 49,
+        "all_entries_read_back": true
+      }
+    }
+  ],
+  "Core_XCTest": 303,
+  "Core_failures": 0,
+  "Core_skips": 0,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "UI_runs": [
+    {
+      "stage": "guest-session-ui-baseline",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 2,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792475149.362,
+            "passedTests": 2,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792475046.436,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 2
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 2,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792475145.577,
+            "passedTests": 2,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792475046.436,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 2
+          }
+        }
+      ]
+    },
+    {
+      "stage": "unlock-pre-cancelled-ui-final",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 4,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792475403.461,
+            "passedTests": 4,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792475234.134,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 4
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 4,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792475394.88,
+            "passedTests": 4,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792475234.135,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 4
+          }
+        }
+      ]
+    }
+  ],
+  "final_UI_executions": 8,
+  "baseline_UI_executions": 4,
+  "UI_note": "Actual guest/profile and ordinary unlock regression; does not reproduce pre-cancel race through system authentication",
+  "images": [
+    {
+      "path": "Docs/screenshots/unlock-pre-cancelled/iPad-viewport-guest-session-calendar-requires-new-unlock.png",
+      "sha256": "29cf8a728f8b8d6c35694c5ab5928fcccc89176154f93302cc2f6b92d7334655",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-pre-cancelled/iPad-viewport-guest-session-reminders-requires-new-unlock.png",
+      "sha256": "29cf8a728f8b8d6c35694c5ab5928fcccc89176154f93302cc2f6b92d7334655",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-pre-cancelled/iPad-contact.png",
+      "sha256": "28f32249e505ed8e3361c05019d815ffdbe4ac2d16d9854ba3d59d082f1dfa58"
+    },
+    {
+      "path": "Docs/screenshots/unlock-pre-cancelled/iPhone-viewport-guest-session-calendar-requires-new-unlock.png",
+      "sha256": "bbae96df0e5d6ddbbe57a4085e06d415bbe2b6c98ec437b54e924bb94157bc9c",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-pre-cancelled/iPhone-viewport-guest-session-reminders-requires-new-unlock.png",
+      "sha256": "bbae96df0e5d6ddbbe57a4085e06d415bbe2b6c98ec437b54e924bb94157bc9c",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "path": "Docs/screenshots/unlock-pre-cancelled/iPhone-contact.png",
+      "sha256": "32a4e76f1f8549b2a34b61eafcdb4843f1226e728c2964b5ad2497fdbaf38bbb"
+    }
+  ],
+  "PNG_decoded": 58,
+  "pixel_comparisons": [
+    {
+      "device": "iPad",
+      "state": "viewport-guest-session-calendar-explicit-new-unlock",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-guest-session-calendar-requires-new-unlock",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-guest-session-calendar-authenticated",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-guest-session-reminders-explicit-new-unlock",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-guest-session-reminders-requires-new-unlock",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPad",
+      "state": "viewport-guest-session-reminders-authenticated",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-guest-session-calendar-explicit-new-unlock",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-guest-session-calendar-requires-new-unlock",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-guest-session-calendar-authenticated",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-guest-session-reminders-explicit-new-unlock",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-guest-session-reminders-requires-new-unlock",
+      "changed_RGBA_pixels": 0
+    },
+    {
+      "device": "iPhone",
+      "state": "viewport-guest-session-reminders-authenticated",
+      "changed_RGBA_pixels": 0
+    }
+  ],
+  "archives": [
+    {
+      "artifact": "pre-cancelled-unlock-baseline-inputs.zip",
+      "sha256": "cc4baae1b5e97d599779912c528d5eff3bf3f352966b283f9ac4bc2333dc5461",
+      "entries": 49,
+      "all_entries_read_back": true
+    },
+    {
+      "artifact": "pre-cancelled-unlock-final-inputs.zip",
+      "sha256": "cf9eb7047a0e7bf14d8ca68abbcfc97361e43d9da34940f885ce334e50f0e92b",
+      "entries": 49,
+      "all_entries_read_back": true
+    },
+    {
+      "archive": "pre-cancelled-unlock-core-inputs.zip",
+      "entries": 211,
+      "sha256": "976ffc0867d6e60433811c7ad05bb0f07e006c8db2bbe1795ea9d3109f5a4be9",
+      "all_entries_read_back": true,
+      "source_digest": "02c5895f84c00b55d79447affa92d9294a7f0aa58bde24b8f3d603514618e02e",
+      "XCTest_count": 303,
+      "failures": 0
+    },
+    {
+      "artifact": "guest-session-ui-baseline-inputs.zip",
+      "sha256": "6dcb98f49271f54477eb5033441c11343014a4968bcb05eb4c1b2511cf6d8930",
+      "entries": 235,
+      "all_entries_read_back": true
+    },
+    {
+      "artifact": "unlock-pre-cancelled-ui-final-inputs.zip",
+      "sha256": "a3dcde79f3a45df3e836ef949cd5af541c8dc1bce9100b88955d0cda414f6d8f",
+      "entries": 235,
+      "all_entries_read_back": true
+    }
+  ],
+  "discarded_hypothesis": {
+    "reason": "Isolated guest callback omitted upstream RootView privacy observer. Not an application leak; actual baseline guest UI four PASS.",
+    "diagnostic_runs": [
+      {
+        "prefix": "guest-session-baseline",
+        "scenarios": 8,
+        "assertions": 37,
+        "failed_scenarios": 5,
+        "failed_assertions": 15,
+        "not_product_failures": true
+      },
+      {
+        "prefix": "guest-session-qualified-baseline",
+        "scenarios": 8,
+        "assertions": 37,
+        "failed_scenarios": 5,
+        "failed_assertions": 15,
+        "not_product_failures": true
+      }
+    ],
+    "harness_control_correction": "Fresh re-unlock control explicitly refreshes calendar/reminders before checking reads; made before any product change"
+  },
+  "limits": [
+    "No actual LocalAuthentication or OS prompt experiment",
+    "No hardware absence/presence, App Switcher snapshot or complete privacy/identity parity acceptance",
+    "No actual SwiftUI pending-unlock departure/cancel test",
+    "No Home, real account/content, microphone/camera, message/call/system alarm or media playback"
+  ],
+  "public_fixture_normalization": "Only the public ProbeProvider text copy has its final empty line removed for the Git whitespace gate. Exact original compiled input bytes remain in both before/after native archives."
+}

@@ -1,0 +1,52 @@
+import Foundation
+
+@main struct PreCancelledUnlockGate {
+  @MainActor static func main() async throws {
+    var rows:[[String:Any]]=[]
+    func record(_ name:String,_ checks:[String:Bool]) {
+      rows.append(["name":name,"checks":checks,"failed":checks.filter{!$0.value}.map(\.key).sorted()])
+    }
+    let p=ProbeProvider(),c=DeviceConnections(provider:ProbeProvider())
+    let locked=DeviceConnections(provider:p)
+    let stopped=Task { await locked.unlock() };stopped.cancel()
+    let result=await stopped.value
+    record("cancelled_before_entry",["returns_false":!result,"zero_provider_entries":p.unlockCalls==0,
+      "remains_locked":!locked.personalUnlocked])
+    let existingProvider=ProbeProvider(),existing=DeviceConnections(provider:ProbeProvider())
+    let active=DeviceConnections(provider:existingProvider)
+    _ = await active.unlock();await active.connect(.calendar);await active.connect(.reminders)
+    let before=existingProvider.unlockCalls
+    let discarded=Task { await active.unlock() };discarded.cancel()
+    let discardedResult=await discarded.value
+    record("cancelled_job_preserves_existing_session",["returns_false":!discardedResult,
+      "no_additional_prompt":existingProvider.unlockCalls==before,"keeps_current_authentication":active.personalUnlocked,
+      "keeps_current_private_cache":!active.events.isEmpty && !active.reminders.isEmpty])
+    let delayedProvider=ProbeProvider(),delayed=DeviceConnections(provider:ProbeProvider())
+    let pending=DeviceConnections(provider:delayedProvider)
+    delayedProvider.delayUnlock=true
+    var legitimate:Task<Bool,Never>?
+    await withCheckedContinuation { (entered:CheckedContinuation<Void,Never>) in
+      delayedProvider.onStart={entered.resume()}
+      legitimate=Task { await pending.unlock() }
+    }
+    let originalReply=delayedProvider.unlockReply!
+    delayedProvider.delayUnlock=false
+    let noise=Task { await pending.unlock() };noise.cancel()
+    let noiseResult=await noise.value
+    originalReply.resume(returning:true)
+    let legitimateResult=await legitimate!.value
+    record("cancelled_job_cannot_supersede_legitimate_pending_request",[
+      "discarded_returns_false":!noiseResult,"only_legitimate_provider_entry":delayedProvider.unlockCalls==1,
+      "legitimate_request_still_succeeds":legitimateResult,"legitimate_authentication_retained":pending.personalUnlocked])
+    let control=await c.unlock(),control2=await existing.unlock(),control3=await delayed.unlock()
+    record("ordinary_authentication_controls",["fresh_request_succeeds":control,"second_request_succeeds":control2,"third_request_succeeds":control3])
+    let failures=rows.reduce(0){$0+($1["failed"] as! [String]).count}
+    let verdict:[String:Any]=["scenarios":rows,"scenario_count":rows.count,
+      "assertions":rows.reduce(0){$0+($1["checks"] as! [String:Bool]).count},
+      "failed_scenarios":rows.filter{!($0["failed"] as! [String]).isEmpty}.count,
+      "failed_assertions":failures,"verdict":failures==0 ? "PASS":"FAIL",
+      "actual_DeviceConnections":true,"provider":"synthetic controlled continuation",
+      "actual_OS_authentication":false,"actual_SwiftUI":false]
+    print(String(data:try JSONSerialization.data(withJSONObject:verdict,options:[.sortedKeys]),encoding:.utf8)!)
+  }
+}

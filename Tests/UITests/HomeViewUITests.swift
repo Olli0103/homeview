@@ -3,6 +3,30 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func verifyGuestRevokesConnectedSession(_ service:String) {
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    connectService(service)
+    tap("nav.apps");tap("personal.profile");tap("profile.Alex")
+    tap("all.apps");tap("app."+service);tap("device.unlock")
+    let content:XCUIElement = service == "Calendar"
+      ? app.staticTexts["Device fixture meeting"] : app.buttons["device.reminder.Device fixture reminder"]
+    XCTAssertTrue(content.waitForExistence(timeout:5))
+    viewportShot("guest-session-"+service.lowercased()+"-authenticated")
+    tap("nav.apps");tap("personal.profile");tap("profile.guest")
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    tap("all.apps");tap("app."+service)
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:5))
+    XCTAssertFalse(content.exists)
+    viewportShot("guest-session-"+service.lowercased()+"-requires-new-unlock")
+    tap("device.unlock")
+    XCTAssertTrue(content.waitForExistence(timeout:5))
+    viewportShot("guest-session-"+service.lowercased()+"-explicit-new-unlock")
+  }
+  func testGuestProfilePathRequiresFreshCalendarUnlock() {verifyGuestRevokesConnectedSession("Calendar")}
+  func testGuestProfilePathRequiresFreshReminderUnlock() {verifyGuestRevokesConnectedSession("Reminders")}
+}
+
+extension HomeViewUITests {
   private func launchMockCameraAudit(nine:Bool=false,detail:Bool=false,talking:Bool=false) {
     launch(["--page","Cameras"])
     if nine {tap("camera.grid.size");XCTAssertTrue(app.buttons["camera.8"].exists)}

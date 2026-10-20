@@ -1096,6 +1096,8 @@ Abhängigkeiten: BASE-01.
 <a id="sys-04"></a>
 ### SYS-04: Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen
 
+[Vorab abgebrochene Entsperrung](unlock-pre-cancelled.md): kein Providerstart und keine Entwertung aktueller Anmeldung; getrennt vom widerlegten Gastmodus-Verdacht. Keine Hardware-/Snapshot-Gesamtabnahme.
+
 [Persönlicher Timeout auch auf dem Zifferblatt und während eingehender Demo-Anrufe](face-idle-privacy.md): Sitzungsschutz von sichtbarer Route getrennt; neue lokale Ablaufhinweise bleiben erhalten. Keine Präsenz-/Hardware-Snapshot-Abnahme.
 
 Abmelden, Hintergrund und Inaktivitäts-Timeout sperren verbundene Daten. Entfernen der aktiven RootView widerruft jetzt ebenfalls die persönliche Sitzung; vorübergehende Scene-Inaktivität allein erhält sie. [Begrenzte Reproduktion und Gegenprüfung](root-disappearance-privacy.md). Tatsächliches Weggehen und physische Snapshots bleiben ungeprüft.
@@ -1314,6 +1316,8 @@ Abhängigkeiten: QA-01.
 
 <a id="qa-05"></a>
 ### QA-05: Persistenz, Migration, Offline und späte Antworten systematisch prüfen
+
+[Vorab abgebrochene Entsperrung](unlock-pre-cancelled.md): kein Providerstart und keine Entwertung aktueller Anmeldung; getrennt vom widerlegten Gastmodus-Verdacht. Keine Hardware-/Snapshot-Gesamtabnahme.
 
 Lokale Zustände und ausgewählte Neustart-/Offlinefälle sind getestet. Vollständige Daten- und Lifecycle-Matrix fehlt.
 
