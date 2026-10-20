@@ -5097,6 +5097,34 @@ extension HomeViewUITests {
 
 
 extension HomeViewUITests {
+  func testAssistantBundledRecipeDoesNotOpenOrReplaceSelectedCanary() {
+    let storeID=UUID().uuidString
+    print("ASSISTANT_RECIPE_TARGET_STORE_ID="+storeID)
+    launch(["--page","Safari","--browser-multiple-recipes","--persistence-test",storeID,"--reset-test-store"])
+    XCTAssertTrue(app.webViews.firstMatch.staticTexts["Garden Tomato Pasta"].waitForExistence(timeout:10))
+    tap("browser.recipe")
+    XCTAssertTrue(app.buttons["Second local recipe"].waitForExistence(timeout:5))
+    app.buttons["Second local recipe"].tap()
+    XCTAssertTrue(app.staticTexts["Second local recipe"].waitForExistence(timeout:5))
+    tap("recipe.start")
+    XCTAssertEqual(app.staticTexts["cooking.text"].label,"Mix the second fixture.")
+    tap("nav.assistant")
+    let draft="set a timer for 5 minutes",input=app.textFields["assistant.input"]
+    input.tap();input.typeText(draft);selectAnswerExample("recipe")
+    XCTAssertEqual(input.value as? String,draft)
+    XCTAssertTrue(app.staticTexts["Butternut Squash Soup"].exists)
+    activatePlanControl(app.buttons["assistant.card.openRecipe"])
+    expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:input)
+    waitForExpectations(timeout:5)
+    // Capture the actual destination before the assertion; do not accept the
+    // old selected recipe merely because some recipe view opened.
+    shot("assistant-recipe-target-after-open-with-canary-selected")
+    XCTAssertTrue(app.staticTexts["Butternut Squash Soup"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Second local recipe"].exists)
+  }
+}
+
+extension HomeViewUITests {
   private func auditAssistantHitRegions(_ state:String) throws {
     viewportShot("assistant-hit-region-"+state,assistantRectangle:true)
     var reports:[[String:Any]]=[]
