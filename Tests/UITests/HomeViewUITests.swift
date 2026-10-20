@@ -5713,10 +5713,27 @@ extension HomeViewUITests {
     viewportShot("demo-music-hit-region-readable-passive-progress")
     tap("music.artwork.info.demo")
     XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Bundled demo player")
-    // App.screenshot can crop a system sheet to the app's reported rectangle.
-    // Capture the actual full simulator display separately, with its own name.
-    let a=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
-    a.name="display-demo-music-hit-region-information";a.lifetime = .keepAlways;add(a)
+    // Separate the first display sample from a later sample. Accessibility
+    // presence alone does not establish that presentation has visually settled.
+    let began=ProcessInfo.processInfo.systemUptime
+    func pose()->[String:[Double]] {
+      var result:[String:[Double]]=[:]
+      for (key,e) in [("app",app),("done",app.buttons["music.artwork.done"]),
+        ("source",app.staticTexts["music.artwork.source"]),("footer",app.staticTexts["music.artwork.motion"])] {
+        let f=e.frame;result[key]=[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)]
+      }
+      return result
+    }
+    let before=pose(),a=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+    a.name="immediate-display-demo-music-hit-region-information";a.lifetime = .keepAlways;add(a)
+    RunLoop.current.run(until:Date().addingTimeInterval(2))
+    let after=pose(),elapsed=ProcessInfo.processInfo.systemUptime-began
+    XCTAssertTrue(app.buttons["music.artwork.done"].isHittable)
+    let settled=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+    settled.name="settled-display-demo-music-hit-region-information";settled.lifetime = .keepAlways;add(settled)
+    let data:[String:Any]=["before":before,"after":after,"elapsed_seconds":elapsed,"declared_wait_seconds":2]
+    let geometry=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    geometry.name="demo-music-information-capture-poses";geometry.lifetime = .keepAlways;add(geometry)
     tap("music.artwork.done")
     XCTAssertEqual(app.buttons["player.play"].label,"Play")
   }
