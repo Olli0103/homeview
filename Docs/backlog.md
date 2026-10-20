@@ -651,9 +651,9 @@ Abhängigkeiten: AI-01, HOME-01.
 <a id="ai-04"></a>
 ### AI-04: Antwortansicht mit Text, Bildern und Karten vervollständigen
 
-Eigene gebündelte Wissens-/Bild-, Quellen-, Agenda- und Rezeptkarten sowie Lade-/Leer-/Fehlerbeispiele vorhanden. Entwürfe bleiben ungesendet; nur expliziter Rezeptbutton navigiert. Keine persönlichen oder dynamischen API-Ergebnisse. Tatsächliche VoiceOver-/Hardware- und Originalabnahme bleiben offen.
+Eigene gebündelte Wissens-/Bild-, Quellen-, Agenda- und Rezeptkarten sowie Lade-/Leer-/Fehlerbeispiele vorhanden. Entwürfe bleiben ungesendet; nur expliziter Rezeptbutton navigiert. Keine persönlichen oder dynamischen API-Ergebnisse. Tatsächliche VoiceOver-/Hardware- und Originalabnahme bleiben offen. Die Rezeptkarte öffnet ihr unabhängiges schreibgeschütztes Suppenbeispiel, ohne ausgewähltes Importrezept oder aktiven Kochfortschritt zu ersetzen.
 
-[Lokale Karten und Grenzen](assistant-response-cards.md).
+[Lokale Karten und Grenzen](assistant-response-cards.md) · [Unabhängiges Rezeptziel](assistant-recipe-target.md).
 
 Offen:
 

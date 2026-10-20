@@ -41,3 +41,7 @@ Ein erster nativer Vorbereitungsbuild wollte einen privaten Modus-Setter verwend
 Tatsächliche VoiceOver-/Switch-Control-Sitzungen, vollständiger Fokus-/Ansagen-/Dynamic-Type-/Kontrasttest, physische Geräte und Originalgeometrie/-animation. Keine produktive persönliche Kalenderantwort, Nachrichtensuche, dynamische Webantwort oder Quellenprüfung eines Live-Modells implementiert. Readout erhält den Antworttext, nicht automatisch die vollständigen Kartenzeilen. F046 bleibt teilweise und `parity_accepted=false`; #36 bleibt offen.
 
 Nur eigene synthetische Beispiele und Mock-Befehle, keine realen Konten, Mikrofon-/Kameraaufnahme, Systemalarme oder neuen Live-Activities. **Keine Home-Anbindung.**
+
+## Nachtrag: richtiges Rezeptziel
+
+Der historische Kartenstand öffnete die allgemeine Rezeptansicht und konnte dadurch ein anderes ausgewähltes Rezept zeigen. [Der nachfolgende Teilfix](assistant-recipe-target.md) verwendet eine eigene schreibgeschützte Suppenansicht; die oben dokumentierten alten Messungen werden dadurch nicht nachträglich geändert.

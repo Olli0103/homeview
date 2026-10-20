@@ -901,7 +901,7 @@
     "functions": [
       "F046"
     ],
-    "current": "Eigene gebündelte Wissens-/Bild-, Quellen-, Agenda- und Rezeptkarten sowie Lade-/Leer-/Fehlerbeispiele vorhanden. Entwürfe bleiben ungesendet; nur expliziter Rezeptbutton navigiert. Keine persönlichen oder dynamischen API-Ergebnisse. Tatsächliche VoiceOver-/Hardware- und Originalabnahme bleiben offen.",
+    "current": "Eigene gebündelte Wissens-/Bild-, Quellen-, Agenda- und Rezeptkarten sowie Lade-/Leer-/Fehlerbeispiele vorhanden. Entwürfe bleiben ungesendet; nur expliziter Rezeptbutton navigiert. Keine persönlichen oder dynamischen API-Ergebnisse. Tatsächliche VoiceOver-/Hardware- und Originalabnahme bleiben offen. Die Rezeptkarte öffnet ihr unabhängiges schreibgeschütztes Suppenbeispiel, ohne ausgewähltes Importrezept oder aktiven Kochfortschritt zu ersetzen.",
     "tasks": [
       "Referenztypen für Text, Bilder, Quellen und Aktionskarten erfassen",
       "Lade-, Leer-, Fehler- und Folgefragenzustände umsetzen",
@@ -917,7 +917,9 @@
     "state": "open",
     "progress_evidence": [
       "Docs/assistant-response-cards.md",
-      "Docs/verification/assistant-response-cards.json"
+      "Docs/verification/assistant-response-cards.json",
+      "Docs/assistant-recipe-target.md",
+      "Docs/verification/assistant-recipe-target.json"
     ]
   },
   {

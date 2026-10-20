@@ -1,0 +1,406 @@
+{
+  "date": "2026-10-20",
+  "issue": 36,
+  "status": "partial_issue_remains_open",
+  "product_commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+  "UI_test_commit": "cd0da7e908972320deaadc987de9b3c9b56905b3",
+  "baseline_test_commit": "f4c559d6e699eb4c3f4d55b535da630d17c24bff",
+  "source_files": 206,
+  "source_digest": "56a9535f14ee6b207210cd0b9d4f59fbf7873473353f7729e8cd258a55efbe68",
+  "UI_results": [
+    {
+      "checkpoint": "assistant-recipe-target-baseline",
+      "device": "iPad",
+      "passed": 0,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-recipe-target-baseline",
+      "device": "iPhone",
+      "passed": 0,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-recipe-target-final",
+      "device": "iPad",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-recipe-target-final",
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_final_executions": 8,
+  "UI_unique_methods": 4,
+  "UI_total_executions": 18,
+  "UI_total_passed": 14,
+  "UI_historical_failed": 4,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "Core_tests": 301,
+  "Core_commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+  "native_before": {
+    "assertions": 50,
+    "checks": {
+      "agenda_draft_not_sent": true,
+      "agenda_exact_document": true,
+      "agenda_no_pending_actions": true,
+      "agenda_no_state_mutation": true,
+      "agenda_readout_text_matches": true,
+      "AI_mode_cannot_select_or_execute_cards": true,
+      "all_state_unchanged": true,
+      "canary_action_uses_own_readonly_preview": false,
+      "canary_cooking_active_before_action": true,
+      "canary_cooking_progress_preserved": true,
+      "canary_draft_preserved_unsent": true,
+      "canary_entire_snapshot_preserved": true,
+      "canary_selected_before_action": true,
+      "empty_draft_not_sent": true,
+      "empty_exact_document": true,
+      "empty_no_pending_actions": true,
+      "empty_no_state_mutation": true,
+      "empty_readout_text_matches": true,
+      "explicit_recipe_opens_readonly_example_route": false,
+      "failure_draft_not_sent": true,
+      "failure_exact_document": true,
+      "failure_no_pending_actions": true,
+      "failure_no_state_mutation": true,
+      "failure_readout_text_matches": true,
+      "inactive_selection_and_action_rejected": true,
+      "knowledge_draft_not_sent": true,
+      "knowledge_exact_document": true,
+      "knowledge_no_pending_actions": true,
+      "knowledge_no_state_mutation": true,
+      "knowledge_readout_text_matches": true,
+      "loading_draft_not_sent": true,
+      "loading_exact_document": true,
+      "loading_no_pending_actions": true,
+      "loading_no_state_mutation": true,
+      "loading_readout_text_matches": true,
+      "lock_discards_document_and_draft": true,
+      "navigation_discards_document": true,
+      "new_sent_question_discards_document": true,
+      "no_system_IDs": true,
+      "non_recipe_document_cannot_open": true,
+      "outside_assistant_rejected": true,
+      "plain_answer_does_not_become_card": true,
+      "plain_answer_no_state_mutation": true,
+      "recipe_action_keeps_draft": true,
+      "recipe_action_no_state_mutation": true,
+      "recipe_draft_not_sent": true,
+      "recipe_exact_document": true,
+      "recipe_no_pending_actions": true,
+      "recipe_no_state_mutation": true,
+      "recipe_readout_text_matches": true
+    },
+    "failed": [
+      "canary_action_uses_own_readonly_preview",
+      "explicit_recipe_opens_readonly_example_route"
+    ],
+    "observations": {
+      "example_recipe_title": "Butternut Squash Soup",
+      "route_after_canary_action": "recipe",
+      "selected_recipe_after_canary_action": "OTHER_RECIPE_CANARY"
+    },
+    "verdict": "FAIL"
+  },
+  "native_after": {
+    "assertions": 50,
+    "checks": {
+      "agenda_draft_not_sent": true,
+      "agenda_exact_document": true,
+      "agenda_no_pending_actions": true,
+      "agenda_no_state_mutation": true,
+      "agenda_readout_text_matches": true,
+      "AI_mode_cannot_select_or_execute_cards": true,
+      "all_state_unchanged": true,
+      "canary_action_uses_own_readonly_preview": true,
+      "canary_cooking_active_before_action": true,
+      "canary_cooking_progress_preserved": true,
+      "canary_draft_preserved_unsent": true,
+      "canary_entire_snapshot_preserved": true,
+      "canary_selected_before_action": true,
+      "empty_draft_not_sent": true,
+      "empty_exact_document": true,
+      "empty_no_pending_actions": true,
+      "empty_no_state_mutation": true,
+      "empty_readout_text_matches": true,
+      "explicit_recipe_opens_readonly_example_route": true,
+      "failure_draft_not_sent": true,
+      "failure_exact_document": true,
+      "failure_no_pending_actions": true,
+      "failure_no_state_mutation": true,
+      "failure_readout_text_matches": true,
+      "inactive_selection_and_action_rejected": true,
+      "knowledge_draft_not_sent": true,
+      "knowledge_exact_document": true,
+      "knowledge_no_pending_actions": true,
+      "knowledge_no_state_mutation": true,
+      "knowledge_readout_text_matches": true,
+      "loading_draft_not_sent": true,
+      "loading_exact_document": true,
+      "loading_no_pending_actions": true,
+      "loading_no_state_mutation": true,
+      "loading_readout_text_matches": true,
+      "lock_discards_document_and_draft": true,
+      "navigation_discards_document": true,
+      "new_sent_question_discards_document": true,
+      "no_system_IDs": true,
+      "non_recipe_document_cannot_open": true,
+      "outside_assistant_rejected": true,
+      "plain_answer_does_not_become_card": true,
+      "plain_answer_no_state_mutation": true,
+      "recipe_action_keeps_draft": true,
+      "recipe_action_no_state_mutation": true,
+      "recipe_draft_not_sent": true,
+      "recipe_exact_document": true,
+      "recipe_no_pending_actions": true,
+      "recipe_no_state_mutation": true,
+      "recipe_readout_text_matches": true
+    },
+    "failed": [],
+    "observations": {
+      "example_recipe_title": "Butternut Squash Soup",
+      "route_after_canary_action": "assistantRecipePreview",
+      "selected_recipe_after_canary_action": "OTHER_RECIPE_CANARY"
+    },
+    "verdict": "PASS"
+  },
+  "native_processes_per_checkpoint": 1,
+  "native_product_methods_replaced": false,
+  "native_readonly_URL_accessor_appended": true,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "SDK_commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+  "qualified_product_equality": {
+    "product_commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "UI_test_commit": "cd0da7e908972320deaadc987de9b3c9b56905b3",
+    "changed_files": [
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "unchanged_files": 205,
+    "SDK_Core_native_product_inputs_unchanged": true
+  },
+  "decoded_PNGs": 82,
+  "contacts_viewed": 6,
+  "additional_full_images_viewed": [
+    "baseline wrong recipe on both devices",
+    "first candidate phone landscape crop artifact",
+    "qualified correct soup with canary selected on both devices",
+    "qualified landscape whole displays on both devices",
+    "qualified selected canary after restart on both devices"
+  ],
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPad-before-assistant-recipe-target-after-open-with-canary-selected.png",
+      "sha256": "44698861ada5aaf1d18d26e4fe96ca643eb62b957de85dfbcf37a2250694666d",
+      "checkpoint": "assistant-recipe-target-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPad-after-assistant-recipe-target-after-open-with-canary-selected.png",
+      "sha256": "f6b9f62e088d41331d402ac7a8d2c1360f691731694e02b6e2349f4ac0931740",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPad-after-assistant-recipe-target-selected-canary-not-replaced.png",
+      "sha256": "44698861ada5aaf1d18d26e4fe96ca643eb62b957de85dfbcf37a2250694666d",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPad-after-assistant-recipe-target-canary-after-restart.png",
+      "sha256": "44698861ada5aaf1d18d26e4fe96ca643eb62b957de85dfbcf37a2250694666d",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPad-after-assistant-readonly-recipe-portrait-visible-ingredient.png",
+      "sha256": "f6b9f62e088d41331d402ac7a8d2c1360f691731694e02b6e2349f4ac0931740",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPad-after-assistant-readonly-recipe-landscape-visible-ingredient.png",
+      "sha256": "639aadb9e44858753837b50874632278f1d5287d9cb6e9a0abe0cc33292deca5",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPad-after-assistant-card-opened-readonly-bundled-recipe.png",
+      "sha256": "f6b9f62e088d41331d402ac7a8d2c1360f691731694e02b6e2349f4ac0931740",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPad-after-assistant-hit-region-recipe-edge-readonly-preview.png",
+      "sha256": "f6b9f62e088d41331d402ac7a8d2c1360f691731694e02b6e2349f4ac0931740",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPhone-before-assistant-recipe-target-after-open-with-canary-selected.png",
+      "sha256": "fd4a62de616a0468997651696d5336acc2911c8fe92254cfad46f8b103694abc",
+      "checkpoint": "assistant-recipe-target-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPhone-after-assistant-recipe-target-after-open-with-canary-selected.png",
+      "sha256": "7dc19dd057bb9fc85c0acc3714b391593bd80195900dc35b18362b2b0a380a72",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPhone-after-assistant-recipe-target-selected-canary-not-replaced.png",
+      "sha256": "6f5e4844e446a0a002e9e9c4e3841997fb085f0e0efbc37af1155429a547797e",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPhone-after-assistant-recipe-target-canary-after-restart.png",
+      "sha256": "6f5e4844e446a0a002e9e9c4e3841997fb085f0e0efbc37af1155429a547797e",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPhone-after-assistant-readonly-recipe-portrait-visible-ingredient.png",
+      "sha256": "edb5dfcf6793e1b864809c3f198afae48beaeac8a7b0839c0486ab24f4b1c5b6",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPhone-after-assistant-readonly-recipe-landscape-visible-ingredient.png",
+      "sha256": "0366740c055f66f3931e34df42c9fd16f2a06e3a3cf27327577320de3211bebb",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPhone-after-assistant-card-opened-readonly-bundled-recipe.png",
+      "sha256": "cfc724f0e3837c78f62b89744db9f2d069d5080b405d7d50fac5eaad5c9073d0",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-recipe-target/iPhone-after-assistant-hit-region-recipe-edge-readonly-preview.png",
+      "sha256": "cfc724f0e3837c78f62b89744db9f2d069d5080b405d7d50fac5eaad5c9073d0",
+      "checkpoint": "assistant-recipe-target-qualified",
+      "device": "iPhone"
+    }
+  ],
+  "archives": {
+    "assistant-recipe-target-baseline": {
+      "archive": "assistant-recipe-target-baseline-inputs.zip",
+      "sha256": "3b08861b9e560a61b7ae2e72ef0bf9ac7fb53c93326ebce9a2e8a013a8265bf0",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "1d0482f028a8097cbe413abdb9b70104f043c8650e034dbf8524f3340ee9e7e8"
+    },
+    "assistant-recipe-target-final": {
+      "archive": "assistant-recipe-target-final-inputs.zip",
+      "sha256": "ec9dbe2433c44be33b324ecc90b87669cdee46ee085c9119b6919a8e3cafc774",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "0f110921e57c2273b9b34edd78bea774b50c0afc0734235356306bdcd51e7fd7"
+    },
+    "assistant-recipe-target-qualified": {
+      "archive": "assistant-recipe-target-qualified-inputs.zip",
+      "sha256": "1d586fea47fe894265fc6c5d4eeba217af1f6ddd94224f20f6621c4f5400c3ab",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "56a9535f14ee6b207210cd0b9d4f59fbf7873473353f7729e8cd258a55efbe68"
+    },
+    "assistant-recipe-target-core-final": {
+      "archive": "assistant-recipe-target-core-final-inputs.zip",
+      "entries": 214,
+      "sha256": "03d413fa8759392cd6eb818f8e89beae330cb757d15a5f9eecba95f48a87464a",
+      "all_entries_read_back": true,
+      "target": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+      "tests": 301,
+      "failed_assertions": 0
+    },
+    "assistant-recipe-target-native-baseline": {
+      "archive": "assistant-recipe-target-native-baseline-inputs.zip",
+      "entries": 317,
+      "sha256": "1f7972fd88a6bbe557802e50267b9fa4f0b8159cba67a6c93e1e7126587cb999",
+      "all_entries_read_back": true,
+      "processes": 1,
+      "assertions": 50,
+      "failed": 2
+    },
+    "assistant-recipe-target-native-final": {
+      "archive": "assistant-recipe-target-native-final-inputs.zip",
+      "entries": 316,
+      "sha256": "74b6eaa3a7d83ec7ea01afe6f33626f7925917313530a86e6e86061db9e4c48d",
+      "all_entries_read_back": true,
+      "processes": 1,
+      "assertions": 50,
+      "failed": 0,
+      "source_digest": "0f110921e57c2273b9b34edd78bea774b50c0afc0734235356306bdcd51e7fd7"
+    }
+  },
+  "implementation": "Independent read-only RecipeDocument.soup destination; no selected-recipe/Snapshot/cooking/Handoff mutation. No start/timer/pin/offer controls. Dedicated Back keeps unsent draft.",
+  "baseline": "Fixed soup card opened generic route backed by currently selected canary; reproduced in actual AppModel and both UI destinations.",
+  "harness_failures": [
+    "First corrected-product UI run: 6 PASS/2 FAIL at library button assertion because actual app drawer intentionally opens selected recipe cover. Fixed test requires actual cover title and start button before/after restart; no product changes.",
+    "First corrected-product app.screenshot landscape attachments use inconsistent simulator rotation crop coordinates; retained, not accepted as full landscape evidence. Qualified test captures XCUIScreen and requires oriented point dimensions equal app.frame."
+  ],
+  "unproved": [
+    "Restart verifies selected recipe only, not persisted cooking step; live step2 preservation is a separate same-process native check.",
+    "No actual VoiceOver/Switch Control/Dynamic Type/physical-device/original-parity acceptance.",
+    "No dynamic API/personal recipe content or full OS restart/background execution acceptance."
+  ],
+  "real_personal_data_used": false,
+  "real_authentication": false,
+  "microphone_capture": false,
+  "system_alarm_authorization": false,
+  "Home_constructed": false,
+  "system_activity_created": false
+}
