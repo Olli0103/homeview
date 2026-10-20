@@ -373,10 +373,12 @@ struct CookingView: View {
 }
 struct RemindersView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var newItem = ""
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
-      AppHeader(title: "Reminders")
+      AppHeader(title:"Reminders",closeSize:max(48,minimumHitSide))
       Text("Today").font(.system(size: 40, weight: .bold)).padding(.horizontal, 32)
       ScrollView {
         VStack(spacing: 0) {
@@ -392,12 +394,15 @@ struct RemindersView: View {
                     .foregroundStyle(item.completed ? .orange : .gray)
                   Text(item.title).strikethrough(item.completed)
                   Spacer()
-                }
+                }.frame(minHeight:minimumHitSide).contentShape(Rectangle())
               }.accessibilityIdentifier("reminder.\(item.title)")
+                .accessibilityLabel(item.title)
+                .accessibilityValue(item.completed ? "Completed":"Not completed")
               Button {
                 model.reminders.removeAll { $0.id == item.id }
               } label: {
                 Image(systemName: "minus.circle").foregroundStyle(.gray)
+                  .frame(width:minimumHitSide,height:minimumHitSide).contentShape(Rectangle())
               }.accessibilityLabel("Delete \(item.title)")
             }.font(.system(size: 24)).padding(.vertical, 17)
             Divider()
@@ -406,8 +411,9 @@ struct RemindersView: View {
       }
       HStack {
         TextField("New reminder", text: $newItem).textFieldStyle(.plain).font(.system(size: 22))
+          .frame(minHeight:minimumHitSide).contentShape(Rectangle())
           .accessibilityIdentifier("reminder.input")
-        RoundButton(symbol: "plus", color: .orange.opacity(0.2), label: "Add reminder") {
+        RoundButton(symbol: "plus", color: .orange.opacity(0.2),size:max(48,minimumHitSide),label:"Add reminder") {
           let s = newItem.trimmingCharacters(in: .whitespacesAndNewlines)
           if !s.isEmpty,model.addLocalReminder(s) { newItem = "" }
         }.accessibilityIdentifier("reminder.add")

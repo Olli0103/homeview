@@ -5481,3 +5481,77 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
   }
 }
+
+extension HomeViewUITests {
+  private func launchLocalRemindersAudit() {
+    launch();drawer();tap("app.Reminders");tap("profile.Alex")
+    XCTAssertTrue(app.buttons["reminder.Pick up groceries"].exists)
+    XCTAssertTrue(app.buttons["reminder.Water the plants"].exists)
+    XCTAssertFalse(app.buttons["device.reminder.add"].exists)
+  }
+  private func auditLocalReminderHitRegions(_ state:String) throws {
+    viewportShot("reminder-hit-region-"+state)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let element=issue.element,frame=element?.frame ?? .zero
+      reports.append(["identifier":element?.identifier ?? "","label":element?.label ?? "",
+        "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let attachment=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="reminder-hit-region-"+state+"-all-findings";attachment.lifetime = .keepAlways;add(attachment)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered local reminder hit-region audit found \(reports.count) issues: \(reports)")
+  }
+  func testLocalRemindersInitialAutomaticHitRegionAudit() throws {
+    launchLocalRemindersAudit();try auditLocalReminderHitRegions("initial")
+  }
+  func testLocalRemindersEmptyAutomaticHitRegionAudit() throws {
+    launchLocalRemindersAudit();app.buttons["Delete Pick up groceries"].tap();app.buttons["Delete Water the plants"].tap()
+    XCTAssertFalse(app.buttons["reminder.Pick up groceries"].exists)
+    XCTAssertFalse(app.buttons["reminder.Water the plants"].exists)
+    try auditLocalReminderHitRegions("empty")
+  }
+  func testLocalRemindersKeyboardAutomaticHitRegionAudit() throws {
+    launchLocalRemindersAudit()
+    let input=app.textFields["reminder.input"];input.tap();input.typeText("SYNTHETIC EDGE ITEM")
+    XCTAssertTrue(app.keyboards.firstMatch.exists)
+    XCTAssertEqual(input.value as? String,"SYNTHETIC EDGE ITEM")
+    try auditLocalReminderHitRegions("keyboard-draft")
+  }
+  private func tapLocalReminderEdge(_ element:XCUIElement,bottom:Bool=false) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let f=element.frame,v=app.otherElements["reference.viewport"].frame
+    let data:[String:Any]=["identifier":element.identifier,"label":element.label,
+      "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "edge":bottom ? "bottom":"top","hittable":element.isHittable]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="reminder-edge-"+element.identifier.replacingOccurrences(of:".",with:"-")+"-"+(bottom ? "bottom":"top")
+    a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(v.contains(f));tapRecipeTargetEdge(element,bottom:bottom)
+  }
+  func testLocalRemindersDeleteCompleteInputAddAndCloseActualEdges() {
+    launchLocalRemindersAudit();viewportShot("reminder-hit-region-before-edge-actions")
+    tapLocalReminderEdge(app.buttons["Delete Pick up groceries"])
+    XCTAssertFalse(app.buttons["reminder.Pick up groceries"].exists)
+    let water=app.buttons["reminder.Water the plants"]
+    XCTAssertTrue(water.exists)
+    tapLocalReminderEdge(water);XCTAssertEqual(water.value as? String,"Completed")
+    tapLocalReminderEdge(water,bottom:true);XCTAssertEqual(water.value as? String,"Not completed")
+    tapLocalReminderEdge(app.buttons["Delete Water the plants"],bottom:true)
+    XCTAssertFalse(water.exists)
+    let input=app.textFields["reminder.input"]
+    tapLocalReminderEdge(input);input.typeText("SYNTHETIC EDGE ITEM")
+    XCTAssertTrue(app.keyboards.firstMatch.exists)
+    viewportShot("reminder-hit-region-keyboard-before-add")
+    tapLocalReminderEdge(app.buttons["reminder.add"])
+    XCTAssertTrue(app.buttons["reminder.SYNTHETIC EDGE ITEM"].waitForExistence(timeout:5))
+    XCTAssertEqual(input.value as? String,"New reminder")
+    tapLocalReminderEdge(app.buttons["Delete SYNTHETIC EDGE ITEM"],bottom:true)
+    XCTAssertFalse(app.buttons["reminder.SYNTHETIC EDGE ITEM"].exists)
+    viewportShot("reminder-hit-region-empty-after-edge-actions")
+    tapLocalReminderEdge(app.buttons["close"],bottom:true)
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+  }
+}
