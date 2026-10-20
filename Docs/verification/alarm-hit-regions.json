@@ -1,0 +1,670 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "status": "partial_issue_remains_open",
+  "product_test_commit": "974c46044db35a9118aeb96a75909b092947fe74",
+  "source_files": 206,
+  "source_digest": "5ee10ce5e55911d53a6f1b0d1d78b6c43cd79aa1f3498e270e2028e2caa4ac0c",
+  "UI_results": [
+    {
+      "checkpoint": "alarm-hit-regions-baseline",
+      "device": "iPad",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "alarm-hit-regions-baseline",
+      "device": "iPhone",
+      "passed": 1,
+      "failed": 3,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_final_executions": 8,
+  "UI_unique_methods": 4,
+  "UI_total_executions": 16,
+  "UI_total_passed": 12,
+  "UI_historical_failed": 4,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "audit_findings": {
+    "alarm-hit-regions-baseline/iPad/alarm-hit-region-empty-all-findings": [],
+    "alarm-hit-regions-baseline/iPad/alarm-hit-region-initial-all-findings": [],
+    "alarm-hit-regions-baseline/iPad/alarm-hit-region-two-rows-all-findings": [],
+    "alarm-hit-regions-baseline/iPhone/alarm-hit-region-empty-all-findings": [],
+    "alarm-hit-regions-baseline/iPhone/alarm-hit-region-initial-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          358.71000000000004,
+          318.7,
+          10.290000400543192,
+          11.760000801086392
+        ],
+        "identifier": "alarm.delete.F4C600CC-F946-4704-A23A-68764D3C0314",
+        "label": "Delete alarm"
+      }
+    ],
+    "alarm-hit-regions-baseline/iPhone/alarm-hit-region-two-rows-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          358.71000000000004,
+          318.7,
+          10.290000400543192,
+          11.760000801086392
+        ],
+        "identifier": "alarm.delete.9EC5339F-0A8A-4902-A9E8-E2869E48A5BF",
+        "label": "Delete alarm"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          358.71000000000004,
+          383.59,
+          10.290000400543192,
+          11.760000801086449
+        ],
+        "identifier": "alarm.delete.211A1A70-B3BB-4865-8F98-E9AEB19B296A",
+        "label": "Delete alarm"
+      }
+    ],
+    "alarm-hit-regions-final/iPad/alarm-hit-region-empty-all-findings": [],
+    "alarm-hit-regions-final/iPad/alarm-hit-region-initial-all-findings": [],
+    "alarm-hit-regions-final/iPad/alarm-hit-region-two-rows-all-findings": [],
+    "alarm-hit-regions-final/iPhone/alarm-hit-region-empty-all-findings": [],
+    "alarm-hit-regions-final/iPhone/alarm-hit-region-initial-all-findings": [],
+    "alarm-hit-regions-final/iPhone/alarm-hit-region-two-rows-all-findings": []
+  },
+  "actual_final_edge_geometries": [
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        49.14666748046875,
+        208.83999633789062,
+        63.68000030517578,
+        63.67999267578125
+      ],
+      "hittable": true,
+      "identifier": "close",
+      "label": "Close",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "bottom",
+      "frame": [
+        54.45333480834961,
+        787.2666625976562,
+        711.0933837890625,
+        78.9366455078125
+      ],
+      "hittable": true,
+      "identifier": "alarm.add",
+      "label": "Add Alarm",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        720.4399999999999,
+        330.23,
+        45.10666666666668,
+        45.10666666666668
+      ],
+      "hittable": true,
+      "identifier": "alarm.delete.D0556C49-8144-432B-BA13-73B20319CD74",
+      "label": "Delete alarm at 07:00",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "bottom",
+      "frame": [
+        720.4399999999999,
+        466.87666666666667,
+        45.10666666666668,
+        45.10666666666668
+      ],
+      "hittable": true,
+      "identifier": "alarm.delete.19CA1297-5BC5-4334-9135-32A212E0BE3E",
+      "label": "Delete alarm at 07:00",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        54.45333480834961,
+        787.2666625976562,
+        711.0933837890625,
+        78.9366455078125
+      ],
+      "hittable": true,
+      "identifier": "alarm.add",
+      "label": "Add Alarm",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "bottom",
+      "frame": [
+        650.1266666666667,
+        322.93333333333334,
+        59.700000000000045,
+        59.69999999999999
+      ],
+      "hittable": true,
+      "identifier": "alarm.toggle.D0556C49-8144-432B-BA13-73B20319CD74",
+      "label": "Toggle alarm at 07:00",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        650.1266666666667,
+        322.93333333333334,
+        59.700000000000045,
+        59.69999999999999
+      ],
+      "hittable": true,
+      "identifier": "alarm.toggle.D0556C49-8144-432B-BA13-73B20319CD74",
+      "label": "Toggle alarm at 07:00",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        29.639999389648438,
+        256.1199951171875,
+        44.099998474121094,
+        44.100006103515625
+      ],
+      "hittable": true,
+      "identifier": "close",
+      "label": "Close",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "bottom",
+      "frame": [
+        32.15999984741211,
+        524.2899780273438,
+        337.67999267578125,
+        44.10003662109375
+      ],
+      "hittable": true,
+      "identifier": "alarm.add",
+      "label": "Add Alarm",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        325.74,
+        316.39,
+        44.099999999999966,
+        44.10000000000002
+      ],
+      "hittable": true,
+      "identifier": "alarm.delete.D1D3BFDA-2C36-4A30-82DC-566DEBC302AA",
+      "label": "Delete alarm at 07:00",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "bottom",
+      "frame": [
+        325.74,
+        381.28,
+        44.099999999999966,
+        44.099999999999966
+      ],
+      "hittable": true,
+      "identifier": "alarm.delete.36ABB216-54BE-43D7-AF37-DFF00F695FF9",
+      "label": "Delete alarm at 07:00",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        32.15999984741211,
+        524.2899780273438,
+        337.67999267578125,
+        44.10003662109375
+      ],
+      "hittable": true,
+      "identifier": "alarm.add",
+      "label": "Add Alarm",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "bottom",
+      "frame": [
+        276.6,
+        316.39,
+        44.099999999999966,
+        44.10000000000002
+      ],
+      "hittable": true,
+      "identifier": "alarm.toggle.D1D3BFDA-2C36-4A30-82DC-566DEBC302AA",
+      "label": "Toggle alarm at 07:00",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        276.6,
+        316.39,
+        44.099999999999966,
+        44.10000000000002
+      ],
+      "hittable": true,
+      "identifier": "alarm.toggle.D1D3BFDA-2C36-4A30-82DC-566DEBC302AA",
+      "label": "Toggle alarm at 07:00",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    }
+  ],
+  "baseline_edge_attempt_geometries": [
+    {
+      "device": "iPad",
+      "edge": "bottom",
+      "frame": [
+        741.6666666666666,
+        477.49,
+        21.889999999999986,
+        24.54333333333335
+      ],
+      "hittable": true,
+      "identifier": "alarm.delete.9C2C4D25-BB1D-4602-8593-8E84104DB413",
+      "label": "Delete alarm",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        54.45333480834961,
+        787.2666625976562,
+        711.0933837890625,
+        78.9366455078125
+      ],
+      "hittable": true,
+      "identifier": "alarm.add",
+      "label": "Add Alarm",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "bottom",
+      "frame": [
+        674.0066666666667,
+        327.57666666666665,
+        50.4133333333333,
+        50.413333333333355
+      ],
+      "hittable": true,
+      "identifier": "alarm.toggle.F842F5D9-7EB3-4001-BA56-C850888225BE",
+      "label": "Toggle alarm",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        674.0066666666667,
+        327.57666666666665,
+        50.4133333333333,
+        50.413333333333355
+      ],
+      "hittable": true,
+      "identifier": "alarm.toggle.F842F5D9-7EB3-4001-BA56-C850888225BE",
+      "label": "Toggle alarm",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        326.78999999999996,
+        312.61,
+        23.939999999999998,
+        23.939999999999998
+      ],
+      "hittable": true,
+      "identifier": "alarm.toggle.4F412E24-494C-435B-89F9-9A815B7C6D8B",
+      "label": "Toggle alarm",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    }
+  ],
+  "baseline_manual_outcomes": [
+    {
+      "device": "iPhone",
+      "stopped_before": "first Toggle top tap",
+      "height_points": 23.939999999999998,
+      "delivered_prior_edge_actions": []
+    },
+    {
+      "device": "iPad",
+      "stopped_before": "new Delete bottom tap",
+      "height_points": 24.54333333333335,
+      "delivered_prior_edge_actions": [
+        "initial Toggle top",
+        "initial Toggle bottom",
+        "Add top"
+      ]
+    }
+  ],
+  "AX_semantics": {
+    "enhancement": "Source-reviewed time-specific labels and explicit On/Off values; not a separate baseline VoiceOver reproduction",
+    "actual_final_assertions": [
+      "Toggle label includes07:00",
+      "Initial Off, actual Toggle top gives On, actual Toggle bottom gives Off"
+    ]
+  },
+  "product_scope": {
+    "base": "1702a56588dbd4f1b9cde92af0df4f9a602afedb",
+    "target": "974c46044db35a9118aeb96a75909b092947fe74",
+    "changed_product_files": [
+      "Sources/App/Everyday.swift"
+    ],
+    "Everyday_outside_AlarmsView_byte_equal": true,
+    "AppHeader_RoundButton_Pill_ButtonStyle_unchanged": true,
+    "AppModel_and_scheduling_unchanged": true
+  },
+  "historical_Core_results": {
+    "tests": 301,
+    "commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "unchanged_Core_and_test_files": 72,
+    "new_Core_execution": false
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "archives": {
+    "alarm-hit-regions-baseline": {
+      "archive": "alarm-hit-regions-baseline-inputs.zip",
+      "sha256": "e0c6dcc0071834fc182f1209ef3cc741a961a306738314d2a5b07fda668cb9e9",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "e553d91402fb24d183338b0d1fb994ed536908402ff80771f1b355172d23601c"
+    },
+    "alarm-hit-regions-final": {
+      "archive": "alarm-hit-regions-final-inputs.zip",
+      "sha256": "138f77614433aeabe34542449e4c2df823d1826baaebe29321efae2b5ab0a9af",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "5ee10ce5e55911d53a6f1b0d1d78b6c43cd79aa1f3498e270e2028e2caa4ac0c"
+    }
+  },
+  "decoded_PNGs": 42,
+  "contacts_viewed": 4,
+  "additional_full_images_viewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPad-before-viewport-alarm-hit-region-initial.png",
+      "sha256": "2985c38c15638e5649778eba1fb9c837062f8422ad782ae6699eb0d08c3779f4",
+      "checkpoint": "alarm-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPad-before-viewport-alarm-hit-region-two-rows.png",
+      "sha256": "1a88af8fe4e1b2a3eaf8cf4a557a990a42c6dc6667e561e7f950f230fe8fcbeb",
+      "checkpoint": "alarm-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPad-before-viewport-alarm-hit-region-empty.png",
+      "sha256": "c30f8ef15220e893415e8103afe0b528449a857f17751085059fb5ed3bbdc935",
+      "checkpoint": "alarm-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPad-after-viewport-alarm-hit-region-initial.png",
+      "sha256": "fc38bc669020146d35ceaaf83536fb23d87badc299d0956337ad98a8a21535ef",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPad-after-viewport-alarm-hit-region-two-rows.png",
+      "sha256": "d5d30bb6c7e4ec9d616dfa29194774566dfda45341019e0d40e1db4825c11516",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPad-after-viewport-alarm-hit-region-empty.png",
+      "sha256": "c30f8ef15220e893415e8103afe0b528449a857f17751085059fb5ed3bbdc935",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPad-after-viewport-alarm-hit-region-added-local-before-delete.png",
+      "sha256": "d5d30bb6c7e4ec9d616dfa29194774566dfda45341019e0d40e1db4825c11516",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPad-after-viewport-alarm-hit-region-after-edge-actions.png",
+      "sha256": "a7670c69f97679d60796cecad4cce0a94f90a001d844762db8b6b14968ce609e",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPhone-before-viewport-alarm-hit-region-initial.png",
+      "sha256": "e71daf9290d3a2d235c0cfda4a97d4f1811e44557540944f3c437e48fda8607e",
+      "checkpoint": "alarm-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPhone-before-viewport-alarm-hit-region-two-rows.png",
+      "sha256": "78d8fe9b1adb2380060331f7b72d2c6e3fd4b8d47ea59ed48776441bd14a08a1",
+      "checkpoint": "alarm-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPhone-before-viewport-alarm-hit-region-empty.png",
+      "sha256": "c97060ea2913e8f19e9b6b34eaf18aad4fd082cafeb388c0915db598d83a1535",
+      "checkpoint": "alarm-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPhone-after-viewport-alarm-hit-region-initial.png",
+      "sha256": "67f51ffc74a2331af7e47a81bee215336bf16acdb82d0e8295890031972c7805",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPhone-after-viewport-alarm-hit-region-two-rows.png",
+      "sha256": "e1a965b803a30d62b39497e97e476d8f8a695468af67e023aec1e337407027c9",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPhone-after-viewport-alarm-hit-region-empty.png",
+      "sha256": "56b6cd2c98f5deefaca37beff3343b802e1bbba022957af5206805af0e56e7c0",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPhone-after-viewport-alarm-hit-region-added-local-before-delete.png",
+      "sha256": "e1a965b803a30d62b39497e97e476d8f8a695468af67e023aec1e337407027c9",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/alarm-hit-regions/iPhone-after-viewport-alarm-hit-region-after-edge-actions.png",
+      "sha256": "2ea8e7d9626e31bfe40f0165960118d26241bb96041922f935e9f5b505c64b20",
+      "checkpoint": "alarm-hit-regions-final",
+      "device": "iPhone"
+    }
+  ],
+  "artifact_export": "All original attachments exported, then actual exportedFileName suffix used to copy verified PNG/JSON subsets; no suggested-filename glob omissions.",
+  "functional_proof": [
+    "Seven actual native2-point-inside edge actions per device with full viewport containment and native44-point minimum",
+    "Off→On→Off observed as explicit AX values and actual foreground/off status",
+    "Added entry identified independently from original; deleting new leaves original, deleting original empties list, Add works from empty",
+    "No System alert enabled state, Close reaches personal app view"
+  ],
+  "limits": [
+    "Automatic public audit only three visible states; not all24/offscreen entries or open time-pickers",
+    "Add/Close minimum target sizes are companion final strict contract, not baseline public audit findings",
+    "No actual VoiceOver/VoiceControl/SwitchControl/AssistiveTouch/focus/announcement/DynamicType/fullcontrast/physical/original acceptance",
+    "Only --uitesting without --system-alarms: actual AppModel native planning guard false, no AlarmKit permission/schedule/notification or acoustic/background delivery acceptance",
+    "Identical alarm times may still produce identical labels; no full Voice Control uniqueness claim",
+    "No pixel preservation: targets/Close geometry can grow"
+  ],
+  "real_personal_data_used": false,
+  "system_alarm_authorization_requested": false,
+  "native_system_alarm_created": false,
+  "acoustic_acceptance": false,
+  "Home_constructed": false,
+  "new_live_activity": false
+}

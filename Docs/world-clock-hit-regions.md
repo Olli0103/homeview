@@ -31,3 +31,7 @@ Fünf aktuelle SDK-Builds. Die früheren 301 Modelltests und 50 AppModel-Asserti
 ## Grenzen
 
 Der öffentliche Audit gilt nur für die drei aufgenommenen sichtbaren Zustände, nicht alle offscreen Städte, Einstellungen oder Plattformansichten. Die automatischen Prüfungen sind keine tatsächliche VoiceOver-/Voice-Control-/Switch-Control-/AssistiveTouch-, Fokus-, Ansagen-, Dynamic-Type-, volle Kontrast-, Hardware- oder Originalabnahme. Keine Systemzeit oder Gerätezeitzone geändert; synthetische Referenzzeit und eigene lokale Teststores. F103 bleibt partial, parity=false. Keine echten Daten, Freigaben, Aufnahmen oder neuen Systemaktivitäten. **Keine Home-Anbindung.**
+
+## Nachtrag: opt-in Close-Sizing
+
+Die spätere [lokale Wecker-Korrektur](alarm-hit-regions.md) verwendet ebenfalls den optionalen Close-Parameter. Die oben dokumentierten Weltuhr-Messungen bleiben an ihren historischen Produkt-/Prüfstand gebunden.
