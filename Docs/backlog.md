@@ -1187,6 +1187,8 @@ Lokale Erinnerungen: drei sichtbare öffentliche Hitflächen-Audits je Gerät le
 
 Lokale Kalender-Tageswahl: zwei sichtbare öffentliche Hitflächen-Audits je Gerät leer; alle sieben Tage, wiederholter Vorjahrestag und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Genau eine Auswahl und unverändertes lokales Heute im Kalender-Face am Jahreswechsel beobachtet. Keine echte Kalenderquelle oder tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/calendar-hit-regions.md. [Befunde und Grenzen](calendar-hit-regions.md).
 
+Demo-Musik: drei sichtbare öffentliche Hitflächen-Audits je Gerät leer, pausierte Navigation/Info/Bibliothek/Close mit echten nativen Randaktionen geprüft. Fortschritt bleibt als benannter nicht interaktiver AX-Status lesbar; Play nur vermessen, keine Wiedergabe. Gesonderte spätere Ganzdisplay-Aufnahmen bei identischen Produktbytes. Keine tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/demo-music-hit-regions.md. [Befunde und Grenzen](demo-music-hit-regions.md).
+
 Offen:
 
 - VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen
