@@ -2793,7 +2793,8 @@
       "SYS-01"
     ],
     "current": [
-      "AVFoundation-Vorschau startet bewusst und stoppt beim Verlassen. Zoom/Ringlicht sind UI-Effekte; Hardwarewirkung nicht geprüft."
+      "AVFoundation-Vorschau startet bewusst und stoppt beim Verlassen. Zoom/Ringlicht sind UI-Effekte; Hardwarewirkung nicht geprüft.",
+      "Latest mirror capture intent protects newer starts from stale shared shutdowns; stopped/denied/failed intents retain cleanup and clear live state. Exact controller body with symbolic fake dependencies:12 native cases/45 assertions and five SDKs. Not real camera hardware acceptance. Docs/mirror-start-lifecycle.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2812,6 +2813,10 @@
     },
     "completion_criteria": [
       "Bewusster physischer Test mit Vorher-/Nachher-Bild und Capture-Lifecycle-Nachweis; keine Kameranutzung im Mock-E2E."
+    ],
+    "progress_evidence": [
+      "Docs/mirror-start-lifecycle.md",
+      "Docs/verification/mirror-start-lifecycle.json"
     ]
   },
   {
