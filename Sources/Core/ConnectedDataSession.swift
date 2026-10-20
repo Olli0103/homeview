@@ -236,6 +236,8 @@ final class DeviceConnections {
     if !testing { defaults.set(false, forKey: "HomeView.connected." + kind.rawValue) }
   }
   func unlock() async -> Bool {
+    // A cancelled caller has no authority to prompt or supersede another session.
+    guard !Task.isCancelled else { return false }
     unlockGeneration += 1
     let ticket = unlockGeneration
     let granted = await provider.unlock()

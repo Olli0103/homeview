@@ -11,6 +11,7 @@ final class DeviceConnectionTests: XCTestCase {
     var permissionRequests = 0
     var queriedInterval: DateInterval?
     var delayUnlock = false
+    var unlockCalls = 0
     var unlockGranted = true
     var delayEvents = false
     var delayReminderWrite = false
@@ -123,6 +124,7 @@ final class DeviceConnectionTests: XCTestCase {
       throw CocoaError(.featureUnsupported)
     }
     func unlock() async -> Bool {
+      unlockCalls += 1
       if delayUnlock {
         return await withCheckedContinuation {
           unlockReply = $0
@@ -543,6 +545,50 @@ final class DeviceConnectionTests: XCTestCase {
     let granted = await attempt.value
     XCTAssertFalse(granted)
     XCTAssertFalse(connections.personalUnlocked)
+  }
+
+  func testPreCancelledAuthenticationDoesNotCallProviderOrEraseExistingSession() async {
+    for alreadyAuthenticated in [false, true] {
+      let provider = Provider()
+      let session = DeviceConnections(provider: provider)
+      if alreadyAuthenticated {
+        _ = await session.unlock()
+        await session.connect(.calendar)
+        await session.connect(.reminders)
+      }
+      let calls = provider.unlockCalls, events = session.events.map(\.id)
+      let reminders = session.reminders.map(\.id)
+      // Inherits MainActor: cancellation happens before this child can enter.
+      let attempt = Task { await session.unlock() }
+      attempt.cancel()
+      let granted = await attempt.value
+      XCTAssertFalse(granted)
+      XCTAssertEqual(provider.unlockCalls, calls)
+      XCTAssertEqual(session.personalUnlocked, alreadyAuthenticated)
+      XCTAssertEqual(session.events.map(\.id), events)
+      XCTAssertEqual(session.reminders.map(\.id), reminders)
+    }
+  }
+
+  func testPreCancelledAuthenticationCannotSupersedeLegitimatePendingUnlock() async throws {
+    let provider = Provider()
+    let connections = DeviceConnections(provider: provider)
+    provider.delayUnlock = true
+    let entered = expectation(description: "legitimate authentication entered")
+    provider.onStart = { entered.fulfill() }
+    let legitimate = Task { await connections.unlock() }
+    await fulfillment(of: [entered], timeout: 2)
+    let originalReply = try XCTUnwrap(provider.unlockReply)
+    provider.delayUnlock = false
+    let discarded = Task { await connections.unlock() }
+    discarded.cancel()
+    let discardedResult = await discarded.value
+    originalReply.resume(returning: true)
+    let legitimateResult = await legitimate.value
+    XCTAssertFalse(discardedResult)
+    XCTAssertEqual(provider.unlockCalls, 1)
+    XCTAssertTrue(legitimateResult)
+    XCTAssertTrue(connections.personalUnlocked)
   }
 
   func testLockClearsPersonalCachesButKeepsConnectionChoice() async {
