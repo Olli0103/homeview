@@ -1,4 +1,7 @@
 import SwiftUI
+#if os(iOS) || os(visionOS)
+  import UIKit
+#endif
 
 private struct NativeCanvasScaleKey:EnvironmentKey { static let defaultValue:CGFloat=1 }
 extension EnvironmentValues {
@@ -279,6 +282,7 @@ struct ValueAdjuster: View {
   var value: Double
   var range: ClosedRange<Double> = 0...100
   var label: String
+  var minimumHitSide: CGFloat = 0
   var set: @MainActor @Sendable (Double) -> Void
   var body: some View {
     VStack(spacing: 12) {
@@ -286,23 +290,69 @@ struct ValueAdjuster: View {
         Text(label)
         Spacer()
         Text("\(Int(value))%").monospacedDigit()
+          .accessibilityIdentifier("adjuster.value.\(label)")
       }
       HStack {
-        RoundButton(symbol: "minus", label: "Decrease \(label)") {
+        RoundButton(symbol: "minus", size: max(48, minimumHitSide), label: "Decrease \(label)") {
           set(max(range.lowerBound, value - 10))
         }
         #if os(tvOS) || os(watchOS)
           ProgressView(value: value, total: range.upperBound)
         #else
-          Slider(value: Binding(get: { value }, set: set), in: range).accessibilityLabel(label)
+          if minimumHitSide > 0 {
+            #if os(iOS) || os(visionOS)
+              MinimumHitSlider(value: value, range: range, label: label,
+                minimumHeight: minimumHitSide, set: set)
+                .frame(height: minimumHitSide)
+            #else
+              Slider(value: Binding(get: { value }, set: set), in: range)
+                .accessibilityLabel(label).frame(minHeight: minimumHitSide)
+            #endif
+          } else {
+            Slider(value: Binding(get: { value }, set: set), in: range).accessibilityLabel(label)
+          }
         #endif
-        RoundButton(symbol: "plus", label: "Increase \(label)") {
+        RoundButton(symbol: "plus", size: max(48, minimumHitSide), label: "Increase \(label)") {
           set(min(range.upperBound, value + 10))
         }
       }
     }.font(.system(size: 22))
   }
 }
+
+#if os(iOS) || os(visionOS)
+// A SwiftUI Slider's outer frame does not enlarge its underlying UISlider.
+// Opt-in callers host the standard native control at the requested real height.
+private struct MinimumHitSlider: UIViewRepresentable {
+  var value: Double
+  var range: ClosedRange<Double>
+  var label: String
+  var minimumHeight: CGFloat
+  var set: @MainActor @Sendable (Double) -> Void
+  func makeCoordinator() -> Coordinator { Coordinator(set: set) }
+  func makeUIView(context: Context) -> UISlider {
+    let slider = UISlider()
+    slider.addTarget(context.coordinator, action: #selector(Coordinator.changed(_:)), for: .valueChanged)
+    return slider
+  }
+  func updateUIView(_ slider: UISlider, context: Context) {
+    context.coordinator.set = set
+    slider.minimumValue = Float(range.lowerBound)
+    slider.maximumValue = Float(range.upperBound)
+    slider.value = Float(value)
+    slider.accessibilityLabel = label
+    slider.accessibilityValue = "\(Int(value))%"
+  }
+  func sizeThatFits(_ proposal: ProposedViewSize, uiView: UISlider, context: Context) -> CGSize? {
+    CGSize(width: proposal.width ?? max(0, uiView.intrinsicContentSize.width), height: minimumHeight)
+  }
+  @MainActor final class Coordinator: NSObject {
+    var set: @MainActor @Sendable (Double) -> Void
+    init(set: @escaping @MainActor @Sendable (Double) -> Void) { self.set = set }
+    @objc func changed(_ slider: UISlider) { set(Double(slider.value)) }
+  }
+}
+#endif
 
 // Independent simple geometry: seven symmetric bars, not extracted contours.
 struct IntercomMark: Shape {

@@ -5,6 +5,10 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Einstellungs-Touchflächen · 20. Oktober 2026
+
+Einstellungen: zu kleine native Tasten und Mock-Regler sowie fehlende Boolean-AXwerte korrigiert; getrennte Vorherfehler erhalten. Acht letzte betroffene UI-Ausführungen, zehn leere ungefilterte Auditlisten und fünf SDKs; vorherige 18/20 UI-Ergebnisse ausdrücklich historisch. Keine echte Hilfsmittel-/Hardwareabnahme; Wetterfeld/Einheitenwähler separat offen. Docs/settings-hit-regions.md. Der Auftrag geht ohne Home-Anbindung weiter.
+
 ### Kennungsfreies Distanzmodell und Entsperr-Abbrüche · 20. Oktober 2026
 
 [#10: Recherche und ausdrücklich synthetische Modellabnahme](presence-policy.md)

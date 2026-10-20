@@ -1,0 +1,1952 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "base_commit": "1f7d7e5dc80b36c7d21c7548e8fd564d84a7f2a8",
+  "status": "bounded_settings_fix_issue_open",
+  "source_digest": "2fde74bdc45c71a6ea515704b6fcb31842d2eed78df61acdc8e3d3a2cfcc033c",
+  "runs": [
+    {
+      "checkpoint": "settings-hit-regions-baseline",
+      "source_digest": "41602fe7fc4d87dda63933942ebdd02bb8b6e9a6e82733f165390e46cc3fe902",
+      "source_count": 209,
+      "archive_sha256": "7ca3346ed33d8b83190cd0e38237c515be5b2be64108762422abe3fe95b2ecb3",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "passed": 0,
+          "failed": 5,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered Settings audit found 10 issues: [[\"identifier\": \"settings.keepawake\", \"label\": \"Keep Display On\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"auditType\": 4, \"frame\": [32.16, 281.95, 337.67999999999995, 17.430000000000007], \"description\": \"Hit area is too small\"], [\"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"settings.reset\", \"frame\": [32.16, 313.24, 146.16000000000003, 17.42999999999995], \"label\": \"Reset local app content\", \"auditType\": 4, \"description\": \"Hit area is too small\"], [\"label\": \"Welcome and service overview\", \"identifier\": \"settings.introduction\", \"frame\": [32.16, 369.73, 192.57000000000002, 17.430000000000007], \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"description\": \"Hit area is too small\"], [\"frame\": [32.16, 401.02, 164.22, 17.430000000000064], \"identifier\": \"settings.power\", \"auditType\": 4, \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Power adapter information\"], [\"identifier\": \"\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Reference clock\", \"auditType\": 4, \"description\": \"Hit area is too small\", \"frame\": [32.16, 432.30999999999995, 337.67999999999995, 17.430000000000064]], [\"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"\", \"frame\": [32.16, 463.6000000000001, 337.67999999999995, 17.429999999999893], \"description\": \"Hit area is too small\", \"label\": \"Night mode\"], [\"description\": \"Hit area is too small\", \"identifier\": \"\", \"frame\": [32.16, 494.89000000000004, 337.67999999999995, 17.429999999999893], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Far-view layout\", \"auditType\": 4], [\"auditType\": 4, \"identifier\": \"\", \"label\": \"Profile present\", \"frame\": [32.16, 526.18, 337.67999999999995, 17.42999999999995], \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"], [\"identifier\": \"settings.faces\", \"label\": \"Edit Faces\", \"auditType\": 4, \"frame\": [32.16, 557.47, 64.26000000000002, 17.42999999999995], \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"], [\"identifier\": \"\", \"frame\": [32.16, 588.76, 114.23999999999998, 17.430000000000064], \"label\": \"Light & brightness\", \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"auditType\": 4]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 1,
+              "testIdentifierString": "HomeViewUITests/testSettingsControlsUnconnectedAutomaticHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsControlsUnconnectedAutomaticHitRegionAudit",
+              "testName": "testSettingsControlsUnconnectedAutomaticHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered Settings audit found 7 issues: [[\"label\": \"Schedule 60-second system test alarm\", \"frame\": [32.16, 355.03, 208.73999999999998, 14.489999999999839], \"auditType\": 4, \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"native.alarm\"], [\"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"auditType\": 4, \"identifier\": \"\", \"label\": \"Choose Photos\", \"frame\": [33.84000015258789, 445.9599914550781, 110.8800048828125, 15.959991455078125]], [\"frame\": [32.16, 471.3699999999997, 127.68000000000004, 15.96000000000015], \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"photos.shared.load\", \"auditType\": 4, \"label\": \"Unlock shared albums\"], [\"auditType\": 4, \"frame\": [32.16, 510.00999999999993, 139.44000000000003, 15.960000000000093], \"identifier\": \"photos.shared.fixture.change\", \"label\": \"Change synthetic album\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"description\": \"Hit area is too small\"], [\"description\": \"Hit area is too small\", \"auditType\": 4, \"identifier\": \"photos.shared.fixture.revoke\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"frame\": [32.16, 533.53, 184.79999999999995, 15.960000000000036], \"label\": \"Revoke synthetic Photos access\"], [\"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"photos.demo\", \"auditType\": 4, \"label\": \"Use Demo Photo\", \"description\": \"Hit area is too small\", \"frame\": [32.16, 558.9399999999998, 97.44, 15.960000000000036]], [\"description\": \"Hit area is too small\", \"label\": \"Use Demo Gallery\", \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"photos.gallery\", \"frame\": [32.16, 584.3499999999999, 103.73999999999998, 15.960000000000036]]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testSettingsPhotoChoicesUnconnectedAutomaticHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsPhotoChoicesUnconnectedAutomaticHitRegionAudit",
+              "testName": "testSettingsPhotoChoicesUnconnectedAutomaticHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered Settings audit found 2 issues: [[\"label\": \"Connect\", \"frame\": [329.1, 561.8800000000001, 40.73999999999995, 12.809999999999945], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"connect.Calendar\", \"description\": \"Hit area is too small\", \"auditType\": 4], [\"identifier\": \"connect.Reminders\", \"description\": \"Hit area is too small\", \"auditType\": 4, \"label\": \"Connect\", \"frame\": [329.1, 615.4300000000001, 40.73999999999995, 12.809999999999945], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 3,
+              "testIdentifierString": "HomeViewUITests/testSettingsServicesUnconnectedAutomaticHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsServicesUnconnectedAutomaticHitRegionAudit",
+              "testName": "testSettingsServicesUnconnectedAutomaticHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered Settings audit found 7 issues: [[\"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"auditType\": 4, \"label\": \"Keep Display On\", \"frame\": [32.16, 402.91, 337.67999999999995, 17.42999999999995], \"description\": \"Hit area is too small\", \"identifier\": \"settings.keepawake\"], [\"frame\": [32.16, 434.2, 146.16000000000003, 17.42999999999995], \"label\": \"Reset local app content\", \"auditType\": 4, \"description\": \"Hit area is too small\", \"identifier\": \"settings.reset\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"], [\"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"frame\": [32.16, 490.69, 192.57000000000002, 17.430000000000064], \"label\": \"Welcome and service overview\", \"identifier\": \"settings.introduction\", \"auditType\": 4, \"description\": \"Hit area is too small\"], [\"identifier\": \"settings.power\", \"frame\": [32.16, 521.98, 164.22, 17.430000000000064], \"label\": \"Power adapter information\", \"description\": \"Hit area is too small\", \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"], [\"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"\", \"description\": \"Hit area is too small\", \"frame\": [32.16, 553.27, 337.67999999999995, 17.42999999999995], \"label\": \"Reference clock\"], [\"frame\": [32.16, 584.56, 337.67999999999995, 17.430000000000064], \"description\": \"Hit area is too small\", \"label\": \"Night mode\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"\", \"auditType\": 4], [\"auditType\": 4, \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"\", \"label\": \"Far-view layout\", \"frame\": [32.16, 615.85, 337.67999999999995, 17.42999999999995]]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 4,
+              "testIdentifierString": "HomeViewUITests/testSettingsTopUnconnectedAutomaticHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsTopUnconnectedAutomaticHitRegionAudit",
+              "testName": "testSettingsTopUnconnectedAutomaticHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered Settings audit found 5 issues: [[\"description\": \"Hit area is too small\", \"label\": \"Connect\", \"frame\": [329.1, 352.0900000000001, 40.73999999999995, 12.809999999999945], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"connect.Calendar\", \"auditType\": 4], [\"identifier\": \"connect.Reminders\", \"label\": \"Connect\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"description\": \"Hit area is too small\", \"frame\": [329.1, 405.6400000000001, 40.73999999999995, 12.809999999999945], \"auditType\": 4], [\"frame\": [329.1, 459.19000000000005, 40.73999999999995, 12.810000000000002], \"label\": \"Connect\", \"description\": \"Hit area is too small\", \"auditType\": 4, \"identifier\": \"connect.Apple Music\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"], [\"label\": \"Connect\", \"frame\": [329.1, 512.7400000000001, 40.73999999999995, 12.809999999999945], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"description\": \"Hit area is too small\", \"identifier\": \"connect.Weather\", \"auditType\": 4], [\"frame\": [32.16, 603.25, 128.31000000000003, 11.339999999999918], \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Weather data by Open-Meteo\", \"identifier\": \"\", \"description\": \"Hit area is too small\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 5,
+              "testIdentifierString": "HomeViewUITests/testSettingsWeatherUnconnectedAutomaticHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherUnconnectedAutomaticHitRegionAudit",
+              "testName": "testSettingsWeatherUnconnectedAutomaticHitRegionAudit()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "settings-hit-regions-boundary-baseline",
+      "source_digest": "50ee014b1b9a64ee4f4e003200a91567f431651f7d657129d7d9a9d8f9af1700",
+      "source_count": 209,
+      "archive_sha256": "2799304b542a920626d0eaa540cef305b01294c5623890683c3e10cb70fc7dbf",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 1,
+          "failed": 2,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertGreaterThanOrEqual failed: (\"27.196666666666715\") is less than (\"44.0\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testSettingsMockStepperAndSyntheticConnectionActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsMockStepperAndSyntheticConnectionActualEdges",
+              "testName": "testSettingsMockStepperAndSyntheticConnectionActualEdges()"
+            },
+            {
+              "failureText": "XCTAssertEqual failed: (\"Optional(\"\")\") is not equal to (\"Optional(\"Off\")\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 3,
+              "testIdentifierString": "HomeViewUITests/testSettingsNightValueAndCloseActualNativeEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsNightValueAndCloseActualNativeEdges",
+              "testName": "testSettingsNightValueAndCloseActualNativeEdges()"
+            }
+          ]
+        },
+        {
+          "device": "iPhone",
+          "passed": 0,
+          "failed": 3,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered Settings audit found 5 issues: [[\"auditType\": 4, \"identifier\": \"\", \"label\": \"Mock blinds\", \"frame\": [67.44, 337.39, 267.12, 19.53000000000003], \"description\": \"Hit area is too small\", \"detail\": \"The size of this UISlider is too small for user to interact.\"], [\"detail\": \"The size of this UISlider is too small for user to interact.\", \"label\": \"Mock fan speed\", \"frame\": [67.44, 405.64000000000004, 267.12, 19.529999999999973], \"identifier\": \"\", \"auditType\": 4, \"description\": \"Hit area is too small\"], [\"frame\": [32.16, 444.28000000000003, 108.57, 17.430000000000007], \"auditType\": 4, \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Simulate doorbell\", \"identifier\": \"settings.doorbell\"], [\"label\": \"Simulate incoming call\", \"auditType\": 4, \"identifier\": \"settings.call\", \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"frame\": [32.16, 475.57, 139.44000000000003, 17.430000000000007]], [\"identifier\": \"\", \"label\": \"Sign out demo profile\", \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"frame\": [32.16, 506.85999999999996, 132.93000000000004, 17.430000000000007], \"auditType\": 4]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 1,
+              "testIdentifierString": "HomeViewUITests/testSettingsMockMiddleAutomaticHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsMockMiddleAutomaticHitRegionAudit",
+              "testName": "testSettingsMockMiddleAutomaticHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertGreaterThanOrEqual failed: (\"30.239990234375\") is less than (\"44.0\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testSettingsMockStepperAndSyntheticConnectionActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsMockStepperAndSyntheticConnectionActualEdges",
+              "testName": "testSettingsMockStepperAndSyntheticConnectionActualEdges()"
+            },
+            {
+              "failureText": "XCTAssertEqual failed: (\"Optional(\"\")\") is not equal to (\"Optional(\"Off\")\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 3,
+              "testIdentifierString": "HomeViewUITests/testSettingsNightValueAndCloseActualNativeEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsNightValueAndCloseActualNativeEdges",
+              "testName": "testSettingsNightValueAndCloseActualNativeEdges()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "settings-hit-regions-pilot",
+      "source_digest": "031c6cd299678d40e672b76d76885b437cad5aff62cb0da2f2d8099e99713892",
+      "source_count": 209,
+      "archive_sha256": "7a0f766a6325f094f84523da7964ec950cce6acec129f3abad2665dc8b4280ac",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 7,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "Unable to parse the format string \"label NOT CONTAINS %@\" (NSInvalidArgumentException)",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 3,
+              "testIdentifierString": "HomeViewUITests/testSettingsMockStepperAndSyntheticConnectionActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsMockStepperAndSyntheticConnectionActualEdges",
+              "testName": "testSettingsMockStepperAndSyntheticConnectionActualEdges()"
+            }
+          ]
+        },
+        {
+          "device": "iPhone",
+          "passed": 6,
+          "failed": 2,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered Settings audit found 1 issues: [[\"identifier\": \"\", \"auditType\": 4, \"description\": \"Hit area is too small\", \"label\": \"Mock fan speed\", \"frame\": [81.30000000000001, 356.29, 239.39999999999998, 19.529999999999973], \"detail\": \"The size of this UISlider is too small for user to interact.\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testSettingsMockMiddleAutomaticHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsMockMiddleAutomaticHitRegionAudit",
+              "testName": "testSettingsMockMiddleAutomaticHitRegionAudit()"
+            },
+            {
+              "failureText": "Unable to parse the format string \"label NOT CONTAINS %@\" (NSInvalidArgumentException)",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 3,
+              "testIdentifierString": "HomeViewUITests/testSettingsMockStepperAndSyntheticConnectionActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsMockStepperAndSyntheticConnectionActualEdges",
+              "testName": "testSettingsMockStepperAndSyntheticConnectionActualEdges()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "settings-hit-regions-final",
+      "source_digest": "0ace07887005150c3f342e9b9792a05564898b4ff10e2b06a0f033d4886e0ae5",
+      "source_count": 209,
+      "archive_sha256": "e070540e5e5477b1c721c7508709b9953dbd3da2e9d1869c4b326ab1d2b3e482",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 9,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertNotNil failed",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 4,
+              "testIdentifierString": "HomeViewUITests/testSettingsMockSlidersKeepNativeAdjustmentAndValue()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsMockSlidersKeepNativeAdjustmentAndValue",
+              "testName": "testSettingsMockSlidersKeepNativeAdjustmentAndValue()"
+            }
+          ]
+        },
+        {
+          "device": "iPhone",
+          "passed": 9,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertGreaterThanOrEqual failed: (\"21.41999999999996\") is less than (\"44.0\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 4,
+              "testIdentifierString": "HomeViewUITests/testSettingsMockSlidersKeepNativeAdjustmentAndValue()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsMockSlidersKeepNativeAdjustmentAndValue",
+              "testName": "testSettingsMockSlidersKeepNativeAdjustmentAndValue()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "settings-hit-regions-qualified",
+      "source_digest": "2fde74bdc45c71a6ea515704b6fcb31842d2eed78df61acdc8e3d3a2cfcc033c",
+      "source_count": 209,
+      "archive_sha256": "3135fd3112ab412cf3d84ad7d496d6f809f3071fffbedddcc184bac62a98a21d",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        }
+      ]
+    }
+  ],
+  "current_qualified_scope": {
+    "iPad": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": [],
+      "failures": [],
+      "audits": {
+        "settings-hit-region-weather-attribution-all-findings_0_EF6E9F19-A751-4CF6-BC84-9A067E222756.json": [],
+        "settings-hit-region-gallery-row-all-findings_0_A1E1B520-3D62-42B3-AB8F-C73C35412B7B.json": [],
+        "settings-hit-region-native-alarm-row-all-findings_0_A39E3745-6111-40E3-A2E5-3FDC72FD5566.json": [],
+        "settings-hit-region-light-row-all-findings_0_6C4EE404-2441-4DA3-BA09-9D8298B5AA02.json": [],
+        "settings-hit-region-mock-middle-all-findings_0_945D98A6-262A-43D2-BEA1-EEECFB517AD3.json": []
+      },
+      "geometry": {
+        "settings-hit-region-weather-attribution-visible-control-geometry_0_93BB500B-A3DA-42D7-B6DC-CCAEAF3C3FAF.json": [
+          {
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              208.83999633789062,
+              63.68000030517578,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              559.7433333333333,
+              439.79,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "native.alarm",
+            "label": "Schedule 60-second system test alarm",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              766.7033333333334,
+              236.1466666666667,
+              45.10666666666657
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Choose Photos",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              831.71,
+              269.31333333333333,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.shared.load",
+            "label": "Unlock shared albums",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              924.5766666666667,
+              293.8566666666667,
+              45.10666666666657
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.shared.fixture.change",
+            "label": "Change synthetic album",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              286.45,
+              355.5466666666667,
+              42.45333333333332
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "°F / mph",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              410,
+              286.45,
+              355.5466666666666,
+              42.45333333333332
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "°C / km/h",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              221.44333333333333,
+              711.0933333333332,
+              55.71999999999997
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "weather.city",
+            "label": "",
+            "type": 49
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              286.45,
+              711.0933333333332,
+              41.126666666666665
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "weather.units",
+            "label": "",
+            "type": 37
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              336.86333333333334,
+              270.64,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Weather data by Open-Meteo",
+            "type": 42
+          }
+        ],
+        "settings-hit-region-gallery-row-visible-control-geometry_0_1BF490DD-7DED-492E-BF04-D3CD037C13AB.json": [
+          {
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              208.83999633789062,
+              63.68000030517578,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              330.8933333333333,
+              439.79,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "native.alarm",
+            "label": "Schedule 60-second system test alarm",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              537.8533333333334,
+              236.1466666666667,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Choose Photos",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              602.86,
+              269.31333333333333,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.shared.load",
+            "label": "Unlock shared albums",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              695.7266666666667,
+              293.8566666666667,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.shared.fixture.change",
+            "label": "Change synthetic album",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              756.7533333333333,
+              389.37666666666667,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.shared.fixture.revoke",
+            "label": "Revoke synthetic Photos access",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              821.76,
+              204.97000000000003,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.demo",
+            "label": "Use Demo Photo",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              886.7666666666667,
+              218.23666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.gallery",
+            "label": "Use Demo Gallery",
+            "type": 9
+          }
+        ],
+        "settings-hit-region-native-alarm-row-visible-control-geometry_0_6A54B9FC-EAE1-4005-B431-E674D0F7FF0E.json": [
+          {
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              208.83999633789062,
+              63.68000030517578,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              679.3133333333333,
+              208.84,
+              86.23333333333335,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "connect.Reminders",
+            "label": "Connect",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              679.3133333333333,
+              332.22,
+              86.23333333333335,
+              45.10666666666663
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "connect.Apple Music",
+            "label": "Connect",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              679.3133333333333,
+              455.6,
+              86.23333333333335,
+              45.10666666666663
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "connect.Weather",
+            "label": "Connect",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              883.45,
+              439.79,
+              45.10666666666657
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "native.alarm",
+            "label": "Schedule 60-second system test alarm",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              610.1566666666666,
+              355.5466666666667,
+              42.453333333333376
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "°F / mph",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              410,
+              610.1566666666666,
+              355.5466666666666,
+              42.453333333333376
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "°C / km/h",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              545.15,
+              711.0933333333332,
+              55.72000000000003
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "weather.city",
+            "label": "",
+            "type": 49
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              610.1566666666666,
+              711.0933333333332,
+              41.126666666666665
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "weather.units",
+            "label": "",
+            "type": 37
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              660.5699999999999,
+              270.64,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Weather data by Open-Meteo",
+            "type": 42
+          }
+        ],
+        "settings-hit-region-light-row-visible-control-geometry_0_DC279F4D-1690-45B7-B749-8E00ECB7F52C.json": [
+          {
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              208.83999633789062,
+              63.68000030517578,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              165.06,
+              711.0933333333332,
+              45.106666666666655
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "settings.keepawake",
+            "label": "Keep Display On",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              239.35333333333332,
+              307.7866666666667,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "settings.reset",
+            "label": "Reset local app content",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              366.71333333333337,
+              405.2966666666667,
+              45.10666666666663
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "settings.introduction",
+            "label": "Welcome and service overview",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              441.00666666666666,
+              346.26,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "settings.power",
+            "label": "Power adapter information",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              515.3,
+              711.0933333333332,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Reference clock",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              589.5933333333332,
+              711.0933333333332,
+              45.1066666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Night mode",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              663.8866666666667,
+              711.0933333333332,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Far-view layout",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              738.18,
+              711.0933333333332,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Profile present",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              812.4733333333334,
+              135.32,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "settings.faces",
+            "label": "Edit Faces",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              886.7666666666667,
+              240.79000000000002,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Light & brightness",
+            "type": 9
+          }
+        ],
+        "settings-hit-region-mock-middle-visible-control-geometry_0_86D09CE0-8585-4521-8824-CB71A7FA33F2.json": [
+          {
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              208.83999633789062,
+              63.68000030517578,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              150.46666666666667,
+              711.0933333333332,
+              45.106666666666655
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "",
+            "label": "Reference clock",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              224.76,
+              711.0933333333332,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "Night mode",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              299.05333333333334,
+              711.0933333333332,
+              45.10666666666663
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Far-view layout",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              373.3466666666667,
+              711.0933333333332,
+              45.10666666666663
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Profile present",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              447.64,
+              135.32,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "settings.faces",
+            "label": "Edit Faces",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              521.9333333333334,
+              240.79000000000002,
+              45.10666666666657
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Light & brightness",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333480834961,
+              647.3033447265625,
+              63.679996490478516,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Mock blinds",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              701.8666381835938,
+              647.3033447265625,
+              63.6800537109375,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Mock blinds",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333480834961,
+              791.2466430664062,
+              63.679996490478516,
+              63.6800537109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Mock fan speed",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              701.8666381835938,
+              791.2466430664062,
+              63.6800537109375,
+              63.6800537109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Mock fan speed",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              884.1133333333333,
+              228.85000000000002,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "settings.doorbell",
+            "label": "Simulate doorbell",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              54.45333333333333,
+              958.4066666666666,
+              293.8566666666667,
+              45.10666666666668
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "settings.call",
+            "label": "Simulate incoming call",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              128.74666666666667,
+              656.5899999999999,
+              562.5066666666667,
+              45.1066666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mock blinds",
+            "type": 33
+          },
+          {
+            "enabled": true,
+            "frame": [
+              128.74666666666667,
+              800.5333333333333,
+              562.5066666666667,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mock fan speed",
+            "type": 33
+          }
+        ]
+      },
+      "edges": [
+        {
+          "edge": "bottom",
+          "frame": [
+            650.79,
+            884.1133333333333,
+            114.75666666666666,
+            45.10666666666668
+          ],
+          "hittable": true,
+          "identifier": "connect.Calendar",
+          "label": "Disconnect",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            679.3133333333333,
+            884.1133333333333,
+            86.23333333333335,
+            45.10666666666668
+          ],
+          "hittable": true,
+          "identifier": "connect.Calendar",
+          "label": "Connect",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            54.45333480834961,
+            866.8666381835938,
+            63.679996490478516,
+            63.6800537109375
+          ],
+          "hittable": true,
+          "identifier": "minus",
+          "label": "Decrease Mock blinds",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            701.8666381835938,
+            866.8666381835938,
+            63.6800537109375,
+            63.6800537109375
+          ],
+          "hittable": true,
+          "identifier": "plus",
+          "label": "Increase Mock blinds",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        }
+      ]
+    },
+    "iPhone": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": [],
+      "failures": [],
+      "audits": {
+        "settings-hit-region-weather-attribution-all-findings_0_5DD690C1-4F8A-41FA-B55E-10FE3B07A8C1.json": [],
+        "settings-hit-region-gallery-row-all-findings_0_172833D3-3D6B-4401-A87B-FA6C0A674563.json": [],
+        "settings-hit-region-native-alarm-row-all-findings_0_87967452-8322-4720-BC6A-E7734D6CC656.json": [],
+        "settings-hit-region-light-row-all-findings_0_75FBE67F-6514-456F-B2D1-F401C187FB9B.json": [],
+        "settings-hit-region-mock-middle-all-findings_0_07F1730F-9BC8-4446-907D-0F45FB85401C.json": []
+      },
+      "geometry": {
+        "settings-hit-region-weather-attribution-visible-control-geometry_0_C829B4EC-86B0-42FD-B3A0-9957826811F6.json": [
+          {
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              256.1199951171875,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              325.74,
+              231.9699999999999,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "connect.Weather",
+            "label": "Connect",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              479.9799999999998,
+              208.73999999999998,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "native.alarm",
+            "label": "Schedule 60-second system test alarm",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              600.52,
+              112.56,
+              44.09999999999991
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "",
+            "label": "Choose Photos",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              327.94,
+              168.84,
+              20.160000000000082
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "°F / mph",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              201,
+              327.94,
+              168.83999999999997,
+              20.160000000000082
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "°C / km/h",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              297.07,
+              337.67999999999995,
+              26.45999999999998
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "weather.city",
+            "label": "",
+            "type": 49
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              327.94,
+              337.67999999999995,
+              19.53000000000003
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "weather.units",
+            "label": "",
+            "type": 37
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              351.87999999999994,
+              128.31000000000003,
+              44.10000000000008
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Weather data by Open-Meteo",
+            "type": 42
+          }
+        ],
+        "settings-hit-region-gallery-row-visible-control-geometry_0_E65E4202-8ABC-4704-87AB-E8015A5730C7.json": [
+          {
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              256.1199951171875,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              251.71,
+              112.56,
+              44.099999999999994
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "Choose Photos",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              305.26,
+              127.68000000000004,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.shared.load",
+            "label": "Unlock shared albums",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              372.03999999999996,
+              139.44000000000003,
+              44.10000000000008
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.shared.fixture.change",
+            "label": "Change synthetic album",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              423.7,
+              184.79999999999995,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.shared.fixture.revoke",
+            "label": "Revoke synthetic Photos access",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              477.25,
+              97.44,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.demo",
+            "label": "Use Demo Photo",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              530.8,
+              103.73999999999998,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "photos.gallery",
+            "label": "Use Demo Gallery",
+            "type": 9
+          }
+        ],
+        "settings-hit-region-native-alarm-row-visible-control-geometry_0_6359D839-7DD0-42C9-B9BC-A9BEAEB9B1E2.json": [
+          {
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              256.1199951171875,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              426.00999999999993,
+              208.73999999999998,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "native.alarm",
+            "label": "Schedule 60-second system test alarm",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              546.55,
+              112.56,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Choose Photos",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              600.1,
+              127.68000000000004,
+              44.10000000000002
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "photos.shared.load",
+            "label": "Unlock shared albums",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              273.9700000000001,
+              168.84,
+              20.160000000000025
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "°F / mph",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              201,
+              273.9700000000001,
+              168.83999999999997,
+              20.160000000000025
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "°C / km/h",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              243.10000000000005,
+              337.67999999999995,
+              26.460000000000008
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "weather.city",
+            "label": "",
+            "type": 49
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              273.9700000000001,
+              337.67999999999995,
+              19.53000000000003
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "weather.units",
+            "label": "",
+            "type": 37
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              297.9100000000001,
+              128.31000000000003,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Weather data by Open-Meteo",
+            "type": 42
+          }
+        ],
+        "settings-hit-region-light-row-visible-control-geometry_0_9E26FE60-F05C-4BB8-9758-11A85D0FD271.json": [
+          {
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              256.1199951171875,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              199.20999999999995,
+              337.67999999999995,
+              44.10000000000002
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "",
+            "label": "Night mode",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              257.16999999999996,
+              337.67999999999995,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "Far-view layout",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              315.13,
+              337.67999999999995,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Profile present",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              373.09,
+              64.26000000000002,
+              44.09999999999991
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "settings.faces",
+            "label": "Edit Faces",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              431.04999999999995,
+              114.23999999999998,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Light & brightness",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.15999984741211,
+              513.1599731445312,
+              44.10000228881836,
+              44.10003662109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Mock blinds",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              325.739990234375,
+              513.1599731445312,
+              44.100006103515625,
+              44.10003662109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Mock blinds",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.15999984741211,
+              595.27001953125,
+              44.10000228881836,
+              44.0999755859375
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Mock fan speed",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              325.739990234375,
+              595.27001953125,
+              44.100006103515625,
+              44.0999755859375
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Mock fan speed",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              81.30000000000001,
+              513.1599999999999,
+              239.39999999999998,
+              44.100000000000136
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mock blinds",
+            "type": 33
+          },
+          {
+            "enabled": true,
+            "frame": [
+              81.30000000000001,
+              595.2699999999999,
+              239.39999999999998,
+              44.10000000000002
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mock fan speed",
+            "type": 33
+          }
+        ],
+        "settings-hit-region-mock-middle-visible-control-geometry_0_24B12112-DC89-4531-8114-663A792A3767.json": [
+          {
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              256.1199951171875,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.15999984741211,
+              261.7900085449219,
+              44.10000228881836,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "minus",
+            "label": "Decrease Mock blinds",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              325.739990234375,
+              261.7900085449219,
+              44.100006103515625,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "plus",
+            "label": "Increase Mock blinds",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.15999984741211,
+              343.8999938964844,
+              44.10000228881836,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Mock fan speed",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              325.739990234375,
+              343.8999938964844,
+              44.100006103515625,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Mock fan speed",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              401.85999999999996,
+              108.57,
+              44.09999999999991
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "settings.doorbell",
+            "label": "Simulate doorbell",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              459.81999999999994,
+              139.44000000000003,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "settings.call",
+            "label": "Simulate incoming call",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              32.16,
+              517.78,
+              132.93000000000004,
+              44.09999999999991
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Sign out demo profile",
+            "type": 9
+          },
+          {
+            "enabled": true,
+            "frame": [
+              81.30000000000001,
+              261.78999999999996,
+              239.39999999999998,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "Mock blinds",
+            "type": 33
+          },
+          {
+            "enabled": true,
+            "frame": [
+              81.30000000000001,
+              343.8999999999999,
+              239.39999999999998,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mock fan speed",
+            "type": 33
+          }
+        ]
+      },
+      "edges": [
+        {
+          "edge": "bottom",
+          "frame": [
+            315.45,
+            530.7999999999998,
+            54.389999999999986,
+            44.10000000000002
+          ],
+          "hittable": true,
+          "identifier": "connect.Calendar",
+          "label": "Disconnect",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            325.74,
+            530.7999999999998,
+            44.099999999999966,
+            44.10000000000002
+          ],
+          "hittable": true,
+          "identifier": "connect.Calendar",
+          "label": "Connect",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            32.15999984741211,
+            530.7999877929688,
+            44.10000228881836,
+            44.10003662109375
+          ],
+          "hittable": true,
+          "identifier": "minus",
+          "label": "Decrease Mock blinds",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            325.739990234375,
+            530.7999877929688,
+            44.100006103515625,
+            44.10003662109375
+          ],
+          "hittable": true,
+          "identifier": "plus",
+          "label": "Increase Mock blinds",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        }
+      ]
+    }
+  },
+  "scope_notes": [
+    "Final is a historical filename, not a passing verdict: its two slider failures remain failures.",
+    "The last checkpoint reruns four affected cases per device, not all ten.",
+    "Previous checkpoint passed all 20 unfiltered audit lists and 14 actual edge actions, but only 18 of 20 test executions.",
+    "The final qualified checkpoint has ten empty lists and eight passing test executions.",
+    "Raw pre-fix slider value was not saved; its exact parser failure cause is unknown. Explicit percentage value now matches visible model value.",
+    "Earlier invalid NSPredicate is a harness defect, not a product disconnect defect. Exact Disconnected now checked.",
+    "Weather text field and segmented picker are not proven 44 points or fully accessible.",
+    "No real assistive technology, hardware, original parity or Home integration."
+  ],
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "new_core_test_runs": 0,
+  "published_images": [
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPad-before-contact.png",
+      "sha256": "c5cd71ce162770e88b05550f27604a18254b250a64a8e38e41f1f74161a48264"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPad-qualified-contact.png",
+      "sha256": "eefb706c330fbfd6ed7aa85a3f7698bc37751242619486662fa0f1773bbb8b80"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPad-settings-hit-region-weather-attribution.png",
+      "sha256": "8bf401dd8197441b1cf24541c40239813ec592a4df862a7bb70933d2eb2f9739"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPad-settings-hit-region-mock-middle.png",
+      "sha256": "063b54dbb9a26cad07a5203abece52edb04710fa2c258ded885dc0ee42626dd4"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPad-settings-native-sliders-adjusted.png",
+      "sha256": "0bc99fd099a482729d4e462d52fc22f0f0a90a519554ae9cf1acc813e2d1ab24"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPhone-before-contact.png",
+      "sha256": "ef7711a739df7d29ea724ec5784f3d598a5835abc14053eeef59c777a881991f"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPhone-qualified-contact.png",
+      "sha256": "ca90f5a6fe285bb7264786569efcc61abc0721210ac5830984c0bcaa39ec13db"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPhone-settings-hit-region-weather-attribution.png",
+      "sha256": "f26983e6ac54d21944dda9cf379ed38686031f257e6d178de43158cf17dfa972"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPhone-settings-hit-region-mock-middle.png",
+      "sha256": "1979235b48f50b28bacbb98d813a22bcdc0056117d28a4ea8edbf4a436739b64"
+    },
+    {
+      "path": "Docs/screenshots/settings-hit-regions/iPhone-settings-native-sliders-adjusted.png",
+      "sha256": "b147176e7e6e83288c7cbeb2f202be5b71b97c4c697f38b0693aea893287b911"
+    }
+  ]
+}

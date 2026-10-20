@@ -1,0 +1,500 @@
+{
+  "settings-hit-regions-baseline": {
+    "iPad": {
+      "settings-hit-region-controls-all-findings_0_519F870D-3F67-4227-B47E-87CBD13DA8A3.json": [],
+      "settings-hit-region-photos-all-findings_0_7547ACB8-AAD7-4E9D-889B-EC888F06802D.json": [],
+      "settings-hit-region-services-all-findings_0_0F42CAA3-4BE8-4808-8BC0-B450361D0748.json": [],
+      "settings-hit-region-top-all-findings_0_305C34D2-6255-43FC-982D-EA403D1C3D09.json": [],
+      "settings-hit-region-weather-all-findings_0_76185169-3174-47F5-967B-78E2A1EF3844.json": []
+    },
+    "iPhone": {
+      "settings-hit-region-controls-all-findings_0_50084FDA-B1C8-48B3-9DCA-33050F8EF24A.json": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            281.95,
+            337.67999999999995,
+            17.430000000000007
+          ],
+          "identifier": "settings.keepawake",
+          "label": "Keep Display On"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            313.24,
+            146.16000000000003,
+            17.42999999999995
+          ],
+          "identifier": "settings.reset",
+          "label": "Reset local app content"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            369.73,
+            192.57000000000002,
+            17.430000000000007
+          ],
+          "identifier": "settings.introduction",
+          "label": "Welcome and service overview"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            401.02,
+            164.22,
+            17.430000000000064
+          ],
+          "identifier": "settings.power",
+          "label": "Power adapter information"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            432.30999999999995,
+            337.67999999999995,
+            17.430000000000064
+          ],
+          "identifier": "",
+          "label": "Reference clock"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            463.6000000000001,
+            337.67999999999995,
+            17.429999999999893
+          ],
+          "identifier": "",
+          "label": "Night mode"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            494.89000000000004,
+            337.67999999999995,
+            17.429999999999893
+          ],
+          "identifier": "",
+          "label": "Far-view layout"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            526.18,
+            337.67999999999995,
+            17.42999999999995
+          ],
+          "identifier": "",
+          "label": "Profile present"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            557.47,
+            64.26000000000002,
+            17.42999999999995
+          ],
+          "identifier": "settings.faces",
+          "label": "Edit Faces"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            588.76,
+            114.23999999999998,
+            17.430000000000064
+          ],
+          "identifier": "",
+          "label": "Light & brightness"
+        }
+      ],
+      "settings-hit-region-photos-all-findings_0_8EECA739-D9C8-4AA5-B67E-6879AB421708.json": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            355.03,
+            208.73999999999998,
+            14.489999999999839
+          ],
+          "identifier": "native.alarm",
+          "label": "Schedule 60-second system test alarm"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            33.84000015258789,
+            445.9599914550781,
+            110.8800048828125,
+            15.959991455078125
+          ],
+          "identifier": "",
+          "label": "Choose Photos"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            471.3699999999997,
+            127.68000000000004,
+            15.96000000000015
+          ],
+          "identifier": "photos.shared.load",
+          "label": "Unlock shared albums"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            510.00999999999993,
+            139.44000000000003,
+            15.960000000000093
+          ],
+          "identifier": "photos.shared.fixture.change",
+          "label": "Change synthetic album"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            533.53,
+            184.79999999999995,
+            15.960000000000036
+          ],
+          "identifier": "photos.shared.fixture.revoke",
+          "label": "Revoke synthetic Photos access"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            558.9399999999998,
+            97.44,
+            15.960000000000036
+          ],
+          "identifier": "photos.demo",
+          "label": "Use Demo Photo"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            584.3499999999999,
+            103.73999999999998,
+            15.960000000000036
+          ],
+          "identifier": "photos.gallery",
+          "label": "Use Demo Gallery"
+        }
+      ],
+      "settings-hit-region-services-all-findings_0_D0344518-3750-4284-AB4C-A66DE4E9F4EF.json": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            329.1,
+            561.8800000000001,
+            40.73999999999995,
+            12.809999999999945
+          ],
+          "identifier": "connect.Calendar",
+          "label": "Connect"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            329.1,
+            615.4300000000001,
+            40.73999999999995,
+            12.809999999999945
+          ],
+          "identifier": "connect.Reminders",
+          "label": "Connect"
+        }
+      ],
+      "settings-hit-region-top-all-findings_0_90E9CE4D-4E1F-478C-A759-9FC772EC734F.json": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            402.91,
+            337.67999999999995,
+            17.42999999999995
+          ],
+          "identifier": "settings.keepawake",
+          "label": "Keep Display On"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            434.2,
+            146.16000000000003,
+            17.42999999999995
+          ],
+          "identifier": "settings.reset",
+          "label": "Reset local app content"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            490.69,
+            192.57000000000002,
+            17.430000000000064
+          ],
+          "identifier": "settings.introduction",
+          "label": "Welcome and service overview"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            521.98,
+            164.22,
+            17.430000000000064
+          ],
+          "identifier": "settings.power",
+          "label": "Power adapter information"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            553.27,
+            337.67999999999995,
+            17.42999999999995
+          ],
+          "identifier": "",
+          "label": "Reference clock"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            584.56,
+            337.67999999999995,
+            17.430000000000064
+          ],
+          "identifier": "",
+          "label": "Night mode"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            615.85,
+            337.67999999999995,
+            17.42999999999995
+          ],
+          "identifier": "",
+          "label": "Far-view layout"
+        }
+      ],
+      "settings-hit-region-weather-all-findings_0_DEB9AEC7-0EDC-400A-9B82-22769F930E83.json": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            329.1,
+            352.0900000000001,
+            40.73999999999995,
+            12.809999999999945
+          ],
+          "identifier": "connect.Calendar",
+          "label": "Connect"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            329.1,
+            405.6400000000001,
+            40.73999999999995,
+            12.809999999999945
+          ],
+          "identifier": "connect.Reminders",
+          "label": "Connect"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            329.1,
+            459.19000000000005,
+            40.73999999999995,
+            12.810000000000002
+          ],
+          "identifier": "connect.Apple Music",
+          "label": "Connect"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            329.1,
+            512.7400000000001,
+            40.73999999999995,
+            12.809999999999945
+          ],
+          "identifier": "connect.Weather",
+          "label": "Connect"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            603.25,
+            128.31000000000003,
+            11.339999999999918
+          ],
+          "identifier": "",
+          "label": "Weather data by Open-Meteo"
+        }
+      ]
+    }
+  },
+  "settings-hit-regions-boundary-baseline": {
+    "iPad": {
+      "settings-hit-region-mock-middle-all-findings_0_7A4C1880-C52C-414F-8805-91A5C3BA9F9A.json": []
+    },
+    "iPhone": {
+      "settings-hit-region-mock-middle-all-findings_0_AE2E2A98-3972-45E7-9469-1E9D4A248A25.json": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this UISlider is too small for user to interact.",
+          "frame": [
+            67.44,
+            337.39,
+            267.12,
+            19.53000000000003
+          ],
+          "identifier": "",
+          "label": "Mock blinds"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this UISlider is too small for user to interact.",
+          "frame": [
+            67.44,
+            405.64000000000004,
+            267.12,
+            19.529999999999973
+          ],
+          "identifier": "",
+          "label": "Mock fan speed"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            444.28000000000003,
+            108.57,
+            17.430000000000007
+          ],
+          "identifier": "settings.doorbell",
+          "label": "Simulate doorbell"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            475.57,
+            139.44000000000003,
+            17.430000000000007
+          ],
+          "identifier": "settings.call",
+          "label": "Simulate incoming call"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            32.16,
+            506.85999999999996,
+            132.93000000000004,
+            17.430000000000007
+          ],
+          "identifier": "",
+          "label": "Sign out demo profile"
+        }
+      ]
+    }
+  }
+}
