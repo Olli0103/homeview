@@ -536,3 +536,8 @@ Fade-Grundfläche heller/neutraler an UI12 angenähert: acht unveränderte Farbz
 App-Control-Zustände bilanziert und robust gespeichert: Mock/App/OS klar getrennt, transaktionaler Rollback bei Speicherfehlern, native Keep-awake-Anzeige, persistenter Verbindungswiderruf, Offline-Status ohne Inhaltsüberdeckung. 171 Coretests, 16 Integrations- und sechs gezielte Nachprüfungen auf iPad/iPhone sowie fünf SDKs; zwei getrennt gebundene UI-Quellstände. Docs/settings-state.md. Vollständige Originaldarstellung und Hardware bleiben separat offen; keine Home-Anbindung.
 
 Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen.
+
+
+## Tabellen-Wiederherstellung · 20. Oktober 2026
+
+[Begrenzter Fix zu QA-05 / #80](state-table-pressure.md): bekannte Face-/Profil-/Slotwerte trotz überfüllter Tabellen erhalten; Nichtobjekte und ungültige Schlüssel verbrauchen kein Objektbudget. 329 Modelltests, vier native App-Ausführungen, vier unabhängige Originalbyte-/Write-Read-backs und fünf SDKs bestanden. Getrennte Vorherfehler und Quellenstände bleiben dokumentiert. Keine vollständige Daten-/Lifecycle-/Hardwareabnahme; #80 bleibt offen, keine Home-Anbindung.

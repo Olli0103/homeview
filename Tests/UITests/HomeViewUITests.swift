@@ -3,6 +3,79 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func openPressureEditor() {
+    let edit=app.buttons["settings.faces"]
+    scrollPhotoControlFullyIntoView(edit);edit.tap()
+    XCTAssertTrue(app.buttons["editor.done"].waitForExistence(timeout:5))
+  }
+  private func verifyPressureProfile(_ name:String,own:String,other:String) {
+    tap("nav.apps");tap("personal.profile");tap("profile."+name)
+    tap("all.apps");tap("app.Messages")
+    XCTAssertTrue(app.staticTexts[own].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts[other].exists)
+  }
+  private func verifyPressureFace(_ expectedRight:String,write:Bool=false) {
+    openPressureEditor()
+    XCTAssertEqual(app.buttons["Sage style"].value as? String,"Selected")
+    XCTAssertTrue(app.buttons["widget.0"].label.contains("Weather"))
+    XCTAssertTrue(app.buttons["widget.1"].label.contains(expectedRight))
+    if write {
+      scrollEditorIntoView(app.buttons["widget.1"]);tap("widget.1")
+      tap("complication.choose.Date")
+      XCTAssertTrue(app.buttons["widget.1"].waitForExistence(timeout:5))
+      XCTAssertTrue(app.buttons["widget.1"].label.contains("Date"))
+    }
+    tap("editor.done")
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+  }
+  func testCrowdedMigrationPreservesFaceSlotsProfilesNormalWriteAndRestart() {
+    let id=UUID().uuidString
+    print("STATE_TABLE_PRESSURE_STORE kind=face id="+id)
+    launch(["--persistence-test",id,"--reset-test-store","--state-table-pressure-fixture","--page","Settings"])
+    XCTAssertTrue(app.staticTexts.matching(identifier:"store.recovery").firstMatch.waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["store.readOnly"].exists)
+    verifyPressureFace("Clock",write:true)
+    viewportShot("table-pressure-face-known-slots-saved")
+    verifyPressureProfile("Alex",own:"OWNED_ALEX_PRIVATE_CANARY",other:"OWNED_JAMIE_PRIVATE_CANARY")
+    viewportShot("table-pressure-alex-isolated")
+    verifyPressureProfile("Jamie",own:"OWNED_JAMIE_PRIVATE_CANARY",other:"OWNED_ALEX_PRIVATE_CANARY")
+    viewportShot("table-pressure-jamie-isolated")
+    app.terminate()
+    // No reset or fixture flag: normal reader must load the ordinary write.
+    launch(["--persistence-test",id,"--page","Settings"])
+    XCTAssertFalse(app.staticTexts["store.readOnly"].exists)
+    verifyPressureFace("Date")
+    verifyPressureProfile("Alex",own:"OWNED_ALEX_PRIVATE_CANARY",other:"OWNED_JAMIE_PRIVATE_CANARY")
+    verifyPressureProfile("Jamie",own:"OWNED_JAMIE_PRIVATE_CANARY",other:"OWNED_ALEX_PRIVATE_CANARY")
+    viewportShot("table-pressure-profiles-after-process-restart")
+  }
+  func testCrowdedPhotoCorrectionLoadsAndSurvivesNormalWriteAndRestart() {
+    let id=UUID().uuidString
+    print("STATE_TABLE_PRESSURE_STORE kind=photo id="+id)
+    launch(["--persistence-test",id,"--reset-test-store","--state-table-pressure-fixture","--page","Settings"])
+    let bottom=app.buttons["photos.clock.bottom"]
+    scrollPhotoControlFullyIntoView(bottom)
+    XCTAssertEqual(bottom.value as? String,"Selected")
+    let automatic=app.switches["photos.crop.auto"]
+    XCTAssertEqual(automatic.value as? String,"0")
+    XCTAssertTrue(app.sliders["photos.crop.horizontal"].exists)
+    XCTAssertTrue(app.sliders["photos.crop.vertical"].exists)
+    viewportShot("table-pressure-photo-bottom-recovered")
+    tap("photos.clock.top")
+    XCTAssertEqual(app.buttons["photos.clock.top"].value as? String,"Selected")
+    app.terminate()
+    launch(["--persistence-test",id,"--page","Settings"])
+    let top=app.buttons["photos.clock.top"]
+    scrollPhotoControlFullyIntoView(top)
+    XCTAssertEqual(top.value as? String,"Selected")
+    XCTAssertEqual(app.switches["photos.crop.auto"].value as? String,"0")
+    XCTAssertTrue(app.sliders["photos.crop.horizontal"].exists)
+    XCTAssertTrue(app.sliders["photos.crop.vertical"].exists)
+    viewportShot("table-pressure-photo-top-after-process-restart")
+  }
+}
+
+extension HomeViewUITests {
   private func launchFaceEditorAudit(_ face:String) {
     launch(["--face",face,"--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
     let edit=app.buttons["settings.faces"]

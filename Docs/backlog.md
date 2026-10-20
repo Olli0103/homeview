@@ -1399,3 +1399,8 @@ Control Center: native Mindestflächen für Close, lokale Regler und Pill-Tasten
 ### Face-Editor-Touchflächen · 20. Oktober 2026
 
 Face-Editor: lokale Label-Mindestflächen, tatsächliche Flow-Zeilenaktion und geschützte Inline-Datum-Trefferfläche. 28 UI-Ausführungen über zwei bytegleiche Auswahlläufe, 14 leere ungefilterte Auditlisten, 38 native Rand-Taps und fünf SDKs. Vorherfehler erhalten; andere kleine Previewflächen, schmale Fenster und echte Hilfsmittel-/Originalabnahme offen. Docs/editor-hit-regions.md. #73 bleibt offen.
+
+
+## Tabellen-Wiederherstellung · 20. Oktober 2026
+
+[Begrenzter Fix zu QA-05 / #80](state-table-pressure.md): bekannte Face-/Profil-/Slotwerte trotz überfüllter Tabellen erhalten; Nichtobjekte und ungültige Schlüssel verbrauchen kein Objektbudget. 329 Modelltests, vier native App-Ausführungen, vier unabhängige Originalbyte-/Write-Read-backs und fünf SDKs bestanden. Getrennte Vorherfehler und Quellenstände bleiben dokumentiert. Keine vollständige Daten-/Lifecycle-/Hardwareabnahme; #80 bleibt offen, keine Home-Anbindung.
