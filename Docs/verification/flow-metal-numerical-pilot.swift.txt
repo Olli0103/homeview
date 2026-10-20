@@ -1,0 +1,34 @@
+import Foundation
+import Metal
+
+@main struct NumericPilot {
+  static func main() async throws {
+    guard let device = MTLCreateSystemDefaultDevice() else { fatalError("Actual Metal device unavailable; not a PASS") }
+    print("Actual Metal device:",device.name)
+    for n in [8,16,40,128] {
+      for seeded in [false,true] {
+        var cpu = FlowSimulation(side:n)
+        if seeded {
+          let velocity=(0..<n*n).map { SIMD2<Float>(sin(Float($0)*0.37)*0.4,cos(Float($0)*0.23)*0.3) }
+          let dye=(0..<n*n).map { SIMD3<Float>(Float(($0*17)%101)/100,Float(($0*31)%103)/102,Float(($0*47)%107)/106) }
+          cpu=FlowSimulation(side:n,velocity:velocity,dye:dye)!
+        }
+        let gpu=FlowMetalSimulation(snapshot:cpu)
+        let steps=n==40 ? 100:20
+        var maxV:Float=0,maxD:Float=0
+        var firstFailure:Int?
+        for step in 0..<steps {
+          let time=Float(step)/20,delta:Float=step%7==0 ? 0.2:0.05
+          let impulse:SIMD2<Float>=step%3==0 ? SIMD2(3,-7):SIMD2(0.3,-0.2)
+          cpu.step(time:time,delta:delta,impulse:impulse)
+          let result=try await gpu.step(time:time,delta:delta,impulse:impulse)
+          for (a,b) in zip(cpu.velocity,result.velocity) { maxV=max(maxV,max(abs(a.x-b.x),abs(a.y-b.y))) }
+          for (a,b) in zip(cpu.dye,result.dye) { maxD=max(maxD,max(abs(a.x-b.x),max(abs(a.y-b.y),abs(a.z-b.z)))) }
+          let lv:Float=step<20 ? 0.0005:0.001,ld:Float=step<20 ? 0.0001:0.0002
+          if (maxV>lv || maxD>ld) && firstFailure==nil { firstFailure=step+1 }
+        }
+        print("COMPLETE firstFailure=\(firstFailure.map(String.init) ?? "none") n=\(n) seeded=\(seeded) steps=\(steps) maxVelocity=\(maxV) maxDye=\(maxD) textures=\(await gpu.textureAllocations)")
+      }
+    }
+  }
+}
