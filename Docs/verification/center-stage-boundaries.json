@@ -1,0 +1,421 @@
+{
+  "date": "2026-10-20",
+  "issue": 43,
+  "base_commit": "13782ca97a016d08210617ec4816432bb356a4cf",
+  "status": "public_research_partial_physical_target_unknown_issue_open",
+  "original_function": {
+    "id": "F055",
+    "implementation_status": "research",
+    "parity_accepted": false
+  },
+  "original_acceptance_unmet": true,
+  "actual_target_camera": "not identified or queried; no supported/unsupported hardware conclusion",
+  "official_main": {
+    "url": "https://support.apple.com/en-us/111102",
+    "published": "2026-05-12",
+    "file": "center-stage-main.md",
+    "sha256": "2fc0ff2f1acae1cf68c6e159e5d5f867d06602438302014a2a5b0ca88fcdb1f9",
+    "HTTP_status": 200,
+    "truncated": false,
+    "full_main_read": true
+  },
+  "official_contracts": [
+    {
+      "file": "center-stage-supported-official.json",
+      "title": "isCenterStageSupported",
+      "sha256": "b691b425707a9e78d223f1730117e2c8f89b2dd6f25a33050efcd2aff42173e0",
+      "url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/format/iscenterstagesupported",
+      "primary_sections_read": true
+    },
+    {
+      "file": "center-stage-active-official.json",
+      "title": "isCenterStageActive",
+      "sha256": "3c07fd5393ec698fa60f8af73750c12c300c2a6c4f04c1790d368a83fadf3589",
+      "url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/iscenterstageactive",
+      "primary_sections_read": true
+    },
+    {
+      "file": "center-stage-enabled-official.json",
+      "title": "isCenterStageEnabled",
+      "sha256": "193a813f69d5e9a04b05c45e6b40d84083cf7ec991869bd16cae8cee1ecc2b0c",
+      "url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/iscenterstageenabled",
+      "primary_sections_read": true
+    },
+    {
+      "file": "center-stage-control-official.json",
+      "title": "centerStageControlMode",
+      "sha256": "f20b58c0ff3c276b9976e2128c0e6e155de062d64179c9d47736fda85ff80a9a",
+      "url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/centerstagecontrolmode-swift.type.property",
+      "primary_sections_read": true
+    },
+    {
+      "file": "center-stage-modes-official.json",
+      "title": "AVCaptureDevice.CenterStageControlMode",
+      "sha256": "57bd883dfda4cb2db41a9d10bf9fda589c0de8e108eef533197bf45b5041ead0",
+      "url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/centerstagecontrolmode-swift.enum",
+      "primary_sections_read": true
+    },
+    {
+      "file": "center-stage-mode-user-official.json",
+      "title": "AVCaptureDevice.CenterStageControlMode.user",
+      "sha256": "9aed196f76d96b2adeef4ce3da2fed5c6e0194edd2198059811c3316d772a4ee",
+      "url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/centerstagecontrolmode-swift.enum/user",
+      "primary_sections_read": true
+    },
+    {
+      "file": "center-stage-mode-app-official.json",
+      "title": "AVCaptureDevice.CenterStageControlMode.app",
+      "sha256": "6186b85f08059080067e628e5368fa4f70193b61908ab65e23b7cf7226da128c",
+      "url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/centerstagecontrolmode-swift.enum/app",
+      "primary_sections_read": true
+    },
+    {
+      "file": "center-stage-mode-cooperative-official.json",
+      "title": "AVCaptureDevice.CenterStageControlMode.cooperative",
+      "sha256": "1f30b6c4bbfc9a4afd181c8999d9554a879a3df64f20a057b74d318285a20bfb",
+      "url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/centerstagecontrolmode-swift.enum/cooperative",
+      "primary_sections_read": true
+    }
+  ],
+  "SDK_read": {
+    "file": "center-stage-public-sdk-contracts.json",
+    "sha256": "11d4de0b266848964dc1577b9ec820697c5e6b74e0892524eb6526ffcdf5cc7d",
+    "public_headers": 5,
+    "properties_per_header": 4,
+    "SDKs": [
+      {
+        "sdk": "iphonesimulator",
+        "version": "27.0",
+        "public_path": "System/Library/Frameworks/AVFoundation.framework/Headers/AVCaptureDevice.h",
+        "sha256": "4b899b0a3e4b8db0d7a20ea7119d5413c15e32aeb0b72f8dae0b3046e5b6b709"
+      },
+      {
+        "sdk": "macosx",
+        "version": "27.0",
+        "public_path": "System/Library/Frameworks/AVFoundation.framework/Versions/A/Headers/AVCaptureDevice.h",
+        "sha256": "4b899b0a3e4b8db0d7a20ea7119d5413c15e32aeb0b72f8dae0b3046e5b6b709"
+      },
+      {
+        "sdk": "appletvsimulator",
+        "version": "27.0",
+        "public_path": "System/Library/Frameworks/AVFoundation.framework/Headers/AVCaptureDevice.h",
+        "sha256": "4b899b0a3e4b8db0d7a20ea7119d5413c15e32aeb0b72f8dae0b3046e5b6b709"
+      },
+      {
+        "sdk": "watchsimulator",
+        "version": "27.0",
+        "public_path": "System/Library/Frameworks/AVFoundation.framework/Headers/AVCaptureDevice.h",
+        "sha256": "4b899b0a3e4b8db0d7a20ea7119d5413c15e32aeb0b72f8dae0b3046e5b6b709"
+      },
+      {
+        "sdk": "xrsimulator",
+        "version": "27.0",
+        "public_path": "System/Library/Frameworks/AVFoundation.framework/Headers/AVCaptureDevice.h",
+        "sha256": "4b899b0a3e4b8db0d7a20ea7119d5413c15e32aeb0b72f8dae0b3046e5b6b709"
+      }
+    ],
+    "scope": "Named public AVFoundation/AVCaptureDevice.h resolved within each SDK; no PrivateHeaders, PrivateFrameworks, binaries or runtime objects"
+  },
+  "typechecks": [
+    {
+      "sdk": "iphonesimulator",
+      "target": "arm64-apple-ios17.0-simulator",
+      "SDK": "iPhoneSimulator.sdk",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk",
+        "-target",
+        "arm64-apple-ios17.0-simulator",
+        "-module-cache-path",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-module-cache",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-public-api.swift"
+      ],
+      "exit_code": 0,
+      "expected_success": true,
+      "diagnostic_file": "center-stage-typecheck-iphonesimulator.log",
+      "diagnostic_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256": "3b0a0eb3b10ba5a2dea1b4b5bacceefc6a56f49bddb15954fc86e252797a1bba",
+      "executed": false
+    },
+    {
+      "sdk": "macosx",
+      "target": "arm64-apple-macos14.0",
+      "SDK": "MacOSX.sdk",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-target",
+        "arm64-apple-macos14.0",
+        "-module-cache-path",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-module-cache",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-public-api.swift"
+      ],
+      "exit_code": 0,
+      "expected_success": true,
+      "diagnostic_file": "center-stage-typecheck-macosx.log",
+      "diagnostic_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256": "3b0a0eb3b10ba5a2dea1b4b5bacceefc6a56f49bddb15954fc86e252797a1bba",
+      "executed": false
+    },
+    {
+      "sdk": "appletvsimulator",
+      "target": "arm64-apple-tvos17.0-simulator",
+      "SDK": "AppleTVSimulator.sdk",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator.sdk",
+        "-target",
+        "arm64-apple-tvos17.0-simulator",
+        "-module-cache-path",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-module-cache",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-public-api.swift"
+      ],
+      "exit_code": 0,
+      "expected_success": true,
+      "diagnostic_file": "center-stage-typecheck-appletvsimulator.log",
+      "diagnostic_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256": "3b0a0eb3b10ba5a2dea1b4b5bacceefc6a56f49bddb15954fc86e252797a1bba",
+      "executed": false
+    },
+    {
+      "sdk": "watchsimulator",
+      "target": "arm64-apple-watchos10.0-simulator",
+      "SDK": "WatchSimulator.sdk",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/WatchSimulator.platform/Developer/SDKs/WatchSimulator.sdk",
+        "-target",
+        "arm64-apple-watchos10.0-simulator",
+        "-module-cache-path",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-module-cache",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-public-api.swift"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "diagnostic_file": "center-stage-typecheck-watchsimulator.log",
+      "diagnostic_sha256": "ae03bdf334dc5b7c15a53fb1c8ee7e18a43ffed870583e26d6b099ac1d13e6bd",
+      "source_sha256": "3b0a0eb3b10ba5a2dea1b4b5bacceefc6a56f49bddb15954fc86e252797a1bba",
+      "executed": false
+    },
+    {
+      "sdk": "xrsimulator",
+      "target": "arm64-apple-xros1.0-simulator",
+      "SDK": "XRSimulator.sdk",
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-typecheck",
+        "-swift-version",
+        "6",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/XRSimulator.platform/Developer/SDKs/XRSimulator.sdk",
+        "-target",
+        "arm64-apple-xros1.0-simulator",
+        "-module-cache-path",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-module-cache",
+        "/Volumes/Extern/Research/homeview-goal-20261017/center-stage-public-api.swift"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "diagnostic_file": "center-stage-typecheck-xrsimulator.log",
+      "diagnostic_sha256": "6fdc44362fffd2332eb509202c7dc1e48033592321c633ce4a1234c0d66d68e2",
+      "source_sha256": "3b0a0eb3b10ba5a2dea1b4b5bacceefc6a56f49bddb15954fc86e252797a1bba",
+      "executed": false
+    }
+  ],
+  "typecheck_source": {
+    "file": "center-stage-public-api.swift",
+    "sha256": "3b0a0eb3b10ba5a2dea1b4b5bacceefc6a56f49bddb15954fc86e252797a1bba",
+    "never_invoked": true
+  },
+  "positive_typechecks": 3,
+  "expected_unavailable_typechecks": 2,
+  "semantics": {
+    "format_support": "Specific capture format capability, not active tracking",
+    "enabled": "User/app request, not device-active guarantee",
+    "active": "Concrete device/current configuration; actual multi-person framing still must be observed",
+    "user": "Exclusive user control; programmatic enabled write throws",
+    "app": "Exclusive app control prevents user Control Center changes; not silently selected",
+    "cooperative": "Observe enabled and honor user intent; configure capture accordingly",
+    "conflicts": [
+      "Depth delivery can deactivate",
+      "Supported geometric distortion correction must be enabled",
+      "Active zoom and frame-duration bounds can change"
+    ]
+  },
+  "existing_solution_preflight": "Public AVFoundation Center Stage exists for suitable own capture; no third-party tracking library or custom crop system needed merely to establish this route. No dependency installed or alternative accepted.",
+  "current_source": {
+    "file": "Sources/App/NativeMirror.swift",
+    "sha256": "1c4db3aafb84f65b4b75687001d2573f3a5c803fbb59158d977b06799ccd3197",
+    "live_capture_app_targets": [
+      "iOS",
+      "macOS"
+    ],
+    "explicit_Use_Camera_required": true,
+    "Center_Stage_handling_present": false,
+    "manual_mirror_zoom_is_not_automatic_framing": true
+  },
+  "FaceTime_boundary": {
+    "document": "Docs/facetime-control-boundary.md",
+    "own_AVCaptureSession_not_control_of_foreign_FaceTime_session": true,
+    "call_started": false
+  },
+  "platform_limits": [
+    "iOS/Catalyst14.5 macOS12.3 tvOS17 public declarations, not hardware proof",
+    "Catalyst declared but not separately compiled here",
+    "watchOS and visionOS Center Stage property unavailability is not a universal denial of all AVFoundation or camera APIs",
+    "HomeView tvOS/visionOS/Watch mirror fallback is narrower than the public SDK; no actual hardware suitability inferred"
+  ],
+  "device_plan_executed": false,
+  "source_files_unchanged": 206,
+  "source_digest": "b675fd93fac3b3669c6ae8f1300775a150f1b10dd060d9e3f257f1ffdb229442",
+  "new_App_builds": 0,
+  "new_UI_or_Core_or_native_model_runs": 0,
+  "new_images": 0,
+  "capture_session_or_discovery_or_device_instantiated": false,
+  "permissions_requested": false,
+  "frames_captured": false,
+  "Center_Stage_values_read_or_set": false,
+  "settings_changed": false,
+  "Home_connected": false,
+  "archive": {
+    "file": "center-stage-boundaries-inputs.zip",
+    "entries": 28,
+    "sha256": "fd27a7b1a04b76dc6d6acee540dc03b9621537814ee76acfe76df9e9ddf636c0",
+    "all_entries_read_back": true,
+    "files": [
+      {
+        "path": "evidence/center-stage-main.md",
+        "sha256": "2fc0ff2f1acae1cf68c6e159e5d5f867d06602438302014a2a5b0ca88fcdb1f9"
+      },
+      {
+        "path": "evidence/center-stage-main-receipt.json",
+        "sha256": "e5c5ee5638d816fd7ba06583e7c2d89ec58270d7a0017c898bbdf3dde58bed3c"
+      },
+      {
+        "path": "evidence/center-stage-search-receipts.json",
+        "sha256": "c31982811d4c781331d8d9276178d4194f816d32832a95205470a1bdd7b759ea"
+      },
+      {
+        "path": "evidence/center-stage-supported-official.json",
+        "sha256": "b691b425707a9e78d223f1730117e2c8f89b2dd6f25a33050efcd2aff42173e0"
+      },
+      {
+        "path": "evidence/center-stage-active-official.json",
+        "sha256": "3c07fd5393ec698fa60f8af73750c12c300c2a6c4f04c1790d368a83fadf3589"
+      },
+      {
+        "path": "evidence/center-stage-enabled-official.json",
+        "sha256": "193a813f69d5e9a04b05c45e6b40d84083cf7ec991869bd16cae8cee1ecc2b0c"
+      },
+      {
+        "path": "evidence/center-stage-control-official.json",
+        "sha256": "f20b58c0ff3c276b9976e2128c0e6e155de062d64179c9d47736fda85ff80a9a"
+      },
+      {
+        "path": "evidence/center-stage-modes-official.json",
+        "sha256": "57bd883dfda4cb2db41a9d10bf9fda589c0de8e108eef533197bf45b5041ead0"
+      },
+      {
+        "path": "evidence/center-stage-mode-user-official.json",
+        "sha256": "9aed196f76d96b2adeef4ce3da2fed5c6e0194edd2198059811c3316d772a4ee"
+      },
+      {
+        "path": "evidence/center-stage-mode-app-official.json",
+        "sha256": "6186b85f08059080067e628e5368fa4f70193b61908ab65e23b7cf7226da128c"
+      },
+      {
+        "path": "evidence/center-stage-mode-cooperative-official.json",
+        "sha256": "1f30b6c4bbfc9a4afd181c8999d9554a879a3df64f20a057b74d318285a20bfb"
+      },
+      {
+        "path": "evidence/center-stage-DocC-receipts.json",
+        "sha256": "0b0f5619476f9c177ff99556f938380318d5bcadd6fac165bcfcb32595675da8"
+      },
+      {
+        "path": "evidence/center-stage-mode-DocC-receipts.json",
+        "sha256": "78b43b221693c9f92a2f9f1be427e1ff7ebe4f138b67078fb12c8176eae0746e"
+      },
+      {
+        "path": "evidence/center-stage-public-sdk-contracts.json",
+        "sha256": "11d4de0b266848964dc1577b9ec820697c5e6b74e0892524eb6526ffcdf5cc7d"
+      },
+      {
+        "path": "evidence/center-stage-typecheck-results.json",
+        "sha256": "3dc3e84ae675c1100e7fe692b356c22a53cf06690564d79419faa56debfbf8db"
+      },
+      {
+        "path": "evidence/center-stage-public-api.swift",
+        "sha256": "3b0a0eb3b10ba5a2dea1b4b5bacceefc6a56f49bddb15954fc86e252797a1bba"
+      },
+      {
+        "path": "evidence/center-stage-typecheck-iphonesimulator.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/center-stage-typecheck-macosx.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/center-stage-typecheck-appletvsimulator.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/center-stage-typecheck-watchsimulator.log",
+        "sha256": "ae03bdf334dc5b7c15a53fb1c8ee7e18a43ffed870583e26d6b099ac1d13e6bd"
+      },
+      {
+        "path": "evidence/center-stage-typecheck-xrsimulator.log",
+        "sha256": "6fdc44362fffd2332eb509202c7dc1e48033592321c633ce4a1234c0d66d68e2"
+      },
+      {
+        "path": "evidence/center-stage-boundaries-source.json",
+        "sha256": "4244f081e09b5094c92154ccdea3b405bfb2270a7796e7a358cb2160bcdcf14c"
+      },
+      {
+        "path": "evidence/center-stage-boundaries-audit.json",
+        "sha256": "2ac5d78105cfeec9735ea4f01250f7671a04ef071189ae4a82070c107850b095"
+      },
+      {
+        "path": "evidence/deliver-center-stage-boundaries.py",
+        "sha256": "dbfd640a566e668a6567971e067d16c2efe739394f5ffa901d42e9abf9592f7b"
+      },
+      {
+        "path": "document/center-stage-boundaries.md",
+        "sha256": "bcbb979d29a6c8021cc58b45b91db8fe5f0f6489cfc6559a52355349a3612b30"
+      },
+      {
+        "path": "source/Sources/App/NativeMirror.swift",
+        "sha256": "1c4db3aafb84f65b4b75687001d2573f3a5c803fbb59158d977b06799ccd3197"
+      },
+      {
+        "path": "source/Sources/App/CameraAndCommunication.swift",
+        "sha256": "f3c55cfa09c72b4a9fee331c0aaac4f2dda68a41e45cf088927dcb446ccfcad0"
+      },
+      {
+        "path": "source/Docs/facetime-control-boundary.md",
+        "sha256": "fe17d2becdebb26d74fa33d80535d09399a8881f7a44f089950f2dbb6475a34d"
+      }
+    ]
+  }
+}

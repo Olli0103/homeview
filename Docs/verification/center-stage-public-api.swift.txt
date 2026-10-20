@@ -1,0 +1,11 @@
+import AVFoundation
+@available(iOS 14.5, macOS 12.3, tvOS 17.0, *)
+@MainActor
+func publicCenterStageContract(_ device: AVCaptureDevice) -> (Bool, Bool, Bool, AVCaptureDevice.CenterStageControlMode) {
+  let _: [AVCaptureDevice.CenterStageControlMode] = [.user, .app, .cooperative]
+  return (device.activeFormat.isCenterStageSupported,
+          AVCaptureDevice.isCenterStageEnabled,
+          device.isCenterStageActive,
+          AVCaptureDevice.centerStageControlMode)
+}
+// Compile/typecheck only. Never called, no capture/session/discovery or settings.
