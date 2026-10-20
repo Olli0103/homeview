@@ -589,7 +589,9 @@ Abhängigkeiten: HOME-01, SYS-03.
 <a id="home-07"></a>
 ### HOME-07: Rauch-/CO-Geräuscherkennung und eigene Sensoren auf Machbarkeit prüfen
 
-Kein Sicherheitsalarm-Detektor und keine eigenen physischen Temperatur-/Feuchtesensoren vorhanden.
+Machbarkeitsentscheidung fuer F039/F040 abgeschlossen: HomePod-Systemfunktionen, eigene Audio-Klassifikation und physische Raumfuehler getrennt. Keine Schutzversprechen, Messwerte, Home-Anbindung oder akzeptierte Alternative. Originalfunktionen bleiben blockiert/parity=false. Docs/sound-sensor-boundaries.md.
+
+[Entscheidung, Plattformmatrix und Nachweisgrenzen](sound-sensor-boundaries.md).
 
 Offen:
 

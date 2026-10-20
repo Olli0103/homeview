@@ -806,7 +806,7 @@
       "F039",
       "F040"
     ],
-    "current": "Kein Sicherheitsalarm-Detektor und keine eigenen physischen Temperatur-/Feuchtesensoren vorhanden.",
+    "current": "Machbarkeitsentscheidung fuer F039/F040 abgeschlossen: HomePod-Systemfunktionen, eigene Audio-Klassifikation und physische Raumfuehler getrennt. Keine Schutzversprechen, Messwerte, Home-Anbindung oder akzeptierte Alternative. Originalfunktionen bleiben blockiert/parity=false. Docs/sound-sensor-boundaries.md.",
     "tasks": [
       "Erforderliche Hardware und zugängliche Systemdienste getrennt prüfen",
       "Keine verlässliche Rauch-/CO-Schutzfunktion durch Mikrofon-Demo behaupten",
@@ -819,7 +819,12 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/32",
     "issue_number": 32,
-    "state": "open"
+    "state": "completed",
+    "research_resolution": "completed_with_documented_blocked_original",
+    "progress_evidence": [
+      "Docs/sound-sensor-boundaries.md",
+      "Docs/verification/sound-sensor-boundaries.json"
+    ]
   },
   {
     "key": "AI-01",
