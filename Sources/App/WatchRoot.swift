@@ -1,8 +1,11 @@
 import SwiftUI
+import Combine
 
 #if os(watchOS)
   struct WatchRoot: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.scenePhase) private var scenePhase
+    private let pulse = Timer.publish(every:1,on:.main,in:.common).autoconnect()
     var body: some View {
       NavigationStack {
         List {
@@ -27,7 +30,12 @@ import SwiftUI
           }
           Section("World Clock") { Text(model.clock, style: .time) }
         }.navigationTitle("HomeView")
-      }.onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in model.tick()
+      }
+      .onReceive(scenePhase == .active ? pulse.eraseToAnyPublisher()
+        : Empty<Date,Never>().eraseToAnyPublisher()) { _ in model.tick() }
+      .onChange(of:scenePhase) { _,phase in
+        // Absolute deadlines must catch up when the watch surface resumes.
+        if phase == .active { model.tick() }
       }
     }
   }
