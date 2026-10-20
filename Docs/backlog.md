@@ -557,7 +557,9 @@ Abhängigkeiten: CAM-01.
 <a id="home-05"></a>
 ### HOME-05: HKSV-Erkennung und Archivsuche als API-Lücke entscheiden
 
-Keine gleichwertige öffentliche Integration für HKSV-Metadaten, bekannte Gesichter oder natürliche Archivsuche nachgewiesen.
+Fähigkeitsbericht zu HKSV-Klassen, bekannten Gesichtern, Clips, Home-KI-Beschreibungen und natürlicher Suche abgeschlossen. Positive Home-Systemfunktionen von geprüften App-Verträgen und Berechtigungen getrennt. F036/F037 bleiben blockiert/parity=false; keine Home-Anbindung oder akzeptierte Archiv-Alternative.
+
+[Öffentliche System-/App-Grenzen, Rechte und unerfüllte Originalfunktionen](hksv-public-boundaries.md).
 
 Offen:
 

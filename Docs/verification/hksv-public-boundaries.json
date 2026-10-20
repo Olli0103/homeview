@@ -1,0 +1,387 @@
+{
+  "date": "2026-10-20",
+  "issue": 30,
+  "status": "research_completed_original_functions_blocked",
+  "base_commit": "337aaa6204dd8ed16a80238b5a13e0eee8ccfff7",
+  "original_functions": {
+    "F036": {
+      "implementation_status": "blocked",
+      "parity_accepted": false
+    },
+    "F037": {
+      "implementation_status": "blocked",
+      "parity_accepted": false
+    }
+  },
+  "capability_matrix": [
+    {
+      "function": "F036",
+      "capability": "People/animals/vehicles/packages",
+      "Apple_Home": "Documented specific-motion notifications and timeline icons for HKSV; package must remain visible; unanalyzed recordings possible if hubs cannot analyze all streams",
+      "rights": "Compatible HKSV camera, home hub, iCloud+ recording setup, owner-granted access; not tested",
+      "HomeView": "No documented classification-to-HKSV-clip retrieval path established in reviewed public contracts",
+      "status": "blocked_not_implemented"
+    },
+    {
+      "function": "F036",
+      "capability": "Familiar faces/names",
+      "Apple_Home": "Photos library or recently captured Home visitors; Never/Only Me/Everyone in this Home; Never still permits faces named from Home clips",
+      "rights": "Owner/user face-recognition and naming/sharing decisions; Photos sharing not universally required; not inspected",
+      "HomeView": "No Home visitor/identity database access established; face rectangle/demo identity/general Photos permission not equivalent",
+      "status": "blocked_not_implemented"
+    },
+    {
+      "function": "F036/F037",
+      "capability": "Cloud recording catalogue",
+      "Apple_Home": "Ten-day timeline and authorized playback; owner controls recording/remote-stream/manage rights",
+      "rights": "50GB1cam/200GB5cam/2TB+unlimited recording plans per source, home hub, account/home permissions; capacity not analysis guarantee",
+      "HomeView": "Reviewed stream and mostRecentSnapshot contracts do not establish this cloud catalogue access",
+      "status": "blocked_not_implemented"
+    },
+    {
+      "function": "F037",
+      "capability": "Video descriptions",
+      "Apple_Home": "POSITIVE current iOS27 Apple Intelligence Home feature for compatible Home cameras",
+      "rights": "Latest HomePod2/HomePodmini/AppleTV4K; AI-capable owner iPhone, enabled AI in Home, guide names2TBplan; language/region/usage limits; higher plans not independently accepted",
+      "HomeView": "No app reader for Home-generated description fields established in reviewed camera/CloudKit contracts",
+      "status": "blocked_not_implemented"
+    },
+    {
+      "function": "F037",
+      "capability": "Natural-language archive search",
+      "Apple_Home": "POSITIVE current guide explicitly documents natural language searching of recorded Home clips",
+      "rights": "Same separately documented Home AI prerequisites, no actual user account/device assumption",
+      "HomeView": "No public HomeView query/result/clip-ID integration proved; own index/mock search not accepted substitute",
+      "status": "blocked_not_implemented"
+    }
+  ],
+  "official_main_sources": [
+    {
+      "url": "https://support.apple.com/guide/iphone/set-up-security-cameras-iph7bc5df9d9/ios",
+      "file": "hksv-official-main-0.md",
+      "sha256": "7ed1f3fc6ad236c40e12257d0b18dd607226fd85d8bc60c40a21a96904695c46",
+      "read_on": "2026-10-20",
+      "full_main_text_read": true
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/apple-intelligence-home-cameras-bd2gjv2g9nx0/ios",
+      "file": "hksv-official-main-1.md",
+      "sha256": "4d59548d21530fbbd18ed6891b032863f5495d544a186d97562d1ffb468894fe",
+      "read_on": "2026-10-20",
+      "full_main_text_read": true
+    },
+    {
+      "url": "https://support.apple.com/guide/icloud/icloud-homekit-secure-video-mme054c72692/icloud",
+      "file": "hksv-official-main-2.md",
+      "sha256": "c514b7e9b5e1f42428479b64ac036999e69555807e30484f6ad319ba591c378e",
+      "read_on": "2026-10-20",
+      "full_main_text_read": true
+    },
+    {
+      "file": "hksv-face-main.md",
+      "url": "https://support.apple.com/guide/iphone/use-face-recognition-iph04af43727/ios",
+      "sha256": "74a31d6fae1e888b2d305cc9355f1674d8adb240da8ccaaab5cd31b07699e14b",
+      "read_on": "2026-10-20",
+      "full_main_text_read": true
+    },
+    {
+      "file": "hksv-HAP-recording-delegate-main.md",
+      "url": "https://developers.homebridge.io/HAP-NodeJS/interfaces/CameraRecordingDelegate.html",
+      "sha256": "f1f6df17a2c1aa8f03848b7a1a0c39bfdf55cca01e412025327de61d6100ffbb",
+      "read_on": "2026-10-20",
+      "full_main_text_read": true
+    }
+  ],
+  "official_App_contracts": [
+    {
+      "external_file": "hksv-profile-official.json",
+      "sha256": "64622e7da4251884199c06c4b428e121d2c5f1535dd598e7cca9d437e4729bdf",
+      "title": "HMCameraProfile",
+      "read_on": "2026-10-20",
+      "URL": "https://developer.apple.com/documentation/homekit/hmcameraprofile"
+    },
+    {
+      "external_file": "hksv-stream-official.json",
+      "sha256": "fbcddde8926f095b6f0b82da66291da8605292e54edf1b7bc3606c176ea24721",
+      "title": "HMCameraStreamControl",
+      "read_on": "2026-10-20",
+      "URL": "https://developer.apple.com/documentation/homekit/hmcamerastreamcontrol"
+    },
+    {
+      "external_file": "hksv-snapshot-official.json",
+      "sha256": "c8482cbabf93eea378b21557968dd2de5103e1c99a7e5bfc947976a3a81a3959",
+      "title": "HMCameraSnapshotControl",
+      "read_on": "2026-10-20",
+      "URL": "https://developer.apple.com/documentation/homekit/hmcamerasnapshotcontrol"
+    },
+    {
+      "external_file": "hksv-container-official.json",
+      "sha256": "8e64271c29e03fa318eac229d6a65b2e7a42617bb9bd6ebb983f97953bcd2c78",
+      "title": "CKContainer",
+      "read_on": "2026-10-20",
+      "URL": "https://developer.apple.com/documentation/cloudkit/ckcontainer"
+    },
+    {
+      "external_file": "hksv-entitlement-official.json",
+      "sha256": "4fc0ae6ba82d8966150bb332ad95e87a5231bf840b58587b0849b86fd388f800",
+      "title": "HomeKit Entitlement",
+      "read_on": "2026-10-20",
+      "URL": "https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.homekit"
+    },
+    {
+      "external_file": "hksv-setup-official.json",
+      "sha256": "b2c392da619404f14b9bc7fb933065870d8f6d9aec69121d8cca71b0d390e21a",
+      "title": "Enabling HomeKit in your app",
+      "read_on": "2026-10-20",
+      "URL": "https://developer.apple.com/documentation/homekit/enabling-homekit-in-your-app"
+    },
+    {
+      "external_file": "hksv-usage-official.json",
+      "sha256": "7a8b69bb028c0801b9e44136e65bf77142e70524c9b2afdd50b2f387cdda9ec8",
+      "title": "NSHomeKitUsageDescription",
+      "read_on": "2026-10-20",
+      "URL": "https://developer.apple.com/documentation/bundleresources/information-property-list/nshomekitusagedescription"
+    },
+    {
+      "external_file": "intercom-homekit-overview-official-full.json",
+      "sha256": "13fd0d1c080e304551f261a8d1d09a91b4c66ce3038284ac7dfdfcc58e3b45f6",
+      "title": "HomeKit",
+      "read_on": "2026-10-20",
+      "URL": "https://developer.apple.com/documentation/homekit",
+      "reused_full_read": true
+    }
+  ],
+  "public_SDK_scan": {
+    "external_file": "hksv-public-sdk-scan.json",
+    "sha256": "fb2d2a343d21d8758cafb5dae7e3ebc7e6953a576cfb14f347d777ef4c1d5a0c",
+    "Xcode": "Xcode 27.0\nBuild version 27A266a",
+    "files": 22520,
+    "scope": "Read-only SDK System/Library/Frameworks .h in Headers or public .swiftinterface in Modules, resolved-file deduplication. Excludes PrivateFrameworks, PrivateHeaders, .private.swiftinterface and .package.swiftinterface. No framework instantiated.",
+    "SDKs": [
+      {
+        "sdk": "iphonesimulator",
+        "SDK_name": "iPhoneSimulator27.0.sdk",
+        "files": 4577,
+        "inventory_digest": "1f26a537a0019d25d14a9b7aa19b8834efbec9ed4f80a485ad01b7f429a72863",
+        "raw_matching_lines": 218
+      },
+      {
+        "sdk": "macosx",
+        "SDK_name": "MacOSX27.0.sdk",
+        "files": 6862,
+        "inventory_digest": "218e97c685c373d2f5378c5e3cb450fdf9cbfad747e26b20f3923b70d8df7e60",
+        "raw_matching_lines": 0
+      },
+      {
+        "sdk": "appletvsimulator",
+        "SDK_name": "AppleTVSimulator27.0.sdk",
+        "files": 3654,
+        "inventory_digest": "f6e14de8fbb0db0029fa04ba903325d267aaea9bb8afd46328037f2ac302b99a",
+        "raw_matching_lines": 218
+      },
+      {
+        "sdk": "xrsimulator",
+        "SDK_name": "XRSimulator27.0.sdk",
+        "files": 4398,
+        "inventory_digest": "f62b8eab9e91294839a0c3bfb03695d67cd409a66e66cf4eac06e9b522c187c2",
+        "raw_matching_lines": 218
+      },
+      {
+        "sdk": "watchsimulator",
+        "SDK_name": "WatchSimulator27.0.sdk",
+        "files": 3029,
+        "inventory_digest": "40fd30053dfe40544679a3a47d5b3c7e0049e38d7246d374ff3a3ed8fe2b80cf",
+        "raw_matching_lines": 218
+      }
+    ],
+    "false_positive_classification": [
+      "face also matches interface boilerplate; not a face-recognition API",
+      "search/startSearching are accessory discovery, not clip archive search",
+      "HMCharacteristicValueInputDeviceTypeRecording is an input-device enum, not recording catalogue access",
+      "Cloud synchronization error constants are not CloudKit record grants"
+    ],
+    "conclusion": "No supported integration chain for classifications/familiar identities/clip catalogue/Home AI descriptions/search results established within reviewed public camera/CloudKit contracts and bounded SDK scope. Not a universal absence proof for every future or differently named API."
+  },
+  "public_positive_controls": {
+    "camera_profile": [
+      "settingsControl",
+      "microphoneControl",
+      "speakerControl",
+      "streamControl",
+      "snapshotControl"
+    ],
+    "stream": [
+      "startStream",
+      "stopStream",
+      "streamState",
+      "cameraStream",
+      "delegate"
+    ],
+    "snapshot": [
+      "takeSnapshot",
+      "mostRecentSnapshot",
+      "delegate"
+    ],
+    "camera_controls_vendor_optional": true,
+    "macOS_native_camera_class_unavailable_not_equal_to_Mac_Home_app_unavailable": true,
+    "CloudKit": "Own app containers/databases with appropriate entitlements, not generic system HKSV access",
+    "HomeKit_permission": "Entitlement and purpose string/user permission; first actual use typically HMHomeManager construction may prompt; none performed"
+  },
+  "existing_option": {
+    "name": "HAP-NodeJS CameraRecordingDelegate",
+    "documentation": "https://developers.homebridge.io/HAP-NodeJS/interfaces/CameraRecordingDelegate.html",
+    "documented_positive": "Accessory maintains prebuffer and supplies next fMP4 recording to HomeKit controller after user activation/configuration",
+    "not_accepted_as": "Reader of Apple stored HKSV catalogue, familiar names or Home AI descriptions/search index",
+    "installed": false,
+    "built": false,
+    "started": false,
+    "paired": false,
+    "host_compatibility_tested": false,
+    "alternative_selected_or_implemented": false
+  },
+  "code_read": [
+    {
+      "path": "Sources/App/CameraAndCommunication.swift",
+      "sha256": "f3c55cfa09c72b4a9fee331c0aaac4f2dda68a41e45cf088927dcb446ccfcad0"
+    },
+    {
+      "path": "Sources/App/NativeServices.swift",
+      "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+    }
+  ],
+  "source_files_unchanged": 206,
+  "source_digest": "22f92e3c1db1f6e2c0543fbab8c5e69a32d2d2aab9a2a44969e70017991811a5",
+  "new_builds": 0,
+  "new_UI_runs": 0,
+  "new_Core_or_native_app_runs": 0,
+  "new_images": 0,
+  "HMHomeManager_constructed": false,
+  "Home_connected": false,
+  "real_camera_or_microphone_used": false,
+  "Photos_CloudKit_or_account_queried": false,
+  "permissions_settings_or_entitlements_changed": false,
+  "recording_or_playback_started": false,
+  "third_party_installed": false,
+  "preliminary_limits": [
+    "Initial developer-domain search returned generic library/license pages and is not treated as an absence proof",
+    "Search snippets are orientation only; user-system claims use separately read full main texts",
+    "No language/region/account/hardware eligibility of this user verified; source plan wording not expanded into a purchase recommendation"
+  ],
+  "closure_scope": "Original issue asks capability report with documentation links and test boundaries. Research package completes; F036/F037 and all original functional/device/original parity criteria remain unmet; Home integration issue23 stays open.",
+  "archive": {
+    "archive": "hksv-public-boundaries-inputs.zip",
+    "entries": 27,
+    "sha256": "39ad628703ae7ab682e3d3e216b84e6c8f77bb8396cb9f20f8182979ac0a2ac1",
+    "all_entries_read_back": true,
+    "files": [
+      {
+        "path": "evidence/hksv-official-main-0.md",
+        "sha256": "7ed1f3fc6ad236c40e12257d0b18dd607226fd85d8bc60c40a21a96904695c46"
+      },
+      {
+        "path": "evidence/hksv-official-main-1.md",
+        "sha256": "4d59548d21530fbbd18ed6891b032863f5495d544a186d97562d1ffb468894fe"
+      },
+      {
+        "path": "evidence/hksv-official-main-2.md",
+        "sha256": "c514b7e9b5e1f42428479b64ac036999e69555807e30484f6ad319ba591c378e"
+      },
+      {
+        "path": "evidence/hksv-face-main.md",
+        "sha256": "74a31d6fae1e888b2d305cc9355f1674d8adb240da8ccaaab5cd31b07699e14b"
+      },
+      {
+        "path": "evidence/hksv-HAP-recording-delegate-main.md",
+        "sha256": "f1f6df17a2c1aa8f03848b7a1a0c39bfdf55cca01e412025327de61d6100ffbb"
+      },
+      {
+        "path": "evidence/hksv-profile-official.json",
+        "sha256": "64622e7da4251884199c06c4b428e121d2c5f1535dd598e7cca9d437e4729bdf"
+      },
+      {
+        "path": "evidence/hksv-stream-official.json",
+        "sha256": "fbcddde8926f095b6f0b82da66291da8605292e54edf1b7bc3606c176ea24721"
+      },
+      {
+        "path": "evidence/hksv-snapshot-official.json",
+        "sha256": "c8482cbabf93eea378b21557968dd2de5103e1c99a7e5bfc947976a3a81a3959"
+      },
+      {
+        "path": "evidence/hksv-container-official.json",
+        "sha256": "8e64271c29e03fa318eac229d6a65b2e7a42617bb9bd6ebb983f97953bcd2c78"
+      },
+      {
+        "path": "evidence/hksv-entitlement-official.json",
+        "sha256": "4fc0ae6ba82d8966150bb332ad95e87a5231bf840b58587b0849b86fd388f800"
+      },
+      {
+        "path": "evidence/hksv-setup-official.json",
+        "sha256": "b2c392da619404f14b9bc7fb933065870d8f6d9aec69121d8cca71b0d390e21a"
+      },
+      {
+        "path": "evidence/hksv-usage-official.json",
+        "sha256": "7a8b69bb028c0801b9e44136e65bf77142e70524c9b2afdd50b2f387cdda9ec8"
+      },
+      {
+        "path": "evidence/intercom-homekit-overview-official-full.json",
+        "sha256": "13fd0d1c080e304551f261a8d1d09a91b4c66ce3038284ac7dfdfcc58e3b45f6"
+      },
+      {
+        "path": "evidence/hksv-public-web-receipts.json",
+        "sha256": "864451890d15958991da406fb7267b7edf3ad3bef46da03c4188a5dabc516f89"
+      },
+      {
+        "path": "evidence/hksv-followup-web-receipts.json",
+        "sha256": "864de739a6ea168f5a583bb771d0f1d10703fb5bc9299d3ca6f3513cf8e9ce70"
+      },
+      {
+        "path": "evidence/hksv-DocC-fetch-receipts.json",
+        "sha256": "4c40d163a3dfff37be969f6edb6fa98ba8cf926885391b48a101b4797de339ff"
+      },
+      {
+        "path": "evidence/hksv-permission-fetch-receipts.json",
+        "sha256": "369b32a6dcd08209c94ce62d970b24c5fd30c46ad2e8a8619e078bb6a82538ee"
+      },
+      {
+        "path": "evidence/hksv-official-main-index.json",
+        "sha256": "3354368f5ab52bd7d068ce454cdeee9e7ba957b89beb13be8e63966ab94d5400"
+      },
+      {
+        "path": "evidence/hksv-followup-main-index.json",
+        "sha256": "e03c1a454d6f87086d45c8ed3fcd14ee53e98a85af7b753e2ce56a2348e81851"
+      },
+      {
+        "path": "evidence/hksv-public-sdk-scan.json",
+        "sha256": "fb2d2a343d21d8758cafb5dae7e3ebc7e6953a576cfb14f347d777ef4c1d5a0c"
+      },
+      {
+        "path": "evidence/scan-hksv-public-sdks.py",
+        "sha256": "a2f1d222ce37760605299aa78690fe004e6e37b2e9f85650bcb30da9981fb1c9"
+      },
+      {
+        "path": "evidence/hksv-public-boundaries-source.json",
+        "sha256": "37b0d9f36ea77d291d2b7ab0c3feb387a648aabfa7d4b8e5105983edf2007e7d"
+      },
+      {
+        "path": "evidence/hksv-public-boundaries-audit.json",
+        "sha256": "c4537b071dbad24735f8071421933f0d8b4e9a1ed7295c2b07326da6a6316d49"
+      },
+      {
+        "path": "evidence/deliver-hksv-public-boundaries.py",
+        "sha256": "f716ec58de4a211f69a4033fc0847d8df12b0884462050a6b736f7201cbe7698"
+      },
+      {
+        "path": "document/hksv-public-boundaries.md",
+        "sha256": "9c9c77571e97699ff4ed235e1336e9e848e096a278fe2f38df3e43282c74aa8b"
+      },
+      {
+        "path": "source/Sources/App/CameraAndCommunication.swift",
+        "sha256": "f3c55cfa09c72b4a9fee331c0aaac4f2dda68a41e45cf088927dcb446ccfcad0"
+      },
+      {
+        "path": "source/Sources/App/NativeServices.swift",
+        "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+      }
+    ]
+  }
+}

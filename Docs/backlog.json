@@ -752,7 +752,7 @@
       "F036",
       "F037"
     ],
-    "current": "Keine gleichwertige öffentliche Integration für HKSV-Metadaten, bekannte Gesichter oder natürliche Archivsuche nachgewiesen.",
+    "current": "Fähigkeitsbericht zu HKSV-Klassen, bekannten Gesichtern, Clips, Home-KI-Beschreibungen und natürlicher Suche abgeschlossen. Positive Home-Systemfunktionen von geprüften App-Verträgen und Berechtigungen getrennt. F036/F037 bleiben blockiert/parity=false; keine Home-Anbindung oder akzeptierte Archiv-Alternative.",
     "tasks": [
       "Aktuelle öffentliche APIs und erforderliche Cloud-/Accountrechte je Unterfunktion belegen",
       "Falls unzugänglich, Anforderung ausdrücklich unerfüllt lassen",
@@ -765,7 +765,12 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/30",
     "issue_number": 30,
-    "state": "open"
+    "state": "completed",
+    "research_resolution": "completed_with_documented_blocked_original",
+    "progress_evidence": [
+      "Docs/hksv-public-boundaries.md",
+      "Docs/verification/hksv-public-boundaries.json"
+    ]
   },
   {
     "key": "HOME-06",
