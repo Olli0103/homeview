@@ -552,7 +552,8 @@ struct WorldClockView: View {
               && !model.data.worldClockZones.contains($0.zone)
             }) { city in
               Button {
-                model.addWorldCity(city.zone); choosing = false; search = ""
+                guard model.addWorldCity(city.zone) else { return }
+                choosing = false; search = ""
               } label: {
                 HStack { Text(city.name); Spacer(); Image(systemName: "plus.circle") }
                   .font(.system(size: 24)).padding(18)

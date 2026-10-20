@@ -2122,7 +2122,8 @@
     ],
     "current": [
       "Lokale Weltuhr ist vorhanden, vollständige Zonenwahl und Tag-/Nachtverlauf sind offen.",
-      "Two-calendar-day distance at the date line now explicitly labelled; existing +/-1 labels retained. See Docs/world-clock-date-distance.md."
+      "Two-calendar-day distance at the date line now explicitly labelled; existing +/-1 labels retained. See Docs/world-clock-date-distance.md.",
+      "Rejected city saves retain picker and search; explicit Done still works. Four final simulator UI executions and five SDK builds, two historical failures retained. Docs/world-clock-write-boundary.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2144,7 +2145,9 @@
     ],
     "progress_evidence": [
       "Docs/world-clock-date-distance.md",
-      "Docs/verification/world-date-distance.json"
+      "Docs/verification/world-date-distance.json",
+      "Docs/world-clock-write-boundary.md",
+      "Docs/verification/world-clock-write-boundary.json"
     ]
   },
   {
