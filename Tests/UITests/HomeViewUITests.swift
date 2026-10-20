@@ -5286,3 +5286,77 @@ extension HomeViewUITests {
     viewportShot("assistant-hit-region-header-edge-actions",assistantRectangle:true)
   }
 }
+
+extension HomeViewUITests {
+  private func auditWorldClockHitRegions(_ state:String) throws {
+    viewportShot("world-hit-region-"+state)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let element=issue.element,frame=element?.frame ?? .zero
+      reports.append(["identifier":element?.identifier ?? "","label":element?.label ?? "",
+        "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let attachment=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="world-hit-region-"+state+"-all-findings";attachment.lifetime = .keepAlways;add(attachment)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered world-clock hit-region audit found \(reports.count) issues: \(reports)")
+  }
+  func testWorldClockSelectedAutomaticHitRegionAudit() throws {
+    launch(["--page","World Clock"])
+    XCTAssertTrue(app.buttons["world.remove.America/Los_Angeles"].waitForExistence(timeout:5))
+    try auditWorldClockHitRegions("selected")
+  }
+  func testWorldClockChooserAutomaticHitRegionAudit() throws {
+    launch(["--page","World Clock"]);tap("world.add")
+    XCTAssertTrue(app.buttons["world.choose.Europe/London"].waitForExistence(timeout:5))
+    try auditWorldClockHitRegions("chooser")
+  }
+  func testWorldClockFilteredAutomaticHitRegionAudit() throws {
+    launch(["--page","World Clock"]);tap("world.add")
+    let search=app.textFields["world.search"]
+    search.tap();search.typeText("Kathmandu\n")
+    expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:app.keyboards.firstMatch)
+    waitForExpectations(timeout:5)
+    XCTAssertTrue(app.buttons["world.choose.Asia/Kathmandu"].waitForExistence(timeout:5))
+    try auditWorldClockHitRegions("filtered")
+  }
+  private func revealWorldClockControl(_ element:XCUIElement) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let list=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"]
+    for _ in 0..<12 {
+      let safe=list.frame.intersection(viewport.frame).insetBy(dx:4,dy:8),target=element.frame
+      if !target.isEmpty && safe.contains(target) {break}
+      let gap=target.minY<safe.minY ? -(safe.minY-target.minY+12):target.maxY-safe.maxY+12
+      let distance=min(max(abs(gap),24),safe.height*0.5)*(gap<0 ? -1:1)
+      let origin=app.coordinate(withNormalizedOffset:.zero)
+      origin.withOffset(CGVector(dx:safe.minX+8,dy:safe.midY+distance/2))
+        .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:safe.minX+8,dy:safe.midY-distance/2)),withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    XCTAssertTrue(list.frame.intersection(viewport.frame).insetBy(dx:4,dy:8).contains(element.frame))
+  }
+  func testWorldClockAddDoneChooseRemoveAndCloseActualEdges() {
+    launch(["--page","World Clock"])
+    viewportShot("world-hit-region-before-edge-actions")
+    let add=app.buttons["world.add"]
+    tapRecipeTargetEdge(add)
+    XCTAssertEqual(add.label,"Done")
+    tapRecipeTargetEdge(add,bottom:true)
+    XCTAssertEqual(add.label,"Add City")
+    tapRecipeTargetEdge(add)
+    let london=app.buttons["world.choose.Europe/London"]
+    revealWorldClockControl(london)
+    tapRecipeTargetEdge(london)
+    XCTAssertEqual(add.label,"Add City")
+    let remove=app.buttons["world.remove.Europe/London"]
+    revealWorldClockControl(remove)
+    XCTAssertTrue(app.staticTexts["world.time.Europe/London"].exists)
+    viewportShot("world-hit-region-added-london-before-remove")
+    tapRecipeTargetEdge(remove,bottom:true)
+    XCTAssertFalse(app.buttons["world.remove.Europe/London"].exists)
+    XCTAssertTrue(app.buttons["world.remove.America/Los_Angeles"].exists)
+    viewportShot("world-hit-region-after-remove")
+    tapRecipeTargetEdge(app.buttons["close"])
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+  }
+}
