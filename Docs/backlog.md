@@ -1315,6 +1315,8 @@ Abhängigkeiten: SYS-03.
 
 Langzeit-Farb- und numerische Stabilität von Flow sind geprüft. Keine gemessene Geräteenergie oder umfassende Speicher-/Framezeitabnahme.
 
+WatchRoot: drei native Host-Vorherfehler für inaktive Modellzeit und vorzeitigen lokalen Ablauf korrigiert. Gleicher Watch-Body im klar gekennzeichneten macOS-Host besteht elf Bedingungen; echte watchOS-SDK-Typprüfung bestanden, keine Watch-Runtime-/Always-on-/Energieabnahme. Docs/watch-pulse.md. [Befund und Grenzen](watch-pulse.md).
+
 Offen:
 
 - CPU/GPU/Framezeit und Speicher je Face sowie neun Kamerafeeds messen

@@ -1,0 +1,59 @@
+import AppKit
+import SwiftUI
+import Foundation
+@MainActor @Observable final class ProbeState { var visible=true;var phase=ScenePhase.active;var appeared=false;var disappeared=false;var observedPhase:ScenePhase?=nil }
+struct PhaseWitness:ViewModifier {
+ let state:ProbeState
+ @Environment(\.scenePhase) private var phase
+ func body(content:Content)->some View {content.onChange(of:phase,initial:true) { _,value in state.observedPhase=value }}
+}
+struct ProbeHost:View {
+ let model:AppModel;let state:ProbeState
+ var body:some View {
+  Group {
+   if state.visible { WatchRoot().modifier(PhaseWitness(state:state)).environment(model).environment(\.scenePhase,state.phase)
+    .onAppear { state.appeared=true }.onDisappear { state.disappeared=true } }
+   else { Color.black }
+  }
+ }
+}
+@main struct WatchPulseGate {
+ enum ProbeError:Error {case invalidFixture,timeout(String)}
+ @MainActor static func main() {
+  NSApplication.shared.setActivationPolicy(.accessory)
+  Task { @MainActor in do {try await run();exit(0)} catch {print("PREPARATION_ERROR",String(describing:error));exit(2)} }
+  NSApplication.shared.run()
+ }
+ @MainActor static func wait(_ name:String,_ ready:()->Bool) async throws {
+  let deadline=ContinuousClock.now.advanced(by:.seconds(5))
+  while !ready() {guard ContinuousClock.now<deadline else {throw ProbeError.timeout(name)};try await Task.sleep(for:.milliseconds(20))}
+ }
+ @MainActor static func run() async throws {
+  let a=ProcessInfo.processInfo.arguments
+  guard a.contains("--uitesting"),let i=a.firstIndex(of:"--persistence-test"),a.indices.contains(i+1),let id=UUID(uuidString:a[i+1]),!a.contains("--reset-test-store"),!a.contains("--system-alarms"),Bundle.main.url(forResource:"demo-tone",withExtension:"wav")==nil else {throw ProbeError.invalidFixture}
+  let m=AppModel(),fm=FileManager.default
+  guard m.gateStoreURL.deletingLastPathComponent().lastPathComponent=="test-"+id.uuidString,!fm.fileExists(atPath:m.gateStoreURL.path) else {throw ProbeError.invalidFixture}
+  m.data.keepDisplayOn=false;m.data.volume=0;m.idleSeconds=3600;m.lastInteraction=Date();m.route = .app(.timers)
+  let s=ProbeState(),v=NSHostingView(rootView:ProbeHost(model:m,state:s)),window=NSWindow(contentRect:NSRect(x:-4000,y:-4000,width:820,height:900),styleMask:[.borderless],backing:.buffered,defer:false)
+  window.contentView=v;window.orderBack(nil)
+  try await wait("actual root appeared"){s.appeared && s.observedPhase == .active}
+  var observations:[String:Double]=[:],checks:[String:Bool]=[:]
+  let active=m.now;try await Task.sleep(for:.milliseconds(1600));checks["active_clock_pulse_advances"]=m.now>active
+  s.phase = .inactive;try await wait("actual inactive callback"){s.observedPhase == .inactive};try await Task.sleep(for:.milliseconds(250))
+  let inactive=m.now;try await Task.sleep(for:.milliseconds(2200));observations["inactive_clock_advance_seconds"]=m.now.timeIntervalSince(inactive);checks["inactive_clock_has_no_repeated_tick"]=m.now==inactive
+  s.phase = .active;try await wait("actual resume"){s.observedPhase == .active};let resumed=m.now;try await Task.sleep(for:.milliseconds(1600));checks["resumed_clock_pulse_advances"]=m.now>resumed
+  guard m.addTimer(seconds:1,title:"Synthetic foreground deadline"),let timer=m.data.timers.last else {throw ProbeError.invalidFixture}
+  s.phase = .background;try await wait("actual background callback"){s.observedPhase == .background};try await Task.sleep(for:.milliseconds(250));let background=m.now
+  try await Task.sleep(for:.milliseconds(2200));observations["background_clock_advance_seconds"]=m.now.timeIntervalSince(background);checks["background_clock_has_no_repeated_tick"]=m.now==background;checks["background_does_not_emit_foreground_expiry"]=m.data.timers.first(where:{$0.id==timer.id})?.didAlert==false
+  s.phase = .active;try await wait("resume and reconcile deadline"){s.observedPhase == .active && m.data.timers.first(where:{$0.id==timer.id})?.didAlert==true}
+  checks["overdue_timer_reconciles_after_resume"]=m.data.timers.first(where:{$0.id==timer.id})?.didAlert==true
+  let saved=try JSONDecoder().decode(Snapshot.self,from:Data(contentsOf:m.gateStoreURL));checks["resumed_expiry_receipt_is_saved"]=saved.timers.first(where:{$0.id==timer.id})?.didAlert==true
+  try await Task.sleep(for:.milliseconds(250));let reduced=m.now;try await Task.sleep(for:.milliseconds(1600));checks["reduce_motion_launch_flag_keeps_semantic_clock_alive"]=m.now>reduced && a.contains("--reduce-motion")
+  s.visible=false;try await wait("actual root disappeared"){s.disappeared};try await Task.sleep(for:.milliseconds(250));let removed=m.now;try await Task.sleep(for:.milliseconds(2200));checks["removed_root_has_no_repeated_tick"]=m.now==removed
+  checks["display_wake_remained_disabled"] = !m.display.active
+  checks["no_registered_system_alarm_ids"] = m.data.nativeTimerIDs.isEmpty && m.data.nativeAlarmIDs.isEmpty
+  window.orderOut(nil)
+  let failed=checks.filter{!$0.value}.map(\.key).sorted();let result:[String:Any]=["checks":checks,"observations":observations,"failed":failed,"assertions":checks.count,"verdict":failed.isEmpty ? "PASS":"FAIL","owned_uuid":id.uuidString,"actual_WatchRoot_body_in_macOS_host":true,"outer_watchOS_guard_removed_only":true,"actual_watchOS_runtime":false,"actual_AppModel":true,"synthetic_scene_phase":true,"physical_window_scene_test":false,"audio_asset_present":false]
+  print(String(data:try JSONSerialization.data(withJSONObject:result,options:[.sortedKeys]),encoding:.utf8)!)
+ }
+}

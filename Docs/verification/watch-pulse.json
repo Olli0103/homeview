@@ -1,0 +1,280 @@
+{
+  "date": "2026-10-20",
+  "issue": 81,
+  "status": "partial_issue_remains_open",
+  "product_commit": "21849e6345febb4c1cfedff5cdd32b13b5c8c610",
+  "source_files": 206,
+  "source_digest": "54cede83f57ab37afeef4097c76f065ad6ea5a2d5a25108db22f227486f6c2ff",
+  "native_processes": 2,
+  "assertions_per_process": 11,
+  "baseline_passed": 8,
+  "baseline_failed": 3,
+  "current_passed": 11,
+  "current_failed": 0,
+  "native_results": {
+    "watch-pulse-baseline": {
+      "exit_code": 0,
+      "binary_sha256": "e5ac8c2713f92d89f35d5e3776c202d4c47e7f366375a376f73e5a6efe64a9c0",
+      "result": {
+        "actual_AppModel": true,
+        "actual_watchOS_runtime": false,
+        "actual_WatchRoot_body_in_macOS_host": true,
+        "assertions": 11,
+        "audio_asset_present": false,
+        "checks": {
+          "active_clock_pulse_advances": true,
+          "background_clock_has_no_repeated_tick": false,
+          "background_does_not_emit_foreground_expiry": false,
+          "display_wake_remained_disabled": true,
+          "inactive_clock_has_no_repeated_tick": false,
+          "no_registered_system_alarm_ids": true,
+          "overdue_timer_reconciles_after_resume": true,
+          "reduce_motion_launch_flag_keeps_semantic_clock_alive": true,
+          "removed_root_has_no_repeated_tick": true,
+          "resumed_clock_pulse_advances": true,
+          "resumed_expiry_receipt_is_saved": true
+        },
+        "failed": [
+          "background_clock_has_no_repeated_tick",
+          "background_does_not_emit_foreground_expiry",
+          "inactive_clock_has_no_repeated_tick"
+        ],
+        "observations": {
+          "background_clock_advance_seconds": 2.763247013092041,
+          "inactive_clock_advance_seconds": 3.045324921607971
+        },
+        "outer_watchOS_guard_removed_only": true,
+        "owned_uuid": "2D47611F-1DB2-409E-BDB0-5F7760CC69DF",
+        "physical_window_scene_test": false,
+        "synthetic_scene_phase": true,
+        "verdict": "FAIL"
+      }
+    },
+    "watch-pulse-final": {
+      "exit_code": 0,
+      "binary_sha256": "bfb86860f2247b305fe718545fde8e2515e1955a86f7b4ee6911752193be32b7",
+      "result": {
+        "actual_AppModel": true,
+        "actual_watchOS_runtime": false,
+        "actual_WatchRoot_body_in_macOS_host": true,
+        "assertions": 11,
+        "audio_asset_present": false,
+        "checks": {
+          "active_clock_pulse_advances": true,
+          "background_clock_has_no_repeated_tick": true,
+          "background_does_not_emit_foreground_expiry": true,
+          "display_wake_remained_disabled": true,
+          "inactive_clock_has_no_repeated_tick": true,
+          "no_registered_system_alarm_ids": true,
+          "overdue_timer_reconciles_after_resume": true,
+          "reduce_motion_launch_flag_keeps_semantic_clock_alive": true,
+          "removed_root_has_no_repeated_tick": true,
+          "resumed_clock_pulse_advances": true,
+          "resumed_expiry_receipt_is_saved": true
+        },
+        "failed": [],
+        "observations": {
+          "background_clock_advance_seconds": 0,
+          "inactive_clock_advance_seconds": 0
+        },
+        "outer_watchOS_guard_removed_only": true,
+        "owned_uuid": "4D66FD1F-6758-4F1C-9A15-A831BB39D8EF",
+        "physical_window_scene_test": false,
+        "synthetic_scene_phase": true,
+        "verdict": "PASS"
+      }
+    }
+  },
+  "source_adaptations": {
+    "watch-pulse-baseline": {
+      "original_path": "Sources/App/WatchRoot.swift",
+      "original_sha256": "d3956c7168752c689fb057535b104a40dc80b36812662feef52aadb89cdf2bde",
+      "host_source_sha256": "77c463253bf2ab367ece174f2fc1785186b4256e45872beb864395e050b3f137",
+      "removed_lines": [
+        3,
+        34
+      ],
+      "only_removed_outer_watchOS_compilation_envelope": true,
+      "WatchRoot_body_unchanged": true,
+      "host": "native macOS NSHostingView",
+      "watchOS_runtime_acceptance": false
+    },
+    "watch-pulse-final": {
+      "original_path": "Sources/App/WatchRoot.swift",
+      "original_sha256": "1481379f30b21720adabf89071bfceefb25d3d0841839b455863be7140ec27a8",
+      "host_source_sha256": "6b03bde160fbce73774b691c453444178eddd783323527127dc74217e48f265f",
+      "removed_lines": [
+        4,
+        42
+      ],
+      "only_removed_outer_watchOS_compilation_envelope": true,
+      "WatchRoot_body_unchanged": true,
+      "host": "native macOS NSHostingView",
+      "watchOS_runtime_acceptance": false
+    }
+  },
+  "actual_native_host": "macOS NSHostingView with injected ScenePhase; not a watchOS process",
+  "actual_watchOS_runtime": false,
+  "watchOS_SDK_build_passed": true,
+  "runtime_preflight": {
+    "watch_runtimes": [],
+    "watch_runtime_available": false,
+    "native_host": "macOS",
+    "source_adaptation": "Only remove outer watchOS conditional compilation envelope; actual WatchRoot body retained",
+    "Watch_OS_runtime_or_hardware_acceptance": false
+  },
+  "source_scope": {
+    "base": "3bb885e0fdf07709c14f20b5290d8fe6ff0d0514",
+    "product": "21849e6345febb4c1cfedff5cdd32b13b5c8c610",
+    "only_changed_source": [
+      "Sources/App/WatchRoot.swift"
+    ],
+    "all_other205_inputs_unchanged": true,
+    "all_Core_and_tests_equal_historical301_paths": [
+      "Sources/Core/AlbumDisplay.swift",
+      "Sources/Core/AnswerSpeechSession.swift",
+      "Sources/Core/AssistantConversation.swift",
+      "Sources/Core/AssistantLimits.swift",
+      "Sources/Core/AssistantResponseDocument.swift",
+      "Sources/Core/BrowserPolicy.swift",
+      "Sources/Core/CalendarAgenda.swift",
+      "Sources/Core/ConicGradientModel.swift",
+      "Sources/Core/ConnectedDataSession.swift",
+      "Sources/Core/ConnectedModels.swift",
+      "Sources/Core/DataConnection.swift",
+      "Sources/Core/DemoActionPlan.swift",
+      "Sources/Core/DemoDoorbell.swift",
+      "Sources/Core/EverydayVoiceCommand.swift",
+      "Sources/Core/FaceConfiguration.swift",
+      "Sources/Core/FlowSimulation.swift",
+      "Sources/Core/FlowTypography.swift",
+      "Sources/Core/GuestAccessPolicy.swift",
+      "Sources/Core/LocalStateFileReader.swift",
+      "Sources/Core/LocalStateReset.swift",
+      "Sources/Core/Models.swift",
+      "Sources/Core/MusicPlaybackGate.swift",
+      "Sources/Core/PersonalHomeConfiguration.swift",
+      "Sources/Core/PhotoClockInk.swift",
+      "Sources/Core/PhotoMaskRasterizer.swift",
+      "Sources/Core/PhotoPlacement.swift",
+      "Sources/Core/PodcastFeedParser.swift",
+      "Sources/Core/PodcastFeedTransport.swift",
+      "Sources/Core/PodcastLibrary.swift",
+      "Sources/Core/PowerAdapterInformation.swift",
+      "Sources/Core/RecipeParser.swift",
+      "Sources/Core/RecipeTransfer.swift",
+      "Sources/Core/SetupIntroduction.swift",
+      "Sources/Core/SnapshotMigration.swift",
+      "Sources/Core/TimerLiveActivity.swift",
+      "Sources/Core/ViewportNavigationIntent.swift",
+      "Sources/Core/WeatherData.swift",
+      "Sources/Core/WorldClock.swift",
+      "Tests/CoreTests/AlbumDisplayTests.swift",
+      "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+      "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+      "Tests/CoreTests/AssistantConversationTests.swift",
+      "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+      "Tests/CoreTests/BrowserPolicyTests.swift",
+      "Tests/CoreTests/CalendarAgendaTests.swift",
+      "Tests/CoreTests/CalendarBoundaryTests.swift",
+      "Tests/CoreTests/ConicGradientTests.swift",
+      "Tests/CoreTests/DemoActionPlanTests.swift",
+      "Tests/CoreTests/DemoDoorbellTests.swift",
+      "Tests/CoreTests/DeviceConnectionTests.swift",
+      "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+      "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+      "Tests/CoreTests/FlowTypographyTests.swift",
+      "Tests/CoreTests/GuestSafetyTests.swift",
+      "Tests/CoreTests/HomeViewCoreTests.swift",
+      "Tests/CoreTests/LocalStateFileReaderTests.swift",
+      "Tests/CoreTests/LocalStateResetTests.swift",
+      "Tests/CoreTests/MusicPlaybackGateTests.swift",
+      "Tests/CoreTests/PersonalHomeTests.swift",
+      "Tests/CoreTests/PhotoClockInkTests.swift",
+      "Tests/CoreTests/PhotoPlacementTests.swift",
+      "Tests/CoreTests/PodcastTests.swift",
+      "Tests/CoreTests/PowerAdapterInformationTests.swift",
+      "Tests/CoreTests/RecipeParserTests.swift",
+      "Tests/CoreTests/RecipeTransferTests.swift",
+      "Tests/CoreTests/SetupIntroductionTests.swift",
+      "Tests/CoreTests/SnapshotMigrationTests.swift",
+      "Tests/CoreTests/TimerLiveActivityTests.swift",
+      "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+      "Tests/CoreTests/WatchFacesTests.swift",
+      "Tests/CoreTests/WeatherTests.swift",
+      "Tests/CoreTests/WorldClockTests.swift"
+    ],
+    "new_Core_execution": false,
+    "main_RootView_unchanged": true,
+    "AppModel_and_native_adapters_unchanged": true,
+    "probe_harness_unchanged": true,
+    "native_host": "macOS, WatchRoot outer platform guard removed only",
+    "actual_watchOS_runtime": false
+  },
+  "observation_protocol": "Injected phase witnessed in the same hosting hierarchy; 250ms settling then a declared Task.sleep of2200ms. Actual wall duration not measured; reported differences are between AppModel.now readings, not duration/CPU/wakeups/energy.",
+  "native_inputs_each": 100,
+  "archives": {
+    "watch-pulse-baseline": {
+      "archive": "watch-pulse-baseline-inputs.zip",
+      "sha256": "ff73e4391c74d4b83faabcdac93247868c2ce128cbdadd4f5fa6c5cb51af5546",
+      "entries": 319,
+      "commit": "3bb885e0fdf07709c14f20b5290d8fe6ff0d0514",
+      "all_entries_read_back": true
+    },
+    "watch-pulse-final": {
+      "archive": "watch-pulse-final-inputs.zip",
+      "sha256": "c089868b073b5b581fbfc3514013801d75016b5694e1a812edf0dde89bf55f56",
+      "entries": 319,
+      "commit": "21849e6345febb4c1cfedff5cdd32b13b5c8c610",
+      "all_entries_read_back": true
+    }
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "new_Core_runs": 0,
+  "historical_Core": {
+    "tests": 301,
+    "commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "byte_equal_Core_and_test_files": 72
+  },
+  "new_UI_runs": 0,
+  "new_images": 0,
+  "hardware_or_energy_acceptance": false,
+  "layout_or_visual_parity_accepted": false,
+  "real_personal_data_used": false,
+  "Home_constructed": false,
+  "new_system_alarms": false,
+  "new_live_activities": false,
+  "display_wake_enabled": false,
+  "limits": [
+    "Only outer watchOS compilation guard removed from source copy; actual WatchRoot body retained, but AppModel uses macOS conditional paths in the host",
+    "No watchOS simulator runtime installed or installed for this test, no real Watch/device/pairing acceptance",
+    "No real OS suspension, always-on/wrist-down/display dimming/background refresh/complications/multiple-watch-window acceptance",
+    "No CPU/GPU/wakeup/memory/frame-time/battery or performance-speed measurement",
+    "No acoustic/native system alarm delivery or full timer hardware acceptance",
+    "No real Reduce Motion setting change; existing own --reduce-motion flag only",
+    "No claim that an onReceive counter by itself measures timer-source wakeups or hardware energy"
+  ],
+  "probe_audio_asset_present": false,
+  "real_audio_playback_tested": false
+}
