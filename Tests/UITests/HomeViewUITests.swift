@@ -3,6 +3,117 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func launchLocalControlCenter() {
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("nav.controls")
+    XCTAssertTrue(app.buttons["controls.online"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["controls.scope"].exists)
+  }
+  private func auditLocalControlCenter(_ state:String) throws {
+    viewportShot("control-center-hit-region-"+state)
+    let v=app.otherElements["reference.viewport"].frame
+    let controls=app.buttons.allElementsBoundByIndex+app.sliders.allElementsBoundByIndex
+    let rows:[[String:Any]]=controls.compactMap { e in
+      let f=e.frame
+      guard !f.isEmpty,f.intersects(v) else {return nil}
+      return ["identifier":e.identifier,"label":e.label,"value":String(describing:e.value),
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "hittable":e.isHittable,"fullyInViewport":v.contains(f)]
+    }
+    let g=XCTAttachment(data:try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    g.name="control-center-"+state+"-geometry";g.lifetime = .keepAlways;add(g)
+    var findings:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let e=issue.element,f=e?.frame ?? .zero
+      findings.append(["identifier":e?.identifier ?? "","label":e?.label ?? "",
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let a=XCTAttachment(data:try JSONSerialization.data(withJSONObject:findings,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="control-center-"+state+"-all-findings";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(findings.isEmpty,"Unfiltered control-center findings: \(findings)")
+  }
+  private func tapLocalControlCenterEdge(_ e:XCUIElement,bottom:Bool=false) {
+    bringLocalControlCenterIntoView(e)
+    XCTAssertTrue(e.waitForExistence(timeout:5))
+    let f=e.frame,v=app.otherElements["reference.viewport"].frame
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:[
+      "identifier":e.identifier,"label":e.label,"edge":bottom ? "bottom":"top",
+      "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "hittable":e.isHittable,"viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)]],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="control-center-edge-"+e.identifier+"-"+e.label+"-"+(bottom ? "bottom":"top");a.lifetime = .keepAlways;add(a)
+    XCTAssertGreaterThanOrEqual(f.width,44);XCTAssertGreaterThanOrEqual(f.height,44)
+    XCTAssertTrue(v.contains(f));XCTAssertTrue(e.isHittable)
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:f.midX,dy:bottom ? f.maxY-2:f.minY+2)).tap()
+  }
+  private func bringLocalControlCenterIntoView(_ e:XCUIElement) {
+    let scroll=app.scrollViews["controls.content"]
+    guard e.identifier != "close",scroll.exists else {return}
+    let viewport=app.otherElements["reference.viewport"].frame
+    var visible=viewport
+    // The first row can sit at the actual scroll-content top. It cannot be
+    // scrolled down to create the generic photo helper's 40-point top inset.
+    visible.size.height=max(0,visible.height-40)
+    if e.isHittable,visible.contains(e.frame) {return}
+    scrollPhotoControlFullyIntoView(e)
+  }
+  func testLocalControlCenterDefaultUnfilteredHitRegionAudit() throws {
+    launchLocalControlCenter();try auditLocalControlCenter("default")
+  }
+  func testLocalControlCenterNightUnfilteredHitRegionAudit() throws {
+    launchLocalControlCenter();tap("controls.night");try auditLocalControlCenter("night")
+  }
+  func testLocalControlCenterCardsCloseAndSettingsActualEdges() {
+    continueAfterFailure=true
+    launchLocalControlCenter()
+    for (identifier,before,after) in [("controls.online","On","Off"),
+      ("controls.night","Off","On"),("controls.distance","Off","On")] {
+      let e=app.buttons[identifier];XCTAssertEqual(e.value as? String,before)
+      tapLocalControlCenterEdge(e)
+      XCTAssertEqual(e.value as? String,after)
+      tapLocalControlCenterEdge(e,bottom:true)
+      XCTAssertEqual(e.value as? String,before)
+    }
+    tapLocalControlCenterEdge(app.buttons["close"])
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    tap("nav.controls");tapLocalControlCenterEdge(app.buttons["controls.settings"])
+    XCTAssertTrue(app.buttons["settings.reset"].waitForExistence(timeout:5))
+    viewportShot("control-center-settings-destination")
+  }
+  func testLocalControlCenterAppOnlyAdjusterActualEdges() {
+    continueAfterFailure=true
+    launchLocalControlCenter()
+    for label in ["Display dimming","Demo audio"] {
+      let status=app.staticTexts["adjuster.value."+label],before=status.label
+      tapLocalControlCenterEdge(app.buttons["Decrease "+label],bottom:true)
+      XCTAssertNotEqual(status.label,before)
+      tapLocalControlCenterEdge(app.buttons["Increase "+label])
+      XCTAssertEqual(status.label,before)
+    }
+    viewportShot("control-center-app-only-adjusters-returned")
+  }
+  func testLocalControlCenterNativeSlidersKeepModelValues() {
+    continueAfterFailure=true
+    launchLocalControlCenter()
+    for label in ["Display dimming","Demo audio"] {
+      let slider=app.sliders[label],status=app.staticTexts["adjuster.value."+label]
+      bringLocalControlCenterIntoView(slider)
+      let f=slider.frame,v=app.otherElements["reference.viewport"].frame
+      XCTAssertGreaterThanOrEqual(f.height,44);XCTAssertGreaterThanOrEqual(f.width,44)
+      XCTAssertTrue(v.contains(f));XCTAssertTrue(slider.isHittable)
+      for target in [CGFloat(0.25),CGFloat(0.75)] {
+        slider.adjust(toNormalizedSliderPosition:target)
+        let number=Double(status.label.replacingOccurrences(of:"%",with:""))
+        XCTAssertNotNil(number,"Visible model value: \(status.label), native: \(String(describing:slider.value))")
+        XCTAssertEqual(number ?? -100,Double(target)*100,accuracy:10)
+      }
+    }
+    viewportShot("control-center-native-sliders-adjusted")
+  }
+}
+
+extension HomeViewUITests {
   private func launchUnconnectedSettingsAudit() {
     launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
     XCTAssertTrue(app.buttons["settings.reset"].waitForExistence(timeout:5))
