@@ -1,0 +1,330 @@
+{
+  "date": "2026-10-20",
+  "issue": 32,
+  "base_commit": "7200318a4e195e90a1a954b8143ff72a1fa4ff14",
+  "status": "research_completed_original_functions_blocked",
+  "decisions": {
+    "F039": {
+      "implementation_status": "blocked",
+      "parity_accepted": false,
+      "system_positive": "HomePod mini/2 alarm-sound recognition and notifications/check-in; not smoke/gas measurement",
+      "app_positive": "SoundAnalysis classifies own supplied file/stream with Apple or custom model; knownClassifications is model-specific vocabulary",
+      "gap": "No HomePod recognition event integration established in reviewed contracts; no own classifier, acoustic reliability, critical notification or suspended/background delivery proved",
+      "selected_alternative": false
+    },
+    "F040": {
+      "implementation_status": "blocked",
+      "parity_accepted": false,
+      "system_positive": "HomePod mini/2 physical temperature/humidity sensing; HomeKit accessory temperature Celsius and relative humidity percent contracts",
+      "gap": "No own target-device ambient sensor hardware or concrete authorized external sensor chain verified; no automation",
+      "not_measurements": [
+        "MockHome68",
+        "fixed30percent",
+        "weather",
+        "thermostat setpoint",
+        "qualitative system thermalState"
+      ],
+      "selected_alternative": false
+    }
+  },
+  "official_main_sources": [
+    {
+      "url": "https://support.apple.com/guide/homepod/apd1f1921722/homepod",
+      "file": "sound-sensors-main-0.md",
+      "sha256": "b9407a4b42f49883068d0155d37fb55006c11e4a760ee4b224a3536baa886035",
+      "full_main_read": true
+    },
+    {
+      "url": "https://support.apple.com/guide/homepod/apd8085c1032/homepod",
+      "file": "sound-sensors-main-1.md",
+      "sha256": "6d84a45d96e48bc96137203af022cc94ebea9e3ab72b397dee7915230c077743",
+      "full_main_read": true
+    },
+    {
+      "url": "https://support.apple.com/en-us/111914",
+      "file": "sound-sensors-main-2.md",
+      "sha256": "28462bff4967e01399cd3b7456e6e4d1bff251de727a1edf52bdc4077aa84b03",
+      "full_main_read": true
+    },
+    {
+      "url": "https://support.apple.com/en-us/111843",
+      "file": "sound-sensors-main-3.md",
+      "sha256": "76535fc429b6421093d826def6d4b2b6e9487fab5330a19d6f411326a889ec8e",
+      "full_main_read": true
+    }
+  ],
+  "official_contracts": [
+    {
+      "file": "sound-sensors-classify-official.json",
+      "sha256": "f130094e991bbc236c96081650ce7776d45103b778e6c00e6c22297175fce654",
+      "url": "https://developer.apple.com/documentation/soundanalysis/snclassifysoundrequest",
+      "title": "SNClassifySoundRequest",
+      "abstract": [
+        {
+          "text": "A request that classifies sound using a Core ML model.",
+          "type": "text"
+        }
+      ],
+      "primary_sections_read": true
+    },
+    {
+      "file": "sound-sensors-supported-official.json",
+      "sha256": "cb1f1f36d9c1f5fcf588bed21b65ebfaa6b639559f5efc9770468524ef69ba91",
+      "url": "https://developer.apple.com/documentation/soundanalysis/snclassifysoundrequest/knownclassifications",
+      "title": "knownClassifications",
+      "abstract": [
+        {
+          "text": "A string array that contains every prediction label in the request\u2019s underlying sound classifier model.",
+          "type": "text"
+        }
+      ],
+      "primary_sections_read": true
+    },
+    {
+      "file": "sound-sensors-analyzer-official.json",
+      "sha256": "b470fa8ec94eed8d5d66ed2711d1a37cddc988f0f11b87abfa488cc39d34f9b3",
+      "url": "https://developer.apple.com/documentation/soundanalysis/snaudiostreamanalyzer",
+      "title": "SNAudioStreamAnalyzer",
+      "abstract": [
+        {
+          "text": "An object you create to analyze a stream of audio data and provide the results to your app.",
+          "type": "text"
+        }
+      ],
+      "primary_sections_read": true
+    },
+    {
+      "file": "sound-sensors-thermal-official.json",
+      "sha256": "4f997354687c634b03251d9015c3645d0d42a0731ae64b89b7eee780459703ff",
+      "url": "https://developer.apple.com/documentation/foundation/processinfo/thermalstate-swift.property",
+      "title": "thermalState",
+      "abstract": [
+        {
+          "text": "The current thermal state of the system.",
+          "type": "text"
+        }
+      ],
+      "primary_sections_read": true
+    },
+    {
+      "file": "sound-sensors-temperature-official.json",
+      "sha256": "e79215ed700d0ea466ead6dc41f3f8319c29cbe50814b3bad1fd2d7e10958a7e",
+      "url": "https://developer.apple.com/documentation/homekit/hmcharacteristictypecurrenttemperature",
+      "title": "HMCharacteristicTypeCurrentTemperature",
+      "abstract": [
+        {
+          "text": "The current temperature measured by the accessory.",
+          "type": "text"
+        }
+      ],
+      "primary_sections_read": true
+    },
+    {
+      "file": "sound-sensors-humidity-official.json",
+      "sha256": "f6a9100c8385fb3ba315512c5ea08b13674a9e45ebd23768e0170f6dd0c374ff",
+      "url": "https://developer.apple.com/documentation/homekit/hmcharacteristictypecurrentrelativehumidity",
+      "title": "HMCharacteristicTypeCurrentRelativeHumidity",
+      "abstract": [
+        {
+          "text": "The current relative humidity measured by the accessory.",
+          "type": "text"
+        }
+      ],
+      "primary_sections_read": true
+    },
+    {
+      "file": "sound-sensors-smoke-official.json",
+      "sha256": "2984a7320cb2cda3e8bd73673474f516a3b5d8033c3b05f596fc8cdf4d0bba4d",
+      "url": "https://developer.apple.com/documentation/homekit/hmcharacteristictypesmokedetected",
+      "title": "HMCharacteristicTypeSmokeDetected",
+      "abstract": [
+        {
+          "text": "A smoke detection indicator.",
+          "type": "text"
+        }
+      ],
+      "primary_sections_read": true
+    },
+    {
+      "file": "sound-sensors-co-official.json",
+      "sha256": "72ad091d662a9898aa8fbf6e462aa805da34f7d3481125b63d6373c433bd1451",
+      "url": "https://developer.apple.com/documentation/homekit/hmcharacteristictypecarbonmonoxidedetected",
+      "title": "HMCharacteristicTypeCarbonMonoxideDetected",
+      "abstract": [
+        {
+          "text": "An indicator of abnormally high levels of carbon monoxide.",
+          "type": "text"
+        }
+      ],
+      "primary_sections_read": true
+    },
+    {
+      "file": "hksv-setup-official.json",
+      "sha256": "b2c392da619404f14b9bc7fb933065870d8f6d9aec69121d8cca71b0d390e21a",
+      "url": "https://developer.apple.com/documentation/homekit/enabling-homekit-in-your-app",
+      "title": "Enabling HomeKit in your app",
+      "reused_public_permission_contract": true
+    }
+  ],
+  "SDK_read": {
+    "file": "sound-sensors-sdk-contracts.json",
+    "sha256": "a13082238c0754e7954c9750697d39352aa08b1ccad4640c55d71bc8e7af953a",
+    "targets": [
+      "iphonesimulator",
+      "macosx",
+      "watchsimulator",
+      "appletvsimulator",
+      "xrsimulator"
+    ],
+    "public_files_read": 14,
+    "scope": "Only named public SoundAnalysis/SNClassifySoundRequest.h, HomeKit/HMCharacteristicTypes.h, Foundation/NSProcessInfo.h; resolve inside SDK; native macOS HomeKit header absent. No PrivateHeaders, PrivateFrameworks, binaries or runtime objects.",
+    "not_universal_absence_proof": true
+  },
+  "existing_options_preflight": "Existing Apple HomePod system feature, public SoundAnalysis and HomeKit accessory contracts assessed; no custom system built or third-party install/adoption/spend authorized.",
+  "source_files_unchanged": 206,
+  "source_digest": "22f92e3c1db1f6e2c0543fbab8c5e69a32d2d2aab9a2a44969e70017991811a5",
+  "code_read": [
+    {
+      "path": "Sources/App/NativeServices.swift",
+      "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+    },
+    {
+      "path": "Sources/Core/Models.swift",
+      "sha256": "af6ae76110b9f4b4ff417b982154ff90264ba3e8045e1b6270d20dab903831aa"
+    },
+    {
+      "path": "Sources/App/HomeScreens.swift",
+      "sha256": "b98bd0d2d43576e189ed06cab792135bccad596d0ba266b8baab538140ec41b0"
+    }
+  ],
+  "limitations": [
+    "Initial DocC smoke request misspelled characteristic as characteristick; retained HTTPError receipt is not absence evidence. Corrected full smoke and CO contracts fetched separately.",
+    "Initial targeted SDK read used HMCharacteristicDefines rather than HMCharacteristicTypes, retained separately; no zero-match absence conclusion.",
+    "No request or analyzer constructed, model vocabulary enumerated, microphone permission requested, audio acquired/played, sensors read, Home connected, HMHomeManager constructed or alerts triggered.",
+    "No new builds, UI/Core/model runs, images or actual device/system acceptance.",
+    "No specific user hardware/OS/account/Home suitability verified. No safety guarantee, sensor precision guarantee or hardware recommendation."
+  ],
+  "new_builds": 0,
+  "new_test_runs": 0,
+  "new_images": 0,
+  "Home_connected": false,
+  "HMHomeManager_constructed": false,
+  "microphone_or_audio_used": false,
+  "sensor_values_read": false,
+  "SoundAnalysis_instantiated": false,
+  "critical_notifications_triggered": false,
+  "settings_or_permissions_changed": false,
+  "closure_scope": "Original research acceptance: documented feasibility decision for each function without invented measurements or safety promises. Research complete only; original F039/F040 criteria and blocked/parity=false unchanged; issue23 remains open.",
+  "archive": {
+    "file": "sound-sensor-boundaries-inputs.zip",
+    "entries": 26,
+    "sha256": "45a628a9a5c0cff6804e2e8d9c9d4ed84a8dad0a0abb5a1b1339572daf918e56",
+    "all_entries_read_back": true,
+    "files": [
+      {
+        "path": "evidence/sound-sensors-main-0.md",
+        "sha256": "b9407a4b42f49883068d0155d37fb55006c11e4a760ee4b224a3536baa886035"
+      },
+      {
+        "path": "evidence/sound-sensors-main-1.md",
+        "sha256": "6d84a45d96e48bc96137203af022cc94ebea9e3ab72b397dee7915230c077743"
+      },
+      {
+        "path": "evidence/sound-sensors-main-2.md",
+        "sha256": "28462bff4967e01399cd3b7456e6e4d1bff251de727a1edf52bdc4077aa84b03"
+      },
+      {
+        "path": "evidence/sound-sensors-main-3.md",
+        "sha256": "76535fc429b6421093d826def6d4b2b6e9487fab5330a19d6f411326a889ec8e"
+      },
+      {
+        "path": "evidence/sound-sensors-classify-official.json",
+        "sha256": "f130094e991bbc236c96081650ce7776d45103b778e6c00e6c22297175fce654"
+      },
+      {
+        "path": "evidence/sound-sensors-supported-official.json",
+        "sha256": "cb1f1f36d9c1f5fcf588bed21b65ebfaa6b639559f5efc9770468524ef69ba91"
+      },
+      {
+        "path": "evidence/sound-sensors-analyzer-official.json",
+        "sha256": "b470fa8ec94eed8d5d66ed2711d1a37cddc988f0f11b87abfa488cc39d34f9b3"
+      },
+      {
+        "path": "evidence/sound-sensors-thermal-official.json",
+        "sha256": "4f997354687c634b03251d9015c3645d0d42a0731ae64b89b7eee780459703ff"
+      },
+      {
+        "path": "evidence/sound-sensors-temperature-official.json",
+        "sha256": "e79215ed700d0ea466ead6dc41f3f8319c29cbe50814b3bad1fd2d7e10958a7e"
+      },
+      {
+        "path": "evidence/sound-sensors-humidity-official.json",
+        "sha256": "f6a9100c8385fb3ba315512c5ea08b13674a9e45ebd23768e0170f6dd0c374ff"
+      },
+      {
+        "path": "evidence/sound-sensors-smoke-official.json",
+        "sha256": "2984a7320cb2cda3e8bd73673474f516a3b5d8033c3b05f596fc8cdf4d0bba4d"
+      },
+      {
+        "path": "evidence/sound-sensors-co-official.json",
+        "sha256": "72ad091d662a9898aa8fbf6e462aa805da34f7d3481125b63d6373c433bd1451"
+      },
+      {
+        "path": "evidence/hksv-setup-official.json",
+        "sha256": "b2c392da619404f14b9bc7fb933065870d8f6d9aec69121d8cca71b0d390e21a"
+      },
+      {
+        "path": "evidence/sound-sensors-search-receipts.json",
+        "sha256": "4130de7bb0efc2a213aa675a9f3f0952d22c67cea7536f9c6b2e8737f8189033"
+      },
+      {
+        "path": "evidence/sound-sensors-main-receipts.json",
+        "sha256": "2a7e1d54635ac674eb6cebe346a81c21924c63c2a1c62daad4ca5b9bb548aa99"
+      },
+      {
+        "path": "evidence/sound-sensors-DocC-receipts.json",
+        "sha256": "a1549986f510260ac08b97df2b137287ae9fade9f58ab4fc287b10816336fc29"
+      },
+      {
+        "path": "evidence/sound-sensors-accessory-DocC-receipts.json",
+        "sha256": "1f06afda2131c1a9202d003cfd774b6c51d5aa4b083661b77e61e23eb0a1d0f9"
+      },
+      {
+        "path": "evidence/sound-sensors-targeted-sdk-read.json",
+        "sha256": "13f5ceafd65c16cebbc3db95cbed1c58d7c4d6bf3192226a9d966e723ba800b3"
+      },
+      {
+        "path": "evidence/sound-sensors-sdk-contracts.json",
+        "sha256": "a13082238c0754e7954c9750697d39352aa08b1ccad4640c55d71bc8e7af953a"
+      },
+      {
+        "path": "evidence/sound-sensor-boundaries-source.json",
+        "sha256": "de86748f966494b406a5a98d3ce7f9bf16b6927ebd2b5bdb5378343029611ef0"
+      },
+      {
+        "path": "evidence/sound-sensor-boundaries-audit.json",
+        "sha256": "b3495b15a83f4f5d8feb6816e6058368b1bca6f5de8a6c77da0bcec54f078914"
+      },
+      {
+        "path": "evidence/deliver-sound-sensor-boundaries.py",
+        "sha256": "a759b701b97a6b338b31706684e75e3d0cde23817d325edebc33df1f68310471"
+      },
+      {
+        "path": "document/sound-sensor-boundaries.md",
+        "sha256": "b114f793409806819f9790e9aadec7ac0575b151a75286db7abf34896853f55b"
+      },
+      {
+        "path": "source/Sources/App/NativeServices.swift",
+        "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+      },
+      {
+        "path": "source/Sources/Core/Models.swift",
+        "sha256": "af6ae76110b9f4b4ff417b982154ff90264ba3e8045e1b6270d20dab903831aa"
+      },
+      {
+        "path": "source/Sources/App/HomeScreens.swift",
+        "sha256": "b98bd0d2d43576e189ed06cab792135bccad596d0ba266b8baab538140ec41b0"
+      }
+    ]
+  }
+}
