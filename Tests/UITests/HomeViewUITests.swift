@@ -5387,3 +5387,93 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
   }
 }
+
+extension HomeViewUITests {
+  private var localAlarmDeletes:XCUIElementQuery {
+    app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH %@","alarm.delete."))
+  }
+  private var localAlarmToggles:XCUIElementQuery {
+    app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH %@","alarm.toggle."))
+  }
+  private func launchLocalAlarmAudit() {
+    // No --system-alarms: AppModel's explicit uitesting guard disables
+    // native scheduling. Only synthetic foreground state is exercised.
+    launch(["--page","Alarms"])
+    XCTAssertEqual(localAlarmDeletes.count,1)
+    XCTAssertTrue(app.staticTexts["Off"].exists)
+    XCTAssertFalse(app.staticTexts["System alert enabled"].exists)
+  }
+  private func auditLocalAlarmHitRegions(_ state:String) throws {
+    XCTAssertFalse(app.staticTexts["System alert enabled"].exists)
+    viewportShot("alarm-hit-region-"+state)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let element=issue.element,frame=element?.frame ?? .zero
+      reports.append(["identifier":element?.identifier ?? "","label":element?.label ?? "",
+        "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let attachment=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="alarm-hit-region-"+state+"-all-findings";attachment.lifetime = .keepAlways;add(attachment)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered local alarm hit-region audit found \(reports.count) issues: \(reports)")
+  }
+  func testLocalAlarmInitialAutomaticHitRegionAudit() throws {
+    launchLocalAlarmAudit();try auditLocalAlarmHitRegions("initial")
+  }
+  func testLocalAlarmTwoRowsAutomaticHitRegionAudit() throws {
+    launchLocalAlarmAudit();tap("alarm.add")
+    XCTAssertEqual(localAlarmDeletes.count,2)
+    XCTAssertTrue(app.staticTexts["Foreground alarm"].exists)
+    try auditLocalAlarmHitRegions("two-rows")
+  }
+  func testLocalAlarmEmptyAutomaticHitRegionAudit() throws {
+    launchLocalAlarmAudit();localAlarmDeletes.firstMatch.tap()
+    XCTAssertEqual(localAlarmDeletes.count,0)
+    try auditLocalAlarmHitRegions("empty")
+  }
+  private func tapLocalAlarmEdge(_ button:XCUIElement,bottom:Bool=false) {
+    XCTAssertTrue(button.waitForExistence(timeout:5))
+    let frame=button.frame,viewport=app.otherElements["reference.viewport"].frame
+    let data:[String:Any]=["identifier":button.identifier,"label":button.label,
+      "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+      "viewport":[Double(viewport.minX),Double(viewport.minY),Double(viewport.width),Double(viewport.height)],
+      "edge":bottom ? "bottom":"top","hittable":button.isHittable]
+    let geometry=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    geometry.name="alarm-edge-"+button.identifier.replacingOccurrences(of:".",with:"-")+"-"+(bottom ? "bottom":"top")
+    geometry.lifetime = .keepAlways;add(geometry)
+    XCTAssertTrue(viewport.contains(frame))
+    tapRecipeTargetEdge(button,bottom:bottom)
+  }
+  func testLocalAlarmAddToggleDeleteAndCloseActualEdges() {
+    launchLocalAlarmAudit()
+    let initialToggle=localAlarmToggles.firstMatch
+    let initialDelete="alarm.delete."+initialToggle.identifier.dropFirst("alarm.toggle.".count)
+    viewportShot("alarm-hit-region-before-edge-actions")
+    tapLocalAlarmEdge(initialToggle)
+    XCTAssertTrue(app.staticTexts["Foreground alarm"].exists)
+    XCTAssertFalse(app.staticTexts["Off"].exists)
+    tapLocalAlarmEdge(initialToggle,bottom:true)
+    XCTAssertTrue(app.staticTexts["Off"].exists)
+    XCTAssertFalse(app.staticTexts["Foreground alarm"].exists)
+    tapLocalAlarmEdge(app.buttons["alarm.add"])
+    XCTAssertEqual(localAlarmDeletes.count,2)
+    XCTAssertTrue(app.staticTexts["Foreground alarm"].exists)
+    let added=localAlarmDeletes.allElementsBoundByIndex.filter {$0.identifier != initialDelete}
+    XCTAssertEqual(added.count,1)
+    viewportShot("alarm-hit-region-added-local-before-delete")
+    tapLocalAlarmEdge(added[0],bottom:true)
+    XCTAssertEqual(localAlarmDeletes.count,1)
+    XCTAssertTrue(app.buttons[initialDelete].exists)
+    XCTAssertFalse(app.staticTexts["Foreground alarm"].exists)
+    tapLocalAlarmEdge(app.buttons[initialDelete])
+    XCTAssertEqual(localAlarmDeletes.count,0)
+    tapLocalAlarmEdge(app.buttons["alarm.add"],bottom:true)
+    XCTAssertEqual(localAlarmDeletes.count,1)
+    XCTAssertTrue(app.staticTexts["Foreground alarm"].exists)
+    XCTAssertFalse(app.staticTexts["System alert enabled"].exists)
+    viewportShot("alarm-hit-region-after-edge-actions")
+    tapLocalAlarmEdge(app.buttons["close"])
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+  }
+}
