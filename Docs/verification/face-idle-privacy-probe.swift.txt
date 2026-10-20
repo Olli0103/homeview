@@ -1,0 +1,111 @@
+import Foundation
+
+@main struct FaceIdlePrivacyGate {
+  enum Preparation:Error {case invalidFixture}
+  @MainActor static func main() async {
+    do {try await run()} catch {print("PREPARATION_ERROR",String(describing:error));exit(2)}
+  }
+  @MainActor static func run() async throws {
+    let args=ProcessInfo.processInfo.arguments
+    guard args.contains("--uitesting"),let p=args.firstIndex(of:"--persistence-test"),
+      args.indices.contains(p+1),let id=UUID(uuidString:args[p+1]),
+      !args.contains("--system-alarms"),Bundle.main.url(forResource:"demo-tone",withExtension:"wav")==nil
+    else {throw Preparation.invalidFixture}
+    var scenarios:[[String:Any]]=[]
+    func report(_ name:String,_ checks:[String:Bool]) {
+      scenarios.append(["name":name,"checks":checks,"failed":checks.filter{!$0.value}.map(\.key).sorted()])
+    }
+    func model()->AppModel {
+      let m=AppModel();m.data.keepDisplayOn=false;m.data.volume=0
+      m.data.timers=[];m.data.alarms=[];m.idleSeconds=120;m.incomingCall=false
+      return m
+    }
+    func prepare(_ m:AppModel) async throws {
+      guard m.gateStoreURL.deletingLastPathComponent().lastPathComponent=="test-"+id.uuidString else {throw Preparation.invalidFixture}
+      m.signIn("Alex");guard await m.connections.unlock() else {throw Preparation.invalidFixture}
+      await m.connections.connect(.calendar);await m.connections.connect(.reminders)
+      m.assistantInput="FICTIONAL_PRIVATE_ASSISTANT_DRAFT";m.messageText="FICTIONAL_PRIVATE_MESSAGE_DRAFT"
+      m.route = .face;m.interact()
+      guard m.profile=="Alex",m.connections.personalUnlocked,!m.connections.events.isEmpty,
+        !m.connections.reminders.isEmpty,m.persist() else {throw Preparation.invalidFixture}
+    }
+    let expired=model();try await prepare(expired)
+    let stored=try Data(contentsOf:expired.gateStoreURL),generation=expired.personalSessionGeneration
+    expired.lastInteraction=Date().addingTimeInterval(-600);expired.tick()
+    report("expired_face",[
+      "revokes_device_authentication":!expired.connections.personalUnlocked,
+      "clears_calendar_cache":expired.connections.events.isEmpty,
+      "clears_reminder_cache":expired.connections.reminders.isEmpty,
+      "clears_demo_profile":expired.profile==nil,
+      "clears_assistant_draft":expired.assistantInput.isEmpty,
+      "clears_message_draft":expired.messageText.isEmpty,
+      "invalidates_session_once":expired.personalSessionGeneration==generation+1,
+      "keeps_face_route":expired.route == .face,
+      "does_not_delete_saved_content":try Data(contentsOf:expired.gateStoreURL)==stored])
+    let lockedGeneration=expired.personalSessionGeneration
+    expired.tick();expired.tick()
+    report("same_idle_period",["no_repeated_revocation":expired.personalSessionGeneration==lockedGeneration])
+    expired.banner("Synthetic timer finished")
+    report("local_timer_banner_after_idle",["banner_does_not_unlock":!expired.connections.personalUnlocked,
+      "banner_does_not_restore_calendar":expired.connections.events.isEmpty,
+      "banner_does_not_restore_profile":expired.profile==nil])
+
+    let fresh=model();try await prepare(fresh);let freshGeneration=fresh.personalSessionGeneration;fresh.tick()
+    report("fresh_face",["keeps_authentication":fresh.connections.personalUnlocked,
+      "keeps_calendar":!fresh.connections.events.isEmpty,"keeps_reminders":!fresh.connections.reminders.isEmpty,
+      "keeps_profile":fresh.profile=="Alex","keeps_drafts":!fresh.assistantInput.isEmpty && !fresh.messageText.isEmpty,
+      "does_not_invalidate_generation":fresh.personalSessionGeneration==freshGeneration,"keeps_face_route":fresh.route == .face])
+
+    let app=model();try await prepare(app);app.route = .app(.calendar)
+    let appGeneration=app.personalSessionGeneration;app.lastInteraction=Date().addingTimeInterval(-600);app.tick()
+    report("expired_personal_app",["revokes_authentication":!app.connections.personalUnlocked,
+      "clears_caches":app.connections.events.isEmpty && app.connections.reminders.isEmpty,
+      "clears_profile_and_drafts":app.profile==nil && app.assistantInput.isEmpty && app.messageText.isEmpty,
+      "returns_to_face":app.route == .face,"invalidates_once":app.personalSessionGeneration==appGeneration+1])
+
+    let profileOnly=model();profileOnly.signIn("Alex");profileOnly.route = .face
+    profileOnly.lastInteraction=Date().addingTimeInterval(-600);profileOnly.tick()
+    report("expired_demo_profile_only",["clears_profile":profileOnly.profile==nil,
+      "never_device_authenticated":!profileOnly.connections.personalUnlocked,"keeps_face":profileOnly.route == .face])
+
+    let incoming=model();try await prepare(incoming);incoming.incomingCall=true;incoming.route = .call
+    incoming.lastInteraction=Date().addingTimeInterval(-600);let incomingGeneration=incoming.personalSessionGeneration;incoming.tick()
+    report("incoming_demo_call_does_not_extend_private_session",[
+      "revokes_private_authentication":!incoming.connections.personalUnlocked,
+      "clears_private_caches":incoming.connections.events.isEmpty && incoming.connections.reminders.isEmpty,
+      "invalidates_once":incoming.personalSessionGeneration==incomingGeneration+1,
+      "keeps_incoming_demo_call_display":incoming.incomingCall && incoming.route == .call])
+    incoming.incomingCall=false;incoming.tick()
+    report("incoming_demo_call_ended",["revokes_after_exception_ends":!incoming.connections.personalUnlocked,
+      "clears_caches_after_exception":incoming.connections.events.isEmpty && incoming.connections.reminders.isEmpty])
+
+    expired.interact();try await prepare(expired);let renewedGeneration=expired.personalSessionGeneration;expired.tick()
+    report("new_interaction_and_unlock",["new_session_allowed_before_deadline":expired.connections.personalUnlocked,
+      "fresh_tick_keeps_generation":expired.personalSessionGeneration==renewedGeneration])
+    expired.lastInteraction=Date().addingTimeInterval(-600);expired.tick()
+    report("second_idle_period",["revokes_new_session":!expired.connections.personalUnlocked,
+      "clears_new_caches":expired.connections.events.isEmpty && expired.connections.reminders.isEmpty,
+      "increments_for_new_period":expired.personalSessionGeneration==renewedGeneration+1])
+    let simultaneous=model();try await prepare(simultaneous)
+    let timer=Countdown(title:"Synthetic timer",seconds:1,now:Date().addingTimeInterval(-10))
+    simultaneous.data.timers=[timer]
+    // Own snapshot-only marker suppresses the chime branch; no system alarm is
+    // registered and the native host contains no playable audio assets.
+    simultaneous.data.nativeTimerIDs=[timer.id]
+    guard simultaneous.persist() else {throw Preparation.invalidFixture}
+    simultaneous.lastInteraction=Date().addingTimeInterval(-600);simultaneous.tick()
+    report("timer_expiry_same_tick_as_idle_lock",[
+      "still_revokes_private_session":!simultaneous.connections.personalUnlocked,
+      "records_local_timer_expiry":simultaneous.data.timers.first?.didAlert==true,
+      "keeps_new_timer_banner":simultaneous.toast=="Synthetic timer finished",
+      "does_not_clear_timer_collection":simultaneous.data.timers.count==1])
+    let assertions=scenarios.reduce(0){$0+($1["checks"] as! [String:Bool]).count}
+    let failed=scenarios.filter{!($0["failed"] as! [String]).isEmpty}.count
+    let result:[String:Any]=["scenarios":scenarios,"scenario_count":scenarios.count,"failed_scenarios":failed,
+      "assertions":assertions,"failed_assertions":scenarios.reduce(0){$0+($1["failed"] as! [String]).count},
+      "verdict":failed==0 ? "PASS":"FAIL","owned_uuid":id.uuidString,"actual_AppModel":true,
+      "synthetic_expired_lastInteraction":true,"actual_wait_or_presence_sensor":false,
+      "actual_RootView_or_snapshot_test":false,"audio_assets_or_playback":false]
+    print(String(data:try JSONSerialization.data(withJSONObject:result,options:[.sortedKeys]),encoding:.utf8)!)
+  }
+}

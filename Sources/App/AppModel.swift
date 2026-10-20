@@ -239,7 +239,8 @@ final class AppModel {
   var referenceClock: Bool
   private let testReferenceDate: Date?
   private let testReferenceTimeZone: TimeZone?
-  var lastInteraction = Date()
+  private var idleLockApplied = false
+  var lastInteraction = Date() { didSet { idleLockApplied = false } }
   var idleSeconds = 120.0
   let audio = LocalAudioEngine()
   let display = DisplayWakeController()
@@ -1172,6 +1173,18 @@ final class AppModel {
         progress = 0
       }
     }
+    if now.timeIntervalSince(lastInteraction) > idleSeconds {
+      // Private authority expires independently of the visible surface. A face
+      // or incoming demo call must not keep it alive. Revoke once per idle
+      // period; a real interaction arms the next deadline again.
+      if !idleLockApplied {
+        idleLockApplied = true
+        lockPersonalAccess()
+      }
+      if route != .face && !incomingCall && !showingLocalReset && !showingIntroduction {
+        route = .face
+      }
+    }
     var candidate=data
     var completions:[(timerID:UUID?,message:String,chime:Bool)]=[]
     for i in candidate.timers.indices
@@ -1200,10 +1213,7 @@ final class AppModel {
         if completion.chime { playChime() }
       }
     }
-    if route != .face && now.timeIntervalSince(lastInteraction) > idleSeconds && !incomingCall {
-      if !showingLocalReset && !showingIntroduction { route = .face }
-      lockPersonalAccess()
-    }
+
   }
   @discardableResult
   func addTimer(seconds: TimeInterval, title: String = "Timer") -> Bool {
