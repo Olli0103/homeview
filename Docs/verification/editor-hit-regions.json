@@ -1,0 +1,4088 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "base_commit": "05ce77a3ba23d4ab87210200181a78d29118c0bd",
+  "status": "bounded_editor_fix_issue_open",
+  "source_digest": "786d25be4b79fb9dfeffe38b3eb7a4e68b2e293bf15d0469fc3fffa3766e8aea",
+  "source_count": 209,
+  "runs": [
+    {
+      "checkpoint": "editor-hit-regions-baseline",
+      "source_digest": "60c573f60114e23458db19863ed8c5d53742fdbbdfa3ea081d78afbd91518e8f",
+      "archive_sha256": "0ff9df36ad60a2962c4e3b3475fd7a8bf2aca6d0e7bd67ee4df72f2d9931c4de",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 65,
+          "passed": 0,
+          "failed": 7,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered editor findings: [[\"identifier\": \"complications.done\", \"frame\": [332.2271973466003, 440.95190713101164, 38.72802653399668, 19.524046434494153], \"label\": \"Done\", \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 1,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorComplicationSheetUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorComplicationSheetUnfilteredHitRegionAudit",
+              "testName": "testFaceEditorComplicationSheetUnfilteredHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered editor findings: [[\"label\": \"Done\", \"frame\": [346.95, 256.015, 25.409999999999968, 12.810000000000002], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"editor.done\", \"description\": \"Hit area is too small\"], [\"frame\": [32.15999984741211, 520.719970703125, 337.67999267578125, 17.6400146484375], \"identifier\": \"flow.background\", \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Background\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorFlowOptionsUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorFlowOptionsUnfilteredHitRegionAudit",
+              "testName": "testFaceEditorFlowOptionsUnfilteredHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered editor findings: [[\"description\": \"Hit area is too small\", \"identifier\": \"editor.done\", \"label\": \"Done\", \"frame\": [346.95, 256.015, 25.409999999999968, 12.810000000000002], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"], [\"identifier\": \"flow.background\", \"frame\": [32.15999984741211, 520.719970703125, 337.67999267578125, 17.6400146484375], \"label\": \"Background\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"description\": \"Hit area is too small\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 3,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorFlowTopUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorFlowTopUnfilteredHitRegionAudit",
+              "testName": "testFaceEditorFlowTopUnfilteredHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered editor findings: [[\"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"frame\": [346.95, 256.015, 25.409999999999968, 12.810000000000002], \"identifier\": \"editor.done\", \"description\": \"Hit area is too small\", \"label\": \"Done\"], [\"frame\": [177.8159942626953, 361.2040100097656, 89.20799255371094, 10.079986572265625], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"preview.slot.date\", \"description\": \"Hit area is too small\", \"label\": \"Date line, Inline, Date\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 4,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorInfographTopUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorInfographTopUnfilteredHitRegionAudit",
+              "testName": "testFaceEditorInfographTopUnfilteredHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered editor findings: [[\"label\": \"Done\", \"description\": \"Hit area is too small\", \"frame\": [346.95, 256.015, 25.409999999999968, 12.810000000000002], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"editor.done\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 5,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorModularListUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorModularListUnfilteredHitRegionAudit",
+              "testName": "testFaceEditorModularListUnfilteredHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered editor findings: [[\"identifier\": \"editor.done\", \"frame\": [346.95, 256.015, 25.409999999999968, 12.810000000000002], \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Done\", \"description\": \"Hit area is too small\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 6,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorModularTopUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorModularTopUnfilteredHitRegionAudit",
+              "testName": "testFaceEditorModularTopUnfilteredHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered editor findings: [[\"label\": \"Done\", \"frame\": [346.95, 256.015, 25.409999999999968, 12.810000000000002], \"identifier\": \"editor.done\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"description\": \"Hit area is too small\"]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 7,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorWatchModularTopUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorWatchModularTopUnfilteredHitRegionAudit",
+              "testName": "testFaceEditorWatchModularTopUnfilteredHitRegionAudit()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "editor-hit-regions-pilot",
+      "source_digest": "7db98ab7fbdac686cf8a61d9e2e196a179d7d3ba9dc38866e85b5b85a7c1b981",
+      "archive_sha256": "a148b41ba60cf8d44ac43bbbdfde8708611d81727bcd97941b092fb61b5a36af",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 65,
+          "passed": 4,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertEqual failed: (\"Optional(\"1\")\") is not equal to (\"Optional(\"0\")\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorFlowTypefaceAndBackgroundNativeEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorFlowTypefaceAndBackgroundNativeEdges",
+              "testName": "testFaceEditorFlowTypefaceAndBackgroundNativeEdges()"
+            }
+          ]
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 65,
+          "passed": 3,
+          "failed": 2,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertEqual failed: (\"Optional(\"1\")\") is not equal to (\"Optional(\"0\")\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorFlowTypefaceAndBackgroundNativeEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorFlowTypefaceAndBackgroundNativeEdges",
+              "testName": "testFaceEditorFlowTypefaceAndBackgroundNativeEdges()"
+            },
+            {
+              "failureText": "XCTAssertGreaterThanOrEqual failed: (\"42.24875621890544\") is less than (\"44.0\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 4,
+              "testIdentifierString": "HomeViewUITests/testFaceEditorInlineHitRegionKeepsSiblingSlotsAndCorrectPicker()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testFaceEditorInlineHitRegionKeepsSiblingSlotsAndCorrectPicker",
+              "testName": "testFaceEditorInlineHitRegionKeepsSiblingSlotsAndCorrectPicker()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "editor-hit-regions-corrected",
+      "source_digest": "786d25be4b79fb9dfeffe38b3eb7a4e68b2e293bf15d0469fc3fffa3766e8aea",
+      "archive_sha256": "c302f84436497e88645e713a12bae2309e9d24d31fff9e0827471428e2d5ee9e",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        }
+      ]
+    },
+    {
+      "checkpoint": "editor-hit-regions-rest",
+      "source_digest": "786d25be4b79fb9dfeffe38b3eb7a4e68b2e293bf15d0469fc3fffa3766e8aea",
+      "archive_sha256": "47a8ad99d14d842ae7695c71215a3d0ac0f2287ccb66df873c4df35d404b012a",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "passed": 9,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "passed": 9,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        }
+      ]
+    }
+  ],
+  "current_selected_runs": [
+    "editor-hit-regions-corrected",
+    "editor-hit-regions-rest"
+  ],
+  "current_runs_same_source_tests_and_compiled_app": true,
+  "current_executions": 28,
+  "current_unique_methods": 14,
+  "current_unfiltered_empty_audit_lists": 14,
+  "current_native_two_point_edge_actions": 38,
+  "current_native_scope": {
+    "iPad": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": [],
+      "failures": [],
+      "audits": {
+        "editor-flow-options-all-findings_0_919A06EB-1BBE-4B97-94F0-04E3E127E318.json": [],
+        "editor-infograph-top-all-findings_0_40138432-4C95-49B3-9890-AFC0CDAF0726.json": []
+      },
+      "geometry": {
+        "editor-flow-options-geometry_0_2681E6F2-7434-4480-AA2A-20690C940C62.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              717.1233333333333,
+              199.55333333333334,
+              53.73000000000002,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              609,
+              697.0533333333333,
+              72.9666666666667,
+              50.41333333333341
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.typeface.0",
+            "label": "I",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              692.58,
+              697.0533333333333,
+              72.96666666666658,
+              50.41333333333341
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.typeface.1",
+            "label": "II",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666666666667,
+              267.21333333333337,
+              133.32999999999998,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              195.74333333333334,
+              267.21333333333337,
+              204.30666666666667,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              413.31666666666666,
+              267.21333333333337,
+              238.8,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              665.3833333333333,
+              267.21333333333337,
+              180.42666666666662,
+              63.67999999999995
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              54.45333480834961,
+              766.0399780273438,
+              711.0933837890625,
+              45.106689453125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.background",
+            "label": "Background",
+            "value": "Optional(1)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              684.62,
+              770.02,
+              83.58000000000004,
+              37.14666666666665
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "",
+            "value": "Optional(1)"
+          }
+        ],
+        "editor-infograph-top-geometry_0_C49118C9-2A5E-4A07-8A59-A296C3BA7912.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              717.1233333333333,
+              199.55333333333334,
+              53.73000000000002,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              270.9653333333333,
+              374.9386666666667,
+              68.98666666666668,
+              68.98666666666662
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.topLeft",
+            "label": "Top left, Circular, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              361.17866666666663,
+              418.71866666666665,
+              187.85600000000005,
+              44.0453333333333
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.date",
+            "label": "Date line, Inline, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              270.9653333333333,
+              466.2133333333333,
+              278.06933333333336,
+              84.9066666666667
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.center",
+            "label": "Middle, Rectangular, Calendar",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              270.9653333333333,
+              571.2853333333334,
+              79.60000000000002,
+              79.60000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomLeft",
+            "label": "Bottom left, Circular, Timer",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              370.2,
+              571.2853333333334,
+              79.60000000000002,
+              79.60000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomCenter",
+            "label": "Bottom center, Circular, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              469.43466666666666,
+              571.2853333333334,
+              79.60000000000002,
+              79.60000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomRight",
+            "label": "Bottom right, Circular, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              664.72,
+              731.5466666666666,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Orange style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              720.4399999999999,
+              731.5466666666666,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mint style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              856.2533569335938,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.0",
+            "label": "Top left, Circular, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              955.0900268554688,
+              721.7066650390625,
+              74.95660400390625
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "widget.1",
+            "label": "Date line, Inline, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666666666667,
+              267.21333333333337,
+              133.32999999999998,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              195.74333333333334,
+              267.21333333333337,
+              204.30666666666667,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              413.31666666666666,
+              267.21333333333337,
+              238.8,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              665.3833333333333,
+              267.21333333333337,
+              180.42666666666662,
+              63.67999999999995
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          }
+        ]
+      },
+      "edges": [
+        {
+          "edge": "top",
+          "frame": [
+            717.1233333333333,
+            199.55333333333334,
+            53.73000000000002,
+            45.106666666666655
+          ],
+          "hittable": true,
+          "identifier": "editor.done",
+          "label": "Done",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            54.45333480834961,
+            766.0399780273438,
+            711.0933837890625,
+            45.106689453125
+          ],
+          "hittable": true,
+          "identifier": "flow.background",
+          "label": "Background",
+          "lane": "scaled-root",
+          "value": "Optional(0)",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            54.45333480834961,
+            766.0399780273438,
+            711.0933837890625,
+            45.106689453125
+          ],
+          "hittable": true,
+          "identifier": "flow.background",
+          "label": "Background",
+          "lane": "scaled-root",
+          "value": "Optional(1)",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            609,
+            697.0533333333333,
+            72.9666666666667,
+            50.41333333333341
+          ],
+          "hittable": true,
+          "identifier": "flow.typeface.0",
+          "label": "I",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            692.58,
+            697.0533333333333,
+            72.96666666666658,
+            50.41333333333341
+          ],
+          "hittable": true,
+          "identifier": "flow.typeface.1",
+          "label": "II",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            717.1233333333333,
+            199.55333333333334,
+            53.73000000000002,
+            45.106666666666655
+          ],
+          "hittable": true,
+          "identifier": "editor.done",
+          "label": "Done",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            144,
+            737.5,
+            532,
+            52.5
+          ],
+          "hittable": true,
+          "identifier": "complication.choose.Clock",
+          "label": "Clock",
+          "lane": "native-sheet",
+          "value": "Optional()",
+          "viewport": [
+            0,
+            0,
+            820,
+            1180
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            361.17866666666663,
+            418.71866666666665,
+            187.85600000000005,
+            44.0453333333333
+          ],
+          "hittable": true,
+          "identifier": "preview.slot.date",
+          "label": "Date line, Inline, Off",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            144,
+            616.5,
+            532,
+            52.5
+          ],
+          "hittable": true,
+          "identifier": "complication.choose.Off",
+          "label": "Off",
+          "lane": "native-sheet",
+          "value": "Optional()",
+          "viewport": [
+            0,
+            0,
+            820,
+            1180
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            361.17866666666663,
+            418.71866666666665,
+            187.85600000000005,
+            44.0453333333333
+          ],
+          "hittable": true,
+          "identifier": "preview.slot.date",
+          "label": "Date line, Inline, Date",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            628,
+            552.5,
+            48,
+            48
+          ],
+          "hittable": true,
+          "identifier": "complications.done",
+          "label": "Done",
+          "lane": "native-sheet",
+          "value": "Optional()",
+          "viewport": [
+            0,
+            0,
+            820,
+            1180
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            361.17866666666663,
+            418.71866666666665,
+            187.85600000000005,
+            44.0453333333333
+          ],
+          "hittable": true,
+          "identifier": "preview.slot.date",
+          "label": "Date line, Inline, Date",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            717.1233333333333,
+            199.55333333333334,
+            53.73000000000002,
+            45.106666666666655
+          ],
+          "hittable": true,
+          "identifier": "editor.done",
+          "label": "Done",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            49.14666666666667,
+            267.21333333333337,
+            133.32999999999998,
+            63.67999999999995
+          ],
+          "hittable": true,
+          "identifier": "select.Modular",
+          "label": "Modular",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            195.74333333333334,
+            267.21333333333337,
+            204.30666666666667,
+            63.67999999999995
+          ],
+          "hittable": true,
+          "identifier": "select.Watch Modular",
+          "label": "Watch Modular",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            144,
+            737.5,
+            532,
+            52.5
+          ],
+          "hittable": true,
+          "identifier": "complication.choose.Clock",
+          "label": "Clock",
+          "lane": "native-sheet",
+          "value": "Optional()",
+          "viewport": [
+            0,
+            0,
+            820,
+            1180
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            49.14666748046875,
+            856.2533569335938,
+            721.7066650390625,
+            74.9566650390625
+          ],
+          "hittable": true,
+          "identifier": "widget.0",
+          "label": "Top left, Panel, Date",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            664.72,
+            731.5466666666666,
+            45.10666666666668,
+            45.10666666666668
+          ],
+          "hittable": true,
+          "identifier": "",
+          "label": "Mist style",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            720.4399999999999,
+            731.5466666666666,
+            45.10666666666668,
+            45.10666666666668
+          ],
+          "hittable": true,
+          "identifier": "",
+          "label": "Sage style",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        }
+      ]
+    },
+    "iPhone": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": [],
+      "failures": [],
+      "audits": {
+        "editor-flow-options-all-findings_0_6FEE8EC9-EB3A-41EB-8EFA-257B339919D3.json": [],
+        "editor-infograph-top-all-findings_0_C3E4919D-7416-472F-AB0F-25AD11BB7979.json": []
+      },
+      "geometry": {
+        "editor-flow-options-geometry_0_4729D353-E261-4E4C-B324-3B3E80FD4CFA.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              328.26,
+              251.08,
+              44.099999999999966,
+              44.099999999999994
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              276.6,
+              477.87999999999994,
+              44.099999999999966,
+              44.10000000000008
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.typeface.0",
+            "label": "I",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              325.74,
+              477.87999999999994,
+              44.099999999999966,
+              44.10000000000008
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.typeface.1",
+            "label": "II",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999999999986,
+              259.9,
+              63.209999999999994,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              99.14999999999998,
+              259.9,
+              97.01999999999998,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              202.47000000000003,
+              259.9,
+              113.19,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              321.96,
+              259.9,
+              85.68000000000006,
+              44.10000000000002
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              32.15999984741211,
+              530.7999877929688,
+              337.67999267578125,
+              44.0999755859375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.background",
+            "label": "Background",
+            "value": "Optional(1)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              331.41,
+              544.03,
+              39.690000000000055,
+              17.639999999999986
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "",
+            "value": "Optional(1)"
+          }
+        ],
+        "editor-infograph-top-geometry_0_A4017126-BB7D-4060-900A-65E2C7AEE45C.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              328.26,
+              251.08,
+              44.099999999999966,
+              44.099999999999994
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              134.976,
+              370.276,
+              32.75999999999999,
+              32.75999999999999
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.topLeft",
+            "label": "Top left, Circular, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              177.81600000000003,
+              368.512,
+              89.20799999999997,
+              44.09999999999991
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.date",
+            "label": "Date line, Inline, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              134.976,
+              413.62000000000006,
+              132.048,
+              40.319999999999936
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.center",
+            "label": "Middle, Rectangular, Calendar",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              134.976,
+              463.516,
+              37.799999999999955,
+              37.80000000000001
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomLeft",
+            "label": "Bottom left, Circular, Timer",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              182.10000000000002,
+              463.516,
+              37.799999999999955,
+              37.80000000000001
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomCenter",
+            "label": "Bottom center, Circular, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              229.22400000000005,
+              463.516,
+              37.799999999999955,
+              37.80000000000001
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomRight",
+            "label": "Bottom right, Circular, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              276.6,
+              539.62,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Orange style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              325.74,
+              539.62,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mint style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999999999986,
+              305.26,
+              63.209999999999994,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              99.14999999999998,
+              305.26,
+              97.01999999999998,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              202.47000000000003,
+              305.26,
+              113.19,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              321.96,
+              305.26,
+              85.68000000000006,
+              44.099999999999966
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          }
+        ]
+      },
+      "edges": [
+        {
+          "edge": "top",
+          "frame": [
+            328.26,
+            251.08,
+            44.099999999999966,
+            44.099999999999994
+          ],
+          "hittable": true,
+          "identifier": "editor.done",
+          "label": "Done",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            32.15999984741211,
+            530.7999877929688,
+            337.67999267578125,
+            44.0999755859375
+          ],
+          "hittable": true,
+          "identifier": "flow.background",
+          "label": "Background",
+          "lane": "scaled-root",
+          "value": "Optional(0)",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            32.15999984741211,
+            530.7999877929688,
+            337.67999267578125,
+            44.0999755859375
+          ],
+          "hittable": true,
+          "identifier": "flow.background",
+          "label": "Background",
+          "lane": "scaled-root",
+          "value": "Optional(1)",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            276.6,
+            523.24,
+            44.099999999999966,
+            44.09999999999991
+          ],
+          "hittable": true,
+          "identifier": "flow.typeface.0",
+          "label": "I",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            325.74,
+            523.24,
+            44.099999999999966,
+            44.09999999999991
+          ],
+          "hittable": true,
+          "identifier": "flow.typeface.1",
+          "label": "II",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            328.26,
+            251.08,
+            44.099999999999966,
+            44.099999999999994
+          ],
+          "hittable": true,
+          "identifier": "editor.done",
+          "label": "Done",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            31.044776119402986,
+            615.3880597014925,
+            339.91044776119406,
+            50.250414593698224
+          ],
+          "hittable": true,
+          "identifier": "complication.choose.Clock",
+          "label": "Clock",
+          "lane": "native-sheet",
+          "value": "Optional()",
+          "viewport": [
+            0,
+            0,
+            402,
+            874
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            177.81600000000003,
+            368.512,
+            89.20799999999997,
+            44.09999999999991
+          ],
+          "hittable": true,
+          "identifier": "preview.slot.date",
+          "label": "Date line, Inline, Off",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            31.044776119402986,
+            499.5240464344941,
+            339.91044776119406,
+            50.25041459369817
+          ],
+          "hittable": true,
+          "identifier": "complication.choose.Off",
+          "label": "Off",
+          "lane": "native-sheet",
+          "value": "Optional()",
+          "viewport": [
+            0,
+            0,
+            402,
+            874
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            177.81600000000003,
+            368.512,
+            89.20799999999997,
+            44.09999999999991
+          ],
+          "hittable": true,
+          "identifier": "preview.slot.date",
+          "label": "Date line, Inline, Date",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            324.8656716417911,
+            438.0713101160862,
+            46.089552238805936,
+            46.089552238805936
+          ],
+          "hittable": true,
+          "identifier": "complications.done",
+          "label": "Done",
+          "lane": "native-sheet",
+          "value": "Optional()",
+          "viewport": [
+            0,
+            0,
+            402,
+            874
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            177.81600000000003,
+            368.512,
+            89.20799999999997,
+            44.09999999999991
+          ],
+          "hittable": true,
+          "identifier": "preview.slot.date",
+          "label": "Date line, Inline, Date",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            328.26,
+            251.08,
+            44.099999999999966,
+            44.099999999999994
+          ],
+          "hittable": true,
+          "identifier": "editor.done",
+          "label": "Done",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            29.639999999999986,
+            305.26,
+            63.209999999999994,
+            44.099999999999966
+          ],
+          "hittable": true,
+          "identifier": "select.Modular",
+          "label": "Modular",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            99.14999999999998,
+            305.26,
+            97.01999999999998,
+            44.099999999999966
+          ],
+          "hittable": true,
+          "identifier": "select.Watch Modular",
+          "label": "Watch Modular",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            31.044776119402986,
+            615.3880597014925,
+            339.91044776119406,
+            50.250414593698224
+          ],
+          "hittable": true,
+          "identifier": "complication.choose.Clock",
+          "label": "Clock",
+          "lane": "native-sheet",
+          "value": "Optional()",
+          "viewport": [
+            0,
+            0,
+            402,
+            874
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            29.639999389648438,
+            457.510009765625,
+            342.719970703125,
+            44.100006103515625
+          ],
+          "hittable": true,
+          "identifier": "widget.0",
+          "label": "Top left, Panel, Date",
+          "lane": "scaled-root",
+          "value": "Optional()",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            276.6,
+            539.62,
+            44.099999999999966,
+            44.10000000000002
+          ],
+          "hittable": true,
+          "identifier": "",
+          "label": "Mist style",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            325.74,
+            539.62,
+            44.099999999999966,
+            44.10000000000002
+          ],
+          "hittable": true,
+          "identifier": "",
+          "label": "Sage style",
+          "lane": "scaled-root",
+          "value": "Optional(Not selected)",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        }
+      ]
+    }
+  },
+  "current_remaining_scope": {
+    "iPad": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": [],
+      "failures": [],
+      "audits": {
+        "editor-complication-sheet-all-findings_0_94F1BC36-7703-475A-BD99-095970FC4FF4.json": [],
+        "editor-flow-top-all-findings_0_DDC5EAEC-C67A-4297-9906-7E589B91B1E8.json": [],
+        "editor-modular-list-all-findings_0_EA56DB13-A941-40A8-8D4C-29191723CF85.json": [],
+        "editor-modular-top-all-findings_0_71643962-087F-4046-900F-F6ED53E28F11.json": [],
+        "editor-watch-modular-top-all-findings_0_D9E5A296-A2DE-4729-B9BB-2CBE11EC9388.json": []
+      },
+      "geometry": {
+        "editor-complication-sheet-geometry_0_DE7E8E5B-6D08-4EBB-B4D3-82955CE273C2.json": [
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              360,
+              524.5,
+              100,
+              24
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Sheet Grabber",
+            "value": "Optional(Half screen)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              717.1233333333333,
+              199.55333333333334,
+              53.73000000000002,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              264.5,
+              978,
+              44,
+              44
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "nav.faces",
+            "label": "Faces",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              316.5,
+              978,
+              44,
+              44
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "nav.apps",
+            "label": "Apps",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              460,
+              978,
+              44,
+              44
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "nav.assistant",
+            "label": "Assistant",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              512,
+              978,
+              44,
+              44
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "nav.controls",
+            "label": "Control Center",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              628,
+              552.5,
+              48,
+              48
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complications.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              272.02666666666664,
+              376,
+              132.66666666666669,
+              132.66666666666669
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "preview.slot.panel0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              415.3066666666667,
+              376,
+              132.66666666666669,
+              132.66666666666669
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "preview.slot.panel1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              272.02666666666664,
+              519.28,
+              132.66666666666669,
+              132.66666666666674
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "preview.slot.panel2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              415.3066666666667,
+              519.28,
+              132.66666666666669,
+              132.66666666666674
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "preview.slot.panel3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              664.72,
+              731.5466666666666,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "Mist style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              720.4399999999999,
+              731.5466666666666,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "Sage style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              856.2533569335938,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "widget.0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              955.0900268554688,
+              721.7066650390625,
+              74.95660400390625
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "widget.1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              1053.9266357421875,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "widget.2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              1152.7633056640625,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "widget.3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              144,
+              616.5,
+              532,
+              52.5
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Off",
+            "label": "Off",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              144,
+              677,
+              532,
+              52.5
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Date",
+            "label": "Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              144,
+              737.5,
+              532,
+              52.5
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Clock",
+            "label": "Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              144,
+              798,
+              532,
+              52.5
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Music",
+            "label": "Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              144,
+              858.5,
+              532,
+              52.5
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Weather",
+            "label": "Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              144,
+              919,
+              532,
+              52.5
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Calendar",
+            "label": "Calendar",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              144,
+              979.5,
+              532,
+              52.5
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Timer",
+            "label": "Timer",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              49.14666666666667,
+              267.21333333333337,
+              133.32999999999998,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              195.74333333333334,
+              267.21333333333337,
+              204.30666666666667,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              413.31666666666666,
+              267.21333333333337,
+              238.8,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              665.3833333333333,
+              267.21333333333337,
+              180.42666666666662,
+              63.67999999999995
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          }
+        ],
+        "editor-flow-top-geometry_0_E0A16049-2B33-4361-9DC6-88197306A712.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              717.1233333333333,
+              199.55333333333334,
+              53.73000000000002,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              609,
+              697.0533333333333,
+              72.9666666666667,
+              50.41333333333341
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.typeface.0",
+            "label": "I",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              692.58,
+              697.0533333333333,
+              72.96666666666658,
+              50.41333333333341
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.typeface.1",
+            "label": "II",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666666666667,
+              267.21333333333337,
+              133.32999999999998,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              195.74333333333334,
+              267.21333333333337,
+              204.30666666666667,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              413.31666666666666,
+              267.21333333333337,
+              238.8,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              665.3833333333333,
+              267.21333333333337,
+              180.42666666666662,
+              63.67999999999995
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              54.45333480834961,
+              766.0399780273438,
+              711.0933837890625,
+              45.106689453125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.background",
+            "label": "Background",
+            "value": "Optional(1)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              684.62,
+              770.02,
+              83.58000000000004,
+              37.14666666666665
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "",
+            "value": "Optional(1)"
+          }
+        ],
+        "editor-modular-list-geometry_0_2BD4FCD4-F6D8-4751-B497-A03EA13B1E23.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              717.1233333333333,
+              199.55333333333334,
+              53.73000000000002,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              272.02666666666664,
+              194.24666666666667,
+              132.66666666666669,
+              132.66666666666663
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              415.3066666666667,
+              194.24666666666667,
+              132.66666666666669,
+              132.66666666666663
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              272.02666666666664,
+              337.52666666666664,
+              132.66666666666669,
+              132.66666666666669
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              415.3066666666667,
+              337.52666666666664,
+              132.66666666666669,
+              132.66666666666669
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              664.72,
+              549.7933333333333,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mist style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              720.4399999999999,
+              549.7933333333333,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Sage style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              674.5,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              773.336669921875,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              872.17333984375,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              971.010009765625,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "widget.3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          }
+        ],
+        "editor-modular-top-geometry_0_290CD918-67C1-41EA-B37F-9D578C28402F.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              717.1233333333333,
+              199.55333333333334,
+              53.73000000000002,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              272.02666666666664,
+              376,
+              132.66666666666669,
+              132.66666666666669
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              415.3066666666667,
+              376,
+              132.66666666666669,
+              132.66666666666669
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              272.02666666666664,
+              519.28,
+              132.66666666666669,
+              132.66666666666674
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              415.3066666666667,
+              519.28,
+              132.66666666666669,
+              132.66666666666674
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              664.72,
+              731.5466666666666,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mist style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              720.4399999999999,
+              731.5466666666666,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Sage style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              856.2533569335938,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              955.0900268554688,
+              721.7066650390625,
+              74.95660400390625
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "widget.1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666666666667,
+              267.21333333333337,
+              133.32999999999998,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              195.74333333333334,
+              267.21333333333337,
+              204.30666666666667,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              413.31666666666666,
+              267.21333333333337,
+              238.8,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              665.3833333333333,
+              267.21333333333337,
+              180.42666666666662,
+              63.67999999999995
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          }
+        ],
+        "editor-watch-modular-top-geometry_0_18F833E2-48CA-419F-A174-7590A9282E8C.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              717.1233333333333,
+              199.55333333333334,
+              53.73000000000002,
+              45.106666666666655
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              270.9653333333333,
+              374.9386666666667,
+              84.90666666666664,
+              66.33333333333331
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.topLeft",
+            "label": "Top left, Small, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              270.9653333333333,
+              458.784,
+              278.06933333333336,
+              98.17333333333329
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.center",
+            "label": "Middle, Large, Calendar",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              270.9653333333333,
+              566.5093333333334,
+              85.96800000000002,
+              76.9466666666666
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomLeft",
+            "label": "Bottom left, Small, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              366.4853333333333,
+              566.5093333333334,
+              85.96800000000002,
+              76.9466666666666
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomCenter",
+            "label": "Bottom center, Small, Timer",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              462.0053333333334,
+              566.5093333333334,
+              87.02933333333328,
+              76.9466666666666
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomRight",
+            "label": "Bottom right, Small, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              664.72,
+              731.5466666666666,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Orange style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              720.4399999999999,
+              731.5466666666666,
+              45.10666666666668,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mint style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              856.2533569335938,
+              721.7066650390625,
+              74.9566650390625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.0",
+            "label": "Top left, Small, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666748046875,
+              955.0900268554688,
+              721.7066650390625,
+              74.95660400390625
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "widget.1",
+            "label": "Middle, Large, Calendar",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              49.14666666666667,
+              267.21333333333337,
+              133.32999999999998,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              195.74333333333334,
+              267.21333333333337,
+              204.30666666666667,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              413.31666666666666,
+              267.21333333333337,
+              238.8,
+              63.67999999999995
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              665.3833333333333,
+              267.21333333333337,
+              180.42666666666662,
+              63.67999999999995
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          }
+        ]
+      },
+      "edges": []
+    },
+    "iPhone": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": [],
+      "failures": [],
+      "audits": {
+        "editor-complication-sheet-all-findings_0_19CE244C-A7D3-482E-87A6-00C21CDA140C.json": [],
+        "editor-flow-top-all-findings_0_5985BE56-16D8-4113-9276-A0E72B93B72F.json": [],
+        "editor-modular-list-all-findings_0_8B4779C4-CCE2-4557-933A-EE5F809B9749.json": [],
+        "editor-modular-top-all-findings_0_FEE8A71C-4AA7-4EDD-9091-6E941E35BC40.json": [],
+        "editor-watch-modular-top-all-findings_0_BA2BA910-69BC-4067-A744-BE36F944092E.json": []
+      },
+      "geometry": {
+        "editor-complication-sheet-geometry_0_F9CC5C06-D790-48AA-8802-B430324899A0.json": [
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              152.9900497512438,
+              411.1857379767827,
+              96.01990049751242,
+              23.044776119402968
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Sheet Grabber",
+            "value": "Optional(Half screen)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              328.26,
+              251.08,
+              44.099999999999966,
+              44.099999999999994
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              55.333333333333336,
+              624,
+              43.99999999999999,
+              44
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "nav.faces",
+            "label": "Faces",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              107.33333333333333,
+              624,
+              43.999999999999986,
+              44
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "nav.apps",
+            "label": "Apps",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              250.66666666666666,
+              624,
+              43.99999999999997,
+              44
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "nav.assistant",
+            "label": "Assistant",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              302.66666666666663,
+              624,
+              44.00000000000006,
+              44
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "nav.controls",
+            "label": "Control Center",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              324.8656716417911,
+              438.0713101160862,
+              46.089552238805936,
+              46.089552238805936
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complications.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              135.48000000000002,
+              206.77,
+              63,
+              62.99999999999997
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "preview.slot.panel0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              203.51999999999998,
+              206.77,
+              63,
+              62.99999999999997
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "preview.slot.panel1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              135.48000000000002,
+              274.81,
+              63,
+              63
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "preview.slot.panel2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              203.51999999999998,
+              274.81,
+              63,
+              63
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "preview.slot.panel3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              276.6,
+              375.60999999999996,
+              44.099999999999966,
+              44.10000000000008
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "Mist style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              325.74,
+              375.60999999999996,
+              44.099999999999966,
+              44.10000000000008
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "",
+            "label": "Sage style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              457.510009765625,
+              342.719970703125,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "widget.0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              512.9500122070312,
+              342.719970703125,
+              44.0999755859375
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "widget.1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              568.3900146484375,
+              342.719970703125,
+              44.0999755859375
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "widget.2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              623.8300170898438,
+              342.719970703125,
+              44.0999755859375
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "widget.3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              31.044776119402986,
+              499.5240464344941,
+              339.91044776119406,
+              50.25041459369817
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Off",
+            "label": "Off",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              31.044776119402986,
+              557.4560530679933,
+              339.91044776119406,
+              50.250414593698224
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Date",
+            "label": "Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              31.044776119402986,
+              615.3880597014925,
+              339.91044776119406,
+              50.250414593698224
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Clock",
+            "label": "Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              31.044776119402986,
+              673.3200663349917,
+              339.91044776119406,
+              50.250414593698224
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Music",
+            "label": "Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              31.044776119402986,
+              731.2520729684908,
+              339.91044776119406,
+              50.250414593698224
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Weather",
+            "label": "Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              31.044776119402986,
+              789.18407960199,
+              339.91044776119406,
+              50.250414593698224
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "complication.choose.Calendar",
+            "label": "Calendar",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              31.044776119402986,
+              847.1160862354892,
+              339.91044776119406,
+              50.25041459369811
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "complication.choose.Timer",
+            "label": "Timer",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              29.639999999999986,
+              141.25,
+              63.209999999999994,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              99.14999999999998,
+              141.25,
+              97.01999999999998,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              202.47000000000003,
+              141.25,
+              113.19,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": false,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "native-sheet",
+            "enabled": true,
+            "frame": [
+              321.96,
+              141.25,
+              85.68000000000006,
+              44.10000000000002
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          }
+        ],
+        "editor-flow-top-geometry_0_4113CC63-B743-4547-98FD-838410208B5C.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              328.26,
+              251.08,
+              44.099999999999966,
+              44.099999999999994
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              276.6,
+              523.24,
+              44.099999999999966,
+              44.09999999999991
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.typeface.0",
+            "label": "I",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              325.74,
+              523.24,
+              44.099999999999966,
+              44.09999999999991
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "flow.typeface.1",
+            "label": "II",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999999999986,
+              305.26,
+              63.209999999999994,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              99.14999999999998,
+              305.26,
+              97.01999999999998,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              202.47000000000003,
+              305.26,
+              113.19,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              321.96,
+              305.26,
+              85.68000000000006,
+              44.099999999999966
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              32.15999984741211,
+              576.1599731445312,
+              337.67999267578125,
+              44.0999755859375
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "flow.background",
+            "label": "Background",
+            "value": "Optional(1)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              331.41,
+              589.39,
+              39.690000000000055,
+              17.639999999999986
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "",
+            "value": "Optional(1)"
+          }
+        ],
+        "editor-modular-list-geometry_0_2AC26BCB-FAC3-4FC7-8E49-4B6D126299BB.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              328.26,
+              251.08,
+              44.099999999999966,
+              44.099999999999994
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              135.48000000000002,
+              181.78,
+              63,
+              63
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "preview.slot.panel2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              203.51999999999998,
+              181.78,
+              63,
+              63
+            ],
+            "fullyInViewport": false,
+            "hittable": false,
+            "identifier": "preview.slot.panel3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              276.6,
+              282.58,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mist style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              325.74,
+              282.58,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Sage style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              364.4800109863281,
+              342.719970703125,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              419.9200134277344,
+              342.719970703125,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              475.3599853515625,
+              342.719970703125,
+              44.10003662109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999389648438,
+              530.7999877929688,
+              342.719970703125,
+              44.10003662109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "widget.3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          }
+        ],
+        "editor-modular-top-geometry_0_093FD338-8D0C-4F2C-ABB9-9D40FDDD3DC7.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              328.26,
+              251.08,
+              44.099999999999966,
+              44.099999999999994
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              135.48000000000002,
+              370.78,
+              63,
+              63
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel0",
+            "label": "Top left, Panel, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              203.51999999999998,
+              370.78,
+              63,
+              63
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel1",
+            "label": "Top right, Panel, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              135.48000000000002,
+              438.82,
+              63,
+              63
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel2",
+            "label": "Bottom left, Panel, Music",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              203.51999999999998,
+              438.82,
+              63,
+              63
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.panel3",
+            "label": "Bottom right, Panel, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              276.6,
+              539.62,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mist style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              325.74,
+              539.62,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Sage style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999999999986,
+              305.26,
+              63.209999999999994,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              99.14999999999998,
+              305.26,
+              97.01999999999998,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              202.47000000000003,
+              305.26,
+              113.19,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              321.96,
+              305.26,
+              85.68000000000006,
+              44.099999999999966
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          }
+        ],
+        "editor-watch-modular-top-geometry_0_6CDC5012-6423-4FE1-B4C6-349B2944987D.json": [
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              328.26,
+              251.08,
+              44.099999999999966,
+              44.099999999999994
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "editor.done",
+            "label": "Done",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              134.976,
+              370.276,
+              40.319999999999965,
+              31.5
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.topLeft",
+            "label": "Top left, Small, Date",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              134.976,
+              410.0919999999999,
+              132.048,
+              46.62000000000006
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.center",
+            "label": "Middle, Large, Calendar",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              134.976,
+              461.24800000000005,
+              40.82400000000004,
+              36.539999999999964
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomLeft",
+            "label": "Bottom left, Small, Weather",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              180.336,
+              461.24800000000005,
+              40.823999999999955,
+              36.539999999999964
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomCenter",
+            "label": "Bottom center, Small, Timer",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              225.69600000000003,
+              461.24800000000005,
+              41.327999999999975,
+              36.539999999999964
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "preview.slot.bottomRight",
+            "label": "Bottom right, Small, Clock",
+            "value": "Optional()"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              276.6,
+              539.62,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Orange style",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              325.74,
+              539.62,
+              44.099999999999966,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mint style",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              29.639999999999986,
+              305.26,
+              63.209999999999994,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Modular",
+            "label": "Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              99.14999999999998,
+              305.26,
+              97.01999999999998,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Watch Modular",
+            "label": "Watch Modular",
+            "value": "Optional(Selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              202.47000000000003,
+              305.26,
+              113.19,
+              44.099999999999966
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "select.Infograph Modular",
+            "label": "Infograph Modular",
+            "value": "Optional(Not selected)"
+          },
+          {
+            "coordinateLane": "scaled-root",
+            "enabled": true,
+            "frame": [
+              321.96,
+              305.26,
+              85.68000000000006,
+              44.099999999999966
+            ],
+            "fullyInViewport": false,
+            "hittable": true,
+            "identifier": "select.Modular Duo",
+            "label": "Modular Duo",
+            "value": "Optional(Not selected)"
+          }
+        ]
+      },
+      "edges": []
+    }
+  },
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "watch_scope": "Reduced target compilation regression only; no FaceEditor on watchOS asserted.",
+  "new_core_test_runs": 0,
+  "pngs_decoded": 94,
+  "published_images": [
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPad-before-contact.png",
+      "sha256": "0a578cd2392bb6a9079e560bec50866110694df7a47c9abb339c8784fd6c26e0"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPad-native-contact.png",
+      "sha256": "603a7ad3f56cb94fc3232174bc4b8c37690edf556a7de7ddbb518d98ec930630"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPad-regressions-contact.png",
+      "sha256": "f0b85e59a0ffef1efb79b5e6d812b0d16899049a1991c33a7b423cb658b3e77f"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPad-editor-hit-region-infograph-top.png",
+      "sha256": "e1641097d7f1730398a3941e84b0bc7900c7a8015b81fa840eade932a14fd218"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPad-editor-hit-region-flow-options.png",
+      "sha256": "84500e9ed69941d1db7290c4affc8f2e74ece66f159b498a38d45c133f5bf28f"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPad-editor-hit-region-modular-list.png",
+      "sha256": "f525c3cbf5e0ad906ca902d6318fbfb947a95cfec2064c26d3fb851ed8e8c237"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPhone-before-contact.png",
+      "sha256": "581db000f1b7ae33fc17b19fde770340e9523c3fe70752f652703e5aa1873a46"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPhone-native-contact.png",
+      "sha256": "e5e7c5f54ec7ec436850d21e47ea70c4cf1bb502ae7ce3ee11c2831de6c60976"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPhone-regressions-contact.png",
+      "sha256": "140e0a8bc93fd746c98c4629d660f741f782f38235570f413c30a803953b275b"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPhone-editor-hit-region-infograph-top.png",
+      "sha256": "bf7ef58e1672a76e1c2c3634faa76a66d9852d29ec725bbe28a68a38ed794707"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPhone-editor-hit-region-flow-options.png",
+      "sha256": "e21a1a4d2f73ba610d69cd2cb972377dd1e3ccb9f00d9fd2f66db6eb1ddb28b2"
+    },
+    {
+      "path": "Docs/screenshots/editor-hit-regions/iPhone-editor-hit-region-modular-list.png",
+      "sha256": "0d91fdd07a7927a2d782d2f6f11dc6d80688766f27c068c169bde962e6e9bff1"
+    }
+  ],
+  "limits": [
+    "Not the complete XCTest suite. Two separate selections at identical frozen source/test/binary bytes.",
+    "Other spatial-preview controls can still be smaller than 44 native points. The slot-list alternatives are enlarged.",
+    "Inline expansion returns original rect when canvas containment, original painting containment or sibling exclusion cannot hold; narrow-window physical acceptance remains pending.",
+    "Actual assistive technologies, Dynamic Type, contrast/zoom and physical/original parity are not accepted.",
+    "No Home integration, real accounts, media playback, camera/microphone, photo library, system alarms or messages/calls."
+  ],
+  "same_compiled_product_files": [
+    {
+      "bundle_relative_path": "HomeViewReplica.app/AppIcon60x60@2x.png",
+      "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+      "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/Assets.car",
+      "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/HomeViewReplica",
+      "sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "sha256": "cb5ca5618175e7ec943e80fcd8064e2d32c46f2a5283de21a6cd939481801da9"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/Info.plist",
+      "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/Metadata.appintents/version.json",
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/PkgInfo",
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "sha256": "a4b0bb90c53985f0044fe2c11ecd2ebf337785e3db5acaa2096e686fe824d0fe"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+      "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/__preview.dylib",
+      "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/default.metallib",
+      "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/demo-tone.wav",
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "bundle_relative_path": "HomeViewReplica.app/podcast-test-audio.wav",
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "bundle_relative_path": "HomeViewUITests-Runner.app/HomeViewUITests-Runner",
+      "sha256": "a2a058c87c45755e677e9008b78b91308a08e596bd8c121de7697d3bc875095f"
+    },
+    {
+      "bundle_relative_path": "HomeViewUITests-Runner.app/Info.plist",
+      "sha256": "7f4aa0cce89bea569b93dff27192c410567474560af25978ea3e0823c23d0a93"
+    },
+    {
+      "bundle_relative_path": "HomeViewUITests-Runner.app/PkgInfo",
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "bundle_relative_path": "HomeViewUITests-Runner.app/PlugIns/HomeViewUITests.xctest/HomeViewUITests",
+      "sha256": "ad6dcb5a04acdd40ee77d70fa18bc01605a07d6332ce37245538f1668bfc7a50"
+    },
+    {
+      "bundle_relative_path": "HomeViewUITests-Runner.app/PlugIns/HomeViewUITests.xctest/Info.plist",
+      "sha256": "1fef141d6671eaa2d99d12027685d24fb822ca37a5c63f5748b9cb8dd8a70326"
+    }
+  ]
+}

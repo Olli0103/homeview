@@ -101,6 +101,9 @@ struct ComplicationContent: View {
 }
 struct FaceEditor: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private let previewScale: CGFloat = 0.4
+  private var minimumHitSide: CGFloat { (44 / max(0.01, canvasScale)).rounded(.up) }
   private struct Selection: Identifiable {
     let face: Face
     let slot: FaceSlot
@@ -119,8 +122,11 @@ struct FaceEditor: View {
       HStack {
         Text("Faces").font(.system(size: 30, weight: .bold))
         Spacer()
-        Button("Done") {
+        Button {
           model.route = .face
+        } label: {
+          Text("Done").frame(minWidth: minimumHitSide, minHeight: minimumHitSide)
+            .contentShape(Rectangle())
         }
         .accessibilityIdentifier("editor.done")
       }.padding(.horizontal, 28).padding(.vertical, 16)
@@ -138,7 +144,10 @@ struct FaceEditor: View {
                     .padding(.horizontal, 18).frame(height: 48)
                     .background(
                       model.data.face == face ? .lilac : .gray.opacity(0.12), in: Capsule())
+                    .frame(minWidth: minimumHitSide, minHeight: minimumHitSide)
+                    .contentShape(Rectangle())
                 }.accessibilityIdentifier("select.\(face.rawValue)")
+                  .accessibilityValue(model.data.face == face ? "Selected" : "Not selected")
               }
             }.padding(.horizontal, 28)
           }
@@ -171,6 +180,8 @@ struct FaceEditor: View {
                           model.data.configuration(for: model.data.face).theme == i ? 0.8 : 0),
                         lineWidth: 3
                       ).padding(-3))
+                    .frame(minWidth: minimumHitSide, minHeight: minimumHitSide)
+                    .contentShape(Rectangle())
                 }.accessibilityLabel(colorLabel(i))
                   .accessibilityValue(
                     model.data.configuration(for: model.data.face).theme == i
@@ -195,12 +206,13 @@ struct FaceEditor: View {
                   Text(model.data.complication(for: model.data.face, slot: slot).rawValue)
                   Image(systemName: "chevron.right").font(.system(size: 14))
                 }.padding(.horizontal, 18).padding(.vertical, 10)
+                  .frame(minHeight: minimumHitSide).contentShape(Rectangle())
                   .background(.gray.opacity(0.08), in: RoundedRectangle(cornerRadius: 15))
               }.accessibilityIdentifier("widget.\(i)")
                 .padding(.horizontal, 28)
             }
           }
-        }.padding(.bottom, 28)
+        }.padding(.bottom, max(28, minimumHitSide))
       }.accessibilityIdentifier("editor.content")
     }.foregroundStyle(.black).background(.white).buttonStyle(.plain)
       .sheet(item:$selection,onDismiss:{ slotSaveError=nil }) { selected in
@@ -209,7 +221,9 @@ struct FaceEditor: View {
           HStack {
             Text(slot.title).font(.title2.bold())
             Spacer()
-            Button("Done") { selection = nil }.accessibilityIdentifier("complications.done")
+            Button { selection = nil } label: {
+              Text("Done").frame(minWidth: 48, minHeight: 48).contentShape(Rectangle())
+            }.accessibilityIdentifier("complications.done")
           }
           ScrollView {
             ForEach(slot.choices) { kind in
@@ -252,35 +266,62 @@ struct FaceEditor: View {
         FaceView(selection: face).allowsHitTesting(false).accessibilityHidden(true)
         ForEach(face.definition.placements, id: \.slot.id) { placement in
           let slot = placement.slot
+          let hit = previewHitRect(placement)
           Button {
             select(slot)
           } label: {
-            RoundedRectangle(cornerRadius: slot.family == .circular ? 80 : 18)
-              .fill(.cyan.opacity(highlightedSlot == slot.id ? 0.22 : 0.05))
-              .overlay {
-                RoundedRectangle(cornerRadius: slot.family == .circular ? 80 : 18)
-                  .strokeBorder(.cyan, lineWidth: highlightedSlot == slot.id ? 6 : 3)
-              }
-              .overlay {
-                if model.data.complication(for: face, slot: slot) == .none {
-                  Image(systemName: "plus").font(.system(size: 36, weight: .semibold))
-                    .foregroundStyle(.cyan)
+            ZStack {
+              Rectangle().fill(.clear)
+              RoundedRectangle(cornerRadius: slot.family == .circular ? 80 : 18)
+                .fill(.cyan.opacity(highlightedSlot == slot.id ? 0.22 : 0.05))
+                .overlay {
+                  RoundedRectangle(cornerRadius: slot.family == .circular ? 80 : 18)
+                    .strokeBorder(.cyan, lineWidth: highlightedSlot == slot.id ? 6 : 3)
                 }
-              }
-          }.frame(width: placement.rect.width, height: placement.rect.height)
-            .position(x: placement.rect.midX, y: placement.rect.midY)
+                .overlay {
+                  if model.data.complication(for: face, slot: slot) == .none {
+                    Image(systemName: "plus").font(.system(size: 36, weight: .semibold))
+                      .foregroundStyle(.cyan)
+                  }
+                }
+                .frame(width: placement.rect.width, height: placement.rect.height)
+                .offset(x: placement.rect.midX - hit.midX, y: placement.rect.midY - hit.midY)
+            }.frame(width: hit.width, height: hit.height).contentShape(Rectangle())
+          }.position(x: hit.midX, y: hit.midY)
             .accessibilityIdentifier("preview.slot.\(slot.id)")
             .accessibilityLabel(
               "\(slot.title), \(slot.family.title), \(model.data.complication(for: face, slot: slot).rawValue)"
             )
             .accessibilityHint("Choose complication")
         }
-      }.frame(width: 600, height: 600).scaleEffect(0.4).frame(width: 240, height: 240)
+      }.frame(width: 600, height: 600).scaleEffect(previewScale)
+        .frame(width: 600 * previewScale, height: 600 * previewScale)
         .clipShape(RoundedRectangle(cornerRadius: 24))
       if !face.slots.isEmpty {
         Text("Tap an outlined area to edit").font(.system(size: 15)).foregroundStyle(.secondary)
       }
     }
+  }
+  private func previewHitRect(_ placement: SlotPlacement) -> CGRect {
+    let original = placement.rect
+    guard placement.slot.family == .inline else { return original }
+    let minimum = (44 / max(0.01, canvasScale * previewScale)).rounded(.up)
+    let clearance = 1 / max(0.01, canvasScale * previewScale)
+    let width = max(original.width, minimum), height = max(original.height, minimum)
+    var hit = CGRect(x: original.midX - width / 2, y: original.midY - height / 2,
+      width: width, height: height)
+    hit.origin.x = min(max(0, hit.minX), 600 - width)
+    hit.origin.y = min(max(0, hit.minY), 600 - height)
+    let others = face.definition.placements.filter { $0.slot.id != placement.slot.id }.map(\.rect)
+    for other in others where other.minY >= original.maxY
+      && other.minX < hit.maxX && other.maxX > hit.minX {
+      hit.origin.y = min(hit.minY, other.minY - height - clearance)
+    }
+    // Expand only into unused preview space. Never steal a sibling's touch
+    // region or move the painted slot; very small canvases retain the list.
+    guard CGRect(x: 0, y: 0, width: 600, height: 600).contains(hit), hit.contains(original),
+      others.allSatisfy({ hit.intersection($0).isEmpty }) else { return original }
+    return hit
   }
   private var flowOptions: some View {
     VStack(spacing: 14) {
@@ -295,17 +336,26 @@ struct FaceEditor: View {
               .background(
                 model.data.configuration(for: .flow).flowTypeface == i
                   ? .lilac : .gray.opacity(0.12), in: Capsule())
+              .frame(minWidth: minimumHitSide, minHeight: minimumHitSide)
+              .contentShape(Rectangle())
           }.accessibilityIdentifier("flow.typeface.\(i)")
+            .accessibilityValue(model.data.configuration(for: .flow).flowTypeface == i
+              ? "Selected" : "Not selected")
         }
       }
-      Toggle(
-        "Background",
-        isOn: Binding(
+      Toggle(isOn: Binding(
           get: { model.data.configuration(for: .flow).flowBackground },
           set: { value in
             model.updateLocalControls { $0.editConfiguration(for:.flow) { $0.flowBackground=value } }
-          })
-      ).accessibilityIdentifier("flow.background")
+          })) {
+        Text("Background").frame(maxWidth: .infinity, minHeight: minimumHitSide, alignment: .leading)
+          .contentShape(Rectangle())
+          .onTapGesture {
+            model.updateLocalControls {
+              $0.editConfiguration(for: .flow) { $0.flowBackground.toggle() }
+            }
+          }
+      }.accessibilityIdentifier("flow.background")
     }.font(.system(size: 20)).padding(.horizontal, 32)
   }
 }

@@ -3,6 +3,171 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func launchFaceEditorAudit(_ face:String) {
+    launch(["--face",face,"--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    let edit=app.buttons["settings.faces"]
+    scrollPhotoControlFullyIntoView(edit);edit.tap()
+    XCTAssertTrue(app.buttons["editor.done"].waitForExistence(timeout:5))
+  }
+  private func auditFaceEditorHitRegions(_ state:String,sheet:Bool=false) throws {
+    if sheet {shot("editor-hit-region-"+state)} else {viewportShot("editor-hit-region-"+state)}
+    let viewport=sheet ? app.frame:app.otherElements["reference.viewport"].frame
+    let controls=app.buttons.allElementsBoundByIndex+app.switches.allElementsBoundByIndex
+      + app.sliders.allElementsBoundByIndex+app.segmentedControls.allElementsBoundByIndex
+    let rows:[[String:Any]]=controls.compactMap { e in
+      let f=e.frame
+      guard !f.isEmpty,f.intersects(viewport) else {return nil}
+      return ["identifier":e.identifier,"label":e.label,"value":String(describing:e.value),
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "hittable":e.isHittable,"enabled":e.isEnabled,"fullyInViewport":viewport.contains(f),
+        "coordinateLane":sheet ? "native-sheet":"scaled-root"]
+    }
+    let g=XCTAttachment(data:try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    g.name="editor-"+state+"-geometry";g.lifetime = .keepAlways;add(g)
+    var findings:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let e=issue.element,f=e?.frame ?? .zero
+      findings.append(["identifier":e?.identifier ?? "","label":e?.label ?? "",
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let a=XCTAttachment(data:try JSONSerialization.data(withJSONObject:findings,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="editor-"+state+"-all-findings";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(findings.isEmpty,"Unfiltered editor findings: \(findings)")
+  }
+  func testFaceEditorModularTopUnfilteredHitRegionAudit() throws {
+    launchFaceEditorAudit("Modular");try auditFaceEditorHitRegions("modular-top")
+  }
+  func testFaceEditorModularListUnfilteredHitRegionAudit() throws {
+    launchFaceEditorAudit("Modular");scrollEditorIntoView(app.buttons["widget.2"])
+    try auditFaceEditorHitRegions("modular-list")
+  }
+  func testFaceEditorFlowTopUnfilteredHitRegionAudit() throws {
+    launchFaceEditorAudit("Flow");try auditFaceEditorHitRegions("flow-top")
+  }
+  func testFaceEditorFlowOptionsUnfilteredHitRegionAudit() throws {
+    launchFaceEditorAudit("Flow");scrollEditorIntoView(app.switches["flow.background"])
+    try auditFaceEditorHitRegions("flow-options")
+  }
+  func testFaceEditorWatchModularTopUnfilteredHitRegionAudit() throws {
+    launchFaceEditorAudit("Watch Modular");try auditFaceEditorHitRegions("watch-modular-top")
+  }
+  func testFaceEditorInfographTopUnfilteredHitRegionAudit() throws {
+    launchFaceEditorAudit("Infograph Modular");try auditFaceEditorHitRegions("infograph-top")
+  }
+  func testFaceEditorComplicationSheetUnfilteredHitRegionAudit() throws {
+    launchFaceEditorAudit("Modular")
+    let first=app.buttons["widget.0"];scrollEditorIntoView(first);first.tap()
+    XCTAssertTrue(app.buttons["complications.done"].waitForExistence(timeout:5))
+    waitEditorFrameStable(app.buttons["complications.done"])
+    try auditFaceEditorHitRegions("complication-sheet",sheet:true)
+  }
+  private func waitEditorFrameStable(_ e:XCUIElement) {
+    XCTAssertTrue(e.waitForExistence(timeout:5))
+    var previous=CGRect.null,stable=0
+    let until=Date().addingTimeInterval(5)
+    while Date()<until {
+      let frame=e.frame
+      stable = frame==previous && e.isHittable ? stable+1:0
+      if stable>=3 {return}
+      previous=frame;Thread.sleep(forTimeInterval:0.15)
+    }
+    XCTFail("Editor control never reached a stable hittable frame: "+e.identifier)
+  }
+  private func scrollEditorIntoView(_ e:XCUIElement) {
+    let v=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews["editor.content"]
+    let top=floor(max(v.minY,scroll.frame.minY)*2)/2,bottom=v.maxY-24
+    for _ in 0..<16 {
+      let f=e.frame
+      if e.isHittable,v.contains(f),f.minY>=top,f.maxY<=bottom {return}
+      let gap=f.isEmpty ? (bottom-top)*0.5 : f.minY<top ? -(top-f.minY+12):f.maxY-bottom+12
+      let distance=min(max(abs(gap),24),(bottom-top)*0.6)*(gap<0 ? -1:1)
+      let y=(top+bottom)/2
+      let start=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:v.minX+15,dy:y+distance/2))
+      let end=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:v.minX+15,dy:y-distance/2))
+      start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    XCTFail("Could not show editor control in the actual viewport: "+e.identifier)
+  }
+  private func tapEditorNativeEdge(_ e:XCUIElement,bottom:Bool=false,sheet:Bool=false) {
+    if !sheet,e.identifier != "editor.done" {scrollEditorIntoView(e)}
+    waitEditorFrameStable(e)
+    let f=e.frame,v=sheet ? app.frame:app.otherElements["reference.viewport"].frame
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:[
+      "identifier":e.identifier,"label":e.label,"value":String(describing:e.value),
+      "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "hittable":e.isHittable,"viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "edge":bottom ? "bottom":"top","lane":sheet ? "native-sheet":"scaled-root"],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="editor-native-edge-"+(e.identifier.isEmpty ? e.label:e.identifier)+"-"+(bottom ? "bottom":"top")
+    a.lifetime = .keepAlways;add(a)
+    XCTAssertGreaterThanOrEqual(f.width,44);XCTAssertGreaterThanOrEqual(f.height,44)
+    XCTAssertTrue(v.contains(f));XCTAssertTrue(e.isHittable)
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:f.midX,dy:bottom ? f.maxY-2:f.minY+2)).tap()
+  }
+  func testFaceEditorPaletteListAndCarouselNativeEdges() {
+    launchFaceEditorAudit("Modular")
+    tapEditorNativeEdge(app.buttons["Sage style"])
+    XCTAssertEqual(app.buttons["Sage style"].value as? String,"Selected")
+    tapEditorNativeEdge(app.buttons["Mist style"],bottom:true)
+    XCTAssertEqual(app.buttons["Mist style"].value as? String,"Selected")
+    tapEditorNativeEdge(app.buttons["widget.0"])
+    tapEditorNativeEdge(app.buttons["complication.choose.Clock"],sheet:true)
+    XCTAssertTrue(app.buttons["widget.0"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.buttons["widget.0"].label.contains("Clock"))
+    tapEditorNativeEdge(app.buttons["select.Watch Modular"])
+    XCTAssertEqual(app.buttons["select.Watch Modular"].value as? String,"Selected")
+    tapEditorNativeEdge(app.buttons["select.Modular"],bottom:true)
+    XCTAssertEqual(app.buttons["select.Modular"].value as? String,"Selected")
+    XCTAssertTrue(app.buttons["widget.0"].label.contains("Clock"))
+    tapEditorNativeEdge(app.buttons["editor.done"],bottom:true)
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    viewportShot("editor-native-modular-controls-complete")
+  }
+  func testFaceEditorFlowTypefaceAndBackgroundNativeEdges() {
+    launchFaceEditorAudit("Flow")
+    tapEditorNativeEdge(app.buttons["flow.typeface.1"])
+    XCTAssertEqual(app.buttons["flow.typeface.1"].value as? String,"Selected")
+    tapEditorNativeEdge(app.buttons["flow.typeface.0"],bottom:true)
+    XCTAssertEqual(app.buttons["flow.typeface.0"].value as? String,"Selected")
+    let background=app.switches["flow.background"]
+    XCTAssertEqual(background.value as? String,"1")
+    tapEditorNativeEdge(background)
+    XCTAssertEqual(background.value as? String,"0")
+    tapEditorNativeEdge(background,bottom:true)
+    XCTAssertEqual(background.value as? String,"1")
+    tapEditorNativeEdge(app.buttons["editor.done"])
+    XCTAssertTrue(app.otherElements["face.Flow"].waitForExistence(timeout:5))
+    viewportShot("editor-native-flow-controls-complete")
+  }
+  func testFaceEditorInlineHitRegionKeepsSiblingSlotsAndCorrectPicker() {
+    launchFaceEditorAudit("Infograph Modular")
+    let date=app.buttons["preview.slot.date"]
+    let siblings=app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH %@","preview.slot."))
+    let rect=date.frame
+    for other in siblings.allElementsBoundByIndex where other.identifier != date.identifier {
+      XCTAssertTrue(rect.intersection(other.frame).isEmpty,"Date hit region overlaps "+other.identifier)
+    }
+    tapEditorNativeEdge(date)
+    XCTAssertTrue(app.buttons["complication.choose.Off"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.buttons["complication.choose.Music"].exists)
+    XCTAssertFalse(app.buttons["complication.choose.Weather"].exists)
+    tapEditorNativeEdge(app.buttons["complications.done"],sheet:true)
+    tapEditorNativeEdge(date,bottom:true)
+    tapEditorNativeEdge(app.buttons["complication.choose.Off"],bottom:true,sheet:true)
+    XCTAssertTrue(date.waitForExistence(timeout:5));XCTAssertTrue(date.label.contains("Off"))
+    tapEditorNativeEdge(date)
+    tapEditorNativeEdge(app.buttons["complication.choose.Clock"],sheet:true)
+    XCTAssertTrue(date.waitForExistence(timeout:5));XCTAssertTrue(date.label.contains("Clock"))
+    tapEditorNativeEdge(app.buttons["editor.done"],bottom:true)
+    XCTAssertTrue(app.buttons["complication.slot.date"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.buttons["complication.slot.date"].label.contains("Clock"))
+    viewportShot("editor-native-inline-correct-slot-complete")
+  }
+
+}
+
+extension HomeViewUITests {
   private func launchLocalControlCenter() {
     launch(["--persistence-test",UUID().uuidString,"--reset-test-store"])
     tap("nav.controls")
