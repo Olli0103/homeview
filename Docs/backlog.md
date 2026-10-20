@@ -1004,7 +1004,9 @@ Abhängigkeiten: MEDIA-01.
 <a id="media-06"></a>
 ### MEDIA-06: Gast- und Peer-to-peer-AirPlay separat klären
 
-Keine eigene AirPlay-Empfänger- oder Gast-Discovery-Funktion nachgewiesen.
+Gastfreigabe, Discovery, Medienpfad und Empfängerrolle getrennt; Apple-TV-/Mac-/HomePod-Voraussetzungen dokumentiert. OS-Bedienweg definiert, experimentelle UxPlay-AWDL-Option weder installiert noch akzeptiert. Keine echte Gast-/Peer-to-peer-Abnahme; F087 bleibt ausdrücklich blockiert, normales WLAN-Streaming kein Ersatz.
+
+[Voraussetzungen, Rollen und offene Geräteabnahme](guest-airplay-boundaries.md).
 
 Offen:
 
