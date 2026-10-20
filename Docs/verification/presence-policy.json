@@ -1,0 +1,272 @@
+{
+  "date": "2026-10-20",
+  "issue": 10,
+  "base_commit": "73e4ab25e8c42cb74c5bc04e8e9e358f2a430e1c",
+  "source_digest": "695f4b74f06afa5616ae812b51ed5eab711f6221d97bdb3fdde8675d76ce1c67",
+  "source_count": 209,
+  "scope": "Research and explicit synthetic-policy acceptance; live source/automatic UI not implemented",
+  "contract": {
+    "base_commit": "73e4ab25e8c42cb74c5bc04e8e9e358f2a430e1c",
+    "scope": "Pure anonymous synthetic policy only. Manual app mode remains unchanged. No sensor adapter/start, permission/discovery, identity or authentication authority.",
+    "own_not_Apple_constants": {
+      "near_at_or_below_meters": 1.25,
+      "far_at_or_above_meters": 2.0,
+      "dwell_seconds": 1.0,
+      "minimum_unique_samples": 3,
+      "maximum_continuous_sample_gap_seconds": 0.5,
+      "maximum_frame_age_seconds": 0.5,
+      "source_stale_seconds": 3.0,
+      "confidence_minimum": 0.75,
+      "distance_range_meters": [
+        0.25,
+        10.0
+      ],
+      "maximum_observed_people": 16,
+      "motion_output_component_limit": 1.0,
+      "motion_filter_rate": 6.0,
+      "motion_filter_delta_cap_seconds": 0.25
+    },
+    "multiple_observations": "Farthest supplied valid observation controls readability; all detections in this supplied frame must have distance estimates. This is NOT proof of all occupants or people outside/occluded in the camera view.",
+    "ordering": "Ephemeral source token, increasing sequence and same-clock capture time; expired tokens and old sequences cannot mutate the current source or its clock. Host receipt time is finite, nonnegative and monotonic. No wall-clock or user identity inferred.",
+    "source_loss": "Missing/partial/low-quality/malformed/too-old frame -> manual density and zero motion. Empty detection is unknown, NOT proof of absence. Silence at 3 seconds -> manual fallback. Recovery needs fresh dwell. Manual override invalidates token.",
+    "motion": "Finite normalized synthetic vector, clipped components and time-based low-pass; first frame/gap reset is zero. Not inferred from device accelerometer or a claimed original Apple motion algorithm.",
+    "required_cases": [
+      "manual default and explicit synthetic start",
+      "stable near/far trace and hysteresis-band jitter",
+      "dwell plus three unique frames; duplicate and out-of-order rejection",
+      "bounded gap; stale silence and recovery",
+      "multiple supplied people and partial observations",
+      "invalid/confidence/nonfinite/oversized frame fallback",
+      "old source/sequence cannot affect newer source or its clock",
+      "manual override prevents late synthetic results",
+      "motion clipping, smoothing, source-loss zeroing",
+      "same-clock capture age/future timestamp and monotonic receipt validation"
+    ],
+    "non_acceptance": "No original F010/F016 parity, physical iPad depth/UWB support, real human-distance accuracy, live room motion, identity, biometric/presence authentication, Home or automatic source selection claimed. Issue closure must be evaluated against the original explicitly synthetic acceptance, not assumed here."
+  },
+  "Core_XCTest": 320,
+  "new_Core_cases": 17,
+  "Core_failures": 0,
+  "Core_skips": 0,
+  "standalone_trace": {
+    "rows": 20,
+    "assertions": 114,
+    "failed_assertions": 0,
+    "synthetic_only": true
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "watch_scope": "Reduced Watch target does not include the new policy; Watch SDK build is regression only",
+  "new_UI_tests": 0,
+  "new_sensor_or_permission_operations": 0,
+  "unchanged": [
+    "Sources/App",
+    "Sources/Shared",
+    "Resources",
+    "Tests/UITests",
+    "Package.swift",
+    "Package.resolved"
+  ],
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/vision/identifying-3d-human-body-poses-in-images",
+      "final_url": "https://developer.apple.com/documentation/vision/identifying-3d-human-body-poses-in-images",
+      "status": 200,
+      "truncated": false,
+      "characters": 12803,
+      "local_raw_sha256": "c99b70cc88b6213ba07edc4ec59694ee2566335a3341a1f5ad419239a43a4f7f",
+      "retrieved": "2026-10-20"
+    },
+    {
+      "url": "https://developer.apple.com/videos/play/wwdc2023/111241/",
+      "final_url": "https://developer.apple.com/videos/play/wwdc2023/111241/",
+      "status": 200,
+      "truncated": false,
+      "characters": 32156,
+      "local_raw_sha256": "5d2874a76415f7c4f87b3db3bbd5aead9bfe9129f88dc1963b34164d344ab0de",
+      "retrieved": "2026-10-20"
+    },
+    {
+      "url": "https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker",
+      "final_url": "https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker",
+      "status": 200,
+      "truncated": false,
+      "characters": 12762,
+      "local_raw_sha256": "b97ea78afd4a1cf8a159b7c388a482393c3068f6ac874f576f536d2760131ffa",
+      "retrieved": "2026-10-20"
+    },
+    {
+      "url": "https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker/ios",
+      "final_url": "https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker/ios",
+      "status": 200,
+      "truncated": false,
+      "characters": 34113,
+      "local_raw_sha256": "6dafb87924003bb506880d3db864c4557c7f6cf71c136af92875ac7d5d2f238e",
+      "retrieved": "2026-10-20"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/nearbyinteraction",
+      "final_url": "https://developer.apple.com/documentation/nearbyinteraction",
+      "status": 200,
+      "truncated": false,
+      "characters": 13658,
+      "local_raw_sha256": "11cce0e2f118a4f582ccc21bbd0d96c1fb64721e06087bc17e7b0f4e43f6b8a1",
+      "retrieved": "2026-10-20"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/coremotion",
+      "final_url": "https://developer.apple.com/documentation/coremotion",
+      "status": 200,
+      "truncated": false,
+      "characters": 12670,
+      "local_raw_sha256": "4e65529065b5a4d8c72d54df166fb2530fba3fe90dc22ccecbed1e6393a0c7bc",
+      "retrieved": "2026-10-20"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/uikit/uidevice/proximitystate",
+      "final_url": "https://developer.apple.com/documentation/uikit/uidevice/proximitystate",
+      "status": 200,
+      "truncated": false,
+      "characters": 1085,
+      "local_raw_sha256": "d5abf2276cdf6ab2ac530bec0d23a94548c86b92c79df470ec098a46c0f1427d",
+      "retrieved": "2026-10-20"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/avfoundation/capturing-depth-using-the-lidar-camera",
+      "final_url": "https://developer.apple.com/documentation/avfoundation/capturing-depth-using-the-lidar-camera",
+      "status": 200,
+      "truncated": false,
+      "characters": 14528,
+      "local_raw_sha256": "bddc618afd7ef2d8b9a2d62f89cfd35a59a0fd7a8cf315b6d73b782723520e61",
+      "retrieved": "2026-10-20"
+    }
+  ],
+  "existing_solution": {
+    "repo": "google-ai-edge/mediapipe",
+    "pushed_at": "2026-10-20T01:49:32Z",
+    "archived": false,
+    "license": "Apache-2.0",
+    "actual_license_git_blob": "0e03e3911e0ac02c72ed527b34efe250f0fb9bef",
+    "actual_license_sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8",
+    "readme_git_blob": "f3211eb8a037b17718bac4fc80026418fc82d576",
+    "decision": "No dependency, code or models adopted/installed/run. Apple public frameworks provide candidate observations; neither supplies this own lifecycle/hysteresis policy. MediaPipe hip-origin world coordinates are not a direct display-distance measurement.",
+    "host_compatibility": "Not built or installed; no compatibility/accuracy/model-license claim",
+    "privacy_notice": "Current README says input processing stays on device but performance/utilization metrics are sent to Google. Not activated here."
+  },
+  "qualified_typechecks": [
+    {
+      "sdk": "iphonesimulator",
+      "target": "arm64-apple-ios26.1-simulator",
+      "exit_code": 0,
+      "source_sha256": "6cf5412eeaf308bb2f08ca03ae8cb8f7a48250f11e7bc7208dd6c48a5e7382ba"
+    },
+    {
+      "sdk": "macosx",
+      "target": "arm64-apple-macos15.0",
+      "exit_code": 0,
+      "source_sha256": "6cf5412eeaf308bb2f08ca03ae8cb8f7a48250f11e7bc7208dd6c48a5e7382ba"
+    }
+  ],
+  "retained_initial_boundaries": {
+    "initial_iOS_typecheck": 0,
+    "initial_macOS_typecheck": 1,
+    "reason": "Initial probe included AVCaptureDepthDataOutput on macOS, explicitly unavailable there; corrected platform guard. Not reclassified as an expected-negative PASS or whole-Mac depth ban.",
+    "truncated_source": "Initial 24k MediaPipe iOS page excluded; complete 34k retry is the cited input."
+  },
+  "header_fingerprints": [
+    {
+      "file": "AVFoundation-AVDepthData.h.txt",
+      "bytes": 12875,
+      "sha256": "7670b15283db6148a4bc34e31cecddf156ae9a04fd15f80355f7f5d67f840c28"
+    },
+    {
+      "file": "CoreMotion-CMMotionManager.h.txt",
+      "bytes": 15121,
+      "sha256": "4475f460d12b7477153e53ffcb18a3bdea017b9ad3dab4ff973060d2488f325e"
+    },
+    {
+      "file": "NearbyInteraction-NISession.h.txt",
+      "bytes": 13340,
+      "sha256": "fbc995e89f6a64923efb7f88e56d4177a9ea4e2119940be0e26428e60855cd0e"
+    },
+    {
+      "file": "Vision-VNDetectHumanBodyPose3DRequest.h.txt",
+      "bytes": 2465,
+      "sha256": "62a6df979a9a25c081cda5f05a4d693225b5aea5fd059bab417f7fd27a28858d"
+    }
+  ],
+  "public_fixtures": [
+    {
+      "path": "Docs/verification/presence-policy-trace-probe.swift.txt",
+      "sha256": "ab9756caaba6708b0d8c25bc33d684796972c1e482c2e457875b6607b7ec7dae",
+      "native_input_sha256": "ab9756caaba6708b0d8c25bc33d684796972c1e482c2e457875b6607b7ec7dae",
+      "normalization": "Final empty lines only; actual compiled bytes archived"
+    },
+    {
+      "path": "Docs/verification/presence-policy-public-symbols.swift.txt",
+      "sha256": "6cf5412eeaf308bb2f08ca03ae8cb8f7a48250f11e7bc7208dd6c48a5e7382ba",
+      "native_input_sha256": "6cf5412eeaf308bb2f08ca03ae8cb8f7a48250f11e7bc7208dd6c48a5e7382ba",
+      "normalization": "Final empty lines only; actual compiled bytes archived"
+    }
+  ],
+  "archives": [
+    {
+      "artifact": "presence-policy-model-pilot-inputs.zip",
+      "entries": 214,
+      "sha256": "58e9f9d1c4d4f88bda519c689d36930eaadb4e1405d758d4b6b0a432d4c0aab7",
+      "all_entries_read_back": true,
+      "Core_XCTest": 320,
+      "new_cases": 17,
+      "failures": 0,
+      "source_digest": "695f4b74f06afa5616ae812b51ed5eab711f6221d97bdb3fdde8675d76ce1c67"
+    },
+    {
+      "artifact": "presence-policy-trace-inputs.zip",
+      "sha256": "81d6d7bf884953e0cb6057bee84f7db7ad1f4f7b8ddf07d0466eb6efc4d108e6",
+      "entries": 12,
+      "all_entries_read_back": true
+    },
+    {
+      "artifact": "presence-policy-preflight-inputs.zip",
+      "sha256": "47e271d80f7da44112319e2dbd6e5446bb5ceed565f309f8097cbf41bc6682a9",
+      "entries": 26,
+      "all_entries_read_back": true,
+      "scope": "Private local raw source/SDK evidence, not a redistributable SDK bundle"
+    }
+  ],
+  "acceptance_assessment": {
+    "public_candidates": "Documented native and maintained OSS candidates with unknown actual target-device capabilities; no runtime queries.",
+    "anonymous_model": "No names, faces, profiles or authentication decisions; bounded supplied distances/motion only.",
+    "hysteresis_multi_loss": "17 Core cases plus independently executed 20-row trace.",
+    "manual_fallback": "Manual app/Controls/FlowArtwork unchanged; synthetic policy opt-in only.",
+    "live_source": "Not implemented or validated. Requires exact hardware, calibrated source, explicit permission and future adapter/lifecycle/energy acceptance.",
+    "original_parity": "F010/F016 remain research/parity=false with original functional/visual/device acceptance pending."
+  },
+  "limits": [
+    "No real person-distance accuracy, camera calibration, room/occluded-person coverage or identity proof",
+    "No actual camera/sensor discovery/capture/permission/NI session/Live Activity or CoreMotion query",
+    "No new automatic UI behavior or pixel/original-state acceptance",
+    "No presence-derived authentication or security decisions",
+    "No Home, accounts, real personal content, microphone, messages/calls/system alarms/media playback"
+  ]
+}

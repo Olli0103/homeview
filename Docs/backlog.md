@@ -252,6 +252,8 @@ Abhängigkeiten: SYS-03, BASE-02.
 <a id="face-06"></a>
 ### FACE-06: Entfernung und Bewegung durch nachgewiesene Präsenzquelle steuern
 
+[Recherche und synthetische Modellabnahme](presence-policy.md) abgeschlossen: Hysterese/Mehrpersonen/Quellenverlust nachgewiesen. Echte Quelle und automatische UI bleiben unimplementiert; keine Original- oder Hardwareabnahme. Ausgangsanforderungen bleiben unten dokumentiert.
+
 Far/Near ist ein manueller Schalter. Flow bewegt sich und reagiert auf Touch, aber nicht auf echte Raumbewegung.
 
 Offen:

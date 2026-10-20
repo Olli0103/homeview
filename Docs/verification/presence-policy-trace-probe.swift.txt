@@ -1,0 +1,64 @@
+import Foundation
+
+@main struct PresencePolicyTrace {
+  enum Failure:Error {case source,expectation}
+  static func main() throws {
+    var p=AnonymousPresencePolicy(),rows:[[String:Any]]=[]
+    func record(_ event:String,_ at:Double,_ band:PresenceDistanceBand,
+                _ origin:PresenceDecisionOrigin,_ condition:PresenceDecisionCondition,
+                accepted:Bool?=nil,expectedAccepted:Bool?=nil) throws {
+      let d=p.decision
+      var checks:[String:Bool]=["band":d.band==band,"origin":d.origin==origin,"condition":d.condition==condition,
+        "finite_bounded_motion":d.flowImpulse.x.isFinite && d.flowImpulse.y.isFinite
+          && abs(d.flowImpulse.x)<=1 && abs(d.flowImpulse.y)<=1,
+        "manual_motion_zero":d.origin != .manual || d.flowImpulse == .zero]
+      if let expectedAccepted {checks["frame_acceptance"]=accepted==expectedAccepted}
+      rows.append(["event":event,"supplied_time":at,"band":d.band.rawValue,
+        "origin":d.origin.rawValue,"condition":d.condition.rawValue,
+        "motion":[d.flowImpulse.x,d.flowImpulse.y],
+        "farthest_supplied_distance":d.farthestSuppliedDistance.map{NSNumber(value:$0)} ?? NSNull(),
+        "checks":checks,"failed":checks.filter{!$0.value}.map(\.key).sorted()])
+    }
+    func sample(_ seq:UInt64,_ at:Double,_ values:[Float],confidence:Float=0.95)->SyntheticPresenceFrame {
+      .init(sequence:seq,capturedAt:at,detectedPeople:values.count,
+            distances:values.map{.init(meters:$0,confidence:confidence)},normalizedMotion:SIMD2(0.7,-0.4))
+    }
+    try record("manual_default",0,.near,.manual,.selected)
+    guard let first=p.beginSyntheticSource(at:0) else {throw Failure.source}
+    try record("explicit_synthetic_start",0,.near,.manual,.waiting)
+    for i in 0...2 {
+      let at=Double(i)/2,ok=p.receive(sample(UInt64(i+1),at,[0.8,2.6]),from:first,at:at)
+      try record("multi_person_far_dwell_\(i)",at,i==2 ? .far:.near,.synthetic,.tracking,accepted:ok,expectedAccepted:true)
+    }
+    let jitter=p.receive(sample(4,1.5,[1.7]),from:first,at:1.5)
+    try record("hysteresis_band_holds_far",1.5,.far,.synthetic,.tracking,accepted:jitter,expectedAccepted:true)
+    for i in 0...2 {
+      let at=2+Double(i)/2,ok=p.receive(sample(UInt64(i+5),at,[1]),from:first,at:at)
+      try record("near_dwell_\(i)",at,i==2 ? .near:.far,.synthetic,.tracking,accepted:ok,expectedAccepted:true)
+    }
+    let bad=p.receive(sample(8,3.5,[2.6],confidence:0.4),from:first,at:3.5)
+    try record("low_quality_manual_fallback",3.5,.near,.manual,.unusable,accepted:bad,expectedAccepted:false)
+    for i in 0...2 {
+      let at=4+Double(i)/2,ok=p.receive(sample(UInt64(i+9),at,[2.6]),from:first,at:at)
+      try record("fresh_recovery_dwell_\(i)",at,i==2 ? .far:.near,.synthetic,.tracking,accepted:ok,expectedAccepted:true)
+    }
+    p.tick(at:8);try record("source_silence_manual_fallback",8,.near,.manual,.stale)
+    guard let second=p.beginSyntheticSource(at:8) else {throw Failure.source}
+    try record("source_replacement",8,.near,.manual,.waiting)
+    let old=p.receive(sample(99,1000,[2.6]),from:first,at:1000)
+    try record("obsolete_token_cannot_poison_clock",1000,.near,.manual,.waiting,accepted:old,expectedAccepted:false)
+    let fresh=p.receive(sample(1,8,[1]),from:second,at:8)
+    try record("new_source_still_accepts_own_clock",8,.near,.synthetic,.tracking,accepted:fresh,expectedAccepted:true)
+    p.selectManual(.far);try record("explicit_manual_override",8.1,.far,.manual,.selected)
+    let late=p.receive(sample(2,8.5,[1]),from:second,at:8.5)
+    try record("manual_override_rejects_late_result",8.5,.far,.manual,.selected,accepted:late,expectedAccepted:false)
+    p.tick(at:9);try record("manual_has_no_source_timeout",9,.far,.manual,.selected)
+    let failed=rows.reduce(0){$0+($1["failed"] as! [String]).count}
+    let result:[String:Any]=["synthetic_only":true,"sensor_or_UI_execution":false,"rows":rows,
+      "row_count":rows.count,"assertions":rows.reduce(0){$0+($1["checks"] as! [String:Bool]).count},
+      "failed_assertions":failed,"verdict":failed==0 ? "PASS":"FAIL",
+      "time_note":"Supplied times are invented. The obsolete-token adversarial row intentionally supplies a future timestamp; rejection must not change the current source clock."]
+    print(String(data:try JSONSerialization.data(withJSONObject:result,options:[.sortedKeys,.prettyPrinted]),encoding:.utf8)!)
+    if failed>0 {throw Failure.expectation}
+  }
+}

@@ -5,6 +5,20 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Kennungsfreies Distanzmodell und Entsperr-Abbrüche · 20. Oktober 2026
+
+[#10: Recherche und ausdrücklich synthetische Modellabnahme](presence-policy.md)
+abgeschlossen. 320 Modelltests (17 neue Fälle), ein separat ausgeführter
+20-Zeilen-Verlauf mit 114 Assertions und fünf SDK-Builds bestanden. Keine
+Sensoren gestartet und keine automatische UI angebunden; F010/F016 bleiben
+ohne Live-/Originalabnahme. Die App bleibt im manuellen Modus.
+
+Zusätzlich sind der [Vorab-Abbruch persönlicher Anmeldung](unlock-pre-cancelled.md)
+und ihre [Bindung an die Entsperransicht](unlock-owner.md) begrenzt korrigiert;
+die dort getrennten Prüfstände bleiben jeweils an ihre Quellen gebunden.
+#67/#80 bleiben für ihre übrigen Anforderungen offen. Der Gesamtauftrag läuft
+weiter, ausdrücklich ohne Home-Anbindung.
+
 ### Weitere Medien: API-/Rechtematrix ·19.Oktober2026
 
 [#60 im Rechercheumfang abgeschlossen](media-service-boundaries.md): Hörbücher,

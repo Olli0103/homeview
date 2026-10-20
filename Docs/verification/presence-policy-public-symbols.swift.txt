@@ -1,0 +1,31 @@
+import AVFoundation
+import Vision
+
+// Compile only. No entrypoint, capture/session/request construction or sensor query.
+@available(iOS 17.0, macOS 14.0, *)
+func visionDeclarations(_ observation: VNHumanBodyPose3DObservation) throws {
+  _ = try observation.cameraRelativePosition(.root)
+  _ = observation.cameraOriginMatrix
+  _ = observation.bodyHeight
+  _ = observation.heightEstimation
+  _ = VNDetectHumanBodyPose3DRequest.self
+}
+func depthDeclarations(_ depth: AVDepthData) {
+  _ = depth.depthDataMap
+  _ = depth.cameraCalibrationData
+}
+#if os(iOS)
+import CoreMotion
+import NearbyInteraction
+import UIKit
+func iosDeclarations(_ motion: CMMotionManager, _ peer: NINearbyObject, _ device: UIDevice) {
+  _ = AVCaptureDepthDataOutput.self
+  _ = motion.deviceMotion
+  _ = motion.accelerometerData
+  _ = peer.distance
+  _ = peer.direction
+  _ = device.proximityState
+  _ = AVCaptureDevice.DeviceType.builtInLiDARDepthCamera
+  _ = AVCaptureDevice.DeviceType.builtInTrueDepthCamera
+}
+#endif
