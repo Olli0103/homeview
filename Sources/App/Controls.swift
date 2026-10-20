@@ -35,41 +35,47 @@ struct AppContent: View {
 }
 struct ControlCenterView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide: CGFloat { (44 / max(0.01, canvasScale)).rounded(.up) }
   var body: some View {
     VStack(spacing: 22) {
-      AppHeader(title: "Control Center")
-      HStack(spacing: 14) {
-        control(
-          "wifi", model.data.home.online ? "Mock Online" : "Mock Offline", model.data.home.online
-        ) {
-          model.updateLocalControls { $0.home.online.toggle() }
-        }.accessibilityIdentifier("controls.online")
-        control("moon.fill", "Night Mode", model.data.night) {
-          model.updateLocalControls { $0.night.toggle() }
-        }.accessibilityIdentifier("controls.night")
-        control("person.fill.viewfinder", model.data.far ? "Far View" : "Near View", model.data.far)
-        {
-          model.updateLocalControls { $0.far.toggle() }
-        }.accessibilityIdentifier("controls.distance")
-      }.frame(height: 125)
-      ValueAdjuster(value: model.data.screenBrightness * 100, label: "Display dimming") {
-        let value = $0 / 100
-        model.updateLocalControls { $0.screenBrightness = value }
-      }
-      ValueAdjuster(value: model.data.volume * 100, label: "Demo audio") {
-        let value = $0 / 100
-        model.updateLocalControls { $0.volume = value }
-      }
-      HStack(spacing: 16) {
-        Pill(title: "Mirror", symbol: "person.crop.rectangle") { model.navigate(.mirror) }
-        Pill(title: "Settings", symbol: "gearshape") { model.navigate(.settings) }
-          .accessibilityIdentifier("controls.settings")
-      }
-      Text("App-only dimming and demo audio. Wi-Fi, screen brightness and system volume are unchanged.")
-        .font(.system(size: 15)).foregroundStyle(.secondary)
-        .accessibilityIdentifier("controls.scope")
-      Spacer(minLength: 0)
-    }.padding(.horizontal, 30).background(Color(white: 0.95)).foregroundStyle(.black)
+      AppHeader(title: "Control Center", closeSize: max(48, minimumHitSide))
+        .padding(.horizontal, 30)
+      ScrollView {
+        VStack(spacing: 22) {
+          HStack(spacing: 14) {
+            control(
+              "wifi", model.data.home.online ? "Mock Online" : "Mock Offline", model.data.home.online
+            ) {
+              model.updateLocalControls { $0.home.online.toggle() }
+            }.accessibilityIdentifier("controls.online")
+            control("moon.fill", "Night Mode", model.data.night) {
+              model.updateLocalControls { $0.night.toggle() }
+            }.accessibilityIdentifier("controls.night")
+            control("person.fill.viewfinder", model.data.far ? "Far View" : "Near View", model.data.far)
+            {
+              model.updateLocalControls { $0.far.toggle() }
+            }.accessibilityIdentifier("controls.distance")
+          }.frame(height: 125)
+          ValueAdjuster(value: model.data.screenBrightness * 100, label: "Display dimming", minimumHitSide: minimumHitSide) {
+            let value = $0 / 100
+            model.updateLocalControls { $0.screenBrightness = value }
+          }
+          ValueAdjuster(value: model.data.volume * 100, label: "Demo audio", minimumHitSide: minimumHitSide) {
+            let value = $0 / 100
+            model.updateLocalControls { $0.volume = value }
+          }
+          HStack(spacing: 16) {
+            Pill(title: "Mirror", symbol: "person.crop.rectangle", minimumHeight: minimumHitSide) { model.navigate(.mirror) }
+            Pill(title: "Settings", symbol: "gearshape", minimumHeight: minimumHitSide) { model.navigate(.settings) }
+              .accessibilityIdentifier("controls.settings")
+          }
+          Text("App-only dimming and demo audio. Wi-Fi, screen brightness and system volume are unchanged.")
+            .font(.system(size: 15)).foregroundStyle(.secondary)
+            .accessibilityIdentifier("controls.scope")
+        }.padding(.horizontal, 30).padding(.bottom, 22)
+      }.accessibilityIdentifier("controls.content")
+    }.background(Color(white: 0.95)).foregroundStyle(.black)
   }
   private func control(
     _ symbol: String, _ label: String, _ active: Bool, action: @escaping () -> Void

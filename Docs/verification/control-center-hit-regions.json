@@ -1,0 +1,1387 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "base_commit": "72d1b118a7664a47ef82e3fdc72d665e29a19e45",
+  "status": "bounded_control_center_fix_issue_open",
+  "source_digest": "84c41e3c565c616285c5778b6099198e181a5841304257fd5ebf144b2a7aca48",
+  "source_count": 209,
+  "runs": [
+    {
+      "checkpoint": "control-center-hit-regions-baseline",
+      "interrupted": false,
+      "source_digest": "bb40a495c3cbaa5ab7a8f5acd7700fca0cab926e5d41ab51f76c8640aad4cd95",
+      "archive_sha256": "ef7a85a3968ee78d4c5c92aa954bd43c946c8aee28890b0878610c509ea9559a",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 65,
+          "passed": 4,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertGreaterThanOrEqual failed: (\"41.12666666666678\") is less than (\"44.0\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 4,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterNativeSlidersKeepModelValues()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterNativeSlidersKeepModelValues",
+              "testName": "testLocalControlCenterNativeSlidersKeepModelValues()"
+            }
+          ]
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 65,
+          "passed": 0,
+          "failed": 5,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertGreaterThanOrEqual failed: (\"30.239999771118164\") is less than (\"44.0\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 1,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterAppOnlyAdjusterActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterAppOnlyAdjusterActualEdges",
+              "testName": "testLocalControlCenterAppOnlyAdjusterActualEdges()"
+            },
+            {
+              "failureText": "XCTAssertGreaterThanOrEqual failed: (\"30.23999786376953\") is less than (\"44.0\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges",
+              "testName": "testLocalControlCenterCardsCloseAndSettingsActualEdges()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered control-center findings: [[\"detail\": \"The size of this UISlider is too small for user to interact.\", \"identifier\": \"\", \"description\": \"Hit area is too small\", \"label\": \"Display dimming\", \"frame\": [66.18, 422.44, 269.64, 19.53000000000003]], [\"detail\": \"The size of this UISlider is too small for user to interact.\", \"identifier\": \"\", \"description\": \"Hit area is too small\", \"label\": \"Demo audio\", \"frame\": [66.18, 490.69, 269.64, 19.529999999999973]]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 3,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterDefaultUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterDefaultUnfilteredHitRegionAudit",
+              "testName": "testLocalControlCenterDefaultUnfilteredHitRegionAudit()"
+            },
+            {
+              "failureText": "XCTAssertGreaterThanOrEqual failed: (\"19.53000000000003\") is less than (\"44.0\")",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 4,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterNativeSlidersKeepModelValues()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterNativeSlidersKeepModelValues",
+              "testName": "testLocalControlCenterNativeSlidersKeepModelValues()"
+            },
+            {
+              "failureText": "XCTAssertTrue failed - Unfiltered control-center findings: [[\"frame\": [66.18, 422.44, 269.64, 19.53000000000003], \"description\": \"Hit area is too small\", \"label\": \"Display dimming\", \"detail\": \"The size of this UISlider is too small for user to interact.\", \"identifier\": \"\"], [\"detail\": \"The size of this UISlider is too small for user to interact.\", \"label\": \"Demo audio\", \"description\": \"Hit area is too small\", \"identifier\": \"\", \"frame\": [66.18, 490.69, 269.64, 19.529999999999973]]]",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 5,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterNightUnfilteredHitRegionAudit()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterNightUnfilteredHitRegionAudit",
+              "testName": "testLocalControlCenterNightUnfilteredHitRegionAudit()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "control-center-hit-regions-final",
+      "interrupted": true,
+      "source_digest": "31c7e3ce6a6f3442615e91f07c99a5fe29ed66743603934a415291070dbd0556",
+      "archive_sha256": "4f834316bc6f1670580ed82474d10d9874dff9d2b841385f09563b8213eaca88",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 75,
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertTrue failed",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges",
+              "testName": "testLocalControlCenterCardsCloseAndSettingsActualEdges()"
+            }
+          ]
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 75,
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertTrue failed",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges",
+              "testName": "testLocalControlCenterCardsCloseAndSettingsActualEdges()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "control-center-hit-regions-qualified",
+      "interrupted": true,
+      "source_digest": "7531f8850a9b4bc52b248ec1e97ec1139661c5eb6d23bfa71c0282685894da29",
+      "archive_sha256": "7a6d8ed0ecba6132bf9361f44900a16e83edc6db838d710f6b1e6db23a1f9598",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 75,
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertTrue failed",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges",
+              "testName": "testLocalControlCenterCardsCloseAndSettingsActualEdges()"
+            }
+          ]
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 75,
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": [
+            {
+              "failureText": "XCTAssertTrue failed",
+              "targetName": "HomeViewUITests",
+              "testIdentifier": 2,
+              "testIdentifierString": "HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges()",
+              "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testLocalControlCenterCardsCloseAndSettingsActualEdges",
+              "testName": "testLocalControlCenterCardsCloseAndSettingsActualEdges()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "control-center-hit-regions-diagnostic",
+      "interrupted": false,
+      "source_digest": "7531f8850a9b4bc52b248ec1e97ec1139661c5eb6d23bfa71c0282685894da29",
+      "archive_sha256": "dfa670c7daeff3f0420de728148206ccd3bfa2b409abca0915c21628389a621e",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        }
+      ]
+    },
+    {
+      "checkpoint": "control-center-hit-regions-complete",
+      "interrupted": false,
+      "source_digest": "84c41e3c565c616285c5778b6099198e181a5841304257fd5ebf144b2a7aca48",
+      "archive_sha256": "7821a25252ec082db3eacc4720059edfe262b8bf2ca23210e875a10ea709e862",
+      "archive_entries": 237,
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "failures": []
+        }
+      ]
+    }
+  ],
+  "current_qualified_scope": {
+    "iPad": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": [],
+      "failures": [],
+      "audits": {
+        "control-center-default-all-findings_0_8D317CF4-3B8B-41E2-B7C2-27E264F847EA.json": [],
+        "control-center-night-all-findings_0_463E955D-C27F-4821-BF45-6C9FCA35CAD9.json": []
+      },
+      "geometry": {
+        "control-center-default-geometry_0_3B2EEFE9-EB26-416C-B0AF-630B35865854.json": [
+          {
+            "frame": [
+              88.94666290283203,
+              208.83999633789062,
+              63.68000030517578,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              51.79999923706055,
+              301.7066650390625,
+              226.19667053222656,
+              165.83334350585938
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.online",
+            "label": "Mock Online",
+            "value": "Optional(On)"
+          },
+          {
+            "frame": [
+              296.57000732421875,
+              301.7066650390625,
+              226.8599853515625,
+              165.83334350585938
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.night",
+            "label": "Night Mode",
+            "value": "Optional(Off)"
+          },
+          {
+            "frame": [
+              542.0033569335938,
+              301.7066650390625,
+              226.1966552734375,
+              165.83334350585938
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.distance",
+            "label": "Near View",
+            "value": "Optional(Off)"
+          },
+          {
+            "frame": [
+              51.79999923706055,
+              547.8033447265625,
+              63.68000411987305,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Display dimming",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              704.52001953125,
+              547.8033447265625,
+              63.67999267578125,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Display dimming",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              51.79999923706055,
+              691.7466430664062,
+              63.68000411987305,
+              63.6800537109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Demo audio",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              704.52001953125,
+              691.7466430664062,
+              63.67999267578125,
+              63.6800537109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Demo audio",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              51.79999923706055,
+              785.2766723632812,
+              347.586669921875,
+              78.9366455078125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mirror",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              420.61334228515625,
+              784.6133422851562,
+              347.586669921875,
+              80.2633056640625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.settings",
+            "label": "Settings",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              126.09333333333333,
+              557.0899999999999,
+              567.8133333333333,
+              45.1066666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Display dimming",
+            "value": "Optional(100%)"
+          },
+          {
+            "frame": [
+              126.09333333333333,
+              701.0333333333333,
+              567.8133333333333,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Demo audio",
+            "value": "Optional(55%)"
+          }
+        ],
+        "control-center-night-geometry_0_15B58BB1-72A7-4C4B-9DCF-12C562DFD003.json": [
+          {
+            "frame": [
+              88.94666290283203,
+              208.83999633789062,
+              63.68000030517578,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              51.79999923706055,
+              301.7066650390625,
+              226.19667053222656,
+              165.83334350585938
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.online",
+            "label": "Mock Online",
+            "value": "Optional(On)"
+          },
+          {
+            "frame": [
+              296.57000732421875,
+              301.7066650390625,
+              226.8599853515625,
+              165.83334350585938
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.night",
+            "label": "Night Mode",
+            "value": "Optional(On)"
+          },
+          {
+            "frame": [
+              542.0033569335938,
+              301.7066650390625,
+              226.1966552734375,
+              165.83334350585938
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.distance",
+            "label": "Near View",
+            "value": "Optional(Off)"
+          },
+          {
+            "frame": [
+              51.79999923706055,
+              547.8033447265625,
+              63.68000411987305,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Display dimming",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              704.52001953125,
+              547.8033447265625,
+              63.67999267578125,
+              63.67999267578125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Display dimming",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              51.79999923706055,
+              691.7466430664062,
+              63.68000411987305,
+              63.6800537109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Demo audio",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              704.52001953125,
+              691.7466430664062,
+              63.67999267578125,
+              63.6800537109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Demo audio",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              51.79999923706055,
+              785.2766723632812,
+              347.586669921875,
+              78.9366455078125
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mirror",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              420.61334228515625,
+              784.6133422851562,
+              347.586669921875,
+              80.2633056640625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.settings",
+            "label": "Settings",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              126.09333333333333,
+              557.0899999999999,
+              567.8133333333333,
+              45.1066666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Display dimming",
+            "value": "Optional(100%)"
+          },
+          {
+            "frame": [
+              126.09333333333333,
+              701.0333333333333,
+              567.8133333333333,
+              45.10666666666668
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Demo audio",
+            "value": "Optional(55%)"
+          }
+        ]
+      },
+      "edges": [
+        {
+          "edge": "top",
+          "frame": [
+            704.52001953125,
+            691.7466430664062,
+            63.67999267578125,
+            63.6800537109375
+          ],
+          "hittable": true,
+          "identifier": "plus",
+          "label": "Increase Demo audio",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            51.79999923706055,
+            691.7466430664062,
+            63.68000411987305,
+            63.6800537109375
+          ],
+          "hittable": true,
+          "identifier": "minus",
+          "label": "Decrease Demo audio",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            704.52001953125,
+            547.8033447265625,
+            63.67999267578125,
+            63.67999267578125
+          ],
+          "hittable": true,
+          "identifier": "plus",
+          "label": "Increase Display dimming",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            51.79999923706055,
+            547.8033447265625,
+            63.68000411987305,
+            63.67999267578125
+          ],
+          "hittable": true,
+          "identifier": "minus",
+          "label": "Decrease Display dimming",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            420.61334228515625,
+            784.6133422851562,
+            347.586669921875,
+            80.2633056640625
+          ],
+          "hittable": true,
+          "identifier": "controls.settings",
+          "label": "Settings",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            88.94666290283203,
+            208.83999633789062,
+            63.68000030517578,
+            63.67999267578125
+          ],
+          "hittable": true,
+          "identifier": "close",
+          "label": "Close",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            542.0033569335938,
+            301.7066650390625,
+            226.1966552734375,
+            165.83334350585938
+          ],
+          "hittable": true,
+          "identifier": "controls.distance",
+          "label": "Far View",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            542.0033569335938,
+            301.7066650390625,
+            226.1966552734375,
+            165.83334350585938
+          ],
+          "hittable": true,
+          "identifier": "controls.distance",
+          "label": "Near View",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            296.57000732421875,
+            301.7066650390625,
+            226.8599853515625,
+            165.83334350585938
+          ],
+          "hittable": true,
+          "identifier": "controls.night",
+          "label": "Night Mode",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            296.57000732421875,
+            301.7066650390625,
+            226.8599853515625,
+            165.83334350585938
+          ],
+          "hittable": true,
+          "identifier": "controls.night",
+          "label": "Night Mode",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            51.79999923706055,
+            301.7066650390625,
+            226.19667053222656,
+            165.83334350585938
+          ],
+          "hittable": true,
+          "identifier": "controls.online",
+          "label": "Mock Offline",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            51.79999923706055,
+            301.7066650390625,
+            226.19667053222656,
+            165.83334350585938
+          ],
+          "hittable": true,
+          "identifier": "controls.online",
+          "label": "Mock Online",
+          "viewport": [
+            12,
+            177,
+            796,
+            796
+          ]
+        }
+      ]
+    },
+    "iPhone": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": [],
+      "failures": [],
+      "audits": {
+        "control-center-default-all-findings_0_291855F3-06B6-4092-8C75-AF8F16405377.json": [],
+        "control-center-night-all-findings_0_0AB16EA6-2F04-43EA-BA27-EE5F5DF4BDB2.json": []
+      },
+      "geometry": {
+        "control-center-default-geometry_0_D6773753-C87A-4622-93C4-B11B66C30277.json": [
+          {
+            "frame": [
+              48.540000915527344,
+              256.1199951171875,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              30.899999618530273,
+              314.0799865722656,
+              107.5199966430664,
+              78.75
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.online",
+            "label": "Mock Online",
+            "value": "Optional(On)"
+          },
+          {
+            "frame": [
+              147.24000549316406,
+              314.0799865722656,
+              107.51998901367188,
+              78.75
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.night",
+            "label": "Night Mode",
+            "value": "Optional(Off)"
+          },
+          {
+            "frame": [
+              263.5799865722656,
+              314.0799865722656,
+              107.52001953125,
+              78.75
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.distance",
+            "label": "Near View",
+            "value": "Optional(Off)"
+          },
+          {
+            "frame": [
+              30.899999618530273,
+              430.8399963378906,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Display dimming",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              327,
+              430.8399963378906,
+              44.100006103515625,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Display dimming",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              30.899999618530273,
+              512.9500122070312,
+              44.099998474121094,
+              44.0999755859375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Demo audio",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              327,
+              512.9500122070312,
+              44.100006103515625,
+              44.0999755859375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Demo audio",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              30.899999618530273,
+              570.9099731445312,
+              165.0600128173828,
+              44.10003662109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mirror",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              206.0399932861328,
+              570.9099731445312,
+              165.0600128173828,
+              44.10003662109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.settings",
+            "label": "Settings",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              80.04000000000002,
+              430.84,
+              241.91999999999996,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Display dimming",
+            "value": "Optional(100%)"
+          },
+          {
+            "frame": [
+              80.04000000000002,
+              512.95,
+              241.91999999999996,
+              44.09999999999991
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Demo audio",
+            "value": "Optional(55%)"
+          }
+        ],
+        "control-center-night-geometry_0_51458143-0696-4F73-9210-0918E2AAB49C.json": [
+          {
+            "frame": [
+              48.540000915527344,
+              256.1199951171875,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "close",
+            "label": "Close",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              30.899999618530273,
+              314.0799865722656,
+              107.5199966430664,
+              78.75
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.online",
+            "label": "Mock Online",
+            "value": "Optional(On)"
+          },
+          {
+            "frame": [
+              147.24000549316406,
+              314.0799865722656,
+              107.51998901367188,
+              78.75
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.night",
+            "label": "Night Mode",
+            "value": "Optional(On)"
+          },
+          {
+            "frame": [
+              263.5799865722656,
+              314.0799865722656,
+              107.52001953125,
+              78.75
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.distance",
+            "label": "Near View",
+            "value": "Optional(Off)"
+          },
+          {
+            "frame": [
+              30.899999618530273,
+              430.8399963378906,
+              44.099998474121094,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Display dimming",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              327,
+              430.8399963378906,
+              44.100006103515625,
+              44.100006103515625
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Display dimming",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              30.899999618530273,
+              512.9500122070312,
+              44.099998474121094,
+              44.0999755859375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "minus",
+            "label": "Decrease Demo audio",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              327,
+              512.9500122070312,
+              44.100006103515625,
+              44.0999755859375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "plus",
+            "label": "Increase Demo audio",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              30.899999618530273,
+              570.9099731445312,
+              165.0600128173828,
+              44.10003662109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Mirror",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              206.0399932861328,
+              570.9099731445312,
+              165.0600128173828,
+              44.10003662109375
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "controls.settings",
+            "label": "Settings",
+            "value": "Optional()"
+          },
+          {
+            "frame": [
+              80.04000000000002,
+              430.84,
+              241.91999999999996,
+              44.10000000000002
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Display dimming",
+            "value": "Optional(100%)"
+          },
+          {
+            "frame": [
+              80.04000000000002,
+              512.95,
+              241.91999999999996,
+              44.09999999999991
+            ],
+            "fullyInViewport": true,
+            "hittable": true,
+            "identifier": "",
+            "label": "Demo audio",
+            "value": "Optional(55%)"
+          }
+        ]
+      },
+      "edges": [
+        {
+          "edge": "top",
+          "frame": [
+            327,
+            512.9500122070312,
+            44.100006103515625,
+            44.0999755859375
+          ],
+          "hittable": true,
+          "identifier": "plus",
+          "label": "Increase Demo audio",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            30.899999618530273,
+            512.9500122070312,
+            44.099998474121094,
+            44.0999755859375
+          ],
+          "hittable": true,
+          "identifier": "minus",
+          "label": "Decrease Demo audio",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            327,
+            430.8399963378906,
+            44.100006103515625,
+            44.100006103515625
+          ],
+          "hittable": true,
+          "identifier": "plus",
+          "label": "Increase Display dimming",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            30.899999618530273,
+            430.8399963378906,
+            44.099998474121094,
+            44.100006103515625
+          ],
+          "hittable": true,
+          "identifier": "minus",
+          "label": "Decrease Display dimming",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            206.0399932861328,
+            524.5,
+            165.0600128173828,
+            44.0999755859375
+          ],
+          "hittable": true,
+          "identifier": "controls.settings",
+          "label": "Settings",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            48.540000915527344,
+            256.1199951171875,
+            44.099998474121094,
+            44.100006103515625
+          ],
+          "hittable": true,
+          "identifier": "close",
+          "label": "Close",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            263.5799865722656,
+            314.0799865722656,
+            107.52001953125,
+            78.75
+          ],
+          "hittable": true,
+          "identifier": "controls.distance",
+          "label": "Far View",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            263.5799865722656,
+            314.0799865722656,
+            107.52001953125,
+            78.75
+          ],
+          "hittable": true,
+          "identifier": "controls.distance",
+          "label": "Near View",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            147.24000549316406,
+            314.0799865722656,
+            107.51998901367188,
+            78.75
+          ],
+          "hittable": true,
+          "identifier": "controls.night",
+          "label": "Night Mode",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            147.24000549316406,
+            314.0799865722656,
+            107.51998901367188,
+            78.75
+          ],
+          "hittable": true,
+          "identifier": "controls.night",
+          "label": "Night Mode",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "bottom",
+          "frame": [
+            30.899999618530273,
+            314.0799865722656,
+            107.5199966430664,
+            78.75
+          ],
+          "hittable": true,
+          "identifier": "controls.online",
+          "label": "Mock Offline",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        },
+        {
+          "edge": "top",
+          "frame": [
+            30.899999618530273,
+            314.0799865722656,
+            107.5199966430664,
+            78.75
+          ],
+          "hittable": true,
+          "identifier": "controls.online",
+          "label": "Mock Online",
+          "viewport": [
+            12,
+            241,
+            378,
+            378
+          ]
+        }
+      ]
+    }
+  },
+  "sdk_source_digest": "31c7e3ce6a6f3442615e91f07c99a5fe29ed66743603934a415291070dbd0556",
+  "sdk_production_inputs_identical_only_ui_test_helper_changed": true,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "interruption_reason": "Intentional SIGINT to exact owned UI xcodebuild processes after reproducing generic scroll-helper top inset failure; unexecuted cases not counted as passes.",
+  "new_core_test_runs": 0,
+  "published_images": [
+    {
+      "path": "Docs/screenshots/control-center-hit-regions/iPad-before-contact.png",
+      "sha256": "61381586426092bee92305708926ee0108c16381b7afffbb1ae8fa22dc842eb8"
+    },
+    {
+      "path": "Docs/screenshots/control-center-hit-regions/iPad-qualified-contact.png",
+      "sha256": "8b8be334135b964592acf01adf7d9451f5c6cfeeb07defd757939be82e692d3d"
+    },
+    {
+      "path": "Docs/screenshots/control-center-hit-regions/iPad-control-center-hit-region-default.png",
+      "sha256": "8640a8df5dbfd3d248eeac838a47fcecc9758742b02f4cfb95d604f14e3a18ab"
+    },
+    {
+      "path": "Docs/screenshots/control-center-hit-regions/iPad-control-center-native-sliders-adjusted.png",
+      "sha256": "342dd61238793c037c421ec397076ca2f6644a39b6ed9bd090dfced078b5f05d"
+    },
+    {
+      "path": "Docs/screenshots/control-center-hit-regions/iPhone-before-contact.png",
+      "sha256": "5f01f01c423ce558265e0ab04e5446076e2afd7e408dd5b6f2eb7e8e3adece9a"
+    },
+    {
+      "path": "Docs/screenshots/control-center-hit-regions/iPhone-qualified-contact.png",
+      "sha256": "69836956daac3a43ae4c57d367e8fa87039fc6d6f377e5cee965b84acae517e4"
+    },
+    {
+      "path": "Docs/screenshots/control-center-hit-regions/iPhone-control-center-hit-region-default.png",
+      "sha256": "7c3e3825db16fc9155b89af2262c6eab0b76e34105371ce4d827aab5c21ff049"
+    },
+    {
+      "path": "Docs/screenshots/control-center-hit-regions/iPhone-control-center-native-sliders-adjusted.png",
+      "sha256": "8c9e984fee55dbf1426e9f75a5dcb651387124bf2efb21f827d7c40e45378a92"
+    }
+  ]
+}

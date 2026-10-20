@@ -66,12 +66,14 @@ struct Pill: View {
   var symbol: String
   var tint: Color = .black.opacity(0.08)
   var textColor: Color = .primary
+  var minimumHeight: CGFloat = 0
   var action: () -> Void
   var body: some View {
     Button(action: action) {
       Label(title, systemImage: symbol).font(.system(size: 21, weight: .medium)).frame(
         maxWidth: .infinity
-      ).padding(.vertical, 17).background(tint, in: Capsule()).foregroundStyle(textColor)
+      ).padding(.vertical, 17).frame(minHeight: minimumHeight)
+        .background(tint, in: Capsule()).foregroundStyle(textColor)
     }.buttonStyle(.plain)
   }
 }

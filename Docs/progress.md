@@ -5,6 +5,10 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Control-Center-Touchflächen · 20. Oktober 2026
+
+Control Center: native Mindestflächen für Close, lokale Regler und Pill-Tasten, scrollbarer Inhalt; zehn UI-Ausführungen, vier leere ungefilterte Auditlisten und 24 Randaktionen bestanden. Unterbrochener Testhelfer-Fehllauf separat erhalten, fünf SDKs bei bytegleichen Produktinputs. Keine echte Hilfsmittelabnahme oder Home-Anbindung. Docs/control-center-hit-regions.md. Der fortlaufende Auftrag geht weiter.
+
 ### Einstellungs-Touchflächen · 20. Oktober 2026
 
 Einstellungen: zu kleine native Tasten und Mock-Regler sowie fehlende Boolean-AXwerte korrigiert; getrennte Vorherfehler erhalten. Acht letzte betroffene UI-Ausführungen, zehn leere ungefilterte Auditlisten und fünf SDKs; vorherige 18/20 UI-Ergebnisse ausdrücklich historisch. Keine echte Hilfsmittel-/Hardwareabnahme; Wetterfeld/Einheitenwähler separat offen. Docs/settings-hit-regions.md. Der Auftrag geht ohne Home-Anbindung weiter.
