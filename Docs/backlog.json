@@ -2076,7 +2076,7 @@
     "priority": "P1",
     "kind": "validation",
     "functions": [],
-    "current": "Langzeit-Farb- und numerische Stabilität von Flow sind geprüft. Keine gemessene Geräteenergie oder umfassende Speicher-/Framezeitabnahme.",
+    "current": "Langzeit-Farb- und numerische Stabilität von Flow sind geprüft. Keine gemessene Geräteenergie oder umfassende Speicher-/Framezeitabnahme. WatchRoot: drei native Host-Vorherfehler für inaktive Modellzeit und vorzeitigen lokalen Ablauf korrigiert. Gleicher Watch-Body im klar gekennzeichneten macOS-Host besteht elf Bedingungen; echte watchOS-SDK-Typprüfung bestanden, keine Watch-Runtime-/Always-on-/Energieabnahme. Docs/watch-pulse.md.",
     "tasks": [
       "CPU/GPU/Framezeit und Speicher je Face sowie neun Kamerafeeds messen",
       "Inaktiver ScenePhase und Reduce Motion müssen Arbeit tatsächlich reduzieren",
@@ -2089,7 +2089,11 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/81",
     "issue_number": 81,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/watch-pulse.md",
+      "Docs/verification/watch-pulse.json"
+    ]
   },
   {
     "key": "EXTRA-01",

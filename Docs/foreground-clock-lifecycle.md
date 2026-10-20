@@ -35,3 +35,7 @@ Core und Coretests sind unverändert: 291 frühere Modelltests bei `5f12a7f`, 68
 ## Offen
 
 #81 bleibt offen. Nicht gemessen sind CPU/GPU, Wakeups, Framezeiten, Speicher- und Energieverbrauch, physische iPad-/Watch-Szenen, sämtliche Animationen oder neun Kamerafeeds. Der WatchRoot verwendet eine separate Tick-Subscription und ist durch diesen RootView-Fix nicht abgenommen. Der native Testschalter ist keine reale Reduce-Motion-Systemeinstellung. Aus beobachteter verringerter Modellarbeit folgt keine quantifizierte Batterie- oder Beschleunigungsbehauptung.
+
+## Nachtrag: separater Watch-Pfad
+
+Der spätere [WatchRoot-Schritt](watch-pulse.md) prüft den eigenen Watch-View-Body gesondert in einem ausdrücklich begrenzten macOS-Host und per watchOS-SDK-Build. Die obigen RootView-Ergebnisse bleiben historisch unverändert; daraus wird keine Watch-Runtime-/Hardware- oder Energieabnahme.
