@@ -1175,6 +1175,8 @@ Abhängigkeiten: BASE-01.
 
 Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme. Benanntes Control für den ruhenden Timer ergänzt, ohne sichtbare Geometrie zu verändern. [Begrenzte Reproduktion, Gegenprüfung und offene Hilfsmittel-Lanes](timer-accessible-controls.md).
 
+Weltuhr: drei sichtbare öffentliche Hitflächen-Audits pro Gerät ohne Restbefund; Add/Done, Auswahl, Entfernen und Schließen mit gemessenen nativen Mindestflächen und realen Randaktionen geprüft. Historische Fehlstände und Test-Scrollkorrektur getrennt dokumentiert. Keine tatsächliche Hilfsmittel-/Hardware-/Originalabnahme. Docs/world-clock-hit-regions.md. [Messungen und Grenzen](world-clock-hit-regions.md).
+
 Offen:
 
 - VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen

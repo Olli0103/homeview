@@ -1,0 +1,780 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "status": "partial_issue_remains_open",
+  "product_commit": "5504a0221693d07525bae3a5ce84b6efeac5e86d",
+  "UI_helper_commit": "e6a95a45829c7e05e6057fa920e5063d82a22427",
+  "source_files": 206,
+  "source_digest": "3ddc1ca5ee336911e418420a8e840e1a9dbfa7805f5b4203b95e7d17488ed1d2",
+  "UI_results": [
+    {
+      "checkpoint": "world-hit-regions-baseline",
+      "device": "iPad",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "world-hit-regions-baseline",
+      "device": "iPhone",
+      "passed": 0,
+      "failed": 4,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPad",
+      "passed": 5,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPhone",
+      "passed": 5,
+      "failed": 1,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "world-hit-regions-qualified",
+      "device": "iPad",
+      "passed": 1,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "world-hit-regions-qualified",
+      "device": "iPhone",
+      "passed": 1,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_unique_methods": 6,
+  "UI_total_executions": 22,
+  "UI_total_passed": 15,
+  "UI_historical_failed": 7,
+  "accepted_product_checks": {
+    "ten_passed_executions_at": "world-hit-regions-final",
+    "two_affected_manual_reruns_passed_at": "world-hit-regions-qualified",
+    "total_accepted_executions": 12,
+    "not_one_single_green_suite": true,
+    "reason": "Only test scroll-helper containment/evidence changed; all 205 other inputs and product bytes unchanged. Existing five passing methods/device not rerun without cause."
+  },
+  "artifact_export_note": "Suggested attachment names containing world.add-top or world.add-bottom are interpreted as custom extensions by xcresulttool, so the first *.json filename filter omitted three JSON geometries per device. Recovered all attachments from the original qualified xcresult, selected actual exported .json files, no test rerun or product mutation.",
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "audit_findings": {
+    "world-hit-regions-baseline/iPad/world-hit-region-chooser-all-findings": [],
+    "world-hit-regions-baseline/iPad/world-hit-region-filtered-all-findings": [],
+    "world-hit-regions-baseline/iPad/world-hit-region-selected-all-findings": [],
+    "world-hit-regions-baseline/iPhone/world-hit-region-chooser-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          344.22,
+          291.4,
+          26.880000000000052,
+          13.650000000000034
+        ],
+        "identifier": "world.add",
+        "label": "Done"
+      }
+    ],
+    "world-hit-regions-baseline/iPhone/world-hit-region-filtered-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          344.22,
+          291.4,
+          26.880000000000052,
+          13.650000000000034
+        ],
+        "identifier": "world.add",
+        "label": "Done"
+      }
+    ],
+    "world-hit-regions-baseline/iPhone/world-hit-region-selected-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          327.84000000000003,
+          291.4,
+          43.26000000000005,
+          13.650000000000034
+        ],
+        "identifier": "world.add",
+        "label": "Add City"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          354.09,
+          327.1,
+          13.860000000000014,
+          13.859999999999957
+        ],
+        "identifier": "world.remove.America/Los_Angeles",
+        "label": "Remove San Francisco"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          354.09,
+          380.02,
+          13.860000000000014,
+          13.859999999999957
+        ],
+        "identifier": "world.remove.America/New_York",
+        "label": "Remove New York"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          354.09,
+          432.9399999999999,
+          13.860000000000014,
+          13.86000000000007
+        ],
+        "identifier": "world.remove.Europe/Berlin",
+        "label": "Remove Berlin"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          354.09,
+          485.85999999999996,
+          13.860000000000014,
+          13.860000000000014
+        ],
+        "identifier": "world.remove.Asia/Tokyo",
+        "label": "Remove Tokyo"
+      }
+    ],
+    "world-hit-regions-final/iPad/world-hit-region-chooser-all-findings": [],
+    "world-hit-regions-final/iPad/world-hit-region-filtered-all-findings": [],
+    "world-hit-regions-final/iPad/world-hit-region-selected-all-findings": [],
+    "world-hit-regions-final/iPhone/world-hit-region-chooser-all-findings": [],
+    "world-hit-regions-final/iPhone/world-hit-region-filtered-all-findings": [],
+    "world-hit-regions-final/iPhone/world-hit-region-selected-all-findings": []
+  },
+  "actual_edge_geometries": [
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        49.14666748046875,
+        208.83999633789062,
+        63.68000030517578,
+        63.67999267578125
+      ],
+      "hittable": true,
+      "identifier": "close",
+      "label": "Close",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "bottom",
+      "frame": [
+        719.1133333333333,
+        809.82,
+        55.72000000000003,
+        55.719999999999914
+      ],
+      "hittable": true,
+      "identifier": "world.remove.Europe/London",
+      "label": "Remove London",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        35.879999999999995,
+        410.49333333333334,
+        748.24,
+        86.23333333333335
+      ],
+      "hittable": true,
+      "identifier": "world.choose.Europe/London",
+      "label": "London",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        676.66,
+        283.1333333333333,
+        91.54000000000008,
+        45.10666666666668
+      ],
+      "hittable": true,
+      "identifier": "world.add",
+      "label": "Add City",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "bottom",
+      "frame": [
+        711.1533333333333,
+        283.1333333333333,
+        57.04666666666674,
+        45.10666666666668
+      ],
+      "hittable": true,
+      "identifier": "world.add",
+      "label": "Done",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPad",
+      "edge": "top",
+      "frame": [
+        676.66,
+        283.1333333333333,
+        91.54000000000008,
+        45.10666666666668
+      ],
+      "hittable": true,
+      "identifier": "world.add",
+      "label": "Add City",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        29.639999389648438,
+        256.1199951171875,
+        44.099998474121094,
+        44.100006103515625
+      ],
+      "hittable": true,
+      "identifier": "close",
+      "label": "Close",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "bottom",
+      "frame": [
+        330.15,
+        550.12,
+        44.10000000000002,
+        44.10000000000002
+      ],
+      "hittable": true,
+      "identifier": "world.remove.Europe/London",
+      "label": "Remove London",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        23.340000000000003,
+        388.4199999999999,
+        355.32000000000005,
+        44.10000000000008
+      ],
+      "hittable": true,
+      "identifier": "world.choose.Europe/London",
+      "label": "London",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        327,
+        305.26,
+        44.10000000000008,
+        44.099999999999966
+      ],
+      "hittable": true,
+      "identifier": "world.add",
+      "label": "Add City",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "bottom",
+      "frame": [
+        327,
+        305.26,
+        44.10000000000008,
+        44.099999999999966
+      ],
+      "hittable": true,
+      "identifier": "world.add",
+      "label": "Done",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "device": "iPhone",
+      "edge": "top",
+      "frame": [
+        327,
+        305.26,
+        44.10000000000008,
+        44.099999999999966
+      ],
+      "hittable": true,
+      "identifier": "world.add",
+      "label": "Add City",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    }
+  ],
+  "full_visibility_geometries": [
+    {
+      "device": "iPad",
+      "name": "world-visible-world.remove.EuropeLondon",
+      "observations": [
+        {
+          "safe": [
+            16,
+            338.85333333333335,
+            788,
+            585.7233333333334
+          ],
+          "target": [
+            719.1133333333333,
+            809.82,
+            55.72000000000003,
+            55.719999999999914
+          ]
+        },
+        {
+          "safe": [
+            16,
+            338.85333333333335,
+            788,
+            585.7233333333334
+          ],
+          "target": [
+            719.1133333333333,
+            809.82,
+            55.72000000000003,
+            55.719999999999914
+          ]
+        }
+      ]
+    },
+    {
+      "device": "iPad",
+      "name": "world-visible-world.choose.EuropeLondon",
+      "observations": [
+        {
+          "safe": [
+            16,
+            410.49333333333334,
+            788,
+            562.5066666666667
+          ],
+          "target": [
+            35.879999999999995,
+            410.49333333333334,
+            748.24,
+            86.23333333333335
+          ]
+        },
+        {
+          "safe": [
+            16,
+            410.49333333333334,
+            788,
+            562.5066666666667
+          ],
+          "target": [
+            35.879999999999995,
+            410.49333333333334,
+            748.24,
+            86.23333333333335
+          ]
+        }
+      ]
+    },
+    {
+      "device": "iPhone",
+      "name": "world-visible-world.remove.EuropeLondon",
+      "observations": [
+        {
+          "safe": [
+            16,
+            354.3999999999999,
+            370,
+            241.70999999999998
+          ],
+          "target": [
+            330.15,
+            625.51,
+            44.10000000000002,
+            44.09999999999991
+          ]
+        },
+        {
+          "safe": [
+            16,
+            354.3999999999999,
+            370,
+            241.7100000000001
+          ],
+          "target": [
+            330.15,
+            550.12,
+            44.10000000000002,
+            44.10000000000002
+          ]
+        },
+        {
+          "safe": [
+            16,
+            354.3999999999999,
+            370,
+            241.7100000000001
+          ],
+          "target": [
+            330.15,
+            550.12,
+            44.10000000000002,
+            44.10000000000002
+          ]
+        }
+      ]
+    },
+    {
+      "device": "iPhone",
+      "name": "world-visible-world.choose.EuropeLondon",
+      "observations": [
+        {
+          "safe": [
+            16,
+            388.4199999999999,
+            370,
+            230.5800000000001
+          ],
+          "target": [
+            23.340000000000003,
+            388.4199999999999,
+            355.32000000000005,
+            44.10000000000008
+          ]
+        },
+        {
+          "safe": [
+            16,
+            388.4199999999999,
+            370,
+            230.5800000000001
+          ],
+          "target": [
+            23.340000000000003,
+            388.4199999999999,
+            355.32000000000005,
+            44.10000000000008
+          ]
+        }
+      ]
+    }
+  ],
+  "baseline_manual_failures": [
+    {
+      "device": "iPad",
+      "control": "world.add",
+      "height_points": 28.523333333333312,
+      "stopped_before_first_edge_tap": true
+    },
+    {
+      "device": "iPhone",
+      "control": "world.add",
+      "height_points": 13.650000000000034,
+      "stopped_before_first_edge_tap": true
+    }
+  ],
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "historical_model_results": {
+    "target": "5504a0221693d07525bae3a5ce84b6efeac5e86d",
+    "Core_unchanged_files": 72,
+    "historical_Core_tests": 301,
+    "historical_Core_commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "AppModel_and_native_probe_unchanged": true,
+    "historical_native_assertions": 50,
+    "new_Core_native_execution": false
+  },
+  "product_byte_equality": {
+    "product_commit": "5504a0221693d07525bae3a5ce84b6efeac5e86d",
+    "UI_helper_commit": "e6a95a45829c7e05e6057fa920e5063d82a22427",
+    "changed_files": [
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "unchanged_files": 205,
+    "all_product_inputs_unchanged": true,
+    "rerun": "Only affected manual edge scenario on each device; other five methods per device already passed at unchanged product checkpoint"
+  },
+  "archives": {
+    "world-hit-regions-baseline": {
+      "archive": "world-hit-regions-baseline-inputs.zip",
+      "sha256": "b7ba48e6d3991598ac3b2789d54eaf569f3b2732813c0067d2cb71dd7aca487c",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "91711706c8ca6cc120e2ba9800f4b0add2c2902cabcf406fcb034d275da45fd3"
+    },
+    "world-hit-regions-final": {
+      "archive": "world-hit-regions-final-inputs.zip",
+      "sha256": "bc1f90e277775710a2f229257c739542652286678805eca8038c0527de6f4798",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "1ee50d4431f03a9c723844b7d0ab085f34d89438e9b5ad5b71ceff07840a6d1a"
+    },
+    "world-hit-regions-qualified": {
+      "archive": "world-hit-regions-qualified-inputs.zip",
+      "sha256": "a3a5aa31c3a5ba336b8cdea7a91b2a01b7f1b6d0a69cd5897c98be65cbcd1eb1",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "3ddc1ca5ee336911e418420a8e840e1a9dbfa7805f5b4203b95e7d17488ed1d2"
+    }
+  },
+  "decoded_PNGs": 52,
+  "contacts_viewed": 6,
+  "additional_full_images_viewed": 6,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-baseline-viewport-world-hit-region-selected.png",
+      "sha256": "ab0ff0f81024a6c35343719660c33c50aa90045cb0da11d36f7665edc697a9eb",
+      "checkpoint": "world-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-baseline-viewport-world-hit-region-chooser.png",
+      "sha256": "d67abcd0cdcf952bfbe217824d38f892aa8552bcb774ea8c6ae8d7670ada9ff5",
+      "checkpoint": "world-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-baseline-viewport-world-hit-region-filtered.png",
+      "sha256": "30e5c15d13c1c415ee979a60f6a426ed0c46ba0174aaabfa4188a885a8585baa",
+      "checkpoint": "world-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-final-viewport-world-hit-region-selected.png",
+      "sha256": "b981555f05241a681523fc37b5495fc5173212b9145c223a044aeb3b274aab7a",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-final-viewport-world-hit-region-chooser.png",
+      "sha256": "ad5aef128b0e985b38b9d5e32affeaeb55d439ac2b2c38e7bfc73edf447fb2bd",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-final-viewport-world-hit-region-filtered.png",
+      "sha256": "f4029a76957770cb84bd69f3e42f79e0179b99941e24ce7ccd9b344c71f1d623",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-final-world-kathmandu-fractional-zone.png",
+      "sha256": "196d470959a8f9dcd03adb38aad3d3af435e32db0b101e82c46344754796291e",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-final-viewport-world-date-two-days-before-assertion.png",
+      "sha256": "aa70707ed36af39bb0b6370cc01064a25f586cb3eb9f2bb8e05b114d556d508e",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-qualified-viewport-world-hit-region-added-london-before-remove.png",
+      "sha256": "484e005cd9c539a3d55b60c829e2161bdfd6c289eeb44fc6768fb5001b0a13ab",
+      "checkpoint": "world-hit-regions-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPad-qualified-viewport-world-hit-region-after-remove.png",
+      "sha256": "b981555f05241a681523fc37b5495fc5173212b9145c223a044aeb3b274aab7a",
+      "checkpoint": "world-hit-regions-qualified",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-baseline-viewport-world-hit-region-selected.png",
+      "sha256": "37ea1fa95283435ef23318cf9a45cd58b343b057a9d41850bc4ddb9421aa4b05",
+      "checkpoint": "world-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-baseline-viewport-world-hit-region-chooser.png",
+      "sha256": "c2579e550b0e924d37232aca17a4f6bba665057fa2fcd4a3a6e42ef81ad0c616",
+      "checkpoint": "world-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-baseline-viewport-world-hit-region-filtered.png",
+      "sha256": "232d9f6685ee415eb82d0c820d4110d57aea0fdc387480fc91732ecdcd1733cf",
+      "checkpoint": "world-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-final-viewport-world-hit-region-selected.png",
+      "sha256": "bc932d58c0f9551d9faf61764e1c60a6650c9e6f8b0c490d744dc22fbb8e04d2",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-final-viewport-world-hit-region-chooser.png",
+      "sha256": "a2c5ea3e36fdfea98d708adba0b8cac8a3f7867536163e561bc4b3489afbd9ba",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-final-viewport-world-hit-region-filtered.png",
+      "sha256": "1d6d091bf60d31599cd89636f633d0b4d88bf8742f7fa279f22d81b5f3ece9a3",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-final-world-kathmandu-fractional-zone.png",
+      "sha256": "6e20d30e5ad8fced77c8d319a40dc794da7d1d69b4e7692ff51216e2bcd60c7a",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-final-viewport-world-date-two-days-before-assertion.png",
+      "sha256": "fe361df1ce5236f2772218e008659ba8e7410a0eead3e8fef2774458a0694305",
+      "checkpoint": "world-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-qualified-viewport-world-hit-region-added-london-before-remove.png",
+      "sha256": "19bff7f4fc12795530f5680abb01eb7c30141dbf385d4d9040d7b301b7a38645",
+      "checkpoint": "world-hit-regions-qualified",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/world-clock-hit-regions/iPhone-qualified-viewport-world-hit-region-after-remove.png",
+      "sha256": "9a5be7061083eb1c8366731760f55c400bc2c386a625e32437fa0c9ae3057e6f",
+      "checkpoint": "world-hit-regions-qualified",
+      "device": "iPhone"
+    }
+  ],
+  "implementation": "WorldClock native-scaled Add/Done, chooser-row and Remove labels. AppHeader closeSize defaults to unchanged48; only WorldClock opts into a sufficiently large Close circle/glyph. Search, model, time/date/filtering and other RoundButton/Pill/ButtonStyle behavior not changed.",
+  "harness_failure": "First product run stopped two manual cases before London because helper required an unreachable extra 8-point vertical inset at first scroll row. Qualified helper retains full list/viewport containment, strict44/native2-point-inside taps and attaches actual rectangles; London top is exactly flush with list. No product change and no midpoint/model shortcut.",
+  "limits": [
+    "Automatic audit is not universal strict44 proof; iPad baseline audits were already empty.",
+    "Baseline manual case stopped before Add tap, did not deliver failing edge taps to later controls.",
+    "Chooser rows/Close were not baseline audit findings; enlarged only to meet final strict edge contract.",
+    "Three visible audit states only, not all offscreen cities or platforms.",
+    "No actual VoiceOver/VoiceControl/SwitchControl/AssistiveTouch/focus/announcement/DynamicType/fullcontrast/physical/original acceptance.",
+    "No pixel-preservation claim: headers/rows can grow; scoped Close glyph/circle grows on phone."
+  ],
+  "real_personal_data_used": false,
+  "device_clock_changed": false,
+  "Home_constructed": false,
+  "system_activity_created": false
+}

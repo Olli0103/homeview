@@ -1848,7 +1848,7 @@
     "functions": [
       "F103"
     ],
-    "current": "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme. Ruhender Timer besitzt jetzt ein benanntes Accessibility-Control mit aktuellem Wert statt ausschließlich anonymem Flächentipp; zwei Vorherfehler, sechs finale UI-Ausführungen und fünf SDKs. Statischer Viewport auf beiden Geräten pixelgleich; echte Hilfsmittel-/Fokusabnahme bleibt offen. Docs/timer-accessible-controls.md.",
+    "current": "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme. Ruhender Timer besitzt jetzt ein benanntes Accessibility-Control mit aktuellem Wert statt ausschließlich anonymem Flächentipp; zwei Vorherfehler, sechs finale UI-Ausführungen und fünf SDKs. Statischer Viewport auf beiden Geräten pixelgleich; echte Hilfsmittel-/Fokusabnahme bleibt offen. Docs/timer-accessible-controls.md. Weltuhr: drei sichtbare öffentliche Hitflächen-Audits pro Gerät ohne Restbefund; Add/Done, Auswahl, Entfernen und Schließen mit gemessenen nativen Mindestflächen und realen Randaktionen geprüft. Historische Fehlstände und Test-Scrollkorrektur getrennt dokumentiert. Keine tatsächliche Hilfsmittel-/Hardware-/Originalabnahme. Docs/world-clock-hit-regions.md.",
     "tasks": [
       "VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen",
       "Zoom/Dynamic Type sowie Kontrast und reduzierte Bewegung abnehmen",
@@ -1862,7 +1862,9 @@
     "state": "in_progress",
     "progress_evidence": [
       "Docs/timer-accessible-controls.md",
-      "Docs/verification/accessible-timer.json"
+      "Docs/verification/accessible-timer.json",
+      "Docs/world-clock-hit-regions.md",
+      "Docs/verification/world-clock-hit-regions.json"
     ]
   },
   {
