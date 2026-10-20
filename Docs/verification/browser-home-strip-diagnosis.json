@@ -1,0 +1,40 @@
+{
+  "failed_checkpoint": "browser-hit-regions-final",
+  "observed": {
+    "iPad": {
+      "passed": 7,
+      "failed": 0
+    },
+    "iPhone": {
+      "passed": 4,
+      "failed": 3
+    }
+  },
+  "source_digest": "1473deb2ff87f6056719d9560b4e3c02bf67074cdf24c70ab42778dd2fd80cbd",
+  "phone_viewport": [
+    12,
+    241,
+    378,
+    378
+  ],
+  "slow_link": [
+    32.2,
+    601.1,
+    68,
+    18.9
+  ],
+  "slow_link_center_y": 610.55,
+  "invisible_strip_y": [
+    608.92,
+    619
+  ],
+  "strip_reference_height": 16,
+  "native_scale": 0.63,
+  "slow_link_center_overlaps_strip": true,
+  "failed_stop_cases_still_show_original_local_page_status": true,
+  "failed_policy_scroll_hierarchy_has_personal_photos_control": true,
+  "root_homeGesture_default_routes_to_personal": true,
+  "correction": "Exclude Safari app route only from RootView bottom home-gesture overlay. Keep Close/footer. No navigation/controller/HTML/transport changes.",
+  "test_bytes_unchanged": true,
+  "scope": "Evidence-grounded UI interception diagnosis; final actual correction/retest not yet complete"
+}

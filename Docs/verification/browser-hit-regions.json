@@ -1,0 +1,2098 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "base_commit": "dcf3ea6325769419f6d5c65be3c68b5934be9a9d",
+  "status": "bounded_fix_passed_issue_open",
+  "source_digest": "b675fd93fac3b3669c6ae8f1300775a150f1b10dd060d9e3f257f1ffdb229442",
+  "runs": [
+    {
+      "stage": "baseline",
+      "source_digest": "ac4f813a5b5512dca6088c2cd91dc9227a4d93801a973611aa7a8a1f4d40e937",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 3,
+                "passedTests": 3,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 3,
+            "finishTime": 1792465509.742,
+            "passedTests": 3,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792465437.339,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertGreaterThanOrEqual failed: (\"30.51333333333332\") is less than (\"43.999999\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 1,
+                "testIdentifierString": "HomeViewUITests/testBrowserAddressReadCancelAndRecipeChoiceActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserAddressReadCancelAndRecipeChoiceActualEdges",
+                "testName": "testBrowserAddressReadCancelAndRecipeChoiceActualEdges()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered browser audit found 1 issues: [[\"description\": \"Hit area is too small\", \"identifier\": \"browser.back\", \"frame\": [53.126666666666665, 385.95, 12.603333333333325, 21.890000000000043], \"auditType\": 4, \"label\": \"Back\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 3,
+                "testIdentifierString": "HomeViewUITests/testBrowserHistoryAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserHistoryAutomaticHitRegionAudit",
+                "testName": "testBrowserHistoryAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "XCTAssertGreaterThanOrEqual failed: (\"21.890000000000043\") is less than (\"43.999999\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 4,
+                "testIdentifierString": "HomeViewUITests/testBrowserHistoryStopSavedAndCloseActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserHistoryStopSavedAndCloseActualEdges",
+                "testName": "testBrowserHistoryStopSavedAndCloseActualEdges()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 6
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 6,
+                "passedTests": 0,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 6,
+            "finishTime": 1792465511.009,
+            "passedTests": 0,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792465437.339,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertGreaterThanOrEqual failed: (\"14.699999999999932\") is less than (\"43.999999\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 1,
+                "testIdentifierString": "HomeViewUITests/testBrowserAddressReadCancelAndRecipeChoiceActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserAddressReadCancelAndRecipeChoiceActualEdges",
+                "testName": "testBrowserAddressReadCancelAndRecipeChoiceActualEdges()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered browser audit found 3 issues: [[\"identifier\": \"browser.address\", \"frame\": [37.19999999999999, 304.84000000000003, 296.1, 14.699999999999932], \"label\": \"\", \"auditType\": 4, \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.UIKitTextField is too small for user to interact.\"], [\"identifier\": \"browser.saved\", \"frame\": [260.43000000000006, 338.02, 32.97000000000003, 14.490000000000009], \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Saved\", \"auditType\": 4], [\"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Read Recipe\", \"auditType\": 4, \"identifier\": \"browser.recipe\", \"frame\": [302.2200000000001, 338.02, 68.88, 14.490000000000009]]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 2,
+                "testIdentifierString": "HomeViewUITests/testBrowserBundledAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserBundledAutomaticHitRegionAudit",
+                "testName": "testBrowserBundledAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered browser audit found 4 issues: [[\"detail\": \"The size of this SwiftUI.UIKitTextField is too small for user to interact.\", \"auditType\": 4, \"frame\": [37.19999999999999, 304.84000000000003, 296.1, 14.699999999999932], \"description\": \"Hit area is too small\", \"label\": \"\", \"identifier\": \"browser.address\"], [\"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"browser.back\", \"frame\": [31.74000000000001, 340.12, 5.880000400543196, 10.290000400543192], \"auditType\": 4, \"label\": \"Back\", \"description\": \"Hit area is too small\"], [\"label\": \"Saved\", \"frame\": [260.43000000000006, 338.02, 32.97000000000003, 14.490000000000009], \"description\": \"Hit area is too small\", \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"browser.saved\"], [\"label\": \"Read Recipe\", \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"identifier\": \"browser.recipe\", \"frame\": [302.2200000000001, 338.02, 68.88, 14.490000000000009], \"description\": \"Hit area is too small\"]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 3,
+                "testIdentifierString": "HomeViewUITests/testBrowserHistoryAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserHistoryAutomaticHitRegionAudit",
+                "testName": "testBrowserHistoryAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "XCTAssertGreaterThanOrEqual failed: (\"10.290000400543192\") is less than (\"43.999999\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 4,
+                "testIdentifierString": "HomeViewUITests/testBrowserHistoryStopSavedAndCloseActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserHistoryStopSavedAndCloseActualEdges",
+                "testName": "testBrowserHistoryStopSavedAndCloseActualEdges()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered browser audit found 2 issues: [[\"auditType\": 4, \"label\": \"\", \"detail\": \"The size of this SwiftUI.UIKitTextField is too small for user to interact.\", \"frame\": [37.19999999999999, 304.84000000000003, 264.6, 14.699999999999932], \"description\": \"Hit area is too small\", \"identifier\": \"browser.address\"], [\"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"auditType\": 4, \"identifier\": \"browser.saved\", \"label\": \"Saved\", \"frame\": [260.43000000000006, 338.02, 32.97000000000003, 14.490000000000009], \"description\": \"Hit area is too small\"]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 5,
+                "testIdentifierString": "HomeViewUITests/testBrowserPendingAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserPendingAutomaticHitRegionAudit",
+                "testName": "testBrowserPendingAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered browser audit found 1 issues: [[\"identifier\": \"browser.cancelRecipes\", \"description\": \"Hit area is too small\", \"label\": \"Cancel\", \"frame\": [184.41, 591.07, 33.180000000000035, 12.81000000000006], \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 6,
+                "testIdentifierString": "HomeViewUITests/testBrowserRecipeChoicesAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserRecipeChoicesAutomaticHitRegionAudit",
+                "testName": "testBrowserRecipeChoicesAutomaticHitRegionAudit()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 6
+          }
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "source_digest": "1473deb2ff87f6056719d9560b4e3c02bf67074cdf24c70ab42778dd2fd80cbd",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 7,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792465768.423,
+            "passedTests": 7,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792465631.498,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 7
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 3,
+                "passedTests": 4,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 3,
+            "finishTime": 1792465751.25,
+            "passedTests": 4,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792465631.498,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertTrue failed",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 4,
+                "testIdentifierString": "HomeViewUITests/testBrowserHistoryStopSavedAndCloseActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserHistoryStopSavedAndCloseActualEdges",
+                "testName": "testBrowserHistoryStopSavedAndCloseActualEdges()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 5,
+                "testIdentifierString": "HomeViewUITests/testBrowserPendingAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserPendingAutomaticHitRegionAudit",
+                "testName": "testBrowserPendingAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "Failed to swipe up WebView (First Match): No matches found for first query match sequence: `Descendants matching type WebView`, given input App element pid: 71558",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 7,
+                "testIdentifierString": "HomeViewUITests/testBrowserRejectsInsecureAddressAndPageCannotOpenExternalScheme()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testBrowserRejectsInsecureAddressAndPageCannotOpenExternalScheme",
+                "testName": "testBrowserRejectsInsecureAddressAndPageCannotOpenExternalScheme()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 7
+          }
+        }
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "source_digest": "b675fd93fac3b3669c6ae8f1300775a150f1b10dd060d9e3f257f1ffdb229442",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 7,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792466086.527,
+            "passedTests": 7,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792465949.82,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 7
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 7,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792466083.337,
+            "passedTests": 7,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792465949.82,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 7
+          }
+        }
+      ]
+    }
+  ],
+  "archives": [
+    {
+      "file": "browser-hit-regions-baseline-inputs.zip",
+      "entries": 234,
+      "sha256": "b21421d58931dceb99e118aa09819e7c3aa68bacf258eaf6253c89350e08fa91",
+      "all_entries_read_back": true
+    },
+    {
+      "file": "browser-hit-regions-final-inputs.zip",
+      "entries": 234,
+      "sha256": "3202016474f1594fe22d69ccafea88090f8f382f654df9ddbf8ec892931d2e87",
+      "all_entries_read_back": true
+    },
+    {
+      "file": "browser-hit-regions-final-v2-inputs.zip",
+      "entries": 234,
+      "sha256": "8f119ed366419b3197adcb81e111b32710f4668ca9c0be0eaa66632242c7dd89",
+      "all_entries_read_back": true
+    }
+  ],
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-browser-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=1,2",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-browser-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "macosx",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-browser-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "appletvsimulator",
+        "-destination",
+        "generic/platform=tvOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=3",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-browser-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "xrsimulator",
+        "-destination",
+        "generic/platform=visionOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=7",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-browser-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewWatch",
+        "-sdk",
+        "watchsimulator",
+        "-destination",
+        "generic/platform=watchOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=4",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "all_unfiltered_audits": [
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "browser-hit-region-bundled-all-findings_0_FC448146-95B9-4719-A0F6-C0C50A45C2CE.json",
+      "findings": []
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "browser-hit-region-history-all-findings_0_31F1B809-E4CC-43DD-945D-8C638EF63E86.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            53.126666666666665,
+            385.95,
+            12.603333333333325,
+            21.890000000000043
+          ],
+          "identifier": "browser.back",
+          "label": "Back"
+        }
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "browser-hit-region-pending-all-findings_0_DB98338D-AD07-4BA0-AB55-3F1BE2E25404.json",
+      "findings": []
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "browser-hit-region-recipe-choices-all-findings_0_2A2C8866-E930-4EAD-9C79-283DB33D85B0.json",
+      "findings": []
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "browser-hit-region-bundled-all-findings_0_90B2E292-D2CE-4BFA-ADA7-F0511CC6D654.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.UIKitTextField is too small for user to interact.",
+          "frame": [
+            37.19999999999999,
+            304.84000000000003,
+            296.1,
+            14.699999999999932
+          ],
+          "identifier": "browser.address",
+          "label": ""
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            260.43000000000006,
+            338.02,
+            32.97000000000003,
+            14.490000000000009
+          ],
+          "identifier": "browser.saved",
+          "label": "Saved"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            302.2200000000001,
+            338.02,
+            68.88,
+            14.490000000000009
+          ],
+          "identifier": "browser.recipe",
+          "label": "Read Recipe"
+        }
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "browser-hit-region-history-all-findings_0_6EAC5FDD-15E3-44AA-910D-C093FE647FD2.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.UIKitTextField is too small for user to interact.",
+          "frame": [
+            37.19999999999999,
+            304.84000000000003,
+            296.1,
+            14.699999999999932
+          ],
+          "identifier": "browser.address",
+          "label": ""
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            31.74000000000001,
+            340.12,
+            5.880000400543196,
+            10.290000400543192
+          ],
+          "identifier": "browser.back",
+          "label": "Back"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            260.43000000000006,
+            338.02,
+            32.97000000000003,
+            14.490000000000009
+          ],
+          "identifier": "browser.saved",
+          "label": "Saved"
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            302.2200000000001,
+            338.02,
+            68.88,
+            14.490000000000009
+          ],
+          "identifier": "browser.recipe",
+          "label": "Read Recipe"
+        }
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "browser-hit-region-pending-all-findings_0_854EAB60-8B6D-406D-8012-D6F6A9BECCE0.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.UIKitTextField is too small for user to interact.",
+          "frame": [
+            37.19999999999999,
+            304.84000000000003,
+            264.6,
+            14.699999999999932
+          ],
+          "identifier": "browser.address",
+          "label": ""
+        },
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            260.43000000000006,
+            338.02,
+            32.97000000000003,
+            14.490000000000009
+          ],
+          "identifier": "browser.saved",
+          "label": "Saved"
+        }
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "browser-hit-region-recipe-choices-all-findings_0_3B92DF20-20C8-40DC-B2C5-48907C18D9DA.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            184.41,
+            591.07,
+            33.180000000000035,
+            12.81000000000006
+          ],
+          "identifier": "browser.cancelRecipes",
+          "label": "Cancel"
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-hit-region-bundled-all-findings_0_48C2F6B1-3456-46FD-B33A-3735AE1E552C.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-hit-region-history-all-findings_0_82455711-1E0E-414C-95FA-BB4FD51C25F7.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-hit-region-pending-all-findings_0_E14F7DCB-06FE-4AC2-BB04-2AA33621FDB9.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-hit-region-recipe-choices-all-findings_0_DD40FE4B-B3CD-4776-A906-4FA6628AE855.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-hit-region-bundled-all-findings_0_961C53E7-4D61-4AB2-BBC1-59EF3DC146BB.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-hit-region-history-all-findings_0_2C8E150D-C309-40FE-AEF4-ADDF2AF2278C.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-hit-region-recipe-choices-all-findings_0_43B53886-44EC-4126-BA69-E767D07C8B00.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-hit-region-bundled-all-findings_0_63B0C3DD-4570-44D1-9B02-7144FB1E4045.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-hit-region-history-all-findings_0_E441D07A-04BB-4AFA-BEFB-A732445BEA27.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-hit-region-pending-all-findings_0_A52892D1-31E6-48F0-BDE7-77AB66AE77BE.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-hit-region-recipe-choices-all-findings_0_8CE2089E-4E7F-49FC-8C1A-6920C18ACA34.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-hit-region-bundled-all-findings_0_C7D9F005-4060-429C-AD03-843528044F7D.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-hit-region-history-all-findings_0_2CCC57F9-42A9-4562-B7DD-4F1026FEB30E.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-hit-region-pending-all-findings_0_227106D3-AB46-4D40-ABA8-9E065D28DA35.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-hit-region-recipe-choices-all-findings_0_341A3567-ED38-4D40-BE0C-34B1A162C02C.json",
+      "findings": []
+    }
+  ],
+  "all_recorded_native_geometry": [
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "browser-edge-browser-address-top_0_AD9CA257-8E01-401F-8D50-DCC7B32B1EDE.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          65.06666666666666,
+          311.65666666666664,
+          623.5333333333333,
+          30.51333333333332
+        ],
+        "hittable": true,
+        "identifier": "browser.address",
+        "label": "",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "browser-edge-browser-back-top_0_B5D4049F-4D61-4CDE-A0C6-CA4BBF7FBEFA.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          53.126666666666665,
+          385.95,
+          12.603333333333325,
+          21.890000000000043
+        ],
+        "hittable": true,
+        "identifier": "browser.back",
+        "label": "Back",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "browser-edge-browser-address-top_0_926F9489-6F32-447E-8D4D-1EDE22F44441.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          37.19999999999999,
+          304.84000000000003,
+          296.1,
+          14.699999999999932
+        ],
+        "hittable": true,
+        "identifier": "browser.address",
+        "label": "",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "browser-edge-browser-back-top_0_D0D5AC0D-740A-4825-A914-F08A8F87E4B4.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          31.74000000000001,
+          340.12,
+          5.880000400543196,
+          10.290000400543192
+        ],
+        "hittable": true,
+        "identifier": "browser.back",
+        "label": "Back",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-chooseRecipe-F97CA751-BD9D-80AD-867A-6D6320ACAF06-top_0_867E818D-2C14-46A1-AB4D-59BBB5968E14.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          51.8,
+          488.76666666666665,
+          716.4000000000001,
+          133.99333333333334
+        ],
+        "hittable": true,
+        "identifier": "browser.chooseRecipe.F97CA751-BD9D-80AD-867A-6D6320ACAF06",
+        "label": "Second local recipe",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-recipe-bottom_0_7B2DA15A-45B2-48AE-87C8-8A0A1092F61E.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          622.93,
+          381.3066666666667,
+          145.2700000000001,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "browser.recipe",
+        "label": "Read Recipe",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-cancelRecipes-bottom_0_F2261C49-B4AC-4005-A4DA-97C083A7B4DF.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          375.50666666666666,
+          896.0533333333333,
+          69.64999999999998,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "browser.cancelRecipes",
+        "label": "Cancel",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-recipe-top_0_B263B07E-1F9C-4971-9674-B138080B337A.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          609.8225,
+          235.72999999999996,
+          136.3275000000001,
+          44.81999999999999
+        ],
+        "hittable": true,
+        "identifier": "browser.recipe",
+        "label": "Read Recipe",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-load-bottom_0_ABEFFB68-1BF5-41B0-A423-CC468C964FA1.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          686.3900146484375,
+          161.02999877929688,
+          47.30999755859375,
+          47.30999755859375
+        ],
+        "hittable": true,
+        "identifier": "browser.load",
+        "label": "Load website",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-address-top_0_E451B9BC-4061-4EF5-8A63-5605698CE5B8.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          65.06666666666666,
+          304.36,
+          623.5333333333333,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "browser.address",
+        "label": "",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-close-bottom_0_CA27EA54-0F69-4774-BCAC-EC60D845213F.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          49.14666748046875,
+          208.83999633789062,
+          63.68000030517578,
+          63.67999267578125
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-saved-bottom_0_860E1DA7-86F8-433E-9998-8628178D4023.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          534.7066666666667,
+          381.3066666666667,
+          69.64999999999998,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "browser.saved",
+        "label": "Saved",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-stop-top_0_71A9BA70-263F-464A-9AD1-1B6C5FB5B2C2.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          638.1866455078125,
+          301.7066650390625,
+          50.413330078125,
+          50.413330078125
+        ],
+        "hittable": true,
+        "identifier": "browser.stop",
+        "label": "Stop loading",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-forward-bottom_0_AAE683FF-7D38-4272-AB8A-6F82F95F6992.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          115.48,
+          381.3066666666667,
+          45.10666666666667,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "browser.forward",
+        "label": "Forward",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "browser-edge-browser-back-top_0_2AFBF4A4-347D-4FEF-8E8D-81AFC2229A73.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          51.8,
+          381.3066666666667,
+          45.10666666666667,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "browser.back",
+        "label": "Back",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-edge-browser-chooseRecipe-F97CA751-BD9D-80AD-867A-6D6320ACAF06-top_0_8B9B9853-3DAE-4F35-B11A-AC27AC999B1F.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          30.900000000000006,
+          402.91,
+          340.20000000000005,
+          63.62999999999994
+        ],
+        "hittable": true,
+        "identifier": "browser.chooseRecipe.F97CA751-BD9D-80AD-867A-6D6320ACAF06",
+        "label": "Second local recipe",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-edge-browser-recipe-bottom_0_7DB9A498-4273-4E85-A637-5A3234BE8430.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          302.21999999999997,
+          372.03999999999996,
+          68.88000000000011,
+          44.10000000000008
+        ],
+        "hittable": true,
+        "identifier": "browser.recipe",
+        "label": "Read Recipe",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-edge-browser-cancelRecipes-bottom_0_A472AA1E-9662-40CF-B866-80C353C8429D.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          178.94999999999996,
+          559.78,
+          44.10000000000008,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "browser.cancelRecipes",
+        "label": "Cancel",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-edge-browser-recipe-top_0_67515160-BDBC-458B-A473-90FA6879F531.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          302.21999999999997,
+          238.43499999999997,
+          68.88000000000011,
+          44.309999999999974
+        ],
+        "hittable": true,
+        "identifier": "browser.recipe",
+        "label": "Read Recipe",
+        "viewport": [
+          12,
+          107.66666666666667,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-edge-browser-load-bottom_0_6E66EDFC-E26B-4CCD-A44A-716D5EED0091.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          320.70001220703125,
+          180.47500610351562,
+          44.0999755859375,
+          44.09999084472656
+        ],
+        "hittable": true,
+        "identifier": "browser.load",
+        "label": "Load website",
+        "viewport": [
+          12,
+          107.66666666666667,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-edge-browser-address-top_0_B823CBC2-B253-41C5-AC38-A32CB6824A86.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          37.19999999999999,
+          314.08,
+          275.94,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "browser.address",
+        "label": "",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-edge-browser-forward-bottom_0_71DCD24C-F2CA-4268-86DD-C063519AE488.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          83.82,
+          372.03999999999996,
+          44.10000000000002,
+          44.10000000000008
+        ],
+        "hittable": true,
+        "identifier": "browser.forward",
+        "label": "Forward",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "browser-edge-browser-back-top_0_70ED899D-F512-47EF-B29F-F031AEBCEE39.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          30.900000000000006,
+          372.03999999999996,
+          44.099999999999994,
+          44.10000000000008
+        ],
+        "hittable": true,
+        "identifier": "browser.back",
+        "label": "Back",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-chooseRecipe-F97CA751-BD9D-80AD-867A-6D6320ACAF06-top_0_A011F15D-85A1-4C74-9EB8-87CA53DA19DA.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          51.8,
+          488.76666666666665,
+          716.4000000000001,
+          133.99333333333334
+        ],
+        "hittable": true,
+        "identifier": "browser.chooseRecipe.F97CA751-BD9D-80AD-867A-6D6320ACAF06",
+        "label": "Second local recipe",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-recipe-bottom_0_76EEDF27-123C-4A0F-AC09-09D327693FA6.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          622.93,
+          381.3066666666667,
+          145.2700000000001,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "browser.recipe",
+        "label": "Read Recipe",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-cancelRecipes-bottom_0_B1F679B1-D6CD-4E4F-844E-BF10DF8E79EC.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          375.50666666666666,
+          896.0533333333333,
+          69.64999999999998,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "browser.cancelRecipes",
+        "label": "Cancel",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-recipe-top_0_E5E169AC-3B0C-4B05-86B0-79950220EDE1.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          609.8225,
+          235.72999999999996,
+          136.3275000000001,
+          44.81999999999999
+        ],
+        "hittable": true,
+        "identifier": "browser.recipe",
+        "label": "Read Recipe",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-load-bottom_0_98EF632F-C4F6-46D2-B8A2-E3F1D8EC86BB.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          686.3900146484375,
+          161.02999877929688,
+          47.30999755859375,
+          47.30999755859375
+        ],
+        "hittable": true,
+        "identifier": "browser.load",
+        "label": "Load website",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-address-top_0_90637EBA-2863-408C-B1A4-D0A921F62A21.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          65.06666666666666,
+          304.36,
+          623.5333333333333,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "browser.address",
+        "label": "",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-close-bottom_0_203E8879-7D84-47B4-930A-1247FCCAE0E6.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          49.14666748046875,
+          208.83999633789062,
+          63.68000030517578,
+          63.67999267578125
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-saved-bottom_0_1088F273-38E5-4887-A6A7-98CDCBCE8665.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          534.7066666666667,
+          381.3066666666667,
+          69.64999999999998,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "browser.saved",
+        "label": "Saved",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-stop-top_0_9259D3B1-4B0D-477B-86EC-CED1B7FB889B.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          638.1866455078125,
+          301.7066650390625,
+          50.413330078125,
+          50.413330078125
+        ],
+        "hittable": true,
+        "identifier": "browser.stop",
+        "label": "Stop loading",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-forward-bottom_0_166508AE-1A23-4770-B572-EA9167EED42D.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          115.48,
+          381.3066666666667,
+          45.10666666666667,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "browser.forward",
+        "label": "Forward",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "browser-edge-browser-back-top_0_4E6260E9-A527-4AED-B60D-E33FA7FC54AB.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          51.8,
+          381.3066666666667,
+          45.10666666666667,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "browser.back",
+        "label": "Back",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-chooseRecipe-F97CA751-BD9D-80AD-867A-6D6320ACAF06-top_0_C15B40CB-DD37-4440-B854-E12DBCF4DAB2.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          30.900000000000006,
+          402.91,
+          340.20000000000005,
+          63.62999999999994
+        ],
+        "hittable": true,
+        "identifier": "browser.chooseRecipe.F97CA751-BD9D-80AD-867A-6D6320ACAF06",
+        "label": "Second local recipe",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-recipe-bottom_0_64A7022C-9312-4D09-A720-F7372015C521.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          302.21999999999997,
+          372.03999999999996,
+          68.88000000000011,
+          44.10000000000008
+        ],
+        "hittable": true,
+        "identifier": "browser.recipe",
+        "label": "Read Recipe",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-cancelRecipes-bottom_0_073B74D5-4894-4AC7-8A58-6F73544A10C5.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          178.94999999999996,
+          559.78,
+          44.10000000000008,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "browser.cancelRecipes",
+        "label": "Cancel",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-recipe-top_0_5CDDFBC8-CDAF-4D55-B79B-495B6832385D.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          302.21999999999997,
+          238.43499999999997,
+          68.88000000000011,
+          44.309999999999974
+        ],
+        "hittable": true,
+        "identifier": "browser.recipe",
+        "label": "Read Recipe",
+        "viewport": [
+          12,
+          107.66666666666667,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-load-bottom_0_FA2A2308-531B-4DB8-A5F4-AC9BCC0C4247.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          320.70001220703125,
+          180.47500610351562,
+          44.0999755859375,
+          44.09999084472656
+        ],
+        "hittable": true,
+        "identifier": "browser.load",
+        "label": "Load website",
+        "viewport": [
+          12,
+          107.66666666666667,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-address-top_0_B73E90F5-2FF0-4830-A43A-C9835FFDB63A.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          37.19999999999999,
+          314.08,
+          275.94,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "browser.address",
+        "label": "",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-close-bottom_0_0B7048FB-B484-449B-9867-702FE067E296.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          29.639999389648438,
+          256.1199951171875,
+          44.099998474121094,
+          44.100006103515625
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-saved-bottom_0_6ADE81EE-5361-4FCE-AC0F-C6DCD1EC40FD.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          249.29999999999995,
+          372.03999999999996,
+          44.10000000000002,
+          44.10000000000008
+        ],
+        "hittable": true,
+        "identifier": "browser.saved",
+        "label": "Saved",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-stop-top_0_49EB9264-1E21-49B4-8C10-4FE8DD4363AB.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          269.0400085449219,
+          314.0799865722656,
+          44.100006103515625,
+          44.100006103515625
+        ],
+        "hittable": true,
+        "identifier": "browser.stop",
+        "label": "Stop loading",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-forward-bottom_0_1D028188-1E3B-46D6-A6B6-2D289A733578.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          83.82,
+          372.03999999999996,
+          44.10000000000002,
+          44.10000000000008
+        ],
+        "hittable": true,
+        "identifier": "browser.forward",
+        "label": "Forward",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "browser-edge-browser-back-top_0_E5549F43-A9BD-4848-A3CA-DB306108A7F4.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          30.900000000000006,
+          372.03999999999996,
+          44.099999999999994,
+          44.10000000000008
+        ],
+        "hittable": true,
+        "identifier": "browser.back",
+        "label": "Back",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    }
+  ],
+  "final_native_edge_actions": 22,
+  "final_empty_audit_lists": 8,
+  "home_strip_diagnosis": {
+    "failed_checkpoint": "browser-hit-regions-final",
+    "observed": {
+      "iPad": {
+        "passed": 7,
+        "failed": 0
+      },
+      "iPhone": {
+        "passed": 4,
+        "failed": 3
+      }
+    },
+    "source_digest": "1473deb2ff87f6056719d9560b4e3c02bf67074cdf24c70ab42778dd2fd80cbd",
+    "phone_viewport": [
+      12,
+      241,
+      378,
+      378
+    ],
+    "slow_link": [
+      32.2,
+      601.1,
+      68,
+      18.9
+    ],
+    "slow_link_center_y": 610.55,
+    "invisible_strip_y": [
+      608.92,
+      619
+    ],
+    "strip_reference_height": 16,
+    "native_scale": 0.63,
+    "slow_link_center_overlaps_strip": true,
+    "failed_stop_cases_still_show_original_local_page_status": true,
+    "failed_policy_scroll_hierarchy_has_personal_photos_control": true,
+    "root_homeGesture_default_routes_to_personal": true,
+    "correction": "Exclude Safari app route only from RootView bottom home-gesture overlay. Keep Close/footer. No navigation/controller/HTML/transport changes.",
+    "test_bytes_unchanged": true,
+    "scope": "Evidence-grounded UI interception diagnosis; final actual correction/retest not yet complete"
+  },
+  "images_decoded": 63,
+  "contact_sheets_viewed": 6,
+  "full_final_viewports_viewed": 4,
+  "images": [
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-baseline-viewport-browser-hit-region-bundled.png",
+      "sha256": "525a682f2e84f5dfed467a2fe786e236a9094bbb5ee2f5d923d4d2964373507d",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-baseline-viewport-browser-hit-region-history.png",
+      "sha256": "48221cbf03f16bb0bcaab0f9dcf1e22c0c318ba934476beb931f2abbb9e3b22c",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-baseline-viewport-browser-hit-region-bundled.png",
+      "sha256": "845221585b54a388b8919da8d605edaba567f2834f517fa181b1eaa4564b714d",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-baseline-viewport-browser-hit-region-history.png",
+      "sha256": "50961b6f71209370657b4c3bce36bc67d67a8b92a586c8b2ad062b1310327c3e",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-final-viewport-browser-hit-region-history.png",
+      "sha256": "52d827c4e17034041a6c5f967245fef2e39c5d27eda4e89a31202ff6a225a31e",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-final-v2-viewport-browser-hit-region-selected-second-recipe-after-edge.png",
+      "sha256": "48fcc086231618f6afa694a225cd051bdaae3531642e08a37069be515ff63173",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-final-v2-viewport-browser-hit-region-bundled.png",
+      "sha256": "9561a720fd32a87d1c500a684521fc476b454bc5c991bd6b1023393e7e70beb7",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-final-v2-viewport-browser-hit-region-history.png",
+      "sha256": "a7627a3213827220549d6a84167d75d9a4ce3db3f1cc8bbf0dd0a716ba9c7b6a",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-final-v2-viewport-browser-hit-region-stopped-after-edge.png",
+      "sha256": "dade22277c1629ba2ea7c58492da7cae8fe87df11200a4675ebb84b1eaf215cf",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-final-v2-viewport-browser-hit-region-pending.png",
+      "sha256": "0b17cede9bdf09e3b40cb6b341aaa465c93d591f89b39e791ecb69d0582bcb7f",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-final-v2-viewport-browser-hit-region-recipe-choices.png",
+      "sha256": "3e1c28ed12184f6b9be868ecc8371bda8dfea7aeacec416a55dbc2b228f7ace5",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/browser-hit-regions/iPad-final-v2-browser-insecure-address-rejected.png",
+      "sha256": "d3527d81048865462d70cca9ec0a710be9d846f8acefa53212fbdc8e99ba63d5",
+      "size": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-final-v2-viewport-browser-hit-region-selected-second-recipe-after-edge.png",
+      "sha256": "578160703a2248af44016e313b285fce51e8ee9422cb4c695122b0f699d4163b",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-final-v2-viewport-browser-hit-region-bundled.png",
+      "sha256": "d253a684aa9b7547b069cc2b22fd02b26a2442d0c64a5ca5f70f26c6162a1d25",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-final-v2-viewport-browser-hit-region-history.png",
+      "sha256": "52d827c4e17034041a6c5f967245fef2e39c5d27eda4e89a31202ff6a225a31e",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-final-v2-viewport-browser-hit-region-stopped-after-edge.png",
+      "sha256": "c93f7ecb0f9f7afaa8e2eb918bbd2bc0aa05c010d209205c5048efa59c597238",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-final-v2-viewport-browser-hit-region-pending.png",
+      "sha256": "ab04decce1f139fcd8598aadaec689305fd8e2d2198e4d5e9fb4e8376b43654c",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-final-v2-viewport-browser-hit-region-recipe-choices.png",
+      "sha256": "5d0216401341209d05ae746e57e6d4f0dbb25491cd9a25ce5dc202a420dc4dcf",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/browser-hit-regions/iPhone-final-v2-browser-insecure-address-rejected.png",
+      "sha256": "245870a1a00c32d4a0dc71d24c1433c6deb7a51b1274234b4f8648c26cbbe1a5",
+      "size": [
+        1206,
+        2622
+      ]
+    }
+  ],
+  "final_UI_passed": 14,
+  "total_UI_executions": 40,
+  "total_UI_passed": 28,
+  "historical_UI_failed": 12,
+  "test_bytes_unchanged": true,
+  "controller_policy_HTML_and_import_lifecycle_unchanged": true,
+  "product_scope": [
+    "NativeBrowserContent control geometry and address focus",
+    "RootView Safari route exclusion from bottom invisible home-gesture overlay"
+  ],
+  "new_Core_or_separate_native_model_runs": 0,
+  "function": {
+    "id": "F103",
+    "implementation_status": "partial",
+    "parity_accepted": false
+  },
+  "limits": [
+    "Real assistive technologies/focus/announcements/DynamicType/contrast/hardware/original comparison remain open",
+    "Native rectangles not generalized to all DOM links or external webpages",
+    "Synthetic bundled HTML and two-flag in-memory WKURLSchemeHandler, invalid HTTP rejected before any request",
+    "No Home/account/permissions/camera/microphone/audio/external navigation/system alarm/new Live Activities or system configuration"
+  ]
+}

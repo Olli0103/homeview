@@ -3,6 +3,98 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func launchLocalBrowserAudit(history:Bool=false,multiple:Bool=false) {
+    var args=["--page","Safari"]
+    if history {args.append("--browser-navigation-fixture")}
+    if multiple {args.append("--browser-multiple-recipes")}
+    launch(args)
+    XCTAssertTrue(app.webViews.staticTexts[history ? "First local page":"Garden Tomato Pasta"].waitForExistence(timeout:10))
+  }
+  private func auditBrowserHitRegions(_ state:String) throws {
+    viewportShot("browser-hit-region-"+state)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let e=issue.element,f=e?.frame ?? .zero
+      reports.append(["identifier":e?.identifier ?? "","label":e?.label ?? "",
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let a=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="browser-hit-region-"+state+"-all-findings";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered browser audit found \(reports.count) issues: \(reports)")
+  }
+  func testBrowserBundledAutomaticHitRegionAudit() throws {
+    launchLocalBrowserAudit();try auditBrowserHitRegions("bundled")
+  }
+  func testBrowserHistoryAutomaticHitRegionAudit() throws {
+    launchLocalBrowserAudit(history:true);app.links["Next page"].tap()
+    XCTAssertTrue(app.webViews.staticTexts["Second local page"].waitForExistence(timeout:5))
+    try auditBrowserHitRegions("history")
+  }
+  func testBrowserPendingAutomaticHitRegionAudit() throws {
+    launchLocalBrowserAudit(history:true);app.links["Slow page"].tap()
+    XCTAssertTrue(app.buttons["browser.stop"].waitForExistence(timeout:5))
+    try auditBrowserHitRegions("pending")
+  }
+  func testBrowserRecipeChoicesAutomaticHitRegionAudit() throws {
+    launchLocalBrowserAudit(multiple:true);tap("browser.recipe")
+    XCTAssertTrue(app.buttons["Second local recipe"].waitForExistence(timeout:5))
+    try auditBrowserHitRegions("recipe-choices")
+  }
+  private func tapBrowserEdge(_ e:XCUIElement,bottom:Bool=false) {
+    XCTAssertTrue(e.waitForExistence(timeout:5))
+    let f=e.frame,v=app.otherElements["reference.viewport"].frame
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:[
+      "identifier":e.identifier,"label":e.label,"frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "hittable":e.isHittable,"edge":bottom ? "bottom":"top"],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="browser-edge-"+e.identifier.replacingOccurrences(of:".",with:"-")+"-"+(bottom ? "bottom":"top")
+    a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(v.contains(f));tapRecipeTargetEdge(e,bottom:bottom)
+  }
+  func testBrowserHistoryStopSavedAndCloseActualEdges() {
+    launchLocalBrowserAudit(history:true);app.links["Next page"].tap()
+    XCTAssertTrue(app.webViews.staticTexts["Second local page"].waitForExistence(timeout:5))
+    tapBrowserEdge(app.buttons["browser.back"])
+    XCTAssertTrue(app.webViews.staticTexts["First local page"].waitForExistence(timeout:5))
+    tapBrowserEdge(app.buttons["browser.forward"],bottom:true)
+    XCTAssertTrue(app.webViews.staticTexts["Second local page"].waitForExistence(timeout:5))
+    app.links["Slow page"].tap()
+    tapBrowserEdge(app.buttons["browser.stop"])
+    XCTAssertEqual(app.staticTexts["browser.status"].label,"Loading stopped.")
+    XCTAssertFalse(app.buttons["browser.stop"].exists)
+    viewportShot("browser-hit-region-stopped-after-edge")
+    tapBrowserEdge(app.buttons["browser.saved"],bottom:true)
+    XCTAssertTrue(app.staticTexts["Recent & Pinned"].waitForExistence(timeout:5))
+    app.terminate();launchLocalBrowserAudit()
+    tapBrowserEdge(app.buttons["close"],bottom:true)
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+  }
+  func testBrowserAddressReadCancelAndRecipeChoiceActualEdges() {
+    launchLocalBrowserAudit(multiple:true)
+    let address=app.textFields["browser.address"]
+    tapBrowserEdge(address)
+    XCTAssertTrue(app.keyboards.firstMatch.exists)
+    let old=address.value as? String ?? ""
+    address.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:old.count)+"http://example.invalid")
+    tapBrowserEdge(app.buttons["browser.load"],bottom:true)
+    XCTAssertTrue(app.staticTexts["browser.status"].label.contains("HTTPS"))
+    XCTAssertFalse(app.buttons["browser.stop"].exists)
+    tapBrowserEdge(app.buttons["browser.recipe"])
+    XCTAssertTrue(app.buttons["Second local recipe"].waitForExistence(timeout:5))
+    tapBrowserEdge(app.buttons["browser.cancelRecipes"],bottom:true)
+    XCTAssertTrue(address.waitForExistence(timeout:5))
+    tapBrowserEdge(app.buttons["browser.recipe"],bottom:true)
+    let second=app.buttons["Second local recipe"]
+    tapBrowserEdge(second)
+    XCTAssertTrue(app.staticTexts["Second local recipe"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.buttons["recipe.start"].exists)
+    viewportShot("browser-hit-region-selected-second-recipe-after-edge")
+  }
+}
+
+extension HomeViewUITests {
   func testReadOnlyWorldCityKeepsPickerAndSearchUntilExplicitDone() {
     let id=UUID().uuidString
     print("WORLD_WRITE_BOUNDARY_STORE_ID="+id)
