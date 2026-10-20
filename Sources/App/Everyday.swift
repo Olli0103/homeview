@@ -428,6 +428,8 @@ struct RemindersView: View {
 }
 struct MusicView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var browse = false
   var body: some View {
     ZStack {
@@ -436,7 +438,7 @@ struct MusicView: View {
           Color(red: 0.31, green: 0.46, blue: 0.62), Color(red: 0.13, green: 0.22, blue: 0.35),
         ], startPoint: .topLeading, endPoint: .bottomTrailing)
       VStack(spacing: 17) {
-        AppHeader(title: browse ? "Music" : "", light: true)
+        AppHeader(title:browse ? "Music":"",light:true,closeSize:max(48,minimumHitSide))
         if browse { library } else { player }
         Spacer(minLength: 0)
       }.foregroundStyle(.white)
@@ -481,21 +483,28 @@ struct MusicView: View {
           browse = true
         } label: {
           Image(systemName: "list.bullet").font(.system(size: 23))
+            .frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
         }.accessibilityLabel("Music library")
       }.padding(.horizontal, 40)
       ProgressView(value: min(180, model.progress), total: 180).tint(.white).padding(
         .horizontal, 40)
+        .accessibilityLabel("Demo progress")
+        .accessibilityValue("\(Int(model.progress.isFinite ? max(0,min(180,model.progress)):0)) of 180 seconds")
+        .accessibilityIdentifier("player.progress")
+        .accessibilityRespondsToUserInteraction(false)
       HStack(spacing: 62) {
         Button {
           model.song = (model.song + Fixtures.songs.count - 1) % Fixtures.songs.count
           model.progress = 0
         } label: {
           Image(systemName: "backward.fill")
+            .frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
         }.accessibilityLabel("Previous track")
         Button {
           model.togglePlayback()
         } label: {
           Image(systemName: model.playing ? "pause.fill" : "play.fill").font(.system(size: 43))
+            .frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
         }.accessibilityLabel(model.playing ? "Pause" : "Play").accessibilityIdentifier(
           "player.play")
         Button {
@@ -503,6 +512,7 @@ struct MusicView: View {
           model.progress = 0
         } label: {
           Image(systemName: "forward.fill")
+            .frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
         }.accessibilityLabel("Next track").accessibilityIdentifier("player.next")
       }.font(.system(size: 29))
     }

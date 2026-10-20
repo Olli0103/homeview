@@ -5621,3 +5621,103 @@ extension HomeViewUITests {
     viewportShot("calendar-hit-region-face-local-today-preserved")
   }
 }
+
+extension HomeViewUITests {
+  private func launchPausedDemoMusicAudit() {
+    launch(["--page","Music"])
+    XCTAssertTrue(app.buttons["music.artwork.info.demo"].exists)
+    XCTAssertFalse(app.buttons["music.artwork.info.catalog"].exists)
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    XCTAssertTrue(app.staticTexts["FEVER DREAM"].exists)
+  }
+  private func auditDemoMusicHitRegions(_ state:String) throws {
+    if state=="information" {shot("demo-music-hit-region-"+state)}
+    else {viewportShot("demo-music-hit-region-"+state)}
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let element=issue.element,frame=element?.frame ?? .zero
+      reports.append(["identifier":element?.identifier ?? "","label":element?.label ?? "",
+        "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let a=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="demo-music-hit-region-"+state+"-all-findings";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered demo music hit-region audit found \(reports.count) issues: \(reports)")
+  }
+  func testDemoMusicPausedAutomaticHitRegionAudit() throws {
+    launchPausedDemoMusicAudit();try auditDemoMusicHitRegions("paused")
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+  func testDemoMusicLibraryAutomaticHitRegionAudit() throws {
+    launchPausedDemoMusicAudit();app.buttons["Music library"].tap()
+    for title in ["FEVER DREAM","A Little Sunshine","Evening Light"] {XCTAssertTrue(app.staticTexts[title].exists)}
+    XCTAssertFalse(app.buttons["player.play"].exists)
+    // Deliberately do not select a library row: those actions start demo audio.
+    try auditDemoMusicHitRegions("library")
+  }
+  func testDemoMusicInformationAutomaticHitRegionAudit() throws {
+    launchPausedDemoMusicAudit();tap("music.artwork.info.demo")
+    XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Bundled demo player")
+    try auditDemoMusicHitRegions("information")
+    tap("music.artwork.done");XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+  private func tapDemoMusicEdge(_ element:XCUIElement,bottom:Bool=false) {
+    let f=element.frame,v=app.otherElements["reference.viewport"].frame
+    let data:[String:Any]=["identifier":element.identifier,"label":element.label,
+      "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "edge":bottom ? "bottom":"top","hittable":element.isHittable]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="demo-music-edge-"+element.label.replacingOccurrences(of:" ",with:"-")+"-"+(bottom ? "bottom":"top")
+    a.lifetime = .keepAlways;add(a);XCTAssertTrue(v.contains(f));tapRecipeTargetEdge(element,bottom:bottom)
+  }
+  func testDemoMusicNavigationInformationAndCloseActualEdgesWithoutPlayback() {
+    launchPausedDemoMusicAudit();viewportShot("demo-music-hit-region-before-edge-actions")
+    tapDemoMusicEdge(app.buttons["player.next"])
+    XCTAssertTrue(app.staticTexts["A Little Sunshine"].exists)
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    tapDemoMusicEdge(app.buttons["Previous track"],bottom:true)
+    XCTAssertTrue(app.staticTexts["FEVER DREAM"].exists)
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    let play=app.buttons["player.play"],f=play.frame
+    let geometry:[String:Any]=["identifier":play.identifier,"label":play.label,"frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],"hittable":play.isHittable,"activated":false]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:geometry,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="demo-music-play-measured-not-activated";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(play.isHittable);XCTAssertGreaterThanOrEqual(f.width,44-1e-6);XCTAssertGreaterThanOrEqual(f.height,44-1e-6)
+    let previous=app.buttons["Previous track"].frame,next=app.buttons["player.next"].frame
+    XCTAssertLessThanOrEqual(previous.maxX,f.minX);XCTAssertLessThanOrEqual(f.maxX,next.minX)
+    viewportShot("demo-music-hit-region-tracks-changed-still-paused")
+    tapDemoMusicEdge(app.buttons["music.artwork.info.demo"])
+    XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Bundled demo player")
+    shot("demo-music-hit-region-information-after-edge")
+    tap("music.artwork.done");XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    tapDemoMusicEdge(app.buttons["Music library"])
+    for title in ["FEVER DREAM","A Little Sunshine","Evening Light"] {XCTAssertTrue(app.staticTexts[title].exists)}
+    viewportShot("demo-music-hit-region-library-after-edge")
+    tapDemoMusicEdge(app.buttons["close"],bottom:true)
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+  }
+}
+
+extension HomeViewUITests {
+  func testDemoMusicProgressStaysReadableAndPassiveWithoutPlayback() {
+    launchPausedDemoMusicAudit()
+    let progress=app.descendants(matching:.any).matching(identifier:"player.progress").firstMatch
+    XCTAssertTrue(progress.waitForExistence(timeout:5))
+    XCTAssertEqual(progress.label,"Demo progress")
+    XCTAssertEqual(progress.value as? String,"0 of 180 seconds")
+    XCTAssertFalse(app.sliders["player.progress"].exists)
+    XCTAssertFalse(app.buttons["player.progress"].exists)
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    viewportShot("demo-music-hit-region-readable-passive-progress")
+    tap("music.artwork.info.demo")
+    XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Bundled demo player")
+    // App.screenshot can crop a system sheet to the app's reported rectangle.
+    // Capture the actual full simulator display separately, with its own name.
+    let a=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+    a.name="display-demo-music-hit-region-information";a.lifetime = .keepAlways;add(a)
+    tap("music.artwork.done")
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+}
