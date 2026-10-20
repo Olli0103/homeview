@@ -3252,7 +3252,8 @@
       "Lokale Erinnerungen: drei sichtbare öffentliche Hitflächen-Audits je Gerät leer; Erledigen, konkretes Löschen, Eingabefokus, Add und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Zusätzlichen Rand-Fokusfehler tatsächlich reproduziert und korrigiert. Nur Demoliste, keine verbundenen Quellen oder tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/reminder-hit-regions.md.",
       "Lokale Kalender-Tageswahl: zwei sichtbare öffentliche Hitflächen-Audits je Gerät leer; alle sieben Tage, wiederholter Vorjahrestag und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Genau eine Auswahl und unverändertes lokales Heute im Kalender-Face am Jahreswechsel beobachtet. Keine echte Kalenderquelle oder tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/calendar-hit-regions.md.",
       "Demo-Musik: drei sichtbare öffentliche Hitflächen-Audits je Gerät leer, pausierte Navigation/Info/Bibliothek/Close mit echten nativen Randaktionen geprüft. Fortschritt bleibt als benannter nicht interaktiver AX-Status lesbar; Play nur vermessen, keine Wiedergabe. Gesonderte spätere Ganzdisplay-Aufnahmen bei identischen Produktbytes. Keine tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/demo-music-hit-regions.md.",
-      "Browser native hit areas and Safari bottom-gesture collision corrected: 14 final UI passes, eight empty audit lists, 22 actual native edge actions, five SDKs. Historical failures retained. Docs/browser-hit-regions.md."
+      "Browser native hit areas and Safari bottom-gesture collision corrected: 14 final UI passes, eight empty audit lists, 22 actual native edge actions, five SDKs. Historical failures retained. Docs/browser-hit-regions.md.",
+      "Demo-Kamera: vier ungefilterte Hitflaechen-Audits je Geraet leer; native Mindestflaechen und 14 echte Randaktionen fuer Raster/letzten Slot/Talkback/Schliessen. Talkback-AXwert und Reset, bestehende Demo-/Nacht-/Offlinefaelle bestanden. Kamera-Face auf beiden Geraeten exakt RGBA-unveraendert. Keine echte Kamera oder Hilfsmittelabnahme. Docs/camera-hit-regions.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3274,7 +3275,9 @@
     ],
     "progress_evidence": [
       "Docs/browser-hit-regions.md",
-      "Docs/verification/browser-hit-regions.json"
+      "Docs/verification/browser-hit-regions.json",
+      "Docs/camera-hit-regions.md",
+      "Docs/verification/camera-hit-regions.json"
     ]
   },
   {

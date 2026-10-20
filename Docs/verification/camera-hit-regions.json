@@ -1,0 +1,1974 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "base_commit": "c4025d75b13cc2328da4746d589e62c195f7cf80",
+  "status": "bounded_fix_passed_issue_open",
+  "source_digest": "4d8820a6ff8df8e66b383cbcba27ae438cd153cbb3c4caaf296f0708999efd2d",
+  "runs": [
+    {
+      "stage": "baseline",
+      "source_digest": "1e5d50c3b5ea59842b7befda88a9538bfd94d7f3a27a0aca65154eece551e13e",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 2,
+                "passedTests": 6,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 2,
+            "finishTime": 1792469745.84,
+            "passedTests": 6,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792469653.795,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertGreaterThanOrEqual failed: (\"28.523333333333312\") is less than (\"43.999999\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 4,
+                "testIdentifierString": "HomeViewUITests/testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges",
+                "testName": "testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges()"
+              },
+              {
+                "failureText": "XCTAssertEqual failed: (\"Optional(\"\")\") is not equal to (\"Optional(\"Off (demo)\")\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 8,
+                "testIdentifierString": "HomeViewUITests/testMockCameraTalkValueAndNavigationResetAreReadable()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraTalkValueAndNavigationResetAreReadable",
+                "testName": "testMockCameraTalkValueAndNavigationResetAreReadable()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 8
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 7,
+                "passedTests": 1,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 7,
+            "finishTime": 1792469736.684,
+            "passedTests": 1,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792469653.774,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered mock camera audit found 1 issues: [[\"description\": \"Hit area is too small\", \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"label\": \"Demo still\", \"identifier\": \"camera.demo.status\", \"frame\": [34.2599983215332, 288.0400085449219, 64.05000305175781, 12.80999755859375]]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 1,
+                "testIdentifierString": "HomeViewUITests/testMockCameraDetailAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraDetailAutomaticHitRegionAudit",
+                "testName": "testMockCameraDetailAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered mock camera audit found 1 issues: [[\"identifier\": \"camera.grid.size\", \"label\": \"Show 9\", \"frame\": [182.10000000000002, 289.93, 37.799999999999955, 13.650000000000034], \"auditType\": 4, \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 3,
+                "testIdentifierString": "HomeViewUITests/testMockCameraFourAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraFourAutomaticHitRegionAudit",
+                "testName": "testMockCameraFourAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "XCTAssertGreaterThanOrEqual failed: (\"13.650000000000034\") is less than (\"43.999999\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 4,
+                "testIdentifierString": "HomeViewUITests/testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges",
+                "testName": "testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered mock camera audit found 1 issues: [[\"identifier\": \"camera.grid.size\", \"label\": \"Show 4\", \"frame\": [181.995, 287.725, 38.00999999999999, 13.649999999999977], \"auditType\": 4, \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\", \"description\": \"Hit area is too small\"]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 5,
+                "testIdentifierString": "HomeViewUITests/testMockCameraNineAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraNineAutomaticHitRegionAudit",
+                "testName": "testMockCameraNineAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "XCTAssertGreaterThanOrEqual failed: (\"39.05999755859375\") is less than (\"43.999999\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 6,
+                "testIdentifierString": "HomeViewUITests/testMockCameraTalkAndDetailCloseActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraTalkAndDetailCloseActualEdges",
+                "testName": "testMockCameraTalkAndDetailCloseActualEdges()"
+              },
+              {
+                "failureText": "XCTAssertTrue failed - Unfiltered mock camera audit found 1 issues: [[\"auditType\": 4, \"label\": \"Demo still\", \"identifier\": \"camera.demo.status\", \"frame\": [34.2599983215332, 288.0400085449219, 64.05000305175781, 12.80999755859375], \"description\": \"Hit area is too small\", \"detail\": \"The size of this SwiftUI.AccessibilityNode is too small for user to interact.\"]]",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 7,
+                "testIdentifierString": "HomeViewUITests/testMockCameraTalkingAutomaticHitRegionAudit()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraTalkingAutomaticHitRegionAudit",
+                "testName": "testMockCameraTalkingAutomaticHitRegionAudit()"
+              },
+              {
+                "failureText": "XCTAssertEqual failed: (\"Optional(\"\")\") is not equal to (\"Optional(\"Off (demo)\")\")",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 8,
+                "testIdentifierString": "HomeViewUITests/testMockCameraTalkValueAndNavigationResetAreReadable()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraTalkValueAndNavigationResetAreReadable",
+                "testName": "testMockCameraTalkValueAndNavigationResetAreReadable()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 8
+          }
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "source_digest": "b750d81c9b98dda7cd8d8676b3005cce2054791a39efd5079d3a2ac3d693d3bc",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 1,
+                "passedTests": 9,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "finishTime": 1792469945.022,
+            "passedTests": 9,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792469797.9,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertTrue failed",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 6,
+                "testIdentifierString": "HomeViewUITests/testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges",
+                "testName": "testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 10
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 65,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 1,
+                "passedTests": 9,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "finishTime": 1792469940.161,
+            "passedTests": 9,
+            "result": "Failed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792469797.901,
+            "statistics": [],
+            "testFailures": [
+              {
+                "failureText": "XCTAssertTrue failed",
+                "targetName": "HomeViewUITests",
+                "testIdentifier": 6,
+                "testIdentifierString": "HomeViewUITests/testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges()",
+                "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges",
+                "testName": "testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges()"
+              }
+            ],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 10
+          }
+        }
+      ]
+    },
+    {
+      "stage": "diagnostic",
+      "source_digest": "bd6c160baca62ea854aa16aa2e819daf6007f37dc4b1d80b33fd119a0eaf8727",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 1,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792470026.496,
+            "passedTests": 1,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792470009.846,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 1
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 1,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792470026.337,
+            "passedTests": 1,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792470009.846,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 1
+          }
+        }
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "source_digest": "4d8820a6ff8df8e66b383cbcba27ae438cd153cbb3c4caaf296f0708999efd2d",
+      "results": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+                  "deviceName": "iPad Air 11-inch (M4)",
+                  "modelName": "iPad Air 11-inch (M4)",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 10,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792470260.33,
+            "passedTests": 10,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792470107.011,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 10
+          }
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "summary": {
+            "devicesAndConfigurations": [
+              {
+                "device": {
+                  "architecture": "arm64",
+                  "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+                  "deviceName": "iPhone 18 Pro",
+                  "modelName": "iPhone 18 Pro",
+                  "osBuildNumber": "24A434",
+                  "osVersion": "27.0",
+                  "platform": "iOS Simulator"
+                },
+                "expectedFailures": 0,
+                "failedTests": 0,
+                "passedTests": 10,
+                "skippedTests": 0,
+                "testPlanConfiguration": {
+                  "configurationId": "1",
+                  "configurationName": "Test Scheme Action"
+                }
+              }
+            ],
+            "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "finishTime": 1792470256.445,
+            "passedTests": 10,
+            "result": "Passed",
+            "runtimeWarnings": [],
+            "skippedTests": 0,
+            "startTime": 1792470107.011,
+            "statistics": [],
+            "testFailures": [],
+            "title": "Test - HomeViewReplica",
+            "topInsights": [],
+            "totalTestCount": 10
+          }
+        }
+      ]
+    }
+  ],
+  "archives": [
+    {
+      "file": "camera-hit-regions-baseline-inputs.zip",
+      "entries": 234,
+      "sha256": "7f13c42bc5a8c88793266fd51a0cde3c45556626fbe31ba310777bb6355b0717",
+      "all_entries_read_back": true
+    },
+    {
+      "file": "camera-hit-regions-final-inputs.zip",
+      "entries": 234,
+      "sha256": "973094e38f76f440088c826c35627f2942e880646dd7bafbcad58a66972ed5fe",
+      "all_entries_read_back": true
+    },
+    {
+      "file": "camera-hit-regions-diagnostic-inputs.zip",
+      "entries": 234,
+      "sha256": "5493dbdf630fed7af1c37afcd1fc483fb14d39c52698226fd1050c202893b4f2",
+      "all_entries_read_back": true
+    },
+    {
+      "file": "camera-hit-regions-final-v2-inputs.zip",
+      "entries": 234,
+      "sha256": "12c6264261e89315078a276c31c5051c2b2fe33b1cce9681030de3f4d0c93d4e",
+      "all_entries_read_back": true
+    }
+  ],
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-camera-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=1,2",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-camera-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "macosx",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-camera-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "appletvsimulator",
+        "-destination",
+        "generic/platform=tvOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=3",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-camera-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "xrsimulator",
+        "-destination",
+        "generic/platform=visionOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=7",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-camera-hit-regions/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewWatch",
+        "-sdk",
+        "watchsimulator",
+        "-destination",
+        "generic/platform=watchOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/assistant-input-sdks",
+        "-clonedSourcePackagesDirPath",
+        "/Volumes/Extern/Research/homeview-goal-20261017/recipe-handoff-core",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=4",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "all_unfiltered_audits": [
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-detail-all-findings_0_933B46A1-F9BC-47F9-8A08-097A025D90CB.json",
+      "findings": []
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-four-all-findings_0_1F8FAAEE-8871-474A-ABAE-024CB9DF7A95.json",
+      "findings": []
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-nine-all-findings_0_B5E78BE5-4C0C-4BF0-A1EB-EDBB8514A07F.json",
+      "findings": []
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-talking-all-findings_0_F3BDAFB4-B389-42F5-AFFA-C2D577F4115D.json",
+      "findings": []
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-detail-all-findings_0_9BBAE751-90F2-4577-B30F-F6C48A068984.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            34.2599983215332,
+            288.0400085449219,
+            64.05000305175781,
+            12.80999755859375
+          ],
+          "identifier": "camera.demo.status",
+          "label": "Demo still"
+        }
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-four-all-findings_0_AA9DD39E-934E-4791-BA55-1257C63DF66B.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            182.10000000000002,
+            289.93,
+            37.799999999999955,
+            13.650000000000034
+          ],
+          "identifier": "camera.grid.size",
+          "label": "Show 9"
+        }
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-nine-all-findings_0_03EF712E-5D0F-4EBC-BF6F-7489C4798BFF.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            181.995,
+            287.725,
+            38.00999999999999,
+            13.649999999999977
+          ],
+          "identifier": "camera.grid.size",
+          "label": "Show 4"
+        }
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-talking-all-findings_0_781303C8-6AF0-4D9E-A7DE-A01092FA962A.json",
+      "findings": [
+        {
+          "auditType": 4,
+          "description": "Hit area is too small",
+          "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+          "frame": [
+            34.2599983215332,
+            288.0400085449219,
+            64.05000305175781,
+            12.80999755859375
+          ],
+          "identifier": "camera.demo.status",
+          "label": "Demo still"
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-detail-all-findings_0_B8E310A0-EF0D-40C3-A351-64C8503CCDC3.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-four-all-findings_0_C861C353-7ACA-4056-964D-3341C10B4DC0.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-nine-all-findings_0_29E3BDEE-F6F3-4CCD-A886-4851D5447BE2.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-talking-all-findings_0_83C2BD8B-6EBB-4EE3-887E-FD19FD499529.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-detail-all-findings_0_D9859EB4-C565-4B32-A3C0-2B20AE1D2A58.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-four-all-findings_0_A370FCBD-4018-418F-84C9-CFD15804F9E4.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-nine-all-findings_0_76FA9679-7EE0-41F6-837C-1952DFEFBB61.json",
+      "findings": []
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-talking-all-findings_0_6684D855-B5E7-4FB5-A6B9-686DAFE8F2CD.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-detail-all-findings_0_E97B2A25-B4E6-49DF-B66C-F5354934599C.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-four-all-findings_0_184A8969-795E-4CE9-B666-419240B40D75.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-nine-all-findings_0_B44C5363-4975-4658-BD57-B3F8C97E4CC3.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-hit-region-talking-all-findings_0_7B7B08DD-1201-47C2-A099-D51B994A4BA8.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-detail-all-findings_0_6FBB47D6-C238-4A23-A0ED-45A03815F4D4.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-four-all-findings_0_4CA06AEA-F686-424F-A31D-C09495AEC5C4.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-nine-all-findings_0_E0E2EB60-465C-4D2B-A39B-26F51C87AE66.json",
+      "findings": []
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-hit-region-talking-all-findings_0_33BDCFCD-B7F8-4DC9-8430-4F464C99AEEC.json",
+      "findings": []
+    }
+  ],
+  "all_recorded_native_geometry": [
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-grid-size-top_0_52E0530B-807C-4BF9-93B4-3B03BB08A5EF.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          370.2,
+          280.1483333333333,
+          79.60000000000002,
+          28.523333333333312
+        ],
+        "hittable": true,
+        "identifier": "camera.grid.size",
+        "label": "Show 9",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-close-bottom_0_23F4DCD0-2A08-400E-AFF8-FB1189306513.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          54.45333480834961,
+          848.2933349609375,
+          82.25332641601562,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.close",
+        "label": "Close camera",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-talk-bottom_0_A0330773-387D-4DCB-9C92-E44D229A6D98.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          368.8733215332031,
+          848.2933349609375,
+          82.25335693359375,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-talk-top_0_53EE7E70-CE69-429F-A401-063C516F8941.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          368.8733215332031,
+          848.2933349609375,
+          82.25335693359375,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-grid-size-top_0_C33A5B30-6806-4F21-A485-E80DF31EDDC3.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          182.10000000000002,
+          289.93,
+          37.799999999999955,
+          13.650000000000034
+        ],
+        "hittable": true,
+        "identifier": "camera.grid.size",
+        "label": "Show 9",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-talk-top_0_3A4D4345-E823-4BCC-8775-1DA707AFC981.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          181.47000122070312,
+          559.780029296875,
+          39.05999755859375,
+          39.05999755859375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-grid-size-top_0_7CF48B9D-CE8B-469E-91ED-A55E4D57448E.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          370.2,
+          283.1333333333333,
+          79.60000000000002,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "camera.grid.size",
+        "label": "Show 9",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-close-bottom_0_727F7A74-AA95-4EED-A869-DEB6B9C78FCA.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          54.45333480834961,
+          848.2933349609375,
+          82.25332641601562,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.close",
+        "label": "Close camera",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-talk-bottom_0_10240633-CA13-47BD-BC2C-D7BDBCABC660.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          368.8733215332031,
+          848.2933349609375,
+          82.25335693359375,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-talk-top_0_DDC0F9DE-4492-40CC-858C-46ACEA3C2CE7.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          368.8733215332031,
+          848.2933349609375,
+          82.25335693359375,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-grid-size-top_0_E7A58578-FC67-4B2A-9D63-2652EC078599.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          178.94999999999996,
+          305.26,
+          44.10000000000008,
+          44.099999999999966
+        ],
+        "hittable": true,
+        "identifier": "camera.grid.size",
+        "label": "Show 9",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-close-bottom_0_04FCB2B3-8042-4671-817A-43844D71B33B.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          32.15999984741211,
+          554.739990234375,
+          44.10000228881836,
+          44.10003662109375
+        ],
+        "hittable": true,
+        "identifier": "camera.close",
+        "label": "Close camera",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-talk-bottom_0_950A8E46-D65A-4E24-AC14-5D9AEC2FA8B9.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          178.9499969482422,
+          554.739990234375,
+          44.100006103515625,
+          44.10003662109375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-talk-top_0_D3300F06-40B3-46FA-895D-4C1F57E63D30.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          178.9499969482422,
+          554.739990234375,
+          44.100006103515625,
+          44.10003662109375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "diagnostic",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-grid-size-top_0_A965B519-2C29-47E2-A86A-A711D78DD857.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          370.2,
+          283.1333333333333,
+          79.60000000000002,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "camera.grid.size",
+        "label": "Show 9",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "diagnostic",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-grid-size-top_0_2907D553-E1AD-43D0-A257-E514ADF636EE.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          178.94999999999996,
+          305.26,
+          44.10000000000008,
+          44.099999999999966
+        ],
+        "hittable": true,
+        "identifier": "camera.grid.size",
+        "label": "Show 9",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-edge-close-bottom_0_3BD39321-0C6D-49FB-ABB0-C90FAFCCDC2F.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          49.14666748046875,
+          208.83999633789062,
+          63.68000030517578,
+          63.67999267578125
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-grid-top_0_D7915B38-C89C-4871-8B1E-45E89B738E30.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          683.2933349609375,
+          848.2933349609375,
+          82.25335693359375,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.grid",
+        "label": "Camera grid",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-8-bottom_0_F00AFEED-46F0-46D4-BDDA-46B481393203.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          542.0033333333333,
+          754.1,
+          246.0966666666667,
+          188.38666666666666
+        ],
+        "hittable": true,
+        "identifier": "camera.8",
+        "label": "AI-generated demo still, no camera access, Front Door",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-grid-size-top_0_D7340A5A-14FA-4D15-86B8-93C382B01618.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          370.2,
+          283.1333333333333,
+          79.60000000000002,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "camera.grid.size",
+        "label": "Show 9",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-close-bottom_0_D2BDD234-84F5-420F-A376-7EDE7D607CA6.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          54.45333480834961,
+          848.2933349609375,
+          82.25332641601562,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.close",
+        "label": "Close camera",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-talk-bottom_0_0A027F5E-0851-4BD6-8F9A-7F9514D9423F.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          368.8733215332031,
+          848.2933349609375,
+          82.25335693359375,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "name": "mock-camera-edge-camera-talk-top_0_752AFBC4-E4C2-4197-994D-CA2012624840.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          368.8733215332031,
+          848.2933349609375,
+          82.25335693359375,
+          82.25335693359375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-edge-close-bottom_0_F772AD84-C757-4E14-879C-F5705CB25A52.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          29.639999389648438,
+          256.1199951171875,
+          44.099998474121094,
+          44.100006103515625
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-grid-top_0_BD7F9DC8-FF76-4488-93B4-F2F19BF14B12.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          325.739990234375,
+          554.739990234375,
+          44.100006103515625,
+          44.10003662109375
+        ],
+        "hittable": true,
+        "identifier": "camera.grid",
+        "label": "Camera grid",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-8-bottom_0_1DC2580E-016D-4827-9061-05C050DDFC18.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          263.78999999999996,
+          527.23,
+          116.76000000000005,
+          77.27999999999997
+        ],
+        "hittable": true,
+        "identifier": "camera.8",
+        "label": "AI-generated demo still, no camera access, Front Door",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-grid-size-top_0_28346D69-FC22-4C00-83B6-AB68C03A8394.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          178.94999999999996,
+          305.26,
+          44.10000000000008,
+          44.099999999999966
+        ],
+        "hittable": true,
+        "identifier": "camera.grid.size",
+        "label": "Show 9",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-close-bottom_0_A33D9A01-468A-4F88-B600-0A2631C4C135.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          32.15999984741211,
+          554.739990234375,
+          44.10000228881836,
+          44.10003662109375
+        ],
+        "hittable": true,
+        "identifier": "camera.close",
+        "label": "Close camera",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-talk-bottom_0_4E36B575-E8F3-4268-A67C-2B1E02204E75.json",
+      "geometry": {
+        "edge": "bottom",
+        "frame": [
+          178.9499969482422,
+          554.739990234375,
+          44.100006103515625,
+          44.10003662109375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "name": "mock-camera-edge-camera-talk-top_0_BCF369AA-189D-4BAA-BC84-F1E5C11688C9.json",
+      "geometry": {
+        "edge": "top",
+        "frame": [
+          178.9499969482422,
+          554.739990234375,
+          44.100006103515625,
+          44.10003662109375
+        ],
+        "hittable": true,
+        "identifier": "camera.talk",
+        "label": "Toggle mock talkback",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    }
+  ],
+  "final_native_edge_actions": 14,
+  "final_empty_audit_lists": 8,
+  "face_exact_RGBA_comparison": {
+    "iPad": {
+      "size": [
+        1592,
+        1592
+      ],
+      "changed_RGBA_channels": 0,
+      "changed_pixels": 0,
+      "PNG_bytes_identical": true,
+      "baseline_sha256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c",
+      "final_sha256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c"
+    },
+    "iPhone": {
+      "size": [
+        1134,
+        1134
+      ],
+      "changed_RGBA_channels": 0,
+      "changed_pixels": 0,
+      "PNG_bytes_identical": true,
+      "baseline_sha256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368",
+      "final_sha256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368"
+    }
+  },
+  "images_decoded": 120,
+  "contact_sheets_viewed": 8,
+  "full_final_viewports_viewed": 4,
+  "images": [
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-baseline-viewport-mock-camera-hit-region-detail.png",
+      "sha256": "fde94353faa355ee7e35bab13743056df2cbad41d48f13122b613d8815bb8c2c",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-baseline-viewport-mock-camera-hit-region-four.png",
+      "sha256": "68d54c62f1b3ff40a359dc2a3510f8fe0051245e13cef08f937996392e54a09c",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-baseline-viewport-mock-camera-hit-region-detail.png",
+      "sha256": "35fc9ae7f156a5a1da61f1311c6aa3ecb8f49ecd02f4abc57cda7a9dcb40d056",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "baseline",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-baseline-viewport-mock-camera-hit-region-four.png",
+      "sha256": "a885c09000c76877a0b4c6af71631c09cefc5828ac26b54858cc4a0d85cab8cc",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-final-v2-camera-demo-night-offline.png",
+      "sha256": "8f5a157ae044c1e3acbed16cdd06ab905462387e051300d1189ba3540bc3b7e1",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-final-v2-viewport-mock-camera-hit-region-detail.png",
+      "sha256": "fde94353faa355ee7e35bab13743056df2cbad41d48f13122b613d8815bb8c2c",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-final-v2-viewport-mock-camera-face-preserved.png",
+      "sha256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-final-v2-viewport-mock-camera-hit-region-four.png",
+      "sha256": "c5b71d4836b8cdc72ea164828d66b714a8baefa8cf59c0aa21e8c9d37affb010",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-final-v2-viewport-mock-camera-hit-region-nine.png",
+      "sha256": "23a055ca33ca02b2bc225399536e384a6f7436cb4bff7282a3b0df02a9094fb8",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-final-v2-viewport-mock-camera-hit-region-talking.png",
+      "sha256": "597c90f4ef4fa5ee5bb4623b758600fc7e4427853fb0a6c9a0f3820b59390931",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPad",
+      "path": "Docs/screenshots/camera-hit-regions/iPad-final-v2-viewport-mock-camera-talk-off-after-navigation.png",
+      "sha256": "fde94353faa355ee7e35bab13743056df2cbad41d48f13122b613d8815bb8c2c",
+      "size": [
+        1592,
+        1592
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-final-v2-camera-demo-night-offline.png",
+      "sha256": "6e176bf02f9815754bb68867e6f52250ca4a2132b363877312fdba9c953d22f9",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-final-v2-viewport-mock-camera-hit-region-detail.png",
+      "sha256": "bb5877319c3ccd21ea1afd7887609159d8507e909223ad9cb85ab6b4009f0fd6",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-final-v2-viewport-mock-camera-face-preserved.png",
+      "sha256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-final-v2-viewport-mock-camera-hit-region-four.png",
+      "sha256": "272129a68fe00996412a08b1c0a4a3858e2684c4e85dc5657c36f69bd7af6351",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-final-v2-viewport-mock-camera-hit-region-nine.png",
+      "sha256": "db0b5a283e0f846c6637df1f3e4a3e340754e6822cbc665a32d2e44bc6b61c60",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-final-v2-viewport-mock-camera-hit-region-talking.png",
+      "sha256": "7aa7983dd76e84d16c2a2929ebe1f06d5400124a0331b682d66a5d243c041336",
+      "size": [
+        1134,
+        1134
+      ]
+    },
+    {
+      "stage": "final-v2",
+      "device": "iPhone",
+      "path": "Docs/screenshots/camera-hit-regions/iPhone-final-v2-viewport-mock-camera-talk-off-after-navigation.png",
+      "sha256": "bb5877319c3ccd21ea1afd7887609159d8507e909223ad9cb85ab6b4009f0fd6",
+      "size": [
+        1134,
+        1134
+      ]
+    }
+  ],
+  "final_UI_passed": 20,
+  "total_UI_executions": 58,
+  "total_UI_passed": 47,
+  "historical_UI_failed": 11,
+  "diagnostic_only_executions": 2,
+  "functional_UI_executions": 56,
+  "functional_UI_passed": 45,
+  "original_new_test_bytes_unchanged_baseline_first_candidate_final_v2": true,
+  "diagnostic_temporary_test_removed_after_archive": true,
+  "overlap_diagnosis": {
+    "iPad": {
+      "frames": [
+        [
+          31.899999618530273,
+          330.2300109863281,
+          246.0966796875,
+          245.43331909179688
+        ],
+        [
+          287.2833251953125,
+          330.2300109863281,
+          245.433349609375,
+          245.43331909179688
+        ],
+        [
+          542.0033569335938,
+          330.2300109863281,
+          246.0966796875,
+          245.43331909179688
+        ],
+        [
+          31.899999618530273,
+          527.9033203125,
+          246.0966796875,
+          245.433349609375
+        ],
+        [
+          287.2833251953125,
+          527.9033203125,
+          245.433349609375,
+          245.433349609375
+        ],
+        [
+          542.0033569335938,
+          527.9033203125,
+          246.0966796875,
+          245.433349609375
+        ],
+        [
+          31.899999618530273,
+          725.57666015625,
+          246.0966796875,
+          245.433349609375
+        ],
+        [
+          287.2833251953125,
+          725.57666015625,
+          245.433349609375,
+          245.433349609375
+        ],
+        [
+          542.0033569335938,
+          725.57666015625,
+          246.0966796875,
+          245.433349609375
+        ]
+      ],
+      "overlapping_pairs": [
+        {
+          "indices": [
+            0,
+            3
+          ],
+          "overlap": [
+            246.0966796875,
+            47.760009765625
+          ]
+        },
+        {
+          "indices": [
+            1,
+            4
+          ],
+          "overlap": [
+            245.433349609375,
+            47.760009765625
+          ]
+        },
+        {
+          "indices": [
+            2,
+            5
+          ],
+          "overlap": [
+            246.0966796875,
+            47.760009765625
+          ]
+        },
+        {
+          "indices": [
+            3,
+            6
+          ],
+          "overlap": [
+            246.0966796875,
+            47.760009765625
+          ]
+        },
+        {
+          "indices": [
+            4,
+            7
+          ],
+          "overlap": [
+            245.433349609375,
+            47.760009765625
+          ]
+        },
+        {
+          "indices": [
+            5,
+            8
+          ],
+          "overlap": [
+            246.0966796875,
+            47.760009765625
+          ]
+        }
+      ],
+      "measured_attachment_sha256": "a60b78bbc0b07068322d03415d1fd995febbee3fda418172d9ad0f5d7bb31f64"
+    },
+    "iPhone": {
+      "frames": [
+        [
+          21.450000762939453,
+          344.1099853515625,
+          116.760009765625,
+          116.760009765625
+        ],
+        [
+          142.6199951171875,
+          344.1099853515625,
+          116.760009765625,
+          116.760009765625
+        ],
+        [
+          263.7900085449219,
+          344.1099853515625,
+          116.760009765625,
+          116.760009765625
+        ],
+        [
+          21.450000762939453,
+          425.79998779296875,
+          116.760009765625,
+          116.760009765625
+        ],
+        [
+          142.6199951171875,
+          425.79998779296875,
+          116.760009765625,
+          116.760009765625
+        ],
+        [
+          263.7900085449219,
+          425.79998779296875,
+          116.760009765625,
+          116.760009765625
+        ],
+        [
+          21.450000762939453,
+          507.489990234375,
+          116.760009765625,
+          116.760009765625
+        ],
+        [
+          142.6199951171875,
+          507.489990234375,
+          116.760009765625,
+          116.760009765625
+        ],
+        [
+          263.7900085449219,
+          507.489990234375,
+          116.760009765625,
+          116.760009765625
+        ]
+      ],
+      "overlapping_pairs": [
+        {
+          "indices": [
+            0,
+            3
+          ],
+          "overlap": [
+            116.760009765625,
+            35.07000732421875
+          ]
+        },
+        {
+          "indices": [
+            1,
+            4
+          ],
+          "overlap": [
+            116.760009765625,
+            35.07000732421875
+          ]
+        },
+        {
+          "indices": [
+            2,
+            5
+          ],
+          "overlap": [
+            116.760009765625,
+            35.07000732421875
+          ]
+        },
+        {
+          "indices": [
+            3,
+            6
+          ],
+          "overlap": [
+            116.760009765625,
+            35.07000732421875
+          ]
+        },
+        {
+          "indices": [
+            4,
+            7
+          ],
+          "overlap": [
+            116.760009765625,
+            35.07000732421875
+          ]
+        },
+        {
+          "indices": [
+            5,
+            8
+          ],
+          "overlap": [
+            116.760009765625,
+            35.07000732421875
+          ]
+        }
+      ],
+      "measured_attachment_sha256": "573f2dc22784b9891164bf2701773d0c96ff2a6307d52e3be9b588700e41fe38"
+    }
+  },
+  "product_scope": [
+    "CameraGrid app-only native minimum controls and fitted rows, original isFace geometry",
+    "CameraDetail native minimum controls, passive readable demo status, explicit mock talkback AX value"
+  ],
+  "new_Core_or_separate_native_model_runs": 0,
+  "function": {
+    "id": "F103",
+    "implementation_status": "partial",
+    "parity_accepted": false
+  },
+  "limits": [
+    "Actual assistive technologies, focus/order/announcements, Dynamic Type, contrast, physical devices and original comparison remain open",
+    "Four generated local still assets repeat across nine demo slots; no live stream or nine real cameras",
+    "No Home/camera/microphone/permission/account/system settings/real calls/messages/system alarms/new Live Activities"
+  ]
+}

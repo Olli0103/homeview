@@ -3,6 +3,83 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func launchMockCameraAudit(nine:Bool=false,detail:Bool=false,talking:Bool=false) {
+    launch(["--page","Cameras"])
+    if nine {tap("camera.grid.size");XCTAssertTrue(app.buttons["camera.8"].exists)}
+    if detail {tap("camera.0");XCTAssertEqual(app.descendants(matching:.any)["camera.demo.status"].label,"Demo still")}
+    if talking {tap("camera.talk");XCTAssertTrue(app.staticTexts["Mock talkback active · No microphone used"].exists)}
+  }
+  private func auditMockCameraHitRegions(_ state:String) throws {
+    viewportShot("mock-camera-hit-region-"+state)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let e=issue.element,f=e?.frame ?? .zero
+      reports.append(["identifier":e?.identifier ?? "","label":e?.label ?? "",
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let a=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="mock-camera-hit-region-"+state+"-all-findings";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered mock camera audit found \(reports.count) issues: \(reports)")
+  }
+  func testMockCameraFourAutomaticHitRegionAudit() throws {launchMockCameraAudit();try auditMockCameraHitRegions("four")}
+  func testMockCameraNineAutomaticHitRegionAudit() throws {launchMockCameraAudit(nine:true);try auditMockCameraHitRegions("nine")}
+  func testMockCameraDetailAutomaticHitRegionAudit() throws {launchMockCameraAudit(detail:true);try auditMockCameraHitRegions("detail")}
+  func testMockCameraTalkingAutomaticHitRegionAudit() throws {launchMockCameraAudit(detail:true,talking:true);try auditMockCameraHitRegions("talking")}
+  private func tapMockCameraEdge(_ e:XCUIElement,bottom:Bool=false) {
+    XCTAssertTrue(e.waitForExistence(timeout:5))
+    let f=e.frame,v=app.otherElements["reference.viewport"].frame
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:[
+      "identifier":e.identifier,"label":e.label,"frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "hittable":e.isHittable,"edge":bottom ? "bottom":"top"],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="mock-camera-edge-"+e.identifier.replacingOccurrences(of:".",with:"-")+"-"+(bottom ? "bottom":"top")
+    a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(v.contains(f));tapRecipeTargetEdge(e,bottom:bottom)
+  }
+  func testMockCameraGridSizeLastSlotAndHeaderCloseActualEdges() {
+    launchMockCameraAudit()
+    tapMockCameraEdge(app.buttons["camera.grid.size"])
+    XCTAssertTrue(app.buttons["camera.8"].exists)
+    let tiles=(0..<9).map {app.buttons["camera.\($0)"].frame}
+    for i in 0..<tiles.count {for j in (i+1)..<tiles.count {XCTAssertTrue(tiles[i].intersection(tiles[j]).isNull)}}
+    tapMockCameraEdge(app.buttons["camera.8"],bottom:true)
+    XCTAssertEqual(app.descendants(matching:.any)["camera.demo.status"].label,"Demo still")
+    XCTAssertTrue(app.staticTexts["Front Door"].exists)
+    tapMockCameraEdge(app.buttons["camera.grid"])
+    XCTAssertTrue(app.buttons["camera.0"].exists)
+    tapMockCameraEdge(app.buttons["close"],bottom:true)
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+  }
+  func testMockCameraTalkAndDetailCloseActualEdges() {
+    launchMockCameraAudit(detail:true)
+    tapMockCameraEdge(app.buttons["camera.talk"])
+    XCTAssertTrue(app.staticTexts["Mock talkback active · No microphone used"].exists)
+    tapMockCameraEdge(app.buttons["camera.talk"],bottom:true)
+    XCTAssertTrue(app.staticTexts["Mock talkback off"].exists)
+    tapMockCameraEdge(app.buttons["camera.close"],bottom:true)
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+  }
+  func testMockCameraTalkValueAndNavigationResetAreReadable() {
+    launchMockCameraAudit(detail:true)
+    XCTAssertEqual(app.buttons["camera.talk"].value as? String,"Off (demo)")
+    tap("camera.talk");XCTAssertEqual(app.buttons["camera.talk"].value as? String,"On (demo)")
+    tap("camera.grid");tap("camera.1")
+    XCTAssertEqual(app.buttons["camera.talk"].value as? String,"Off (demo)")
+    tap("camera.talk");XCTAssertEqual(app.buttons["camera.talk"].value as? String,"On (demo)")
+    tap("camera.close");tap("nav.apps");tap("app.Cameras");tap("camera.0")
+    XCTAssertEqual(app.buttons["camera.talk"].value as? String,"Off (demo)")
+    viewportShot("mock-camera-talk-off-after-navigation")
+  }
+  func testMockCameraFaceFrozenViewportWithoutCapture() {
+    launch(["--face","Home Camera"])
+    XCTAssertTrue(app.buttons["camera.3"].exists)
+    viewportShot("mock-camera-face-preserved")
+  }
+}
+
+extension HomeViewUITests {
   private func launchLocalBrowserAudit(history:Bool=false,multiple:Bool=false) {
     var args=["--page","Safari"]
     if history {args.append("--browser-navigation-fixture")}
