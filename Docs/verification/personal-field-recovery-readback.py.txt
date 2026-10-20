@@ -1,0 +1,48 @@
+from pathlib import Path
+import os,stat,json,re,uuid,subprocess,hashlib
+b=Path(__file__).parent;pre='personal-field-recovery-ui';out=b/pre
+plan=json.loads((b/(pre+'-plan.json')).read_text());rows=[]
+def read(p):
+ fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+ try:
+  st=os.fstat(fd);assert stat.S_ISREG(st.st_mode) and st.st_size<=32_000_000
+  data=b''
+  while True:
+   part=os.read(fd,min(65536,32_000_001-len(data)))
+   if not part:break
+   data+=part
+   assert len(data)<=32_000_000
+  return data
+ finally:os.close(fd)
+sha=lambda x:hashlib.sha256(x).hexdigest()
+for device,destination in plan['destinations'].items():
+ matches=re.findall(r'PERSONAL_FIELD_RECOVERY_STORE kind=(damaged|legacy) id=([A-F0-9-]{36})', (out/(device+'.log')).read_text())
+ assert len(matches)==2 and len(set(matches))==2,matches
+ assert {x[0] for x in matches}=={'damaged','legacy'}
+ container=Path(subprocess.check_output(['xcrun','simctl','get_app_container',destination,'org.example.HomeViewReplica','data'],text=True).strip())
+ for kind,uid in matches:
+  assert str(uuid.UUID(uid)).upper()==uid
+  root=container/'Library/Application Support/HomeViewReplica'/('test-'+uid)
+  assert root.is_dir() and not root.is_symlink()
+  digest=read(root/'personal-fixture-sha256.txt').decode().strip();assert re.fullmatch('[0-9a-f]{64}',digest)
+  original=read(root/'State Recovery'/('original-'+digest+'.json'));assert sha(original)==digest
+  before=json.loads(original);currentBytes=read(root/'mock-state.json');current=json.loads(currentBytes)
+  assert {k:v for k,v in current.items() if k!='personal'}=={k:v for k,v in before.items() if k!='personal'}
+  assert set(current['personal'])=={'Alex','Jamie'}
+  alex=current['personal']['Alex'];jamie=current['personal']['Jamie']
+  assert alex==dict(messages=['OWNED_ALEX_FIRST_MESSAGE','OWNED_ALEX_LAST_MESSAGE'],reminders=[])
+  assert jamie['messages']==[]
+  reminders=jamie['reminders'];assert len(reminders)==2
+  first,last=reminders;assert first['title']=='OWNED_JAMIE_FIRST_REMINDER' and first['completed']==True
+  assert last['title']=='OWNED_JAMIE_LAST_REMINDER' and last['completed']==False
+  assert first['id']!=last['id']
+  raw=before['personal']
+  assert first['id']==raw['Jamie']['reminders'][0]['id'] and last['id']==raw['Jamie']['reminders'][-1]['id']
+  if kind=='legacy':
+   assert set(raw['Alex'])=={'messages'} and set(raw['Jamie'])=={'reminders'}
+  else:
+   assert raw['Alex']['reminders']=='broken' and raw['Jamie']['messages']=={'not':'a list'}
+   assert len(raw['Alex']['messages'])==4 and len(raw['Jamie']['reminders'])==5
+   assert raw['Jamie']['reminders'][3]['id']==first['id']
+  rows.append(dict(device=device,kind=kind,ownedUUID=uid,originalSHA256=digest,currentSHA256=sha(currentBytes),originalByteCopyVerified=True,normalWriteVerified=True,otherSnapshotFieldsExactlyPreserved=True,validMessagesPreserved=True,missingOrBrokenListsEmpty=True,reminderIdentitiesPreservedAndUnique=True,firstReminderCompletedAndLastNotCompleted=True))
+p=b/'personal-field-recovery-store-readback.json';assert not p.exists();p.write_text(json.dumps(dict(scope='Only four UUID stores printed by these native tests; no ordinary stores inspected.',rows=rows),indent=2)+'\n');print('Four own stores, unchanged neighbors and original byte copies verified')
