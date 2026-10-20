@@ -85,11 +85,13 @@ struct ControlCenterView: View {
 }
 struct SettingsView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide: CGFloat { (44 / max(0.01, canvasScale)).rounded(.up) }
   @State private var showingPowerCapabilities=false
   @State private var showingTimerActivitySettings=false
   var body: some View {
     VStack(spacing: 12) {
-      AppHeader(title: "Settings")
+      AppHeader(title: "Settings", closeSize: max(48, minimumHitSide))
       ScrollView {
         VStack(alignment: .leading, spacing: 22) {
           if let note = model.storeRecoveryNote {
@@ -138,10 +140,10 @@ struct SettingsView: View {
           Button("Edit Faces") { model.route = .editor }.font(.system(size: 23))
             .accessibilityIdentifier("settings.faces")
           Button("Light & brightness") { model.route = .light }.font(.system(size: 23))
-          ValueAdjuster(value: model.data.home.blinds, label: "Mock blinds") {
+          ValueAdjuster(value: model.data.home.blinds, label: "Mock blinds", minimumHitSide: minimumHitSide) {
             model.command(.blinds($0))
           }
-          ValueAdjuster(value: model.data.home.fanSpeed, label: "Mock fan speed") {
+          ValueAdjuster(value: model.data.home.fanSpeed, label: "Mock fan speed", minimumHitSide: minimumHitSide) {
             model.command(.fanSpeed($0))
           }
           Button("Simulate doorbell") { model.simulateDoorbell() }.font(.system(size: 23))
@@ -166,6 +168,7 @@ struct SettingsView: View {
             "Original artwork reference: Apple HomeView, October 2026. This independent prototype is not an Apple product."
           ).font(.system(size: 15)).foregroundStyle(.gray)
         }.padding(32)
+          .buttonStyle(SettingsHitRegionStyle(minimumSide: minimumHitSide))
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
       .sheet(isPresented:$showingPowerCapabilities) { PowerCapabilitiesView() }
@@ -179,7 +182,15 @@ struct SettingsView: View {
         Image(systemName: on ? "checkmark.circle.fill" : "circle").foregroundStyle(
           on ? .green : .gray)
       }.font(.system(size: 23)).contentShape(Rectangle())
-    }
+    }.accessibilityValue(on ? "On" : "Off")
+  }
+}
+// Scoped to the settings scroll content: unscaled sheets retain their own style.
+private struct SettingsHitRegionStyle: ButtonStyle {
+  var minimumSide: CGFloat
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label.frame(minWidth: minimumSide, minHeight: minimumSide)
+      .contentShape(Rectangle())
   }
 }
 struct AssistantView: View {

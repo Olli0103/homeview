@@ -3,6 +3,139 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func launchUnconnectedSettingsAudit() {
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    XCTAssertTrue(app.buttons["settings.reset"].waitForExistence(timeout:5))
+  }
+  private func auditSettingsHitRegions(_ state:String) throws {
+    viewportShot("settings-hit-region-"+state)
+    let viewport=app.otherElements["reference.viewport"].frame
+    let controls=app.buttons.allElementsBoundByIndex+app.textFields.allElementsBoundByIndex
+      + app.switches.allElementsBoundByIndex+app.segmentedControls.allElementsBoundByIndex
+      + app.sliders.allElementsBoundByIndex+app.links.allElementsBoundByIndex
+    let geometry:[[String:Any]]=controls.compactMap { e in
+      let f=e.frame
+      guard !f.isEmpty,f.intersects(viewport) else {return nil}
+      return ["identifier":e.identifier,"label":e.label,"type":e.elementType.rawValue,
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "hittable":e.isHittable,"enabled":e.isEnabled,"fullyInViewport":viewport.contains(f)]
+    }
+    let g=XCTAttachment(data:try JSONSerialization.data(withJSONObject:geometry,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    g.name="settings-hit-region-"+state+"-visible-control-geometry";g.lifetime = .keepAlways;add(g)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let e=issue.element,f=e?.frame ?? .zero
+      reports.append(["identifier":e?.identifier ?? "","label":e?.label ?? "",
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let a=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="settings-hit-region-"+state+"-all-findings";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered Settings audit found \(reports.count) issues: \(reports)")
+  }
+  func testSettingsTopUnconnectedAutomaticHitRegionAudit() throws {
+    launchUnconnectedSettingsAudit();try auditSettingsHitRegions("top")
+  }
+  func testSettingsControlsUnconnectedAutomaticHitRegionAudit() throws {
+    launchUnconnectedSettingsAudit();scrollPhotoControlFullyIntoView(app.buttons["settings.faces"])
+    try auditSettingsHitRegions("controls")
+  }
+  func testSettingsServicesUnconnectedAutomaticHitRegionAudit() throws {
+    launchUnconnectedSettingsAudit();scrollPhotoControlFullyIntoView(app.buttons["connect.Calendar"])
+    try auditSettingsHitRegions("services")
+  }
+  func testSettingsWeatherUnconnectedAutomaticHitRegionAudit() throws {
+    launchUnconnectedSettingsAudit();scrollPhotoControlFullyIntoView(app.textFields["weather.city"])
+    try auditSettingsHitRegions("weather")
+  }
+  func testSettingsPhotoChoicesUnconnectedAutomaticHitRegionAudit() throws {
+    launchUnconnectedSettingsAudit();scrollPhotoControlFullyIntoView(app.buttons["photos.demo"])
+    try auditSettingsHitRegions("photos")
+  }
+  func testSettingsMockMiddleAutomaticHitRegionAudit() throws {
+    launchUnconnectedSettingsAudit();scrollPhotoControlFullyIntoView(app.buttons["settings.doorbell"])
+    try auditSettingsHitRegions("mock-middle")
+  }
+  func testSettingsAdditionalVisibleChoicesAutomaticHitRegionAudit() throws {
+    launchUnconnectedSettingsAudit()
+    for (anchor,state) in [(app.buttons["Light & brightness"],"light-row"),
+      (app.buttons["native.alarm"],"native-alarm-row"),
+      (app.buttons["photos.gallery"],"gallery-row"),
+      (app.links["Weather data by Open-Meteo"],"weather-attribution")] {
+      scrollPhotoControlFullyIntoView(anchor)
+      try auditSettingsHitRegions(state)
+    }
+  }
+  func testSettingsMockSlidersKeepNativeAdjustmentAndValue() {
+    launchUnconnectedSettingsAudit()
+    for label in ["Mock blinds","Mock fan speed"] {
+      let slider=app.sliders[label]
+      scrollPhotoControlFullyIntoView(slider)
+      let f=slider.frame,v=app.otherElements["reference.viewport"].frame
+      XCTAssertGreaterThanOrEqual(f.width,44);XCTAssertGreaterThanOrEqual(f.height,44)
+      XCTAssertTrue(v.contains(f));XCTAssertTrue(slider.isHittable)
+      for target in [CGFloat(0.25),CGFloat(0.75)] {
+        slider.adjust(toNormalizedSliderPosition:target)
+        let number=Double((slider.value as? String ?? "").replacingOccurrences(of:"%",with:""))
+        XCTAssertNotNil(number,"Native value: \(String(describing:slider.value))")
+        XCTAssertEqual(number ?? -100,Double(target)*100,accuracy:10)
+        let displayed=app.staticTexts["adjuster.value."+label]
+        XCTAssertEqual(displayed.label,slider.value as? String)
+      }
+    }
+    viewportShot("settings-native-sliders-adjusted")
+  }
+  private func tapSettingsNativeEdge(_ e:XCUIElement,bottom:Bool=false) {
+    XCTAssertTrue(e.waitForExistence(timeout:5))
+    let f=e.frame,v=app.otherElements["reference.viewport"].frame
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:[
+      "identifier":e.identifier,"label":e.label,"frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "hittable":e.isHittable,"viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "edge":bottom ? "bottom":"top"],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="settings-native-edge-"+(e.identifier.isEmpty ? e.label:e.identifier).replacingOccurrences(of:" ",with:"-")+"-"+(bottom ? "bottom":"top")
+    a.lifetime = .keepAlways;add(a)
+    XCTAssertGreaterThanOrEqual(f.width,44);XCTAssertGreaterThanOrEqual(f.height,44)
+    XCTAssertTrue(v.contains(f));XCTAssertTrue(e.isHittable)
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:f.midX,dy:bottom ? f.maxY-2:f.minY+2)).tap()
+  }
+  func testSettingsNightValueAndCloseActualNativeEdges() {
+    continueAfterFailure=true
+    launchUnconnectedSettingsAudit()
+    let night=app.buttons["Night mode"]
+    scrollPhotoControlFullyIntoView(night)
+    XCTAssertEqual(night.value as? String,"Off")
+    tapSettingsNativeEdge(night)
+    expectation(for:NSPredicate(format:"value == %@","On"),evaluatedWith:night);waitForExpectations(timeout:5)
+    tapSettingsNativeEdge(night,bottom:true)
+    expectation(for:NSPredicate(format:"value == %@","Off"),evaluatedWith:night);waitForExpectations(timeout:5)
+    tapSettingsNativeEdge(app.buttons["close"])
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    viewportShot("settings-native-edges-returned-personal-home")
+  }
+  func testSettingsMockStepperAndSyntheticConnectionActualEdges() {
+    continueAfterFailure=true
+    launchUnconnectedSettingsAudit()
+    let slider=app.sliders["Mock blinds"],increase=app.buttons["Increase Mock blinds"]
+    scrollPhotoControlFullyIntoView(increase)
+    let before=slider.value as? String;XCTAssertNotNil(before)
+    tapSettingsNativeEdge(increase)
+    expectation(for:NSPredicate(format:"value != %@",before ?? ""),evaluatedWith:slider);waitForExpectations(timeout:5)
+    tapSettingsNativeEdge(app.buttons["Decrease Mock blinds"],bottom:true)
+    expectation(for:NSPredicate(format:"value == %@",before ?? ""),evaluatedWith:slider);waitForExpectations(timeout:5)
+    let calendar=app.buttons["connect.Calendar"]
+    scrollPhotoControlFullyIntoView(calendar);tapSettingsNativeEdge(calendar)
+    let status=app.staticTexts["connection.status.Calendar"]
+    expectation(for:NSPredicate(format:"label CONTAINS %@","Connected"),evaluatedWith:status);waitForExpectations(timeout:5)
+    XCTAssertEqual(calendar.label,"Disconnect")
+    tapSettingsNativeEdge(calendar,bottom:true)
+    expectation(for:NSPredicate(format:"label == %@","Disconnected"),evaluatedWith:status);waitForExpectations(timeout:5)
+    XCTAssertEqual(calendar.label,"Connect")
+    viewportShot("settings-native-edges-synthetic-calendar-disconnected")
+  }
+}
+
+extension HomeViewUITests {
   private func verifyGuestRevokesConnectedSession(_ service:String) {
     launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
     connectService(service)

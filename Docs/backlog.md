@@ -1387,3 +1387,7 @@ Apple Home bleibt bis zur ausdrücklich fortgesetzten Einrichtung gesperrt. Pers
 ## Abschluss 19. Oktober 2026
 
 [SYS-02 / #65](settings-state.md) ist im bilanzierten App-Control-Umfang abgeschlossen. Die drei Musik-Suchfehler sind unter [QA-05](music-search-lifecycle.md) behoben; #67/#80 bleiben für ihre breiteren Kriterien offen. Die [Fade-Flächenkorrektur](fade-surface-tones.md) ist geliefert; #18 bleibt für Originalzeitkurve und weitere Details offen. Apple Home bleibt deaktiviert.
+
+### Einstellungen-Touchflächen · 20. Oktober 2026
+
+Einstellungen: zu kleine native Tasten und Mock-Regler sowie fehlende Boolean-AXwerte korrigiert; getrennte Vorherfehler erhalten. Acht letzte betroffene UI-Ausführungen, zehn leere ungefilterte Auditlisten und fünf SDKs; vorherige 18/20 UI-Ergebnisse ausdrücklich historisch. Keine echte Hilfsmittel-/Hardwareabnahme; Wetterfeld/Einheitenwähler separat offen. Docs/settings-hit-regions.md. #73 bleibt OPEN; ursprüngliche Anforderungen unverändert.
