@@ -1,0 +1,844 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "status": "partial_issue_remains_open",
+  "product_test_commit": "13bd448b1f17dcbe04d20f1f65b6eed1000d0820",
+  "capture_helper_commit": "ef7a6397682ab64b83453347538891e13af41b91",
+  "current_source_files": 206,
+  "current_source_digest": "22f92e3c1db1f6e2c0543fbab8c5e69a32d2d2aab9a2a44969e70017991811a5",
+  "functional_source_digest": "061e646de39b9e6d2c24cba00cbb47fe2f88d345579a198dac491c5b3b3d039e",
+  "UI_results": [
+    {
+      "checkpoint": "demo-music-hit-regions-baseline",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 2,
+      "exit_code": 65,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "demo-music-hit-regions-baseline",
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 2,
+      "exit_code": 65,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "demo-music-hit-regions-final",
+      "device": "iPad",
+      "passed": 5,
+      "failed": 0,
+      "exit_code": 0,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "demo-music-hit-regions-final",
+      "device": "iPhone",
+      "passed": 5,
+      "failed": 0,
+      "exit_code": 0,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "demo-music-hit-regions-capture-final",
+      "device": "iPad",
+      "passed": 1,
+      "failed": 0,
+      "exit_code": 0,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "demo-music-hit-regions-capture-final",
+      "device": "iPhone",
+      "passed": 1,
+      "failed": 0,
+      "exit_code": 0,
+      "bound_App_metadata_launch_inputs": 28
+    }
+  ],
+  "UI_functional_checkpoint_executions": 10,
+  "UI_capture_qualification_executions": 2,
+  "UI_unique_methods": 5,
+  "UI_accepted_scope": "10 functional executions then only positive AX/capture method repeated2times with identical18fileApp/Widgetbundle; not one12testgreen suite",
+  "UI_total_executions": 20,
+  "UI_total_passed": 16,
+  "UI_historical_failed": 4,
+  "UI_skips": 0,
+  "UI_structured_runtime_warnings": 0,
+  "audit_findings": {
+    "demo-music-hit-regions-baseline/iPad/demo-music-hit-region-information-all-findings": [],
+    "demo-music-hit-regions-baseline/iPad/demo-music-hit-region-library-all-findings": [],
+    "demo-music-hit-regions-baseline/iPad/demo-music-hit-region-paused-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          65.06666666666666,
+          778.6433333333333,
+          689.8666666666666,
+          5.306666666666729
+        ],
+        "identifier": "",
+        "label": ""
+      }
+    ],
+    "demo-music-hit-regions-baseline/iPhone/demo-music-hit-region-information-all-findings": [],
+    "demo-music-hit-regions-baseline/iPhone/demo-music-hit-region-library-all-findings": [],
+    "demo-music-hit-regions-baseline/iPhone/demo-music-hit-region-paused-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          348.62999999999994,
+          491.74,
+          14.28000080108643,
+          10.5000008010864
+        ],
+        "identifier": "list.bullet",
+        "label": "Music library"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          37.19999999999999,
+          526.5999999999999,
+          327.6,
+          2.5200000000000955
+        ],
+        "identifier": "",
+        "label": ""
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          123.30000000000001,
+          546.55,
+          24.360000801086414,
+          13.650000801086435
+        ],
+        "identifier": "backward.fill",
+        "label": "Previous track"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          192.39,
+          542.14,
+          19.95000080108639,
+          22.260001602172792
+        ],
+        "identifier": "player.play",
+        "label": "Play"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          254.34000000000003,
+          546.55,
+          24.360000801086414,
+          13.650000801086435
+        ],
+        "identifier": "player.next",
+        "label": "Next track"
+      }
+    ],
+    "demo-music-hit-regions-final/iPad/demo-music-hit-region-information-all-findings": [],
+    "demo-music-hit-regions-final/iPad/demo-music-hit-region-library-all-findings": [],
+    "demo-music-hit-regions-final/iPad/demo-music-hit-region-paused-all-findings": [],
+    "demo-music-hit-regions-final/iPhone/demo-music-hit-region-information-all-findings": [],
+    "demo-music-hit-regions-final/iPhone/demo-music-hit-region-library-all-findings": [],
+    "demo-music-hit-regions-final/iPhone/demo-music-hit-region-paused-all-findings": []
+  },
+  "edge_geometries": {
+    "demo-music-hit-regions-baseline/iPad": [
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          522.1033333333334,
+          821.0966666666667,
+          51.0766666666666,
+          29.18666666666661
+        ],
+        "hittable": true,
+        "identifier": "player.next",
+        "label": "Next track",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    ],
+    "demo-music-hit-regions-baseline/iPhone": [
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          254.34000000000003,
+          546.55,
+          24.360000801086414,
+          13.650000801086435
+        ],
+        "hittable": true,
+        "identifier": "player.next",
+        "label": "Next track",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    ],
+    "demo-music-hit-regions-final/iPad": [
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          49.14666748046875,
+          208.83999633789062,
+          63.68000030517578,
+          63.67999267578125
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          709.8266666666667,
+          693.7366666666667,
+          45.10666666666657,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "list.bullet",
+        "label": "Music library",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          493.58,
+          557.7533333333333,
+          95.52000000000004,
+          95.51999999999998
+        ],
+        "hittable": true,
+        "identifier": "music.artwork.info.demo",
+        "label": "Artwork and lyrics information",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          246.15666666666667,
+          813.1366666666667,
+          56.383333333333354,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "backward.fill",
+        "label": "Previous track",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          517.46,
+          813.1366666666667,
+          56.383333333333326,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "player.next",
+        "label": "Next track",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    ],
+    "demo-music-hit-regions-final/iPhone": [
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          29.639999389648438,
+          256.1199951171875,
+          44.099998474121094,
+          44.100006103515625
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          320.7,
+          491.74,
+          44.10000000000002,
+          44.09999999999991
+        ],
+        "hittable": true,
+        "identifier": "list.bullet",
+        "label": "Music library",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          240.68999999999997,
+          435.6699999999999,
+          45.36000000000004,
+          45.36000000000007
+        ],
+        "hittable": true,
+        "identifier": "music.artwork.info.demo",
+        "label": "Artwork and lyrics information",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          95.79000000000002,
+          559.78,
+          44.099999999999966,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "backward.fill",
+        "label": "Previous track",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          262.11,
+          559.78,
+          44.099999999999966,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "player.next",
+        "label": "Next track",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    ],
+    "demo-music-hit-regions-capture-final/iPad": [],
+    "demo-music-hit-regions-capture-final/iPhone": []
+  },
+  "final_actual_native_edge_actions": 10,
+  "Play_geometry_only_not_activated": [
+    {
+      "device": "iPad",
+      "activated": false,
+      "frame": [
+        384.79333333333335,
+        806.5033333333333,
+        50.4133333333333,
+        57.710000000000036
+      ],
+      "hittable": true,
+      "identifier": "player.play",
+      "label": "Play"
+    },
+    {
+      "device": "iPhone",
+      "activated": false,
+      "frame": [
+        178.94999999999996,
+        559.78,
+        44.10000000000008,
+        44.10000000000002
+      ],
+      "hittable": true,
+      "identifier": "player.play",
+      "label": "Play"
+    }
+  ],
+  "baseline_manual": "Both stopped before first Next top tap; native heights29.1866667/iPad and13.6500008/iPhone, no native edges delivered",
+  "passive_progress": {
+    "AX_present": true,
+    "label": "Demo progress",
+    "value": "0 of 180 seconds",
+    "not_a_slider_or_button": true,
+    "not_hidden": true,
+    "own_gestures_or_seek_actions": false,
+    "responds_to_user_interaction": false,
+    "counter_is_simulated_demo_not_real_AV_playhead": true,
+    "public_API": {
+      "url": "https://developer.apple.com/documentation/swiftui/view/accessibilityrespondstouserinteraction(_:)",
+      "full_DocC_sha256": "e43d5dc8eea85c39d9f4e1acc846568be3cd2aaf075a1b76ac6ea4a6bdd36866",
+      "read_on": "2026-10-20",
+      "source_review": "ProgressView has no own tap/gesture/seek/slider action; modifier concerns assistive interaction targeting, not a new seeking function",
+      "no_actual_assistive_technology_acceptance": true
+    },
+    "actual_assistive_technology_used": false
+  },
+  "capture_poses": {
+    "iPad": {
+      "after": {
+        "app": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "done": [
+          620,
+          274,
+          66,
+          36
+        ],
+        "footer": [
+          144,
+          618.989013671875,
+          509,
+          42.5
+        ],
+        "source": [
+          146,
+          400.489013671875,
+          189,
+          20.5
+        ]
+      },
+      "before": {
+        "app": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "done": [
+          620,
+          274,
+          66,
+          36
+        ],
+        "footer": [
+          144,
+          618.989013671875,
+          509,
+          42.5
+        ],
+        "source": [
+          146,
+          400.489013671875,
+          189,
+          20.5
+        ]
+      },
+      "declared_wait_seconds": 2,
+      "elapsed_seconds": 2.3748852498829365
+    },
+    "iPhone": {
+      "after": {
+        "app": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "done": [
+          316.3333333333333,
+          82,
+          65.66666666666669,
+          36
+        ],
+        "footer": [
+          24,
+          447.6776529947917,
+          346.3333333333333,
+          64.33333333333331
+        ],
+        "source": [
+          26,
+          208,
+          188.6666717529297,
+          20.333328247070312
+        ]
+      },
+      "before": {
+        "app": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "done": [
+          316.3333333333333,
+          82,
+          65.66666666666669,
+          36
+        ],
+        "footer": [
+          24,
+          447.6776529947917,
+          346.3333333333333,
+          64.33333333333331
+        ],
+        "source": [
+          26,
+          208,
+          188.6666717529297,
+          20.333328247070312
+        ]
+      },
+      "declared_wait_seconds": 2,
+      "elapsed_seconds": 2.3130191250238568
+    }
+  },
+  "capture_finding": "AX before/after end rectangles were already equal, but actual immediate and later full-display images show different presentation positions. Later image settles completely. No additional product change; do not attribute this solely to app.screenshot cropping.",
+  "capture_product_equivalence": {
+    "product_bundle_unchanged_files": 18,
+    "all_current_app_bytes_identical_to_ten_execution_checkpoint": true,
+    "SDK_builds_reused_only_for_identical_product": true,
+    "only_changed_source": "Tests/UITests/HomeViewUITests.swift",
+    "new_scope": "Only positive AX method repeats with immediate/2s-later full-screen samples and pose geometry",
+    "functional_checkpoint_source_digest": "061e646de39b9e6d2c24cba00cbb47fe2f88d345579a198dac491c5b3b3d039e",
+    "capture_checkpoint_source_digest": "22f92e3c1db1f6e2c0543fbab8c5e69a32d2d2aab9a2a44969e70017991811a5"
+  },
+  "source_scope": {
+    "product_commit": "13bd448b1f17dcbe04d20f1f65b6eed1000d0820",
+    "base": "3a7eb069ced30f62d234a29d8ffd864f218695b2",
+    "baseline_to_final_changed_inputs": [
+      "Sources/App/Everyday.swift",
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "other_inputs_unchanged": 204,
+    "product_changed_only_MusicView": true,
+    "all_other_Everyday_views_unchanged": true,
+    "AudioEngine_AppModel_CatalogView_ArtworkInfoButton_and_sheet_unchanged": true,
+    "four_baseline_UI_methods_byte_identical_prefix": true,
+    "additional_method": "testDemoMusicProgressStaysReadableAndPassiveWithoutPlayback",
+    "purpose": "Positive readable AX progress retained; no slider/button; final actual full-screen sheet capture; no playback",
+    "Core_equal_historical301_paths": [
+      "Sources/Core/AlbumDisplay.swift",
+      "Sources/Core/AnswerSpeechSession.swift",
+      "Sources/Core/AssistantConversation.swift",
+      "Sources/Core/AssistantLimits.swift",
+      "Sources/Core/AssistantResponseDocument.swift",
+      "Sources/Core/BrowserPolicy.swift",
+      "Sources/Core/CalendarAgenda.swift",
+      "Sources/Core/ConicGradientModel.swift",
+      "Sources/Core/ConnectedDataSession.swift",
+      "Sources/Core/ConnectedModels.swift",
+      "Sources/Core/DataConnection.swift",
+      "Sources/Core/DemoActionPlan.swift",
+      "Sources/Core/DemoDoorbell.swift",
+      "Sources/Core/EverydayVoiceCommand.swift",
+      "Sources/Core/FaceConfiguration.swift",
+      "Sources/Core/FlowSimulation.swift",
+      "Sources/Core/FlowTypography.swift",
+      "Sources/Core/GuestAccessPolicy.swift",
+      "Sources/Core/LocalStateFileReader.swift",
+      "Sources/Core/LocalStateReset.swift",
+      "Sources/Core/Models.swift",
+      "Sources/Core/MusicPlaybackGate.swift",
+      "Sources/Core/PersonalHomeConfiguration.swift",
+      "Sources/Core/PhotoClockInk.swift",
+      "Sources/Core/PhotoMaskRasterizer.swift",
+      "Sources/Core/PhotoPlacement.swift",
+      "Sources/Core/PodcastFeedParser.swift",
+      "Sources/Core/PodcastFeedTransport.swift",
+      "Sources/Core/PodcastLibrary.swift",
+      "Sources/Core/PowerAdapterInformation.swift",
+      "Sources/Core/RecipeParser.swift",
+      "Sources/Core/RecipeTransfer.swift",
+      "Sources/Core/SetupIntroduction.swift",
+      "Sources/Core/SnapshotMigration.swift",
+      "Sources/Core/TimerLiveActivity.swift",
+      "Sources/Core/ViewportNavigationIntent.swift",
+      "Sources/Core/WeatherData.swift",
+      "Sources/Core/WorldClock.swift",
+      "Tests/CoreTests/AlbumDisplayTests.swift",
+      "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+      "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+      "Tests/CoreTests/AssistantConversationTests.swift",
+      "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+      "Tests/CoreTests/BrowserPolicyTests.swift",
+      "Tests/CoreTests/CalendarAgendaTests.swift",
+      "Tests/CoreTests/CalendarBoundaryTests.swift",
+      "Tests/CoreTests/ConicGradientTests.swift",
+      "Tests/CoreTests/DemoActionPlanTests.swift",
+      "Tests/CoreTests/DemoDoorbellTests.swift",
+      "Tests/CoreTests/DeviceConnectionTests.swift",
+      "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+      "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+      "Tests/CoreTests/FlowTypographyTests.swift",
+      "Tests/CoreTests/GuestSafetyTests.swift",
+      "Tests/CoreTests/HomeViewCoreTests.swift",
+      "Tests/CoreTests/LocalStateFileReaderTests.swift",
+      "Tests/CoreTests/LocalStateResetTests.swift",
+      "Tests/CoreTests/MusicPlaybackGateTests.swift",
+      "Tests/CoreTests/PersonalHomeTests.swift",
+      "Tests/CoreTests/PhotoClockInkTests.swift",
+      "Tests/CoreTests/PhotoPlacementTests.swift",
+      "Tests/CoreTests/PodcastTests.swift",
+      "Tests/CoreTests/PowerAdapterInformationTests.swift",
+      "Tests/CoreTests/RecipeParserTests.swift",
+      "Tests/CoreTests/RecipeTransferTests.swift",
+      "Tests/CoreTests/SetupIntroductionTests.swift",
+      "Tests/CoreTests/SnapshotMigrationTests.swift",
+      "Tests/CoreTests/TimerLiveActivityTests.swift",
+      "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+      "Tests/CoreTests/WatchFacesTests.swift",
+      "Tests/CoreTests/WeatherTests.swift",
+      "Tests/CoreTests/WorldClockTests.swift"
+    ],
+    "historical_Core_commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "new_Core_execution": false,
+    "Play_function_activated": false,
+    "library_rows_selected": false,
+    "source_digest": "061e646de39b9e6d2c24cba00cbb47fe2f88d345579a198dac491c5b3b3d039e",
+    "passive_API": {
+      "url": "https://developer.apple.com/documentation/swiftui/view/accessibilityrespondstouserinteraction(_:)",
+      "full_DocC_sha256": "e43d5dc8eea85c39d9f4e1acc846568be3cd2aaf075a1b76ac6ea4a6bdd36866",
+      "read_on": "2026-10-20",
+      "source_review": "ProgressView has no own tap/gesture/seek/slider action; modifier concerns assistive interaction targeting, not a new seeking function",
+      "no_actual_assistive_technology_acceptance": true
+    }
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "product_commit": "13bd448b1f17dcbe04d20f1f65b6eed1000d0820"
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "product_commit": "13bd448b1f17dcbe04d20f1f65b6eed1000d0820"
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "product_commit": "13bd448b1f17dcbe04d20f1f65b6eed1000d0820"
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "product_commit": "13bd448b1f17dcbe04d20f1f65b6eed1000d0820"
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "product_commit": "13bd448b1f17dcbe04d20f1f65b6eed1000d0820"
+    }
+  ],
+  "archives": {
+    "demo-music-hit-regions-baseline": {
+      "archive": "demo-music-hit-regions-baseline-inputs.zip",
+      "sha256": "e5f6833e3136cb80615f2c731c3ae2926f67dacfe318c984e9cdd6e3c2f2b17c",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "dd539655213239e0b89b785844b94bf71f7bba339aa7407e2ac38c0999342f65"
+    },
+    "demo-music-hit-regions-final": {
+      "archive": "demo-music-hit-regions-final-inputs.zip",
+      "sha256": "03b6c0941d0e9d5b81010f1d563d603d855d940779b968275dab729555d3e5fb",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "061e646de39b9e6d2c24cba00cbb47fe2f88d345579a198dac491c5b3b3d039e"
+    },
+    "demo-music-hit-regions-capture-final": {
+      "archive": "demo-music-hit-regions-capture-final-inputs.zip",
+      "sha256": "2434e4a3198528b2d252fb1b0f3e6ad5380cb5caee7856721f8227560c4632b9",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "22f92e3c1db1f6e2c0543fbab8c5e69a32d2d2aab9a2a44969e70017991811a5"
+    }
+  },
+  "decoded_PNGs": 52,
+  "contacts_viewed": 6,
+  "additional_full_images_viewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPad-before-viewport-demo-music-hit-region-paused.png",
+      "sha256": "0741cd26cde93440f604e7d5b64fa3fbc1abd5fefd6a1cee976ff647ff6882b9",
+      "checkpoint": "demo-music-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPad-before-viewport-demo-music-hit-region-library.png",
+      "sha256": "9932919a4d11382ec7af5099d5345847266459b5e44475d69a42df39e5da4fe5",
+      "checkpoint": "demo-music-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPad-after-viewport-demo-music-hit-region-paused.png",
+      "sha256": "dc9103bad04192555ef0126d6e3bbd80532197c2eff9578d47683c1a25c247bc",
+      "checkpoint": "demo-music-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPad-after-viewport-demo-music-hit-region-library.png",
+      "sha256": "9932919a4d11382ec7af5099d5345847266459b5e44475d69a42df39e5da4fe5",
+      "checkpoint": "demo-music-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPad-after-viewport-demo-music-hit-region-tracks-changed-still-paused.png",
+      "sha256": "dc9103bad04192555ef0126d6e3bbd80532197c2eff9578d47683c1a25c247bc",
+      "checkpoint": "demo-music-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPad-after-viewport-demo-music-hit-region-readable-passive-progress.png",
+      "sha256": "dc9103bad04192555ef0126d6e3bbd80532197c2eff9578d47683c1a25c247bc",
+      "checkpoint": "demo-music-hit-regions-capture-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPad-after-settled-display-demo-music-hit-region-information.png",
+      "sha256": "a59321d2bcfe62ac04c79e3515868e6ee2c372c738041f76143a76dab150ea38",
+      "checkpoint": "demo-music-hit-regions-capture-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPhone-before-viewport-demo-music-hit-region-paused.png",
+      "sha256": "2b245a0adf6191f9aec57f19c443d8d7f09dcc0ed4f3211d456490a8cb1a1a96",
+      "checkpoint": "demo-music-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPhone-before-viewport-demo-music-hit-region-library.png",
+      "sha256": "2891c854e079f6429026bd7c16c9bbe34cb40e2813267ef8f0c1069db6ad4655",
+      "checkpoint": "demo-music-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPhone-after-viewport-demo-music-hit-region-paused.png",
+      "sha256": "b82b4db810ea32139c79cfca7492bed3a246fe28b8731ed3309abfbb98057728",
+      "checkpoint": "demo-music-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPhone-after-viewport-demo-music-hit-region-library.png",
+      "sha256": "91d8ada97ed685e1190cedc4fa26e42acd24991c50e93ed021de83cc48b7f6b7",
+      "checkpoint": "demo-music-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPhone-after-viewport-demo-music-hit-region-tracks-changed-still-paused.png",
+      "sha256": "211c709a12d405b540de83f2d99bc9872935bf2087b766ac781eebd205983e90",
+      "checkpoint": "demo-music-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPhone-after-viewport-demo-music-hit-region-readable-passive-progress.png",
+      "sha256": "b82b4db810ea32139c79cfca7492bed3a246fe28b8731ed3309abfbb98057728",
+      "checkpoint": "demo-music-hit-regions-capture-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/demo-music-hit-regions/iPhone-after-settled-display-demo-music-hit-region-information.png",
+      "sha256": "4e5eb9ebe0785d03a6f3b615dd15c52d7186d2c2e8df054037c450551bd928a4",
+      "checkpoint": "demo-music-hit-regions-capture-final",
+      "device": "iPhone"
+    }
+  ],
+  "historical_Core": {
+    "tests": 301,
+    "commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "equal_Core_and_test_files": 72,
+    "new_Core_execution": false
+  },
+  "functional_proof": [
+    "Paused Next→A Little Sunshine and Previous→FEVER DREAM, no playback start",
+    "Actual info edge→demo source and ordinary Done→still paused",
+    "Actual library edge→three fixture titles, actual Close edge→personal view",
+    "Play only measured, not activated; transport target rectangles nonoverlapping",
+    "Readable passive AX progress stays present while not a slider or button"
+  ],
+  "limits": [
+    "No Play or library-row activation, no playback/seek/audio-focus/acoustic acceptance",
+    "Demo player only, not connected MusicKit/catalog player",
+    "Info/Library audits already passed before; Info72reference target and shared sheet source unchanged",
+    "No actual VoiceOver/VoiceControl/SwitchControl/FKA use, focus-order/announcement/DynamicType/fullcontrast/physical/original parity acceptance",
+    "No general pixel-preservation claim: native button extents/layout/Close can grow",
+    "Pause/progress data unchanged; this is not real-track duration/position accuracy"
+  ],
+  "playback_started_by_test": false,
+  "library_rows_selected": false,
+  "real_personal_data_used": false,
+  "MusicKit_connected": false,
+  "permissions_changed": false,
+  "Home_constructed": false,
+  "new_system_alarms": false,
+  "new_live_activities": false
+}
