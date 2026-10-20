@@ -1122,7 +1122,7 @@
     "functions": [
       "F058"
     ],
-    "current": "Lokale Intercom-Ansicht versendet nicht an HomePods oder persönliche Geräte.",
+    "current": "Machbarkeitsprüfung abgeschlossen: In den geprüften öffentlichen Apple-Dokumenten und SDK-Schnittstellen ist kein unterstützter Drittanbieter-Sendepfad zu Apple Home Intercom belegt. Lokale Ansicht bleibt Simulation; Originalzustellung F058 blockiert, keine Zielbestätigung. Keine Home-Einrichtung oder eigene Audioalternative.",
     "tasks": [
       "Öffentliche Sendeschnittstellen, Zielauswahl und Berechtigungen belegen",
       "Wenn nicht zugänglich, Originalanforderung unerfüllt lassen",
@@ -1134,7 +1134,12 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/45",
     "issue_number": 45,
-    "state": "open"
+    "state": "completed",
+    "progress_evidence": [
+      "Docs/intercom-public-feasibility.md",
+      "Docs/verification/intercom-public-feasibility.json"
+    ],
+    "research_resolution": "completed_with_documented_blocked_original"
   },
   {
     "key": "COM-05",
