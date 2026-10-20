@@ -404,6 +404,35 @@ final class AppModel {
           .write(to:store,options:.atomic)
       } catch { self.error = "The synthetic face configuration store could not be prepared." }
     }
+    if testID != nil,args.contains("--uitesting"),args.contains("--personal-field-recovery-fixture"),
+       !FileManager.default.fileExists(atPath:store.path) {
+      do {
+        var fixture=Snapshot();fixture.home.temperature=74;fixture.connectionConsent=[]
+        var object=try JSONSerialization.jsonObject(with:JSONEncoder().encode(fixture)) as! [String:Any]
+        let first=ReminderItem(title:"OWNED_JAMIE_FIRST_REMINDER")
+        let last=ReminderItem(title:"OWNED_JAMIE_LAST_REMINDER")
+        var duplicate=first;duplicate.title="OWNED_DUPLICATE_REMINDER"
+        let firstObject=try JSONSerialization.jsonObject(with:JSONEncoder().encode(first))
+        let lastObject=try JSONSerialization.jsonObject(with:JSONEncoder().encode(last))
+        let duplicateObject=try JSONSerialization.jsonObject(with:JSONEncoder().encode(duplicate))
+        let messages=["OWNED_ALEX_FIRST_MESSAGE","OWNED_ALEX_LAST_MESSAGE"]
+        if args.contains("--personal-field-legacy") {
+          object["personal"]=["Alex":["messages":messages],
+            "Jamie":["reminders":[firstObject,lastObject]]] as [String:Any]
+        } else {
+          object["personal"]=[
+            "Alex":["messages":[messages[0],17,NSNull(),messages[1]],"reminders":"broken"] as [String:Any],
+            "Jamie":["messages":["not":"a list"],
+              "reminders":[firstObject,NSNull(),["broken":true],duplicateObject,lastObject]] as [String:Any]
+          ] as [String:Any]
+        }
+        let bytes=try JSONSerialization.data(withJSONObject:object,options:[.sortedKeys])
+        try FileManager.default.createDirectory(at:dir,withIntermediateDirectories:true)
+        try bytes.write(to:store,options:.atomic)
+        let digest=SHA256.hash(data:bytes).map {String(format:"%02x",$0)}.joined()
+        try Data((digest+"\n").utf8).write(to:dir.appendingPathComponent("personal-fixture-sha256.txt"),options:.atomic)
+      } catch { self.error="The owned personal-field fixture could not be prepared." }
+    }
     if testID != nil,args.contains("--uitesting"),args.contains("--state-table-pressure-fixture"),
        !FileManager.default.fileExists(atPath:store.path) {
       do {

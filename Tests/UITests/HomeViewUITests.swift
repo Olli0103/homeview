@@ -3,6 +3,59 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func openRecoveredProfile(_ name:String,page:String) {
+    tap("nav.apps");tap("personal.profile");tap("profile."+name)
+    tap("all.apps");tap("app."+page)
+  }
+  private func checkRecoveredAlexMessages() {
+    openRecoveredProfile("Alex",page:"Messages")
+    XCTAssertTrue(app.staticTexts["OWNED_ALEX_FIRST_MESSAGE"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["OWNED_ALEX_LAST_MESSAGE"].exists)
+    XCTAssertFalse(app.staticTexts["OWNED_JAMIE_FIRST_REMINDER"].exists)
+    XCTAssertFalse(app.staticTexts["Hey! Are we still on for dinner?"].exists)
+  }
+  private func runPersonalFieldRecovery(legacy:Bool) {
+    let id=UUID().uuidString,kind=legacy ? "legacy":"damaged"
+    print("PERSONAL_FIELD_RECOVERY_STORE kind="+kind+" id="+id)
+    var args=["--persistence-test",id,"--reset-test-store","--personal-field-recovery-fixture","--page","Settings"]
+    if legacy {args.append("--personal-field-legacy")}
+    launch(args)
+    XCTAssertTrue(app.staticTexts.matching(identifier:"store.recovery").firstMatch.waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["store.readOnly"].exists)
+    checkRecoveredAlexMessages();viewportShot("personal-fields-"+kind+"-alex-recovered")
+    openRecoveredProfile("Jamie",page:"Messages")
+    XCTAssertFalse(app.staticTexts["OWNED_ALEX_FIRST_MESSAGE"].exists)
+    XCTAssertFalse(app.staticTexts["OWNED_ALEX_LAST_MESSAGE"].exists)
+    XCTAssertFalse(app.staticTexts["Hey! Are we still on for dinner?"].exists)
+    openRecoveredProfile("Jamie",page:"Reminders")
+    let first=app.buttons["reminder.OWNED_JAMIE_FIRST_REMINDER"]
+    let last=app.buttons["reminder.OWNED_JAMIE_LAST_REMINDER"]
+    XCTAssertTrue(first.waitForExistence(timeout:5));XCTAssertTrue(last.exists)
+    XCTAssertEqual(app.buttons.matching(identifier:"reminder.OWNED_JAMIE_FIRST_REMINDER").count,1)
+    XCTAssertFalse(app.buttons["reminder.OWNED_DUPLICATE_REMINDER"].exists)
+    XCTAssertEqual(first.value as? String,"Not completed")
+    first.tap();XCTAssertEqual(first.value as? String,"Completed")
+    viewportShot("personal-fields-"+kind+"-jamie-normal-write")
+    app.terminate()
+    launch(["--persistence-test",id,"--page","Settings"])
+    XCTAssertFalse(app.staticTexts["store.readOnly"].exists)
+    checkRecoveredAlexMessages()
+    openRecoveredProfile("Jamie",page:"Reminders")
+    XCTAssertTrue(first.waitForExistence(timeout:5));XCTAssertTrue(last.exists)
+    XCTAssertEqual(first.value as? String,"Completed")
+    XCTAssertEqual(last.value as? String,"Not completed")
+    XCTAssertFalse(app.buttons["reminder.OWNED_DUPLICATE_REMINDER"].exists)
+    viewportShot("personal-fields-"+kind+"-after-process-restart")
+  }
+  func testDamagedPersonalListsPreserveSiblingsAndNormalWriteAfterRestart() {
+    runPersonalFieldRecovery(legacy:false)
+  }
+  func testLegacyPersonalListsPreserveSiblingsAndNormalWriteAfterRestart() {
+    runPersonalFieldRecovery(legacy:true)
+  }
+}
+
+extension HomeViewUITests {
   private func openPressureEditor() {
     let edit=app.buttons["settings.faces"]
     scrollPhotoControlFullyIntoView(edit);edit.tap()

@@ -228,6 +228,27 @@ struct PersonalContent: Codable, Sendable {
   ]
   var messages = ["Hey! Are we still on for dinner?", "Yes, see you at six."]
 }
+extension PersonalContent {
+  private enum CodingKeys:String,CodingKey { case reminders,messages }
+  init(from decoder:any Decoder) throws {
+    let values=try decoder.container(keyedBy:CodingKeys.self)
+    func list<T:Decodable>(_ key:CodingKeys,as type:T.Type) throws -> [T] {
+      guard var items=try? values.nestedUnkeyedContainer(forKey:key) else { return [] }
+      var result:[T]=[]
+      while !items.isAtEnd {
+        // Advance once even for malformed members, then decode that member in
+        // isolation so a damaged sibling cannot erase an otherwise healthy list.
+        let itemDecoder=try items.superDecoder()
+        if let item=try? T(from:itemDecoder) { result.append(item) }
+      }
+      return result
+    }
+    // A saved missing/broken list is empty, not fresh demonstration content.
+    messages=try list(.messages,as:String.self)
+    var seen=Set<UUID>()
+    reminders=try list(.reminders,as:ReminderItem.self).filter { seen.insert($0.id).inserted }
+  }
+}
 
 struct Snapshot: Codable, Sendable {
   var introduction = SetupIntroduction.pending

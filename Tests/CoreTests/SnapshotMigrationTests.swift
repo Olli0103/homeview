@@ -192,3 +192,83 @@ final class SnapshotTablePressureTests: XCTestCase {
   }
 
 }
+
+final class PersonalFieldRecoveryTests: XCTestCase {
+  private func restore(_ profiles:[String:Any]) throws -> Snapshot {
+    var state=Snapshot();state.home.temperature=74;state.connectionConsent=[]
+    var raw=try XCTUnwrap(JSONSerialization.jsonObject(with:JSONEncoder().encode(state)) as? [String:Any])
+    raw["personal"]=profiles
+    return try Snapshot.decodeMigrating(JSONSerialization.data(withJSONObject:raw))
+  }
+  private func reminder(_ item:ReminderItem) throws -> Any {
+    try JSONSerialization.jsonObject(with:JSONEncoder().encode(item))
+  }
+  func testBrokenRemindersPreserveMessagesAndOtherProfile() throws {
+    let state=try restore([
+      "Alex":["messages":["OWNED_ALEX_MESSAGE"],"reminders":"broken"],
+      "Jamie":["messages":["OWNED_JAMIE_MESSAGE"],"reminders":[]]
+    ])
+    XCTAssertEqual(state.personal["Alex"]?.messages,["OWNED_ALEX_MESSAGE"])
+    XCTAssertEqual(state.personal["Alex"]?.reminders,[])
+    XCTAssertEqual(state.personal["Jamie"]?.messages,["OWNED_JAMIE_MESSAGE"])
+    XCTAssertEqual(state.home.temperature,74)
+  }
+  func testBrokenMessagesPreserveReminders() throws {
+    let item=ReminderItem(title:"OWNED_JAMIE_REMINDER")
+    let state=try restore(["Jamie":["messages":19,"reminders":[try reminder(item)]]])
+    XCTAssertEqual(state.personal["Jamie"]?.messages,[])
+    XCTAssertEqual(state.personal["Jamie"]?.reminders,[item])
+  }
+  func testLegacyMissingOneListDoesNotDiscardTheOtherOrInventContent() throws {
+    let item=ReminderItem(title:"OWNED_LEGACY_REMINDER")
+    let state=try restore(["Alex":["messages":["OWNED_LEGACY_MESSAGE"]],
+      "Jamie":["reminders":[try reminder(item)]]])
+    XCTAssertEqual(state.personal["Alex"]?.messages,["OWNED_LEGACY_MESSAGE"])
+    XCTAssertEqual(state.personal["Alex"]?.reminders,[])
+    XCTAssertEqual(state.personal["Jamie"]?.messages,[])
+    XCTAssertEqual(state.personal["Jamie"]?.reminders,[item])
+  }
+  func testMalformedArrayItemsDoNotDiscardValidSiblings() throws {
+    let first=ReminderItem(title:"OWNED_FIRST_REMINDER"),last=ReminderItem(title:"OWNED_LAST_REMINDER")
+    let state=try restore(["Alex":["messages":["OWNED_FIRST_MESSAGE",17,NSNull(),["not":"message"],"OWNED_LAST_MESSAGE"],
+      "reminders":[try reminder(first),17,NSNull(),["bad":true],try reminder(last)]]])
+    XCTAssertEqual(state.personal["Alex"]?.messages,["OWNED_FIRST_MESSAGE","OWNED_LAST_MESSAGE"])
+    XCTAssertEqual(state.personal["Alex"]?.reminders,[first,last])
+  }
+  func testDuplicateReminderIdentityCannotReachTwoLocalActions() throws {
+    let first=ReminderItem(title:"OWNED_FIRST_IDENTITY")
+    var duplicate=first;duplicate.title="OWNED_DUPLICATE_IDENTITY"
+    let last=ReminderItem(title:"OWNED_DISTINCT_IDENTITY")
+    let state=try restore(["Alex":["messages":[],"reminders":[try reminder(first),try reminder(duplicate),try reminder(last)]]])
+    XCTAssertEqual(state.personal["Alex"]?.reminders,[first,last])
+  }
+  func testNullOrMalformedListsRecoverEmptyNotDemoOrOtherProfileContent() throws {
+    for bad:Any in [NSNull(),19,"bad",["not":"a list"]] {
+      let state=try restore(["Alex":["messages":bad,"reminders":bad],
+        "Jamie":["messages":["OWNED_OTHER_PROFILE"],"reminders":[]]])
+      XCTAssertEqual(state.personal["Alex"]?.messages,[])
+      XCTAssertEqual(state.personal["Alex"]?.reminders,[])
+      XCTAssertEqual(state.personal["Jamie"]?.messages,["OWNED_OTHER_PROFILE"])
+    }
+  }
+  func testExplicitEmptyListsStayEmptyControl() throws {
+    let state=try restore(["Alex":["messages":[],"reminders":[]]])
+    XCTAssertEqual(state.personal["Alex"]?.messages,[])
+    XCTAssertEqual(state.personal["Alex"]?.reminders,[])
+  }
+  func testHealthyContentRoundTripsAndFreshDemoConstructorIsUnchangedControl() throws {
+    let fresh=PersonalContent();XCTAssertEqual(fresh.messages.count,2);XCTAssertEqual(fresh.reminders.count,2)
+    var content=PersonalContent();content.messages=["OWNED_HEALTHY_MESSAGE","OWNED_HEALTHY_MESSAGE"]
+    content.reminders=[ReminderItem(title:"OWNED_HEALTHY_REMINDER")]
+    let object=try JSONSerialization.jsonObject(with:JSONEncoder().encode(content))
+    let state=try restore(["Alex":object]);XCTAssertEqual(state.personal["Alex"]?.messages,content.messages)
+    XCTAssertEqual(state.personal["Alex"]?.reminders,content.reminders)
+    let encoded=try JSONEncoder().encode(state)
+    XCTAssertEqual(try Snapshot.canonicalBytes(encoded),try Snapshot.canonicalBytes(JSONEncoder().encode(Snapshot.decodeMigrating(encoded))))
+  }
+  func testNonObjectProfileRecordsRemainRejectedControl() throws {
+    for bad:Any in [17,"bad",[],NSNull()] {
+      let state=try restore(["Alex":bad]);XCTAssertNil(state.personal["Alex"])
+    }
+  }
+}

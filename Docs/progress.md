@@ -541,3 +541,8 @@ Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Feh
 ## Tabellen-Wiederherstellung · 20. Oktober 2026
 
 [Begrenzter Fix zu QA-05 / #80](state-table-pressure.md): bekannte Face-/Profil-/Slotwerte trotz überfüllter Tabellen erhalten; Nichtobjekte und ungültige Schlüssel verbrauchen kein Objektbudget. 329 Modelltests, vier native App-Ausführungen, vier unabhängige Originalbyte-/Write-Read-backs und fünf SDKs bestanden. Getrennte Vorherfehler und Quellenstände bleiben dokumentiert. Keine vollständige Daten-/Lifecycle-/Hardwareabnahme; #80 bleibt offen, keine Home-Anbindung.
+
+
+## Unabhängige Profilfeld-Reparatur · 20. Oktober 2026
+
+[Begrenzter Fix zu #80](personal-field-recovery.md): gesunde Nachrichten-/Erinnerungsnachbarn erhalten, fehlende/beschädigte Listen leer statt neuer Demoinhalte, doppelte Erinnerungs-IDs entfernt. Sechs Vorherfehler/19 Assertions; 338 Coretests, vier native App-Ausführungen mit Originalbyte-/Write-/Neustart-Read-backs und fünf SDKs bestanden. Kein Nachrichtenversand oder Home-Zugriff; übrige Matrix offen.
