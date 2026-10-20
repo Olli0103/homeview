@@ -141,6 +141,8 @@ Abnahme: Ein Zustandskatalog verlinkt für jedes Abnahmeszenario Quelle, Datum, 
 <a id="pub-01"></a>
 ### PUB-01: Redistribuierbare Grafik- und Typografiegrundlage herstellen
 
+[Aktuelles Ressourceninventar und eigener App-Icon-Ersatz](asset-provenance.md): historischer Systemsymbol-Anteil explizit qualifiziert; keine History-Umschreibung oder pauschale historische Freigabe.
+
 Die öffentliche Kopie ersetzt 17 Referenzgrafiken und abgeleitete OS-Ziffernkonturen durch eigene geometrische Platzhalter.
 
 Offen:

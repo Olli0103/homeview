@@ -1,0 +1,390 @@
+{
+  "head": "65a42108b18be5dc5201e427ef1afb9ecc9b093f",
+  "remote_refs": [
+    "65a42108b18be5dc5201e427ef1afb9ecc9b093f\trefs/heads/main"
+  ],
+  "reachable_commits": 371,
+  "reachable_objects": 5779,
+  "blob_count": 3731,
+  "total_blob_bytes": 1013454267,
+  "all_reachable_blob_bytes_read": true,
+  "object_list_sha256": "49dfaa8705c298a01bc421a3c1eb144f41dbf96a42ce69c9aa8689305a4b44bd",
+  "raw_changes_sha256": "a670ee6e3fa10ca71aa34e79183f31757137a0cbd9885ae52130699e19f1062a",
+  "resource_versions": [
+    {
+      "oid": "70b1e460c3e759bb1d29a074fd6752281a6aa12a",
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "bytes": 148,
+      "paths": [
+        "Resources/Assets.xcassets/AlbumArt.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconAlarms.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconCalendar.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconFaceTime.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconFindMy.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconHome.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconIntercom.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconMessages.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconMusic.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconPodcasts.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconReminders.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconSafari.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconSettings.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconTimers.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconWeather.imageset/Contents.json",
+        "Resources/Assets.xcassets/IconWorldClock.imageset/Contents.json",
+        "Resources/Assets.xcassets/Soup.imageset/Contents.json"
+      ],
+      "kind": "text_or_other"
+    },
+    {
+      "oid": "4d77e7b1d8ede9c9bc261a72735ba0c7f55992e3",
+      "sha256": "d53db63436f68e04d6f26a54fa46da4bd2b533f4a3c146e67f654db191fb5208",
+      "bytes": 23517,
+      "paths": [
+        "Resources/Assets.xcassets/AlbumArt.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "f81187f3bf89c5a5aff66496f7bc21648142cf6e",
+      "sha256": "af114fbf654d5a0cd461e029f943a08928b4c08cdc00de5465c77a8c07d5c412",
+      "bytes": 204,
+      "paths": [
+        "Resources/Assets.xcassets/AppIcon.appiconset/Contents.json"
+      ],
+      "kind": "text_or_other"
+    },
+    {
+      "oid": "4cf10c89b02c60b53f23d3ca491c1a0c7a344610",
+      "sha256": "5a20b74e22d680eee19b59a6b9cde67a98d370f30e1afab53ee93316e537a3bc",
+      "bytes": 914998,
+      "paths": [
+        "Resources/Assets.xcassets/AppIcon.appiconset/icon-1024.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "77aed3d430c7f61cab98b91ddc469590f2a20af9",
+      "sha256": "47d7e4a36c59b0f8829154abe3a7f6b7ef0c5ea5cf8a9bfccbc6bdf85e811d1b",
+      "bytes": 43,
+      "paths": [
+        "Resources/Assets.xcassets/Contents.json"
+      ],
+      "kind": "text_or_other"
+    },
+    {
+      "oid": "5c9c3fe488ffe593a4c5d8ec9bb5d12d2848994c",
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57",
+      "bytes": 149,
+      "paths": [
+        "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/Contents.json",
+        "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/Contents.json",
+        "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/Contents.json",
+        "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/Contents.json",
+        "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/Contents.json",
+        "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/Contents.json",
+        "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/Contents.json"
+      ],
+      "kind": "text_or_other"
+    },
+    {
+      "oid": "6b70d5603068eca821bc763deb68e3301ac566a4",
+      "sha256": "9acbcb56c4dbd5b41daa0054985c6b496f99408642bc246b9f3e273be08f8241",
+      "bytes": 3742589,
+      "paths": [
+        "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "8bea4675ab7878fa5f896ec5647521132c17ca54",
+      "sha256": "14d3fc99123c6ff70c994523790b94f4d34cf18c1e808a3080b1905f4cc73db9",
+      "bytes": 3073944,
+      "paths": [
+        "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "ddd57abde914979ce3c5ce0f19ee4d955153af16",
+      "sha256": "640cce7ae268abee5cf53b424a9c9646ecd03922a9a4b14865ead2c4414b21b7",
+      "bytes": 3252316,
+      "paths": [
+        "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "eea2e80ff000aac1ca56520d265eace9d2e1764a",
+      "sha256": "b0a9540126098aab163deb7627609275600b95f1164aae5784e5e7765adf3db9",
+      "bytes": 3022112,
+      "paths": [
+        "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "e8afc0e6b867fefcb8569a451097aad5e283250e",
+      "sha256": "4706c1679b463628014e7fbbe64a3be6e3ebafdc864f121c33d4e2d4182f8651",
+      "bytes": 2818793,
+      "paths": [
+        "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "2a1785b3cc126d1c8f72a7badee486d9c7690efd",
+      "sha256": "a23cc0c3f9bd409029e2e4451a771d9dceb91821fd2a32dbdaaac8ca0e3f47d7",
+      "bytes": 2334993,
+      "paths": [
+        "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "dfd9248cd5c64f4cd59e2efa81ab77a3825190b4",
+      "sha256": "6a494569e8a377f4fe6a1d21cb6bda8024c25848dc78f905a2fe58f660d833ab",
+      "bytes": 51440,
+      "paths": [
+        "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "af49072b48102c9beaf3f2c40f3378022e2dcdd1",
+      "sha256": "5db57cfef3d81f472a462feb90715fa76359af9ea5a1b2ada45f4acdffe0022b",
+      "bytes": 23193,
+      "paths": [
+        "Resources/Assets.xcassets/IconAlarms.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "955b4cf87c8c163e5656fb94a8c5a91764eeecd0",
+      "sha256": "a6ebff496c8bf0dd216d1f3c97fb954bb2949d1e4b12def159dc7e5110dcddbe",
+      "bytes": 23375,
+      "paths": [
+        "Resources/Assets.xcassets/IconCalendar.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "871e62b6ada5828ced247b65d28a8ee66f86708b",
+      "sha256": "f2c4e01ad31ab51995a795dfb8bb40eedb3d98b69cef30f4722c3ba4efa6cd69",
+      "bytes": 23119,
+      "paths": [
+        "Resources/Assets.xcassets/IconFaceTime.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "19148086efc99a3caa28188e270a3fe492a8757c",
+      "sha256": "0619d1d988afef3cb0fa424c4a16c52d242f66a6a707ca2948d5f5ce4c136e5e",
+      "bytes": 23112,
+      "paths": [
+        "Resources/Assets.xcassets/IconFindMy.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "596afbb10d70a8b2ccba80dcfa37fef6af47d20b",
+      "sha256": "a4107899bb299eea1fb938ec202adbceb6d4e9ea61d1d9f9da7fcc234f108663",
+      "bytes": 23592,
+      "paths": [
+        "Resources/Assets.xcassets/IconHome.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "4d097bc821b60881afd47c7ee44bb0168be54c52",
+      "sha256": "aead7f98e93449c0e538eb2a2ab5aca22c8f65d6a2ce8831794836935e732d61",
+      "bytes": 23765,
+      "paths": [
+        "Resources/Assets.xcassets/IconIntercom.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "0d4804e6903fcdd32b62faec81d60406c639ed5a",
+      "sha256": "e53f1b20362924a7d40c85208ab94ef594cca47580bc3439df3da8ef6e40e721",
+      "bytes": 23497,
+      "paths": [
+        "Resources/Assets.xcassets/IconMessages.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "dcd6cf862e24b9243f5032d75e28ec3f088a8def",
+      "sha256": "943812f42694050a5c6e12b6051cbc3eb4b7cdcf742057558bd80d57ea4be06d",
+      "bytes": 23452,
+      "paths": [
+        "Resources/Assets.xcassets/IconMusic.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "43b9d51c487a8a9076d034fd2f83e88ad7824c17",
+      "sha256": "5cda483a240793d412059b58ed648dcd9913f66247851f37d85fc8fa92002260",
+      "bytes": 23293,
+      "paths": [
+        "Resources/Assets.xcassets/IconPodcasts.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "75c2ce209647b9c2d3a0003877476df1f9169073",
+      "sha256": "95c1202df19960e8cca6271fc0f94675fd93844ed7cc8913d1af1e9f6f401b58",
+      "bytes": 23667,
+      "paths": [
+        "Resources/Assets.xcassets/IconReminders.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "aec26b6182a5f036cbca8c5f2c67c9855cb3338a",
+      "sha256": "91a1ae2e4b5a4ac5235ad115b7220fea98fdf28fa1372d0765e8f549fe5f091b",
+      "bytes": 23353,
+      "paths": [
+        "Resources/Assets.xcassets/IconSafari.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "0a4c9f785a7df80d22a24f736d28264fcd73ae38",
+      "sha256": "a4c5f5ae1a828062f573f17ba0cd3a873b745baa076b6dd182197e61dc600283",
+      "bytes": 23289,
+      "paths": [
+        "Resources/Assets.xcassets/IconSettings.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "689632665f3bd7931719fc493023d32c3c6d4088",
+      "sha256": "0cb4cebb93b29deb64f1c3851d1489c7671013659fd9757655521e4bb1b5352f",
+      "bytes": 23498,
+      "paths": [
+        "Resources/Assets.xcassets/IconTimers.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "c9e913b2fd3b38f3832ae684a041c614a2e1d966",
+      "sha256": "8093f745c479d407fb8be7264f567819233a56ca2bd384d4a52b796bef65abce",
+      "bytes": 22993,
+      "paths": [
+        "Resources/Assets.xcassets/IconWeather.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "32ac14ac6dc2eddf3aa4c0c7ee20b33de4d2feed",
+      "sha256": "37bbeb999a4dcc41c91af84eae723ba04f40394384f5ae1c7d150717edb1f471",
+      "bytes": 23550,
+      "paths": [
+        "Resources/Assets.xcassets/IconWorldClock.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "ea2959a9910bd77da660a97c12285c35b4f3f7e6",
+      "sha256": "18096d661501bf786990a44eb19a2d8c3c97e1584da96c35a4dd26f380ff195f",
+      "bytes": 23419,
+      "paths": [
+        "Resources/Assets.xcassets/Soup.imageset/image.png"
+      ],
+      "kind": "PNG"
+    },
+    {
+      "oid": "8681d4df796eb0d114311042334339a2128a6f54",
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0",
+      "bytes": 1083,
+      "paths": [
+        "Resources/FeedKit-LICENSE.txt"
+      ],
+      "kind": "text_or_other"
+    },
+    {
+      "oid": "480f38a7f87dafa73c1aee45744db95fa18a0a7c",
+      "sha256": "90292e4f4fe1b86218deeacccc03572f80c28137e9e65cec50b27e3b474ed074",
+      "bytes": 1292,
+      "paths": [
+        "Resources/Info.plist"
+      ],
+      "kind": "text_or_other"
+    },
+    {
+      "oid": "ec6350d66d55edf2f204358647936fc1264454e9",
+      "sha256": "7b0ec0be469b996427bfa325e0a68389fd48858cb1bb66ad637802f1232faae6",
+      "bytes": 1393,
+      "paths": [
+        "Resources/MainInfo.plist"
+      ],
+      "kind": "text_or_other"
+    },
+    {
+      "oid": "a4acb6bb87fd1446cf07acf9d1f76562af0bb594",
+      "sha256": "03ef18bd0c11de3a13e3219064293e9ef05255689f7f770e12fd8eba2258f7a3",
+      "bytes": 729,
+      "paths": [
+        "Resources/TimerWidgetInfo.plist"
+      ],
+      "kind": "text_or_other"
+    },
+    {
+      "oid": "a0281b9de1c4559fe644a5c59085cb3e678ca7ac",
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+      "bytes": 176444,
+      "paths": [
+        "Resources/demo-tone.wav"
+      ],
+      "kind": "WAV"
+    },
+    {
+      "oid": "54afa2ebf81082c46479d8a9e9c897e314d32d73",
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
+      "bytes": 1920044,
+      "paths": [
+        "Resources/podcast-test-audio.wav"
+      ],
+      "kind": "WAV"
+    },
+    {
+      "oid": "f51c573841d46039f8c6d5a00361cddb96550362",
+      "sha256": "9c042cbb6e9288d46db86a17815eaa9c5f735ed1ef5d7ad4cc368b9edea81c71",
+      "bytes": 1402,
+      "paths": [
+        "Resources/Info.plist"
+      ],
+      "kind": "text_or_other"
+    }
+  ],
+  "signature_or_extension_flags": [],
+  "kind_counts": {
+    "text_or_other": 1987,
+    "PNG": 1530,
+    "JPEG": 212,
+    "WAV": 2
+  },
+  "limits": [
+    "Filename/signature scan and digest enumeration do not by themselves prove image authorship or license clearance",
+    "Public refs frozen at stated head; no private checkout/unreachable objects inspected",
+    "Historical app icon intentionally retains rasterized SF Symbol component; no history rewrite"
+  ],
+  "resource_raster_provenance": {
+    "replayed_primitives": 17,
+    "documented_AI_and_own_alpha": 7,
+    "historical_mixed_system_symbol_icon": 1,
+    "unknown_raster_digests": 0
+  },
+  "nonresource_image_digest_lookup": {
+    "images": 1717,
+    "referenced_in_existing_JSON": 1716,
+    "unreferenced_contact": {
+      "path": "Docs/screenshots/goal-20261018/calendar-ui08-contact.jpg",
+      "sha256": "b869ad0aa8663bfa55c52f95bfd2f1668b004ae3b27e1c7001c58054b5314d4b",
+      "visually_viewed": true,
+      "observed": "14 own synthetic calendar/agenda viewport panels; own screenshot records in Docs/calendar-ui08.md and calendar-ui08-manifest.json"
+    },
+    "limits": "Digest reference is not individual image-rights clearance; not every historical image visually inspected"
+  }
+}

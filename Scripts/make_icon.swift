@@ -7,9 +7,18 @@ NSGradient(starting:NSColor(red:0.38,green:0.32,blue:0.85,alpha:1),ending:NSColo
 for (x,y,w,h) in [(70.0,380.0,570.0,570.0),(665,665,285,285),(665,380,285,260),(70,70,285,285),(380,70,260,285),(665,70,285,285)] {
  NSColor.white.withAlphaComponent(0.19).setFill();NSBezierPath(roundedRect:NSRect(x:x,y:y,width:w,height:h),xRadius:60,yRadius:60).fill()
 }
-let house=NSImage(systemSymbolName:"house.fill",accessibilityDescription:nil)!.withSymbolConfiguration(.init(pointSize:300,weight:.regular))!
-house.draw(in:NSRect(x:190,y:515,width:330,height:300))
+// Original primitive geometry only. Do not rasterize a system symbol or font
+// into an asset that is distributed as project-owned app-icon artwork.
+NSColor.white.withAlphaComponent(0.94).setFill()
+let roof=NSBezierPath()
+roof.move(to:NSPoint(x:195,y:700));roof.line(to:NSPoint(x:355,y:845))
+roof.line(to:NSPoint(x:515,y:700));roof.close();roof.fill()
+NSBezierPath(roundedRect:NSRect(x:235,y:525,width:240,height:180),xRadius:12,yRadius:12).fill()
+NSColor(calibratedRed:0.28,green:0.23,blue:0.60,alpha:1).setFill()
+NSBezierPath(rect:NSRect(x:329,y:525,width:52,height:92)).fill()
+NSBezierPath(rect:NSRect(x:263,y:635,width:38,height:38)).fill()
+NSBezierPath(rect:NSRect(x:409,y:635,width:38,height:38)).fill()
 NSColor.white.setStroke();let clock=NSBezierPath(ovalIn:NSRect(x:715,y:715,width:185,height:185));clock.lineWidth=12;clock.stroke()
 let hands=NSBezierPath();hands.move(to:NSPoint(x:807,y:807));hands.line(to:NSPoint(x:807,y:865));hands.move(to:NSPoint(x:807,y:807));hands.line(to:NSPoint(x:855,y:775));hands.lineWidth=13;hands.lineCapStyle = .round;hands.stroke()
 NSGraphicsContext.restoreGraphicsState()
-try rep.representation(using:.png,properties:[:])!.write(to:root.appendingPathComponent("Resources/Assets.xcassets/AppIcon.appiconset/icon-1024.png"))
+try rep.representation(using:.png,properties:[:])!.write(to:root.appendingPathComponent("Resources/Assets.xcassets/AppIcon.appiconset/icon-independent-v2.png"))
