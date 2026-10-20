@@ -1645,7 +1645,9 @@ final class AppModel {
   func openAssistantExampleRecipe() {
     guard !Task.isCancelled,assistantInteractionActive,!assistantUsesAI,
       assistantDocument?.recipeActionAvailable==true else {return}
-    interact();route = .recipe
+    // The display example must not resolve through data.recipe or replace an
+    // imported/active recipe just to show its bundled content.
+    interact();route = .assistantRecipePreview
   }
   func playChime() {
     stopAnswerSpeech();let reset=localResetGeneration

@@ -78,7 +78,8 @@ enum Route: Equatable {
   case app(AppPage)
   case thermostat, light, lock
   case camera(Int)
-  case recipe, ingredients, cooking, handoff, assistant, editor, controlCenter, privacy, call, deviceUnlock
+  case recipe, ingredients, cooking, handoff, assistant, assistantRecipePreview
+  case editor, controlCenter, privacy, call, deviceUnlock
 }
 
 struct MockHome: Codable, Equatable, Sendable {
