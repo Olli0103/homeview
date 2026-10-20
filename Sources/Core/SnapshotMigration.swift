@@ -35,12 +35,20 @@ extension Snapshot {
       }
       return result
     }
-    func table<T: Decodable>(_ key: String, limit: Int, validKey: (String) -> Bool = { _ in true }) -> [String: T] {
+    func table<T: Decodable>(_ key: String, limit: Int, preferredKeys: Set<String> = [],
+      validKey: (String) -> Bool = { _ in true }) -> [String: T] {
       guard let raw = stored[key] as? [String: Any] else { return [:] }
       var result: [String: T] = [:]
-      for name in raw.keys.filter(validKey).sorted().prefix(limit) {
-        guard name.count <= 128,
-          let data = try? JSONSerialization.data(withJSONObject: raw[name]!, options: [.fragmentsAllowed]),
+      let keys = raw.keys.filter { $0.count <= 128 && validKey($0) }.sorted {
+        let left = preferredKeys.contains($0), right = preferredKeys.contains($1)
+        return left == right ? $0 < $1 : left
+      }
+      for name in keys {
+        if result.count == limit { break }
+        // Every named record here is an object. A forgiving field decoder must
+        // not turn an unrelated scalar into a default record that spends budget.
+        guard let object = raw[name] as? [String: Any],
+          let data = try? JSONSerialization.data(withJSONObject: object, options: [.fragmentsAllowed]),
           let item = try? decoder.decode(T.self, from: data) else { continue }
         result[name] = item
       }
@@ -49,7 +57,7 @@ extension Snapshot {
     output.introduction = value("introduction",fallback.introduction)
     // A present malformed/null field must never fall back to stale legacy grants.
     output.connectionConsent = stored["connectionConsent"] == nil ? nil:value("connectionConsent",Set<DataConnection>())
-    output.personal = table("personal", limit: 6)
+    output.personal = table("personal", limit: 6, preferredKeys: Set(Fixtures.profiles))
     let homeConfigurations: [String: PersonalHomeConfiguration] = table("personalHomeConfigurations", limit: 6,
       validKey: { Fixtures.profiles.contains($0) })
     output.personalHomeConfigurations = homeConfigurations.mapValues { $0.normalized }
@@ -99,8 +107,10 @@ extension Snapshot {
         && $0.title.count <= 512
         && ($0.deadline.map { $0 >= .distantPast && $0 <= .distantFuture } ?? true)
     }
-    output.nativeTimerIDs = Set(value("nativeTimerIDs",fallback.nativeTimerIDs).prefix(64))
-    output.nativeAlarmIDs = Set(value("nativeAlarmIDs",fallback.nativeAlarmIDs).prefix(64))
+    output.nativeTimerIDs = Set(value("nativeTimerIDs",fallback.nativeTimerIDs)
+      .sorted { $0.uuidString < $1.uuidString }.prefix(64))
+    output.nativeAlarmIDs = Set(value("nativeAlarmIDs",fallback.nativeAlarmIDs)
+      .sorted { $0.uuidString < $1.uuidString }.prefix(64))
     output.reminders = items("reminders",fallback.reminders,limit:500)
     output.alarms = items("alarms",fallback.alarms,limit:24) {
       (0...23).contains($0.hour) && (0...59).contains($0.minute)
@@ -117,7 +127,8 @@ extension Snapshot {
     output.recipe = validRecipe(recipe) ? recipe : fallback.recipe
     output.pinnedRecipes = items("pinnedRecipes",fallback.pinnedRecipes,limit:50,valid:validRecipe)
     output.pinnedRecipe = output.pinnedRecipes.contains { $0.id == output.recipe.id }
-    output.faceConfigurations = table("faceConfigurations",limit:Face.allCases.count)
+    output.faceConfigurations = table("faceConfigurations",limit:Face.allCases.count,
+      preferredKeys:Set(Face.allCases.map(\.rawValue)))
     let widgets = value("widgets",fallback.widgets)
     output.widgets = widgets.count == 4 && widgets.allSatisfy({ $0.count <= 80 }) ? widgets : fallback.widgets
     let podcasts = value("podcasts",fallback.podcasts)

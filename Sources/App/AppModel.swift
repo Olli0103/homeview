@@ -404,6 +404,48 @@ final class AppModel {
           .write(to:store,options:.atomic)
       } catch { self.error = "The synthetic face configuration store could not be prepared." }
     }
+    if testID != nil,args.contains("--uitesting"),args.contains("--state-table-pressure-fixture"),
+       !FileManager.default.fileExists(atPath:store.path) {
+      do {
+        var fixture=Snapshot();fixture.face = .modular;fixture.home.temperature=73
+        fixture.connectionConsent=[]
+        var timer=Countdown(title:"Owned pressure canary timer",seconds:90)
+        timer.deadline=nil;timer.pausedRemaining=90;fixture.timers=[timer]
+        var object=try JSONSerialization.jsonObject(with:JSONEncoder().encode(fixture)) as! [String:Any]
+        var slots=Dictionary(uniqueKeysWithValues:(0..<64).map {
+          (String(format:"AA-future-%03d",$0),"Clock")
+        })
+        slots["panel0"]="Weather";slots["panel1"]="Clock"
+        var faces:[String:Any]=Dictionary(uniqueKeysWithValues:(0..<Face.allCases.count).map {
+          (String(format:"AA-unknown-%03d",$0),["theme":0] as Any)
+        })
+        faces["Modular"]=["complications":slots,"theme":1]
+        faces["Flow"]=["flowTypeface":1,"flowBackground":false,"theme":1]
+        var profiles:[String:Any]=[:]
+        for i in 0..<Fixtures.profiles.count {
+          profiles[String(format:"AA-unknown-%03d",i)]=["messages":["UNUSED_SYNTHETIC_\(i)"],"reminders":[]] as [String:Any]
+        }
+        profiles["Alex"]=["messages":["OWNED_ALEX_PRIVATE_CANARY"],"reminders":[]] as [String:Any]
+        profiles["Jamie"]=["messages":["OWNED_JAMIE_PRIVATE_CANARY"],"reminders":[]] as [String:Any]
+        var adjustments:[String:Any]=Dictionary(uniqueKeysWithValues:(0..<100).map {
+          (String(format:"AA-broken-%03d",$0),"not an adjustment object" as Any)
+        })
+        try FileManager.default.createDirectory(at:dir,withIntermediateDirectories:true)
+        #if !os(watchOS)
+          guard let photo=PhotoLayoutFixture.make("top") else { throw CocoaError(.fileReadUnknown) }
+          try photo.bytes.write(to:dir.appendingPathComponent("selected-photo.data"),options:.atomic)
+          let adjustmentKey=SHA256.hash(data:photo.bytes).map {String(format:"%02x",$0)}.joined()
+        #else
+          let adjustmentKey="synthetic"
+        #endif
+        adjustments[adjustmentKey]=["clock":"bottom","automaticCrop":false,"horizontal":0.23,"vertical":0.77]
+        object["faceConfigurations"]=faces;object["personal"]=profiles;object["photoAdjustments"]=adjustments
+        let bytes=try JSONSerialization.data(withJSONObject:object,options:[.sortedKeys])
+        try bytes.write(to:store,options:.atomic)
+        let digest=SHA256.hash(data:bytes).map {String(format:"%02x",$0)}.joined()
+        try Data((digest+"\n").utf8).write(to:dir.appendingPathComponent("table-fixture-sha256.txt"),options:.atomic)
+      } catch { self.error="The owned table-recovery fixture could not be prepared." }
+    }
     if testID != nil,args.contains("--uitesting"),args.contains("--reset-content-fixture"),
        !FileManager.default.fileExists(atPath:store.path) {
       do {

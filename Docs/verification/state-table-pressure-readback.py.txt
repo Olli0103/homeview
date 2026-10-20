@@ -1,0 +1,50 @@
+from pathlib import Path
+import os,stat,json,re,uuid,subprocess,hashlib
+b=Path(__file__).parent;pre='state-table-pressure-ui';out=b/pre
+plan=json.loads((b/(pre+'-plan.json')).read_text());rows=[]
+def read(p):
+ fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+ try:
+  st=os.fstat(fd);assert stat.S_ISREG(st.st_mode) and st.st_size<=32_000_000
+  data=b''
+  while True:
+   part=os.read(fd,min(65536,32_000_001-len(data)))
+   if not part:break
+   data+=part
+   assert len(data)<=32_000_000
+  return data
+ finally:os.close(fd)
+sha=lambda x:hashlib.sha256(x).hexdigest()
+for device,destination in plan['destinations'].items():
+ matches=re.findall(r'STATE_TABLE_PRESSURE_STORE kind=(face|photo) id=([A-F0-9-]{36})', (out/(device+'.log')).read_text())
+ assert len(matches)==2 and len(set(matches))==2,matches
+ assert {x[0] for x in matches}=={'face','photo'}
+ container=Path(subprocess.check_output(['xcrun','simctl','get_app_container',destination,'org.example.HomeViewReplica','data'],text=True).strip())
+ for kind,uid in matches:
+  assert str(uuid.UUID(uid)).upper()==uid
+  root=container/'Library/Application Support/HomeViewReplica'/('test-'+uid)
+  assert root.is_dir() and not root.is_symlink()
+  digest=read(root/'table-fixture-sha256.txt').decode().strip();assert re.fullmatch('[0-9a-f]{64}',digest)
+  original=read(root/'State Recovery'/('original-'+digest+'.json'));assert sha(original)==digest
+  before=json.loads(original);currentBytes=read(root/'mock-state.json');current=json.loads(currentBytes)
+  assert len(before['faceConfigurations'])==16 and len(before['personal'])==8
+  assert len(before['faceConfigurations']['Modular']['complications'])==66 and len(before['photoAdjustments'])==101
+  assert len(current['faceConfigurations'])<=14 and len(current['personal'])<=6
+  modular=current['faceConfigurations']['Modular'];flow=current['faceConfigurations']['Flow']
+  assert modular['theme']==1 and modular['complications']['panel0']=='Weather'
+  assert modular['complications']['panel1']==('Date' if kind=='face' else 'Clock')
+  assert len(modular['complications'])==64
+  assert flow['theme']==1 and flow['flowTypeface']==1 and flow['flowBackground']==False
+  for name in ['Alex','Jamie']:
+   assert current['personal'][name]['messages']==['OWNED_'+name.upper()+'_PRIVATE_CANARY']
+  photo=read(root/'selected-photo.data');key=sha(photo);assert set(current['photoAdjustments'])=={key}
+  adjustment=current['photoAdjustments'][key]
+  assert adjustment==dict(clock='bottom' if kind=='face' else 'top',automaticCrop=False,horizontal=.23,vertical=.77)
+  assert current['home']['temperature']==73 and current['connectionConsent']==[]
+  assert current['nativeTimerIDs']==[] and current['nativeAlarmIDs']==[]
+  assert len(current['timers'])==1
+  timer=current['timers'][0];assert timer['title']=='Owned pressure canary timer' and timer.get('deadline') is None
+  assert timer['pausedRemaining']==90 and timer['duration']==90 and timer['didAlert']==False
+  rows.append(dict(device=device,kind=kind,ownedUUID=uid,originalSHA256=digest,currentSHA256=sha(currentBytes),photoSHA256=key,originalByteCopyVerified=True,normalWriteVerified=True,knownFaceAndSlotsVerified=True,privateCanariesInOwnProfiles=True,photoAdjustment=adjustment,pausedTimerPreserved=True,nativeIDsEmpty=True,connectionConsentEmpty=True))
+report=dict(scope='Only four UUID stores printed by these native tests; no ordinary stores inspected.',rows=rows)
+p=b/'state-table-pressure-store-readback.json';assert not p.exists();p.write_text(json.dumps(report,indent=2)+'\n');print('Four own stores and original byte copies verified')

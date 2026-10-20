@@ -1,0 +1,417 @@
+{
+  "date": "2026-10-20",
+  "issue": 80,
+  "status": "bounded_fix_issue_open",
+  "baseCommit": "8f00b9e1c67b2ca34ae69fb2c86452411d70af15",
+  "sourceDigest": "51595540a76980a2b3a0512df8a4809df8a0106af189c97d05dbdad988a82646",
+  "sourceCount": 209,
+  "coreCheckpoints": [
+    {
+      "checkpoint": "state-table-pressure-baseline",
+      "tests": 8,
+      "failed": 6,
+      "failedAssertions": 20,
+      "archive_sha256": "e2cfe0e341a8dcb457c32a564b9ec3347c2c2c8535640b9874574e0b127ca6d4",
+      "entries": 238,
+      "compiled_file_count": 23,
+      "source_digest": "82cbe4e1a9212b68dd658d1aaa6255ed2b6fe0bb690d244c6bcd532bc8a03255"
+    },
+    {
+      "checkpoint": "state-native-id-order-baseline",
+      "tests": 1,
+      "failed": 1,
+      "failedAssertions": 2,
+      "archive_sha256": "ef4cb43f81f86e219669e8612f2799dd92e5e891764b487681701a30208e4e23",
+      "entries": 238,
+      "compiled_file_count": 23,
+      "source_digest": "53b41e88455dab87d7ddfefb36016dc81cf5535e45a8110587bc2ff6febcf08e"
+    },
+    {
+      "checkpoint": "state-table-pressure-final-core",
+      "tests": 329,
+      "failed": 0,
+      "failedAssertions": 0,
+      "archive_sha256": "47a04959b58fb3c188ca406bb7c830d9ec04d886f72590e2b5b1b45e1efe065c",
+      "entries": 238,
+      "compiled_file_count": 23,
+      "source_digest": "48bbdda0ca18995e97040dc7a8c64a1db6656da952e047ab5d998ab1f2a586d9"
+    }
+  ],
+  "coreUIEquivalence": {
+    "coreInputsUnchanged": true,
+    "changedFiles": [
+      "Sources/App/AppModel.swift",
+      "Tests/UITests/HomeViewUITests.swift"
+    ]
+  },
+  "nativeUI": [
+    {
+      "device": "iPad",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "installedAppByteReadback": [
+        {
+          "path": "default.metallib",
+          "expected_sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431",
+          "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+        },
+        {
+          "path": "demo-tone.wav",
+          "expected_sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "AppIcon60x60@2x.png",
+          "expected_sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646",
+          "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+        },
+        {
+          "path": "__preview.dylib",
+          "expected_sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a",
+          "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+        },
+        {
+          "path": "Assets.car",
+          "expected_sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f",
+          "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+        },
+        {
+          "path": "AppIcon76x76@2x~ipad.png",
+          "expected_sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d",
+          "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+        },
+        {
+          "path": "HomeViewReplica",
+          "expected_sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da",
+          "sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da"
+        },
+        {
+          "path": "HomeViewReplica.debug.dylib",
+          "expected_sha256": "cf7d29f293fc9d38c0ef3e059ca86a51ba4a3aa18476c66037073b8ebd3f8672",
+          "sha256": "cf7d29f293fc9d38c0ef3e059ca86a51ba4a3aa18476c66037073b8ebd3f8672"
+        },
+        {
+          "path": "FeedKit-LICENSE.txt",
+          "expected_sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0",
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "Info.plist",
+          "expected_sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00",
+          "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+        },
+        {
+          "path": "PkgInfo",
+          "expected_sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "podcast-test-audio.wav",
+          "expected_sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        },
+        {
+          "path": "Metadata.appintents/version.json",
+          "expected_sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4",
+          "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+        },
+        {
+          "path": "Metadata.appintents/extract.actionsdata",
+          "expected_sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053",
+          "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+        },
+        {
+          "path": "PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+          "expected_sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595",
+          "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+        },
+        {
+          "path": "PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+          "expected_sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1",
+          "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+        },
+        {
+          "path": "PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+          "expected_sha256": "4554b2236d0ffda7ff39c39a8c0e6d5284e82ee29095319be4cfb01aca7000e1",
+          "sha256": "4554b2236d0ffda7ff39c39a8c0e6d5284e82ee29095319be4cfb01aca7000e1"
+        },
+        {
+          "path": "PlugIns/HomeViewTimerWidget.appex/Info.plist",
+          "expected_sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d",
+          "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+        }
+      ]
+    },
+    {
+      "device": "iPhone",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "installedAppByteReadback": [
+        {
+          "path": "default.metallib",
+          "expected_sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431",
+          "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+        },
+        {
+          "path": "demo-tone.wav",
+          "expected_sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "AppIcon60x60@2x.png",
+          "expected_sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646",
+          "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+        },
+        {
+          "path": "__preview.dylib",
+          "expected_sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a",
+          "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+        },
+        {
+          "path": "Assets.car",
+          "expected_sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f",
+          "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+        },
+        {
+          "path": "AppIcon76x76@2x~ipad.png",
+          "expected_sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d",
+          "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+        },
+        {
+          "path": "HomeViewReplica",
+          "expected_sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da",
+          "sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da"
+        },
+        {
+          "path": "HomeViewReplica.debug.dylib",
+          "expected_sha256": "cf7d29f293fc9d38c0ef3e059ca86a51ba4a3aa18476c66037073b8ebd3f8672",
+          "sha256": "cf7d29f293fc9d38c0ef3e059ca86a51ba4a3aa18476c66037073b8ebd3f8672"
+        },
+        {
+          "path": "FeedKit-LICENSE.txt",
+          "expected_sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0",
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "Info.plist",
+          "expected_sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00",
+          "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+        },
+        {
+          "path": "PkgInfo",
+          "expected_sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "podcast-test-audio.wav",
+          "expected_sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        },
+        {
+          "path": "Metadata.appintents/version.json",
+          "expected_sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4",
+          "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+        },
+        {
+          "path": "Metadata.appintents/extract.actionsdata",
+          "expected_sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053",
+          "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+        },
+        {
+          "path": "PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+          "expected_sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595",
+          "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+        },
+        {
+          "path": "PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+          "expected_sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1",
+          "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+        },
+        {
+          "path": "PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+          "expected_sha256": "4554b2236d0ffda7ff39c39a8c0e6d5284e82ee29095319be4cfb01aca7000e1",
+          "sha256": "4554b2236d0ffda7ff39c39a8c0e6d5284e82ee29095319be4cfb01aca7000e1"
+        },
+        {
+          "path": "PlugIns/HomeViewTimerWidget.appex/Info.plist",
+          "expected_sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d",
+          "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+        }
+      ]
+    }
+  ],
+  "nativeArchive": {
+    "entries": 237,
+    "sha256": "82d218abb4d7af42e8d494a898b5a26b40f7b4f7f98f5fb5ce89c851837e9597"
+  },
+  "storeReadback": {
+    "scope": "Only four UUID stores printed by these native tests; no ordinary stores inspected.",
+    "rows": [
+      {
+        "device": "iPad",
+        "kind": "face",
+        "originalSHA256": "3b60a9c421f106bdbfcb771c6dcc5db58894f966e0d523d2266677e3fe476e39",
+        "currentSHA256": "774ec9067592e5d67db8dc4a71aa976d8d60aa793889a8bb40236f492a342d47",
+        "photoSHA256": "d698a53e06d91607122f342af508a6770ac013d57b32aed09530600af86b61f9",
+        "originalByteCopyVerified": true,
+        "normalWriteVerified": true,
+        "knownFaceAndSlotsVerified": true,
+        "privateCanariesInOwnProfiles": true,
+        "photoAdjustment": {
+          "automaticCrop": false,
+          "horizontal": 0.23,
+          "vertical": 0.77,
+          "clock": "bottom"
+        },
+        "pausedTimerPreserved": true,
+        "nativeIDsEmpty": true,
+        "connectionConsentEmpty": true
+      },
+      {
+        "device": "iPad",
+        "kind": "photo",
+        "originalSHA256": "41ca336105a68627af3323abb7b34f6e0cb2abbe5e8ca6670f23ee64f8924441",
+        "currentSHA256": "5bc3109c9ec40558feb0042252f39a8d3e7512ca1b6db4cad12267d2d83f9cb7",
+        "photoSHA256": "d698a53e06d91607122f342af508a6770ac013d57b32aed09530600af86b61f9",
+        "originalByteCopyVerified": true,
+        "normalWriteVerified": true,
+        "knownFaceAndSlotsVerified": true,
+        "privateCanariesInOwnProfiles": true,
+        "photoAdjustment": {
+          "automaticCrop": false,
+          "horizontal": 0.23,
+          "clock": "top",
+          "vertical": 0.77
+        },
+        "pausedTimerPreserved": true,
+        "nativeIDsEmpty": true,
+        "connectionConsentEmpty": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "face",
+        "originalSHA256": "794b393466b100849f8a64a88aa28b384124ed110443ae81c890b463628e43d8",
+        "currentSHA256": "a88bb3ebbda85dc7aa222c283c5b19eb6e593816088b6885e347f6b80f729941",
+        "photoSHA256": "d698a53e06d91607122f342af508a6770ac013d57b32aed09530600af86b61f9",
+        "originalByteCopyVerified": true,
+        "normalWriteVerified": true,
+        "knownFaceAndSlotsVerified": true,
+        "privateCanariesInOwnProfiles": true,
+        "photoAdjustment": {
+          "clock": "bottom",
+          "horizontal": 0.23,
+          "automaticCrop": false,
+          "vertical": 0.77
+        },
+        "pausedTimerPreserved": true,
+        "nativeIDsEmpty": true,
+        "connectionConsentEmpty": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "photo",
+        "originalSHA256": "f41a7ac817c2032e5762a044f2c0744992798075f4db52ef3d213a057092df27",
+        "currentSHA256": "092667e0ff30cfa3616539aa1e337fa096b50f18b653b12fcdd2c035fa95711b",
+        "photoSHA256": "d698a53e06d91607122f342af508a6770ac013d57b32aed09530600af86b61f9",
+        "originalByteCopyVerified": true,
+        "normalWriteVerified": true,
+        "knownFaceAndSlotsVerified": true,
+        "privateCanariesInOwnProfiles": true,
+        "photoAdjustment": {
+          "clock": "top",
+          "automaticCrop": false,
+          "horizontal": 0.23,
+          "vertical": 0.77
+        },
+        "pausedTimerPreserved": true,
+        "nativeIDsEmpty": true,
+        "connectionConsentEmpty": true
+      }
+    ]
+  },
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exitCode": 0
+    },
+    {
+      "platform": "macOS",
+      "exitCode": 0
+    },
+    {
+      "platform": "tvOS",
+      "exitCode": 0
+    },
+    {
+      "platform": "visionOS",
+      "exitCode": 0
+    },
+    {
+      "platform": "watchOS",
+      "exitCode": 0
+    }
+  ],
+  "imagesDecoded": 24,
+  "contactSheetsViewed": 2,
+  "publishedPictures": [
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPad-viewport-table-pressure-profiles-after-process-restart.png",
+      "sha256": "7981bf983ea6008ef160c6b7f4d7eb88f3da4e841d28281ff2a93e6f511a6769"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPad-viewport-table-pressure-jamie-isolated.png",
+      "sha256": "7981bf983ea6008ef160c6b7f4d7eb88f3da4e841d28281ff2a93e6f511a6769"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPad-viewport-table-pressure-alex-isolated.png",
+      "sha256": "ca480ea90b5f7f0a98c776cade677712c5d4aac13e0f1a41e9433970b3cad56d"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPad-viewport-table-pressure-face-known-slots-saved.png",
+      "sha256": "329a48ca029ae0f9d34978901e01a29873543fa60cac665a277b67581234d86e"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPad-viewport-table-pressure-photo-top-after-process-restart.png",
+      "sha256": "417b9719b2c86f5f448de0757c1f352ff3a779c84e42a848e8ffd20454e1e1f6"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPad-viewport-table-pressure-photo-bottom-recovered.png",
+      "sha256": "7c27197840ffa273bc7ebcf574168d6731034d3505c9b9231287f6ac4d97051a"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPhone-viewport-table-pressure-profiles-after-process-restart.png",
+      "sha256": "898a6ef870d2983645500e68bb487a0f888b99e9b282b4bce097c0e93947e2c4"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPhone-viewport-table-pressure-jamie-isolated.png",
+      "sha256": "898a6ef870d2983645500e68bb487a0f888b99e9b282b4bce097c0e93947e2c4"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPhone-viewport-table-pressure-alex-isolated.png",
+      "sha256": "2128424c215367a4b12113f1c1f7022de770b8c774b9da377b3c36ae9bb2392f"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPhone-viewport-table-pressure-face-known-slots-saved.png",
+      "sha256": "a30e477f22eb65ff47b904fbf844582e51ae2f0c9a7e3e1cdd4d290e4de357e8"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPhone-viewport-table-pressure-photo-top-after-process-restart.png",
+      "sha256": "3c7bf99ce040555876b36dee5ba81ee4d79043e38e2c7346e0b2367adeb1a073"
+    },
+    {
+      "path": "Docs/screenshots/state-table-pressure/iPhone-viewport-table-pressure-photo-bottom-recovered.png",
+      "sha256": "e1565316d75639799c748d08866778063cb683acc76adbfdbf42ce223242d062"
+    }
+  ],
+  "boundaries": [
+    "Synthetic local data and own UUID stores only",
+    "Timer paused, no actual system alarms or media or messages sent",
+    "Watch target build is reduced-target regression, not functional native UI acceptance",
+    "No Home integration; no original or hardware acceptance",
+    "Unknown object records may use remaining capacity; this is not universal lossless recovery"
+  ]
+}
