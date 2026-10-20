@@ -5555,3 +5555,69 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
   }
 }
+
+extension HomeViewUITests {
+  private func launchLocalCalendarAudit() {
+    launch(["--face","Calendar","--page","Calendar","--reference-date","2026-12-31T23:30:00Z",
+      "--reference-zone","Pacific/Kiritimati"])
+    XCTAssertTrue(app.staticTexts["January"].exists)
+    XCTAssertEqual(app.buttons["calendar.day.5"].value as? String,"Selected")
+    XCTAssertFalse(app.buttons["calendar.refresh"].exists)
+    let days=[27,28,29,30,31,1,2]
+    for i in 0..<7 {XCTAssertTrue(app.buttons["calendar.day.\(i)"].staticTexts[String(days[i])].exists)}
+  }
+  private func auditLocalCalendarHitRegions(_ state:String) throws {
+    viewportShot("calendar-hit-region-"+state)
+    var reports:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let element=issue.element,frame=element?.frame ?? .zero
+      reports.append(["identifier":element?.identifier ?? "","label":element?.label ?? "",
+        "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+        "auditType":issue.auditType.rawValue,"description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let a=XCTAttachment(data:try JSONSerialization.data(withJSONObject:reports,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="calendar-hit-region-"+state+"-all-findings";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(reports.isEmpty,"Unfiltered local calendar hit-region audit found \(reports.count) issues: \(reports)")
+  }
+  func testLocalCalendarInitialAutomaticHitRegionAudit() throws {
+    launchLocalCalendarAudit();try auditLocalCalendarHitRegions("local-january1")
+  }
+  func testLocalCalendarPreviousYearSelectedAutomaticHitRegionAudit() throws {
+    launchLocalCalendarAudit();tap("calendar.day.0")
+    XCTAssertEqual(app.buttons["calendar.day.0"].value as? String,"Selected")
+    XCTAssertFalse(app.staticTexts["CANCELED: Coffee with Jamie"].exists)
+    try auditLocalCalendarHitRegions("selected-december27")
+  }
+  private func tapLocalCalendarEdge(_ element:XCUIElement,bottom:Bool=false) {
+    let f=element.frame,v=app.otherElements["reference.viewport"].frame
+    let data:[String:Any]=["identifier":element.identifier,"label":element.label,
+      "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "edge":bottom ? "bottom":"top","hittable":element.isHittable]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="calendar-edge-"+element.identifier.replacingOccurrences(of:".",with:"-")+"-"+(bottom ? "bottom":"top")
+    a.lifetime = .keepAlways;add(a);XCTAssertTrue(v.contains(f));tapRecipeTargetEdge(element,bottom:bottom)
+  }
+  func testLocalCalendarAllDayEdgesKeepSelectionAndLocalToday() {
+    launchLocalCalendarAudit();viewportShot("calendar-hit-region-before-edge-actions")
+    for i in 0..<7 {
+      if i>0 {XCTAssertLessThanOrEqual(app.buttons["calendar.day.\(i-1)"].frame.maxX,app.buttons["calendar.day.\(i)"].frame.minX)}
+      tapLocalCalendarEdge(app.buttons["calendar.day.\(i)"])
+      for j in 0..<7 {XCTAssertEqual(app.buttons["calendar.day.\(j)"].value as? String,j==i ? "Selected":"")}
+      XCTAssertEqual(app.staticTexts["CANCELED: Coffee with Jamie"].exists,i==5)
+    }
+    viewportShot("calendar-hit-region-selected-january2")
+    tapLocalCalendarEdge(app.buttons["calendar.day.0"],bottom:true)
+    XCTAssertEqual(app.buttons["calendar.day.0"].value as? String,"Selected")
+    XCTAssertNotEqual(app.buttons["calendar.day.6"].value as? String,"Selected")
+    viewportShot("calendar-hit-region-selected-december27-after-edge")
+    tapLocalCalendarEdge(app.buttons["close"],bottom:true)
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    tap("nav.faces")
+    XCTAssertEqual(app.staticTexts["calendar.face.selected"].label,"1")
+    XCTAssertEqual(app.staticTexts["calendar.face.selected"].value as? String,"Today")
+    XCTAssertTrue(app.staticTexts["January 2027"].exists)
+    viewportShot("calendar-hit-region-face-local-today-preserved")
+  }
+}
