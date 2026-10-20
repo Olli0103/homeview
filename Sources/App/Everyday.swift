@@ -376,6 +376,7 @@ struct RemindersView: View {
   @Environment(\.nativeCanvasScale) private var canvasScale
   private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var newItem = ""
+  @FocusState private var inputFocused:Bool
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       AppHeader(title:"Reminders",closeSize:max(48,minimumHitSide))
@@ -411,7 +412,9 @@ struct RemindersView: View {
       }
       HStack {
         TextField("New reminder", text: $newItem).textFieldStyle(.plain).font(.system(size: 22))
+          .focused($inputFocused)
           .frame(minHeight:minimumHitSide).contentShape(Rectangle())
+          .simultaneousGesture(TapGesture().onEnded { inputFocused=true })
           .accessibilityIdentifier("reminder.input")
         RoundButton(symbol: "plus", color: .orange.opacity(0.2),size:max(48,minimumHitSide),label:"Add reminder") {
           let s = newItem.trimmingCharacters(in: .whitespacesAndNewlines)
