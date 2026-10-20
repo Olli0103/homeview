@@ -499,6 +499,8 @@ struct MusicView: View {
 }
 struct WorldClockView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var choosing = false
   @State private var search = ""
   private var selected: [WorldCity] {
@@ -506,12 +508,15 @@ struct WorldClockView: View {
   }
   var body: some View {
     VStack(spacing: 8) {
-      AppHeader(title: choosing ? "Add City" : "World Clock")
+      AppHeader(title: choosing ? "Add City" : "World Clock",closeSize:max(48,minimumHitSide))
       HStack {
         Text(choosing ? "Choose a time zone" : "\(selected.count) of 12 cities")
         Spacer()
-        Button(choosing ? "Done" : "Add City") { choosing.toggle(); search = "" }
-          .disabled(!choosing && selected.count >= 12)
+        Button { choosing.toggle(); search = "" } label: {
+          Text(choosing ? "Done" : "Add City")
+            .frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+            .contentShape(Rectangle())
+        }.disabled(!choosing && selected.count >= 12)
           .accessibilityIdentifier("world.add")
       }.font(.system(size: 18)).padding(.horizontal, 30)
       if choosing {
@@ -529,7 +534,8 @@ struct WorldClockView: View {
                 model.addWorldCity(city.zone); choosing = false; search = ""
               } label: {
                 HStack { Text(city.name); Spacer(); Image(systemName: "plus.circle") }
-                  .font(.system(size: 24)).padding(18).contentShape(Rectangle())
+                  .font(.system(size: 24)).padding(18)
+                  .frame(minHeight:minimumHitSide).contentShape(Rectangle())
               }.accessibilityIdentifier("world.choose.\(city.zone)")
             }
           }.padding(.horizontal, 18)
@@ -557,6 +563,8 @@ struct WorldClockView: View {
                   .accessibilityIdentifier("world.time.\(city.zone)")
                 Button { model.removeWorldCity(city.zone) } label: {
                   Image(systemName: "minus.circle").font(.system(size: 22)).padding(8)
+                    .frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+                    .contentShape(Rectangle())
                 }.accessibilityLabel("Remove \(city.name)")
                   .accessibilityIdentifier("world.remove.\(city.zone)")
               }.padding(.horizontal, 25).padding(.vertical, 13)

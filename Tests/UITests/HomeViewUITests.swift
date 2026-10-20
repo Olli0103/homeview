@@ -5335,28 +5335,41 @@ extension HomeViewUITests {
     }
     XCTAssertTrue(list.frame.intersection(viewport.frame).insetBy(dx:4,dy:8).contains(element.frame))
   }
+  private func tapWorldClockEdge(_ button:XCUIElement,bottom:Bool=false) {
+    XCTAssertTrue(button.waitForExistence(timeout:5))
+    let frame=button.frame,viewport=app.otherElements["reference.viewport"].frame
+    let data:[String:Any]=["identifier":button.identifier,"label":button.label,
+      "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
+      "viewport":[Double(viewport.minX),Double(viewport.minY),Double(viewport.width),Double(viewport.height)],
+      "edge":bottom ? "bottom":"top","hittable":button.isHittable]
+    let geometry=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    geometry.name="world-edge-"+button.identifier+"-"+(bottom ? "bottom":"top")
+    geometry.lifetime = .keepAlways;add(geometry)
+    XCTAssertTrue(viewport.contains(frame))
+    tapRecipeTargetEdge(button,bottom:bottom)
+  }
   func testWorldClockAddDoneChooseRemoveAndCloseActualEdges() {
     launch(["--page","World Clock"])
     viewportShot("world-hit-region-before-edge-actions")
     let add=app.buttons["world.add"]
-    tapRecipeTargetEdge(add)
+    tapWorldClockEdge(add)
     XCTAssertEqual(add.label,"Done")
-    tapRecipeTargetEdge(add,bottom:true)
+    tapWorldClockEdge(add,bottom:true)
     XCTAssertEqual(add.label,"Add City")
-    tapRecipeTargetEdge(add)
+    tapWorldClockEdge(add)
     let london=app.buttons["world.choose.Europe/London"]
     revealWorldClockControl(london)
-    tapRecipeTargetEdge(london)
+    tapWorldClockEdge(london)
     XCTAssertEqual(add.label,"Add City")
     let remove=app.buttons["world.remove.Europe/London"]
     revealWorldClockControl(remove)
     XCTAssertTrue(app.staticTexts["world.time.Europe/London"].exists)
     viewportShot("world-hit-region-added-london-before-remove")
-    tapRecipeTargetEdge(remove,bottom:true)
+    tapWorldClockEdge(remove,bottom:true)
     XCTAssertFalse(app.buttons["world.remove.Europe/London"].exists)
     XCTAssertTrue(app.buttons["world.remove.America/Los_Angeles"].exists)
     viewportShot("world-hit-region-after-remove")
-    tapRecipeTargetEdge(app.buttons["close"])
+    tapWorldClockEdge(app.buttons["close"])
     XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
   }
 }

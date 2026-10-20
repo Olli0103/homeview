@@ -36,12 +36,15 @@ struct AppHeader: View {
   @Environment(AppModel.self) private var model
   var title = ""
   var light = false
+  // Opt-in for scaled screens that require a native-sized Close control.
+  // Other callers retain the existing 48-point reference-canvas size.
+  var closeSize:CGFloat = 48
   var body: some View {
     ZStack {
       HStack {
         RoundButton(
           symbol: "xmark", color: light ? .white.opacity(0.18) : .black.opacity(0.07),
-          foreground: light ? .white : .black, label: "Close"
+          foreground: light ? .white : .black, size:closeSize, label: "Close"
         ) { model.route = .personal }.accessibilityIdentifier("close")
         Spacer()
         Text(model.clock, style: .time).font(.system(size: 22, weight: .medium))
