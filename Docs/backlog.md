@@ -1046,6 +1046,8 @@ Abhängigkeiten: MEDIA-01, MEDIA-03, COM-01.
 
 AVFoundation-Vorschau startet bewusst und stoppt beim Verlassen. Zoom/Ringlicht sind UI-Effekte; Hardwarewirkung nicht geprüft.
 
+Spiegel-Controller: neuester Capture-Wunsch schuetzt neueren Start vor alten Stop-Anforderungen; notwendige Nachlauf-Bereinigung bleibt erhalten. Zwoelf native Logik-Szenarien mit rein symbolischen Capture-/Permission-Fakes, 45 Assertions und fuenf SDKs. Kein echter Kameratreiber-/Hardware-PASS. [Reproduktion und Grenzen](mirror-start-lifecycle.md).
+
 Offen:
 
 - Frontkamera, Orientierung, Spiegelung, Freigabe/Ablehnung und Unterbrechung prüfen
@@ -1306,6 +1308,8 @@ Abhängigkeiten: QA-01.
 ### QA-05: Persistenz, Migration, Offline und späte Antworten systematisch prüfen
 
 Lokale Zustände und ausgewählte Neustart-/Offlinefälle sind getestet. Vollständige Daten- und Lifecycle-Matrix fehlt.
+
+Spiegel-Controller: neuester Capture-Wunsch schuetzt neueren Start vor alten Stop-Anforderungen; notwendige Nachlauf-Bereinigung bleibt erhalten. Zwoelf native Logik-Szenarien mit rein symbolischen Capture-/Permission-Fakes, 45 Assertions und fuenf SDKs. Kein echter Kameratreiber-/Hardware-PASS. [Reproduktion und Grenzen](mirror-start-lifecycle.md).
 
 Offen:
 

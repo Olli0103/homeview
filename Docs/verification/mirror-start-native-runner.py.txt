@@ -1,0 +1,36 @@
+from pathlib import Path
+import json,hashlib,subprocess,sys,zipfile
+b=Path(__file__).parent;w=Path('/Volumes/Extern/Workspaces/homeview-mirror-start-lifecycle');pre=sys.argv[1]
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+def write(p,x):
+ assert not p.exists(),p
+ p.write_text(json.dumps(x,indent=2)+'\n')
+paths=[p for name in ['Sources','Tests','Resources','Scripts','HomeViewReplica.xcodeproj'] for p in (w/name).rglob('*') if p.is_file() and 'xcuserdata' not in str(p)]
+paths += [w/n for n in ['Package.swift','Package.resolved'] if (w/n).exists()]
+rows=[dict(path=str(p.relative_to(w)),sha256=sha(p)) for p in sorted(set(paths))]
+source=dict(digest=hashlib.sha256(''.join(f"{r['sha256']}  {r['path']}\n" for r in rows).encode()).hexdigest(),files=rows);assert len(rows)==206
+write(b/(pre+'-source.json'),source)
+code=(w/'Sources/App/NativeMirror.swift').read_text();start=code.index('  @MainActor @Observable\n  final class NativeMirrorController');end=code.index('  #if os(macOS)\n    struct MirrorPreview',start);controller=code[start:end]
+literal=b/(pre+'-literal-controller.swift.txt');assert not literal.exists();literal.write_text(controller)
+stub=b/'mirror-start-qualified-stubs.swift';cases=b/'mirror-start-qualified-cases.swift';combined=b/(pre+'-probe.swift');assert not combined.exists();combined.write_text(stub.read_text()+'\n'+controller+'\n'+cases.read_text())
+assert 'import AVFoundation' not in combined.read_text()
+exe=b/(pre+'-probe');assert not exe.exists();cmd=['xcrun','swiftc','-parse-as-library','-swift-version','6','-module-cache-path',str(b/'mirror-start-module-cache'),'-o',str(exe),str(combined)]
+run=subprocess.run(cmd,capture_output=True,text=True);log=b/(pre+'-compile.log');assert not log.exists();log.write_text(run.stdout+run.stderr);write(b/(pre+'-compile.json'),dict(command=cmd,exit_code=run.returncode));assert run.returncode==0,run.stderr
+linked=subprocess.check_output(['otool','-L',str(exe)],text=True);p=b/(pre+'-own-executable-linked-libraries.txt');assert not p.exists();p.write_text(linked);assert 'AVFoundation' not in linked
+names=['ordinary_success_stop','permission_denied','stop_before_permission_reply','stop_before_capture_reply','newer_start_after_stop_old_success','newer_start_after_stop_old_failure','overlapping_start_old_success','current_capture_failure','old_reply_then_latest_permission_denied','old_reply_then_latest_capture_failure','live_then_permission_denied','live_then_capture_failure'];results=[]
+for name in names:
+ run=subprocess.run([str(exe),name],capture_output=True,text=True,timeout=15);d=json.loads(run.stdout);assert d['case']==name and run.returncode==(0 if d['passed'] else 1);results.append(d);p=b/(pre+'-'+name+'.json');write(p,d)
+ print(name,'PASS' if d['passed'] else 'FAIL',flush=True)
+write(b/(pre+'-results.json'),results)
+inputs=[literal,stub,cases,combined,exe,log,Path(__file__),b/(pre+'-compile.json'),b/(pre+'-own-executable-linked-libraries.txt')]
+manifest=[dict(file=str(p),sha256=sha(p),bytes=p.stat().st_size) for p in inputs];write(b/(pre+'-native-inputs.json'),manifest)
+for r in rows:assert sha(w/r['path'])==r['sha256']
+archive=b/(pre+'-inputs.zip');assert not archive.exists()
+with zipfile.ZipFile(archive,'x',compression=zipfile.ZIP_DEFLATED) as z:
+ for r in rows:z.write(w/r['path'],'source/'+r['path'])
+ for i,r in enumerate(manifest):z.write(r['file'],'native/'+str(i)+'-'+Path(r['file']).name)
+with zipfile.ZipFile(archive) as z:
+ for r in rows:assert hashlib.sha256(z.read('source/'+r['path'])).hexdigest()==r['sha256']
+ for i,r in enumerate(manifest):assert hashlib.sha256(z.read('native/'+str(i)+'-'+Path(r['file']).name)).hexdigest()==r['sha256']
+receipt=dict(source_digest=source['digest'],literal_controller_sha256=sha(literal),native_input_files=len(manifest),archive_entries=len(rows)+len(manifest),archive_sha256=sha(archive),all_entries_read_back=True,scenarios_passed=sum(d['passed'] for d in results),scenarios_failed=sum(not d['passed'] for d in results),assertions=sum(len(d['assertions']) for d in results),assertions_failed=sum(not a['passed'] for d in results for a in d['assertions']),no_AVFoundation_import_or_link=True,no_real_camera_or_permission=True)
+write(b/(pre+'-receipt.json'),receipt);print(json.dumps(receipt,indent=2))

@@ -1,0 +1,222 @@
+import Foundation
+import Observation
+import Darwin
+
+// TEST-ONLY SYMBOL BINDINGS. No AVFoundation import, camera, session or consent API.
+// The production controller body is appended verbatim between this file and the cases.
+final class AVCaptureSession {}
+private enum CaptureStart: Sendable { case started, failed(String) }
+@MainActor private enum AVCaptureDevice {
+  enum Media: Sendable { case video }
+  static var allowed = true
+  static var held = false
+  static var requests = 0
+  static var pending: [CheckedContinuation<Bool, Never>] = []
+  static func requestAccess(for media: Media) async -> Bool {
+    requests += 1
+    if held { return await withCheckedContinuation { pending.append($0) } }
+    return allowed
+  }
+  static func grant(_ value: Bool) { CaptureBox.latest?.events.append("permission-reply-\(value)");pending.removeFirst().resume(returning:value) }
+}
+@MainActor private final class CaptureBox {
+  static var latest: CaptureBox?
+  let session = AVCaptureSession()
+  var starts = 0
+  var stops = 0
+  var events: [String] = []
+  var pending: [Int:CheckedContinuation<CaptureStart,Never>] = [:]
+  init() { Self.latest = self }
+  func start() async -> CaptureStart {
+    starts += 1
+    let id=starts
+    events.append("start-request-\(id)")
+    return await withCheckedContinuation { pending[id]=$0 }
+  }
+  func finish(_ id:Int,_ result:CaptureStart) {
+    events.append("start-reply-\(id)")
+    pending.removeValue(forKey:id)!.resume(returning:result)
+  }
+  func stop() { stops += 1;events.append("stop-request-\(stops)") }
+}
+
+  @MainActor @Observable
+  final class NativeMirrorController {
+    private let capture = CaptureBox()
+    var running = false
+    var busy = false
+    var status = "Mock camera"
+    private var generation = 0
+    private var captureWanted = false
+    var session: AVCaptureSession { capture.session }
+    func start() async {
+      generation += 1
+      let ticket = generation
+      captureWanted = true
+      busy = true
+      let allowed = await AVCaptureDevice.requestAccess(for: .video)
+      guard generation == ticket else { return }
+      guard allowed else {
+        captureWanted = false
+        capture.stop()
+        running = false
+        status = "Camera permission was not granted."
+        busy = false
+        return
+      }
+      let result = await capture.start()
+      guard generation == ticket else {
+        // This box is shared by subsequent starts. Keep late cleanup only
+        // while the latest intent is stopped; never stop a newer request.
+        if !captureWanted { capture.stop() }
+        return
+      }
+      busy = false
+      switch result {
+      case .started:
+        running = true
+        status = "Live camera"
+      case .failed(let text):
+        captureWanted = false
+        capture.stop()
+        running = false
+        status = text
+      }
+    }
+    func stop() {
+      generation += 1
+      captureWanted = false
+      busy = false
+      capture.stop()
+      running = false
+      status = "Mock camera"
+    }
+  }
+
+@MainActor private final class Checks {
+  var assertions:[[String:Any]]=[]
+  var states:[[String:Any]]=[]
+  func require(_ value:Bool,_ name:String) { assertions.append(["name":name,"passed":value]) }
+  func state(_ name:String,_ m:NativeMirrorController,_ b:CaptureBox) {
+    states.append(["name":name,"running":m.running,"busy":m.busy,"status":m.status,
+      "driverStarts":b.starts,"driverStops":b.stops,"driverEvents":b.events])
+  }
+}
+private enum ProbeFailure:Error {case timeout}
+@MainActor private func waitFor(_ test:()->Bool) async throws {
+  for _ in 0..<400 {
+    if test() {return}
+    try await Task.sleep(for:.milliseconds(5))
+  }
+  throw ProbeFailure.timeout
+}
+@main private struct MirrorStartLogicProbe {
+  @MainActor static func main() async {
+    let name=CommandLine.arguments[1],checks=Checks()
+    let m=NativeMirrorController(),b=CaptureBox.latest!
+    do {
+      switch name {
+      case "ordinary_success_stop":
+        let start=Task {await m.start()}
+        try await waitFor {b.starts==1}
+        checks.require(m.busy && !m.running,"pending start is busy, not live")
+        b.finish(1,.started);await start.value
+        checks.require(m.running && !m.busy && m.status=="Live camera","current success publishes live state")
+        checks.require(b.stops==0,"success emits no stop")
+        m.stop()
+        checks.require(b.stops==1 && !m.running && !m.busy && m.status=="Mock camera","explicit stop owns one shutdown and clears live state")
+      case "permission_denied":
+        AVCaptureDevice.allowed=false
+        await m.start()
+        checks.require(AVCaptureDevice.requests==1,"one fake permission decision")
+        checks.require(b.starts==0,"denial starts no capture; cleanup stops are permitted")
+        checks.require(!m.running && !m.busy && m.status=="Camera permission was not granted.","denial is not live or busy")
+      case "stop_before_permission_reply":
+        AVCaptureDevice.held=true
+        let start=Task {await m.start()}
+        try await waitFor {AVCaptureDevice.pending.count==1}
+        m.stop();AVCaptureDevice.grant(true);await start.value
+        checks.require(b.starts==0,"late permission grant does not start capture")
+        checks.require(b.stops==1,"only explicit stop owns shutdown")
+        checks.require(!m.running && !m.busy && m.status=="Mock camera","late grant does not resurrect live or busy state")
+      case "stop_before_capture_reply":
+        let start=Task {await m.start()}
+        try await waitFor {b.starts==1}
+        m.stop();b.finish(1,.started);await start.value
+        checks.require(b.stops==2,"stopped latest intent retains late-result shutdown cleanup")
+        checks.require(!m.running && !m.busy && m.status=="Mock camera","stopped controller stays stopped")
+      case "newer_start_after_stop_old_success", "newer_start_after_stop_old_failure", "overlapping_start_old_success":
+        let first=Task {await m.start()}
+        try await waitFor {b.starts==1}
+        let explicitStop=name != "overlapping_start_old_success"
+        if explicitStop {m.stop()}
+        let second=Task {await m.start()}
+        try await waitFor {b.starts==2}
+        checks.state("newer start requested before old reply",m,b)
+        // First capture reply precedes the second: no impossible reordering of
+        // the real CaptureBox serial queue is needed for this counterexample.
+        b.finish(1,name=="newer_start_after_stop_old_failure" ? .failed("SYNTHETIC_OLD_FAILURE"):.started)
+        await first.value
+        checks.state("old reply handled while newer request pending",m,b)
+        checks.require(b.stops==(explicitStop ? 1:0),"old reply must not enqueue shutdown after newer start request")
+        checks.require(m.busy && !m.running && m.status=="Mock camera","old reply leaves pending current state alone")
+        b.finish(2,.started);await second.value
+        checks.require(m.running && !m.busy && m.status=="Live camera","newest success still owns published live state")
+        checks.state("newest reply handled",m,b)
+        m.stop()
+      case "current_capture_failure":
+        let start=Task {await m.start()}
+        try await waitFor {b.starts==1}
+        b.finish(1,.failed("SYNTHETIC_CURRENT_FAILURE"));await start.value
+        checks.require(!m.running && !m.busy && m.status=="SYNTHETIC_CURRENT_FAILURE","current failure is visible, not live")
+        checks.require(b.starts==1,"failure does not create a second capture request")
+      case "old_reply_then_latest_permission_denied":
+        let first=Task {await m.start()}
+        try await waitFor {b.starts==1}
+        AVCaptureDevice.held=true
+        let second=Task {await m.start()}
+        try await waitFor {AVCaptureDevice.pending.count==1}
+        b.finish(1,.started);await first.value
+        checks.require(b.stops==0,"old reply cannot stop while newer permission is pending")
+        AVCaptureDevice.grant(false);await second.value
+        checks.require(b.starts==1 && !m.running && !m.busy && m.status=="Camera permission was not granted.","latest denial starts no capture and is not live")
+        let denial=b.events.firstIndex(of:"permission-reply-false")!,stop=b.events.firstIndex(of:"stop-request-1")
+        checks.require(b.stops==1 && stop != nil && stop!>denial,"latest denial performs its own cleanup after decision")
+      case "old_reply_then_latest_capture_failure":
+        let first=Task {await m.start()}
+        try await waitFor {b.starts==1}
+        let second=Task {await m.start()}
+        try await waitFor {b.starts==2}
+        b.finish(1,.started);await first.value
+        checks.require(b.stops==0,"old reply cannot stop a newer pending capture")
+        b.finish(2,.failed("SYNTHETIC_CURRENT_FAILURE"));await second.value
+        checks.require(!m.running && !m.busy && m.status=="SYNTHETIC_CURRENT_FAILURE","latest failure is not published as live")
+        let failure=b.events.firstIndex(of:"start-reply-2")!,stop=b.events.firstIndex(of:"stop-request-1")
+        checks.require(b.stops==1 && stop != nil && stop!>failure,"latest failure performs its own cleanup after result")
+      case "live_then_permission_denied", "live_then_capture_failure":
+        let first=Task {await m.start()}
+        try await waitFor {b.starts==1};b.finish(1,.started);await first.value
+        checks.require(m.running && !m.busy,"setup really reaches controller live state")
+        let denied=name=="live_then_permission_denied"
+        if denied {AVCaptureDevice.allowed=false;await m.start()}
+        else {
+          let second=Task {await m.start()}
+          try await waitFor {b.starts==2};b.finish(2,.failed("SYNTHETIC_CURRENT_FAILURE"));await second.value
+        }
+        checks.require(!m.running && !m.busy && b.stops==1 && m.status==(denied ? "Camera permission was not granted.":"SYNTHETIC_CURRENT_FAILURE"),"current denial/failure clears prior live state and owns shutdown")
+      default:throw ProbeFailure.timeout
+      }
+      checks.require(b.pending.isEmpty && AVCaptureDevice.pending.isEmpty,"all fake replies settled")
+    } catch {
+      checks.require(false,"bounded scenario setup failed")
+    }
+    checks.state("terminal",m,b)
+    let failed=checks.assertions.filter { !($0["passed"] as! Bool) }.count
+    let result:[String:Any]=["case":name,"passed":failed==0,"assertions":checks.assertions,
+      "states":checks.states,"driverEvents":b.events,"fakePermissionRequests":AVCaptureDevice.requests,
+      "realAVFoundationImported":false,"realCameraOrSessionConstructed":false]
+    let bytes=try! JSONSerialization.data(withJSONObject:result,options:[.prettyPrinted,.sortedKeys])
+    FileHandle.standardOutput.write(bytes);FileHandle.standardOutput.write(Data("\n".utf8))
+    exit(failed==0 ? 0:1)
+  }
+}

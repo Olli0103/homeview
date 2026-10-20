@@ -58,21 +58,28 @@ import SwiftUI
     var busy = false
     var status = "Mock camera"
     private var generation = 0
+    private var captureWanted = false
     var session: AVCaptureSession { capture.session }
     func start() async {
       generation += 1
       let ticket = generation
+      captureWanted = true
       busy = true
       let allowed = await AVCaptureDevice.requestAccess(for: .video)
       guard generation == ticket else { return }
       guard allowed else {
+        captureWanted = false
+        capture.stop()
+        running = false
         status = "Camera permission was not granted."
         busy = false
         return
       }
       let result = await capture.start()
       guard generation == ticket else {
-        capture.stop()
+        // This box is shared by subsequent starts. Keep late cleanup only
+        // while the latest intent is stopped; never stop a newer request.
+        if !captureWanted { capture.stop() }
         return
       }
       busy = false
@@ -80,11 +87,16 @@ import SwiftUI
       case .started:
         running = true
         status = "Live camera"
-      case .failed(let text): status = text
+      case .failed(let text):
+        captureWanted = false
+        capture.stop()
+        running = false
+        status = text
       }
     }
     func stop() {
       generation += 1
+      captureWanted = false
       busy = false
       capture.stop()
       running = false
