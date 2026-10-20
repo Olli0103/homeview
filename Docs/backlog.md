@@ -1185,6 +1185,8 @@ Lokale Wecker: drei vollständige sichtbare Hitflächen-Audits pro Gerät leer; 
 
 Lokale Erinnerungen: drei sichtbare öffentliche Hitflächen-Audits je Gerät leer; Erledigen, konkretes Löschen, Eingabefokus, Add und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Zusätzlichen Rand-Fokusfehler tatsächlich reproduziert und korrigiert. Nur Demoliste, keine verbundenen Quellen oder tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/reminder-hit-regions.md. [Befunde und Grenzen](reminder-hit-regions.md).
 
+Lokale Kalender-Tageswahl: zwei sichtbare öffentliche Hitflächen-Audits je Gerät leer; alle sieben Tage, wiederholter Vorjahrestag und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Genau eine Auswahl und unverändertes lokales Heute im Kalender-Face am Jahreswechsel beobachtet. Keine echte Kalenderquelle oder tatsächliche Hilfsmittel-/Hardwareabnahme. Docs/calendar-hit-regions.md. [Befunde und Grenzen](calendar-hit-regions.md).
+
 Offen:
 
 - VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen
