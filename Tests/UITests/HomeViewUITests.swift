@@ -5127,12 +5127,16 @@ extension HomeViewUITests {
     XCTAssertEqual(input.value as? String,draft)
     if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
     tap("nav.faces");drawer();tap("app.Recipes")
-    XCTAssertTrue(app.buttons["saved.Second local recipe"].waitForExistence(timeout:5))
-    XCTAssertFalse(app.buttons["saved.Butternut Squash Soup"].exists)
+    // The drawer intentionally opens the selected recipe cover, not the library.
+    XCTAssertTrue(app.staticTexts["Second local recipe"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Butternut Squash Soup"].exists)
+    XCTAssertTrue(app.buttons["recipe.start"].exists)
     shot("assistant-recipe-target-selected-canary-not-replaced")
     app.terminate();launch(["--persistence-test",storeID]);drawer();tap("app.Recipes")
-    XCTAssertTrue(app.buttons["saved.Second local recipe"].waitForExistence(timeout:5))
-    XCTAssertFalse(app.buttons["saved.Butternut Squash Soup"].exists)
+    // The drawer intentionally opens the selected recipe cover, not the library.
+    XCTAssertTrue(app.staticTexts["Second local recipe"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Butternut Squash Soup"].exists)
+    XCTAssertTrue(app.buttons["recipe.start"].exists)
     shot("assistant-recipe-target-canary-after-restart")
   }
   private func revealReadonlyExampleText(_ element:XCUIElement) {
@@ -5165,7 +5169,14 @@ extension HomeViewUITests {
       XCTAssertTrue(frame.contains(back.frame))
       XCTAssertGreaterThanOrEqual(back.frame.width,44-0.000_001)
       XCTAssertGreaterThanOrEqual(back.frame.height,44-0.000_001)
-      shot("assistant-readonly-recipe-"+name+"-visible-ingredient")
+      // App-window screenshots use inconsistent rotation crop coordinates on
+      // this runtime. Use the actual whole display, with dimensions checked.
+      let screen=XCUIScreen.main.screenshot()
+      XCTAssertEqual(screen.image.size.width,app.frame.width)
+      XCTAssertEqual(screen.image.size.height,app.frame.height)
+      let picture=XCTAttachment(screenshot:screen)
+      picture.name="assistant-readonly-recipe-"+name+"-visible-ingredient"
+      picture.lifetime = .keepAlways;add(picture)
     }
     tapAssistantControlEdge(app.buttons["assistant.exampleRecipe.back"],bottom:true)
     XCTAssertEqual(input.value as? String,draft)
