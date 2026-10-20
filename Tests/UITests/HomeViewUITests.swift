@@ -5448,12 +5448,16 @@ extension HomeViewUITests {
   func testLocalAlarmAddToggleDeleteAndCloseActualEdges() {
     launchLocalAlarmAudit()
     let initialToggle=localAlarmToggles.firstMatch
+    XCTAssertTrue(initialToggle.label.contains("07:00"))
+    XCTAssertEqual(initialToggle.value as? String,"Off")
     let initialDelete="alarm.delete."+initialToggle.identifier.dropFirst("alarm.toggle.".count)
     viewportShot("alarm-hit-region-before-edge-actions")
     tapLocalAlarmEdge(initialToggle)
+    XCTAssertEqual(initialToggle.value as? String,"On")
     XCTAssertTrue(app.staticTexts["Foreground alarm"].exists)
     XCTAssertFalse(app.staticTexts["Off"].exists)
     tapLocalAlarmEdge(initialToggle,bottom:true)
+    XCTAssertEqual(initialToggle.value as? String,"Off")
     XCTAssertTrue(app.staticTexts["Off"].exists)
     XCTAssertFalse(app.staticTexts["Foreground alarm"].exists)
     tapLocalAlarmEdge(app.buttons["alarm.add"])

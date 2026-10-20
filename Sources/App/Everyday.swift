@@ -583,11 +583,13 @@ struct WorldClockView: View {
 }
 struct AlarmsView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var hour = 7
   @State private var minute = 0
   var body: some View {
     VStack(spacing: 18) {
-      AppHeader(title: "Alarms")
+      AppHeader(title:"Alarms",closeSize:max(48,minimumHitSide))
       ScrollView {
         VStack(spacing: 18) {
           ForEach(model.data.alarms) { alarm in
@@ -607,13 +609,18 @@ struct AlarmsView: View {
                 Image(systemName: alarm.enabled ? "checkmark.circle.fill" : "circle").font(
                   .system(size: 38)
                 ).foregroundStyle(alarm.enabled ? .green : .gray)
-              }.accessibilityLabel("Toggle alarm").accessibilityIdentifier(
+                  .frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+                  .contentShape(Rectangle())
+              }.accessibilityLabel("Toggle alarm at \(String(format:"%02d:%02d",alarm.hour,alarm.minute))")
+                .accessibilityValue(alarm.enabled ? "On":"Off").accessibilityIdentifier(
                 "alarm.toggle.\(alarm.id)")
               Button {
                 model.removeAlarm(alarm.id)
               } label: {
                 Image(systemName: "trash").foregroundStyle(.gray)
-              }.accessibilityLabel("Delete alarm").accessibilityIdentifier(
+                  .frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+                  .contentShape(Rectangle())
+              }.accessibilityLabel("Delete alarm at \(String(format:"%02d:%02d",alarm.hour,alarm.minute))").accessibilityIdentifier(
                 "alarm.delete.\(alarm.id)")
             }.padding(.horizontal, 32)
           }
@@ -627,8 +634,12 @@ struct AlarmsView: View {
           ForEach(0..<60) { m in Text(String(format: "%02d", m)).tag(m) }
         }
       }.font(.system(size: 25)).padding(.horizontal, 32)
-      Pill(title: "Add Alarm", symbol: "plus") { model.addAlarm(hour: hour, minute: minute) }
-        .padding(.horizontal, 32).accessibilityIdentifier("alarm.add")
+      Button {model.addAlarm(hour:hour,minute:minute)} label: {
+        Label("Add Alarm",systemImage:"plus").font(.system(size:21,weight:.medium))
+          .frame(maxWidth:.infinity).padding(.vertical,17)
+          .frame(minHeight:minimumHitSide)
+          .background(.black.opacity(0.08),in:Capsule()).foregroundStyle(.primary)
+      }.padding(.horizontal,32).accessibilityIdentifier("alarm.add")
       Text(
         "System alerts use AlarmKit on iPhone and iPad after permission. Other targets use foreground alarms."
       ).font(.system(size: 16)).foregroundStyle(.gray).padding(.horizontal, 32).padding(.bottom, 24)
