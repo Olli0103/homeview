@@ -1,0 +1,863 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "status": "partial_issue_remains_open",
+  "product_test_commit": "eb0b65cf6137e3e835b6e3e86a9cfc43ac7ef8c5",
+  "source_files": 206,
+  "source_digest": "a18ae9cba6e3bb78c4655ddb847a0c29f8fb1da73777d8c9cd75433e13d736ef",
+  "UI_results": [
+    {
+      "checkpoint": "calendar-hit-regions-baseline",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 1,
+      "exit_code": 65,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "calendar-hit-regions-baseline",
+      "device": "iPhone",
+      "passed": 0,
+      "failed": 3,
+      "exit_code": 65,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPad",
+      "passed": 3,
+      "failed": 0,
+      "exit_code": 0,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 0,
+      "exit_code": 0,
+      "bound_App_metadata_launch_inputs": 28
+    }
+  ],
+  "UI_final_executions": 6,
+  "UI_unique_methods": 3,
+  "UI_total_executions": 12,
+  "UI_total_passed": 8,
+  "UI_historical_failed": 4,
+  "UI_skips": 0,
+  "UI_structured_runtime_warnings": 0,
+  "audit_findings": {
+    "calendar-hit-regions-baseline/iPad/calendar-hit-region-local-january1-all-findings": [],
+    "calendar-hit-regions-baseline/iPad/calendar-hit-region-selected-december27-all-findings": [],
+    "calendar-hit-regions-baseline/iPhone/calendar-hit-region-local-january1-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          308.2049865722656,
+          306.5199890136719,
+          12.3900146484375,
+          52.81500244140625
+        ],
+        "identifier": "calendar.day.6",
+        "label": "S, 2"
+      }
+    ],
+    "calendar-hit-regions-baseline/iPhone/calendar-hit-region-selected-december27-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          271.6650085449219,
+          306.5199890136719,
+          9.8699951171875,
+          52.81500244140625
+        ],
+        "identifier": "calendar.day.5",
+        "label": "F, 1"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          308.2049865722656,
+          306.5199890136719,
+          12.3900146484375,
+          52.81500244140625
+        ],
+        "identifier": "calendar.day.6",
+        "label": "S, 2"
+      }
+    ],
+    "calendar-hit-regions-final/iPad/calendar-hit-region-local-january1-all-findings": [],
+    "calendar-hit-regions-final/iPad/calendar-hit-region-selected-december27-all-findings": [],
+    "calendar-hit-regions-final/iPhone/calendar-hit-region-local-january1-all-findings": [],
+    "calendar-hit-regions-final/iPhone/calendar-hit-region-selected-december27-all-findings": []
+  },
+  "edge_geometries": {
+    "calendar-hit-regions-baseline/iPad": [
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          558.9183349609375,
+          314.97332763671875,
+          20.5633544921875,
+          111.10833740234375
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.5",
+        "label": "F, 1",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          465.7200012207031,
+          314.97332763671875,
+          47.759979248046875,
+          111.10833740234375
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.4",
+        "label": "T, 31",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          382.4716796875,
+          314.97332763671875,
+          55.056671142578125,
+          111.10833740234375
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.3",
+        "label": "W, 30",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          303.2033386230469,
+          314.97332763671875,
+          54.393341064453125,
+          111.10833740234375
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.2",
+        "label": "T, 29",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          223.93499755859375,
+          314.97332763671875,
+          53.730010986328125,
+          111.10833740234375
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.1",
+        "label": "M, 28",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          145.6616668701172,
+          314.97332763671875,
+          51.07667541503906,
+          111.10833740234375
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.0",
+        "label": "S, 27",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    ],
+    "calendar-hit-regions-baseline/iPhone": [
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          75.5250015258789,
+          306.5199890136719,
+          24.150001525878906,
+          52.81500244140625
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.0",
+        "label": "S, 27",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    ],
+    "calendar-hit-regions-final/iPad": [
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          49.14666748046875,
+          208.83999633789062,
+          63.68000030517578,
+          63.67999267578125
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          135.38,
+          314.97333333333336,
+          71.64000000000001,
+          120.72666666666663
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.0",
+        "label": "S, 27",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          612.98,
+          314.97333333333336,
+          71.63999999999999,
+          120.72666666666663
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.6",
+        "label": "S, 2",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          533.38,
+          314.97333333333336,
+          71.63999999999999,
+          120.72666666666663
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.5",
+        "label": "F, 1",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          453.78,
+          314.97333333333336,
+          71.63999999999999,
+          120.72666666666663
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.4",
+        "label": "T, 31",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          374.18,
+          314.97333333333336,
+          71.63999999999999,
+          120.72666666666663
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.3",
+        "label": "W, 30",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          294.58,
+          314.97333333333336,
+          71.63999999999999,
+          120.72666666666663
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.2",
+        "label": "T, 29",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          214.98,
+          314.97333333333336,
+          71.64000000000001,
+          120.72666666666663
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.1",
+        "label": "M, 28",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          135.38,
+          314.97333333333336,
+          71.64000000000001,
+          120.72666666666663
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.0",
+        "label": "S, 27",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    ],
+    "calendar-hit-regions-final/iPhone": [
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          29.639999389648438,
+          256.1199951171875,
+          44.099998474121094,
+          44.100006103515625
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          35.31,
+          320.38,
+          44.099999999999994,
+          57.33000000000004
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.0",
+        "label": "S, 27",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          322.59,
+          320.38,
+          44.10000000000002,
+          57.33000000000004
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.6",
+        "label": "S, 2",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          274.71,
+          320.38,
+          44.10000000000002,
+          57.33000000000004
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.5",
+        "label": "F, 1",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          226.83000000000004,
+          320.38,
+          44.099999999999966,
+          57.33000000000004
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.4",
+        "label": "T, 31",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          178.94999999999996,
+          320.38,
+          44.10000000000008,
+          57.33000000000004
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.3",
+        "label": "W, 30",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          131.07,
+          320.38,
+          44.099999999999966,
+          57.33000000000004
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.2",
+        "label": "T, 29",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          83.19,
+          320.38,
+          44.10000000000002,
+          57.33000000000004
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.1",
+        "label": "M, 28",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          35.31,
+          320.38,
+          44.099999999999994,
+          57.33000000000004
+        ],
+        "hittable": true,
+        "identifier": "calendar.day.0",
+        "label": "S, 27",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    ]
+  },
+  "actual_final_edge_actions": 18,
+  "baseline_manual_outcomes": [
+    {
+      "device": "iPad",
+      "delivered_days": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "stopped_before_day": 5,
+      "width_points": 20.5633544921875
+    },
+    {
+      "device": "iPhone",
+      "delivered_days": [],
+      "stopped_before_day": 0,
+      "width_points": 24.150001525878906
+    }
+  ],
+  "final_functional_proof": [
+    "All seven day top edges independently select exactly one matching day",
+    "Adjacent day AX rectangles are non-overlapping",
+    "Demo cancelled-today entry shown only for local today index5",
+    "Previous-year day0 bottom edge selects Dec27 again",
+    "Close bottom edge reaches personal page",
+    "Calendar face remains local Jan1/Today/January2027 after agenda selection"
+  ],
+  "fixture": {
+    "reference_UTC": "2026-12-31T23:30:00Z",
+    "IANA_zone": "Pacific/Kiritimati",
+    "week_days": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      1,
+      2
+    ],
+    "local_today": "2027-01-01",
+    "OS_clock_changed": false
+  },
+  "product_scope": {
+    "product_commit": "eb0b65cf6137e3e835b6e3e86a9cfc43ac7ef8c5",
+    "base": "896e23f0d1bc4f8119ad79fae844586edcccec69",
+    "baseline_to_final_only_changed_file": "Sources/App/Everyday.swift",
+    "all_other205_inputs_unchanged": true,
+    "all_product_code_outside_CalendarView_unchanged": true,
+    "model_profile_storage_IANA_date_agenda_algorithms_unchanged": true,
+    "all_Core_and_CoreTest_equal_paths": [
+      "Sources/Core/AlbumDisplay.swift",
+      "Sources/Core/AnswerSpeechSession.swift",
+      "Sources/Core/AssistantConversation.swift",
+      "Sources/Core/AssistantLimits.swift",
+      "Sources/Core/AssistantResponseDocument.swift",
+      "Sources/Core/BrowserPolicy.swift",
+      "Sources/Core/CalendarAgenda.swift",
+      "Sources/Core/ConicGradientModel.swift",
+      "Sources/Core/ConnectedDataSession.swift",
+      "Sources/Core/ConnectedModels.swift",
+      "Sources/Core/DataConnection.swift",
+      "Sources/Core/DemoActionPlan.swift",
+      "Sources/Core/DemoDoorbell.swift",
+      "Sources/Core/EverydayVoiceCommand.swift",
+      "Sources/Core/FaceConfiguration.swift",
+      "Sources/Core/FlowSimulation.swift",
+      "Sources/Core/FlowTypography.swift",
+      "Sources/Core/GuestAccessPolicy.swift",
+      "Sources/Core/LocalStateFileReader.swift",
+      "Sources/Core/LocalStateReset.swift",
+      "Sources/Core/Models.swift",
+      "Sources/Core/MusicPlaybackGate.swift",
+      "Sources/Core/PersonalHomeConfiguration.swift",
+      "Sources/Core/PhotoClockInk.swift",
+      "Sources/Core/PhotoMaskRasterizer.swift",
+      "Sources/Core/PhotoPlacement.swift",
+      "Sources/Core/PodcastFeedParser.swift",
+      "Sources/Core/PodcastFeedTransport.swift",
+      "Sources/Core/PodcastLibrary.swift",
+      "Sources/Core/PowerAdapterInformation.swift",
+      "Sources/Core/RecipeParser.swift",
+      "Sources/Core/RecipeTransfer.swift",
+      "Sources/Core/SetupIntroduction.swift",
+      "Sources/Core/SnapshotMigration.swift",
+      "Sources/Core/TimerLiveActivity.swift",
+      "Sources/Core/ViewportNavigationIntent.swift",
+      "Sources/Core/WeatherData.swift",
+      "Sources/Core/WorldClock.swift",
+      "Tests/CoreTests/AlbumDisplayTests.swift",
+      "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+      "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+      "Tests/CoreTests/AssistantConversationTests.swift",
+      "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+      "Tests/CoreTests/BrowserPolicyTests.swift",
+      "Tests/CoreTests/CalendarAgendaTests.swift",
+      "Tests/CoreTests/CalendarBoundaryTests.swift",
+      "Tests/CoreTests/ConicGradientTests.swift",
+      "Tests/CoreTests/DemoActionPlanTests.swift",
+      "Tests/CoreTests/DemoDoorbellTests.swift",
+      "Tests/CoreTests/DeviceConnectionTests.swift",
+      "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+      "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+      "Tests/CoreTests/FlowTypographyTests.swift",
+      "Tests/CoreTests/GuestSafetyTests.swift",
+      "Tests/CoreTests/HomeViewCoreTests.swift",
+      "Tests/CoreTests/LocalStateFileReaderTests.swift",
+      "Tests/CoreTests/LocalStateResetTests.swift",
+      "Tests/CoreTests/MusicPlaybackGateTests.swift",
+      "Tests/CoreTests/PersonalHomeTests.swift",
+      "Tests/CoreTests/PhotoClockInkTests.swift",
+      "Tests/CoreTests/PhotoPlacementTests.swift",
+      "Tests/CoreTests/PodcastTests.swift",
+      "Tests/CoreTests/PowerAdapterInformationTests.swift",
+      "Tests/CoreTests/RecipeParserTests.swift",
+      "Tests/CoreTests/RecipeTransferTests.swift",
+      "Tests/CoreTests/SetupIntroductionTests.swift",
+      "Tests/CoreTests/SnapshotMigrationTests.swift",
+      "Tests/CoreTests/TimerLiveActivityTests.swift",
+      "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+      "Tests/CoreTests/WatchFacesTests.swift",
+      "Tests/CoreTests/WeatherTests.swift",
+      "Tests/CoreTests/WorldClockTests.swift"
+    ],
+    "historical_Core_tests": 301,
+    "historical_Core_commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "new_Core_execution": false,
+    "source_digest": "a18ae9cba6e3bb78c4655ddb847a0c29f8fb1da73777d8c9cd75433e13d736ef",
+    "real_calendar_connection": false
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "archives": {
+    "calendar-hit-regions-baseline": {
+      "archive": "calendar-hit-regions-baseline-inputs.zip",
+      "sha256": "d99aa54f2d6360b3ab43db1eab98a77f1639052db18e08a0e8478cdbd22750ec",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "06ec020ba3cd2b5303dd48f2116203240ccae62c6ac25f6dfe0c06cadc177e58"
+    },
+    "calendar-hit-regions-final": {
+      "archive": "calendar-hit-regions-final-inputs.zip",
+      "sha256": "378749459eecbd1b1019c70757b1477945ec36aed5621fc7dd5554c5a5df74c0",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "a18ae9cba6e3bb78c4655ddb847a0c29f8fb1da73777d8c9cd75433e13d736ef"
+    }
+  },
+  "decoded_PNGs": 36,
+  "contacts_viewed": 4,
+  "additional_full_images_viewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPad-before-viewport-calendar-hit-region-local-january1.png",
+      "sha256": "8975ec7bcb30487b05119da46d1a503aa77a5f7d29c73da2bde449209e91c4c7",
+      "checkpoint": "calendar-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPad-before-viewport-calendar-hit-region-selected-december27.png",
+      "sha256": "b22fe859557d5384471136474a79dbf0dbfe1038a484ce4892501ed5a743fa46",
+      "checkpoint": "calendar-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPad-after-viewport-calendar-hit-region-local-january1.png",
+      "sha256": "8975ec7bcb30487b05119da46d1a503aa77a5f7d29c73da2bde449209e91c4c7",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPad-after-viewport-calendar-hit-region-selected-december27.png",
+      "sha256": "b22fe859557d5384471136474a79dbf0dbfe1038a484ce4892501ed5a743fa46",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPad-after-viewport-calendar-hit-region-selected-january2.png",
+      "sha256": "17eed473133a215b527afbbae9a344c985a1ed0ea18bcad3e099108bebde6acd",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPad-after-viewport-calendar-hit-region-selected-december27-after-edge.png",
+      "sha256": "6ec087467803c8716886a736291afba7b01dd9dd9d42e78475ec5901351d6cf5",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPad-after-viewport-calendar-hit-region-face-local-today-preserved.png",
+      "sha256": "08dc4444f980d37e52271eb90491c8a0a16c9471750a3bd183a3f9517e495700",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPhone-before-viewport-calendar-hit-region-local-january1.png",
+      "sha256": "4c497c1dd0e1d5fe0cd2b5e07c130612584ef9b77f9ae8a4670327969f1fb6b1",
+      "checkpoint": "calendar-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPhone-before-viewport-calendar-hit-region-selected-december27.png",
+      "sha256": "5b694eb95d1305c6a566a2ee7f909753092af22383ffd520925433d6a1e6cb2b",
+      "checkpoint": "calendar-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPhone-after-viewport-calendar-hit-region-local-january1.png",
+      "sha256": "6a7c76d0ec9873ed389be2d1591baad43f85191dbfae0ceafde0c6081b91fd04",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPhone-after-viewport-calendar-hit-region-selected-december27.png",
+      "sha256": "65c1e114b524ac5f1b5e2718a3403d1de4d0f2bb6632189ded07738399e3f96b",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPhone-after-viewport-calendar-hit-region-selected-january2.png",
+      "sha256": "8939483008a0991b718afb01cb87054a1c47b14cd92a32b097fd446a21b82315",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPhone-after-viewport-calendar-hit-region-selected-december27-after-edge.png",
+      "sha256": "65c1e114b524ac5f1b5e2718a3403d1de4d0f2bb6632189ded07738399e3f96b",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/calendar-hit-regions/iPhone-after-viewport-calendar-hit-region-face-local-today-preserved.png",
+      "sha256": "20ed4499e370533075f0e97ed317019cbf4e36d6a2a551f2bf44efd18d397c9a",
+      "checkpoint": "calendar-hit-regions-final",
+      "device": "iPhone"
+    }
+  ],
+  "historical_Core": {
+    "tests": 301,
+    "commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "byte_equal_Core_and_test_files": 72,
+    "new_Core_execution": false
+  },
+  "limits": [
+    "Local demo agenda only, no connected EventKit source or Refresh control acceptance",
+    "Two visible audit states and one week; no all locales or large DynamicType guarantee",
+    "Close native minimum is a final companion contract, not baseline automatic finding",
+    "No actual assistive technologies/focus order/announcements/fullcontrast/physical device/original parity acceptance",
+    "No general pixel-preservation claim; phone day spacing and Close size can grow"
+  ],
+  "real_personal_data_used": false,
+  "EventKit_connected": false,
+  "permissions_changed": false,
+  "Home_constructed": false,
+  "new_system_alarms": false,
+  "new_live_activities": false,
+  "artifact_export": "All original attachments exported; actual exportedFileName suffix determines PNG/JSON subsets"
+}
