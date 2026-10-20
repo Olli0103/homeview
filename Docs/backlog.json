@@ -55,7 +55,7 @@
     "priority": "P0",
     "kind": "implementation",
     "functions": [],
-    "current": "Die öffentliche Kopie ersetzt 17 Referenzgrafiken und abgeleitete OS-Ziffernkonturen durch eigene geometrische Platzhalter.",
+    "current": "Die öffentliche Kopie ersetzt 17 Referenzgrafiken und abgeleitete OS-Ziffernkonturen durch eigene geometrische Platzhalter. Aktueller Ressourcenindex mit57Dateien/16Provenienzeingaben und eigenem App-Icon ohne Systemsymbol ergänzt.17geometrischeRaster bytegleichreproduziert,5SDKsbestanden.371öffentlicheCommits/3731Blobs bis65a4210 vollständiggelesen;historischerAppicon-SF-Anteilbewusstqualifiziert,nichtumgeschriebenoderpauschalfreigegeben. Docs/asset-provenance.md.",
     "tasks": [
       "Eigenständige App-Icons, Rezeptbilder, Demo-Fotos und Cover mit dokumentierter Herkunft erstellen oder geeignet lizenzieren",
       "Flow- und Numerals-Typografie ohne extrahierte Schriftkonturen entwickeln",
@@ -68,7 +68,12 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/3",
     "issue_number": 3,
-    "state": "open"
+    "state": "open",
+    "progress_evidence": [
+      "Docs/asset-provenance.md",
+      "Docs/asset-current-manifest.json",
+      "Docs/verification/asset-provenance.json"
+    ]
   },
   {
     "key": "PUB-02",

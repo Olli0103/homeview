@@ -11,8 +11,10 @@ FeedKit is by Nuno Dias, licensed under MIT; the upstream notice is preserved in
 [Resources/FeedKit-LICENSE.txt](Resources/FeedKit-LICENSE.txt) and bundled with the
 app. SwiftPM resolves the pinned dependency; no third-party source archive is
 copied into this repository.
-The raster fixtures, app icon and demo tone are original project-generated
-assets. The procedural DemoAlbumCover in Sources/App/HomeScreens.swift is also
+The current geometric raster fixtures, independent-v2 app icon and demo tone
+are project-generated assets. The current app icon is drawn from explicit
+primitive paths in Scripts/make_icon.swift without a system-symbol/font image.
+The procedural DemoAlbumCover in Sources/App/HomeScreens.swift is also
 original project artwork under MIT, not a copied or connected album cover; its
 source is bound by the relevant verification source manifest.
 [asset-manifest.json](Docs/asset-manifest.json) records their provenance
@@ -25,9 +27,10 @@ project-authored geometry under MIT, not extracted Apple font contours. Some
 digits reuse our own cubic skeletons. Their bounded visual scope and native
 atlas evidence are documented in [photo-glyphs.md](Docs/photo-glyphs.md).
 
-Apple SDKs, system-provided fonts, SF Symbols and other system resources are not
-redistributed or relicensed by this repository. Their use remains subject to
-their respective terms. Product names and trademarks identify compatibility or
+Apple SDK binaries and font files are not bundled by this repository. Runtime
+system fonts, SF Symbols and other system resources are not relicensed under
+the project MIT notice; their use remains subject to their respective terms.
+Historical rasterized system content is qualified below. Product names and trademarks identify compatibility or
 research targets; the MIT license grants no trademark rights or endorsement.
 HomeView is an independent prototype, not affiliated with Apple.
 
@@ -36,6 +39,16 @@ contours, binary disassembly and private research archives are excluded from the
 public source publication. The license does not grant rights to that material.
 The verification screenshots in this repository show our own synthetic
 simulator states; incidental system UI remains its owner's material.
+
+Historical qualification: the earlier app-icon file named icon-1024.png,
+present through commit 65a4210, rasterized Apple's house.fill system symbol
+inside the project's own background. Its previous generic project-generated
+description did not distinguish that component. Do not treat that historical
+symbol component as independently authored or relicensed by this project's
+MIT notice. The current icon-independent-v2.png replaces it with original
+primitive geometry. The historical bytes remain in Git; this correction is
+not a history rewrite or clearance of all historical material. See
+Docs/asset-provenance.md and Docs/asset-current-manifest.json for scope.
 
 Any future third-party source or bundled asset must retain its own applicable
 license and attribution, with provenance documented before redistribution.

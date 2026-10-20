@@ -1,0 +1,796 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "audit_base_commit": "65a42108b18be5dc5201e427ef1afb9ecc9b093f",
+  "purpose": "Current byte-bound declarations; initial publication index remains historical and unchanged",
+  "assets": [
+    {
+      "path": "Resources/Assets.xcassets/AlbumArt.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/AlbumArt.imageset/image.png",
+      "bytes": 23517,
+      "sha256": "d53db63436f68e04d6f26a54fa46da4bd2b533f4a3c146e67f654db191fb5208",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "bytes": 215,
+      "sha256": "380b68793f2cfa854be7cce10b1c98ee5032ab707e70d8f771f586e7ea182abc",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/AppIcon.appiconset/icon-independent-v2.png",
+      "bytes": 891172,
+      "sha256": "a6c20b8da16e82972473ef3e2c1153eee048ccc42e1a1110148f19c72dee69fa",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original paths and gradient; no system symbol/font rasterization",
+      "evidence": [
+        "Scripts/make_icon.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/Contents.json",
+      "bytes": 43,
+      "sha256": "47d7e4a36c59b0f8829154abe3a7f6b7ef0c5ea5cf8a9bfccbc6bdf85e811d1b",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/Contents.json",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/image.png",
+      "bytes": 3742589,
+      "sha256": "9acbcb56c4dbd5b41daa0054985c6b496f99408642bc246b9f3e273be08f8241",
+      "author_or_generator": "AI-generated output; no human photographer asserted",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "AI-generated fictional demo still; built-in image_gen; no reference-image input; 2026-10-17",
+      "evidence": [
+        "Docs/demo-camera-assets.json"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/Contents.json",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/image.png",
+      "bytes": 3073944,
+      "sha256": "14d3fc99123c6ff70c994523790b94f4d34cf18c1e808a3080b1905f4cc73db9",
+      "author_or_generator": "AI-generated output; no human photographer asserted",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "AI-generated fictional demo still; built-in image_gen; no reference-image input; 2026-10-17",
+      "evidence": [
+        "Docs/demo-camera-assets.json"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/Contents.json",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/image.png",
+      "bytes": 3252316,
+      "sha256": "640cce7ae268abee5cf53b424a9c9646ecd03922a9a4b14865ead2c4414b21b7",
+      "author_or_generator": "AI-generated output; no human photographer asserted",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "AI-generated fictional demo still; built-in image_gen; no reference-image input; 2026-10-17",
+      "evidence": [
+        "Docs/demo-camera-assets.json"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/Contents.json",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/image.png",
+      "bytes": 3022112,
+      "sha256": "b0a9540126098aab163deb7627609275600b95f1164aae5784e5e7765adf3db9",
+      "author_or_generator": "AI-generated output; no human photographer asserted",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "AI-generated fictional demo still; built-in image_gen; no reference-image input; 2026-10-17",
+      "evidence": [
+        "Docs/demo-camera-assets.json"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/Contents.json",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/image.png",
+      "bytes": 2818793,
+      "sha256": "4706c1679b463628014e7fbbe64a3be6e3ebafdc864f121c33d4e2d4182f8651",
+      "author_or_generator": "AI-generated output; no human photographer asserted",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "AI-generated fictional demo photograph; built-in image_gen; no reference-image input; 2026-10-17",
+      "evidence": [
+        "Docs/demo-photo-assets.json"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/Contents.json",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/image.png",
+      "bytes": 2334993,
+      "sha256": "a23cc0c3f9bd409029e2e4451a771d9dceb91821fd2a32dbdaaac8ca0e3f47d7",
+      "author_or_generator": "AI-generated output; no human photographer asserted",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "AI-generated fictional demo photograph; built-in image_gen; no reference-image input; 2026-10-17",
+      "evidence": [
+        "Docs/demo-photo-assets.json"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/Contents.json",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/image.png",
+      "bytes": 51440,
+      "sha256": "6a494569e8a377f4fe6a1d21cb6bda8024c25848dc78f905a2fe58f660d833ab",
+      "author_or_generator": "AI-generated output; no human photographer asserted",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Deterministic grayscale RGB copy of the alpha channel of the Mac native foreground PNG from our own generated DemoPhotoPortraitV1, 2026-10-18. UITesting replay only; not an iOS native extraction or production fallback.",
+      "evidence": [
+        "Docs/demo-photo-assets.json"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconAlarms.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconAlarms.imageset/image.png",
+      "bytes": 23193,
+      "sha256": "5db57cfef3d81f472a462feb90715fa76359af9ea5a1b2ada45f4acdffe0022b",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconCalendar.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconCalendar.imageset/image.png",
+      "bytes": 23375,
+      "sha256": "a6ebff496c8bf0dd216d1f3c97fb954bb2949d1e4b12def159dc7e5110dcddbe",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconFaceTime.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconFaceTime.imageset/image.png",
+      "bytes": 23119,
+      "sha256": "f2c4e01ad31ab51995a795dfb8bb40eedb3d98b69cef30f4722c3ba4efa6cd69",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconFindMy.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconFindMy.imageset/image.png",
+      "bytes": 23112,
+      "sha256": "0619d1d988afef3cb0fa424c4a16c52d242f66a6a707ca2948d5f5ce4c136e5e",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconHome.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconHome.imageset/image.png",
+      "bytes": 23592,
+      "sha256": "a4107899bb299eea1fb938ec202adbceb6d4e9ea61d1d9f9da7fcc234f108663",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconIntercom.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconIntercom.imageset/image.png",
+      "bytes": 23765,
+      "sha256": "aead7f98e93449c0e538eb2a2ab5aca22c8f65d6a2ce8831794836935e732d61",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconMessages.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconMessages.imageset/image.png",
+      "bytes": 23497,
+      "sha256": "e53f1b20362924a7d40c85208ab94ef594cca47580bc3439df3da8ef6e40e721",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconMusic.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconMusic.imageset/image.png",
+      "bytes": 23452,
+      "sha256": "943812f42694050a5c6e12b6051cbc3eb4b7cdcf742057558bd80d57ea4be06d",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconPodcasts.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconPodcasts.imageset/image.png",
+      "bytes": 23293,
+      "sha256": "5cda483a240793d412059b58ed648dcd9913f66247851f37d85fc8fa92002260",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconReminders.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconReminders.imageset/image.png",
+      "bytes": 23667,
+      "sha256": "95c1202df19960e8cca6271fc0f94675fd93844ed7cc8913d1af1e9f6f401b58",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconSafari.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconSafari.imageset/image.png",
+      "bytes": 23353,
+      "sha256": "91a1ae2e4b5a4ac5235ad115b7220fea98fdf28fa1372d0765e8f549fe5f091b",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconSettings.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconSettings.imageset/image.png",
+      "bytes": 23289,
+      "sha256": "a4c5f5ae1a828062f573f17ba0cd3a873b745baa076b6dd182197e61dc600283",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconTimers.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconTimers.imageset/image.png",
+      "bytes": 23498,
+      "sha256": "0cb4cebb93b29deb64f1c3851d1489c7671013659fd9757655521e4bb1b5352f",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconWeather.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconWeather.imageset/image.png",
+      "bytes": 22993,
+      "sha256": "8093f745c479d407fb8be7264f567819233a56ca2bd384d4a52b796bef65abce",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconWorldClock.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconWorldClock.imageset/image.png",
+      "bytes": 23550,
+      "sha256": "37bbeb999a4dcc41c91af84eae723ba04f40394384f5ae1c7d150717edb1f471",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/Soup.imageset/Contents.json",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Assets.xcassets/Soup.imageset/image.png",
+      "bytes": 23419,
+      "sha256": "18096d661501bf786990a44eb19a2d8c3c97e1584da96c35a4dd26f380ff195f",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Original primitive geometry; exact 17/17 PNG replay from retained generator",
+      "evidence": [
+        "Scripts/prepare_assets.swift"
+      ]
+    },
+    {
+      "path": "Resources/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0",
+      "author_or_generator": "Nuno Dias / FeedKit upstream",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Preserved upstream MIT license notice for pinned FeedKit 10.9.4, revision 545aba8b9357fb00ffe51483b659519d96a9d635",
+      "evidence": [
+        "Resources/FeedKit-LICENSE.txt",
+        "Package.resolved",
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/Info.plist",
+      "bytes": 1292,
+      "sha256": "90292e4f4fe1b86218deeacccc03572f80c28137e9e65cec50b27e3b474ed074",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/MainInfo.plist",
+      "bytes": 1393,
+      "sha256": "7b0ec0be469b996427bfa325e0a68389fd48858cb1bb66ad637802f1232faae6",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/TimerWidgetInfo.plist",
+      "bytes": 729,
+      "sha256": "03ef18bd0c11de3a13e3219064293e9ef05255689f7f770e12fd8eba2258f7a3",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Project-authored configuration",
+      "evidence": [
+        "NOTICE.md"
+      ]
+    },
+    {
+      "path": "Resources/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Declared project-synthesized audio, not a borrowed recording; declaration is not a retained generator replay",
+      "evidence": [
+        "NOTICE.md",
+        "Docs/publication.md"
+      ]
+    },
+    {
+      "path": "Resources/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Declared project-synthesized audio, not a borrowed recording; declaration is not a retained generator replay",
+      "evidence": [
+        "NOTICE.md",
+        "Docs/public-podcast-feeds.md"
+      ]
+    }
+  ],
+  "source_inputs": [
+    {
+      "path": "LICENSE",
+      "sha256": "230da0dd4ca32725a9a4b3d4c8e27bfc8a42515514d4a3e8d7f60b3c11e1a083"
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "79cc848b5cf24929904a2cb118f0819ac1b6833d41cc7176453a050a8426e687"
+    },
+    {
+      "path": "Scripts/check_asset_manifest.py",
+      "sha256": "843b76fe6f7233b77885bc974c737e8e34ef62b7bce0e3293f30d3587578b5fe"
+    },
+    {
+      "path": "Scripts/prepare_assets.swift",
+      "sha256": "3f94224213f299abdbf225637c8de4e229c986c2d613c528e01d642ebd5d8a12"
+    },
+    {
+      "path": "Scripts/make_icon.swift",
+      "sha256": "3b6fd2816c40d2c2d534dacb41063358e3741aad6d8a6232709205883d719b2a"
+    },
+    {
+      "path": "Docs/demo-camera-assets.json",
+      "sha256": "bf9983a10d5e2e0f998676d38b642c4c1c7230925f785262fdb9e40b5d599cc4"
+    },
+    {
+      "path": "Docs/demo-photo-assets.json",
+      "sha256": "90b84e2828f55df92a7f41d20bb478e0fcd90bf503cd656f8749e7f263ccb7cc"
+    },
+    {
+      "path": "Docs/publication.md",
+      "sha256": "a8391b5defaf4bec91300437465d03796281aad60e0a6ef4f0f3bec398e95b37"
+    },
+    {
+      "path": "Docs/public-podcast-feeds.md",
+      "sha256": "18521a689ba7964bc42740921002a85f672d4ef359f0e0d3126b258a9b605dbb"
+    },
+    {
+      "path": "Resources/FeedKit-LICENSE.txt",
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Package.resolved",
+      "sha256": "c8847f7f0d11227b76d43c295cc6596611c58b666412fef51298f1b959c8df0c"
+    },
+    {
+      "path": "Sources/App/FlowDigitContours.swift",
+      "sha256": "c05e80a4379d75b141d886ae25794e0fa8129b639f472eac9d6b3426c38a0fc0"
+    },
+    {
+      "path": "Sources/Core/FlowTypography.swift",
+      "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+    },
+    {
+      "path": "Sources/App/PhotoTallGlyphs.swift",
+      "sha256": "3be93d1957a68adbf00c0d1c173d5467a512cf5207ee2cfd03db8b9eff56384b"
+    },
+    {
+      "path": "Sources/App/HomeScreens.swift",
+      "sha256": "b98bd0d2d43576e189ed06cab792135bccad596d0ba266b8baab538140ec41b0"
+    },
+    {
+      "path": "Sources/App/Faces.swift",
+      "sha256": "72a1aaacd674435d89d0866e8009723ec502ac8cced4a3cbc8a0847e258b216c"
+    }
+  ],
+  "runtime_and_code_assets": [
+    {
+      "name": "Flow and tall photo digits",
+      "origin": "Project-authored geometry, not stored OS contours",
+      "sources": [
+        "Sources/App/FlowDigitContours.swift",
+        "Sources/Core/FlowTypography.swift",
+        "Sources/App/PhotoTallGlyphs.swift"
+      ],
+      "license": "MIT; see NOTICE.md"
+    },
+    {
+      "name": "Procedural demo album cover",
+      "origin": "Project-authored SwiftUI artwork",
+      "sources": [
+        "Sources/App/HomeScreens.swift"
+      ],
+      "license": "MIT"
+    },
+    {
+      "name": "Runtime system text and symbols",
+      "origin": "Public SDK runtime resources; no font files bundled",
+      "sources": [
+        "Sources/App/Faces.swift"
+      ],
+      "license": "Apple terms, not relicensed as project MIT; incidental system rendering in screenshots remains system material"
+    }
+  ],
+  "historical_qualification": "icon-1024.png through65a4210 contains rasterized house.fill system component. Earlier generic project-generated declaration incomplete. Historical bytes remain; current independent-v2 replacement does not certify historical rights.",
+  "limits": [
+    "Provenance records and reproducible geometry are not blanket legal clearance",
+    "No claim to have visually inspected every historical screenshot",
+    "Initial asset-manifest.json intentionally retains its original digest record"
+  ]
+}
