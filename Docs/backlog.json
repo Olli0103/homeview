@@ -1585,7 +1585,7 @@
     "functions": [
       "F088"
     ],
-    "current": "Keine nachgewiesene Übergabe von Song, Podcast, aktivem Anruf oder Video zwischen Geräten.",
+    "current": "Song, Podcast, aktiver Anruf und Video jeweils mit öffentlichen Verträgen und konkreter Lücke abgegrenzt. Eigene Rezept-/Podcastzustände, AirPlay, Apple-System-Handoff und Deep Links getrennt. Geräte-Abnahmeplan einschließlich Abbruch und fehlendem Ziel dokumentiert, nicht ausgeführt. Keine tatsächliche Zwei-Geräte-Sitzungsübernahme; F088 bleibt blockiert.",
     "tasks": [
       "Öffentliche Übergabefähigkeit je Inhaltstyp untersuchen",
       "Eigenen Podcast-/Rezeptzustand von fremden aktiven Sitzungen unterscheiden",
@@ -1599,7 +1599,12 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/63",
     "issue_number": 63,
-    "state": "open"
+    "state": "completed",
+    "research_resolution": "completed_with_documented_gaps",
+    "progress_evidence": [
+      "Docs/media-handoff-boundaries.md",
+      "Docs/verification/media-handoff-boundaries.json"
+    ]
   },
   {
     "key": "SYS-01",

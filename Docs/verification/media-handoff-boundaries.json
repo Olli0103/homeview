@@ -1,0 +1,346 @@
+{
+  "date": "2026-10-20",
+  "issue": 63,
+  "status": "research_completed_with_documented_gaps",
+  "F088_implementation_status": "blocked",
+  "parity_accepted": false,
+  "base_commit": "ded9715591adfd6ce281d2d691c8cd4a1fde9f0a",
+  "content_types_reviewed": 4,
+  "content_matrix": [
+    {
+      "content": "Song",
+      "public_contract": "ApplicationMusicPlayer owns app playback; SystemMusicPlayer can control Music-app state, not equated with remote-device session handoff. OS HomePod user flow exists.",
+      "HomeView": "NativeMusicService uses ApplicationMusicPlayer; no song activity/receiver.",
+      "gap": "No actual remote session/queue/playhead/rights/source-state readback; reopening a track is not accepted.",
+      "status": "documented_gap"
+    },
+    {
+      "content": "Podcast",
+      "public_contract": "NSUserActivity describes own app context; AVPlayer supports own episode playback/seek. Foreign Apple Podcasts system playback is distinct.",
+      "HomeView": "Own RSS/episode/progress data and AVPlayer, only local persistence; no podcast activity/receiver.",
+      "gap": "No own-app two-device continuation or foreign active Apple Podcasts session transfer proved.",
+      "status": "documented_gap"
+    },
+    {
+      "content": "Active call",
+      "public_contract": "CallKit is for own VoIP service with its own backend; Apple documents confirmed FaceTime system handoff and HomePod call-audio routing.",
+      "HomeView": "Demo CallView and explicit facetime: URL; no production active-call takeover.",
+      "gap": "No supported HomeView foreign Phone/FaceTime-session transfer identified/implemented. System link or changed speaker is not proof.",
+      "status": "documented_gap"
+    },
+    {
+      "content": "Video",
+      "public_contract": "AVRoutePickerView selects media receivers; AVPlayer external playback concerns its player. Own NSUserActivity context is not universal foreign-session access.",
+      "HomeView": "No video activity/receiver in declared activity list or Root.",
+      "gap": "No actual same-content/playhead/state/rights/source/target transition readback; browser link insufficient.",
+      "status": "documented_gap"
+    }
+  ],
+  "Foundation_scope": "Own app context and optional own-activity continued delegate event. Neither becomeCurrent nor delegate alone proves correct media content/position/call state. Current recipe controller has no delegate and does not claim delivered.",
+  "own_recipe_control": {
+    "activity_type": "org.example.homeview.recipe.v1",
+    "creator_paths": [
+      "Sources/App/RecipeHandoffController.swift"
+    ],
+    "receiver_paths": [
+      "Sources/App/RootView.swift"
+    ],
+    "payload_fields": [
+      "version",
+      "document",
+      "step"
+    ],
+    "maximum_payload_bytes": 512,
+    "requires_local_matching_recipe": true,
+    "actual_two_device_acceptance": false,
+    "issue56_remains_open": true,
+    "media_session_payload": false,
+    "source_code_review_only": true
+  },
+  "two_device_plan": {
+    "status": "not_executed",
+    "execution_authorization": "Requires separate deliberate devices/accounts/permissions task; no Home/HomePod setup in this plan.",
+    "scenarios": [
+      "Own podcast/video identity-position-state readback and no unintended double playback, only after corresponding implementation",
+      "Song same-session/queue/rights/source-target proof, no fresh-track substitute",
+      "Call only after supported path and separate explicit consent; no invented call or new VoIP service",
+      "No receiver/unreachable/wrong activity: no delivered claim or automatic substitute; absence does not identify cause",
+      "Recipient cancel/denied unlock: no mutation/autoplay/late local continuation",
+      "Sender revoke/background: observe real late delivery, no global remote-cache revocation guarantee from invalidate",
+      "Missing content/version/locked recipient: explicit rejection, no implicit download/demo fallback",
+      "Restart/repeated delivery: no automatic stale action replay"
+    ],
+    "position_tolerance": "Must be chosen in a concrete future protocol; no tolerance measured or guaranteed here.",
+    "Home_connection": false
+  },
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/foundation/nsuseractivity",
+      "title": "NSUserActivity",
+      "full_DocC_sha256": "9bd9b4b910096ce8433ef7d8a533d3d623074dfef3d1a8bca9707598b9a3da82",
+      "external_file": "handoff-activity-official.json",
+      "read_on": "2026-10-20",
+      "abstract": "A representation of the state of your app at a moment in time."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/musickit/applicationmusicplayer",
+      "title": "ApplicationMusicPlayer",
+      "full_DocC_sha256": "36dbacc57acb3e90ff7e3e881095b58020afbe78cf6bc6b828c1f37aed95bbfb",
+      "external_file": "handoff-appmusic-official.json",
+      "read_on": "2026-10-20",
+      "abstract": "An object your app uses to play music in a way that doesn’t affect   the Music app’s state."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/musickit/systemmusicplayer",
+      "title": "SystemMusicPlayer",
+      "full_DocC_sha256": "51da38d161237f77b478d9c64517bc1515597193631990bb01936c75ae51b6f0",
+      "external_file": "handoff-systemmusic-official.json",
+      "read_on": "2026-10-20",
+      "abstract": "An object your app uses to play music by controlling the Music app’s state."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/avkit/avroutepickerview",
+      "title": "AVRoutePickerView",
+      "full_DocC_sha256": "35c4caf4393266abb8e12f1326e6ba132c10b9df98d756bbca9a2ff6abfba696",
+      "external_file": "handoff-routepicker-official.json",
+      "read_on": "2026-10-20",
+      "abstract": "A view that presents a list of nearby media receivers."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/callkit",
+      "title": "CallKit",
+      "full_DocC_sha256": "408784dc179cbd56857e6cb9765b45e9cb7216c7cc6a34a9f10d186b1b5f322a",
+      "external_file": "handoff-callkit-official.json",
+      "read_on": "2026-10-20",
+      "abstract": "Display the system-calling UI for your app’s VoIP services, and coordinate your calling services with other apps and the system."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/avfoundation/avplayer/allowsexternalplayback",
+      "title": "allowsExternalPlayback",
+      "full_DocC_sha256": "9a6e8ca0877f2c98eb36fcb4380b67a58e4100fc7a4242908d7a39dca05ea510",
+      "external_file": "handoff-externalvideo-official.json",
+      "read_on": "2026-10-20",
+      "abstract": "A Boolean value that indicates whether the player allows switching to external playback mode."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/foundation/nsuseractivitydelegate",
+      "title": "NSUserActivityDelegate",
+      "full_DocC_sha256": "1e6ab9adf6637df77ac0648c78ec3366e8c927505da7dd3293ba384cf6ac9002",
+      "external_file": "handoff-delegate-official.json",
+      "read_on": "2026-10-20",
+      "abstract": "The interface through which a user activity instance notifies its delegate of updates."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/foundation/implementing-handoff-in-your-app",
+      "title": "Implementing Handoff in Your App",
+      "full_DocC_sha256": "1cf2ac8db63007c9233573673ebab3e551f9045c16c040f805ead5b16d460528",
+      "external_file": "handoff-implementation-official.json",
+      "read_on": "2026-10-20",
+      "abstract": "Create, send, and receive user activities directly."
+    }
+  ],
+  "user_system_documentation": [
+    {
+      "url": "https://support.apple.com/guide/homepod/play-audio-using-your-iphone-or-ipad-apdfb81a72e4/homepod",
+      "text_sha256": "41bdc9db496fbecf1c0d634c3f6c438bb25809fabc1d3e77c2e726d1757c7f91",
+      "read_on": "2026-10-20",
+      "full_main_content_read": true
+    },
+    {
+      "url": "https://support.apple.com/guide/homepod/use-for-phone-calls-apdeaa15a6c3/homepod",
+      "text_sha256": "75d1bbf2d326aa1425cede4b888085f0303962c98d1efa1079fd3eeb89b1387b",
+      "read_on": "2026-10-20",
+      "full_main_content_read": true
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/hand-off-tasks-between-devices-iphcec5d0a9d/ios",
+      "text_sha256": "d17d1602041966e5678a4699f907d329aec7eb966061996a08827a49243c615d",
+      "read_on": "2026-10-20",
+      "full_main_content_read": true
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/hand-a-facetime-call-apple-device-iph74e013a95/ios",
+      "text_sha256": "04f3f2057e606dfbfd7a2fb7db6116b3bc75476d242ff4b2ffe71a926e4c8e30",
+      "read_on": "2026-10-20",
+      "full_main_content_read": true
+    }
+  ],
+  "code_read": [
+    {
+      "path": "Sources/App/NativeServices.swift",
+      "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+    },
+    {
+      "path": "Sources/App/DeviceConnections.swift",
+      "sha256": "c173eef48a1bbc51ec626a9947d9a4865c0b1fb84240828102910a4bb7da262f"
+    },
+    {
+      "path": "Sources/App/PodcastActions.swift",
+      "sha256": "5e776c0138f8df0a5a96d1540d33941b7b686a38d7ae68a7ef7b01d3dda0c43a"
+    },
+    {
+      "path": "Sources/App/PodcastPlayback.swift",
+      "sha256": "0232ca33b26878ef02cc33dc8d5dba0093730ba75cec77e8445127e1119981c3"
+    },
+    {
+      "path": "Sources/App/RecipeHandoffActions.swift",
+      "sha256": "7f7ac10fe8481582991b6f6fbcbec3e4877a371647882c35cc97cf15bb5e168a"
+    },
+    {
+      "path": "Sources/App/RecipeHandoffController.swift",
+      "sha256": "f2e94c008c001a8773b652fe2b79c5d000cc14c1da5d3382924fe0a20f512adc"
+    },
+    {
+      "path": "Sources/Core/RecipeTransfer.swift",
+      "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+    },
+    {
+      "path": "Sources/App/SystemActions.swift",
+      "sha256": "3926f604d07302035c0d9a2f0c30456d07a09af943098461b4c9434b45dc95a2"
+    },
+    {
+      "path": "Sources/App/RootView.swift",
+      "sha256": "d20f208cbd6ddfeefdcffb23dd99b552a989b66c4422122a6247a8c72efbfdda"
+    },
+    {
+      "path": "Resources/MainInfo.plist",
+      "sha256": "7b0ec0be469b996427bfa325e0a68389fd48858cb1bb66ad637802f1232faae6"
+    },
+    {
+      "path": "Scripts/generate_project.py",
+      "sha256": "4d1aed8a4af2e2654f66e8bb16fca49b9e0e6aae4e375cd4c05d1db8bad58387"
+    },
+    {
+      "path": "Sources/Core/PodcastLibrary.swift",
+      "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+    }
+  ],
+  "all_source_files": 206,
+  "source_digest": "5ee10ce5e55911d53a6f1b0d1d78b6c43cd79aa1f3498e270e2028e2caa4ac0c",
+  "all_source_bytes_unchanged": true,
+  "new_builds": 0,
+  "new_UI_runs": 0,
+  "new_model_processes": 0,
+  "new_user_activities": 0,
+  "new_continuation_streams": 0,
+  "real_calls": false,
+  "real_playback": false,
+  "route_picker_opened": false,
+  "Home_constructed": false,
+  "permissions_changed": false,
+  "accounts_connected": false,
+  "preliminary_limits": [
+    "Brave HTTP429 was recovered with existing Firecrawl search; not interpreted as absent platform capability.",
+    "First readability extracts were incomplete sections/navigation; user-system claims use separately read complete main text.",
+    "Archived Programming Guide only orientation; current Foundation/Support documents ground conclusions."
+  ],
+  "closure_scope": "Original issue allows documented gap for each content type and asks for an acceptance plan. Research completion does not accept F088, execute that plan or close recipe #56.",
+  "archive": {
+    "archive": "media-handoff-boundaries-inputs.zip",
+    "entries": 25,
+    "sha256": "2592eda3de21a1b668161d1a52a1682351a1bcbf32ce56f4cce2ac5342f84a3c",
+    "all_entries_read_back": true,
+    "files": [
+      {
+        "path": "official/handoff-activity-official.json",
+        "sha256": "9bd9b4b910096ce8433ef7d8a533d3d623074dfef3d1a8bca9707598b9a3da82"
+      },
+      {
+        "path": "official/handoff-appmusic-official.json",
+        "sha256": "36dbacc57acb3e90ff7e3e881095b58020afbe78cf6bc6b828c1f37aed95bbfb"
+      },
+      {
+        "path": "official/handoff-systemmusic-official.json",
+        "sha256": "51da38d161237f77b478d9c64517bc1515597193631990bb01936c75ae51b6f0"
+      },
+      {
+        "path": "official/handoff-routepicker-official.json",
+        "sha256": "35c4caf4393266abb8e12f1326e6ba132c10b9df98d756bbca9a2ff6abfba696"
+      },
+      {
+        "path": "official/handoff-callkit-official.json",
+        "sha256": "408784dc179cbd56857e6cb9765b45e9cb7216c7cc6a34a9f10d186b1b5f322a"
+      },
+      {
+        "path": "official/handoff-externalvideo-official.json",
+        "sha256": "9a6e8ca0877f2c98eb36fcb4380b67a58e4100fc7a4242908d7a39dca05ea510"
+      },
+      {
+        "path": "official/handoff-delegate-official.json",
+        "sha256": "1e6ab9adf6637df77ac0648c78ec3366e8c927505da7dd3293ba384cf6ac9002"
+      },
+      {
+        "path": "official/handoff-implementation-official.json",
+        "sha256": "1cf2ac8db63007c9233573673ebab3e551f9045c16c040f805ead5b16d460528"
+      },
+      {
+        "path": "evidence/handoff-boundaries-web-receipts.json",
+        "sha256": "b2945fbda65f7ce2b00fea9bba7fc8be82323e8cc4731a975505f14d576ba894"
+      },
+      {
+        "path": "evidence/handoff-boundaries-final-web-receipts.json",
+        "sha256": "9c8139bf4efab9db9065a60790639fee81caaa0e17dac75e0a1070d444bde7d1"
+      },
+      {
+        "path": "evidence/handoff-content-boundaries-source.json",
+        "sha256": "4601b3e9253e5b21869142e1360c2da8e03543d4d035da3efa396a990c2229bb"
+      },
+      {
+        "path": "evidence/handoff-content-boundaries-audit.json",
+        "sha256": "c088ba3eeaa89fb458ce00fc184315e04f0fa8bf57e05bed6b27a439a428d4e1"
+      },
+      {
+        "path": "evidence/deliver-media-handoff-boundaries.py",
+        "sha256": "979a372576607db8146a0ab6be7f7ee97793912f981ff889bbee0631a2d20e88"
+      },
+      {
+        "path": "source/Sources/App/NativeServices.swift",
+        "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+      },
+      {
+        "path": "source/Sources/App/DeviceConnections.swift",
+        "sha256": "c173eef48a1bbc51ec626a9947d9a4865c0b1fb84240828102910a4bb7da262f"
+      },
+      {
+        "path": "source/Sources/App/PodcastActions.swift",
+        "sha256": "5e776c0138f8df0a5a96d1540d33941b7b686a38d7ae68a7ef7b01d3dda0c43a"
+      },
+      {
+        "path": "source/Sources/App/PodcastPlayback.swift",
+        "sha256": "0232ca33b26878ef02cc33dc8d5dba0093730ba75cec77e8445127e1119981c3"
+      },
+      {
+        "path": "source/Sources/App/RecipeHandoffActions.swift",
+        "sha256": "7f7ac10fe8481582991b6f6fbcbec3e4877a371647882c35cc97cf15bb5e168a"
+      },
+      {
+        "path": "source/Sources/App/RecipeHandoffController.swift",
+        "sha256": "f2e94c008c001a8773b652fe2b79c5d000cc14c1da5d3382924fe0a20f512adc"
+      },
+      {
+        "path": "source/Sources/Core/RecipeTransfer.swift",
+        "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+      },
+      {
+        "path": "source/Sources/App/SystemActions.swift",
+        "sha256": "3926f604d07302035c0d9a2f0c30456d07a09af943098461b4c9434b45dc95a2"
+      },
+      {
+        "path": "source/Sources/App/RootView.swift",
+        "sha256": "d20f208cbd6ddfeefdcffb23dd99b552a989b66c4422122a6247a8c72efbfdda"
+      },
+      {
+        "path": "source/Resources/MainInfo.plist",
+        "sha256": "7b0ec0be469b996427bfa325e0a68389fd48858cb1bb66ad637802f1232faae6"
+      },
+      {
+        "path": "source/Scripts/generate_project.py",
+        "sha256": "4d1aed8a4af2e2654f66e8bb16fca49b9e0e6aae4e375cd4c05d1db8bad58387"
+      },
+      {
+        "path": "source/Sources/Core/PodcastLibrary.swift",
+        "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+      }
+    ]
+  }
+}

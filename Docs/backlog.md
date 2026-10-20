@@ -1019,7 +1019,9 @@ Abhängigkeiten: MEDIA-05.
 <a id="media-07"></a>
 ### MEDIA-07: Medien- und Anruf-Handoff pro Inhaltstyp abgrenzen
 
-Keine nachgewiesene Übergabe von Song, Podcast, aktivem Anruf oder Video zwischen Geräten.
+Song, Podcast, aktiver Anruf und Video jeweils mit öffentlichen Verträgen und konkreter Lücke abgegrenzt. Eigene Rezept-/Podcastzustände, AirPlay, Apple-System-Handoff und Deep Links getrennt. Geräte-Abnahmeplan einschließlich Abbruch und fehlendem Ziel dokumentiert, nicht ausgeführt. Keine tatsächliche Zwei-Geräte-Sitzungsübernahme; F088 bleibt blockiert.
+
+[Vier Verträge, Lücken und nicht ausgeführter Abnahmeplan](media-handoff-boundaries.md).
 
 Offen:
 
