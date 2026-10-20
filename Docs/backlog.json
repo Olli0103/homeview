@@ -1848,7 +1848,7 @@
     "functions": [
       "F103"
     ],
-    "current": "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme. Ruhender Timer besitzt jetzt ein benanntes Accessibility-Control mit aktuellem Wert statt ausschließlich anonymem Flächentipp; zwei Vorherfehler, sechs finale UI-Ausführungen und fünf SDKs. Statischer Viewport auf beiden Geräten pixelgleich; echte Hilfsmittel-/Fokusabnahme bleibt offen. Docs/timer-accessible-controls.md. Weltuhr: drei sichtbare öffentliche Hitflächen-Audits pro Gerät ohne Restbefund; Add/Done, Auswahl, Entfernen und Schließen mit gemessenen nativen Mindestflächen und realen Randaktionen geprüft. Historische Fehlstände und Test-Scrollkorrektur getrennt dokumentiert. Keine tatsächliche Hilfsmittel-/Hardware-/Originalabnahme. Docs/world-clock-hit-regions.md.",
+    "current": "Beschriftete Controls und alternative Navigation vorhanden, keine vollständige Accessibility-Abnahme. Ruhender Timer besitzt jetzt ein benanntes Accessibility-Control mit aktuellem Wert statt ausschließlich anonymem Flächentipp; zwei Vorherfehler, sechs finale UI-Ausführungen und fünf SDKs. Statischer Viewport auf beiden Geräten pixelgleich; echte Hilfsmittel-/Fokusabnahme bleibt offen. Docs/timer-accessible-controls.md. Weltuhr: drei sichtbare öffentliche Hitflächen-Audits pro Gerät ohne Restbefund; Add/Done, Auswahl, Entfernen und Schließen mit gemessenen nativen Mindestflächen und realen Randaktionen geprüft. Historische Fehlstände und Test-Scrollkorrektur getrennt dokumentiert. Keine tatsächliche Hilfsmittel-/Hardware-/Originalabnahme. Docs/world-clock-hit-regions.md. Lokale Wecker: drei vollständige sichtbare Hitflächen-Audits pro Gerät leer; Ein/Aus, Add, konkretes Löschen und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Uhrzeitlabel und Off/On/Off als AX-Wert beobachtet, keine tatsächliche Hilfsmittel- oder Systemalarmabnahme. Docs/alarm-hit-regions.md.",
     "tasks": [
       "VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen",
       "Zoom/Dynamic Type sowie Kontrast und reduzierte Bewegung abnehmen",
@@ -1864,7 +1864,9 @@
       "Docs/timer-accessible-controls.md",
       "Docs/verification/accessible-timer.json",
       "Docs/world-clock-hit-regions.md",
-      "Docs/verification/world-clock-hit-regions.json"
+      "Docs/verification/world-clock-hit-regions.json",
+      "Docs/alarm-hit-regions.md",
+      "Docs/verification/alarm-hit-regions.json"
     ]
   },
   {

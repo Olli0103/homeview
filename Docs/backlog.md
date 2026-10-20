@@ -1177,6 +1177,8 @@ Beschriftete Controls und alternative Navigation vorhanden, keine vollständige 
 
 Weltuhr: drei sichtbare öffentliche Hitflächen-Audits pro Gerät ohne Restbefund; Add/Done, Auswahl, Entfernen und Schließen mit gemessenen nativen Mindestflächen und realen Randaktionen geprüft. Historische Fehlstände und Test-Scrollkorrektur getrennt dokumentiert. Keine tatsächliche Hilfsmittel-/Hardware-/Originalabnahme. Docs/world-clock-hit-regions.md. [Messungen und Grenzen](world-clock-hit-regions.md).
 
+Lokale Wecker: drei vollständige sichtbare Hitflächen-Audits pro Gerät leer; Ein/Aus, Add, konkretes Löschen und Close mit nativen Mindestflächen und echten Rand-Taps geprüft. Uhrzeitlabel und Off/On/Off als AX-Wert beobachtet, keine tatsächliche Hilfsmittel- oder Systemalarmabnahme. Docs/alarm-hit-regions.md. [Befunde und Grenzen](alarm-hit-regions.md).
+
 Offen:
 
 - VoiceOver-Reihenfolge, Werte, Fokus und dynamische Updates prüfen
