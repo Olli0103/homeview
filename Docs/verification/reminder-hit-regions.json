@@ -1,0 +1,1264 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "status": "partial_issue_remains_open",
+  "product_test_commit": "e04faac29d23cf8c60637647072b7a396efdd3e8",
+  "first_product_commit": "65554a401a8df2c660afe55db9615ac429218c41",
+  "source_files": 206,
+  "source_digest": "0565a5d5066b406826c3dd91194fd7998f362e1300128a12c62cc8922909e95f",
+  "UI_results": [
+    {
+      "checkpoint": "reminder-hit-regions-baseline",
+      "device": "iPad",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "reminder-hit-regions-baseline",
+      "device": "iPhone",
+      "passed": 0,
+      "failed": 4,
+      "exit_code": 65,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "reminder-hit-regions-final",
+      "device": "iPad",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "reminder-hit-regions-final",
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 1,
+      "exit_code": 65,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPad",
+      "passed": 4,
+      "failed": 0,
+      "exit_code": 0,
+      "bound_App_metadata_launch_inputs": 28
+    },
+    {
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPhone",
+      "passed": 4,
+      "failed": 0,
+      "exit_code": 0,
+      "bound_App_metadata_launch_inputs": 28
+    }
+  ],
+  "UI_final_executions": 8,
+  "UI_unique_methods": 4,
+  "UI_total_executions": 24,
+  "UI_total_passed": 17,
+  "UI_historical_failed": 7,
+  "UI_skips": 0,
+  "UI_structured_runtime_warnings": 0,
+  "audit_findings": {
+    "reminder-hit-regions-baseline/iPad/reminder-hit-region-empty-all-findings": [],
+    "reminder-hit-regions-baseline/iPad/reminder-hit-region-initial-all-findings": [],
+    "reminder-hit-regions-baseline/iPad/reminder-hit-region-keyboard-draft-all-findings": [],
+    "reminder-hit-regions-baseline/iPhone/reminder-hit-region-empty-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.UIKitTextField is too small for user to interact.",
+        "frame": [
+          30.900000000000006,
+          576.5799999999999,
+          304.91999999999996,
+          17.00999999999999
+        ],
+        "identifier": "reminder.input",
+        "label": ""
+      }
+    ],
+    "reminder-hit-regions-baseline/iPhone/reminder-hit-region-initial-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          347.4700012207031,
+          137.97000122070312,
+          18.05999755859375
+        ],
+        "identifier": "reminder.Pick up groceries",
+        "label": "Pick up groceries"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          353.46,
+          348.94,
+          15.120000000000005,
+          15.120000000000005
+        ],
+        "identifier": "minus.circle",
+        "label": "Delete Pick up groceries"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          387.1600036621094,
+          132.3000030517578,
+          18.05999755859375
+        ],
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          353.46,
+          388.62999999999994,
+          15.120000000000005,
+          15.120000000000061
+        ],
+        "identifier": "minus.circle",
+        "label": "Delete Water the plants"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.UIKitTextField is too small for user to interact.",
+        "frame": [
+          30.900000000000006,
+          576.5799999999999,
+          304.91999999999996,
+          17.00999999999999
+        ],
+        "identifier": "reminder.input",
+        "label": ""
+      }
+    ],
+    "reminder-hit-regions-baseline/iPhone/reminder-hit-region-keyboard-draft-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          200.47000122070312,
+          137.97000122070312,
+          18.05999755859375
+        ],
+        "identifier": "reminder.Pick up groceries",
+        "label": "Pick up groceries"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          353.46,
+          201.93999999999997,
+          15.120000000000005,
+          15.120000000000061
+        ],
+        "identifier": "minus.circle",
+        "label": "Delete Pick up groceries"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          33.41999816894531,
+          240.16000366210938,
+          132.3000030517578,
+          18.05999755859375
+        ],
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          353.46,
+          241.63,
+          15.120000000000005,
+          15.120000000000005
+        ],
+        "identifier": "minus.circle",
+        "label": "Delete Water the plants"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.UIKitTextField is too small for user to interact.",
+        "frame": [
+          30.900000000000006,
+          429.16,
+          304.91999999999996,
+          17.639999999999986
+        ],
+        "identifier": "reminder.input",
+        "label": ""
+      }
+    ],
+    "reminder-hit-regions-final/iPad/reminder-hit-region-empty-all-findings": [],
+    "reminder-hit-regions-final/iPad/reminder-hit-region-initial-all-findings": [],
+    "reminder-hit-regions-final/iPad/reminder-hit-region-keyboard-draft-all-findings": [],
+    "reminder-hit-regions-final/iPhone/reminder-hit-region-empty-all-findings": [],
+    "reminder-hit-regions-final/iPhone/reminder-hit-region-initial-all-findings": [],
+    "reminder-hit-regions-final/iPhone/reminder-hit-region-keyboard-draft-all-findings": [],
+    "reminder-hit-regions-final-v2/iPad/reminder-hit-region-empty-all-findings": [],
+    "reminder-hit-regions-final-v2/iPad/reminder-hit-region-initial-all-findings": [],
+    "reminder-hit-regions-final-v2/iPad/reminder-hit-region-keyboard-draft-all-findings": [],
+    "reminder-hit-regions-final-v2/iPhone/reminder-hit-region-empty-all-findings": [],
+    "reminder-hit-regions-final-v2/iPhone/reminder-hit-region-initial-all-findings": [],
+    "reminder-hit-regions-final-v2/iPhone/reminder-hit-region-keyboard-draft-all-findings": []
+  },
+  "edge_geometries": {
+    "reminder-hit-regions-baseline/iPad": [
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          731.0533333333333,
+          404.5233333333333,
+          31.840000000000032,
+          31.840000000000032
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Pick up groceries",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    ],
+    "reminder-hit-regions-baseline/iPhone": [
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          353.46,
+          348.94,
+          15.120000000000005,
+          15.120000000000005
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Pick up groceries",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    ],
+    "reminder-hit-regions-final/iPad": [
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          51.8,
+          878.8066666666666,
+          642.1066666666667,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "reminder.input",
+        "label": "",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          720.4399999999999,
+          401.2066666666667,
+          45.10666666666668,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Water the plants",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          54.45333333333333,
+          401.2066666666667,
+          665.9866666666666,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          54.45333333333333,
+          401.2066666666667,
+          665.9866666666666,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          720.4399999999999,
+          401.2066666666667,
+          45.10666666666668,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Pick up groceries",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    ],
+    "reminder-hit-regions-final/iPhone": [
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          30.900000000000006,
+          556,
+          291.05999999999995,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "reminder.input",
+        "label": "",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          325.74,
+          361.33,
+          44.099999999999966,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Water the plants",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          32.16,
+          361.33,
+          293.58000000000004,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          32.16,
+          361.33,
+          293.58000000000004,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          325.74,
+          361.33,
+          44.099999999999966,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Pick up groceries",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    ],
+    "reminder-hit-regions-final-v2/iPad": [
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          71.36000061035156,
+          73.87999725341797,
+          59.75999450683594,
+          59.76000213623047
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          698.8399999999999,
+          254.40499999999997,
+          44.820000000000164,
+          44.81999999999999
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete SYNTHETIC EDGE ITEM",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          686.3900146484375,
+          693.8900146484375,
+          59.760009765625,
+          59.760009765625
+        ],
+        "hittable": true,
+        "identifier": "reminder.add",
+        "label": "Add reminder",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          51.8,
+          878.8066666666666,
+          642.1066666666667,
+          45.10666666666668
+        ],
+        "hittable": true,
+        "identifier": "reminder.input",
+        "label": "",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          720.4399999999999,
+          401.2066666666667,
+          45.10666666666668,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Water the plants",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "bottom",
+        "frame": [
+          54.45333333333333,
+          401.2066666666667,
+          665.9866666666666,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          54.45333333333333,
+          401.2066666666667,
+          665.9866666666666,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      {
+        "device": "iPad",
+        "edge": "top",
+        "frame": [
+          720.4399999999999,
+          401.2066666666667,
+          45.10666666666668,
+          45.10666666666663
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Pick up groceries",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      }
+    ],
+    "reminder-hit-regions-final-v2/iPhone": [
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          29.639999389648438,
+          109.12000274658203,
+          44.099998474121094,
+          44.099998474121094
+        ],
+        "hittable": true,
+        "identifier": "close",
+        "label": "Close",
+        "viewport": [
+          12,
+          94,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          325.74,
+          214.33,
+          44.099999999999966,
+          44.099999999999994
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete SYNTHETIC EDGE ITEM",
+        "viewport": [
+          12,
+          94,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          327,
+          409,
+          44.100006103515625,
+          44.100006103515625
+        ],
+        "hittable": true,
+        "identifier": "reminder.add",
+        "label": "Add reminder",
+        "viewport": [
+          12,
+          94,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          30.900000000000006,
+          556,
+          291.05999999999995,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "reminder.input",
+        "label": "",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          325.74,
+          361.33,
+          44.099999999999966,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Water the plants",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "bottom",
+        "frame": [
+          32.16,
+          361.33,
+          293.58000000000004,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          32.16,
+          361.33,
+          293.58000000000004,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "reminder.Water the plants",
+        "label": "Water the plants",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      {
+        "device": "iPhone",
+        "edge": "top",
+        "frame": [
+          325.74,
+          361.33,
+          44.099999999999966,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "minus.circle",
+        "label": "Delete Pick up groceries",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      }
+    ]
+  },
+  "final_edges_delivered_and_postconditions_passed": 16,
+  "baseline_manual": "Both stopped before first Delete top edge; iPad31.84/iPhone15.12pt target height",
+  "first_product_manual": "Both delivered initial Delete, Completed/Not completed toggle, second Delete, then field top tap failed to give keyboard focus; native typeText failed before Add. Six public audits already empty; not accepted as interaction pass.",
+  "final_functional_proof": [
+    "Specific original Delete preserves other entry",
+    "Actual toggle top/bottom exposes Completed/Not completed",
+    "Second Delete empties list",
+    "Actual top input edge gives keyboard focus and native typing",
+    "Separate actual Add edge creates exact own item and clears draft",
+    "Actual new-item Delete and Close work with keyboard still visible"
+  ],
+  "scope": {
+    "baseline_to_final_only_changed_file": [
+      "Sources/App/Everyday.swift"
+    ],
+    "all_other205_inputs_unchanged": true,
+    "all_product_code_outside_RemindersView_unchanged": true,
+    "source_digest": "0565a5d5066b406826c3dd91194fd7998f362e1300128a12c62cc8922909e95f",
+    "historical_Core_tests": 301,
+    "historical_Core_commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "all_Core_and_CoreTest_files_equal": [
+      {
+        "path": "Sources/Core/AlbumDisplay.swift",
+        "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573"
+      },
+      {
+        "path": "Sources/Core/AnswerSpeechSession.swift",
+        "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e"
+      },
+      {
+        "path": "Sources/Core/AssistantConversation.swift",
+        "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1"
+      },
+      {
+        "path": "Sources/Core/AssistantLimits.swift",
+        "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584"
+      },
+      {
+        "path": "Sources/Core/AssistantResponseDocument.swift",
+        "sha256": "f8ad454fb137ab03d43c267c23aecff554b97eb089fb56acb4cd7d3ee8e8dd2a"
+      },
+      {
+        "path": "Sources/Core/BrowserPolicy.swift",
+        "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+      },
+      {
+        "path": "Sources/Core/CalendarAgenda.swift",
+        "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+      },
+      {
+        "path": "Sources/Core/ConicGradientModel.swift",
+        "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3"
+      },
+      {
+        "path": "Sources/Core/ConnectedDataSession.swift",
+        "sha256": "b30c1312e2cc268e75e8eeac389f50adf42c086f8df91218e4c2ccb5fd3438d1"
+      },
+      {
+        "path": "Sources/Core/ConnectedModels.swift",
+        "sha256": "cb011d1d322c46a8424d04e8a9e858b7d723ef76abb8ab88c2f1ed4d5bedc42c"
+      },
+      {
+        "path": "Sources/Core/DataConnection.swift",
+        "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+      },
+      {
+        "path": "Sources/Core/DemoActionPlan.swift",
+        "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11"
+      },
+      {
+        "path": "Sources/Core/DemoDoorbell.swift",
+        "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398"
+      },
+      {
+        "path": "Sources/Core/EverydayVoiceCommand.swift",
+        "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c"
+      },
+      {
+        "path": "Sources/Core/FaceConfiguration.swift",
+        "sha256": "f28b9987306361df114cf24d81a0ca909c8f1a9866fd1708f07a2fe7a8bb6386"
+      },
+      {
+        "path": "Sources/Core/FlowSimulation.swift",
+        "sha256": "11dc99bb0d648625c37a17c5a78ec4a618c69c44370d91373da63e038ea21494"
+      },
+      {
+        "path": "Sources/Core/FlowTypography.swift",
+        "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+      },
+      {
+        "path": "Sources/Core/GuestAccessPolicy.swift",
+        "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+      },
+      {
+        "path": "Sources/Core/LocalStateFileReader.swift",
+        "sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837"
+      },
+      {
+        "path": "Sources/Core/LocalStateReset.swift",
+        "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb"
+      },
+      {
+        "path": "Sources/Core/Models.swift",
+        "sha256": "af6ae76110b9f4b4ff417b982154ff90264ba3e8045e1b6270d20dab903831aa"
+      },
+      {
+        "path": "Sources/Core/MusicPlaybackGate.swift",
+        "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5"
+      },
+      {
+        "path": "Sources/Core/PersonalHomeConfiguration.swift",
+        "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc"
+      },
+      {
+        "path": "Sources/Core/PhotoClockInk.swift",
+        "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9"
+      },
+      {
+        "path": "Sources/Core/PhotoMaskRasterizer.swift",
+        "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+      },
+      {
+        "path": "Sources/Core/PhotoPlacement.swift",
+        "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae"
+      },
+      {
+        "path": "Sources/Core/PodcastFeedParser.swift",
+        "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e"
+      },
+      {
+        "path": "Sources/Core/PodcastFeedTransport.swift",
+        "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97"
+      },
+      {
+        "path": "Sources/Core/PodcastLibrary.swift",
+        "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+      },
+      {
+        "path": "Sources/Core/PowerAdapterInformation.swift",
+        "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616"
+      },
+      {
+        "path": "Sources/Core/RecipeParser.swift",
+        "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
+      },
+      {
+        "path": "Sources/Core/RecipeTransfer.swift",
+        "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+      },
+      {
+        "path": "Sources/Core/SetupIntroduction.swift",
+        "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8"
+      },
+      {
+        "path": "Sources/Core/SnapshotMigration.swift",
+        "sha256": "1e0d8dc66dee1aaa8aa25108564389d8a87d059be168aaff9dbd6340d4bea4ff"
+      },
+      {
+        "path": "Sources/Core/TimerLiveActivity.swift",
+        "sha256": "88d8e0f7b5f9c144e60489a391eb3a6ea33b33b8ddf48e4a19cee6773dd98020"
+      },
+      {
+        "path": "Sources/Core/ViewportNavigationIntent.swift",
+        "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341"
+      },
+      {
+        "path": "Sources/Core/WeatherData.swift",
+        "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+      },
+      {
+        "path": "Sources/Core/WorldClock.swift",
+        "sha256": "a157410cff097cc8104f289f65d19278e26f316d43ed839e4ac8bad6cec11808"
+      },
+      {
+        "path": "Tests/CoreTests/AlbumDisplayTests.swift",
+        "sha256": "c251f8f3783c6699b058bd386b59835af55aaeee3deb81aa2046915659478c39"
+      },
+      {
+        "path": "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+        "sha256": "ea26acafb7a4e039af97f3328b48a92d9e4211fd65cbcae28037df45716a19cb"
+      },
+      {
+        "path": "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+        "sha256": "75eba1015caf3b25e51444492280ec4977e2a5071c37b60d8cd3601981199c60"
+      },
+      {
+        "path": "Tests/CoreTests/AssistantConversationTests.swift",
+        "sha256": "95b4060b83f4d1ee600ef67e74bcc5866e8944b249ff0ac2587046b9625e9451"
+      },
+      {
+        "path": "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+        "sha256": "4bd27a33b521fd86d48e0623be31efbd8aa4efcbc9737c7e2c1fcf6cc5efcc91"
+      },
+      {
+        "path": "Tests/CoreTests/BrowserPolicyTests.swift",
+        "sha256": "3789d2d58f7ad0f02f5887a42c93d59cc66be0c60dd9b99515f2f82de4567c04"
+      },
+      {
+        "path": "Tests/CoreTests/CalendarAgendaTests.swift",
+        "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
+      },
+      {
+        "path": "Tests/CoreTests/CalendarBoundaryTests.swift",
+        "sha256": "667b3b82bcdd635ba91c73b6ae50d71f4fbf51499877b24d933da552b1527769"
+      },
+      {
+        "path": "Tests/CoreTests/ConicGradientTests.swift",
+        "sha256": "b2ae979fd299597c4275ec3085afb49b8e2c2bf080ef75dd384ca90e12e75f2a"
+      },
+      {
+        "path": "Tests/CoreTests/DemoActionPlanTests.swift",
+        "sha256": "4989acd77a49de6a252ddfaa732600a9265d08aa9117ce8ee85802232b2908fb"
+      },
+      {
+        "path": "Tests/CoreTests/DemoDoorbellTests.swift",
+        "sha256": "45bac13d2e9d597f81918ce5d4c472e7494150375e5a383d5cffadfd087058c2"
+      },
+      {
+        "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+        "sha256": "a40275ec9c08ffa259a264e980e7ebdf0286f42a29edaf062f291880ca0b0e0a"
+      },
+      {
+        "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+        "sha256": "d27995a922e1c5c346f8687425a5d775bab205b4abe49ad8547d6626653ab55b"
+      },
+      {
+        "path": "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+        "sha256": "a848907b433a55eb467a078551d6ba2a61d8b989f839ec9a4f1f59b83ad86b28"
+      },
+      {
+        "path": "Tests/CoreTests/FlowTypographyTests.swift",
+        "sha256": "fda513fc05d95a89a3ceacb2ecdd68a19c3941784dca369bdda4d19eac98d76d"
+      },
+      {
+        "path": "Tests/CoreTests/GuestSafetyTests.swift",
+        "sha256": "2a1b47af26c87a24ffb9089f330a4dc11cfb74830c0d270ccd7f746fe1e0d2cd"
+      },
+      {
+        "path": "Tests/CoreTests/HomeViewCoreTests.swift",
+        "sha256": "24458b3609de5eaf6a38f3822e10f34f0ec338ead874f44be5bd243e5a32839b"
+      },
+      {
+        "path": "Tests/CoreTests/LocalStateFileReaderTests.swift",
+        "sha256": "1ecdcb07b482feca5df946fee4e6048558371df50b38dd2a9f209d9bbccaedf4"
+      },
+      {
+        "path": "Tests/CoreTests/LocalStateResetTests.swift",
+        "sha256": "a315fb47b878e6b5165fab6706fd3c71a6c55bdcf76b12e14dee995b3ec3555e"
+      },
+      {
+        "path": "Tests/CoreTests/MusicPlaybackGateTests.swift",
+        "sha256": "b0b95bb382b6a479d06946fd67a44b71fc9361e30edac917b93d8f263ca1d6e7"
+      },
+      {
+        "path": "Tests/CoreTests/PersonalHomeTests.swift",
+        "sha256": "e7c218f72c2b66542d70012a143b30c3790e9b16ef09a5f9a8b485d117bd424d"
+      },
+      {
+        "path": "Tests/CoreTests/PhotoClockInkTests.swift",
+        "sha256": "0171a1f7486c06a176c873dbc9f5f98cee82322f99a332c8c031f1c7ad442821"
+      },
+      {
+        "path": "Tests/CoreTests/PhotoPlacementTests.swift",
+        "sha256": "dd3f4bcbc04c9ad0feccd925916a42541db6cff9329af9e3f12f618baeb13022"
+      },
+      {
+        "path": "Tests/CoreTests/PodcastTests.swift",
+        "sha256": "662bb7087897d5e33e16c7a37c632984215f18dbbd283e59e90996a5bc854bc1"
+      },
+      {
+        "path": "Tests/CoreTests/PowerAdapterInformationTests.swift",
+        "sha256": "e6998839b624de9ce13d702abb7fcb09a2cd5e69319a15dcea97fa04d7e5de16"
+      },
+      {
+        "path": "Tests/CoreTests/RecipeParserTests.swift",
+        "sha256": "0fa0d28fe1658ef580c3bf309bc9d7382d9968adcdf35c40ccac35898b2857b8"
+      },
+      {
+        "path": "Tests/CoreTests/RecipeTransferTests.swift",
+        "sha256": "dd505824664e92202d442c6abb18b67280feec1b731875e3b4768cc7116360b3"
+      },
+      {
+        "path": "Tests/CoreTests/SetupIntroductionTests.swift",
+        "sha256": "f7cc98d3db797009470821bc1c1690895ff26846c1984b87e3bf7d0f409afc3f"
+      },
+      {
+        "path": "Tests/CoreTests/SnapshotMigrationTests.swift",
+        "sha256": "bbff1c7d900e5e8c04d302a959657f7995680935ba9aff15306ba210bd03a376"
+      },
+      {
+        "path": "Tests/CoreTests/TimerLiveActivityTests.swift",
+        "sha256": "118ea7f90f19c1c80940675a2c45cec13a036b4ad122746d9ab008ebed3d71f3"
+      },
+      {
+        "path": "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+        "sha256": "d27bbba71e017c88e09f33bcf64e5ecc57c6a0eec000f658bcbe2ca8d8885763"
+      },
+      {
+        "path": "Tests/CoreTests/WatchFacesTests.swift",
+        "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
+      },
+      {
+        "path": "Tests/CoreTests/WeatherTests.swift",
+        "sha256": "a3aa9bb2852b44088207b7d0c1c8bac354fbe8f17fb2134abfa98654b3d4692c"
+      },
+      {
+        "path": "Tests/CoreTests/WorldClockTests.swift",
+        "sha256": "08b219f10e301b4f2186e6eeb3b808490f865d9ae109c107baefbe4543853ec1"
+      }
+    ],
+    "new_Core_test_runs": 0,
+    "completion_accessibility_value": "Additional source hardening; not a separately reproduced baseline VoiceOver failure",
+    "models_scheduling_connections_unchanged": true,
+    "first_product_commit": "65554a401a8df2c660afe55db9615ac429218c41",
+    "current_product_commit": "e04faac29d23cf8c60637647072b7a396efdd3e8",
+    "first_to_current_only_change": "RemindersView FocusState + focused binding + simultaneous expanded-field tap gesture; tests unchanged"
+  },
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "prior_first_product_five_SDK_builds": "Passed but not substituted for the repeated current source builds",
+  "archives": {
+    "reminder-hit-regions-baseline": {
+      "archive": "reminder-hit-regions-baseline-inputs.zip",
+      "sha256": "db4eb029e7dc47d419f865a7c57e7502417f928a5f624715da6f4dbf62526c03",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "a859757015a748fce96bed4cb50259e69608114d5f61c2e642c942c6bd901660"
+    },
+    "reminder-hit-regions-final": {
+      "archive": "reminder-hit-regions-final-inputs.zip",
+      "sha256": "e516bd88cea69200aad4ea1558de6e52c9cab5a950636c0ec7d042241336c84e",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "c5f8282047f55e728a6d9d9b141ad7bca1ab05988266ca46ed625a4e57dd0caa"
+    },
+    "reminder-hit-regions-final-v2": {
+      "archive": "reminder-hit-regions-final-v2-inputs.zip",
+      "sha256": "3c1d632779a18d626c2db2ce6ea53ff196d7a6988302fe11b981e7d1b057db08",
+      "entries": 234,
+      "all_entries_read_back": true,
+      "source_digest": "0565a5d5066b406826c3dd91194fd7998f362e1300128a12c62cc8922909e95f"
+    }
+  },
+  "decoded_PNGs": 56,
+  "contacts_viewed": 6,
+  "additional_full_images_viewed": 4,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPad-before-viewport-reminder-hit-region-initial.png",
+      "sha256": "cbe424338d55a3e9354d6b66f882cf00455786b92f37d6118c3befd93b2378b5",
+      "checkpoint": "reminder-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPad-before-viewport-reminder-hit-region-empty.png",
+      "sha256": "e93cc7ddb6c1c5467f6244a3bb332209368962ed65ec420c3527b0c0a4718976",
+      "checkpoint": "reminder-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPad-before-viewport-reminder-hit-region-keyboard-draft.png",
+      "sha256": "964f21b006ace8993e0dc45aabf482aa85166662612e721d33d39c9eba2dce58",
+      "checkpoint": "reminder-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPad-after-viewport-reminder-hit-region-initial.png",
+      "sha256": "d731ac6f0d84d41767d02d946e7e7238c13c4ae5207d9521f69784065bb94a86",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPad-after-viewport-reminder-hit-region-empty.png",
+      "sha256": "e93cc7ddb6c1c5467f6244a3bb332209368962ed65ec420c3527b0c0a4718976",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPad-after-viewport-reminder-hit-region-keyboard-draft.png",
+      "sha256": "935d2e38c0b18c608c42644b362908213baccdfcececb3e5fe32ab58089b34dd",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPad-after-viewport-reminder-hit-region-keyboard-before-add.png",
+      "sha256": "7ef034b24e1e1dd1f0e448225795e9c5d8f4cd37a6fbc29b229b10ab829181bd",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPad-after-viewport-reminder-hit-region-empty-after-edge-actions.png",
+      "sha256": "a3a6e83f11a2dcb396eda5dbd04ab680fc2e012e5ecfe05b8a46256df120a905",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPhone-before-viewport-reminder-hit-region-initial.png",
+      "sha256": "6dcb5707e2e751d5d3f2db34dbc9ac67d817650862326365e1b0e829cc631f1f",
+      "checkpoint": "reminder-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPhone-before-viewport-reminder-hit-region-empty.png",
+      "sha256": "019652436557e350ae3a9d77826cbe5979566ebb4b7940866ecdc8ecb801a822",
+      "checkpoint": "reminder-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPhone-before-viewport-reminder-hit-region-keyboard-draft.png",
+      "sha256": "894001144f0acfbad12eae6a065574f88dd6836e8d905dd61ccc3b25456f55ac",
+      "checkpoint": "reminder-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPhone-after-viewport-reminder-hit-region-initial.png",
+      "sha256": "e1380bb7948336289d3ddd34b00c0a16cb6a522f233cad88a58f3c7645ea2507",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPhone-after-viewport-reminder-hit-region-empty.png",
+      "sha256": "92ac35a1ea160b7e028ba12e19ea329ca20484a7da933459fe6d03a0d1be0280",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPhone-after-viewport-reminder-hit-region-keyboard-draft.png",
+      "sha256": "7d35c7139ae9ed57b360c176030041cc8128698fe996049456fec06074fb260d",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPhone-after-viewport-reminder-hit-region-keyboard-before-add.png",
+      "sha256": "7e5085e42082b902e4661c29e371c39a398ccc65a19bdc8fdece839ad7fff8a2",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/reminder-hit-regions/iPhone-after-viewport-reminder-hit-region-empty-after-edge-actions.png",
+      "sha256": "a9f3d36f3a6574cac3ec8b9abe720a7ade07c3e22d203c9f39b8a24196afbc54",
+      "checkpoint": "reminder-hit-regions-final-v2",
+      "device": "iPhone"
+    }
+  ],
+  "historical_Core": {
+    "tests": 301,
+    "commit": "2b223b78aaed0b56fc62bcf9a57ef9731d1989ff",
+    "byte_equal_Core_and_test_files": 72,
+    "new_Core_execution": false
+  },
+  "AX_completion_values": "Additional source hardening, final actual assertions; no separate baseline VoiceOver reproduction",
+  "limits": [
+    "Local demo reminders only; connected sources/read-only permissions not included",
+    "Add/Close minimum size is final companion contract, not baseline automatic finding",
+    "Only three visible public audit states, no long/offscreen lists, long titles, DynamicType or physical device",
+    "No actual assistive technology, focus-order, announcement, full contrast or original parity acceptance",
+    "Identical titles may still have identical labels",
+    "No pixel-preservation claim: row/target/Close/Add geometry can grow"
+  ],
+  "real_personal_data_used": false,
+  "EventKit_connected": false,
+  "permissions_changed": false,
+  "Home_constructed": false,
+  "new_system_alarms": false,
+  "new_live_activities": false,
+  "artifact_export": "All original attachments exported; actual exportedFileName suffix determines PNG/JSON subsets, no suggested-filename glob filtering"
+}
