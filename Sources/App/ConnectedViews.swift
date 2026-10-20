@@ -86,6 +86,12 @@ struct ConnectionControls: View {
 }
 struct DeviceUnlockView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var scenePhase
+  @State private var unlockTask: Task<Void, Never>?
+  private func cancelUnlock() {
+    unlockTask?.cancel()
+    unlockTask = nil
+  }
   var body: some View {
     VStack(spacing: 24) {
       AppHeader(title: "Personal access")
@@ -98,9 +104,11 @@ struct DeviceUnlockView: View {
         title: "Unlock", symbol: "person.crop.circle.badge.checkmark", tint: .blue,
         textColor: .white
       ) {
-        Task {
+        cancelUnlock()
+        unlockTask = Task {
+          guard !Task.isCancelled else { return }
           let granted = await model.connections.unlock()
-          guard model.route == .deviceUnlock else { return }
+          guard !Task.isCancelled, model.route == .deviceUnlock else { return }
           if granted {
             if let page = model.pendingPage {
               model.route = .app(page)
@@ -113,6 +121,11 @@ struct DeviceUnlockView: View {
       }.accessibilityIdentifier("device.unlock")
       Spacer()
     }.padding(.horizontal, 32).background(.white).foregroundStyle(.black)
+      .onDisappear { cancelUnlock() }
+      .onChange(of: scenePhase) { _, phase in
+        // A system authentication prompt may make the scene inactive.
+        if phase == .background { cancelUnlock() }
+      }
   }
 }
 struct DeviceRemindersView: View {

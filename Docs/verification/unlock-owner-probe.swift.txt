@@ -1,0 +1,113 @@
+import Foundation
+
+@MainActor final class UnlockOwnerModel {
+  let connections:DeviceConnections
+  var route:Route = .deviceUnlock
+  var pendingPage:AppPage? = .calendar
+  var error:String?
+  private var completions=0
+  private var waiters:[Int:[CheckedContinuation<Void,Never>]]=[:]
+  init(_ provider:ControlledUnlockProvider) {connections=DeviceConnections(provider:provider)}
+  func taskFinished() {
+    completions+=1
+    for key in Array(waiters.keys) where key<=completions {
+      for waiter in waiters.removeValue(forKey:key) ?? [] {waiter.resume()}
+    }
+  }
+  func waitForCompletions(_ n:Int) async {
+    if completions>=n {return}
+    await withCheckedContinuation {waiters[n,default:[]].append($0)}
+  }
+}
+enum GateScenePhase {case active,inactive,background}
+
+@main struct UnlockOwnerGate {
+  @MainActor static func main() async throws {
+    var rows:[[String:Any]]=[]
+    func record(_ name:String,_ checks:[String:Bool]) {
+      rows.append(["name":name,"checks":checks,"failed":checks.filter{!$0.value}.map(\.key).sorted()])
+    }
+    func setup(held:Bool=false)->(ControlledUnlockProvider,UnlockOwnerModel,UnlockOwnerCallbacks) {
+      let p=ControlledUnlockProvider();p.delayUnlock=held
+      let m=UnlockOwnerModel(p);return(p,m,UnlockOwnerCallbacks(m))
+    }
+    func reply(_ p:ControlledUnlockProvider,_ call:Int,_ value:Bool) {
+      guard let pending=p.unlockReplies.removeValue(forKey:call) else {fatalError("Missing owned continuation")}
+      pending.resume(returning:value)
+    }
+    do {
+      let(p,m,v)=setup();v.tap();m.route = .face;v.disappear();await m.waitForCompletions(1)
+      record("leave_before_child_entry",["zero_provider_calls":p.unlockCalls==0,
+        "no_private_authentication":!m.connections.personalUnlocked,"keeps_face_destination":m.route == .face,
+        "no_late_error":m.error==nil])
+    }
+    for target in [Route.face,Route.personal] {
+      let(p,m,v)=setup(held:true);v.tap();await p.waitForCalls(1)
+      m.route=target;v.disappear();reply(p,1,true);await m.waitForCompletions(1)
+      record("leave_pending_to_"+String(describing:target),["does_not_grant_abandoned_authentication":!m.connections.personalUnlocked,
+        "keeps_destination":m.route==target,"no_late_error":m.error==nil])
+    }
+    do {
+      let(p,m,v)=setup();v.tap();v.tap();await m.waitForCompletions(2)
+      record("replacement_before_entry",["only_new_request_enters_provider":p.unlockCalls==1,
+        "new_request_succeeds":m.connections.personalUnlocked,"reaches_requested_app":m.route == .app(.calendar),
+        "no_replaced_request_error":m.error==nil])
+    }
+    do {
+      let(p,m,v)=setup(held:true);v.tap();await p.waitForCalls(1);v.tap();await p.waitForCalls(2)
+      reply(p,1,false);await m.waitForCompletions(1)
+      let oldError=m.error
+      reply(p,2,true);await m.waitForCompletions(2)
+      record("old_failure_while_replacement_pending",["no_old_error":oldError==nil,
+        "new_authentication_survives":m.connections.personalUnlocked,
+        "new_navigation_survives":m.route == .app(.calendar),"no_leftover_error":m.error==nil])
+    }
+    do {
+      let(p,m,v)=setup(held:true);v.tap();await p.waitForCalls(1);v.tap();await p.waitForCalls(2)
+      reply(p,2,true);await m.waitForCompletions(1)
+      reply(p,1,false);await m.waitForCompletions(2)
+      record("old_failure_after_new_success_control",["keeps_new_authentication":m.connections.personalUnlocked,
+        "keeps_new_destination":m.route == .app(.calendar),"no_old_error":m.error==nil])
+    }
+    do {
+      let(_,m,v)=setup();v.tap();await m.waitForCompletions(1);v.disappear()
+      record("ordinary_success_then_disappear",["successful_authentication_retained":m.connections.personalUnlocked,
+        "requested_destination_opened":m.route == .app(.calendar),"pending_destination_cleared":m.pendingPage==nil,
+        "no_error":m.error==nil])
+    }
+    for page in [AppPage.calendar,AppPage.reminders] {
+      let(_,m,v)=setup();m.route = .app(page);m.pendingPage=nil
+      v.tap();await m.waitForCompletions(1);v.disappear()
+      record("embedded_unlock_"+page.rawValue,["embedded_authentication_usable":m.connections.personalUnlocked,
+        "does_not_change_embedding_route":m.route == .app(page),"no_error":m.error==nil])
+    }
+    do {
+      let(p,m,v)=setup();p.unlockGranted=false;v.tap();await m.waitForCompletions(1)
+      record("ordinary_denial_control",["remains_locked":!m.connections.personalUnlocked,
+        "keeps_unlock_page":m.route == .deviceUnlock,"shows_current_error":m.error=="Personal access was not unlocked."])
+    }
+    do {
+      let(p,m,v)=setup(held:true);v.tap();await p.waitForCalls(1);v.sceneChanged(.inactive)
+      reply(p,1,true);await m.waitForCompletions(1)
+      record("inactive_prompt_phase_does_not_cancel",["authentication_still_usable":m.connections.personalUnlocked,
+        "reaches_destination":m.route == .app(.calendar),"no_error":m.error==nil])
+    }
+    do {
+      let(p,m,v)=setup(held:true);v.tap();await p.waitForCalls(1)
+      // The actual RootView background branch revokes personal access; its
+      // deviceUnlock route is not an app(page), so this route remains unchanged.
+      m.connections.lock();v.sceneChanged(.background)
+      reply(p,1,true);await m.waitForCompletions(1)
+      record("background_with_root_session_lock",["stays_locked":!m.connections.personalUnlocked,
+        "keeps_unlock_route":m.route == .deviceUnlock,"no_obsolete_error":m.error==nil])
+    }
+    let assertions=rows.reduce(0){$0+($1["checks"] as! [String:Bool]).count}
+    let failed=rows.filter{!($0["failed"] as! [String]).isEmpty}.count
+    let result:[String:Any]=["scenario_count":rows.count,"assertions":assertions,"failed_scenarios":failed,
+      "failed_assertions":rows.reduce(0){$0+($1["failed"] as! [String]).count},"scenarios":rows,
+      "verdict":failed==0 ? "PASS":"FAIL","actual_DeviceConnections":true,
+      "production_callback_with_completion_counter":true,"symbolic_lifecycle_host":true,
+      "actual_AppModel_or_RootView":false,"actual_SwiftUI_or_OS_authentication":false]
+    print(String(data:try JSONSerialization.data(withJSONObject:result,options:[.sortedKeys]),encoding:.utf8)!)
+  }
+}

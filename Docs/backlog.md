@@ -1096,6 +1096,8 @@ Abhängigkeiten: BASE-01.
 <a id="sys-04"></a>
 ### SYS-04: Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen
 
+[Entsperrung an sichtbare Anfrage binden](unlock-owner.md): Ersatz/Verlassen/Hintergrund entwerten alte Tasks; inaktive Authentifizierungsphase bleibt erlaubt. Begrenzter Callback-/UI-Beleg, keine reale Promptabnahme.
+
 [Vorab abgebrochene Entsperrung](unlock-pre-cancelled.md): kein Providerstart und keine Entwertung aktueller Anmeldung; getrennt vom widerlegten Gastmodus-Verdacht. Keine Hardware-/Snapshot-Gesamtabnahme.
 
 [Persönlicher Timeout auch auf dem Zifferblatt und während eingehender Demo-Anrufe](face-idle-privacy.md): Sitzungsschutz von sichtbarer Route getrennt; neue lokale Ablaufhinweise bleiben erhalten. Keine Präsenz-/Hardware-Snapshot-Abnahme.
@@ -1316,6 +1318,8 @@ Abhängigkeiten: QA-01.
 
 <a id="qa-05"></a>
 ### QA-05: Persistenz, Migration, Offline und späte Antworten systematisch prüfen
+
+[Entsperrung an sichtbare Anfrage binden](unlock-owner.md): Ersatz/Verlassen/Hintergrund entwerten alte Tasks; inaktive Authentifizierungsphase bleibt erlaubt. Begrenzter Callback-/UI-Beleg, keine reale Promptabnahme.
 
 [Vorab abgebrochene Entsperrung](unlock-pre-cancelled.md): kein Providerstart und keine Entwertung aktueller Anmeldung; getrennt vom widerlegten Gastmodus-Verdacht. Keine Hardware-/Snapshot-Gesamtabnahme.
 

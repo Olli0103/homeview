@@ -1,0 +1,24 @@
+import Foundation
+@MainActor final class UnlockOwnerCallbacks {
+let model:UnlockOwnerModel
+var unlockTask:Task<Void,Never>?
+init(_ model:UnlockOwnerModel){self.model=model}
+func tap(){
+        Task {
+          defer { model.taskFinished() }
+          let granted = await model.connections.unlock()
+          guard model.route == .deviceUnlock else { return }
+          if granted {
+            if let page = model.pendingPage {
+              model.route = .app(page)
+              model.pendingPage = nil
+            }
+          } else {
+            model.error = "Personal access was not unlocked."
+          }
+        }
+      }
+func disappear(){}
+func sceneChanged(_ phase:GateScenePhase){}
+private func cancelUnlock(){}
+}
