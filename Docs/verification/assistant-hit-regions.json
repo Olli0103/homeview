@@ -1,0 +1,394 @@
+{
+  "date": "2026-10-20",
+  "issue": 73,
+  "status": "partial_issue_remains_open",
+  "product_commit": "4137efdaad740b8264ee8691998ff4d5b747d889",
+  "baseline_test_commit": "9b15677cfb51112b0f36fd3d0801a33f9ca9e096",
+  "baseline_product_equivalent_to": "3566c5d902a6b16ef0ae3fceff0e7b4c16b4c5ba",
+  "source_files": 206,
+  "source_digest": "75599682106c33837077b7afac6268da663a1786f3bc46ffe94775378b2f0d1b",
+  "UI_results": [
+    {
+      "checkpoint": "assistant-hit-regions-baseline",
+      "device": "iPad",
+      "passed": 2,
+      "failed": 4,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-hit-regions-baseline",
+      "device": "iPhone",
+      "passed": 3,
+      "failed": 3,
+      "exit_code": 65,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPad",
+      "passed": 9,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    },
+    {
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPhone",
+      "passed": 9,
+      "failed": 0,
+      "exit_code": 0,
+      "compiled_inputs": 28
+    }
+  ],
+  "UI_final_executions": 18,
+  "UI_unique_methods": 9,
+  "UI_total_executions": 30,
+  "UI_total_passed": 23,
+  "UI_failed_historical": 7,
+  "UI_skips": 0,
+  "UI_runtime_warnings": 0,
+  "audit_findings": {
+    "assistant-hit-regions-baseline/iPad/assistant-hit-region-capabilities-all-findings": [],
+    "assistant-hit-regions-baseline/iPad/assistant-hit-region-card-actions-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          46,
+          240,
+          149.5,
+          18
+        ],
+        "identifier": "assistant.capabilities",
+        "label": "Capabilities and limits"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          636.5,
+          240,
+          105,
+          18
+        ],
+        "identifier": "answer.speech.read",
+        "label": "Unlock readout"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          753.5,
+          241,
+          20.5,
+          16
+        ],
+        "identifier": "answer.speech.settings",
+        "label": "Answer voice settings"
+      }
+    ],
+    "assistant-hit-regions-baseline/iPad/assistant-hit-region-initial-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          46,
+          337,
+          149.5,
+          18
+        ],
+        "identifier": "assistant.capabilities",
+        "label": "Capabilities and limits"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          636.5,
+          337,
+          105,
+          18
+        ],
+        "identifier": "answer.speech.read",
+        "label": "Unlock readout"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          753.5,
+          338,
+          20.5,
+          16
+        ],
+        "identifier": "answer.speech.settings",
+        "label": "Answer voice settings"
+      }
+    ],
+    "assistant-hit-regions-baseline/iPad/assistant-hit-region-source-all-findings": [],
+    "assistant-hit-regions-baseline/iPhone/assistant-hit-region-capabilities-all-findings": [],
+    "assistant-hit-regions-baseline/iPhone/assistant-hit-region-card-actions-all-findings": [],
+    "assistant-hit-regions-baseline/iPhone/assistant-hit-region-initial-all-findings": [
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          218,
+          258,
+          104.66666666666663,
+          18
+        ],
+        "identifier": "answer.speech.read",
+        "label": "Unlock readout"
+      },
+      {
+        "auditType": 4,
+        "description": "Hit area is too small",
+        "detail": "The size of this SwiftUI.AccessibilityNode is too small for user to interact.",
+        "frame": [
+          334.66666666666663,
+          259,
+          21.333333333333314,
+          16
+        ],
+        "identifier": "answer.speech.settings",
+        "label": "Answer voice settings"
+      }
+    ],
+    "assistant-hit-regions-baseline/iPhone/assistant-hit-region-source-all-findings": [],
+    "assistant-hit-regions-final/iPad/assistant-hit-region-capabilities-all-findings": [],
+    "assistant-hit-regions-final/iPad/assistant-hit-region-card-actions-all-findings": [],
+    "assistant-hit-regions-final/iPad/assistant-hit-region-initial-all-findings": [],
+    "assistant-hit-regions-final/iPad/assistant-hit-region-source-all-findings": [],
+    "assistant-hit-regions-final/iPhone/assistant-hit-region-capabilities-all-findings": [],
+    "assistant-hit-regions-final/iPhone/assistant-hit-region-card-actions-all-findings": [],
+    "assistant-hit-regions-final/iPhone/assistant-hit-region-initial-all-findings": [],
+    "assistant-hit-regions-final/iPhone/assistant-hit-region-source-all-findings": []
+  },
+  "baseline_size_failures": [
+    {
+      "device": "iPad",
+      "control": "assistant.card.openRecipe",
+      "dimension": "height",
+      "measured_points": 20.5,
+      "required_minimum": 44,
+      "stopped_before_this_edge_tap": true,
+      "source_chip_edge_succeeded_before_Done_check": false
+    },
+    {
+      "device": "iPad",
+      "control": "assistant.card.source.done",
+      "dimension": "width",
+      "measured_points": 40.5,
+      "required_minimum": 44,
+      "stopped_before_this_edge_tap": true,
+      "source_chip_edge_succeeded_before_Done_check": true
+    },
+    {
+      "device": "iPhone",
+      "control": "assistant.card.openRecipe",
+      "dimension": "height",
+      "measured_points": 20.33333333333337,
+      "required_minimum": 44,
+      "stopped_before_this_edge_tap": true,
+      "source_chip_edge_succeeded_before_Done_check": false
+    },
+    {
+      "device": "iPhone",
+      "control": "assistant.card.source.done",
+      "dimension": "width",
+      "measured_points": 40.333333333333314,
+      "required_minimum": 44,
+      "stopped_before_this_edge_tap": true,
+      "source_chip_edge_succeeded_before_Done_check": true
+    }
+  ],
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "Core_AppModel_equality": {
+    "target": "4137efdaad740b8264ee8691998ff4d5b747d889",
+    "Core_historical_tests": 301,
+    "Core_historical_commit": "add551cad72607140096b485ffd021ead1805993",
+    "Core_unchanged_files": 72,
+    "AppModel_byte_equal_to": "80ad73b9767367337b451c32f26bbafdade0eeaa",
+    "new_Core_or_native_Model_runs": 0
+  },
+  "decoded_PNGs": 110,
+  "contacts_viewed": 4,
+  "additional_full_resolution_images_viewed": 2,
+  "selected_images": [
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-before-viewport-assistant-hit-region-initial.png",
+      "sha256": "6b79a6edc2d3b336369f395c2735cb8b7c7019ce6fd7ae65924fe48d399d881a",
+      "checkpoint": "assistant-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-before-viewport-assistant-hit-region-recipe-before-edge.png",
+      "sha256": "b56ca8e95f75a679c53b2cc38dbdd234abbdc03a084dd39209b2f564c7fee379",
+      "checkpoint": "assistant-hit-regions-baseline",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-after-viewport-assistant-hit-region-initial.png",
+      "sha256": "8fa2453b9b194229fe1cfa8eca9ff2847df24a5e066b568249a66d640eae230c",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-after-viewport-assistant-hit-region-header-edge-actions.png",
+      "sha256": "78b3347675d3567b7e3bc22f9057990773b272ddb52d5d6092c03a152dd66b5c",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-after-viewport-assistant-hit-region-recipe-before-edge.png",
+      "sha256": "24448735c541d7841d2d902d3ad218ec23a4b1d4108eb696e00efcf037e084b8",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-after-screen-assistant-hit-region-done-before-edge.png",
+      "sha256": "59fe706523874e1409140343b1727940554c6699708e6c148731a8255837da9e",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-after-viewport-assistant-hit-region-source-edge-followup.png",
+      "sha256": "15a91b238851d549c6852d8c01dae9b4c7db803862393615309a1a32f6892ae0",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-after-assistant-keyboard-landscape-screen.png",
+      "sha256": "c930c40d437298afeb4834ae016c2bac2a43218678383ababac3d6c0f26bd34b",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPad-after-assistant-card-completed-voice-draft-kept-unsent.png",
+      "sha256": "950090b7abc1a19c22ea36661cca501ff7b31fc7b0fb07dc16894448a12cecef",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPad"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-before-viewport-assistant-hit-region-initial.png",
+      "sha256": "d612263d37698e263d8b37698d7b62172131a8aa8aa070f6fce4af1fad288ed9",
+      "checkpoint": "assistant-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-before-viewport-assistant-hit-region-recipe-before-edge.png",
+      "sha256": "8d169a539d41cf765b7b5135387182ecf0e29b4450d7c3cbd34d56437b40fad9",
+      "checkpoint": "assistant-hit-regions-baseline",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-after-viewport-assistant-hit-region-initial.png",
+      "sha256": "b07b6c5d1f6a4d8a4daabf73f03c585fce781ff9289636aa39f44d6c1a16d428",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-after-viewport-assistant-hit-region-header-edge-actions.png",
+      "sha256": "776e0ccae0f65b9f41863f6c1becd5c48d1152c5c877dbe9094ce412395d5579",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-after-viewport-assistant-hit-region-recipe-before-edge.png",
+      "sha256": "b2e2d029bc937751447ed138b11da642aacb25737551f91df0f85e79418be07e",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-after-screen-assistant-hit-region-done-before-edge.png",
+      "sha256": "2b5089feb8660e514c2e9d81126def4b27d4dde534c62d779c0895eefab36f2e",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-after-viewport-assistant-hit-region-source-edge-followup.png",
+      "sha256": "8b5579d09573f87c2497ee4d37662990e9ccce00311ceeaaec01b080ee0e3fd8",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-after-assistant-keyboard-landscape-screen.png",
+      "sha256": "e22585e5a9118ed1010ae68888843cf972d49300ee5721e418348ca5ed6c259b",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPhone"
+    },
+    {
+      "path": "Docs/screenshots/assistant-hit-regions/iPhone-after-assistant-card-completed-voice-draft-kept-unsent.png",
+      "sha256": "275c8a518ae3c6c1fefe618635e5f520d2404f258264f04be984b64f65f136a7",
+      "checkpoint": "assistant-hit-regions-final",
+      "device": "iPhone"
+    }
+  ],
+  "archives": {
+    "assistant-hit-regions-baseline": {
+      "archive": "assistant-hit-regions-baseline-inputs.zip",
+      "sha256": "b64d5a375c435a98727f5cf12617d979c53de6006b784a37087aab5a333dd29c",
+      "entries": 234,
+      "all_entries_read_back": true
+    },
+    "assistant-hit-regions-final": {
+      "archive": "assistant-hit-regions-final-inputs.zip",
+      "sha256": "7109b1ecd57145c2da63dbf2860fadb8e3ce0aac8972d123dae9f4a64ed39262",
+      "entries": 234,
+      "all_entries_read_back": true
+    }
+  },
+  "implementation": "Three assistant header button labels get native 44-point frames/content shapes. Recipe and follow-up button frames moved inside labels. Source Done label gets native 44x44 frame/content shape. No global button, Source chip, museum Link, Speak, capabilities-sheet or speech-settings-body changes.",
+  "functional_proof": [
+    "Header labels at least 44x44 with only 1e-6-point numerical tolerance and no mutual overlap",
+    "Actual top/bottom edge taps open capabilities/settings and reach denied-unlock fixture status without real auth or speech",
+    "Recipe top edge opens bundled recipe without executing typed timer draft",
+    "Source chip top edge opens sheet (already passed before fix)",
+    "Done bottom edge closes sheet, follow-up top edge selects sample agenda",
+    "Completed synthetic voice draft and keyboard rotation retained"
+  ],
+  "limits": [
+    "Automatic audit is not a strict universal 44x44-size or hardware acceptance proof; four additional manual baseline size failures stopped before those taps",
+    "Audit only the four recorded visible states; not hidden/offscreen controls or all examples/providers",
+    "No actual VoiceOver/Switch Control/focus/announcement/Dynamic Type/full-contrast/physical-device/original-parity acceptance",
+    "Museum Link remains unactivated; real authentication/readout/microphone not tested",
+    "Assistant header layout deliberately grows; no pixel-preservation claim",
+    "Source-sheet viewport crop is the background reference canvas region; full-screen attachments cover the actual sheet"
+  ],
+  "real_personal_data_used": false,
+  "real_authentication": false,
+  "microphone_capture": false,
+  "system_alarm_authorization": false,
+  "Home_constructed": false,
+  "system_activity_created": false
+}
