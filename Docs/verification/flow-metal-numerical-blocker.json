@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-20",
+  "base_commit": "655beeae37bb2c11d28cecee69f1e4acbecd8d9b",
+  "device": "Apple M1 Max",
+  "numerical_acceptance": "FAIL",
+  "production_changes": false,
+  "tests": "Eight standalone diagnostic cases, not XCTest, no UI or iPad performance test",
+  "contract": {
+    "date": "2026-10-20",
+    "base_commit": "655beeae37bb2c11d28cecee69f1e4acbecd8d9b",
+    "CPU_reference_sha256": "11dc99bb0d648625c37a17c5a78ec4a618c69c44370d91373da63e038ea21494",
+    "CPU_arithmetic_preservation": "Entire original FlowSimulation.swift remains an unchanged byte prefix; snapshot initializer may only be appended",
+    "grid_sides": [
+      8,
+      16,
+      40,
+      128
+    ],
+    "inputs": [
+      "original palette/zero velocity",
+      "seeded finite velocity and dye fields",
+      "bounded and overlarge impulses",
+      "delta0/negative/clipped/NaN and nonfinite input no-op",
+      "reflecting boundaries and corner cells"
+    ],
+    "numerical_limits": {
+      "up_to_20_steps": {
+        "velocity_max_abs": 0.0005,
+        "dye_max_abs": 0.0001
+      },
+      "hundred_steps": {
+        "velocity_max_abs": 0.001,
+        "dye_max_abs": 0.0002
+      }
+    },
+    "lifecycle_tests": [
+      "cancel before actor starts allocates no Metal textures",
+      "owner inactive/disappeared cancels job and ignores late completion",
+      "old error/cleanup cannot clear newer pending task",
+      "failed/unavailable backend resumes exact CPU reference from last accepted state",
+      "new active session can retry fresh backend"
+    ],
+    "scope": "Production GPU numerical path, CPU fallback, view-owner lifecycle; existing CGImage presentation bridge retained and explicitly not zero-copy",
+    "hardware_limit": "Actual Mac Metal numerical proof where available; no iPad frame-time/energy or speedup claim without real iPad measurement",
+    "preflight_decision": "No new dependency or source copied. Existing CPU-specific forcing/boundaries/palette must remain comparable; surveyed alternatives are old demo, rights-reserved app, or distinct desktop screensaver solver."
+  },
+  "output": [
+    "Actual Metal device: Apple M1 Max",
+    "COMPLETE firstFailure=none n=8 seeded=false steps=20 maxVelocity=1.9073486e-06 maxDye=2.3841858e-07 textures=9",
+    "COMPLETE firstFailure=none n=8 seeded=true steps=20 maxVelocity=1.1920929e-06 maxDye=2.3841858e-07 textures=9",
+    "COMPLETE firstFailure=none n=16 seeded=false steps=20 maxVelocity=6.198883e-06 maxDye=2.3841858e-07 textures=9",
+    "COMPLETE firstFailure=none n=16 seeded=true steps=20 maxVelocity=4.23193e-06 maxDye=4.172325e-07 textures=9",
+    "COMPLETE firstFailure=76 n=40 seeded=false steps=100 maxVelocity=0.0021219254 maxDye=0.00017243624 textures=9",
+    "COMPLETE firstFailure=82 n=40 seeded=true steps=100 maxVelocity=0.003328383 maxDye=3.8683414e-05 textures=9",
+    "COMPLETE firstFailure=6 n=128 seeded=false steps=20 maxVelocity=0.2170186 maxDye=0.0020703673 textures=9",
+    "COMPLETE firstFailure=20 n=128 seeded=true steps=20 maxVelocity=0.0006222725 maxDye=5.990267e-06 textures=9"
+  ],
+  "public_inputs": [
+    {
+      "path": "Docs/verification/flow-metal-candidate.swift.txt",
+      "sha256": "017fc6c91e949949503814a23442ab8115fa30f9f6a4436a1688c714337a337d"
+    },
+    {
+      "path": "Docs/verification/flow-metal-reference-snapshot.swift.txt",
+      "sha256": "fbb8b2c86a8d25eb2935fcd547c88ab95fc24c53dae2210ff994da36731d1d70"
+    },
+    {
+      "path": "Docs/verification/flow-metal-numerical-pilot.swift.txt",
+      "sha256": "e11c30d216c32ace85a9eaacc165a0299943c50adf4f9854d1e7bc476b33f247"
+    }
+  ],
+  "local_archive_sha256": "1d1c2aa3c4943ce3e43f019b4836d25649065f448e60279d5b6374ef78d6bfe0",
+  "notes": [
+    "Three initial Swift compilation failures retained in local evidence. Fourth build reached actual Metal. Precise functions alone did not solve the drift. Disabling FP contraction moved first 40-grid failure from 56 to 76. Rounded divide/sqrt attempt had identical final output and was not claimed a fix.",
+    "First historical manifest omitted Package.resolved. Complete canonical baseline is the existing asset-provenance-source.json (207 files); raw first 206-row manifest is retained, not relabeled. The file named flow-metal-base-with-lockfile-source.json was actually created after two candidate files changed/added and is a candidate checkpoint, not the unmodified base."
+  ]
+}
