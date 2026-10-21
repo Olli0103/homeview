@@ -249,6 +249,8 @@ final class AppModel {
   private let systemAlarmsAllowed: Bool
   #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
     private var nativeAlarms = NativeAlarmService()
+    private var nativeScheduleTokens:[UUID:UUID]=[:]
+    private var nativeScheduleTasks:[UUID:(token:UUID,task:Task<Void,Never>)]=[:]
   #endif
   private var toastTask: Task<Void, Never>?
   private let photoClockTestStart = ProcessInfo.processInfo.systemUptime
@@ -1303,27 +1305,70 @@ final class AppModel {
       return false
     }
     synchronizeTimerActivity(requestStart:true)
-    #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
-      if systemAlarmsAllowed {
-        nativeSchedulesInFlight+=1
-        Task {
-          defer { nativeSchedulesInFlight-=1 }
-          do {
-            try await nativeAlarms.scheduleTimer(id: timer.id, seconds: seconds, title: title)
-            if data.timers.contains(where: { $0.id == timer.id }) {
-              data.nativeTimerIDs.insert(timer.id)
-              persist()
-            } else {
-              try nativeAlarms.cancel(timer.id)
-            }
-          } catch {
-            self.error =
-              "The timer is running in the foreground, but the system alert could not be scheduled: \(error.localizedDescription)"
+    scheduleNativeTimer(timer)
+    return true
+  }
+  #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
+    /// A failed local save must not dispatch a system effect. If the effect
+    /// fails, restore the last committed state; surface a failed rollback too.
+    private func updateNativeAlarmState(_ change:(inout Snapshot)->Void,effect:() throws -> Void) -> Bool {
+      let previous=data
+      guard updateLocalControls(change) else { return false }
+      do {try effect();return true}
+      catch {
+        data=previous
+        let restored=persist()
+        if !restored {storeReadOnly=true}
+        self.error=restored ? "Could not update the system alert. The previous local state was restored."
+          : "Could not update the system alert or restore its saved state. Local writes are blocked; check system alerts before restarting."
+        return false
+      }
+    }
+    private func invalidateNativeSchedule(_ id:UUID) {nativeScheduleTokens.removeValue(forKey:id)}
+    /// Serialize each system identity: cleanup of an old completion must finish
+    /// before its replacement starts. Different identities remain independent.
+    private func queueNativeSchedule(_ id:UUID,wanted:@escaping @MainActor ()->Bool,
+      schedule:@escaping @MainActor () async throws -> Void,record:@escaping (inout Snapshot)->Void) {
+      let predecessor=nativeScheduleTasks[id]?.task,token=UUID()
+      nativeScheduleTokens[id]=token;nativeSchedulesInFlight+=1
+      let task=Task {
+        defer {
+          nativeSchedulesInFlight-=1
+          if nativeScheduleTasks[id]?.token==token {nativeScheduleTasks.removeValue(forKey:id)}
+          if nativeScheduleTokens[id]==token {nativeScheduleTokens.removeValue(forKey:id)}
+        }
+        if let predecessor {await predecessor.value}
+        guard nativeScheduleTokens[id]==token,!Task.isCancelled,wanted() else {return}
+        do {
+          do {try await schedule()}
+          catch {
+            guard nativeScheduleTokens[id]==token,wanted() else {return}
+            throw error
           }
+          guard nativeScheduleTokens[id]==token,!Task.isCancelled,wanted() else {
+            try nativeAlarms.cancel(id);return
+          }
+          // No uncommitted ownership claim: undo the new system schedule if
+          // recording it fails. A failed cleanup is explicit, never success.
+          guard updateLocalControls(record) else {try nativeAlarms.cancel(id);return}
+        } catch {
+          // A failed stale cleanup still needs attention; suppressing it would
+          // hide a potentially orphaned system alert.
+          self.error="System alert scheduling or cleanup failed. Check system alerts. \(error.localizedDescription)"
         }
       }
+      nativeScheduleTasks[id]=(token,task)
+    }
+  #endif
+  private func scheduleNativeTimer(_ timer:Countdown) {
+    #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
+      guard systemAlarmsAllowed,let deadline=timer.deadline else {return}
+      queueNativeSchedule(timer.id,wanted:{
+        self.data.timers.contains {$0.id==timer.id && $0.deadline==deadline && !$0.didAlert}
+      },schedule:{
+        try await self.nativeAlarms.scheduleTimer(id:timer.id,seconds:max(1,deadline.timeIntervalSinceNow),title:timer.title)
+      },record:{$0.nativeTimerIDs.insert(timer.id)})
     #endif
-    return true
   }
   func toggleTimer(_ id: UUID) {
     guard writableStore() else { return }
@@ -1335,21 +1380,21 @@ final class AppModel {
     }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeTimerIDs.contains(id) {
-        do {
+        if updateNativeAlarmState(change,effect:{
           if pause { try nativeAlarms.pause(id) }
           else { try nativeAlarms.resume(id) }
-        } catch {
-          self.error = "Could not update the system timer. \(error.localizedDescription)"
-          return
+        }) {
+          invalidateNativeSchedule(id)
+          if !pause {synchronizeTimerActivity(requestStart:true)}
         }
-        // Keep the existing native-operation ordering separate. A local
-        // rollback cannot undo an already performed system-alarm operation.
-        change(&data)
-        if persist(),!pause {synchronizeTimerActivity(requestStart:true)}
         return
       }
     #endif
-    if updateLocalControls(change),!pause {synchronizeTimerActivity(requestStart:true)}
+    guard updateLocalControls(change) else {return}
+    #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
+      invalidateNativeSchedule(id)
+    #endif
+    if !pause {synchronizeTimerActivity(requestStart:true);scheduleNativeTimer(data.timers[i])}
   }
   func removeTimer(_ id: UUID) {
     guard writableStore() else { return }
@@ -1359,15 +1404,15 @@ final class AppModel {
     }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeTimerIDs.contains(id) {
-        do { try nativeAlarms.cancel(id) } catch {
-          self.error =
-            "The system alarm could not be cancelled. The timer was kept. \(error.localizedDescription)"
-          return
-        }
-        change(&data);persist();return
+        if updateNativeAlarmState(change,effect:{try nativeAlarms.cancel(id)}) {invalidateNativeSchedule(id)}
+        return
       }
     #endif
-    updateLocalControls(change)
+    if updateLocalControls(change) {
+      #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
+        invalidateNativeSchedule(id)
+      #endif
+    }
   }
   func addAlarm(hour: Int, minute: Int) {
     guard writableStore() else { return }
@@ -1383,25 +1428,12 @@ final class AppModel {
   private func scheduleNativeAlarm(_ alarm: AlarmItem) {
     guard writableStore() else { return }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
-      if systemAlarmsAllowed {
-        nativeSchedulesInFlight+=1
-        Task {
-          defer { nativeSchedulesInFlight-=1 }
-          do {
-            try await nativeAlarms.scheduleAlarm(
-              id: alarm.id, hour: alarm.hour, minute: alarm.minute)
-            if data.alarms.contains(where: { $0.id == alarm.id && $0.enabled }) {
-              data.nativeAlarmIDs.insert(alarm.id)
-              persist()
-            } else {
-              try nativeAlarms.cancel(alarm.id)
-            }
-          } catch {
-            self.error =
-              "The alarm is foreground-only because the system could not schedule it: \(error.localizedDescription)"
-          }
-        }
-      }
+      guard systemAlarmsAllowed else {return}
+      queueNativeSchedule(alarm.id,wanted:{
+        self.data.alarms.contains {$0.id==alarm.id && $0.enabled && $0.hour==alarm.hour && $0.minute==alarm.minute}
+      },schedule:{
+        try await self.nativeAlarms.scheduleAlarm(id:alarm.id,hour:alarm.hour,minute:alarm.minute)
+      },record:{$0.nativeAlarmIDs.insert(alarm.id)})
     #endif
   }
   func toggleAlarm(_ id: UUID) {
@@ -1414,13 +1446,14 @@ final class AppModel {
     }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if !enabled,data.nativeAlarmIDs.contains(id) {
-        do { try nativeAlarms.cancel(id) } catch {
-          self.error=error.localizedDescription;return
-        }
-        change(&data);persist();return
+        if updateNativeAlarmState(change,effect:{try nativeAlarms.cancel(id)}) {invalidateNativeSchedule(id)}
+        return
       }
     #endif
     guard updateLocalControls(change) else { return }
+    #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
+      invalidateNativeSchedule(id)
+    #endif
     // Never queue even a permitted native schedule for an unsaved enable.
     if enabled { scheduleNativeAlarm(data.alarms[i]) }
   }
@@ -1432,13 +1465,15 @@ final class AppModel {
     }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if data.nativeAlarmIDs.contains(id) {
-        do { try nativeAlarms.cancel(id) } catch {
-          self.error=error.localizedDescription;return
-        }
-        change(&data);persist();return
+        if updateNativeAlarmState(change,effect:{try nativeAlarms.cancel(id)}) {invalidateNativeSchedule(id)}
+        return
       }
     #endif
-    updateLocalControls(change)
+    if updateLocalControls(change) {
+      #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
+        invalidateNativeSchedule(id)
+      #endif
+    }
   }
   func reconcileSystemAlarms() {
     guard !storeReadOnly else { return }
@@ -1446,19 +1481,17 @@ final class AppModel {
       guard !data.nativeTimerIDs.isEmpty || !data.nativeAlarmIDs.isEmpty else { return }
       do {
         let active = try nativeAlarms.activeIDs()
-        for i in data.alarms.indices
-        where data.nativeAlarmIDs.contains(data.alarms[i].id) && !active.contains(data.alarms[i].id)
-        { data.alarms[i].enabled = false }
-        data.nativeAlarmIDs.formIntersection(active)
-        for i in data.timers.indices
-        where data.nativeTimerIDs.contains(data.timers[i].id) && !active.contains(data.timers[i].id)
-        {
-          data.timers[i].pausedRemaining = 0
-          data.timers[i].deadline = nil
-          data.timers[i].didAlert = true
+        updateLocalControls { state in
+          for i in state.alarms.indices
+          where state.nativeAlarmIDs.contains(state.alarms[i].id) && !active.contains(state.alarms[i].id)
+          {state.alarms[i].enabled=false}
+          state.nativeAlarmIDs.formIntersection(active)
+          for i in state.timers.indices
+          where state.nativeTimerIDs.contains(state.timers[i].id) && !active.contains(state.timers[i].id) {
+            state.timers[i].pausedRemaining=0;state.timers[i].deadline=nil;state.timers[i].didAlert=true
+          }
+          state.nativeTimerIDs.formIntersection(active)
         }
-        data.nativeTimerIDs.formIntersection(active)
-        persist()
       } catch {
         self.error = "Could not reconcile own system alarms. \(error.localizedDescription)"
       }

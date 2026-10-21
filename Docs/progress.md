@@ -5,6 +5,10 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Persistenz-/Lifecycle-Matrix abgeschlossen · 21. Oktober 2026
+
+[#80: ursprüngliche synthetische Abnahmematrix](persistence-acceptance.md) auf einem gemeinsamen Quellenstand bestanden: 352 Modelltests, zwölf alte/beschädigte Migrationszellen, 18 native Fake-Alarm-Szenarien/95 Assertions, 22 ausgewählte App-Ausführungen, fünf SDKs und 14 unabhängige UUID-Datei-Read-backs. Zwei ID-Migrationslücken sowie neun native Write-/Schedule-Fehlerfälle korrigiert; Erstfehler erhalten. Keine echte Alarmzustellung, Accounts, Hardware- oder Gesamt-Parity-Abnahme; keine Home-Anbindung. Frühere #80-Offenstände unten sind datierte Historie.
+
 ### Face-Editor-Touchflächen · 20. Oktober 2026
 
 Face-Editor: lokale Label-Mindestflächen, tatsächliche Flow-Zeilenaktion und geschützte Inline-Datum-Trefferfläche. 28 UI-Ausführungen über zwei bytegleiche Auswahlläufe, 14 leere ungefilterte Auditlisten, 38 native Rand-Taps und fünf SDKs. Vorherfehler erhalten; andere kleine Previewflächen, schmale Fenster und echte Hilfsmittel-/Originalabnahme offen. Docs/editor-hit-regions.md. Weiter ohne Home-Anbindung.
