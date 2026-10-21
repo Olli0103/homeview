@@ -1,0 +1,1297 @@
+{
+  "date": "2026-10-21",
+  "issue": 80,
+  "baseCommit": "ec9198855bdc711ecedd08044aa8758e07d99f36",
+  "status": "original_synthetic_QA05_acceptance_passed",
+  "sourceDigest": "37f5f95889d3f42b6fba6b29cdcca82452185123a2284d9263ffe53f3bbf0ee2",
+  "sourceCount": 210,
+  "baseline": {
+    "matrixTests": 14,
+    "failedTests": 2,
+    "failedAssertions": 2,
+    "sourceDigest": "f075aa2c979599e111406df3561fc902b5321163e19530ce73a4fdffde2ec6dc",
+    "failureCases": [
+      "damaged gallery ID member erases valid peers",
+      "damaged native ownership member erases valid IDs"
+    ],
+    "intermediateGuardRegression": {
+      "tests": 352,
+      "failedTests": 1,
+      "failedAssertions": 2,
+      "description": "First ID deduplication incorrectly made a mismatched album grant appear valid; existing album multiplicity guard caught it. Exact original ID-list equality restored before final gate."
+    }
+  },
+  "modelTests": {
+    "total": 352,
+    "failures": 0,
+    "skips": 0,
+    "suites": {
+      "AlbumDisplayTests": {
+        "tests": 15,
+        "failures": 0
+      },
+      "AlbumSnapshotTests": {
+        "tests": 5,
+        "failures": 0
+      },
+      "AnonymousPresencePolicyTests": {
+        "tests": 17,
+        "failures": 0
+      },
+      "AnswerSpeechSessionTests": {
+        "tests": 12,
+        "failures": 0
+      },
+      "AssistantCommandBoundaryTests": {
+        "tests": 2,
+        "failures": 0
+      },
+      "AssistantConversationTests": {
+        "tests": 14,
+        "failures": 0
+      },
+      "AssistantResponseDocumentTests": {
+        "tests": 4,
+        "failures": 0
+      },
+      "BrowserPolicyTests": {
+        "tests": 4,
+        "failures": 0
+      },
+      "CalendarAgendaTests": {
+        "tests": 4,
+        "failures": 0
+      },
+      "CalendarBoundaryTests": {
+        "tests": 4,
+        "failures": 0
+      },
+      "ConicGradientTests": {
+        "tests": 3,
+        "failures": 0
+      },
+      "DemoActionPlanTests": {
+        "tests": 8,
+        "failures": 0
+      },
+      "DemoDoorbellTests": {
+        "tests": 7,
+        "failures": 0
+      },
+      "DeviceConnectionTests": {
+        "tests": 55,
+        "failures": 0
+      },
+      "EverydayVoiceCommandTests": {
+        "tests": 3,
+        "failures": 0
+      },
+      "FaceConfigurationMigrationTests": {
+        "tests": 7,
+        "failures": 0
+      },
+      "FlowTypographyTests": {
+        "tests": 3,
+        "failures": 0
+      },
+      "GuestSafetyTests": {
+        "tests": 3,
+        "failures": 0
+      },
+      "HomeViewCoreTests": {
+        "tests": 22,
+        "failures": 0
+      },
+      "LocalStateFileReaderTests": {
+        "tests": 4,
+        "failures": 0
+      },
+      "LocalStateResetTests": {
+        "tests": 6,
+        "failures": 0
+      },
+      "MusicPlaybackGateTests": {
+        "tests": 4,
+        "failures": 0
+      },
+      "PersistenceAcceptanceTests": {
+        "tests": 14,
+        "failures": 0
+      },
+      "PersonalFieldRecoveryTests": {
+        "tests": 9,
+        "failures": 0
+      },
+      "PersonalHomeTests": {
+        "tests": 5,
+        "failures": 0
+      },
+      "PhotoClockInkTests": {
+        "tests": 8,
+        "failures": 0
+      },
+      "PhotoPlacementTests": {
+        "tests": 18,
+        "failures": 0
+      },
+      "PodcastTests": {
+        "tests": 10,
+        "failures": 0
+      },
+      "PowerAdapterInformationTests": {
+        "tests": 3,
+        "failures": 0
+      },
+      "RecipeParserTests": {
+        "tests": 5,
+        "failures": 0
+      },
+      "RecipeTransferTests": {
+        "tests": 9,
+        "failures": 0
+      },
+      "SetupIntroductionTests": {
+        "tests": 6,
+        "failures": 0
+      },
+      "SnapshotMigrationTests": {
+        "tests": 5,
+        "failures": 0
+      },
+      "SnapshotTablePressureTests": {
+        "tests": 9,
+        "failures": 0
+      },
+      "TimerLiveActivityTests": {
+        "tests": 9,
+        "failures": 0
+      },
+      "ViewportNavigationIntentTests": {
+        "tests": 9,
+        "failures": 0
+      },
+      "WatchFacesTests": {
+        "tests": 10,
+        "failures": 0
+      },
+      "WeatherTests": {
+        "tests": 10,
+        "failures": 0
+      },
+      "WorldClockTests": {
+        "tests": 7,
+        "failures": 0
+      },
+      "HomeViewCoreTests.xctest": {
+        "tests": 352,
+        "failures": 0
+      },
+      "All tests": {
+        "tests": 352,
+        "failures": 0
+      }
+    }
+  },
+  "nativeAlarmBoundary": {
+    "selection": "Actual AppModel on macOS: select its AlarmKit conditional against a symbolic NativeAlarmService; only that conditional and a private-store accessor differ. No AlarmKit import/link, OS authorization or real system operation. Other App/Core source files compile unchanged.",
+    "baseline": [
+      {
+        "assertions": 7,
+        "case": "write_pause_timer",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": false,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": false,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "pause"
+        ],
+        "failed": [
+          "no_system_effect_before_failed_save",
+          "snapshot_unchanged"
+        ],
+        "owned_uuid": "152F769E-2629-4EE1-889E-20211BC118CD",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 7,
+        "case": "write_resume_timer",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": false,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": false,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "resume"
+        ],
+        "failed": [
+          "no_system_effect_before_failed_save",
+          "snapshot_unchanged"
+        ],
+        "owned_uuid": "283FC30F-5783-4B06-9477-3F51CDF08510",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 7,
+        "case": "write_remove_timer",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": false,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": false,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [
+          "no_system_effect_before_failed_save",
+          "snapshot_unchanged"
+        ],
+        "owned_uuid": "1D711C04-BDB7-4E8F-B836-876FA70CC187",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 7,
+        "case": "write_disable_alarm",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": false,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": false,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [
+          "no_system_effect_before_failed_save",
+          "snapshot_unchanged"
+        ],
+        "owned_uuid": "D99CBCBE-34C6-4345-BF67-F6EE8B27ABD0",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 7,
+        "case": "write_remove_alarm",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": false,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": false,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [
+          "no_system_effect_before_failed_save",
+          "snapshot_unchanged"
+        ],
+        "owned_uuid": "77207759-D3EE-41B3-9D1F-2ABD0077A103",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 5,
+        "case": "schedule_timer_write",
+        "checks": {
+          "error_visible": true,
+          "fault_canary_unchanged": true,
+          "ownership_not_claimed_on_failed_save": false,
+          "snapshot_rolled_back": false,
+          "uncommitted_schedule_cancelled": false
+        },
+        "events": [
+          "schedule"
+        ],
+        "failed": [
+          "ownership_not_claimed_on_failed_save",
+          "snapshot_rolled_back",
+          "uncommitted_schedule_cancelled"
+        ],
+        "owned_uuid": "DF764E88-0DFC-4838-BC64-853F29C654EE",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 5,
+        "case": "schedule_alarm_write",
+        "checks": {
+          "error_visible": true,
+          "fault_canary_unchanged": true,
+          "ownership_not_claimed_on_failed_save": false,
+          "snapshot_rolled_back": false,
+          "uncommitted_schedule_cancelled": false
+        },
+        "events": [
+          "schedule"
+        ],
+        "failed": [
+          "ownership_not_claimed_on_failed_save",
+          "snapshot_rolled_back",
+          "uncommitted_schedule_cancelled"
+        ],
+        "owned_uuid": "2CA5952F-3F05-40D7-BE9E-2D084FC959C5",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 4,
+        "case": "pending_timer_pause",
+        "checks": {
+          "disk_matches_memory": true,
+          "paused_choice_preserved": true,
+          "paused_timer_does_not_gain_system_owner": false,
+          "stale_running_schedule_cancelled": false
+        },
+        "events": [
+          "schedule"
+        ],
+        "failed": [
+          "paused_timer_does_not_gain_system_owner",
+          "stale_running_schedule_cancelled"
+        ],
+        "owned_uuid": "8767D77C-23B4-4CBA-B28B-4BDAD517CF32",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 5,
+        "case": "pending_alarm_reenable",
+        "checks": {
+          "disk_matches_memory": true,
+          "latest_owns_schedule": true,
+          "latest_still_active": true,
+          "old_cleanup_precedes_new_schedule": false,
+          "stale_completion_did_not_install_ownership": false
+        },
+        "events": [
+          "schedule",
+          "schedule"
+        ],
+        "failed": [
+          "old_cleanup_precedes_new_schedule",
+          "stale_completion_did_not_install_ownership"
+        ],
+        "owned_uuid": "2F4F7B0F-22EE-4F4E-A3F4-C5C185A5FD54",
+        "verdict": "FAIL"
+      },
+      {
+        "assertions": 4,
+        "case": "provider_pause_timer",
+        "checks": {
+          "error_visible": true,
+          "failed_effect_rolls_back_disk": true,
+          "failed_effect_rolls_back_memory": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "pause"
+        ],
+        "failed": [],
+        "owned_uuid": "CF6CA017-6FB3-483E-8742-4DBF1CE1C225",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 4,
+        "case": "provider_remove_timer",
+        "checks": {
+          "error_visible": true,
+          "failed_effect_rolls_back_disk": true,
+          "failed_effect_rolls_back_memory": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "009F25B7-7A38-42A1-9F3B-166C0611F878",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 4,
+        "case": "provider_disable_alarm",
+        "checks": {
+          "error_visible": true,
+          "failed_effect_rolls_back_disk": true,
+          "failed_effect_rolls_back_memory": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "39303CD8-C8E4-4ADD-8117-D8DB99114857",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 4,
+        "case": "provider_remove_alarm",
+        "checks": {
+          "error_visible": true,
+          "failed_effect_rolls_back_disk": true,
+          "failed_effect_rolls_back_memory": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "45263355-B862-4894-8638-D3A45DF24C6B",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_pause_timer",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "pause"
+        ],
+        "failed": [],
+        "owned_uuid": "855FE021-2706-41B7-91B5-CBFE06ADE523",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_resume_timer",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "resume"
+        ],
+        "failed": [],
+        "owned_uuid": "F512EE14-F6B0-46FF-956F-D785310417F2",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_remove_timer",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "AB8CE791-FCA8-4CE7-9394-53A398FDB839",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_disable_alarm",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "6CFEE319-DA2E-475A-B9B7-79DA4567FBDF",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_remove_alarm",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "78EAD498-C2F3-455D-9D9D-6A52DD5D7A81",
+        "verdict": "PASS"
+      }
+    ],
+    "final": [
+      {
+        "assertions": 7,
+        "case": "write_pause_timer",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": true,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [],
+        "failed": [],
+        "owned_uuid": "32367245-FD41-400F-B821-DE50DE00786D",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 7,
+        "case": "write_resume_timer",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": true,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [],
+        "failed": [],
+        "owned_uuid": "74F8E16E-CB27-47D4-A084-890E89171F33",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 7,
+        "case": "write_remove_timer",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": true,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [],
+        "failed": [],
+        "owned_uuid": "C96E5671-2191-4578-A2C2-2B136E704BB2",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 7,
+        "case": "write_disable_alarm",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": true,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [],
+        "failed": [],
+        "owned_uuid": "4E784BE7-905B-4B1E-859A-2E8299BB0AA7",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 7,
+        "case": "write_remove_alarm",
+        "checks": {
+          "canary_unchanged": true,
+          "error_visible": true,
+          "no_system_effect_before_failed_save": true,
+          "original_bytes_unchanged": true,
+          "restart_matches_original": true,
+          "snapshot_unchanged": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [],
+        "failed": [],
+        "owned_uuid": "12DFCEF8-F004-4C5B-8F8A-9FF79E60BE21",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "schedule_timer_write",
+        "checks": {
+          "error_visible": true,
+          "fault_canary_unchanged": true,
+          "ownership_not_claimed_on_failed_save": true,
+          "snapshot_rolled_back": true,
+          "uncommitted_schedule_cancelled": true
+        },
+        "events": [
+          "schedule",
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "204E3834-D1D0-48F2-86BC-D65057DCE749",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "schedule_alarm_write",
+        "checks": {
+          "error_visible": true,
+          "fault_canary_unchanged": true,
+          "ownership_not_claimed_on_failed_save": true,
+          "snapshot_rolled_back": true,
+          "uncommitted_schedule_cancelled": true
+        },
+        "events": [
+          "schedule",
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "FCE7A08C-FC23-4B2C-A980-1EB1AD765B21",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 4,
+        "case": "pending_timer_pause",
+        "checks": {
+          "disk_matches_memory": true,
+          "paused_choice_preserved": true,
+          "paused_timer_does_not_gain_system_owner": true,
+          "stale_running_schedule_cancelled": true
+        },
+        "events": [
+          "schedule",
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "23CE2FD6-181D-4895-AFE2-6D7508C6F7E3",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "pending_alarm_reenable",
+        "checks": {
+          "disk_matches_memory": true,
+          "latest_owns_schedule": true,
+          "latest_still_active": true,
+          "old_cleanup_precedes_new_schedule": true,
+          "stale_completion_did_not_install_ownership": true
+        },
+        "events": [
+          "schedule",
+          "cancel",
+          "schedule"
+        ],
+        "failed": [],
+        "owned_uuid": "B2207216-0183-46DC-8398-5A6CAB5AE33E",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 4,
+        "case": "provider_pause_timer",
+        "checks": {
+          "error_visible": true,
+          "failed_effect_rolls_back_disk": true,
+          "failed_effect_rolls_back_memory": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "pause"
+        ],
+        "failed": [],
+        "owned_uuid": "FF6215A2-62AB-4A47-981F-943452673228",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 4,
+        "case": "provider_remove_timer",
+        "checks": {
+          "error_visible": true,
+          "failed_effect_rolls_back_disk": true,
+          "failed_effect_rolls_back_memory": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "FF6CED86-E521-4E33-ACD6-D3FF74A6B50B",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 4,
+        "case": "provider_disable_alarm",
+        "checks": {
+          "error_visible": true,
+          "failed_effect_rolls_back_disk": true,
+          "failed_effect_rolls_back_memory": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "1BCBD48C-0FA9-4712-A95B-2E2740280C89",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 4,
+        "case": "provider_remove_alarm",
+        "checks": {
+          "error_visible": true,
+          "failed_effect_rolls_back_disk": true,
+          "failed_effect_rolls_back_memory": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "281C6826-5280-4E2B-B106-0589A6DDCE7B",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_pause_timer",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "pause"
+        ],
+        "failed": [],
+        "owned_uuid": "9BE773CB-12B6-4199-8BB4-6784B91452D2",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_resume_timer",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "resume"
+        ],
+        "failed": [],
+        "owned_uuid": "06E0F746-D74A-425F-B8C4-DCDCED116756",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_remove_timer",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "A6D53CEE-B866-4DA0-B94D-F26C2790BB8D",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_disable_alarm",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "B88E2654-672D-442B-9EC6-1A3C70F36302",
+        "verdict": "PASS"
+      },
+      {
+        "assertions": 5,
+        "case": "positive_remove_alarm",
+        "checks": {
+          "no_error": true,
+          "one_system_effect": true,
+          "saved_effect_matches_memory": true,
+          "state_changed": true,
+          "unrelated_peer_unchanged": true
+        },
+        "events": [
+          "cancel"
+        ],
+        "failed": [],
+        "owned_uuid": "4C5DC440-1233-41EA-A0FE-FC0519BC0B01",
+        "verdict": "PASS"
+      }
+    ],
+    "compiledInputs": 98,
+    "baselineArchiveSHA256": "9ccb14d17071393d6dc1c0f5c4bb79ecea0787b2c7f7adc90e3fd60796d4d1a0",
+    "finalArchiveSHA256": "d6d643ffda5f39a9656bfa9866cddb1453fc3ecc67298b072a751ffc6ebb26f1",
+    "preparationFailure": "First host compile included the standalone widget entry without its iOS-only shared type. Failed before execution; harness input selection corrected to app/core, no product change.",
+    "native-before-AppModelInputSHA256": "738b3d191fe16989fa620824e779ef0d61cf5e4b564ef7c97cef2f0ee4419b1a",
+    "native-final-AppModelInputSHA256": "7a62fa77b92698c33c6fd647578e6364f74c93f924c79b0f393c7f70f32bf63d"
+  },
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exitCode": 0
+    },
+    {
+      "platform": "macOS",
+      "exitCode": 0
+    },
+    {
+      "platform": "tvOS",
+      "exitCode": 0
+    },
+    {
+      "platform": "visionOS",
+      "exitCode": 0
+    },
+    {
+      "platform": "watchOS",
+      "exitCode": 0
+    }
+  ],
+  "nativeUI": {
+    "plannedUniqueMethods": 11,
+    "plannedExecutions": 22,
+    "methods": [
+      "testLegacyFaceConfigurationRecoversAndSurvivesProcessRestart",
+      "testUnknownFaceWidgetPreservesSiblingChoicesAndStyleAcrossRestart",
+      "testCorruptRecipeMigrationPreservesHomeAndSubsequentWrites",
+      "testFutureStoreRemainsReadOnlyAfterAnAttemptedSaveAndRelaunch",
+      "testPhotoRotationChoiceSurvivesRestartWithoutReselectingGallery",
+      "testLocalTimersReloadOwnStoredDeadlinesAfterProcessRestart",
+      "testLegacyPersonalListsPreserveSiblingsAndNormalWriteAfterRestart",
+      "testDamagedPersonalListsPreserveSiblingsAndNormalWriteAfterRestart",
+      "testReadOnlyFaceStyleAndSlotEditsKeepCurrentSelections",
+      "testReadOnlyRecipePinKeepsUnpinnedCookingContext",
+      "testLocalResetSeparateAuthenticationExactConfirmationAndDurableEmptyRestart"
+    ],
+    "status": "passed",
+    "executions": [
+      {
+        "device": "iPad",
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "installedAppByteReadback": [
+          {
+            "path": "default.metallib",
+            "expected_sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431",
+            "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+          },
+          {
+            "path": "demo-tone.wav",
+            "expected_sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "AppIcon60x60@2x.png",
+            "expected_sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646",
+            "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+          },
+          {
+            "path": "__preview.dylib",
+            "expected_sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a",
+            "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+          },
+          {
+            "path": "Assets.car",
+            "expected_sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f",
+            "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+          },
+          {
+            "path": "AppIcon76x76@2x~ipad.png",
+            "expected_sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d",
+            "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+          },
+          {
+            "path": "HomeViewReplica",
+            "expected_sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da",
+            "sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da"
+          },
+          {
+            "path": "HomeViewReplica.debug.dylib",
+            "expected_sha256": "c1ca457b4efb6bcdc750ef5493e8fc0345e27ff761332eda0077944f11c69bf9",
+            "sha256": "c1ca457b4efb6bcdc750ef5493e8fc0345e27ff761332eda0077944f11c69bf9"
+          },
+          {
+            "path": "FeedKit-LICENSE.txt",
+            "expected_sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0",
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Info.plist",
+            "expected_sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00",
+            "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+          },
+          {
+            "path": "PkgInfo",
+            "expected_sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "podcast-test-audio.wav",
+            "expected_sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Metadata.appintents/version.json",
+            "expected_sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4",
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Metadata.appintents/extract.actionsdata",
+            "expected_sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053",
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+            "expected_sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595",
+            "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+          },
+          {
+            "path": "PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+            "expected_sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1",
+            "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+          },
+          {
+            "path": "PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+            "expected_sha256": "0c94280823d09e8a7ce94863cc2c1fc7d3da39db0663db1916e8782c269cec47",
+            "sha256": "0c94280823d09e8a7ce94863cc2c1fc7d3da39db0663db1916e8782c269cec47"
+          },
+          {
+            "path": "PlugIns/HomeViewTimerWidget.appex/Info.plist",
+            "expected_sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d",
+            "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+          }
+        ]
+      },
+      {
+        "device": "iPhone",
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "installedAppByteReadback": [
+          {
+            "path": "default.metallib",
+            "expected_sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431",
+            "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+          },
+          {
+            "path": "demo-tone.wav",
+            "expected_sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "AppIcon60x60@2x.png",
+            "expected_sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646",
+            "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+          },
+          {
+            "path": "__preview.dylib",
+            "expected_sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a",
+            "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+          },
+          {
+            "path": "Assets.car",
+            "expected_sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f",
+            "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+          },
+          {
+            "path": "AppIcon76x76@2x~ipad.png",
+            "expected_sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d",
+            "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+          },
+          {
+            "path": "HomeViewReplica",
+            "expected_sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da",
+            "sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da"
+          },
+          {
+            "path": "HomeViewReplica.debug.dylib",
+            "expected_sha256": "c1ca457b4efb6bcdc750ef5493e8fc0345e27ff761332eda0077944f11c69bf9",
+            "sha256": "c1ca457b4efb6bcdc750ef5493e8fc0345e27ff761332eda0077944f11c69bf9"
+          },
+          {
+            "path": "FeedKit-LICENSE.txt",
+            "expected_sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0",
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Info.plist",
+            "expected_sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00",
+            "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+          },
+          {
+            "path": "PkgInfo",
+            "expected_sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "podcast-test-audio.wav",
+            "expected_sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Metadata.appintents/version.json",
+            "expected_sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4",
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Metadata.appintents/extract.actionsdata",
+            "expected_sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053",
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+            "expected_sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595",
+            "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+          },
+          {
+            "path": "PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+            "expected_sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1",
+            "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+          },
+          {
+            "path": "PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+            "expected_sha256": "0c94280823d09e8a7ce94863cc2c1fc7d3da39db0663db1916e8782c269cec47",
+            "sha256": "0c94280823d09e8a7ce94863cc2c1fc7d3da39db0663db1916e8782c269cec47"
+          },
+          {
+            "path": "PlugIns/HomeViewTimerWidget.appex/Info.plist",
+            "expected_sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d",
+            "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+          }
+        ]
+      }
+    ]
+  },
+  "sourceArchiveSHA256": "c62038ccb482eff533de3ee8619e128b2211bdf24a7123f1bb6cb941be24ce5f",
+  "boundaries": [
+    "Synthetic data and MockHome only; no home discovery, messages or calls",
+    "Only fresh owned UUID stores; ordinary stores neither read nor modified by these probes",
+    "Real providers, device identity, biometric prompts, OS alarm/audio delivery and crash atomicity across disk and OS are not established",
+    "Historical checkpoints remain historical; final model/native/UI/SDK evidence uses unchanged product sources"
+  ],
+  "personalStoreReadback": {
+    "scope": "Only four UUID stores printed by these native tests; no ordinary stores inspected.",
+    "rows": [
+      {
+        "device": "iPad",
+        "kind": "damaged",
+        "ownedUUID": "FC7DE52C-5968-43AB-AABF-BF0D8D0757C1",
+        "originalSHA256": "38b29d64f49335edce40c7ec824b49cbfd5d50caa820930fd6a80cf13dfbd6f5",
+        "currentSHA256": "bcc2b6a9de839f5c50adbfd15e57d0567b0f14ec16b5763be9c0f30d54b16d20",
+        "originalByteCopyVerified": true,
+        "normalWriteVerified": true,
+        "otherSnapshotFieldsExactlyPreserved": true,
+        "validMessagesPreserved": true,
+        "missingOrBrokenListsEmpty": true,
+        "reminderIdentitiesPreservedAndUnique": true,
+        "firstReminderCompletedAndLastNotCompleted": true
+      },
+      {
+        "device": "iPad",
+        "kind": "legacy",
+        "ownedUUID": "79A09135-1602-4FFD-AC55-9D2E81F5F270",
+        "originalSHA256": "06acd487fa4b88c6090cbbe3388ec7a50242bce881a723571bfe3bf467b6c2fd",
+        "currentSHA256": "d429c95f8016a7143669f1fe2b23fd37c8a2410c4d92e58b216deed09d2e7c70",
+        "originalByteCopyVerified": true,
+        "normalWriteVerified": true,
+        "otherSnapshotFieldsExactlyPreserved": true,
+        "validMessagesPreserved": true,
+        "missingOrBrokenListsEmpty": true,
+        "reminderIdentitiesPreservedAndUnique": true,
+        "firstReminderCompletedAndLastNotCompleted": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "damaged",
+        "ownedUUID": "5E3BC298-0A25-40BE-A0CC-152B1E4F7205",
+        "originalSHA256": "8ba9cc17eda9918643aa4235ab26fe3328ab1505b0364ba34f55e042632137a7",
+        "currentSHA256": "7774fef7243bbc0c00a3ac478088633a8d290c6b841f9b9b3ddacef98447248b",
+        "originalByteCopyVerified": true,
+        "normalWriteVerified": true,
+        "otherSnapshotFieldsExactlyPreserved": true,
+        "validMessagesPreserved": true,
+        "missingOrBrokenListsEmpty": true,
+        "reminderIdentitiesPreservedAndUnique": true,
+        "firstReminderCompletedAndLastNotCompleted": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "legacy",
+        "ownedUUID": "2A474DA2-7D81-4546-A2E0-BCBDD410E867",
+        "originalSHA256": "4668304ca29b6880552b54520a3537c0d1550601b67f5a1c9b5f1e6017069bdb",
+        "currentSHA256": "fa19aa95e69454ae65a838da7337e16c04e532ae7902d194f9d53de8dad6b723",
+        "originalByteCopyVerified": true,
+        "normalWriteVerified": true,
+        "otherSnapshotFieldsExactlyPreserved": true,
+        "validMessagesPreserved": true,
+        "missingOrBrokenListsEmpty": true,
+        "reminderIdentitiesPreservedAndUnique": true,
+        "firstReminderCompletedAndLastNotCompleted": true
+      }
+    ]
+  },
+  "additionalStoreReadback": {
+    "scope": "Only exact UUIDs printed by this selected run; no ordinary stores read",
+    "rows": [
+      {
+        "device": "iPad",
+        "kind": "unknown-version",
+        "exactOriginalBytes": true
+      },
+      {
+        "device": "iPad",
+        "kind": "recipe-corruption",
+        "backupDigestAndFixtureShape": true,
+        "normalThermostatWrite": true,
+        "otherFieldsExact": true
+      },
+      {
+        "device": "iPad",
+        "kind": "gallery",
+        "twoUniqueIDs": true,
+        "rotationSavedFalse": true
+      },
+      {
+        "device": "iPad",
+        "kind": "face-legacy",
+        "backupDigestAndSavedStyle": true
+      },
+      {
+        "device": "iPad",
+        "kind": "face-future-widget",
+        "backupDigestAndSavedStyle": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "unknown-version",
+        "exactOriginalBytes": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "recipe-corruption",
+        "backupDigestAndFixtureShape": true,
+        "normalThermostatWrite": true,
+        "otherFieldsExact": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "gallery",
+        "twoUniqueIDs": true,
+        "rotationSavedFalse": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "face-legacy",
+        "backupDigestAndSavedStyle": true
+      },
+      {
+        "device": "iPhone",
+        "kind": "face-future-widget",
+        "backupDigestAndSavedStyle": true
+      }
+    ]
+  },
+  "imagesAndArchive": {
+    "publishedPictures": [
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPad-personal-fields-damaged-after-process-restart.png",
+        "sha256": "89035e5872f0bd4ccbebae4205961fce4ca513fd951d0cc145dcedd81b2261d5"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPad-personal-fields-legacy-alex-recovered.png",
+        "sha256": "fd6e2c722903571093fe12ffe5b971f5073411d44c51fb2b2c5890c81a99b622"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPad-face-recovery-legacy-after-process-restart.png",
+        "sha256": "22b8bf67afdbf0ed6ed817d1bf2c5327aba15300dc5c7e0e835474677f256413"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPad-photo-write-rotation-disabled-after-restart.png",
+        "sha256": "d10bc470416783c0e23f82148608db7311a39a7cb344692d5d5d9389d5a98067"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPad-timer-lifecycle-restart-peers-preserved.png",
+        "sha256": "9baa29934ee32a8d7f29b9bb6efa5b8b2e0780c6fe85d4fa76d31e288c70b2a2"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPad-reset-complete-source-permissions-retained.png",
+        "sha256": "9a51d4ce318e8e531b2d34156607f3fd0222dbb5c8a3ec256ad85a0eb987f21f"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPad-mock-write-readonly-value-unchanged.png",
+        "sha256": "110e8c8128b7f28e3e3f43df8546dcb4328b2fe29694a11cda78ce84271a4fad"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPad-store-corrupt-recipe-keeps-home-and-writes.png",
+        "sha256": "ec5a87150f6d8da77602e07aecf1eb4fd0132d2741a8d3a3d2bdc9f0de3a7f1d"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPhone-personal-fields-damaged-after-process-restart.png",
+        "sha256": "e196b2c05e14bbd82e9b9dc0ae907aee8d4c0b2d73600316c3924be7a1096f25"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPhone-personal-fields-legacy-alex-recovered.png",
+        "sha256": "6330d54d1889f8c5025a5c5d393bcb7afc4345a458e441756ed550d4bb14798d"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPhone-face-recovery-legacy-after-process-restart.png",
+        "sha256": "9ab6a7bc6926d40c6bcd7b68aa69d7aae17953f0ac1df2b147ee1c67e5388741"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPhone-photo-write-rotation-disabled-after-restart.png",
+        "sha256": "3f4d2b3e30c6786d156c04a7f2f3a4ae27eebc673696cc42847df9f14f2c0ee3"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPhone-timer-lifecycle-restart-peers-preserved.png",
+        "sha256": "daf2a4cd307d953163aeabd2f4ba9887707ecc6bf601a58e322c1f69961eb377"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPhone-reset-complete-source-permissions-retained.png",
+        "sha256": "f91c9259aa39129ac07d807fd12da18f3813e9e16d27aa5559e541ddf6c339e2"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPhone-mock-write-readonly-value-unchanged.png",
+        "sha256": "c04cdcbc25382648bd20543858e3908763efa63f6df256be52de637daf165be1"
+      },
+      {
+        "path": "Docs/screenshots/qa80-acceptance/iPhone-store-corrupt-recipe-keeps-home-and-writes.png",
+        "sha256": "2f78d9ff0239abfc34347daccad139fff71cc93fa37db2015a8ea2c69723a081"
+      }
+    ],
+    "compiledInputs": 28,
+    "archiveEntries": 238,
+    "archiveSHA256": "fa203100cc2e7b39c8750d43d3358ed7f7d102bdfb2abcec38349b06a1abc830",
+    "imagesDecoded": 88,
+    "contactSheetsViewed": 2
+  }
+}

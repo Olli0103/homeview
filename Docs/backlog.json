@@ -2093,7 +2093,7 @@
     "priority": "P1",
     "kind": "validation",
     "functions": [],
-    "current": "Begrenzte Migration, späte Musikantworten sowie lokale Rezept-/Face-/Profil- und Vordergrund-Timer-Schreibfehler sind quellengebunden geprüft und korrigiert. Vollständige Daten-/Lifecycle-/Native-Alarm-Matrix bleibt offen. Lokale Mock-Befehle behalten bei fehlgeschlagenem Write keine ungespeicherten Werte/Audit-Einträge; Fehlermeldungen waren bereits korrekt. Docs/mock-command-write-boundaries.md. Foto-Layout, Korrektur-Cache und Foto-Face-Wechsel werden bei Writefehlern nicht scheinbar übernommen; separate native/UI-Belege in Docs/photo-write-boundaries.md. Lokale Ablaufmarkierungen werden vor Hinweis/Chime-Anforderung gespeichert; Writefehler und Neustart sind separat geprüft. Docs/expiry-write-boundaries.md. Expliziter Task-Abbruch verhindert neue persönliche Provideraufrufe und späte Ergebnis-/Fehlerübernahme; Docs/personal-request-cancellation.md. Abgebrochene Musikfreigabe übernimmt keinen neuen Verbindungs-/Wiederherstellungsstatus; Wetter-Abbruch restauriert vorherigen Status ohne falsche Fehlermarkierung. Docs/music-weather-request-cancellation.md. Begrenzter Start-/Read-back-Reader verwirft Blatt-Symlinks und unsichere Dateiknoten; 297 Modelltests und begrenzte native/UI-Gegenprüfung. Kein universeller Dateisystem-/Hardware-PASS. Latest mirror capture intent protects newer starts from stale shared shutdowns; stopped/denied/failed intents retain cleanup and clear live state. Exact controller body with symbolic fake dependencies:12 native cases/45 assertions and five SDKs. Not real camera hardware acceptance. Docs/mirror-start-lifecycle.md. Mirror start Task is owner-bound/cancelled on replacement, Stop, background and leave; cancelled late entry returns before permission/capture. Exact source-callback host seam: 17 native scenarios / 68 assertions and five SDKs, not real SwiftUI/camera hardware acceptance. Docs/mirror-task-owner.md. Vorab abgebrochene Entsperranfragen kehren vor Provider- und Generationswechsel zurück; gültige oder noch laufende Anmeldungen bleiben erhalten. Drei native Vorherfehler/7 Assertions korrigiert, vier finale Szenarien/14 Assertions und 303 Modelltests. Gastmodus-Verdacht durch bestehende RootView-Sperre und tatsächliche UI-Gegenprüfung widerlegt; keine Gast-Produktänderung. Docs/unlock-pre-cancelled.md. Entsperrseiten-Task wird bei Ersetzung, Verlassen und Hintergrund abgebrochen; veraltete Fehler/Ergebnisse werden vor UI-Übernahme verworfen. Inaktive Promptphase und eingebetteter Kalender-/Reminder-Zugang bleiben nutzbar. Sechs Vorherfehler/8Assertions; zwölf finale native Szenarien/40Assertions im symbolischen Callback-Host sowie acht tatsächliche UI-Regressionen und fünf SDKs. Keine echte Biometrie-/Pending-SwiftUI-/Promptabnahme. Docs/unlock-owner.md. Überfüllte Tabellen verdrängen bekannte Face-/Profil-/Slotdaten nicht mehr; ungültige Schlüssel/Nichtobjekte verbrauchen kein Objektbudget. 329 Coretests, vier native Loader-/Write-/Neustart-Ausführungen mit unabhängigen Originalbyte-/Datei-Read-backs und fünf SDKs. Systemdienst-IDs kanonisch begrenzt, keine reale Alarmoperationsabnahme. Docs/state-table-pressure.md. Beschädigte/fehlende gespeicherte Profillisten und einzelne Mitglieder verwerfen keine gesunden Nachbarn mehr; leere Reparatur statt neuer Demoinhalte, eindeutige Erinnerungsidentitäten. 338 Coretests, vier native Write-/Neustart-Ausführungen und unabhängige Originalbyte-/Datei-Read-backs sowie fünf SDKs. Docs/personal-field-recovery.md.",
+    "current": "Ursprüngliche synthetische Daten-/Lifecycle-/Write-Matrix auf gemeinsamem Stand bestanden: 352 Modelltests, zwölf explizite Migrationszellen, 18 native Fake-Alarm-Szenarien/95 Assertions, 22 ausgewählte App-Ausführungen und fünf SDK-Builds. Quellen-/Binärbindung und 14 eigene Datei-Read-backs. Keine Home-, Live-Account-, physische Alarm- oder Gesamt-Parity-Abnahme. Docs/persistence-acceptance.md.",
     "tasks": [
       "Face-/Slot-/Galerie-/Timer-/Rezept-/Profilmigration mit alten und beschädigten Daten prüfen",
       "Verbindungsabbrüche und spätes Providerergebnis nach Abmelden/Navigation simulieren",
@@ -2106,8 +2106,8 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/80",
     "issue_number": 80,
-    "state": "in_progress",
-    "implementation_note": "Begrenzte gespeicherte Face-Feldwiederherstellung nach unverändertem Decoder-Befund: Docs/face-configuration-recovery.md;166Core/8gezielteUI/5SDK, vier eigene UUID-Teststände mit Originaldateien/Prozessrestart geprüft. Keine vollständige Editor-/Migrations-/Original-/Hardwareabnahme. Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen.",
+    "state": "completed",
+    "implementation_note": "Migrationslücken in gemischten Galerie-/System-ID-Listen behoben; Albumgrant bleibt exakt gebunden. Systemeffekt erst nach Save, Rollback bei Providerfehler, ungespeicherte Schedules stornieren und Planungen pro Identität serialisieren. Historische Teilberichte bleiben erhalten; aktueller Abschlussbericht ist maßgeblich.",
     "progress_evidence": [
       "Docs/persistence-write-boundaries.md",
       "Docs/timer-write-boundaries.md",
@@ -2129,7 +2129,9 @@
       "Docs/state-table-pressure.md",
       "Docs/verification/state-table-pressure.json",
       "Docs/personal-field-recovery.md",
-      "Docs/verification/personal-field-recovery.json"
+      "Docs/verification/personal-field-recovery.json",
+      "Docs/persistence-acceptance.md",
+      "Docs/verification/qa80-acceptance.json"
     ]
   },
   {

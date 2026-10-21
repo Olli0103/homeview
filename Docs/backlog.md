@@ -1321,28 +1321,18 @@ Abhängigkeiten: QA-01.
 <a id="qa-05"></a>
 ### QA-05: Persistenz, Migration, Offline und späte Antworten systematisch prüfen
 
-[Entsperrung an sichtbare Anfrage binden](unlock-owner.md): Ersatz/Verlassen/Hintergrund entwerten alte Tasks; inaktive Authentifizierungsphase bleibt erlaubt. Begrenzter Callback-/UI-Beleg, keine reale Promptabnahme.
+**Abgeschlossen im ursprünglichen synthetischen Software-Abnahmeumfang · 21. Oktober 2026.** [Gemeinsame Matrix und Grenzen](persistence-acceptance.md), [quellengebundener Bericht](verification/qa80-acceptance.json).
 
-[Vorab abgebrochene Entsperrung](unlock-pre-cancelled.md): kein Providerstart und keine Entwertung aktueller Anmeldung; getrennt vom widerlegten Gastmodus-Verdacht. Keine Hardware-/Snapshot-Gesamtabnahme.
+- Face-/Slot-/Galerie-/Timer-/Rezept-/Profilmigration: zwölf explizite alte/beschädigte Zellen, plus zwei ID-/Grant-Gegenproben; alle Nachbarfelder und stabiler kanonischer Save-/Reload geprüft.
+- Disconnect/Abmelden/Task-Abbruch und späte Providerergebnisse: aktueller gemeinsamer Modelllauf mit 55 DeviceConnection- und den bestehenden Album-/Player-/Gesprächs-/Gastprüfungen.
+- Nur eigene UUID-Testordner, begrenzter Reader und Reset; keine normalen Nutzerspeicher geöffnet. 14 unabhängige eigene Datei-Read-backs ergänzen die App-/Modellprüfung.
+- Kein falscher Write-Erfolg: bestehender Rollback und jetzt auch registrierte native Alarmaktionen vor Save geschützt; 18 echte AppModel-Szenarien mit symbolischem Systemdienst, 95 Assertions.
 
-Lokale Zustände und ausgewählte Neustart-/Offlinefälle sind getestet. Vollständige Daten- und Lifecycle-Matrix fehlt.
+**352 Modelltests, 22 App-Ausführungen (elf je iPad/iPhone), fünf SDK-Builds bestanden.** Quellen vor/nach unverändert, native Archive und installierte Appbytes zurückgelesen. Frühere Teilberichte werden nicht als neue Gesamtläufe addiert.
 
-Spiegel-Controller: neuester Capture-Wunsch schuetzt neueren Start vor alten Stop-Anforderungen; notwendige Nachlauf-Bereinigung bleibt erhalten. Zwoelf native Logik-Szenarien mit rein symbolischen Capture-/Permission-Fakes, 45 Assertions und fuenf SDKs. Kein echter Kameratreiber-/Hardware-PASS. [Reproduktion und Grenzen](mirror-start-lifecycle.md).
+Abnahme: Deterministische Regression ohne Datenausfluss, Cross-Profile-Leaks, doppelte Aktionen oder beschädigten normalen Nutzerspeicher. Diese synthetische Grenze ist keine Abnahme echter Accounts, physischer Alarmzustellung oder atomarer Disk-/OS-Crash-Recovery. Die weitergehenden Geräte-/Identitätsgates einschließlich SYS-03 bleiben separat offen. Apple Home bleibt deaktiviert.
 
-Spiegel-Starttask an Besitzer gebunden: Verlassen/Hintergrund vor Task-Beginn dispatcht in der nativen Quell-Callback-Probe keine Fake-Permission/Capture mehr. 17 Szenarien, 68 Assertions und fuenf SDKs; keine reale SwiftUI-/Kameraabnahme. [Gegenfall und Grenzen](mirror-task-owner.md).
-
-Offen:
-
-- Face-/Slot-/Galerie-/Timer-/Rezept-/Profilmigration mit alten und beschädigten Daten prüfen
-- Verbindungsabbrüche und spätes Providerergebnis nach Abmelden/Navigation simulieren
-- Nur begrenzte eigene Testordner nutzen und Löschen auf diese beschränken
-- Kein vermeintlicher Erfolg bei fehlgeschlagenem Write
-
-Abnahme: Deterministische Regression ohne Datenausfluss, Cross-Profile-Leaks, doppelte Aktionen oder beschädigten normalen Nutzerspeicher.
-
-Abhängigkeiten: SYS-03.
-
-[Begrenzter Zustandsdatei-Reader: Start, Linkgrenzen und Gegenprüfung](bounded-state-startup.md).
+Abhängigkeiten: SYS-03 (dessen bestehende synthetische Authentifizierungsgrenze geprüft, keine Gerätebindung behauptet).
 
 <a id="qa-06"></a>
 ### QA-06: Dauerleistung, Energie und Animation-Lifecycle vermessen

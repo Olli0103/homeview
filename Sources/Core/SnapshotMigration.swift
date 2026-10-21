@@ -35,6 +35,16 @@ extension Snapshot {
       }
       return result
     }
+    // These are local file/ownership identities, not authorization grants.
+    // Decode independently so a damaged member cannot erase healthy peers.
+    func uuidStrings(_ key:String) -> [String] {
+      guard let raw=stored[key] as? [Any] else { return [] }
+      var seen=Set<UUID>()
+      return raw.compactMap { item in
+        guard let text=item as? String,let id=UUID(uuidString:text),seen.insert(id).inserted else { return nil }
+        return text
+      }
+    }
     func table<T: Decodable>(_ key: String, limit: Int, preferredKeys: Set<String> = [],
       validKey: (String) -> Bool = { _ in true }) -> [String: T] {
       guard let raw = stored[key] as? [String: Any] else { return [:] }
@@ -75,7 +85,7 @@ extension Snapshot {
     output.screenBrightness = min(1,max(0,value("screenBrightness",fallback.screenBrightness)))
     output.keepDisplayOn = value("keepDisplayOn",fallback.keepDisplayOn)
     output.timerLiveActivitiesEnabled = value("timerLiveActivitiesEnabled",false)
-    output.photoIDs = Array(value("photoIDs",fallback.photoIDs).filter { UUID(uuidString:$0) != nil }.prefix(10))
+    output.photoIDs = Array(uuidStrings("photoIDs").prefix(10))
     // Missing means an older snapshot. A present but malformed discriminator
     // must not resurrect an unrelated legacy selected-photo.data file.
     output.photoSelection = stored["photoSelection"] == nil ? .legacy : value("photoSelection",.none)
@@ -86,7 +96,10 @@ extension Snapshot {
     }
     let grant: AlbumDisplayGrant? = value("albumDisplay",nil)
     output.albumDisplay = grant.flatMap { item in
-      item.valid && item.cache.map(\.fileID) == output.photoIDs ? item:nil
+      // An approved album is an exact ordered grant, unlike a local gallery.
+      // Repairing/deduplicating IDs must never make a mismatched grant valid.
+      item.valid && item.cache.map(\.fileID) == output.photoIDs
+        && value("photoIDs",fallback.photoIDs) == output.photoIDs ? item:nil
     }
     if output.photoSelection == .album, output.albumDisplay == nil {
       output.photoSelection = .none
@@ -107,9 +120,9 @@ extension Snapshot {
         && $0.title.count <= 512
         && ($0.deadline.map { $0 >= .distantPast && $0 <= .distantFuture } ?? true)
     }
-    output.nativeTimerIDs = Set(value("nativeTimerIDs",fallback.nativeTimerIDs)
+    output.nativeTimerIDs = Set(uuidStrings("nativeTimerIDs").compactMap(UUID.init(uuidString:))
       .sorted { $0.uuidString < $1.uuidString }.prefix(64))
-    output.nativeAlarmIDs = Set(value("nativeAlarmIDs",fallback.nativeAlarmIDs)
+    output.nativeAlarmIDs = Set(uuidStrings("nativeAlarmIDs").compactMap(UUID.init(uuidString:))
       .sorted { $0.uuidString < $1.uuidString }.prefix(64))
     output.reminders = items("reminders",fallback.reminders,limit:500)
     output.alarms = items("alarms",fallback.alarms,limit:24) {
