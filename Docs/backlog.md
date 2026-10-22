@@ -225,6 +225,8 @@ Abhängigkeiten: BASE-02.
 <a id="face-04"></a>
 ### FACE-04: Geteilte Modular-Inhalte mit echten Freigaben trennen
 
+**Lokale Freigabeabnahme abgeschlossen · 22. Oktober 2026.** [Zwei synthetische Profile, explizite Veröffentlichungen und Widerruf](shared-panels.md). Echte Haushaltsidentität verbleibt unter #66; kein Home-Zugriff.
+
 Vier gemeinsame Panels und weitere eigene Modular-Layouts funktionieren mit lokalen Daten. Mehrere echte Haushaltsidentitäten sind nicht angebunden.
 
 Offen:

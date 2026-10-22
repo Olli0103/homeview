@@ -5,6 +5,10 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Gemeinsame Panels: ausdrückliche Freigaben · 22. Oktober 2026
+
+[#8 im ursprünglichen synthetischen Umfang abgeschlossen](shared-panels.md): bewusste Kalenderkopien und geteilte Music-Queue, private Caches nie implizit auf Faces/Vorschauen. 363 Coretests, 40 unabhängige native Assertions, zehn UI-Ausführungen über zwei dokumentierte Caption-Prüfstände, fünf finale SDKs. Echte Haushaltsidentität bleibt #66, kein Home-Zugriff. Der Gesamtauftrag geht weiter.
+
 ### Referenz- und Face-Inventur abgeschlossen · 22. Oktober 2026
 
 [#2/#5: Katalogabschluss](reference-catalogue.md): 24 archivierte Quellen, 51 datierte Referenzzustände, 105 Funktionszuordnungen und 13 sichtbare Gruppen mit expliziten Lücken. 356 Coretests und zwei UI-Ausführungen mit 28 Face-Zuständen bestanden. Keine neue Original-/Renderer-/Hardwareabnahme; vier Watch-Zusatzlayouts separat. Der Gesamtauftrag läuft weiter.

@@ -210,7 +210,7 @@
       "F006",
       "F007"
     ],
-    "current": "Vier gemeinsame Panels und weitere eigene Modular-Layouts funktionieren mit lokalen Daten. Mehrere echte Haushaltsidentitäten sind nicht angebunden.",
+    "current": "Explizite widerrufbare Kalender-Snapshot- und bestehende Queue-Freigaben trennen gemeinsame Panels/Vorschauen von privaten Quellen, auch bei entsperrtem Gerät. Zwei synthetische Profile geprüft; echte Haushaltsidentität bleibt #66.",
     "tasks": [
       "Gemeinsame und persönliche Panelinhalte ausdrücklich unterscheiden",
       "Opt-in für haushaltsweit sichtbare Kalender-/Medieninhalte definieren",
@@ -223,7 +223,15 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/8",
     "issue_number": 8,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-22",
+      "evidence": [
+        "Docs/shared-panels.md",
+        "Docs/verification/shared-panels.json"
+      ],
+      "scope": "Original synthetic two-user publication criteria only; named accounts/identity and original visual parity not accepted"
+    }
   },
   {
     "key": "FACE-05",
