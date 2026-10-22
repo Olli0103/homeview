@@ -1110,7 +1110,9 @@ final class HomeViewUITests: XCTestCase {
     tap("nav.apps");app.buttons["personal.profile"].tap();tap("profile.Alex")
     app.buttons["personal.profile"].press(forDuration:1)
     tap("personal.edit");tap("personal.layout.media");tap("personal.editor.done")
-    XCTAssertTrue(app.staticTexts["Demo episode"].exists)
+    XCTAssertEqual(app.buttons["personal.podcast.open"].label,"A Quiet Morning")
+    XCTAssertTrue(app.staticTexts["Demo episode · Local audio"].exists)
+    XCTAssertEqual(app.buttons["personal.podcast.play"].label,"Play")
     tap("personal.podcast.play")
     let play=app.buttons["personal.podcast.play"]
     expectation(for:NSPredicate(format:"label CONTAINS %@","Pause"),evaluatedWith:play)
@@ -1208,7 +1210,8 @@ final class HomeViewUITests: XCTestCase {
   func testPersonalWeatherWidgetDoesNotInventUnavailableData() {
     launch(["--page","Settings","--weather-fail"])
     let connect=app.buttons["connect.Weather"]
-    for _ in 0..<18 where !connect.isHittable { app.scrollViews.firstMatch.swipeUp() }
+    scrollPhotoControlFullyIntoView(connect)
+    viewportShot("personal-weather-source-before-explicit-connect")
     connect.tap()
     expectation(for:NSPredicate(format:"label CONTAINS %@","Weather unavailable"),evaluatedWith:app.staticTexts["connection.status.Weather"])
     waitForExpectations(timeout:5)

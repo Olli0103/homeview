@@ -6,6 +6,7 @@ import EventKit
 
 struct CalendarView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.locale) private var inheritedLocale
   @Environment(\.nativeCanvasScale) private var canvasScale
   private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var selected: Int?
@@ -26,6 +27,7 @@ struct CalendarView: View {
   private var calendarContent: some View {
     VStack(alignment: .leading, spacing: 16) {
       AppHeader(title:model.calendarPresentation.monthName,closeSize:max(48,minimumHitSide))
+        .environment(\.locale,inheritedLocale)
       HStack(spacing: 6) {
         ForEach(0..<7) { i in
           Button {
