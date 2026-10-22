@@ -242,7 +242,7 @@
     "functions": [
       "F008"
     ],
-    "current": "Profilgetrennte eigene Layouts, vier Favoriten, Medien-/Wetterraster und lokale Speicherung sind synthetisch geprüft. Foto-Vorschau und explizit freigegebenes Album sind ergänzt. Vollständige Originalvarianten, echte Mehrnutzeridentität, Accounts und genaue Licht-/Rasterdetails bleiben offen.",
+    "current": "Abnahme der ursprünglichen lokalen/synthetischen Kriterien abgeschlossen: Drei verfügbare Referenzlayouts inventarisiert, profilgetrennte Auswahl/Neustart/zweites Profil/Gast sowie explizite Wiedergabe und nicht erfundene verbundene Leerwerte geprüft. Echte Haushaltsidentität #66 und genaue Originaldarstellung #78 offen.",
     "tasks": [
       "Widgets, App-Reihenfolge, Beschriftungen und Zustände je Profil gegen Referenz erfassen",
       "Änderungen profilgetrennt speichern",
@@ -255,8 +255,16 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/9",
     "issue_number": 9,
-    "state": "open",
-    "implementation_note": "Veröffentlichte, jeweils eigene historische Prüfstände: personal-home-layouts.md, personal-weather-grid.md, selected-album-updates.md. Keine nachträgliche Gesamt- oder Originalabnahme."
+    "state": "completed",
+    "implementation_note": "Veröffentlichte, jeweils eigene historische Prüfstände: personal-home-layouts.md, personal-weather-grid.md, selected-album-updates.md. Keine nachträgliche Gesamt- oder Originalabnahme.",
+    "completion": {
+      "date": "2026-10-22",
+      "evidence": [
+        "Docs/personal-home-acceptance.md",
+        "Docs/verification/calendar-home-acceptance.json"
+      ],
+      "scope": "Original local/synthetic issue criteria. No full original, real-account or hardware parity."
+    }
   },
   {
     "key": "FACE-06",
@@ -588,7 +596,7 @@
     "functions": [
       "F020"
     ],
-    "current": "Kritische Kalenderdaten synthetisch nativ geprüft; Kalender-Eins, Kopfzeilenabstand, Heute-Kreis und lokale Farben näher an UI08 kalibriert. Modular-Form unverändert. Exakte Typografie, weitere Locales und vollständige Original-Auswahlregeln bleiben offen.",
+    "current": "Abnahme der ursprünglichen lokalen/synthetischen Kriterien abgeschlossen: Gregorianische Kalenderdaten, regiongerechte Wochen-/Sprach-/RTL-Ansicht und getrennte Agenda-/Heute-Auswahl; eigener englischer Referenzviewport pixel-/PNG-bytegleich. Exakte Originalglyphen/Materialien bleiben #78.",
     "tasks": [
       "Geometrie, Schrift, Auswahl und Locale gegen alle verfügbaren Referenzzustände prüfen",
       "Monats-/Jahreswechsel, Schaltjahre und Zeitzonenübergang prüfen",
@@ -600,8 +608,16 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/22",
     "issue_number": 22,
-    "state": "open",
-    "implementation_note": "calendar-critical-dates.md und calendar-ui08.md; aktueller Geometriestand139Core/10gezielteUI/5SDK, keinOriginal-/Hardware-PASS."
+    "state": "completed",
+    "implementation_note": "calendar-critical-dates.md und calendar-ui08.md; aktueller Geometriestand139Core/10gezielteUI/5SDK, keinOriginal-/Hardware-PASS.",
+    "completion": {
+      "date": "2026-10-22",
+      "evidence": [
+        "Docs/calendar-locale-acceptance.md",
+        "Docs/verification/calendar-home-acceptance.json"
+      ],
+      "scope": "Original local/synthetic issue criteria. No full original, real-account or hardware parity."
+    }
   },
   {
     "key": "HOME-01",

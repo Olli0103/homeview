@@ -239,7 +239,8 @@
       "FACE-05"
     ],
     "current": [
-      "Profilgetrennte eigene Layouts, vier Favoriten, Medien-/Wetterraster und lokale Speicherung sind synthetisch geprüft. Foto-Vorschau und explizit freigegebenes Album sind ergänzt. Vollständige Originalvarianten, echte Mehrnutzeridentität, Accounts und genaue Licht-/Rasterdetails bleiben offen."
+      "Profilgetrennte eigene Layouts, vier Favoriten, Medien-/Wetterraster und lokale Speicherung sind synthetisch geprüft. Foto-Vorschau und explizit freigegebenes Album sind ergänzt. Vollständige Originalvarianten, echte Mehrnutzeridentität, Accounts und genaue Licht-/Rasterdetails bleiben offen.",
+      "Ursprüngliche lokale/synthetische Issuekriterien #9 abgeschlossen; Docs/personal-home-acceptance.md. Exakte Original-/Hardware-/Account-Parity bleibt false, Restdarstellung #78/Identität #66 separat."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -252,7 +253,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "bounded synthetic profile layout, favorites persistence, guest isolation and widget/source checks passed; real identity and original policy remain pending",
+      "functional": "passed original local/synthetic issue criteria; see Docs/personal-home-acceptance.md",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -628,7 +629,8 @@
       "FACE-13"
     ],
     "current": [
-      "Kritische Kalenderdaten synthetisch nativ geprüft; Kalender-Eins, Kopfzeilenabstand, Heute-Kreis und lokale Farben näher an UI08 kalibriert. Modular-Form unverändert. Exakte Typografie, weitere Locales und vollständige Original-Auswahlregeln bleiben offen."
+      "Kritische Kalenderdaten synthetisch nativ geprüft; Kalender-Eins, Kopfzeilenabstand, Heute-Kreis und lokale Farben näher an UI08 kalibriert. Modular-Form unverändert. Exakte Typografie, weitere Locales und vollständige Original-Auswahlregeln bleiben offen.",
+      "Ursprüngliche lokale/synthetische Issuekriterien #22 abgeschlossen; Docs/calendar-locale-acceptance.md. Exakte Original-/Hardware-/Account-Parity bleibt false, Restdarstellung #78/Identität #66 separat."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -641,7 +643,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "bounded synthetic month, leap-year, local-year and agenda/face checks passed; full original policy remains pending",
+      "functional": "passed original local/synthetic issue criteria; see Docs/calendar-locale-acceptance.md",
       "visual": "bounded UI08 geometry/color correction reviewed; exact typography, other states and locales remain pending",
       "device_service": "pending where required; classify explicitly before acceptance"
     },

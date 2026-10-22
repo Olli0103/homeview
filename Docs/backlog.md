@@ -243,6 +243,8 @@ Abhängigkeiten: SYS-03.
 <a id="face-05"></a>
 ### FACE-05: Persönlichen Home Screen und App-Anordnung abnehmen
 
+**Ursprüngliche lokale/synthetische Abnahme abgeschlossen · 22. Oktober 2026.** [Aktueller konsolidierter Beleg](personal-home-acceptance.md). Exakte Originaldarstellung unter #78, reale Identität/Konten/Hardware bleiben getrennt.
+
 Profilgetrennte eigene Layouts, vier Favoriten, Medien-/Wetterraster und lokale Speicherung sind synthetisch geprüft. Foto-Vorschau und explizit freigegebenes Album sind ergänzt. Vollständige Originalvarianten, echte Mehrnutzeridentität, Accounts und genaue Licht-/Rasterdetails bleiben offen.
 
 Offen:
@@ -442,6 +444,8 @@ Abhängigkeiten: BASE-02.
 
 <a id="face-13"></a>
 ### FACE-13: Monatskalender-Face vollständig abnehmen
+
+**Ursprüngliche lokale/synthetische Abnahme abgeschlossen · 22. Oktober 2026.** [Aktueller konsolidierter Beleg](calendar-locale-acceptance.md). Exakte Originaldarstellung unter #78, reale Identität/Konten/Hardware bleiben getrennt.
 
 Kritische Kalenderdaten synthetisch nativ geprüft; Kalender-Eins, Kopfzeilenabstand, Heute-Kreis und lokale Farben näher an UI08 kalibriert. Modular-Form unverändert. Exakte Typografie, weitere Locales und vollständige Original-Auswahlregeln bleiben offen.
 
