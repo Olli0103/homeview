@@ -818,7 +818,7 @@
     "functions": [
       "F038"
     ],
-    "current": "Keine vollständige produktive Hausmitteilungs-Pipeline oder gruppierte Ereignisabnahme vorhanden.",
+    "current": "Gruppierter RAM-Mock-Inbox mit Quellen-/Haushaltsscope, expliziter Incident-Korrelation, Replay-Deduplikation und atomaren Limits. Gastdarstellung redigiert, alte/offline/gesperrte Ziele denied; nur Mock-Ansichten, kein Device-Command. Ursprüngliche synthetische Abnahme bestanden.",
     "tasks": [
       "Synthetische Ereignisse mit Quelle, Zeit und Haushalt modellieren",
       "Zugehörige Tür-/Ankunft-/Alarmereignisse gruppieren und deduplizieren",
@@ -831,7 +831,15 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/31",
     "issue_number": 31,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-22",
+      "evidence": [
+        "Docs/house-notices.md",
+        "Docs/verification/house-notices.json"
+      ],
+      "scope": "Original synthetic event-sequence acceptance. No Home integration, named identity or original visual parity."
+    }
   },
   {
     "key": "HOME-07",
