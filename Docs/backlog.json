@@ -366,7 +366,7 @@
       "F014",
       "F021"
     ],
-    "current": "Rote Monochromdarstellung und Reduce Motion sind vorhanden. Automatische Tageszeitregeln sind unvollständig.",
+    "current": "Manuelle Nachtübersteuerung für14verfügbareFaces mitlesbarenNachtpaletten, deterministischenZeitzonen-/DST-/Neustartfällen undvollständigemRGBLeakcheckabgenommen. UnbekannteOriginal-Autoregeln/SnoopybleibenbenannteLücken;keineOriginal-/Hardwareparity.",
     "tasks": [
       "Belegte Übergänge und pro Face erlaubte Nachtvarianten erfassen",
       "Zeitzone, Sommerzeit und Tagwechsel berücksichtigen",
@@ -379,7 +379,16 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/13",
     "issue_number": 13,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-22",
+      "evidence": [
+        "Docs/night-state-acceptance.md",
+        "Docs/verification/night-state-acceptance.json",
+        "Docs/verification/night-state-source.json"
+      ],
+      "scope": "Original issue bounded state-policy/readability/zone acceptance. Unknown original rules explicitly retained, not a full F014/F021 original-parity or physical accessibility pass."
+    }
   },
   {
     "key": "FACE-08",
@@ -2217,7 +2226,7 @@
     "priority": "P3",
     "kind": "optional",
     "functions": [],
-    "current": "Statische Buildhinweise vorhanden. Diese Faces sind nicht als notwendige HomeView-Parity-Anforderung belegt.",
+    "current": "Bewertung abgeschlossen: Palette, Bounce-Gitter und Flux werden ohne belegten HomeView-Bezug nicht in dieser Paritätsversion implementiert; kein neuer Original-Parity-PASS.",
     "tasks": [
       "Produktentscheidung vor zusätzlicher Implementierung treffen",
       "Bei Annahme eigene Assets, Zustände und separate Abnahme definieren",
@@ -2229,6 +2238,13 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/82",
     "issue_number": 82,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-22",
+      "evidence": [
+        "Docs/optional-face-decision.md"
+      ],
+      "scope": "Evaluation/scope decision only; not adopted, so conditional implementation acceptance not triggered. Original function denominator unchanged."
+    }
   }
 ]
