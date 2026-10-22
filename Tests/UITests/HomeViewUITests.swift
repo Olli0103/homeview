@@ -3,6 +3,60 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func openMockNotices() {
+    tap("nav.controls")
+    let b=app.buttons["controls.notices"];scrollPhotoControlFullyIntoView(b);b.tap()
+    XCTAssertTrue(app.buttons["notices.load"].waitForExistence(timeout:5))
+  }
+  func testHouseNoticesGroupReplayRedactAndOpenOnlyMockView() {
+    launch();openMockNotices()
+    XCTAssertTrue(app.staticTexts["notices.empty"].exists)
+    tap("notices.load")
+    XCTAssertEqual(app.staticTexts["notices.count"].label,"3 groups · 5 visible events")
+    XCTAssertEqual(app.otherElements.matching(NSPredicate(format:"identifier BEGINSWITH %@","notice.group.")).count,3)
+    XCTAssertEqual(app.staticTexts["notice.title.arrival"].label,"Arrival")
+    XCTAssertFalse(app.staticTexts["Synthetic Alex arrived"].exists)
+    XCTAssertFalse(app.staticTexts["Withheld cabin detail"].exists)
+    XCTAssertFalse(app.buttons["notice.open.other-house"].exists)
+    XCTAssertFalse(app.buttons["notice.open.old"].isEnabled)
+    shot("notices-grouped-guest-redacted")
+    tap("notices.load")
+    XCTAssertEqual(app.staticTexts["notices.count"].label,"3 groups · 5 visible events")
+    tap("notices.authenticate")
+    expectation(for:NSPredicate(format:"label == %@","Synthetic Alex arrived"),evaluatedWith:app.staticTexts["notice.title.arrival"])
+    waitForExpectations(timeout:5)
+    shot("notices-authenticated-private-demo-detail")
+    tap("notices.lock")
+    XCTAssertEqual(app.staticTexts["notice.title.arrival"].label,"Arrival")
+    XCTAssertFalse(app.staticTexts["Synthetic Alex arrived"].exists)
+    shot("notices-locked-detail-cleared")
+    let open=app.buttons["notice.open.door"]
+    for _ in 0..<4 where !open.isHittable {app.scrollViews["notices.list"].swipeUp()}
+    XCTAssertTrue(open.isHittable);open.tap()
+    XCTAssertTrue(app.staticTexts["lock.state"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device")
+    viewportShot("notices-door-target-no-unlock")
+  }
+  func testHouseNoticesOfflineDisablesTargetsAndClearHasNoDeviceEffect() {
+    launch();tap("nav.controls");tap("controls.online")
+    let b=app.buttons["controls.notices"];scrollPhotoControlFullyIntoView(b);b.tap()
+    tap("notices.load")
+    for id in ["arrival","door","alarm","unrelated","old"] {
+      XCTAssertFalse(app.buttons["notice.open."+id].isEnabled,id)
+    }
+    shot("notices-offline-actions-disabled")
+    tap("notices.clear")
+    XCTAssertTrue(app.staticTexts["notices.empty"].exists)
+    XCTAssertEqual(app.staticTexts["notices.count"].label,"0 groups · 0 visible events")
+    tap("notices.done");tap("controls.online");tap("nav.faces")
+    drawer();tap("app.Home");tap("grid.lock")
+    XCTAssertTrue(app.staticTexts["lock.state"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+  }
+}
+
+extension HomeViewUITests {
   private func choosePanelProfile(_ name:String) {
     tap("nav.apps");tap("personal.profile");tap("profile."+name)
   }

@@ -11,6 +11,35 @@ import SwiftUI
 final class AppModel {
   #if !os(watchOS)
     let connections = DeviceConnections()
+    let houseNotices=HouseNoticeInbox()
+    private var noticeDemoAnchor:Date?
+    var houseNoticeStatus="No demo sequence loaded. Apple Home stays disconnected."
+    let noticeHouseholds:Set<NoticeHousehold> = [.demoHouse]
+    func loadHouseNoticeDemo() {
+      let anchor=noticeDemoAnchor ?? clock
+      switch houseNotices.ingest(HouseNoticeInbox.demoSequence(at:anchor),at:clock) {
+      case .accepted:
+        noticeDemoAnchor=anchor
+        houseNoticeStatus="Mock sequence loaded. Replays ignore duplicate events."
+      case .invalid:houseNoticeStatus="Demo sequence rejected: invalid event. History unchanged."
+      case .conflict:houseNoticeStatus="Conflicting duplicate rejected. History unchanged."
+      case .capacity:houseNoticeStatus="Demo history is full. Clear it explicitly before loading more."
+      }
+    }
+    func clearHouseNotices() {
+      houseNotices.clear();noticeDemoAnchor=nil
+      houseNoticeStatus="Demo history cleared. No source or device was changed."
+    }
+    @discardableResult func openHouseNotice(_ key:HouseNoticeKey)->Bool {
+      guard let target=houseNotices.destination(for:key,at:clock,allowed:noticeHouseholds,online:data.home.online) else {return false}
+      switch target {
+      case .home:route = .app(.home)
+      case .cameras:route = .app(.cameras)
+      case .door:route = .lock
+      }
+      return true
+    }
+
     let podcastPlayer = PodcastPlaybackController()
     let recipeHandoff = RecipeHandoffController()
     var recipeHandoffFixtureInstalled = false
@@ -990,7 +1019,7 @@ final class AppModel {
     localResetGeneration+=1;podcastFeedGeneration+=1;podcastLoading=false
     podcastPlayer.stop();podcastPlaying=false;podcastStatus="Public RSS feeds · No Apple Podcasts account sync"
     albumRefreshTask?.cancel();albumUpdates.stop(clearDisplay:false);albumCatalogue.invalidate()
-    lockPersonalAccess();connections.resetLocalPreferences()
+    lockPersonalAccess();connections.resetLocalPreferences();clearHouseNotices()
     audioGeneration+=1;startingMusic=false;startingPodcast=false
     playing=false;audio.stopAll()
     error=nil;storeRecoveryNote=nil
