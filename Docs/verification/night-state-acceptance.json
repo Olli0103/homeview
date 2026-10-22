@@ -1,0 +1,1473 @@
+{
+  "date": "2026-10-22",
+  "issue": 13,
+  "codeCommit": "9e3c40bbe7ec392ff766bb18695742009eafa6d9",
+  "policy": "Manual replica override; unknown original ambient/time/character rules remain gaps, not guessed automatic behavior",
+  "originalParityAccepted": false,
+  "checkpoints": [
+    {
+      "name": "night-baseline",
+      "sourceDigest": "e7ebd6dd1f845fd50b7a335cd443ab6f916dd46028d4b38d03f34a611362dc91",
+      "ui": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "passed": 2,
+          "failed": 0
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "passed": 2,
+          "failed": 0
+        }
+      ]
+    },
+    {
+      "name": "night-candidate",
+      "sourceDigest": "b5756b80259e2e0bf66b0c62fe168d9bbc34949836cfb2d135f6ba8b92b89671",
+      "ui": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "passed": 4,
+          "failed": 0
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "passed": 4,
+          "failed": 0
+        }
+      ]
+    },
+    {
+      "name": "night-matte-fixed",
+      "sourceDigest": "85203ac2622dfe05a4a96775aa8e587be26a78d5b3014e569b0e2dcd5f71b719",
+      "ui": [
+        {
+          "device": "iPad",
+          "exit_code": 0,
+          "passed": 5,
+          "failed": 0
+        },
+        {
+          "device": "iPhone",
+          "exit_code": 0,
+          "passed": 5,
+          "failed": 0
+        }
+      ]
+    }
+  ],
+  "retainedFailures": [
+    "Baseline contrast: 41/42 sampled large date cells below 3:1 per simulator, worst1.056333; functional UI pass was not contrast pass",
+    "Calendar-only candidate passed contrast but visual review rejected other face night materials",
+    "First broad matte build failed: highContrastNight argument attached to animation rather than FlowArtwork; corrected before UI execution, no assertion run or threshold changed"
+  ],
+  "finalSourceCount": 217,
+  "core": {
+    "newRun": false,
+    "bytesEqualToPrior375TestCheckpoint": true,
+    "comparedInputs": 83
+  },
+  "finalUIPlan": {
+    "destinations": {
+      "iPad": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+      "iPhone": "3169F5E3-D953-4B0C-8645-BD8A0E410324"
+    },
+    "methods": [
+      "testCalendarNightContrastUsesRenderedGlyphControls",
+      "testCalendarReferenceMonthKeepsTheObservedSixRowsAndToday",
+      "testNightFaceMatrixUsesFullViewportAndExplicitTimeZones",
+      "testManualNightChoicePersistsThroughDSTAndReturnsToDay",
+      "testFaceCatalogueEveryCurrentIdentityRendersWithoutLiveServices"
+    ]
+  },
+  "uiResults": [
+    {
+      "device": "iPad",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+              "deviceName": "iPad Air 11-inch (M4)",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 5,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792651883.149,
+        "passedTests": 5,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792651471.087,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 5
+      }
+    },
+    {
+      "device": "iPhone",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+              "deviceName": "iPhone 18 Pro",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 5,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792651875.611,
+        "passedTests": 5,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792651471.087,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 5
+      }
+    }
+  ],
+  "fullViewportHue": {
+    "redSampleMinimumExclusive": 25,
+    "greenAndBlueMaximumFractionOfRed": 0.4,
+    "minimumLitSamplesExclusive": 100,
+    "facesPerSimulator": 14,
+    "violations": 0
+  },
+  "calendarContrast": {
+    "results": [
+      {
+        "device": "iPad",
+        "cells": [
+          {
+            "index": 0,
+            "label": "29",
+            "samples": 2568,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 1,
+            "label": "30",
+            "samples": 2487,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 2,
+            "label": "31",
+            "samples": 1833,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 3,
+            "label": "1",
+            "samples": 695,
+            "minimumContrast": 4.510747620631432,
+            "below3": 0
+          },
+          {
+            "index": 4,
+            "label": "2",
+            "samples": 1111,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 5,
+            "label": "3",
+            "samples": 1142,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 6,
+            "label": "4",
+            "samples": 1219,
+            "minimumContrast": 4.815544682312852,
+            "below3": 0
+          },
+          {
+            "index": 7,
+            "label": "5",
+            "samples": 1247,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 8,
+            "label": "6",
+            "samples": 1436,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 9,
+            "label": "7",
+            "samples": 839,
+            "minimumContrast": 4.70662323350111,
+            "below3": 0
+          },
+          {
+            "index": 10,
+            "label": "8",
+            "samples": 1471,
+            "minimumContrast": 4.70662323350111,
+            "below3": 0
+          },
+          {
+            "index": 11,
+            "label": "9",
+            "samples": 1451,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 12,
+            "label": "10",
+            "samples": 2022,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 13,
+            "label": "11",
+            "samples": 1374,
+            "minimumContrast": 4.815544682312852,
+            "below3": 0
+          },
+          {
+            "index": 14,
+            "label": "12",
+            "samples": 1880,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 15,
+            "label": "13",
+            "samples": 1837,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 16,
+            "label": "14",
+            "samples": 1909,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 17,
+            "label": "15",
+            "samples": 2013,
+            "minimumContrast": 4.70662323350111,
+            "below3": 0
+          },
+          {
+            "index": 18,
+            "label": "16",
+            "samples": 2140,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 19,
+            "label": "17",
+            "samples": 1530,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 20,
+            "label": "18",
+            "samples": 2220,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 21,
+            "label": "19",
+            "samples": 2133,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 22,
+            "label": "20",
+            "samples": 2514,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 23,
+            "label": "21",
+            "samples": 1860,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 24,
+            "label": "22",
+            "samples": 2253,
+            "minimumContrast": 4.70662323350111,
+            "below3": 0
+          },
+          {
+            "index": 25,
+            "label": "23",
+            "samples": 2311,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 26,
+            "label": "24",
+            "samples": 2418,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 27,
+            "label": "25",
+            "samples": 2414,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 28,
+            "label": "26",
+            "samples": 2525,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 29,
+            "label": "27",
+            "samples": 1936,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 30,
+            "label": "28",
+            "samples": 2564,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 31,
+            "label": "29",
+            "samples": 2556,
+            "minimumContrast": 4.70662323350111,
+            "below3": 0
+          },
+          {
+            "index": 32,
+            "label": "30",
+            "samples": 2480,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 33,
+            "label": "1",
+            "samples": 686,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 34,
+            "label": "2",
+            "samples": 1100,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 35,
+            "label": "3",
+            "samples": 1144,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 36,
+            "label": "4",
+            "samples": 1270,
+            "minimumContrast": 3.3256918440669825,
+            "below3": 0
+          },
+          {
+            "index": 37,
+            "label": "5",
+            "samples": 1255,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 38,
+            "label": "6",
+            "samples": 1435,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 39,
+            "label": "7",
+            "samples": 837,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 40,
+            "label": "8",
+            "samples": 1462,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 41,
+            "label": "9",
+            "samples": 1459,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          }
+        ],
+        "failedCells": [],
+        "largeTextMinimum": 3,
+        "maskWhiteDeltaFraction": 0.95
+      },
+      {
+        "device": "iPhone",
+        "cells": [
+          {
+            "index": 0,
+            "label": "29",
+            "samples": 1433,
+            "minimumContrast": 3.3256918440669825,
+            "below3": 0
+          },
+          {
+            "index": 1,
+            "label": "30",
+            "samples": 1391,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 2,
+            "label": "31",
+            "samples": 1010,
+            "minimumContrast": 3.3256918440669825,
+            "below3": 0
+          },
+          {
+            "index": 3,
+            "label": "1",
+            "samples": 418,
+            "minimumContrast": 4.510747620631432,
+            "below3": 0
+          },
+          {
+            "index": 4,
+            "label": "2",
+            "samples": 644,
+            "minimumContrast": 4.815544682312852,
+            "below3": 0
+          },
+          {
+            "index": 5,
+            "label": "3",
+            "samples": 638,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 6,
+            "label": "4",
+            "samples": 662,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 7,
+            "label": "5",
+            "samples": 716,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 8,
+            "label": "6",
+            "samples": 803,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 9,
+            "label": "7",
+            "samples": 485,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 10,
+            "label": "8",
+            "samples": 819,
+            "minimumContrast": 4.70662323350111,
+            "below3": 0
+          },
+          {
+            "index": 11,
+            "label": "9",
+            "samples": 802,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 12,
+            "label": "10",
+            "samples": 1167,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 13,
+            "label": "11",
+            "samples": 839,
+            "minimumContrast": 4.923062925148712,
+            "below3": 0
+          },
+          {
+            "index": 14,
+            "label": "12",
+            "samples": 1057,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 15,
+            "label": "13",
+            "samples": 1012,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 16,
+            "label": "14",
+            "samples": 1089,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 17,
+            "label": "15",
+            "samples": 1091,
+            "minimumContrast": 4.741463093745896,
+            "below3": 0
+          },
+          {
+            "index": 18,
+            "label": "16",
+            "samples": 1217,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 19,
+            "label": "17",
+            "samples": 860,
+            "minimumContrast": 4.815544682312852,
+            "below3": 0
+          },
+          {
+            "index": 20,
+            "label": "18",
+            "samples": 1238,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 21,
+            "label": "19",
+            "samples": 1189,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 22,
+            "label": "20",
+            "samples": 1378,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 23,
+            "label": "21",
+            "samples": 1056,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 24,
+            "label": "22",
+            "samples": 1261,
+            "minimumContrast": 4.70662323350111,
+            "below3": 0
+          },
+          {
+            "index": 25,
+            "label": "23",
+            "samples": 1262,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 26,
+            "label": "24",
+            "samples": 1310,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 27,
+            "label": "25",
+            "samples": 1341,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 28,
+            "label": "26",
+            "samples": 1433,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 29,
+            "label": "27",
+            "samples": 1135,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 30,
+            "label": "28",
+            "samples": 1468,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 31,
+            "label": "29",
+            "samples": 1449,
+            "minimumContrast": 4.70662323350111,
+            "below3": 0
+          },
+          {
+            "index": 32,
+            "label": "30",
+            "samples": 1407,
+            "minimumContrast": 4.780091438552111,
+            "below3": 0
+          },
+          {
+            "index": 33,
+            "label": "1",
+            "samples": 418,
+            "minimumContrast": 3.379346454768626,
+            "below3": 0
+          },
+          {
+            "index": 34,
+            "label": "2",
+            "samples": 645,
+            "minimumContrast": 3.352430159649044,
+            "below3": 0
+          },
+          {
+            "index": 35,
+            "label": "3",
+            "samples": 648,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 36,
+            "label": "4",
+            "samples": 686,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 37,
+            "label": "5",
+            "samples": 710,
+            "minimumContrast": 3.3256918440669825,
+            "below3": 0
+          },
+          {
+            "index": 38,
+            "label": "6",
+            "samples": 812,
+            "minimumContrast": 3.2991311701788617,
+            "below3": 0
+          },
+          {
+            "index": 39,
+            "label": "7",
+            "samples": 484,
+            "minimumContrast": 3.3256918440669825,
+            "below3": 0
+          },
+          {
+            "index": 40,
+            "label": "8",
+            "samples": 832,
+            "minimumContrast": 3.3256918440669825,
+            "below3": 0
+          },
+          {
+            "index": 41,
+            "label": "9",
+            "samples": 813,
+            "minimumContrast": 3.3256918440669825,
+            "below3": 0
+          }
+        ],
+        "failedCells": [],
+        "largeTextMinimum": 3,
+        "maskWhiteDeltaFraction": 0.95
+      }
+    ],
+    "passed": true
+  },
+  "dayImageComparison": [
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Home-Camera",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c",
+      "afterSHA256": "8e016227e54156f814495ffdf8614524cd79fd388dce62d6f91dca4c73815e7c",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Numerals",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "6d1e61a2d428e0ecdc7303a8740039eeaabdbb21604365fdffe52f6369594749",
+      "afterSHA256": "6d1e61a2d428e0ecdc7303a8740039eeaabdbb21604365fdffe52f6369594749",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Fade",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "770385ec6a05ce82d31fb52ef81e567dfb5324a07c7b384206df38565c81e566",
+      "afterSHA256": "770385ec6a05ce82d31fb52ef81e567dfb5324a07c7b384206df38565c81e566",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Flow",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "2a35e3fd6b47876cf55f3bc5b2ada5feec3d4552b116091420343d32ad52a94c",
+      "afterSHA256": "2a35e3fd6b47876cf55f3bc5b2ada5feec3d4552b116091420343d32ad52a94c",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Calendar",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "aa32878efcfbce9f806090f906d35b6f093a54627dc888f014610db9a89e05a9",
+      "afterSHA256": "aa32878efcfbce9f806090f906d35b6f093a54627dc888f014610db9a89e05a9",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Weather",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "9b8dfe7750718ef57653fdbbc64ec475c914d95e0e23d24a2bb284e12d6f7b3f",
+      "afterSHA256": "9b8dfe7750718ef57653fdbbc64ec475c914d95e0e23d24a2bb284e12d6f7b3f",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Photos",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "c5d4aee4dacd55d1aab16c4112c798c8c0ac5b2a0ef5eece045e453b8d98e2d6",
+      "afterSHA256": "c5d4aee4dacd55d1aab16c4112c798c8c0ac5b2a0ef5eece045e453b8d98e2d6",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Home-Modular-Clock",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "27039cb394197fe9e783667a25c93b67abb1d9ec9ea2409cc57b684de89253f1",
+      "afterSHA256": "27039cb394197fe9e783667a25c93b67abb1d9ec9ea2409cc57b684de89253f1",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Home-Modular",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "545f0c0f557a27d431f14516033265dbe5429bdb8e977fc291726a8dc293fde5",
+      "afterSHA256": "545f0c0f557a27d431f14516033265dbe5429bdb8e977fc291726a8dc293fde5",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Modular-Compact",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "24d4282f9d966e3dcea4e746e0acb144b0309e89ba594eafbad4521cedcd6e57",
+      "afterSHA256": "24d4282f9d966e3dcea4e746e0acb144b0309e89ba594eafbad4521cedcd6e57",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Modular-Duo",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "db82818cfff0a9b6635db1ee70153cd21e40dc1521978c8f3d1aa2842abd343b",
+      "afterSHA256": "db82818cfff0a9b6635db1ee70153cd21e40dc1521978c8f3d1aa2842abd343b",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Infograph-Modular",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "cbad6888a2666b891108e909182796aaa1829c0a11f58d4324ab7ada95f51ac0",
+      "afterSHA256": "cbad6888a2666b891108e909182796aaa1829c0a11f58d4324ab7ada95f51ac0",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Watch-Modular",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "98923f67f9f3752739baf6f0742e0470e753eb2302583ccc9c86b48bfa903860",
+      "afterSHA256": "98923f67f9f3752739baf6f0742e0470e753eb2302583ccc9c86b48bfa903860",
+      "differentBounds": null
+    },
+    {
+      "device": "iPad",
+      "name": "viewport-catalogue-Modular",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "99f9a1e5d6c89b7318982e4ba774c31dc2316ec3c39d926f71f1df758aeab758",
+      "afterSHA256": "99f9a1e5d6c89b7318982e4ba774c31dc2316ec3c39d926f71f1df758aeab758",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Home-Camera",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368",
+      "afterSHA256": "b418c223ac173c8f6156cb8441145203f05f9604cf9df95e8976c469662bc368",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Numerals",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "41ea1aae224d66c6aa7d0b2cb0bbb4b97cb56bc50eff818875316905c30a4d61",
+      "afterSHA256": "41ea1aae224d66c6aa7d0b2cb0bbb4b97cb56bc50eff818875316905c30a4d61",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Fade",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "40a28c52a5c13481bc427dca3e0f18a2efc3e31b095fd2935fd0c73fa8579e70",
+      "afterSHA256": "40a28c52a5c13481bc427dca3e0f18a2efc3e31b095fd2935fd0c73fa8579e70",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Flow",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "25da9efa4c03bee9e9adf65def128ea5e8afc26f3482d75366b0546a802db3c8",
+      "afterSHA256": "25da9efa4c03bee9e9adf65def128ea5e8afc26f3482d75366b0546a802db3c8",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Calendar",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "a49d7c90523dd7d4c86b5ba2be4a082a1099636dd067897e7a7a33e4c1d2bcff",
+      "afterSHA256": "a49d7c90523dd7d4c86b5ba2be4a082a1099636dd067897e7a7a33e4c1d2bcff",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Weather",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "0717a6045b6def7e8fb37e5cfcad1d716e6df180bca866629b2bc86091723d9e",
+      "afterSHA256": "0717a6045b6def7e8fb37e5cfcad1d716e6df180bca866629b2bc86091723d9e",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Photos",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "634607df80fc5b45a5ff86c32eb1e656eff578a90e80ca8dc2c4f3482e471155",
+      "afterSHA256": "634607df80fc5b45a5ff86c32eb1e656eff578a90e80ca8dc2c4f3482e471155",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Home-Modular-Clock",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "b8e24f360651740dc323f5d04df4d344c8a9d10d592db959abc6d04dd01a6555",
+      "afterSHA256": "b8e24f360651740dc323f5d04df4d344c8a9d10d592db959abc6d04dd01a6555",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Home-Modular",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "b9373672d1a9fcc0496fa4cb73043ba14a7e245a457f888653096c9b61263a55",
+      "afterSHA256": "b9373672d1a9fcc0496fa4cb73043ba14a7e245a457f888653096c9b61263a55",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Modular-Compact",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "20feb14e5bf258ecc7a72c761626b7f680c1512fc3dd96627fac319c9fccefcc",
+      "afterSHA256": "20feb14e5bf258ecc7a72c761626b7f680c1512fc3dd96627fac319c9fccefcc",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Modular-Duo",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "c571accc2e01d490cefecd36ea6d0b1c49c2bb8d31e90f722cf3666c78ab32ff",
+      "afterSHA256": "c571accc2e01d490cefecd36ea6d0b1c49c2bb8d31e90f722cf3666c78ab32ff",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Infograph-Modular",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "4fea3f5af76d8ee026cb8061de8b1e5aa172c07f9b06e5d948821ca217f592ff",
+      "afterSHA256": "4fea3f5af76d8ee026cb8061de8b1e5aa172c07f9b06e5d948821ca217f592ff",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Watch-Modular",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "4d223b0f72588e9b8b3d646b19b499183ab2de47b6c5b478d9a08abf8abf070e",
+      "afterSHA256": "4d223b0f72588e9b8b3d646b19b499183ab2de47b6c5b478d9a08abf8abf070e",
+      "differentBounds": null
+    },
+    {
+      "device": "iPhone",
+      "name": "viewport-catalogue-Modular",
+      "dayPixelsIdentical": true,
+      "dayPNGBytesIdentical": true,
+      "beforeSHA256": "3e1e927f3b78d15e32109da49c7748096811e741817be6064b1aa71264f8843e",
+      "afterSHA256": "3e1e927f3b78d15e32109da49c7748096811e741817be6064b1aa71264f8843e",
+      "differentBounds": null
+    }
+  ],
+  "fullDayBaseline": {
+    "sourceDigest": "b5756b80259e2e0bf66b0c62fe168d9bbc34949836cfb2d135f6ba8b92b89671",
+    "executions": 2,
+    "states": 28
+  },
+  "timeMatrix": {
+    "anchors": [
+      {
+        "utc": "2026-12-31T23:30:00Z",
+        "zone": "Pacific/Kiritimati"
+      },
+      {
+        "utc": "2026-03-29T01:30:00Z",
+        "zone": "Europe/Berlin"
+      },
+      {
+        "utc": "2026-10-25T01:30:00Z",
+        "zone": "Europe/Berlin"
+      }
+    ],
+    "distributedNotCartesian": true,
+    "manualChoiceOwnUUIDRestartAndOffPersist": true
+  },
+  "sdks": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "sourceExecutionInputsUnchanged": true,
+  "installedAppBytesMatch": true,
+  "executionInputs": [
+    {
+      "name": "execution/checkpoint.py",
+      "sha256": "a384f530e2b4e50d5ddb502bf19ff1c6ddcd196bfbcdfe92d51e861b108219aa",
+      "bytes": 876
+    },
+    {
+      "name": "execution/night-matte-fixed-source.json",
+      "sha256": "c8b1fe763a3929b6b05a060bfe2236e8452b5570bb8bcccfa0e8fe9a0b0b8feb",
+      "bytes": 34021
+    },
+    {
+      "name": "execution/night-matte-fixed-ui-plan.json",
+      "sha256": "3649e1a5cf6118025922cb6ae8bf413611356eeae87a69671815986e28824f80",
+      "bytes": 471
+    },
+    {
+      "name": "execution/night-matte-fixed-ui.xctestrun",
+      "sha256": "276bf5dcff83377143dc55c27e08153c01a2e963b1216dc21dc17a83e7abe0a9",
+      "bytes": 6492
+    },
+    {
+      "name": "execution/run-night-matte-fixed.py",
+      "sha256": "d77a3ca1d9e0c6432203114fb1f0e874254de7c7b24a476a60d43408a981f38b",
+      "bytes": 3805
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+      "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646",
+      "bytes": 15425
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+      "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d",
+      "bytes": 22442
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+      "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f",
+      "bytes": 15242504
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0",
+      "bytes": 1083
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+      "sha256": "fac5321f84046771f2c522c510c07d011233a0aacf38597005732ca3a503f3da",
+      "bytes": 40224
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "sha256": "bf4b14e42ff018819d343d4d9cab5bd02092ae34b45eaf46d54cebe2e2ae8c85",
+      "bytes": 25393272
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+      "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00",
+      "bytes": 2366
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053",
+      "bytes": 1764
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4",
+      "bytes": 53
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+      "bytes": 8
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595",
+      "bytes": 40224
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "sha256": "d971c003c1fea98ca911e25b2b8e37c5162716c78add7ef2895a881534f2eed4",
+      "bytes": 261104
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d",
+      "bytes": 774
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+      "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1",
+      "bytes": 16752
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+      "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a",
+      "bytes": 16760
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+      "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431",
+      "bytes": 73088
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
+      "bytes": 176444
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
+      "bytes": 1920044
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewUITests-Runner.app/HomeViewUITests-Runner",
+      "sha256": "a2a058c87c45755e677e9008b78b91308a08e596bd8c121de7697d3bc875095f",
+      "bytes": 113728
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewUITests-Runner.app/Info.plist",
+      "sha256": "7f4aa0cce89bea569b93dff27192c410567474560af25978ea3e0823c23d0a93",
+      "bytes": 10917
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewUITests-Runner.app/PkgInfo",
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+      "bytes": 8
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewUITests-Runner.app/PlugIns/HomeViewUITests.xctest/HomeViewUITests",
+      "sha256": "587724b331439fade9bba4741b3ff7948fad9670f11ec8d2bfc10630a81a2306",
+      "bytes": 2436528
+    },
+    {
+      "name": "compiled/Debug-iphonesimulator/HomeViewUITests-Runner.app/PlugIns/HomeViewUITests.xctest/Info.plist",
+      "sha256": "1fef141d6671eaa2d99d12027685d24fb822ca37a5c63f5748b9cb8dd8a70326",
+      "bytes": 1738
+    }
+  ],
+  "decodedBaselineAndFinalPNGs": 124,
+  "publishedImages": [
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-before-viewport-night-calendar-ink-positive.png",
+      "sha256": "8ca5cd731608facee1ca83aa565d3075c1b790ae235389981a1ca5b6ff710ac8",
+      "bytes": 200931,
+      "checkpoint": "night-baseline"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-viewport-night-calendar-ink-positive.png",
+      "sha256": "9f1756fa21d2eb5feb0c2d67ea776d83ea5900a0a61ce41141e085dfdc6d361c",
+      "bytes": 214863,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-viewport-night-calendar-manual-off-after-DST-restart.png",
+      "sha256": "26b63e8667f1fe0e2c7a09f4b84479043ee934c289e263e93f39b836dcb1f9bd",
+      "bytes": 326231,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Home-Camera.png",
+      "sha256": "36744a4efa09bf0c5d32afaa8b9cf607c3edb72c846ea8c604ca2db117a858fd",
+      "bytes": 2578928,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Numerals.png",
+      "sha256": "5976f660e52d6e3d4a98d36b73af4505014a0b4b69e556cc0562d6285537e2cd",
+      "bytes": 200531,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Fade.png",
+      "sha256": "a0cd3130f67ded4e57c0874d7bd956dbdf767aaefef84a6bfeb067222ac4d815",
+      "bytes": 169196,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Flow.png",
+      "sha256": "f68ee3da80563b87bd017d3ac4c6f241f75828e0f364ccaf85280c38be0c1f2b",
+      "bytes": 91130,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Calendar.png",
+      "sha256": "4554b4b916d7db5d542cbc64f3535fb12b20f67f780632902b87f70a4c9aa972",
+      "bytes": 221765,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Weather.png",
+      "sha256": "094dc1c42964f5372b385a888617071800a56ea4f8e300d7253ae1b1240061f7",
+      "bytes": 190148,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Photos.png",
+      "sha256": "ec6ab6258593b5306330702f0b499e54693702df83d6aadf1fd187c6aa57ede4",
+      "bytes": 89820,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Home-Modular-Clock.png",
+      "sha256": "79b34f630603867d0c020d5abb37954559fafbefe7e16f06428bea416608a872",
+      "bytes": 504047,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Home-Modular.png",
+      "sha256": "773fa0eecdd9c5fc287073a9d37ca33c05f21c2d0ddac51c59d269e711e3a967",
+      "bytes": 215046,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Modular-Compact.png",
+      "sha256": "a55db3ebf4c77b687ebffc53320f5975c5ad0d76dab2356c36b974a1a206a5e4",
+      "bytes": 168520,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Modular-Duo.png",
+      "sha256": "29f804cc6c7079138dacde13055dff68cd012d76f6c2867285f5641cfdbe4088",
+      "bytes": 146000,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Infograph-Modular.png",
+      "sha256": "8fdb37a0a7b8b19173dc42984f8c21e719dabaddbfc31b46b9879f79294265da",
+      "bytes": 180549,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Watch-Modular.png",
+      "sha256": "c11601e865092af8bf5ddc52cfc6022895caca63c176f2ed4c75dfaeacf30196",
+      "bytes": 155007,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-final-night-matrix-Modular.png",
+      "sha256": "04a24a54e1cd067ae9bcee3a93b8a54b44b7a41339e4e3aa13ae890e1cc320a9",
+      "bytes": 286039,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-night-contact-1.png",
+      "sha256": "fe8a499256f64b87c4ae80ef8323a8a81cca40dc04a6b63741b6acbdc2f58f36",
+      "bytes": 336840,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPad-night-contact-2.png",
+      "sha256": "0ca6f414d399625f84d10136543e071f2463e5d245f46ba777687cc6d17ce76d",
+      "bytes": 143553,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-before-viewport-night-calendar-ink-positive.png",
+      "sha256": "06e7358241400c211d1c42792214ca237ca24b91f1aaeb4e27cd26a7df14877d",
+      "bytes": 106500,
+      "checkpoint": "night-baseline"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-viewport-night-calendar-ink-positive.png",
+      "sha256": "e0bfb734c5fbcccdff643a36402959cd7cec093e7b8d1816fea1b9b73bcbbf61",
+      "bytes": 109662,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-viewport-night-calendar-manual-off-after-DST-restart.png",
+      "sha256": "87287018f9359bafd0c4e25b2f8b061570af9a1da2fbafcde176af4191de1953",
+      "bytes": 167146,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Home-Camera.png",
+      "sha256": "eee47ef6b5da01bbe6a2e22b32cb6867be8710be1b2eccd26869ac20293fec68",
+      "bytes": 1379451,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Numerals.png",
+      "sha256": "a7c80e49b0a35f1ac050abbced845a5ff675a8318bec1b875d4e566df63cc989",
+      "bytes": 101071,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Fade.png",
+      "sha256": "ad203a269e5177969c877cb787addc64de102e6b9a60ab3a8358e6132a610f7e",
+      "bytes": 97525,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Flow.png",
+      "sha256": "af1c23312e8bf18fecce88d59f6bf00564573694394fd6f2471872965af92905",
+      "bytes": 57997,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Calendar.png",
+      "sha256": "f01d17ad89167565c20ec8b926a5eedafda33dfd2ce621b5268702604a9473f2",
+      "bytes": 111751,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Weather.png",
+      "sha256": "0dcfe75936163bb87ebdd6f2bae0ab5f91ee2d2af3f43ebb4bc27203e649cd23",
+      "bytes": 90929,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Photos.png",
+      "sha256": "a7edd165af067cd130b79e6dbffd5a9e3dd0d16a4b58e2fb4f09c0d0451c0b26",
+      "bytes": 55523,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Home-Modular-Clock.png",
+      "sha256": "36c23a69f0c4eb6c1a4d755a1e743df91be3545a020df99bbcb29a9367555779",
+      "bytes": 269847,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Home-Modular.png",
+      "sha256": "a5fb1a5a52dc6da6bf3cb75de1af9692e1034fcb655fa08f3e29cc0d97d160b7",
+      "bytes": 116066,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Modular-Compact.png",
+      "sha256": "2591957a62f670a737cbc43bf4e1d7ebf6f3b1c11ca0e8992d0fdf5b16e58244",
+      "bytes": 85079,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Modular-Duo.png",
+      "sha256": "90a8d2f5bbe19683d31b0e1839a69360df87123ab25f9d365198c1096d035631",
+      "bytes": 74257,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Infograph-Modular.png",
+      "sha256": "82c30e5e771c51d537526319a5e2a1999deca542507e1579f183711d38f0f961",
+      "bytes": 93517,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Watch-Modular.png",
+      "sha256": "0647b2d1cce85942b237121886b0c0bc44f02fa6e820f4f896e4e40425fd70de",
+      "bytes": 75275,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-final-night-matrix-Modular.png",
+      "sha256": "aad647bf169da24fe7b17daeefdb6129d97b5787c0303a235a15ae1c5be801f2",
+      "bytes": 150060,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-night-contact-1.png",
+      "sha256": "dec415b2c04bc53665b0bd77912982f76b12e39792a87bf779083de191761904",
+      "bytes": 336401,
+      "checkpoint": "night-matte-fixed"
+    },
+    {
+      "path": "Docs/screenshots/night-state-acceptance/iPhone-night-contact-2.png",
+      "sha256": "81ef79889b54395c5437b4ffd9c7187d737ba40863b8b22c833c77ae60d745df",
+      "bytes": 142247,
+      "checkpoint": "night-matte-fixed"
+    }
+  ],
+  "archive": {
+    "archive": "night-final-actual-inputs.zip",
+    "bytes": 42633053,
+    "sha256": "04000a5cd6da0e983e4421ec2600b2a1bdec68e92bdfbb730a67018808fc08f0",
+    "entries": 245,
+    "everyEntryReadBack": true
+  },
+  "limits": [
+    "Decoded PNG software contrast, not calibrated physical luminance or complete small-text accessibility",
+    "No physical device, signing, VoiceOver or OS Reduce Motion setting proof",
+    "No performance, CPU/GPU, energy or acceleration claim",
+    "No Snoopy asset, automatic ambient threshold or unobserved original rule invented",
+    "Synthetic personal/source data only; no real Home, account, photos, camera/mic capture, alarm, call or message"
+  ]
+}

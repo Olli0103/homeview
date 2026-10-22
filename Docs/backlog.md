@@ -306,6 +306,8 @@ Abhängigkeiten: PUB-01.
 <a id="face-07"></a>
 ### FACE-07: Tageszeit-, Nacht- und reduzierte Face-Zustände vervollständigen
 
+**Abgeschlossen 22. Oktober 2026:** [Policy und quellengebundene Nachtabnahme](night-state-acceptance.md): 14 verfügbare Faces, lesbare Nachtpaletten, Zeitzonen-/DST-/Neustartgrenzen, 28 exakt erhaltene Tagesansichten. Unbekannte Originalregeln bleiben ausdrücklich Lücken; keine automatische Sensorregel, Original-/Hardwareparity oder vollständige Accessibilityabnahme erfunden. Historische Ausgangsplanung unten bleibt erhalten.
+
 Rote Monochromdarstellung und Reduce Motion sind vorhanden. Automatische Tageszeitregeln sind unvollständig.
 
 Offen:
