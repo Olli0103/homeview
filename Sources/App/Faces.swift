@@ -550,27 +550,29 @@ struct WeatherBackdrop: View {
 struct CalendarFace: View {
   @Environment(AppModel.self) private var model
   var body: some View {
-    let month = model.monthLayout
+    let presentation=model.calendarPresentation
+    let month=presentation.layout
     let accent = Color(red: 0.992, green: 0.322, blue: 0.322)
     let dayColor = Color(red: 0, green: 0.4, blue: 1)
     ZStack {
       Color(white: 0.92)
-      FaceDateNumber(value: model.dateLabel("d"), size: 460, calendarStyle: true)
+      FaceDateNumber(value: presentation.dayText(month.selectedDay), size: 460, calendarStyle: true)
         .foregroundStyle(accent).position(x: 274, y: 339)
         .accessibilityHidden(true)
       VStack(spacing: 22) {
         HStack {
-          Text(model.dateLabel("MMMM yyyy"))
+          Text(presentation.monthTitle).lineLimit(1).minimumScaleFactor(0.65)
+            .accessibilityIdentifier("calendar.face.month")
           Spacer()
           Text(model.clock, style: .time).environment(\.timeZone, model.displayTimeZone)
         }.padding(.horizontal, 5).font(.system(size: 37, weight: .medium)).foregroundStyle(
           accent)
         VStack(spacing: 14) {
           HStack(spacing: 0) {
-            ForEach(Array(["S", "M", "T", "W", "T", "F", "S"].enumerated()), id: \.offset) {
-              _, day in
+            ForEach(Array(presentation.weekdaySymbols.enumerated()), id: \.offset) {
+              index, day in
               Text(day).font(.system(size: 38, weight: .semibold)).frame(maxWidth: .infinity).frame(
-                height: 42)
+                height: 42).accessibilityIdentifier("calendar.face.weekday.\(index)")
             }
           }
           LazyVGrid(
@@ -579,7 +581,7 @@ struct CalendarFace: View {
             ForEach(0..<42, id: \.self) { i in
               let current = month.day(at: i) != nil
               let selected = month.day(at: i) == month.selectedDay
-              Text("\(month.displayDay(at: i))").font(.system(size: 37, weight: .medium))
+              Text(presentation.dayText(month.displayDay(at:i))).font(.system(size: 37, weight: .medium))
                 .frame(width: 60, height: 53)
                 .background {
                   if selected {
@@ -593,13 +595,15 @@ struct CalendarFace: View {
                 )
                 .accessibilityIdentifier(
                   selected ? "calendar.face.selected" : "calendar.face.cell.\(i)")
-                .accessibilityValue(selected ? "Today":"")
+                .accessibilityValue(selected ? presentation.todayText:"")
             }
           }
         }.padding(.top, 12).foregroundStyle(dayColor)
       }.padding(.horizontal, 48).padding(.top, 43).padding(.bottom, 42).frame(
         maxHeight: .infinity, alignment: .top)
-    }.onTapGesture { model.navigate(.calendar) }
+    }.environment(\.locale,presentation.locale)
+      .environment(\.layoutDirection,presentation.rightToLeft ? .rightToLeft:.leftToRight)
+      .onTapGesture { model.navigate(.calendar) }
   }
 }
 // The reference's flat-ended, slightly rounded date-one is not SF Rounded's

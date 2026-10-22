@@ -301,6 +301,7 @@ final class AppModel {
   var referenceClock: Bool
   private let testReferenceDate: Date?
   private let testReferenceTimeZone: TimeZone?
+  private let testReferenceLocale: Locale?
   private var idleLockApplied = false
   var lastInteraction = Date() { didSet { idleLockApplied = false } }
   var idleSeconds = 120.0
@@ -370,7 +371,16 @@ final class AppModel {
   var displayTimeZone: TimeZone {
     referenceClock ? (testReferenceTimeZone ?? TimeZone(secondsFromGMT:0)!) : .current
   }
-  var monthLayout: MonthLayout { MonthLayout(date: clock, timeZone: displayTimeZone) }
+  var calendarLocale:Locale {
+    if referenceClock,ProcessInfo.processInfo.arguments.contains("--uitesting") {
+      return testReferenceLocale ?? Locale(identifier:"en_US")
+    }
+    return .current
+  }
+  var calendarPresentation:CalendarPresentation {
+    CalendarPresentation(date:clock,timeZone:displayTimeZone,locale:calendarLocale)
+  }
+  var monthLayout: MonthLayout { calendarPresentation.layout }
   func dateLabel(_ format: String) -> String {
     let f = DateFormatter()
     f.locale = Locale(identifier: "en_US")
@@ -399,6 +409,12 @@ final class AppModel {
       guard args.contains("--uitesting"),let i=args.firstIndex(of:"--reference-zone"),
             args.indices.contains(i+1),args[i+1].count<=128 else { return nil }
       return TimeZone(identifier:args[i+1])
+    }()
+    testReferenceLocale = {
+      guard args.contains("--uitesting"),let i=args.firstIndex(of:"--reference-locale"),
+        args.indices.contains(i+1),args[i+1].count<=128,
+        Locale.availableIdentifiers.contains(args[i+1]) else {return nil}
+      return Locale(identifier:args[i+1])
     }()
     #if !os(watchOS)
       let albumProvider = makeAlbumPhotoProvider()

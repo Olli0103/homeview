@@ -373,11 +373,12 @@ struct MonthLayout: Sendable {
   let dayCount: Int
   let selectedDay: Int
   let previousMonthDayCount: Int
-  init(date: Date, timeZone: TimeZone) {
+  init(date: Date, timeZone: TimeZone, firstWeekday: Int = 1) {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = timeZone
+    let first=(1...7).contains(firstWeekday) ? firstWeekday:1
     let start = calendar.dateInterval(of: .month, for: date)!.start
-    firstWeekdayIndex = calendar.component(.weekday, from: start) - 1
+    firstWeekdayIndex = (calendar.component(.weekday, from: start) - first + 7) % 7
     dayCount = calendar.range(of: .day, in: .month, for: date)!.count
     selectedDay = calendar.component(.day, from: date)
     let previous = calendar.date(byAdding: .month, value: -1, to: start)!
