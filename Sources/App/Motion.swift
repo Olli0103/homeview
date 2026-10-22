@@ -28,29 +28,41 @@ struct GlassPressStyle: ButtonStyle {
   }
 }
 /// Low-resolution fluid field rendered using public CoreGraphics and SwiftUI.
-private final class FlowFrames {
-  var simulation = FlowSimulation()
-  var lastTime = -1.0
-  var image: CGImage?
-  func frame(time: Double, impulse: SIMD2<Float>) -> CGImage? {
-    if time != lastTime || image == nil {
-      let dt = lastTime < 0 ? 1.0 / 20 : max(0, min(1.0 / 15, time - lastTime))
-      simulation.step(time: Float(time), delta: Float(dt), impulse: impulse)
-      lastTime = time
-      let bytes: [UInt8] = simulation.dye.flatMap { color in
-        [color.x, color.y, color.z, 1].map { UInt8(min(255, max(0, $0 * 255))) }
+@MainActor private final class FlowFrames {
+  let session=FlowComputeSession()
+  private var lastTime:Double?
+  private var imageRevision:UInt64?
+  private var image:CGImage?
+  func activate() { session.activate() }
+  func deactivate() { session.deactivate();lastTime=nil }
+  func request(time:Double,impulse:SIMD2<Float>) {
+    let dt=lastTime.map { max(0,min(1.0/15,time-$0)) } ?? 1.0/20
+    if session.request(time:Float(time),delta:Float(dt),impulse:impulse) {lastTime=time}
+  }
+  var currentImage:CGImage? {
+    if imageRevision != session.revision || image == nil {
+      let simulation=session.simulation
+      let bytes:[UInt8]=simulation.dye.flatMap { color in
+        [color.x,color.y,color.z,1].map {UInt8(min(255,max(0,$0*255)))}
       }
-      let provider = CGDataProvider(data: Data(bytes) as CFData)!
-      image = CGImage(
-        width: simulation.side, height: simulation.side, bitsPerComponent: 8,
-        bitsPerPixel: 32, bytesPerRow: simulation.side * 4, space: CGColorSpaceCreateDeviceRGB(),
-        bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue),
-        provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
+      let provider=CGDataProvider(data:Data(bytes) as CFData)!
+      image=CGImage(width:simulation.side,height:simulation.side,bitsPerComponent:8,
+        bitsPerPixel:32,bytesPerRow:simulation.side*4,space:CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo:CGBitmapInfo(rawValue:CGImageAlphaInfo.premultipliedLast.rawValue),
+        provider:provider,decode:nil,shouldInterpolate:true,intent:.defaultIntent)
+      imageRevision=session.revision
     }
     return image
   }
 }
+private struct FlowFrameRequest:Hashable {
+  let time:Double
+  let impulse:SIMD2<Float>
+  let active:Bool
+}
+
 struct FlowArtwork: View {
+  @Environment(\.scenePhase) private var scenePhase
   let date: Date
   let timeZone: TimeZone
   var far: Bool
@@ -65,7 +77,8 @@ struct FlowArtwork: View {
         ZStack { Color.black; numerals(at: 0).foregroundStyle(.white) }
       } else {
       MotionTimeline { t in
-        let frame = frames.frame(time: t, impulse: impulse)
+        let frame = frames.currentImage
+        let request=FlowFrameRequest(time:t,impulse:impulse,active:frames.session.active)
         return ZStack {
           Color.black
           if let frame {
@@ -90,6 +103,8 @@ struct FlowArtwork: View {
                   maxSampleOffset: CGSize(width: 28, height: 28))
             }
           }
+        }.task(id:request) {
+          if request.active { frames.request(time:request.time,impulse:request.impulse) }
         }
       }
       }
@@ -102,6 +117,21 @@ struct FlowArtwork: View {
               Float(value.translation.width / 300), Float(value.translation.height / 300))
           }.onEnded { _ in impulse = .zero })
       #endif
+      .onChange(of:scenePhase,initial:true) { _,phase in
+        if phase == .active && !highContrastNight {frames.activate()} else {frames.deactivate()}
+      }
+      .onChange(of:highContrastNight) { _,night in
+        if scenePhase == .active && !night {frames.activate()} else {frames.deactivate()}
+      }
+      .onDisappear {frames.deactivate()}
+      .overlay {
+        if ProcessInfo.processInfo.arguments.contains("--uitesting") {
+          Text("active=\(frames.session.active);revision=\(frames.session.revision);pending=\(frames.session.isWorking);fallback=\(frames.session.usingCPUFallback)")
+            .accessibilityValue("active=\(frames.session.active);revision=\(frames.session.revision);pending=\(frames.session.isWorking);fallback=\(frames.session.usingCPUFallback)")
+            .font(.system(size:1)).foregroundStyle(.clear).allowsHitTesting(false)
+            .accessibilityIdentifier("flow.compute.test")
+        }
+      }
       .accessibilityLabel("Flow clock")
   }
   private func fluidImage(_ frame: CGImage) -> some View {
