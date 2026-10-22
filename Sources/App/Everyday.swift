@@ -9,14 +9,9 @@ struct CalendarView: View {
   @Environment(\.nativeCanvasScale) private var canvasScale
   private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var selected: Int?
-  private let labels = ["S", "M", "T", "W", "T", "F", "S"]
-  private var calendar: Calendar {
-    var value = Calendar(identifier: .gregorian)
-    value.timeZone = model.displayTimeZone
-    value.firstWeekday = 1
-    return value
-  }
-  private var day: Int { selected ?? calendar.component(.weekday, from: model.clock) - 1 }
+  private var labels:[String] {model.calendarPresentation.weekdaySymbols}
+  private var calendar: Calendar {model.calendarPresentation.calendar}
+  private var day: Int { selected ?? model.calendarPresentation.weekdayIndex(at:model.clock) }
   private var start: Date { calendar.dateInterval(of: .weekOfYear, for: model.clock)!.start }
   private func date(_ index: Int) -> Date {
     calendar.date(byAdding: .day, value: index, to: start)!
@@ -30,7 +25,7 @@ struct CalendarView: View {
   }
   private var calendarContent: some View {
     VStack(alignment: .leading, spacing: 16) {
-      AppHeader(title:model.dateLabel("MMMM"),closeSize:max(48,minimumHitSide))
+      AppHeader(title:model.calendarPresentation.monthName,closeSize:max(48,minimumHitSide))
       HStack(spacing: 6) {
         ForEach(0..<7) { i in
           Button {
@@ -38,7 +33,7 @@ struct CalendarView: View {
           } label: {
             VStack(spacing: 13) {
               Text(labels[i]).font(.system(size: 20)).foregroundStyle(.gray)
-              Text("\(calendar.component(.day, from: date(i)))").font(
+              Text(model.calendarPresentation.dayText(calendar.component(.day,from:date(i)))).font(
                 .system(size: 33, weight: .medium)
               ).frame(width: 54, height: 54)
                 .background(day == i ? .red : .clear, in: Circle())
@@ -65,7 +60,7 @@ struct CalendarView: View {
                 subtitle: [event.calendar, event.location].filter { !$0.isEmpty }.joined(separator: " · "), color: 0,
                 cancelled: event.cancelled)
             }
-            : day == calendar.component(.weekday, from: model.clock) - 1
+            : day == model.calendarPresentation.weekdayIndex(at:model.clock)
               ? CalendarEntry.fixtures : Array(CalendarEntry.fixtures.prefix(2))
           if model.connections.enabled.contains(.calendar) || model.connections.status[.calendar] != nil {
             HStack {
@@ -112,6 +107,8 @@ struct CalendarView: View {
         }.padding(.horizontal, 32).padding(.bottom, 25)
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
+      .environment(\.locale,model.calendarLocale)
+      .environment(\.layoutDirection,model.calendarPresentation.rightToLeft ? .rightToLeft:.leftToRight)
       .task(id: date(day)) {
         await model.connections.refreshCalendar(date(day), timeZone: model.displayTimeZone)
       }

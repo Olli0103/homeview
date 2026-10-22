@@ -3,6 +3,50 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  func testCalendarLocalesKeepAllDatesVisibleAndMirrorOnlyRTLPresentation() {
+    let cases:[(String,String,String,String,Int,[String])]=[
+      ("de_DE","2024-02-29T12:00:00Z","Februar 2024","29",31,["29","30","31","1","2","3","4"]),
+      ("ar_EG","2026-04-01T10:09:00Z","أبريل ٢٠٢٦","١",4,["٢٨","٢٩","٣٠","٣١","١","٢","٣"]),
+      ("ja_JP","2026-08-31T12:00:00Z","2026年8月","31",36,["26","27","28","29","30","31","1"])]
+    for (locale,date,title,day,selectedCell,firstWeek) in cases {
+      launch(["--face","Calendar","--reference-locale",locale,"--reference-date",date])
+      XCTAssertTrue(app.staticTexts["calendar.face.month"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.staticTexts["calendar.face.month"].label,title)
+      let selected=app.staticTexts["calendar.face.selected"]
+      XCTAssertEqual(selected.label,day)
+      let viewport=app.otherElements["reference.viewport"].frame.insetBy(dx:8,dy:8)
+      for i in 0..<42 {
+        let cell=i==selectedCell ? selected:app.staticTexts["calendar.face.cell.\(i)"]
+        XCTAssertTrue(cell.exists,"\(locale) missing \(i)")
+        XCTAssertFalse(cell.label.isEmpty);XCTAssertTrue(viewport.contains(cell.frame),"\(locale) clipped \(i)")
+        if i<7 {XCTAssertEqual(cell.label,firstWeek[i])}
+      }
+      let first=app.staticTexts["calendar.face.weekday.0"].frame
+      let last=app.staticTexts["calendar.face.weekday.6"].frame
+      if locale=="ar_EG" {XCTAssertGreaterThan(first.minX,last.maxX)}
+      else {XCTAssertLessThan(first.maxX,last.minX)}
+      viewportShot("calendar-locale-"+locale+"-all-dates")
+      app.terminate()
+    }
+  }
+  func testCalendarLocaleAgendaWeekSelectionCannotChangeFaceToday() {
+    for (locale,index,day) in [("de_DE",2,"1"),("ar_EG",4,"١")] {
+      launch(["--face","Calendar","--page","Calendar","--reference-locale",locale])
+      XCTAssertEqual(app.buttons["calendar.day.\(index)"].value as? String,"Selected")
+      tap("calendar.day.0")
+      XCTAssertEqual(app.buttons["calendar.day.0"].value as? String,"Selected")
+      XCTAssertNotEqual(app.buttons["calendar.day.\(index)"].value as? String,"Selected")
+      viewportShot("calendar-locale-"+locale+"-agenda-selected")
+      tap("nav.faces")
+      XCTAssertEqual(app.staticTexts["calendar.face.selected"].label,day)
+      XCTAssertFalse((app.staticTexts["calendar.face.selected"].value as? String ?? "").isEmpty)
+      viewportShot("calendar-locale-"+locale+"-today-independent")
+      app.terminate()
+    }
+  }
+}
+
+extension HomeViewUITests {
   private func openMockNotices() {
     tap("nav.controls")
     let b=app.buttons["controls.notices"];scrollPhotoControlFullyIntoView(b);b.tap()
