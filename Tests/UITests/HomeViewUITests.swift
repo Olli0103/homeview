@@ -3,6 +3,81 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  func testNightFaceMatrixUsesFullViewportAndExplicitTimeZones() {
+    let faces=["Modular","Watch Modular","Infograph Modular","Modular Duo","Modular Compact",
+      "Home Modular","Home Modular Clock","Photos","Weather","Calendar","Flow","Fade","Numerals","Home Camera"]
+    let times=[("2026-12-31T23:30:00Z","Pacific/Kiritimati"),("2026-03-29T01:30:00Z","Europe/Berlin"),("2026-10-25T01:30:00Z","Europe/Berlin")]
+    for (index,face) in faces.enumerated() {
+      let (time,zone)=times[index%times.count]
+      var args=["--face",face,"--reduce-motion","--reference-date",time,"--reference-zone",zone]
+      if face=="Photos" {args += ["--photo-layout-fixture","top"]}
+      launch(args)
+      XCTAssertTrue(app.otherElements["face."+face].waitForExistence(timeout:5))
+      tap("nav.controls");tap("controls.night")
+      XCTAssertEqual(app.buttons["controls.night"].value as? String,"On")
+      tap("nav.faces")
+      if face=="Calendar" {XCTAssertEqual(app.staticTexts["calendar.face.selected"].label,"1")}
+      let bytes=viewportBytes("night-matrix-"+face.replacingOccurrences(of:" ",with:"-"))
+      let pixels=[UInt8](viewportPixels(bytes,inset:0));var lit=0,wrong=0
+      for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+        lit+=1
+        if Double(pixels[i+1])>Double(pixels[i])*0.4 || Double(pixels[i+2])>Double(pixels[i])*0.4 {wrong+=1}
+      }
+      XCTAssertGreaterThan(lit,100,face);XCTAssertEqual(wrong,0,face+" full viewport hue leak")
+      app.terminate()
+    }
+  }
+  func testManualNightChoicePersistsThroughDSTAndReturnsToDay() {
+    let id=UUID().uuidString
+    print("NIGHT_MODE_OWNED_STORE "+id)
+    launch(["--face","Calendar","--persistence-test",id,"--reset-test-store","--reduce-motion"])
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    viewportShot("night-calendar-manual-before-restart")
+    app.terminate()
+    launch(["--persistence-test",id,"--reference-date","2026-10-25T01:30:00Z","--reference-zone","Europe/Berlin","--reduce-motion"])
+    XCTAssertEqual(app.staticTexts["calendar.face.selected"].label,"25")
+    tap("nav.controls")
+    XCTAssertEqual(app.buttons["controls.night"].value as? String,"On")
+    tap("controls.night")
+    XCTAssertEqual(app.buttons["controls.night"].value as? String,"Off")
+    tap("nav.faces")
+    viewportShot("night-calendar-manual-off-after-DST-restart")
+    app.terminate()
+    launch(["--persistence-test",id])
+    tap("nav.controls")
+    XCTAssertEqual(app.buttons["controls.night"].value as? String,"Off")
+  }
+}
+
+extension HomeViewUITests {
+  func testCalendarNightContrastUsesRenderedGlyphControls() {
+    for mode in ["positive","hidden","white"] {
+      var args=["--face","Calendar","--reduce-motion"]
+      if mode=="hidden" {args.append("--calendar-ink-hidden")}
+      if mode=="white" {args.append("--calendar-ink-white")}
+      launch(args)
+      tap("nav.controls");tap("controls.night")
+      XCTAssertEqual(app.buttons["controls.night"].value as? String,"On")
+      tap("nav.faces")
+      XCTAssertTrue(app.otherElements["face.Calendar"].waitForExistence(timeout:5))
+      if mode=="positive" {
+        func box(_ f:CGRect)->[String:Double] {["x":f.minX,"y":f.minY,"width":f.width,"height":f.height]}
+        var cells:[[String:Any]]=[]
+        for i in 0..<42 {
+          let e=i==3 ? app.staticTexts["calendar.face.selected"]:app.staticTexts["calendar.face.cell.\(i)"]
+          XCTAssertTrue(e.exists);cells.append(["index":i,"label":e.label,"frame":box(e.frame)])
+        }
+        let report:[String:Any]=["viewport":box(app.otherElements["reference.viewport"].frame),"cells":cells]
+        let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys]),uniformTypeIdentifier:"public.json")
+        a.name="night-calendar-ink-geometry";a.lifetime = .keepAlways;add(a)
+      }
+      viewportShot("night-calendar-ink-"+mode)
+      app.terminate()
+    }
+  }
+}
+
+extension HomeViewUITests {
   func testCalendarLocalesKeepAllDatesVisibleAndMirrorOnlyRTLPresentation() {
     let cases:[(String,String,String,String,Int,[String])]=[
       ("de_DE","2024-02-29T12:00:00Z","Februar 2024","29",31,["29","30","31","1","2","3","4"]),

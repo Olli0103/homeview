@@ -27,7 +27,7 @@ struct HomeModularFace: View {
   @Environment(AppModel.self) private var model
   var body: some View {
     ZStack {
-      PrismBackground(theme: model.data.theme)
+      if model.data.night { Color.black } else { PrismBackground(theme: model.data.theme) }
       tileComposition
     }.foregroundStyle(.white).buttonStyle(.plain)
   }
@@ -85,7 +85,7 @@ struct HomeModularFace: View {
                 Spacer(minLength: 0)
                 VStack(spacing: 2) {
                   Text("Thermostat").fontWeight(.semibold)
-                  Text("Living Room").opacity(0.7)
+                  Text("Living Room").opacity(model.data.night ? 1:0.7)
                 }.font(.system(size: 20))
                 Spacer(minLength: 0)
                 temperatureArrow(
@@ -112,7 +112,7 @@ struct HomeModularFace: View {
                   Image(systemName: "moon.stars.fill").font(.system(size: 44))
                   VStack(spacing: 2) {
                     Text("Good Night").fontWeight(.semibold)
-                    Text("Scene").opacity(0.7)
+                    Text("Scene").opacity(model.data.night ? 1:0.7)
                   }.font(.system(size: 20))
                 }
               }
@@ -149,7 +149,7 @@ struct HomeModularFace: View {
           }
           VStack(spacing: 3) {
             Text(title).fontWeight(.semibold)
-            Text(subtitle).opacity(0.65)
+            Text(subtitle).opacity(model.data.night ? 1:0.65)
           }.font(.system(size: 20))
         }
       }
@@ -169,8 +169,8 @@ struct ModularFace: View {
         modularWidget(model.data.complication(for: .modular, slot: Face.modular.slots[3]).rawValue)
       }.frame(height: 250).offset(y: 12)
     }.padding(40).frame(width: 600, height: 600).background(
-      model.data.configuration(for: .modular).theme == 1 ? Color(red: 0.73, green: 0.76, blue: 0.63) : .mist
-    ).foregroundStyle(.black)
+      model.data.night ? Color.black : model.data.configuration(for: .modular).theme == 1 ? Color(red: 0.73, green: 0.76, blue: 0.63) : .mist
+    ).foregroundStyle(model.data.night ? Color.white:Color.black)
   }
   @ViewBuilder func modularWidget(_ name: String) -> some View {
     switch name {
@@ -182,7 +182,7 @@ struct ModularFace: View {
       } label: {
         VStack(alignment: .leading, spacing: -2) {
           Text(
-            "\(Text(model.dateLabel("EEE")+" ").foregroundStyle(.white))\(Text(model.dateLabel("MMM")).foregroundStyle(.black.opacity(0.75)))"
+            "\(Text(model.dateLabel("EEE")+" ").foregroundStyle(.white))\(Text(model.dateLabel("MMM")).foregroundStyle(model.data.night ? Color.white:Color.black.opacity(0.75)))"
           )
           .font(.system(size: 52, weight: .semibold)).fixedSize().padding(.leading, 18)
           FaceDateNumber(value: model.dateLabel("d"), size: 208)
@@ -192,7 +192,8 @@ struct ModularFace: View {
       }.buttonStyle(.plain)
     case "Clock":
       AnalogClock(date: model.clock, timeZone: model.displayTimeZone,
-        embossedHands:true,lightEdgeInk:true).frame(maxWidth: .infinity)
+        tint:model.data.night ? .white:.black, handColor:model.data.night ? .white:nil,
+        secondsColor:model.data.night ? .white:nil, embossedHands:true,lightEdgeInk:true).frame(maxWidth: .infinity)
         .offset(x: 4, y: -7)
     case "Music":
       VStack(alignment: .leading, spacing: 6) {
@@ -207,7 +208,7 @@ struct ModularFace: View {
           Image(systemName: "music.note").foregroundStyle(.white).font(.system(size: 31))
         }
         Text(model.sharedMusicTitle).font(.system(size: 20, weight: .medium)).lineLimit(1)
-        Text(model.sharedMusicSource).font(.system(size: 21)).foregroundStyle(.black.opacity(0.7))
+        Text(model.sharedMusicSource).font(.system(size: 21)).foregroundStyle(model.data.night ? Color.white:Color.black.opacity(0.7))
         Button {
           model.toggleSharedMusic()
         } label: {
@@ -274,7 +275,7 @@ struct FlowFace: View {
     } else {
     FlowArtwork(date: model.clock, timeZone: model.displayTimeZone, far: model.data.far,
       typeface: model.data.configuration(for: .flow).flowTypeface,
-      showBackground: model.data.configuration(for: .flow).flowBackground)
+      showBackground: model.data.configuration(for: .flow).flowBackground, highContrastNight:model.data.night)
       .clipped().animation(.easeInOut(duration: 0.8), value: model.data.far)
     }
   }
@@ -297,13 +298,15 @@ struct FadeFace: View {
   var body: some View {
     let reading = ClockGeometry(date: model.clock, timeZone: model.displayTimeZone)
     ZStack {
+      if model.data.night { Color.black } else {
       AngularGradient(gradient: Gradient(stops: ConicGradientModel.fadeStops.map {
         .init(color: Color(red: $0.color.x, green: $0.color.y, blue: $0.color.z), location: $0.location)
       }), center: .center,
       angle: .degrees(phase(reading.minutes) * 360 - 90))
+      }
       ForEach(0..<12) { n in
         Text("\(n == 0 ? 12 : n)").font(.system(size: 101, weight: .thin))
-          .foregroundStyle(rose)
+          .foregroundStyle(model.data.night ? Color.white:rose)
           .shadow(color: .black.opacity(0.8), radius: 0.6, x: 0, y: -1.2)
           .shadow(color: .white.opacity(0.8), radius: 0.5, x: 0.8, y: 1.3)
           .opacity(reading.fadeOpacity(hour: n)).accessibilityHidden(true)
@@ -311,8 +314,8 @@ struct FadeFace: View {
       }
       AnalogClock(
         date: model.clock, timeZone: model.displayTimeZone,
-        tint: Color(red: 94.0 / 255, green: 48.0 / 255, blue: 44.0 / 255), numbered: false,
-        showTicks: false, secondsColor: Color(red: 1, green: 0.3, blue: 0.76),
+        tint: model.data.night ? .white:Color(red: 94.0 / 255, green: 48.0 / 255, blue: 44.0 / 255), numbered: false,
+        showTicks: false, secondsColor: model.data.night ? .white:Color(red: 1, green: 0.3, blue: 0.76),
         embossedHands:true,minuteReach:1.01,secondsReach:1.04
       )
       .padding(22)
@@ -323,19 +326,20 @@ struct NumeralsFace: View {
   @Environment(AppModel.self) private var model
   var body: some View {
     ZStack {
-      Color(red: 62.0 / 255, green: 147.0 / 255, blue: 92.0 / 255)
+      model.data.night ? Color.black:Color(red: 62.0 / 255, green: 147.0 / 255, blue: 92.0 / 255)
       Group {
         Text("12").font(.system(size: 335, weight: .light, design: .rounded)).tracking(0).scaleEffect(x:0.88,y:1).position(
           x: 286, y: 152)
         Text("9").font(.system(size: 337, weight: .light, design: .rounded)).position(x: 120, y: 296)
         Text("3").font(.system(size: 337, weight: .light, design: .rounded)).position(x: 475, y: 296)
         Text("6").font(.system(size: 341, weight: .light, design: .rounded)).position(x: 300, y: 442)
-      }.foregroundStyle(.black).accessibilityHidden(true)
+      }.foregroundStyle(model.data.night ? Color.white:Color.black).accessibilityHidden(true)
       AnalogClock(
         date: model.clock, timeZone: model.displayTimeZone, tint: .white, numbered: false,
         showTicks: false, embossedHands:true, minuteReach:0.94,secondsReach:0.98)
-        .overlay { Circle().fill(Color(red:62.0/255,green:147.0/255,blue:92.0/255)).frame(width:12,height:12).accessibilityHidden(true) }
+        .overlay { Circle().fill(model.data.night ? Color.black:Color(red:62.0/255,green:147.0/255,blue:92.0/255)).frame(width:12,height:12).accessibilityHidden(true) }
       Text(model.dateLabel("EEE d").uppercased()).font(.system(size: 34, weight: .medium))
+        .foregroundStyle(model.data.night ? Color.white:Color.black)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading).padding(.horizontal,43).padding(.bottom,34)
     }.clipped()
   }
@@ -354,6 +358,9 @@ struct PhotoFace: View {
     let args=ProcessInfo.processInfo.arguments
     return args.contains("--uitesting") && args.contains("--photo-depth-unoccluded-control")
   }
+  @ViewBuilder private func photoLayer(_ bytes:Data) -> some View {
+    if model.data.night { layer(bytes).brightness(-0.7) } else { layer(bytes) }
+  }
   private func layer(_ bytes: Data) -> some View {
     let composition = model.photoComposition
     let width = 600 * composition.destination.width / composition.crop.width
@@ -366,7 +373,7 @@ struct PhotoFace: View {
     ZStack(alignment: .top) {
       Color.black
       if let bytes = model.photoData {
-        layer(bytes)
+        photoLayer(bytes)
       } else if model.hasPhotoSelection {
         Color.black
         VStack(spacing:20) {
@@ -375,7 +382,7 @@ struct PhotoFace: View {
         }.foregroundStyle(.gray).frame(width:440).position(x:300,y:330)
           .accessibilityIdentifier("photo.album.empty")
       } else {
-        LandscapeArt()
+        if model.data.night { LandscapeArt().brightness(-0.7) } else { LandscapeArt() }
       }
       if model.photoData == nil && model.hasPhotoSelection {
         Text(model.dateLabel("hh mm")).font(.system(size:181,weight:.regular,design:.rounded))
@@ -384,14 +391,14 @@ struct PhotoFace: View {
           .accessibilityIdentifier("photo.clock").accessibilityValue(model.photoComposition.clock.rawValue)
       } else {
       PhotoGlassClock(time: model.dateLabel("hh mm"), spokenTime: model.dateLabel("h:mm"),
-        bytes: model.photoData, composition: model.photoComposition)
+        bytes: model.photoData, composition: model.photoComposition, highContrastNight:model.data.night)
         .position(x: 300, y: 600 * (model.photoComposition.clockRect.y + model.photoComposition.clockRect.height/2))
       }
       // Depth uses the selected image's real segmentation, not a fabricated
       // foreground triangle over the fallback landscape.
       if model.photoComposition.depthEnabled, !unoccludedTestControl,
          let foreground = model.photoForegroundData {
-        layer(foreground).allowsHitTesting(false)
+        photoLayer(foreground).allowsHitTesting(false)
       }
       if ProcessInfo.processInfo.arguments.contains("--uitesting") {
         Text(verbatim:"height=\(model.photoComposition.clockRect.height);y=\(model.photoComposition.clockRect.y);coverage=\(model.photoComposition.coverage)")
@@ -450,7 +457,7 @@ struct WeatherFace: View {
       WeatherGlassTemperature(value:model.connections.weatherTemperature,
         size:inApp ? 170 : model.data.far ? 260:241,phase:phase,
         cover:Float(WeatherBackdrop.cloudCover(model.connections.weather,demo:model.connections.weatherDemo)),
-        night:model.connections.weather?.isDay == false ? 1:0)
+        night:model.connections.weather?.isDay == false ? 1:0,highContrastNight:model.data.night)
         .padding(.top,-40)
       Spacer(minLength: 0)
       if !model.data.far {
@@ -468,11 +475,13 @@ struct WeatherFace: View {
           .offset(y: inApp ? 0 : 5)
       }
     }.padding(inApp ? 30 : 45).foregroundStyle(.white)
-      .shadow(color:.black.opacity(0.18),radius:1,x:0,y:1).background(WeatherBackdrop(
-      reading: model.connections.weather, demo: model.connections.weatherDemo,phase:phase))
+      .shadow(color:.black.opacity(0.18),radius:1,x:0,y:1).background {
+        if model.data.night { Color.black } else { WeatherBackdrop(
+          reading: model.connections.weather, demo: model.connections.weatherDemo,phase:phase) }
+      }
     .overlay {
       let cover=Float(WeatherBackdrop.cloudCover(model.connections.weather,demo:model.connections.weatherDemo))
-      if cover>0 && model.connections.weather?.isDay != false {
+      if !model.data.night && cover>0 && model.connections.weather?.isDay != false {
         GeometryReader { geometry in
           Rectangle().fill(.white).colorEffect(ShaderLibrary.weatherDaylightSpur(
             .float2(Float(geometry.size.width),Float(geometry.size.height)),.float(cover)))
@@ -551,14 +560,19 @@ struct CalendarFace: View {
   @Environment(AppModel.self) private var model
   @Environment(\.locale) private var inheritedLocale
   var body: some View {
+    let arguments=ProcessInfo.processInfo.arguments
+    let probe=arguments.contains("--uitesting")
+    let hideInk=probe && arguments.contains("--calendar-ink-hidden")
+    let whiteInk=probe && arguments.contains("--calendar-ink-white")
     let presentation=model.calendarPresentation
     let month=presentation.layout
-    let accent = Color(red: 0.992, green: 0.322, blue: 0.322)
-    let dayColor = Color(red: 0, green: 0.4, blue: 1)
+    let night=model.data.night
+    let accent = night ? Color.white:Color(red: 0.992, green: 0.322, blue: 0.322)
+    let dayColor = night ? Color.white:Color(red: 0, green: 0.4, blue: 1)
     ZStack {
-      Color(white: 0.92)
+      Color(white:night ? 0.02:0.92)
       FaceDateNumber(value: presentation.dayText(month.selectedDay), size: 460, calendarStyle: true)
-        .foregroundStyle(accent).position(x: 274, y: 339)
+        .foregroundStyle(night ? Color(white:0.08):accent).position(x: 274, y: 339)
         .accessibilityHidden(true)
       VStack(spacing: 22) {
         HStack {
@@ -584,16 +598,17 @@ struct CalendarFace: View {
               let current = month.day(at: i) != nil
               let selected = month.day(at: i) == month.selectedDay
               Text(presentation.dayText(month.displayDay(at:i))).font(.system(size: 37, weight: .medium))
+                .opacity(hideInk ? 0:1)
                 .frame(width: 60, height: 53)
                 .background {
                   if selected {
-                    Circle().fill(Color(red: 0, green: 0.141, blue: 0.322))
+                    Circle().fill(night ? Color(white:0.15):Color(red: 0, green: 0.141, blue: 0.322))
                       .frame(width: 64, height: 64)
                   }
                 }
                 .foregroundStyle(
-                  selected
-                    ? .white : dayColor.opacity(current ? 1 : 0.27)
+                  whiteInk ? .white : selected
+                    ? .white : dayColor.opacity(current ? 1 : night ? 0.8:0.27)
                 )
                 .accessibilityIdentifier(
                   selected ? "calendar.face.selected" : "calendar.face.cell.\(i)")

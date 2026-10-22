@@ -55,6 +55,7 @@ struct PhotoGlassClock: View {
   let spokenTime: String
   let bytes: Data?
   let composition: PhotoComposition
+  var highContrastNight = false
   @State private var texture: Image?
   @State private var renderedBytes: Data?
   private var testMode: String {
@@ -83,7 +84,9 @@ struct PhotoGlassClock: View {
   }
   var body: some View {
     Group {
-      if testMode == "background" {
+      if highContrastNight {
+        glyphs.foregroundStyle(.white).shadow(color:.black,radius:2)
+      } else if testMode == "background" {
         glyphs.opacity(0)
       } else if testMode == "stencil" {
         glyphs

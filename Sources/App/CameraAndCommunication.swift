@@ -42,7 +42,8 @@ struct CameraGrid: View {
               .overlay(alignment: .topTrailing) { DemoCameraBadge().padding(9) }
             Text(["Front Door", "Back Yard", "Living Room", "Driveway"][i % 4]).font(
               .system(size: nine ? 14 : 19, weight: .medium)
-            ).foregroundStyle(.white).padding(12).shadow(radius: 2)
+            ).foregroundStyle(.white).padding(12)
+              .background(model.data.night ? Color.black.opacity(0.95):Color.clear).shadow(radius: 2)
           }.frame(height:height).clipped().contentShape(Rectangle())
         }.frame(height:height).clipShape(RoundedRectangle(cornerRadius:24))
           .accessibilityIdentifier("camera.\(i)")
