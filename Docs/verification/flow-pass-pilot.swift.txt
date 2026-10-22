@@ -1,0 +1,48 @@
+import Foundation
+import Metal
+@main struct Pilot {
+ static func main() async throws {
+  guard let device=MTLCreateSystemDefaultDevice() else {fatalError("Metal unavailable")}
+  var rows:[[String:Any]]=[]
+  let stages=["kick","kickBoundary","advect","advectBoundary","curl","confine","confineBoundary","divergence","pressure","gradient","gradientBoundary","dye"]
+  for seeded in [false,true] {
+   let n=128
+   var cpu=FlowSimulation(side:n)
+   if seeded {
+    let v=(0..<n*n).map {SIMD2<Float>(sin(Float($0)*0.37)*0.4,cos(Float($0)*0.23)*0.3)}
+    let d=(0..<n*n).map {SIMD3<Float>(Float(($0*17)%101)/100,Float(($0*31)%103)/102,Float(($0*47)%107)/106)}
+    cpu=FlowSimulation(side:n,velocity:v,dye:d)!
+   }
+   for step in 0..<20 {
+    let time=Float(step)/20,delta:Float=step%7==0 ? 0.2:0.05
+    let impulse:SIMD2<Float>=step%3==0 ? SIMD2(3,-7):SIMD2(0.3,-0.2)
+    if [0,5,19].contains(step) {
+     var traced=cpu
+     let expected=traced.traceStep(time:time,delta:delta,impulse:impulse)
+     var direct=cpu;direct.step(time:time,delta:delta,impulse:impulse)
+     precondition(direct.velocity==traced.velocity && direct.dye==traced.dye,"Trace adaptation changed CPU result")
+     let gpu=FlowMetalSimulation(snapshot:cpu)
+     let result=try await gpu.step(time:time,delta:delta,impulse:impulse)
+     let actual=await gpu.debugPasses
+     precondition(result.velocity.map {SIMD4($0.x,$0.y,0,0)}==actual["gradientBoundary"]!)
+     precondition(result.dye.map {SIMD4($0.x,$0.y,$0.z,0)}==actual["dye"]!)
+     for name in stages {
+      let a=expected[name]!,b=actual[name]!
+      precondition(a.count==n*n && b.count==a.count)
+      var maxError:Float=0,index=0,component=0,different=0
+      for i in a.indices {for c in 0..<4 {
+       if a[i][c] != b[i][c] {different+=1}
+       let e=abs(a[i][c]-b[i][c]);precondition(e.isFinite)
+       if e>maxError {maxError=e;index=i;component=c}
+      }}
+      let row:[String:Any]=["seeded":seeded,"step":step,"pass":name,"maxAbs":Double(maxError),"differentComponents":different,"x":index%n,"y":index/n,"component":component,"cpu":Double(a[index][component]),"gpu":Double(b[index][component]),"cpuBits":a[index][component].bitPattern,"gpuBits":b[index][component].bitPattern]
+      rows.append(row);print("TRACE seed=\(seeded) step=\(step) \(name) max=\(maxError) different=\(different)")
+     }
+    }
+    cpu.step(time:time,delta:delta,impulse:impulse)
+   }
+  }
+  let report:[String:Any]=["device":device.name,"cpuTraceEqualsOriginalFinalState":true,"gpuTraceEqualsReturnedFinalState":true,"rows":rows]
+  try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys]).write(to:URL(fileURLWithPath:CommandLine.arguments[1]))
+ }
+}

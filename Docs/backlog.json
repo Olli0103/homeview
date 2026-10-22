@@ -482,7 +482,7 @@
     "priority": "P1",
     "kind": "implementation",
     "functions": [],
-    "current": "Nur das Glyphenmaterial läuft auf Metal. Fluidrechnung läuft weiter auf CPU und wird als CGImage hochgeladen.",
+    "current": "Hybrid-Softwarepfad integriert: eigene Quellgewichte auf CPU, Fluidtransport/Confinement/Druck/Advektion auf Metal, generationengesicherter Owner und exakter CPU-Fallback. Acht feste numerische Fälle auf M1 Max exakt gleich; 382 Modelltests und fünf SDKs bestanden. Echte iPad-Framezeit/Energie bleibt offen, keine Beschleunigungsbehauptung.",
     "tasks": [
       "Vorhandene maintained GPU-/Metal-Ansätze leichtgewichtig prüfen",
       "Eigenen Textur-/Ping-Pong-Pfad für die Rechenschritte hinzufügen",
@@ -495,7 +495,11 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/17",
     "issue_number": 17,
-    "state": "open"
+    "state": "open",
+    "software_evidence": [
+      "Docs/flow-compute-acceptance.md",
+      "Docs/verification/flow-compute-acceptance.json"
+    ]
   },
   {
     "key": "FACE-09",

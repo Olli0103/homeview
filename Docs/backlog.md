@@ -370,6 +370,8 @@ Abhängigkeiten: FLOW-01, BASE-02.
 <a id="flow-03"></a>
 ### FLOW-03: CPU-Fluid schrittweise auf Metal-Texturen portieren
 
+**Softwarestand 22. Oktober 2026:** [Hybrid-Metal-Pfad und Fallback](flow-compute-acceptance.md) integriert; acht numerische Fälle auf M1 Max exakt gleich bei unveränderten Grenzen. 382 Modelltests und fünf finale SDKs. Das Issue bleibt für die verlangte physische iPad-Framezeit-/Energiemessung offen; keine gemessene Beschleunigung, kein All-GPU-/Zero-Copy-PASS. Die folgende Ausgangsbeschreibung ist historisch.
+
 Nur das Glyphenmaterial läuft auf Metal. Fluidrechnung läuft weiter auf CPU und wird als CGImage hochgeladen.
 
 Offen:
