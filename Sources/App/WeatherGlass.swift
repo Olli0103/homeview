@@ -7,13 +7,18 @@ struct WeatherGlassTemperature: View {
   let phase: Double
   let cover: Float
   let night: Float
+  var highContrastNight = false
   private var number: Text {
     if value.hasSuffix("°") {
       return Text("\(Text(String(value.dropLast())).font(.system(size:size,weight:.regular)))\(Text("°").font(.system(size:size*0.86,weight:.regular)).baselineOffset(size*0.12))")
     }
     return Text(value).font(.system(size:size,weight:.regular))
   }
-  var body: some View {
+  @ViewBuilder var body: some View {
+    if highContrastNight {
+      number.tracking(-4).lineLimit(1).minimumScaleFactor(0.6).foregroundStyle(.white)
+        .accessibilityIdentifier("weather.temperature")
+    } else {
     number.tracking(-4)
       .lineLimit(1).minimumScaleFactor(0.6).foregroundStyle(.white).blur(radius:1.4)
       .visualEffect { content,geometry in
@@ -25,5 +30,6 @@ struct WeatherGlassTemperature: View {
       }
       .shadow(color:.black.opacity(0.06),radius:1,x:0,y:1)
       .accessibilityIdentifier("weather.temperature")
+    }
   }
 }

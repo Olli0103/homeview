@@ -56,10 +56,14 @@ struct FlowArtwork: View {
   var far: Bool
   var typeface = 0
   var showBackground = true
+  var highContrastNight = false
   @State private var frames = FlowFrames()
   @State private var impulse = SIMD2<Float>.zero
   var body: some View {
     GeometryReader { geometry in
+      if highContrastNight {
+        ZStack { Color.black; numerals(at: 0).foregroundStyle(.white) }
+      } else {
       MotionTimeline { t in
         let frame = frames.frame(time: t, impulse: impulse)
         return ZStack {
@@ -88,10 +92,12 @@ struct FlowArtwork: View {
           }
         }
       }
+      }
     }.clipped().contentShape(Rectangle())
       #if !os(tvOS)
         .gesture(
           DragGesture(minimumDistance: 3).onChanged { value in
+            guard !highContrastNight else { return }
             impulse = SIMD2(
               Float(value.translation.width / 300), Float(value.translation.height / 300))
           }.onEnded { _ in impulse = .zero })

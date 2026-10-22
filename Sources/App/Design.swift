@@ -121,6 +121,7 @@ extension EnvironmentValues {
 struct HomeGlassSurface<Surface:InsettableShape>: View {
   let shape:Surface
   @Environment(\.hostedHomeGlass) private var hosted
+  @Environment(AppModel.self) private var model
   @ViewBuilder var body: some View {
     if hosted {
       Color.clear.anchorPreference(key:HomeGlassAnchors.self,value:.bounds) { bounds in
@@ -129,12 +130,16 @@ struct HomeGlassSurface<Surface:InsettableShape>: View {
     } else { nativeSurface }
   }
   @ViewBuilder private var nativeSurface: some View {
+    if model.data.night {
+      shape.fill(Color(white:0.055)).overlay { shape.strokeBorder(Color(white:0.25),lineWidth:0.8) }
+    } else {
     #if os(visionOS)
     fallback
     #else
     if #available(macOS 26.0, *) { Color.clear.glassEffect(.clear,in:shape) }
     else { fallback }
     #endif
+    }
   }
   private var fallback: some View {
     shape.fill(.ultraThinMaterial).overlay { shape.strokeBorder(.white.opacity(0.45),lineWidth:0.8) }

@@ -5,11 +5,13 @@ struct AlternateHomeFace: View {
   @Environment(AppModel.self) private var model
   var body: some View {
     ZStack {
+      if model.data.night { Color.black } else {
       LinearGradient(
         colors: [
           Color(red: 0.78, green: 0.77, blue: 0.69), Color(red: 0.48, green: 0.5, blue: 0.46),
         ], startPoint: .topLeading, endPoint: .bottomTrailing)
       PrismBackground(theme: 2).opacity(0.12)
+      }
       VStack(spacing: 10) {
         HStack(spacing: 10) {
           AnalogClock(date: model.clock, timeZone: model.displayTimeZone, tint: .white).padding(8)
@@ -24,7 +26,7 @@ struct AlternateHomeFace: View {
                   Text("\(model.data.home.temperature)–\(model.data.home.temperature)").font(
                     .system(size: 36, weight: .medium))
                   Text("Thermostat").font(.system(size: 17, weight: .semibold))
-                  Text("Living Room").font(.system(size: 16)).opacity(0.6)
+                  Text("Living Room").font(.system(size: 16)).opacity(model.data.night ? 1:0.6)
                 }
               }
             }.accessibilityIdentifier("alternate.thermostat")
@@ -58,7 +60,7 @@ struct AlternateHomeFace: View {
         VStack(spacing: 12) {
           Image(systemName: symbol).font(.system(size: 39))
           Text(title).font(.system(size: 20, weight: .semibold))
-          Text("Scene").font(.system(size: 18)).opacity(0.65)
+          Text("Scene").font(.system(size: 18)).opacity(model.data.night ? 1:0.65)
         }
       }
     }.accessibilityIdentifier("scene.\(title)")
