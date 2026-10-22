@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "date": "2026-10-20",
+  "date": "2026-10-22",
   "audit_base_commit": "65a42108b18be5dc5201e427ef1afb9ecc9b093f",
   "purpose": "Current byte-bound declarations; initial publication index remains historical and unchanged",
   "assets": [
@@ -691,6 +691,20 @@
         "NOTICE.md",
         "Docs/public-podcast-feeds.md"
       ]
+    },
+    {
+      "path": "Resources/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a",
+      "author_or_generator": "Olli0103 and HomeView contributors; Scripts/generate_podcast_caption_fixture.py",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; FFmpeg development executable is not redistributed",
+      "origin": "Own previously declared synthetic 220-Hz tone encoded with AAC plus own timed synthetic-tone markers; no video, speech/lyrics or private recording",
+      "evidence": [
+        "Scripts/generate_podcast_caption_fixture.py",
+        "Resources/podcast-test-audio.wav",
+        "NOTICE.md"
+      ]
     }
   ],
   "source_inputs": [
@@ -700,7 +714,7 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "79cc848b5cf24929904a2cb118f0819ac1b6833d41cc7176453a050a8426e687"
+      "sha256": "6e26c8c2b5e996e8f7e37b6757a7ec828502c22748d3a03268e2f36167c6ffe4"
     },
     {
       "path": "Scripts/check_asset_manifest.py",
@@ -728,7 +742,7 @@
     },
     {
       "path": "Docs/public-podcast-feeds.md",
-      "sha256": "18521a689ba7964bc42740921002a85f672d4ef359f0e0d3126b258a9b605dbb"
+      "sha256": "ed5aacf00ff1a7e2733b6628f1417b02acbc2818880f46ba3ecdd4817d746a2f"
     },
     {
       "path": "Resources/FeedKit-LICENSE.txt",
@@ -752,11 +766,15 @@
     },
     {
       "path": "Sources/App/HomeScreens.swift",
-      "sha256": "b98bd0d2d43576e189ed06cab792135bccad596d0ba266b8baab538140ec41b0"
+      "sha256": "37be5cfedfd2c4d5b4f6e61103812c15f0e0dc998f852af110f0b413148c810e"
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "72a1aaacd674435d89d0866e8009723ec502ac8cced4a3cbc8a0847e258b216c"
+      "sha256": "bf716a4a07f552622b590f20b85fba1b972b91cab23362f4a616b254ff97a7d6"
+    },
+    {
+      "path": "Scripts/generate_podcast_caption_fixture.py",
+      "sha256": "1a1edb5544659d37d6ecd39ed7f8359a702fa76603edf0125052bbb6a7aa4dfc"
     }
   ],
   "runtime_and_code_assets": [

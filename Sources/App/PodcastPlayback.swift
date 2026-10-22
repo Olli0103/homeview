@@ -16,7 +16,18 @@ enum PodcastFeedClient {
 }
 enum PodcastFixture {
   static let feedURL=URL(string:"https://fixtures.invalid/homeview-podcast.xml")!
-  static let xml="""
+  static var xml:String {
+    let args=ProcessInfo.processInfo.arguments
+    return args.contains("--uitesting") && args.contains("--podcast-caption-fixture") ? captionXML:normalXML
+  }
+  static let captionXML="""
+  <?xml version="1.0" encoding="UTF-8"?>
+  <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel><title>Own Caption Test Feed</title>
+  <item><title>Own Captioned Tone</title><enclosure url="https://fixtures.invalid/captioned-tone.mp4" type="audio/mp4" length="400000"/><itunes:duration>60</itunes:duration></item>
+  <item><title>Own Plain Tone</title><enclosure url="https://fixtures.invalid/second.wav" type="audio/wav" length="1920044"/><itunes:duration>60</itunes:duration></item>
+  </channel></rss>
+  """
+  static let normalXML="""
   <?xml version="1.0" encoding="UTF-8"?>
   <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel><title>HomeView Test Feed</title>
   <item><title>Own Audio Episode One</title><enclosure url="https://fixtures.invalid/first.wav" type="audio/wav" length="1920044"/><itunes:duration>60</itunes:duration></item>
@@ -25,8 +36,11 @@ enum PodcastFixture {
   """
   static func playbackURL(_ url: URL) -> URL? {
     guard ProcessInfo.processInfo.arguments.contains("--uitesting"),
-      ProcessInfo.processInfo.arguments.contains("--podcast-fixture"),url.host=="fixtures.invalid",
-      ["/first.wav","/second.wav"].contains(url.path) else { return nil }
+      ProcessInfo.processInfo.arguments.contains("--podcast-fixture"),url.host=="fixtures.invalid" else { return nil }
+    if ProcessInfo.processInfo.arguments.contains("--podcast-caption-fixture"),url.path=="/captioned-tone.mp4" {
+      return Bundle.main.url(forResource:"podcast-caption-test",withExtension:"mp4")
+    }
+    guard ["/first.wav","/second.wav"].contains(url.path) else {return nil}
     return Bundle.main.url(forResource:"podcast-test-audio",withExtension:"wav")
   }
 }
@@ -41,6 +55,90 @@ final class PodcastPlaybackController {
   private(set) var status = "Paused"
   private var generation = 0
   private var initialSeek: Double?
+  private var seekGeneration=0
+  private var captionSeekPending=false
+  private var captionAwaitingFlush=false
+  private(set) var captionChoices:[PodcastCaptionChoice]=[]
+  private(set) var captionText=""
+  private(set) var captionStatus="Captions are checked when this episode is played."
+  private(set) var captionSelection="automatic"
+  @ObservationIgnored private var captionGroup:AVMediaSelectionGroup?
+  @ObservationIgnored private var captionTask:Task<Void,Never>?
+  @ObservationIgnored private var captionOutput:AVPlayerItemLegibleOutput?
+  @ObservationIgnored private var captionDelegate:PodcastCaptionDelegate?
+  @ObservationIgnored private weak var captionItem:AVPlayerItem?
+  @ObservationIgnored private var captionToken:UUID?
+
+  private func detachCaptionOutput() {
+    captionToken=nil
+    if let captionOutput {
+      captionOutput.setDelegate(nil,queue:nil)
+      captionItem?.remove(captionOutput)
+    }
+    captionOutput=nil;captionDelegate=nil;captionItem=nil
+    captionText=""
+  }
+  private func clearCaptions() {
+    captionTask?.cancel();captionTask=nil;detachCaptionOutput()
+    captionGroup=nil;captionChoices=[];captionSelection="automatic"
+    captionStatus="Captions are checked when this episode is played."
+    captionSeekPending=false;captionAwaitingFlush=false
+  }
+  private func discoverCaptions(_ item:AVPlayerItem) {
+    clearCaptions();captionStatus="Checking source captions…"
+    let ticket=generation
+    captionTask=Task { [weak self,weak item] in
+      do {
+        guard let item else {return}
+        let group=try await item.asset.loadMediaSelectionGroup(for:.legible)
+        try Task.checkCancellation()
+        guard let self,self.generation==ticket,self.player?.currentItem === item else {return}
+        self.captionGroup=group
+        self.captionChoices=(group?.options ?? []).enumerated().map {
+          PodcastCaptionChoice(id:String($0.offset),name:$0.element.displayName,playable:$0.element.isPlayable)
+        }
+        self.captionStatus=self.captionChoices.isEmpty ? "No captions supplied by this episode.":"Source-provided captions"
+        if !self.captionSeekPending {self.attachCaptionOutput(item)}
+        self.captionTask=nil
+      } catch {
+        guard !Task.isCancelled,let self,self.generation==ticket,self.player?.currentItem === item else {return}
+        self.captionTask=nil;self.captionStatus="Caption information unavailable."
+      }
+    }
+  }
+  private func attachCaptionOutput(_ item:AVPlayerItem) {
+    guard player?.currentItem === item,captionGroup != nil,!captionChoices.isEmpty,!captionSeekPending else {return}
+    detachCaptionOutput()
+    let token=UUID(),ticket=generation
+    let output=AVPlayerItemLegibleOutput()
+    output.suppressesPlayerRendering=true
+    let delegate=PodcastCaptionDelegate(receive: { [weak self] cues in
+      guard let self,self.generation==ticket,self.captionToken==token,!self.captionAwaitingFlush,self.captionSelection != "off" else {return}
+      // Plain source text only: no Markdown, links, HTML, commands or persistence.
+      self.captionText=String(cues.joined(separator:"\n").prefix(4096))
+    },flushed: { [weak self] in
+      guard let self,self.generation==ticket,self.captionToken==token else {return}
+      self.captionText="";self.captionAwaitingFlush=false
+    })
+    captionToken=token;captionOutput=output;captionDelegate=delegate;captionItem=item
+    output.setDelegate(delegate,queue:.main);item.add(output)
+  }
+  func selectCaption(_ key:String) {
+    guard let player,let item=player.currentItem,let group=captionGroup,!captionSeekPending else {return}
+    if key=="off" {item.select(nil,in:group)}
+    else if key=="automatic" {item.selectMediaOptionAutomatically(in:group)}
+    else {
+      guard let index=Int(key),group.options.indices.contains(index),group.options[index].isPlayable else {return}
+      let option=group.options[index];item.select(option,in:group)
+      guard item.currentMediaSelection.selectedMediaOption(in:group)?.isEqual(option)==true else {
+        captionStatus="Caption selection unavailable.";return
+      }
+    }
+    if key=="off",item.currentMediaSelection.selectedMediaOption(in:group) != nil {
+      captionStatus="Caption selection unavailable.";return
+    }
+    captionSelection=key;captionText=""
+  }
   func load(_ episode: PodcastEpisode,position: Double) {
     stop();episodeID=episode.id;self.position=max(0,position);duration=episode.duration
     let args=ProcessInfo.processInfo.arguments
@@ -50,7 +148,9 @@ final class PodcastPlaybackController {
       url=local
     } else { url=episode.mediaURL }
     let item=AVPlayerItem(url:url);player=AVPlayer(playerItem:item)
-    player?.volume=1;initialSeek=max(0,position);requested=true;status="Loading audio…"
+    player?.volume=args.contains("--uitesting") && args.contains("--mute-podcast-fixture") ? 0:1
+    initialSeek=max(0,position);requested=true;status="Loading audio…"
+    discoverCaptions(item)
   }
   func poll() {
     guard let player,let item=player.currentItem else { return }
@@ -73,23 +173,32 @@ final class PodcastPlaybackController {
     guard let player else { return }
     if let item=player.currentItem,item.status == .failed {
       generation+=1;initialSeek=position
-      player.replaceCurrentItem(with:AVPlayerItem(asset:item.asset))
+      let replacement=AVPlayerItem(asset:item.asset)
+      player.replaceCurrentItem(with:replacement);discoverCaptions(replacement)
     } else if status == "Finished" { status="Paused";seek(to:0) }
     requested=true;player.play();poll()
   }
   func seek(to value: Double) {
     guard value.isFinite,let player else { return }
     let target=min(max(0,value),max(0,(duration ?? 604800)-0.05));let ticket=generation
-    position=target
-    player.seek(to:CMTime(seconds:target,preferredTimescale:600),toleranceBefore:.zero,toleranceAfter:.zero) { [weak self] finished in
+    position=target;seekGeneration+=1;let seekTicket=seekGeneration
+    // A no-op initial seek to time zero does not produce a native flush.
+    let seekTime=CMTime(seconds:target,preferredTimescale:600)
+    captionAwaitingFlush=captionOutput != nil && (captionAwaitingFlush || CMTimeCompare(player.currentTime(),seekTime) != 0)
+    captionSeekPending=true;captionText=""
+    player.seek(to:seekTime,toleranceBefore:.zero,toleranceAfter:.zero) { [weak self] finished in
       Task { @MainActor in
-        guard let self,self.generation==ticket,finished else { return }
+        guard let self,self.generation==ticket,self.seekGeneration==seekTicket else { return }
+        self.captionSeekPending=false
+        guard finished else {self.captionStatus="Caption position unavailable.";return}
+        if self.captionOutput==nil,let item=self.player?.currentItem {self.attachCaptionOutput(item)}
         if self.requested { self.player?.play() }
       }
     }
   }
   func stop() {
-    generation+=1;requested=false;playing=false;player?.pause();player?.replaceCurrentItem(with:nil)
+    generation+=1;seekGeneration+=1;clearCaptions()
+    requested=false;playing=false;player?.pause();player?.replaceCurrentItem(with:nil)
     player=nil;episodeID=nil;initialSeek=nil;status="Paused"
   }
 }

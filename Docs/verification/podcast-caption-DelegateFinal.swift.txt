@@ -1,0 +1,30 @@
+import AVFoundation
+import Foundation
+import SwiftUI
+
+#if !os(watchOS)
+struct PodcastCaptionChoice:Identifiable,Equatable {
+  let id:String
+  let name:String
+  let playable:Bool
+}
+
+/// This delegate is installed only on DispatchQueue.main. Copy the public cue
+/// strings before entering the actor; no sample buffers or foreign attributes cross.
+@MainActor final class PodcastCaptionDelegate:NSObject,AVPlayerItemLegibleOutputPushDelegate {
+  private let receive:@MainActor ([String])->Void
+  private let flushed:@MainActor ()->Void
+  init(receive:@escaping @MainActor ([String])->Void,flushed:@escaping @MainActor ()->Void) {
+    self.receive=receive;self.flushed=flushed
+  }
+  nonisolated func legibleOutput(_ output:AVPlayerItemLegibleOutput,
+    didOutputAttributedStrings strings:[NSAttributedString],nativeSampleBuffers:[Any],forItemTime:CMTime) {
+    let plain=strings.map(\.string)
+    MainActor.assumeIsolated {receive(plain)}
+  }
+  nonisolated func outputSequenceWasFlushed(_ output:AVPlayerItemOutput) {
+    MainActor.assumeIsolated {flushed()}
+  }
+}
+
+#endif

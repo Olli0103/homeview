@@ -23,3 +23,8 @@ Automatische Prüfungen verwenden ausschließlich diese Daten und isolierte Test
 181 Modell-/Transporttests bestanden. Sechs unterschiedliche ausgewählte native Fälle je iPad/iPhone sind über die dokumentierten Checkpoints abgedeckt. Der letzte Quellenstand wiederholt die drei vom zusätzlichen Musikfix betroffenen Fälle je Gerät erfolgreich; keine erfundene durchgehend grüne Gesamtsuite. Alle fünf arm64-SDK-Builds bestehen. 48 Bilder der qualifizierten ursprünglichen/letzten Läufe plus zwölf Bilder des gesonderten Seek-Folgelaufs dekodiert; 26 ausgewählte Zustände auf Kontaktbögen gesichtet. 16 eigene Viewport-PNGs sind veröffentlicht.
 
 [Quellenbindung und vollständige Checkpoint-Ergebnisse](verification/podcast-rss.json). Fehlgeschlagene Piloten bleiben fehlgeschlagen: zuerst überdeckte Accessibility-IDs, danach eine falsche absolute Zeitannahme im Test und zuletzt der tatsächliche Music-Rückkehrfehler. Keine nachträgliche Umdeutung in PASS. Allgemeine noch ausstehende Music-Play-/Resume-Races und Gast-/Medienpolicy aus #67/#80 werden damit nicht pauschal freigegeben.
+
+
+## Source captions · 22 October 2026
+
+The existing explicit-Play path can select and display actual native legible tracks when supplied by the enclosure. No automatic transcription or external transcript download: [implementation, own fixture and evidence](podcast-source-captions.md).

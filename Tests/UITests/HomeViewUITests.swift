@@ -6789,3 +6789,58 @@ extension HomeViewUITests {
     XCTAssertEqual(app.buttons["player.play"].label,"Play")
   }
 }
+
+extension HomeViewUITests {
+  func testPodcastSourceCaptionsSelectionSeekOffAndSourceChange() {
+    launch(["--page","Podcasts","--podcast-fixture","--podcast-caption-fixture","--mute-podcast-fixture"])
+    tap("podcast.feeds");tap("podcast.feed.fixture")
+    let episode=app.buttons["podcast.episode.0"]
+    XCTAssertTrue(episode.waitForExistence(timeout:8));scrollPhotoControlFullyIntoView(episode);episode.tap()
+    let captions=app.buttons["podcast.captions"]
+    XCTAssertTrue(captions.exists)
+    XCTAssertFalse(captions.isEnabled)
+    XCTAssertTrue(app.staticTexts["podcast.status"].label.contains("Paused"))
+    let play=app.buttons["podcast.play"]
+    scrollPhotoControlFullyIntoView(play);play.tap()
+    expectation(for:NSPredicate(format:"enabled == true"),evaluatedWith:captions)
+    waitForExpectations(timeout:12)
+    scrollPhotoControlFullyIntoView(captions);captions.tap()
+    tap("podcast.captions.option.0")
+    let cue=app.staticTexts["podcast.captions.current"]
+    expectation(for:NSPredicate(format:"exists == true AND label CONTAINS %@","first marker"),evaluatedWith:cue)
+    waitForExpectations(timeout:12)
+    scrollPhotoControlFullyIntoView(play);play.tap()
+    XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    scrollPhotoControlFullyIntoView(cue);viewportShot("podcast-source-first-cue")
+    scrollPhotoControlFullyIntoView(captions);captions.tap();tap("podcast.captions.off")
+    XCTAssertFalse(cue.exists)
+    XCTAssertEqual(captions.value as? String,"off")
+    captions.tap();tap("podcast.captions.option.0")
+    let forward=app.buttons["podcast.forward"]
+    scrollPhotoControlFullyIntoView(forward)
+    let back=app.buttons["podcast.back"]
+    back.tap();back.tap();back.tap()
+    XCTAssertEqual(podcastSeconds(),0)
+    forward.tap();forward.tap();forward.tap()
+    XCTAssertEqual(podcastSeconds(),45)
+    play.tap()
+    expectation(for:NSPredicate(format:"exists == true AND label CONTAINS %@","final marker"),evaluatedWith:cue)
+    waitForExpectations(timeout:12)
+    scrollPhotoControlFullyIntoView(cue);viewportShot("podcast-source-seek-final-cue")
+    tap("podcast.feeds")
+    let second=app.buttons["podcast.episode.1"]
+    XCTAssertTrue(second.waitForExistence(timeout:5))
+    for _ in 0..<8 where !second.isHittable {app.scrollViews.firstMatch.swipeUp()}
+    // Last feed row: require full containment, not an unattainable extra
+    // 40-point margin beyond the existing short feed's scroll-content end.
+    XCTAssertTrue(app.scrollViews.firstMatch.frame.intersection(app.otherElements["reference.viewport"].frame).contains(second.frame))
+    second.tap()
+    XCTAssertFalse(cue.exists)
+    scrollPhotoControlFullyIntoView(play);play.tap()
+    let status=app.staticTexts["podcast.captions.status"]
+    expectation(for:NSPredicate(format:"label == %@","No captions supplied by this episode."),evaluatedWith:status)
+    waitForExpectations(timeout:12)
+    XCTAssertFalse(captions.isEnabled);XCTAssertFalse(cue.exists)
+    scrollPhotoControlFullyIntoView(status);viewportShot("podcast-source-no-invented-captions")
+  }
+}
