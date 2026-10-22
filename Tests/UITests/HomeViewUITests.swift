@@ -3,6 +3,26 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  func testFlowComputeReducedFrameStopsAndNightDoesNotSubmitFluidWork() {
+    launch(["--face","Flow","--animation-test","--reduce-motion"])
+    let report=app.staticTexts["flow.compute.test"]
+    XCTAssertTrue(report.waitForExistence(timeout:8))
+    expectation(for:NSPredicate(format:"value CONTAINS %@","revision=1;pending=false"),evaluatedWith:report)
+    waitForExpectations(timeout:8)
+    let before=viewportBytes("flow-compute-reduced-accepted")
+    Thread.sleep(forTimeInterval:1.2)
+    XCTAssertTrue((report.value as? String ?? "").contains("revision=1;pending=false"))
+    let after=viewportBytes("flow-compute-reduced-no-extra-step")
+    XCTAssertEqual(viewportPixels(before,inset:0),viewportPixels(after,inset:0))
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    let night=app.staticTexts["flow.compute.test"]
+    XCTAssertTrue(night.waitForExistence(timeout:5))
+    XCTAssertTrue((night.value as? String ?? "").contains("active=false"));XCTAssertTrue((night.value as? String ?? "").contains("pending=false"))
+    viewportShot("flow-compute-night-no-work")
+  }
+}
+
+extension HomeViewUITests {
   func testNightFaceMatrixUsesFullViewportAndExplicitTimeZones() {
     let faces=["Modular","Watch Modular","Infograph Modular","Modular Duo","Modular Compact",
       "Home Modular","Home Modular Clock","Photos","Weather","Calendar","Flow","Fade","Numerals","Home Camera"]

@@ -215,3 +215,16 @@ struct FlowSimulation: Sendable {
     }
   }
 }
+
+extension FlowSimulation {
+  /// Restore a completed backend snapshot, never a partially executed GPU field.
+  init?(side: Int, velocity: [SIMD2<Float>], dye: [SIMD3<Float>]) {
+    guard (8...128).contains(side), velocity.count == side * side,
+      dye.count == velocity.count,
+      velocity.allSatisfy({ $0.x.isFinite && $0.y.isFinite }),
+      dye.allSatisfy({ $0.x.isFinite && $0.y.isFinite && $0.z.isFinite }) else { return nil }
+    self.side = side
+    self.velocity = velocity
+    self.dye = dye
+  }
+}
