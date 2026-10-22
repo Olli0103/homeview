@@ -5,6 +5,10 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Referenz- und Face-Inventur abgeschlossen · 22. Oktober 2026
+
+[#2/#5: Katalogabschluss](reference-catalogue.md): 24 archivierte Quellen, 51 datierte Referenzzustände, 105 Funktionszuordnungen und 13 sichtbare Gruppen mit expliziten Lücken. 356 Coretests und zwei UI-Ausführungen mit 28 Face-Zuständen bestanden. Keine neue Original-/Renderer-/Hardwareabnahme; vier Watch-Zusatzlayouts separat. Der Gesamtauftrag läuft weiter.
+
 ### Persistenz-/Lifecycle-Matrix abgeschlossen · 21. Oktober 2026
 
 [#80: ursprüngliche synthetische Abnahmematrix](persistence-acceptance.md) auf einem gemeinsamen Quellenstand bestanden: 352 Modelltests, zwölf alte/beschädigte Migrationszellen, 18 native Fake-Alarm-Szenarien/95 Assertions, 22 ausgewählte App-Ausführungen, fünf SDKs und 14 unabhängige UUID-Datei-Read-backs. Zwei ID-Migrationslücken sowie neun native Write-/Schedule-Fehlerfälle korrigiert; Erstfehler erhalten. Keine echte Alarmzustellung, Accounts, Hardware- oder Gesamt-Parity-Abnahme; keine Home-Anbindung. Frühere #80-Offenstände unten sind datierte Historie.

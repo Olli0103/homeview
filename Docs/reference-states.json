@@ -1,0 +1,4254 @@
+{
+  "researchCutoff": "2026-10-16",
+  "verificationDate": "2026-10-22",
+  "product": "Apple HomeView public demonstration, October 2026",
+  "geometryIsReplicaContractNotProofForEverySource": true,
+  "sources": [
+    {
+      "id": "P01",
+      "title": "Apple HomeView Produktseite",
+      "url": "https://www.apple.com/apple-homeview/",
+      "publication": "2026-10",
+      "scope": "Primärquelle; HTML, Text, Bilder, Seitenanimationen und Browser-Screenshots",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "065b2ce165728250048a0a5751187c9e91ab017deb69417a2121646a5acd4605",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "P02",
+      "title": "Apple HomeView technische Daten",
+      "url": "https://www.apple.com/apple-homeview/specs/",
+      "publication": "2026-10",
+      "scope": "Primärquelle; App-Listen, Hardware, Fußnoten",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "a1235f32f9a760dd26acab13f4ef17ad0c9ee40387687dac90d489dcc4f77fcf",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "P03",
+      "title": "Apple: Meet Apple HomeView",
+      "url": "https://www.apple.com/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home/",
+      "publication": "2026-10-13",
+      "scope": "Primärquelle; Ankündigung, Termine, Datenschutzbedingungen und Pressebilder",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "62e588910d7045d4bd178631336f46a3508403e8e12fb668ac39c6d96296f239",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "P04",
+      "title": "Apple Support: Power adapters for Apple HomeView",
+      "url": "https://support.apple.com/en-us/127951",
+      "publication": "2026-10-14",
+      "scope": "Primärquelle; Stromwarnung, Einrichtung und Owner-Rolle",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "d30195336cc03d4b098e61a5a33efae18dd3a470e0a3c7a1d9f05675edab6ea1",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "V01",
+      "title": "Apple Produktfilm, CDN-Fassung",
+      "url": "https://www.apple.com/105/media/us/apple-homeview/2026/f7ce47a8-10f2-455c-b99f-bf9b85a35cb6/films/product/apple-homeview-product-tpl-us-2026_16x9.m3u8",
+      "publication": "2026-10",
+      "scope": "187,52 s; 188 Ein-Sekunden-Frames und Untertitel separat. YouTube-Verweis hkrYiZ_g9tw ist eine gesonderte Fassung/Adresse.",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "e93db0934d0010d937dbfc38fe9427f0e107ec0394661af4a9cd2dc083da55ab",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "V02",
+      "title": "Apple: The new Apple HomeView: Keep the whole home connected, entertained, and in the know.",
+      "url": "https://www.youtube.com/watch?v=QeQAXuQpGEA",
+      "publication": "2026-10-13",
+      "scope": "Originalplayer 63,701 s; 17 direkte Stills. Video lokal als gekennzeichnete Browseraufnahme, nicht unverändertes Original.",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "f482bf3fcdfa8a336e6a5f20432b3a3382c8cba206db8f10e74f53657f9f079a",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "V03",
+      "title": "AppleInsider: I Tried Apple’s HomeView… and Now I’m Buying THREE",
+      "url": "https://www.youtube.com/watch?v=v3wcg4Vi4u0",
+      "publication": "2026-10",
+      "scope": "833,401 s; 15 erste Samples plus 7 Nachaufnahmen. Werbung wurde erkannt und ausgeschlossen. Kein kontinuierliches Review, keine vollständige Transkription.",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "20db32e31489cafba024bb4d01e921c486b61370addd66e2deeb33994bf1b86e",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S01",
+      "title": "The Verge: I tried out Apple’s HomeView smart display",
+      "url": "https://www.theverge.com/tech/1009877/apple-homeview-smart-home-display-hands-on",
+      "publication": "2026-10-13",
+      "scope": "Hands-on; Gesten, Tür-Authentifizierung, Siri-Demonstration, Rezept/Handoff",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "d3d5bc6ebce729dbf4783e676cf34eb5906b0b8c61b1d2da01a82df8aa5c2673",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S02",
+      "title": "MacRumors: 10 HomeView Features You Might Have Missed",
+      "url": "https://www.macrumors.com/2026/10/14/homeview-tidbits/",
+      "publication": "2026-10-14",
+      "scope": "Sekundärquelle; Details, keine eigene Alltagserprobung",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "97fc074750047864f5d404e764983b7a045e18c51d41271eab57c33a8ec6d563",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S03",
+      "title": "Gizmodo: Apple HomeView Hands-On",
+      "url": "https://gizmodo.com/apple-homeview-hands-on-2000825418",
+      "publication": "2026-10-13/14",
+      "scope": "Hands-on; Face-Wechsel, Long Press, Farben, betreute Demos",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "182c0b463f2516d9ecac53e54abebffc964c67114630b18a4784976f60d71bae",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S04",
+      "title": "CNN Underscored: Apple HomeView hands-on",
+      "url": "https://www.cnn.com/cnn-underscored/electronics/apple-homeview-hands-on",
+      "publication": "2026-10-13",
+      "scope": "Hands-on-Fotos und Artikel; Roh-HTML-Abruf 403, vollständiger Web-Fetch-Text gesichert",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "5326565d0f9316f85ecb201a64bdf6300e9b64e6615d85169094ce5d31e483ee",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S05",
+      "title": "Engadget: Apple unveils HomeView",
+      "url": "https://www.engadget.com/2285072/apple-launch-homeview-smart-display-siri-ai/",
+      "publication": "2026-10-13",
+      "scope": "Produktbericht; private Inhalte und Kopplung, einzelne nicht primär bestätigte Details markieren",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "0f6ca0d067c4f8853590ed176251ceb5031b9bc3b7beca41466609ad9473abd2",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S06",
+      "title": "Blake Crosley: Apple HomeView for Developers, day one",
+      "url": "https://blakecrosley.com/blog/apple-homeview-developers-day-one",
+      "publication": "2026-10-13 mit Updates bis 15.10.",
+      "scope": "Detaillierte Sekundäranalyse; vollständiger Text, spätere Updates nicht übergehen",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "33a106d72f3079ef57cb3357bc471d9666f46ee8e61e44857cbc6fd7d1f271d1",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S07",
+      "title": "TechRadar: I’ve tried Apple’s HomeView",
+      "url": "https://www.techradar.com/home/smart-home-hubs/ive-tried-apples-homeview-and-it-could-bring-my-smart-home-together-with-less-iphone-time",
+      "publication": "2026-10-14",
+      "scope": "Vollständiges HTML/Text; 11 Medien, darunter 4 echte animierte Gesten-GIFs. Erster Readability-Extrakt war nur eine Login-/Newsletterhülle und wurde nicht als Artikelbeleg verwendet.",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "634bc0aed0c14ae462f7511b4d53ff9eec8912ce52a0927ae3ce9c90b0396cfa",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S08",
+      "title": "AppleInsider: Apple HomeView hands on",
+      "url": "https://appleinsider.com/articles/26/10/14/apple-homeview-hands-on-so-many-questions-but-i-like-it",
+      "publication": "2026-10-14",
+      "scope": "Artikel und elf Originalbilder; Spiegel/Ringlicht, Flow, Kameras, Rezepte",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "32bcc29c51e94c8e4534f6b7869b2f8ffacb0d856fc03a262793fbb27a2205fe",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "S09",
+      "title": "AppleInsider: Devil is in the details",
+      "url": "https://appleinsider.com/articles/26/10/15/devil-is-in-the-details-tidbits-from-our-time-trying-homeview",
+      "publication": "2026-10-15",
+      "scope": "Artikel, Karte und eingebetteter Hands-on-Film; Fade, Alben, Rezepte, Kamera-Livefeeds",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "4e87aca6f3e250b335f710327998e81e9b772340d993c3e907c0e7e5426f5f95",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "D01",
+      "title": "Apple HIG: Widgets",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/widgets",
+      "publication": "Abruf 2026-10-16",
+      "scope": "Vollständige Markdown-Fassung; eigener HomeView-Abschnitt, öffentlicher Modular-Face, persönliche Home Screens, Nachtmodus",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "67d3e82a9e6c044ea16e0b66c247b1b484ec72d1cc4e34a3fb660bcb6f804af4",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "D02",
+      "title": "Apple Developer: CarPlay",
+      "url": "https://developer.apple.com/carplay/",
+      "publication": "Abruf 2026-10-16",
+      "scope": "Direkte Bestätigung von Audio-/Video-App-Unterstützung auf HomeView",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "0bf481392cf171652ca2f2c40244d1d95e12025f249fc3dc0f65e4e035b02be9",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "D03",
+      "title": "Apple Developer News",
+      "url": "https://developer.apple.com/news/",
+      "publication": "Abruf 2026-10-16",
+      "scope": "Hinweis auf Lizenzänderung, Abschnitte 6.4/6.4.1/6.4.2",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "dad269118c1456b3cc047ab554ff5b67cebc16d3768855ff9eaafcdf46959779",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "D04",
+      "title": "Apple CarPlay Developer Guide",
+      "url": "https://developer.apple.com/carplay/documentation/CarPlay-App-Programming-Guide.pdf",
+      "publication": "Oktober 2026",
+      "scope": "Heruntergeladenes Apple-PDF, maßgebliche Audios-/Video-Kategorien",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "e2c7d1a068de89f6f540f5f19312bd27dc8ddc8eed7c1d514d912a80042c093d",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "D05",
+      "title": "Apple HomeKit Dokumentations-JSON",
+      "url": "https://developer.apple.com/tutorials/data/documentation/homekit.json",
+      "publication": "Abruf 2026-10-16",
+      "scope": "Framework-Plattformliste; keine pauschale Methodengarantie",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "f32364593b5388454e2ab9a15cee5083e7095064037c60b9a062ba0098b3c5b0",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "D06",
+      "title": "Apple EventKit Dokumentations-JSON",
+      "url": "https://developer.apple.com/tutorials/data/documentation/eventkit.json",
+      "publication": "Abruf 2026-10-16",
+      "scope": "Framework-Plattformliste",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "57f1ddf728bf63f796b7bfe06246a262260ba8ef7bbe05f90b496ca49a861f51",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "D07",
+      "title": "Apple MusicKit Dokumentations-JSON",
+      "url": "https://developer.apple.com/tutorials/data/documentation/musickit.json",
+      "publication": "Abruf 2026-10-16",
+      "scope": "Framework-Plattformliste",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "05d15534bbd7707b65f2119dd60cba6a571aefe01436dade605f87c9db271b7e",
+      "currentWebAvailabilityTested": false
+    },
+    {
+      "id": "D08",
+      "title": "Apple HMHomeManager Dokumentations-JSON",
+      "url": "https://developer.apple.com/tutorials/data/documentation/homekit/hmhomemanager.json",
+      "publication": "Abruf 2026-10-16",
+      "scope": "Konkretes HomeKit-Symbol; Methodenprüfung bleibt nötig",
+      "archivedSourceAvailable": true,
+      "archivedSHA256": "d6a01b2bfbba6818b7bdf5b843ebc6b45bda868ad5b1c202166dc6df0de7a933",
+      "currentWebAvailabilityTested": false
+    }
+  ],
+  "states": [
+    {
+      "id": "UI01",
+      "title": "Modular: Datum, Uhr, Musik, Wetter",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "69268eb247f0eb3874647d497630c3fd23eab6968f4f51dc8a9d573deac8ace2",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        690,
+        241,
+        1234,
+        787
+      ],
+      "referencePixels": [
+        544,
+        546
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI02",
+      "title": "Fotoalbum Summer",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "24177a318e70ad3040faa66ca3c356b2f6dc766738aa2522c5f338d73f2e9c4a",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        1475,
+        241,
+        2019,
+        787
+      ],
+      "referencePixels": [
+        544,
+        546
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI03",
+      "title": "Snoopy Tag",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "8f111a5743195d81d67e7438633299b3b27301f91a38a100548aca2bf7a48630",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        2261,
+        241,
+        2805,
+        787
+      ],
+      "referencePixels": [
+        544,
+        546
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI04",
+      "title": "Fotos mit Tiefen-Uhr",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "1462746ce002719763ed0c25444f0b19b5b1a0fa169439459132e31c85b7aa2c",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        3048,
+        241,
+        3592,
+        787
+      ],
+      "referencePixels": [
+        544,
+        546
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI05",
+      "title": "Wetter-Face",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "3a13720c0baf4b58183a71322db6bab53927409d1f6c9359adf95ca6e6047188",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        297,
+        973,
+        841,
+        1517
+      ],
+      "referencePixels": [
+        544,
+        544
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI06",
+      "title": "Snoopy dunkel",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "dff0f8b920ea0f84e9422cecfd8df29e034e771af0195600b5ef1f8b3cb30e20",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        1084,
+        973,
+        1627,
+        1517
+      ],
+      "referencePixels": [
+        543,
+        544
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI07",
+      "title": "Home Modular",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "bc9810d9d2bd114ed8ff4621b03c0b299d698c54d22ac374e1e565c54dc62227",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        2657,
+        973,
+        3200,
+        1517
+      ],
+      "referencePixels": [
+        543,
+        544
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI08",
+      "title": "Kalender-Monat mit Uhrzeigern",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "e005f1c9f18a79557f63deff5cab9b9f2e31a3f40c09ec88018016fbf58f0e36",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        3443,
+        973,
+        3987,
+        1517
+      ],
+      "referencePixels": [
+        544,
+        544
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI09",
+      "title": "Abstrakte Digitaluhr, Name offen",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "5dc101060d5dd1d136ecf77bb953d8d6d172f24fc95b3bb2c5d374f5ef4c7a56",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        690,
+        1703,
+        1234,
+        2247
+      ],
+      "referencePixels": [
+        544,
+        544
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI10",
+      "title": "Analoguhr mit grossen Ziffern",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "b60c79578ff7ce9743d1aff308daffae50159c698964606bc8a859da6f7b6908",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        1475,
+        1703,
+        2019,
+        2247
+      ],
+      "referencePixels": [
+        544,
+        544
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI11",
+      "title": "Foto-Tiefen-Uhr, weitere Variante",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "c12e01f9cf989f4328fc415435c4ccbd1932f5e162fc64e6c000342f2140443c",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        2261,
+        1703,
+        2805,
+        2247
+      ],
+      "referencePixels": [
+        544,
+        544
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI12",
+      "title": "Analoguhr mit verblassenden Ziffern",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_montage_crop",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "referenceSHA256": "373328ce708acb389e333a3d112ba0efc8f79cc6f4fd612ddbbc6edf6401ebf9",
+      "sourcePixels": [
+        4284,
+        2496
+      ],
+      "cropBox": [
+        3048,
+        1703,
+        3592,
+        2247
+      ],
+      "referencePixels": [
+        544,
+        544
+      ],
+      "transform": "rectangular crop only, no perspective correction or redraw",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Apple product-page montage, visible face; official name only where independently stated",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI13",
+      "title": "Home: 3x3-Bedienraster",
+      "sourceID": "P03",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "a681ec1f9435974672ffc28a7209bfa3427243640255da24067a29b755eb8a82",
+      "referenceSHA256": "4b7a9b0d1a6e6206236788f291c4c46d9ae028b23921983bb688dc9c0cedb551",
+      "sourcePixels": [
+        1960,
+        1568
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1960,
+        1568
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI14",
+      "title": "Timer: Randmarkierungen",
+      "sourceID": "P03",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "0d1aa6c6f26eaefc6ac447a9a7733d3ae29556b749a7789f60d683cc1a9e80a2",
+      "referenceSHA256": "f30123edf50de6482f947e17d92a10e1e44a2d6a3b90e43127468c640764152f",
+      "sourcePixels": [
+        1960,
+        1568
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1960,
+        1568
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI15",
+      "title": "Rezept: Titel und Start Cooking",
+      "sourceID": "P03",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "4d3f0e5d7cac835dc0cf5556bdfd9fecbb56926fb87a7fefa3e0921b20e85963",
+      "referenceSHA256": "107966cfc6977aab1317c606ca99e3aa8634cce69f99a1fd3b532816f9e2c83f",
+      "sourcePixels": [
+        1960,
+        1568
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1960,
+        1568
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI16",
+      "title": "Persoenlicher Home Screen",
+      "sourceID": "P03",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "3c3f78e76ed1ced390eb2808a9c012804e18be8706a6f3965eed10ee46f185f7",
+      "referenceSHA256": "8f2272842564e5c99c53e8c62084b0066bd1b911ebca765ee7e3be1429e38407",
+      "sourcePixels": [
+        1306,
+        871
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1306,
+        871
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI17",
+      "title": "Siri: Kalender-Antwort",
+      "sourceID": "P03",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "4a6348b4638325f0387166f1d4cce259ea54ca02ca619bd78a363ed3cd4edcff",
+      "referenceSHA256": "f7468ffea23356cbed1d9f4d7fa00f37243a978c22610a7df9d759549ae6c4af",
+      "sourcePixels": [
+        1960,
+        1568
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1960,
+        1568
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI18",
+      "title": "Siri: Wissensantwort mit Bild",
+      "sourceID": "P03",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b0822a2c84691001771282f19049e121474a72cd7692d400cceae88681f32a53",
+      "referenceSHA256": "90baec5fbc8d4e5f837ec0b9bb435f627be0ac86f29d6f35d66c0cce96c8492b",
+      "sourcePixels": [
+        1960,
+        1568
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1960,
+        1568
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI19",
+      "title": "Wetter: Fernansicht",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "981cce06ef0b4c81b6d418a06673b550fea5c983381eec97fe12154610bb698e",
+      "referenceSHA256": "707318b1e829cc0f457ba806ea4c435cb857eb658785f84dce60e140c21b1dbb",
+      "sourcePixels": [
+        2880,
+        1520
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        2880,
+        1520
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI20",
+      "title": "Wetter: Nahansicht mit Vorhersage",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "41bbf045c70c6bc0d9d59d9f5c3513f667c5255e9db0722c7debecca9d6ecf9d",
+      "referenceSHA256": "040f866e17b70da16dfd8d6b5bc5f1425cd9793ffdc1b23fc82e9539b3a4fdb6",
+      "sourcePixels": [
+        2880,
+        1520
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        2880,
+        1520
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI21",
+      "title": "Home Modular: Kamera, Klima und Schalter",
+      "sourceID": "P01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "4a597e9dbfa0672c329b73b7ca456c50cfec4e02466c26463ae7fa9721a89576",
+      "referenceSHA256": "95403e06372b50f5a0a2e53cebc74662c76ca7c5888b59a41916c9c92ce2b93d",
+      "sourcePixels": [
+        2520,
+        1224
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        2520,
+        1224
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI22",
+      "title": "Musik: Lyrics, Artwork, Podcasts",
+      "sourceID": "P03",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "5ca067e8be5b0648f0e1e57e11a03069537580192491a4411fbb43a438864792",
+      "referenceSHA256": "d9a4c14ef5bc485cf25f160ebf7b7858473b4a9525626564063a1c5ca31d08cd",
+      "sourcePixels": [
+        1960,
+        1307
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1960,
+        1307
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI23",
+      "title": "FaceTime: Center Stage",
+      "sourceID": "P03",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "official_device_render",
+      "nativeScreenshot": false,
+      "sourceSHA256": "0588bc30843281ce3fbfcfde1b8d0613e2369dbf316c1925418233ea70e020f3",
+      "referenceSHA256": "28a0a051c18f2d0f24f09f03cbbc45516a582ffc968666c090a6aee2de2ba848",
+      "sourcePixels": [
+        1960,
+        1568
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1960,
+        1568
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Unmodified Apple product render, includes device housing",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI24",
+      "title": "Siri findet Rezept aus Nachricht",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "1ba228fa7e6480d3dacd80f4b1d14e8c1c26f1d5cc6c76e2407f615f60a45aa8",
+      "referenceSHA256": "904e0eab5704a7d33f9b0a84c6ac420fab783676093d4ba93bc7e225dc58d78f",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 23.0,
+      "evidence": "Apple CDN film at 23s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI25",
+      "title": "Kochen: Schrittansicht",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "cf699970906e285245947eb7792bfe7c058410e64624a9ce713276e91b9bf4e2",
+      "referenceSHA256": "6373b38da2c972ef2dbc70567d3b90f10c41371d80892ebdb78952adb96b2d13",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 27.0,
+      "evidence": "Apple CDN film at 27s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI26",
+      "title": "Kalender: Wochenleiste und Termine",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "46dab4ec24ecb3ef3d40510f00978f56c9e876daaa2f316877214fad7af42681",
+      "referenceSHA256": "67544317cd9ee7f6cb557e8f6d965903078112708d3ec7822737db61af2ca634",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 47.0,
+      "evidence": "Apple CDN film at 47s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI27",
+      "title": "FaceTime: eingehender Anruf",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "0c7afbb2f6e681b8b0401246245e97547c95e9e5cc6e3aec698d7c11312565cb",
+      "referenceSHA256": "7ea5bee537c4af331e9a150ac9c3a5cfdf8010e8abd11de5d82d95a66873c78e",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 60.0,
+      "evidence": "Apple CDN film at 60s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI28",
+      "title": "FaceTime: aktiver Anruf",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "5e9c546d2279e05937cb5ea7f993cd105e6d0c9a361ceaa97f13b92cbd9d5642",
+      "referenceSHA256": "4d41ed7d2f4b9ba7ef5b72160c81b765c57c220b82e6390918392a758fc55772",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 64.0,
+      "evidence": "Apple CDN film at 64s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI29",
+      "title": "FaceTime: mehrere Personen",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "65f6740d96fa51034d292a74f15c50fe84719054b0035bc9257afd4be24b9542",
+      "referenceSHA256": "8b3cf5a1b6817d35f869c7f8f3baa3a7095b762988189e4cd71d42755a9223fe",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 69.0,
+      "evidence": "Apple CDN film at 69s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI30",
+      "title": "Nachrichten: Konversation",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "0a3f7138a86acf012229f81dea098bb0475c12b43edfda24d6c75ca0613e00e3",
+      "referenceSHA256": "ad18abecb06fa012e8d4f3e04bd3247e30a10bc1c550776df982e657704c6652",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 98.0,
+      "evidence": "Apple CDN film at 98s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI31",
+      "title": "Privatsphaere: Recognizing",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "8c19042fc209a44d694d7050589e6585b980c8490b3f37d72e62898f40b1fbc3",
+      "referenceSHA256": "abe33dee0b134d171e4665a4824b4b009598c66537f1533e1651af702e492ad8",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 105.0,
+      "evidence": "Apple CDN film at 105s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI32",
+      "title": "Home: persoenliche Kacheln vor Thermostat",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "a464e4c3d424b850418c08f7c7e64ecb9e3db2d2ffdbdb82f4d0473f3a8ef8e0",
+      "referenceSHA256": "4dc17eed424187c2731af27f3c59f18566d5f7f7d3d503c0f6d820f13ed16c06",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 110.0,
+      "evidence": "Apple CDN film at 110s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI33",
+      "title": "Thermostat: Cooling to 70",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "d2a2ee02ef758beef09accfccf812fa48ea770e9def999000fbb217daffbf3db",
+      "referenceSHA256": "39d0cbcd2750ec8105d82e61c2cc003c296acf0d9a4d40f9942fec5f344a19fd",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 112.0,
+      "evidence": "Apple CDN film at 112s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI34",
+      "title": "Tuerkamera: Live und Gegensprechen",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "bcde3265f9165c2ced6649148955258b9d33a8086c9dfa7798209bc6f04e60bf",
+      "referenceSHA256": "96a6117a7ca838a720abfcace87e461bb117d98ce03e5afce10eb42cb784ca86",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 133.0,
+      "evidence": "Apple CDN film at 133s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI35",
+      "title": "Type to Siri: Tastatur und Musik",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "6eb266940bee0fd4eab3ac13fe5356807c4e3182f3388e1eebdacc30a9afe817",
+      "referenceSHA256": "8c4c104e636ba74787566d4a30b54d76697710e9820cd4a1ea7db5630847acbc",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 139.0,
+      "evidence": "Apple CDN film at 139s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI36",
+      "title": "Foto-Face: Uhr ueber Familienbild",
+      "sourceID": "V01",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "b06d6861bfe19e408f5376d1aba1b0d2b4a55b53edc08bd985cf44aeb396abef",
+      "referenceSHA256": "c7b7ae092be977208620bc711d0f28353804e0db3566f1980c98982fb9cae8c7",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "product-film",
+      "mediaSeconds": 168.0,
+      "evidence": "Apple CDN film at 168s, full frame, source clock, one-second sample",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI37",
+      "title": "Face-Editor: Farbauswahl",
+      "sourceID": "S01",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "3583c281eb28a322b63abb8653dfd5a85adf1e450450f31fe5104d612563f007",
+      "referenceSHA256": "16553706af50e183de50e97b24faf18be662a406856f200ba0c3e0178c155524",
+      "sourcePixels": [
+        2400,
+        1800
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        2400,
+        1800
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Event photograph, perspective retained, not native screenshot",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI38",
+      "title": "Home-App: Kamerauebersicht",
+      "sourceID": "S01",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "64a69a99bca8ea9fc1ae55b3832585260d2be3b9d5d578f4ed85926c277ef46a",
+      "referenceSHA256": "ff762e79fb44fa456d297ef512307e134598b61e39e71cb6a6b64597ebfaf25b",
+      "sourcePixels": [
+        2400,
+        1800
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        2400,
+        1800
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Event photograph, perspective retained, not native screenshot",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI39",
+      "title": "Modular-Face auf Wandgeraet",
+      "sourceID": "S04",
+      "sourcePublication": "2026-10-13",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "fdac0c425385928acdf0aa4fe72f0bfd74e28f9f8863b643863b101a89f2a8d1",
+      "referenceSHA256": "f2a70a8de8d60ea69fffc54d3eaf7d4e2a2f97f65519a05003eea23fa801770d",
+      "sourcePixels": [
+        1110,
+        624
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1110,
+        624
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Event photograph, perspective retained, not native screenshot",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI40",
+      "title": "Kameraraster vor Aufwaertsgeste",
+      "sourceID": "S07",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_event_gif_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "a07ebf75bf61ea62e8b618aebbf12bde13291f77fb286c373e3323715690862c",
+      "referenceSHA256": "a07ebf75bf61ea62e8b618aebbf12bde13291f77fb286c373e3323715690862c",
+      "sourcePixels": [
+        492,
+        496
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        492,
+        496
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "S07-gzDpuc57ze2wh9jKhdFaRN",
+      "mediaSeconds": 0.0,
+      "evidence": "Original GIF t=0ms",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI41",
+      "title": "App-Raster nach Aufwaertsgeste",
+      "sourceID": "S07",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_event_gif_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "03c8d127d6de57107c807bb096239a4195ce669c72629ecfeb47685e944e6651",
+      "referenceSHA256": "03c8d127d6de57107c807bb096239a4195ce669c72629ecfeb47685e944e6651",
+      "sourcePixels": [
+        492,
+        496
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        492,
+        496
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "S07-gzDpuc57ze2wh9jKhdFaRN",
+      "mediaSeconds": 2.1,
+      "evidence": "Original GIF t=2100ms",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI42",
+      "title": "Persoenlicher Home Screen mit mehreren Widgets",
+      "sourceID": "S07",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "4eeaf214dd9d5fec67ea4936e823b3502239e46386c57977d5082cbf44c86c98",
+      "referenceSHA256": "1fac819ee55c7eab4371b6202f8433516060ea6ca0a6d0205b0a26dda3cf419f",
+      "sourcePixels": [
+        2560,
+        1440
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        2560,
+        1440
+      ],
+      "transform": "format conversion only",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Original event photograph, perspective retained",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI43",
+      "title": "Musik: Browse und Katalog",
+      "sourceID": "S07",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "c58b40d8b0a65484aeb405d59328352d186407d78fc47a6ce3c2d3a9348fa824",
+      "referenceSHA256": "281452e7295d1154c98418961d057aeb42cdf3682ced644f88006f0de3fb478c",
+      "sourcePixels": [
+        2560,
+        1440
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        2560,
+        1440
+      ],
+      "transform": "format conversion only",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Original event photograph, perspective retained",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI44",
+      "title": "Face-Wechsel: ueberlappende Ansichten",
+      "sourceID": "S07",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_event_gif_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "ec069ccd38a81c0103313e09858da6ded79a9b867ff672f748f1c4977fa9b3b6",
+      "referenceSHA256": "ec069ccd38a81c0103313e09858da6ded79a9b867ff672f748f1c4977fa9b3b6",
+      "sourcePixels": [
+        492,
+        546
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        492,
+        546
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "S07-2SGgVQxTxWtexDdgiVfKnQ",
+      "mediaSeconds": 2.1,
+      "evidence": "Original GIF t=2100ms",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI45",
+      "title": "Home Modular mit grosser Analoguhr",
+      "sourceID": "S07",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_event_gif_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "9cf52687e20ea87c13521ebafc3bf855bd1cc9c7ff90b00a15fccd80887dd2be",
+      "referenceSHA256": "9cf52687e20ea87c13521ebafc3bf855bd1cc9c7ff90b00a15fccd80887dd2be",
+      "sourcePixels": [
+        492,
+        546
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        492,
+        546
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "S07-2SGgVQxTxWtexDdgiVfKnQ",
+      "mediaSeconds": 5.67,
+      "evidence": "Original GIF t=5670ms",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI46",
+      "title": "Spiegelmodus mit hellem Bildschirmrand",
+      "sourceID": "S08",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "383615237a7834803ed08fdaa251a6155e1a0bb3aa61766d422ddd64275f6695",
+      "referenceSHA256": "7fa55448e0d8c9de75e7c09791952fa3df0c0d62cefd682f0782430628d28982",
+      "sourcePixels": [
+        1312,
+        738
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1312,
+        738
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Actual event photo, native source image downloaded through public browser fetch",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI47",
+      "title": "Flow: abstrakte reaktive Uhr",
+      "sourceID": "S08",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "0bcbccaab9b009d2160c73eccd2bad2d217ebc5eebf5d9108f27671a469264a3",
+      "referenceSHA256": "8a59c23b998dab8270ad7253296f6f57e8e16588e9e9d349d39b88e5b78d62f1",
+      "sourcePixels": [
+        1312,
+        738
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1312,
+        738
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Photo caption explicitly identifies Flow",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI48",
+      "title": "Kameraeinzelansicht im Querbild",
+      "sourceID": "S08",
+      "sourcePublication": "2026-10-14",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "7b2c374bd7a717f7363068e927eecf9550466ed88043deb675ed3786535629fc",
+      "referenceSHA256": "930bb23408fd20b627ca6ed0b6f4e3d59174e14ce9c7242731adce5f8f6801e4",
+      "sourcePixels": [
+        1312,
+        738
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1312,
+        738
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Photo with Back Yard Camera title, grid and microphone controls",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI49",
+      "title": "Siri-Routenkarte",
+      "sourceID": "S09",
+      "sourcePublication": "2026-10-15",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "perspective_event_photo",
+      "nativeScreenshot": false,
+      "sourceSHA256": "1e9c5ffbb5436f279a38aa9e99059a43cf301618f0f0bd1cfd9eaef3ed093154",
+      "referenceSHA256": "442509df6619ebb7dad773ae156d60e661649ab7d4ab024e07a7b64f49d3845f",
+      "sourcePixels": [
+        1312,
+        683
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1312,
+        683
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": null,
+      "mediaSeconds": null,
+      "evidence": "Photo of route response card",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI50",
+      "title": "Privater Inhalt gesperrt/verwischt",
+      "sourceID": "V03",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "0925926cdac9142a770ff5831c515108b56356558fbbc03a954dbe9a1b7b893b",
+      "referenceSHA256": "97c4901a4c7c70dea9d3011a796efa8c69dc710bf1aba2af1a4d97a16368dc87",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "appleinsider-actual",
+      "mediaSeconds": 420.66,
+      "evidence": "actual video mediaTime 420.66 seconds, sample only",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    },
+    {
+      "id": "UI51",
+      "title": "Thermostat im echten Demo-Haus",
+      "sourceID": "V03",
+      "sourcePublication": "2026-10",
+      "capturedOn": "2026-10-16",
+      "verifiedOn": "2026-10-22",
+      "kind": "sampled_video_frame",
+      "nativeScreenshot": false,
+      "sourceSHA256": "06eb71d9631c7c512685239f73f3e9e5772f43573b047c2d248b5e7fb50207f6",
+      "referenceSHA256": "a35625b7e947d880b2312afddca57681c3a209cd08287340cdda0509130042b6",
+      "sourcePixels": [
+        1280,
+        720
+      ],
+      "cropBox": null,
+      "referencePixels": [
+        1280,
+        720
+      ],
+      "transform": "format conversion only, full source image",
+      "sequenceID": "appleinsider-actual",
+      "mediaSeconds": 720.0,
+      "evidence": "actual video t=720s",
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+    }
+  ],
+  "faceVisualGroups": [
+    {
+      "id": "modular",
+      "references": [
+        "UI01",
+        "UI39"
+      ],
+      "replicaFaces": [
+        "Modular"
+      ],
+      "remainingGap": "Exact font/light and full widget combinations unaccepted; UI39 is perspective."
+    },
+    {
+      "id": "photo-gallery",
+      "references": [
+        "UI02"
+      ],
+      "replicaFaces": [
+        "Photos"
+      ],
+      "remainingGap": "Selected album variant; original complete chooser/rotation timing not observed."
+    },
+    {
+      "id": "snoopy",
+      "references": [
+        "UI03",
+        "UI06"
+      ],
+      "replicaFaces": [],
+      "remainingGap": "Missing implementation and usable licensed full scene/timeline assets; issue #14 remains blocked."
+    },
+    {
+      "id": "photo-depth",
+      "references": [
+        "UI04",
+        "UI11",
+        "UI36"
+      ],
+      "replicaFaces": [
+        "Photos"
+      ],
+      "remainingGap": "Multiple visible photo variants, not proof of separate face identities. Native iPad segmentation, complete forms/light and algorithm remain open."
+    },
+    {
+      "id": "weather",
+      "references": [
+        "UI05",
+        "UI19",
+        "UI20"
+      ],
+      "replicaFaces": [
+        "Weather"
+      ],
+      "remainingGap": "Near/far views documented; full original weather states/light remain incomplete."
+    },
+    {
+      "id": "home-modular",
+      "references": [
+        "UI07",
+        "UI21"
+      ],
+      "replicaFaces": [
+        "Home Modular"
+      ],
+      "remainingGap": "Own prism/material detail not fully accepted; actual Home controls remain disabled."
+    },
+    {
+      "id": "calendar",
+      "references": [
+        "UI08"
+      ],
+      "replicaFaces": [
+        "Calendar"
+      ],
+      "remainingGap": "One original month, not a complete locale/month/style catalogue."
+    },
+    {
+      "id": "unnamed-digital",
+      "references": [
+        "UI09"
+      ],
+      "replicaFaces": [],
+      "remainingGap": "Official identity unresolved. Do not silently equate it to Flow or count a new original face."
+    },
+    {
+      "id": "large-numerals",
+      "references": [
+        "UI10"
+      ],
+      "replicaFaces": [
+        "Numerals"
+      ],
+      "remainingGap": "Working name is replica terminology; complete original glyph/time/style comparison open."
+    },
+    {
+      "id": "fading-numerals",
+      "references": [
+        "UI12"
+      ],
+      "replicaFaces": [
+        "Fade"
+      ],
+      "remainingGap": "Static state only; complete original fade curve and all phase boundaries unknown."
+    },
+    {
+      "id": "home-clock",
+      "references": [
+        "UI45"
+      ],
+      "replicaFaces": [
+        "Home Modular Clock"
+      ],
+      "remainingGap": "Observed event-GIF endpoint; exact full original name/order/light not proved."
+    },
+    {
+      "id": "flow",
+      "references": [
+        "UI47"
+      ],
+      "replicaFaces": [
+        "Flow"
+      ],
+      "remainingGap": "Caption identifies Flow; perspective photo does not establish native font axes or motion."
+    },
+    {
+      "id": "camera-face",
+      "references": [
+        "UI40"
+      ],
+      "replicaFaces": [
+        "Home Camera"
+      ],
+      "remainingGap": "Observed event-GIF state. Synthetic repeated stills are not live original camera parity."
+    }
+  ],
+  "uniqueOriginalFaceCount": null,
+  "faceCountReason": "Visible variants and uncertain names cannot establish a unique complete original identity count.",
+  "optionalReplicaFaces": [
+    "Watch Modular",
+    "Infograph Modular",
+    "Modular Duo",
+    "Modular Compact"
+  ],
+  "orderEvidence": [
+    {
+      "kind": "official_montage_reading_order_not_carousel",
+      "references": [
+        "UI01",
+        "UI02",
+        "UI03",
+        "UI04",
+        "UI05",
+        "UI06",
+        "UI07",
+        "UI08",
+        "UI09",
+        "UI10",
+        "UI11",
+        "UI12"
+      ],
+      "limit": "Marketing montage is not a proved swipe order."
+    },
+    {
+      "kind": "observed_partial_gesture_sequences",
+      "sequenceIDs": [
+        "S07-2SGgVQxTxWtexDdgiVfKnQ",
+        "S07-SLGADnGeMyNj6CZ6geg9VP",
+        "S07-ZrX5EXJ3cpN3jSaC7GjMdX",
+        "S07-gzDpuc57ze2wh9jKhdFaRN"
+      ],
+      "limit": "Only visible endpoints/overlap order; no complete original face order inferred."
+    },
+    {
+      "kind": "observed_partial_gesture_endpoints",
+      "sequenceID": "S07-2SGgVQxTxWtexDdgiVfKnQ",
+      "endpoints": [
+        {
+          "milliseconds": 0,
+          "visual": "reactive fluid digits",
+          "referenceCandidates": [
+            "UI09",
+            "UI47"
+          ]
+        },
+        {
+          "milliseconds": 630,
+          "visual": "fading analogue numerals",
+          "referenceCandidates": [
+            "UI12"
+          ]
+        },
+        {
+          "milliseconds": 2310,
+          "visual": "modular agenda/date/clock/weather",
+          "referenceCandidates": [
+            "UI01"
+          ]
+        },
+        {
+          "milliseconds": 3780,
+          "visual": "photo depth time",
+          "referenceCandidates": [
+            "UI04",
+            "UI11"
+          ]
+        },
+        {
+          "milliseconds": 5250,
+          "visual": "home with large analogue clock",
+          "referenceCandidates": [
+            "UI45"
+          ]
+        }
+      ],
+      "limit": "Observed sequence order, not a complete original carousel or proof all names are canonical."
+    }
+  ],
+  "originalStateGaps": [
+    {
+      "id": "setup",
+      "uncertainty": "Complete setup/user enrollment/device transfer not shown",
+      "issues": [
+        66,
+        77
+      ],
+      "partialReferences": [],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "face-selector",
+      "uncertainty": "Complete picker order, all colors/styles and empty/removed/new original variants unknown",
+      "issues": [
+        5,
+        7
+      ],
+      "partialReferences": [
+        "UI37",
+        "UI44"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "face-transition",
+      "uncertainty": "Swipe reference available only as timed event GIFs; velocity, cancellation and exact thresholds unproved",
+      "issues": [
+        6
+      ],
+      "partialReferences": [
+        "UI40",
+        "UI41",
+        "UI44",
+        "UI45"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "night-distance",
+      "uncertainty": "Snoopy dark and Weather near/far observed; automatic thresholds/other night variants unknown",
+      "issues": [
+        13
+      ],
+      "partialReferences": [
+        "UI03",
+        "UI06",
+        "UI19",
+        "UI20"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "photo",
+      "uncertainty": "Album/depth examples known; complete original chooser/transition algorithm unknown",
+      "issues": [
+        11
+      ],
+      "partialReferences": [
+        "UI02",
+        "UI04",
+        "UI11",
+        "UI36"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "timer",
+      "uncertainty": "One resting timer; create/end/multiple/restart/error original states missing",
+      "issues": [
+        49,
+        52
+      ],
+      "partialReferences": [
+        "UI14"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "world-clock-alarm-reminder",
+      "uncertainty": "Full original screens/empty/error states not present",
+      "issues": [
+        48,
+        52,
+        53
+      ],
+      "partialReferences": [],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "calendar",
+      "uncertainty": "Month and agenda known; full edit/locale/selection rules unknown",
+      "issues": [
+        22,
+        47
+      ],
+      "partialReferences": [
+        "UI08",
+        "UI26"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "recipe-browser",
+      "uncertainty": "Cover/cooking known; full ingredients/pin/browser/error flow not demonstrated",
+      "issues": [
+        38
+      ],
+      "partialReferences": [
+        "UI15",
+        "UI24",
+        "UI25"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "camera",
+      "uncertainty": "Face/grid/live detail known; full failure/archive/event lifecycle unobserved",
+      "issues": [
+        27,
+        28,
+        29
+      ],
+      "partialReferences": [
+        "UI34",
+        "UI38",
+        "UI40",
+        "UI48"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "mirror",
+      "uncertainty": "One event photo, not all zoom/ringlight/permission states",
+      "issues": [
+        64
+      ],
+      "partialReferences": [
+        "UI46"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "identity-privacy",
+      "uncertainty": "Recognition and blurred state known; full switch/leave/reidentify/guest/error rules incomplete",
+      "issues": [
+        66,
+        67
+      ],
+      "partialReferences": [
+        "UI31",
+        "UI50"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "assistant",
+      "uncertainty": "Text/image/calendar/route examples known; complete response grammar/context/gesture boundaries not shown",
+      "issues": [
+        36,
+        38
+      ],
+      "partialReferences": [
+        "UI17",
+        "UI18",
+        "UI24",
+        "UI35",
+        "UI49"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "music",
+      "uncertainty": "Player/catalog/content render shown; no complete OS authorization/offline/queue proof",
+      "issues": [
+        57,
+        58,
+        61
+      ],
+      "partialReferences": [
+        "UI22",
+        "UI35",
+        "UI43"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "system-services",
+      "uncertainty": "FaceTime/messages renders show original system abilities, not public replica APIs",
+      "issues": [
+        44,
+        74
+      ],
+      "partialReferences": [
+        "UI23",
+        "UI27",
+        "UI28",
+        "UI29",
+        "UI30"
+      ],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "errors-empty",
+      "uncertainty": "No comprehensive original offline/permission/connection/error/empty collection",
+      "issues": [
+        7,
+        21,
+        38,
+        67
+      ],
+      "partialReferences": [],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "accessibility",
+      "uncertainty": "No full original VoiceOver/large text/RTL/assistive-input reference set",
+      "issues": [
+        73,
+        74
+      ],
+      "partialReferences": [],
+      "status": "unresolved-original-state"
+    },
+    {
+      "id": "performance",
+      "uncertainty": "No original runtime energy/frame-time measurements supplied by these images",
+      "issues": [
+        81
+      ],
+      "partialReferences": [],
+      "status": "unresolved-original-state"
+    }
+  ],
+  "motionSequences": [
+    {
+      "sourceID": "S07",
+      "sequenceID": "S07-2SGgVQxTxWtexDdgiVfKnQ",
+      "durationMilliseconds": 5880,
+      "sourceFrames": 84,
+      "verifiedSamples": 28,
+      "sourceSHA256": "4c740fe2483c54c0a145d7267c3c3eb809ebc3f4831a83aed4f51b84286c33e7"
+    },
+    {
+      "sourceID": "S07",
+      "sequenceID": "S07-SLGADnGeMyNj6CZ6geg9VP",
+      "durationMilliseconds": 5180,
+      "sourceFrames": 74,
+      "verifiedSamples": 25,
+      "sourceSHA256": "32b7a4e45aa9efa61aa9ed57a07fdfdc37430ae0c7016f5768040c8631a29ab5"
+    },
+    {
+      "sourceID": "S07",
+      "sequenceID": "S07-ZrX5EXJ3cpN3jSaC7GjMdX",
+      "durationMilliseconds": 7700,
+      "sourceFrames": 110,
+      "verifiedSamples": 37,
+      "sourceSHA256": "1cf0fe1bcb3af98f21b58c595d5370f8014f1dc093dc7f9f90bc6812b8c16d54"
+    },
+    {
+      "sourceID": "S07",
+      "sequenceID": "S07-gzDpuc57ze2wh9jKhdFaRN",
+      "durationMilliseconds": 2170,
+      "sourceFrames": 31,
+      "verifiedSamples": 11,
+      "sourceSHA256": "d0b25f5bfbb8047269a00be3fcba719b419f9c5018234d293d957987f8df53a0"
+    }
+  ],
+  "verification": {
+    "referenceCount": 51,
+    "sourceCount": 24,
+    "uniquePrivateFileHashesVerified": 216,
+    "pixelTransformsVerified": 51,
+    "gifSamplesVerified": 101,
+    "nativeScreenshots": 0,
+    "publicReferenceImagesIncluded": 0,
+    "mappedFeatureCount": 105,
+    "privateContactSheetsViewed": 5,
+    "gifContactSheetsViewed": 4
+  },
+  "featureMap": [
+    {
+      "id": "F001",
+      "function": "Mehrere wechselbare Faces",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "S03",
+        "S07"
+      ],
+      "referenceStates": [
+        "UI01",
+        "UI02",
+        "UI03",
+        "UI04",
+        "UI05",
+        "UI06",
+        "UI07",
+        "UI08",
+        "UI09",
+        "UI10",
+        "UI11",
+        "UI12"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI01-UI12; seitliche Übergänge in S07-GIFs",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/5"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F002",
+      "function": "Seitliches Wischen zwischen Faces",
+      "sourceIDs": [
+        "S03",
+        "S07"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "GIF 2SGg..., zeitgestempelte Einzelbilder",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/6"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F003",
+      "function": "Face per langem Drücken bearbeiten",
+      "sourceIDs": [
+        "S03",
+        "S01"
+      ],
+      "referenceStates": [
+        "UI37"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI37 zeigt Farbauswahl; Auslösegeste im Bericht",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/7"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F004",
+      "function": "Farben und Stile anpassen",
+      "sourceIDs": [
+        "S01",
+        "S03"
+      ],
+      "referenceStates": [
+        "UI37"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI37; nicht alle Einstellungsseiten bekannt",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/7"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F005",
+      "function": "Widgets/Komplikationen wählen",
+      "sourceIDs": [
+        "P03",
+        "S07",
+        "D01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Modular und persönlicher Home Screen getrennt",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/7"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F006",
+      "function": "Geteilter Modular-Face mit bis zu vier Widgets",
+      "sourceIDs": [
+        "D01"
+      ],
+      "referenceStates": [
+        "UI01"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI01; pro Haushalt ein gemeinsamer Modular-Face",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/8"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F007",
+      "function": "Widgets mehrerer Haushaltsmitglieder gemeinsam anzeigen",
+      "sourceIDs": [
+        "D01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Kann persönliche Kalender explizit für alle sichtbar machen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/8"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F008",
+      "function": "Persönlicher Home Screen pro Nutzer",
+      "sourceIDs": [
+        "P03",
+        "D01"
+      ],
+      "referenceStates": [
+        "UI16",
+        "UI32"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI16, UI32",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/9"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F009",
+      "function": "App-Raster durch Aufwärtswischen",
+      "sourceIDs": [
+        "S01",
+        "S07"
+      ],
+      "referenceStates": [
+        "UI40",
+        "UI41"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI40/UI41 und zugehöriges GIF zeigen Übergang",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/6"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F010",
+      "function": "Informationsdichte abhängig von Entfernung",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI19",
+        "UI20"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI19/UI20; UI-Wechsel und Marketingkamerazoom unterscheiden",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/10"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F011",
+      "function": "Einzelfoto oder rotierende Galerie",
+      "sourceIDs": [
+        "P01"
+      ],
+      "referenceStates": [
+        "UI02",
+        "UI04",
+        "UI11",
+        "UI36"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI02, UI04, UI11, UI36",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/11"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F012",
+      "function": "Geteilte Fotoalben",
+      "sourceIDs": [
+        "P01",
+        "S08",
+        "S09"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Keine unbeschränkte Familienkontenfreigabe",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/11"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F013",
+      "function": "Uhr hinter freigestelltem Fotomotiv",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI04",
+        "UI11",
+        "UI36"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI04/UI11/UI36; Tiefenwirkung sichtbar",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/12"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F014",
+      "function": "Dynamische Darstellung nach Tageszeit",
+      "sourceIDs": [
+        "P01",
+        "S02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Detaillierte Regeln noch unbekannt",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/13"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F015",
+      "function": "Snoopy reagiert auf Wetter, Datum und Tageszeit",
+      "sourceIDs": [
+        "P01",
+        "S02",
+        "S08"
+      ],
+      "referenceStates": [
+        "UI03",
+        "UI06"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI03/UI06; GIF mit Animation",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/14"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F016",
+      "function": "Flow reagiert auf Bewegung im Raum",
+      "sourceIDs": [
+        "P01",
+        "S08",
+        "S09"
+      ],
+      "referenceStates": [
+        "UI47"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI47, Bild ausdrücklich als Flow beschriftet; Bewegung bleibt Hersteller-/Berichtsangabe",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/10"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F017",
+      "function": "Fade mit verblassenden Uhrziffern",
+      "sourceIDs": [
+        "S08",
+        "S09"
+      ],
+      "referenceStates": [
+        "UI12"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI12 ähnelt Beschreibung; Name nur sekundär belegt",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/18"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F018",
+      "function": "Analoge und abstrakte digitale Uhrvarianten",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "S07"
+      ],
+      "referenceStates": [
+        "UI09",
+        "UI10"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI09/UI10 und Face-Editor",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/19"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F019",
+      "function": "Wetter-Face mit Details",
+      "sourceIDs": [
+        "P01"
+      ],
+      "referenceStates": [
+        "UI05"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI05: Temperatur, Uhrzeit, Wind, Feuchte, Luftqualität, Sonnenuntergang",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/21"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F020",
+      "function": "Monatskalender-Face",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI08"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI08",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/22"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F021",
+      "function": "Nachtmodus mit monochrom-roter Widgetdarstellung",
+      "sourceIDs": [
+        "D01",
+        "S08"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Keine vollständige eigene Original-Screenshotserie",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/13"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F022",
+      "function": "Home Modular mit direkt bedienbaren Gerätekacheln",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI07",
+        "UI21"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI07/UI21",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/23"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F023",
+      "function": "Home-Übersicht mit 3x3-Raster",
+      "sourceIDs": [
+        "P03"
+      ],
+      "referenceStates": [
+        "UI13"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI13",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/23"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F024",
+      "function": "Thermostat direkt über Pfeile ändern",
+      "sourceIDs": [
+        "P01",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI07",
+        "UI21"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI07/UI21",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/24"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F025",
+      "function": "Thermostat als farbige Vollbildansicht",
+      "sourceIDs": [
+        "V01"
+      ],
+      "referenceStates": [
+        "UI33"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI33: Cooling to 70",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/24"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F026",
+      "function": "Licht steuern",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI07",
+        "UI13"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI07/UI13; genaue Detailregler nicht vollständig belegt",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/24"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F027",
+      "function": "Lüfter steuern",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI13",
+        "UI21"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI13/UI21",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/24"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F028",
+      "function": "Türschloss mit zusätzlicher Authentifizierung",
+      "sourceIDs": [
+        "S01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI13"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI13; Authentifizierung von S01 berichtet",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/25"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F029",
+      "function": "Szenen direkt starten",
+      "sourceIDs": [
+        "P01",
+        "S01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Good Morning, Good Night und weitere Szenenkacheln",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/26"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F030",
+      "function": "Automationen und Routinen bedienen",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "S01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Genaue Bearbeitungsoberfläche offen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/26"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F031",
+      "function": "Rollläden/smarte Beschattung",
+      "sourceIDs": [
+        "S08"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Reporter nennt geplante Nutzung; keine vollständige UI-Sequenz",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/24"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F032",
+      "function": "Home Camera mit bis zu neun Livefeeds",
+      "sourceIDs": [
+        "P01",
+        "S09",
+        "S07"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Kamera-GIF zeigt mehrere Feeds; Grenze neun Herstellerangabe",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/27"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F033",
+      "function": "Kameraeinzelansicht und benachbarte Geräte",
+      "sourceIDs": [
+        "S01",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI34"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI34; zusätzliche Aktionsauswahl laut S01",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/27"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F034",
+      "function": "Türklingel blendet Liveansicht ein",
+      "sourceIDs": [
+        "V01",
+        "P03",
+        "S08"
+      ],
+      "referenceStates": [
+        "UI34"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI34",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/28"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F035",
+      "function": "Gegensprechen über Kamera",
+      "sourceIDs": [
+        "V01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Gelbe Mikrofontaste, Filmnutzung",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/29"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F036",
+      "function": "HKSV erkennt Personen, bekannte Gesichter, Tiere, Pakete, Fahrzeuge",
+      "sourceIDs": [
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Kamera- und iCloud+-abhängig",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/30"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F037",
+      "function": "Videobeschreibungen und natürliche Suche im HKSV-Archiv",
+      "sourceIDs": [
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Geeigneter iCloud+-Plan und Apple-Intelligence-Einrichtung",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/30"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F038",
+      "function": "Zusammengehörige Hausmitteilungen gruppieren",
+      "sourceIDs": [
+        "P01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Ankunft, Tür, Alarm als Beispiel; keine Liveprüfung",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/31"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F039",
+      "function": "Rauch-/CO-Alarmgeräusche erkennen und melden",
+      "sourceIDs": [
+        "P01",
+        "P02",
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Sicherheitsfunktion, nicht als gleichwertige iPad-Erkennung zusagen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/32"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F040",
+      "function": "Eigene Temperatur-/Feuchtesensoren für Home-Automationen",
+      "sourceIDs": [
+        "P02",
+        "S02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Hardwareeigenschaft des Originals",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/32"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F041",
+      "function": "Allgemeinwissen ohne persönlichen Apple-Intelligence-Partner",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "S02"
+      ],
+      "referenceStates": [
+        "UI18"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI18",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/33"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F042",
+      "function": "Persönlichen Kontext aus Nachrichten/Kalender finden",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI17",
+        "UI24"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI17/UI24",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/34"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F043",
+      "function": "Mehrstufige persönliche und Hausaktionen",
+      "sourceIDs": [
+        "P03",
+        "S01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Flugankunft und Kaffeemaschine im betreuten Demo-Bericht",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/35"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F044",
+      "function": "Natürlicher fortgesetzter Dialog",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Latenz und Zuverlässigkeit nicht gemessen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/33"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F045",
+      "function": "Onscreen Awareness",
+      "sourceIDs": [
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Kein vollständiger öffentlicher Drittanbieter-Zugang nachgewiesen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/34"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F046",
+      "function": "Weiße Antwortansicht mit Text, Bild und Karten",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI17",
+        "UI18",
+        "UI24"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI17/UI18/UI24",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/36"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F047",
+      "function": "Aktivieren mit Siri oder Hey Siri",
+      "sourceIDs": [
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Siri ohne Hey zunächst Englisch",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/37"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F048",
+      "function": "Aktivieren durch Wischen am oberen Rand",
+      "sourceIDs": [
+        "P02",
+        "S02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Abgrenzung zu Top-Rechts-Control-Center offen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/38"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F049",
+      "function": "Type to Siri mit Bildschirmtastatur",
+      "sourceIDs": [
+        "P02",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI35"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI35",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/38"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F050",
+      "function": "Dialogverlauf über Siri-App/iCloud fortsetzen",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Kein eigener Chat-Sync-Zugang für Drittapps abgeleitet",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/39"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F051",
+      "function": "Anpassbare expressive Stimme und Sprechtempo",
+      "sourceIDs": [
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Zusätzliche Geräte-/RAM-Voraussetzungen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/40"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F052",
+      "function": "Englisch-Beta, Nutzungslimits und spätere kostenpflichtige Erweiterung",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Keine heutige Zahlungsentscheidung für unser Projekt",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/41"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F053",
+      "function": "FaceTime-Anruf annehmen oder ablehnen",
+      "sourceIDs": [
+        "P01",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI27"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI27",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/42"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F054",
+      "function": "Aktiver FaceTime-Anruf mit Kamera/Mikrofon/Beenden",
+      "sourceIDs": [
+        "V01"
+      ],
+      "referenceStates": [
+        "UI28",
+        "UI29"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI28/UI29",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/42"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F055",
+      "function": "Center Stage hält mehrere Personen im Bild",
+      "sourceIDs": [
+        "P02",
+        "P03",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI23",
+        "UI29"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI23/UI29",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/43"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F056",
+      "function": "FaceTime-Audio und Sprachtelefonate",
+      "sourceIDs": [
+        "P01",
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Geräte-/Netzvoraussetzungen beachten",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/44"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F057",
+      "function": "Nachrichten lesen und per Stimme senden",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI30"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI30; keine API-Freigabe für fremde Nachrichten daraus ableiten",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/44"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F058",
+      "function": "Intercom an HomeView/HomePods und persönliche Geräte",
+      "sourceIDs": [
+        "P01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Eigene App braucht eigene unterstützte Integration",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/45"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F059",
+      "function": "Find My für Geräte, AirTags und freigegebene Personen",
+      "sourceIDs": [
+        "P01",
+        "V01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Film demonstriert Finden; keine vollständige Karten-/Such-UI",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/46"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F060",
+      "function": "Kalenderereignisse anzeigen",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI17",
+        "UI26"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI17/UI26",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/47"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F061",
+      "function": "Wochenleiste und farbige Termine, abgesagte Termine",
+      "sourceIDs": [
+        "V01"
+      ],
+      "referenceStates": [
+        "UI26"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI26",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/47"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F062",
+      "function": "Erinnerungen und To-do-Listen",
+      "sourceIDs": [
+        "P01",
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Keine vollständige Original-App-Screenshotfolge",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/48"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F063",
+      "function": "Mehrere Timer starten und stoppen",
+      "sourceIDs": [
+        "P01",
+        "S02"
+      ],
+      "referenceStates": [
+        "UI14"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI14 ist nur ein laufender Timer",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/49"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F064",
+      "function": "Timer als großer Countdown mit Randstrichen",
+      "sourceIDs": [
+        "P03"
+      ],
+      "referenceStates": [
+        "UI14"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI14",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/49"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F065",
+      "function": "Timer über Sprache",
+      "sourceIDs": [
+        "P01",
+        "S02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Keine Latenz-/Endsignalprüfung",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/50"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F066",
+      "function": "Timer/Intercom als Live Activities über anderen Apps",
+      "sourceIDs": [
+        "P01",
+        "S02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Systemhost versus eigene App-Overlays unterscheiden",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/51"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F067",
+      "function": "Alarms als eingebaute App",
+      "sourceIDs": [
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Detail-UI noch offen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/52"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F068",
+      "function": "World Clock als eingebaute App",
+      "sourceIDs": [
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Detail-UI noch offen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/53"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F069",
+      "function": "Safari als eingebaute App",
+      "sourceIDs": [
+        "P02",
+        "S01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Keine vollständige freie Browser-Navigation gesichtet",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/54"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F070",
+      "function": "Safari-Rezept in vereinfachte Kochansicht umwandeln",
+      "sourceIDs": [
+        "P01",
+        "V01",
+        "S01"
+      ],
+      "referenceStates": [
+        "UI15",
+        "UI25"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI15/UI25",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/55"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F071",
+      "function": "Rezeptcover mit Titel, Herkunft, Dauer und Portionen",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI15"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI15",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/55"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F072",
+      "function": "Ingredients und Start Cooking als getrennte Aktionen",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI15"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI15; Ingredients-Folgezustand nicht vollständig gesichert",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/55"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F073",
+      "function": "Schrittweise große Kochanleitung",
+      "sourceIDs": [
+        "V01",
+        "P01"
+      ],
+      "referenceStates": [
+        "UI25"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI25",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/55"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F074",
+      "function": "Inline-Timer aus Rezeptschritten",
+      "sourceIDs": [
+        "S01",
+        "S03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Nicht mit bloßem Vorhandensein einer Timer-App verwechseln",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/55"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F075",
+      "function": "Kochschritte per Stimme weiterführen",
+      "sourceIDs": [
+        "S08",
+        "S09"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Berichtete Funktion, keine gemessene Sprachprüfung",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/50"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F076",
+      "function": "Rezepte für später anheften",
+      "sourceIDs": [
+        "S08",
+        "S09"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Pin-Dialog und Ablageansicht noch offen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/55"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F077",
+      "function": "Handoff für Rezepte",
+      "sourceIDs": [
+        "P01",
+        "S01",
+        "S07"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Original-iPhone zu HomeView, keine allgemeine Fremd-App-Steuerung",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/56"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F078",
+      "function": "Apple Music wiedergeben",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI22"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI22, V02",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/57"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F079",
+      "function": "Cover, animiertes Artwork und Lyrics",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI22"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI22; API-Zugang je Inhalt separat",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/58"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F080",
+      "function": "Play/Pause, Titelwechsel und Fortschritt",
+      "sourceIDs": [
+        "P01",
+        "V02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Player und Nahaufnahmen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/57"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F081",
+      "function": "Musik-Browse-/Bibliotheksansicht",
+      "sourceIDs": [
+        "S07"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Pressefoto vPaf... zeigt Katalog/Browse",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/57"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F082",
+      "function": "Kompakte laufende Musik beim App-Wechsel",
+      "sourceIDs": [
+        "S07"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Vom Bericht als Dynamic-Island-artig beschrieben",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/57"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F083",
+      "function": "Apple Podcasts",
+      "sourceIDs": [
+        "P02",
+        "P03"
+      ],
+      "referenceStates": [
+        "UI22"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI22",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/59"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F084",
+      "function": "Audiobooks, Classical Music, News, TV vom iPhone",
+      "sourceIDs": [
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Nicht als vier weitere eigenständige native HomeView-Apps zählen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/60"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F085",
+      "function": "Kompatible Drittanbieter-Audio-/Video-Apps",
+      "sourceIDs": [
+        "P01",
+        "D02",
+        "D04"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "CarPlay-Kategorien, kein freier App Store",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/60"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F086",
+      "function": "AirPlay-Mehrraumwiedergabe",
+      "sourceIDs": [
+        "P01",
+        "P02",
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Mehrere kompatible Lautsprecher nötig",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/61"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F087",
+      "function": "Peer-to-peer AirPlay/Discovery für Gäste",
+      "sourceIDs": [
+        "P02",
+        "S02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Umfang und Autorisierung nicht live geprüft",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/62"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F088",
+      "function": "Handoff für Song, Podcast, Anruf und Video",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Eigene Handoff-Aktivitäten sind kein universeller Apple-Übergabezugang",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/63"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F089",
+      "function": "Spiegelmodus über Frontkamera",
+      "sourceIDs": [
+        "S01",
+        "S07",
+        "S08"
+      ],
+      "referenceStates": [
+        "UI46"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI46, gesichertes Originalfoto der Spiegelansicht",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/64"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F090",
+      "function": "Spiegel-Zoom und Bildschirm-Ringlicht",
+      "sourceIDs": [
+        "S08"
+      ],
+      "referenceStates": [
+        "UI46"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI46 zeigt hellen Rand; Zoom-Bedienablauf noch nicht komplett",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/64"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F091",
+      "function": "Control Center",
+      "sourceIDs": [
+        "S01",
+        "S07"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Obere rechte Ecke nach unten",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/65"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F092",
+      "function": "Settings als eingebaute App",
+      "sourceIDs": [
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Nicht alle Einstellungen bekannt",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/65"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F093",
+      "function": "Bis zu sechs Nutzer erkennen",
+      "sourceIDs": [
+        "P01",
+        "P03",
+        "V01"
+      ],
+      "referenceStates": [
+        "UI16",
+        "UI31"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI16/UI31; kein Beweis eigener Face-ID-Identitätsausgabe",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/66"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F094",
+      "function": "Persönliche Daten an Gesicht und Partnergerät binden",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "WLAN, kürzlich entsperrt, eng beschriebene Ausnahme",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/66"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F095",
+      "function": "Persönliche Inhalte beim Weggehen schützen",
+      "sourceIDs": [
+        "S05"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Genaues Timing nicht dokumentiert",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/67"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F096",
+      "function": "Erkennungsdialog und Ausweg über persönliches Gerät",
+      "sourceIDs": [
+        "V01"
+      ],
+      "referenceStates": [
+        "UI31"
+      ],
+      "evidenceClass": "specific-visible-state",
+      "locatorText": "UI31",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "Linked UI proves only its visible state, not all task variants or public API access.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/66"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "observed"
+    },
+    {
+      "id": "F097",
+      "function": "Gastzugriff auf Haus/Wetter/Timer/Musik",
+      "sourceIDs": [
+        "P01",
+        "S02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Ohne persönlichen Kontext",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/68"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F098",
+      "function": "Gesichts-/Stimmdaten in Secure Exclaves verarbeiten",
+      "sourceIDs": [
+        "P01",
+        "P03"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Hardware-/Systemfunktion, keine eingebettete iPad-App-Berechtigung",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/69"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F099",
+      "function": "Private Cloud Compute für geeignete KI-Anfragen",
+      "sourceIDs": [
+        "P01"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Nicht als eigener frei nutzbarer Siri-Backenddienst einplanen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/70"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F100",
+      "function": "Einrichtung durch Home-Owner mit Partnergerät, Bluetooth, WLAN",
+      "sourceIDs": [
+        "P04"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Versionsangaben P02/P04 weichen leicht ab",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/23"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F101",
+      "function": "Kein eigener App Store, ausgewählte/verbundene Angebote",
+      "sourceIDs": [
+        "S01",
+        "S02",
+        "S05",
+        "D02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Von allgemeiner nativer iPad-App-Verteilung unterscheiden",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/71"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F102",
+      "function": "Stromwarnung bei unzureichendem Adapter",
+      "sourceIDs": [
+        "P04"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Power Adapter Not Supported und Blitz/Warnsymbol",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/72"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F103",
+      "function": "VoiceOver, Zoom, Voice Control, Switch Control, AssistiveTouch",
+      "sourceIDs": [
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Systemfunktionen müssen in eigener UI unterstützt werden",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/73"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F104",
+      "function": "Live Speech, Live Captions, RTT",
+      "sourceIDs": [
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Je Zielplattform und Medienfunktion separat prüfen",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/74"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    },
+    {
+      "id": "F105",
+      "function": "Dictation, Type to Siri, Vocal Shortcuts, Untertitel",
+      "sourceIDs": [
+        "P02"
+      ],
+      "referenceStates": [],
+      "evidenceClass": "source-claim-or-report-without-dedicated-UI-locator",
+      "locatorText": "Nicht automatisch Funktionsgleichheit aller Ziele",
+      "sourceDateBasis": "Per-source publication field; archived 2026-10-16, byte-verified 2026-10-22.",
+      "geometryBasis": "Per-UI source size/crop/transform when listed; no native screen geometry for a text/report-only claim.",
+      "uncertainty": "No dedicated native UI state linked by the original feature catalogue; source claim/report is not a complete screen or interaction acceptance.",
+      "linkedIssues": [
+        "https://github.com/Olli0103/homeview/issues/74"
+      ],
+      "parityAccepted": false,
+      "originalAssessment": "reported"
+    }
+  ],
+  "replicaContractGeometryPoints": [
+    600,
+    600
+  ]
+}

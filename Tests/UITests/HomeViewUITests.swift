@@ -3,6 +3,22 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  func testFaceCatalogueEveryCurrentIdentityRendersWithoutLiveServices() {
+    let faces=["Modular","Watch Modular","Infograph Modular","Modular Duo","Modular Compact",
+      "Home Modular","Home Modular Clock","Photos","Weather","Calendar","Flow","Fade","Numerals","Home Camera"]
+    for face in faces {
+      var arguments=["--face",face,"--reduce-motion"]
+      if face=="Photos" {arguments += ["--photo-layout-fixture","top"]}
+      launch(arguments)
+      XCTAssertTrue(app.otherElements["face."+face].waitForExistence(timeout:5),face)
+      XCTAssertFalse(app.staticTexts["store.readOnly"].exists)
+      viewportShot("catalogue-"+face.replacingOccurrences(of:" ",with:"-"))
+      app.terminate()
+    }
+  }
+}
+
+extension HomeViewUITests {
   private func openRecoveredProfile(_ name:String,page:String) {
     tap("nav.apps");tap("personal.profile");tap("profile."+name)
     tap("all.apps");tap("app."+page)
