@@ -549,6 +549,7 @@ struct WeatherBackdrop: View {
 }
 struct CalendarFace: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.locale) private var inheritedLocale
   var body: some View {
     let presentation=model.calendarPresentation
     let month=presentation.layout
@@ -565,6 +566,7 @@ struct CalendarFace: View {
             .accessibilityIdentifier("calendar.face.month")
           Spacer()
           Text(model.clock, style: .time).environment(\.timeZone, model.displayTimeZone)
+            .environment(\.locale,inheritedLocale)
         }.padding(.horizontal, 5).font(.system(size: 37, weight: .medium)).foregroundStyle(
           accent)
         VStack(spacing: 14) {
