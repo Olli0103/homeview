@@ -1,0 +1,328 @@
+import Foundation
+
+protocol FlowComputeBackend: Sendable {
+  func step(time: Float, delta: Float, impulse: SIMD2<Float>) async throws -> FlowSimulation
+}
+
+enum FlowComputeError: Error { case unavailable, resources, command, invalidSnapshot }
+
+#if canImport(Metal) && !os(watchOS)
+import Metal
+
+/// Own Float32 texture implementation of FlowSimulation. No private shaders or binary assets.
+/// A serial actor owns all textures; the UI never waits for a command buffer.
+actor FlowMetalSimulation: FlowComputeBackend {
+  private struct Uniforms {
+    var side: UInt32
+    var time: Float
+    var delta: Float
+    var strength: Float = 1.8
+    var impulse: SIMD2<Float>
+  }
+  private struct Resources {
+    let device: any MTLDevice
+    let queue: any MTLCommandQueue
+    let pipelines: [String: any MTLComputePipelineState]
+    let velocity: [any MTLTexture]
+    let dye: [any MTLTexture]
+    let force: any MTLTexture
+    let dyeWeights: any MTLTexture
+    let curl: any MTLTexture
+    let divergence: any MTLTexture
+    let pressure: [any MTLTexture]
+    var dyeIndex = 0
+  }
+  private(set) var debugPasses:[String:[SIMD4<Float>]]=[:]
+  private var snapshot: FlowSimulation
+  private var resources: Resources?
+  private let deviceProvider: @Sendable () -> (any MTLDevice)?
+  private(set) var textureAllocations = 0
+  private(set) var completedSteps = 0
+  private(set) var deviceName: String?
+
+  init(snapshot: FlowSimulation,
+       deviceProvider: @escaping @Sendable () -> (any MTLDevice)? = { MTLCreateSystemDefaultDevice() }) {
+    self.snapshot = snapshot
+    self.deviceProvider = deviceProvider
+  }
+
+  private func prepare() throws -> Resources {
+    try Task.checkCancellation()
+    guard let device = deviceProvider(), let queue = device.makeCommandQueue() else {
+      throw FlowComputeError.unavailable
+    }
+    let options = MTLCompileOptions()
+    if #available(macOS 15.0, iOS 18.0, tvOS 18.0, visionOS 2.0, *) {
+      options.mathMode = .safe
+      options.mathFloatingPointFunctions = .precise
+    } else {
+      options.fastMathEnabled = false
+    }
+    options.languageVersion = .version2_4
+    let library = try device.makeLibrary(source: Self.kernels, options: options)
+    try Task.checkCancellation()
+    var pipelines: [String: any MTLComputePipelineState] = [:]
+    for name in ["kick", "velocityBoundary", "advect", "curlField", "confine", "divergenceField",
+                 "clearPressure", "jacobi", "pressureBoundary", "subtractGradient", "dyeAdvance"] {
+      guard let function = library.makeFunction(name: name) else { throw FlowComputeError.resources }
+      pipelines[name] = try device.makeComputePipelineState(function: function)
+    }
+    func texture(_ format: MTLPixelFormat) throws -> any MTLTexture {
+      try Task.checkCancellation()
+      let descriptor = MTLTextureDescriptor.texture2DDescriptor(
+        pixelFormat: format, width: snapshot.side, height: snapshot.side, mipmapped: false)
+      descriptor.usage = [.shaderRead, .shaderWrite]
+      #if os(macOS)
+      descriptor.storageMode = device.hasUnifiedMemory ? .shared : .managed
+      #else
+      descriptor.storageMode = .shared
+      #endif
+      guard let result = device.makeTexture(descriptor: descriptor) else { throw FlowComputeError.resources }
+      textureAllocations += 1
+      return result
+    }
+    let v = try [texture(.rgba32Float), texture(.rgba32Float)]
+    let d = try [texture(.rgba32Float), texture(.rgba32Float)]
+    let force = try texture(.rgba32Float), weights = try texture(.rgba32Float)
+    let c = try texture(.r32Float), div = try texture(.r32Float)
+    let p = try [texture(.r32Float), texture(.r32Float), texture(.r32Float)]
+    let region = MTLRegionMake2D(0, 0, snapshot.side, snapshot.side)
+    let velocity = snapshot.velocity.map { SIMD4<Float>($0.x, $0.y, 0, 0) }
+    let dye = snapshot.dye.map { SIMD4<Float>($0.x, $0.y, $0.z, 0) }
+    let rowBytes = snapshot.side * 16
+    velocity.withUnsafeBytes {
+      v[0].replace(region: region, mipmapLevel: 0, withBytes: $0.baseAddress!, bytesPerRow: rowBytes)
+    }
+    dye.withUnsafeBytes {
+      d[0].replace(region: region, mipmapLevel: 0, withBytes: $0.baseAddress!, bytesPerRow: rowBytes)
+    }
+    deviceName = device.name
+    return Resources(device: device, queue: queue, pipelines: pipelines,
+                     velocity: v, dye: d, force:force,dyeWeights:weights,curl: c, divergence: div, pressure: p)
+  }
+
+  func step(time: Float, delta: Float, impulse: SIMD2<Float>) async throws -> FlowSimulation {
+    try performStep(time: time, delta: delta, impulse: impulse)
+  }
+
+  // Deliberately synchronous on this actor, not MainActor: a second caller cannot
+  // interleave encoding with the in-flight textures while the buffer completes.
+  private func performStep(time: Float, delta: Float, impulse: SIMD2<Float>) throws -> FlowSimulation {
+    try Task.checkCancellation()
+    guard time.isFinite, delta.isFinite, impulse.x.isFinite, impulse.y.isFinite, delta > 0 else {
+      return snapshot
+    }
+    do {
+      var r = try resources ?? prepare()
+      guard let command = r.queue.makeCommandBuffer() else { throw FlowComputeError.command }
+      var uniforms = Uniforms(side: UInt32(snapshot.side), time: time, delta: min(1 / 15, delta),
+                             impulse: SIMD2(min(2, max(-2, impulse.x)), min(2, max(-2, impulse.y))))
+      precondition(MemoryLayout<Uniforms>.stride == 24)
+      // CPU source-function evaluation preserves the unchanged reference's libm
+      // rounding. Transport, advection, confinement and projection stay on Metal.
+      let dt=uniforms.delta,boundedImpulse=uniforms.impulse
+      let center=SIMD2<Float>(0.5+sin(time*0.43)*0.23,0.5+cos(time*0.37)*0.23)
+      let locations=(0..<3).map { source in
+        let phase=time*0.22+Float(source)*2.0944
+        return SIMD2<Float>(0.5+sin(phase)*0.36,0.5+cos(phase*0.8)*0.36)
+      }
+      var forceField=[SIMD4<Float>](repeating:.zero,count:snapshot.side*snapshot.side)
+      var weights=forceField
+      for y in 0..<snapshot.side { for x in 0..<snapshot.side {
+        let i=y*snapshot.side+x
+        let point=SIMD2(Float(x),Float(y))/Float(snapshot.side-1)
+        let d=point-center
+        let weight=exp(-(d.x*d.x+d.y*d.y)*28)
+        let force=SIMD2(-d.y,d.x)*60+boundedImpulse*25
+        let kick=force*(weight*dt)
+        forceField[i]=SIMD4(kick.x,kick.y,0,0)
+        for source in 0..<3 {
+          let distance=point-locations[source]
+          weights[i][source]=min(1,exp(-(distance.x*distance.x+distance.y*distance.y)*35)*dt*4)
+        }
+      }}
+      let forcingRegion=MTLRegionMake2D(0,0,snapshot.side,snapshot.side)
+      forceField.withUnsafeBytes { r.force.replace(region:forcingRegion,mipmapLevel:0,withBytes:$0.baseAddress!,bytesPerRow:snapshot.side*16) }
+      weights.withUnsafeBytes { r.dyeWeights.replace(region:forcingRegion,mipmapLevel:0,withBytes:$0.baseAddress!,bytesPerRow:snapshot.side*16) }
+
+      func encode(_ name: String, _ textures: any MTLTexture...) throws {
+        try Task.checkCancellation()
+        guard let pipeline = r.pipelines[name], let encoder = command.makeComputeCommandEncoder() else {
+          throw FlowComputeError.resources
+        }
+        encoder.setComputePipelineState(pipeline)
+        for (i, texture) in textures.enumerated() { encoder.setTexture(texture, index: i) }
+        encoder.setBytes(&uniforms, length: MemoryLayout<Uniforms>.stride, index: 0)
+        let width = pipeline.threadExecutionWidth
+        let height = max(1, min(8, pipeline.maxTotalThreadsPerThreadgroup / width))
+        encoder.dispatchThreads(MTLSize(width: snapshot.side, height: snapshot.side, depth: 1),
+                                threadsPerThreadgroup: MTLSize(width: width, height: height, depth: 1))
+        encoder.endEncoding()
+      }
+      var captured:[(String,any MTLBuffer,Int)]=[]
+      func capture(_ name:String,_ texture:any MTLTexture) throws {
+        let channels=texture.pixelFormat == .r32Float ? 1:4
+        let rowBytes=((snapshot.side*channels*4+255)/256)*256
+        guard let buffer=r.device.makeBuffer(length:rowBytes*snapshot.side,options:.storageModeShared),let blit=command.makeBlitCommandEncoder() else { throw FlowComputeError.resources }
+        blit.copy(from:texture,sourceSlice:0,sourceLevel:0,sourceOrigin:MTLOrigin(x:0,y:0,z:0),sourceSize:MTLSize(width:snapshot.side,height:snapshot.side,depth:1),to:buffer,destinationOffset:0,destinationBytesPerRow:rowBytes,destinationBytesPerImage:rowBytes*snapshot.side)
+        blit.endEncoding();captured.append((name,buffer,channels))
+      }
+      let v = r.velocity, p = r.pressure
+      try encode("kick", v[0], r.force, v[1])
+      try capture("kick",v[1])
+      try encode("velocityBoundary", v[1], v[0])
+      try capture("kickBoundary",v[0])
+      try encode("advect", v[0], v[1])
+      try capture("advect",v[1])
+      try encode("velocityBoundary", v[1], v[0])
+      try capture("advectBoundary",v[0])
+      try encode("curlField", v[0], r.curl)
+      try capture("curl",r.curl)
+      try encode("confine", v[0], r.curl, v[1])
+      try capture("confine",v[1])
+      try encode("velocityBoundary", v[1], v[0])
+      try capture("confineBoundary",v[0])
+      try encode("divergenceField", v[0], r.divergence)
+      try capture("divergence",r.divergence)
+      try encode("clearPressure", p[0])
+      var pressureIndex = 0
+      for _ in 0..<16 {
+        try encode("jacobi", p[pressureIndex], r.divergence, p[2])
+        pressureIndex = 1 - pressureIndex
+        try encode("pressureBoundary", p[2], p[pressureIndex])
+      }
+      try capture("pressure",p[pressureIndex])
+      try encode("subtractGradient", v[0], p[pressureIndex], v[1])
+      try capture("gradient",v[1])
+      try encode("velocityBoundary", v[1], v[0])
+      try capture("gradientBoundary",v[0])
+      let nextDye = 1 - r.dyeIndex
+      try encode("dyeAdvance", r.dye[r.dyeIndex], v[0], r.dyeWeights, r.dye[nextDye])
+      try capture("dye",r.dye[nextDye])
+      #if os(macOS)
+      if !r.device.hasUnifiedMemory {
+        guard let blit = command.makeBlitCommandEncoder() else { throw FlowComputeError.command }
+        blit.synchronize(resource: v[0]); blit.synchronize(resource: r.dye[nextDye])
+        blit.endEncoding()
+      }
+      #endif
+      try Task.checkCancellation()
+      command.commit()
+      command.waitUntilCompleted()
+      try Task.checkCancellation()
+      guard command.status == .completed else { throw FlowComputeError.command }
+      let region = MTLRegionMake2D(0, 0, snapshot.side, snapshot.side)
+      var velocity = [SIMD4<Float>](repeating: .zero, count: snapshot.side * snapshot.side)
+      var dye = velocity
+      let rowBytes = snapshot.side * 16
+      velocity.withUnsafeMutableBytes {
+        v[0].getBytes($0.baseAddress!, bytesPerRow: rowBytes, from: region, mipmapLevel: 0)
+      }
+      dye.withUnsafeMutableBytes {
+        r.dye[nextDye].getBytes($0.baseAddress!, bytesPerRow: rowBytes, from: region, mipmapLevel: 0)
+      }
+      guard let result = FlowSimulation(side: snapshot.side,
+        velocity: velocity.map { SIMD2($0.x, $0.y) }, dye: dye.map { SIMD3($0.x, $0.y, $0.z) }) else {
+        throw FlowComputeError.invalidSnapshot
+      }
+      debugPasses=[:]
+      for (name,buffer,channels) in captured {
+        let rowBytes=((snapshot.side*channels*4+255)/256)*256
+        var values:[SIMD4<Float>]=[]
+        for y in 0..<snapshot.side {
+          let floats=buffer.contents().advanced(by:y*rowBytes).assumingMemoryBound(to:Float.self)
+          for x in 0..<snapshot.side { values.append(channels==1 ? SIMD4(floats[x],0,0,0):SIMD4(floats[x*4],floats[x*4+1],floats[x*4+2],floats[x*4+3])) }
+        }
+        debugPasses[name]=values
+      }
+      r.dyeIndex = nextDye
+      resources = r
+      snapshot = result
+      completedSteps += 1
+      return result
+    } catch {
+      // Never reuse textures after a failed or cancelled submission.
+      resources = nil
+      throw error
+    }
+  }
+
+  private static let kernels = #"""
+  #include <metal_stdlib>
+  #pragma clang fp contract(off)
+  using namespace metal;
+  struct U { uint side; float time; float delta; float strength; float2 impulse; };
+  typedef texture2d<float, access::read> Read;
+  typedef texture2d<float, access::write> Write;
+  float divideRounded(float a,float b) { float q=a/b;return q+fma(-q,b,a)/b; }
+  float sqrtRounded(float a) { if(a==0)return 0;float q=sqrt(a);return q+divideRounded(fma(-q,q,a),2*q); }
+  uint2 bound(int2 p, uint n) { return uint2(clamp(p, int2(0), int2(int(n)-1))); }
+  float4 at(Read f, int2 p, uint n) { return f.read(bound(p,n)); }
+  float4 sampleField(Read f, float2 p, uint n) {
+    float2 q=clamp(p,float2(0),float2(float(n-1)));
+    int2 i=int2(q); float2 a=q-float2(i);
+    return (at(f,i,n)*(1-a.x)+at(f,i+int2(1,0),n)*a.x)*(1-a.y)
+      +(at(f,i+int2(0,1),n)*(1-a.x)+at(f,i+int2(1,1),n)*a.x)*a.y;
+  }
+  kernel void kick(Read f [[texture(0)]],Read force [[texture(1)]],Write o [[texture(2)]],constant U &u [[buffer(0)]],uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;
+    o.write(float4(f.read(g).xy*.993+force.read(g).xy,0,0),g);
+  }
+  kernel void velocityBoundary(Read f [[texture(0)]], Write o [[texture(1)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;
+    bool x=g.x==0||g.x==u.side-1,y=g.y==0||g.y==u.side-1;
+    float2 v=f.read(g).xy;
+    if(x&&y)v=0;
+    else if(x||y){v=f.read(clamp(g,uint2(1),uint2(u.side-2))).xy; if(x)v.x=-v.x;if(y)v.y=-v.y;}
+    o.write(float4(v,0,0),g);
+  }
+  kernel void advect(Read f [[texture(0)]], Write o [[texture(1)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;
+    o.write(sampleField(f,float2(g)-f.read(g).xy*u.delta,u.side),g);
+  }
+  kernel void curlField(Read f [[texture(0)]], Write o [[texture(1)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;int2 p=int2(g);
+    float c=.5*(at(f,p+int2(1,0),u.side).y-at(f,p-int2(1,0),u.side).y-at(f,p+int2(0,1),u.side).x+at(f,p-int2(0,1),u.side).x);
+    o.write(float4(c,0,0,0),g);
+  }
+  kernel void confine(Read f [[texture(0)]], Read c [[texture(1)]], Write o [[texture(2)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;int2 p=int2(g);
+    float2 grad=float2(abs(at(c,p+int2(0,1),u.side).x)-abs(at(c,p-int2(0,1),u.side).x),abs(at(c,p+int2(1,0),u.side).x)-abs(at(c,p-int2(1,0),u.side).x))*.5;
+    float denominator=sqrtRounded(grad.x*grad.x+grad.y*grad.y)+.0001;
+    float2 n=float2(divideRounded(grad.x,denominator),divideRounded(grad.y,denominator));
+    o.write(float4(f.read(g).xy+float2(n.x,-n.y)*c.read(g).x*u.strength*u.delta,0,0),g);
+  }
+  kernel void divergenceField(Read f [[texture(0)]], Write o [[texture(1)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;int2 p=int2(g);
+    float d=.5*(at(f,p+int2(1,0),u.side).x-at(f,p-int2(1,0),u.side).x+at(f,p+int2(0,1),u.side).y-at(f,p-int2(0,1),u.side).y);
+    o.write(float4(d,0,0,0),g);
+  }
+  kernel void clearPressure(Write o [[texture(0)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;o.write(float4(0),g);
+  }
+  kernel void jacobi(Read f [[texture(0)]], Read d [[texture(1)]], Write o [[texture(2)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;int2 p=int2(g);
+    float v=(at(f,p-int2(1,0),u.side).x+at(f,p+int2(1,0),u.side).x+at(f,p-int2(0,1),u.side).x+at(f,p+int2(0,1),u.side).x-d.read(g).x)*.25;
+    o.write(float4(v,0,0,0),g);
+  }
+  kernel void pressureBoundary(Read f [[texture(0)]], Write o [[texture(1)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;
+    bool edge=g.x==0||g.y==0||g.x==u.side-1||g.y==u.side-1;
+    o.write(f.read(edge?clamp(g,uint2(1),uint2(u.side-2)):g),g);
+  }
+  kernel void subtractGradient(Read f [[texture(0)]], Read p [[texture(1)]], Write o [[texture(2)]], constant U &u [[buffer(0)]], uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;int2 i=int2(g);
+    float2 gradient=float2(at(p,i+int2(1,0),u.side).x-at(p,i-int2(1,0),u.side).x,at(p,i+int2(0,1),u.side).x-at(p,i-int2(0,1),u.side).x);
+    o.write(float4(f.read(g).xy-gradient*.5,0,0),g);
+  }
+  kernel void dyeAdvance(Read f [[texture(0)]],Read v [[texture(1)]],Read weights [[texture(2)]],Write o [[texture(3)]],constant U &u [[buffer(0)]],uint2 g [[thread_position_in_grid]]) {
+    if(any(g>=u.side))return;
+    float3 color=sampleField(f,float2(g)-v.read(g).xy*u.delta*5,u.side).xyz;
+    const float3 colors[3]={float3(.10,.72,.96),float3(.95,.40,.74),float3(.12,.35,.97)};
+    float3 amounts=weights.read(g).xyz;
+    for(uint s=0;s<3;++s){float a=amounts[s];color=color*(1-a)+colors[s]*a;}
+    o.write(float4(color,0),g);
+  }
+  """#
+}
+#endif
