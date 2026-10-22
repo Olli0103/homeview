@@ -528,6 +528,7 @@ struct PodcastsView: View {
             }.font(.system(size:28)).padding(.vertical,12)
             Text(model.podcastPlayer.episodeID==episode.id ? model.podcastPlayer.status:"Paused · Saved position")
               .font(.system(size:17)).foregroundStyle(.secondary).accessibilityIdentifier("podcast.status")
+            PodcastCaptionControls(loaded:model.podcastPlayer.episodeID==episode.id)
           } else {
             Image(systemName:"mic.circle.fill").font(.system(size:100)).foregroundStyle(.purple)
             Text("A Quiet Morning").font(.system(size:34,weight:.semibold))

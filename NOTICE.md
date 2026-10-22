@@ -76,3 +76,7 @@ The podcast-test-audio.wav fixture is a project-generated 60-second 220-Hz sine
 signal, mono PCM 16 kHz/16 Bit, under MIT. It contains no speech, borrowed music
 or private recording. It is mapped only to the two explicitly enabled synthetic
 RSS fixture episodes. Details: [public-podcast-feeds.md](Docs/public-podcast-feeds.md).
+
+## Synthetic timed-caption fixture
+
+Resources/podcast-caption-test.mp4 contains the project's own synthetic podcast-test-audio.wav tone, encoded with AAC, and project-authored timed text identifying the first/final synthetic-tone markers. It contains no video, speech transcription, borrowed lyrics or private recording. Scripts/generate_podcast_caption_fixture.py records generation using a separately installed FFmpeg development tool; that tool is not bundled. The own fixture/cues are covered by the project MIT license.

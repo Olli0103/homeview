@@ -1,0 +1,51 @@
+import AVFoundation
+import Foundation
+@main struct ControllerProbe {
+ static func main() {
+  Task { @MainActor in do {try await run();exit(0)} catch {fatalError("Probe failed")} };CFRunLoopRun()
+ }
+ @MainActor static func run() async throws {
+  setbuf(stdout,nil)
+  let player=PodcastPlaybackController()
+  var count=0
+  func check(_ yes:Bool,_ name:String) {precondition(yes,name);count+=1;print("PASS",name)}
+  func wait(_ label:String,_ condition:()->Bool) async throws {
+   for _ in 0..<160 {player.poll();if condition(){return};try await Task.sleep(for:.milliseconds(50))}
+   print("TIMEOUT",label,player.status,player.position,player.captionStatus,player.captionSelection,player.captionText)
+   fatalError(label)
+  }
+  let caption=PodcastEpisode(id:"caption",title:"Own Tone",mediaURL:URL(string:"https://fixtures.invalid/captioned-tone.mp4")!,duration:60)
+  let plain=PodcastEpisode(id:"plain",title:"Own Plain",mediaURL:URL(string:"https://fixtures.invalid/second.wav")!,duration:60)
+  player.selectCaption("0");check(player.episodeID==nil && !player.requested,"unloaded caption selection cannot start playback")
+  player.load(caption,position:0)
+  try await wait("actual source choices") {!player.captionChoices.isEmpty && player.position>0.5}
+  check(player.captionChoices.contains{$0.playable},"native playable selection discovered")
+  print("NATIVE CHOICES",player.captionChoices)
+  let selected=player.captionChoices.first{$0.playable}!.id
+  player.selectCaption(selected)
+  try await wait("actual first cue") {player.captionText.contains("first marker")}
+  check(player.captionSelection==selected,"native explicit choice read back")
+  player.selectCaption("not-a-choice");check(player.captionSelection==selected,"invalid option leaves choice unchanged")
+  player.selectCaption("off");check(player.captionText.isEmpty && player.captionSelection=="off","off clears cue immediately")
+  try await Task.sleep(for:.milliseconds(300));player.poll()
+  check(player.captionText.isEmpty,"off receives no stale cue")
+  player.selectCaption("automatic");check(player.captionSelection=="automatic","automatic policy remains explicit")
+  player.selectCaption(selected)
+  player.seek(to:45)
+  check(player.captionText.isEmpty,"seek clears old cue immediately")
+  try await wait("actual final cue") {player.position>44 && player.captionText.contains("final marker")}
+  check(!player.captionText.contains("first marker"),"seek delivers actual final cue only")
+  player.seek(to:1);player.seek(to:46);player.seek(to:2)
+  try await wait("rapid backward seek actual first cue") {player.position<6 && player.captionText.contains("first marker")}
+  check(!player.captionText.contains("final marker"),"rapid seeks keep the latest real cue")
+  player.pause();check(!player.requested && !player.playing,"pause remains effective")
+  player.load(plain,position:0)
+  check(player.captionText.isEmpty,"source switch clears cue immediately")
+  try await wait("plain source inspected") {player.captionStatus=="No captions supplied by this episode."}
+  check(player.captionChoices.isEmpty && player.captionText.isEmpty,"plain audio has no invented captions")
+  player.load(caption,position:0);player.stop()
+  try await Task.sleep(for:.milliseconds(500));player.poll()
+  check(player.episodeID==nil && player.captionChoices.isEmpty && player.captionText.isEmpty && !player.requested,"stop fences late discovery and output")
+  print("COMPLETE",count,"assertions; actual AVPlayerItemLegibleOutput callbacks observed")
+ }
+}

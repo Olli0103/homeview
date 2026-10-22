@@ -6,6 +6,8 @@
 
 **Fortschritt nach diesem Quellbefund:** [Eigener App-Shortcut-Einstieg](assistant-app-shortcut.md) mit Compilermetadaten und direkter nativer Body-/Root-Prüfung. Die unten beschriebene fehlende Registrierung gilt für den datierten Stand `441f78a`; tatsächliche Systemausführung bleibt offen.
 
+**Weitere Softwarelieferung, 22. Oktober:** [Quellseitige Podcast-Untertitel](podcast-source-captions.md) im bestehenden AVPlayer-Pfad. Die unten beschriebene fehlende Legible-Auswahl gilt für den datierten Quellbefund, nicht den aktuellen Softwarestand. OS-Live-Captions und echte Hilfsmittelabnahmen bleiben getrennt.
+
 ## Eigener Lieferumfang
 
 | Funktion | Tatsächlicher HomeView-Code | Was daraus nicht folgt |

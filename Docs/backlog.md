@@ -1241,7 +1241,7 @@ Abnahme: Face-Editor, Sperre, Timer, Kamera, Rezept und Verbindungen sind ohne p
 <a id="sys-11"></a>
 ### SYS-11: Live Speech, Captions, RTT und Shortcuts pro Plattform klären
 
-Eigene parameterlose App-Shortcut-Öffnung für iOS/macOS/visionOS mit Compilermetadaten und nativer Body-/Root-Prüfung; echte Siri-/Shortcuts-/Geräteausführung offen. Live Speech/Captions/Vocal Shortcuts und RTT/Medienuntertitel weiterhin getrennt bilanziert.
+Eigener parameterloser App-Shortcut-Einstieg für iOS/macOS/visionOS und tatsächliche quellseitige Podcast-Untertitel im bestehenden AVPlayer-Pfad. Native/Simulator-Nachweise von OS-Hilfsmitteln getrennt; echte Siri-/Shortcuts-, Live-Speech-/Live-Captions-/Vocal-Shortcut-/RTT- und Geräteabnahmen bleiben offen. [Untertitel-Nachweis](podcast-source-captions.md).
 
 [API-Matrix](speech-feature-boundaries.md) · [begrenzter App-Einstieg](assistant-app-shortcut.md).
 
