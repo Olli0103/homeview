@@ -5,6 +5,10 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Gruppierte synthetische Hausmitteilungen · 22. Oktober 2026
+
+[#31 abgeschlossen](house-notices.md): Haushalts-/Quellenscope, explizite Korrelation, Replay-Deduplikation, atomare Limits, persönliche Redaktion und alters-/berechtigungsabhängige Mock-Ziele. 370 Coretests, 52 unabhängige native Assertions, zehn erfolgreiche UI-Ausführungen über zwei dokumentierte Darstellungsstände, fünf finale SDKs. Zunächst unlesbare Systemblatt-Farben nach tatsächlicher Bildprüfung korrigiert. Kein Home-Zugriff; der Gesamtauftrag läuft weiter.
+
 ### Gemeinsame Panels: ausdrückliche Freigaben · 22. Oktober 2026
 
 [#8 im ursprünglichen synthetischen Umfang abgeschlossen](shared-panels.md): bewusste Kalenderkopien und geteilte Music-Queue, private Caches nie implizit auf Faces/Vorschauen. 363 Coretests, 40 unabhängige native Assertions, zehn UI-Ausführungen über zwei dokumentierte Caption-Prüfstände, fünf finale SDKs. Echte Haushaltsidentität bleibt #66, kein Home-Zugriff. Der Gesamtauftrag geht weiter.

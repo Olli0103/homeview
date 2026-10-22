@@ -584,6 +584,8 @@ Abhängigkeiten: BASE-01, HOME-01.
 <a id="home-06"></a>
 ### HOME-06: Hausereignisse in einer gruppierten Mitteilungsansicht darstellen
 
+**Synthetische Abnahme abgeschlossen · 22. Oktober 2026.** [Gruppierung, Scope, Widerruf und sichere Mock-Zielansichten](house-notices.md). Keine Echtquelle; #23/#66 und Original-Parity bleiben getrennt offen.
+
 Keine vollständige produktive Hausmitteilungs-Pipeline oder gruppierte Ereignisabnahme vorhanden.
 
 Offen:
