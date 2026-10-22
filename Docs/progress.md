@@ -5,6 +5,10 @@
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere
 freigegebene, nicht blockierte Arbeit wird ohne erneutes „weiter“ fortgesetzt.
 
+### Kalender-Locale und Profil-Home-Abnahme · 22. Oktober 2026
+
+[#22](calendar-locale-acceptance.md) und [#9](personal-home-acceptance.md) im ursprünglichen lokalen/synthetischen Umfang abgeschlossen. 375 Coretests, fünf finale SDKs; 18 erfolgreiche Kalenderausführungen über zwei Quellenstände, zehn erfolgreiche Home-Ausführungen plus vier erhaltene frühe Testfehler. Regiongerechte Wochen/Ziffern/RTL bei unveränderter Zeitpräferenz; englischer eigener Aprilviewport pixel- und PNG-bytegleich. Profile/Neustart/Gast, drei vorhandene Referenzlayouts und Datenherkunft zusammengeführt. Keine finale Vollsuite, Original-/Account-/Hardware-Parity oder Home-Anbindung. Auftrag wird fortgesetzt.
+
 ### Gruppierte synthetische Hausmitteilungen · 22. Oktober 2026
 
 [#31 abgeschlossen](house-notices.md): Haushalts-/Quellenscope, explizite Korrelation, Replay-Deduplikation, atomare Limits, persönliche Redaktion und alters-/berechtigungsabhängige Mock-Ziele. 370 Coretests, 52 unabhängige native Assertions, zehn erfolgreiche UI-Ausführungen über zwei dokumentierte Darstellungsstände, fünf finale SDKs. Zunächst unlesbare Systemblatt-Farben nach tatsächlicher Bildprüfung korrigiert. Kein Home-Zugriff; der Gesamtauftrag läuft weiter.

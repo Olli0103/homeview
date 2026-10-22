@@ -465,7 +465,7 @@
     },
     {
       "id": "UI08",
-      "title": "Kalender-Monat mit Uhrzeigern",
+      "title": "Kalender-Monat mit digitaler Uhr",
       "sourceID": "P01",
       "sourcePublication": "2026-10",
       "capturedOn": "2026-10-16",
@@ -492,7 +492,11 @@
       "sequenceID": null,
       "mediaSeconds": null,
       "evidence": "Apple product-page montage, visible face; official name only where independently stated",
-      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score."
+      "geometryLimit": "Not a native 600-point screenshot. Device housing, montage scale or perspective retained; no full-frame pixel-parity score.",
+      "catalogueTitleCorrection": {
+        "previous": "Kalender-Monat mit Uhrzeigern",
+        "reason": "Reinspection shows digital 10:09, not analog hands; original source bytes are unchanged."
+      }
     },
     {
       "id": "UI09",
