@@ -177,6 +177,13 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
     if ProcessInfo.processInfo.arguments.contains("--connection-denied") {
       throw NativeServiceError.permissionDenied
     }
+    if ProcessInfo.processInfo.arguments.contains("--shared-panel-fixture") {
+      return ["Alex selected event","Jamie selected event","Never shared private event"].enumerated().map { i,title in
+        DeviceEvent(id:"panel-\(i)",title:title,start:from.addingTimeInterval(Double(36000+i*3600)),
+          end:from.addingTimeInterval(Double(39600+i*3600)),location:"Private fixture location",
+          calendar:"Synthetic calendar",cancelled:false)
+      }
+    }
     if ProcessInfo.processInfo.arguments.contains("--calendar-agenda-fixture") {
       return [
         DeviceEvent(id: "repeated-one", title: "Recurring occurrence one", start: from.addingTimeInterval(36000),

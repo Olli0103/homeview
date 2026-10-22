@@ -250,7 +250,7 @@ struct RootView: View {
       model.setTimerActivityForeground(false)
       model.localResetForeground=false
       model.setAnswerSpeechForeground(false)
-      model.connections.endGuestMusicSession()
+      model.connections.endSharedPanelSession()
       model.recipeHandoff.stop()
       model.dismissDemoDoorbell()
       model.pauseFeedPodcast()
@@ -275,7 +275,7 @@ struct RootView: View {
         model.tick();model.synchronizeTimerActivity()
         model.reconcileSystemAlarms()
       } else if phase == .background {
-        model.connections.endGuestMusicSession()
+        model.connections.endSharedPanelSession()
         model.recipeHandoff.stop()
         model.pauseFeedPodcast()
         model.persist()

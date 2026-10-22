@@ -197,19 +197,23 @@ struct ModularFace: View {
     case "Music":
       VStack(alignment: .leading, spacing: 6) {
         HStack(alignment: .top) {
-          DemoAlbumCover().frame(width: 130, height: 130).clipped()
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+          Group {
+            if model.connections.requested.contains(.music) {
+              Image(systemName:"music.note").resizable().scaledToFit().padding(28)
+                .background(.black.opacity(0.08)).accessibilityLabel("Apple Music source")
+            } else { DemoAlbumCover() }
+          }.frame(width:130,height:130).clipped().clipShape(RoundedRectangle(cornerRadius:8))
           Spacer()
           Image(systemName: "music.note").foregroundStyle(.white).font(.system(size: 31))
         }
-        Text(model.currentMusicTitle).font(.system(size: 20, weight: .medium)).lineLimit(1)
-        Text(model.currentMusicArtist).font(.system(size: 21)).foregroundStyle(.black.opacity(0.7))
+        Text(model.sharedMusicTitle).font(.system(size: 20, weight: .medium)).lineLimit(1)
+        Text(model.sharedMusicSource).font(.system(size: 21)).foregroundStyle(.black.opacity(0.7))
         Button {
-          model.togglePlayback()
+          model.toggleSharedMusic()
         } label: {
           Label(
-            model.musicIsPlaying ? "Pause" : "Play",
-            systemImage: model.musicIsPlaying ? "pause.fill" : "play.fill"
+            model.sharedMusicIsPlaying ? "Pause" : "Play",
+            systemImage: model.sharedMusicIsPlaying ? "pause.fill" : "play.fill"
           ).font(.system(size: 23, weight: .medium)).padding(.horizontal, 20).padding(.vertical, 7)
             .background(.black.opacity(0.16), in: Capsule())
         }.buttonStyle(.plain).accessibilityIdentifier("music.play")
@@ -249,18 +253,7 @@ struct ModularFace: View {
       } label: {
         VStack(alignment: .leading, spacing: 12) {
           Text("TODAY").font(.system(size: 16, weight: .bold))
-          if model.connections.enabled.contains(.calendar) {
-            if model.connections.personalUnlocked {
-              Text(model.connections.events.first?.title ?? "No events").font(
-                .system(size: 29, weight: .semibold)
-              ).lineLimit(2)
-            } else {
-              Text("Unlock calendar").font(.system(size: 29, weight: .semibold))
-            }
-          } else {
-            Text("Family dinner").font(.system(size: 29, weight: .semibold))
-            Text("6:00 PM · Home").font(.system(size: 20))
-          }
+          SharedCalendarPanel()
         }.frame(maxWidth: .infinity)
       }.buttonStyle(.plain)
     default:

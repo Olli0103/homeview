@@ -93,6 +93,17 @@ struct CalendarView: View {
                 Label(entry.time, systemImage: "checkmark.circle").font(.system(size: 19))
                   .strikethrough(entry.cancelled)
                 if !entry.cancelled { Text(entry.subtitle).font(.system(size: 17)).opacity(0.7) }
+                if !entry.cancelled, model.connections.enabled.contains(.calendar),
+                  model.connections.personalUnlocked {
+                  Text("Share title, time and calendar source on shared faces as "+(model.profile ?? "Device holder")+". No location is shared.")
+                    .font(.system(size:14)).foregroundStyle(.secondary)
+                  Button("Share this event") {
+                    if !model.connections.shareCalendarEvent(entry.id,label:model.profile ?? "Device holder") {
+                      model.error="Event not shared. Refresh access or remove an existing card (maximum four)."
+                    }
+                  }.frame(minHeight:minimumHitSide)
+                    .accessibilityIdentifier("calendar.share."+entry.id)
+                }
               }.foregroundStyle(color)
               Spacer()
             }.padding(18).frame(minHeight: 92).background(

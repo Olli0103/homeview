@@ -88,6 +88,39 @@ final class AppModel {
   var startingMusic = false
   var startingPodcast = false
   var audioGeneration = 0
+  var sharedMusicIsPlaying: Bool {
+    #if !os(watchOS)
+    if connections.requested.contains(.music) {
+      return connections.sharedMusicTrack != nil && connections.musicPlaying
+    }
+    #endif
+    return playing
+  }
+  var sharedMusicTitle: String {
+    #if !os(watchOS)
+    if connections.requested.contains(.music) {
+      return connections.sharedMusicTrack?.title ?? "Music not shared"
+    }
+    #endif
+    return Fixtures.songs[song]
+  }
+  var sharedMusicSource: String {
+    #if !os(watchOS)
+    if connections.requested.contains(.music) {
+      guard let track=connections.sharedMusicTrack else { return "Private · share a queue in Settings" }
+      return track.artist + " · Shared Apple Music queue"
+    }
+    #endif
+    return "Demo Artist · Synthetic media"
+  }
+  func toggleSharedMusic() {
+    #if !os(watchOS)
+    if connections.requested.contains(.music),connections.sharedMusicTrack == nil {
+      navigate(.music);return
+    }
+    #endif
+    togglePlayback()
+  }
   var currentMusicTitle: String {
     #if !os(watchOS)
       if connections.enabled.contains(.music) {

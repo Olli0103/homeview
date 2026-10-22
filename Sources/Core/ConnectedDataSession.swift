@@ -49,6 +49,37 @@ final class DeviceConnections {
   private(set) var personalUnlocked = false
   /// Explicitly approved current queue, RAM only. Not source/OS permission.
   private(set) var guestMusicShared=false
+  private var calendarPublications: [SharedCalendarCard] = []
+  /// Shared faces must never fall through to authenticated private caches.
+  var sharedCalendarCards: [SharedCalendarCard] {
+    enabled.contains(.calendar) && provider.authorized(.calendar) ? calendarPublications : []
+  }
+  var sharedMusicTrack: DeviceTrack? {
+    guard guestMusicShared, musicAccessAllowed, let index=currentTrack,
+      tracks.indices.contains(index) else { return nil }
+    return tracks[index]
+  }
+  @discardableResult
+  func shareCalendarEvent(_ id: String, label: String) -> Bool {
+    let name=label.trimmingCharacters(in:.whitespacesAndNewlines)
+    guard personalUnlocked, enabled.contains(.calendar), provider.authorized(.calendar),
+      !busy.contains(.calendar), !name.isEmpty, name.count<=40,
+      !name.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) }),
+      let event=events.first(where: {$0.id==id}), !event.cancelled,
+      !event.title.isEmpty, event.title.count<=500, event.calendar.count<=200,
+      event.start.timeIntervalSince1970.isFinite, event.end.timeIntervalSince1970.isFinite,
+      event.end>event.start,
+      calendarPublications.count<4 || calendarPublications.contains(where: {$0.label==name})
+    else { return false }
+    let card=SharedCalendarCard(id:UUID(),label:name,title:event.title,start:event.start,
+      end:event.end,calendar:event.calendar,allDay:event.allDay)
+    calendarPublications.removeAll {$0.label==name}
+    calendarPublications.append(card)
+    return true
+  }
+  /// Anyone may hide a public card; publishing/replacing still requires authentication.
+  func revokeSharedCalendar(_ id: UUID) { calendarPublications.removeAll {$0.id==id} }
+  func endSharedPanelSession() { calendarPublications=[];endGuestMusicSession() }
   private var accessRole:LocalAccessRole { personalUnlocked ? .deviceAuthenticated:.guest }
   var musicAccessAllowed:Bool {
     enabled.contains(.music) && provider.authorized(.music)
@@ -105,6 +136,7 @@ final class DeviceConnections {
   func connect(_ kind: DataConnection, date: Date = Date(),
                timeZone: TimeZone = .current, requestPermission: Bool = true) async {
     guard !Task.isCancelled, !busy.contains(kind) || kind == .calendar else { return }
+    if kind == .calendar && requestPermission { calendarPublications=[] }
     if kind == .music {
       guard !requestPermission || personalUnlocked else {
         status[.music]="Authenticate before connecting Apple Music.";return
@@ -177,6 +209,7 @@ final class DeviceConnections {
         ? "Weather unavailable. Check the city and connection."
         : "Access unavailable. Check permissions and your account."
       if kind == .calendar {
+        calendarPublications=[]
         events = []
         if let error = error as? CalendarAgendaError { status[kind] = error.localizedDescription }
       }
@@ -221,7 +254,7 @@ final class DeviceConnections {
     requested.remove(kind)
     status[kind] = "Disconnected"
     switch kind {
-    case .calendar: events = []
+    case .calendar: events = []; calendarPublications=[]
     case .reminders: reminders = []
     case .music:
       guestMusicShared=false
@@ -415,7 +448,7 @@ final class DeviceConnections {
       generation[kind, default: 0] += 1
       busy.remove(kind)
       enabled.remove(kind)
-      if kind == .calendar { events = [] } else { reminders = [] }
+      if kind == .calendar { events = []; calendarPublications=[] } else { reminders = [] }
       status[kind] = kind == .calendar
         ? CalendarAgendaError.permissionRequired.localizedDescription
         : "Reminders access changed. Connect again in Settings."
