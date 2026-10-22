@@ -1385,6 +1385,10 @@ Abnahme: Explizite Entscheidung mit belegtem Ziel. Optionale Erweiterungen schli
 
 Abhängigkeiten: BASE-01.
 
+## Aktueller Gesamtstatus · 22. Oktober 2026
+
+[GitHub-Zustandsabgleich](verification/issue-state-reconciliation-20261022.json): **39 der ursprünglichen 82 Issues geschlossen, 43 offen**. Elf schon geschlossene Pakete waren lokal noch veraltet als offen markiert und sind jetzt synchronisiert; keine neuen Abschlüsse daraus gezählt. Spätere Issue #83 gehört nicht zum ursprünglichen Nenner. Original-Parity und verbleibende Kriterien bleiben getrennt. [Physische Abnahmen/Signing sind auf Eigentümerwunsch vorerst ausgesetzt](device-acceptance-hold.md); unabhängige Softwarearbeit läuft weiter.
+
 ## Vollständigkeit
 
 [function-coverage.json](function-coverage.json) weist jede der 105 Ausgangsfunktionen einem oder mehreren Paketen zu. [backlog.json](backlog.json) enthält Aufgaben und Abnahmekriterien maschinenlesbar. Keine der 105 Funktionen wird hier als vollständig originalgleich abgenommen ausgegeben.
