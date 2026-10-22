@@ -127,6 +127,8 @@ Abnahme: Jede F001–F105-Zeile hat einen verlinkten Arbeitspunkt, Status, Zielp
 <a id="base-02"></a>
 ### BASE-02: Vollständigen Referenzsatz für Zustände und Bewegungen sichern
 
+**Inventur abgeschlossen · 22. Oktober 2026.** [Zustandskatalog und benannte Lücken](reference-catalogue.md). Keine Renderer-/Original-/Hardwareabnahme; die ursprünglichen Kriterien darunter bleiben nachvollziehbar.
+
 Vorhanden sind einzelne Bilder, Produktaufnahmen und ausgewählte Bewegungssequenzen. Nicht jede Variante hat einen unverzerrten Originalzustand.
 
 Offen:
@@ -172,6 +174,8 @@ Abnahme: Die beschlossene Lizenz und erforderliche Notices sind im Repo, oder de
 
 <a id="face-01"></a>
 ### FACE-01: Face-Katalog und Varianten vollständig gegen Referenz abnehmen
+
+**Inventur abgeschlossen · 22. Oktober 2026.** [Zustandskatalog und benannte Lücken](reference-catalogue.md). Keine Renderer-/Original-/Hardwareabnahme; die ursprünglichen Kriterien darunter bleiben nachvollziehbar.
 
 Mehrere native Faces sind vorhanden, Snoopy fehlt. Watch-abgeleitete zusätzliche Modular-Layouts sind keine belegten HomeView-Originalvarianten.
 

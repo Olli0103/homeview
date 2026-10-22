@@ -35,7 +35,7 @@
     "priority": "P0",
     "kind": "research",
     "functions": [],
-    "current": "Vorhanden sind einzelne Bilder, Produktaufnahmen und ausgewählte Bewegungssequenzen. Nicht jede Variante hat einen unverzerrten Originalzustand.",
+    "current": "Inventur abgeschlossen: 24 Quellen, 51 datierte Bildzustände, 105 Funktions-Locatoren, 13 sichtbare Gruppen und explizite Lücken; 14 aktuelle Replik-Faces auf iPad/iPhone geprüft. Keine Renderer-/Original-/Hardware-Parity.",
     "tasks": [
       "Fehlende Face-, Editor-, Fehler-, Nacht-, Nah-/Fern- und Unterbrechungszustände benennen",
       "Zeitgestempelte Originalsequenzen für Übergänge und Animationen sammeln, soweit rechtmäßig zugänglich",
@@ -46,7 +46,16 @@
     "dependencies": [],
     "issue_url": "https://github.com/Olli0103/homeview/issues/2",
     "issue_number": 2,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-22",
+      "evidence": [
+        "Docs/reference-catalogue.md",
+        "Docs/reference-states.json",
+        "Docs/verification/reference-catalogue.json"
+      ],
+      "scope": "Bounded reference inventory including named gaps; not full product parity."
+    }
   },
   {
     "key": "PUB-01",
@@ -114,7 +123,7 @@
     "functions": [
       "F001"
     ],
-    "current": "Mehrere native Faces sind vorhanden, Snoopy fehlt. Watch-abgeleitete zusätzliche Modular-Layouts sind keine belegten HomeView-Originalvarianten.",
+    "current": "Inventur abgeschlossen: 24 Quellen, 51 datierte Bildzustände, 105 Funktions-Locatoren, 13 sichtbare Gruppen und explizite Lücken; 14 aktuelle Replik-Faces auf iPad/iPhone geprüft. Keine Renderer-/Original-/Hardware-Parity.",
     "tasks": [
       "Alle tatsächlich belegten HomeView-Faces samt Reihenfolge und Varianten inventarisieren",
       "Vorhandene Styles gegen den Katalog prüfen",
@@ -127,7 +136,16 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/5",
     "issue_number": 5,
-    "state": "open"
+    "state": "completed",
+    "completion": {
+      "date": "2026-10-22",
+      "evidence": [
+        "Docs/reference-catalogue.md",
+        "Docs/reference-states.json",
+        "Docs/verification/reference-catalogue.json"
+      ],
+      "scope": "Bounded reference inventory including named gaps; not full product parity."
+    }
   },
   {
     "key": "FACE-02",
