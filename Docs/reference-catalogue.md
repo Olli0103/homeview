@@ -18,6 +18,8 @@ Diese beiden Pakete verlangen einen verknüpften Zustandskatalog und einen gepr�
 | Private Dateien | 216 Dateien vollständig gelesen und gegen das vorhandene datierte SHA-/Byte-Manifest geprüft; 51 Ausschnitt-/Formattransformationen pixelgenau nachgerechnet |
 | Sichtprüfung | Fünf Referenztafeln mit allen 51 Bildern und vier Original-GIF-Kontaktbögen erneut gesichtet |
 
+Ein späterer [gezielter Quellen-Delta vom 22. Oktober](reference-delta-20261022.md) bleibt separat; er ersetzt keine Vollinventur und ändert die folgenden eingefrorenen Zähler nicht.
+
 Der Recherche-Cutoff ist **16. Oktober 2026**, der erneute Byte-/Katalogcheck **22. Oktober 2026**. Das ist keine neue Web-Vollsuche, kein laufender Originalgerätezugriff und keine Behauptung unveränderter aktueller Produktverfügbarkeit. Der bereits archivierte Hauptfilm hat 187,52 Sekunden und 188 Ein-Sekunden-Stichproben; Kurzfilm/Browseraufnahme und der gesampelte 833,401-Sekunden-Hands-on-Film sind im Quellenbestand getrennt dokumentiert. Narration ist kein Button-/Bewegungsnachweis.
 
 Originalmedien bleiben ausschließlich in der privaten Projektakte. Hier werden **keine** Originalfotos, Referenz-Crops, GIFs, Fonts oder extrahierten Konturen als App-Assets veröffentlicht. Öffentliche Quellenlinks und Hash-/Geometriemetadaten sind davon getrennt.
