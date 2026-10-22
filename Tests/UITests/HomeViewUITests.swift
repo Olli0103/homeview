@@ -3,6 +3,82 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func choosePanelProfile(_ name:String) {
+    tap("nav.apps");tap("personal.profile");tap("profile."+name)
+  }
+  private func panelSettings() { drawer();tap("app.Settings") }
+  func testSharedCalendarRequiresTwoExplicitPublicationsAndRevokesPanelsAndPreview() {
+    let id=UUID().uuidString
+    launch(["--face","Watch Modular","--page","Settings","--shared-panel-fixture",
+      "--persistence-test",id,"--reset-test-store"])
+    connectService("Calendar")
+    choosePanelProfile("Alex");tap("all.apps");tap("app.Calendar");tap("device.unlock")
+    XCTAssertTrue(app.staticTexts["Alex selected event"].waitForExistence(timeout:5))
+    tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["Calendar not shared"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Alex selected event"].exists)
+    viewportShot("panels-calendar-private-even-unlocked")
+    drawer();tap("app.Calendar")
+    let alex=app.buttons["calendar.share.panel-0"];scrollPhotoControlFullyIntoView(alex);alex.tap()
+    tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["shared.calendar.title.Alex"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Jamie selected event"].exists)
+    XCTAssertFalse(app.staticTexts["Never shared private event"].exists)
+    choosePanelProfile("Jamie");tap("all.apps");tap("app.Calendar");tap("device.unlock")
+    let jamie=app.buttons["calendar.share.panel-1"];scrollPhotoControlFullyIntoView(jamie);jamie.tap()
+    tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["shared.calendar.title.Alex"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["shared.calendar.title.Jamie"].exists)
+    XCTAssertTrue(app.staticTexts["shared.calendar.source.Jamie"].label.contains("Synthetic calendar"))
+    XCTAssertFalse(app.staticTexts["Never shared private event"].exists)
+    viewportShot("panels-two-explicit-labels")
+    choosePanelProfile("guest");tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["shared.calendar.title.Alex"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["shared.calendar.title.Jamie"].exists)
+    panelSettings()
+    let revokeAlex=app.buttons["shared.calendar.revoke.Alex"]
+    scrollPhotoControlFullyIntoView(revokeAlex);revokeAlex.tap()
+    let revokeJamie=app.buttons["shared.calendar.revoke.Jamie"]
+    scrollPhotoControlFullyIntoView(revokeJamie);revokeJamie.tap()
+    tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["Calendar not shared"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Alex selected event"].exists)
+    XCTAssertFalse(app.staticTexts["Jamie selected event"].exists)
+    viewportShot("panels-calendar-revoked")
+    panelSettings()
+    let editor=app.buttons["settings.faces"];scrollPhotoControlFullyIntoView(editor);editor.tap()
+    XCTAssertTrue(app.buttons["editor.done"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Alex selected event"].exists)
+    XCTAssertFalse(app.staticTexts["Jamie selected event"].exists)
+    viewportShot("panels-revoked-editor-preview")
+    app.terminate();launch(["--face","Watch Modular","--persistence-test",id])
+    XCTAssertFalse(app.staticTexts["Alex selected event"].exists)
+    XCTAssertFalse(app.staticTexts["Jamie selected event"].exists)
+  }
+  func testSharedMusicFaceHidesAuthenticatedPrivateQueueUntilExplicitGrantAndBackground() {
+    launch(["--face","Modular","--page","Settings"]);connectService("Apple Music")
+    drawer();tap("app.Music")
+    let field=app.textFields["music.search.input"];XCTAssertTrue(field.waitForExistence(timeout:5))
+    field.tap();field.typeText("fixture");tap("music.search");tap("music.result.0")
+    XCTAssertTrue(app.staticTexts["music.current.title"].waitForExistence(timeout:5))
+    tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["Music not shared"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Connected fixture song"].exists)
+    XCTAssertFalse(app.buttons["Pause music"].exists)
+    viewportShot("panels-music-private-even-unlocked")
+    panelSettings();let share=app.buttons["guest.music.share"]
+    scrollPhotoControlFullyIntoView(share);share.tap();tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["Connected fixture song"].waitForExistence(timeout:5))
+    viewportShot("panels-music-explicitly-shared")
+    XCUIDevice.shared.press(.home);app.activate()
+    tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["Music not shared"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Connected fixture song"].exists)
+    viewportShot("panels-music-background-revoked")
+  }
+}
+
+extension HomeViewUITests {
   func testFaceCatalogueEveryCurrentIdentityRendersWithoutLiveServices() {
     let faces=["Modular","Watch Modular","Infograph Modular","Modular Duo","Modular Compact",
       "Home Modular","Home Modular Clock","Photos","Weather","Calendar","Flow","Fade","Numerals","Home Camera"]
@@ -2968,6 +3044,8 @@ final class HomeViewUITests: XCTestCase {
     request.typeText("music")
     tap("assistant.send")
     XCTAssertEqual(app.staticTexts["assistant.reply"].label, "Playback requested.")
+    drawer();tap("app.Settings")
+    let share=app.buttons["guest.music.share"];scrollPhotoControlFullyIntoView(share);share.tap()
     tap("nav.faces")
     let pauseActivity = app.buttons["Pause music"]
     XCTAssertTrue(pauseActivity.waitForExistence(timeout: 5))

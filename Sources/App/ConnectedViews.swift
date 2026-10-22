@@ -14,6 +14,7 @@ struct ConnectionControls: View {
       .font(.system(size: 17)).foregroundStyle(.gray)
       Text("Guests can use public weather, local timers, bundled media and public podcast feeds. Apple Music stays private unless an authenticated device holder explicitly shares the current queue. Sharing ends on background, new search, reconnect or app restart.")
         .font(.system(size:16)).foregroundStyle(.gray).accessibilityIdentifier("guest.policy.summary")
+      SharedPanelControls()
       ForEach(DataConnection.allCases) { kind in
         VStack(alignment: .leading, spacing: 7) {
           HStack {
@@ -82,6 +83,27 @@ struct ConnectionControls: View {
         Divider()
       }
     }
+  }
+}
+struct SharedPanelControls: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    VStack(alignment:.leading,spacing:10) {
+      Text("Shared faces").font(.system(size:22,weight:.semibold))
+      Text("Connecting or unlocking never publishes private contents. In Calendar, share one selected event per display label (up to four). Only title, time and calendar source are published as a snapshot. Demo labels are not household identities. Publications stay in memory until revoked, disconnected, backgrounded or restarted.")
+        .font(.system(size:16)).foregroundStyle(.secondary)
+      if model.connections.sharedCalendarCards.isEmpty {
+        Text("No calendar cards shared").accessibilityIdentifier("shared.calendar.empty")
+      }
+      ForEach(model.connections.sharedCalendarCards) { card in
+        VStack(alignment:.leading,spacing:4) {
+          Text(card.title).font(.system(size:20,weight:.semibold))
+          Text(card.label+" · "+card.calendar+" · Snapshot").font(.system(size:15))
+          Button("Stop sharing "+card.label) { model.connections.revokeSharedCalendar(card.id) }
+            .frame(minHeight:48).accessibilityIdentifier("shared.calendar.revoke."+card.label)
+        }
+      }
+    }.accessibilityElement(children:.contain).accessibilityIdentifier("shared.panel.controls")
   }
 }
 struct DeviceUnlockView: View {

@@ -257,7 +257,7 @@ struct ActivityStrip: View {
   @Environment(AppModel.self) private var model
   var body: some View {
     HStack {
-      if model.connections.musicAccessAllowed,model.connections.musicPlaying, let index = model.connections.currentTrack,
+      if model.connections.sharedMusicTrack != nil,model.connections.musicPlaying, let index = model.connections.currentTrack,
         model.connections.tracks.indices.contains(index)
       {
         Button {

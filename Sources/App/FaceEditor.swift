@@ -51,6 +51,36 @@ struct WatchModularFace: View {
     }
   }
 }
+struct SharedCalendarPanel: View {
+  @Environment(AppModel.self) private var model
+  var body: some View {
+    VStack(alignment:.leading,spacing:6) {
+      if !model.connections.sharedCalendarCards.isEmpty {
+        ForEach(Array(model.connections.sharedCalendarCards.prefix(2))) { card in
+          VStack(alignment:.leading,spacing:2) {
+            Text(card.title).font(.system(size:20,weight:.semibold)).lineLimit(1)
+              .accessibilityIdentifier("shared.calendar.title."+card.label)
+            Text(card.label+" · "+card.calendar+" · Snapshot")
+              .font(.system(size:13)).lineLimit(1)
+              .accessibilityIdentifier("shared.calendar.source."+card.label)
+            Text(card.allDay ? "All day" : card.start.formatted(date:.abbreviated,time:.shortened))
+              .font(.system(size:13)).lineLimit(1)
+          }
+        }
+        if model.connections.sharedCalendarCards.count>2 {
+          Text("+\(model.connections.sharedCalendarCards.count-2) shared cards · Settings")
+            .font(.system(size:12))
+        }
+      } else if model.connections.requested.contains(.calendar) {
+        Text("Calendar not shared").font(.system(size:25,weight:.semibold))
+        Text("Private · choose an event in Calendar").font(.system(size:15))
+      } else {
+        Text("Family dinner").font(.system(size:29,weight:.semibold))
+        Text("6:00 PM · Home · Demo").font(.system(size:20))
+      }
+    }.accessibilityElement(children:.contain).accessibilityIdentifier("shared.calendar.panel")
+  }
+}
 struct ComplicationContent: View {
   @Environment(AppModel.self) private var model
   let kind: ComplicationKind
@@ -82,18 +112,11 @@ struct ComplicationContent: View {
         Text(model.data.timers.first?.display(at: model.now) ?? "No timers").monospacedDigit()
       case .calendar:
         Text("UP NEXT").foregroundStyle(accent).font(.system(size: 23, weight: .semibold))
-        if model.connections.enabled.contains(.calendar) {
-          Text(
-            model.connections.personalUnlocked
-              ? (model.connections.events.first?.title ?? "No events") : "Unlock calendar")
-        } else {
-          Text("Family dinner")
-          Text("6:00 PM · Home").font(.system(size: 26)).foregroundStyle(.secondary)
-        }
+        SharedCalendarPanel()
       case .music:
         Image(systemName: "music.note").foregroundStyle(.pink)
-        Text(model.currentMusicTitle)
-        Text(model.currentMusicArtist).font(.system(size: 24)).foregroundStyle(.secondary)
+        Text(model.sharedMusicTitle)
+        Text(model.sharedMusicSource).font(.system(size: 24)).foregroundStyle(.secondary)
       }
     }.font(.system(size: family.isCompact ? 28 : 38, weight: .medium))
       .lineLimit(2).minimumScaleFactor(0.6)

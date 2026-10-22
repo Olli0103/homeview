@@ -10,6 +10,17 @@ struct DeviceEvent: Identifiable, Sendable {
   let cancelled: Bool
   var allDay = false
 }
+/// Explicitly published fields only; no source record ID, location, attendee or account data.
+/// RAM-only snapshot. A demo label is presentation, never proof of household identity.
+struct SharedCalendarCard: Identifiable, Sendable {
+  let id: UUID
+  let label: String
+  let title: String
+  let start: Date
+  let end: Date
+  let calendar: String
+  let allDay: Bool
+}
 struct DeviceReminder: Identifiable, Sendable {
   let id: String
   let title: String
