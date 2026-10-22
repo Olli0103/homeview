@@ -1367,6 +1367,8 @@ Abhängigkeiten: QA-02.
 <a id="extra-01"></a>
 ### EXTRA-01: Palette, Bounce-Gitter und Flux als optionale Watch-inspirierte Erweiterungen bewerten
 
+**Abgeschlossen 22. Oktober 2026:** [Scope-Entscheidung](optional-face-decision.md): diese drei unbelegten optionalen Konzepte werden nicht in der HomeView-Paritätsversion implementiert. Historische Planung unten bleibt erhalten; bedingte Implementierungsabnahme ist mangels Annahme nicht ausgelöst. Kein Original-Parity-PASS.
+
 Statische Buildhinweise vorhanden. Diese Faces sind nicht als notwendige HomeView-Parity-Anforderung belegt.
 
 Offen:
