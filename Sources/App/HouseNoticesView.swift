@@ -73,7 +73,8 @@ struct HouseNoticesView:View {
         }
       }.accessibilityIdentifier("notices.list")
       if !actionStatus.isEmpty {Text(actionStatus).font(.caption).accessibilityIdentifier("notices.action.status")}
-    }.padding(20).buttonStyle(.plain)
+    }.padding(20).background(.white).foregroundStyle(.black)
+      .environment(\.colorScheme,.light).buttonStyle(.plain)
       .onDisappear {authentication?.cancel();authentication=nil}
       .onChange(of:phase) {_,value in
         if value == .background {authentication?.cancel();model.lockPersonalAccess();dismiss()}
