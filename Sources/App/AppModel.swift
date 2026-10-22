@@ -107,8 +107,8 @@ final class AppModel {
   var sharedMusicSource: String {
     #if !os(watchOS)
     if connections.requested.contains(.music) {
-      guard let track=connections.sharedMusicTrack else { return "Private · share a queue in Settings" }
-      return track.artist + " · Shared Apple Music queue"
+      guard connections.sharedMusicTrack != nil else { return "Private · Not shared" }
+      return "Shared · Apple Music"
     }
     #endif
     return "Demo Artist · Synthetic media"

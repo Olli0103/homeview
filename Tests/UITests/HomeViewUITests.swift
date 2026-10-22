@@ -69,6 +69,7 @@ extension HomeViewUITests {
     panelSettings();let share=app.buttons["guest.music.share"]
     scrollPhotoControlFullyIntoView(share);share.tap();tap("nav.faces")
     XCTAssertTrue(app.staticTexts["Connected fixture song"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts["Shared · Apple Music"].exists)
     viewportShot("panels-music-explicitly-shared")
     XCUIDevice.shared.press(.home);app.activate()
     tap("nav.faces")
