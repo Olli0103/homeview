@@ -1345,13 +1345,13 @@ final class AppModel {
       completions.append((timer.id,"\(timer.title) finished",!candidate.nativeTimerIDs.contains(timer.id)))
     }
     let cal=Calendar.current
-    let day="\(cal.component(.year,from:now))-\(cal.ordinality(of:.day,in:.year,for:now) ?? 0)"
-    for i in candidate.alarms.indices
-    where candidate.alarms[i].enabled && candidate.alarms[i].lastFiredDay != day {
-      if cal.component(.hour,from:now)==candidate.alarms[i].hour
-        && cal.component(.minute,from:now)==candidate.alarms[i].minute {
-        candidate.alarms[i].lastFiredDay=day
-        completions.append((nil,"Alarm",!candidate.nativeAlarmIDs.contains(candidate.alarms[i].id)))
+    for i in candidate.alarms.indices {
+      let id=candidate.alarms[i].id
+      // Native alarms remain OS-owned; reconciliation handles stopped/deleted
+      // entries. Do not prematurely disable one while its native alert is active.
+      guard !candidate.nativeAlarmIDs.contains(id) else { continue }
+      if candidate.alarms[i].acknowledgeForegroundOccurrence(at:now,calendar:cal) {
+        completions.append((nil,"Alarm",true))
       }
     }
     // Commit the local receipt before any banner/readout interruption/chime
@@ -1492,13 +1492,13 @@ final class AppModel {
       #endif
     }
   }
-  func addAlarm(hour: Int, minute: Int) {
+  func addAlarm(hour: Int, minute: Int, recurrence: AlarmRecurrence = .once) {
     guard writableStore() else { return }
     guard (0...23).contains(hour), (0...59).contains(minute), data.alarms.count < 24 else {
       error = "Choose a valid time, up to 24 alarms."
       return
     }
-    let alarm = AlarmItem(hour: hour, minute: minute)
+    let alarm = AlarmItem(hour: hour, minute: minute, recurrence: recurrence, armedAfter: Date())
     data.alarms.append(alarm)
     guard persist() else { data.alarms.removeAll { $0.id == alarm.id }; return }
     scheduleNativeAlarm(alarm)
@@ -1508,9 +1508,9 @@ final class AppModel {
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       guard systemAlarmsAllowed else {return}
       queueNativeSchedule(alarm.id,wanted:{
-        self.data.alarms.contains {$0.id==alarm.id && $0.enabled && $0.hour==alarm.hour && $0.minute==alarm.minute}
+        self.data.alarms.contains {$0.id==alarm.id && $0.enabled && $0.hour==alarm.hour && $0.minute==alarm.minute && $0.recurrence==alarm.recurrence}
       },schedule:{
-        try await self.nativeAlarms.scheduleAlarm(id:alarm.id,hour:alarm.hour,minute:alarm.minute)
+        try await self.nativeAlarms.scheduleAlarm(id:alarm.id,hour:alarm.hour,minute:alarm.minute,recurrence:alarm.recurrence)
       },record:{$0.nativeAlarmIDs.insert(alarm.id)})
     #endif
   }
@@ -1520,6 +1520,7 @@ final class AppModel {
     let enabled = !data.alarms[i].enabled
     let change:(inout Snapshot)->Void = {
       $0.alarms[i].enabled=enabled
+      if enabled { $0.alarms[i].armedAfter=Date() }
       if !enabled { $0.nativeAlarmIDs.remove(id) }
     }
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)

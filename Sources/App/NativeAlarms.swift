@@ -25,7 +25,7 @@ import SwiftUI
         configuration: .timer(
           duration: max(1, deadline.timeIntervalSinceNow), attributes: attributes))
     }
-    func scheduleAlarm(id: UUID, hour: Int, minute: Int) async throws {
+    func scheduleAlarm(id: UUID, hour: Int, minute: Int, recurrence: AlarmRecurrence = .once) async throws {
       guard (0...23).contains(hour), (0...59).contains(minute) else { throw HomeError.invalidValue }
       let manager = AlarmManager.shared
       guard try await manager.requestAuthorization() == .authorized else {
@@ -34,7 +34,10 @@ import SwiftUI
       let attributes = AlarmAttributes(
         presentation: AlarmPresentation(alert: .init(title: "HomeView alarm")),
         metadata: HomeViewAlarmMetadata(), tintColor: .orange)
-      let schedule = Alarm.Schedule.relative(.init(time: .init(hour: hour, minute: minute)))
+      let days: [Locale.Weekday] = [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
+      let repeats: Alarm.Schedule.Relative.Recurrence = recurrence == .once
+        ? .never : .weekly(recurrence.weekdays.map { days[$0 - 1] })
+      let schedule = Alarm.Schedule.relative(.init(time: .init(hour: hour, minute: minute), repeats: repeats))
       _ = try await manager.schedule(
         id: id, configuration: .alarm(schedule: schedule, attributes: attributes))
     }

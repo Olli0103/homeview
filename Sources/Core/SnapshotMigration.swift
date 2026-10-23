@@ -127,6 +127,13 @@ extension Snapshot {
     output.reminders = items("reminders",fallback.reminders,limit:500)
     output.alarms = items("alarms",fallback.alarms,limit:24) {
       (0...23).contains($0.hour) && (0...59).contains($0.minute)
+        && ($0.armedAfter.map { $0 >= .distantPast && $0 <= .distantFuture } ?? true)
+    }
+    let legacyAlarms = (stored["alarms"] as? [[String: Any]] ?? []).filter { $0["recurrence"] == nil }
+    let legacyIDs = Set(legacyAlarms.compactMap { ($0["id"] as? String).flatMap(UUID.init(uuidString:)) })
+    for i in output.alarms.indices where legacyIDs.contains(output.alarms[i].id)
+      && output.nativeAlarmIDs.contains(output.alarms[i].id) {
+      output.alarms[i].recurrence = .once
     }
     func validRecipe(_ recipe: RecipeDocument) -> Bool {
       !recipe.title.isEmpty && recipe.title.count <= 200 && recipe.ingredients.count <= 200
