@@ -1,0 +1,244 @@
+{
+  "date": "2026-10-23",
+  "issue": 52,
+  "product_commit": "1d122d6048d96f3f0525144af1bdc6615398c491",
+  "baseline_commit": "511d803c7ef6548a0d8b00e7ecebcc41c46d2319",
+  "source_manifest": "alarm-recurrence-source.json",
+  "source_digest": "a15138b2bbc8fbb45812374e57c1c2ed727e1ce4bb893f3f350738eb179d91f3",
+  "source_files": 225,
+  "scope": [
+    "Explicit once/daily/Mon-Fri/Sat-Sun presets",
+    "Legacy native-once vs foreground-daily migration",
+    "Civil-time DST/zone matching and one-minute foreground window",
+    "Commit-before-receipt once disabling, rearming, duplicate suppression",
+    "Native weekly schedule API mapping (compile only)"
+  ],
+  "core": {
+    "tests": 391,
+    "failures": 0,
+    "new_methods": 9,
+    "checkpoint_digest": "b61a5bee7941255b4b52a949bc2a07a1861f7d38c95937012b52b8901f47692b",
+    "core_and_core_test_bytes_unchanged_in_delivery": true,
+    "log_sha256": "4516b403d551983d7c1c11e456b1fdcf737fc717585570c9688bd06c5c541031"
+  },
+  "native_app_model": {
+    "processes": 4,
+    "assertions": 39,
+    "failed": 0,
+    "checkpoint_digest": "b61a5bee7941255b4b52a949bc2a07a1861f7d38c95937012b52b8901f47692b",
+    "current_app_model_and_core_bytes_unchanged": true,
+    "probe_sha256": "f0df8b73a26222ffe923f6bd57351943adaeda7c00aca97f9782b6df41cd1ca5",
+    "binary_sha256": "8c07f76e0586ace38d12f8c884c66f0c911a9ca8fab75521e9acbb9e5d758407",
+    "actual_OS_alarm_execution": false,
+    "real_audio": false,
+    "checks": [
+      {
+        "case": "normal",
+        "phase": "seed",
+        "checks": {
+          "banner_after_commit": true,
+          "daily_keeps_enabled_with_receipt": true,
+          "disabled_control_unmodified": true,
+          "duplicate_ticks_no_disk_write": true,
+          "duplicate_ticks_no_new_chime_request": true,
+          "explicit_add_saved": true,
+          "native_control_OS_owned": true,
+          "new_alarm_armed_after_creation": true,
+          "once_disables_after_successful_receipt": true,
+          "reenable_in_elapsed_minute_does_not_fire": true,
+          "reenable_records_fresh_arm": true,
+          "seed_saved": true
+        }
+      },
+      {
+        "case": "normal",
+        "phase": "restart",
+        "checks": {
+          "delete_persisted": true,
+          "restart_daily_receipt": true,
+          "restart_disabled_control": true,
+          "restart_four_alarms": true,
+          "restart_native_identity_retained": true,
+          "restart_once_reenabled": true
+        }
+      },
+      {
+        "case": "write_failure",
+        "phase": "seed",
+        "checks": {
+          "banner_after_commit": true,
+          "daily_keeps_enabled_with_receipt": true,
+          "disabled_control_unmodified": true,
+          "duplicate_ticks_no_disk_write": true,
+          "duplicate_ticks_no_new_chime_request": true,
+          "explicit_add_saved": true,
+          "failed_commit_keeps_once_enabled": true,
+          "failed_commit_no_banner": true,
+          "failed_commit_reports_error": true,
+          "native_control_OS_owned": true,
+          "new_alarm_armed_after_creation": true,
+          "once_disables_after_successful_receipt": true,
+          "reenable_in_elapsed_minute_does_not_fire": true,
+          "reenable_records_fresh_arm": true,
+          "seed_saved": true
+        }
+      },
+      {
+        "case": "write_failure",
+        "phase": "restart",
+        "checks": {
+          "delete_persisted": true,
+          "restart_daily_receipt": true,
+          "restart_disabled_control": true,
+          "restart_four_alarms": true,
+          "restart_native_identity_retained": true,
+          "restart_once_reenabled": true
+        }
+      }
+    ]
+  },
+  "ui": {
+    "accepted_unique_methods": 4,
+    "accepted_executions": 8,
+    "not_one_single_final_eight_test_run": true,
+    "main_selection": {
+      "iPad": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+          "deviceName": "iPad Air 11-inch (M4)",
+          "modelName": "iPad Air 11-inch (M4)",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      },
+      "iPhone": {
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+          "deviceName": "iPhone 18 Pro",
+          "modelName": "iPhone 18 Pro",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      }
+    },
+    "corrected_affected_edge_selection": {
+      "iPad": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": []
+      },
+      "iPhone": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": []
+      }
+    },
+    "accepted_composition": "Three main-selection methods per device plus the corrected edge method per device. Earlier main-selection edge passes are not added again.",
+    "app_files_byte_identical_between_main_and_edge": 19,
+    "installed_app_byte_readback": true,
+    "main_source_digest": "e355c2583493698aebf25e3855cbafb1630bb305757bac49c03a9a4ea1d05e5d",
+    "edge_source_digest": "a15138b2bbc8fbb45812374e57c1c2ed727e1ce4bb893f3f350738eb179d91f3",
+    "test_changes_only_between_these_selections": true,
+    "methods": [
+      "testAlarmRecurrenceChoicesPersistWithoutSystemScheduling",
+      "testLocalAlarmAddToggleDeleteAndCloseActualEdges",
+      "testLocalAlarmInitialAutomaticHitRegionAudit",
+      "testLocalAlarmTwoRowsAutomaticHitRegionAudit"
+    ]
+  },
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0
+    }
+  ],
+  "history": {
+    "core_pilot_tests": 391,
+    "core_pilot_assertion_failures": 2,
+    "core_pilot_failed_method": "testHalfHourDSTGapAndNonWholeHourTimeZone",
+    "initial_sdk_failed_target": "watchOS: missing reduced-source-list dependency",
+    "ui_initial": {
+      "passed": 7,
+      "failed": 1
+    },
+    "ui_stronger_clip_guard": {
+      "passed": 7,
+      "failed": 1
+    },
+    "ui_corrected_affected_edge": {
+      "passed": 2,
+      "failed": 0
+    },
+    "total_ui_executions": 18,
+    "total_ui_passed": 16,
+    "total_ui_failed": 2,
+    "installed_pilot_readback": "Initial wrapper encountered Shutdown after test completion; explicit boot, no reinstall, exact installed-app readback recovered. Later runs used already booted simulators.",
+    "image_preparation": "Default Python lacked Pillow; existing external venv used. Repeated same-state export filename collision was rejected before overwrite; checkpoint-qualified names used, partial attempt retained privately."
+  },
+  "images": {
+    "decoded_pngs": 46,
+    "published_pngs": 8,
+    "manifest": "alarm-recurrence-images/manifest.json",
+    "reviewed_contacts": [
+      "alarm-recurrence-images/iPad-contact.png",
+      "alarm-recurrence-images/iPhone-contact.png"
+    ],
+    "additional_full_resolution_inspection": [
+      "iPhone-delivery-alarm-recurrence-Mon-Fri.png",
+      "iPhone-edge-alarm-hit-region-after-edge-actions.png",
+      "iPad-delivery-alarm-recurrence-Mon-Fri.png"
+    ]
+  },
+  "archive": {
+    "filename": "delivery-inputs.zip",
+    "sha256": "f4c6bec23bda0b4e31c26a6e006a3647c2e51745307f5112d5a2bb892eab41b8",
+    "bytes": 147093433,
+    "entries": 355,
+    "all_entries_read_back": true,
+    "storage": "External research volume; not published"
+  },
+  "acceptance": {
+    "issue_closed": false,
+    "F067_parity": false,
+    "physical_signing_acceptance": "paused by owner",
+    "OS_alarm_delivery": "not tested by this change",
+    "VoiceOver_and_other_assistive_tools": "not accepted",
+    "original_repeat_editor": "not verified",
+    "HomeKit": "disabled; not constructed"
+  },
+  "checks": {
+    "backlog": "105 reference functions / 82 issue packages validated",
+    "asset_manifest": "58 resources / 17 provenance inputs validated",
+    "source_matches_code_commit": true
+  }
+}

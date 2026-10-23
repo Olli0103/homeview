@@ -2113,7 +2113,8 @@
       "DAY-06"
     ],
     "current": [
-      "Eigene AlarmKit-Wecker sind im Simulator geprüft. Andere Plattformen haben nur Vordergrundwecker."
+      "Eigene AlarmKit-Wecker sind im Simulator geprüft. Andere Plattformen haben nur Vordergrundwecker.",
+      "Explizite eigene Weckerwahl Once/Every day/Mon–Fri/Sat–Sun, persistente Wiederholung und vor Commit gesicherte Vordergrund-Quittierung. Bestehende lokale tägliche bzw. native einmalige Alarme werden getrennt migriert. Synthetische DST-/Zeitzonen-/Neustartprüfungen; keine neue native AlarmKit-Zustellung oder physische Abnahme. Docs/alarm-recurrence.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
