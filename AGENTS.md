@@ -7,3 +7,5 @@ Real calendar, reminders, photos, microphone, camera and music access require an
 Generate the Xcode project with Scripts/generate_project.py. Do not add private Apple frameworks, extracted OS font contours, proprietary reference imagery or binary disassembly to this repository. Use original assets or assets with documented redistribution terms.
 
 Build/test success does not establish visual or functional parity. Keep simulator, physical-device and live-account evidence separate. Track unresolved system-only capabilities as blocked, never silently replace them with a claimed live integration.
+
+The main app discovers Swift sources automatically, but `Scripts/generate_project.py` maintains an explicit reduced Watch source allowlist. When adding a Core type referenced by shared models or AppModel, include that dependency in the Watch list and regenerate the project; an iOS build alone does not validate this boundary.

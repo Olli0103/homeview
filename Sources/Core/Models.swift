@@ -221,6 +221,27 @@ struct AlarmItem: Codable, Identifiable, Equatable, Sendable {
   var minute: Int
   var enabled = true
   var lastFiredDay = ""
+  var recurrence: AlarmRecurrence = .once
+  var armedAfter: Date?
+
+  private enum CodingKeys: String, CodingKey { case id, hour, minute, enabled, lastFiredDay, recurrence, armedAfter }
+  init(from decoder: any Decoder) throws {
+    let c = try decoder.container(keyedBy: CodingKeys.self)
+    id = try c.decode(UUID.self, forKey: .id)
+    hour = try c.decode(Int.self, forKey: .hour)
+    minute = try c.decode(Int.self, forKey: .minute)
+    enabled = try c.decode(Bool.self, forKey: .enabled)
+    lastFiredDay = try c.decode(String.self, forKey: .lastFiredDay)
+    armedAfter = try c.decodeIfPresent(Date.self, forKey: .armedAfter)
+    // Older foreground alarms repeated every day. Snapshot migration separately
+    // preserves the once-only behavior of already registered native alarms.
+    recurrence = c.contains(.recurrence) ? try c.decode(AlarmRecurrence.self, forKey: .recurrence) : .daily
+  }
+  init(id: UUID = UUID(), hour: Int, minute: Int, enabled: Bool = true,
+       lastFiredDay: String = "", recurrence: AlarmRecurrence = .once, armedAfter: Date? = nil) {
+    self.id=id; self.hour=hour; self.minute=minute; self.enabled=enabled
+    self.lastFiredDay=lastFiredDay; self.recurrence=recurrence; self.armedAfter=armedAfter
+  }
 }
 struct PersonalContent: Codable, Sendable {
   var reminders = [

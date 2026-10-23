@@ -619,6 +619,7 @@ struct AlarmsView: View {
   private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var hour = 7
   @State private var minute = 0
+  @State private var recurrence: AlarmRecurrence = .once
   var body: some View {
     VStack(spacing: 18) {
       AppHeader(title:"Alarms",closeSize:max(48,minimumHitSide))
@@ -629,6 +630,8 @@ struct AlarmsView: View {
               VStack(alignment: .leading, spacing: 6) {
                 Text(String(format: "%02d:%02d", alarm.hour, alarm.minute)).font(
                   .system(size: 51, weight: .light))
+                Text(alarm.recurrence.title).font(.system(size: 16))
+                  .accessibilityIdentifier("alarm.repeat.\(alarm.id)")
                 Text(
                   model.data.nativeAlarmIDs.contains(alarm.id)
                     ? "System alert enabled" : alarm.enabled ? "Foreground alarm" : "Off"
@@ -665,15 +668,21 @@ struct AlarmsView: View {
         Picker("Minute", selection: $minute) {
           ForEach(0..<60) { m in Text(String(format: "%02d", m)).tag(m) }
         }
+        Picker("Repeat", selection: $recurrence) {
+          ForEach(AlarmRecurrence.allCases, id: \.self) { choice in
+            Text(choice.title).tag(choice)
+          }
+        }.pickerStyle(.menu).frame(minHeight:minimumHitSide)
+          .accessibilityIdentifier("alarm.recurrence")
       }.font(.system(size: 25)).padding(.horizontal, 32)
-      Button {model.addAlarm(hour:hour,minute:minute)} label: {
+      Button {model.addAlarm(hour:hour,minute:minute,recurrence:recurrence)} label: {
         Label("Add Alarm",systemImage:"plus").font(.system(size:21,weight:.medium))
           .frame(maxWidth:.infinity).padding(.vertical,17)
           .frame(minHeight:minimumHitSide)
           .background(.black.opacity(0.08),in:Capsule()).foregroundStyle(.primary)
       }.padding(.horizontal,32).accessibilityIdentifier("alarm.add")
       Text(
-        "System alerts use AlarmKit on iPhone and iPad after permission. Other targets use foreground alarms."
+        "Times follow this device. Without a permitted iPhone/iPad system alert, alarms ring only while HomeView is active. Missed foreground alerts are not replayed."
       ).font(.system(size: 16)).foregroundStyle(.gray).padding(.horizontal, 32).padding(.bottom, 24)
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
   }

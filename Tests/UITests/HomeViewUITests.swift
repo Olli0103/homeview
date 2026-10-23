@@ -6485,6 +6485,18 @@ extension HomeViewUITests {
   }
   private func tapLocalAlarmEdge(_ button:XCUIElement,bottom:Bool=false) {
     XCTAssertTrue(button.waitForExistence(timeout:5))
+    if button.identifier.hasPrefix("alarm.delete.") || button.identifier.hasPrefix("alarm.toggle.") {
+      let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"]
+      for _ in 0..<10 {
+        let safe=scroll.frame.intersection(viewport.frame).insetBy(dx:0,dy:2),target=button.frame
+        if safe.contains(target) { break }
+        let gap=target.minY<safe.minY ? -(safe.minY-target.minY+3):target.maxY-safe.maxY+3
+        let distance=min(max(abs(gap),12),safe.height*0.5)*(gap<0 ? -1:1)
+        let start=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:safe.minX+8,dy:safe.midY+distance/2))
+        let end=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:safe.minX+8,dy:safe.midY-distance/2))
+        start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+      }
+    }
     let frame=button.frame,viewport=app.otherElements["reference.viewport"].frame
     let data:[String:Any]=["identifier":button.identifier,"label":button.label,
       "frame":[Double(frame.minX),Double(frame.minY),Double(frame.width),Double(frame.height)],
@@ -6494,6 +6506,10 @@ extension HomeViewUITests {
     geometry.name="alarm-edge-"+button.identifier.replacingOccurrences(of:".",with:"-")+"-"+(bottom ? "bottom":"top")
     geometry.lifetime = .keepAlways;add(geometry)
     XCTAssertTrue(viewport.contains(frame))
+    if button.identifier.hasPrefix("alarm.delete.") || button.identifier.hasPrefix("alarm.toggle.") {
+      XCTAssertTrue(app.scrollViews.firstMatch.frame.intersection(viewport).contains(frame),
+        "Alarm target must be inside the actual unclipped list, not only the outer viewport")
+    }
     tapRecipeTargetEdge(button,bottom:bottom)
   }
   func testLocalAlarmAddToggleDeleteAndCloseActualEdges() {
@@ -6842,5 +6858,41 @@ extension HomeViewUITests {
     waitForExpectations(timeout:12)
     XCTAssertFalse(captions.isEnabled);XCTAssertFalse(cue.exists)
     scrollPhotoControlFullyIntoView(status);viewportShot("podcast-source-no-invented-captions")
+  }
+}
+
+extension HomeViewUITests {
+  func testAlarmRecurrenceChoicesPersistWithoutSystemScheduling() {
+    for title in ["Once", "Every day", "Mon–Fri", "Sat–Sun"] {
+      let store=UUID().uuidString
+      launch(["--page","Alarms","--persistence-test",store,"--reset-test-store"])
+      let initial=localAlarmToggles.firstMatch.identifier
+      tap("alarm.recurrence")
+      let option=app.buttons[title].firstMatch
+      XCTAssertTrue(option.waitForExistence(timeout:5));option.tap()
+      tap("alarm.add")
+      XCTAssertEqual(localAlarmToggles.count,2)
+      let added=localAlarmToggles.allElementsBoundByIndex.first {$0.identifier != initial}!
+      let suffix=String(added.identifier.dropFirst("alarm.toggle.".count))
+      XCTAssertEqual(app.staticTexts["alarm.repeat."+suffix].label,title)
+      XCTAssertEqual(added.value as? String,"On")
+      XCTAssertFalse(app.staticTexts["System alert enabled"].exists)
+      viewportShot("alarm-recurrence-"+title.replacingOccurrences(of:" ",with:"-"))
+      app.terminate()
+      launch(["--page","Alarms","--persistence-test",store])
+      XCTAssertEqual(app.staticTexts["alarm.repeat."+suffix].label,title)
+      XCTAssertEqual(app.buttons["alarm.toggle."+suffix].value as? String,"On")
+      tap("alarm.toggle."+suffix)
+      XCTAssertEqual(app.buttons["alarm.toggle."+suffix].value as? String,"Off")
+      app.terminate()
+      launch(["--page","Alarms","--persistence-test",store])
+      XCTAssertEqual(app.buttons["alarm.toggle."+suffix].value as? String,"Off")
+      XCTAssertEqual(app.staticTexts["alarm.repeat."+suffix].label,title)
+      tap("alarm.toggle."+suffix)
+      XCTAssertEqual(app.buttons["alarm.toggle."+suffix].value as? String,"On")
+      tap("alarm.delete."+suffix)
+      XCTAssertEqual(localAlarmToggles.count,1)
+      app.terminate()
+    }
   }
 }
