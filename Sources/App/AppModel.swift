@@ -341,7 +341,7 @@ final class AppModel {
   @discardableResult
   func addWorldCity(_ zone: String) -> Bool {
     guard data.worldClockZones.count < 12,
-      WorldCity.catalogue.contains(where: { $0.zone == zone }),
+      WorldCity.city(for: zone) != nil,
       !data.worldClockZones.contains(zone) else { return false }
     return updateLocalControls { $0.worldClockZones.append(zone) }
   }

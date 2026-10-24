@@ -1724,6 +1724,43 @@ final class HomeViewUITests: XCTestCase {
     app.terminate()
     launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
   }
+  func testWorldClockOffersEveryZoneAndExplainsMissingSunPosition() {
+    let id = UUID().uuidString
+    launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
+    tap("world.add")
+    let search = app.textFields["world.search"]
+    XCTAssertTrue(search.waitForExistence(timeout: 5))
+    search.tap(); search.typeText("Asia/Shanghai")
+    tap("world.choose.Asia/Shanghai")
+    XCTAssertTrue(app.staticTexts["world.time.Asia/Shanghai"].waitForExistence(timeout: 3))
+    shot("world-derived-zone")
+    tap("world.detail.open.Asia/Shanghai")
+    XCTAssertTrue(app.staticTexts["world.detail.time"].waitForExistence(timeout: 3))
+    XCTAssertTrue(app.staticTexts["No sun position for this time zone."].exists)
+    XCTAssertTrue(app.staticTexts["Current light unknown"].exists)
+    shot("world-detail-derived-zone")
+    tap("world.detail.done")
+    XCTAssertFalse(app.staticTexts["world.detail.time"].waitForExistence(timeout: 2))
+    tap("world.add")
+    let second = app.textFields["world.search"]
+    second.tap(); second.typeText("Sydney")
+    tap("world.choose.Australia/Sydney")
+    XCTAssertTrue(app.staticTexts["world.time.Australia/Sydney"].waitForExistence(timeout: 3))
+    tap("world.detail.open.Australia/Sydney")
+    XCTAssertTrue(app.staticTexts["world.detail.time"].waitForExistence(timeout: 3))
+    XCTAssertTrue(app.otherElements["world.daylight.bar"].exists)
+    let sunrise = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH 'Sunrise'")).firstMatch
+    XCTAssertTrue(sunrise.waitForExistence(timeout: 3))
+    XCTAssertTrue(sunrise.label.contains("Sunset"))
+    shot("world-detail-computed-course")
+    tap("world.detail.done")
+    app.terminate()
+    launch(["--page", "World Clock", "--persistence-test", id])
+    XCTAssertTrue(app.staticTexts["world.time.Australia/Sydney"].waitForExistence(timeout: 3))
+    XCTAssertTrue(app.staticTexts["world.time.Asia/Shanghai"].exists)
+    app.terminate()
+    launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
+  }
   func testBrowserRejectsInsecureAddressAndPageCannotOpenExternalScheme() {
     launch(["--page", "Safari", "--browser-policy-fixture"])
     XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 8))
