@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-24",
+  "issue": 53,
+  "base_commit": "12c89d7a31511bc852ebf9d7e01cf8f8677062f2",
+  "status": "bounded_increment_passed_issue_open",
+  "source_digest": "be710e8b9654e88a9f064ead2968512914800718cdad76bef64b39b4acce0a61",
+  "source_digest_method": "sha256 over the five changed files in fixed order, each prefixed by path, byte length and content",
+  "changed_files": [
+    "Sources/Core/WorldClock.swift",
+    "Sources/App/Everyday.swift",
+    "Sources/App/AppModel.swift",
+    "Tests/CoreTests/WorldClockTests.swift",
+    "Tests/UITests/HomeViewUITests.swift"
+  ],
+  "core": {
+    "suite": "swift test",
+    "executed": 395,
+    "failures": 0,
+    "world_clock_tests": 11,
+    "new_methods": [
+      "testEveryKnownZoneResolvesWithoutInventingASunPosition",
+      "testDaylightWindowPlacementInsideTheLocalDay",
+      "testPolarDayAndNightReportTheirOwnKind",
+      "testNormalizedAcceptsAnyKnownZoneAndRejectsUnknown"
+    ]
+  },
+  "platform_builds": {
+    "script": "Scripts/build_platforms.py",
+    "results": {
+      "iOS": "PASS",
+      "macOS": "PASS",
+      "tvOS": "PASS",
+      "visionOS": "PASS",
+      "watchOS": "PASS"
+    }
+  },
+  "ui_runs": [
+    {
+      "device": "iPhone 18 Pro",
+      "device_id": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+      "os": "iOS 27.0 (24A434)",
+      "bundle": "Test-HomeViewReplica-2026.10.24_17-19-30-+0200.xcresult",
+      "result": "Passed",
+      "passed": 2,
+      "failed": 0,
+      "cases": {
+        "testWorldClockAddsFractionalZoneAndPersistsRemoval": "passed 35.931 s",
+        "testWorldClockOffersEveryZoneAndExplainsMissingSunPosition": "passed 44.706 s"
+      }
+    },
+    {
+      "device": "iPad Air 11-inch (M4)",
+      "device_id": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+      "os": "iOS 27.0 (24A434)",
+      "bundle": "Test-HomeViewReplica-2026.10.24_17-21-16-+0200.xcresult",
+      "result": "Passed",
+      "passed": 2,
+      "failed": 0,
+      "cases": {
+        "testWorldClockAddsFractionalZoneAndPersistsRemoval": "passed 37.242 s",
+        "testWorldClockOffersEveryZoneAndExplainsMissingSunPosition": "passed 45.083 s"
+      }
+    }
+  ],
+  "ui_executions": 4,
+  "retained_failures": [
+    {
+      "stage": "first run of the new test",
+      "device": "iPhone 18 Pro",
+      "error": "XCTAssertTrue failed - expected text 'Currently light unknown' while the view renders 'Current light unknown'",
+      "resolution": "test expectation corrected to the rendered string"
+    },
+    {
+      "stage": "second run of the new test",
+      "device": "iPhone 18 Pro",
+      "error": "XCTAssertTrue failed - Missing world.detail.done",
+      "cause": "the container accessibility identifier propagated to the sheet's Done button and replaced its own identifier",
+      "resolution": "container identifier removed; the test now asserts the sheet via world.detail.time"
+    }
+  ],
+  "observations": [
+    "WorldCity.allZones resolves every TimeZone.knownTimeZoneIdentifiers entry; derived zones carry no coordinates and report daylight == nil with DaylightWindow.unavailable.",
+    "DaylightWindow.compute samples the city's local day in 600 s steps and bisects each horizon crossing 24 times against -0.833 degrees.",
+    "Sydney detail sheet shows an orange day segment between sunrise 07:06 and sunset 18:52 for the reference instant; Shanghai shows the neutral unknown bar with explicit explanatory text.",
+    "Both sheets were inspected as exported PNG attachments from the passing runs."
+  ],
+  "limitations": [
+    "Sonnenstand bleibt eine Offline-Naeherung niedriger Ordnung (NOAA), keine Ephemeride, keine Refraktion, keine Hoehenlage.",
+    "Zonen ohne kuratierte Koordinaten zeigen bewusst keinen Tagesverlauf.",
+    "Keine Originalabnahme der Detailansicht; F068 bleibt parity_accepted false und #53 offen."
+  ]
+}

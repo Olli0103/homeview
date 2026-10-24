@@ -67,8 +67,8 @@ final class WorldClockTests: XCTestCase {
   func testOfflineSunEstimateHandlesPolarDayAndNight() {
     let oslo = city("Europe/Oslo")
     for hour in ["00", "12"] {
-      XCTAssertGreaterThan(SolarPosition.altitude(at: date("2026-06-21T\(hour):00:00Z"), latitude: oslo.latitude, longitude: oslo.longitude), -0.833)
-      XCTAssertLessThan(SolarPosition.altitude(at: date("2026-12-21T\(hour):00:00Z"), latitude: oslo.latitude, longitude: oslo.longitude), -0.833)
+      XCTAssertGreaterThan(SolarPosition.altitude(at: date("2026-06-21T\(hour):00:00Z"), latitude: oslo.latitude!, longitude: oslo.longitude!), -0.833)
+      XCTAssertLessThan(SolarPosition.altitude(at: date("2026-12-21T\(hour):00:00Z"), latitude: oslo.latitude!, longitude: oslo.longitude!), -0.833)
     }
     XCTAssertGreaterThan(SolarPosition.altitude(at: date("2026-03-20T12:00:00Z"), latitude: 0, longitude: 0), 85)
     XCTAssertLessThan(SolarPosition.altitude(at: date("2026-03-20T00:00:00Z"), latitude: 0, longitude: 0), -85)
@@ -86,5 +86,72 @@ final class WorldClockTests: XCTestCase {
     XCTAssertEqual(malformed.worldClockZones, WorldCity.defaults)
     let saved = try Snapshot.decodeMigrating(Data("{\"worldClockZones\":[\"Asia/Kathmandu\",\"Asia/Kathmandu\",\"bad\"]}".utf8))
     XCTAssertEqual(saved.worldClockZones,["Asia/Kathmandu"])
+  }
+
+  func testEveryKnownZoneResolvesWithoutInventingASunPosition() {
+    let identifiers = TimeZone.knownTimeZoneIdentifiers
+    XCTAssertGreaterThan(identifiers.count, 300)
+    for zone in identifiers {
+      let city = WorldCity.city(for: zone)
+      XCTAssertNotNil(city, zone)
+      guard let city else { continue }
+      XCTAssertEqual(city.zone, zone)
+      XCTAssertFalse(city.name.isEmpty)
+      if WorldCity.catalogue.contains(where: { $0.zone == zone }) { continue }
+      XCTAssertFalse(city.hasCoordinates, zone)
+      let reading = WorldClockReading(city: city, instant: date("2026-06-21T12:00:00Z"),
+        referenceZone: TimeZone(secondsFromGMT: 0)!, locale: Locale(identifier: "en_GB"))
+      XCTAssertNil(reading.daylight, zone)
+      XCTAssertEqual(reading.sun.kind, .unavailable, zone)
+      XCTAssertNil(reading.sun.sunriseFraction, zone)
+    }
+    XCTAssertNil(WorldCity.city(for: "Mars/Olympus"))
+    XCTAssertNil(WorldCity.derivedZone("not a zone"))
+  }
+  func testDaylightWindowPlacementInsideTheLocalDay() {
+    let utc = TimeZone(secondsFromGMT: 0)!, locale = Locale(identifier: "en_GB")
+    let berlin = city("Europe/Berlin")
+    let reading = WorldClockReading(city: berlin, instant: date("2026-06-21T12:00:00Z"),
+      referenceZone: utc, locale: locale)
+    XCTAssertEqual(reading.sun.kind, .normal)
+    let sunrise = try? XCTUnwrap(reading.sun.sunrise)
+    let sunset = try? XCTUnwrap(reading.sun.sunset)
+    guard let sunrise, let sunset else { return XCTFail("missing crossings") }
+    XCTAssertLessThan(sunrise, sunset)
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = berlin.timeZone
+    XCTAssertEqual(calendar.component(.hour, from: sunrise), 4)
+    XCTAssertEqual(calendar.component(.hour, from: sunset), 21)
+    for fraction in [reading.sun.sunriseFraction!, reading.sun.sunsetFraction!] {
+      XCTAssertGreaterThan(fraction, 0)
+      XCTAssertLessThan(fraction, 1)
+    }
+    XCTAssertGreaterThan(reading.sun.sunsetFraction!, reading.sun.sunriseFraction!)
+  }
+  func testPolarDayAndNightReportTheirOwnKind() {
+    let utc = TimeZone(secondsFromGMT: 0)!, locale = Locale(identifier: "en_GB")
+    let tromso = city("Europe/Oslo")
+    let summer = WorldClockReading(city: tromso, instant: date("2026-06-21T12:00:00Z"), referenceZone: utc, locale: locale)
+    XCTAssertEqual(summer.sun.kind, .polarDay)
+    XCTAssertNil(summer.sun.sunrise)
+    XCTAssertEqual(summer.daylight, true)
+    let winter = WorldClockReading(city: tromso, instant: date("2026-12-21T12:00:00Z"), referenceZone: utc, locale: locale)
+    XCTAssertEqual(winter.sun.kind, .polarNight)
+    XCTAssertNil(winter.sun.sunset)
+    XCTAssertEqual(winter.daylight, false)
+  }
+  func testNormalizedAcceptsAnyKnownZoneAndRejectsUnknown() {
+    let list = WorldCity.normalized(["Asia/Shanghai", "Asia/Shanghai", "Mars/Olympus", "UTC"]
+      + WorldCity.catalogue.map(\.zone))
+    XCTAssertEqual(list.first, "Asia/Shanghai")
+    XCTAssertTrue(list.contains("UTC"))
+    XCTAssertFalse(list.contains("Mars/Olympus"))
+    XCTAssertEqual(list.count, 12)
+    XCTAssertEqual(Set(list).count, 12)
+    let derived = WorldCity.city(for: "America/Argentina/Buenos_Aires")
+    XCTAssertEqual(derived?.name, "Buenos Aires")
+    XCTAssertFalse(derived?.hasCoordinates ?? true)
+    let underscore = WorldCity.city(for: "America/Port_of_Spain")
+    XCTAssertEqual(underscore?.name, "Port of Spain")
   }
 }

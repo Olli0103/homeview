@@ -566,3 +566,7 @@ Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Feh
 ## Unabhängige Profilfeld-Reparatur · 20. Oktober 2026
 
 [Begrenzter Fix zu #80](personal-field-recovery.md): gesunde Nachrichten-/Erinnerungsnachbarn erhalten, fehlende/beschädigte Listen leer statt neuer Demoinhalte, doppelte Erinnerungs-IDs entfernt. Sechs Vorherfehler/19 Assertions; 338 Coretests, vier native App-Ausführungen mit Originalbyte-/Write-/Neustart-Read-backs und fünf SDKs bestanden. Kein Nachrichtenversand oder Home-Zugriff; übrige Matrix offen.
+
+## Weltuhr: alle Zonen und Tag-/Nachtverlauf · 24. Oktober 2026
+
+[DAY-07 / #53](world-clock-zones-daylight.md): alle bekannten IANA-Zonen wählbar. Kuratierte Städte behalten Koordinaten, abgeleitete Zonen tragen keine und zeigen bewusst keinen Sonnenstand statt eines geratenen Werts. Tag-/Nachtverlauf je lokalem Kalendertag über Vorzeichenwechsel der Sonnenhöhe mit Bisektion, Polartag/-nacht als eigene Art, Detail-Sheet mit Balken und Auf-/Untergangszeiten. 395 Coretests (vier neue Weltuhr-Methoden), fünf SDK-Builds und UI-Ausführungen auf iPhone und iPad. Offline-Näherung niedriger Ordnung, keine Ephemeride; keine Originalabnahme der Detailansicht, #53 bleibt offen.

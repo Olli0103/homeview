@@ -2140,14 +2140,16 @@
     "area": "Alltag",
     "function": "World Clock als eingebaute App",
     "reference_evidence": "V",
-    "reference_state": "Detail-UI noch offen",
+    "reference_state": "Detail-UI und Zonenwahl im Entwurf umgesetzt, Originalabnahme offen",
     "backlog_keys": [
       "DAY-07"
     ],
     "current": [
-      "Lokale Weltuhr ist vorhanden, vollständige Zonenwahl und Tag-/Nachtverlauf sind offen.",
+      "Alle bekannten IANA-Zonen waehlbar; kuratierte Staedte behalten Koordinaten, abgeleitete Zonen tragen keine und zeigen bewusst keinen Sonnenstand.",
+      "Tag-/Nachtverlauf je lokalem Kalendertag mit Auf-/Untergang, Polartag/-nacht und Detail-Sheet; Offline-Naeherung niedriger Ordnung, keine Ephemeride.",
       "Two-calendar-day distance at the date line now explicitly labelled; existing +/-1 labels retained. See Docs/world-clock-date-distance.md.",
-      "Rejected city saves retain picker and search; explicit Done still works. Four final simulator UI executions and five SDK builds, two historical failures retained. Docs/world-clock-write-boundary.md."
+      "Rejected city saves retain picker and search; explicit Done still works. Docs/world-clock-write-boundary.md.",
+      "Zonen- und Tagesverlaufsumsatz: Docs/world-clock-zones-daylight.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2171,7 +2173,9 @@
       "Docs/world-clock-date-distance.md",
       "Docs/verification/world-date-distance.json",
       "Docs/world-clock-write-boundary.md",
-      "Docs/verification/world-clock-write-boundary.json"
+      "Docs/verification/world-clock-write-boundary.json",
+      "Docs/world-clock-zones-daylight.md",
+      "Docs/verification/world-clock-zones-daylight.json"
     ]
   },
   {

@@ -3,10 +3,13 @@ import Foundation
 struct WorldCity: Identifiable, Sendable {
   let name: String
   let zone: String
-  let latitude: Double
-  let longitude: Double
+  /// Curated coordinates only. Derived zones carry none, so no sun position is
+  /// invented for them.
+  let latitude: Double?
+  let longitude: Double?
   var id: String { zone }
-  var timeZone: TimeZone { TimeZone(identifier: zone)! }
+  var timeZone: TimeZone { TimeZone(identifier: zone) ?? TimeZone(secondsFromGMT: 0)! }
+  var hasCoordinates: Bool { latitude != nil && longitude != nil }
   static let catalogue: [Self] = [
     .init(name: "San Francisco", zone: "America/Los_Angeles", latitude: 37.77, longitude: -122.42),
     .init(name: "New York", zone: "America/New_York", latitude: 40.71, longitude: -74.01),
@@ -27,11 +30,81 @@ struct WorldCity: Identifiable, Sendable {
     .init(name: "São Paulo", zone: "America/Sao_Paulo", latitude: -23.55, longitude: -46.63)
   ]
   static let defaults = Array(catalogue.prefix(4).map(\.zone))
+
+  /// Every IANA identifier this platform knows. Curated zones keep their
+  /// coordinates and display names; all others are named after their last
+  /// identifier component and carry no coordinates.
+  static let allZones: [Self] = TimeZone.knownTimeZoneIdentifiers.sorted().compactMap(derivedZone)
+
+  static func city(for zone: String) -> Self? {
+    catalogue.first { $0.zone == zone } ?? derivedZone(zone)
+  }
+
+  static func derivedZone(_ zone: String) -> Self? {
+    guard TimeZone(identifier: zone) != nil else { return nil }
+    let parts = zone.split(separator: "/")
+    let raw = parts.count > 1 ? parts[parts.count - 1] : parts[0]
+    let name = raw.replacingOccurrences(of: "_", with: " ")
+    return .init(name: name.isEmpty ? zone : name, zone: zone, latitude: nil, longitude: nil)
+  }
+
   static func normalized(_ identifiers: [String]) -> [String] {
     var seen = Set<String>()
     return Array(identifiers.filter { id in
-      catalogue.contains { $0.zone == id } && seen.insert(id).inserted
+      TimeZone(identifier: id) != nil && seen.insert(id).inserted
     }.prefix(12))
+  }
+}
+
+/// Bounded day/night estimate for one calendar day in the city's own zone.
+/// Derived from the same low-order solar model as `WorldClockReading.daylight`.
+struct DaylightWindow: Sendable, Equatable {
+  enum Kind: Sendable, Equatable { case normal, polarDay, polarNight, unavailable }
+  var kind: Kind = .unavailable
+  var sunrise: Date?
+  var sunset: Date?
+  /// Position of the crossing inside the local day, 0 at midnight and 1 at the
+  /// next midnight. Absent when no crossing exists.
+  var sunriseFraction: Double?
+  var sunsetFraction: Double?
+
+  static func compute(latitude: Double?, longitude: Double?, dayOf instant: Date, zone: TimeZone) -> Self {
+    guard let latitude, let longitude else { return .init() }
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = zone
+    guard let interval = calendar.dateInterval(of: .day, for: instant) else { return .init() }
+    let start = interval.start, end = interval.end, span = end.timeIntervalSince(start)
+    guard span > 0 else { return .init() }
+    func altitude(_ date: Date) -> Double {
+      SolarPosition.altitude(at: date, latitude: latitude, longitude: longitude)
+    }
+    let horizon = -0.833
+    var sunrise: Date?, sunset: Date?
+    var previous = altitude(start)
+    var cursor = start
+    while cursor < end {
+      let step = min(cursor.addingTimeInterval(600), end)
+      let current = altitude(step)
+      if (previous >= horizon) != (current >= horizon) {
+        var low = cursor, high = step
+        let startsAbove = previous >= horizon
+        for _ in 0..<24 {
+          let mid = low.addingTimeInterval(high.timeIntervalSince(low) / 2)
+          if (altitude(mid) >= horizon) == startsAbove { low = mid } else { high = mid }
+        }
+        let crossing = low.addingTimeInterval(high.timeIntervalSince(low) / 2)
+        if startsAbove { sunset = crossing } else { sunrise = crossing }
+      }
+      previous = current
+      cursor = step
+    }
+    if sunrise == nil && sunset == nil {
+      let noon = start.addingTimeInterval(span / 2)
+      return .init(kind: altitude(noon) >= horizon ? .polarDay : .polarNight)
+    }
+    return .init(kind: .normal, sunrise: sunrise, sunset: sunset,
+      sunriseFraction: sunrise.map { $0.timeIntervalSince(start) / span },
+      sunsetFraction: sunset.map { $0.timeIntervalSince(start) / span })
   }
 }
 
@@ -40,7 +113,9 @@ struct WorldClockReading: Sendable {
   let date: String
   let dayDifference: Int
   let offset: String
-  let daylight: Bool
+  /// `nil` when the zone has no coordinates and no sun position is known.
+  let daylight: Bool?
+  let sun: DaylightWindow
   var dayRelation: String? {
     switch dayDifference {
     case 0: nil
@@ -70,7 +145,13 @@ struct WorldClockReading: Sendable {
     dayDifference = Int((target.timeIntervalSince(origin) / 86400).rounded())
     let seconds = city.timeZone.secondsFromGMT(for: instant)
     offset = String(format: "UTC%@%02d:%02d", seconds < 0 ? "−" : "+", abs(seconds) / 3600, abs(seconds) / 60 % 60)
-    daylight = SolarPosition.altitude(at: instant, latitude: city.latitude, longitude: city.longitude) >= -0.833
+    if let latitude = city.latitude, let longitude = city.longitude {
+      daylight = SolarPosition.altitude(at: instant, latitude: latitude, longitude: longitude) >= -0.833
+    } else {
+      daylight = nil
+    }
+    sun = DaylightWindow.compute(latitude: city.latitude, longitude: city.longitude,
+      dayOf: instant, zone: city.timeZone)
   }
 }
 
