@@ -385,6 +385,7 @@ struct CookingView: View {
 }
 struct RemindersView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
   @Environment(\.nativeCanvasScale) private var canvasScale
   private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var newItem = ""
@@ -428,6 +429,7 @@ struct RemindersView: View {
           .frame(minHeight:minimumHitSide).contentShape(Rectangle())
           .simultaneousGesture(TapGesture().onEnded { inputFocused=true })
           .accessibilityIdentifier("reminder.input")
+          .onChange(of:phase) { _,phase in if phase != .active { inputFocused=false } }
         RoundButton(symbol: "plus", color: .orange.opacity(0.2),size:max(48,minimumHitSide),label:"Add reminder") {
           let s = newItem.trimmingCharacters(in: .whitespacesAndNewlines)
           if !s.isEmpty,model.addLocalReminder(s) { newItem = "" }
@@ -530,6 +532,8 @@ struct MusicView: View {
 }
 struct WorldClockView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
+  @FocusState private var inputFocused:Bool
   @Environment(\.nativeCanvasScale) private var canvasScale
   private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var choosing = false
@@ -563,7 +567,8 @@ struct WorldClockView: View {
       if choosing {
         TextField("Search all time zones", text: $search).textFieldStyle(.plain)
           .padding(12).background(.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 12))
-          .padding(.horizontal, 30).accessibilityIdentifier("world.search")
+          .padding(.horizontal, 30).accessibilityIdentifier("world.search").focused($inputFocused)
+          .onChange(of:phase) { _,phase in if phase != .active { inputFocused=false } }
         ScrollView {
           LazyVStack(spacing: 8) {
             ForEach(matches) { city in

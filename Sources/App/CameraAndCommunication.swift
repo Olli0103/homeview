@@ -149,6 +149,8 @@ struct CameraDetail: View {
 }
 struct IntercomView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
+  @FocusState private var inputFocused:Bool
   @State private var text = "Dinner is ready!"
   var body: some View {
     VStack(spacing: 22) {
@@ -160,7 +162,8 @@ struct IntercomView: View {
         20
       ).background(.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 20)).padding(
         .horizontal, 32
-      ).accessibilityIdentifier("intercom.input")
+      ).accessibilityIdentifier("intercom.input").focused($inputFocused)
+        .onChange(of:phase) { _,phase in if phase != .active { inputFocused=false } }
       Pill(
         title: "Send Demo Announcement", symbol: "paperplane.fill", tint: .orange, textColor: .white
       ) {
@@ -183,6 +186,8 @@ struct IntercomView: View {
 }
 struct MessagesView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
+  @FocusState private var inputFocused:Bool
   @State private var text = ""
   var body: some View {
     VStack(spacing: 18) {
@@ -201,7 +206,8 @@ struct MessagesView: View {
         }.padding(.horizontal, 30)
       }
       HStack {
-        TextField("Demo message", text: $text).font(.system(size: 22)).textFieldStyle(.plain)
+        TextField("Demo message", text: $text).font(.system(size: 22)).textFieldStyle(.plain).focused($inputFocused)
+        .onChange(of:phase) { _,phase in if phase != .active { inputFocused=false } }
         RoundButton(
           symbol: "arrow.up", color: .blue, foreground: .white, label: "Send demo message"
         ) {

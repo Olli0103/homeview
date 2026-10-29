@@ -502,6 +502,7 @@ struct SafariLanding: View {
 }
 struct PodcastsView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
   @State private var feeds = false
   @State private var address = ""
   @FocusState private var typing: Bool
@@ -570,6 +571,7 @@ struct PodcastsView: View {
         .focused($typing).onSubmit { typing=false }
         .padding(12).background(.gray.opacity(0.08),in:RoundedRectangle(cornerRadius:12))
         .accessibilityIdentifier("podcast.feed.url")
+        .onChange(of:phase) { _,phase in if phase != .active { typing=false } }
       Button("Load feed") { typing=false;Task { await model.importPodcastFeed(address) } }
         .disabled(model.podcastLoading).accessibilityIdentifier("podcast.feed.load")
       if ProcessInfo.processInfo.arguments.contains("--uitesting"),ProcessInfo.processInfo.arguments.contains("--podcast-fixture") {

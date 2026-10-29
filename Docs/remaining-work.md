@@ -1,5 +1,7 @@
 # Verbleibende Arbeit und Grenzen
 
+- [Neun zusätzliche Root-Eingaberouten geschützt](app-switcher-root-fields.md): neun iPhone-Vorherfehler und neun bereits grüne iPad-Gegenkontrollen; genaue Entwürfe bleiben erhalten.34 aktuelle UI-Ausführungen/fünf SDKs. Native Composer, Alerts und physische/Präsenz-/Mediengrenzen bei #67 offen.
+
 - [Elf zusätzliche Sheet-Präsentationen geschützt](app-switcher-sheets.md): 22 tatsächliche Vorher-Snapshots korrigiert, 20 finale UI-Ausführungen/fünf SDKs. Native OS-Composer, Alerts/weitere Felder und physische/Präsenz-/Mediengrenzen bei #67 offen.
 
 - [App-Umschalter: Tastatur über Assistenten-/Reminder-Schutz schließen](app-switcher-keyboard.md): zwei iPhone-Vorherfehler und zwei schon grüne iPad-Gegenkontrollen getrennt; zehn finale UI-Ausführungen/fünf SDKs. Keine pauschale Snapshot-Abnahme.

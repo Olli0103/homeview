@@ -52,6 +52,8 @@ struct SystemMessageButton: View {
 }
 struct SystemFaceTimeAction: View {
   @Environment(\.openURL) private var openURL
+  @Environment(\.scenePhase) private var phase
+  @FocusState private var inputFocused:Bool
   @State private var recipient = ""
   @State private var status = ""
   var body: some View {
@@ -59,12 +61,14 @@ struct SystemFaceTimeAction: View {
       #if os(tvOS)
         TextField("Phone number or Apple Account email", text: $recipient)
           .textFieldStyle(.plain)
-          .font(.system(size: 18)).accessibilityIdentifier("facetime.recipient")
+          .font(.system(size: 18)).accessibilityIdentifier("facetime.recipient").focused($inputFocused)
+          .onChange(of:phase) { _,phase in if phase != .active { inputFocused=false } }
       #else
         TextField("Phone number or Apple Account email", text: $recipient).textFieldStyle(
           .roundedBorder
         )
-        .font(.system(size: 18)).accessibilityIdentifier("facetime.recipient")
+        .font(.system(size: 18)).accessibilityIdentifier("facetime.recipient").focused($inputFocused)
+          .onChange(of:phase) { _,phase in if phase != .active { inputFocused=false } }
       #endif
       Button("Call in FaceTime") {
         guard !recipient.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }

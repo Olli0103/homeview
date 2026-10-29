@@ -289,7 +289,7 @@ struct NativeBrowserView: View {
       }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
         .onDisappear { cancelImport(); browser.stop() }
         .onChange(of: scenePhase) { _, phase in
-          if phase != .active { cancelImport(); browser.stop() }
+          if phase != .active { addressFocused=false; cancelImport(); browser.stop() }
         }
     }
     private func cancelImport() {

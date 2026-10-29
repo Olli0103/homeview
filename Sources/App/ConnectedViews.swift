@@ -3,6 +3,7 @@ import SwiftUI
 struct ConnectionControls: View {
   var revealWeatherCity: () -> Void = {}
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
   @Environment(\.nativeCanvasScale) private var canvasScale
   @FocusState private var weatherCityFocused: Bool
   private var minimumHitSide: CGFloat { (44 / max(0.01, canvasScale)).rounded(.up) }
@@ -71,6 +72,7 @@ struct ConnectionControls: View {
               .gray.opacity(0.08), in: RoundedRectangle(cornerRadius: 10)
             ).contentShape(Rectangle()).onTapGesture { weatherCityFocused=true }
               .accessibilityIdentifier("weather.city")
+              .onChange(of:phase) { _,phase in if phase != .active { weatherCityFocused=false } }
               .id("settings.weather.city")
               .onChange(of:weatherCityFocused) { _,focused in
                 if focused { revealWeatherCity() }
@@ -284,6 +286,7 @@ struct DeviceRemindersView: View {
 }
 struct DeviceMusicView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
   @State private var query = ""
   @State private var browsing = false
   @FocusState private var queryFocused: Bool
@@ -307,6 +310,7 @@ struct DeviceMusicView: View {
           )
           .onSubmit { search() }
           .accessibilityIdentifier("music.search.input")
+          .onChange(of:phase) { _,phase in if phase != .active { queryFocused=false } }
           Button("Search") { search() }.accessibilityIdentifier("music.search")
         }.font(.system(size: 22)).padding(18).background(.white.opacity(0.12), in: Capsule())
           .padding(

@@ -1,0 +1,3878 @@
+{
+  "scope": "Nine app-owned root text input routes, actual simulator App Switcher. Native MessageUI, alerts, physical snapshots, presence and complete media policy remain separate. No Home or real personal account.",
+  "runs": [
+    {
+      "checkpoint": "baseline-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testSnapshotProtectsUnsentDemoMessageField",
+        "testSnapshotProtectsUncalledFaceTimeRecipientField",
+        "testSnapshotProtectsUnsentIntercomField",
+        "testSnapshotProtectsUnselectedWorldClockQueryField",
+        "testSnapshotProtectsUnaddedLocalReminderField",
+        "testSnapshotProtectsUnfetchedPodcastFeedField",
+        "testSnapshotProtectsUnsubmittedMusicSearchField",
+        "testSnapshotProtectsUnsubmittedSettingsCityField",
+        "testSnapshotProtectsUnloadedBrowserAddressField"
+      ],
+      "passed": 0,
+      "failed": 9,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "e653cf9a78355e31f316b8cae182306b21e351306bb1b234b513b707d36947f9",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "e16ffd7ae4eac4968817c6900f6eb8974738cffd097352fe2d66d6678b069555",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "25d1f354c84c5d2da41423d3ba55a4847118920b0b11eead645adff3eeb8c1e6",
+      "log_sha256": "2923d71f086398ce6f930231e5d6c2ff43932dbb9a8759b961e76ff3997b34dc",
+      "snapshots": [
+        {
+          "name": "switcher-root-local-reminder",
+          "sha256": "c20863bc379d984012179a30e4e4db22cb601f5b5abd434957e49b7714ff7ae9",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6210288672867867,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-facetime",
+          "sha256": "c20863bc379d984012179a30e4e4db22cb601f5b5abd434957e49b7714ff7ae9",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6210288672867867,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-podcast-url",
+          "sha256": "c20863bc379d984012179a30e4e4db22cb601f5b5abd434957e49b7714ff7ae9",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6210288672867867,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-browser-address",
+          "sha256": "5f5ab8c5131891643788fbd2595d7ca773537d70072ff1cb238e95a12e490618",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6507183236338819,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-world-query",
+          "sha256": "c20863bc379d984012179a30e4e4db22cb601f5b5abd434957e49b7714ff7ae9",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6210288672867867,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-message",
+          "sha256": "c20863bc379d984012179a30e4e4db22cb601f5b5abd434957e49b7714ff7ae9",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6210288672867867,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-intercom",
+          "sha256": "6eb1ac80c7ed7df13980eb96e76a6dc30a3f8d17184f1c48b93beb50dc85d064",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6201422138393169,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-music-query",
+          "sha256": "c20863bc379d984012179a30e4e4db22cb601f5b5abd434957e49b7714ff7ae9",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6210288672867867,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-settings-city",
+          "sha256": "6eb1ac80c7ed7df13980eb96e76a6dc30a3f8d17184f1c48b93beb50dc85d064",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6201422138393169,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testSnapshotProtectsUnsentDemoMessageField",
+        "testSnapshotProtectsUncalledFaceTimeRecipientField",
+        "testSnapshotProtectsUnsentIntercomField",
+        "testSnapshotProtectsUnselectedWorldClockQueryField",
+        "testSnapshotProtectsUnaddedLocalReminderField",
+        "testSnapshotProtectsUnfetchedPodcastFeedField",
+        "testSnapshotProtectsUnsubmittedMusicSearchField",
+        "testSnapshotProtectsUnsubmittedSettingsCityField",
+        "testSnapshotProtectsUnloadedBrowserAddressField"
+      ],
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "e653cf9a78355e31f316b8cae182306b21e351306bb1b234b513b707d36947f9",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "e16ffd7ae4eac4968817c6900f6eb8974738cffd097352fe2d66d6678b069555",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "f21285862a9d344a5d79911b06985b8ddc1099a2a250a2da19299b828ceb6ab9",
+      "log_sha256": "c08f0d0f198e5bdcf937535628932dda65eba9bebf4259f7af00b8b032366f91",
+      "snapshots": [
+        {
+          "name": "switcher-root-local-reminder",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-facetime",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-podcast-url",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-browser-address",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-world-query",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-message",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-intercom",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-music-query",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-settings-city",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testSnapshotProtectsUnsentDemoMessageField",
+        "testSnapshotProtectsUncalledFaceTimeRecipientField",
+        "testSnapshotProtectsUnsentIntercomField",
+        "testSnapshotProtectsUnselectedWorldClockQueryField",
+        "testSnapshotProtectsUnaddedLocalReminderField",
+        "testSnapshotProtectsUnfetchedPodcastFeedField",
+        "testSnapshotProtectsUnsubmittedMusicSearchField",
+        "testSnapshotProtectsUnsubmittedSettingsCityField",
+        "testSnapshotProtectsUnloadedBrowserAddressField"
+      ],
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "c9f84685ce31a5b69fbfee5c2bdfad4baecc0de9d3034c17e9fd0c4572bc559d",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "8cd75e8c22fa360d80b14bf9c79ff31f8446d54f68fcd997658858db1cf6774f",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "ccd0f64297e6ef5b17b295b08219f8a1e40f036a85601d19a09d21b55b6c37a4",
+      "log_sha256": "50f793b4822cbfb57b0ebc702fc931ea0e71c8bfd12b158e0d80ac32919483e6",
+      "snapshots": [
+        {
+          "name": "switcher-root-local-reminder",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-facetime",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-podcast-url",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-browser-address",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-world-query",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-message",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-intercom",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-music-query",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-settings-city",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testSnapshotProtectsUnsentDemoMessageField",
+        "testSnapshotProtectsUncalledFaceTimeRecipientField",
+        "testSnapshotProtectsUnsentIntercomField",
+        "testSnapshotProtectsUnselectedWorldClockQueryField",
+        "testSnapshotProtectsUnaddedLocalReminderField",
+        "testSnapshotProtectsUnfetchedPodcastFeedField",
+        "testSnapshotProtectsUnsubmittedMusicSearchField",
+        "testSnapshotProtectsUnsubmittedSettingsCityField",
+        "testSnapshotProtectsUnloadedBrowserAddressField"
+      ],
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "c9f84685ce31a5b69fbfee5c2bdfad4baecc0de9d3034c17e9fd0c4572bc559d",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "8cd75e8c22fa360d80b14bf9c79ff31f8446d54f68fcd997658858db1cf6774f",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "492b23ea4e33f70ded79917c21379b3b951eeeb0232bb9900d30d87e10366c73",
+      "log_sha256": "13bf0a1d5702d953807701e0c89367fcb22e4d41d6757ed9441d08f5a5abde1b",
+      "snapshots": [
+        {
+          "name": "switcher-root-local-reminder",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-facetime",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-podcast-url",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-browser-address",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-world-query",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-message",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-intercom",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-music-query",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-root-settings-city",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "regression-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testSystemCommunicationHandsOffOnlyAfterExplicitAction",
+        "testConnectedMusicAndWeatherDoNotUseHomeKit",
+        "testWorldClockAddsFractionalZoneAndPersistsRemoval",
+        "testPublicPodcastFeedErrorsRemovalAndBackgroundNeverAutoplayDemo",
+        "testRemindersCreateAndComplete",
+        "testBrowserLocalHistoryOfflineAndStopDoNotNeedNetwork",
+        "testNativeAppSwitcherSnapshotCoversUnsentAssistantKeyboardDraft",
+        "testNativeAppSwitcherSnapshotCoversUnaddedReminderKeyboardDraft"
+      ],
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "c9f84685ce31a5b69fbfee5c2bdfad4baecc0de9d3034c17e9fd0c4572bc559d",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "8cd75e8c22fa360d80b14bf9c79ff31f8446d54f68fcd997658858db1cf6774f",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "d21188120ee736bd05247d4d8187d9207d46edac795ae8026e9fa27b4e09f27e",
+      "log_sha256": "e873cee6ee36fa2dc14fe77facbeb022f9b3ad21ef4e69d01b4d7dd88d8fe0c1",
+      "snapshots": [
+        {
+          "name": "switcher-reminder-keyboard-inactive",
+          "sha256": "6c059804f29b2a290c447fbf51da18557645afa568cd23e49b420e406f3b6a4a",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827062275313956,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-assistant-keyboard-inactive",
+          "sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testSystemCommunicationHandsOffOnlyAfterExplicitAction",
+        "testConnectedMusicAndWeatherDoNotUseHomeKit",
+        "testWorldClockAddsFractionalZoneAndPersistsRemoval",
+        "testPublicPodcastFeedErrorsRemovalAndBackgroundNeverAutoplayDemo",
+        "testRemindersCreateAndComplete",
+        "testBrowserLocalHistoryOfflineAndStopDoNotNeedNetwork",
+        "testNativeAppSwitcherSnapshotCoversUnsentAssistantKeyboardDraft",
+        "testNativeAppSwitcherSnapshotCoversUnaddedReminderKeyboardDraft"
+      ],
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "c9f84685ce31a5b69fbfee5c2bdfad4baecc0de9d3034c17e9fd0c4572bc559d",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "8cd75e8c22fa360d80b14bf9c79ff31f8446d54f68fcd997658858db1cf6774f",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "6db900d3b5669331675a8670fcfb2afab16883e01c4a62510fe1589a10d3dc1f",
+      "log_sha256": "fe8983db78de66dae9cd419dfef07be80b22dbaf531f0f22f64c7ab708b3ee87",
+      "snapshots": [
+        {
+          "name": "switcher-reminder-keyboard-inactive",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "name": "switcher-assistant-keyboard-inactive",
+          "sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    }
+  ],
+  "baseline_app_product_files_identical_to_published_d9ad8e3": 19,
+  "image_manifest": [
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/4FB4115A-5AA3-431E-B2AC-68953E81990D.png",
+      "name": "switcher-root-local-reminder-whole-homeview-card_0_1FE97E64-A8C6-4868-8629-D0D8A4D1FCD2.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "7cca7967b9d813eda326de4d00bc95e08016ac755730044babb01a8ddf0a07f6"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/DA4D4E33-FFDA-4E74-B2AE-A3DA61C935E7.png",
+      "name": "switcher-root-local-reminder-native-system-screen_0_0A49290C-45C6-4F25-8B2E-65A4311737BB.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "a3437a0c5e313790e4b67ce95371efbe3d090fbedde4d1245d6011ac7b5fa8d5"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/75451AF2-269E-4696-AEBB-756BC6973F83.png",
+      "name": "switcher-root-local-reminder-before_0_D296F6E9-A913-4CD3-B5EB-E1CB80FE07AF.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "b7cb2b099e2cb2bdac908f809739131f50fcecc3c5027f3f2142a118dd67084f"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/09D99428-4D54-4F15-95FF-8C1B943A14B0.png",
+      "name": "switcher-root-facetime-whole-homeview-card_0_DD41E3E3-D9E2-4BAB-8EEC-D6270384155D.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "0e72353491df7e9dde1c7a261ee1b8b013ed685cc0c8c13ac15efabe561aef54"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/9F5CDCA2-BACA-4B1B-B527-1656F88D5055.png",
+      "name": "switcher-root-facetime-native-system-screen_0_BE466C53-518B-49EE-87C6-5D75B46F65C9.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "0eca18c1fba30d32f8668bfada1e3ba4aa873972f6dd8ca5539297bd1301b487"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/85AA5909-7518-436A-A197-DBEEE9C6EA0D.png",
+      "name": "switcher-root-facetime-before_0_94C8775A-F945-477A-A83A-61DBE6A766DD.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "1228767eedcfe06f73a40b4b5211f1b4dc8c9b27c1838c71a26565211bf5dec0"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/AF38A504-4D90-409E-8C79-32C41F7997DC.png",
+      "name": "switcher-root-podcast-url-whole-homeview-card_0_578D2377-68CD-4F86-BA0E-63202EDC5B57.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "da2990433dc0b36b7aea009515e454c9a96f49c7aab1dcfa223ea31823ab401c"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/7BB484C9-D50A-41DB-8FC1-680B27CE21A8.png",
+      "name": "switcher-root-podcast-url-native-system-screen_0_A3EFF887-82C2-4DD9-9324-D6723C62EF17.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "4b070ec509fe2ad766c9cb4241e9c21c42989df5b8ef5f489e98f42267877c71"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/4CECB683-E0C2-48E0-82C1-BFA71B9B7652.png",
+      "name": "switcher-root-podcast-url-before_0_EC7E4080-2A17-42A8-B7B4-6FDA01E8A9B5.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "0606915a97f5fb56186f6937e8af8f486b29afe4d5e42184ba05e3f7dda2a3bb"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/BBC5A927-E9D5-474A-9DE4-D0E7412FB2C0.png",
+      "name": "switcher-root-browser-address-whole-homeview-card_0_0FB7C8C3-7529-45D8-BDB6-0EB01A9C7B19.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "3480a95aecdd3858d98552d3a89bea3ac959b395ee93c37bee4b049f1d6fd3ad"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/03385E7B-9E35-4D35-A056-171711C6320B.png",
+      "name": "switcher-root-browser-address-native-system-screen_0_40547D83-9AD8-43CF-9BEE-0CBE9C89515E.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "bae08413816c6c2124cbdfebeafa29d924dabf260cfcb5975f66fcfd31551780"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/DBBE5879-D9E4-4DCB-80B6-5BC1BCA361AB.png",
+      "name": "switcher-root-browser-address-before_0_D01F7488-7654-447F-A8A1-63D739A20498.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "0f424f77c8fad53b70e936032cb016b2382fae59707d6a03e6721864446b89c1"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/1CC50598-0C38-4820-A6A1-8C1E72453961.png",
+      "name": "switcher-root-world-query-whole-homeview-card_0_C1CC1FEC-0027-4E66-9B1E-D8B0195EF2BB.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "06f291db0692b340893496dcc84ed37ee2394f4accf0d9fab1cd8ca6330185ce"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/D78BBBFA-EFC5-488F-A949-719B92A3D204.png",
+      "name": "switcher-root-world-query-native-system-screen_0_A6DA6DC8-6DE1-4492-860E-7CA4BA1EDE9A.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "c1b3dae5b086888214649d6af700a11d8435df7bc82df2e27c730d542bf41b90"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/29210CDB-77DE-474A-BBC3-3567469EAE3B.png",
+      "name": "switcher-root-world-query-before_0_CCED440D-4EDE-41C5-AC29-106147474C01.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "e4e6f2c91909900fc4001aba3b27d75cb9911c65837c291d164d297389b5cf37"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/7B05A9FA-DC50-4950-B688-47657D9503FB.png",
+      "name": "switcher-root-message-whole-homeview-card_0_0ABF33CC-B74D-4DD9-B89F-724F3119131D.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "33f16dd50adf149c4368301fd8ce3839e067c351a22276afd310a11b515d5cb0"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/8C30B121-72AA-4D76-8662-400BF4717E71.png",
+      "name": "switcher-root-message-native-system-screen_0_EAA9C384-5263-4240-89AA-54E5F93E8845.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "3deb9f41c8ff5a85de48d6bd95934cfe2fa0cb266b18e54a402282fa2379255a"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/49BCF113-6ED1-4086-87D8-9A72463E89D8.png",
+      "name": "switcher-root-message-before_0_59AB299D-261B-41CC-8C31-C0A7C120A060.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "4ea6aa223be4a07ba39a787dfbff721eac6e1b40c4536b79725dbedda8cd5b65"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/BCB5489E-CD81-4B62-82C6-BF41CC185B45.png",
+      "name": "switcher-root-intercom-whole-homeview-card_0_13A6FF43-D03E-4778-B46F-802C2199C030.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "ce9f5fa148dda12a10ef75fe1a5d66ca90cd1ec185efc4d5b0979cb44be2c65b"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/23C1E135-1472-4DF9-89B2-22854CB7E3B6.png",
+      "name": "switcher-root-intercom-native-system-screen_0_F21A173C-0475-4A9F-B9A8-62AC3E2B3C43.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "f8ef84801035dae9e6c202b8e109756c929853dc1810f74983fa0d4e99868d51"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/897A8EF6-7634-4D4E-AB38-F4B0FB0751D2.png",
+      "name": "switcher-root-intercom-before_0_08E40AA4-46A5-46A2-8ECF-F6104AFE3924.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "88f9a4ce42f375745a78231b3f1c2e4809b71303d5d1d1e9453c287d13271c48"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/14D39EB6-AA0E-4593-A12A-CC79675EB0BC.png",
+      "name": "switcher-root-music-query-whole-homeview-card_0_6497AED4-ADEC-487A-84E0-743B42CC61AC.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "55eaa35de6d513e210b34a6c59c51a8829da2ca2e44845f24c692e271801614d"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/DAF7A33B-1520-4A59-826E-F9B443808863.png",
+      "name": "switcher-root-music-query-native-system-screen_0_6B4785B6-9D84-4144-906A-1CA802F0A20A.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "f05072fcc51fe1063ff9a1a6bd630b0937a07fcc908c63b541f468a13b752e16"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/E9972400-79B1-4787-8811-319B8C632F88.png",
+      "name": "switcher-root-music-query-before_0_AD420AD4-88A5-4F34-8F81-1A84AFAB3095.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "0b4d699d635e51be800ac5d01bb73c094a24877ea082bcf490d2eb8d2f4672ea"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/BC1DAF88-8109-440E-9013-3ACD39AB539E.png",
+      "name": "switcher-root-settings-city-whole-homeview-card_0_D006950F-9721-4353-8A6F-D3B818EB310B.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "b1d5f7fe020f9c41181893d391d09ff486d56ac6c60f8a06a1baca44fba46c51"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/D48D2FAF-937F-4525-8A03-173F55537E8E.png",
+      "name": "switcher-root-settings-city-native-system-screen_0_B019BC9B-C6E2-4B1F-8182-BB164B67EA3C.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "b2101ded97d964771c7eaac601fd53a0930bcde2eb86183c4bf6365f7fe57aa8"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/52DBF581-BE7E-462C-875B-5DA59B8918B9.png",
+      "name": "switcher-root-settings-city-before_0_2A798BE5-E17D-43E0-8313-EF17654B25EC.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "6d650d7163a9afe3a6d60f71a2ffe4214eaf6457977086f0249aa0084956f90f"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/9DE1B0C8-12D6-4181-B2E4-23EB3DE3C146.png",
+      "name": "switcher-root-local-reminder-returned-unsent_0_D7D923B6-D9AD-4CBB-962A-95995258BD56.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "a17e141cec975b9d22c0a150a8e66a332e0998ae2a85dfdd7bf52d80173130bd"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/4AAEDAD6-E252-4D74-9494-9D5790119305.png",
+      "name": "switcher-root-local-reminder-whole-homeview-card_0_7192979C-03EB-4FCB-9A76-4608AB76307F.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "9fcdf6aa541f9fc585c71c0f1e49d24f63635a0984a99f567b9bc98f2e62e499"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/731D1C53-0159-4830-8258-F0AEAB18D3F4.png",
+      "name": "switcher-root-local-reminder-native-system-screen_0_E589BA43-A507-4B61-A6E9-B2C1A59C946A.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "89cbd436373690c41366a563fad445e77e4a2acf5d4f2b154ce3ea2514817c61"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/552E95A9-2658-42A3-8735-923A724C7CC1.png",
+      "name": "switcher-root-local-reminder-before_0_D3A7AC39-8FCF-45A0-B187-5CB4F1BB30B8.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "5e5adbc3e4e0fd602e745fdd23c8f8d87acaf480bdcaf1936e31578bdcc327f5"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/4C8606AF-0BEB-4FBB-B111-822C160F48F8.png",
+      "name": "switcher-root-facetime-returned-unsent_0_E398B23E-A997-409C-9AB4-1AFE2874FE63.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "d172062a6c6edf492d43fc9c39f37a79918f113061324fe618901b6d0f59ff23"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/989E409D-2506-4163-8232-AA16CF0C2823.png",
+      "name": "switcher-root-facetime-whole-homeview-card_0_1200CEF2-48DF-4648-8B37-36B840C80F0A.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "2f072503107786d51a5576fc6548d71f3596293541ac36030d52a234e4cd822d"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/30C4D80B-8916-4C31-BF8F-115EFCE1A637.png",
+      "name": "switcher-root-facetime-native-system-screen_0_F69C3136-B70D-41D0-A20E-8401227E2211.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "00e3ddbc634257fd2b0e6218154ad4cc6bc7091801fe25904e0f7f4534f36bcd"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/74146D58-A7C8-40F4-AE6C-568C66EBE575.png",
+      "name": "switcher-root-facetime-before_0_5E8ECC69-3328-46CC-9CF6-67C45F575B4B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "6827cceb99767c9aef14749bd888552bc21249cff3d5120af7a212a7082124c7"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/71805205-C09B-4C20-BC1F-7B0721D37415.png",
+      "name": "switcher-root-podcast-url-returned-unsent_0_C2D071A1-715C-4EA4-8DD7-25A1C525C3A2.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "01980c13a04ba2aa623cbfb866aadae99934413dd8ff56610070d5fc21536144"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/EEF47A8B-D61B-4C57-9673-555D29B82A6C.png",
+      "name": "switcher-root-podcast-url-whole-homeview-card_0_93DE3FBA-C495-478A-91FA-02CABB82BD4F.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "78bdda71a6ee5daac80762b21ec3bd27d688b64a582c6dc1503cd2ff0afe9df7"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/C081CC51-1FD3-41D6-B1CC-BB7569434EA2.png",
+      "name": "switcher-root-podcast-url-native-system-screen_0_AF5505A9-4264-4D7A-A210-68689CEEC674.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "ec328b45be6a7ba170c0527f822af2adc2060ea08fcbfacf55ddbb63d5f0ab3e"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/44AE51E7-179C-42BA-9C31-975271AFC216.png",
+      "name": "switcher-root-podcast-url-before_0_F58194E1-536C-4061-A4B2-1E2D0C9E008F.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "0db8dca2f07a4f6c065a95e5304a328ede7102e28f5d6c98f91ccd05e3a9dd02"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/C15E5930-B548-44BE-8B12-1A3346659936.png",
+      "name": "switcher-root-browser-address-returned-unsent_0_A531A635-E904-4F0B-ADC3-97ED2635B1CF.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "65ac9e4b502b9934bf85d0b1f7247771acf2e4e03e061dc181f5a216868dca66"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/18D3FC4A-A532-41F9-81AB-5379A82A20DC.png",
+      "name": "switcher-root-browser-address-whole-homeview-card_0_56087A81-980A-4B90-8CA3-0356D1CAC034.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "8feeb53612680c7264035a58708ae8c04401f0c8238966615c1c576cb50a5d58"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/02001111-5249-4B06-A1BE-FA44A3E92DDC.png",
+      "name": "switcher-root-browser-address-native-system-screen_0_E704BBFE-FBB6-4B08-AAE3-39E00CCA2569.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "84c87124b9c9ae0aec7acd86ada6124ce60a15a8767b1cf4ca884e33fb210a9b"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/38F983C5-AD24-4735-B48B-F738F19BF663.png",
+      "name": "switcher-root-browser-address-before_0_FE881D0C-539D-4AC1-B0A4-6B6BA750AC1B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "b2ab6fca684e3f82afb47d0938d0b6f43e1a5708359fa6daf0fc055aa7188ec7"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/D966AF02-23E4-47E8-A1D9-09C5E1E2AD2B.png",
+      "name": "switcher-root-world-query-returned-unsent_0_B152944C-26E3-40A5-8700-02E5FF62A6B1.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "82225d1868d982a0f32114b54114b7f5aa17e35307b8752862ae35bd8a6a4637"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/825711D9-5245-4568-8A9B-0CE934BE5B0A.png",
+      "name": "switcher-root-world-query-whole-homeview-card_0_5001FE18-607C-425A-98A3-9C2C55FA5B9F.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "7fa27d8925764c508b96d4425056a33fe80ccb8c6299da2fe6f34beef18c5206"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/D2539B4B-57A8-4882-9F4A-48E0512C5EA9.png",
+      "name": "switcher-root-world-query-native-system-screen_0_96970486-DA49-45F4-B6FA-E376FA32500F.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "1c0393a1ddb43d2b5f12fa7963a7f03daf6797dc7694bc828ccbf76e2a067a72"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/36008546-1306-4D1C-82FA-9700F05A4BBE.png",
+      "name": "switcher-root-world-query-before_0_3826E7BE-DA25-4CF8-B0C9-C84FFA11A3B6.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "340cfe51d903c95c06fd0e413cb56df55cb640e88fdfba37ea4ec3d36c3bd1e3"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/EC7E4FCE-8FE4-45D9-8EF2-37FB52AEC7B1.png",
+      "name": "switcher-root-message-returned-unsent_0_F4EADC0D-774D-445E-8753-BBBFF71CBF13.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "421710ff95e7d4e3db7d7e10b34a6fd6f88b70afa3f287e2ddfe93f9b67edbfd"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/349BCA62-321D-4AE6-AD59-B3D8EB05A0A5.png",
+      "name": "switcher-root-message-whole-homeview-card_0_88CACFF5-0873-4E14-9588-5A2CDB5BCC35.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "e2e17dd609c3e0b741ebd44980b279aa29eb6564d7d91891de3ec342a189ec91"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/181DEA2A-5BD3-4E7F-AC96-BB1C91949ABC.png",
+      "name": "switcher-root-message-native-system-screen_0_417F7EC2-1583-413E-A94E-F55799445EB5.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "c0c49d9727530268cb1ee8c212edf7cc177bb6274bfad88cb370c30848113cd5"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/FE5942AD-4F90-4618-A30C-63F3F5FFB614.png",
+      "name": "switcher-root-message-before_0_3EED70B6-1FDC-47DD-8141-80EBE0DFB213.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "808a55673b72ec2d17da48713346de7d138a9d43cf9dadd4bf2a419b845e3f01"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/DF7BF7A6-1C9F-4B01-B82C-04F34C916B6A.png",
+      "name": "switcher-root-intercom-returned-unsent_0_79E63762-2083-452F-BE63-8FB269F79226.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "fff7cb93a9f61d649b1446591e07e64e1ae9a8fb6cc2981ae596e2b21ccdc886"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/0A846B87-C356-4B4C-9994-8B6EF5AB0C43.png",
+      "name": "switcher-root-intercom-whole-homeview-card_0_4E11F63D-8026-45BF-93BE-5E27EE39E9C7.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "bb1ef545ff4be4e2aae802ae909ed7d987a2dcc924028f93b3c42d957dac84d5"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/EB5AF786-8A5D-4F2F-9CDD-65D073CB826D.png",
+      "name": "switcher-root-intercom-native-system-screen_0_94B0EDD3-B253-471B-B068-21BF640BDB1E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "7058b4b96a1739cc4396667e459b75f95302ceca5d9ba7b050c5ff1f1112a243"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/6769D431-2E64-4D14-9204-1F566F3C3399.png",
+      "name": "switcher-root-intercom-before_0_AA2C2A33-DBAC-4E0E-885E-58C08636C349.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "5066e555dbc6c988fe05c0d0c6eab1362ce6c80def9bf26e53fec499e91f3af7"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/5672FE36-AB31-48A1-9845-B7B49376E966.png",
+      "name": "switcher-root-music-query-returned-unsent_0_1B2DCD3F-E03B-4675-861B-A7108B9B734E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "ddca390f32cfa852b8d7225f98d325a845fc9d87d376e2e5be80a2820dd18399"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/C869058A-7D01-4B41-9832-6F42E05A3A64.png",
+      "name": "switcher-root-music-query-whole-homeview-card_0_34E370AE-8672-44A8-9D5D-D3A26D53F7FA.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "8feeb53612680c7264035a58708ae8c04401f0c8238966615c1c576cb50a5d58"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/B5099547-1495-44FA-91EC-53E0A2440E68.png",
+      "name": "switcher-root-music-query-native-system-screen_0_BEB8F687-0A34-4C18-8740-CDE5C99E7537.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "85003cddd408328d3b5a3bebd5150c19463634f382a8f04cc3763e86d846a4b8"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/9986B76F-63C6-4D76-8F96-76AC683A7EFE.png",
+      "name": "switcher-root-music-query-before_0_975EB0B5-E625-4EBC-A209-39744DB22CC7.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "29bb837b42d9d819b01bc32eb4f9e7fa04a7e252b63b592722670742256e4624"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/4581EBA4-815C-49AF-BE75-2FB5E03B4D8F.png",
+      "name": "switcher-root-settings-city-returned-unsent_0_9D1C3871-1E76-4915-B398-89A0B9505CF1.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "f1be183413425592cba154f80fcd9476199111f5e73cbfe73c048882b51cd8aa"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/43DD67F3-7F98-425F-82EA-AD50F36AC491.png",
+      "name": "switcher-root-settings-city-whole-homeview-card_0_208D8EFB-B1EC-4FE5-8C10-3819584BD876.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "bb1ef545ff4be4e2aae802ae909ed7d987a2dcc924028f93b3c42d957dac84d5"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/08A1CDBD-B73A-47F5-8C1C-2A197F8DEF76.png",
+      "name": "switcher-root-settings-city-native-system-screen_0_F388C971-380F-4AD6-A73C-E0F2670E684B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "af4e5b635d714d3bc1d7507f70f488e050848f4e2ea9142aef939f247133cd34"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/91A0479C-0854-4893-8436-B7C8F695EB37.png",
+      "name": "switcher-root-settings-city-before_0_32E4AD2B-C4A9-4F1B-A3E0-44AD24F8D60B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "126c29328a06f6f24cb662435c96921ec6c71c97d23f12f8bb935d4822ae9468"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/4D562057-2B13-41D2-A5F0-84D3E2D1AB31.png",
+      "name": "switcher-root-local-reminder-returned-unsent_0_8A215DBE-4E00-4BA7-A348-1C178F1E6789.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "19fe80b2a239c37769ae47f4c1a2128064cb6a996c5e515387676a6541e4380a"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/34311358-8F5E-4D1D-AC2E-7A5459CE956D.png",
+      "name": "switcher-root-local-reminder-whole-homeview-card_0_DD0B5219-5D63-4D05-B41E-8A7AE2A82B8D.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "850e7085f2eb50d0c9bcfebd0eb0f4e99a849f6e37b2d6a382000c47a623ca8a"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/D59F785E-9DC8-41B3-9412-D97042BF863C.png",
+      "name": "switcher-root-local-reminder-native-system-screen_0_058505CE-2DB3-4CE6-BE25-6CC60D878E0D.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "d3950cabb32b095f9f13652f52ffa3b9d239ff1d26fde9eedda1c626ede1119b"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/E1E2F0D4-063C-4BAD-B1A4-5DE574A3AB2E.png",
+      "name": "switcher-root-local-reminder-before_0_1A687AFD-E601-454C-B74C-7DC7185CC8EA.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "dc7b016f5d12ec037c3bfc7f27dbe2343e95d5745b087dfd7685d6e0d1a16f87"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/1A668EE0-BCD6-4DF9-9940-AFA5872870EC.png",
+      "name": "switcher-root-facetime-returned-unsent_0_34F3D4B7-26D7-49A8-BBD1-4265FC1C9846.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "d7f08c439b56a167f005e82ea92f727b71c0bbb7f9096b6612ef9d0576dab812"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/2790FAF2-5132-4E5E-ACF9-6F82DED331A2.png",
+      "name": "switcher-root-facetime-whole-homeview-card_0_12AD52FD-D6A6-460A-B723-265D7774DBDC.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "b3b91cc8aa3591fa925aa02b843fc30914d6b913ffc099a383d37c12d71aea58"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/3D9D5EFD-B119-4BEC-92C5-AD424DE8A5FE.png",
+      "name": "switcher-root-facetime-native-system-screen_0_41DBBDED-F4E2-463B-BCC6-BCD24B39CF00.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5b42392a1d625c135f38653d2102c34b353182ba424079d94726041bd084dea1"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/27662345-8AB9-4074-87D1-A604171A8A97.png",
+      "name": "switcher-root-facetime-before_0_628F2232-93D3-431C-9ABB-1D4D85F6903C.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "9580aa3838526985b080da641909883f78b677bfc3dd9b466ba9440f922cd19f"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/5F4E3F1B-35F3-4059-A5DA-8D68B7AF67D9.png",
+      "name": "switcher-root-podcast-url-returned-unsent_0_1FB84965-36F2-4411-B427-3DC1ECB86243.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "e19d01eb72faf6c9db093c338f8c5e7df550321474cb20e97d2feaca6e7c272c"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/ABEDEFD3-5243-48AE-ABA4-C9A19F9DDBB4.png",
+      "name": "switcher-root-podcast-url-whole-homeview-card_0_0A6A591F-E0FC-429D-87E8-FA02D072C0F2.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "8f94811c7ad75d61d5290da1682ce7fbe0271bb0a17d59c6addda0c1a919b4f2"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/18B48D4D-994F-4519-BF2C-75DA19EC6437.png",
+      "name": "switcher-root-podcast-url-native-system-screen_0_E5FD5CD5-8C46-4C81-BC3A-100B030B6841.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "07b76c7d6dc376c2cc29d98f8966ee78a26e464c09021b260096e6c7506928cd"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/B923A277-FA2A-4CB1-A37C-AA0CA4523ACD.png",
+      "name": "switcher-root-podcast-url-before_0_5992C975-CDF2-4A14-99EA-A75E10B6959B.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "c6db2e196d6aac883e7efcfbfca3cfb00b75462403f680edeb9ffd41f3815a01"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/A0EF1BBF-F63A-4A48-A34C-A23EE6D75FA2.png",
+      "name": "switcher-root-browser-address-returned-unsent_0_729A7EBD-59EF-4A46-BE18-C51B7AAD43E0.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "b22cc2480a2f6bacbc6f1f430a6cc4d7d1e335c61aa1c34bf2b724e4fa4d8807"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/C45F5045-7D37-4F56-B8E8-4CDE95099EE1.png",
+      "name": "switcher-root-browser-address-whole-homeview-card_0_47C06191-A0D5-472A-A172-C75A99A8E18C.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "afef66c7df241efb2fd22323c555fd02cb55e8b24367b47657dc3b3410108ba5"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/7BFC4A93-0891-4B21-9649-5713F09C075B.png",
+      "name": "switcher-root-browser-address-native-system-screen_0_2F2F43E1-1EBD-4454-83FB-E16A670AABEE.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5e93f1edc67737ef6c72c719fa48602295641ccfd41fc1793055b2931a622ed1"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/3465EE7D-73C3-4115-B25B-D65AC626C7E4.png",
+      "name": "switcher-root-browser-address-before_0_D6982DB7-6A67-4C5A-8937-D83D6E7185D5.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5d5665cb7cf2b4bfec8e66fec7ca0d6f5e9a9be5fd8593d4992b45bef5b57183"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/878FCA0C-E706-4FB7-962C-193260EE707A.png",
+      "name": "switcher-root-world-query-returned-unsent_0_1D9885F3-B708-4F25-AFC0-3F543A54133D.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5b2fe071268e8a6e6e15e112429845a49930b60375e67f3c2d2696ceedfc2a06"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/99F60E2F-1E1B-4C57-B800-FA703055509B.png",
+      "name": "switcher-root-world-query-whole-homeview-card_0_C895D32E-F3D9-4595-ACEB-5141041732F0.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "0669a5cf39b265887549ae4c1810cb96f2b2f1cc09982b8dbf049d4ca5ef9a8f"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/25AFDD64-4802-4BF1-8CD1-54E2ED4B4024.png",
+      "name": "switcher-root-world-query-native-system-screen_0_A03CDA26-5D8F-4E69-A341-147B3AC19167.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "22c3ab97e381956e0c26b5b7f1d277f6a3ac86af61aac02b42b9da85682c62d0"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/180ED2F8-94EC-4466-834A-000557CA805F.png",
+      "name": "switcher-root-world-query-before_0_C947CABA-8CB6-455E-8312-53101E9680DF.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "bc6b489a2697e1a2c14c69fc2f0e4ff486f72b5a16d9d755b09c53d1566f38b9"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/9FBAEFFE-6081-436F-BAF6-4A527D837C45.png",
+      "name": "switcher-root-message-returned-unsent_0_DBA58608-718A-4C50-B286-5E4D432A983D.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "23ac95dd86e03c943d6ad6315237a39d15d5d1d13447f8300d5715e6bc55b852"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/3F2AF719-6ED1-4E37-875A-B16AE3CF00B7.png",
+      "name": "switcher-root-message-whole-homeview-card_0_BAE092CB-5E22-469A-93DE-E8F99B1CBF8C.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "efb3af8e3025681b139d11e6d5ac9f17620e640f56d7dc9008fdba56f867be33"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/A29CD58C-4361-4FDE-A641-855B7D134FB5.png",
+      "name": "switcher-root-message-native-system-screen_0_07F8CE0B-4701-44DD-AE03-0A5C1A482EBE.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "00f9d8afb68db989f82ab1bd0d0f7d78b1cab80b9646d46c41ab32c9e50e60d5"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/170018D2-6E76-4CFD-B5CC-53619C0156AD.png",
+      "name": "switcher-root-message-before_0_A088F9FF-2A09-427B-A07F-0DD82B0F11B2.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "00d869632aff4ad6c85d838c1d11694f15c430853994e9f3d633558477bfd35e"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/940C2817-8A6A-4D13-B6DE-29742F5DAD6E.png",
+      "name": "switcher-root-intercom-returned-unsent_0_839564FF-8BD4-4346-9AE4-3C810C8D4DE3.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "fffc94e5ca57b086dfea80020d3d4ca72f7bdcfe537abf9cb97f2652bed62c02"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/039A69C4-3AA4-4234-BA4F-F96584A6984E.png",
+      "name": "switcher-root-intercom-whole-homeview-card_0_8960D97F-993C-4F9C-879C-3C3FA4D7C1D5.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "85ad67ec13adc377261ae383263604585f94679138cee36668b61dbb10b2a0b9"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/5D911FE1-C4B7-4076-95A4-90B6F05F954E.png",
+      "name": "switcher-root-intercom-native-system-screen_0_36AC5A51-042C-48D6-8543-610986BF37F8.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "6f8c03ebb683decb3aab97fba3db20a1c08221db2a72212073214c233230fcc6"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/993EBBF4-2724-49E5-9563-FFDE21635279.png",
+      "name": "switcher-root-intercom-before_0_11E1AE60-2F13-4E91-9809-7343F659CF44.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "9865d8555ef4de122a0d4f9f450c933f7b8f147a3cf77cfe427cd3fbf4d0f4a9"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/56D9D4CA-0674-497B-A617-FF0377E8C982.png",
+      "name": "switcher-root-music-query-returned-unsent_0_DF76796A-C42D-4730-81F6-950E1603E2FE.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5bba768f7f65693b99c9e7c60412b694f6151396a3fc048709b9c08d8f0ca79b"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/0C9E916D-9DDB-497F-ADD8-0A63787E5901.png",
+      "name": "switcher-root-music-query-whole-homeview-card_0_1803B8AD-3291-49D0-A5AF-9A81C32A7078.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "d793570197f1d2d222a03f0584ba9c4f3a3a8f4c89a7a9f46e48be0dbc7913ce"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/AB0580C8-C9C6-42FF-8116-CF0BA92B52A1.png",
+      "name": "switcher-root-music-query-native-system-screen_0_5DEA7066-D194-47F5-BB6B-1966C4792A1D.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "d874b57d87a86e80c0197f9cb0b8aa291eead36820c6390ae3c5e5fb944b9130"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/6C9CEAD3-764C-4238-85E2-95A8A19AB836.png",
+      "name": "switcher-root-music-query-before_0_ABE58230-0F3A-4C30-96E0-8175FF7D60D2.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "88bc101a869498316a5ebf4ef68e99147ca43dbe16962485e951080c4db66e7c"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/AE50A2BD-F53A-41DF-BDBE-2B3360DB0343.png",
+      "name": "switcher-root-settings-city-returned-unsent_0_0AE9DE27-2C0A-4EE1-9952-F0EADA525C8E.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "37e2bde1434a4b1ed1b451008d686889ad24d504ad5b9e7c727f6332fa1e99a3"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/F149304F-E005-4D8A-834B-4CCC3769EAD6.png",
+      "name": "switcher-root-settings-city-whole-homeview-card_0_703DAD4A-071F-403A-8836-4BD261C5055F.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "83e32b5b87ad53e99f051eaf214bbf6ea814e675c83f6feef3e33f9641e862e9"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/BD6D8861-F2E2-4CB8-82B8-57439623950F.png",
+      "name": "switcher-root-settings-city-native-system-screen_0_26E216A1-B23F-47F3-97D1-D58A9EAD3E96.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "e963cb0d28f6e7e59349c0811bb22d7bfe53e8be7ae2b76381e2c7a8c6d29edc"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/E3998CEF-01B3-4FF1-8780-D05EEFBBCCAB.png",
+      "name": "switcher-root-settings-city-before_0_26B65E6C-4F08-4BB7-9F7A-7F5A676193E6.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "73f19b4bd952c2b2fc924641f029b3b99204f8467bb542ab1c30497d81bdde4c"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/5DEDB073-884C-413F-977C-5DE81052EF7B.png",
+      "name": "switcher-root-local-reminder-returned-unsent_0_BEA964B5-BB6D-48AE-A9BA-3AB10E6D832E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "86bbfc5c5271cedaec3a90a69987eefdead95fc3a4683c6e4df8b29acf7eb6e6"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/F41CF5F8-435B-4665-97BA-E6E039184F03.png",
+      "name": "switcher-root-local-reminder-whole-homeview-card_0_11865CAE-AD59-450C-87D9-C40ECA85C404.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "fbf81b406eebfc8425aa5e3623165a5a583001edc34851fd6843ae8857b9625a"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/7ADC791B-E6B4-46B8-914B-0A607ED60AAB.png",
+      "name": "switcher-root-local-reminder-native-system-screen_0_D62B0079-826A-4F38-AC29-1BB6ED30ADA3.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "65e906ab55b19d5119334178bc34c02967bc088a3e538379dc8099fedcf34531"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/AF454A26-B063-4F10-B626-7D941C5E558C.png",
+      "name": "switcher-root-local-reminder-before_0_B46A64CE-27C2-47E6-91C9-FBA3D13D7E9D.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "5e5adbc3e4e0fd602e745fdd23c8f8d87acaf480bdcaf1936e31578bdcc327f5"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/42B2E1C9-266E-4260-ACEF-83A38753B155.png",
+      "name": "switcher-root-facetime-returned-unsent_0_26C4C36C-A099-47A1-82EB-5BE4EC6310FA.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "59877a5a4b0765e95c28c3972c67be9e2a9711566fa0cf80d986d8158f30a560"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/089131A5-F1B3-445E-8948-23ACB6570BB4.png",
+      "name": "switcher-root-facetime-whole-homeview-card_0_68CC43F3-485B-42CC-9225-696B4209D614.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "b02049a4edd1e7e6f5e175ae4c094d67ec9d5ea5c2de7e295423c63bfb11c472"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/3B3E7386-22D2-404D-908D-03D3B396882C.png",
+      "name": "switcher-root-facetime-native-system-screen_0_B1555E66-D9DF-4418-82C0-08BC53F0D754.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "54485d56a3bf9235ddde0d4f1542eb8c58ba9d7787298bebf078f637a7d05911"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/BA17DEDE-EF8F-468C-944E-7628D8D05A06.png",
+      "name": "switcher-root-facetime-before_0_610880F9-4A86-45BE-8B80-12B8C228DFDD.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "6827cceb99767c9aef14749bd888552bc21249cff3d5120af7a212a7082124c7"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/FFB501F6-5611-437A-950E-9F9266E736F4.png",
+      "name": "switcher-root-podcast-url-returned-unsent_0_F8DBCA10-3152-43BF-83F3-85DB4A54AAC9.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "5257f30a16e434bfa04f6a872e5f704e781eb06e6e983fdc53ecd00c08710404"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/BE1B0DC7-D862-4085-91BC-ABAA09802D66.png",
+      "name": "switcher-root-podcast-url-whole-homeview-card_0_A94C4C53-65A4-4A40-A798-7CA07818FDAE.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "c6131073e114a7ac172ea743afd065c78642fc015ee24edfef8bd25112846b79"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/EF2C4391-A547-47A8-B03B-7B757EBD9AA0.png",
+      "name": "switcher-root-podcast-url-native-system-screen_0_ED0E91E0-AB2F-4E50-BC92-20D1B26D3F07.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "786dbb846e3a74d1483585da589dd67510d60d6a8dfd2791976c5d090555ebfe"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/B5BC7E30-E9A0-4311-A0F0-6EE02A66906E.png",
+      "name": "switcher-root-podcast-url-before_0_359E4711-8A10-4A3B-8504-EC2D0C9468EF.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "0db8dca2f07a4f6c065a95e5304a328ede7102e28f5d6c98f91ccd05e3a9dd02"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/FD438A16-505C-4284-AF9A-F47E66579D26.png",
+      "name": "switcher-root-browser-address-returned-unsent_0_29BC1910-DAC2-43BE-B9E6-391FE04F6338.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "e090a7cee2361061076c25a51b364dcbc3936cee38a6859f0b20bfb0a08ec05b"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/E906F202-78DC-4881-8F81-896CBBC4E4C5.png",
+      "name": "switcher-root-browser-address-whole-homeview-card_0_4ABCE38C-3785-485A-BC8B-78C3B3691DE4.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "2f072503107786d51a5576fc6548d71f3596293541ac36030d52a234e4cd822d"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/6628E7A2-30A4-47E5-91AF-813A944B0FC9.png",
+      "name": "switcher-root-browser-address-native-system-screen_0_A319DC67-378B-48AF-9492-A21300667331.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "2adb2d177ddbe95c8a4a92085e73d026d57e675eb1aaaff40e16bfc05a176cd2"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/0AD4828D-4F43-447C-8B0B-BC5EDB8368A8.png",
+      "name": "switcher-root-browser-address-before_0_3C832ED6-BDAE-48FA-A3B2-3D51F775F71D.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "b2ab6fca684e3f82afb47d0938d0b6f43e1a5708359fa6daf0fc055aa7188ec7"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/F9926C57-9169-47BC-8ADA-2CC4652AB754.png",
+      "name": "switcher-root-world-query-returned-unsent_0_8EA4689C-3EEA-4E24-8731-04B178A5EC71.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "c7939e521521415923e0ca2101d8ba2e8fbd2926918cc748d307e7d8f431a137"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/ECF96366-0BA8-479F-84AF-56A2F203AE44.png",
+      "name": "switcher-root-world-query-whole-homeview-card_0_DE38A571-001F-4C58-8B5F-1BE7B1F754A2.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "fe234940582a4570b73a0a035e85382c3ed744c6e64e1300bc67e5a30d76e369"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/D67767A6-7844-4092-8666-274C72C44FA1.png",
+      "name": "switcher-root-world-query-native-system-screen_0_C454702F-22FF-4F45-BB55-FEAB55B23254.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "23d4ac0b39bdf104c1c5fe9e1eb998bbbc88809a8bd2e70b5ea6fc94c80cfc06"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/1199AC40-D7FD-4475-991B-84A6619D2686.png",
+      "name": "switcher-root-world-query-before_0_C8F225EB-FE0A-43A1-9FBD-F9787DC15DC0.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "340cfe51d903c95c06fd0e413cb56df55cb640e88fdfba37ea4ec3d36c3bd1e3"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/4789D7EB-8F6B-4FB3-A7A8-624A89758278.png",
+      "name": "switcher-root-message-returned-unsent_0_D16F213B-2BF6-430F-914D-B46EB9B33432.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "84c5243ea52a42f83af7647d70bb728355b04f9081b593b69fa76759fba6c5ea"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/C14BB88E-7492-47B6-942B-09BDCB5CC787.png",
+      "name": "switcher-root-message-whole-homeview-card_0_1AEB0DB5-CA3A-4606-A645-DAE3F3A11DEF.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "8c6b5c468f1804f979d8e6a0bff33c392aeb515278d6fd337ead5a5ec34ac52b"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/8330A84E-4236-444D-B81B-C4AAFE42F3BF.png",
+      "name": "switcher-root-message-native-system-screen_0_151298CC-6391-4E10-9272-62D55C8D35CA.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "c982f5c6ac6ca1ad8a3f8d2e96ba4353326c7e38f6acb9a5ec9190a295690e8e"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/F244C11C-6B1A-490F-8E58-94C7BE035D72.png",
+      "name": "switcher-root-message-before_0_AC1DFDF9-3406-4575-B389-D7ADC2E57C43.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "808a55673b72ec2d17da48713346de7d138a9d43cf9dadd4bf2a419b845e3f01"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/6D6F9C23-95EB-4EF0-B766-AFE8A67D511A.png",
+      "name": "switcher-root-intercom-returned-unsent_0_664620AA-2224-4A89-9CAE-85C73D0D10FB.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "7defaba685e9af99bc391a7b240381e553f0d0d8f449d828bcb948ffc4f5defd"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/C246750C-E0B5-46E6-89AB-DFF86209DD66.png",
+      "name": "switcher-root-intercom-whole-homeview-card_0_AF1F2043-8A67-4F2D-B1A8-FE843F6ED5D4.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "94a30e52cf2021f95bcd2f801c9e01a32839b7693b8f7afe0d015a21ff9d1c1c"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/341BCA9E-1EC4-45FA-BA8E-6B79B0C34664.png",
+      "name": "switcher-root-intercom-native-system-screen_0_4B85C700-527F-41FE-A8E1-E1D4BF335BC5.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "1df187e51c348005dd3ed8887e5967dbcde8b075bf6da6e9790046bdbaf42070"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/39013306-BE46-4B37-9910-3BA5796D37D9.png",
+      "name": "switcher-root-intercom-before_0_D49B17BE-E57E-4FF9-87F3-7A883D49FD3E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "5066e555dbc6c988fe05c0d0c6eab1362ce6c80def9bf26e53fec499e91f3af7"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/B70588CE-6891-4B5E-AEB5-7C0FD7A662C1.png",
+      "name": "switcher-root-music-query-returned-unsent_0_C6925416-FBC3-4829-9B5A-EF5C6B5AA318.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "eda3b062bcc30a258755ea100c3174df25661011461651ef70ee02fa9b02b7fc"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/AE6A1958-ACB0-4853-9984-F5E55BC06482.png",
+      "name": "switcher-root-music-query-whole-homeview-card_0_39326156-421F-4B2E-92B2-DA9BB13B23A4.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "e2e17dd609c3e0b741ebd44980b279aa29eb6564d7d91891de3ec342a189ec91"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/5F90BF73-7F10-4F36-8C79-3A1589583DC5.png",
+      "name": "switcher-root-music-query-native-system-screen_0_69BE4B2D-8F30-460B-A744-5A8560AE07F7.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "2f1004a3b1ffa05fbe0180cb9b6e879fc8eaaa99e16e7a737018df318278295d"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/175A0444-572A-48D7-9BBD-59724457FA66.png",
+      "name": "switcher-root-music-query-before_0_BE50AA7D-CA24-4266-85A6-191848687D4E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "29bb837b42d9d819b01bc32eb4f9e7fa04a7e252b63b592722670742256e4624"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/565006E2-28FD-4CEE-B61D-5134A588B3B8.png",
+      "name": "switcher-root-settings-city-returned-unsent_0_1E801AC0-43E8-426F-B16A-26E05D359C16.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "e5bf559658f3f08a04371154a8473c927b5874627011749c46ba3df9abdea81c"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/C82EE67D-2FF2-4C4D-A3DA-CC8A1D56A483.png",
+      "name": "switcher-root-settings-city-whole-homeview-card_0_EA7EE573-F61E-4B68-B408-401B1D5B2927.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "599d0f776429b2d88fb285b11e67a74ff7222abd362fc772813ec6ea00ed3851"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/453DBEC6-8D14-4042-8061-FC41EA74CF9D.png",
+      "name": "switcher-root-settings-city-native-system-screen_0_1DB53ACE-3CDC-4B9C-BE3A-70BB2BD3F6C9.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "1fe91be0533df662f9dcd3094659d2e1a77b7a2c10c776026f8a5af4e6bee5e1"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/036BA177-0E14-44DF-9477-ED67C393928E.png",
+      "name": "switcher-root-settings-city-before_0_546B4056-5B2F-491B-B200-19E38E8D91A0.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "126c29328a06f6f24cb662435c96921ec6c71c97d23f12f8bb935d4822ae9468"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/D78A7B2E-9A68-4518-B9C8-F8A91225615A.png",
+      "name": "browser-local-history-offline-and-stop_0_A3E765E7-6CDC-43C4-B335-AB95F9765477.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "217cfd8a5d076e15ca64cf02e9a4e05894bdb136cb258b6acbe3a56e34fab9b4"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/89704665-719B-4DC8-99F3-37499BE4FD52.png",
+      "name": "connected-weather-fixture_0_456D9CFC-AEF2-4AFF-BDDF-CD523AFCB04E.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "6ee7566ab0461c58fe5a86702abbd3516ca29734f2b2f392658408bcff8e7dae"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/0DC83706-8B35-4327-97D0-29F2242C190B.png",
+      "name": "connected-music-fixture_0_08344371-874B-412D-8B9C-997B6F1EEBD7.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "284642c76e7ed651d32615eca43fe59afdd8ff0bf29c252633de24b26194ba91"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/C06F85E8-4B25-49A0-A491-C98A85964A61.png",
+      "name": "switcher-reminder-keyboard-draft-returned-unadded_0_2436DD8B-E8BA-4537-8920-56DB750E8648.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "14c36c12ea724d05ca742509337fd47eb7d173561440b4dee2ab503e685f5467"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/596AFEB9-7AF7-4FC1-BBC0-20B4D6189413.png",
+      "name": "switcher-reminder-keyboard-inactive-whole-homeview-card_0_1AF89CDD-3383-40E1-AAB8-479A9D2B9DDE.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "0a62cebff7a9c4069f1392568bb33e6875b93a2149cdd224ac14026a14065045"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/5E63827B-B449-4E2A-B11F-0E750CF8B7F1.png",
+      "name": "switcher-reminder-keyboard-inactive-native-system-screen_0_64617837-7C49-486C-A0A2-F84C227AFC80.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5efc8391db4de3e83dd3990e5d73d68fcf419d0c21a7effe3de35d28e244bc49"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/077F51E6-E44A-45C7-AC4B-FB17E997DDD2.png",
+      "name": "switcher-reminder-keyboard-draft-before_0_5F5BF1A1-7CED-481B-A85D-333188C8B7FD.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "e4dca7f43438d9891945500e4a709a80b04c291acecfd8bfaa831d7117a39dc4"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/BB4A5EC5-29A3-4859-BECA-2F07B70C7C21.png",
+      "name": "switcher-assistant-keyboard-draft-returned-unsent_0_D13B62FB-5D5C-4464-B659-41C82F4C5A2A.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "2eaacef412c80747c1ae28a9fe2a908f02713c76e72a93ec78e36e588ce70e99"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/69175ADA-B9B1-4373-AEB9-64E747DCC60B.png",
+      "name": "switcher-assistant-keyboard-inactive-whole-homeview-card_0_011F6F6B-A3F7-4D4A-B2A3-128A34627511.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "3b5d2cb49bbfb6c2055a2c27e07dac49767ece8267636339a5914cfca80d75fa"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/689016B6-E5CC-4497-B224-2B5A56AB4B90.png",
+      "name": "switcher-assistant-keyboard-inactive-native-system-screen_0_A318119D-FE2E-41CF-986C-04E901A66679.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "b77eb750cd63d69541ae5948b5dbb0cdd038994a2e25eabac44a6bd23c112d4b"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/DB180713-1EFC-4797-8B98-B9D850184F79.png",
+      "name": "switcher-assistant-keyboard-draft-before_0_D42D2CCA-553A-4C39-9D8D-D7CDD2EC6248.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "0141e5e9adf1a9a07c713ae6881ff7bb10eda088e3fb8407081fe134b535a363"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/27F63447-8C81-4462-9923-370EFE304928.png",
+      "name": "screen-rss-podcast-removed-explicit-demo_0_D3A8648A-8EF3-4481-8828-F8F0B78D7EA2.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "b1018f4c270c0a81f55b92daa6bef610e3be1ec4c4e3379ae989c96cc16f6288"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/4745B7E8-3305-4B07-AE37-68FCF726E928.png",
+      "name": "viewport-rss-podcast-removed-explicit-demo_0_F4A68D26-FB68-4318-988B-C32C64442380.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "650cfdce9583bbc168d1b69472ec7316b0dcb436160ece33673d38c1904054cd"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/346F854C-64BF-44CB-9AF6-A738FFA88EDE.png",
+      "name": "screen-rss-podcast-background-paused_0_2FAED310-026B-4965-81C7-14111ADC9BCB.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "898beaae486ac0ef56a395e8ad796a8e0d2d84b8fd375eaf425d50516f7bfcc2"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/F93A3851-599D-4EFE-8BD1-E0D1448FADB6.png",
+      "name": "viewport-rss-podcast-background-paused_0_D194A98B-C2B0-4B97-932B-9FC133AB0A6E.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "d3b8d7b928eec174f85718994fcfb57e0884497287b082eea2a2e5c51ae8548f"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/3A7F7E61-7C5F-4AA5-95F9-22DBC704F85E.png",
+      "name": "world-kathmandu-fractional-zone_0_4480FA84-0445-4F32-8559-6FD39189FB88.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "d98280a1f38a6c9286e27af99c9f7757c19fb7e1f3082ca3f9e55374dde9f476"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/D08F772E-01E5-480E-9711-683A040D4D6C.png",
+      "name": "world-after-selection_0_0C4C1AF2-C24A-4AF4-ADF7-3B94521CE223.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "4dc5f57aa2d040f5d5319c39e5649bb2221209cfddf9e55e1bf75c01e7f90845"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/C840F61B-D061-487B-B59C-D83AA8A294BB.png",
+      "name": "browser-local-history-offline-and-stop_0_DA059DD4-A255-4E99-A2B0-26D7E345DAE2.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "7abb599c1ab714f0fbefedd1294fab8c255d660817a8a9afbe2204774f5269c7"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/D34F244A-8066-46E0-B53B-49F01F0C1BF8.png",
+      "name": "connected-weather-fixture_0_3682641B-201C-4887-B882-36BC56F8ED42.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "f3a6db1c93f6ea6876ff06a690ef233872ac4808647a89d51c46f388ab96011c"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/8BBAA791-E8C7-4733-92EE-165F2993ED7A.png",
+      "name": "connected-music-fixture_0_B5FE26F9-5957-4A9B-8EA7-D83464B832F6.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "09d966f7953066dfed20737484d3219d8ab1de26e8ef433cb239e3639ba4581d"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/1AD77ADD-96BC-4E30-B111-3D8AF18B14E0.png",
+      "name": "switcher-reminder-keyboard-draft-returned-unadded_0_D077451F-48EE-449D-9106-9D7F0A09BBB8.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "d0fc13dbce43aa8b9c6ad59fe943ab0da947df911bbc66f43fb39b446d03a935"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/99A6B776-A8D7-4C5F-A0A4-16F9FAF3EA6F.png",
+      "name": "switcher-reminder-keyboard-inactive-whole-homeview-card_0_4B669E97-D3FC-41E2-A94F-75E733B4BBAF.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "7fa27d8925764c508b96d4425056a33fe80ccb8c6299da2fe6f34beef18c5206"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/6D5360DD-1FA3-44F3-AE32-AA74E5896D74.png",
+      "name": "switcher-reminder-keyboard-inactive-native-system-screen_0_1F91A4D4-4F35-471A-B8ED-18720ED0F2F0.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "016cf3a0851a45649f1e670f893a059729c0f22a1b489fdaeb20efd96ba9d7a3"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/9F470020-57BE-45A8-B14D-CEE6A26994DD.png",
+      "name": "switcher-reminder-keyboard-draft-before_0_186CC1B5-0211-40CB-9E70-200868AE9BB0.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "ef2de1699cf0de414ad1e378deab5975c100cfc3a1e0d82a1e4c592ae99435df"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/F164B626-E8E2-4C09-B155-8578DAA138FC.png",
+      "name": "switcher-assistant-keyboard-draft-returned-unsent_0_65B5401A-E5FC-4DB7-986F-ACFC588B8BFA.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "af3cd82a13f72b7f11086b9c97218287b3062922f8f1a2086163dd0bd80330eb"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/BF7064C3-2A9E-435E-9F28-4D64DB61AD6C.png",
+      "name": "switcher-assistant-keyboard-inactive-whole-homeview-card_0_CAF5EEF9-BDE0-4C74-943C-CA2C33461390.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "b75dbab86f65df1040193482aa84bcca5532938d958ef4ad3247133690db1a41"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/4F47D670-43DF-49CF-BC59-5CDB8D473CD9.png",
+      "name": "switcher-assistant-keyboard-inactive-native-system-screen_0_B198EDC3-2027-42DA-8F2D-9F9288AC9449.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "168bebde9a4185f1b9c2ca3ad0567e16446b6e51cb371a58e54a90e8f07939cd"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/7AA66A9B-1CEC-4BF6-8A7E-C7FE3EC22E1F.png",
+      "name": "switcher-assistant-keyboard-draft-before_0_894AE441-9517-486D-AFEE-33BE850BF965.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "c0764059b819abf9adefb1aeb8291cf290743f42479ae6ac690a9eff2ab8dbf7"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/572004B3-AF70-4E42-8332-B06D6B1FCD9B.png",
+      "name": "screen-rss-podcast-removed-explicit-demo_0_9629DD56-6DA6-4A8F-A597-605953B9298A.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "ea46fa3068db80e938731acd3e89d1f9faf7672d116d7629b9992f93dc1fffb1"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/7B7BBAA9-E418-43EF-8961-3996C4A8F3EF.png",
+      "name": "viewport-rss-podcast-removed-explicit-demo_0_0C6A2C24-211E-4A18-9779-C4AF9DF65CAF.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "3085f03a8306787bd308ea150a40d29a3902232b75bf4bd6bf2a379272f8e897"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/2C56D734-9124-49D8-B397-5EE6E7CB55B6.png",
+      "name": "screen-rss-podcast-background-paused_0_ADC85A4D-B09F-4CE6-8DE0-68A4ECD3574B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "8c16d8a65c1409fe12170b24da7bfb2a1f09f503ceeb443b1bc83e414c12c90c"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/A288A570-E58B-43DE-9C08-ADE200D6DE38.png",
+      "name": "viewport-rss-podcast-background-paused_0_903DE05D-B897-4468-B077-6EC291F4CCEC.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "1e5f568e2290659b81bce9572fa34e53cc1932e7115383bb6987d4969ccaf1e8"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/98241E17-449D-49A7-871B-5711AE4541A0.png",
+      "name": "world-kathmandu-fractional-zone_0_76733A84-3FCE-4C86-9160-A8D1AB17AF65.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "3cba8327f7f800adb4f52e0ffc377d8f1af898b54a01a863c4b0ed734159e346"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/0B2C37FA-DAE3-42E7-B3C5-26AE271B30D1.png",
+      "name": "world-after-selection_0_A4C3F8B3-C436-4D8A-AA1B-17A0932348FD.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "3cba8327f7f800adb4f52e0ffc377d8f1af898b54a01a863c4b0ed734159e346"
+    }
+  ],
+  "public_own_images_read_back": [
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPhone-before-switcher-root-podcast-url-before.png",
+      "sha256": "0606915a97f5fb56186f6937e8af8f486b29afe4d5e42184ba05e3f7dda2a3bb"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPhone-before-switcher-root-browser-address-before.png",
+      "sha256": "0f424f77c8fad53b70e936032cb016b2382fae59707d6a03e6721864446b89c1"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPhone-before-switcher-root-message-before.png",
+      "sha256": "4ea6aa223be4a07ba39a787dfbff721eac6e1b40c4536b79725dbedda8cd5b65"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPad-before-switcher-root-podcast-url-before.png",
+      "sha256": "0db8dca2f07a4f6c065a95e5304a328ede7102e28f5d6c98f91ccd05e3a9dd02"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPad-before-switcher-root-browser-address-before.png",
+      "sha256": "b2ab6fca684e3f82afb47d0938d0b6f43e1a5708359fa6daf0fc055aa7188ec7"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPad-before-switcher-root-message-before.png",
+      "sha256": "808a55673b72ec2d17da48713346de7d138a9d43cf9dadd4bf2a419b845e3f01"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPhone-after-switcher-root-podcast-url-returned-unsent.png",
+      "sha256": "e19d01eb72faf6c9db093c338f8c5e7df550321474cb20e97d2feaca6e7c272c"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPhone-after-switcher-root-browser-address-returned-unsent.png",
+      "sha256": "b22cc2480a2f6bacbc6f1f430a6cc4d7d1e335c61aa1c34bf2b724e4fa4d8807"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPhone-after-switcher-root-message-returned-unsent.png",
+      "sha256": "23ac95dd86e03c943d6ad6315237a39d15d5d1d13447f8300d5715e6bc55b852"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPad-after-switcher-root-podcast-url-returned-unsent.png",
+      "sha256": "5257f30a16e434bfa04f6a872e5f704e781eb06e6e983fdc53ecd00c08710404"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPad-after-switcher-root-browser-address-returned-unsent.png",
+      "sha256": "e090a7cee2361061076c25a51b364dcbc3936cee38a6859f0b20bfb0a08ec05b"
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-root-fields/iPad-after-switcher-root-message-returned-unsent.png",
+      "sha256": "84c5243ea52a42f83af7647d70bb728355b04f9081b593b69fa76759fba6c5ea"
+    }
+  ],
+  "core_package_inputs_unchanged": [
+    {
+      "path": "Package.resolved",
+      "kind": "source",
+      "bytes": 383,
+      "sha256": "c8847f7f0d11227b76d43c295cc6596611c58b666412fef51298f1b959c8df0c"
+    },
+    {
+      "path": "Package.swift",
+      "kind": "source",
+      "bytes": 509,
+      "sha256": "87aa9830cf40dae5b18d58ff685509d42e0d7ad8003c295f627b175d514a7537"
+    },
+    {
+      "path": "Sources/Core/AlarmRecurrence.swift",
+      "kind": "source",
+      "bytes": 2858,
+      "sha256": "7223931e1fae63512aedeef99a9b6570a7162503f4ea2ebf85789b2eb6a1d469"
+    },
+    {
+      "path": "Sources/Core/AlbumDisplay.swift",
+      "kind": "source",
+      "bytes": 10693,
+      "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573"
+    },
+    {
+      "path": "Sources/Core/AnonymousPresencePolicy.swift",
+      "kind": "source",
+      "bytes": 5978,
+      "sha256": "6e86fb5ea8f28d0e02cd6517826459e60938eaa52e3e5f510622168355711d67"
+    },
+    {
+      "path": "Sources/Core/AnswerSpeechSession.swift",
+      "kind": "source",
+      "bytes": 3700,
+      "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e"
+    },
+    {
+      "path": "Sources/Core/AssistantConversation.swift",
+      "kind": "source",
+      "bytes": 5049,
+      "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1"
+    },
+    {
+      "path": "Sources/Core/AssistantLimits.swift",
+      "kind": "source",
+      "bytes": 251,
+      "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584"
+    },
+    {
+      "path": "Sources/Core/AssistantResponseDocument.swift",
+      "kind": "source",
+      "bytes": 2952,
+      "sha256": "f8ad454fb137ab03d43c267c23aecff554b97eb089fb56acb4cd7d3ee8e8dd2a"
+    },
+    {
+      "path": "Sources/Core/BrowserPolicy.swift",
+      "kind": "source",
+      "bytes": 1367,
+      "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+    },
+    {
+      "path": "Sources/Core/CalendarAgenda.swift",
+      "kind": "source",
+      "bytes": 1432,
+      "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+    },
+    {
+      "path": "Sources/Core/CalendarPresentation.swift",
+      "kind": "source",
+      "bytes": 1798,
+      "sha256": "cb173f15e0d4667743117b27a533da9f6dc3d2302038401970b3bf6f67727d7c"
+    },
+    {
+      "path": "Sources/Core/ConicGradientModel.swift",
+      "kind": "source",
+      "bytes": 1384,
+      "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3"
+    },
+    {
+      "path": "Sources/Core/ConnectedDataSession.swift",
+      "kind": "source",
+      "bytes": 21371,
+      "sha256": "f04cd662576a2d7cdab1a534d62c0c5704c86dd1e3d03ddb2a60e27d09116eb5"
+    },
+    {
+      "path": "Sources/Core/ConnectedModels.swift",
+      "kind": "source",
+      "bytes": 1378,
+      "sha256": "6b0ea8f93b0247a9f1fc59b32c30d25564a4db1554e0eefd5b6e3a0ef883bf2e"
+    },
+    {
+      "path": "Sources/Core/DataConnection.swift",
+      "kind": "source",
+      "bytes": 244,
+      "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+    },
+    {
+      "path": "Sources/Core/DemoActionPlan.swift",
+      "kind": "source",
+      "bytes": 6817,
+      "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11"
+    },
+    {
+      "path": "Sources/Core/DemoDoorbell.swift",
+      "kind": "source",
+      "bytes": 2014,
+      "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398"
+    },
+    {
+      "path": "Sources/Core/EverydayVoiceCommand.swift",
+      "kind": "source",
+      "bytes": 4238,
+      "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c"
+    },
+    {
+      "path": "Sources/Core/FaceConfiguration.swift",
+      "kind": "source",
+      "bytes": 8390,
+      "sha256": "de97ad42252c790e25868e76f82ca8c6595e31740eef5134d6664f0cedada6ac"
+    },
+    {
+      "path": "Sources/Core/FlowCompute.swift",
+      "kind": "source",
+      "bytes": 15081,
+      "sha256": "85c66eb9b067313922729c73c533d308dc5fcbdcd56c3d8fcc85112ce330d97d"
+    },
+    {
+      "path": "Sources/Core/FlowComputeSession.swift",
+      "kind": "source",
+      "bytes": 3736,
+      "sha256": "05b410a7436cbc158eefb74d1ce8df4faf29d221b10c44b17ff6bd8dac742781"
+    },
+    {
+      "path": "Sources/Core/FlowSimulation.swift",
+      "kind": "source",
+      "bytes": 9779,
+      "sha256": "fbb8b2c86a8d25eb2935fcd547c88ab95fc24c53dae2210ff994da36731d1d70"
+    },
+    {
+      "path": "Sources/Core/FlowTypography.swift",
+      "kind": "source",
+      "bytes": 3569,
+      "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+    },
+    {
+      "path": "Sources/Core/GuestAccessPolicy.swift",
+      "kind": "source",
+      "bytes": 902,
+      "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+    },
+    {
+      "path": "Sources/Core/HouseNotices.swift",
+      "kind": "source",
+      "bytes": 5720,
+      "sha256": "53c592315988c2d83762bd77e3b75283490c3716342d7178e2d6aef533fd5732"
+    },
+    {
+      "path": "Sources/Core/LocalStateFileReader.swift",
+      "kind": "source",
+      "bytes": 1376,
+      "sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837"
+    },
+    {
+      "path": "Sources/Core/LocalStateReset.swift",
+      "kind": "source",
+      "bytes": 7709,
+      "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb"
+    },
+    {
+      "path": "Sources/Core/Models.swift",
+      "kind": "source",
+      "bytes": 17756,
+      "sha256": "3f287818198ada8ea2c6d60cf74860a9b4eef6715257aa324285fd6f6f039ef3"
+    },
+    {
+      "path": "Sources/Core/MusicPlaybackGate.swift",
+      "kind": "source",
+      "bytes": 1485,
+      "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5"
+    },
+    {
+      "path": "Sources/Core/PersonalHomeConfiguration.swift",
+      "kind": "source",
+      "bytes": 2107,
+      "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc"
+    },
+    {
+      "path": "Sources/Core/PhotoClockInk.swift",
+      "kind": "source",
+      "bytes": 2348,
+      "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9"
+    },
+    {
+      "path": "Sources/Core/PhotoMaskRasterizer.swift",
+      "kind": "source",
+      "bytes": 941,
+      "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+    },
+    {
+      "path": "Sources/Core/PhotoPlacement.swift",
+      "kind": "source",
+      "bytes": 13992,
+      "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae"
+    },
+    {
+      "path": "Sources/Core/PodcastFeedParser.swift",
+      "kind": "source",
+      "bytes": 2154,
+      "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e"
+    },
+    {
+      "path": "Sources/Core/PodcastFeedTransport.swift",
+      "kind": "source",
+      "bytes": 1884,
+      "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97"
+    },
+    {
+      "path": "Sources/Core/PodcastLibrary.swift",
+      "kind": "source",
+      "bytes": 2934,
+      "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+    },
+    {
+      "path": "Sources/Core/PowerAdapterInformation.swift",
+      "kind": "source",
+      "bytes": 639,
+      "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616"
+    },
+    {
+      "path": "Sources/Core/RecipeParser.swift",
+      "kind": "source",
+      "bytes": 8475,
+      "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
+    },
+    {
+      "path": "Sources/Core/RecipeTransfer.swift",
+      "kind": "source",
+      "bytes": 3400,
+      "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+    },
+    {
+      "path": "Sources/Core/SetupIntroduction.swift",
+      "kind": "source",
+      "bytes": 198,
+      "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8"
+    },
+    {
+      "path": "Sources/Core/SnapshotMigration.swift",
+      "kind": "source",
+      "bytes": 9608,
+      "sha256": "cc24c10d1f7fd0e8e99a6e40556051b062239fd57fef21f4f0492c4fc758dffd"
+    },
+    {
+      "path": "Sources/Core/TimerLiveActivity.swift",
+      "kind": "source",
+      "bytes": 4008,
+      "sha256": "88d8e0f7b5f9c144e60489a391eb3a6ea33b33b8ddf48e4a19cee6773dd98020"
+    },
+    {
+      "path": "Sources/Core/ViewportNavigationIntent.swift",
+      "kind": "source",
+      "bytes": 1260,
+      "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341"
+    },
+    {
+      "path": "Sources/Core/WeatherData.swift",
+      "kind": "source",
+      "bytes": 6698,
+      "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+    },
+    {
+      "path": "Sources/Core/WorldClock.swift",
+      "kind": "source",
+      "bytes": 9482,
+      "sha256": "f2fa5fe6493f4cf0ba7a126f41df98c2e90a0bd1eeaac8ac5fd178c59d7bdbbc"
+    },
+    {
+      "path": "Tests/CoreTests/AlarmRecurrenceTests.swift",
+      "kind": "source",
+      "bytes": 5600,
+      "sha256": "1db522c696d0ce89073c5f2103fe77f1176ab5888f6850c25bb6f18d3e2591f2"
+    },
+    {
+      "path": "Tests/CoreTests/AlbumDisplayTests.swift",
+      "kind": "source",
+      "bytes": 20209,
+      "sha256": "c251f8f3783c6699b058bd386b59835af55aaeee3deb81aa2046915659478c39"
+    },
+    {
+      "path": "Tests/CoreTests/AnonymousPresencePolicyTests.swift",
+      "kind": "source",
+      "bytes": 9338,
+      "sha256": "afd8ed942d44fce5c2eb1d1f807fb7acede0011b395652c5a52123774690ca48"
+    },
+    {
+      "path": "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+      "kind": "source",
+      "bytes": 6131,
+      "sha256": "ea26acafb7a4e039af97f3328b48a92d9e4211fd65cbcae28037df45716a19cb"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+      "kind": "source",
+      "bytes": 1100,
+      "sha256": "75eba1015caf3b25e51444492280ec4977e2a5071c37b60d8cd3601981199c60"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantConversationTests.swift",
+      "kind": "source",
+      "bytes": 7467,
+      "sha256": "95b4060b83f4d1ee600ef67e74bcc5866e8944b249ff0ac2587046b9625e9451"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+      "kind": "source",
+      "bytes": 1965,
+      "sha256": "4bd27a33b521fd86d48e0623be31efbd8aa4efcbc9737c7e2c1fcf6cc5efcc91"
+    },
+    {
+      "path": "Tests/CoreTests/BrowserPolicyTests.swift",
+      "kind": "source",
+      "bytes": 2201,
+      "sha256": "3789d2d58f7ad0f02f5887a42c93d59cc66be0c60dd9b99515f2f82de4567c04"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarAgendaTests.swift",
+      "kind": "source",
+      "bytes": 2699,
+      "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarBoundaryTests.swift",
+      "kind": "source",
+      "bytes": 2325,
+      "sha256": "667b3b82bcdd635ba91c73b6ae50d71f4fbf51499877b24d933da552b1527769"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarLocaleTests.swift",
+      "kind": "source",
+      "bytes": 3988,
+      "sha256": "64ddc425a96909ba43ba40203be5893a66bcebbfb0054715e630bf1b088fe656"
+    },
+    {
+      "path": "Tests/CoreTests/ConicGradientTests.swift",
+      "kind": "source",
+      "bytes": 1498,
+      "sha256": "b2ae979fd299597c4275ec3085afb49b8e2c2bf080ef75dd384ca90e12e75f2a"
+    },
+    {
+      "path": "Tests/CoreTests/DemoActionPlanTests.swift",
+      "kind": "source",
+      "bytes": 5974,
+      "sha256": "4989acd77a49de6a252ddfaa732600a9265d08aa9117ce8ee85802232b2908fb"
+    },
+    {
+      "path": "Tests/CoreTests/DemoDoorbellTests.swift",
+      "kind": "source",
+      "bytes": 4306,
+      "sha256": "45bac13d2e9d597f81918ce5d4c472e7494150375e5a383d5cffadfd087058c2"
+    },
+    {
+      "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+      "kind": "source",
+      "bytes": 50899,
+      "sha256": "9c0376273dd9f769ea2598d550c6760ee15bf8697dd58813621122d7c8bfdb40"
+    },
+    {
+      "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+      "kind": "source",
+      "bytes": 2086,
+      "sha256": "d27995a922e1c5c346f8687425a5d775bab205b4abe49ad8547d6626653ab55b"
+    },
+    {
+      "path": "Tests/CoreTests/FaceCatalogueRecoveryTests.swift",
+      "kind": "source",
+      "bytes": 2939,
+      "sha256": "53130d5cad5051c7d6d876463aa509b0b423fe7e973920ad8e923f889db69ec9"
+    },
+    {
+      "path": "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+      "kind": "source",
+      "bytes": 5685,
+      "sha256": "a848907b433a55eb467a078551d6ba2a61d8b989f839ec9a4f1f59b83ad86b28"
+    },
+    {
+      "path": "Tests/CoreTests/FlowComputeTests.swift",
+      "kind": "source",
+      "bytes": 8161,
+      "sha256": "1098b3ea16231ecfd370fde9f85cf5f62eb134456eb105302a9f2ee48014b12b"
+    },
+    {
+      "path": "Tests/CoreTests/FlowTypographyTests.swift",
+      "kind": "source",
+      "bytes": 2447,
+      "sha256": "fda513fc05d95a89a3ceacb2ecdd68a19c3941784dca369bdda4d19eac98d76d"
+    },
+    {
+      "path": "Tests/CoreTests/GuestSafetyTests.swift",
+      "kind": "source",
+      "bytes": 1541,
+      "sha256": "2a1b47af26c87a24ffb9089f330a4dc11cfb74830c0d270ccd7f746fe1e0d2cd"
+    },
+    {
+      "path": "Tests/CoreTests/HomeViewCoreTests.swift",
+      "kind": "source",
+      "bytes": 11252,
+      "sha256": "24458b3609de5eaf6a38f3822e10f34f0ec338ead874f44be5bd243e5a32839b"
+    },
+    {
+      "path": "Tests/CoreTests/HouseNoticeTests.swift",
+      "kind": "source",
+      "bytes": 6777,
+      "sha256": "d8e6c73588e8bf229c5de209de1ee3760f052cc3a2bf7e2ca59c9edab00f5f4c"
+    },
+    {
+      "path": "Tests/CoreTests/LocalStateFileReaderTests.swift",
+      "kind": "source",
+      "bytes": 3240,
+      "sha256": "1ecdcb07b482feca5df946fee4e6048558371df50b38dd2a9f209d9bbccaedf4"
+    },
+    {
+      "path": "Tests/CoreTests/LocalStateResetTests.swift",
+      "kind": "source",
+      "bytes": 7290,
+      "sha256": "a315fb47b878e6b5165fab6706fd3c71a6c55bdcf76b12e14dee995b3ec3555e"
+    },
+    {
+      "path": "Tests/CoreTests/MusicPlaybackGateTests.swift",
+      "kind": "source",
+      "bytes": 3516,
+      "sha256": "b0b95bb382b6a479d06946fd67a44b71fc9361e30edac917b93d8f263ca1d6e7"
+    },
+    {
+      "path": "Tests/CoreTests/PersistenceAcceptanceTests.swift",
+      "kind": "source",
+      "bytes": 8031,
+      "sha256": "7a60c5781f4a043ddef22ec59a3049febe77e7baf72c665d9460af7b262ab2d2"
+    },
+    {
+      "path": "Tests/CoreTests/PersonalHomeTests.swift",
+      "kind": "source",
+      "bytes": 3310,
+      "sha256": "e7c218f72c2b66542d70012a143b30c3790e9b16ef09a5f9a8b485d117bd424d"
+    },
+    {
+      "path": "Tests/CoreTests/PhotoClockInkTests.swift",
+      "kind": "source",
+      "bytes": 6810,
+      "sha256": "0171a1f7486c06a176c873dbc9f5f98cee82322f99a332c8c031f1c7ad442821"
+    },
+    {
+      "path": "Tests/CoreTests/PhotoPlacementTests.swift",
+      "kind": "source",
+      "bytes": 10883,
+      "sha256": "dd3f4bcbc04c9ad0feccd925916a42541db6cff9329af9e3f12f618baeb13022"
+    },
+    {
+      "path": "Tests/CoreTests/PodcastTests.swift",
+      "kind": "source",
+      "bytes": 6992,
+      "sha256": "662bb7087897d5e33e16c7a37c632984215f18dbbd283e59e90996a5bc854bc1"
+    },
+    {
+      "path": "Tests/CoreTests/PowerAdapterInformationTests.swift",
+      "kind": "source",
+      "bytes": 1315,
+      "sha256": "e6998839b624de9ce13d702abb7fcb09a2cd5e69319a15dcea97fa04d7e5de16"
+    },
+    {
+      "path": "Tests/CoreTests/RecipeParserTests.swift",
+      "kind": "source",
+      "bytes": 4181,
+      "sha256": "0fa0d28fe1658ef580c3bf309bc9d7382d9968adcdf35c40ccac35898b2857b8"
+    },
+    {
+      "path": "Tests/CoreTests/RecipeTransferTests.swift",
+      "kind": "source",
+      "bytes": 5342,
+      "sha256": "dd505824664e92202d442c6abb18b67280feec1b731875e3b4768cc7116360b3"
+    },
+    {
+      "path": "Tests/CoreTests/SetupIntroductionTests.swift",
+      "kind": "source",
+      "bytes": 2947,
+      "sha256": "f7cc98d3db797009470821bc1c1690895ff26846c1984b87e3bf7d0f409afc3f"
+    },
+    {
+      "path": "Tests/CoreTests/SharedPanelTests.swift",
+      "kind": "source",
+      "bytes": 7250,
+      "sha256": "57059f84343be67bf1b4ac6f1019cada5100007ea525201f099e05941943341f"
+    },
+    {
+      "path": "Tests/CoreTests/SnapshotMigrationTests.swift",
+      "kind": "source",
+      "bytes": 15373,
+      "sha256": "faf212029d5e3a40ee48d633bc30bea981660ddd83467da28b8b8dc8a1de3eb5"
+    },
+    {
+      "path": "Tests/CoreTests/TimerLiveActivityTests.swift",
+      "kind": "source",
+      "bytes": 7083,
+      "sha256": "118ea7f90f19c1c80940675a2c45cec13a036b4ad122746d9ab008ebed3d71f3"
+    },
+    {
+      "path": "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+      "kind": "source",
+      "bytes": 4068,
+      "sha256": "d27bbba71e017c88e09f33bcf64e5ecc57c6a0eec000f658bcbe2ca8d8885763"
+    },
+    {
+      "path": "Tests/CoreTests/WatchFacesTests.swift",
+      "kind": "source",
+      "bytes": 9214,
+      "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
+    },
+    {
+      "path": "Tests/CoreTests/WeatherTests.swift",
+      "kind": "source",
+      "bytes": 5723,
+      "sha256": "a3aa9bb2852b44088207b7d0c1c8bac354fbe8f17fb2134abfa98654b3d4692c"
+    },
+    {
+      "path": "Tests/CoreTests/WorldClockTests.swift",
+      "kind": "source",
+      "bytes": 11769,
+      "sha256": "ced9a5640261b5622afb785e783d3fbe13cb7edecc9de62e32a0e521985a74cf"
+    }
+  ],
+  "source_variants": 2,
+  "no_new_core_run": true,
+  "private_artifact_locator": "research/homeview-root-fields-20261029",
+  "image_review_receipt": {
+    "method": "Actual view_image observations, including all nine baseline/candidate cards, all candidate draft returns and all regression PNG contact pages. Foreign OS cards remain private.",
+    "files": [
+      {
+        "path": "baseline-phone-cards.jpg",
+        "sha256": "e6d04bc6d38e59416e574b5eacc92d1357ff52b5eba9409b8063840e716c8542"
+      },
+      {
+        "path": "baseline-ipad-cards.jpg",
+        "sha256": "b678f0bb0cc9774de9707cc16da6c9ac02bd4f8cbe0b92c88c7b085bd281d24b"
+      },
+      {
+        "path": "candidate1-phone-cards.jpg",
+        "sha256": "c2904536fd9f7506de2ebe9665d005fec80eb02f15b0fed496578364384f9a76"
+      },
+      {
+        "path": "candidate1-ipad-cards.jpg",
+        "sha256": "5f9f298903588d6074518254270cf9ff8abf5df6e94dd4f58dd86b973693e7f1"
+      },
+      {
+        "path": "candidate1-phone-returns.jpg",
+        "sha256": "a180d58aae016f81a20da28d59be3eccb8e4e0f6842fee2a17071e71a692e8ff"
+      },
+      {
+        "path": "candidate1-ipad-returns.jpg",
+        "sha256": "eeef55a4fa47fb0e136ce072d3d0ca2abf7770831c69e29911f9b46f09df6787"
+      },
+      {
+        "path": "regression-phone-review-1.jpg",
+        "sha256": "0841c18e3e23b758105850db964bd65c68516480a170a550205f5f4aaecb2dd2"
+      },
+      {
+        "path": "regression-phone-review-2.jpg",
+        "sha256": "d087b411af36d119f487236250050546b89dfe267076fb19b2064c7b47b0bd8f"
+      },
+      {
+        "path": "regression-ipad-review-1.jpg",
+        "sha256": "833056ce150d28d7e2c353c809f8e02e0d8f2c48feb0df64c397950e7775cdab"
+      },
+      {
+        "path": "regression-ipad-review-2.jpg",
+        "sha256": "c93a28f81a51cddfa4254b180415b524b4415cb17b5e9bcba227112b82e2b9b4"
+      }
+    ]
+  }
+}

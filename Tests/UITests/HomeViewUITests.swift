@@ -7509,3 +7509,66 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["settings.reset"].exists)
   }
 }
+
+
+extension HomeViewUITests {
+  private func verifyRootInputSnapshot(_ field:XCUIElement,_ checkpoint:String) {
+    XCTAssertTrue(field.waitForExistence(timeout:5))
+    if !field.isHittable || !app.otherElements["reference.viewport"].frame.contains(field.frame) {
+      scrollPhotoControlFullyIntoView(field)
+    }
+    field.tap();field.typeText("OWNEDPRIVATEINPUT")
+    let draft=field.value as? String ?? ""
+    XCTAssertTrue(draft.contains("OWNEDPRIVATEINPUT"))
+    shot("switcher-root-"+checkpoint+"-before")
+    calendarSwitcherCard(from:app,bounds:app.frame,checkpoint:"root-"+checkpoint).tap()
+    XCTAssertTrue(field.waitForExistence(timeout:5));XCTAssertEqual(field.value as? String,draft)
+    shot("switcher-root-"+checkpoint+"-returned-unsent")
+  }
+  private func launchRootInput(_ page:String) {
+    launch(["--page",page,"--persistence-test",UUID().uuidString,"--reset-test-store"])
+  }
+  func testSnapshotProtectsUnsentDemoMessageField() {
+    launchRootInput("Messages")
+    verifyRootInputSnapshot(app.textFields["Demo message"],"message")
+    XCTAssertFalse(app.staticTexts["OWNEDPRIVATEINPUT"].exists)
+  }
+  func testSnapshotProtectsUncalledFaceTimeRecipientField() {
+    launchRootInput("FaceTime")
+    verifyRootInputSnapshot(app.textFields["facetime.recipient"],"facetime")
+    XCTAssertFalse(app.staticTexts["FaceTime not opened in tests"].exists)
+  }
+  func testSnapshotProtectsUnsentIntercomField() {
+    launchRootInput("Intercom")
+    verifyRootInputSnapshot(app.textFields["intercom.input"],"intercom")
+    XCTAssertFalse(app.staticTexts["Dinner is ready!OWNEDPRIVATEINPUT"].exists)
+  }
+  func testSnapshotProtectsUnselectedWorldClockQueryField() {
+    launchRootInput("World Clock");tap("world.add")
+    verifyRootInputSnapshot(app.textFields["world.search"],"world-query")
+    XCTAssertTrue(app.buttons["world.add"].exists)
+  }
+  func testSnapshotProtectsUnaddedLocalReminderField() {
+    launchRootInput("Reminders")
+    verifyRootInputSnapshot(app.textFields["reminder.input"],"local-reminder")
+    XCTAssertFalse(app.buttons["reminder.OWNEDPRIVATEINPUT"].exists)
+  }
+  func testSnapshotProtectsUnfetchedPodcastFeedField() {
+    launchRootInput("Podcasts");tap("podcast.feeds")
+    verifyRootInputSnapshot(app.textFields["podcast.feed.url"],"podcast-url")
+  }
+  func testSnapshotProtectsUnsubmittedMusicSearchField() {
+    launchRootInput("Settings");connectService("Apple Music")
+    drawer();tap("app.Music")
+    verifyRootInputSnapshot(app.textFields["music.search.input"],"music-query")
+    XCTAssertFalse(app.buttons["music.result.0"].exists)
+  }
+  func testSnapshotProtectsUnsubmittedSettingsCityField() {
+    launchRootInput("Settings")
+    verifyRootInputSnapshot(app.textFields["weather.city"],"settings-city")
+  }
+  func testSnapshotProtectsUnloadedBrowserAddressField() {
+    launchLocalBrowserAudit()
+    verifyRootInputSnapshot(app.textFields["browser.address"],"browser-address")
+  }
+}

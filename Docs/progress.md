@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Neun weitere Eingabefoki geschützt · 29. Oktober 2026
+
+[Neun iPhone-Vorherfehler korrigiert](app-switcher-root-fields.md); neun iPad-Vorherfälle waren bereits grün. Tatsächliche vollständige OS-Karten ohne Tastaturebene, genaue ungesendete Entwürfe nach Rückkehr erhalten. **34 aktuelle UI-Ausführungen, fünf SDKs**, 225 Quellen und alle App-/Test-/Archivbytes gebunden. Native Composer/Alerts und physische/Präsenz-/Mediengrenzen bleiben bei #67 offen. Gesamtauftrag läuft weiter; 41 offene ursprüngliche Issues, Snoopy ist ein ausdrücklicher Rechte-Scope-Ausschluss.
+
 ## Snoopy auf Eigentümerwunsch ausgeschlossen · 29. Oktober 2026
 
 [#14](https://github.com/Olli0103/homeview/issues/14) ist wegen der Rechte `not_planned` geschlossen. Nicht implementiert, keine Original-Parity; F015 bleibt im historischen 105er-Inventar erhalten, 104 aktive Referenzfunktionen. **41/82 geschlossen: 40 dokumentierte Abschlüsse + 1 Scope-Ausschluss; 41 offen.** [Entscheidung](scope-exclusions.md) · [exakter Issue-Read-back](verification/snoopy-scope-exclusion-20261029.json). Übrige Arbeit läuft weiter.
