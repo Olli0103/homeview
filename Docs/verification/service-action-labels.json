@@ -1,0 +1,2334 @@
+{
+  "date": "2026-10-30",
+  "base_commit": "66e8d28154b60b9e7061bfa9bd06c1e368ba333c",
+  "issue": "73 remains OPEN/F103 partial",
+  "product_scope": {
+    "product_change": "Single accessibilityLabel modifier only; visible text, layout and callback bytes unchanged.",
+    "other_product_resource_inputs_unchanged": 164,
+    "product_inputs_total": 165,
+    "exact_new_native_action_test_unchanged": true,
+    "existing_test_expectations_only_updates": [
+      [
+        "app.buttons[\"connect.\"+kind].label,\"Connect\"",
+        "app.buttons[\"connect.\"+kind].label,\"Connect \"+kind"
+      ],
+      [
+        "app.buttons[\"connect.\"+name].label,\"Connect\"",
+        "app.buttons[\"connect.\"+name].label,\"Connect \"+name"
+      ],
+      [
+        "button.label,\"Connect\"",
+        "button.label,\"Connect \"+name"
+      ],
+      [
+        "calendar.label,\"Disconnect\"",
+        "calendar.label,\"Disconnect Calendar\""
+      ],
+      [
+        "calendar.label,\"Connect\"",
+        "calendar.label,\"Connect Calendar\""
+      ],
+      [
+        "app.buttons[\"connect.Calendar\"].label, \"Connect\"",
+        "app.buttons[\"connect.Calendar\"].label, \"Connect Calendar\""
+      ],
+      [
+        "app.buttons[\"connect.Calendar\"].label,\"Connect\"",
+        "app.buttons[\"connect.Calendar\"].label,\"Connect Calendar\""
+      ],
+      [
+        "app.buttons[\"connect.Calendar\"].label,\"Disconnect\"",
+        "app.buttons[\"connect.Calendar\"].label,\"Disconnect Calendar\""
+      ]
+    ],
+    "baseline_source_digest": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668"
+  },
+  "new_native_contract_unchanged_from_baseline": true,
+  "sources233": {
+    "baseline": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668",
+    "SDK_and_first_current_UI": "d3504100d0538501de5cefdb4b18d145ba2df12dc6c931bfbe1e4d3793038007",
+    "observation_only_test_pin": "190f0a2a5ea8c346eb9b1b49bb6edc22b3779cbba851132195dda5ad7a0eb640",
+    "delivered_qualified_test_pin": "e425cad71150b27a30af88f846f38e1c78ed8c83145799763635ef9fe4d8559a",
+    "SDK_to_delivered_delta": "UITest only;232 other inputs and22 compiled App files byteequal. No fresh SDK claim after test-only instrumentation/preparation."
+  },
+  "accepted_current_UI_executions": 10,
+  "accepted_selection": "Eight successful first-current executions plus two qualified Introduction executions; same product/App across two accepted test pins. Observation-only success excluded from accepted count.",
+  "history": {
+    "executions": 16,
+    "passed": 11,
+    "failed": 5,
+    "failures": "Two before name tests, two first-current Introduction failures, one exact before-app Introduction failure. Later passing observation does not explain original cause."
+  },
+  "results": [
+    {
+      "checkpoint": "baseline-phone",
+      "source_digest": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "input_archive_read_back": true
+    },
+    {
+      "checkpoint": "baseline-pad",
+      "source_digest": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "input_archive_read_back": true
+    },
+    {
+      "checkpoint": "final-phone",
+      "source_digest": "d3504100d0538501de5cefdb4b18d145ba2df12dc6c931bfbe1e4d3793038007",
+      "passed": 4,
+      "failed": 1,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "input_archive_read_back": true
+    },
+    {
+      "checkpoint": "final-pad",
+      "source_digest": "d3504100d0538501de5cefdb4b18d145ba2df12dc6c931bfbe1e4d3793038007",
+      "passed": 4,
+      "failed": 1,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "input_archive_read_back": true
+    },
+    {
+      "checkpoint": "before-introduction-phone",
+      "source_digest": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "input_archive_read_back": true
+    },
+    {
+      "checkpoint": "forget-trace-pad",
+      "source_digest": "190f0a2a5ea8c346eb9b1b49bb6edc22b3779cbba851132195dda5ad7a0eb640",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "input_archive_read_back": true
+    },
+    {
+      "checkpoint": "qualified-introduction-phone",
+      "source_digest": "e425cad71150b27a30af88f846f38e1c78ed8c83145799763635ef9fe4d8559a",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "input_archive_read_back": true
+    },
+    {
+      "checkpoint": "qualified-introduction-pad",
+      "source_digest": "e425cad71150b27a30af88f846f38e1c78ed8c83145799763635ef9fe4d8559a",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "input_archive_read_back": true
+    }
+  ],
+  "native_service_reports": [
+    {
+      "checkpoint": "baseline-phone",
+      "AX_action_labels": {
+        "Apple Music": "Connect",
+        "Calendar": "Connect",
+        "Reminders": "Connect",
+        "Weather": "Connect"
+      },
+      "events": [
+        {
+          "elapsed": 3.412493970245123e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 11.806834124960005,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 11.833436999935657,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 12.382659083348699,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 12.897593041649088,
+          "event": "move-forward",
+          "utterance": "Settings"
+        },
+        {
+          "elapsed": 13.418730499921367,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 13.941378583316691,
+          "event": "move-forward",
+          "utterance": "Mock home only"
+        },
+        {
+          "elapsed": 14.455179541604593,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected. Other services can be connected b"
+        },
+        {
+          "elapsed": 14.972428166656755,
+          "event": "move-forward",
+          "utterance": "Keep Display On Off Button"
+        },
+        {
+          "elapsed": 15.480974333360791,
+          "event": "move-forward",
+          "utterance": "Reset local app content Button"
+        },
+        {
+          "elapsed": 16.012043124996126,
+          "event": "move-forward",
+          "utterance": "Authenticate, then confirm separately. Nothing is reset by openi"
+        },
+        {
+          "elapsed": 16.54438308335375,
+          "event": "move-forward",
+          "utterance": "Welcome and service overview Button"
+        },
+        {
+          "elapsed": 17.064457291620784,
+          "event": "move-forward",
+          "utterance": "Power adapter information Button"
+        },
+        {
+          "elapsed": 17.58017966663465,
+          "event": "move-forward",
+          "utterance": "selected Reference clock On Button"
+        },
+        {
+          "elapsed": 18.1011534583522,
+          "event": "move-forward",
+          "utterance": "Night mode Off Button"
+        },
+        {
+          "elapsed": 18.627933708252385,
+          "event": "move-forward",
+          "utterance": "Far-view layout Off Button"
+        },
+        {
+          "elapsed": 19.14460579166189,
+          "event": "move-forward",
+          "utterance": "selected Profile present On Button"
+        },
+        {
+          "elapsed": 19.6670316249365,
+          "event": "move-forward",
+          "utterance": "Edit Faces Button"
+        },
+        {
+          "elapsed": 20.194411041680723,
+          "event": "move-forward",
+          "utterance": "Light & brightness Button"
+        },
+        {
+          "elapsed": 20.724469416658394,
+          "event": "move-forward",
+          "utterance": "Mock blinds"
+        },
+        {
+          "elapsed": 21.236578958341852,
+          "event": "move-forward",
+          "utterance": "80%"
+        },
+        {
+          "elapsed": 21.758806958328933,
+          "event": "move-forward",
+          "utterance": "Decrease Mock blinds Button"
+        },
+        {
+          "elapsed": 22.281288750004023,
+          "event": "move-forward",
+          "utterance": "Mock blinds 80% adjustable Swipe up or down with one finger to a"
+        },
+        {
+          "elapsed": 22.80461741669569,
+          "event": "move-forward",
+          "utterance": "Increase Mock blinds Button"
+        },
+        {
+          "elapsed": 23.328216208261438,
+          "event": "move-forward",
+          "utterance": "Mock fan speed"
+        },
+        {
+          "elapsed": 23.848917333292775,
+          "event": "move-forward",
+          "utterance": "45%"
+        },
+        {
+          "elapsed": 24.365419583278708,
+          "event": "move-forward",
+          "utterance": "Decrease Mock fan speed Button"
+        },
+        {
+          "elapsed": 24.883266833261587,
+          "event": "move-forward",
+          "utterance": "Mock fan speed 45% adjustable Swipe up or down with one finger t"
+        },
+        {
+          "elapsed": 25.395141291664913,
+          "event": "move-forward",
+          "utterance": "Increase Mock fan speed Button"
+        },
+        {
+          "elapsed": 25.93199766660109,
+          "event": "move-forward",
+          "utterance": "Simulate doorbell Button"
+        },
+        {
+          "elapsed": 26.44841125002131,
+          "event": "move-forward",
+          "utterance": "Simulate incoming call Button"
+        },
+        {
+          "elapsed": 26.96980787499342,
+          "event": "move-forward",
+          "utterance": "Sign out demo profile Button"
+        },
+        {
+          "elapsed": 27.490590999950655,
+          "event": "move-forward",
+          "utterance": "Native system features"
+        },
+        {
+          "elapsed": 28.004725249949843,
+          "event": "move-forward",
+          "utterance": "Public system APIs can supply our own UI with calendars, reminde"
+        },
+        {
+          "elapsed": 28.518182541592978,
+          "event": "move-forward",
+          "utterance": "Connected services"
+        },
+        {
+          "elapsed": 29.036995625006966,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected"
+        },
+        {
+          "elapsed": 29.549785041599534,
+          "event": "move-forward",
+          "utterance": "Calendar and reminders are protected by your device authenticati"
+        },
+        {
+          "elapsed": 30.062984666670673,
+          "event": "move-forward",
+          "utterance": "Guests can use public weather, local timers, bundled media and p"
+        },
+        {
+          "elapsed": 30.58204466663301,
+          "event": "move-forward",
+          "utterance": "Shared faces"
+        },
+        {
+          "elapsed": 31.09900375001598,
+          "event": "move-forward",
+          "utterance": "Connecting or unlocking never publishes private contents. In Cal"
+        },
+        {
+          "elapsed": 31.605714083299972,
+          "event": "move-forward",
+          "utterance": "No calendar cards shared"
+        },
+        {
+          "elapsed": 32.12074470834341,
+          "event": "move-forward",
+          "utterance": "Calendar"
+        },
+        {
+          "elapsed": 32.64622137497645,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 32.646283958340064,
+          "event": "native-service-action",
+          "service": "Calendar",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 33.16671483335085,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 33.68288358335849,
+          "event": "move-forward",
+          "utterance": "Reminders"
+        },
+        {
+          "elapsed": 34.324211208266206,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 34.32426641660277,
+          "event": "native-service-action",
+          "service": "Reminders",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 34.85296520835254,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 35.36713941663038,
+          "event": "move-forward",
+          "utterance": "Apple Music"
+        },
+        {
+          "elapsed": 35.87499516666867,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 35.87503433332313,
+          "event": "native-service-action",
+          "service": "Apple Music",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 36.40863224992063,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 36.92982079158537,
+          "event": "move-forward",
+          "utterance": "Weather"
+        },
+        {
+          "elapsed": 37.449531833291985,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 37.44960637495387,
+          "event": "native-service-action",
+          "service": "Weather",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 37.98488733335398,
+          "event": "move-backward",
+          "utterance": "Weather"
+        },
+        {
+          "elapsed": 38.50892537494656,
+          "event": "move-forward-return",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 45.43563800002448,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "native_action_utterances": {
+        "Apple Music": "Connect Button",
+        "Calendar": "Connect Button",
+        "Reminders": "Connect Button",
+        "Weather": "Connect Button"
+      },
+      "original_enabled": false,
+      "restored": true,
+      "scope": "Four unconnected service button names. Native reported speech, no acoustic or raw-input acceptance; test-only viewport marker explicitly retained. No service action invoked."
+    },
+    {
+      "checkpoint": "baseline-pad",
+      "AX_action_labels": {
+        "Apple Music": "Connect",
+        "Calendar": "Connect",
+        "Reminders": "Connect",
+        "Weather": "Connect"
+      },
+      "events": [
+        {
+          "elapsed": 2.1166633814573288e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 12.21720941667445,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 12.32246591662988,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 12.866062041604891,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 13.383067583316006,
+          "event": "move-forward",
+          "utterance": "Settings"
+        },
+        {
+          "elapsed": 13.89690587494988,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 14.414976166677661,
+          "event": "move-forward",
+          "utterance": "Mock home only"
+        },
+        {
+          "elapsed": 14.93104604166001,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected. Other services can be connected b"
+        },
+        {
+          "elapsed": 15.448470916599035,
+          "event": "move-forward",
+          "utterance": "Keep Display On Off Button"
+        },
+        {
+          "elapsed": 15.97375987493433,
+          "event": "move-forward",
+          "utterance": "Reset local app content Button"
+        },
+        {
+          "elapsed": 16.500099083292298,
+          "event": "move-forward",
+          "utterance": "Authenticate, then confirm separately. Nothing is reset by openi"
+        },
+        {
+          "elapsed": 17.02423595834989,
+          "event": "move-forward",
+          "utterance": "Welcome and service overview Button"
+        },
+        {
+          "elapsed": 17.55303758336231,
+          "event": "move-forward",
+          "utterance": "Power adapter information Button"
+        },
+        {
+          "elapsed": 18.073594666668214,
+          "event": "move-forward",
+          "utterance": "selected Reference clock On Button"
+        },
+        {
+          "elapsed": 18.59814274997916,
+          "event": "move-forward",
+          "utterance": "Night mode Off Button"
+        },
+        {
+          "elapsed": 19.111319583375007,
+          "event": "move-forward",
+          "utterance": "Far-view layout Off Button"
+        },
+        {
+          "elapsed": 19.634857124998234,
+          "event": "move-forward",
+          "utterance": "selected Profile present On Button"
+        },
+        {
+          "elapsed": 20.161643666680902,
+          "event": "move-forward",
+          "utterance": "Edit Faces Button"
+        },
+        {
+          "elapsed": 20.683208666625433,
+          "event": "move-forward",
+          "utterance": "Light & brightness Button"
+        },
+        {
+          "elapsed": 21.20385037502274,
+          "event": "move-forward",
+          "utterance": "Mock blinds"
+        },
+        {
+          "elapsed": 21.71775383327622,
+          "event": "move-forward",
+          "utterance": "80%"
+        },
+        {
+          "elapsed": 22.24182058335282,
+          "event": "move-forward",
+          "utterance": "Decrease Mock blinds Button"
+        },
+        {
+          "elapsed": 22.761700749979354,
+          "event": "move-forward",
+          "utterance": "Mock blinds 80% adjustable Swipe up or down with one finger to a"
+        },
+        {
+          "elapsed": 23.287022750009783,
+          "event": "move-forward",
+          "utterance": "Increase Mock blinds Button"
+        },
+        {
+          "elapsed": 23.802039583330043,
+          "event": "move-forward",
+          "utterance": "Mock fan speed"
+        },
+        {
+          "elapsed": 24.320552374934778,
+          "event": "move-forward",
+          "utterance": "45%"
+        },
+        {
+          "elapsed": 24.825954833300784,
+          "event": "move-forward",
+          "utterance": "Decrease Mock fan speed Button"
+        },
+        {
+          "elapsed": 25.348624083329923,
+          "event": "move-forward",
+          "utterance": "Mock fan speed 45% adjustable Swipe up or down with one finger t"
+        },
+        {
+          "elapsed": 25.871396249975078,
+          "event": "move-forward",
+          "utterance": "Increase Mock fan speed Button"
+        },
+        {
+          "elapsed": 26.391478750039823,
+          "event": "move-forward",
+          "utterance": "Simulate doorbell Button"
+        },
+        {
+          "elapsed": 26.905499791610055,
+          "event": "move-forward",
+          "utterance": "Simulate incoming call Button"
+        },
+        {
+          "elapsed": 27.417604708345607,
+          "event": "move-forward",
+          "utterance": "Sign out demo profile Button"
+        },
+        {
+          "elapsed": 27.92724370828364,
+          "event": "move-forward",
+          "utterance": "Native system features"
+        },
+        {
+          "elapsed": 28.456558041623794,
+          "event": "move-forward",
+          "utterance": "Public system APIs can supply our own UI with calendars, reminde"
+        },
+        {
+          "elapsed": 28.978312583290972,
+          "event": "move-forward",
+          "utterance": "Connected services"
+        },
+        {
+          "elapsed": 29.504608999937773,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected"
+        },
+        {
+          "elapsed": 30.024473250028677,
+          "event": "move-forward",
+          "utterance": "Calendar and reminders are protected by your device authenticati"
+        },
+        {
+          "elapsed": 30.548900458263233,
+          "event": "move-forward",
+          "utterance": "Guests can use public weather, local timers, bundled media and p"
+        },
+        {
+          "elapsed": 31.068401458323933,
+          "event": "move-forward",
+          "utterance": "Shared faces"
+        },
+        {
+          "elapsed": 31.592563458369114,
+          "event": "move-forward",
+          "utterance": "Connecting or unlocking never publishes private contents. In Cal"
+        },
+        {
+          "elapsed": 32.1203281666385,
+          "event": "move-forward",
+          "utterance": "No calendar cards shared"
+        },
+        {
+          "elapsed": 32.64179324998986,
+          "event": "move-forward",
+          "utterance": "Calendar"
+        },
+        {
+          "elapsed": 33.15701645833906,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 33.15706241666339,
+          "event": "native-service-action",
+          "service": "Calendar",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 33.68350024998654,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 34.204170208307914,
+          "event": "move-forward",
+          "utterance": "Reminders"
+        },
+        {
+          "elapsed": 34.71834783337545,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 34.718378958292305,
+          "event": "native-service-action",
+          "service": "Reminders",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 35.23478395829443,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 35.75908441666979,
+          "event": "move-forward",
+          "utterance": "Apple Music"
+        },
+        {
+          "elapsed": 36.26502737496048,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 36.26506133330986,
+          "event": "native-service-action",
+          "service": "Apple Music",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 36.794697999954224,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 37.320938583347015,
+          "event": "move-forward",
+          "utterance": "Weather"
+        },
+        {
+          "elapsed": 37.84767870826181,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 37.84775541664567,
+          "event": "native-service-action",
+          "service": "Weather",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 38.38832270831335,
+          "event": "move-backward",
+          "utterance": "Weather"
+        },
+        {
+          "elapsed": 38.91711945831776,
+          "event": "move-forward-return",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 45.93317733332515,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "native_action_utterances": {
+        "Apple Music": "Connect Button",
+        "Calendar": "Connect Button",
+        "Reminders": "Connect Button",
+        "Weather": "Connect Button"
+      },
+      "original_enabled": false,
+      "restored": true,
+      "scope": "Four unconnected service button names. Native reported speech, no acoustic or raw-input acceptance; test-only viewport marker explicitly retained. No service action invoked."
+    },
+    {
+      "checkpoint": "final-phone",
+      "AX_action_labels": {
+        "Apple Music": "Connect Apple Music",
+        "Calendar": "Connect Calendar",
+        "Reminders": "Connect Reminders",
+        "Weather": "Connect Weather"
+      },
+      "events": [
+        {
+          "elapsed": 0.002844333299435675,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 12.6825282915961,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 12.68365204159636,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 13.221703166607767,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 13.741046208306216,
+          "event": "move-forward",
+          "utterance": "Settings"
+        },
+        {
+          "elapsed": 14.26600533328019,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 14.79550220828969,
+          "event": "move-forward",
+          "utterance": "Mock home only"
+        },
+        {
+          "elapsed": 15.30866429163143,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected. Other services can be connected b"
+        },
+        {
+          "elapsed": 15.830754208262078,
+          "event": "move-forward",
+          "utterance": "Keep Display On Off Button"
+        },
+        {
+          "elapsed": 16.340583416633308,
+          "event": "move-forward",
+          "utterance": "Reset local app content Button"
+        },
+        {
+          "elapsed": 16.87075279164128,
+          "event": "move-forward",
+          "utterance": "Authenticate, then confirm separately. Nothing is reset by openi"
+        },
+        {
+          "elapsed": 17.394770374987274,
+          "event": "move-forward",
+          "utterance": "Welcome and service overview Button"
+        },
+        {
+          "elapsed": 17.907019083271734,
+          "event": "move-forward",
+          "utterance": "Power adapter information Button"
+        },
+        {
+          "elapsed": 18.422388333361596,
+          "event": "move-forward",
+          "utterance": "selected Reference clock On Button"
+        },
+        {
+          "elapsed": 18.947966999956407,
+          "event": "move-forward",
+          "utterance": "Night mode Off Button"
+        },
+        {
+          "elapsed": 19.47597974992823,
+          "event": "move-forward",
+          "utterance": "Far-view layout Off Button"
+        },
+        {
+          "elapsed": 19.99532333330717,
+          "event": "move-forward",
+          "utterance": "selected Profile present On Button"
+        },
+        {
+          "elapsed": 20.503900500014424,
+          "event": "move-forward",
+          "utterance": "Edit Faces Button"
+        },
+        {
+          "elapsed": 21.02328183327336,
+          "event": "move-forward",
+          "utterance": "Light & brightness Button"
+        },
+        {
+          "elapsed": 21.536431499989703,
+          "event": "move-forward",
+          "utterance": "Mock blinds"
+        },
+        {
+          "elapsed": 22.051628625020385,
+          "event": "move-forward",
+          "utterance": "80%"
+        },
+        {
+          "elapsed": 22.580056999926455,
+          "event": "move-forward",
+          "utterance": "Decrease Mock blinds Button"
+        },
+        {
+          "elapsed": 23.10490174998995,
+          "event": "move-forward",
+          "utterance": "Mock blinds 80% adjustable Swipe up or down with one finger to a"
+        },
+        {
+          "elapsed": 23.626432750024833,
+          "event": "move-forward",
+          "utterance": "Increase Mock blinds Button"
+        },
+        {
+          "elapsed": 24.144442333374172,
+          "event": "move-forward",
+          "utterance": "Mock fan speed"
+        },
+        {
+          "elapsed": 24.67125933326315,
+          "event": "move-forward",
+          "utterance": "45%"
+        },
+        {
+          "elapsed": 25.198166541638784,
+          "event": "move-forward",
+          "utterance": "Decrease Mock fan speed Button"
+        },
+        {
+          "elapsed": 25.723854083335027,
+          "event": "move-forward",
+          "utterance": "Mock fan speed 45% adjustable Swipe up or down with one finger t"
+        },
+        {
+          "elapsed": 26.240713999955915,
+          "event": "move-forward",
+          "utterance": "Increase Mock fan speed Button"
+        },
+        {
+          "elapsed": 26.771847083349712,
+          "event": "move-forward",
+          "utterance": "Simulate doorbell Button"
+        },
+        {
+          "elapsed": 27.2946784166852,
+          "event": "move-forward",
+          "utterance": "Simulate incoming call Button"
+        },
+        {
+          "elapsed": 27.80635633331258,
+          "event": "move-forward",
+          "utterance": "Sign out demo profile Button"
+        },
+        {
+          "elapsed": 28.322867708280683,
+          "event": "move-forward",
+          "utterance": "Native system features"
+        },
+        {
+          "elapsed": 28.850720625021495,
+          "event": "move-forward",
+          "utterance": "Public system APIs can supply our own UI with calendars, reminde"
+        },
+        {
+          "elapsed": 29.373317374964245,
+          "event": "move-forward",
+          "utterance": "Connected services"
+        },
+        {
+          "elapsed": 29.88934724999126,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected"
+        },
+        {
+          "elapsed": 30.406051166704856,
+          "event": "move-forward",
+          "utterance": "Calendar and reminders are protected by your device authenticati"
+        },
+        {
+          "elapsed": 30.9209337499924,
+          "event": "move-forward",
+          "utterance": "Guests can use public weather, local timers, bundled media and p"
+        },
+        {
+          "elapsed": 31.44156858336646,
+          "event": "move-forward",
+          "utterance": "Shared faces"
+        },
+        {
+          "elapsed": 31.95680399995763,
+          "event": "move-forward",
+          "utterance": "Connecting or unlocking never publishes private contents. In Cal"
+        },
+        {
+          "elapsed": 32.47845841664821,
+          "event": "move-forward",
+          "utterance": "No calendar cards shared"
+        },
+        {
+          "elapsed": 33.004889250034466,
+          "event": "move-forward",
+          "utterance": "Calendar"
+        },
+        {
+          "elapsed": 33.525907375034876,
+          "event": "move-forward",
+          "utterance": "Connect Calendar Button"
+        },
+        {
+          "elapsed": 33.525945166591555,
+          "event": "native-service-action",
+          "service": "Calendar",
+          "utterance": "Connect Calendar Button"
+        },
+        {
+          "elapsed": 34.04002383328043,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 34.55934449995402,
+          "event": "move-forward",
+          "utterance": "Reminders"
+        },
+        {
+          "elapsed": 35.08253745827824,
+          "event": "move-forward",
+          "utterance": "Connect Reminders Button"
+        },
+        {
+          "elapsed": 35.082625958370045,
+          "event": "native-service-action",
+          "service": "Reminders",
+          "utterance": "Connect Reminders Button"
+        },
+        {
+          "elapsed": 35.605728124966845,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 36.13875525002368,
+          "event": "move-forward",
+          "utterance": "Apple Music"
+        },
+        {
+          "elapsed": 36.66401483328082,
+          "event": "move-forward",
+          "utterance": "Connect Apple Music Button"
+        },
+        {
+          "elapsed": 36.66409887501504,
+          "event": "native-service-action",
+          "service": "Apple Music",
+          "utterance": "Connect Apple Music Button"
+        },
+        {
+          "elapsed": 37.194913125014864,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 37.71897958335467,
+          "event": "move-forward",
+          "utterance": "Weather"
+        },
+        {
+          "elapsed": 38.23532579164021,
+          "event": "move-forward",
+          "utterance": "Connect Weather Button"
+        },
+        {
+          "elapsed": 38.235364416614175,
+          "event": "native-service-action",
+          "service": "Weather",
+          "utterance": "Connect Weather Button"
+        },
+        {
+          "elapsed": 38.74652041669469,
+          "event": "move-backward",
+          "utterance": "Weather"
+        },
+        {
+          "elapsed": 39.26061429164838,
+          "event": "move-forward-return",
+          "utterance": "Connect Weather Button"
+        },
+        {
+          "elapsed": 46.09944141667802,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "native_action_utterances": {
+        "Apple Music": "Connect Apple Music Button",
+        "Calendar": "Connect Calendar Button",
+        "Reminders": "Connect Reminders Button",
+        "Weather": "Connect Weather Button"
+      },
+      "original_enabled": false,
+      "restored": true,
+      "scope": "Four unconnected service button names. Native reported speech, no acoustic or raw-input acceptance; test-only viewport marker explicitly retained. No service action invoked."
+    },
+    {
+      "checkpoint": "final-phone",
+      "events": [
+        {
+          "elapsed": 1.5625031664967537e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 10.66059541667346,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 10.66167237504851,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 11.196914291707799,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 11.720718208351173,
+          "event": "move-forward",
+          "utterance": "Settings"
+        },
+        {
+          "elapsed": 12.235977916745469,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 12.74981329170987,
+          "event": "move-forward",
+          "utterance": "Mock home only"
+        },
+        {
+          "elapsed": 13.27897841669619,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected. Other services can be connected b"
+        },
+        {
+          "elapsed": 13.802139458362944,
+          "event": "move-forward",
+          "utterance": "Keep Display On Off Button"
+        },
+        {
+          "elapsed": 14.325376625056379,
+          "event": "move-forward",
+          "utterance": "Reset local app content Button"
+        },
+        {
+          "elapsed": 14.848301124991849,
+          "event": "move-forward",
+          "utterance": "Authenticate, then confirm separately. Nothing is reset by openi"
+        },
+        {
+          "elapsed": 15.361460833344609,
+          "event": "move-forward",
+          "utterance": "Welcome and service overview Button"
+        },
+        {
+          "elapsed": 15.875845666741952,
+          "event": "move-forward",
+          "utterance": "Power adapter information Button"
+        },
+        {
+          "elapsed": 16.394489750033244,
+          "event": "move-forward",
+          "utterance": "selected Reference clock On Button"
+        },
+        {
+          "elapsed": 16.920600875047967,
+          "event": "move-forward",
+          "utterance": "Night mode Off Button"
+        },
+        {
+          "elapsed": 17.450375374988653,
+          "event": "move-forward",
+          "utterance": "Far-view layout Off Button"
+        },
+        {
+          "elapsed": 17.975844583357684,
+          "event": "move-forward",
+          "utterance": "selected Profile present On Button"
+        },
+        {
+          "elapsed": 18.50118800008204,
+          "event": "move-forward",
+          "utterance": "Edit Faces Button"
+        },
+        {
+          "elapsed": 19.020337000023574,
+          "event": "move-forward",
+          "utterance": "Light & brightness Button"
+        },
+        {
+          "elapsed": 19.545731750084087,
+          "event": "move-forward",
+          "utterance": "Mock blinds"
+        },
+        {
+          "elapsed": 20.074917041696608,
+          "event": "move-forward",
+          "utterance": "80%"
+        },
+        {
+          "elapsed": 20.598927458398975,
+          "event": "move-forward",
+          "utterance": "Decrease Mock blinds Button"
+        },
+        {
+          "elapsed": 21.12343050003983,
+          "event": "move-forward",
+          "utterance": "Mock blinds 80% adjustable Swipe up or down with one finger to a"
+        },
+        {
+          "elapsed": 21.64314395841211,
+          "event": "move-forward",
+          "utterance": "Increase Mock blinds Button"
+        },
+        {
+          "elapsed": 22.17106291675009,
+          "event": "move-forward",
+          "utterance": "Mock fan speed"
+        },
+        {
+          "elapsed": 22.689810083364137,
+          "event": "move-forward",
+          "utterance": "45%"
+        },
+        {
+          "elapsed": 23.212031166651286,
+          "event": "move-forward",
+          "utterance": "Decrease Mock fan speed Button"
+        },
+        {
+          "elapsed": 23.720497625065036,
+          "event": "move-forward",
+          "utterance": "Mock fan speed 45% adjustable Swipe up or down with one finger t"
+        },
+        {
+          "elapsed": 24.23861091665458,
+          "event": "move-forward",
+          "utterance": "Increase Mock fan speed Button"
+        },
+        {
+          "elapsed": 24.759453875012696,
+          "event": "move-forward",
+          "utterance": "Simulate doorbell Button"
+        },
+        {
+          "elapsed": 25.281686750007793,
+          "event": "move-forward",
+          "utterance": "Simulate incoming call Button"
+        },
+        {
+          "elapsed": 25.815430083312094,
+          "event": "move-forward",
+          "utterance": "Sign out demo profile Button"
+        },
+        {
+          "elapsed": 26.3379160000477,
+          "event": "move-forward",
+          "utterance": "Native system features"
+        },
+        {
+          "elapsed": 26.853763666702434,
+          "event": "move-forward",
+          "utterance": "Public system APIs can supply our own UI with calendars, reminde"
+        },
+        {
+          "elapsed": 27.36966966674663,
+          "event": "move-forward",
+          "utterance": "Connected services"
+        },
+        {
+          "elapsed": 27.89414304168895,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected"
+        },
+        {
+          "elapsed": 28.413628124981187,
+          "event": "move-forward",
+          "utterance": "Calendar and reminders are protected by your device authenticati"
+        },
+        {
+          "elapsed": 28.951988333370537,
+          "event": "move-forward",
+          "utterance": "Guests can use public weather, local timers, bundled media and p"
+        },
+        {
+          "elapsed": 29.46977537497878,
+          "event": "move-forward",
+          "utterance": "Shared faces"
+        },
+        {
+          "elapsed": 29.99672625004314,
+          "event": "move-forward",
+          "utterance": "Connecting or unlocking never publishes private contents. In Cal"
+        },
+        {
+          "elapsed": 30.515555749996565,
+          "event": "move-forward",
+          "utterance": "No calendar cards shared"
+        },
+        {
+          "elapsed": 31.04206637502648,
+          "event": "move-forward",
+          "utterance": "Calendar"
+        },
+        {
+          "elapsed": 31.56683741672896,
+          "event": "move-forward",
+          "utterance": "Connect Calendar Button"
+        },
+        {
+          "elapsed": 32.08988254168071,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 32.089943416649476,
+          "event": "required-values-result",
+          "found": 7,
+          "missing": []
+        },
+        {
+          "elapsed": 32.608191875042394,
+          "event": "move-backward",
+          "utterance": "Connect Calendar Button"
+        },
+        {
+          "elapsed": 33.120614416664466,
+          "event": "move-forward-return",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 40.25226079171989,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Settings",
+        "Mock home only",
+        "Native system features",
+        "Connected services",
+        "Apple Home stays disconnected",
+        "Calendar",
+        "Not connected"
+      ],
+      "restored": true,
+      "scene": "settings",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Apple Home stays disconnected",
+        "Calendar",
+        "Connected services",
+        "Mock home only",
+        "Native system features",
+        "Not connected",
+        "Settings"
+      ]
+    },
+    {
+      "checkpoint": "final-pad",
+      "AX_action_labels": {
+        "Apple Music": "Connect Apple Music",
+        "Calendar": "Connect Calendar",
+        "Reminders": "Connect Reminders",
+        "Weather": "Connect Weather"
+      },
+      "events": [
+        {
+          "elapsed": 5.008338484913111e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 13.861064583295956,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 13.862656958401203,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 14.410866250051185,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 14.934936291654594,
+          "event": "move-forward",
+          "utterance": "Settings"
+        },
+        {
+          "elapsed": 15.457754583330825,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 15.975913875037804,
+          "event": "move-forward",
+          "utterance": "Mock home only"
+        },
+        {
+          "elapsed": 16.50121337501332,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected. Other services can be connected b"
+        },
+        {
+          "elapsed": 17.031883624964394,
+          "event": "move-forward",
+          "utterance": "Keep Display On Off Button"
+        },
+        {
+          "elapsed": 17.553994124988094,
+          "event": "move-forward",
+          "utterance": "Reset local app content Button"
+        },
+        {
+          "elapsed": 18.079331125016324,
+          "event": "move-forward",
+          "utterance": "Authenticate, then confirm separately. Nothing is reset by openi"
+        },
+        {
+          "elapsed": 18.599770875065587,
+          "event": "move-forward",
+          "utterance": "Welcome and service overview Button"
+        },
+        {
+          "elapsed": 19.112949708360247,
+          "event": "move-forward",
+          "utterance": "Power adapter information Button"
+        },
+        {
+          "elapsed": 19.627587541704997,
+          "event": "move-forward",
+          "utterance": "selected Reference clock On Button"
+        },
+        {
+          "elapsed": 20.140347208362073,
+          "event": "move-forward",
+          "utterance": "Night mode Off Button"
+        },
+        {
+          "elapsed": 20.66964266670402,
+          "event": "move-forward",
+          "utterance": "Far-view layout Off Button"
+        },
+        {
+          "elapsed": 21.196806166670285,
+          "event": "move-forward",
+          "utterance": "selected Profile present On Button"
+        },
+        {
+          "elapsed": 21.715259208343923,
+          "event": "move-forward",
+          "utterance": "Edit Faces Button"
+        },
+        {
+          "elapsed": 22.24301616672892,
+          "event": "move-forward",
+          "utterance": "Light & brightness Button"
+        },
+        {
+          "elapsed": 22.762741875019856,
+          "event": "move-forward",
+          "utterance": "Mock blinds"
+        },
+        {
+          "elapsed": 23.29596745839808,
+          "event": "move-forward",
+          "utterance": "80%"
+        },
+        {
+          "elapsed": 23.82199099997524,
+          "event": "move-forward",
+          "utterance": "Decrease Mock blinds Button"
+        },
+        {
+          "elapsed": 24.348218375002034,
+          "event": "move-forward",
+          "utterance": "Mock blinds 80% adjustable Swipe up or down with one finger to a"
+        },
+        {
+          "elapsed": 24.864730833331123,
+          "event": "move-forward",
+          "utterance": "Increase Mock blinds Button"
+        },
+        {
+          "elapsed": 25.38065041671507,
+          "event": "move-forward",
+          "utterance": "Mock fan speed"
+        },
+        {
+          "elapsed": 25.896083791623823,
+          "event": "move-forward",
+          "utterance": "45%"
+        },
+        {
+          "elapsed": 26.409426750033163,
+          "event": "move-forward",
+          "utterance": "Decrease Mock fan speed Button"
+        },
+        {
+          "elapsed": 26.925474333344027,
+          "event": "move-forward",
+          "utterance": "Mock fan speed 45% adjustable Swipe up or down with one finger t"
+        },
+        {
+          "elapsed": 27.44189587503206,
+          "event": "move-forward",
+          "utterance": "Increase Mock fan speed Button"
+        },
+        {
+          "elapsed": 27.964231333346106,
+          "event": "move-forward",
+          "utterance": "Simulate doorbell Button"
+        },
+        {
+          "elapsed": 28.486637499998324,
+          "event": "move-forward",
+          "utterance": "Simulate incoming call Button"
+        },
+        {
+          "elapsed": 29.000760999973863,
+          "event": "move-forward",
+          "utterance": "Sign out demo profile Button"
+        },
+        {
+          "elapsed": 29.5229700000491,
+          "event": "move-forward",
+          "utterance": "Native system features"
+        },
+        {
+          "elapsed": 30.038507375051267,
+          "event": "move-forward",
+          "utterance": "Public system APIs can supply our own UI with calendars, reminde"
+        },
+        {
+          "elapsed": 30.563567250035703,
+          "event": "move-forward",
+          "utterance": "Connected services"
+        },
+        {
+          "elapsed": 31.085292791714892,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected"
+        },
+        {
+          "elapsed": 31.601842083386146,
+          "event": "move-forward",
+          "utterance": "Calendar and reminders are protected by your device authenticati"
+        },
+        {
+          "elapsed": 32.12950366665609,
+          "event": "move-forward",
+          "utterance": "Guests can use public weather, local timers, bundled media and p"
+        },
+        {
+          "elapsed": 32.64616616663989,
+          "event": "move-forward",
+          "utterance": "Shared faces"
+        },
+        {
+          "elapsed": 33.16195137496106,
+          "event": "move-forward",
+          "utterance": "Connecting or unlocking never publishes private contents. In Cal"
+        },
+        {
+          "elapsed": 33.675254958332516,
+          "event": "move-forward",
+          "utterance": "No calendar cards shared"
+        },
+        {
+          "elapsed": 34.18917354173027,
+          "event": "move-forward",
+          "utterance": "Calendar"
+        },
+        {
+          "elapsed": 34.718556708307005,
+          "event": "move-forward",
+          "utterance": "Connect Calendar Button"
+        },
+        {
+          "elapsed": 34.71860291669145,
+          "event": "native-service-action",
+          "service": "Calendar",
+          "utterance": "Connect Calendar Button"
+        },
+        {
+          "elapsed": 35.23707033332903,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 35.759982291725464,
+          "event": "move-forward",
+          "utterance": "Reminders"
+        },
+        {
+          "elapsed": 36.27424866671208,
+          "event": "move-forward",
+          "utterance": "Connect Reminders Button"
+        },
+        {
+          "elapsed": 36.27428966667503,
+          "event": "native-service-action",
+          "service": "Reminders",
+          "utterance": "Connect Reminders Button"
+        },
+        {
+          "elapsed": 36.78560558333993,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 37.304258166695945,
+          "event": "move-forward",
+          "utterance": "Apple Music"
+        },
+        {
+          "elapsed": 37.825589500018395,
+          "event": "move-forward",
+          "utterance": "Connect Apple Music Button"
+        },
+        {
+          "elapsed": 37.82563145831227,
+          "event": "native-service-action",
+          "service": "Apple Music",
+          "utterance": "Connect Apple Music Button"
+        },
+        {
+          "elapsed": 38.34664933336899,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 38.87123074999545,
+          "event": "move-forward",
+          "utterance": "Weather"
+        },
+        {
+          "elapsed": 39.39529454172589,
+          "event": "move-forward",
+          "utterance": "Connect Weather Button"
+        },
+        {
+          "elapsed": 39.39533266669605,
+          "event": "native-service-action",
+          "service": "Weather",
+          "utterance": "Connect Weather Button"
+        },
+        {
+          "elapsed": 39.91673908336088,
+          "event": "move-backward",
+          "utterance": "Weather"
+        },
+        {
+          "elapsed": 40.4480229166802,
+          "event": "move-forward-return",
+          "utterance": "Connect Weather Button"
+        },
+        {
+          "elapsed": 47.41688012506347,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "native_action_utterances": {
+        "Apple Music": "Connect Apple Music Button",
+        "Calendar": "Connect Calendar Button",
+        "Reminders": "Connect Reminders Button",
+        "Weather": "Connect Weather Button"
+      },
+      "original_enabled": false,
+      "restored": true,
+      "scope": "Four unconnected service button names. Native reported speech, no acoustic or raw-input acceptance; test-only viewport marker explicitly retained. No service action invoked."
+    },
+    {
+      "checkpoint": "final-pad",
+      "events": [
+        {
+          "elapsed": 2.6708352379500866e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 11.023851583362557,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 11.024835416697897,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 11.56880337500479,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 12.092393625061959,
+          "event": "move-forward",
+          "utterance": "Settings"
+        },
+        {
+          "elapsed": 12.626841208315454,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 13.150688625057228,
+          "event": "move-forward",
+          "utterance": "Mock home only"
+        },
+        {
+          "elapsed": 13.674007791676559,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected. Other services can be connected b"
+        },
+        {
+          "elapsed": 14.198435749975033,
+          "event": "move-forward",
+          "utterance": "Keep Display On Off Button"
+        },
+        {
+          "elapsed": 14.726888749981299,
+          "event": "move-forward",
+          "utterance": "Reset local app content Button"
+        },
+        {
+          "elapsed": 15.25169599999208,
+          "event": "move-forward",
+          "utterance": "Authenticate, then confirm separately. Nothing is reset by openi"
+        },
+        {
+          "elapsed": 15.77327858330682,
+          "event": "move-forward",
+          "utterance": "Welcome and service overview Button"
+        },
+        {
+          "elapsed": 16.283691583317704,
+          "event": "move-forward",
+          "utterance": "Power adapter information Button"
+        },
+        {
+          "elapsed": 16.80188920837827,
+          "event": "move-forward",
+          "utterance": "selected Reference clock On Button"
+        },
+        {
+          "elapsed": 17.323619458358735,
+          "event": "move-forward",
+          "utterance": "Night mode Off Button"
+        },
+        {
+          "elapsed": 17.855672666686587,
+          "event": "move-forward",
+          "utterance": "Far-view layout Off Button"
+        },
+        {
+          "elapsed": 18.37770929164253,
+          "event": "move-forward",
+          "utterance": "selected Profile present On Button"
+        },
+        {
+          "elapsed": 18.899558916687965,
+          "event": "move-forward",
+          "utterance": "Edit Faces Button"
+        },
+        {
+          "elapsed": 19.42038908333052,
+          "event": "move-forward",
+          "utterance": "Light & brightness Button"
+        },
+        {
+          "elapsed": 19.93924075004179,
+          "event": "move-forward",
+          "utterance": "Mock blinds"
+        },
+        {
+          "elapsed": 20.464971541659907,
+          "event": "move-forward",
+          "utterance": "80%"
+        },
+        {
+          "elapsed": 20.990071583306417,
+          "event": "move-forward",
+          "utterance": "Decrease Mock blinds Button"
+        },
+        {
+          "elapsed": 21.518303833319806,
+          "event": "move-forward",
+          "utterance": "Mock blinds 80% adjustable Swipe up or down with one finger to a"
+        },
+        {
+          "elapsed": 22.044271458406,
+          "event": "move-forward",
+          "utterance": "Increase Mock blinds Button"
+        },
+        {
+          "elapsed": 22.569721791660413,
+          "event": "move-forward",
+          "utterance": "Mock fan speed"
+        },
+        {
+          "elapsed": 23.096025999984704,
+          "event": "move-forward",
+          "utterance": "45%"
+        },
+        {
+          "elapsed": 23.611358958412893,
+          "event": "move-forward",
+          "utterance": "Decrease Mock fan speed Button"
+        },
+        {
+          "elapsed": 24.131820916663855,
+          "event": "move-forward",
+          "utterance": "Mock fan speed 45% adjustable Swipe up or down with one finger t"
+        },
+        {
+          "elapsed": 24.65433400007896,
+          "event": "move-forward",
+          "utterance": "Increase Mock fan speed Button"
+        },
+        {
+          "elapsed": 25.174717708374374,
+          "event": "move-forward",
+          "utterance": "Simulate doorbell Button"
+        },
+        {
+          "elapsed": 25.699034666642547,
+          "event": "move-forward",
+          "utterance": "Simulate incoming call Button"
+        },
+        {
+          "elapsed": 26.222245666664094,
+          "event": "move-forward",
+          "utterance": "Sign out demo profile Button"
+        },
+        {
+          "elapsed": 26.743689125054516,
+          "event": "move-forward",
+          "utterance": "Native system features"
+        },
+        {
+          "elapsed": 27.260627833311446,
+          "event": "move-forward",
+          "utterance": "Public system APIs can supply our own UI with calendars, reminde"
+        },
+        {
+          "elapsed": 27.786996958311647,
+          "event": "move-forward",
+          "utterance": "Connected services"
+        },
+        {
+          "elapsed": 28.307326875044964,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected"
+        },
+        {
+          "elapsed": 28.823117458377965,
+          "event": "move-forward",
+          "utterance": "Calendar and reminders are protected by your device authenticati"
+        },
+        {
+          "elapsed": 29.349948833347298,
+          "event": "move-forward",
+          "utterance": "Guests can use public weather, local timers, bundled media and p"
+        },
+        {
+          "elapsed": 29.876876458409242,
+          "event": "move-forward",
+          "utterance": "Shared faces"
+        },
+        {
+          "elapsed": 30.411012541735545,
+          "event": "move-forward",
+          "utterance": "Connecting or unlocking never publishes private contents. In Cal"
+        },
+        {
+          "elapsed": 30.93327704165131,
+          "event": "move-forward",
+          "utterance": "No calendar cards shared"
+        },
+        {
+          "elapsed": 31.46337912499439,
+          "event": "move-forward",
+          "utterance": "Calendar"
+        },
+        {
+          "elapsed": 31.981946166721173,
+          "event": "move-forward",
+          "utterance": "Connect Calendar Button"
+        },
+        {
+          "elapsed": 32.50696437503211,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 32.507279374985956,
+          "event": "required-values-result",
+          "found": 7,
+          "missing": []
+        },
+        {
+          "elapsed": 33.047059166710824,
+          "event": "move-backward",
+          "utterance": "Connect Calendar Button"
+        },
+        {
+          "elapsed": 33.57016962498892,
+          "event": "move-forward-return",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 40.86066029174253,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Settings",
+        "Mock home only",
+        "Native system features",
+        "Connected services",
+        "Apple Home stays disconnected",
+        "Calendar",
+        "Not connected"
+      ],
+      "restored": true,
+      "scene": "settings",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Apple Home stays disconnected",
+        "Calendar",
+        "Connected services",
+        "Mock home only",
+        "Native system features",
+        "Not connected",
+        "Settings"
+      ]
+    }
+  ],
+  "native_VoiceOver_restorations_verified": 6,
+  "normal_and_focused_pixels": [
+    {
+      "device": "phone",
+      "state": "before-voiceover",
+      "before": "baseline-phone-attachments/83721106-575C-4518-9C4D-CAAA141872D6.png",
+      "after": "final-phone-attachments/932EA39B-0041-4B85-A4CB-D0EBA8B27F88.png",
+      "before_sha256": "8d2dd00c3a670650668f9bbf4d1959beb78383a90f76baa39879d48442e1cc43",
+      "after_sha256": "8d2dd00c3a670650668f9bbf4d1959beb78383a90f76baa39879d48442e1cc43",
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "shape": [
+        1134,
+        1134,
+        4
+      ],
+      "qualified_exact": true,
+      "method": "Whole RGBA; no mask, registration or tolerance"
+    },
+    {
+      "device": "phone",
+      "state": "focused",
+      "before": "baseline-phone-attachments/E2FABC0C-71EA-4F19-81B3-73D9C8F92C0C.png",
+      "after": "final-phone-attachments/BC8992CD-CFE3-4073-9D2E-67A55656E12B.png",
+      "before_sha256": "96f53b292098aaf4171745626079d9ec38e7ecea4d23662368fa45bc763df20e",
+      "after_sha256": "96f53b292098aaf4171745626079d9ec38e7ecea4d23662368fa45bc763df20e",
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "shape": [
+        1134,
+        1134,
+        4
+      ],
+      "qualified_exact": true,
+      "method": "Whole RGBA; no mask, registration or tolerance"
+    },
+    {
+      "device": "pad",
+      "state": "before-voiceover",
+      "before": "baseline-pad-attachments/2BE3168E-215B-482C-84E2-608525223A89.png",
+      "after": "final-pad-attachments/3192F314-36DA-4C0F-AFA5-2EE25983FA28.png",
+      "before_sha256": "d5c4c489e0e862afd0d56cb2cce50dd5bc40bcbd5756fa32b82d0a6f6816dc62",
+      "after_sha256": "d5c4c489e0e862afd0d56cb2cce50dd5bc40bcbd5756fa32b82d0a6f6816dc62",
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "shape": [
+        1592,
+        1592,
+        4
+      ],
+      "qualified_exact": true,
+      "method": "Whole RGBA; no mask, registration or tolerance"
+    },
+    {
+      "device": "pad",
+      "state": "focused",
+      "before": "baseline-pad-attachments/1C94C95C-BE49-43C0-8C7C-64B15462E532.png",
+      "after": "final-pad-attachments/B125BA63-1978-4DCE-9AF6-B63FCA7A08BB.png",
+      "before_sha256": "669e03c5e8f7c1d1766285c2467e4c6dbc663662d091edea528267767f048388",
+      "after_sha256": "669e03c5e8f7c1d1766285c2467e4c6dbc663662d091edea528267767f048388",
+      "changed_pixels": 0,
+      "changed_channels": 0,
+      "shape": [
+        1592,
+        1592,
+        4
+      ],
+      "qualified_exact": true,
+      "method": "Whole RGBA; no mask, registration or tolerance"
+    }
+  ],
+  "forget_input_history": {
+    "first_candidate_Introduction_failures": {
+      "phone": "Access unavailable != Disconnected",
+      "pad": "Access unavailable != Disconnected"
+    },
+    "before_app_phone": "Same failure, exact frozen36aa baseline source+compiled app recovered and installed; no exclusively new-label cause.",
+    "trace_pad": "Full original callback/return test PASS after observation-only instrumentation; before tap frame y973..1018.1 is entirely beyond clip maxY973, AX_hittable=false.",
+    "limits": "Original failures have no pre-tap geometry. Later observation overhead may affect auto-scroll/timing. Exact original cause remains unproven; not a product disconnect bug/fix.",
+    "correction": "Explicit existing gutter scroll helper and full actual-clip/hittability checks before same original tap/Disconnected/reconnect/Disconnect assertions; no weakened expectation, no product edit."
+  },
+  "forget_input_geometry": [
+    {
+      "checkpoint": "forget-trace-pad",
+      "name": "native-voiceover-forget-original-input-geometry_0_54CA3628-47F5-4D5B-A93A-4305BCF0634D.json",
+      "actual_clip": [
+        12,
+        288.43999999999994,
+        796,
+        684.56
+      ],
+      "AX_hittable": false,
+      "frame": [
+        54.45333333333333,
+        973,
+        114.75666666666667,
+        45.10666666666668
+      ],
+      "fully_in_clip": false,
+      "id": "connection.forget.Calendar",
+      "label": "Disconnect",
+      "scope": "Observation only, before original unchanged tap/status assertion; no additional scroll or weaker callback criterion.",
+      "scroll": [
+        12,
+        288.43999999999994,
+        796,
+        684.56
+      ],
+      "status_before": "Access unavailable. Check permissions and your account.",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    },
+    {
+      "checkpoint": "qualified-introduction-phone",
+      "name": "native-voiceover-forget-qualified-input-geometry_0_8079755A-0052-423B-B769-CDA7232A0667.json",
+      "actual_clip": [
+        12,
+        307.78000000000003,
+        378,
+        311.21999999999997
+      ],
+      "AX_hittable": true,
+      "frame": [
+        32.16,
+        504.5499999999998,
+        54.390000000000015,
+        44.10000000000008
+      ],
+      "fully_in_clip": true,
+      "scope": "Qualified scroll preparation only; original target, tap and callback/return assertions unchanged."
+    },
+    {
+      "checkpoint": "qualified-introduction-phone",
+      "name": "native-voiceover-forget-original-input-geometry_0_6FAC308A-76BD-4C2C-A8AD-7D0182841BD4.json",
+      "actual_clip": [
+        12,
+        307.78000000000003,
+        378,
+        311.21999999999997
+      ],
+      "AX_hittable": true,
+      "frame": [
+        32.16,
+        504.5499999999998,
+        54.390000000000015,
+        44.10000000000008
+      ],
+      "fully_in_clip": true,
+      "id": "connection.forget.Calendar",
+      "label": "Disconnect",
+      "scope": "Initial observation, not input-qualified. Explicit preparation follows before the original unchanged tap/status assertion.",
+      "scroll": [
+        12,
+        307.78000000000003,
+        378,
+        311.21999999999997
+      ],
+      "status_before": "Access unavailable. Check permissions and your account.",
+      "viewport": [
+        12,
+        241,
+        378,
+        378
+      ]
+    },
+    {
+      "checkpoint": "qualified-introduction-pad",
+      "name": "native-voiceover-forget-qualified-input-geometry_0_86FA4C80-CB04-4241-BCE2-559FA86131F5.json",
+      "actual_clip": [
+        12,
+        288.44000000000005,
+        796,
+        684.56
+      ],
+      "AX_hittable": true,
+      "frame": [
+        54.45333333333333,
+        882.1233333333333,
+        114.75666666666667,
+        45.10666666666668
+      ],
+      "fully_in_clip": true,
+      "scope": "Qualified scroll preparation only; original target, tap and callback/return assertions unchanged."
+    },
+    {
+      "checkpoint": "qualified-introduction-pad",
+      "name": "native-voiceover-forget-original-input-geometry_0_8EF7BAA7-57D4-430C-88B0-116A983BF45B.json",
+      "actual_clip": [
+        12,
+        288.43999999999994,
+        796,
+        684.56
+      ],
+      "AX_hittable": false,
+      "frame": [
+        54.45333333333333,
+        973,
+        114.75666666666667,
+        45.10666666666668
+      ],
+      "fully_in_clip": false,
+      "id": "connection.forget.Calendar",
+      "label": "Disconnect",
+      "scope": "Initial observation, not input-qualified. Explicit preparation follows before the original unchanged tap/status assertion.",
+      "scroll": [
+        12,
+        288.43999999999994,
+        796,
+        684.56
+      ],
+      "status_before": "Access unavailable. Check permissions and your account.",
+      "viewport": [
+        12,
+        177,
+        796,
+        796
+      ]
+    }
+  ],
+  "SDK": {
+    "build_count": 5,
+    "all_exit_zero": true,
+    "product_files_read_back": 73,
+    "archive_sha256": "2babcf0524e124d89257c61b75fc5e72e0ae5449201f80e9bbab2a8a22c7d66b",
+    "tooling_tests_passed": 6
+  },
+  "archives": {
+    "archives": [
+      {
+        "checkpoint": "baseline-phone",
+        "source_digest": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668",
+        "archive_sha256": "3c2f0dcd63e68304e23a01ef971978ea9330601b52ae0cbae91948359ed2e1cb",
+        "all_files_verified": true,
+        "file_count": 308
+      },
+      {
+        "checkpoint": "baseline-pad",
+        "source_digest": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668",
+        "archive_sha256": "3c2f0dcd63e68304e23a01ef971978ea9330601b52ae0cbae91948359ed2e1cb",
+        "all_files_verified": true,
+        "file_count": 308
+      },
+      {
+        "checkpoint": "final-phone",
+        "source_digest": "d3504100d0538501de5cefdb4b18d145ba2df12dc6c931bfbe1e4d3793038007",
+        "archive_sha256": "49e36ad85f7bd6339211e738d7b9fe90287e486355bab0dd772554b6576b0ea3",
+        "all_files_verified": true,
+        "file_count": 305
+      },
+      {
+        "checkpoint": "final-pad",
+        "source_digest": "d3504100d0538501de5cefdb4b18d145ba2df12dc6c931bfbe1e4d3793038007",
+        "archive_sha256": "49e36ad85f7bd6339211e738d7b9fe90287e486355bab0dd772554b6576b0ea3",
+        "all_files_verified": true,
+        "file_count": 305
+      },
+      {
+        "checkpoint": "before-introduction-phone",
+        "source_digest": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668",
+        "archive_sha256": "9a38374433de38e46c4e70f099a247e78174a32918d137f114a2415a982e86f7",
+        "all_files_verified": true,
+        "file_count": 308
+      },
+      {
+        "checkpoint": "forget-trace-pad",
+        "source_digest": "190f0a2a5ea8c346eb9b1b49bb6edc22b3779cbba851132195dda5ad7a0eb640",
+        "archive_sha256": "6f7cb85ee42d6f37695be3a72cd7d146d845ceee7a833bc3c08264d0dc1c350e",
+        "all_files_verified": true,
+        "file_count": 305
+      },
+      {
+        "checkpoint": "qualified-introduction-phone",
+        "source_digest": "e425cad71150b27a30af88f846f38e1c78ed8c83145799763635ef9fe4d8559a",
+        "archive_sha256": "d0131e49ad03fc8c6e03a5a094d9ec37bb6c8f033bab0f31b3eb492ad978833b",
+        "all_files_verified": true,
+        "file_count": 305
+      },
+      {
+        "checkpoint": "qualified-introduction-pad",
+        "source_digest": "e425cad71150b27a30af88f846f38e1c78ed8c83145799763635ef9fe4d8559a",
+        "archive_sha256": "d0131e49ad03fc8c6e03a5a094d9ec37bb6c8f033bab0f31b3eb492ad978833b",
+        "all_files_verified": true,
+        "file_count": 305
+      }
+    ],
+    "all_before_apps_exact22": true,
+    "all_candidate_trace_qualified_apps_exact22": true,
+    "source_recovered_before": true
+  },
+  "Core": "89 Core inputs unchanged;405 prior tests historical, not rerun.",
+  "resources": "58 resources/17 provenance inputs validated; no asset modification or historical rights verdict.",
+  "review": {
+    "native_png_decoded": 46,
+    "native_contact_sheets_generated_and_actually_viewed": 7,
+    "public_own_png": 10
+  },
+  "boundaries": [
+    "Only four main service action names. Pending-request Disconnect button name is not changed by this product edit.",
+    "Actual native Connect utterances verified on phone/pad; synthetic Calendar Disconnect AX/action states verified, not all four Disconnect speech paths.",
+    "New native-reading test invokes no service action. Existing separate callback regressions use synthetic FixtureDeviceDataProvider only.",
+    "No actual account, HomeKit, microphone/camera, message/call or physical/signing change.",
+    "Native utterance not acoustic/whole-paragraph/Voice Control/Switch Control/AssistiveTouch/full-flow/original-order acceptance.",
+    "Retain original Xcode loader/debugger warnings; normalized xcresult warning lists are recorded separately."
+  ],
+  "images": [
+    {
+      "path": "Docs/screenshots/service-action-labels/baseline-phone-before-voiceover.png",
+      "checkpoint": "baseline-phone",
+      "sha256": "8d2dd00c3a670650668f9bbf4d1959beb78383a90f76baa39879d48442e1cc43"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/baseline-phone-focused.png",
+      "checkpoint": "baseline-phone",
+      "sha256": "96f53b292098aaf4171745626079d9ec38e7ecea4d23662368fa45bc763df20e"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/baseline-pad-before-voiceover.png",
+      "checkpoint": "baseline-pad",
+      "sha256": "d5c4c489e0e862afd0d56cb2cce50dd5bc40bcbd5756fa32b82d0a6f6816dc62"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/baseline-pad-focused.png",
+      "checkpoint": "baseline-pad",
+      "sha256": "669e03c5e8f7c1d1766285c2467e4c6dbc663662d091edea528267767f048388"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/final-phone-before-voiceover.png",
+      "checkpoint": "final-phone",
+      "sha256": "8d2dd00c3a670650668f9bbf4d1959beb78383a90f76baa39879d48442e1cc43"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/final-phone-focused.png",
+      "checkpoint": "final-phone",
+      "sha256": "96f53b292098aaf4171745626079d9ec38e7ecea4d23662368fa45bc763df20e"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/final-pad-before-voiceover.png",
+      "checkpoint": "final-pad",
+      "sha256": "d5c4c489e0e862afd0d56cb2cce50dd5bc40bcbd5756fa32b82d0a6f6816dc62"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/final-pad-focused.png",
+      "checkpoint": "final-pad",
+      "sha256": "669e03c5e8f7c1d1766285c2467e4c6dbc663662d091edea528267767f048388"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/qualified-introduction-phone-ready.png",
+      "checkpoint": "qualified-introduction-phone",
+      "sha256": "3892a08548916592993542a928cc88c2ab8fb52dcbe4e0bbece43ede77f69588"
+    },
+    {
+      "path": "Docs/screenshots/service-action-labels/qualified-introduction-pad-ready.png",
+      "checkpoint": "qualified-introduction-pad",
+      "sha256": "dc7b479d450b309c7226db653d1189219d90c0ff26f1070b151a8dc5aa17e86a"
+    }
+  ]
+}

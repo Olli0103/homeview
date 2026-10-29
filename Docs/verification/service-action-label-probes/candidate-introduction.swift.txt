@@ -1,0 +1,22 @@
+  func testIntroductionDeniedServiceCanDisconnectAndConnectLater() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--setup-introduction-fixture","--connection-denied"])
+    finishSetupSteps();tap("setup.settings")
+    XCTAssertTrue(app.buttons["settings.introduction"].waitForExistence(timeout:5))
+    connectService("Calendar",success:false)
+    XCTAssertEqual(app.buttons["connect.Calendar"].label,"Connect Calendar")
+    XCTAssertTrue(app.staticTexts["connections.home.locked"].label.contains("disconnected"))
+    tap("connection.forget.Calendar")
+    XCTAssertEqual(app.staticTexts["connection.status.Calendar"].label,"Disconnected")
+    viewportShot("setup-denied-connection-forgotten-not-home")
+    app.terminate()
+    app.launchArguments.removeAll { $0=="--connection-denied" }
+    app.launch()
+    XCTAssertTrue(app.buttons["nav.controls"].waitForExistence(timeout:15))
+    XCTAssertFalse(app.staticTexts["setup.step"].exists)
+    tap("nav.controls");tap("controls.settings");connectService("Calendar")
+    XCTAssertEqual(app.buttons["connect.Calendar"].label,"Disconnect Calendar")
+    tap("connect.Calendar")
+    XCTAssertEqual(app.staticTexts["connection.status.Calendar"].label,"Disconnected")
+    viewportShot("setup-explicit-later-connect-and-disconnect")
+  }

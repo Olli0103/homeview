@@ -1,0 +1,23 @@
+[
+  {
+    "checkpoint": "baseline-phone",
+    "source_digest": "36aa7ddb2c95e3fbb99f42c495a1c68adcf97fe5b8963595f1a221cf93f54668",
+    "path": "Docs/verification/service-action-label-probes/before-introduction.swift.txt",
+    "sha256": "ddb43a7306c2d8a9a60a24cac24138d5e28e023d1e74b776aacdac842a84f2df",
+    "scope": "Exact existing functional method at its frozen checkpoint; original failure and later passing observation remain separately labelled."
+  },
+  {
+    "checkpoint": "final-phone",
+    "source_digest": "d3504100d0538501de5cefdb4b18d145ba2df12dc6c931bfbe1e4d3793038007",
+    "path": "Docs/verification/service-action-label-probes/candidate-introduction.swift.txt",
+    "sha256": "bdb4f7d9d5f50feedfecc5c83d2a1618f5319acb94aeb4e546c9233b6aba6454",
+    "scope": "Exact existing functional method at its frozen checkpoint; original failure and later passing observation remain separately labelled."
+  },
+  {
+    "checkpoint": "forget-trace-pad",
+    "source_digest": "190f0a2a5ea8c346eb9b1b49bb6edc22b3779cbba851132195dda5ad7a0eb640",
+    "path": "Docs/verification/service-action-label-probes/observed-introduction.swift.txt",
+    "sha256": "a0f3d0e7b77865ff4cf59501ffa517132e286dd0b6e91bbe78a8e0ec262df207",
+    "scope": "Exact existing functional method at its frozen checkpoint; original failure and later passing observation remain separately labelled."
+  }
+]

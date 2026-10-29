@@ -42,6 +42,7 @@ struct ConnectionControls: View {
                 Task { await model.connectService(kind,expectedResetGeneration:reset) }
               }
             }.disabled(model.connections.busy.contains(kind))
+              .accessibilityLabel("\(on ? "Disconnect":"Connect") \(kind.rawValue)")
               .accessibilityIdentifier("connect.\(kind.rawValue)")
           }
           Text(model.connections.status[kind] ?? "Not connected").font(.system(size: detailSize))

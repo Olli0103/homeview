@@ -3,6 +3,64 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  func testNativeVoiceOverServiceActionLabelsAndRestore() throws {
+    continueAfterFailure=true;executionTimeAllowance=240
+    guard #available(iOS 27.0,*) else {XCTFail("Native VoiceOver service requires iOS 27");return}
+    let service=XCUIDevice.shared.voiceOverService,original=service.isEnabled
+    let kinds=["Calendar","Reminders","Apple Music","Weather"],started=ProcessInfo.processInfo.systemUptime
+    var events:[[String:Any]]=[],labels:[String:String]=[:],spoken:[String:String]=[:],restored=false
+    func record(_ name:String,_ fields:[String:Any]=[:]) {
+      var row=fields;row["event"]=name;row["elapsed"]=ProcessInfo.processInfo.systemUptime-started;events.append(row)
+    }
+    func normalized(_ text:String)->String {text.replacingOccurrences(of:"\u{00a0}",with:" ").lowercased()}
+    defer {
+      do {
+        if service.isEnabled != original {if original {try service.enable()} else {try service.disable()}}
+        restored=service.isEnabled==original
+        record("restored-state",["enabled":service.isEnabled,"matches_original":restored]);XCTAssertTrue(restored)
+      } catch {let e=error as NSError;record("restore-error",["domain":e.domain,"code":e.code]);XCTFail("Restore original simulator VoiceOver state")}
+      let report:[String:Any]=["original_enabled":original,"restored":restored,"events":events,
+        "AX_action_labels":labels,"native_action_utterances":spoken,
+        "scope":"Four unconnected service button names. Native reported speech, no acoustic or raw-input acceptance; test-only viewport marker explicitly retained. No service action invoked."]
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="native-voiceover-service-actions";a.lifetime = .keepAlways;add(a)
+    }
+    record("original-state",["enabled":original])
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    viewportShot("native-service-actions-before-voiceover")
+    for kind in kinds {
+      let button=app.buttons["connect."+kind]
+      labels[kind]=button.label
+      XCTAssertEqual(button.label,"Connect "+kind,"Action must identify its service without the neighbouring heading")
+      XCTAssertEqual(app.staticTexts["connection.status."+kind].label,"Not connected")
+    }
+    do {
+      if !service.isEnabled {try service.enable()}
+      record("enabled-state",["enabled":service.isEnabled]);guard service.isEnabled else {XCTFail("Native VoiceOver not enabled");return}
+      var heading:String?
+      let deadline=ProcessInfo.processInfo.systemUptime+100
+      if let initial=try? service.currentSpeech().utterance {record("initial-speech",["utterance":initial])}
+      for _ in 0..<128 {
+        guard spoken.count<kinds.count,ProcessInfo.processInfo.systemUptime<deadline else {break}
+        let utterance=try service.moveForward().utterance;record("move-forward",["utterance":utterance])
+        if let kind=kinds.first(where:{normalized(utterance)==normalized($0)}) {heading=kind}
+        if let kind=heading,spoken[kind]==nil,normalized(utterance).hasPrefix("connect"),normalized(utterance).contains("button") {
+          spoken[kind]=utterance;record("native-service-action",["service":kind,"utterance":utterance]);heading=nil
+        }
+      }
+      XCTAssertEqual(spoken.count,kinds.count,"Native traversal must reach all four action buttons")
+      for kind in kinds {XCTAssertTrue(normalized(spoken[kind] ?? "").contains(normalized("Connect "+kind+" Button")),"Native button utterance must identify "+kind)}
+      let anchor=try service.currentSpeech().utterance
+      record("move-backward",["utterance":try service.moveBackward().utterance])
+      let returned=try service.moveForward().utterance;record("move-forward-return",["utterance":returned])
+      XCTAssertEqual(normalized(returned),normalized(anchor))
+      viewportShot("native-service-actions-focused")
+      for kind in kinds {XCTAssertEqual(app.staticTexts["connection.status."+kind].label,"Not connected")}
+    } catch {let e=error as NSError;record("native-service-error",["domain":e.domain,"code":e.code]);XCTFail("Native service action-label traversal failed")}
+  }
+}
+
+extension HomeViewUITests {
   private func verifyNativeVoiceOverFocus(_ scene:String,arguments:[String],required:[String])throws {
     continueAfterFailure=true;executionTimeAllowance=180
     guard #available(iOS 27.0,*) else {XCTFail("Native VoiceOver service requires iOS 27");return}
@@ -69,7 +127,7 @@ extension HomeViewUITests {
       case "lock":XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked");XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device")
       case "timer":XCTAssertEqual(app.staticTexts["timer.countdown"].label,"10:56");XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
       case "recipe":XCTAssertTrue(app.buttons["saved.Butternut Squash Soup"].exists);XCTAssertFalse(app.buttons["cooking.next"].exists)
-      case "settings":for kind in ["Calendar","Reminders","Apple Music","Weather"] {XCTAssertEqual(app.buttons["connect."+kind].label,"Connect");XCTAssertEqual(app.staticTexts["connection.status."+kind].label,"Not connected")}
+      case "settings":for kind in ["Calendar","Reminders","Apple Music","Weather"] {XCTAssertEqual(app.buttons["connect."+kind].label,"Connect "+kind);XCTAssertEqual(app.staticTexts["connection.status."+kind].label,"Not connected")}
       case "editor":XCTAssertEqual(app.buttons["select.Modular"].value as? String,"Selected");XCTAssertFalse(app.buttons["complications.done"].exists)
       default:XCTFail("Unknown native VO scene")
       }
@@ -285,7 +343,7 @@ extension HomeViewUITests {
     for name in ["Calendar","Reminders","Apple Music","Weather"] {
       let status=app.staticTexts["connection.status."+name]
       revealRecipeTypeElement(status,margin:10)
-      XCTAssertEqual(status.label,"Not connected");XCTAssertEqual(app.buttons["connect."+name].label,"Connect")
+      XCTAssertEqual(status.label,"Not connected");XCTAssertEqual(app.buttons["connect."+name].label,"Connect "+name)
       connectionsLockTypeCapture("service-"+name.replacingOccurrences(of:" ",with:"-")+"-status-visible",["status":status],onlyVisibleNeighbors:true)
     }
     drawer();tap("app.Home");tap("grid.lock")
@@ -324,7 +382,7 @@ extension HomeViewUITests {
     for name in ["Calendar","Reminders","Apple Music","Weather"] {
       let button=app.buttons["connect."+name],status=app.staticTexts["connection.status."+name]
       revealRecipeTypeElement(button,margin:10)
-      XCTAssertEqual(button.label,"Connect");XCTAssertEqual(status.label,"Not connected")
+      XCTAssertEqual(button.label,"Connect "+name);XCTAssertEqual(status.label,"Not connected")
       connectionsLockTypeCapture("service-"+name.replacingOccurrences(of:" ",with:"-"),
         ["service":app.staticTexts[name],"connect_control":button,"status":status])
     }
@@ -1968,10 +2026,10 @@ extension HomeViewUITests {
     scrollPhotoControlFullyIntoView(calendar);tapSettingsNativeEdge(calendar)
     let status=app.staticTexts["connection.status.Calendar"]
     expectation(for:NSPredicate(format:"label CONTAINS %@","Connected"),evaluatedWith:status);waitForExpectations(timeout:5)
-    XCTAssertEqual(calendar.label,"Disconnect")
+    XCTAssertEqual(calendar.label,"Disconnect Calendar")
     tapSettingsNativeEdge(calendar,bottom:true)
     expectation(for:NSPredicate(format:"label == %@","Disconnected"),evaluatedWith:status);waitForExpectations(timeout:5)
-    XCTAssertEqual(calendar.label,"Connect")
+    XCTAssertEqual(calendar.label,"Connect Calendar")
     viewportShot("settings-native-edges-synthetic-calendar-disconnected")
   }
 }
@@ -4716,7 +4774,7 @@ final class HomeViewUITests: XCTestCase {
   func testDeniedConnectionDoesNotBecomeConnected() {
     launch(["--page", "Settings", "--connection-denied"])
     connectService("Calendar", success: false)
-    XCTAssertEqual(app.buttons["connect.Calendar"].label, "Connect")
+    XCTAssertEqual(app.buttons["connect.Calendar"].label, "Connect Calendar")
     tap("nav.faces")
     tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "68°")
@@ -6786,8 +6844,30 @@ extension HomeViewUITests {
     finishSetupSteps();tap("setup.settings")
     XCTAssertTrue(app.buttons["settings.introduction"].waitForExistence(timeout:5))
     connectService("Calendar",success:false)
-    XCTAssertEqual(app.buttons["connect.Calendar"].label,"Connect")
+    XCTAssertEqual(app.buttons["connect.Calendar"].label,"Connect Calendar")
     XCTAssertTrue(app.staticTexts["connections.home.locked"].label.contains("disconnected"))
+    let forget=app.buttons["connection.forget.Calendar"],actualScroll=app.scrollViews.firstMatch
+    let forgetFrame=forget.frame,scrollFrame=actualScroll.frame,viewport=app.otherElements["reference.viewport"].frame
+    let actualClip=scrollFrame.intersection(viewport)
+    func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
+    let report:[String:Any]=["id":forget.identifier,"label":forget.label,"frame":box(forgetFrame),
+      "scroll":box(scrollFrame),"viewport":box(viewport),"actual_clip":box(actualClip),
+      "fully_in_clip":axContains(actualClip,forgetFrame),"AX_hittable":forget.isHittable,
+      "status_before":app.staticTexts["connection.status.Calendar"].label,
+      "scope":"Initial observation, not input-qualified. Explicit preparation follows before the original unchanged tap/status assertion."]
+    let diagnostic=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    diagnostic.name="native-voiceover-forget-original-input-geometry";diagnostic.lifetime = .keepAlways;add(diagnostic)
+    viewportShot("forget-original-input-before")
+    scrollPhotoControlFullyIntoView(forget)
+    let qualifiedClip=actualScroll.frame.intersection(app.otherElements["reference.viewport"].frame)
+    XCTAssertTrue(axContains(qualifiedClip,forget.frame),"Original callback probe requires a fully visible target")
+    XCTAssertTrue(forget.isHittable,"Original callback probe requires native hittability after explicit scroll preparation")
+    let qualified:[String:Any]=["frame":box(forget.frame),"actual_clip":box(qualifiedClip),
+      "fully_in_clip":axContains(qualifiedClip,forget.frame),"AX_hittable":forget.isHittable,
+      "scope":"Qualified scroll preparation only; original target, tap and callback/return assertions unchanged."]
+    let ready=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:qualified,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    ready.name="native-voiceover-forget-qualified-input-geometry";ready.lifetime = .keepAlways;add(ready)
+    viewportShot("forget-qualified-input")
     tap("connection.forget.Calendar")
     XCTAssertEqual(app.staticTexts["connection.status.Calendar"].label,"Disconnected")
     viewportShot("setup-denied-connection-forgotten-not-home")
@@ -6797,7 +6877,7 @@ extension HomeViewUITests {
     XCTAssertTrue(app.buttons["nav.controls"].waitForExistence(timeout:15))
     XCTAssertFalse(app.staticTexts["setup.step"].exists)
     tap("nav.controls");tap("controls.settings");connectService("Calendar")
-    XCTAssertEqual(app.buttons["connect.Calendar"].label,"Disconnect")
+    XCTAssertEqual(app.buttons["connect.Calendar"].label,"Disconnect Calendar")
     tap("connect.Calendar")
     XCTAssertEqual(app.staticTexts["connection.status.Calendar"].label,"Disconnected")
     viewportShot("setup-explicit-later-connect-and-disconnect")
