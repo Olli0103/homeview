@@ -373,44 +373,74 @@ struct TimerView: View {
 }
 struct RecipeCover: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.dynamicTypeSize) private var textSize
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  @ScaledMetric(relativeTo:.largeTitle) private var titleSize:CGFloat=34
+  @ScaledMetric(relativeTo:.body) private var metadataSize:CGFloat=22
+  @ScaledMetric(relativeTo:.headline) private var actionSize:CGFloat=21
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  private var minimumHitHeight:CGFloat {ceil(44/max(0.01,canvasScale))}
   var body: some View {
     ZStack(alignment: .bottom) {
       RecipeArtwork(recipe: model.recipe)
       LinearGradient(
         colors: [.clear, .black.opacity(0.15), .black.opacity(0.8)], startPoint: .center,
         endPoint: .bottom)
-      VStack(alignment: .leading, spacing: 14) {
-        AppHeader(light: true)
-        Spacer()
-        Text(model.recipe.title).font(.system(size: 34, weight: .semibold)).padding(
-          .horizontal, 40)
-        Text(
-          "\(model.recipe.source) · \(model.recipe.durationLabel) · \(model.recipe.servingsLabel)"
-        ).font(.system(size: 22)).opacity(0.75).padding(
-          .horizontal, 40)
-        HStack(spacing: 12) {
-          Pill(
-            title: "Ingredients", symbol: "checklist", tint: .white.opacity(0.22), textColor: .white
-          ) { model.route = .ingredients }.accessibilityIdentifier("recipe.ingredients")
-          Pill(
-            title: "Start Cooking", symbol: "frying.pan", tint: .white.opacity(0.22),
-            textColor: .white
-          ) {
-            model.startCooking()
-          }.accessibilityIdentifier("recipe.start")
-        }.padding(.horizontal, 32).padding(.bottom, 32)
-      }.foregroundStyle(.white)
+      if textSize.isAccessibilitySize {
+        VStack(spacing:0) {
+          AppHeader(light:true,closeSize:max(48,minimumHitHeight),clockFontSize:clockSize,
+            accessibilityLayout:true)
+          ScrollView {
+            VStack(alignment:.leading,spacing:20) {
+              Text(model.recipe.title).font(.system(size:titleSize,weight:.semibold))
+              Text("\(model.recipe.source) · \(model.recipe.durationLabel) · \(model.recipe.servingsLabel)")
+                .font(.system(size:metadataSize)).opacity(0.75)
+              Pill(title:"Ingredients",symbol:"checklist",tint:.white.opacity(0.22),textColor:.white,
+                fontSize:actionSize,minimumHeight:minimumHitHeight) {
+                  model.route = .ingredients
+                }.accessibilityIdentifier("recipe.ingredients")
+              Pill(title:"Start Cooking",symbol:"frying.pan",tint:.white.opacity(0.22),textColor:.white,
+                fontSize:actionSize,minimumHeight:minimumHitHeight) {
+                  model.startCooking()
+                }.accessibilityIdentifier("recipe.start")
+            }.padding(32)
+          }.accessibilityIdentifier("recipe.cover.accessible.content")
+        }.background(.black.opacity(0.72)).foregroundStyle(.white)
+      } else {
+        VStack(alignment: .leading, spacing: 14) {
+          AppHeader(light: true,clockFontSize:clockSize)
+          Spacer()
+          Text(model.recipe.title).font(.system(size: titleSize, weight: .semibold)).padding(
+            .horizontal, 40)
+          Text(
+            "\(model.recipe.source) · \(model.recipe.durationLabel) · \(model.recipe.servingsLabel)"
+          ).font(.system(size: metadataSize)).opacity(0.75).padding(
+            .horizontal, 40)
+          HStack(spacing: 12) {
+            Pill(title:"Ingredients",symbol:"checklist",tint:.white.opacity(0.22),textColor:.white,
+              fontSize:actionSize) {model.route = .ingredients}.accessibilityIdentifier("recipe.ingredients")
+            Pill(title:"Start Cooking",symbol:"frying.pan",tint:.white.opacity(0.22),textColor:.white,
+              fontSize:actionSize) {model.startCooking()}.accessibilityIdentifier("recipe.start")
+          }.padding(.horizontal, 32).padding(.bottom, 32)
+        }.foregroundStyle(.white)
+      }
     }
   }
 }
 struct IngredientsView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var canvasScale
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.body) private var ingredientSize:CGFloat=24
+  @ScaledMetric(relativeTo:.headline) private var actionSize:CGFloat=21
   @State private var checked: Set<Int> = []
   private var minimumHitHeight:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
-      AppHeader(title: "Ingredients")
+      AppHeader(title:"Ingredients",closeSize:textSize.isAccessibilitySize ? max(48,minimumHitHeight):48,
+        titleFontSize:headerSize,clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
       ScrollView {
         VStack(alignment: .leading, spacing: 22) {
           ForEach(model.recipe.ingredients.indices, id: \.self) { i in
@@ -422,7 +452,7 @@ struct IngredientsView: View {
                   .foregroundStyle(checked.contains(i) ? .green : .gray)
                 Text(model.recipe.ingredients[i]).strikethrough(checked.contains(i))
                 Spacer()
-              }.font(.system(size: 24))
+              }.font(.system(size: ingredientSize))
                 .frame(maxWidth:.infinity,minHeight:minimumHitHeight,alignment:.leading)
                 .contentShape(Rectangle())
             }.accessibilityIdentifier("ingredient.\(i)")
@@ -430,74 +460,113 @@ struct IngredientsView: View {
           }
         }.padding(32)
       }
-      Pill(title: "Start Cooking", symbol: "frying.pan") {
-        model.startCooking()
-      }.padding(30)
+      Pill(title:"Start Cooking",symbol:"frying.pan",fontSize:actionSize,
+        minimumHeight:textSize.isAccessibilitySize ? minimumHitHeight:0) {
+          model.startCooking()
+        }.padding(30)
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
   }
 }
 struct CookingView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var canvasScale
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.body) private var stepSize:CGFloat=18
+  @ScaledMetric(relativeTo:.body) private var instructionSize:CGFloat=30
+  @ScaledMetric(relativeTo:.body) private var handoffSize:CGFloat=18
+  @ScaledMetric(relativeTo:.body) private var timerSize:CGFloat=22
+  @ScaledMetric(relativeTo:.headline) private var nextSize:CGFloat=21
   private var minimumHitHeight:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
+  private var navigationSize:CGFloat {textSize.isAccessibilitySize ? max(48,minimumHitHeight):48}
   var body: some View {
-    let stepCount=model.recipe.steps.count,currentStep=model.cookingStep
-    VStack(alignment: .leading, spacing: 20) {
-      VStack(spacing: 7) {
-        AppHeader(title: model.recipe.title)
-        Canvas { context,_ in
-          for index in 0..<stepCount {
-            let dot=Path(ellipseIn:CGRect(x:index*14,y:0,width:7,height:7))
-            context.fill(dot,with:.color(index == currentStep ? .black:.gray.opacity(0.4)))
-          }
-        }.frame(width:CGFloat(max(0,stepCount*14-7)),height:7).allowsHitTesting(false)
+    Group {
+      if textSize.isAccessibilitySize {
+        VStack(alignment:.leading,spacing:20) {
+          header
+          ScrollView {
+            VStack(alignment:.leading,spacing:20) {
+              // Long recipe names belong to the scroll, not a fixed header.
+              Text(model.recipe.title).font(.system(size:headerSize,weight:.semibold))
+                .frame(maxWidth:.infinity,alignment:.leading).padding(.horizontal,35)
+              instruction
+              handoff
+              timer
+              footer
+            }
+          }.accessibilityIdentifier("recipe.cooking.accessible.content")
+        }
+      } else {
+        VStack(alignment:.leading,spacing:20) {
+          header
+          ScrollView {instruction}.frame(maxHeight:.infinity)
+          handoff
+          timer
+          footer
+        }
       }
-      ScrollView {
-        VStack(alignment: .leading, spacing: 14) {
-          Text("Step \(model.cookingStep+1)").font(.system(size: 18)).foregroundStyle(.gray)
-            .accessibilityLabel("Step \(model.cookingStep+1) of \(model.recipe.steps.count)")
-            .accessibilityIdentifier("cooking.step")
-          Text(model.recipe.steps[model.cookingStep].text).font(.system(size: 30, weight: .regular))
-            .lineSpacing(6).frame(maxWidth: .infinity, alignment: .leading).accessibilityIdentifier(
-              "cooking.text")
-        }.padding(.horizontal, 35).padding(.top, 16)
-      }.frame(maxHeight: .infinity)
-      Button { model.presentRecipeHandoff() } label: {
-        Text("Continue on another device").font(.system(size:18))
+    }.background(.white).foregroundStyle(.black)
+  }
+  private var header:some View {
+    VStack(spacing:7) {
+      AppHeader(title:textSize.isAccessibilitySize ? "":model.recipe.title,
+        closeSize:navigationSize,titleFontSize:headerSize,clockFontSize:clockSize,
+        accessibilityLayout:textSize.isAccessibilitySize)
+      Canvas {context,_ in
+        for index in 0..<model.recipe.steps.count {
+          let dot=Path(ellipseIn:CGRect(x:index*14,y:0,width:7,height:7))
+          context.fill(dot,with:.color(index == model.cookingStep ? .black:.gray.opacity(0.4)))
+        }
+      }.frame(width:CGFloat(max(0,model.recipe.steps.count*14-7)),height:7).allowsHitTesting(false)
+    }
+  }
+  private var instruction:some View {
+    VStack(alignment:.leading,spacing:14) {
+      Text("Step \(model.cookingStep+1)").font(.system(size:stepSize)).foregroundStyle(.black.opacity(0.65))
+        .accessibilityLabel("Step \(model.cookingStep+1) of \(model.recipe.steps.count)")
+        .accessibilityIdentifier("cooking.step")
+      Text(model.recipe.steps[model.cookingStep].text).font(.system(size:instructionSize,weight:.regular))
+        .lineSpacing(6).frame(maxWidth:.infinity,alignment:.leading).accessibilityIdentifier("cooking.text")
+    }.padding(.horizontal,35).padding(.top,16)
+  }
+  private var handoff:some View {
+    Button {model.presentRecipeHandoff()} label: {
+      Text("Continue on another device").font(.system(size:handoffSize))
+        .frame(maxWidth:.infinity,minHeight:minimumHitHeight,alignment:.leading)
+        .contentShape(Rectangle())
+    }.padding(.horizontal,35).accessibilityIdentifier("cooking.handoff")
+  }
+  @ViewBuilder private var timer:some View {
+    if let minutes=model.recipe.steps[model.cookingStep].minutes {
+      Button {
+        if model.addTimer(seconds:Double(minutes*60),title:"\(model.recipe.title) · Step \(model.cookingStep+1)") {
+          model.banner("\(minutes)-minute cooking timer started")
+        }
+      } label: {
+        Label("Start \(minutes)-minute timer",systemImage:"timer")
+          .font(.system(size:timerSize,weight:.semibold))
+          .foregroundStyle(Color(red:0.65,green:0.23,blue:0))
           .frame(maxWidth:.infinity,minHeight:minimumHitHeight,alignment:.leading)
           .contentShape(Rectangle())
-      }.padding(.horizontal,35).accessibilityIdentifier("cooking.handoff")
-      if let minutes = model.recipe.steps[model.cookingStep].minutes {
-        Button {
-          if model.addTimer(
-            seconds: Double(minutes * 60),
-            title: "\(model.recipe.title) · Step \(model.cookingStep+1)") {
-            model.banner("\(minutes)-minute cooking timer started")
-          }
-        } label: {
-          Label("Start \(minutes)-minute timer", systemImage: "timer").font(
-            .system(size: 22, weight: .semibold)
-          ).foregroundStyle(.orange)
-            .frame(maxWidth:.infinity,minHeight:minimumHitHeight,alignment:.leading)
-            .contentShape(Rectangle())
-        }.padding(.horizontal, 35).accessibilityIdentifier("cooking.timer")
-      }
-      HStack(spacing: 16) {
-        RoundButton(symbol: "chevron.left", label: "Previous step") {
-          model.moveCookingStep(-1)
-        }.disabled(model.cookingStep == 0)
-        Pill(
-          title: model.cookingStep == model.recipe.steps.count - 1 ? "Finish" : "Next Step",
-          symbol: model.cookingStep == model.recipe.steps.count - 1 ? "checkmark" : "chevron.right"
-        ) {
+      }.padding(.horizontal,35).accessibilityIdentifier("cooking.timer")
+    }
+  }
+  private var footer:some View {
+    HStack(spacing:16) {
+      RoundButton(symbol:"chevron.left",size:navigationSize,label:"Previous step") {
+        model.moveCookingStep(-1)
+      }.disabled(model.cookingStep == 0)
+      Pill(title:model.cookingStep == model.recipe.steps.count-1 ? "Finish":"Next Step",
+        symbol:model.cookingStep == model.recipe.steps.count-1 ? "checkmark":"chevron.right",
+        fontSize:nextSize,minimumHeight:textSize.isAccessibilitySize ? minimumHitHeight:0) {
           model.moveCookingStep(1)
         }.accessibilityIdentifier("cooking.next")
-        RoundButton(symbol: model.data.pinnedRecipe ? "pin.fill" : "pin", label: "Pin recipe") {
-          model.pinRecipe()
-        }.accessibilityIdentifier("recipe.pin")
-          .accessibilityValue(model.data.pinnedRecipe ? "Pinned":"Not pinned")
-      }.padding(30)
-    }.background(.white).foregroundStyle(.black)
+      RoundButton(symbol:model.data.pinnedRecipe ? "pin.fill":"pin",size:navigationSize,label:"Pin recipe") {
+        model.pinRecipe()
+      }.accessibilityIdentifier("recipe.pin")
+        .accessibilityValue(model.data.pinnedRecipe ? "Pinned":"Not pinned")
+    }.padding(30)
   }
 }
 struct RemindersView: View {

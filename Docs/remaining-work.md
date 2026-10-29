@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Rezept-Systemschrift, Scrollwege und vier Textfarben korrigiert](recipe-dynamic-type.md): zwölf aktuelle UI-Ausführungen/fünf SDKs;46 Textausdehnungsbedingungen und16 Farbbedingungen grün.14 normale Rezeptpaare außerhalb der Farbrollen gleich, zwei Timer-Einrichtungsbilder exakt gleich. Vier anfängliche Helferfehler und drei unqualifizierte Eck-ROIs erhalten; #73 für übrige Flows/Hilfsmittel offen.
+
 - [Face-Editor-Anleitung und Slotfamilie kontrastiert](face-editor-root-contrast.md): acht Messungen jetzt6,19–7,00:1; sechs frische UI-Ausführungen/fünf SDKs. Vier Vorherfälle ausdrücklich wiederverwendet. Sieben passende Pixelpaare außerhalb der Textregionen gleich; ein anders gescrolltes XXXL-iPad-Paar unqualifiziert erhalten. Vollständiger Issue-Verlauf archiviert, Kriterien erhalten; #73 offen.
 
 - [Face-Editor: fünf UI-Schriftrollen skalieren](face-editor-dynamic-type.md): zehn aktuelle UI-Ausführungen/fünf SDKs, vier normale Pixelpaare exakt gleich. Eine iPhone-Controlhöhen-Bedingung bleibt rot; tatsächlich gerenderter Chip-Schriftzug separat rund2,7-fach vergrößert. Kein Farbfix am unqualifizierten Glas-Kontrast, #73 offen.

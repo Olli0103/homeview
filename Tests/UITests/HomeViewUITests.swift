@@ -3,6 +3,119 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func recipeTypeScrollContains(_ element:XCUIElement,_ scroll:XCUIElement)->Bool {
+    guard scroll.exists else {return false}
+    let candidates=scroll.descendants(matching:element.elementType)
+    return element.identifier.isEmpty
+      ? candidates.matching(NSPredicate(format:"label == %@",element.label)).count>0
+      : candidates.matching(identifier:element.identifier).count>0
+  }
+  private func revealRecipeTypeElement(_ element:XCUIElement,margin:CGFloat=2) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"].frame
+    let insideScroll=recipeTypeScrollContains(element,scroll)
+    for _ in 0..<16 {
+      let clip=(insideScroll ? scroll.frame.intersection(viewport):viewport).insetBy(dx:margin,dy:margin),f=element.frame
+      if axContains(clip,f) || (f.height>clip.height && f.intersection(clip).height>=min(44,clip.height)) {return}
+      guard insideScroll else {XCTFail("Recipe target is outside its actual clip: "+element.identifier);return}
+      let gap=f.minY<clip.minY ? f.minY-clip.minY-10:f.maxY-clip.maxY+10
+      let distance=min(max(abs(gap),24),clip.height*0.6)*(gap<0 ? -1:1),y=clip.midY
+      let start=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:clip.minX+8,dy:y+distance/2))
+      let end=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:clip.minX+8,dy:y-distance/2))
+      start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    XCTFail("Recipe target was never visibly reachable: "+element.identifier)
+  }
+  private func activateRecipeTypeControl(_ element:XCUIElement) {
+    revealRecipeTypeElement(element)
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    let clip=recipeTypeScrollContains(element,scroll) ? scroll.frame.intersection(viewport):viewport
+    let visible=element.frame.intersection(clip).insetBy(dx:2,dy:2)
+    XCTAssertFalse(visible.isEmpty);XCTAssertTrue(element.isEnabled)
+    // A functional center probe, not a minimum-hit-size/edge audit. A large
+    // scrollable row need not fit wholly on screen to have a visible action.
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:visible.midX-app.frame.minX,dy:visible.midY-app.frame.minY)).tap()
+  }
+  private func recipeTypeCapture(_ state:String,_ elements:[String:XCUIElement]) {
+    func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
+    RunLoop.current.run(until:Date().addingTimeInterval(2))
+    let viewport=app.otherElements["reference.viewport"].frame
+    let scroll=app.scrollViews.firstMatch
+    func effectiveClip(_ e:XCUIElement)->CGRect {
+      recipeTypeScrollContains(e,scroll) ? scroll.frame.intersection(viewport):viewport
+    }
+    var rows:[[String:Any]]=[]
+    for role in elements.keys.sorted() {
+      let e=elements[role]!,f=e.frame;XCTAssertTrue(e.exists);XCTAssertFalse(f.isEmpty)
+      let visible=f.intersects(viewport)
+      rows.append(["role":role,"label":e.label,"frame":box(f),"fully_in_viewport":axContains(viewport,f),
+        "effective_clip":box(effectiveClip(e)),"fully_in_clip":axContains(effectiveClip(e),f),
+        "intersects_clip":visible,"visible_intersection":visible ? box(f.intersection(viewport)):[0,0,0,0],"AX_hittable":e.isHittable])
+    }
+    let texts=app.staticTexts.allElementsBoundByIndex.map {e->[String:Any] in
+      ["id":e.identifier,"label":e.label,"frame":box(e.frame),"fully_in_viewport":axContains(viewport,e.frame),
+        "effective_clip":box(effectiveClip(e)),"fully_in_clip":axContains(effectiveClip(e),e.frame)]
+    }
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["app":box(app.frame),"clip":box(viewport),"elements":rows,"all_static_text":texts],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="recipe-type-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
+    viewportShot("recipe-type-"+state)
+  }
+  func testRecipeSystemTextSizeInventoryKeepsChecksStepsAndNoTimer() {
+    continueAfterFailure=false
+    let owned=UUID().uuidString,title="Butternut Squash Soup"
+    launch(["--page","Recipes","--persistence-test",owned,"--reset-test-store"])
+    let row=app.buttons["saved."+title]
+    XCTAssertTrue(row.waitForExistence(timeout:5))
+    recipeTypeCapture("library",["heading":app.staticTexts["Recent & Pinned"],"recipe_control":row])
+    revealRecipeTypeElement(row,margin:10)
+    recipeTypeCapture("library-row-visible",["recipe_control":row])
+    activateRecipeTypeControl(row)
+    XCTAssertTrue(app.buttons["recipe.ingredients"].waitForExistence(timeout:5))
+    recipeTypeCapture("cover",["title":app.staticTexts[title],"ingredients_control":app.buttons["recipe.ingredients"],"start_control":app.buttons["recipe.start"]])
+    activateRecipeTypeControl(app.buttons["recipe.ingredients"])
+    let first=app.buttons["ingredient.0"],last=app.buttons["ingredient.5"]
+    XCTAssertEqual(first.value as? String,"Unchecked");activateRecipeTypeControl(first)
+    XCTAssertEqual(first.value as? String,"Checked")
+    recipeTypeCapture("ingredients-first",["title":app.staticTexts["Ingredients"],"first_control":first])
+    activateRecipeTypeControl(first);XCTAssertEqual(first.value as? String,"Unchecked")
+    activateRecipeTypeControl(last);XCTAssertEqual(last.value as? String,"Checked")
+    recipeTypeCapture("ingredients-last",["last_control":last])
+    app.terminate();launch(["--screen-recipe","--persistence-test",owned])
+    activateRecipeTypeControl(app.buttons["recipe.start"])
+    let step=app.staticTexts["cooking.step"],instruction=app.staticTexts["cooking.text"]
+    XCTAssertEqual(step.label,"Step 1 of 3");XCTAssertTrue(instruction.label.contains("olive oil"))
+    let original=instruction.label
+    recipeTypeCapture("cooking-first",["step":step,"instruction":instruction,"next_control":app.buttons["cooking.next"],"handoff_control":app.buttons["cooking.handoff"]])
+    revealRecipeTypeElement(app.buttons["cooking.timer"],margin:10)
+    recipeTypeCapture("cooking-timer-control",["timer_control":app.buttons["cooking.timer"]])
+    revealRecipeTypeElement(app.buttons["cooking.handoff"],margin:10)
+    recipeTypeCapture("cooking-handoff-control",["handoff_control":app.buttons["cooking.handoff"]])
+    activateRecipeTypeControl(app.buttons["cooking.handoff"])
+    XCTAssertTrue(app.buttons["recipe.handoff.offer"].waitForExistence(timeout:5))
+    recipeTypeCapture("handoff",["title":app.staticTexts["Recipe Handoff"],"done_control":app.buttons["recipe.handoff.done"]])
+    let policy=app.staticTexts["Recipe text, ingredients and source URLs are not copied. Save the same recipe on both devices first."]
+    revealRecipeTypeElement(policy,margin:10)
+    recipeTypeCapture("handoff-policy-visible",["policy":policy])
+    // No offer, transfer, authentication or system activity is invoked.
+    activateRecipeTypeControl(app.buttons["recipe.handoff.done"])
+    XCTAssertEqual(step.label,"Step 1 of 3");XCTAssertEqual(instruction.label,original)
+    revealRecipeTypeElement(app.buttons["cooking.next"],margin:10)
+    recipeTypeCapture("cooking-next-control",["next_control":app.buttons["cooking.next"]])
+    activateRecipeTypeControl(app.buttons["cooking.next"])
+    XCTAssertEqual(step.label,"Step 2 of 3");XCTAssertTrue(instruction.label.contains("squash"))
+    recipeTypeCapture("cooking-second",["step":step,"instruction":instruction])
+    activateRecipeTypeControl(app.buttons["Previous step"])
+    XCTAssertEqual(step.label,"Step 1 of 3");XCTAssertEqual(instruction.label,original)
+    for _ in 0..<3 {activateRecipeTypeControl(app.buttons["cooking.next"])}
+    XCTAssertTrue(app.buttons["recipe.start"].waitForExistence(timeout:5))
+    tap("nav.faces");drawer();tap("app.Timers")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5));XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
+    drawer();tap("app.Home");tap("grid.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+}
+
+extension HomeViewUITests {
   private func faceEditorPresentationCapture(_ state:String,_ elements:[String:XCUIElement],sheet:Bool=false) {
     func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
     RunLoop.current.run(until:Date().addingTimeInterval(2))

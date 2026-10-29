@@ -344,15 +344,24 @@ struct RecipeArtwork: View {
 }
 struct RecipeLibraryView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.dynamicTypeSize) private var textSize
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.headline) private var sectionSize:CGFloat=30
+  @ScaledMetric(relativeTo:.headline) private var recipeSize:CGFloat=24
+  @ScaledMetric(relativeTo:.caption) private var metadataSize:CGFloat=17
+  private var closeSize:CGFloat {textSize.isAccessibilitySize ? max(48,ceil(44/max(0.01,canvasScale))):48}
   private var recipes: [RecipeDocument] {
     [model.recipe] + model.data.pinnedRecipes.filter { $0.id != model.recipe.id }
   }
   var body: some View {
     VStack(spacing: 20) {
-      AppHeader(title: "Recipes")
+      AppHeader(title:"Recipes",closeSize:closeSize,titleFontSize:headerSize,
+        clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
       ScrollView {
         VStack(alignment: .leading, spacing: 15) {
-          Text("Recent & Pinned").font(.system(size: 30, weight: .bold))
+          Text("Recent & Pinned").font(.system(size: sectionSize, weight: .bold))
           ForEach(recipes) { recipe in
             Button {
               if model.setRecipe(recipe) { model.route = .recipe }
@@ -360,9 +369,9 @@ struct RecipeLibraryView: View {
               HStack {
                 Image(systemName: "fork.knife").font(.system(size: 30)).foregroundStyle(.orange)
                 VStack(alignment: .leading, spacing: 5) {
-                  Text(recipe.title).font(.system(size: 24, weight: .semibold))
-                  Text(recipe.durationLabel + " · " + recipe.source).font(.system(size: 17))
-                    .foregroundStyle(.gray)
+                  Text(recipe.title).font(.system(size: recipeSize, weight: .semibold))
+                  Text(recipe.durationLabel + " · " + recipe.source).font(.system(size: metadataSize))
+                    .foregroundStyle(.black.opacity(0.65))
                 }
                 Spacer()
                 if model.data.pinnedRecipes.contains(where: { $0.id == recipe.id }) {

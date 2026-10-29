@@ -44,7 +44,26 @@ struct AppHeader: View {
   var closeSize:CGFloat = 48
   var titleFontSize:CGFloat = 23
   var clockFontSize:CGFloat = 22
+  var accessibilityLayout = false
   var body: some View {
+    Group {
+      if accessibilityLayout {
+        VStack(alignment:.leading,spacing:12) {
+          HStack {
+            RoundButton(symbol:"xmark",color:light ? .white.opacity(0.18):.black.opacity(0.07),
+              foreground:light ? .white:.black,size:closeSize,label:"Close") {
+                model.route = .personal
+              }.accessibilityIdentifier("close")
+            Spacer()
+            Text(model.clock,style:.time).font(.system(size:clockFontSize,weight:.medium))
+              .environment(\.timeZone,model.displayTimeZone)
+          }
+          if !title.isEmpty {
+            Text(title).font(.system(size:titleFontSize,weight:.semibold))
+              .frame(maxWidth:.infinity,alignment:.leading).allowsHitTesting(false)
+          }
+        }
+      } else {
     ZStack {
       HStack {
         RoundButton(
@@ -59,6 +78,8 @@ struct AppHeader: View {
         Text(title).font(.system(size: titleFontSize, weight: .semibold))
           .lineLimit(1).minimumScaleFactor(0.7).frame(maxWidth: 310)
           .allowsHitTesting(false)
+      }
+    }
       }
     }.foregroundStyle(light ? .white : .black).padding(.horizontal, 28).padding(.top, 24)
   }
