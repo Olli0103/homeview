@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Face-Editor: fünf UI-Schriftrollen skalieren](face-editor-dynamic-type.md): zehn aktuelle UI-Ausführungen/fünf SDKs, vier normale Pixelpaare exakt gleich. Eine iPhone-Controlhöhen-Bedingung bleibt rot; tatsächlich gerenderter Chip-Schriftzug separat rund2,7-fach vergrößert. Kein Farbfix am unqualifizierten Glas-Kontrast, #73 offen.
+
 - [Timer-Einrichtung skaliert ohne geänderte Normalansicht](timer-setup-dynamic-type.md): sechs Vorher-Vergrößerungsbedingungen korrigiert;20 aktuelle UI-Ausführungen/fünf SDKs, sechs normale Aufnahmen exakt pixelgleich. Acht Start-Randaktionen waren schon vorher grün und bleiben es, trotz kleinerer AX-Höhe auf dem iPhone. #73 offen für übrige Flows/Hilfsmittel.
 
 - [Timer-Systemschrift und Accessibility-Anordnung korrigiert](timer-dynamic-type.md): drei Rollen wachsen auf iPhone/iPad, echte Auswahl/Löschen erhalten pausierte Peer-Werte. Vier normale Ansichten exakt pixelgleich;20 akzeptierte UI-Ausführungen über zwei Testpins bei bytegleicher App/fünf SDKs. Vorherige Eingabe- und Zeitfensterfehler erhalten; #73 weiter offen.

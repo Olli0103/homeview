@@ -3,6 +3,57 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func faceEditorPresentationCapture(_ state:String,_ elements:[String:XCUIElement],sheet:Bool=false) {
+    func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
+    RunLoop.current.run(until:Date().addingTimeInterval(2))
+    let before=elements.mapValues {box($0.frame)},began=ProcessInfo.processInfo.systemUptime
+    RunLoop.current.run(until:Date().addingTimeInterval(2))
+    let clip=sheet ? app.frame:app.otherElements["reference.viewport"].frame
+    var rows:[[String:Any]]=[]
+    for role in elements.keys.sorted() {
+      let e=elements[role]!,f=e.frame,after=box(f)
+      XCTAssertTrue(e.exists);XCTAssertFalse(f.isEmpty);XCTAssertTrue(axContains(clip,f))
+      for i in after.indices {XCTAssertEqual(before[role]![i],after[i],accuracy:0.5)}
+      rows.append(["role":role,"label":e.label,"frame":after,"before_wait_frame":before[role]!,"AX_hittable":e.isHittable])
+    }
+    let text=app.staticTexts.allElementsBoundByIndex.map {e->[String:Any] in
+      ["identifier":e.identifier,"label":e.label,"frame":box(e.frame),"fully_in_clip":axContains(clip,e.frame)]
+    }
+    let payload:[String:Any]=["app":box(app.frame),"clip":box(clip),"elements":rows,"all_static_text":text,
+      "declared_wait_seconds":2,"elapsed_seconds":ProcessInfo.processInfo.systemUptime-began]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:payload,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="face-editor-presentation-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
+    if sheet {shot("face-editor-presentation-"+state)} else {viewportShot("face-editor-presentation-"+state)}
+  }
+  func testFaceEditorPresentationInventoryKeepsSlotAndReadOnlyHome() {
+    continueAfterFailure=false
+    launchFaceEditorAudit("Modular")
+    faceEditorPresentationCapture("root-top",["title":app.staticTexts["Faces"],"face_control":app.buttons["select.Modular"]])
+    let slot=app.buttons["widget.0"]
+    scrollEditorIntoView(slot)
+    let original=slot.label
+    XCTAssertTrue(original.contains("Top left"));XCTAssertTrue(original.contains("Date"))
+    faceEditorPresentationCapture("root-list",["slot_control":slot])
+    for opening in ["first","reopened"] {
+      slot.tap()
+      let done=app.buttons["complications.done"]
+      XCTAssertTrue(done.waitForExistence(timeout:5));waitEditorFrameStable(done)
+      let headers=app.staticTexts.matching(NSPredicate(format:"label == %@","Top left"))
+      XCTAssertGreaterThan(headers.count,0)
+      let nearest=(0..<headers.count).min {abs(headers.element(boundBy:$0).frame.midY-done.frame.midY)<abs(headers.element(boundBy:$1).frame.midY-done.frame.midY)}!
+      // SwiftUI exposes this plain button as a combined AX node, not a
+      // StaticText child. Keep its measured control bounds distinct from text.
+      let header=headers.element(boundBy:nearest),off=app.buttons["complication.choose.Off"]
+      XCTAssertLessThan(abs(header.frame.midY-done.frame.midY),1)
+      faceEditorPresentationCapture("sheet-"+opening,["title":header,"off_control":off,"done_control":done],sheet:true)
+      done.tap();XCTAssertTrue(slot.waitForExistence(timeout:5));XCTAssertEqual(slot.label,original)
+    }
+    tap("editor.done");drawer();tap("app.Home");tap("grid.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+}
+
+extension HomeViewUITests {
   private func timerSetupDuration(_ label:String)->XCUIElement {
     let items=app.staticTexts.matching(NSPredicate(format:"label == %@",label))
     XCTAssertGreaterThan(items.count,0)

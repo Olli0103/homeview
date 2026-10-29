@@ -125,6 +125,11 @@ struct ComplicationContent: View {
 struct FaceEditor: View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var canvasScale
+  @ScaledMetric(relativeTo:.headline) private var headingSize:CGFloat=30
+  @ScaledMetric(relativeTo:.body) private var choiceSize:CGFloat=17
+  @ScaledMetric(relativeTo:.title3) private var sectionSize:CGFloat=20
+  @ScaledMetric(relativeTo:.caption) private var familySize:CGFloat=13
+  @ScaledMetric(relativeTo:.subheadline) private var guidanceSize:CGFloat=15
   private let previewScale: CGFloat = 0.4
   private var minimumHitSide: CGFloat { (44 / max(0.01, canvasScale)).rounded(.up) }
   private struct Selection: Identifiable {
@@ -143,7 +148,7 @@ struct FaceEditor: View {
   var body: some View {
     VStack(spacing: 0) {
       HStack {
-        Text("Faces").font(.system(size: 30, weight: .bold))
+        Text("Faces").font(.system(size: headingSize, weight: .bold))
         Spacer()
         Button {
           model.route = .face
@@ -163,8 +168,8 @@ struct FaceEditor: View {
                   highlightedSlot = nil
                   model.updateLocalControls { $0.face = face }
                 } label: {
-                  Text(face.rawValue).font(.system(size: 17, weight: .medium))
-                    .padding(.horizontal, 18).frame(height: 48)
+                  Text(face.rawValue).font(.system(size: choiceSize, weight: .medium))
+                    .padding(.horizontal, 18).frame(height:max(48,ceil(choiceSize*1.3+24)))
                     .background(
                       model.data.face == face ? .lilac : .gray.opacity(0.12), in: Capsule())
                     .frame(minWidth: minimumHitSide, minHeight: minimumHitSide)
@@ -211,7 +216,7 @@ struct FaceEditor: View {
             }.padding(.horizontal, 32)
           }
           if !model.data.face.slots.isEmpty {
-            Text("Complications").font(.system(size: 20, weight: .semibold))
+            Text("Complications").font(.system(size: sectionSize, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 32)
             ForEach(Array(model.data.face.slots.enumerated()), id: \.element.id) { i, slot in
               Button {
@@ -221,7 +226,7 @@ struct FaceEditor: View {
                   VStack(alignment: .leading) {
                     Text(slot.title)
                     Text(slot.family.title)
-                      .font(.system(size: 13)).foregroundStyle(.secondary)
+                      .font(.system(size: familySize)).foregroundStyle(.secondary)
                   }
                   Spacer()
                   Text(model.data.complication(for: model.data.face, slot: slot).rawValue)
@@ -317,7 +322,7 @@ struct FaceEditor: View {
         .frame(width: 600 * previewScale, height: 600 * previewScale)
         .clipShape(RoundedRectangle(cornerRadius: 24))
       if !face.slots.isEmpty {
-        Text("Tap an outlined area to edit").font(.system(size: 15)).foregroundStyle(.secondary)
+        Text("Tap an outlined area to edit").font(.system(size: guidanceSize)).foregroundStyle(.secondary)
       }
     }
   }
