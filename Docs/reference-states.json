@@ -1666,7 +1666,7 @@
         "UI06"
       ],
       "replicaFaces": [],
-      "remainingGap": "Missing implementation and usable licensed full scene/timeline assets; issue #14 remains blocked."
+      "remainingGap": "Not implemented. Owner excluded Snoopy for rights on 2026-10-29; #14 closed not_planned, not a parity pass. Docs/scope-exclusions.md."
     },
     {
       "id": "photo-depth",
@@ -4254,5 +4254,17 @@
   "replicaContractGeometryPoints": [
     600,
     600
-  ]
+  ],
+  "currentScopeExclusions": {
+    "F015": {
+      "date": "2026-10-29",
+      "owner": "Olli",
+      "instruction": "snoopy skippen wir wegen rechten",
+      "status": "excluded_by_owner",
+      "reason": "rights",
+      "implemented": false,
+      "parity_accepted": false,
+      "issue_state_reason": "not_planned"
+    }
+  }
 }

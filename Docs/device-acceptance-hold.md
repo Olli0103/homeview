@@ -20,4 +20,4 @@ Current SDK builds and actual Mac Metal results remain separately labeled. Neith
 
 Resume the relevant physical lanes only when the owner provides a suitable consciously configured test device/signing setup and resumes that acceptance. Preserve issue criteria, old results and actual build/device digests. Do not restart completed software packages just to manufacture additional counts.
 
-Real Apple Home setup remains separately **forbidden until explicitly resumed**; this device hold does not relax that rule. Rights-cleared Snoopy assets, unknown original rules, visual/gesture calibration and unimplemented software paths are separate issues—not hardware excuses.
+Real Apple Home setup remains separately **forbidden until explicitly resumed**; this device hold does not relax that rule. Snoopy/F015 was separately excluded by the owner for rights on 2026-10-29 ([scope decision](scope-exclusions.md)), not accepted as parity. Unknown original rules, visual/gesture calibration and unimplemented software paths are separate issues—not hardware excuses.

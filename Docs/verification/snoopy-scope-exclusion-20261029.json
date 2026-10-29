@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-29",
+  "issue": 14,
+  "url": "https://github.com/Olli0103/homeview/issues/14",
+  "title": "[FACE-08] Snoopy-Szenen, Atlanten und Timelines klären",
+  "state": "closed",
+  "state_reason": "not_planned",
+  "labels": [
+    "priority:P1",
+    "area:faces",
+    "type:blocked"
+  ],
+  "body": "<!-- homeview-backlog:FACE-08 -->\n\n## Eigentümerentscheidung · 29. Oktober 2026\n\nOlli hat ausdrücklich entschieden: „snoopy skippen wir wegen rechten“.\n\nSnoopy / F015 ist damit aus dem aktiven Projektziel ausgeschlossen. Dieses Issue wird als **not planned**, nicht als implementiert oder abgenommen geschlossen. Es werden weder proprietäre Szenen/Animationen beschafft noch eine Ersatzfigur als Original ausgegeben. Die ursprünglichen Aufgaben und Abnahmekriterien unten bleiben als historischer Referenzumfang erhalten; `parity_accepted` bleibt `false`.\n\nDokumentation: [Scope-Ausschlüsse](https://github.com/Olli0103/homeview/blob/main/Docs/scope-exclusions.md). Der ursprüngliche Nenner bleibt 105 Referenzfunktionen / 82 Issues; F015 ist ein ausdrücklicher Ausschluss, kein Parity-PASS.\n\n---\n\n## Ursprüngliches Ziel\n\nSnoopy-Szenen, Atlanten und Timelines klären.\n\n## Stand\n\nSnoopy ist nicht implementiert. Statisch bekannte Engine-Struktur und Szenenbeschreibungen ersetzen keine vollständigen Atlanten oder Timelines.\n\nPriorität: P1. Typ: blocked. Bereich: faces.\n\n## Referenzumfang\n\n- F015: Snoopy reagiert auf Wetter, Datum und Tageszeit\n\n## Konkrete Arbeit\n\n- [ ] Rechtmäßig nutzbare vollständige Szenen, Timing, Wetter-/Datumsauswahl und Übergänge beschaffen oder eine ausdrücklich akzeptierte eigene Alternative definieren\n- [ ] Keine extrahierten proprietären Assets öffentlich einchecken\n- [ ] Speicher-/Animationsbudget und reduzierte Zustände festlegen\n\n## Abnahme\n\nErst mit dokumentierter Assetgrundlage und geprüften Szenen für Wetter, Datum und Tageszeit abschließen. Ein statisches Bild oder ähnliche Figur ist kein Parity-PASS.\n\n## Abhängigkeiten\n\n[PUB-01](https://github.com/Olli0103/homeview/blob/main/Docs/backlog.md#pub-01), [BASE-02](https://github.com/Olli0103/homeview/blob/main/Docs/backlog.md#base-02)\n\n## Testgrenze\n\nAutomatisierte Tests verwenden synthetische persönliche Daten und MockHome. Apple Home bleibt gesperrt, bis der Eigentümer die Einrichtung ausdrücklich fortsetzt. Keine Nachrichten oder Anrufe automatisch ausführen. Persönliche Accounts und physische Geräte werden gesondert und bewusst abgenommen.\n\nStand: 17. Oktober 2026. Quellen und ursprüngliche Referenzbilder werden nicht mit veröffentlicht. Build-Erfolg ist keine Originalgleichheit. Vollständige Zuordnung in [Docs/function-coverage.json](https://github.com/Olli0103/homeview/blob/main/Docs/function-coverage.json).\n",
+  "owner_instruction": "snoopy skippen wir wegen rechten",
+  "parity_accepted": false,
+  "read_back_exact": true,
+  "original_reference_functions": 105,
+  "active_reference_functions": 104,
+  "original_issues": 82,
+  "scope_exclusions": 1,
+  "previous_reconciliation": "backlog-reconciliation-20261029.json",
+  "original_closed_after_delta": 41,
+  "original_open_after_delta": 41,
+  "previous_completed_count_unchanged": 40
+}

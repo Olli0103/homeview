@@ -34,7 +34,7 @@ Varianten sind keine zusätzlichen eindeutig benannten Faces. Der Katalog lässt
 | --- | --- | --- |
 | Modular | UI01, UI39 | Modular vorhanden; exakte Typografie, Material und weitere Widgetkombinationen unter #78/#7 offen |
 | Albumvariante | UI02 | Photos vorhanden; vollständiger Original-Auswahldialog und Wechselalgorithmus unter #11 offen |
-| Snoopy Tag/dunkel | UI03, UI06 und eigener S07-Animationsclip | Kein Parity-Ersatz; lizenzierte Szenen/Timing fehlen, #14 bleibt blockiert |
+| Snoopy Tag/dunkel | UI03, UI06 und eigener S07-Animationsclip | Nicht implementiert; am 29. Oktober vom Eigentümer wegen der Rechte ausgeschlossen, #14 `not_planned`. Kein Parity-PASS; [Scope](scope-exclusions.md) |
 | Foto-Tiefenuhr | UI04, UI11, UI36 | Photos vorhanden; Originalformen, Algorithmus und native iPad-Segmentierung bleiben unter #11/#78 offen |
 | Wetter | UI05, UI19, UI20 | Weather vorhanden; Nah/Fern unterschieden, komplette Effekte/Licht unter #21 offen |
 | Home Modular | UI07, UI21 | Home Modular vorhanden; Prismendetail unter #20, echte Home-Quelle ausdrücklich gesperrt |

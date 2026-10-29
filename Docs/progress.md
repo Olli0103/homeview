@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Snoopy auf Eigentümerwunsch ausgeschlossen · 29. Oktober 2026
+
+[#14](https://github.com/Olli0103/homeview/issues/14) ist wegen der Rechte `not_planned` geschlossen. Nicht implementiert, keine Original-Parity; F015 bleibt im historischen 105er-Inventar erhalten, 104 aktive Referenzfunktionen. **41/82 geschlossen: 40 dokumentierte Abschlüsse + 1 Scope-Ausschluss; 41 offen.** [Entscheidung](scope-exclusions.md) · [exakter Issue-Read-back](verification/snoopy-scope-exclusion-20261029.json). Übrige Arbeit läuft weiter.
+
 ## App-Umschalter: Assistenten-/Reminder-Tastaturen · 29. Oktober 2026
 
 [Zwei iPhone-Vorherfehler korrigiert](app-switcher-keyboard.md): Tastatur/Vorschläge blieben über der Root-Abdeckung; Entwurfstext war bereits verdeckt, zwei iPad-Gegenkontrollen bereits grün. Nur vorhandene FocusStates bei Inaktivität gelöst, Entwürfe bleiben erhalten. Zehn aktuelle UI-Ausführungen und fünf SDKs bestanden; getrennte 225-Quellen-/App-/Test-/Archivbindung. Andere Eingaben, Präsentationen und physische Snapshot-/Präsenz-/Medienabnahmen bleiben bei #67 offen; **40/82 geschlossen, 42 offen**.

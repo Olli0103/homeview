@@ -1,5 +1,7 @@
 # Vollständiges Parity-Backlog
 
+**Scope-Entscheidung, 29. Oktober 2026:** Snoopy / F015 wird wegen der Rechte auf ausdrücklichen Eigentümerwunsch nicht umgesetzt; #14 ist `not_planned`, nicht als Parity abgeschlossen. [Details](scope-exclusions.md). Der ursprüngliche Katalog unten bleibt erhalten.
+
 Aktueller Bearbeitungsstand: [Fortschritt und abgeschlossene Pakete](progress.md). Die ursprünglichen Restbeschreibungen unten sind der Ausgangskatalog.
 
 Stand 17. Oktober 2026. 82 konkrete Arbeitspakete decken alle 105 Referenzfunktionen ab. Manche Pakete bündeln eng zusammengehörige Funktionen, andere betreffen Renderer, Datenschutz, Veröffentlichung oder Abnahme.
@@ -323,6 +325,8 @@ Abhängigkeiten: BASE-02.
 
 <a id="face-08"></a>
 ### FACE-08: Snoopy-Szenen, Atlanten und Timelines klären
+
+**Aktueller Status:** Eigentümer-Ausschluss wegen der Rechte am 29. Oktober 2026; #14 geschlossen als `not_planned`, nicht implementiert/abgenommen. [Scope-Entscheidung](scope-exclusions.md). Folgende Aufgaben sind der ursprüngliche, nicht mehr verfolgte Umfang.
 
 Snoopy ist nicht implementiert. Statisch bekannte Engine-Struktur und Szenenbeschreibungen ersetzen keine vollständigen Atlanten oder Timelines.
 

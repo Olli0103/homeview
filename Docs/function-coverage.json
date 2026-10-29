@@ -16,7 +16,8 @@
       "Modular-Wetterblock an privat geprüftes UI01 angenähert: normale Laufzeitschrift, korrigierte sichtbare Feldpositionen ohne geänderte Layoutplätze.166Core/6finalUI/5SDK, native Positionsgrenzen und außerhalb Wetterbereich exakt0Pixeländerungen;55°/fehlend— und reale Widgettaps geprüft. Docs/modular-weather-reference.md. Originalfont/Symbol/Licht/Hardware bleiben offen.",
       "Feine öffentliche Lichtkante nur an Modular-Datum und -Temperatur ergänzt. Native ein-/zweistellige Tage, verbundene/fehlende Werte und reale Widget-Taps geprüft. Außerhalb zweier eigener UI01-artiger Referenzbereiche und im um einen Referenzpixel abgegrenzten dunklen Inneren exakt null Pixeländerung auf beiden Geräten; tatsächlich hellere Randpixel.166 Modelltests/sechs UI/fünf SDKs; Docs/modular-light-edge.md. Keine Originalfont-/Reliefshader-, Hardware- oder Vollsuite-Abnahme.",
       "Modular-Analoguhr nutzt vorhandene schmale Zeigerstege und opt-in Kantenlicht, ohne Schrift-/Längen-/Skalen-/Sekunden-/Nabenänderung. Sechs native UI/166 Modelltests/fünf SDKs; drei Datumsbilder je Gerät außerhalb Uhr unverändert, Fade vier PNG-Paare bytegleich. Leere Erst-Innenmaske und roher Schwarztest bleiben fehlgeschlagen dokumentiert; ergänzte größere Innenmasken mit exakt null RGB-Änderungen und tatsächlicher Teilmengenprüfung. 22 eigene Bilder; Docs/modular-clock-detail.md. Original-/Hardwareabnahme offen.",
-      "Referenz-/Face-Inventur #2/#5 abgeschlossen: 13 sichtbare Gruppen mit geprüfter Replik oder konkreter Lücke, 14 aktuelle Identitäten auf beiden Simulatoren, vier Watch-Zusatzfaces separat. Docs/reference-catalogue.md. Renderer-, Snoopy-, Original- und Hardware-Parity bleiben offen."
+      "Referenz-/Face-Inventur #2/#5 abgeschlossen: 13 sichtbare Gruppen mit geprüfter Replik oder konkreter Lücke, 14 aktuelle Identitäten auf beiden Simulatoren, vier Watch-Zusatzfaces separat. Docs/reference-catalogue.md. Renderer-, Snoopy-, Original- und Hardware-Parity bleiben offen.",
+      "29. Oktober: Snoopy / F015 ist nun ein ausdrücklicher Eigentümer-Scope-Ausschluss wegen der Rechte, keine weiter angefragte Implementierung und kein Parity-PASS. Docs/scope-exclusions.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -471,7 +472,8 @@
       "FACE-08"
     ],
     "current": [
-      "Snoopy ist nicht implementiert. Statisch bekannte Engine-Struktur und Szenenbeschreibungen ersetzen keine vollständigen Atlanten oder Timelines."
+      "Snoopy ist nicht implementiert. Statisch bekannte Engine-Struktur und Szenenbeschreibungen ersetzen keine vollständigen Atlanten oder Timelines.",
+      "29. Oktober: Olli schließt Snoopy wegen der Rechte ausdrücklich aus dem aktiven Ziel aus. #14 not_planned geschlossen; nicht implementiert, parity_accepted=false. Docs/scope-exclusions.md. Historischer Nenner 105 bleibt erhalten; 104 aktive Referenzfunktionen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -484,13 +486,23 @@
     "target": "iPad core",
     "implementation_status": "blocked",
     "acceptance": {
-      "functional": "pending",
-      "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "functional": "not pursued: owner-excluded for rights; not accepted",
+      "visual": "not pursued: owner-excluded for rights; not accepted",
+      "device_service": "not pursued: owner-excluded for rights; not accepted"
     },
     "completion_criteria": [
       "Erst mit dokumentierter Assetgrundlage und geprüften Szenen für Wetter, Datum und Tageszeit abschließen. Ein statisches Bild oder ähnliche Figur ist kein Parity-PASS."
-    ]
+    ],
+    "scope_decision": {
+      "date": "2026-10-29",
+      "owner": "Olli",
+      "instruction": "snoopy skippen wir wegen rechten",
+      "status": "excluded_by_owner",
+      "reason": "rights",
+      "implemented": false,
+      "parity_accepted": false,
+      "issue_state_reason": "not_planned"
+    }
   },
   {
     "id": "F016",

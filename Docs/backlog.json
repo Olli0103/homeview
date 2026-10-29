@@ -434,7 +434,7 @@
     "functions": [
       "F015"
     ],
-    "current": "Snoopy ist nicht implementiert. Statisch bekannte Engine-Struktur und Szenenbeschreibungen ersetzen keine vollständigen Atlanten oder Timelines.",
+    "current": "Nicht implementiert. Am 29. Oktober 2026 ausdrücklich wegen der Rechte aus dem aktiven Ziel ausgeschlossen; #14 not_planned geschlossen, kein Parity-PASS. Ursprüngliche Aufgaben und Kriterien bleiben historisch erhalten. Docs/scope-exclusions.md.",
     "tasks": [
       "Rechtmäßig nutzbare vollständige Szenen, Timing, Wetter-/Datumsauswahl und Übergänge beschaffen oder eine ausdrücklich akzeptierte eigene Alternative definieren",
       "Keine extrahierten proprietären Assets öffentlich einchecken",
@@ -447,9 +447,20 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/14",
     "issue_number": 14,
-    "state": "open",
-    "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "state": "closed",
+    "github_state": "closed",
+    "github_state_verified_on": "2026-10-29",
+    "github_state_reason": "not_planned",
+    "scope_decision": {
+      "date": "2026-10-29",
+      "owner": "Olli",
+      "instruction": "snoopy skippen wir wegen rechten",
+      "status": "excluded_by_owner",
+      "reason": "rights",
+      "implemented": false,
+      "parity_accepted": false,
+      "issue_state_reason": "not_planned"
+    }
   },
   {
     "key": "FLOW-01",

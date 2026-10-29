@@ -10,7 +10,7 @@
 
 - [Wetter-Quellenlink: vier echte native Randaufrufe mit richtigem Safari-Ziel](weather-attribution-os-route.md); getrennte Testquelle, Produkt unverändert. #73 bleibt für übrige Kriterien offen.
 
-29. Oktober 2026. **40 von 82 ursprünglichen Paketen geschlossen, 42 offen.** Alle ursprünglichen Nummern wurden mit den aktuellen offenen und geschlossenen GitHub-Issues abgeglichen. Das zusätzliche Community-Issue #83 ist geschlossen und wird nicht in den ursprünglichen Nenner eingerechnet. [Read-back](verification/backlog-reconciliation-20261029.json).
+29. Oktober 2026. **41 von 82 ursprünglichen Paketen geschlossen, 41 offen: 40 im dokumentierten Umfang abgeschlossen und 1 ausdrücklicher Scope-Ausschluss (#14/Snoopy, `not_planned`, nicht implementiert).** [Eigentümerentscheidung](scope-exclusions.md). Der vollständige [40/42-Abgleich](verification/backlog-reconciliation-20261029.json) bleibt als früherer Prüfstand erhalten; die zusätzliche #14-Schließung ist [exakt zurückgelesen](verification/snoopy-scope-exclusion-20261029.json). Das zusätzliche Community-Issue #83 ist geschlossen und wird nicht in den ursprünglichen Nenner eingerechnet.
 
 ## Aktueller Arbeitsblock
 
@@ -33,7 +33,7 @@ Das Ziel bleibt die belegte native Apple-HomeView-Kopie, keine freie Neugestaltu
 
 ## Vollständiger aktueller Paketstatus
 
-Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs, nicht automatisch vollständige Parity jeder zugeordneten Originalfunktion. Die ursprünglichen Aufgaben und Kriterien bleiben in [backlog.json](backlog.json) erhalten.
+Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs oder einen ausdrücklich benannten Eigentümer-Scope-Ausschluss, nicht automatisch vollständige Parity jeder zugeordneten Originalfunktion. Die ursprünglichen Aufgaben und Kriterien bleiben in [backlog.json](backlog.json) erhalten.
 
 | Issue | Arbeit | Status / nächste Grenze |
 |---|---|---|
@@ -50,7 +50,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs, nicht automatis
 | [#11](https://github.com/Olli0103/homeview/issues/11) | Foto-Galerie und geteilte Alben vervollständigen | Offen; zusätzliche Software-, Originalzustands-/Geometrie-/Bewegungsabnahme erforderlich. |
 | [#12](https://github.com/Olli0103/homeview/issues/12) | Motivgeschützte Uhrplatzierung und Bildausschnitt berechnen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#13](https://github.com/Olli0103/homeview/issues/13) | Tageszeit-, Nacht- und reduzierte Face-Zustände vervollständigen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
-| [#14](https://github.com/Olli0103/homeview/issues/14) | Snoopy-Szenen, Atlanten und Timelines klären | Offen. Rechtmäßig nutzbare vollständige Snoopy-Szenen/Timelines fehlen; keine Ersatzfigur als Original-PASS. |
+| [#14](https://github.com/Olli0103/homeview/issues/14) | Snoopy-Szenen, Atlanten und Timelines klären | Eigentümer-Ausschluss wegen der Rechte (29. Oktober), `not_planned` geschlossen. Nicht implementiert/abgenommen; kein Ersatz als Original-PASS. [Scope](scope-exclusions.md). |
 | [#15](https://github.com/Olli0103/homeview/issues/15) | Variable Flow-Ziffern mit korrekten Metriken entwickeln | Offen; zusätzliche Software-, Originalzustands-/Geometrie-/Bewegungsabnahme erforderlich. |
 | [#16](https://github.com/Olli0103/homeview/issues/16) | Flow-Glas, Fluidparameter und Originalbewegung kalibrieren | Offen; zusätzliche Software-, Originalzustands-/Geometrie-/Bewegungsabnahme erforderlich. |
 | [#17](https://github.com/Olli0103/homeview/issues/17) | CPU-Fluid schrittweise auf Metal-Texturen portieren | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
