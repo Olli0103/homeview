@@ -31,7 +31,9 @@ struct LocalResetView:View {
     VStack(spacing:0) {
       HStack {
         Text("Reset local app content").font(.title2.bold());Spacer()
-        Button("Cancel") { model.cancelLocalReset() }.accessibilityIdentifier("reset.cancel")
+        Button { model.cancelLocalReset() } label: {
+          Text("Cancel").frame(minWidth:44,minHeight:44).contentShape(Rectangle())
+        }.accessibilityIdentifier("reset.cancel")
       }.padding(24)
       ScrollView {
         VStack(alignment:.leading,spacing:20) {

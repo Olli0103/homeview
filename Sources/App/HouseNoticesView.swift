@@ -16,7 +16,9 @@ struct HouseNoticesView:View {
       HStack {
         Text("Mock house notices").font(.title2.bold())
         Spacer()
-        Button("Done") {dismiss()}.frame(minWidth:60,minHeight:44).accessibilityIdentifier("notices.done")
+        Button {dismiss()} label: {
+          Text("Done").frame(minWidth:60,minHeight:44).contentShape(Rectangle())
+        }.accessibilityIdentifier("notices.done")
       }
       Text("Synthetic events only · Demo house · Apple Home disconnected")
         .font(.subheadline).foregroundStyle(.secondary)

@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Sieben Done-/Cancel-Trefferrechtecke korrigiert, zwei native Toolbar-Controls unverändert gegengeprüft](secondary-hit-regions.md):36 aktuelle UI-Ausführungen/fünf SDKs. Echte44-Punkte-Randpunkte außerhalb nativer AX-Bounds funktionieren; verworfene Vorbehalte getrennt erhalten. Profil-Editor-Kontrast wird separat weiterverfolgt, #73 offen.
+
 - [Assistenten-Systemschrift und Done-Rechteck korrigiert](assistant-dynamic-type.md): drei Antwort-Textrollen wachsen nun in größter Accessibility-Kategorie; vier normale Antwortansichten exakt pixelgleich.18 aktuelle UI-Ausführungen/fünf SDKs; Gerätepräferenzen zurückgestellt. Nur dieser Teilumfang, #73 für übrige Flows/Hilfsmittel offen.
 
 - [Manuelles Vorlesen sichtbarer Antwortkarten vervollständigt](card-readout.md):18 Vorherfehler in76AppModel-Assertions; danach405Coretests/76AppModel-Assertions,14 aktuelle UI-Ausführungen/fünf SDKs bestanden. Kein automatisches Sprechen oder versteckte Quellen-/Aktionsinhalte; #36 für Original-/Live-/Hilfsmittelgrenzen offen.

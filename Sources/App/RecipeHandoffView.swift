@@ -2,12 +2,16 @@ import SwiftUI
 
 struct RecipeHandoffView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   var body:some View {
     VStack(alignment:.leading,spacing:24) {
       HStack {
         Text("Recipe Handoff").font(.system(size:27,weight:.semibold))
         Spacer()
-        Button("Done") { model.closeRecipeHandoff() }.accessibilityIdentifier("recipe.handoff.done")
+        Button { model.closeRecipeHandoff() } label: {
+          Text("Done").frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
+        }.accessibilityIdentifier("recipe.handoff.done")
       }
       Text("Continue cooking in HomeView on another device.").font(.system(size:27))
       Text("Recipe text, ingredients and source URLs are not copied. Save the same recipe on both devices first.")

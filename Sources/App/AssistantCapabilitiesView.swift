@@ -8,7 +8,9 @@ struct AssistantCapabilitiesView: View {
       HStack {
         Text("Assistant capabilities").font(.title2.bold())
         Spacer()
-        Button("Done") { dismiss() }.accessibilityIdentifier("assistant.capabilities.done")
+        Button { dismiss() } label: {
+          Text("Done").frame(minWidth:44,minHeight:44).contentShape(Rectangle())
+        }.accessibilityIdentifier("assistant.capabilities.done")
       }.padding(24)
       ScrollView {
         VStack(alignment:.leading,spacing:22) {

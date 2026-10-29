@@ -3,6 +3,157 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private enum SecondaryHitTarget:String {
+    case capabilities,personalEditor,recipeHandoff,musicArtwork,resetCancel,power,notices,timerActivity,voiceCancel
+    var identifier:String {
+      switch self {
+      case .capabilities:return "assistant.capabilities.done"
+      case .personalEditor:return "personal.editor.done"
+      case .recipeHandoff:return "recipe.handoff.done"
+      case .musicArtwork:return "music.artwork.done"
+      case .resetCancel:return "reset.cancel"
+      case .power:return "power.capabilities.done"
+      case .notices:return "notices.done"
+      case .timerActivity:return "timer.activity.done"
+      case .voiceCancel:return "assistant.voice.cancel"
+      }
+    }
+  }
+  private func verifySecondaryHitTarget(_ target:SecondaryHitTarget,bottomRight:Bool) {
+    continueAfterFailure=false
+    let owned=UUID().uuidString,draft="OWNED_HIT_DRAFT",edge=bottomRight ? "bottom-right":"top-left"
+    print("SECONDARY_HIT_OWNED_STORE "+owned+" target="+target.rawValue+" edge="+edge)
+    var args=["--persistence-test",owned,"--reset-test-store"]
+    switch target {
+    case .recipeHandoff:args += ["--screen-recipe"]
+    case .musicArtwork:args += ["--page","Music"]
+    case .resetCancel,.power:args += ["--page","Settings"]
+    case .timerActivity:args += ["--page","Settings","--timer-activity-fixture"]
+    case .capabilities,.voiceCancel:args += ["--answer-speech-fixture"]
+    default:break
+    }
+    launch(args)
+    var retained=""
+    switch target {
+    case .capabilities:
+      tap("nav.assistant")
+      let input=app.textFields["assistant.input"];input.tap();input.typeText(draft)
+      tap("assistant.capabilities")
+    case .personalEditor:
+      tap("nav.apps");tap("personal.profile");tap("profile.Alex")
+      app.buttons["personal.profile"].press(forDuration:1);tap("personal.edit")
+      XCTAssertTrue(app.staticTexts["Home Screen · Alex"].waitForExistence(timeout:5))
+    case .recipeHandoff:
+      tap("recipe.start")
+      XCTAssertTrue(app.staticTexts["cooking.text"].waitForExistence(timeout:5))
+      retained=app.staticTexts["cooking.text"].label;tap("cooking.handoff")
+      XCTAssertFalse(app.buttons["recipe.handoff.stop"].exists)
+    case .musicArtwork:
+      XCTAssertEqual(app.buttons["player.play"].label,"Play");tap("music.artwork.info.demo")
+      XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Bundled demo player")
+    case .resetCancel:
+      openResetReview();XCTAssertFalse(app.buttons["reset.confirm"].exists)
+    case .power:
+      let power=app.buttons["settings.power"];scrollPhotoControlFullyIntoView(power);power.tap()
+      XCTAssertTrue(app.staticTexts["power.assessment"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.staticTexts["power.assessment"].label,"Adapter adequacy: Not available")
+    case .notices:
+      openMockNotices();XCTAssertTrue(app.staticTexts["notices.empty"].exists)
+      XCTAssertEqual(app.staticTexts["notices.count"].label,"0 groups · 0 visible events")
+    case .timerActivity:
+      openTimerActivitySettings();XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"0")
+    case .voiceCancel:
+      tap("nav.assistant")
+      let input=app.textFields["assistant.input"];input.tap();input.typeText(draft)
+      retained=app.staticTexts["assistant.reply"].label;tap("assistant.voice")
+      XCTAssertTrue(app.staticTexts["assistant.voice.status"].label.contains("Synthetic"))
+      revealPlanControl(app.buttons[target.identifier])
+    }
+    let button=app.buttons[target.identifier]
+    XCTAssertTrue(button.waitForExistence(timeout:5));XCTAssertTrue(button.isEnabled)
+    // The visible synthetic voice Cancel can report false AX hittability.
+    // Its full scroll-clip containment and real corner action remain required.
+    if target != .voiceCancel {XCTAssertTrue(button.isHittable)}
+    let frame=button.frame,bounds=app.frame
+    XCTAssertFalse(frame.isEmpty);XCTAssertTrue(bounds.contains(frame))
+    let nativeToolbar=target == .musicArtwork || target == .timerActivity
+    // UIKit's reported toolbar frame is not its hit-test bounds. Probe the
+    // actual corners of a centered >=44-point rectangle, including outside
+    // the reported 36-point height, instead of restyling a system button.
+    let touchFrame=nativeToolbar
+      ? CGRect(x:frame.midX-max(44,frame.width)/2,y:frame.midY-max(44,frame.height)/2,
+        width:max(44,frame.width),height:max(44,frame.height)):frame
+    XCTAssertTrue(bounds.contains(touchFrame))
+    let point=CGPoint(x:bottomRight ? touchFrame.maxX-2:touchFrame.minX+2,y:bottomRight ? touchFrame.maxY-2:touchFrame.minY+2)
+    func box(_ f:CGRect)->[Double] {[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)]}
+    let data:[String:Any]=["target":target.rawValue,"identifier":target.identifier,"edge":edge,
+      "frame":box(frame),"app":box(bounds),"point":[Double(point.x),Double(point.y)],"owned_store":owned,
+      "AX_hittable":button.isHittable,"enabled":button.isEnabled,"native_toolbar":nativeToolbar,"touch_frame":box(touchFrame)]
+    let attachment=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="secondary-hit-"+target.rawValue+"-"+edge+"-geometry";attachment.lifetime = .keepAlways;add(attachment)
+    shot("secondary-hit-"+target.rawValue+"-"+edge+"-before")
+    continueAfterFailure=true
+    if !nativeToolbar {
+      XCTAssertGreaterThanOrEqual(frame.width,44-0.000_001,"minimum hit width: "+target.rawValue)
+      XCTAssertGreaterThanOrEqual(frame.height,44-0.000_001,"minimum hit height: "+target.rawValue)
+    }
+    continueAfterFailure=false
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:point.x-bounds.minX,dy:point.y-bounds.minY)).tap()
+    expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:button);waitForExpectations(timeout:5)
+    switch target {
+    case .capabilities:
+      XCTAssertTrue(app.buttons["assistant.capabilities"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.textFields["assistant.input"].value as? String,draft)
+    case .personalEditor:
+      XCTAssertTrue(app.buttons["personal.profile"].waitForExistence(timeout:5))
+      app.buttons["personal.profile"].press(forDuration:1);tap("personal.edit")
+      XCTAssertTrue(app.staticTexts["Home Screen · Alex"].waitForExistence(timeout:5));tap("personal.editor.done")
+    case .recipeHandoff:
+      XCTAssertTrue(app.staticTexts["cooking.text"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.staticTexts["cooking.text"].label,retained);XCTAssertFalse(app.buttons["timer.pause"].exists)
+    case .musicArtwork:
+      XCTAssertTrue(app.buttons["music.artwork.info.demo"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    case .resetCancel:
+      XCTAssertTrue(app.buttons["settings.reset"].waitForExistence(timeout:5))
+      openResetReview();XCTAssertFalse(app.textFields["reset.confirmation"].exists)
+      XCTAssertFalse(app.buttons["reset.confirm"].exists);tap("reset.cancel")
+    case .power:XCTAssertTrue(app.buttons["settings.power"].waitForExistence(timeout:5))
+    case .notices:
+      XCTAssertTrue(app.buttons["controls.notices"].waitForExistence(timeout:5))
+      openMockNotices();XCTAssertEqual(app.staticTexts["notices.count"].label,"0 groups · 0 visible events");tap("notices.done")
+    case .timerActivity:
+      XCTAssertTrue(app.buttons["settings.timer-activity"].waitForExistence(timeout:5))
+      openTimerActivitySettings();XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"0");tap("timer.activity.done")
+    case .voiceCancel:
+      XCTAssertEqual(app.textFields["assistant.input"].value as? String,draft)
+      XCTAssertEqual(app.staticTexts["assistant.reply"].label,retained)
+    }
+    shot("secondary-hit-"+target.rawValue+"-"+edge+"-returned")
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+  func testSecondaryCapabilitiesTopLeft() {verifySecondaryHitTarget(.capabilities,bottomRight:false)}
+  func testSecondaryCapabilitiesBottomRight() {verifySecondaryHitTarget(.capabilities,bottomRight:true)}
+  func testSecondaryPersonalEditorTopLeft() {verifySecondaryHitTarget(.personalEditor,bottomRight:false)}
+  func testSecondaryPersonalEditorBottomRight() {verifySecondaryHitTarget(.personalEditor,bottomRight:true)}
+  func testSecondaryRecipeHandoffTopLeft() {verifySecondaryHitTarget(.recipeHandoff,bottomRight:false)}
+  func testSecondaryRecipeHandoffBottomRight() {verifySecondaryHitTarget(.recipeHandoff,bottomRight:true)}
+  func testSecondaryMusicArtworkTopLeft() {verifySecondaryHitTarget(.musicArtwork,bottomRight:false)}
+  func testSecondaryMusicArtworkBottomRight() {verifySecondaryHitTarget(.musicArtwork,bottomRight:true)}
+  func testSecondaryResetCancelTopLeft() {verifySecondaryHitTarget(.resetCancel,bottomRight:false)}
+  func testSecondaryResetCancelBottomRight() {verifySecondaryHitTarget(.resetCancel,bottomRight:true)}
+  func testSecondaryPowerTopLeft() {verifySecondaryHitTarget(.power,bottomRight:false)}
+  func testSecondaryPowerBottomRight() {verifySecondaryHitTarget(.power,bottomRight:true)}
+  func testSecondaryNoticesTopLeft() {verifySecondaryHitTarget(.notices,bottomRight:false)}
+  func testSecondaryNoticesBottomRight() {verifySecondaryHitTarget(.notices,bottomRight:true)}
+  func testSecondaryTimerActivityTopLeft() {verifySecondaryHitTarget(.timerActivity,bottomRight:false)}
+  func testSecondaryTimerActivityBottomRight() {verifySecondaryHitTarget(.timerActivity,bottomRight:true)}
+  func testSecondaryVoiceCancelTopLeft() {verifySecondaryHitTarget(.voiceCancel,bottomRight:false)}
+  func testSecondaryVoiceCancelBottomRight() {verifySecondaryHitTarget(.voiceCancel,bottomRight:true)}
+}
+
+extension HomeViewUITests {
   private func systemTextSizeGeometry(_ name:String,_ elements:[String:XCUIElement]) {
     var rows:[[String:Any]]=[]
     for key in elements.keys.sorted() {

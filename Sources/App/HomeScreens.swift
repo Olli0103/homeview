@@ -228,7 +228,9 @@ private struct PersonalHomeEditor: View {
       HStack {
         Text("Home Screen · \(profile)").font(.title2.bold())
         Spacer()
-        Button("Done") { dismiss() }.accessibilityIdentifier("personal.editor.done")
+        Button { dismiss() } label: {
+          Text("Done").frame(minWidth:44,minHeight:44).contentShape(Rectangle())
+        }.accessibilityIdentifier("personal.editor.done")
       }
       Text("Layout").font(.headline)
       VStack(alignment:.leading,spacing:8) {

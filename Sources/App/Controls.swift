@@ -350,8 +350,9 @@ struct AssistantView: View {
                 systemImage: voice.recording ? "stop.circle.fill" : "mic.circle.fill")
             }.disabled(voiceInitiating || (voice.busy && !voice.recording) || model.assistantAI.busy || model.demoPlanBusy).accessibilityIdentifier("assistant.voice")
             if voiceInitiating || voice.busy || voice.phase == .ready {
-              Button("Cancel") { voiceSession.cancelAndRestore() }
-              .accessibilityIdentifier("assistant.voice.cancel")
+              Button { voiceSession.cancelAndRestore() } label: {
+                Text("Cancel").frame(minWidth:44,minHeight:44).contentShape(Rectangle())
+              }.accessibilityIdentifier("assistant.voice.cancel")
             }
             Spacer()
             Menu {
