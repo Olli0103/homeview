@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Native Vision-Matrix ohne Produktänderung · 29. Oktober 2026
+
+[Vier aktuelle Vision-Methoden bestanden](vision-native-runtime.md): kontrolliertes Fenster/Mock-Thermostat, lokaler Timer, ungesendete Eingabe und lokaler WebKit-Inhalt. Fünf tatsächlich gesichtete Simulator-Kamerabilder vollständig an Haltezustände gebunden; fehlerhafte Screenshot-APIs/zu späte ältere Captures getrennt.165 Produktquell-/Ressourcendateien unverändert zu `6eaf5f7`,231 gesamte Inputs gebunden. Keine neue physische/Original-/Mehrfensterabnahme; #79 bleibt offen, Gesamtauftrag läuft weiter.
+
 ## Native Watch: Installation und getrennte Temperaturaktionen · 29. Oktober 2026
 
 [Zwei echte Plattformfehler behoben](watch-native-runtime.md): eindeutige Watch-only-Metadaten erlauben Installation; getrennte44-Punkte-Buttons verhindern doppelte Temperaturaktionen. Zwei aktuelle native Watch-Methoden/fünf SDKs bestanden; echter Timer-Hintergrund/Rückkehrfall war bereits vorher grün.228 Quellen, installierte App und Archive gebunden. Reduzierter eigenständiger Umfang, keine volle iPad-Parity; #79/#81 für übrige Kriterien offen.
