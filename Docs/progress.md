@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Kalender: tatsächlicher OS-App-Umschalter · 29. Oktober 2026
+
+[Vier finale UI-Ausführungen](app-switcher-calendar.md) bestehen: zwei echte vollständige HomeView-Karten je iPhone-/iPad-Simulator zeigen den schwarzen Schutz ohne sichtbare Kalenderreste; bloße Inaktivität und echter Home-Hintergrund/Fresh Unlock getrennt. Zwei frühere Testannahmen-/Ausschnittfehler erhalten. 225 Quellen, alle Eingabearchive und installierten Apps geprüft; alle 19 Produktdateien unverändert, keine neuen Core-/SDK-Läufe. Andere persönliche Routen/Sheets und physische Snapshot-/Präsenzabnahme bleiben offen; #67 weiter OPEN, **40/82 geschlossen, 42 offen**.
+
 ## Wetter-Quellenlink: echtes OS-Routing · 29. Oktober 2026
 
 [Vier reale Randaufrufe](weather-attribution-os-route.md) erreichen Safari und den exakten Host in der nativen Adressanzeige; zwei finale UI-Ausführungen bestanden. Zwei alte Selektorfehler separat erhalten. Alle 19 Produktdateien bytegleich zu `88b068e`, keine neuen SDK-/Core-Läufe. Webseite noch nicht vollständig geladen, kein Verfügbarkeits-/Hilfsmittel-/Original-PASS. #73 bleibt offen; **40/82 geschlossen, 42 offen**.

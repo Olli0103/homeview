@@ -1,5 +1,7 @@
 # Verbleibende Arbeit und Grenzen
 
+- [Kalender im tatsächlichen OS-App-Umschalter](app-switcher-calendar.md): vier finale UI-Ausführungen, vollständige Karten und Hintergrund/Fresh Unlock geprüft. Andere persönliche Routen/Sheets, Präsenz/Medien und physische Snapshots bleiben bei #67 offen.
+
 - [Wetter-Quellenlink: vier echte native Randaufrufe mit richtigem Safari-Ziel](weather-attribution-os-route.md); getrennte Testquelle, Produkt unverändert. #73 bleibt für übrige Kriterien offen.
 
 29. Oktober 2026. **40 von 82 ursprünglichen Paketen geschlossen, 42 offen.** Alle ursprünglichen Nummern wurden mit den aktuellen offenen und geschlossenen GitHub-Issues abgeglichen. Das zusätzliche Community-Issue #83 ist geschlossen und wird nicht in den ursprünglichen Nenner eingerechnet. [Read-back](verification/backlog-reconciliation-20261029.json).

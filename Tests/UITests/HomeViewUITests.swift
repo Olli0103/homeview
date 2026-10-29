@@ -3575,6 +3575,82 @@ final class HomeViewUITests: XCTestCase {
     tap("device.unlock")
     XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout: 5))
   }
+  private func calendarSwitcherCard(from source:XCUIApplication,bounds:CGRect,checkpoint:String)->XCUIElement {
+    let origin=source.coordinate(withNormalizedOffset:.zero)
+    let start=CGPoint(x:bounds.midX,y:bounds.maxY-1)
+    let end=CGPoint(x:bounds.midX,y:bounds.minY+bounds.height*0.42)
+    origin.withOffset(CGVector(dx:start.x,dy:start.y))
+      .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:end.x,dy:end.y)),
+        withVelocity:.slow,thenHoldForDuration:1)
+    let system=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+    XCTAssertTrue(system.windows["SBSwitcherWindow:Main"].waitForExistence(timeout:5))
+    XCTAssertTrue(system.otherElements["AppSwitcherContentView"].exists)
+    let card=system.otherElements.matching(NSPredicate(format:
+      "identifier BEGINSWITH %@","card:org.example.HomeViewReplica:")).firstMatch
+    XCTAssertTrue(card.waitForExistence(timeout:5));XCTAssertEqual(card.label,"HomeView")
+    for _ in 0..<4 {
+      let f=card.frame
+      if bounds.contains(f) {break}
+      let visible=f.intersection(bounds),distance=max(-bounds.width*0.55,min(bounds.width*0.55,bounds.midX-f.midX))
+      let a=system.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:visible.midX,dy:visible.midY))
+      a.press(forDuration:0.1,thenDragTo:a.withOffset(CGVector(dx:distance,dy:0)),withVelocity:.slow,thenHoldForDuration:0.3)
+    }
+    let f=card.frame
+    let tree=XCTAttachment(string:system.debugDescription)
+    tree.name="switcher-"+checkpoint+"-native-system-tree";tree.lifetime = .keepAlways;add(tree)
+    let screenshot=XCUIScreen.main.screenshot()
+    let screen=XCTAttachment(screenshot:screenshot)
+    screen.name="switcher-"+checkpoint+"-native-system-screen";screen.lifetime = .keepAlways;add(screen)
+    XCTAssertTrue(bounds.contains(f),"Entire HomeView card must be visible, not a clipped sliver")
+    let image=screenshot.image.cgImage!,scale=CGFloat(image.width)/bounds.width
+    let pixelFrame=CGRect(x:f.minX*scale,y:f.minY*scale,width:f.width*scale,height:f.height*scale).integral
+    let cropped=UIImage(cgImage:image.cropping(to:pixelFrame)!),png=cropped.pngData()!
+    let crop=XCTAttachment(image:cropped)
+    crop.name="switcher-"+checkpoint+"-whole-homeview-card";crop.lifetime = .keepAlways;add(crop)
+    let bytes=[UInt8](viewportPixels(png,inset:0));var black=0
+    for i in stride(from:0,to:bytes.count,by:4) {
+      if max(bytes[i],max(bytes[i+1],bytes[i+2]))<20 {black+=1}
+    }
+    let fraction=Double(black)/Double(bytes.count/4)
+    let data:[String:Any] = ["appState":app.state.rawValue,"systemState":system.state.rawValue,
+      "cardIdentifier":card.identifier,"cardLabel":card.label,"wholeCardVisible":bounds.contains(f),
+      "cardFrame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "pixelFrame":[Double(pixelFrame.minX),Double(pixelFrame.minY),Double(pixelFrame.width),Double(pixelFrame.height)],
+      "screenFrame":[Double(bounds.minX),Double(bounds.minY),Double(bounds.width),Double(bounds.height)],
+      "blackFraction":fraction,"blackThreshold":20,"minimumBlackFraction":0.98,
+      "acceptance":"coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee"]
+    let receipt=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    receipt.name="switcher-"+checkpoint+"-snapshot-receipt";receipt.lifetime = .keepAlways;add(receipt)
+    XCTAssertGreaterThanOrEqual(fraction,0.98,"Full card should show the existing black shield, not the white/green calendar")
+    return card
+  }
+  func testCalendarNativeAppSwitcherSnapshotHidesPersonalContents() {
+    continueAfterFailure=false
+    launch(["--page","Settings","--persistence-test",UUID().uuidString])
+    connectService("Calendar")
+    drawer();tap("app.Calendar");tap("device.unlock")
+    XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout:5))
+    shot("switcher-calendar-visible-before")
+    let frame=app.frame
+    calendarSwitcherCard(from:app,bounds:frame,checkpoint:"inactive").tap()
+    // The real switcher can leave this scene inactive without backgrounding.
+    // Returning from inactivity need not revoke the authenticated calendar.
+    XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout:5))
+    shot("switcher-calendar-return-after-inactive")
+    XCUIDevice.shared.press(.home)
+    expectation(for:NSPredicate { _,_ in self.app.state == .runningBackground || self.app.state == .runningBackgroundSuspended },evaluatedWith:app)
+    waitForExpectations(timeout:5)
+    let system=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+    calendarSwitcherCard(from:system,bounds:frame,checkpoint:"background").tap()
+    XCTAssertTrue(app.staticTexts["mock.badge"].waitForExistence(timeout:8))
+    XCTAssertFalse(app.staticTexts["Device fixture meeting"].exists)
+    tap("nav.faces");drawer();tap("app.Calendar")
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["Device fixture meeting"].exists)
+    shot("switcher-calendar-return-requires-fresh-unlock")
+    tap("device.unlock")
+    XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout:5))
+  }
   func testDemoArtworkInformationIsExplicitAndNeverAutoplays() {
     launch(["--page","Music"])
     let info=app.buttons["music.artwork.info.demo"]

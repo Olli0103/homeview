@@ -1,0 +1,580 @@
+{
+  "date": "2026-10-29",
+  "issue": 67,
+  "issue_stays_open": true,
+  "product_commit": "449a3ead340a7a0d4a6191194924b9fedf3a513b",
+  "production_changes": false,
+  "source_digest": "48ab560e689cc42f62587193e9443da200c2e23e8c606eb3a8f6920a3137211c",
+  "UI_runs": [
+    {
+      "checkpoint": "capture-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testCaptureCalendarNativeAppSwitcherCandidate"
+      ],
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "727fc6459d4e93390b4a019714e6a4526d6597fa0d78aaed5287824651e3a25a",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "7f7f3e1c7a177561904b6c5353759eb1c1e52d11b397128bbf7f7d33182c29e2",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "09b6e3aa3310aed9064a2a5d5bb5ac42fa1c492420d29ce6927bf132f3e5b479",
+      "summary_sha256": "c5a0b97b66ef32521b1e76caf0d4a3c7c969f327ed089778169bea3ddabacb11",
+      "snapshots": []
+    },
+    {
+      "checkpoint": "capture-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testCaptureCalendarNativeAppSwitcherCandidate"
+      ],
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "727fc6459d4e93390b4a019714e6a4526d6597fa0d78aaed5287824651e3a25a",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "7f7f3e1c7a177561904b6c5353759eb1c1e52d11b397128bbf7f7d33182c29e2",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "2e1277e686d38aa471b656928cbb84b3973ac96ccdbe67ebc944c035c3e7f5a8",
+      "summary_sha256": "6d4ac2b4b731b8833f25f8ed8a058109b781969388fc57472fd255f6cef5acdf",
+      "snapshots": []
+    },
+    {
+      "checkpoint": "v2-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testCalendarNativeAppSwitcherSnapshotHidesPersonalContents",
+        "testBackgroundLocksConnectedCalendarAndRequiresFreshDeviceUnlock"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "48ab560e689cc42f62587193e9443da200c2e23e8c606eb3a8f6920a3137211c",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "e6b7144cf2f6079440e1ec0d053ff9fe1f22ca3f14f1fe4f362220cfb135fcc5",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "c597014bedf7a9ab8d6cbb2d058b983e3fc0fe75c10a069a310bf2bcb535eec1",
+      "summary_sha256": "d85f0252df1209646f599261d538e0b5bbbaac786593acbc58fba6ff5fd22895",
+      "snapshots": [
+        {
+          "state": "background",
+          "receipt_sha256": "7072d26b24f401532144b7fbe4a3d93df394bc427337a1d0497e9e9a6a81eea2",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 3,
+            "blackFraction": 0.982711601188653,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "state": "inactive",
+          "receipt_sha256": "6c059804f29b2a290c447fbf51da18557645afa568cd23e49b420e406f3b6a4a",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827062275313956,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testCalendarNativeAppSwitcherSnapshotHidesPersonalContents",
+        "testBackgroundLocksConnectedCalendarAndRequiresFreshDeviceUnlock"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "48ab560e689cc42f62587193e9443da200c2e23e8c606eb3a8f6920a3137211c",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "e6b7144cf2f6079440e1ec0d053ff9fe1f22ca3f14f1fe4f362220cfb135fcc5",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "4eaeb4548b9d46bc2ac3573013dc229b217698bf9350575b1fd800b4009d128e",
+      "summary_sha256": "db24dd510fb4dd8e85ff480de1422949afb7959d26d95d65b510a944911536df",
+      "snapshots": [
+        {
+          "state": "background",
+          "receipt_sha256": "460167a612d6fef1a33ebd1bb3159453553a2c1b0481ef72d9175cc1f45e7991",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 3,
+            "blackFraction": 0.9890882167305919,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "state": "inactive",
+          "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    }
+  ],
+  "final_executions": 4,
+  "final_passed": 4,
+  "historical_failed_executions": 2,
+  "unchanged_product_file_count": 19,
+  "product_files": [
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+      "kind": "compiled",
+      "bytes": 15425,
+      "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+      "kind": "compiled",
+      "bytes": 22442,
+      "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+      "kind": "compiled",
+      "bytes": 14740152,
+      "sha256": "f4b76e46c2bea7459a730ac52da4d9340b5ebb44448e7e9fc28659946939df54"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "kind": "compiled",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+      "kind": "compiled",
+      "bytes": 40224,
+      "sha256": "8737552bce21322ee4e2a3133a44bf3c8c189a50275b12ead9864f62b539cf70"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "kind": "compiled",
+      "bytes": 26410744,
+      "sha256": "681315b2964798d9bb9e93e80cc3df8ab9c7fd557c45bb8c6dca6270998a3341"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+      "kind": "compiled",
+      "bytes": 2366,
+      "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+      "kind": "compiled",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+      "kind": "compiled",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+      "kind": "compiled",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "kind": "compiled",
+      "bytes": 40224,
+      "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "kind": "compiled",
+      "bytes": 261104,
+      "sha256": "57ce84fca3b81451b45f5bfa3f6dfeb7d556a74349b7d4cd0912fdc5dd71b643"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+      "kind": "compiled",
+      "bytes": 774,
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+      "kind": "compiled",
+      "bytes": 16752,
+      "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+      "kind": "compiled",
+      "bytes": 16760,
+      "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+      "kind": "compiled",
+      "bytes": 73088,
+      "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+      "kind": "compiled",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+      "kind": "compiled",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "kind": "compiled",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    }
+  ],
+  "image_inspection": {
+    "decoded_final_PNGs": 16,
+    "contacts_actually_viewed": [
+      "v2-phone-review-1.jpg",
+      "v2-ipad-review-1.jpg"
+    ],
+    "full_card_images_actually_viewed": [
+      "v2-phone inactive",
+      "v2-ipad background"
+    ],
+    "observation": "All four whole HomeView cards show black shield and own HomeView locked label, no visible synthetic calendar title/time/details. Rounded outside-card corners can include adjacent OS app/background pixels; not a private-content leak within this card. Raw OS screens/trees/card crops remain private; six ordinary synthetic own-app screenshots copied and byte-read-back."
+  },
+  "images": [
+    {
+      "checkpoint": "v2-phone",
+      "file": "v2-phone-attachments/F4CD358D-4430-439B-973A-D05808163B3F.png",
+      "name": "privacy-calendar-locked-after-background_0_E6F07F94-1A7A-46E0-8BF8-676F647EDE96.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "c24bfa73fa038d8a13371f506d1f499df6ef7cbae2caabae0a72223118de5cbf"
+    },
+    {
+      "checkpoint": "v2-phone",
+      "file": "v2-phone-attachments/3FF3FAEE-8BF4-43E0-88DB-94886085C814.png",
+      "name": "switcher-calendar-return-requires-fresh-unlock_0_BF3300B5-5EBA-4B57-BD30-0CBC52E93409.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "99b52173c7a832598df23d81f2d7906f7598144f1f03af0aa69d84028b69004a",
+      "public_copy": "Docs/screenshots/app-switcher-calendar/iPhone-switcher-calendar-return-requires-fresh-unlock.png"
+    },
+    {
+      "checkpoint": "v2-phone",
+      "file": "v2-phone-attachments/8336B91B-00BC-4940-87AB-078A78AD1AF6.png",
+      "name": "switcher-background-whole-homeview-card_0_B517C617-B841-4FD9-B173-B98406E9887F.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "8a5f1d37956e9294d91075a91c8ade898c687d30cc0febe0370788e2c51b5f77"
+    },
+    {
+      "checkpoint": "v2-phone",
+      "file": "v2-phone-attachments/9C22D5FB-F8DC-46D1-92BC-F687019862D8.png",
+      "name": "switcher-background-native-system-screen_0_9DD6EEEB-6701-42D6-BFC1-551B2D3B9A16.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "9a147a59ed6d729c55b83d64abe377329ec86bbcce67cd43485cd486159b2da5"
+    },
+    {
+      "checkpoint": "v2-phone",
+      "file": "v2-phone-attachments/452F4B9C-C61F-4B96-9634-744699198AE8.png",
+      "name": "switcher-calendar-return-after-inactive_0_EBEC9FD7-4D3C-4ACA-9F3F-FD1463D55ABB.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "2731a3ee346a65e3b77a7a23bc11f7172758c297b21fd2d17792da2195c84e09",
+      "public_copy": "Docs/screenshots/app-switcher-calendar/iPhone-switcher-calendar-return-after-inactive.png"
+    },
+    {
+      "checkpoint": "v2-phone",
+      "file": "v2-phone-attachments/6DA0AF37-54A3-4951-BA0E-05A3237D82A2.png",
+      "name": "switcher-inactive-whole-homeview-card_0_B50A70E6-2C11-40C8-A7EB-7307E3A41659.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "e60b08cafe69ac82eddbb01c2b685afce501a074b69fb7b3be74ae3008f724b1"
+    },
+    {
+      "checkpoint": "v2-phone",
+      "file": "v2-phone-attachments/4639526A-1516-4597-96D8-2B1F49206090.png",
+      "name": "switcher-inactive-native-system-screen_0_31A527A8-FA4A-4B53-A02A-F1E2A17CAC10.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "e2fe1fdf2210f89d586653c4fe6b83bab88adc80768bd175ab806790d629c32b"
+    },
+    {
+      "checkpoint": "v2-phone",
+      "file": "v2-phone-attachments/589031EB-9F5C-4707-BC0E-09E888F20EE6.png",
+      "name": "switcher-calendar-visible-before_0_2BDC2359-CF4F-42F3-947E-3246281AC0C7.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "de4b32eeace6c30f5844b96051fcd34f36fec9aaec362c37ff02a99ff9ac827e",
+      "public_copy": "Docs/screenshots/app-switcher-calendar/iPhone-switcher-calendar-visible-before.png"
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "file": "v2-ipad-attachments/1E493387-652F-406F-A736-2FA855671FAB.png",
+      "name": "privacy-calendar-locked-after-background_0_A18C4EE8-AAD3-4820-BC18-0A2FC958EEAB.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "390c529c348d10857641ae962deaf7d140e3b3b778661dd75a7728ab4c964cbd"
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "file": "v2-ipad-attachments/7BFBBA2E-2C39-49EE-8D36-1C7534B91340.png",
+      "name": "switcher-calendar-return-requires-fresh-unlock_0_8370AD3B-B660-4411-A807-9D318E2F0FAF.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "3f1e31ea0478bc50a8f61f70b4dcfa6481f1ef623e30fdd5a7e7869318168a97",
+      "public_copy": "Docs/screenshots/app-switcher-calendar/iPad-switcher-calendar-return-requires-fresh-unlock.png"
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "file": "v2-ipad-attachments/99FE3EC0-8D0F-42E6-947D-2CAA08CCF4D2.png",
+      "name": "switcher-background-whole-homeview-card_0_B5F77B16-3DA3-4E54-A98E-385AC3B8D193.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "21d53ad6d736fd636942b434a10361efb9fc2ece253fa9f3c959aa7952246c22"
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "file": "v2-ipad-attachments/A4719B98-F8DC-4044-B1DB-D2A2A4388C6C.png",
+      "name": "switcher-background-native-system-screen_0_9417AD86-0DA3-48D6-91EB-74BFE278589D.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "954986c7c9f462d0f66322ad854da47a2db1a733440bc16c9bb855bdceaf93ff"
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "file": "v2-ipad-attachments/D6CD7289-024F-409C-83F5-95A3806F961B.png",
+      "name": "switcher-calendar-return-after-inactive_0_12DC1923-4A05-4235-A573-5D803896B55B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "689578590c055f8a213fb71abbe0207fa624b858f58f6a3d511d1adbb3f1fda6",
+      "public_copy": "Docs/screenshots/app-switcher-calendar/iPad-switcher-calendar-return-after-inactive.png"
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "file": "v2-ipad-attachments/B6E09D11-AA65-4C8D-BD18-C121B1BA0D34.png",
+      "name": "switcher-inactive-whole-homeview-card_0_3F30F3B4-0512-4484-821C-1607E6AA5FBC.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "8feeb53612680c7264035a58708ae8c04401f0c8238966615c1c576cb50a5d58"
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "file": "v2-ipad-attachments/0CDA2004-576F-43F8-86F4-3D49B0A0A65D.png",
+      "name": "switcher-inactive-native-system-screen_0_B503C2F8-6C48-4A36-A27E-7E8BBE0373EB.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "7edb5de7995c897c533353a506227c9a6952bfb780479f34610b3e33030fc013"
+    },
+    {
+      "checkpoint": "v2-ipad",
+      "file": "v2-ipad-attachments/EBD1430B-B94B-4C36-AF4B-EED7FE9AD72D.png",
+      "name": "switcher-calendar-visible-before_0_70FD1ADB-5EC6-4AF3-9DAD-E5E8B20D92EB.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "689578590c055f8a213fb71abbe0207fa624b858f58f6a3d511d1adbb3f1fda6",
+      "public_copy": "Docs/screenshots/app-switcher-calendar/iPad-switcher-calendar-visible-before.png"
+    }
+  ],
+  "failure_classification": "Two historical capture failures incorrectly required fresh unlock after inactive-only switcher entry; iPhone card was also clipped. No product defect inferred. Revised test retains full-card OS identity/visibility, actual card touch, pixel guard plus actual visual review, and adds actual Home background/locked-return/fresh-unlock assertions.",
+  "coverage_limits": [
+    "Only synthetic connected Calendar in iOS 27 Simulator on named iPhone/iPad; not all personal routes/sheets.",
+    "No physical device snapshot, biometrics, real accounts, presence or timing guarantee.",
+    "No new Core or SDK execution: all 19 product files byte-identical.",
+    "No Home, notifications/calls, system alarms or live media actions."
+  ],
+  "source_builds": {
+    "historical_capture_build_log_sha256": "1a89b2cbd64059ab93819e2fa05fcb60eaf08e4916ac2a091d8a072f980b6418",
+    "v2_build_log_sha256": "48027b9fbb0a71546ccc5771749a9d8fa28e570fcd6175ada21953a5f99823d2",
+    "completed_before_coordinated_restart": true,
+    "v2_execution_after_coordinator_ready": true
+  },
+  "raw_logs_public": false
+}
