@@ -18,7 +18,9 @@
 
 ## Aktueller Arbeitsblock
 
-- [Native TV-Kamera-Gegenkontrolle und fokussierbare Fotogalerie](tv-camera-photos.md): sechs aktuelle TV-Methoden/vier mobile Fotoregressionen/fünf frische SDKs bestanden. Next photo erreicht und Bildnummer frei. Keine Live-Quellen oder Geräteabnahme; #79 offen. Inkrementell fehlende generierte iOS-Shortcut-Sprachdateien separat bei #74 nachprüfen; frische aktuelle Abgabebuilds vollständig.
+- [iOS-Shortcut-Paketvollständigkeit abgesichert](shortcut-package-completeness.md): drei fehlende generierte Dateien trotz Compilererfolg kontrolliert reproduziert; bestehender Buildweg prüft Artefakte, bewahrt Erstbefund und führt höchstens einen normalen Clean-Build aus. Sechs Tooling-Tests, echter Guard-Wiederherstellungspfad und fünf frische SDKs; kein neuer OS-Hilfsmittelaufruf, #74 offen.
+
+- [Native TV-Kamera-Gegenkontrolle und fokussierbare Fotogalerie](tv-camera-photos.md): sechs aktuelle TV-Methoden/vier mobile Fotoregressionen/fünf frische SDKs bestanden. Next photo erreicht und Bildnummer frei. Keine Live-Quellen oder Geräteabnahme; #79 offen. Die dort zusätzlich beobachtete inkrementelle Shortcut-Verpackungsgrenze ist [separat reproduziert und abgesichert](shortcut-package-completeness.md).
 
 - [Fiktiver Nachrichtenbeleg als zusätzlicher Antworttyp](assistant-message-evidence.md):398Coretests/zehn aktuelle native mobile UI-Ausführungen/fünf SDKs bestanden. Kein Nachrichten-API oder ausführbarer Karteninhalt; #36 für Live-/Original-/Hilfsmittelkriterien offen.
 
