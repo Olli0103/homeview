@@ -1,0 +1,28 @@
+import AppKit
+import XCTest
+
+@MainActor
+final class HomeViewMacProbeTests: XCTestCase {
+  func testNativeSelectAllKeepsAssistantAndReplacesOnlyDraft() throws {
+    continueAfterFailure=false
+    let app=XCUIApplication()
+    app.launchArguments=["--uitesting","--reference-clock","--persistence-test","5DFEF135-2401-46BA-9565-1CDC275071E5","--face","Modular"]
+    app.launch()
+    defer { app.terminate() }
+    XCTAssertTrue(app.staticTexts["mock.badge"].waitForExistence(timeout:15))
+    let open=app.buttons["nav.assistant"]
+    XCTAssertTrue(open.waitForExistence(timeout:5));open.click()
+    let input=app.textFields["assistant.input"]
+    XCTAssertTrue(input.waitForExistence(timeout:5));input.click()
+    input.typeText("Synthetic Mac unsent draft")
+    XCTAssertEqual(input.value as? String,"Synthetic Mac unsent draft")
+    let before=XCTAttachment(screenshot:app.screenshot());before.name="mac-owned-before-select-all";before.lifetime = .keepAlways;add(before)
+    app.typeKey("a",modifierFlags:.command)
+    let after=XCTAttachment(screenshot:app.screenshot());after.name="mac-owned-after-select-all";after.lifetime = .keepAlways;add(after)
+    XCTAssertTrue(input.exists,"Native Cmd+A must select text, not navigate away from the focused assistant")
+    input.typeText("Replacement")
+    XCTAssertEqual(input.value as? String,"Replacement")
+    XCTAssertFalse(app.buttons["personal.profile"].exists)
+    let final=XCTAttachment(screenshot:app.screenshot());final.name="mac-owned-replacement-not-submitted";final.lifetime = .keepAlways;add(final)
+  }
+}

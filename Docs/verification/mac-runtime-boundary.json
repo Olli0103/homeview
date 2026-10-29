@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-29",
+  "issue": 79,
+  "issue_stays_open": true,
+  "repository_commit": "065cacff39125fb145c0d762cc12fe91988e42e2",
+  "repository_source_digest": "17cb586b3a6358f0be9f814ac9aaccbc3a4420096aa920a8f552292c350eefe3",
+  "production_source_changes": false,
+  "scope": "Native macOS test-runner startup investigation, no actual command/keyboard assertion or platform acceptance. Cmd+A hypothesis remains unverified; shortcut unchanged.",
+  "host": {
+    "OS": "macOS27.0.1",
+    "build": "26A434",
+    "Xcode": "27.0 /27A266a",
+    "architecture": "arm64",
+    "binary_platform": "MACOS",
+    "SDK": "macosx27.0",
+    "minimum_os": "15.0",
+    "Catalyst": false
+  },
+  "diagnostic_bundle_identifier": "org.example.HomeViewMacQA20261029.HomeViewReplica",
+  "owned_synthetic_store_UUID": "5DFEF135-2401-46BA-9565-1CDC275071E5",
+  "isolation": "Own bundle ID and UUID store; no normal store reset, accounts, providers, sensors, alarms, Home actions or system permission changes.",
+  "probe": {
+    "file": "mac-runtime-probes/MacProbeTests.swift.txt",
+    "sha256": "5734ed219334c613db7487aee77bdbaf05fd573abb086381c9eeb5107fe066d0",
+    "qualification": "Compiled intended assertion only. Do not count as an executed or successful test."
+  },
+  "control_adaptations": [
+    "External variant of existing project generator; unchanged product sources through absolute file/plist references.",
+    "Only QA bundle IDs, macOS XCTest source/platform and external project destination changed.",
+    "Original scheme-root attempt failed66 before tests; archived original control package.",
+    "Second test-build used standard local Xcode ad-hoc signing without certificate/Team ID/security policy change."
+  ],
+  "test_builds": [
+    {
+      "label": "attempt2-build.log",
+      "exit_code": 0,
+      "signing": "CODE_SIGNING_ALLOWED=NO; linker signature not a complete bundle seal",
+      "log_sha256": "2a77d8bec5b073aa8bbcf0ec036aa37058f3c02f6438dfa36e034c142ccb086b"
+    },
+    {
+      "label": "adhoc-build.log",
+      "exit_code": 0,
+      "signing": "Local ad-hoc, CODE_SIGN_IDENTITY=-, CODE_SIGN_STYLE=Manual",
+      "bundle_deep_strict_verification_exit_code": 0,
+      "log_sha256": "a5454562afadc7f881b9a15a98786e94156f195e40f460b0a94d1c0a23422451"
+    }
+  ],
+  "attempts": [
+    {
+      "label": "baseline-select-all",
+      "exit_code": 124,
+      "started": "2026-10-29T06:46:37.133226+00:00",
+      "ended": "2026-10-29T06:49:07.185506+00:00",
+      "source_files": 225,
+      "control_files": 5,
+      "compiled_files": 37,
+      "source_digest": "17cb586b3a6358f0be9f814ac9aaccbc3a4420096aa920a8f552292c350eefe3",
+      "archive_sha256": "65638d1d2408c01d003e2db7fdbb9da18f2631c0e62c0e3cc19985153725a503",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "source_input_manifest_sha256": "f2dbadebb6f9d442315453024e785b2485c704ab365dd4ccd5c2a0904bd91974",
+      "log_sha256": "4d1e9af61f3d80c29baba5677994f2de328097df0d3fb09329dcfaf6d352e2d1",
+      "test_methods_observed": 0,
+      "terminal_XCTest_summary": "xcresulttool cannot read a completed test-results summary after owner timeout.",
+      "owned_process_cleanup_complete": true,
+      "summary_command_exit_code": 64
+    },
+    {
+      "label": "adhoc-select-all",
+      "exit_code": 124,
+      "started": "2026-10-29T06:51:31.232525+00:00",
+      "ended": "2026-10-29T06:52:46.272809+00:00",
+      "source_files": 225,
+      "control_files": 6,
+      "compiled_files": 40,
+      "source_digest": "17cb586b3a6358f0be9f814ac9aaccbc3a4420096aa920a8f552292c350eefe3",
+      "archive_sha256": "e10cb875d04ef0a18504167292410d5845b90fd3b51531cf4d925e9919fbbaaf",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "source_input_manifest_sha256": "48aaeb67010528a6d960af4e3627f9d8d64dc4dbee0eb758ba4b9c2eccd53599",
+      "log_sha256": "6f82b9a0e10384ff9c3b76565344eac3d67ce55d3fc899f15aafa277f3fce6c0",
+      "test_methods_observed": 0,
+      "terminal_XCTest_summary": "xcresulttool cannot read a completed test-results summary after owner timeout.",
+      "owned_process_cleanup_complete": true,
+      "summary_command_exit_code": 64
+    }
+  ],
+  "UI_passes": 0,
+  "UI_failures_claimed": 0,
+  "qualification": "Two bounded launch-owner timeouts150s/75s are not two failing app test methods. No terminal XCTest outcome; do not invent app failure or native key success.",
+  "observed_boundaries": {
+    "DevToolsSecurity_status": "Developer mode is currently disabled.",
+    "policy_changed": false,
+    "gateway_computer_tool": "Gateway computer is unavailable; enable its computer provider and desktop session",
+    "connected_computer_nodes": 0,
+    "CG_session_on_console": "unknown",
+    "CG_session_locked": "unknown",
+    "NSScreen_sizes": [
+      [
+        1728,
+        1117
+      ]
+    ],
+    "causality": "Disabled developer mode and unavailable computer provider are observed prerequisites/boundaries, not a proven sole cause of runner startup timeout. No permissions enabled or bypassed."
+  },
+  "setup_failure": {
+    "first_external_build_exit": 66,
+    "stage": "Scheme/project-root resolution, no test method execution",
+    "archive_sha256": "bb6ac0460be70c84945aab480c220c5ffa3c44a9cf6d5ea14cfb6ced7067bce1"
+  },
+  "unknown": [
+    "Actual Cmd+A/Select All precedence and route behavior.",
+    "Native Mac window/input/permissions; tvOS/visionOS/Watch runtime acceptance.",
+    "Physical iPad/signing/energy/service lanes remain paused/separate."
+  ]
+}

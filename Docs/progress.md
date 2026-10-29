@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Mac-Runtime: Startgrenze getrennt festgehalten · 29. Oktober 2026
+
+[Native Mac-Prüfvorbereitung](mac-runtime-boundary.md): zwei erfolgreiche native Testbuilds, aber keine beobachtete UI-Testmethode in zwei begrenzten Runner-Startversuchen. Archive/Prozessbereinigung erhalten, keine Appfehlfunktion oder UI-Erfolg erfunden. Developer-Modus ist aus, Gateway-Computerzugang nicht verfügbar; Ursache nicht pauschal behauptet, Hostkonfiguration unverändert. #79 offen, Cmd+A unverändert; anderer Software-/Referenzumfang wird fortgesetzt.
+
 ## Face-Wechsel: gerundete Karten und Rückrichtung · 29. Oktober 2026
 
 [Zwei tatsächlich aufgezeichnete Übergangsfehler korrigiert](face-transition-cards.md): keine gerade innere Kante und kein weißes Panel beim Zurückwischen. Acht echte Wechsel auf iPad/iPhone, sechs vollständige native Ruhe-Viewportpaare exakt unverändert.22 erfolgreiche UI-Ausführungen über zwei dokumentierte Testvarianten, zwei alte Quadrat-Helperfehler erhalten, fünf SDKs;19 Produkt-Bundledateien bleiben durch die gezielte Testkorrektur identisch. Kein neuer Core-Lauf. #6 bleibt für Originalkurven/Abbruch/gesamte Bewegung offen; **40/82 geschlossen,42 offen**.
