@@ -226,7 +226,7 @@ struct FaceEditor: View {
                   VStack(alignment: .leading) {
                     Text(slot.title)
                     Text(slot.family.title)
-                      .font(.system(size: familySize)).foregroundStyle(.secondary)
+                      .font(.system(size: familySize)).foregroundStyle(.black.opacity(0.65))
                   }
                   Spacer()
                   Text(model.data.complication(for: model.data.face, slot: slot).rawValue)
@@ -322,7 +322,7 @@ struct FaceEditor: View {
         .frame(width: 600 * previewScale, height: 600 * previewScale)
         .clipShape(RoundedRectangle(cornerRadius: 24))
       if !face.slots.isEmpty {
-        Text("Tap an outlined area to edit").font(.system(size: guidanceSize)).foregroundStyle(.secondary)
+        Text("Tap an outlined area to edit").font(.system(size: guidanceSize)).foregroundStyle(.black.opacity(0.65))
       }
     }
   }
