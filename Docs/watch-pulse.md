@@ -1,5 +1,7 @@
 # WatchRoot: periodische Modellarbeit an die aktive Szene binden
 
+**Aktualisierung, 29. Oktober:** [Tatsächliche native Watch-Installation und begrenzte UI-Abnahme](watch-native-runtime.md) inzwischen geliefert, einschließlich lokalem Timer und echtem Hintergrund-/Rückkehrfall. Der folgende20.-Oktober-Hostversuch bleibt ausdrücklich ein Mac-Nachweis; keine Energie-/Wrist-down-Abnahme wird rückwirkend daraus gemacht.
+
 20. Oktober 2026 · [#81](https://github.com/Olli0103/homeview/issues/81) · [Quellen-/Ergebnisbericht](verification/watch-pulse.json) · [eigene native Probe](verification/watch-pulse-native-probe.swift.txt)
 
 **Begrenzter Software-Fix, keine Watch-Laufzeit- oder Energieabnahme.** Auf dem Host ist keine watchOS-Simulatorlaufzeit installiert. Die Quelle wurde deshalb vorab ausdrücklich in einem nativen macOS-NSHostingView untersucht: Nur die beiden äußeren `#if os(watchOS)`-/`#endif`-Zeilen einer externen WatchRoot-Kopie wurden entfernt. Der darin stehende View-Body ist unverändert übernommen, nicht durch ein nachgebautes Testmodell ersetzt. AppModel wird tatsächlich ausgeführt, verwendet im Host aber seine **macOS**-Bedingungszweige. Der anschließende echte watchOS-SDK-Build ist Typ-/Linkprüfung, kein Watch-Prozess.

@@ -16,6 +16,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Native Watch-Installation und unabhängige Temperaturaktionen korrigiert](watch-native-runtime.md): zwei aktuelle native Methoden/fünf SDKs bestanden; reduzierte eigenständige Oberfläche, keine Geräte-/Energie-/volle iPad-Abnahme. #79/#81 für übrige Kriterien offen. Erste separate native Vision-Prüfung läuft.
+
 - [Native TV-Remote und Timerfokus](tv-remote-runtime.md): echter Vorherfehler behoben, vier aktuelle TV-Methoden/zwei mobile Timerregressionen/fünf SDKs bestanden. TV-Kamera-/Foto- und übrige Plattform-/Geräteabnahmen bei #79 offen; Watch-Runtime installiert, Prüfung folgt.
 
 - [#3: lokaler Historienbereinigungskandidat](asset-history-cleanup-candidate.md) vorbereitet: bekannter Icon-Blob entfernt, heutiger Baum exakt identisch. Keine öffentliche Umschreibung/pauschale Rechtefreigabe; andere historische Einzelherkunft offen.

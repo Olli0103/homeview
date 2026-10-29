@@ -14,9 +14,16 @@ import Combine
               Image(systemName: "thermometer.medium")
               Text("\(model.data.home.temperature)°")
               Spacer()
-              Button("−") { model.command(.temperature(model.data.home.temperature - 1)) }
-              Button("+") { model.command(.temperature(model.data.home.temperature + 1)) }
+              Button { model.command(.temperature(model.data.home.temperature - 1)) } label: {
+                Text("−").frame(width:44,height:44).contentShape(Rectangle())
+              }
+              Button { model.command(.temperature(model.data.home.temperature + 1)) } label: {
+                Text("+").frame(width:44,height:44).contentShape(Rectangle())
+              }
             }
+            // Automatic List-row buttons otherwise execute both actions.
+            // Explicit per-button hit regions keep each tap independent.
+            .buttonStyle(.plain)
             Button(model.data.home.entryLight ? "Lights On" : "Lights Off") {
               model.command(.entryLight)
             }

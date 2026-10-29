@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Native Watch: Installation und getrennte Temperaturaktionen · 29. Oktober 2026
+
+[Zwei echte Plattformfehler behoben](watch-native-runtime.md): eindeutige Watch-only-Metadaten erlauben Installation; getrennte44-Punkte-Buttons verhindern doppelte Temperaturaktionen. Zwei aktuelle native Watch-Methoden/fünf SDKs bestanden; echter Timer-Hintergrund/Rückkehrfall war bereits vorher grün.228 Quellen, installierte App und Archive gebunden. Reduzierter eigenständiger Umfang, keine volle iPad-Parity; #79/#81 für übrige Kriterien offen.
+
 ## Tatsächliche TV-Remote und Timerfokus · 29. Oktober 2026
 
 [Native tvOS-Matrix und korrigierter Fokus](tv-remote-runtime.md): unerreichbare Timeraktionen tatsächlich reproduziert; tvOS-Fokusgruppe behebt den unveränderten Vorherfall. Reproduzierbares `HomeViewTV`-Testziel integriert. **Vier aktuelle TV-Methoden + zwei mobile Timerregressionen**, fünf SDKs bestanden;227 Quellen und alle Archive/Installationen gebunden. Kamera/Foto und übrige Plattform-/Hardwarekriterien bei #79 offen; Gesamtauftrag läuft weiter.
