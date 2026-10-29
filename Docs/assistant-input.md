@@ -2,6 +2,8 @@
 
 19 October 2026. **#38 remains open.** This is HomeView's own input surface, not Siri or accepted original F048/F049 parity.
 
+Historical 19 October checkpoint. The [29 October independent-control and software-acceptance follow-up](assistant-input-acceptance.md) supersedes this issue-status note without relabeling the failed raw-key candidates below.
+
 ## Observed problem and change
 
 With the native iPad keyboard open in landscape, the old 600-point square scaled its Send button down to 24.16 points. The rotation test preserved the draft and did not send it, but its recorded geometry exposed the usability problem. The assistant now uses the available width and height without scaling its controls; Send measures 48 × 48 points in both tested orientations on iPad and iPhone. Other screens retain their existing square layout.

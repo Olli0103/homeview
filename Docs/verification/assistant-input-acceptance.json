@@ -1,0 +1,382 @@
+{
+  "date": "2026-10-29",
+  "issue": 38,
+  "scope": "Original synthetic software acceptance: unobscured iPad portrait/landscape input and no implicit send. No physical/raw-key/assistive/original parity acceptance.",
+  "base_commit": "f75631547644701651da45cbe7e9f0b55fa6ed87",
+  "source_digest": "e563fb89a8ea2f276f6f47e5264e6fc757693611dabd9cfec3b9c72d5707e0a9",
+  "source_manifest": "Docs/verification/assistant-input-acceptance-source.json",
+  "final_UI_executions": 18,
+  "unique_UI_methods": 9,
+  "full_suite": false,
+  "ui_runs": [
+    {
+      "checkpoint": "assistant-acceptance-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testAssistantCommandPeriodDismissesWithoutSending",
+        "testAssistantSystemControlCenterDoesNotSubmitDraft",
+        "testAssistantKeyboardGeometryAndUnsentRotation",
+        "testAssistantShortcutDismissalAndSoftwareKeyboardSend",
+        "testAssistantViewportGesturesAndContentScrollDoNotSend",
+        "testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend",
+        "testVoicePreviewRequiresSendBeforeMockCommand",
+        "testAssistantInitialAutomaticHitRegionAudit",
+        "testLongAnswerReadoutPausesDemoMusicAndSettingsKeepAnswer"
+      ],
+      "started": "2026-10-29T05:22:54.619287+00:00",
+      "ended": "2026-10-29T05:27:26.810007+00:00",
+      "source_files": 225,
+      "compiled_files": 51,
+      "control_fixture_inputs": 3,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "installed_control_verified": true,
+      "archive": "assistant-acceptance-phone-inputs.zip",
+      "archive_sha256": "d8e1ab76f7d0680f3b12eaad0a5902093250a1c82e7e1578b336f0cb75136070",
+      "all_archive_entries_read_back": true,
+      "log_sha256": "364836b0670ea99e0bcce95c3660fa98b09154d1500e487e203a359820461d16"
+    },
+    {
+      "checkpoint": "assistant-acceptance-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testAssistantCommandPeriodDismissesWithoutSending",
+        "testAssistantSystemControlCenterDoesNotSubmitDraft",
+        "testAssistantKeyboardGeometryAndUnsentRotation",
+        "testAssistantShortcutDismissalAndSoftwareKeyboardSend",
+        "testAssistantViewportGesturesAndContentScrollDoNotSend",
+        "testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend",
+        "testVoicePreviewRequiresSendBeforeMockCommand",
+        "testAssistantInitialAutomaticHitRegionAudit",
+        "testLongAnswerReadoutPausesDemoMusicAndSettingsKeepAnswer"
+      ],
+      "started": "2026-10-29T05:22:55.715625+00:00",
+      "ended": "2026-10-29T05:27:32.592292+00:00",
+      "source_files": 225,
+      "compiled_files": 51,
+      "control_fixture_inputs": 3,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "installed_control_verified": true,
+      "archive": "assistant-acceptance-ipad-inputs.zip",
+      "archive_sha256": "d8e1ab76f7d0680f3b12eaad0a5902093250a1c82e7e1578b336f0cb75136070",
+      "all_archive_entries_read_back": true,
+      "log_sha256": "e7c2c89dadc6f6f85d3399f07112c6f75c4f410c3ccd177a6414f7ea8220b11b"
+    }
+  ],
+  "core": {
+    "historical_passed": 397,
+    "new_core_run": false,
+    "unchanged_core_source_and_test_files": 86,
+    "historical_report": "Docs/verification/world-clock-midnight-daylight.json"
+  },
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T05:21:05.041632+00:00",
+      "ended": "2026-10-29T05:21:33.636899+00:00",
+      "log": "ios-final-build.log",
+      "log_sha256": "a9fe93520a2a170a1a1403c63285f9858543deb71a0ca09444b897dd8ced5898"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-29T05:21:33.637353+00:00",
+      "ended": "2026-10-29T05:22:00.810168+00:00",
+      "log": "macos-final-build.log",
+      "log_sha256": "46b030269fe9450b9bd2910aa72f90aa62bac28d95b16ef2dbfee49b8e06dae7"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T05:22:00.810720+00:00",
+      "ended": "2026-10-29T05:22:23.871463+00:00",
+      "log": "tvos-final-build.log",
+      "log_sha256": "90976114aa1feeae683a3d41feb9d82615e9443383e7b97b845f1789a99f6ec9"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T05:22:23.871990+00:00",
+      "ended": "2026-10-29T05:22:48.488543+00:00",
+      "log": "visionos-final-build.log",
+      "log_sha256": "2273e89f3de3e8e663cecd6fe316fcfc3da8b9eaf19255626ed3051eaddf7f12"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T05:22:48.489011+00:00",
+      "ended": "2026-10-29T05:22:57.669502+00:00",
+      "log": "watchos-final-build.log",
+      "log_sha256": "91c8148995b4782cc4b3ae0e8fa0fbb01c923b89e4e2d25028d8a2fb880bd674"
+    }
+  ],
+  "sdk_products_manifest": "Docs/verification/assistant-input-acceptance-platforms.json",
+  "historical_checkpoints_this_batch": [
+    {
+      "checkpoint": "command-baseline-phone",
+      "source_digest": "21bf76a27af04d8589842d680aaa62619470e6a68e5bb8aecaac03e9b77f5c88",
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive_sha256": "29f7b19f16ddb0845ef69ecea926392aa32a3ec801ae78b985cf408f099abb29",
+      "inputs_unchanged": true,
+      "all_archive_entries_read_back": true,
+      "installed_app_verified": true,
+      "installed_control_verified": true
+    },
+    {
+      "checkpoint": "command-actions-phone",
+      "source_digest": "69df3744688d366e20f4b256ec34c80dddec9caaca92531b6e47b0327acfe44a",
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive_sha256": "7ddd7c62e1862620e439715096e79a5d10e487fa3feeacd0b7e0218d2f191d21",
+      "inputs_unchanged": true,
+      "all_archive_entries_read_back": true,
+      "installed_app_verified": true,
+      "installed_control_verified": true
+    },
+    {
+      "checkpoint": "system-edge-phone",
+      "source_digest": "ed68f1d11629d0fa0d33e6c361fc51dfd775ad3793cbd8666353bd0f2c230b7c",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive_sha256": "f399cfa90805f5a87c5eebbfa5c056626743d9a3e87510af483b4b35d23e219e",
+      "inputs_unchanged": true,
+      "all_archive_entries_read_back": true,
+      "installed_app_verified": true,
+      "installed_control_verified": true
+    },
+    {
+      "checkpoint": "system-edge-native-identity-phone",
+      "source_digest": "733662bd29c421c05bac276622bfeab189044d101eacbfa65addc65da292bfad",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive_sha256": "734cb7f1867c0f140a751cd2681abdebc9046bc2aaecb7f324af24a70a461f36",
+      "inputs_unchanged": true,
+      "all_archive_entries_read_back": true,
+      "installed_app_verified": true,
+      "installed_control_verified": true
+    },
+    {
+      "checkpoint": "independent-control-phone",
+      "source_digest": "3e5b927632928bbcde07912282a970e4ad472faa28f38dcecfa8e26c6f86e3d8",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "archive_sha256": "3c6b5cf2f4e74e0e2ccf4ed40d27eb93440ad54f6db565ad6964f292874da851",
+      "inputs_unchanged": true,
+      "all_archive_entries_read_back": true,
+      "installed_app_verified": true,
+      "installed_control_verified": true
+    },
+    {
+      "checkpoint": "independent-control-ipad",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "compiled_inputs_reused_from_phone_archive": true,
+      "all_51_frozen_compiled_inputs_rechecked": true
+    }
+  ],
+  "history_this_batch_totals_including_final": {
+    "executions": 26,
+    "passed": 22,
+    "failed": 4,
+    "skipped": 0
+  },
+  "prior_failed_raw_key_executions": 10,
+  "prior_raw_key_receipts": "Docs/verification/assistant-raw-key-transport.json",
+  "independent_control_observations": [
+    {
+      "device": "phone",
+      "observed": {
+        "ordinary_key": "probe3",
+        "raw_delete_result": "probe3",
+        "raw_escape_status": "returns=1;cancels=0",
+        "raw_return_status": "returns=0;cancels=0",
+        "software_return_status": "returns=1;cancels=0"
+      }
+    },
+    {
+      "device": "ipad",
+      "observed": {
+        "ordinary_key": "probe3",
+        "raw_delete_result": "probe3",
+        "raw_escape_status": "returns=1;cancels=0",
+        "raw_return_status": "returns=0;cancels=0",
+        "software_return_status": "returns=1;cancels=0"
+      }
+    }
+  ],
+  "raw_key_success_claimed": false,
+  "cmd_return_candidate_delivered": false,
+  "native_field_adapter_delivered": false,
+  "delivery_PNGs_decoded": 24,
+  "delivery_contact_sheets_reviewed": 4,
+  "images": [
+    {
+      "device": "phone",
+      "state": "assistant-command-period-unsent",
+      "path": "Docs/screenshots/assistant-input-acceptance/phone-e563fb89a8ea-assistant-command-period-unsent.png",
+      "sha256": "56e0e11b714f75699c2a23d4255b4a5b11e7db7820713c46e94aaf665d59702a",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "device": "phone",
+      "state": "assistant-keyboard-landscape-screen",
+      "path": "Docs/screenshots/assistant-input-acceptance/phone-e563fb89a8ea-assistant-keyboard-landscape-screen.png",
+      "sha256": "f004abc7a270b10bc6926b600c511ff56be2100809946ea81a715ef7f0faaf94",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "device": "phone",
+      "state": "assistant-keyboard-portrait-screen",
+      "path": "Docs/screenshots/assistant-input-acceptance/phone-e563fb89a8ea-assistant-keyboard-portrait-screen.png",
+      "sha256": "c645d7af232ad229b7db00512c65a72ce66a649c0ef483393c4e7acad2a60dac",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "device": "phone",
+      "state": "assistant-system-control-center-return-unsent",
+      "path": "Docs/screenshots/assistant-input-acceptance/phone-e563fb89a8ea-assistant-system-control-center-return-unsent.png",
+      "sha256": "f9b69e6eaa71bcc5c4f06f6ed74ce66901d0db45aba7265da7bc8b039e9f2ab3",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "device": "phone",
+      "state": "assistant-real-system-control-center",
+      "path": "Docs/screenshots/assistant-input-acceptance/phone-e563fb89a8ea-assistant-real-system-control-center.png",
+      "sha256": "a4cf287866776bd94551a855112f7cec6e4e47e91600de615d887553a05cc67a",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "device": "phone",
+      "state": "screen-answer-readout-long-answer-active",
+      "path": "Docs/screenshots/assistant-input-acceptance/phone-e563fb89a8ea-screen-answer-readout-long-answer-active.png",
+      "sha256": "35962c8c67bf0886af5dcc14fdd2ae6f90f90357c278e977bf5cbd404fcbb01f",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "device": "ipad",
+      "state": "assistant-command-period-unsent",
+      "path": "Docs/screenshots/assistant-input-acceptance/ipad-e563fb89a8ea-assistant-command-period-unsent.png",
+      "sha256": "fbb107768f13befb75cb4dbdce3539a5e5e686961d23af10c1bd7ec3a7f89085",
+      "pixels": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "device": "ipad",
+      "state": "assistant-keyboard-landscape-screen",
+      "path": "Docs/screenshots/assistant-input-acceptance/ipad-e563fb89a8ea-assistant-keyboard-landscape-screen.png",
+      "sha256": "f333daaedcfd57f908db5b1a7d11088014b758568fb38cbde6a8d490fe86cb0d",
+      "pixels": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "device": "ipad",
+      "state": "assistant-keyboard-portrait-screen",
+      "path": "Docs/screenshots/assistant-input-acceptance/ipad-e563fb89a8ea-assistant-keyboard-portrait-screen.png",
+      "sha256": "e368c032575dd316b6cf26e69fde6d44bb563618046ce7bfa54676a41d550ca4",
+      "pixels": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "device": "ipad",
+      "state": "assistant-system-control-center-return-unsent",
+      "path": "Docs/screenshots/assistant-input-acceptance/ipad-e563fb89a8ea-assistant-system-control-center-return-unsent.png",
+      "sha256": "fbb107768f13befb75cb4dbdce3539a5e5e686961d23af10c1bd7ec3a7f89085",
+      "pixels": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "device": "ipad",
+      "state": "assistant-real-system-control-center",
+      "path": "Docs/screenshots/assistant-input-acceptance/ipad-e563fb89a8ea-assistant-real-system-control-center.png",
+      "sha256": "65b6dac61345b65a58860cc02da41e66ace143d9b928e0750b15fe230d968e4c",
+      "pixels": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "device": "ipad",
+      "state": "screen-answer-readout-long-answer-active",
+      "path": "Docs/screenshots/assistant-input-acceptance/ipad-e563fb89a8ea-screen-answer-readout-long-answer-active.png",
+      "sha256": "59d7963aba5f78462490615df50d2acf07c687cdb17223c9ef978afbbd355476",
+      "pixels": [
+        1640,
+        2360
+      ]
+    }
+  ],
+  "image_qualification": "Two app-window landscape thermostat attachments have inconsistent rotation crops and are not published or used as geometry proof. Whole-screen keyboard geometry, OS Control Center and actual long-answer viewports reviewed.",
+  "parity_accepted": false,
+  "physical_signing_hold_unchanged": true,
+  "real_Home_or_accounts_used": false
+}

@@ -217,6 +217,7 @@ struct AssistantView: View {
   @FocusState private var typing:Bool
   private var canEdit:Bool {
     scenePhase == .active && model.assistantInteractionActive
+      && !showingCapabilities && !showingAnswerSpeechSettings
   }
   @State private var voiceDraftGeneration = 0
   @State private var language = "de-DE"
@@ -383,6 +384,10 @@ struct AssistantView: View {
           Button { typing=false } label: { Image(systemName:"keyboard.chevron.compact.down").frame(width:44,height:44) }
             .buttonStyle(.plain).accessibilityLabel("Dismiss keyboard")
             .accessibilityIdentifier("assistant.keyboard.dismiss")
+            #if !os(tvOS)
+              .keyboardShortcut(canEdit ? KeyboardShortcut(".",modifiers:[.command]):nil)
+              .help("Dismiss keyboard (Command-Period)")
+            #endif
         }
         RoundButton(symbol: "arrow.up", color: .blue, foreground: .white, label: "Send request") {
           submitted()

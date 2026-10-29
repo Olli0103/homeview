@@ -1,0 +1,26 @@
+  func testIndependentUIKitRawKeyTransportControl() {
+    let control=XCUIApplication(bundleIdentifier:"org.example.KeyTransportControl")
+    control.launch()
+    let field=control.textFields["control.input"],status=control.staticTexts["control.status"]
+    XCTAssertTrue(field.waitForExistence(timeout:8))
+    field.tap();field.typeText("probe")
+    field.typeKey("3",modifierFlags:[])
+    XCTAssertEqual(field.value as? String,"probe3")
+    field.typeKey(XCUIKeyboardKey.delete,modifierFlags:[])
+    let rawDelete=field.value as? String ?? "nil"
+    field.typeText(XCUIKeyboardKey.delete.rawValue)
+    XCTAssertEqual(field.value as? String,String(rawDelete.dropLast()))
+    field.typeKey(XCUIKeyboardKey.return,modifierFlags:[])
+    let rawReturn=status.label
+    field.typeText("\n")
+    let softwareReturn=status.label
+    XCTAssertNotEqual(softwareReturn,rawReturn,"The control must actually handle a software Return")
+    field.typeKey(XCUIKeyboardKey.escape,modifierFlags:[])
+    let rawEscape=status.label
+    let data:[String:String]=["ordinary_key":"probe3","raw_delete_result":rawDelete,
+      "raw_return_status":rawReturn,"software_return_status":softwareReturn,"raw_escape_status":rawEscape]
+    let attachment=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.prettyPrinted,.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="independent-uikit-key-transport";attachment.lifetime = .keepAlways;add(attachment)
+    let screenshot=XCTAttachment(screenshot:control.screenshot());screenshot.name="independent-uikit-control";screenshot.lifetime = .keepAlways;add(screenshot)
+    control.terminate()
+  }

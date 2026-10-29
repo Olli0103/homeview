@@ -1,6 +1,6 @@
 # Raw assistant keys: unsuccessful candidates retained
 
-29 October 2026 · [#38 / AI-06](https://github.com/Olli0103/homeview/issues/38). **Open, not repaired or accepted.**
+29 October 2026 · [#38 / AI-06](https://github.com/Olli0103/homeview/issues/38). **Historical unsuccessful checkpoint at f756315, not a raw-key repair or acceptance.** Later independent-control and bounded software acceptance: [follow-up](assistant-input-acceptance.md).
 
 Two isolated UI methods against the unchanged production code reproduce the previously open raw Escape/Return boundary on iPhone 18 Pro, iOS Simulator 27.0 (24A434). Escape does not remove composer focus; raw Return does not submit the request. Both use XCTest `typeKey` and assert the resulting state, not its successful API acknowledgement.
 
@@ -13,3 +13,7 @@ Five frozen input checkpoints contain ten unsuccessful test executions: baseline
 A separate [public report, auto-mobile #7439](https://github.com/kaeawc/auto-mobile/issues/7439), describes special `typeKey` commands accepted without editing an iOS simulator field; text entry succeeds. Its proposed cause is explicitly **probable**, and its fix uses the text-input path for deletion. Its follow-up also reports a literal forward-delete glyph regression. This is supporting context, not proof that HomeView has the same cause or that an actual hardware keyboard works.
 
 The existing explicit software-keyboard Send and visible Dismiss paths remain separate supported paths. The current targeted delivery selection reruns that existing software-send case on both simulators. Real raw-key handling, physical assistive technologies, OS-edge behavior and original equivalence remain unaccepted. The owner's physical/signing hold remains in force. No account, real microphone/camera, Home connection, message or call is used.
+
+## Later independent control and bounded software acceptance
+
+The separate pure UIKit control now reproduces raw Delete/Return/Escape no-ops on **both** simulators, while ordinary `typeKey` characters and software-text Return work. This is independent reproduction, not proof of the underlying transport implementation or a physical-key PASS. No unsuccessful adapter is delivered. Cmd-Period dismissal and an actual OS Control Center round-trip now pass on both simulators, alongside the existing input/draft/rotation paths: 18 final UI executions, five SDK builds. The unsuccessful Cmd-Return candidate remains archived and is removed from delivery. [Current report and explicit remaining gates](assistant-input-acceptance.md). The ten failed executions above remain failed historical evidence.

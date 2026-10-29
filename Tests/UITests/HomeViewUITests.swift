@@ -3072,6 +3072,49 @@ final class HomeViewUITests: XCTestCase {
     }
   }
 
+  func testAssistantSystemControlCenterDoesNotSubmitDraft() {
+    launch();tap("nav.assistant")
+    let field=app.textFields["assistant.input"]
+    field.tap();field.typeText("temperature 73")
+    tap("assistant.keyboard.dismiss")
+    let origin=app.coordinate(withNormalizedOffset:.zero),frame=app.frame
+    origin.withOffset(CGVector(dx:frame.width*0.98,dy:1))
+      .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:frame.width*0.8,dy:frame.height*0.65)),withVelocity:.slow,thenHoldForDuration:0.3)
+    let system=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+    let screenshot=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+    screenshot.name="assistant-real-system-control-center";screenshot.lifetime = .keepAlways;add(screenshot)
+    XCTAssertTrue(system.otherElements["cc-root-folder-view"].waitForExistence(timeout:5),
+      "The actual OS Control Center must open; our in-app panel is not a substitute")
+    XCTAssertTrue(system.buttons["Add Controls"].exists)
+    XCTAssertTrue(system.buttons["Power"].exists)
+    system.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.98))
+      .press(forDuration:0.1,thenDragTo:system.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.3)),withVelocity:.slow,thenHoldForDuration:0.3)
+    XCTAssertTrue(field.waitForExistence(timeout:5))
+    XCTAssertEqual(field.value as? String,"temperature 73")
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    shot("assistant-system-control-center-return-unsent")
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+
+  func testAssistantCommandPeriodDismissesWithoutSending() {
+    launch();app.typeKey("s",modifierFlags:[.command,.shift])
+    let field=app.textFields["assistant.input"]
+    XCTAssertTrue(field.waitForExistence(timeout:5))
+    field.typeText("temperature 73")
+    app.typeKey(".",modifierFlags:[.command])
+    expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:app.buttons["assistant.keyboard.dismiss"])
+    waitForExpectations(timeout:5)
+    XCTAssertEqual(field.value as? String,"temperature 73")
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    shot("assistant-command-period-unsent")
+    app.typeKey("s",modifierFlags:[.command,.shift])
+    XCTAssertTrue(app.buttons["assistant.keyboard.dismiss"].waitForExistence(timeout:5))
+    XCTAssertEqual(field.value as? String,"temperature 73")
+    tap("assistant.keyboard.dismiss");tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+
   func testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend() {
     launch()
     tap("nav.assistant")

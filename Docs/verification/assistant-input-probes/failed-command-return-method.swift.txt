@@ -1,0 +1,23 @@
+  func testAssistantCommandReturnOnlySubmitsFocusedUncoveredComposer() {
+    launch();tap("nav.assistant")
+    let field=app.textFields["assistant.input"]
+    field.tap();field.typeText("temperature 73")
+    tap("assistant.keyboard.dismiss")
+    app.typeKey(XCUIKeyboardKey.return,modifierFlags:[.command])
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    tap("assistant.capabilities")
+    app.typeKey(XCUIKeyboardKey.return,modifierFlags:[.command])
+    XCTAssertTrue(app.buttons["assistant.capabilities.done"].exists)
+    tap("assistant.capabilities.done")
+    XCTAssertEqual(field.value as? String,"temperature 73")
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    app.typeKey("s",modifierFlags:[.command,.shift])
+    XCTAssertTrue(app.buttons["assistant.keyboard.dismiss"].waitForExistence(timeout:5))
+    app.typeKey(XCUIKeyboardKey.return,modifierFlags:[.command])
+    expectation(for:NSPredicate(format:"label CONTAINS %@","73"),evaluatedWith:app.staticTexts["assistant.reply"])
+    waitForExpectations(timeout:5)
+    shot("assistant-command-return-explicit-send")
+    tap("assistant.keyboard.dismiss");tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"73°")
+  }
+
