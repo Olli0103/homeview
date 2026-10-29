@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [TV-/Vision-Settings ohne Aktivierung inventarisiert](os-speech-settings-inventory-20261029.md): fünf erfolgreiche OS-Oberflächenfälle, zwei frühere Eingabeversuche getrennt erhalten. Vision Live Speech sichtbar Off; bekannte positive Such-/Menükontrollen fehlen ebenfalls, daher keine negative RTT-/TV-OS-Behauptung.165 Produktinputs unverändert; #74 offen, weitere App-Arbeit läuft.
+
 - [Profil-Editor-Kontrast korrigiert](personal-editor-contrast.md):16 eigene Textmessungen jetzt etwa6–18:1 statt selbst maximal <1,31:1. Acht aktuelle UI-Ausführungen/fünf SDKs; Geometrie, Konfiguration und Rückkehrpixel unverändert. Nur lokales Editorschema, #73 weiter offen.
 
 - [Sieben Done-/Cancel-Trefferrechtecke korrigiert, zwei native Toolbar-Controls unverändert gegengeprüft](secondary-hit-regions.md):36 aktuelle UI-Ausführungen/fünf SDKs. Echte44-Punkte-Randpunkte außerhalb nativer AX-Bounds funktionieren; verworfene Vorbehalte getrennt erhalten. Profil-Editor-Kontrast [im separaten Folgestand korrigiert](personal-editor-contrast.md); #73 offen.

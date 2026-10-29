@@ -1,6 +1,42 @@
 import XCTest
 
 final class HomeViewTVUITests:XCTestCase {
+  func testReadOnlyTVAccessibilityMenuInventory() {
+    continueAfterFailure=false
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.TVSettings")
+    settings.launch();XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
+    let category=settings.cells.matching(NSPredicate(format:"label == %@","Accessibility")).firstMatch
+    select(category,in:settings,maxMoves:20)
+    XCTAssertTrue(settings.navigationBars.staticTexts["Accessibility"].waitForExistence(timeout:10))
+    capture(settings,"tv-ossettings-accessibility-top")
+    func focus()->String {
+      guard let e=settings.descendants(matching:.any).allElementsBoundByIndex.first(where:{$0.hasFocus}) else {return "NONE"}
+      return e.identifier+" | "+e.label+" | "+(e.value as? String ?? "")+" | "+String(describing:e.frame)
+    }
+    XCTAssertNotEqual(focus(),"NONE")
+    var trace:[[String:Any]]=[],stable=0,reachedEnd=false
+    for step in 1...32 {
+      let before=focus()
+      // Focus movement only: no Select after opening the category.
+      XCUIRemote.shared.press(.down)
+      let after=focus();XCTAssertNotEqual(after,"NONE")
+      trace.append(["step":step,"before":before,"after":after,"action":"down"])
+      if step%6==0 {capture(settings,"tv-ossettings-accessibility-page-\(step)")}
+      stable=before==after ? stable+1:0
+      if stable>=2 {reachedEnd=true;break}
+    }
+    capture(settings,"tv-ossettings-accessibility-end")
+    let data:[String:Any]=["trace":trace,"stable_end_observed":reachedEnd,"bound":32,"feature_activation_actions":0]
+    let receipt=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    receipt.name="tv-ossettings-focus-only-inventory";receipt.lifetime = .keepAlways;add(receipt)
+  }
+  func testReadOnlyTVSystemSettingsRootInventory() {
+    continueAfterFailure=false
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.TVSettings")
+    settings.launch()
+    XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
+    capture(settings,"tv-ossettings-root")
+  }
   private func launch(_ page:String?=nil,extra:[String]=[])->XCUIApplication {
     continueAfterFailure=false
     let app=XCUIApplication(bundleIdentifier:"org.example.HomeViewReplica")

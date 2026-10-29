@@ -2,6 +2,8 @@
 
 29. Oktober 2026 · [#74](https://github.com/Olli0103/homeview/issues/74). Ergänzt den [datierten Befund vom 20. Oktober](speech-feature-boundaries.md), ohne dessen alte Belege umzudatieren. **Recherche, keine neue akustische Hilfsmittel-, Telefonie- oder Hardwareabnahme.**
 
+**Spätere native Runtime-Inventur:** [TV-/Vision-Settings ohne Feature-Aktivierung](os-speech-settings-inventory-20261029.md). Vision Live Speech ist jetzt tatsächlich sichtbar belegt, weiterhin Off. Die lokale Suche findet auch diese bekannte Funktion nicht; TV lässt die offiziell dokumentierte VoiceOver-Funktion ebenfalls aus. Diese konkreten Gegenkontrollen verbieten einen OS-Negativschluss für die weiterhin ungeklärten TV-/Vision-RTT-Zellen. Keine Produktdatei geändert oder neue Hilfsmittel-Nutzbarkeit behauptet.
+
 ## Neue positive OS-Belege
 
 | Ziel / Funktion | Tatsächlich dokumentierter OS-Pfad | Konkrete verbleibende Grenze |

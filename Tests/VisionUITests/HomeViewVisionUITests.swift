@@ -1,6 +1,58 @@
 import XCTest
 
 @MainActor final class HomeViewVisionUITests:XCTestCase {
+  func testReadOnlyVisionVisibleLiveSpeechAndRTTSearchInventory() {
+    continueAfterFailure=false
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences")
+    settings.launch();XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
+    let category=settings.buttons["ACCESSIBILITY"]
+    XCTAssertTrue(category.waitForExistence(timeout:10));category.tap();XCTAssertTrue(category.isSelected)
+    let table=settings.tables.firstMatch,window=settings.windows.containing(.button,identifier:"ACCESSIBILITY").firstMatch
+    XCTAssertTrue(table.exists);XCTAssertTrue(window.exists)
+    let live=settings.cells["LIVE_SPEECH_TITLE"]
+    XCTAssertTrue(live.exists);let status=live.label;XCTAssertTrue(status.contains("Off"))
+    var poses:[[Double]]=[],visible=false
+    for step in 0..<8 {
+      let f=live.frame,clip=table.frame.intersection(window.frame).insetBy(dx:20,dy:112)
+      poses.append([Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)])
+      if !f.isEmpty,clip.contains(f) {visible=true;break}
+      // Use the table's native scene-bound scroll action, not the window gutter.
+      let pose=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:[
+        "target":[f.minX,f.minY,f.width,f.height],"window":[window.frame.minX,window.frame.minY,window.frame.width,window.frame.height],
+        "direction":f.minY<clip.minY ? "down":"up","base":"main table semantic slow swipe"],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      pose.name="vision-ossettings-scroll-before-\(step)";pose.lifetime = .keepAlways;add(pose)
+      if f.minY<clip.minY {table.swipeDown(velocity:.slow)} else {table.swipeUp(velocity:.slow)}
+    }
+    XCTAssertTrue(visible);XCTAssertEqual(live.label,status)
+    let report=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["poses":poses,"status":status,"feature_row_taps":0],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    report.name="vision-ossettings-live-speech-scroll-only";report.lifetime = .keepAlways;add(report)
+    capture(settings,"vision-ossettings-live-speech-visible")
+    let field=settings.searchFields.firstMatch
+    XCTAssertTrue(field.waitForExistence(timeout:5));field.tap();field.typeText("RTT")
+    XCTAssertEqual(field.value as? String,"RTT");RunLoop.current.run(until:Date().addingTimeInterval(2))
+    capture(settings,"vision-ossettings-query-rtt")
+    field.tap();field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:3));field.typeText("Live Speech")
+    XCTAssertEqual(field.value as? String,"Live Speech");RunLoop.current.run(until:Date().addingTimeInterval(2))
+    capture(settings,"vision-ossettings-query-live-speech")
+    field.tap();field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:11))
+    XCTAssertTrue(["","Search"].contains(field.value as? String ?? "INVALID"))
+  }
+  func testReadOnlyVisionAccessibilityMenuInventory() {
+    continueAfterFailure=false
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences")
+    settings.launch();XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
+    let category=settings.buttons["ACCESSIBILITY"]
+    XCTAssertTrue(category.waitForExistence(timeout:10));category.tap()
+    XCTAssertTrue(category.isSelected)
+    capture(settings,"vision-ossettings-accessibility-top")
+  }
+  func testReadOnlyVisionSystemSettingsRootInventory() {
+    continueAfterFailure=false
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences")
+    settings.launch()
+    XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
+    capture(settings,"vision-ossettings-root")
+  }
   private func launch(_ page:String?=nil)->XCUIApplication {
     continueAfterFailure=false
     let app=XCUIApplication(bundleIdentifier:"org.example.HomeViewReplica")
