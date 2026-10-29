@@ -4,6 +4,8 @@
 
 **Recherche und Quellprüfung, keine Hilfsmittel-/Hardwareabnahme. #74 bleibt offen; F104/F105 bleiben ohne Parity.** Diese Funktionen sind nicht durch ein einziges Textfeld erfüllt.
 
+**Aktualisierung, 29. Oktober:** [Neue spezialisierte Apple-Guides und vollständige einzelne Live-Speech-/RTT-Bilanz](speech-platform-update-20261029.md): iPad-/Watch-RTT positiv dokumentiert, Vision Live Speech nur in Anrufen, TV-FaceTime-Captions und Watch-Untertitel als iPhone-Live-Listen-Fernanzeige. Diese neuen Belege ersetzen die entsprechenden „in diesem Paket ungeklärt“-Zellen des historischen Tabellenstands unten; TV Live Speech/RTT und Vision RTT bleiben ausdrücklich nicht positiv geklärt. Keine negative OS-Behauptung aus einer Kataloglücke.
+
 **Fortschritt nach diesem Quellbefund:** [Eigener App-Shortcut-Einstieg](assistant-app-shortcut.md) mit Compilermetadaten und direkter nativer Body-/Root-Prüfung. **29. Oktober:** [tatsächliche Entdeckung und OS-Kalt-/Warmaufrufe auf iPhone/iPad](assistant-os-shortcut.md) bestanden, normale App ohne Fixtureargumente. Die unten beschriebenen früheren Softwarelücken gelten nur für `441f78a`; Siri, Mac-/Vision-Systemausführung und physische Authentifizierung bleiben offen.
 
 **Weitere Softwarelieferung, 22. Oktober:** [Quellseitige Podcast-Untertitel](podcast-source-captions.md) im bestehenden AVPlayer-Pfad. Die unten beschriebene fehlende Legible-Auswahl gilt für den datierten Quellbefund, nicht den aktuellen Softwarestand. OS-Live-Captions und echte Hilfsmittelabnahmen bleiben getrennt.

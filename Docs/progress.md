@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Sprache je Plattform genauer bilanziert · 29. Oktober 2026
+
+[Neun aktuelle spezialisierte Apple-Guides](speech-platform-update-20261029.md): Vision Live Speech nur in Anrufen, TV-Captions nur FaceTime, Watch-Captions als Fernanzeige des gekoppelten iPhone; iPad-/Watch-RTT positiv dokumentiert. Alle zwölf Live-Speech-/RTT-Zellen einzeln erfasst; drei OS-Pfade und echte Hilfsmittel-/Gesprächsabnahmen bleiben offen. #74 bleibt OPEN/F104–F105 ohne Parity; keine neue Runtime- oder Hardwareabnahme aus Recherche.
+
 ## Neun weitere Eingabefoki geschützt · 29. Oktober 2026
 
 [Neun iPhone-Vorherfehler korrigiert](app-switcher-root-fields.md); neun iPad-Vorherfälle waren bereits grün. Tatsächliche vollständige OS-Karten ohne Tastaturebene, genaue ungesendete Entwürfe nach Rückkehr erhalten. **34 aktuelle UI-Ausführungen, fünf SDKs**, 225 Quellen und alle App-/Test-/Archivbytes gebunden. Native Composer/Alerts und physische/Präsenz-/Mediengrenzen bleiben bei #67 offen. Gesamtauftrag läuft weiter; 41 offene ursprüngliche Issues, Snoopy ist ein ausdrücklicher Rechte-Scope-Ausschluss.

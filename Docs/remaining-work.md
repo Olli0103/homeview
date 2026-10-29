@@ -16,6 +16,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Sprache/RTT: aktuelle spezialisierte OS-Pfade und einzelne Grenzen](speech-platform-update-20261029.md). Zwölf Live-Speech-/RTT-Zellen bilanziert, drei OS-Pfade noch nicht positiv geklärt; tatsächliche Hilfsmittel-/Gesprächsabnahmen getrennt. #74 bleibt offen.
+
 - [Wetter-App und Stadtdialog: native Trefferflächen korrigiert](weather-surface-hit-regions.md); zwölf finale UI-Ausführungen, vier leere Audits, fünf SDKs. #73 weiter offen für übrige Kriterien.
 - [Wetter-Einstellungen: Stadtfeld/Einheiten und Tastatur-Sichtbarkeit korrigiert](weather-settings-hit-regions.md); zehn finale UI-Ausführungen/fünf SDKs. #73 bleibt für übrige Accessibility-Kriterien offen.
 - [Fade-Zeitabbildung nachgeprüft](fade-time-mapping-review.md): sichtbare Lücke bei geschätzter 9:25-Pose; keine weitere Fade-Sequenz in sieben zusätzlichen Filmzeitpunkten. Keine geratene Sekundenbindung übernommen; #18 offen.
