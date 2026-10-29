@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Tatsächliche TV-Remote und Timerfokus · 29. Oktober 2026
+
+[Native tvOS-Matrix und korrigierter Fokus](tv-remote-runtime.md): unerreichbare Timeraktionen tatsächlich reproduziert; tvOS-Fokusgruppe behebt den unveränderten Vorherfall. Reproduzierbares `HomeViewTV`-Testziel integriert. **Vier aktuelle TV-Methoden + zwei mobile Timerregressionen**, fünf SDKs bestanden;227 Quellen und alle Archive/Installationen gebunden. Kamera/Foto und übrige Plattform-/Hardwarekriterien bei #79 offen; Gesamtauftrag läuft weiter.
+
 ## Sprache je Plattform genauer bilanziert · 29. Oktober 2026
 
 [Neun aktuelle spezialisierte Apple-Guides](speech-platform-update-20261029.md): Vision Live Speech nur in Anrufen, TV-Captions nur FaceTime, Watch-Captions als Fernanzeige des gekoppelten iPhone; iPad-/Watch-RTT positiv dokumentiert. Alle zwölf Live-Speech-/RTT-Zellen einzeln erfasst; drei OS-Pfade und echte Hilfsmittel-/Gesprächsabnahmen bleiben offen. #74 bleibt OPEN/F104–F105 ohne Parity; keine neue Runtime- oder Hardwareabnahme aus Recherche.

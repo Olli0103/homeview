@@ -182,6 +182,11 @@ struct TimerView: View {
             // The 44pt choices row plus 10pt bottom inset uses 54pt of the
             // former 90pt gap. Keep status/actions clear of the central title.
             }.padding(.bottom, model.data.timers.count > 1 ? 36:90)
+            #if os(tvOS)
+              // Extend the focus region across the empty horizontal space so
+              // Down from either corner control can reach the timer actions.
+              .frame(maxWidth:.infinity).focusSection()
+            #endif
             if model.data.timers.count > 1 {
               ScrollView(.horizontal) {
                 HStack {
