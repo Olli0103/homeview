@@ -183,7 +183,11 @@
     "state": "open",
     "implementation_note": "Begrenzte diagonale Achsenkonflikte nach unverändertem App-Befund korrigiert. Docs/navigation-intent.md:159Core/14gezielteUI/5SDK. Bestehende Abstände und Übergänge bleiben; Originalkurven, interaktive Abbrüche und Hardware offen.",
     "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state_verified_on": "2026-10-29",
+    "progress_evidence": [
+      "Docs/transition-reference-review-20261029.md",
+      "Docs/verification/original-transition-gifs-20261029.json"
+    ]
   },
   {
     "key": "FACE-03",
@@ -196,7 +200,7 @@
       "F004",
       "F005"
     ],
-    "current": "Direktwahl von Slots, Größenfamilien und unabhängige Speicherung je Face sind umgesetzt. Exakte Originalgeometrie und vollständiger Optionsumfang sind nicht bewiesen.",
+    "current": "Begrenzter Editor-Farbfehler korrigiert: Home schreibt/rendert eigene Konfiguration, unkonfiguriertes Modular bleibt nach Änderung und Neustart pixelgleich. Wirkungslose Home-Clock-Farbauswahl entfernt, Altwerte nicht gelöscht/geraten. 397 Coretests,12 gezielte UI-Ausführungen,5 SDKs; zwei Vorherfehler und eigene UUID-Dateien erhalten. Exakte Originalgeometrie, vollständige Optionen/Familien/Anbieter und physische Abnahmen bleiben offen.",
     "tasks": [
       "Langdruck, Auswahlrahmen, Farb-/Stilseiten und leere Slots gegen Referenzen abnehmen",
       "Pro Layout erlaubte Familien, Anbieter und Defaults prüfen",
@@ -212,7 +216,12 @@
     "state": "open",
     "implementation_note": "Begrenzte gespeicherte Face-Feldwiederherstellung nach unverändertem Decoder-Befund: Docs/face-configuration-recovery.md;166Core/8gezielteUI/5SDK, vier eigene UUID-Teststände mit Originaldateien/Prozessrestart geprüft. Keine vollständige Editor-/Migrations-/Original-/Hardwareabnahme.",
     "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state_verified_on": "2026-10-29",
+    "progress_evidence": [
+      "Docs/face-color-isolation.md",
+      "Docs/verification/face-color-isolation.json",
+      "Docs/transition-reference-review-20261029.md"
+    ]
   },
   {
     "key": "FACE-04",

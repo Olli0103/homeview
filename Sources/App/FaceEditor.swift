@@ -186,14 +186,12 @@ struct FaceEditor: View {
                   let selected=model.data.face
                   model.updateLocalControls {
                     $0.editConfiguration(for:selected) { $0.theme = i }
-                    // Home panels retain their legacy color binding.
-                    if [.home,.homeClock].contains(selected) { $0.theme=i }
                   }
                 } label: {
                   Circle().fill(
                     face == .modular
                       ? (i == 0 ? .mist : Color(red: 0.73, green: 0.76, blue: 0.63))
-                      : face == .home || face == .homeClock
+                      : face == .home
                         ? (i == 0 ? .purple : .teal)
                         : (i == 0 ? .orange : .mint)
                   ).frame(width: 34, height: 34)
@@ -280,7 +278,7 @@ struct FaceEditor: View {
   }
   private func colorLabel(_ index: Int) -> String {
     if face == .modular { return index == 0 ? "Mist style" : "Sage style" }
-    if face == .home || face == .homeClock { return index == 0 ? "Purple style" : "Teal style" }
+    if face == .home { return index == 0 ? "Purple style" : "Teal style" }
     return index == 0 ? "Orange style" : "Mint style"
   }
   private var editorPreview: some View {

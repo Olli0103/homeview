@@ -1,0 +1,377 @@
+{
+  "date": "2026-10-29",
+  "issue": 7,
+  "issue_stays_open": true,
+  "base_commit": "1b34bd777efaaa87220af0bcf929ec7cb5f4cc5c",
+  "source_digest": "c4282130c4ad06b3596b84ea8200787c8b71818b7271c354d84a8bf673b8b90e",
+  "scope": "Fix cross-face legacy color writes and stop offering a color option absent from the Home Clock renderer; no original editor palette/geometry acceptance",
+  "core": {
+    "passed": 397,
+    "failed": 0,
+    "final_bound_run": true,
+    "source_digest": "c4282130c4ad06b3596b84ea8200787c8b71818b7271c354d84a8bf673b8b90e",
+    "compiled_test_bundle": "HomeViewCoreTests.xctest",
+    "compiled_files": [
+      {
+        "path": "HomeViewCoreTests.xctest/Contents/Info.plist",
+        "kind": "core_compiled",
+        "bytes": 1214,
+        "sha256": "2a7fe508540bd68c6eecb054d00b2fb6ecfdca1beb0d8578c63354e3084fead8"
+      },
+      {
+        "path": "HomeViewCoreTests.xctest/Contents/_CodeSignature/CodeResources",
+        "kind": "core_compiled",
+        "bytes": 2200,
+        "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b"
+      },
+      {
+        "path": "HomeViewCoreTests.xctest/Contents/MacOS/HomeViewCoreTests",
+        "kind": "core_compiled",
+        "bytes": 14192592,
+        "sha256": "7c00e2ae7a0814b82556672b767d2db380a5e950f1c09ea376a553ad69dbe234"
+      }
+    ],
+    "archive_sha256": "dd9bdbd6248f989fcb81ea4247b4d04f2dda0c0cfa2c2803583641a1a360fe54",
+    "all_entries_read_back": true,
+    "inputs_unchanged": true,
+    "log_sha256": "8ecadb15d77a50755d66c503f738342f2eee6a4cf34de5d6c4b4a302aaa25524",
+    "qualification": "First compile-and-run also passed397; one independently frozen skip-build execution is the final bound run, not794 distinct tests. Metal host is M1 Max, not iPad performance evidence."
+  },
+  "UI_runs": [
+    {
+      "checkpoint": "face-color-final-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "c4282130c4ad06b3596b84ea8200787c8b71818b7271c354d84a8bf673b8b90e",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "1a1aff6b84795bb3c18f965bd77760e48adaccc8bb54b8597bdf017feb3a1442",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "tests": [
+        "testHomeColorChangesOnlyHomeAndPersistsWithoutChangingModular",
+        "testHomeClockDoesNotOfferAnUnrenderedColorChoice",
+        "testFaceEditorModularTopUnfilteredHitRegionAudit",
+        "testFaceEditorPaletteListAndCarouselNativeEdges",
+        "testSpatialEditorFiltersInlineSlotAndRestoresAfterRelaunch",
+        "testHomePrismNightHasNoBlueGlassLeak"
+      ],
+      "log_sha256": "abe00a4f5af572babfba7231ecf09fe9cfdeffb935e4801c93669e4bf7712b03"
+    },
+    {
+      "checkpoint": "face-color-final-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "c4282130c4ad06b3596b84ea8200787c8b71818b7271c354d84a8bf673b8b90e",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "1a1aff6b84795bb3c18f965bd77760e48adaccc8bb54b8597bdf017feb3a1442",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "tests": [
+        "testHomeColorChangesOnlyHomeAndPersistsWithoutChangingModular",
+        "testHomeClockDoesNotOfferAnUnrenderedColorChoice",
+        "testFaceEditorModularTopUnfilteredHitRegionAudit",
+        "testFaceEditorPaletteListAndCarouselNativeEdges",
+        "testSpatialEditorFiltersInlineSlotAndRestoresAfterRelaunch",
+        "testHomePrismNightHasNoBlueGlassLeak"
+      ],
+      "log_sha256": "625c43ff5f80dc83f7a1a392de6136162aad3f9263f85880a492eb8078ec8009"
+    },
+    {
+      "checkpoint": "face-color-baseline-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "7bc167fe00700760d9306b2c30f6186ecf53e5947be98f5de8ac9b64dff1751d",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "5f554190014d6b0616a78a3740e8494ff7548f6bd2365dea25b069c9188b3949",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "tests": [
+        "testHomeColorChangesOnlyHomeAndPersistsWithoutChangingModular",
+        "testHomeClockDoesNotOfferAnUnrenderedColorChoice"
+      ],
+      "log_sha256": "131b6f648c986e4d232a9c180d5d669f9a83e3849af857a703051416d0212ca6"
+    }
+  ],
+  "final_UI_executions": 12,
+  "final_unique_methods": 6,
+  "full_suite": false,
+  "baseline_failed_executions": 2,
+  "pixel_readbacks": [
+    {
+      "device": "phone",
+      "Modular_before_vs_after_Home_edit_changed_pixels": 0,
+      "Modular_before_vs_after_restart_changed_pixels": 0,
+      "Home_Teal_before_vs_after_restart_changed_pixels": 0,
+      "Home_before_vs_selected_Teal_changed_pixels": 1204692
+    },
+    {
+      "device": "ipad",
+      "Modular_before_vs_after_Home_edit_changed_pixels": 0,
+      "Modular_before_vs_after_restart_changed_pixels": 0,
+      "Home_Teal_before_vs_after_restart_changed_pixels": 0,
+      "Home_before_vs_selected_Teal_changed_pixels": 2377929
+    }
+  ],
+  "baseline_owned_store": {
+    "owned_test_id": "989B13E8-DF2A-440D-B2CD-DB7501817158",
+    "sha256": "758f4845f52b81ce5baabe5974d0cd2252aaf9e78624668c2a132b3bd53200d4",
+    "face": "Modular",
+    "legacy_theme": 1,
+    "faceConfigurations": {
+      "Home Modular": {
+        "flowBackground": true,
+        "complications": {},
+        "theme": 1,
+        "flowTypeface": 0
+      }
+    }
+  },
+  "final_owned_stores": [
+    {
+      "device": "phone",
+      "owned_test_id": "32CFE9BF-C9A6-4164-B74C-32477953FFB3",
+      "sha256": "780fcf05bd264c141d16e5c673cd7914425d46de105190ed075c62bb3a9b7da3",
+      "face": "Home Modular",
+      "legacy_theme": 0,
+      "Home_Modular_theme": 1,
+      "Modular_configuration_present": false
+    },
+    {
+      "device": "ipad",
+      "owned_test_id": "4BB9C461-A738-456C-B6A4-17D99B6F81AA",
+      "sha256": "beaa5a9ea270400035268383b864cafb5b7e3880c2272bb4314a12a2c86d2d30",
+      "face": "Home Modular",
+      "legacy_theme": 0,
+      "Home_Modular_theme": 1,
+      "Modular_configuration_present": false
+    }
+  ],
+  "legacy_data_policy": "Existing legacy theme is retained as fallback; no guessed repair/reset of ambiguous older global values, no removed stored Home Clock configuration",
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T05:58:38.737047+00:00",
+      "ended": "2026-10-29T05:59:12.297630+00:00",
+      "log": "ios-final-build.log",
+      "log_sha256": "5518cf9f1a407cdb4fca731d0fcd7120520fe69f215c5cd6e22bc1056df7e8f3"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-29T05:59:12.298996+00:00",
+      "ended": "2026-10-29T05:59:39.938312+00:00",
+      "log": "macos-final-build.log",
+      "log_sha256": "ec0d237894ef3628b514a156887d53971d560d8a6da58e47ed58ae2feeb9b64d"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T05:59:39.939020+00:00",
+      "ended": "2026-10-29T06:00:08.853343+00:00",
+      "log": "tvos-final-build.log",
+      "log_sha256": "0a88a7d7dae0f27387a362dc3694d9869dd56c78a0011621598a0d9514c9714b"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T06:00:08.853964+00:00",
+      "ended": "2026-10-29T06:00:37.803236+00:00",
+      "log": "visionos-final-build.log",
+      "log_sha256": "07f195b8d1c138c6f4ad90bf8b3f7ae9c81ef7f98442e191bbd9428c4c75fc34"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T06:00:37.803702+00:00",
+      "ended": "2026-10-29T06:00:46.498379+00:00",
+      "log": "watchos-final-build.log",
+      "log_sha256": "615c8a3cf4d899e059aee179bc67a82a8e30d76e21cfe5deb5e839f880b414e0"
+    }
+  ],
+  "SDK_products_manifest": "Docs/verification/face-color-isolation-platforms.json",
+  "decoded_PNGs": 35,
+  "contact_sheets_reviewed": 7,
+  "published_images": [
+    {
+      "checkpoint": "face-color-final-phone",
+      "device": "phone",
+      "state": "face-color-home-clock-options",
+      "path": "Docs/screenshots/face-color-isolation/phone-face-color-home-clock-options.png",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "b0f0fe2211a4e295af0384fc27c8afddaa2871073bd5d0670d71974220c44511"
+    },
+    {
+      "checkpoint": "face-color-final-phone",
+      "device": "phone",
+      "state": "face-color-home-teal-after-restart",
+      "path": "Docs/screenshots/face-color-isolation/phone-face-color-home-teal-after-restart.png",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "2b4c8b66deb0611da267551673e13679c30c25d8e275075abf05d0c920aa3226"
+    },
+    {
+      "checkpoint": "face-color-final-phone",
+      "device": "phone",
+      "state": "face-color-modular-after-restart",
+      "path": "Docs/screenshots/face-color-isolation/phone-face-color-modular-after-restart.png",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "3e1e927f3b78d15e32109da49c7748096811e741817be6064b1aa71264f8843e"
+    },
+    {
+      "checkpoint": "face-color-final-phone",
+      "device": "phone",
+      "state": "face-color-modular-selection-after-home-edit",
+      "path": "Docs/screenshots/face-color-isolation/phone-face-color-modular-selection-after-home-edit.png",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "48a95f3795c0e1313d20fae957bdb1ad24ab2964e68120291620d92cc47aaef9"
+    },
+    {
+      "checkpoint": "face-color-final-phone",
+      "device": "phone",
+      "state": "face-color-home-before",
+      "path": "Docs/screenshots/face-color-isolation/phone-face-color-home-before.png",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "sha256": "b9373672d1a9fcc0496fa4cb73043ba14a7e245a457f888653096c9b61263a55"
+    },
+    {
+      "checkpoint": "face-color-final-ipad",
+      "device": "ipad",
+      "state": "face-color-home-clock-options",
+      "path": "Docs/screenshots/face-color-isolation/ipad-face-color-home-clock-options.png",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "ecd9325f3094362ef3c12a246cbbdc79af13f66e5ea85cf974498608b9f8ce8a"
+    },
+    {
+      "checkpoint": "face-color-final-ipad",
+      "device": "ipad",
+      "state": "face-color-home-teal-after-restart",
+      "path": "Docs/screenshots/face-color-isolation/ipad-face-color-home-teal-after-restart.png",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "03fd012d5e76354611becab3893163265881f8cc6f6e7193dd1f6fc64299b9bc"
+    },
+    {
+      "checkpoint": "face-color-final-ipad",
+      "device": "ipad",
+      "state": "face-color-modular-after-restart",
+      "path": "Docs/screenshots/face-color-isolation/ipad-face-color-modular-after-restart.png",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "99f9a1e5d6c89b7318982e4ba774c31dc2316ec3c39d926f71f1df758aeab758"
+    },
+    {
+      "checkpoint": "face-color-final-ipad",
+      "device": "ipad",
+      "state": "face-color-modular-selection-after-home-edit",
+      "path": "Docs/screenshots/face-color-isolation/ipad-face-color-modular-selection-after-home-edit.png",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "f7af34b2779d477a410266818875de818d184a9faed4e8d4b7f9213626ff0aaf"
+    },
+    {
+      "checkpoint": "face-color-final-ipad",
+      "device": "ipad",
+      "state": "face-color-home-before",
+      "path": "Docs/screenshots/face-color-isolation/ipad-face-color-home-before.png",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "sha256": "545f0c0f557a27d431f14516033265dbe5429bdb8e977fc291726a8dc293fde5"
+    },
+    {
+      "checkpoint": "face-color-baseline-phone",
+      "device": "baseline-phone",
+      "state": "face-color-home-clock-options",
+      "path": "Docs/screenshots/face-color-isolation/baseline-phone-face-color-home-clock-options.png",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "c6b1b32ffcba4d72a5726c38a890f8e2395bc19024f8873c6dfed225b3d018b0"
+    },
+    {
+      "checkpoint": "face-color-baseline-phone",
+      "device": "baseline-phone",
+      "state": "face-color-modular-selection-after-home-edit",
+      "path": "Docs/screenshots/face-color-isolation/baseline-phone-face-color-modular-selection-after-home-edit.png",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "035195b7b832b54f655f1cb091a38954582c9334e545f5f3e272bc47e805e120"
+    }
+  ],
+  "physical_signing_hold_unchanged": true,
+  "real_Home_accounts_calls_capture_used": false,
+  "parity_accepted": false,
+  "pixel_scope": "Full native reference.viewport crop, excluding OS status bars and footer; not whole device-screen equality"
+}

@@ -1,5 +1,11 @@
 # Bearbeitungsstand
 
+## Face-Editor: Farben ohne Querveränderung · 29. Oktober 2026
+
+[Home-Farbänderung färbt Modular nicht mehr ungefragt um](face-color-isolation.md); zwei tatsächliche Vorherfehler und eigene UUID-Dateien belegen die Ursache. Home rendert seine eigene gespeicherte Farbe, der Legacy-Fallback bleibt erhalten. Wirkungslose Home-Clock-Farbauswahl entfernt, gespeicherte Werte nicht gelöscht. 397 Coretests, zwölf gezielte UI-Ausführungen, fünf SDKs; Modular nach Änderung/Neustart und Home Teal nach Neustart jeweils im vollständigen Face-Viewport exakt. #7 bleibt für Originalgeometrie/-optionen offen; **40/82 geschlossen, 42 offen**.
+
+Daneben [158 Frames zweier bestehender Original-GIFs vollständig nachgeprüft](transition-reference-review-20261029.md). Keine neue Quelle oder Originalstate-Zählung, keine erfundene komplette Standardreihenfolge oder native Eingabekurve. #6 bleibt offen; Originalbilder bleiben privat.
+
 ## Assistenteneingabe und aktueller Backlog · 29. Oktober 2026
 
 **40/82 ursprüngliche Issues geschlossen, 42 offen.** [#38 im ursprünglichen synthetischen Softwareumfang abgeschlossen](assistant-input-acceptance.md): 18/18 gezielte UI-Ausführungen an identischen Quellen, echter OS-Control-Center-Wechsel, Cmd-Period-Dismissal, Rotation und ungesendeter Entwurf; fünf SDK-Builds. Kein Raw-Key-/physischer Hilfsmittel-/Original-PASS. [Aktuelle vollständige Liste](remaining-work.md) und [GitHub-Abgleich aller 82 Nummern](verification/backlog-reconciliation-20261029.json).

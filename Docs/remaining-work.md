@@ -4,6 +4,9 @@
 
 ## Aktueller Arbeitsblock
 
+- [Editor-Farben isoliert](face-color-isolation.md): Home ändert Modular nicht mehr ungefragt; feste Home-Clock-Palette bietet keine wirkungslosen Farbtasten. 397 Coretests, zwölf UI-Ausführungen, fünf SDKs; eigene gespeicherte Zustände und exakte Pixel geprüft. #7 bleibt für vollständigen Originaleditor offen.
+- [Original-GIF-Nachprüfung](transition-reference-review-20261029.md): 158 Frames gesichtet, sichtbare Teilfolge erhalten; keine vollständige Standardreihenfolge oder Langsam-/Schnell-/Abbruchregel abgeleitet. #6 bleibt offen.
+
 - Weltuhr: Tageslicht über Mitternacht und einzelne Horizontkreuzungen korrekt als Intervalle darstellen; unbekannten Sonnenstand neutral markieren. [Umsetzung und Grenzen](world-clock-midnight-daylight.md). #53 bleibt wegen der fehlenden konkreten Originalreferenz offen.
 - Assistenteneingabe: [#38 im ursprünglichen synthetischen Softwareumfang abgeschlossen](assistant-input-acceptance.md). 18 aktuelle UI-Ausführungen und fünf SDKs; echter OS-Control-Center-Wechsel und Cmd-Period ohne Senden. Unabhängige UIKit-No-ops sind kein Raw-Key-PASS; physische Hilfsmittel und Original-Parity bei #73/#77/#78 bleiben offen.
 - [Tatsächlicher App-Shortcut-Aufruf aus Apples Kurzbefehle-App](assistant-os-shortcut.md) auf eigenen frischen iPad-/iPhone-Simulatoren bestanden: normaler OS-Kaltstart und Warmaufruf ohne UITesting-Speicher/Flags, keine implizite Aktion. #74 bleibt für übrige Hilfsmittel-/Plattformgrenzen offen.
@@ -25,7 +28,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs, nicht automatis
 | [#4](https://github.com/Olli0103/homeview/issues/4) | Quelllizenz und Veröffentlichungsunterlagen festlegen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#5](https://github.com/Olli0103/homeview/issues/5) | Face-Katalog und Varianten vollständig gegen Referenz abnehmen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#6](https://github.com/Olli0103/homeview/issues/6) | Face-Wechsel und App-Raster-Übergänge vermessen | Offen; zusätzliche Software-, Originalzustands-/Geometrie-/Bewegungsabnahme erforderlich. |
-| [#7](https://github.com/Olli0103/homeview/issues/7) | Räumlichen Face-Editor vollständig kalibrieren | Offen; zusätzliche Software-, Originalzustands-/Geometrie-/Bewegungsabnahme erforderlich. |
+| [#7](https://github.com/Olli0103/homeview/issues/7) | Räumlichen Face-Editor vollständig kalibrieren | Offen. Farb-Querveränderung und wirkungslose Auswahl korrigiert; Originalgeometrie, vollständige Optionen/Familien/Anbieter und physische Abnahme bleiben offen. |
 | [#8](https://github.com/Olli0103/homeview/issues/8) | Geteilte Modular-Inhalte mit echten Freigaben trennen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#9](https://github.com/Olli0103/homeview/issues/9) | Persönlichen Home Screen und App-Anordnung abnehmen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#10](https://github.com/Olli0103/homeview/issues/10) | Entfernung und Bewegung durch nachgewiesene Präsenzquelle steuern | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |

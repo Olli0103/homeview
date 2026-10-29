@@ -140,7 +140,7 @@ extension Face {
           place("bottom", "Bottom", .rectangular, .calendar, 38, 412, 524, 144),
         ], clockRect: CGRect(x: 220, y: 38, width: 342, height: 342), options: [.color])
     case .flow: return FaceDefinition(options: [.flowTypeface, .flowBackground])
-    case .home, .homeClock: return FaceDefinition(options: [.color])
+    case .home: return FaceDefinition(options: [.color])
     default: return FaceDefinition()
     }
   }

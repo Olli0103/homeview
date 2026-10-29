@@ -1632,6 +1632,47 @@ final class HomeViewUITests: XCTestCase {
     app.terminate()
     launch(["--persistence-test", id, "--reset-test-store"])
   }
+  func testHomeColorChangesOnlyHomeAndPersistsWithoutChangingModular() {
+    let id=UUID().uuidString
+    let receipt=XCTAttachment(string:id);receipt.name="face-color-owned-store-id";receipt.lifetime = .keepAlways;add(receipt)
+    launch(["--persistence-test",id,"--reset-test-store","--face","Modular","--reduce-motion"])
+    let modularBefore=viewportBytes("face-color-modular-before")
+    app.otherElements["face.Modular"].press(forDuration:1)
+    XCTAssertEqual(app.buttons["Mist style"].value as? String,"Selected")
+    tap("select.Home Modular");tap("editor.done")
+    let homeBefore=viewportBytes("face-color-home-before")
+    app.otherElements["face.Home Modular"].press(forDuration:1)
+    tap("Teal style");tap("editor.done")
+    let homeAfter=viewportBytes("face-color-home-teal")
+    XCTAssertNotEqual(viewportPixels(homeBefore,inset:0),viewportPixels(homeAfter,inset:0),
+      "Selecting Home's color must actually change its own renderer")
+    app.otherElements["face.Home Modular"].press(forDuration:1)
+    tap("select.Modular")
+    shot("face-color-modular-selection-after-home-edit")
+    XCTAssertEqual(app.buttons["Mist style"].value as? String,"Selected",
+      "Editing Home must not mutate an unconfigured Modular sibling through the legacy theme")
+    tap("editor.done")
+    let modularAfter=viewportBytes("face-color-modular-after-home-edit")
+    XCTAssertEqual(viewportPixels(modularBefore,inset:0),viewportPixels(modularAfter,inset:0))
+    app.terminate();launch(["--persistence-test",id,"--reduce-motion"])
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    XCTAssertEqual(viewportPixels(modularBefore,inset:0),viewportPixels(viewportBytes("face-color-modular-after-restart"),inset:0))
+    app.otherElements["face.Modular"].press(forDuration:1)
+    tap("select.Home Modular")
+    XCTAssertEqual(app.buttons["Teal style"].value as? String,"Selected")
+    tap("editor.done")
+    XCTAssertEqual(viewportPixels(homeAfter,inset:0),viewportPixels(viewportBytes("face-color-home-teal-after-restart"),inset:0))
+  }
+  func testHomeClockDoesNotOfferAnUnrenderedColorChoice() {
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--face","Home Modular Clock","--reduce-motion"])
+    app.otherElements["face.Home Modular Clock"].press(forDuration:1)
+    shot("face-color-home-clock-options")
+    XCTAssertFalse(app.buttons["Purple style"].exists,
+      "The fixed-palette renderer must not advertise a color choice it does not render")
+    XCTAssertFalse(app.buttons["Teal style"].exists)
+    tap("editor.done")
+    XCTAssertTrue(app.otherElements["face.Home Modular Clock"].exists)
+  }
   func testDuoAndCompactUseIndependentSlotsAndNavigableContent() {
     launch(["--face", "Modular Duo"])
     XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "complication.slot.")).count, 3)
