@@ -1,5 +1,7 @@
 # Verbleibende Arbeit und Grenzen
 
+- [Zwei native Fehlermeldungen im App-Umschalter geschützt](app-switcher-alerts.md): vier Vorherfehler und vier verworfene Rückkehrfehler erhalten; zwölf aktuelle UI-Ausführungen/fünf SDKs bestanden. Meldung, Picker und Read-only-Speicher bleiben erhalten. Weitere OS-Composer, physische/Präsenz-/Mediengrenzen bei #67 offen.
+
 - [Neun zusätzliche Root-Eingaberouten geschützt](app-switcher-root-fields.md): neun iPhone-Vorherfehler und neun bereits grüne iPad-Gegenkontrollen; genaue Entwürfe bleiben erhalten.34 aktuelle UI-Ausführungen/fünf SDKs. Native Composer, Alerts und physische/Präsenz-/Mediengrenzen bei #67 offen.
 
 - [Elf zusätzliche Sheet-Präsentationen geschützt](app-switcher-sheets.md): 22 tatsächliche Vorher-Snapshots korrigiert, 20 finale UI-Ausführungen/fünf SDKs. Native OS-Composer, Alerts/weitere Felder und physische/Präsenz-/Mediengrenzen bei #67 offen.
@@ -121,7 +123,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs oder einen ausdr
 | [#64](https://github.com/Olli0103/homeview/issues/64) | Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
 | [#65](https://github.com/Olli0103/homeview/issues/65) | Control Center und Settings mit echten Zuständen abgleichen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#66](https://github.com/Olli0103/homeview/issues/66) | Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen | Offen. Echte Geräte-/Haushaltsidentitätsbindung und persönliche Freigabe nicht vollständig nachgewiesen. |
-| [#67](https://github.com/Olli0103/homeview/issues/67) | Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen | Offen. Kalender und zwei offene Dialoge im Simulator geschützt; weitere Präsentationen, Präsenz/Medien/Unterbrechungen und physische Snapshots offen. |
+| [#67](https://github.com/Olli0103/homeview/issues/67) | Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen | Offen. Kalender, dokumentierte Sheets/Eingaberouten und zwei generische native Fehleralerts im Simulator geschützt; weitere OS-Präsentationen, Präsenz/Medien/Unterbrechungen und physische Snapshots offen. |
 | [#68](https://github.com/Olli0103/homeview/issues/68) | Gastberechtigungen für Haus, Wetter, Timer und Musik definieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#69](https://github.com/Olli0103/homeview/issues/69) | Secure-Exclaves-Identitätsverarbeitung als Hardwaregrenze dokumentieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#70](https://github.com/Olli0103/homeview/issues/70) | Private Cloud Compute als externe Systemfähigkeit bilanzieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |

@@ -271,10 +271,7 @@ struct FaceEditor: View {
           }
         }.padding(24).foregroundStyle(.primary).presentationDetents([.medium, .large])
           .snapshotPrivacyProtected()
-          .alert("HomeView",isPresented:Binding(
-            get:{ slotSaveError != nil },set:{ if !$0 { slotSaveError=nil } })) {
-              Button("OK",role:.cancel) { slotSaveError=nil }
-            } message: { Text(slotSaveError ?? "") }
+          .snapshotErrorAlert($slotSaveError)
       }
   }
   private func colorLabel(_ index: Int) -> String {

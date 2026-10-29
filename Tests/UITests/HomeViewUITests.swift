@@ -3575,7 +3575,8 @@ final class HomeViewUITests: XCTestCase {
     tap("device.unlock")
     XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout: 5))
   }
-  private func calendarSwitcherCard(from source:XCUIApplication,bounds:CGRect,checkpoint:String)->XCUIElement {
+  private func calendarSwitcherCard(from source:XCUIApplication,bounds:CGRect,checkpoint:String,
+    preserveReturnOnPrivacyFailure:Bool=false)->XCUIElement {
     let origin=source.coordinate(withNormalizedOffset:.zero)
     let start=CGPoint(x:bounds.midX,y:bounds.maxY-1)
     let end=CGPoint(x:bounds.midX,y:bounds.minY+bounds.height*0.42)
@@ -3621,7 +3622,12 @@ final class HomeViewUITests: XCTestCase {
       "acceptance":"coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee"]
     let receipt=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
     receipt.name="switcher-"+checkpoint+"-snapshot-receipt";receipt.lifetime = .keepAlways;add(receipt)
+    // Only the independent privacy guard may continue; navigation/card identity
+    // failures above remain fatal, so a return cannot be assigned to another app.
+    let previous=continueAfterFailure
+    if preserveReturnOnPrivacyFailure {continueAfterFailure=true}
     XCTAssertGreaterThanOrEqual(fraction,0.98,"Full card should show the existing black shield, not the white/green calendar")
+    continueAfterFailure=previous
     return card
   }
   func testCalendarNativeAppSwitcherSnapshotHidesPersonalContents() {
@@ -4426,6 +4432,53 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.staticTexts["store.readOnly"].exists,"The unsupported source must remain untouched")
   }
 
+}
+
+extension HomeViewUITests {
+  func testNativeAppSwitcherCoversRootWriteErrorAlertWithoutChangingReadOnlyState() {
+    continueAfterFailure=false
+    let id=UUID().uuidString
+    print("ALERT_FIXTURE_ROOT_UUID="+id)
+    launch(["--persistence-test",id,"--reset-test-store","--state-future-fixture","--screen-thermostat"])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    let previous=app.staticTexts["thermostat.value"].label
+    tap("thermostat.up")
+    let alert=app.alerts.firstMatch
+    XCTAssertTrue(alert.waitForExistence(timeout:5))
+    let message=alert.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","Original saved data is unchanged")).firstMatch
+    XCTAssertTrue(message.exists);let originalMessage=message.label
+    shot("switcher-root-write-alert-before")
+    calendarSwitcherCard(from:app,bounds:app.frame,checkpoint:"root-write-alert",preserveReturnOnPrivacyFailure:true).tap()
+    shot("switcher-root-write-alert-returned")
+    XCTAssertTrue(alert.waitForExistence(timeout:5));XCTAssertEqual(message.label,originalMessage)
+    alert.buttons["OK"].tap();XCTAssertEqual(app.staticTexts["thermostat.value"].label,previous)
+    app.terminate();launch(["--persistence-test",id,"--screen-thermostat"])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,previous)
+  }
+  func testNativeAppSwitcherCoversEditorSlotWriteErrorAlertAndKeepsPicker() {
+    continueAfterFailure=false
+    let id=UUID().uuidString
+    print("ALERT_FIXTURE_EDITOR_UUID="+id)
+    launch(["--persistence-test",id,"--reset-test-store","--state-future-fixture","--face","Modular"])
+    app.otherElements["face.Modular"].press(forDuration:1)
+    XCTAssertTrue(app.buttons["editor.done"].waitForExistence(timeout:5))
+    let previous=app.buttons["widget.0"].label
+    tap("widget.0");tap("complication.choose.Clock")
+    let alert=app.alerts.firstMatch
+    XCTAssertTrue(alert.waitForExistence(timeout:5))
+    let message=alert.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","Original saved data is unchanged")).firstMatch
+    XCTAssertTrue(message.exists);let originalMessage=message.label
+    shot("switcher-editor-slot-alert-before")
+    calendarSwitcherCard(from:app,bounds:app.frame,checkpoint:"editor-slot-alert",preserveReturnOnPrivacyFailure:true).tap()
+    shot("switcher-editor-slot-alert-returned")
+    XCTAssertTrue(alert.waitForExistence(timeout:5));XCTAssertEqual(message.label,originalMessage)
+    alert.buttons["OK"].tap()
+    XCTAssertTrue(app.buttons["complications.done"].waitForExistence(timeout:5));tap("complications.done")
+    XCTAssertEqual(app.buttons["widget.0"].label,previous);tap("editor.done")
+    app.terminate();launch(["--persistence-test",id])
+    XCTAssertTrue(app.staticTexts["store.readOnly"].exists)
+  }
 }
 
 extension HomeViewUITests {

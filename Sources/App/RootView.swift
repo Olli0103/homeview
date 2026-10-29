@@ -21,6 +21,39 @@ private struct SnapshotPrivacyProtection: ViewModifier {
 
 extension View {
   func snapshotPrivacyProtected() -> some View { modifier(SnapshotPrivacyProtection()) }
+  func snapshotErrorAlert(_ message:Binding<String?>) -> some View {
+    modifier(SnapshotErrorAlert(message:message))
+  }
+}
+
+/// Native presentation state is not the error's lifetime. Inactivity dismisses
+/// the alert, while a stale UIKit dismissal/acknowledgement cannot clear it.
+private struct SnapshotErrorAlert:ViewModifier {
+  @Environment(\.scenePhase) private var phase
+  @Binding var message:String?
+  @State private var presented=false
+  @State private var active=false
+  @State private var generation=0
+  func body(content:Content) -> some View {
+    let ticket=generation,expected=message
+    let presentation=Binding(get:{presented},set:{ value in
+      if generation==ticket {presented=value}
+    })
+    return content.alert("HomeView",isPresented:presentation) {
+      Button("OK",role:.cancel) {
+        guard active,generation==ticket,message==expected else {return}
+        message=nil
+      }
+    } message: {Text(message ?? "")}
+      .onChange(of:phase,initial:true) { _,phase in
+        generation+=1
+        active=phase == .active
+        presented=active && message != nil
+      }
+      .onChange(of:message,initial:true) { _,message in
+        presented=active && message != nil
+      }
+  }
 }
 
 struct RootView: View {
@@ -317,14 +350,7 @@ struct RootView: View {
         }
       }
     }
-    .alert(
-      "HomeView",
-      isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })
-    ) {
-      Button("OK") { model.error = nil }
-    } message: {
-      Text(model.error ?? "")
-    }
+    .snapshotErrorAlert(Binding(get:{model.error},set:{model.error=$0}))
     #if os(tvOS)
       .onExitCommand { model.homeGesture() }
       .onMoveCommand { direction in

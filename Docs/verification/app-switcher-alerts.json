@@ -1,0 +1,3999 @@
+{
+  "date": "2026-10-29",
+  "issue": 67,
+  "scope": "Two native generic write-error alerts in actual iOS App Switcher; not all OS composers or physical snapshots",
+  "source_digest": "958357fca2e6f8ecbaf6b1cd02bc5caad30164568e74981bc59561d4f59385ce",
+  "source_files": [
+    {
+      "path": "HomeViewReplica.xcodeproj/project.pbxproj",
+      "kind": "source",
+      "bytes": 75307,
+      "sha256": "43a9d5788add283e1e2941b9d637c0fff661dfca5ca712b3f4c126b6492aa4ad"
+    },
+    {
+      "path": "HomeViewReplica.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+      "kind": "source",
+      "bytes": 383,
+      "sha256": "9cd91cb1de5043e06afd268e13369983f60a22409fedff2b48fef64786442afc"
+    },
+    {
+      "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
+      "kind": "source",
+      "bytes": 2324,
+      "sha256": "d592cf5ee61a485aa772f5aad21d8d6da72eb07ad0d0d2b8f8f372529277f599"
+    },
+    {
+      "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewTV.xcscheme",
+      "kind": "source",
+      "bytes": 2328,
+      "sha256": "0a939876e1de704dd736f9bbbac4d53562caacffbc1da0b703e7127f697c59db"
+    },
+    {
+      "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewVision.xcscheme",
+      "kind": "source",
+      "bytes": 2336,
+      "sha256": "0da45f8a3f82685e531c602879e81d51e8b3e4e661ca8dbecdbc0e7abf6c6aed"
+    },
+    {
+      "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewWatch.xcscheme",
+      "kind": "source",
+      "bytes": 2322,
+      "sha256": "c2a35cb0ba9b90a091b1f0f9246e6c4477f96b161b80058a3437dc85d4166c26"
+    },
+    {
+      "path": "Package.resolved",
+      "kind": "source",
+      "bytes": 383,
+      "sha256": "c8847f7f0d11227b76d43c295cc6596611c58b666412fef51298f1b959c8df0c"
+    },
+    {
+      "path": "Package.swift",
+      "kind": "source",
+      "bytes": 509,
+      "sha256": "87aa9830cf40dae5b18d58ff685509d42e0d7ad8003c295f627b175d514a7537"
+    },
+    {
+      "path": "Resources/Assets.xcassets/AlbumArt.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/AlbumArt.imageset/image.png",
+      "kind": "source",
+      "bytes": 23517,
+      "sha256": "d53db63436f68e04d6f26a54fa46da4bd2b533f4a3c146e67f654db191fb5208"
+    },
+    {
+      "path": "Resources/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "kind": "source",
+      "bytes": 215,
+      "sha256": "380b68793f2cfa854be7cce10b1c98ee5032ab707e70d8f771f586e7ea182abc"
+    },
+    {
+      "path": "Resources/Assets.xcassets/AppIcon.appiconset/icon-independent-v2.png",
+      "kind": "source",
+      "bytes": 891172,
+      "sha256": "a6c20b8da16e82972473ef3e2c1153eee048ccc42e1a1110148f19c72dee69fa"
+    },
+    {
+      "path": "Resources/Assets.xcassets/Contents.json",
+      "kind": "source",
+      "bytes": 43,
+      "sha256": "47d7e4a36c59b0f8829154abe3a7f6b7ef0c5ea5cf8a9bfccbc6bdf85e811d1b"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/image.png",
+      "kind": "source",
+      "bytes": 3742589,
+      "sha256": "9acbcb56c4dbd5b41daa0054985c6b496f99408642bc246b9f3e273be08f8241"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/image.png",
+      "kind": "source",
+      "bytes": 3073944,
+      "sha256": "14d3fc99123c6ff70c994523790b94f4d34cf18c1e808a3080b1905f4cc73db9"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/image.png",
+      "kind": "source",
+      "bytes": 3252316,
+      "sha256": "640cce7ae268abee5cf53b424a9c9646ecd03922a9a4b14865ead2c4414b21b7"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/image.png",
+      "kind": "source",
+      "bytes": 3022112,
+      "sha256": "b0a9540126098aab163deb7627609275600b95f1164aae5784e5e7765adf3db9"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/image.png",
+      "kind": "source",
+      "bytes": 2818793,
+      "sha256": "4706c1679b463628014e7fbbe64a3be6e3ebafdc864f121c33d4e2d4182f8651"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/image.png",
+      "kind": "source",
+      "bytes": 2334993,
+      "sha256": "a23cc0c3f9bd409029e2e4451a771d9dceb91821fd2a32dbdaaac8ca0e3f47d7"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 149,
+      "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+    },
+    {
+      "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/image.png",
+      "kind": "source",
+      "bytes": 51440,
+      "sha256": "6a494569e8a377f4fe6a1d21cb6bda8024c25848dc78f905a2fe58f660d833ab"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconAlarms.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconAlarms.imageset/image.png",
+      "kind": "source",
+      "bytes": 23193,
+      "sha256": "5db57cfef3d81f472a462feb90715fa76359af9ea5a1b2ada45f4acdffe0022b"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconCalendar.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconCalendar.imageset/image.png",
+      "kind": "source",
+      "bytes": 23375,
+      "sha256": "a6ebff496c8bf0dd216d1f3c97fb954bb2949d1e4b12def159dc7e5110dcddbe"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconFaceTime.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconFaceTime.imageset/image.png",
+      "kind": "source",
+      "bytes": 23119,
+      "sha256": "f2c4e01ad31ab51995a795dfb8bb40eedb3d98b69cef30f4722c3ba4efa6cd69"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconFindMy.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconFindMy.imageset/image.png",
+      "kind": "source",
+      "bytes": 23112,
+      "sha256": "0619d1d988afef3cb0fa424c4a16c52d242f66a6a707ca2948d5f5ce4c136e5e"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconHome.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconHome.imageset/image.png",
+      "kind": "source",
+      "bytes": 23592,
+      "sha256": "a4107899bb299eea1fb938ec202adbceb6d4e9ea61d1d9f9da7fcc234f108663"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconIntercom.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconIntercom.imageset/image.png",
+      "kind": "source",
+      "bytes": 23765,
+      "sha256": "aead7f98e93449c0e538eb2a2ab5aca22c8f65d6a2ce8831794836935e732d61"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconMessages.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconMessages.imageset/image.png",
+      "kind": "source",
+      "bytes": 23497,
+      "sha256": "e53f1b20362924a7d40c85208ab94ef594cca47580bc3439df3da8ef6e40e721"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconMusic.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconMusic.imageset/image.png",
+      "kind": "source",
+      "bytes": 23452,
+      "sha256": "943812f42694050a5c6e12b6051cbc3eb4b7cdcf742057558bd80d57ea4be06d"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconPodcasts.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconPodcasts.imageset/image.png",
+      "kind": "source",
+      "bytes": 23293,
+      "sha256": "5cda483a240793d412059b58ed648dcd9913f66247851f37d85fc8fa92002260"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconReminders.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconReminders.imageset/image.png",
+      "kind": "source",
+      "bytes": 23667,
+      "sha256": "95c1202df19960e8cca6271fc0f94675fd93844ed7cc8913d1af1e9f6f401b58"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconSafari.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconSafari.imageset/image.png",
+      "kind": "source",
+      "bytes": 23353,
+      "sha256": "91a1ae2e4b5a4ac5235ad115b7220fea98fdf28fa1372d0765e8f549fe5f091b"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconSettings.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconSettings.imageset/image.png",
+      "kind": "source",
+      "bytes": 23289,
+      "sha256": "a4c5f5ae1a828062f573f17ba0cd3a873b745baa076b6dd182197e61dc600283"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconTimers.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconTimers.imageset/image.png",
+      "kind": "source",
+      "bytes": 23498,
+      "sha256": "0cb4cebb93b29deb64f1c3851d1489c7671013659fd9757655521e4bb1b5352f"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconWeather.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconWeather.imageset/image.png",
+      "kind": "source",
+      "bytes": 22993,
+      "sha256": "8093f745c479d407fb8be7264f567819233a56ca2bd384d4a52b796bef65abce"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconWorldClock.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/IconWorldClock.imageset/image.png",
+      "kind": "source",
+      "bytes": 23550,
+      "sha256": "37bbeb999a4dcc41c91af84eae723ba04f40394384f5ae1c7d150717edb1f471"
+    },
+    {
+      "path": "Resources/Assets.xcassets/Soup.imageset/Contents.json",
+      "kind": "source",
+      "bytes": 148,
+      "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+    },
+    {
+      "path": "Resources/Assets.xcassets/Soup.imageset/image.png",
+      "kind": "source",
+      "bytes": 23419,
+      "sha256": "18096d661501bf786990a44eb19a2d8c3c97e1584da96c35a4dd26f380ff195f"
+    },
+    {
+      "path": "Resources/FeedKit-LICENSE.txt",
+      "kind": "source",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Resources/Info.plist",
+      "kind": "source",
+      "bytes": 1292,
+      "sha256": "90292e4f4fe1b86218deeacccc03572f80c28137e9e65cec50b27e3b474ed074"
+    },
+    {
+      "path": "Resources/MainInfo.plist",
+      "kind": "source",
+      "bytes": 1393,
+      "sha256": "7b0ec0be469b996427bfa325e0a68389fd48858cb1bb66ad637802f1232faae6"
+    },
+    {
+      "path": "Resources/TimerWidgetInfo.plist",
+      "kind": "source",
+      "bytes": 729,
+      "sha256": "03ef18bd0c11de3a13e3219064293e9ef05255689f7f770e12fd8eba2258f7a3"
+    },
+    {
+      "path": "Resources/demo-tone.wav",
+      "kind": "source",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Resources/podcast-caption-test.mp4",
+      "kind": "source",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Resources/podcast-test-audio.wav",
+      "kind": "source",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Scripts/build_platforms.py",
+      "kind": "source",
+      "bytes": 1730,
+      "sha256": "e9fa088ea5e5f0c55d1bc92f60c77f915ca6bdc97d7bc1cf0042af91a7fd85fd"
+    },
+    {
+      "path": "Scripts/capture_vision_states.py",
+      "kind": "source",
+      "bytes": 5141,
+      "sha256": "a1456ea351daa56908d5456eb0d66d9a21b3eb6be4d3f7a51f667533c1d2cd20"
+    },
+    {
+      "path": "Scripts/check_asset_manifest.py",
+      "kind": "source",
+      "bytes": 2123,
+      "sha256": "843b76fe6f7233b77885bc974c737e8e34ef62b7bce0e3293f30d3587578b5fe"
+    },
+    {
+      "path": "Scripts/check_backlog.py",
+      "kind": "source",
+      "bytes": 1390,
+      "sha256": "77909fef46182e0b7946738ae390afd3ad3ecdfaf135412be3660906b8f9fc15"
+    },
+    {
+      "path": "Scripts/check_simultaneous_timer_expiry.py",
+      "kind": "source",
+      "bytes": 4036,
+      "sha256": "3c16e25d34cd8669f45ada5ea246a7e23fc67334bec7e158c7dd5bb6062478b4"
+    },
+    {
+      "path": "Scripts/generate_podcast_caption_fixture.py",
+      "kind": "source",
+      "bytes": 1210,
+      "sha256": "1a1edb5544659d37d6ecd39ed7f8359a702fa76603edf0125052bbb6a7aa4dfc"
+    },
+    {
+      "path": "Scripts/generate_project.py",
+      "kind": "source",
+      "bytes": 15196,
+      "sha256": "8088bd86813185d9e6c97a518f66acd09234e7575d919403d7b0fd0b3fc11dae"
+    },
+    {
+      "path": "Scripts/make_icon.swift",
+      "kind": "source",
+      "bytes": 2096,
+      "sha256": "3b6fd2816c40d2c2d534dacb41063358e3741aad6d8a6232709205883d719b2a"
+    },
+    {
+      "path": "Scripts/prepare_assets.swift",
+      "kind": "source",
+      "bytes": 1474,
+      "sha256": "3f94224213f299abdbf225637c8de4e229c986c2d613c528e01d642ebd5d8a12"
+    },
+    {
+      "path": "Sources/App/AlternateHomeFace.swift",
+      "kind": "source",
+      "bytes": 2636,
+      "sha256": "d33182eb2a58d6856484d9ee6e38db4401912f1e3c3980e421d9e77dfb2c048e"
+    },
+    {
+      "path": "Sources/App/AnswerSpeechActions.swift",
+      "kind": "source",
+      "bytes": 3072,
+      "sha256": "dbcdc1c7bf1d4eac236b7c6c036a46f69dea1e1d4b5313d9a5971e49be788843"
+    },
+    {
+      "path": "Sources/App/AnswerSpeechSettingsView.swift",
+      "kind": "source",
+      "bytes": 2895,
+      "sha256": "91398c25ab36ccd5d5aff40430984db48133c8295be50f48904bd324e0c99cea"
+    },
+    {
+      "path": "Sources/App/AppIcons.swift",
+      "kind": "source",
+      "bytes": 6506,
+      "sha256": "171f5456c6adb64a55285419afdd277213d2c97c89c07b725584a40039e61f06"
+    },
+    {
+      "path": "Sources/App/AppModel.swift",
+      "kind": "source",
+      "bytes": 85746,
+      "sha256": "f1a9bb0f1d7409b2535f9971d33535316573850a3d98687e0531ab06fd89bff9"
+    },
+    {
+      "path": "Sources/App/AssistantAppShortcut.swift",
+      "kind": "source",
+      "bytes": 1858,
+      "sha256": "c3c8d5212879e96fe095a73cd357d5634f34153b41a35686dceacfb4feb726dd"
+    },
+    {
+      "path": "Sources/App/AssistantCapabilitiesView.swift",
+      "kind": "source",
+      "bytes": 7700,
+      "sha256": "00ede7682e80ad4480f347c3eed42401017c17c8e9ebd2f0c0df86082ddecde8"
+    },
+    {
+      "path": "Sources/App/AssistantPlanView.swift",
+      "kind": "source",
+      "bytes": 2320,
+      "sha256": "9c083a44eb02821d1f12d26f2b07a1aa0a33a6ffa63cbb24754bc697127e3cc0"
+    },
+    {
+      "path": "Sources/App/AssistantResponseView.swift",
+      "kind": "source",
+      "bytes": 10489,
+      "sha256": "b2a5a17ec089fce365e7127184bf756fcfe21f36f8f00c3457670694107efa11"
+    },
+    {
+      "path": "Sources/App/AssistantVoiceSession.swift",
+      "kind": "source",
+      "bytes": 2524,
+      "sha256": "4d78f414284434a1d7cbf0dfac3a708974338a7831abd6d4fe9b44273dde9559"
+    },
+    {
+      "path": "Sources/App/BrowserNavigationFixture.swift",
+      "kind": "source",
+      "bytes": 1826,
+      "sha256": "179e863f55bcb4d0171d9ee874cc10c0dea9d9576fb465309056539d7417ebac"
+    },
+    {
+      "path": "Sources/App/CameraAndCommunication.swift",
+      "kind": "source",
+      "bytes": 15165,
+      "sha256": "2f3384e592f1cde0c9df15b8981d247ef6390c5e77e6e3a4ac6e630087993c4f"
+    },
+    {
+      "path": "Sources/App/ConnectedViews.swift",
+      "kind": "source",
+      "bytes": 19189,
+      "sha256": "6b737189d5c54d0f198da7b642b741418020be9536f64e7645807e41957ec260"
+    },
+    {
+      "path": "Sources/App/Controls.swift",
+      "kind": "source",
+      "bytes": 32385,
+      "sha256": "916ca0d75fd805fb8e0536ff56338e2ea955fc3a775729248fd34436ab079b15"
+    },
+    {
+      "path": "Sources/App/Design.swift",
+      "kind": "source",
+      "bytes": 15066,
+      "sha256": "2f06df4adbc91004544b6c9934a50f34c02d04bb672350b1bf4ef9d3a9f52775"
+    },
+    {
+      "path": "Sources/App/DeviceConnections.swift",
+      "kind": "source",
+      "bytes": 10821,
+      "sha256": "6c73ec2f42007b0023828c18541cb3ecc29976e5d25bf55dfb304154e27493e7"
+    },
+    {
+      "path": "Sources/App/DisplayWakeController.swift",
+      "kind": "source",
+      "bytes": 1426,
+      "sha256": "85ea8ea5f21007bb518c5e6e9d4046b063db80d36fed682d9eff5c5047f277e7"
+    },
+    {
+      "path": "Sources/App/Everyday.swift",
+      "kind": "source",
+      "bytes": 39529,
+      "sha256": "a3466a28bf0a3c6c4c8a725107a8ef57a9596573d0c31890c337938ab2c40753"
+    },
+    {
+      "path": "Sources/App/FaceEditor.swift",
+      "kind": "source",
+      "bytes": 17249,
+      "sha256": "c1534d11693a7e658bab186b639878be51c4b59d31aeb1478e042a71e13bb9c7"
+    },
+    {
+      "path": "Sources/App/Faces.swift",
+      "kind": "source",
+      "bytes": 35420,
+      "sha256": "dfc7a7bd1e2acaabde1a9230b8a9e5b18d33511e437ca25e1f7d0c71b02787b3"
+    },
+    {
+      "path": "Sources/App/FlowDigitContours.swift",
+      "kind": "source",
+      "bytes": 4984,
+      "sha256": "c05e80a4379d75b141d886ae25794e0fa8129b639f472eac9d6b3426c38a0fc0"
+    },
+    {
+      "path": "Sources/App/FlowMaterial.metal",
+      "kind": "source",
+      "bytes": 4216,
+      "sha256": "ffeb84962febb4267f111b4d63fe8e54605edbeea8251f1fa03600cd4f8e0e75"
+    },
+    {
+      "path": "Sources/App/HomeScreens.swift",
+      "kind": "source",
+      "bytes": 24478,
+      "sha256": "68a296f4f5d9d6ef1039420cf71e380f5a62c2969d858e21d110628fc69c11bb"
+    },
+    {
+      "path": "Sources/App/HomeViewApp.swift",
+      "kind": "source",
+      "bytes": 857,
+      "sha256": "3bd36df7e1f753b203ab34e29cd3fbda866786680ad22122ac44d942bc64ce6e"
+    },
+    {
+      "path": "Sources/App/HouseNoticesView.swift",
+      "kind": "source",
+      "bytes": 4432,
+      "sha256": "bef54b93fbe731cf627e19a25f21521fc116270f80e9f57487212b81d9730a5b"
+    },
+    {
+      "path": "Sources/App/LocalAudioEngine.swift",
+      "kind": "source",
+      "bytes": 2803,
+      "sha256": "1c2b3284f90ea3965d3d287b7d0131a0e350c55bd5fecdde2268bde0aa5697c0"
+    },
+    {
+      "path": "Sources/App/LocalResetView.swift",
+      "kind": "source",
+      "bytes": 4739,
+      "sha256": "621676bbf942e4a1c65af04b0309dac5c3c2d5b44618535355c29428dbf98e40"
+    },
+    {
+      "path": "Sources/App/Motion.swift",
+      "kind": "source",
+      "bytes": 8551,
+      "sha256": "ea8fb1e7efa64234ab79df678f5ee09a1e0258de81e44a5b71baf874cdc9cd2f"
+    },
+    {
+      "path": "Sources/App/MusicArtworkInformation.swift",
+      "kind": "source",
+      "bytes": 2879,
+      "sha256": "0cfbff9c353055914cf4ea58b3de4dd1ee9cc52f719dcaccded02a264233dda2"
+    },
+    {
+      "path": "Sources/App/NativeAlarms.swift",
+      "kind": "source",
+      "bytes": 5098,
+      "sha256": "2f7dc3ee188b9eeec76e79ad13c041043486c1162a52a4b632ac5021894b7d6c"
+    },
+    {
+      "path": "Sources/App/NativeAnswerSpeech.swift",
+      "kind": "source",
+      "bytes": 4548,
+      "sha256": "1ee1550a609d60a04215f562311b630d0db9bb666e9ad8b42341112f7f4f89c3"
+    },
+    {
+      "path": "Sources/App/NativeAssistantAnswers.swift",
+      "kind": "source",
+      "bytes": 4502,
+      "sha256": "69113df39041d856d0ad7f12512a14ce7c10b9119f959e2742b2b6dd4b2b323f"
+    },
+    {
+      "path": "Sources/App/NativeBrowser.swift",
+      "kind": "source",
+      "bytes": 17859,
+      "sha256": "5dc8695d8f3e164512975b09b72699b0ca3357e58161fa36825eacb4f3958734"
+    },
+    {
+      "path": "Sources/App/NativeMirror.swift",
+      "kind": "source",
+      "bytes": 8591,
+      "sha256": "0eddb29e28a8590a8127a8d007adfb22dcde508990e1a7393d36916693e0e33b"
+    },
+    {
+      "path": "Sources/App/NativePhotos.swift",
+      "kind": "source",
+      "bytes": 17026,
+      "sha256": "be4c75b53ae4c1d2c4751553886fd3619e3d66386f21258ec0e4f74a2d9cc106"
+    },
+    {
+      "path": "Sources/App/NativeServices.swift",
+      "kind": "source",
+      "bytes": 9889,
+      "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+    },
+    {
+      "path": "Sources/App/NativeTimerLiveActivity.swift",
+      "kind": "source",
+      "bytes": 4066,
+      "sha256": "593d93e96c208667ce1a3ad88c0dd53dc0b32ea4351347ec447095a485e1f180"
+    },
+    {
+      "path": "Sources/App/NativeViewportMarker.swift",
+      "kind": "source",
+      "bytes": 1099,
+      "sha256": "965fe9f7e058d31405a90b6262c4c3ca273872ec9fd803a58e8ea1c67a8cf159"
+    },
+    {
+      "path": "Sources/App/NativeVoice.swift",
+      "kind": "source",
+      "bytes": 10788,
+      "sha256": "d90732a4e2f262050d66c497d6fa8ae11b6e08213c5dfb1fd9f8c7ac38a2c2af"
+    },
+    {
+      "path": "Sources/App/PhotoClockInkRasterizer.swift",
+      "kind": "source",
+      "bytes": 2839,
+      "sha256": "fa6142f1cfbc4f695ef7896255d67da069a02628e17f975fc3fed0faf00b9fdb"
+    },
+    {
+      "path": "Sources/App/PhotoLayoutFixture.swift",
+      "kind": "source",
+      "bytes": 5078,
+      "sha256": "841bff3090e57e9a7b2d9a801a6fcc40f22485d24fceec8d9377d8dfee89dc5a"
+    },
+    {
+      "path": "Sources/App/PhotoTallGlyphs.swift",
+      "kind": "source",
+      "bytes": 4224,
+      "sha256": "3be93d1957a68adbf00c0d1c173d5467a512cf5207ee2cfd03db8b9eff56384b"
+    },
+    {
+      "path": "Sources/App/PodcastActions.swift",
+      "kind": "source",
+      "bytes": 3778,
+      "sha256": "5e776c0138f8df0a5a96d1540d33941b7b686a38d7ae68a7ef7b01d3dda0c43a"
+    },
+    {
+      "path": "Sources/App/PodcastCaptions.swift",
+      "kind": "source",
+      "bytes": 3103,
+      "sha256": "9bbc9a3a4fddb9357240a9798701d5c21acb507a823d92a7032a1ad1ab8ebafa"
+    },
+    {
+      "path": "Sources/App/PodcastPlayback.swift",
+      "kind": "source",
+      "bytes": 10576,
+      "sha256": "772c115a2d4730ab7bb4c20644f4f40b8aec74df2db0fc242e48b76251707611"
+    },
+    {
+      "path": "Sources/App/PowerCapabilitiesView.swift",
+      "kind": "source",
+      "bytes": 3660,
+      "sha256": "6db8c594bbc0531a0d711092605ab65755d7000be07406da42a53933ebea843b"
+    },
+    {
+      "path": "Sources/App/PrismScene.metal",
+      "kind": "source",
+      "bytes": 2834,
+      "sha256": "d6eec229c8c2dcfd5e0bad6a0a80d5e72cd52bfe2ace98501dd21e146f0062d6"
+    },
+    {
+      "path": "Sources/App/RecipeHandoffActions.swift",
+      "kind": "source",
+      "bytes": 3676,
+      "sha256": "7f7ac10fe8481582991b6f6fbcbec3e4877a371647882c35cc97cf15bb5e168a"
+    },
+    {
+      "path": "Sources/App/RecipeHandoffController.swift",
+      "kind": "source",
+      "bytes": 2697,
+      "sha256": "f2e94c008c001a8773b652fe2b79c5d000cc14c1da5d3382924fe0a20f512adc"
+    },
+    {
+      "path": "Sources/App/RecipeHandoffView.swift",
+      "kind": "source",
+      "bytes": 1536,
+      "sha256": "debd0e112a2f82e7ce7c4247c7110930b72e59765942c5023d80db0cf9d34c34"
+    },
+    {
+      "path": "Sources/App/RootView.swift",
+      "kind": "source",
+      "bytes": 19920,
+      "sha256": "f0edbc209e5e4f04a5a8d02c3d4dc0eedd2e3d8c29e7b8701deec2fd8f4405db"
+    },
+    {
+      "path": "Sources/App/SetupIntroductionView.swift",
+      "kind": "source",
+      "bytes": 4881,
+      "sha256": "445550bc5030c8bafbaaa33df6fe8ae05692b85fab81b00d4982d153e4c3f107"
+    },
+    {
+      "path": "Sources/App/SharedAlbums.swift",
+      "kind": "source",
+      "bytes": 15263,
+      "sha256": "67da476ec1b41dadf26bb95a70c360aca85f25e0d9e8c1cd2a62a90d3ba918bb"
+    },
+    {
+      "path": "Sources/App/SystemActions.swift",
+      "kind": "source",
+      "bytes": 3813,
+      "sha256": "a8e9bcd8f265fa8a7c9bd7c0209bb65c94a7f3653d8abf1c3f1f86183c80a9b7"
+    },
+    {
+      "path": "Sources/App/TimerActivitySettingsView.swift",
+      "kind": "source",
+      "bytes": 2091,
+      "sha256": "4d351f30c91d6d71439877beca52a3fbb92abcbe87f9646a98051e4e61b4716c"
+    },
+    {
+      "path": "Sources/App/WatchRoot.swift",
+      "kind": "source",
+      "bytes": 2096,
+      "sha256": "c0f80245da6e823b623b84e586c107170e4f1cc9736adab7a4c10402adeab8b2"
+    },
+    {
+      "path": "Sources/App/WeatherClouds.metal",
+      "kind": "source",
+      "bytes": 5703,
+      "sha256": "ed351414f4942115a805f867a5b2eb64573202631fbf2dfc39471683ed713d25"
+    },
+    {
+      "path": "Sources/App/WeatherGlass.swift",
+      "kind": "source",
+      "bytes": 1402,
+      "sha256": "3e965677b3984e2091206c04d0107b44ab22e8893469ebf2c32a1a3afdd45f17"
+    },
+    {
+      "path": "Sources/App/WeatherLightSpur.metal",
+      "kind": "source",
+      "bytes": 942,
+      "sha256": "2adc743b00b409e1443c8bebb2e659e7d800e8e1b9a0405ea1a5b0aec164f70a"
+    },
+    {
+      "path": "Sources/App/WeatherScreen.swift",
+      "kind": "source",
+      "bytes": 10341,
+      "sha256": "54a8c73515f35e86f9db03543f96c31939f4e1ed0f3f38736e40cbe91ac66514"
+    },
+    {
+      "path": "Sources/App/WeatherService.swift",
+      "kind": "source",
+      "bytes": 2337,
+      "sha256": "3921ee5426399c326610cfa4f25d27e6baf2018f6a827210edfbef8ae692be78"
+    },
+    {
+      "path": "Sources/Core/AlarmRecurrence.swift",
+      "kind": "source",
+      "bytes": 2858,
+      "sha256": "7223931e1fae63512aedeef99a9b6570a7162503f4ea2ebf85789b2eb6a1d469"
+    },
+    {
+      "path": "Sources/Core/AlbumDisplay.swift",
+      "kind": "source",
+      "bytes": 10693,
+      "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573"
+    },
+    {
+      "path": "Sources/Core/AnonymousPresencePolicy.swift",
+      "kind": "source",
+      "bytes": 5978,
+      "sha256": "6e86fb5ea8f28d0e02cd6517826459e60938eaa52e3e5f510622168355711d67"
+    },
+    {
+      "path": "Sources/Core/AnswerSpeechSession.swift",
+      "kind": "source",
+      "bytes": 3700,
+      "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e"
+    },
+    {
+      "path": "Sources/Core/AssistantConversation.swift",
+      "kind": "source",
+      "bytes": 5049,
+      "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1"
+    },
+    {
+      "path": "Sources/Core/AssistantLimits.swift",
+      "kind": "source",
+      "bytes": 251,
+      "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584"
+    },
+    {
+      "path": "Sources/Core/AssistantResponseDocument.swift",
+      "kind": "source",
+      "bytes": 3539,
+      "sha256": "f31ac1992dc2173a2151a0f68f260b5877f23a5523dfcf7b301e421b5a9063f3"
+    },
+    {
+      "path": "Sources/Core/BrowserPolicy.swift",
+      "kind": "source",
+      "bytes": 1367,
+      "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+    },
+    {
+      "path": "Sources/Core/CalendarAgenda.swift",
+      "kind": "source",
+      "bytes": 1432,
+      "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+    },
+    {
+      "path": "Sources/Core/CalendarPresentation.swift",
+      "kind": "source",
+      "bytes": 1798,
+      "sha256": "cb173f15e0d4667743117b27a533da9f6dc3d2302038401970b3bf6f67727d7c"
+    },
+    {
+      "path": "Sources/Core/ConicGradientModel.swift",
+      "kind": "source",
+      "bytes": 1384,
+      "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3"
+    },
+    {
+      "path": "Sources/Core/ConnectedDataSession.swift",
+      "kind": "source",
+      "bytes": 21371,
+      "sha256": "f04cd662576a2d7cdab1a534d62c0c5704c86dd1e3d03ddb2a60e27d09116eb5"
+    },
+    {
+      "path": "Sources/Core/ConnectedModels.swift",
+      "kind": "source",
+      "bytes": 1378,
+      "sha256": "6b0ea8f93b0247a9f1fc59b32c30d25564a4db1554e0eefd5b6e3a0ef883bf2e"
+    },
+    {
+      "path": "Sources/Core/DataConnection.swift",
+      "kind": "source",
+      "bytes": 244,
+      "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+    },
+    {
+      "path": "Sources/Core/DemoActionPlan.swift",
+      "kind": "source",
+      "bytes": 6817,
+      "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11"
+    },
+    {
+      "path": "Sources/Core/DemoDoorbell.swift",
+      "kind": "source",
+      "bytes": 2014,
+      "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398"
+    },
+    {
+      "path": "Sources/Core/EverydayVoiceCommand.swift",
+      "kind": "source",
+      "bytes": 4238,
+      "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c"
+    },
+    {
+      "path": "Sources/Core/FaceConfiguration.swift",
+      "kind": "source",
+      "bytes": 8390,
+      "sha256": "de97ad42252c790e25868e76f82ca8c6595e31740eef5134d6664f0cedada6ac"
+    },
+    {
+      "path": "Sources/Core/FlowCompute.swift",
+      "kind": "source",
+      "bytes": 15081,
+      "sha256": "85c66eb9b067313922729c73c533d308dc5fcbdcd56c3d8fcc85112ce330d97d"
+    },
+    {
+      "path": "Sources/Core/FlowComputeSession.swift",
+      "kind": "source",
+      "bytes": 3736,
+      "sha256": "05b410a7436cbc158eefb74d1ce8df4faf29d221b10c44b17ff6bd8dac742781"
+    },
+    {
+      "path": "Sources/Core/FlowSimulation.swift",
+      "kind": "source",
+      "bytes": 9779,
+      "sha256": "fbb8b2c86a8d25eb2935fcd547c88ab95fc24c53dae2210ff994da36731d1d70"
+    },
+    {
+      "path": "Sources/Core/FlowTypography.swift",
+      "kind": "source",
+      "bytes": 3569,
+      "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+    },
+    {
+      "path": "Sources/Core/GuestAccessPolicy.swift",
+      "kind": "source",
+      "bytes": 902,
+      "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+    },
+    {
+      "path": "Sources/Core/HouseNotices.swift",
+      "kind": "source",
+      "bytes": 5720,
+      "sha256": "53c592315988c2d83762bd77e3b75283490c3716342d7178e2d6aef533fd5732"
+    },
+    {
+      "path": "Sources/Core/LocalStateFileReader.swift",
+      "kind": "source",
+      "bytes": 1376,
+      "sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837"
+    },
+    {
+      "path": "Sources/Core/LocalStateReset.swift",
+      "kind": "source",
+      "bytes": 7709,
+      "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb"
+    },
+    {
+      "path": "Sources/Core/Models.swift",
+      "kind": "source",
+      "bytes": 17756,
+      "sha256": "3f287818198ada8ea2c6d60cf74860a9b4eef6715257aa324285fd6f6f039ef3"
+    },
+    {
+      "path": "Sources/Core/MusicPlaybackGate.swift",
+      "kind": "source",
+      "bytes": 1485,
+      "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5"
+    },
+    {
+      "path": "Sources/Core/PersonalHomeConfiguration.swift",
+      "kind": "source",
+      "bytes": 2107,
+      "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc"
+    },
+    {
+      "path": "Sources/Core/PhotoClockInk.swift",
+      "kind": "source",
+      "bytes": 2348,
+      "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9"
+    },
+    {
+      "path": "Sources/Core/PhotoMaskRasterizer.swift",
+      "kind": "source",
+      "bytes": 941,
+      "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+    },
+    {
+      "path": "Sources/Core/PhotoPlacement.swift",
+      "kind": "source",
+      "bytes": 13992,
+      "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae"
+    },
+    {
+      "path": "Sources/Core/PodcastFeedParser.swift",
+      "kind": "source",
+      "bytes": 2154,
+      "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e"
+    },
+    {
+      "path": "Sources/Core/PodcastFeedTransport.swift",
+      "kind": "source",
+      "bytes": 1884,
+      "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97"
+    },
+    {
+      "path": "Sources/Core/PodcastLibrary.swift",
+      "kind": "source",
+      "bytes": 2934,
+      "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+    },
+    {
+      "path": "Sources/Core/PowerAdapterInformation.swift",
+      "kind": "source",
+      "bytes": 639,
+      "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616"
+    },
+    {
+      "path": "Sources/Core/RecipeParser.swift",
+      "kind": "source",
+      "bytes": 8475,
+      "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
+    },
+    {
+      "path": "Sources/Core/RecipeTransfer.swift",
+      "kind": "source",
+      "bytes": 3400,
+      "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+    },
+    {
+      "path": "Sources/Core/SetupIntroduction.swift",
+      "kind": "source",
+      "bytes": 198,
+      "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8"
+    },
+    {
+      "path": "Sources/Core/SnapshotMigration.swift",
+      "kind": "source",
+      "bytes": 9608,
+      "sha256": "cc24c10d1f7fd0e8e99a6e40556051b062239fd57fef21f4f0492c4fc758dffd"
+    },
+    {
+      "path": "Sources/Core/TimerLiveActivity.swift",
+      "kind": "source",
+      "bytes": 4008,
+      "sha256": "88d8e0f7b5f9c144e60489a391eb3a6ea33b33b8ddf48e4a19cee6773dd98020"
+    },
+    {
+      "path": "Sources/Core/ViewportNavigationIntent.swift",
+      "kind": "source",
+      "bytes": 1260,
+      "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341"
+    },
+    {
+      "path": "Sources/Core/WeatherData.swift",
+      "kind": "source",
+      "bytes": 6698,
+      "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+    },
+    {
+      "path": "Sources/Core/WorldClock.swift",
+      "kind": "source",
+      "bytes": 9482,
+      "sha256": "f2fa5fe6493f4cf0ba7a126f41df98c2e90a0bd1eeaac8ac5fd178c59d7bdbbc"
+    },
+    {
+      "path": "Sources/Shared/HomeViewTimerAttributes.swift",
+      "kind": "source",
+      "bytes": 221,
+      "sha256": "c82c97999ff1765de34976481ff5158356003a0a870715f8b207ab8f042fda92"
+    },
+    {
+      "path": "Sources/Widgets/HomeViewTimerWidget.swift",
+      "kind": "source",
+      "bytes": 2097,
+      "sha256": "94f01e5f7b175a9fe71317005002b71979c52f556f0e0c25e5a510e8a3be54fc"
+    },
+    {
+      "path": "Tests/BoundaryTests/RecipeHandoffBoundaryProbe.swift",
+      "kind": "source",
+      "bytes": 3193,
+      "sha256": "46ad41740303d6d276ebeee658f2d8ab14a4ccd49f1d784b2f2b4ae2b6438e10"
+    },
+    {
+      "path": "Tests/CoreTests/AlarmRecurrenceTests.swift",
+      "kind": "source",
+      "bytes": 5600,
+      "sha256": "1db522c696d0ce89073c5f2103fe77f1176ab5888f6850c25bb6f18d3e2591f2"
+    },
+    {
+      "path": "Tests/CoreTests/AlbumDisplayTests.swift",
+      "kind": "source",
+      "bytes": 20209,
+      "sha256": "c251f8f3783c6699b058bd386b59835af55aaeee3deb81aa2046915659478c39"
+    },
+    {
+      "path": "Tests/CoreTests/AnonymousPresencePolicyTests.swift",
+      "kind": "source",
+      "bytes": 9338,
+      "sha256": "afd8ed942d44fce5c2eb1d1f807fb7acede0011b395652c5a52123774690ca48"
+    },
+    {
+      "path": "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+      "kind": "source",
+      "bytes": 6131,
+      "sha256": "ea26acafb7a4e039af97f3328b48a92d9e4211fd65cbcae28037df45716a19cb"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+      "kind": "source",
+      "bytes": 1100,
+      "sha256": "75eba1015caf3b25e51444492280ec4977e2a5071c37b60d8cd3601981199c60"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantConversationTests.swift",
+      "kind": "source",
+      "bytes": 7467,
+      "sha256": "95b4060b83f4d1ee600ef67e74bcc5866e8944b249ff0ac2587046b9625e9451"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+      "kind": "source",
+      "bytes": 2745,
+      "sha256": "f8c62d673dbc321d56887573d83c50251443f4bb53026a454c5224e1228c57ba"
+    },
+    {
+      "path": "Tests/CoreTests/BrowserPolicyTests.swift",
+      "kind": "source",
+      "bytes": 2201,
+      "sha256": "3789d2d58f7ad0f02f5887a42c93d59cc66be0c60dd9b99515f2f82de4567c04"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarAgendaTests.swift",
+      "kind": "source",
+      "bytes": 2699,
+      "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarBoundaryTests.swift",
+      "kind": "source",
+      "bytes": 2325,
+      "sha256": "667b3b82bcdd635ba91c73b6ae50d71f4fbf51499877b24d933da552b1527769"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarLocaleTests.swift",
+      "kind": "source",
+      "bytes": 3988,
+      "sha256": "64ddc425a96909ba43ba40203be5893a66bcebbfb0054715e630bf1b088fe656"
+    },
+    {
+      "path": "Tests/CoreTests/ConicGradientTests.swift",
+      "kind": "source",
+      "bytes": 1498,
+      "sha256": "b2ae979fd299597c4275ec3085afb49b8e2c2bf080ef75dd384ca90e12e75f2a"
+    },
+    {
+      "path": "Tests/CoreTests/DemoActionPlanTests.swift",
+      "kind": "source",
+      "bytes": 5974,
+      "sha256": "4989acd77a49de6a252ddfaa732600a9265d08aa9117ce8ee85802232b2908fb"
+    },
+    {
+      "path": "Tests/CoreTests/DemoDoorbellTests.swift",
+      "kind": "source",
+      "bytes": 4306,
+      "sha256": "45bac13d2e9d597f81918ce5d4c472e7494150375e5a383d5cffadfd087058c2"
+    },
+    {
+      "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+      "kind": "source",
+      "bytes": 50899,
+      "sha256": "9c0376273dd9f769ea2598d550c6760ee15bf8697dd58813621122d7c8bfdb40"
+    },
+    {
+      "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+      "kind": "source",
+      "bytes": 2086,
+      "sha256": "d27995a922e1c5c346f8687425a5d775bab205b4abe49ad8547d6626653ab55b"
+    },
+    {
+      "path": "Tests/CoreTests/FaceCatalogueRecoveryTests.swift",
+      "kind": "source",
+      "bytes": 2939,
+      "sha256": "53130d5cad5051c7d6d876463aa509b0b423fe7e973920ad8e923f889db69ec9"
+    },
+    {
+      "path": "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+      "kind": "source",
+      "bytes": 5685,
+      "sha256": "a848907b433a55eb467a078551d6ba2a61d8b989f839ec9a4f1f59b83ad86b28"
+    },
+    {
+      "path": "Tests/CoreTests/FlowComputeTests.swift",
+      "kind": "source",
+      "bytes": 8161,
+      "sha256": "1098b3ea16231ecfd370fde9f85cf5f62eb134456eb105302a9f2ee48014b12b"
+    },
+    {
+      "path": "Tests/CoreTests/FlowTypographyTests.swift",
+      "kind": "source",
+      "bytes": 2447,
+      "sha256": "fda513fc05d95a89a3ceacb2ecdd68a19c3941784dca369bdda4d19eac98d76d"
+    },
+    {
+      "path": "Tests/CoreTests/GuestSafetyTests.swift",
+      "kind": "source",
+      "bytes": 1541,
+      "sha256": "2a1b47af26c87a24ffb9089f330a4dc11cfb74830c0d270ccd7f746fe1e0d2cd"
+    },
+    {
+      "path": "Tests/CoreTests/HomeViewCoreTests.swift",
+      "kind": "source",
+      "bytes": 11252,
+      "sha256": "24458b3609de5eaf6a38f3822e10f34f0ec338ead874f44be5bd243e5a32839b"
+    },
+    {
+      "path": "Tests/CoreTests/HouseNoticeTests.swift",
+      "kind": "source",
+      "bytes": 6777,
+      "sha256": "d8e6c73588e8bf229c5de209de1ee3760f052cc3a2bf7e2ca59c9edab00f5f4c"
+    },
+    {
+      "path": "Tests/CoreTests/LocalStateFileReaderTests.swift",
+      "kind": "source",
+      "bytes": 3240,
+      "sha256": "1ecdcb07b482feca5df946fee4e6048558371df50b38dd2a9f209d9bbccaedf4"
+    },
+    {
+      "path": "Tests/CoreTests/LocalStateResetTests.swift",
+      "kind": "source",
+      "bytes": 7290,
+      "sha256": "a315fb47b878e6b5165fab6706fd3c71a6c55bdcf76b12e14dee995b3ec3555e"
+    },
+    {
+      "path": "Tests/CoreTests/MusicPlaybackGateTests.swift",
+      "kind": "source",
+      "bytes": 3516,
+      "sha256": "b0b95bb382b6a479d06946fd67a44b71fc9361e30edac917b93d8f263ca1d6e7"
+    },
+    {
+      "path": "Tests/CoreTests/PersistenceAcceptanceTests.swift",
+      "kind": "source",
+      "bytes": 8031,
+      "sha256": "7a60c5781f4a043ddef22ec59a3049febe77e7baf72c665d9460af7b262ab2d2"
+    },
+    {
+      "path": "Tests/CoreTests/PersonalHomeTests.swift",
+      "kind": "source",
+      "bytes": 3310,
+      "sha256": "e7c218f72c2b66542d70012a143b30c3790e9b16ef09a5f9a8b485d117bd424d"
+    },
+    {
+      "path": "Tests/CoreTests/PhotoClockInkTests.swift",
+      "kind": "source",
+      "bytes": 6810,
+      "sha256": "0171a1f7486c06a176c873dbc9f5f98cee82322f99a332c8c031f1c7ad442821"
+    },
+    {
+      "path": "Tests/CoreTests/PhotoPlacementTests.swift",
+      "kind": "source",
+      "bytes": 10883,
+      "sha256": "dd3f4bcbc04c9ad0feccd925916a42541db6cff9329af9e3f12f618baeb13022"
+    },
+    {
+      "path": "Tests/CoreTests/PodcastTests.swift",
+      "kind": "source",
+      "bytes": 6992,
+      "sha256": "662bb7087897d5e33e16c7a37c632984215f18dbbd283e59e90996a5bc854bc1"
+    },
+    {
+      "path": "Tests/CoreTests/PowerAdapterInformationTests.swift",
+      "kind": "source",
+      "bytes": 1315,
+      "sha256": "e6998839b624de9ce13d702abb7fcb09a2cd5e69319a15dcea97fa04d7e5de16"
+    },
+    {
+      "path": "Tests/CoreTests/RecipeParserTests.swift",
+      "kind": "source",
+      "bytes": 4181,
+      "sha256": "0fa0d28fe1658ef580c3bf309bc9d7382d9968adcdf35c40ccac35898b2857b8"
+    },
+    {
+      "path": "Tests/CoreTests/RecipeTransferTests.swift",
+      "kind": "source",
+      "bytes": 5342,
+      "sha256": "dd505824664e92202d442c6abb18b67280feec1b731875e3b4768cc7116360b3"
+    },
+    {
+      "path": "Tests/CoreTests/SetupIntroductionTests.swift",
+      "kind": "source",
+      "bytes": 2947,
+      "sha256": "f7cc98d3db797009470821bc1c1690895ff26846c1984b87e3bf7d0f409afc3f"
+    },
+    {
+      "path": "Tests/CoreTests/SharedPanelTests.swift",
+      "kind": "source",
+      "bytes": 7250,
+      "sha256": "57059f84343be67bf1b4ac6f1019cada5100007ea525201f099e05941943341f"
+    },
+    {
+      "path": "Tests/CoreTests/SnapshotMigrationTests.swift",
+      "kind": "source",
+      "bytes": 15373,
+      "sha256": "faf212029d5e3a40ee48d633bc30bea981660ddd83467da28b8b8dc8a1de3eb5"
+    },
+    {
+      "path": "Tests/CoreTests/TimerLiveActivityTests.swift",
+      "kind": "source",
+      "bytes": 7083,
+      "sha256": "118ea7f90f19c1c80940675a2c45cec13a036b4ad122746d9ab008ebed3d71f3"
+    },
+    {
+      "path": "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+      "kind": "source",
+      "bytes": 4068,
+      "sha256": "d27bbba71e017c88e09f33bcf64e5ecc57c6a0eec000f658bcbe2ca8d8885763"
+    },
+    {
+      "path": "Tests/CoreTests/WatchFacesTests.swift",
+      "kind": "source",
+      "bytes": 9214,
+      "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
+    },
+    {
+      "path": "Tests/CoreTests/WeatherTests.swift",
+      "kind": "source",
+      "bytes": 5723,
+      "sha256": "a3aa9bb2852b44088207b7d0c1c8bac354fbe8f17fb2134abfa98654b3d4692c"
+    },
+    {
+      "path": "Tests/CoreTests/WorldClockTests.swift",
+      "kind": "source",
+      "bytes": 11769,
+      "sha256": "ced9a5640261b5622afb785e783d3fbe13cb7edecc9de62e32a0e521985a74cf"
+    },
+    {
+      "path": "Tests/NativeProbes/AssistantResponseGate.swift",
+      "kind": "source",
+      "bytes": 4726,
+      "sha256": "5d265fbac7778abce832f1b38613f415a2b01c9f01e5a1a092463bdf61c981bd"
+    },
+    {
+      "path": "Tests/NativeProbes/SimultaneousTimerExpiry.swift",
+      "kind": "source",
+      "bytes": 6460,
+      "sha256": "4e81533b1f5743a718d619738874e9db881ea6ba4781790dd653a97d82206ce3"
+    },
+    {
+      "path": "Tests/TVUITests/HomeViewTVUITests.swift",
+      "kind": "source",
+      "bytes": 8114,
+      "sha256": "013a9adc93212483cee14b35709d307407902734e336ae3a01fca241a70c62d7"
+    },
+    {
+      "path": "Tests/UITests/HomeViewUITests.swift",
+      "kind": "source",
+      "bytes": 423549,
+      "sha256": "6b615128bf3ba9f3f2d3b9e2e3271586ee1a11205a5b2d57da5fb5ed71650b63"
+    },
+    {
+      "path": "Tests/VisionUITests/HomeViewVisionUITests.swift",
+      "kind": "source",
+      "bytes": 3253,
+      "sha256": "f759fe69258d6d3931576f0ced2d02c11a9bfa2b7a1797f78f2cc5f30fb1e6e3"
+    },
+    {
+      "path": "Tests/WatchUITests/HomeViewWatchUITests.swift",
+      "kind": "source",
+      "bytes": 2805,
+      "sha256": "55ee4eb0d96cb1d6f89fb9f50a455c5299a8511eab6b34245fba59e9dfb6cc6a"
+    }
+  ],
+  "product_files_changed": [
+    "Sources/App/FaceEditor.swift",
+    "Sources/App/RootView.swift"
+  ],
+  "unchanged_product_files": 163,
+  "expanded_two_method_matrix_unchanged_through_all_candidates": true,
+  "current_UI_executions": 12,
+  "current_unique_methods": 6,
+  "historical_UI_executions": 20,
+  "historical_UI_passed": 12,
+  "historical_UI_failed": 8,
+  "runs": [
+    {
+      "checkpoint": "baseline-phone",
+      "current": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherCoversRootWriteErrorAlertWithoutChangingReadOnlyState",
+        "testNativeAppSwitcherCoversEditorSlotWriteErrorAlertAndKeepsPicker"
+      ],
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "487321ec746a5f389e0c64d33abc1d8985b95a6ca6b7027be280047765618245",
+      "compiled_files": 54,
+      "archive_entries_read_back": 286,
+      "archive_sha256": "8f11cc03ccba2d9438887a2781138038958f619f91630fafa415ce4095da4dee",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "652c68754e2a9b233293ab80f12d7a8ba2cd961cfa458d0f4e0c8480d434b859"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "current": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherCoversRootWriteErrorAlertWithoutChangingReadOnlyState",
+        "testNativeAppSwitcherCoversEditorSlotWriteErrorAlertAndKeepsPicker"
+      ],
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "487321ec746a5f389e0c64d33abc1d8985b95a6ca6b7027be280047765618245",
+      "compiled_files": 54,
+      "archive_entries_read_back": 286,
+      "archive_sha256": "8f11cc03ccba2d9438887a2781138038958f619f91630fafa415ce4095da4dee",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "a524ade5098b55e81123dc2dd2569c08bd49eda7a0f3012a5c3a01673e744105"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "current": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherCoversRootWriteErrorAlertWithoutChangingReadOnlyState",
+        "testNativeAppSwitcherCoversEditorSlotWriteErrorAlertAndKeepsPicker"
+      ],
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "b82cca0f0ac24ebae5922c29184be43d58e3e3d7368899fbe24e036bb86483e4",
+      "compiled_files": 51,
+      "archive_entries_read_back": 283,
+      "archive_sha256": "95ad432bad21447410d6a4ef064d5e8ed1bdf52feb49986951a86b27d0413150",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "e18e3f18665cc58395ab1a002eab0ff34412895268989d0c27479eab50151911"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "current": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherCoversRootWriteErrorAlertWithoutChangingReadOnlyState",
+        "testNativeAppSwitcherCoversEditorSlotWriteErrorAlertAndKeepsPicker"
+      ],
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "b82cca0f0ac24ebae5922c29184be43d58e3e3d7368899fbe24e036bb86483e4",
+      "compiled_files": 51,
+      "archive_entries_read_back": 283,
+      "archive_sha256": "95ad432bad21447410d6a4ef064d5e8ed1bdf52feb49986951a86b27d0413150",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "dcb58952228065070e0dc9a321afd501f3823db1ccb22529b5867c95fbea3497"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "current": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherCoversRootWriteErrorAlertWithoutChangingReadOnlyState",
+        "testNativeAppSwitcherCoversEditorSlotWriteErrorAlertAndKeepsPicker"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "958357fca2e6f8ecbaf6b1cd02bc5caad30164568e74981bc59561d4f59385ce",
+      "compiled_files": 51,
+      "archive_entries_read_back": 283,
+      "archive_sha256": "c00851d3355f41aae8aa7d92394acade1948b54f2654428cd93ce54f23542e7b",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "3e998eb5d7d8b38aadfa7d704d34eba41fe34b701443de5044a7f1e6333c5a31"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "current": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherCoversRootWriteErrorAlertWithoutChangingReadOnlyState",
+        "testNativeAppSwitcherCoversEditorSlotWriteErrorAlertAndKeepsPicker"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "958357fca2e6f8ecbaf6b1cd02bc5caad30164568e74981bc59561d4f59385ce",
+      "compiled_files": 51,
+      "archive_entries_read_back": 283,
+      "archive_sha256": "c00851d3355f41aae8aa7d92394acade1948b54f2654428cd93ce54f23542e7b",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "f4a64fcfe845d70cb337ad1e7bcd2ac3e2cdf62535fec2d8e78581e76e7835e6"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "current": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testCalendarNativeAppSwitcherSnapshotHidesPersonalContents",
+        "testFutureStoreRemainsReadOnlyAfterAnAttemptedSaveAndRelaunch",
+        "testReadOnlyFaceStyleAndSlotEditsKeepCurrentSelections",
+        "testNativeAppSwitcherCoversDetailAndEditorSheets"
+      ],
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "958357fca2e6f8ecbaf6b1cd02bc5caad30164568e74981bc59561d4f59385ce",
+      "compiled_files": 51,
+      "archive_entries_read_back": 283,
+      "archive_sha256": "c00851d3355f41aae8aa7d92394acade1948b54f2654428cd93ce54f23542e7b",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "8e1298cc5b76dd65bd70276b5f653b0335b90ec73b97f8a2af62d5702bd12cfb"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "current": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testCalendarNativeAppSwitcherSnapshotHidesPersonalContents",
+        "testFutureStoreRemainsReadOnlyAfterAnAttemptedSaveAndRelaunch",
+        "testReadOnlyFaceStyleAndSlotEditsKeepCurrentSelections",
+        "testNativeAppSwitcherCoversDetailAndEditorSheets"
+      ],
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "958357fca2e6f8ecbaf6b1cd02bc5caad30164568e74981bc59561d4f59385ce",
+      "compiled_files": 51,
+      "archive_entries_read_back": 283,
+      "archive_sha256": "c00851d3355f41aae8aa7d92394acade1948b54f2654428cd93ce54f23542e7b",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "793a1b23894acece4df9faedeff8b35fa5ca6fb8f21d3210d1a1a7c218c3d0ba"
+    }
+  ],
+  "core_package_inputs_unchanged": [
+    {
+      "path": "Package.resolved",
+      "kind": "source",
+      "bytes": 383,
+      "sha256": "c8847f7f0d11227b76d43c295cc6596611c58b666412fef51298f1b959c8df0c"
+    },
+    {
+      "path": "Package.swift",
+      "kind": "source",
+      "bytes": 509,
+      "sha256": "87aa9830cf40dae5b18d58ff685509d42e0d7ad8003c295f627b175d514a7537"
+    },
+    {
+      "path": "Sources/Core/AlarmRecurrence.swift",
+      "kind": "source",
+      "bytes": 2858,
+      "sha256": "7223931e1fae63512aedeef99a9b6570a7162503f4ea2ebf85789b2eb6a1d469"
+    },
+    {
+      "path": "Sources/Core/AlbumDisplay.swift",
+      "kind": "source",
+      "bytes": 10693,
+      "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573"
+    },
+    {
+      "path": "Sources/Core/AnonymousPresencePolicy.swift",
+      "kind": "source",
+      "bytes": 5978,
+      "sha256": "6e86fb5ea8f28d0e02cd6517826459e60938eaa52e3e5f510622168355711d67"
+    },
+    {
+      "path": "Sources/Core/AnswerSpeechSession.swift",
+      "kind": "source",
+      "bytes": 3700,
+      "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e"
+    },
+    {
+      "path": "Sources/Core/AssistantConversation.swift",
+      "kind": "source",
+      "bytes": 5049,
+      "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1"
+    },
+    {
+      "path": "Sources/Core/AssistantLimits.swift",
+      "kind": "source",
+      "bytes": 251,
+      "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584"
+    },
+    {
+      "path": "Sources/Core/AssistantResponseDocument.swift",
+      "kind": "source",
+      "bytes": 3539,
+      "sha256": "f31ac1992dc2173a2151a0f68f260b5877f23a5523dfcf7b301e421b5a9063f3"
+    },
+    {
+      "path": "Sources/Core/BrowserPolicy.swift",
+      "kind": "source",
+      "bytes": 1367,
+      "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+    },
+    {
+      "path": "Sources/Core/CalendarAgenda.swift",
+      "kind": "source",
+      "bytes": 1432,
+      "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+    },
+    {
+      "path": "Sources/Core/CalendarPresentation.swift",
+      "kind": "source",
+      "bytes": 1798,
+      "sha256": "cb173f15e0d4667743117b27a533da9f6dc3d2302038401970b3bf6f67727d7c"
+    },
+    {
+      "path": "Sources/Core/ConicGradientModel.swift",
+      "kind": "source",
+      "bytes": 1384,
+      "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3"
+    },
+    {
+      "path": "Sources/Core/ConnectedDataSession.swift",
+      "kind": "source",
+      "bytes": 21371,
+      "sha256": "f04cd662576a2d7cdab1a534d62c0c5704c86dd1e3d03ddb2a60e27d09116eb5"
+    },
+    {
+      "path": "Sources/Core/ConnectedModels.swift",
+      "kind": "source",
+      "bytes": 1378,
+      "sha256": "6b0ea8f93b0247a9f1fc59b32c30d25564a4db1554e0eefd5b6e3a0ef883bf2e"
+    },
+    {
+      "path": "Sources/Core/DataConnection.swift",
+      "kind": "source",
+      "bytes": 244,
+      "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+    },
+    {
+      "path": "Sources/Core/DemoActionPlan.swift",
+      "kind": "source",
+      "bytes": 6817,
+      "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11"
+    },
+    {
+      "path": "Sources/Core/DemoDoorbell.swift",
+      "kind": "source",
+      "bytes": 2014,
+      "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398"
+    },
+    {
+      "path": "Sources/Core/EverydayVoiceCommand.swift",
+      "kind": "source",
+      "bytes": 4238,
+      "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c"
+    },
+    {
+      "path": "Sources/Core/FaceConfiguration.swift",
+      "kind": "source",
+      "bytes": 8390,
+      "sha256": "de97ad42252c790e25868e76f82ca8c6595e31740eef5134d6664f0cedada6ac"
+    },
+    {
+      "path": "Sources/Core/FlowCompute.swift",
+      "kind": "source",
+      "bytes": 15081,
+      "sha256": "85c66eb9b067313922729c73c533d308dc5fcbdcd56c3d8fcc85112ce330d97d"
+    },
+    {
+      "path": "Sources/Core/FlowComputeSession.swift",
+      "kind": "source",
+      "bytes": 3736,
+      "sha256": "05b410a7436cbc158eefb74d1ce8df4faf29d221b10c44b17ff6bd8dac742781"
+    },
+    {
+      "path": "Sources/Core/FlowSimulation.swift",
+      "kind": "source",
+      "bytes": 9779,
+      "sha256": "fbb8b2c86a8d25eb2935fcd547c88ab95fc24c53dae2210ff994da36731d1d70"
+    },
+    {
+      "path": "Sources/Core/FlowTypography.swift",
+      "kind": "source",
+      "bytes": 3569,
+      "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+    },
+    {
+      "path": "Sources/Core/GuestAccessPolicy.swift",
+      "kind": "source",
+      "bytes": 902,
+      "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+    },
+    {
+      "path": "Sources/Core/HouseNotices.swift",
+      "kind": "source",
+      "bytes": 5720,
+      "sha256": "53c592315988c2d83762bd77e3b75283490c3716342d7178e2d6aef533fd5732"
+    },
+    {
+      "path": "Sources/Core/LocalStateFileReader.swift",
+      "kind": "source",
+      "bytes": 1376,
+      "sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837"
+    },
+    {
+      "path": "Sources/Core/LocalStateReset.swift",
+      "kind": "source",
+      "bytes": 7709,
+      "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb"
+    },
+    {
+      "path": "Sources/Core/Models.swift",
+      "kind": "source",
+      "bytes": 17756,
+      "sha256": "3f287818198ada8ea2c6d60cf74860a9b4eef6715257aa324285fd6f6f039ef3"
+    },
+    {
+      "path": "Sources/Core/MusicPlaybackGate.swift",
+      "kind": "source",
+      "bytes": 1485,
+      "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5"
+    },
+    {
+      "path": "Sources/Core/PersonalHomeConfiguration.swift",
+      "kind": "source",
+      "bytes": 2107,
+      "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc"
+    },
+    {
+      "path": "Sources/Core/PhotoClockInk.swift",
+      "kind": "source",
+      "bytes": 2348,
+      "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9"
+    },
+    {
+      "path": "Sources/Core/PhotoMaskRasterizer.swift",
+      "kind": "source",
+      "bytes": 941,
+      "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+    },
+    {
+      "path": "Sources/Core/PhotoPlacement.swift",
+      "kind": "source",
+      "bytes": 13992,
+      "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae"
+    },
+    {
+      "path": "Sources/Core/PodcastFeedParser.swift",
+      "kind": "source",
+      "bytes": 2154,
+      "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e"
+    },
+    {
+      "path": "Sources/Core/PodcastFeedTransport.swift",
+      "kind": "source",
+      "bytes": 1884,
+      "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97"
+    },
+    {
+      "path": "Sources/Core/PodcastLibrary.swift",
+      "kind": "source",
+      "bytes": 2934,
+      "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+    },
+    {
+      "path": "Sources/Core/PowerAdapterInformation.swift",
+      "kind": "source",
+      "bytes": 639,
+      "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616"
+    },
+    {
+      "path": "Sources/Core/RecipeParser.swift",
+      "kind": "source",
+      "bytes": 8475,
+      "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
+    },
+    {
+      "path": "Sources/Core/RecipeTransfer.swift",
+      "kind": "source",
+      "bytes": 3400,
+      "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+    },
+    {
+      "path": "Sources/Core/SetupIntroduction.swift",
+      "kind": "source",
+      "bytes": 198,
+      "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8"
+    },
+    {
+      "path": "Sources/Core/SnapshotMigration.swift",
+      "kind": "source",
+      "bytes": 9608,
+      "sha256": "cc24c10d1f7fd0e8e99a6e40556051b062239fd57fef21f4f0492c4fc758dffd"
+    },
+    {
+      "path": "Sources/Core/TimerLiveActivity.swift",
+      "kind": "source",
+      "bytes": 4008,
+      "sha256": "88d8e0f7b5f9c144e60489a391eb3a6ea33b33b8ddf48e4a19cee6773dd98020"
+    },
+    {
+      "path": "Sources/Core/ViewportNavigationIntent.swift",
+      "kind": "source",
+      "bytes": 1260,
+      "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341"
+    },
+    {
+      "path": "Sources/Core/WeatherData.swift",
+      "kind": "source",
+      "bytes": 6698,
+      "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+    },
+    {
+      "path": "Sources/Core/WorldClock.swift",
+      "kind": "source",
+      "bytes": 9482,
+      "sha256": "f2fa5fe6493f4cf0ba7a126f41df98c2e90a0bd1eeaac8ac5fd178c59d7bdbbc"
+    },
+    {
+      "path": "Tests/CoreTests/AlarmRecurrenceTests.swift",
+      "kind": "source",
+      "bytes": 5600,
+      "sha256": "1db522c696d0ce89073c5f2103fe77f1176ab5888f6850c25bb6f18d3e2591f2"
+    },
+    {
+      "path": "Tests/CoreTests/AlbumDisplayTests.swift",
+      "kind": "source",
+      "bytes": 20209,
+      "sha256": "c251f8f3783c6699b058bd386b59835af55aaeee3deb81aa2046915659478c39"
+    },
+    {
+      "path": "Tests/CoreTests/AnonymousPresencePolicyTests.swift",
+      "kind": "source",
+      "bytes": 9338,
+      "sha256": "afd8ed942d44fce5c2eb1d1f807fb7acede0011b395652c5a52123774690ca48"
+    },
+    {
+      "path": "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+      "kind": "source",
+      "bytes": 6131,
+      "sha256": "ea26acafb7a4e039af97f3328b48a92d9e4211fd65cbcae28037df45716a19cb"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+      "kind": "source",
+      "bytes": 1100,
+      "sha256": "75eba1015caf3b25e51444492280ec4977e2a5071c37b60d8cd3601981199c60"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantConversationTests.swift",
+      "kind": "source",
+      "bytes": 7467,
+      "sha256": "95b4060b83f4d1ee600ef67e74bcc5866e8944b249ff0ac2587046b9625e9451"
+    },
+    {
+      "path": "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+      "kind": "source",
+      "bytes": 2745,
+      "sha256": "f8c62d673dbc321d56887573d83c50251443f4bb53026a454c5224e1228c57ba"
+    },
+    {
+      "path": "Tests/CoreTests/BrowserPolicyTests.swift",
+      "kind": "source",
+      "bytes": 2201,
+      "sha256": "3789d2d58f7ad0f02f5887a42c93d59cc66be0c60dd9b99515f2f82de4567c04"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarAgendaTests.swift",
+      "kind": "source",
+      "bytes": 2699,
+      "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarBoundaryTests.swift",
+      "kind": "source",
+      "bytes": 2325,
+      "sha256": "667b3b82bcdd635ba91c73b6ae50d71f4fbf51499877b24d933da552b1527769"
+    },
+    {
+      "path": "Tests/CoreTests/CalendarLocaleTests.swift",
+      "kind": "source",
+      "bytes": 3988,
+      "sha256": "64ddc425a96909ba43ba40203be5893a66bcebbfb0054715e630bf1b088fe656"
+    },
+    {
+      "path": "Tests/CoreTests/ConicGradientTests.swift",
+      "kind": "source",
+      "bytes": 1498,
+      "sha256": "b2ae979fd299597c4275ec3085afb49b8e2c2bf080ef75dd384ca90e12e75f2a"
+    },
+    {
+      "path": "Tests/CoreTests/DemoActionPlanTests.swift",
+      "kind": "source",
+      "bytes": 5974,
+      "sha256": "4989acd77a49de6a252ddfaa732600a9265d08aa9117ce8ee85802232b2908fb"
+    },
+    {
+      "path": "Tests/CoreTests/DemoDoorbellTests.swift",
+      "kind": "source",
+      "bytes": 4306,
+      "sha256": "45bac13d2e9d597f81918ce5d4c472e7494150375e5a383d5cffadfd087058c2"
+    },
+    {
+      "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+      "kind": "source",
+      "bytes": 50899,
+      "sha256": "9c0376273dd9f769ea2598d550c6760ee15bf8697dd58813621122d7c8bfdb40"
+    },
+    {
+      "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+      "kind": "source",
+      "bytes": 2086,
+      "sha256": "d27995a922e1c5c346f8687425a5d775bab205b4abe49ad8547d6626653ab55b"
+    },
+    {
+      "path": "Tests/CoreTests/FaceCatalogueRecoveryTests.swift",
+      "kind": "source",
+      "bytes": 2939,
+      "sha256": "53130d5cad5051c7d6d876463aa509b0b423fe7e973920ad8e923f889db69ec9"
+    },
+    {
+      "path": "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+      "kind": "source",
+      "bytes": 5685,
+      "sha256": "a848907b433a55eb467a078551d6ba2a61d8b989f839ec9a4f1f59b83ad86b28"
+    },
+    {
+      "path": "Tests/CoreTests/FlowComputeTests.swift",
+      "kind": "source",
+      "bytes": 8161,
+      "sha256": "1098b3ea16231ecfd370fde9f85cf5f62eb134456eb105302a9f2ee48014b12b"
+    },
+    {
+      "path": "Tests/CoreTests/FlowTypographyTests.swift",
+      "kind": "source",
+      "bytes": 2447,
+      "sha256": "fda513fc05d95a89a3ceacb2ecdd68a19c3941784dca369bdda4d19eac98d76d"
+    },
+    {
+      "path": "Tests/CoreTests/GuestSafetyTests.swift",
+      "kind": "source",
+      "bytes": 1541,
+      "sha256": "2a1b47af26c87a24ffb9089f330a4dc11cfb74830c0d270ccd7f746fe1e0d2cd"
+    },
+    {
+      "path": "Tests/CoreTests/HomeViewCoreTests.swift",
+      "kind": "source",
+      "bytes": 11252,
+      "sha256": "24458b3609de5eaf6a38f3822e10f34f0ec338ead874f44be5bd243e5a32839b"
+    },
+    {
+      "path": "Tests/CoreTests/HouseNoticeTests.swift",
+      "kind": "source",
+      "bytes": 6777,
+      "sha256": "d8e6c73588e8bf229c5de209de1ee3760f052cc3a2bf7e2ca59c9edab00f5f4c"
+    },
+    {
+      "path": "Tests/CoreTests/LocalStateFileReaderTests.swift",
+      "kind": "source",
+      "bytes": 3240,
+      "sha256": "1ecdcb07b482feca5df946fee4e6048558371df50b38dd2a9f209d9bbccaedf4"
+    },
+    {
+      "path": "Tests/CoreTests/LocalStateResetTests.swift",
+      "kind": "source",
+      "bytes": 7290,
+      "sha256": "a315fb47b878e6b5165fab6706fd3c71a6c55bdcf76b12e14dee995b3ec3555e"
+    },
+    {
+      "path": "Tests/CoreTests/MusicPlaybackGateTests.swift",
+      "kind": "source",
+      "bytes": 3516,
+      "sha256": "b0b95bb382b6a479d06946fd67a44b71fc9361e30edac917b93d8f263ca1d6e7"
+    },
+    {
+      "path": "Tests/CoreTests/PersistenceAcceptanceTests.swift",
+      "kind": "source",
+      "bytes": 8031,
+      "sha256": "7a60c5781f4a043ddef22ec59a3049febe77e7baf72c665d9460af7b262ab2d2"
+    },
+    {
+      "path": "Tests/CoreTests/PersonalHomeTests.swift",
+      "kind": "source",
+      "bytes": 3310,
+      "sha256": "e7c218f72c2b66542d70012a143b30c3790e9b16ef09a5f9a8b485d117bd424d"
+    },
+    {
+      "path": "Tests/CoreTests/PhotoClockInkTests.swift",
+      "kind": "source",
+      "bytes": 6810,
+      "sha256": "0171a1f7486c06a176c873dbc9f5f98cee82322f99a332c8c031f1c7ad442821"
+    },
+    {
+      "path": "Tests/CoreTests/PhotoPlacementTests.swift",
+      "kind": "source",
+      "bytes": 10883,
+      "sha256": "dd3f4bcbc04c9ad0feccd925916a42541db6cff9329af9e3f12f618baeb13022"
+    },
+    {
+      "path": "Tests/CoreTests/PodcastTests.swift",
+      "kind": "source",
+      "bytes": 6992,
+      "sha256": "662bb7087897d5e33e16c7a37c632984215f18dbbd283e59e90996a5bc854bc1"
+    },
+    {
+      "path": "Tests/CoreTests/PowerAdapterInformationTests.swift",
+      "kind": "source",
+      "bytes": 1315,
+      "sha256": "e6998839b624de9ce13d702abb7fcb09a2cd5e69319a15dcea97fa04d7e5de16"
+    },
+    {
+      "path": "Tests/CoreTests/RecipeParserTests.swift",
+      "kind": "source",
+      "bytes": 4181,
+      "sha256": "0fa0d28fe1658ef580c3bf309bc9d7382d9968adcdf35c40ccac35898b2857b8"
+    },
+    {
+      "path": "Tests/CoreTests/RecipeTransferTests.swift",
+      "kind": "source",
+      "bytes": 5342,
+      "sha256": "dd505824664e92202d442c6abb18b67280feec1b731875e3b4768cc7116360b3"
+    },
+    {
+      "path": "Tests/CoreTests/SetupIntroductionTests.swift",
+      "kind": "source",
+      "bytes": 2947,
+      "sha256": "f7cc98d3db797009470821bc1c1690895ff26846c1984b87e3bf7d0f409afc3f"
+    },
+    {
+      "path": "Tests/CoreTests/SharedPanelTests.swift",
+      "kind": "source",
+      "bytes": 7250,
+      "sha256": "57059f84343be67bf1b4ac6f1019cada5100007ea525201f099e05941943341f"
+    },
+    {
+      "path": "Tests/CoreTests/SnapshotMigrationTests.swift",
+      "kind": "source",
+      "bytes": 15373,
+      "sha256": "faf212029d5e3a40ee48d633bc30bea981660ddd83467da28b8b8dc8a1de3eb5"
+    },
+    {
+      "path": "Tests/CoreTests/TimerLiveActivityTests.swift",
+      "kind": "source",
+      "bytes": 7083,
+      "sha256": "118ea7f90f19c1c80940675a2c45cec13a036b4ad122746d9ab008ebed3d71f3"
+    },
+    {
+      "path": "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+      "kind": "source",
+      "bytes": 4068,
+      "sha256": "d27bbba71e017c88e09f33bcf64e5ecc57c6a0eec000f658bcbe2ca8d8885763"
+    },
+    {
+      "path": "Tests/CoreTests/WatchFacesTests.swift",
+      "kind": "source",
+      "bytes": 9214,
+      "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
+    },
+    {
+      "path": "Tests/CoreTests/WeatherTests.swift",
+      "kind": "source",
+      "bytes": 5723,
+      "sha256": "a3aa9bb2852b44088207b7d0c1c8bac354fbe8f17fb2134abfa98654b3d4692c"
+    },
+    {
+      "path": "Tests/CoreTests/WorldClockTests.swift",
+      "kind": "source",
+      "bytes": 11769,
+      "sha256": "ced9a5640261b5622afb785e783d3fbe13cb7edecc9de62e32a0e521985a74cf"
+    }
+  ],
+  "previous_core_tests": 398,
+  "new_core_run": false,
+  "SDK_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T14:57:36.967171+00:00",
+      "ended": "2026-10-29T14:58:14.438650+00:00",
+      "log_sha256": "a404d6d23d544ebbdec0494f96c26c71e637f0c1fe2d3be76cc83b55484443dc"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-29T14:58:14.439236+00:00",
+      "ended": "2026-10-29T14:58:46.829647+00:00",
+      "log_sha256": "fec18ac7a4322199a913c5bdf148fef93591ca6843c15c3830331ec4d74db606"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T14:58:46.830227+00:00",
+      "ended": "2026-10-29T14:59:13.628566+00:00",
+      "log_sha256": "3673f8987cceb998a0d82f135d53cd7fe31d017c3036bcc3b93d7e4c3083baf5"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T14:59:13.629092+00:00",
+      "ended": "2026-10-29T14:59:42.936110+00:00",
+      "log_sha256": "78de5732ea832ef80359f34f66143da581841777b4a5baae83516edeedac4097"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T14:59:42.936628+00:00",
+      "ended": "2026-10-29T14:59:51.709450+00:00",
+      "log_sha256": "ae01b46247d3d23f0d57beb4b202a76da9f799a1ef87e41a30555f0dfc4cda6e"
+    }
+  ],
+  "SDK_products": [
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Info.plist",
+      "bytes": 3111,
+      "sha256": "f288ed97483fdd3503726b41c3226ba2b1912a03a2316cebbd19fde0aaf87347"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "65b5e9b76bec59fae206166210741f9cf3eb1b8e00f561d9f60d91f06880fac4"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica.debug.dylib",
+      "bytes": 26852664,
+      "sha256": "1ac4c9d6d5302604f1ec1bc901ac7224991956379e2568bcf390c02f0418dbf2"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/MacOS/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "ef42e4140edff5aa41beea98327030af0bc0a463fc79a07b6ba04d72088f6690"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/Assets.car",
+      "bytes": 14232664,
+      "sha256": "767d8e5b21a7fb9a20db530d5e9fe8e9dbd350c150b5a867ba06398435fe36a7"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/default.metallib",
+      "bytes": 71552,
+      "sha256": "2d900cbbfd77ccef3c3d572f238e0f3b856a08d9ccdb38dd9e64e509e58878ed"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/Assets.car",
+      "bytes": 14236856,
+      "sha256": "b4c9d7d3bd6c0bb265ec47c0a72d60d24793158eb38b32d94e58c98e502ab3ae"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "f6cb4acc66b2a3cf629e8d28ef6cda8ad783cf488401b006d03838cc6812a026"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "bytes": 25217544,
+      "sha256": "dee879672a11710597038155e748a0e195c81a8e3c93e85b7972dfa9b3e52a93"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+      "bytes": 2116,
+      "sha256": "d74455a14609276831ff9d1d3c84c8201cb9c36c313b1f290026083a817a8f95"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "670e17274069643540183ea4a2bc7f9e4d071010627b412e93fa8e1f07081b75"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/default.metallib",
+      "bytes": 73120,
+      "sha256": "4bc27cae4df99c4a034115102721f3de1aba4b333b5b23217ac207ddb4563fd7"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+      "bytes": 15425,
+      "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+      "bytes": 22442,
+      "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+      "bytes": 15242504,
+      "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "3f3173dedc77828525702ead8b756a41b2618f06856d02b66ec3ea963a552736"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "bytes": 26772328,
+      "sha256": "716194e60bd26832607cf0a813e3f5fe9d11203686e25a19483428e34e1a2cc9"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+      "bytes": 2366,
+      "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/nlu.lzfse",
+      "bytes": 2124,
+      "sha256": "73034779e06a9079393e8d4568fb34cc6f175a39fe52140a7ae5bf56c58a959f"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/root.ssu.yaml",
+      "bytes": 926,
+      "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "bytes": 40224,
+      "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "bytes": 261104,
+      "sha256": "6010afb8791a8b1aa6936433957285cbae6a031e29215c42880e3bcbdbd103c9"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+      "bytes": 774,
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+      "bytes": 16752,
+      "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+      "bytes": 73088,
+      "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "bytes": 40224,
+      "sha256": "c78d242145cb07b2b7ac478fe2c2514e89514bcc39e277adf01344f324289152"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "bytes": 296000,
+      "sha256": "fb255d18dda519b7a60c9e5d9fb05230657b93f53255ad56409fe750fcf32d9f"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/Info.plist",
+      "bytes": 774,
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/__preview.dylib",
+      "bytes": 16768,
+      "sha256": "266e6199c94ea97332a5288d350ee22a4425698c7358d01cd4b72f704c142c7e"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/Assets.car",
+      "bytes": 14236856,
+      "sha256": "a771995aac5ec007e91664e4428067ac0555610c4b215035bfc3e79c79a932ed"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch",
+      "bytes": 40224,
+      "sha256": "7cbd76f08b69d235082ed075ff3aaa495b617031354cf30409b4b0d802addffe"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch.debug.dylib",
+      "bytes": 2610440,
+      "sha256": "527cf61351fce0447829845be361540b7b73cb2fb617ef4e23d6d94f9fe927c3"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+      "bytes": 1766,
+      "sha256": "deef71535f26ea1ead2687b624eae0ff6dabb69775725f6a66dbe63cbf11060d"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "bf73f1f668d076a35153530e76ea07d6ae5a749fdf5f87c63273b33277d69de9"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/Assets.car",
+      "bytes": 14236856,
+      "sha256": "b2f643d74a2e6016352536f6e3ce8a2d753afd36329ff9d633c6e830df180909"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "f6523138d0812d14f3b6baea3b409f968573178a03812a04c4058fb04be8458f"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "bytes": 26510744,
+      "sha256": "40e4e269846e73ab938d83e277b681390ad9e974ce26dcac82f66059ebf618ac"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+      "bytes": 2069,
+      "sha256": "b8bc0f89ac84e91aab3c67e7d621ac970cba3e3914d592d32b1b1d31a66bb66b"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "f969dc8b19bebb6ffb9280f2343858d8a568ff2373374385700dcae25761a1b4"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/default.metallib",
+      "bytes": 73136,
+      "sha256": "5ce1f26d647310d55fc2249c5cba4735e94a07626545edbb8e169d5fdce1b955"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    }
+  ],
+  "SDK_archive_sha256": "eec462d469b0bfc208f1085ad77af231d2d0c521a30e73df4aa1fa2d0474f815",
+  "SDK_product_bytes_read_back": true,
+  "current_iOS_five_AppIntents_metadata_files_present": true,
+  "own_future_store_files_read_back": [
+    {
+      "checkpoint": "baseline-phone",
+      "kind": "EDITOR",
+      "own_uuid": "82E906D5-0861-492F-BEB7-AD7EE0F73940",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "kind": "ROOT",
+      "own_uuid": "04A17882-A827-4F78-BB1C-B8EE21FC7628",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "kind": "EDITOR",
+      "own_uuid": "02E8A210-A63A-4190-9AF8-B6BE34535182",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "kind": "ROOT",
+      "own_uuid": "71FA07A6-B632-4D6E-AEDD-1B2AFC23195A",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "kind": "EDITOR",
+      "own_uuid": "1387FB3D-CA28-489B-A2AD-0CF3596F6385",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "kind": "ROOT",
+      "own_uuid": "43A6D093-42C0-43ED-88DC-715783CF24F6",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "kind": "EDITOR",
+      "own_uuid": "27B79C93-8588-4C18-821B-6DC1D1C32FE6",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "kind": "ROOT",
+      "own_uuid": "197E27BC-4704-4160-A3E8-835136454015",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "kind": "EDITOR",
+      "own_uuid": "58DD1A60-7346-420F-BE0A-F24B35F8736C",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "kind": "ROOT",
+      "own_uuid": "23DE1455-100A-4899-BD36-894BBDCE622F",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "kind": "EDITOR",
+      "own_uuid": "733892CA-62AC-4F5D-BDF7-0486A5AAF812",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "kind": "ROOT",
+      "own_uuid": "28A7F3BC-CC91-486A-A651-2A92130EE810",
+      "bytes": 14,
+      "sha256": "9a2f382f9e837c60ef6c2dcc8efeb1b0e2e37ce828e692deb08fb9b0d798d2d7"
+    }
+  ],
+  "snapshot_guards": [
+    {
+      "checkpoint": "baseline-phone",
+      "state": "switcher-editor-slot-alert-snapshot-receipt_0_A4EEE5BF-6FD1-4091-A0B9-B728C50575AB.json",
+      "black_fraction": 0.811545168276077,
+      "whole_card_visible": true,
+      "receipt_sha256": "085c3201243180612a35eef3c9f90c31db3a3bc7d0905b310baba00b33f99276"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "state": "switcher-root-write-alert-snapshot-receipt_0_A526C2CE-6613-4240-AD63-9200998B5096.json",
+      "black_fraction": 0.8145738958477751,
+      "whole_card_visible": true,
+      "receipt_sha256": "90957c25dbff850ffbb6d1bc11c1f837b835d1d454d15583fa6be880762f37c2"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "state": "switcher-editor-slot-alert-snapshot-receipt_0_980E22DB-5C9C-47B7-87E1-56F6FFE7A7AA.json",
+      "black_fraction": 0.927850536485896,
+      "whole_card_visible": true,
+      "receipt_sha256": "bf92ff8112cfd7fd260ef848c5fce3f4f32029f45877c668883528b1a0c7c8ed"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "state": "switcher-root-write-alert-snapshot-receipt_0_AD39D65F-284A-400D-8DAB-0F8F72FD5235.json",
+      "black_fraction": 0.929124993931155,
+      "whole_card_visible": true,
+      "receipt_sha256": "64ba25b9fedeb0cd21fdd7d430c2bc2c6ecb24dfb9b8a9832f2ff5f6cffb3bd9"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "state": "switcher-editor-slot-alert-snapshot-receipt_0_6C300F56-5E75-49B5-8BE7-7DB0898D5793.json",
+      "black_fraction": 0.9823213393303348,
+      "whole_card_visible": true,
+      "receipt_sha256": "0423e4b978f4b3cd2b035f74840384bf6bf3b26562db538fe75249ffee9acd16"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "state": "switcher-root-write-alert-snapshot-receipt_0_C787AFBC-19F3-4BAB-8E59-3167CF6C9575.json",
+      "black_fraction": 0.9827068992385528,
+      "whole_card_visible": true,
+      "receipt_sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "state": "switcher-editor-slot-alert-snapshot-receipt_0_BB79530F-0478-4898-95CC-CD0321F93EC1.json",
+      "black_fraction": 0.9898073748604166,
+      "whole_card_visible": true,
+      "receipt_sha256": "239a01472955fac3763f08eaf23f0bf75e50dc9b8d45fdf1e990c4a34f218c80"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "state": "switcher-root-write-alert-snapshot-receipt_0_1B7CF945-B261-4DD0-887C-0734E4CC0F0D.json",
+      "black_fraction": 0.9900319221245812,
+      "whole_card_visible": true,
+      "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "state": "switcher-editor-slot-alert-snapshot-receipt_0_DCEC128F-35E0-4C25-90D5-643E693C4EBF.json",
+      "black_fraction": 0.9823206676231777,
+      "whole_card_visible": true,
+      "receipt_sha256": "0d6839c1d3687ce1f1624c56b640919009f40dc83edbbb99a97346b789904ea8"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "state": "switcher-root-write-alert-snapshot-receipt_0_04D6698F-62B1-488C-A0CA-3A42DB0E5B3E.json",
+      "black_fraction": 0.9827068992385528,
+      "whole_card_visible": true,
+      "receipt_sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "state": "switcher-editor-slot-alert-snapshot-receipt_0_5DF5CCD3-315A-4F11-8334-9D8D42220BE2.json",
+      "black_fraction": 0.9898073748604166,
+      "whole_card_visible": true,
+      "receipt_sha256": "239a01472955fac3763f08eaf23f0bf75e50dc9b8d45fdf1e990c4a34f218c80"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "state": "switcher-root-write-alert-snapshot-receipt_0_9179C935-CF9D-435A-8E31-08E91E85AE30.json",
+      "black_fraction": 0.9900319221245812,
+      "whole_card_visible": true,
+      "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "state": "switcher-background-snapshot-receipt_0_9C0516EE-6A5D-401A-B23A-0667414791F0.json",
+      "black_fraction": 0.982711601188653,
+      "whole_card_visible": true,
+      "receipt_sha256": "7072d26b24f401532144b7fbe4a3d93df394bc427337a1d0497e9e9a6a81eea2"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "state": "switcher-inactive-snapshot-receipt_0_04B52856-6348-465F-BCD5-48687D2A7C17.json",
+      "black_fraction": 0.9827068992385528,
+      "whole_card_visible": true,
+      "receipt_sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "state": "switcher-artwork-info-snapshot-receipt_0_AB591A2E-D24B-4A09-84D9-85EE247535DB.json",
+      "black_fraction": 0.9819740667300758,
+      "whole_card_visible": true,
+      "receipt_sha256": "90ca289c4bd8441f5a20d01c15699d4c0edd3aa08cf7b84c99155a77f0c2d4f7"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "state": "switcher-complication-picker-snapshot-receipt_0_11D79389-C999-4372-AA28-CC335775A97E.json",
+      "black_fraction": 0.9823206676231777,
+      "whole_card_visible": true,
+      "receipt_sha256": "0d6839c1d3687ce1f1624c56b640919009f40dc83edbbb99a97346b789904ea8"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "state": "switcher-world-detail-snapshot-receipt_0_167CD0C6-6093-4285-92C6-96982B9D1185.json",
+      "black_fraction": 0.982264244221975,
+      "whole_card_visible": true,
+      "receipt_sha256": "87d6da9f31b17c4e2f4f1227853cc359e9de1af0821540aea5d72599f4ee75a0"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "state": "switcher-background-snapshot-receipt_0_FF5CA73C-1193-4D09-B15C-F9AB59A20787.json",
+      "black_fraction": 0.9890882167305919,
+      "whole_card_visible": true,
+      "receipt_sha256": "460167a612d6fef1a33ebd1bb3159453553a2c1b0481ef72d9175cc1f45e7991"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "state": "switcher-inactive-snapshot-receipt_0_BCEC78C1-50E3-4A61-A070-C40CDC164A46.json",
+      "black_fraction": 0.9900319221245812,
+      "whole_card_visible": true,
+      "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "state": "switcher-artwork-info-snapshot-receipt_0_AB352DAE-28AF-4865-8491-1BFDE24E8AA3.json",
+      "black_fraction": 0.989655653735981,
+      "whole_card_visible": true,
+      "receipt_sha256": "b6ec0c47e7db6c3a8f6656e625225e78bca1ade81d24647b4f2cf0005a884698"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "state": "switcher-complication-picker-snapshot-receipt_0_48F8B330-7C5F-42C3-99BD-6583CBC0BF52.json",
+      "black_fraction": 0.9898073748604166,
+      "whole_card_visible": true,
+      "receipt_sha256": "239a01472955fac3763f08eaf23f0bf75e50dc9b8d45fdf1e990c4a34f218c80"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "state": "switcher-world-detail-snapshot-receipt_0_AF6F2CDE-B651-440D-846B-08E4280DC619.json",
+      "black_fraction": 0.9900319221245812,
+      "whole_card_visible": true,
+      "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581"
+    }
+  ],
+  "images": [
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/913ADD3C-B471-42CD-850A-8BB5E88E4799.png",
+      "name": "switcher-editor-slot-alert-returned_0_06A75A37-758C-4FDC-8300-25DA53C2429D.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "250210740320ec19934af395e5d38144bb679aba9624b0da0ae0ec0d3d5fa5e8"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/60E4A433-276D-448E-BA7E-BDC884ED0A51.png",
+      "name": "switcher-editor-slot-alert-whole-homeview-card_0_CBE3E674-09AE-441B-99BC-BD31558DB0BE.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "59350e654b175dfe1de3fbddfe46979a6a1d825ed57d307ff4af5f39c4c9c55a"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/8E3C6A85-1E12-4C92-A243-EE45B3944827.png",
+      "name": "switcher-editor-slot-alert-native-system-screen_0_3424BCD2-7884-46C1-AACB-2D69AD680627.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "89cfe2f606c5a7fc6588f4a7567c42ab85c2a93601eda9e1f07eac9b1b37c4a8"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/0F46DF11-C813-4547-A363-85D1695B3A7A.png",
+      "name": "switcher-editor-slot-alert-before_0_32FA4D72-B3A4-484A-843D-B53DF9B4EFB6.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "6f055a40ffcd645d8d28ca474b6b5bf7a526f357ca639c52bad3c3387ad6e94c"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/3EDB209A-03F7-490C-A631-F439EC6BB582.png",
+      "name": "switcher-root-write-alert-returned_0_E0AF058B-B718-4F59-8458-332049370FF4.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "b1c6d3d6b24cc12ec0c5bd0838fcdceb19e554f9f38d2e0896df7a7a9d73bc6f"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/E7299351-A8C7-47F3-A37A-A3A2CA527234.png",
+      "name": "switcher-root-write-alert-whole-homeview-card_0_0AD633D7-E643-40D2-893A-7F584AFF9A03.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "31526a5a4e60d7714e0b110367231a80224816f91572746abf9d130417b5501a"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/14A01B31-DA1C-4546-8D58-A1E56DAD6F9F.png",
+      "name": "switcher-root-write-alert-native-system-screen_0_52058169-A587-4195-9227-1F164D695908.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "bfd32a0aac4886e9a34ca5dbd24db1b535159813f22a1dc48f92bed9b564f286"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/96006C94-DB5F-4715-A52D-9F73B75752FF.png",
+      "name": "switcher-root-write-alert-before_0_3024DC9F-596D-437E-9C99-7B46FD655CD0.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "2e7aff3409900b63f72f40c0a82972f12f9b599d6a4991945e02a45ef7910048"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/D53B8412-C754-45B9-8E58-32F553850DD8.png",
+      "name": "switcher-editor-slot-alert-returned_0_3375A51D-6924-4816-8CF1-2D1B77EB9677.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "5961a2cfb65c8526be2828bf9d7a751973919a289aaefab10f1daf5b64f752ca"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/5C61B3EE-ABF1-4CD6-B103-4F54F8B2492C.png",
+      "name": "switcher-editor-slot-alert-whole-homeview-card_0_68AA2EDA-03CE-40FF-B492-3BA33E970322.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "b9d8333fb59b8b232e6e96e191a4ce7c9920042cd93a8e61f59611fcd6a09333"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/D77C2D2C-B07F-4826-B1B9-73936188CC77.png",
+      "name": "switcher-editor-slot-alert-native-system-screen_0_57FCC1EA-C16A-42CD-BE80-CE129D8BD9FB.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "4f2018de1a7500367ece361f1165353b83a11b248cffb52118996eb4e0738417"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/F2DEA5E7-934F-43F4-825E-9AD2669095F0.png",
+      "name": "switcher-editor-slot-alert-before_0_AA72676A-548C-4BD5-88DC-9FAD9942A650.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "724237884f60b2289eb8d29d1e6f33246eeb4d99534accb9bf81c9b2b05c2c0d"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/2152D96B-DD21-48B1-A4FE-152E5359805E.png",
+      "name": "switcher-root-write-alert-returned_0_163111BF-A27C-4E7A-A306-8D13FC169B1B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "e52964572774974f8b38b713ca389c64ada37fc61e815d14f782ad1a3c0d29b0"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/D9A3E0FD-D899-466F-B334-D5015A94AC0F.png",
+      "name": "switcher-root-write-alert-whole-homeview-card_0_69FAF527-4083-432C-8334-B35E68A97913.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "30551618c3c049268f69f37bd7aeb6cc4aaabf2848c00a51cdd5795b42abc255"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/EAE51A79-77CC-4576-BF40-46B476FA32B4.png",
+      "name": "switcher-root-write-alert-native-system-screen_0_C91BE5FD-315A-49B6-8364-1DF255C15249.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "8ddda1e5eed71a2e6d73c062c0ec7cbd950c4d3d019e028f1c8160a4ef9f50a9"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/BD97D10C-901B-43E5-8CDE-B9FF20FF6937.png",
+      "name": "switcher-root-write-alert-before_0_6A0096AA-D324-4610-BFE2-8C9167968767.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "d5a874ef574224a5e67b760d87c7730598c1c73af00fe128cea4ef0a019289d8"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/5F625453-350B-4878-B1ED-B916DB32EE8B.png",
+      "name": "switcher-editor-slot-alert-returned_0_E5D0079D-BA38-4ADC-8BA0-467E10160D0F.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "53bb20ee8d3dc7315f2ac3a429df70383f6a500904e2dc1e8c06f94a3036082a"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/189B1FDE-A0AB-474F-9244-8630629C71E8.png",
+      "name": "switcher-editor-slot-alert-whole-homeview-card_0_CDD6C84F-0683-449E-BDEA-EE7DF1764875.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "a75c7e5ce6fa85e1d830c85698290296dca1d0da135ccb2acdf329853c82908a"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/CB8F0A41-C3BE-4742-A03C-924FCED8C039.png",
+      "name": "switcher-editor-slot-alert-native-system-screen_0_EF6F2B70-2146-4F89-8CE0-72A52EF581FD.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "9a8d432df0d3b4ec782dc58c91611ebbf1adb99af9a3d054270dd704e9b79bd7"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/E1439681-AEDF-4DD9-883F-126E33D52D31.png",
+      "name": "switcher-editor-slot-alert-before_0_F7E32433-1B2F-4CB9-8625-11C5F45A68C4.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "78d64eb580f1588456ebb7ec9704b77ecfccdf0412ed00e9a85d873947246e85"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/CF77978E-CE47-46AC-85E0-B183D4EC2B20.png",
+      "name": "switcher-root-write-alert-returned_0_5D430B88-7F35-4FCF-9CED-8F49E0C4A74E.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "90d256ea78f0cfeb9aa458c25cce5a19af5bfb3f258578d1e07c95fc73555246"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/E931D9B5-B3DA-4D2D-A6A9-AE94D5AE8B5C.png",
+      "name": "switcher-root-write-alert-whole-homeview-card_0_7005FC51-E6B8-43FA-97E9-BF21E7F16F0D.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "5d459b326b04dad33811c5341d2b101fe0f32da3554831910db615d302e3ab48"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/F6EA8199-B618-400E-9032-DC85E65EA284.png",
+      "name": "switcher-root-write-alert-native-system-screen_0_B3F4C362-64E7-4A97-A50E-A3701C6B974B.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "d765750733cfaf14e11bd7a337314d128ee83aa5bbef4ca5d88b470a6eeb53ca"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/91DDCD0D-33D7-469C-98F8-225EAE78F44B.png",
+      "name": "switcher-root-write-alert-before_0_1E8B1A84-2792-4839-927A-B666B1D79430.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "114c7424767cb203465343298727a5f5257f5b6b9d737c4ffebcb95cc7243cf1"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/5FC6634A-2F2B-4B97-96B5-C2758981C354.png",
+      "name": "switcher-editor-slot-alert-returned_0_5E19C243-044F-4557-98DB-397B66AFB8FB.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "9557fcc5682352164632d2e3088f3ef097b061779f0833e0b8996ef5ac981744"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/19BAAFC8-7E3D-43B9-B997-47FD4523147D.png",
+      "name": "switcher-editor-slot-alert-whole-homeview-card_0_31A9049A-1CF3-4443-9B99-8EF291D0AEFD.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "61c32c2c0a97661b38e1d43875989e1e0670c0b427202f54182b94b7e4d45536"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/26024D1D-2033-4EC9-AD45-8FE958E4DA0C.png",
+      "name": "switcher-editor-slot-alert-native-system-screen_0_AA2B774E-76F3-487A-A45E-4B2AAE38F436.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "6d0bafba887eac400b040ed3531054aceb05093f911a82a3b1f76696237b11dc"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/10291CD7-8170-4430-9515-66C320761F9E.png",
+      "name": "switcher-editor-slot-alert-before_0_1BD3B4C1-A9B8-4FDD-8018-3BE7D25CDE77.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "724237884f60b2289eb8d29d1e6f33246eeb4d99534accb9bf81c9b2b05c2c0d"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/B90C6A22-CDB4-4CD9-BA32-496DAD041C5F.png",
+      "name": "switcher-root-write-alert-returned_0_9EC83C70-3752-4987-B6A9-A89A19C2E996.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "06731b933ff1ca0d25d9367cf67e1c2550596a80afba112a62611fa5358c73cf"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/A819A100-35A7-45D1-9129-852076C59C9C.png",
+      "name": "switcher-root-write-alert-whole-homeview-card_0_05A2E6D6-5589-45A5-B0BA-8ABE16DDF36F.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "19dde49effeeb89404f472385028490faa4eeb00cd5da60ebe42c12e22085bed"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/EE33A848-C45F-46D8-B93B-A12A6D181E6D.png",
+      "name": "switcher-root-write-alert-native-system-screen_0_47A16038-A854-444E-B812-6D81E9DEFB30.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "b960bfc439118b071a394c782f7df697398d9b9732c5a4fac2d86cf4b1b8479f"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/90CC962F-66B6-4389-AC1D-E0F8164EC3ED.png",
+      "name": "switcher-root-write-alert-before_0_49565AC7-A55C-42FF-84B1-A15D8E3729BB.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "d5a874ef574224a5e67b760d87c7730598c1c73af00fe128cea4ef0a019289d8"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "file": "candidate2-phone-attachments/69A4F150-4CA6-4BC3-ADC9-69457CE81AD3.png",
+      "name": "switcher-editor-slot-alert-returned_0_1F073A4C-AAB4-45C2-939F-67EE3FCC9872.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "1e8f2a674c8957df176ee9fefe612c41e6fc3246aea5effd6673cb51206f161c"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "file": "candidate2-phone-attachments/F6385007-B0FC-4406-BA48-93ADE9122BF4.png",
+      "name": "switcher-editor-slot-alert-whole-homeview-card_0_8F6ACCFF-7A5C-4867-95FE-487D4A1392AC.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "3347eff2528da1ddd35bfe3c26dc7b636b9eebb75dc83b1cc3e982c935e1c974"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "file": "candidate2-phone-attachments/6973B428-C3DB-4559-9D87-36778151626B.png",
+      "name": "switcher-editor-slot-alert-native-system-screen_0_A76EAF50-7B1D-4703-93B6-406246BECD67.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "2af6e5b22646d45d873bab3ad9658678c713a4e7e9094d063100df8ce9b4ab15"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "file": "candidate2-phone-attachments/617B65C6-0FE0-455F-8391-8D75D3F7BAF4.png",
+      "name": "switcher-editor-slot-alert-before_0_FE8A9DF2-D88F-4B1A-B45B-F75BF0BD9175.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "787ca0f6a8ebd94fbca45d0d8dd71855a1080973885853d08efbfc41e7551073"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "file": "candidate2-phone-attachments/FC35FE91-192C-4DEF-B57F-E76BE40ABC88.png",
+      "name": "switcher-root-write-alert-returned_0_9F862FD0-CC76-40BD-ABA4-D41A1CE77943.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "a7b4ac6f40a07054c34a00367b7ea3a1558512298ea5bbc1a344300eea94bfb0"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "file": "candidate2-phone-attachments/CF59502F-5B18-46EC-802B-88DA677A45CA.png",
+      "name": "switcher-root-write-alert-whole-homeview-card_0_55AE85EB-2CB6-459B-BE81-4A12E26E6AA1.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "2b65e480432bc0ec0ae3c00a66182e5a70923af061238240eac943341800284e"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "file": "candidate2-phone-attachments/E7E50A3D-59E4-46F7-93DE-43FB786589C7.png",
+      "name": "switcher-root-write-alert-native-system-screen_0_0259EDA6-2329-4658-9838-FB9B4601BF09.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "1396ba2c4fdc96d56aec93e666b2eceff675298d114c3ce87727eb487be52c93"
+    },
+    {
+      "checkpoint": "candidate2-phone",
+      "file": "candidate2-phone-attachments/E24B7A89-45DE-4CC7-A840-E9B472F29082.png",
+      "name": "switcher-root-write-alert-before_0_0099DDB1-C033-4E51-AB29-9B62071B5EC9.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "0dd9df806c053565690598fe0cb7bd43bd9b8095b7ce2fbbb81b8f7f861b639a"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "file": "candidate2-ipad-attachments/11C3C036-8E25-4B2F-9532-DECC76BC2CBB.png",
+      "name": "switcher-editor-slot-alert-returned_0_42927078-54C6-4774-A01E-F2DCBB6164E9.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "3df800a94a3caa68bfc663ebbc153008596f207ee655566b7cd3758633c0fce8"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "file": "candidate2-ipad-attachments/69392F05-6A9F-4D75-BFC6-F7F9E887A740.png",
+      "name": "switcher-editor-slot-alert-whole-homeview-card_0_5DCC5F72-8D44-4794-96A7-8820D0827FB0.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "b95892b64e308a4ac972a139b4eb747da03b0ba84c5d938d9ac9ca87bdcd3ecf"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "file": "candidate2-ipad-attachments/839433D1-8F9F-4346-AEE9-D7942B07CAF5.png",
+      "name": "switcher-editor-slot-alert-native-system-screen_0_258E319C-276F-4922-9D41-AE13F3A8D908.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "6dc566b7110d089b6b7a0959e7f612a696d184d510e773f2a13b2a83c83df4c9"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "file": "candidate2-ipad-attachments/640C86C8-B1DF-44A8-B543-137028A7EB5A.png",
+      "name": "switcher-editor-slot-alert-before_0_7A4B0425-803B-4467-9C4B-993734F22E48.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "5961a2cfb65c8526be2828bf9d7a751973919a289aaefab10f1daf5b64f752ca"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "file": "candidate2-ipad-attachments/4424679A-D09C-429A-B69A-8DB5382AB792.png",
+      "name": "switcher-root-write-alert-returned_0_F73AAEF1-A8D7-4A99-A5C6-85B66E69A5DF.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "be17ccd33fe8a69b2f61fb93c536a1910156787e23ce48449cc101177a24d94e"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "file": "candidate2-ipad-attachments/09E57833-89CA-4392-8624-31A74FE2C405.png",
+      "name": "switcher-root-write-alert-whole-homeview-card_0_995E130B-7BE4-43D8-A5F2-83E67CC5F2B7.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "905dc187086bd9c9e58ec40aa7e6627caba4b4a5713488fa53e193d5aa93e714"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "file": "candidate2-ipad-attachments/583F4D93-9079-4A12-8FCC-04294A448D0E.png",
+      "name": "switcher-root-write-alert-native-system-screen_0_19EFC38F-F988-4172-BBA6-B5BBCC047A82.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "06e46056dce4401ca32eff5759adb8e89a47e73bb0f070a77b6c2e149701955a"
+    },
+    {
+      "checkpoint": "candidate2-ipad",
+      "file": "candidate2-ipad-attachments/30C39C75-54F4-4D0A-9D02-6CDF5BA7808F.png",
+      "name": "switcher-root-write-alert-before_0_694BD317-2446-4558-BEDA-D9179F4576AC.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "e52964572774974f8b38b713ca389c64ada37fc61e815d14f782ad1a3c0d29b0"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/282E0010-4030-4126-BF52-36DCFB93DDF3.png",
+      "name": "switcher-calendar-return-requires-fresh-unlock_0_DDE49F66-C0CF-4264-B9E2-703F302C117C.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "9d7ac75e6ca9b874c31ddd56115d07d9a8fa8777e6664f0b4f80c1111aeb8f7d"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/E6A677B7-F138-4984-A273-96C4B983E4A9.png",
+      "name": "switcher-background-whole-homeview-card_0_E7FA4EEE-D698-499B-B834-1038C96F34BD.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "52c9e05917a905ff75e98a0a58c38b65279c3b2d24cc2c04f6d71de7c928cea0"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/FD71778B-D9EE-478B-BCE4-1B4D6ED81D96.png",
+      "name": "switcher-background-native-system-screen_0_CFD7818E-F613-4A01-906E-41CFFA566EBD.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "9df0f5aa20b3c152cd240611c14f8e43513a5417f82e049ba478e1c75a9b0291"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/FB386F80-7D7B-470C-97A6-B6714DF89CCD.png",
+      "name": "switcher-calendar-return-after-inactive_0_FEFD171A-7BF9-4121-B81D-9D21BB7BB4CC.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5a569b6c684cbc1404b8e33352c73d2a2029eafd2b66513198cc961f7b6c1f99"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/4019A69D-771F-4D58-9E49-4D87D6445967.png",
+      "name": "switcher-inactive-whole-homeview-card_0_168475D9-3D64-4F1F-99D1-9916075A9B76.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "e40563b530b980a2f1dc9efdc3f9ca69df892831a8c68699954bd7db359fdf82"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/E29A7C3C-67A0-4B5A-BBD6-82F98696D700.png",
+      "name": "switcher-inactive-native-system-screen_0_80FADE6F-4BA6-4C48-90A4-DC730DAD4D34.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5df412793d88f2e35a9209a2902efe824dce6ffabf7b1209f4ff385b0830571a"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/A0C50CC1-492A-4D86-88E8-F065146099B5.png",
+      "name": "switcher-calendar-visible-before_0_59BCE9E9-4094-48DC-8EBB-834FBFDC52A1.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "6b86efea374b5218aebd06259b2a2f7008610ac9df30b56dd874e3d4b11030b4"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/884382F8-6485-4744-BD43-4248841F17C3.png",
+      "name": "store-future-version-readonly-after-relaunch_0_B1E1016D-D414-4700-9D7D-E3D79A01E96E.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "7a54a09c99f116b7d7ae31e5050bf02b4be9a4f46432430a6006c517e87afc53"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/036C01E1-E94C-4E08-8B39-BC09C1EE3EA6.png",
+      "name": "screen-mock-write-readonly-value-unchanged_0_38DE6FA1-BA91-4227-B41E-51CE6C896308.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "7a54a09c99f116b7d7ae31e5050bf02b4be9a4f46432430a6006c517e87afc53"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/8E1F55F9-1EED-4A91-9F5E-40CD280CD69A.png",
+      "name": "viewport-mock-write-readonly-value-unchanged_0_1153D975-3089-4C08-8C9E-031DCFBB4C95.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "2f118439d5cf00967fcc6cfc34114ddd66293fb4276ae30d0577edb7bcdaad8a"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/DF4264C1-6305-40C5-B6FA-4A088700CD33.png",
+      "name": "switcher-sheets-artwork-info-returned_0_76F9E3B4-E9FC-49FF-9543-994E830B33F4.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "f2992ee6c2fa5a4ce2b6a3f6735199865100b0e2b9cd90a961458b268ad93c42"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/313579E3-C12A-454F-A569-A7EF8D2A5ECB.png",
+      "name": "switcher-artwork-info-whole-homeview-card_0_C6873E16-0731-45AE-91DE-E416863C2007.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "463e6aa0d53293f4bb93242c667dfa2b2cd6855a44380230d83fa123203ddb9c"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/6ACD610B-71FE-4F18-A555-DB1A2877A48C.png",
+      "name": "switcher-artwork-info-native-system-screen_0_A2BEB2EB-4C73-4BB9-BEEF-5B648B18D305.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "7a45faae8b3c2d86962e55ce62de744cc17d2a6c89b68a41ba4fefac7bbda1f0"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/13B3C884-DB59-47ED-B53A-47FFF8AE13EE.png",
+      "name": "switcher-sheets-artwork-info-before_0_B38570CF-B4B7-47C8-A2A6-D81069CD8A72.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "42da7669dd2352f3daf75b94fe1d58c71f1f5bcb1ba62878cfd1c8777478eb90"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/24099E15-A1BB-4D08-BFF5-7D9BB2FDE96B.png",
+      "name": "switcher-sheets-complication-picker-returned_0_94085B2C-18FE-4E4F-9950-67D54CECFF58.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "95cb63a671f8c4849e66badce92614ba1c63dd96b2d5dc881becb5fb879a55bf"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/AC473F39-4675-4252-931B-2FB15733086B.png",
+      "name": "switcher-complication-picker-whole-homeview-card_0_B0A02591-C53A-46C8-8EE3-C9AE54F0B688.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "6cee1e35649f3071fa84403c8987ef41cb0c42c14dc5f97779ebc6d3d03c0060"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/05950A13-9C28-42CF-9E4D-DA81F40645FD.png",
+      "name": "switcher-complication-picker-native-system-screen_0_910D90C3-E9D3-4A9A-9B1C-02BE570D2053.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "526cdbf806b4398a3dcbf11ab3ae2bf9c1d7e418dd1f041edd13538353f8724f"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/21F469F8-6BE4-4221-B29A-7B091CECA191.png",
+      "name": "switcher-sheets-complication-picker-before_0_89B104CA-EF90-4C9F-9B64-5754B64B9E0C.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "752ba49b40343a7d8b6bef5c5b41a2e3970e6f59d95fa823e0fdb43f7e193a28"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/1385D3FB-F5D3-4B2D-A61B-A7CACD18033A.png",
+      "name": "switcher-sheets-world-detail-returned_0_600FA11B-6BB0-4328-BD4C-9F8274852C16.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "8f7004d1b5263fd2df3f4d67d4ade354792fe4057d761eee12658beb32b1b5f7"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/5D7D7509-213E-4DE1-B37C-F9F1CB24F3E6.png",
+      "name": "switcher-world-detail-whole-homeview-card_0_494FDCD9-C30F-4F78-ACC5-41F2BE77B123.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "c1ad9a358b7b1ccdf00c1687adf5e99ce159fa28ad50684f3e053028da32528e"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/D138BBCD-0452-4526-B070-57BF9312DF1C.png",
+      "name": "switcher-world-detail-native-system-screen_0_3F3EBC4E-AA13-479D-9052-FBA5A363247E.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "2a60dcc8cba4858d4f846f87b97b41c3ec47a90797e6e846a30fb51a77f81e5a"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/1DD06A59-722C-40A2-B094-04C0CEEB6ED0.png",
+      "name": "switcher-sheets-world-detail-before_0_AE4A7A70-8312-49A5-AA92-D5B164D8407D.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "8f7004d1b5263fd2df3f4d67d4ade354792fe4057d761eee12658beb32b1b5f7"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/E89CBAB5-1C3B-4127-A67D-DF67018D0954.png",
+      "name": "screen-write-boundary-readonly-face-and-slot-unchanged_0_EFD6CC1A-2305-45FE-8822-B9C95B681573.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "44e2961c0b3c7cceaacf0292565604f899ad53a2eec66fe397efdc0f68b10166"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/415A55A2-952F-4553-8A4B-F50445C42638.png",
+      "name": "viewport-write-boundary-readonly-face-and-slot-unchanged_0_51928FD3-81B7-4512-9261-97B682A95D25.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "00eb2f48543c256cbad5f4711f726a16a79edaeece8eb4d7ca4f47045c89e65e"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/1D79ED25-C514-4D7C-8AB1-36D44FDE6D96.png",
+      "name": "screen-write-boundary-slot-after-save-error_0_9D98DB17-A936-498F-B1B8-08B061819E04.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "972733d419fb0e9b62ee07bac87f3e2856e22d3a2ea05f2954fb42ad9595411c"
+    },
+    {
+      "checkpoint": "regression-phone",
+      "file": "regression-phone-attachments/E2A682A9-BAA4-4018-8C0A-2A196DB6B722.png",
+      "name": "viewport-write-boundary-slot-after-save-error_0_82E08600-4E3B-4500-A8F9-5309BA3CB27C.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "70e09aa5d1cf83d8bc19f5ef92f594f52ca78ddb7eff6e436e1e9924e6df3b5e"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/E24AF9F3-A56B-490E-85DA-A43CBF26DFEE.png",
+      "name": "switcher-calendar-return-requires-fresh-unlock_0_EB1D2880-549F-4794-92D2-45CACBF15944.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "9cd6f5d329f164e7581b90fb082312f736fe0ad268152dc84582d9b1e6b34080"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/30A41BEB-4423-43B0-945C-376F73D5CC40.png",
+      "name": "switcher-background-whole-homeview-card_0_CACA16F7-46AB-45DB-B6AA-94BC00977175.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "92c9c5fca6f47ef55c27979c12f984ba1e446aa7503e725b015d3023b91f3b51"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/859C62BF-6E4F-4E83-AE21-0EDCB9123501.png",
+      "name": "switcher-background-native-system-screen_0_ACFDE8DF-D9BB-415F-BCC5-400610215D38.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "a85f9f5aeec515838c57f3a7ec72c4e84055a58242642631717be0c6e0dd8bca"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/21009BD8-AA71-4A2A-8831-4D7D3DAF5930.png",
+      "name": "switcher-calendar-return-after-inactive_0_E8AEA46F-A6D6-426E-8E30-C36880C243B0.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "eea3ceca0bbc606db187e5a9d5746c435b83614ef240b2d34b05e2b3b8e21d65"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/DDE7F310-0D39-48E0-90F7-8E820942BBD0.png",
+      "name": "switcher-inactive-whole-homeview-card_0_5FCE496A-C3F2-4248-BA9E-0CC9D01EBD56.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "fbf81b406eebfc8425aa5e3623165a5a583001edc34851fd6843ae8857b9625a"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/3E64E4AF-4BB9-4C9C-A387-7AEC57A582D8.png",
+      "name": "switcher-inactive-native-system-screen_0_E2BFCF4D-6722-4B3E-96DA-079B1EE89525.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "33919a81ad88c7c9dccff37b1015adeec2ee1b2246b5203ab6082d343f6afe58"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/FB21E2E0-4A96-46BC-918C-B90BBD81CA7C.png",
+      "name": "switcher-calendar-visible-before_0_064D9800-79FE-46B9-94B0-6442B62E49A9.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "689578590c055f8a213fb71abbe0207fa624b858f58f6a3d511d1adbb3f1fda6"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/BEFDCB89-9BD9-4C6A-A616-3C703D155607.png",
+      "name": "store-future-version-readonly-after-relaunch_0_521B1F55-E3A5-4A4C-B1EA-E5BB7F754FD3.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "06731b933ff1ca0d25d9367cf67e1c2550596a80afba112a62611fa5358c73cf"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/D1CAD41E-C501-44BC-99D3-2C3CB84A9F30.png",
+      "name": "screen-mock-write-readonly-value-unchanged_0_A0797F99-CF9B-4BBF-A4A9-2D4B56BC4CF2.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "06731b933ff1ca0d25d9367cf67e1c2550596a80afba112a62611fa5358c73cf"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/6C22D36A-01B4-4C20-997D-B0DC8670181D.png",
+      "name": "viewport-mock-write-readonly-value-unchanged_0_1BB53E52-1B58-4786-87F9-E2B3556973C4.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "0757e2bfe2921e795fc5e921154f2b1eac3015ae9db9d92f493afc4412cf575c"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/7CE072B3-7A4B-4E0D-AB02-B9162253C7A3.png",
+      "name": "switcher-sheets-artwork-info-returned_0_6F5E85A8-27BE-4C15-8227-95D0E1930793.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "8f744bd839dc61316f1752fe3e4130556db6011fc6987ac244fbd2dbeee3bd05"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/B0C7FFFB-5C32-45C3-BD39-B90DC0AAE3AE.png",
+      "name": "switcher-artwork-info-whole-homeview-card_0_3C470EE9-2C39-4953-8CAD-5E21D2C25CFB.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "5fccf0d6f70f4dbf0b66e67239c449aa77e93ca1830f92fe91c53860a3517d4b"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/3DC7D719-71D4-4035-9677-9FAD89532B8C.png",
+      "name": "switcher-artwork-info-native-system-screen_0_B5824CA2-0FA6-403A-8FA5-FE73737D21A5.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "17ac13d41ec774afa23892087ab15d13faf745c2ca7830ba1d8836af646de9e8"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/11B861B2-F65B-4088-890D-03C21505015A.png",
+      "name": "switcher-sheets-artwork-info-before_0_EA937DDE-DFCB-450E-8865-DEE187B7C367.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "8f744bd839dc61316f1752fe3e4130556db6011fc6987ac244fbd2dbeee3bd05"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/29CC6343-5FFA-497C-89C6-5F2FD0BC7351.png",
+      "name": "switcher-sheets-complication-picker-returned_0_61438C58-2A71-4D72-B53B-AC7E1B2BF39E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "59e784219e674bc20d53ed42ad3ba165e7c48f26ed83dbb11a660808a2bac816"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/F44484CC-02E1-4486-B99D-3BD8FEFF662F.png",
+      "name": "switcher-complication-picker-whole-homeview-card_0_49BF8558-8765-46B5-A8A4-768E1AF74453.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "246e918a20d0d01f4e9f9881d6339d4068d0d56ccef81085c80540a6dca3f07f"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/AD1E0AF8-4963-4A2D-B8D7-8EF9351F568F.png",
+      "name": "switcher-complication-picker-native-system-screen_0_BDE4E8F3-AD7C-41BF-BAA6-A0278FF83735.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "5bb975a6adeaaa86df0a99f4f84b3fd8de74f12f68df1e4559bd487c5589c3c7"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/950863A3-EBF4-4734-8226-A2380BA10D8A.png",
+      "name": "switcher-sheets-complication-picker-before_0_FC1B6697-4487-4BB2-ADA0-61416B01336C.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "59e784219e674bc20d53ed42ad3ba165e7c48f26ed83dbb11a660808a2bac816"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/14FC6DEA-543D-498D-B230-D3800330DF4B.png",
+      "name": "switcher-sheets-world-detail-returned_0_148846DB-EC0F-4B71-8C25-3C5D8361425B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "a5c081c29676fff596c51da16247d6c55465504f80b3b4db4be392d70797947f"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/829A5FF9-E756-4E22-8C48-004FDA590147.png",
+      "name": "switcher-world-detail-whole-homeview-card_0_553C0B5F-0D00-49E3-A625-7D28ADD3B5D5.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "e34cb8c190bbb2d3520c47870e47640802c95e490e88e0a0ed5a9abed5e7541f"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/77E60F45-B04D-44D1-A464-C89D56495659.png",
+      "name": "switcher-world-detail-native-system-screen_0_5FB852E7-4AF4-4670-9DC6-4FCCD14EC1DF.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "001fb5376b429138402cd2adf33c1d24c4a69c7673f0a70c43e73f6aa7b25444"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/235C74C9-0A13-40F8-8597-C305840C850F.png",
+      "name": "switcher-sheets-world-detail-before_0_A959A0A3-698A-4D43-B4AD-44069426738F.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "a5c081c29676fff596c51da16247d6c55465504f80b3b4db4be392d70797947f"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/4615C98C-1C75-4641-B0B1-0FFA0D661C9B.png",
+      "name": "screen-write-boundary-readonly-face-and-slot-unchanged_0_041134AF-DC76-420C-A757-0777B84AE4C7.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "e57c457d9428e53b4848f4ab18163e9f32508885532d6cf476b7630483bd4580"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/34FCEA91-8087-45EE-B90E-13CA85095D28.png",
+      "name": "viewport-write-boundary-readonly-face-and-slot-unchanged_0_246B3200-AD9C-4408-BFEA-58B92F5BDA1C.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "1c12a7f649d90c5e886c8c67f4292ec4c33efb6b23051706852a1bd25b2d23c4"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/87A37F97-A096-402F-93F8-9FFA3BB2E44F.png",
+      "name": "screen-write-boundary-slot-after-save-error_0_E0C09ACC-095B-45D2-BE34-946DE1AE364B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "68339ccd9583e105c11b0a19a7b1b99c018b216ceef6e04835bbd363924289d5"
+    },
+    {
+      "checkpoint": "regression-ipad",
+      "file": "regression-ipad-attachments/5055178F-3E53-4C42-9B1E-8260E745A2B3.png",
+      "name": "viewport-write-boundary-slot-after-save-error_0_B1A379CD-5704-4235-A7BC-24AF578DE4EE.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "150c49a46ec5a71d2c44066d795665eb0f24061859ac38b7e7bebf0e4243abad"
+    }
+  ],
+  "contacts": [
+    {
+      "path": "baseline-phone-review-1.jpg",
+      "sha256": "2040af99b34cccc37a267d85c44a1ce6797f05ca5826b2d558a2554148f402ae",
+      "actually_viewed": true
+    },
+    {
+      "path": "baseline-ipad-review-1.jpg",
+      "sha256": "8de3efea7cd6e25d459512e792abcce1b03cb0c6cd6d07bcb4ba2f39085e3669",
+      "actually_viewed": true
+    },
+    {
+      "path": "candidate1-phone-review-1.jpg",
+      "sha256": "5b5c2e4fdaef0a20a669160564e0fad3144b5d12d28b469133dd1b5a739257eb",
+      "actually_viewed": true
+    },
+    {
+      "path": "candidate1-ipad-review-1.jpg",
+      "sha256": "de7ba5b4889b347a17748272b166d9b36255dd323becf92890334d19233aa510",
+      "actually_viewed": true
+    },
+    {
+      "path": "candidate2-phone-review-1.jpg",
+      "sha256": "45a17995dcc5733807de07b4e0d20fd5442903604432c00ae19dab7296e166a8",
+      "actually_viewed": true
+    },
+    {
+      "path": "candidate2-ipad-review-1.jpg",
+      "sha256": "f5a0b140a2aeef195ddc70d899ff1bc2190057360862389ff0529ddb4a54f495",
+      "actually_viewed": true
+    },
+    {
+      "path": "regression-phone-review-1.jpg",
+      "sha256": "84216856f804c18dac2ed59e2c8873d8de54e8352d3a2ba77f8ea2a47e749348",
+      "actually_viewed": true
+    },
+    {
+      "path": "regression-phone-review-2.jpg",
+      "sha256": "d30ede9d753cb26d5a4e21a1cc03bd12403d13985deac0d8a215886a3c457fb1",
+      "actually_viewed": true
+    },
+    {
+      "path": "regression-phone-review-3.jpg",
+      "sha256": "adede802059721889c983683a03ef551d50b61a39a6c0745c28fb58221630f01",
+      "actually_viewed": true
+    },
+    {
+      "path": "regression-ipad-review-1.jpg",
+      "sha256": "545593825280759784ba13b0a8bd3181895c2bf1fa597aef4c3108499ca49167",
+      "actually_viewed": true
+    },
+    {
+      "path": "regression-ipad-review-2.jpg",
+      "sha256": "f95e58fcb4060361e6c69e4491df7650f99ec47ac6f8c610921a45c0d40db5d7",
+      "actually_viewed": true
+    },
+    {
+      "path": "regression-ipad-review-3.jpg",
+      "sha256": "50bc66417592730ced58fffac9ad2b631972cbfee93fc6e99d93918ca5fa35bb",
+      "actually_viewed": true
+    }
+  ],
+  "additional_full_image_review": [
+    "candidate2-phone-attachments/F6385007-B0FC-4406-BA48-93ADE9122BF4.png",
+    "candidate2-phone-attachments/CF59502F-5B18-46EC-802B-88DA677A45CA.png",
+    "candidate2-phone-attachments/FC35FE91-192C-4DEF-B57F-E76BE40ABC88.png",
+    "candidate2-ipad-attachments/69392F05-6A9F-4D75-BFC6-F7F9E887A740.png"
+  ],
+  "own_public_images_read_back": [
+    {
+      "path": "Docs/screenshots/app-switcher-alerts/baseline-phone-switcher-editor-slot-alert.png",
+      "bytes": 64958,
+      "sha256": "f059737d4f13b456534d731661ae33d8a5b0b267d18d00f240bbe05b2e3763d6",
+      "source_sha256": "59350e654b175dfe1de3fbddfe46979a6a1d825ed57d307ff4af5f39c4c9c55a",
+      "deterministic_inner_own_card_crop": [
+        66,
+        144,
+        762,
+        1654
+      ]
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-alerts/baseline-phone-switcher-root-write-alert.png",
+      "bytes": 65132,
+      "sha256": "409c5e10fcfc746ff317f4df8ce572671c8b35c1108cac53fe3c5a2cf1f9a640",
+      "source_sha256": "31526a5a4e60d7714e0b110367231a80224816f91572746abf9d130417b5501a",
+      "deterministic_inner_own_card_crop": [
+        66,
+        144,
+        762,
+        1654
+      ]
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-alerts/baseline-ipad-switcher-editor-slot-alert.png",
+      "bytes": 10468,
+      "sha256": "43bf98aaa1ed2d2d929535f15323c8897b482840d5ad16a42efdb5381c1c64e3",
+      "source_sha256": "b9d8333fb59b8b232e6e96e191a4ce7c9920042cd93a8e61f59611fcd6a09333",
+      "deterministic_inner_own_card_crop": [
+        38,
+        55,
+        441,
+        633
+      ]
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-alerts/baseline-ipad-switcher-root-write-alert.png",
+      "bytes": 8822,
+      "sha256": "5406b95631474e1f0a1a4346bd4805b4dd837cf035543fbf7a92192ffe4a8939",
+      "source_sha256": "30551618c3c049268f69f37bd7aeb6cc4aaabf2848c00a51cdd5795b42abc255",
+      "deterministic_inner_own_card_crop": [
+        38,
+        55,
+        441,
+        633
+      ]
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-alerts/candidate2-phone-switcher-editor-slot-alert.png",
+      "bytes": 13052,
+      "sha256": "913718fcc22237fbc8defe45da6126efbc91bd27d7f7e5361550b96f68f06bb6",
+      "source_sha256": "3347eff2528da1ddd35bfe3c26dc7b636b9eebb75dc83b1cc3e982c935e1c974",
+      "deterministic_inner_own_card_crop": [
+        66,
+        144,
+        762,
+        1654
+      ]
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-alerts/candidate2-phone-switcher-root-write-alert.png",
+      "bytes": 13272,
+      "sha256": "4939a0ba997c76d9871b683585cef764c314b7753791f85953b816f50205bdea",
+      "source_sha256": "2b65e480432bc0ec0ae3c00a66182e5a70923af061238240eac943341800284e",
+      "deterministic_inner_own_card_crop": [
+        66,
+        144,
+        762,
+        1654
+      ]
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-alerts/candidate2-ipad-switcher-editor-slot-alert.png",
+      "bytes": 3367,
+      "sha256": "e606338e62b3c9d97640d7acc2e82f4f7725477686feaec44dafd4ddcbb01548",
+      "source_sha256": "b95892b64e308a4ac972a139b4eb747da03b0ba84c5d938d9ac9ca87bdcd3ecf",
+      "deterministic_inner_own_card_crop": [
+        38,
+        55,
+        441,
+        633
+      ]
+    },
+    {
+      "path": "Docs/screenshots/app-switcher-alerts/candidate2-ipad-switcher-root-write-alert.png",
+      "bytes": 2276,
+      "sha256": "01286dbb9a973e1c7b1cd7d6df98d5d856488145bd2d7c4f28c3bcd8fba840af",
+      "source_sha256": "905dc187086bd9c9e58ec40aa7e6627caba4b4a5713488fa53e193d5aa93e714",
+      "deterministic_inner_own_card_crop": [
+        38,
+        55,
+        441,
+        633
+      ]
+    }
+  ],
+  "history_limits": [
+    "Baseline: generic native UIAlert above the black shield on both devices; no private payload leak observed. Return/message/picker/read-only assertions still ran and passed.",
+    "Candidate1 hides alerts but all four return-alert restoration checks fail; rejected, no unsupported callback root cause asserted.",
+    "Candidate2 separates logical error from presentation, fences stale UI callbacks, restores unchanged error after inactivity.",
+    "Returned screenshots precede the waitForExistence assertion; iPad captures include presentation transition, not final settled-alert screenshots. Exact message restoration established by subsequent native element assertions."
+  ],
+  "private_artifact_locator": "research/homeview-switcher-alerts-20261029",
+  "real_Home_accounts_messages_calls": false,
+  "physical_signing_hold_unchanged": true,
+  "issue_remains_open": true
+}
