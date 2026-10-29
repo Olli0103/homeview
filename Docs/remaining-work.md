@@ -4,6 +4,7 @@
 
 ## Aktueller Arbeitsblock
 
+- [Face-Karten und Rückrichtung korrigiert](face-transition-cards.md): native Vorher-/Nachher-Filme belegen den Fix, sechs volle Ruhepaare pixelgleich.22 erfolgreiche UI-Ausführungen über zwei Testvarianten, zwei alte Testannahmen-Fehler behalten, fünf SDKs. #6 bleibt für Originalkurven und vollständige Bewegungsabnahme offen.
 - [Editor-Farben isoliert](face-color-isolation.md): Home ändert Modular nicht mehr ungefragt; feste Home-Clock-Palette bietet keine wirkungslosen Farbtasten. 397 Coretests, zwölf UI-Ausführungen, fünf SDKs; eigene gespeicherte Zustände und exakte Pixel geprüft. #7 bleibt für vollständigen Originaleditor offen.
 - [Original-GIF-Nachprüfung](transition-reference-review-20261029.md): 158 Frames gesichtet, sichtbare Teilfolge erhalten; keine vollständige Standardreihenfolge oder Langsam-/Schnell-/Abbruchregel abgeleitet. #6 bleibt offen.
 

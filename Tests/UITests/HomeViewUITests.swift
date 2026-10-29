@@ -3,6 +3,41 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  func testAnimatedFaceRoundTripPreservesRestingPixels() throws {
+    try faceRoundTrip(animated:true)
+  }
+  func testReducedFaceRoundTripPreservesRestingPixels() throws {
+    try faceRoundTrip(animated:false)
+  }
+  private func faceRoundTrip(animated:Bool) throws {
+    launch(["--face","Modular",animated ? "--animation-test":"--reduce-motion"])
+    if animated {
+      XCTAssertFalse(UIAccessibility.isReduceMotionEnabled,"Record a real animated transition, not a reduced-motion substitute")
+    }
+    let viewport=app.otherElements["reference.viewport"].frame
+    let geometry:[String:Any]=["viewport":[Double(viewport.minX),Double(viewport.minY),Double(viewport.width),Double(viewport.height)],
+      "app":[Double(app.frame.minX),Double(app.frame.minY),Double(app.frame.width),Double(app.frame.height)],"reduce_motion":UIAccessibility.isReduceMotionEnabled]
+    let receipt=XCTAttachment(data:try JSONSerialization.data(withJSONObject:geometry,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    receipt.name="replica-transition-capture-geometry";receipt.lifetime = .keepAlways;add(receipt)
+    shot("replica-transition-modular-start")
+    let before=viewportBytes("face-roundtrip-modular-before")
+    app.otherElements["face.Modular"].swipeLeft()
+    XCTAssertTrue(app.otherElements["face.Watch Modular"].waitForExistence(timeout:5))
+    shot("replica-transition-watch-middle")
+    app.otherElements["face.Watch Modular"].swipeRight()
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    shot("replica-transition-modular-return")
+    XCTAssertEqual(viewportPixels(before,inset:0),viewportPixels(viewportBytes("face-roundtrip-modular-return"),inset:0))
+    // Reversal must keep working after both identities have been removed once.
+    app.otherElements["face.Modular"].swipeLeft()
+    XCTAssertTrue(app.otherElements["face.Watch Modular"].waitForExistence(timeout:5))
+    app.otherElements["face.Watch Modular"].swipeRight()
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    XCTAssertEqual(viewportPixels(before,inset:0),viewportPixels(viewportBytes("face-roundtrip-modular-second-return"),inset:0))
+  }
+}
+
+extension HomeViewUITests {
   func testFlowComputeReducedFrameStopsAndNightDoesNotSubmitFluidWork() {
     launch(["--face","Flow","--animation-test","--reduce-motion"])
     let report=app.staticTexts["flow.compute.test"]
@@ -1293,7 +1328,7 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.otherElements["personal.photos.layout"].waitForExistence(timeout:5))
     tap("nav.faces")
     drag(0.4,0.06,0.4,0.5)
-    viewportShot("gesture-top-left-opens-assistant")
+    viewportShot("gesture-top-left-opens-assistant",assistantRectangle:true)
     XCTAssertTrue(app.textFields["assistant.input"].waitForExistence(timeout:5))
     tap("nav.faces")
     drag(0.85,0.06,0.85,0.5)

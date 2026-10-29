@@ -1,0 +1,1567 @@
+{
+  "date": "2026-10-29",
+  "issue": 6,
+  "issue_stays_open": true,
+  "base_commit": "435afd3b75d9b58cc94de760e055bf26bb075ab1",
+  "source_digest": "17cb586b3a6358f0be9f814ac9aaccbc3a4420096aa920a8f552292c350eefe3",
+  "motion_and_SDK_test_variant_digest": "7cb9312a9e111be78b14b7ffc51707690bcc22cff7978460ee46657a287a5d0d",
+  "test_only_correction_product_comparison": {
+    "product_files": 19,
+    "changed": [],
+    "all_product_bytes_identical": true,
+    "changed_test_source": "Tests/UITests/HomeViewUITests.swift",
+    "only_line_change": "Pass assistantRectangle:true to existing native assistant geometry helper in the edge-navigation case."
+  },
+  "scope": "Own moving-card clipping, reverse-direction binding, dark motion-only stage; resting pixels unchanged. Not original gesture/curve or physical acceptance.",
+  "acceptance_declared_before_candidate": {
+    "file_sha256": "5e67b4f0541fcae19e6ae17c5102a711a27c912796de1696139bdf5afeca0509",
+    "criteria": {
+      "rounded_moving_mist_edge": "In both directions, frames with Mist rightmost edge between 120 and 480 of normalized width 600 show row-12 edge inset over 20 pixels relative to row-300, rather than baseline zero. Inspect actual frames; classifier is only a geometry aid.",
+      "background": "No solid white background panel on return; no continuous near-white run over 16 pixels on normalized row 520 in transition frames with an interior Mist edge. Inspect image and video frames, exclude OS chrome.",
+      "resting_preservation": "Compare all three native resting face viewport RGBA crops against unchanged baseline for each device; zero changed pixels required. No lossy movie image used for exact equality.",
+      "functional": "Both directions and repeated navigation, Reduce Motion/no animation, edge-navigation and overlays still work on iPhone and iPad. Night treatment remains monochromatic.",
+      "build": "Five installed SDK compilations; source/compiled/launch/archive/readback/install bindings on final UI selection."
+    }
+  },
+  "UI_runs": [
+    {
+      "checkpoint": "replica-candidate3-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testAnimatedFaceRoundTripPreservesRestingPixels"
+      ],
+      "source_digest": "7cb9312a9e111be78b14b7ffc51707690bcc22cff7978460ee46657a287a5d0d",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "2dcab7e9f6ec9da2db429aaafe8c5cd274158c55d6dfff6619d24bf5811a9155",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "b964c145781ec674d5953afffbd71168b3fe1178c39ba489bc4019936967e443",
+      "log_sha256": "61d2f1ce9aba584164e0e1c873d87d030843cf20fcd652528fbb48896effbd4e"
+    },
+    {
+      "checkpoint": "replica-candidate3-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testAnimatedFaceRoundTripPreservesRestingPixels"
+      ],
+      "source_digest": "7cb9312a9e111be78b14b7ffc51707690bcc22cff7978460ee46657a287a5d0d",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "2dcab7e9f6ec9da2db429aaafe8c5cd274158c55d6dfff6619d24bf5811a9155",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "6370a114332f8a0cde2e51a87a62b8a3a1b002000bba9a1e1c0426de07ec83b5",
+      "log_sha256": "817dc66ec36f95d4d724bd89de19f58102045e92a175937599eeb54e6ed809bf"
+    },
+    {
+      "checkpoint": "replica-regression-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 9,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testReducedFaceRoundTripPreservesRestingPixels",
+        "testHorizontalDominantTopDiagonalChangesFaceInsteadOfOpeningAssistant",
+        "testVerticalDominantInteriorDiagonalDoesNotAdvanceFace",
+        "testShortFaceDragKeepsActualFaceAndDoesNotOpenAnOverlay",
+        "testViewportEdgeGesturesOpenTheirActualDestinations",
+        "testPersonalWeatherGridScrollKeepsSourceLayoutAndOpensWeather",
+        "testFaceEditorChangesFaceAndWidget",
+        "testDemoDoorbellDismissReturnsToTheSameFaceAndARepeatedEventDoesNotReopen",
+        "testDemoDoorbellPreservesTheRunningTimerAndBlocksUnderlyingControls",
+        "testNightFaceMatrixUsesFullViewportAndExplicitTimeZones"
+      ],
+      "source_digest": "7cb9312a9e111be78b14b7ffc51707690bcc22cff7978460ee46657a287a5d0d",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "2dcab7e9f6ec9da2db429aaafe8c5cd274158c55d6dfff6619d24bf5811a9155",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "eb1a3a9c39f3c5762e20ad1d457d2b7ceeed371d45966a31f22f3fccce6672fc",
+      "log_sha256": "eb77dd6a2f58b894cd82fc973fad693a5c694414387764d194010ccc3b7c32aa"
+    },
+    {
+      "checkpoint": "replica-regression-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 9,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testReducedFaceRoundTripPreservesRestingPixels",
+        "testHorizontalDominantTopDiagonalChangesFaceInsteadOfOpeningAssistant",
+        "testVerticalDominantInteriorDiagonalDoesNotAdvanceFace",
+        "testShortFaceDragKeepsActualFaceAndDoesNotOpenAnOverlay",
+        "testViewportEdgeGesturesOpenTheirActualDestinations",
+        "testPersonalWeatherGridScrollKeepsSourceLayoutAndOpensWeather",
+        "testFaceEditorChangesFaceAndWidget",
+        "testDemoDoorbellDismissReturnsToTheSameFaceAndARepeatedEventDoesNotReopen",
+        "testDemoDoorbellPreservesTheRunningTimerAndBlocksUnderlyingControls",
+        "testNightFaceMatrixUsesFullViewportAndExplicitTimeZones"
+      ],
+      "source_digest": "7cb9312a9e111be78b14b7ffc51707690bcc22cff7978460ee46657a287a5d0d",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "2dcab7e9f6ec9da2db429aaafe8c5cd274158c55d6dfff6619d24bf5811a9155",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "85b9efe43e72495478645ad5845ea2edb09dda5ae722024a8969572b396be7d8",
+      "log_sha256": "7c9c0c5b3b3ce2d9e8e023a4dd3d6b999c2f0367213469105a144a02fa09f750"
+    },
+    {
+      "checkpoint": "replica-edge-corrected-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testViewportEdgeGesturesOpenTheirActualDestinations"
+      ],
+      "source_digest": "17cb586b3a6358f0be9f814ac9aaccbc3a4420096aa920a8f552292c350eefe3",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "23fad2acb6682f592d8cdddbe7b1df7a95c8ad3e451f5f8d087a7e1eb465a274",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "4848090ef4be5958045bd45a721f9b5a43e132c4738f7d548b08abe65d951ff7",
+      "log_sha256": "b252c6c7b0c58aec12b6980e1a676a04d86785869d17197debe5c726e2767a7d"
+    },
+    {
+      "checkpoint": "replica-edge-corrected-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testViewportEdgeGesturesOpenTheirActualDestinations"
+      ],
+      "source_digest": "17cb586b3a6358f0be9f814ac9aaccbc3a4420096aa920a8f552292c350eefe3",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "23fad2acb6682f592d8cdddbe7b1df7a95c8ad3e451f5f8d087a7e1eb465a274",
+      "archive_all_entries_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "46bb283f9fc41950539f6c37f6cd79718c436ab76f5036999e44344b8fdc388a",
+      "log_sha256": "0e76571a95d0c7e458e4048ab6d993bf8e04519c8b845e6879a5061769ec04ad"
+    }
+  ],
+  "successful_UI_executions": 22,
+  "total_UI_executions": 24,
+  "historical_failed_UI_executions": 2,
+  "UI_scope": "Twenty2 successful executions across two explicitly bound test variants, with two preserved earlier geometry-helper failures. No final complete22-case rerun is claimed.",
+  "unique_UI_methods": 11,
+  "core": {
+    "historical_commit": "435afd3b75d9b58cc94de760e055bf26bb075ab1",
+    "historical_passed": 397,
+    "current_core_run": false,
+    "unchanged_core_package_test_inputs": 88,
+    "changed_source_inputs": [
+      "Sources/App/RootView.swift",
+      "Tests/UITests/HomeViewUITests.swift"
+    ]
+  },
+  "SDKs": {
+    "passed": 5,
+    "receipt": "face-transition-cards-platforms.json"
+  },
+  "native_captures": [
+    {
+      "device": "phone",
+      "geometry": {
+        "app": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "reduce_motion": false,
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      "before": {
+        "checkpoint": "replica-baseline-phone",
+        "video_sha256": "75aa9cb351db05b7cd35e600c768cef0f43b0324e5c13d426b6e583b9a3f4a2c",
+        "decoded_frames": 254,
+        "inputs_archive_sha256": "9c9d0364242628a69d291426c9cd0e77d5e8e88a641bc31e50726d012851450c",
+        "input_manifest_sha256": "a13e6bb93d3dd1de65d7f88cce83131a1bcf946b7ddbcf9620750fdf7db7f15f",
+        "frames_index_sha256": "151779a8b412125bd24fd6223845ac68ee4d8a4ae39a3a014af6fc865d9c4f64"
+      },
+      "after": {
+        "checkpoint": "replica-candidate3-phone",
+        "video_sha256": "a9470af8336811df6495a742857c35be8a249f793f6b130b364e24093e590e3b",
+        "decoded_frames": 349,
+        "frames_index_sha256": "2e4efaf4d38b64f539ad8efda314be4b2debc22151a082c67726274bc83c9eb2",
+        "groups": [
+          {
+            "count": 9,
+            "start_edge": 458,
+            "end_edge": 132,
+            "inset_range": [
+              29,
+              41
+            ],
+            "nearwhite_run_max": 0
+          },
+          {
+            "count": 10,
+            "start_edge": 138,
+            "end_edge": 469,
+            "inset_range": [
+              31,
+              43
+            ],
+            "nearwhite_run_max": 0
+          },
+          {
+            "count": 9,
+            "start_edge": 447,
+            "end_edge": 127,
+            "inset_range": [
+              27,
+              42
+            ],
+            "nearwhite_run_max": 0
+          },
+          {
+            "count": 10,
+            "start_edge": 138,
+            "end_edge": 469,
+            "inset_range": [
+              31,
+              42
+            ],
+            "nearwhite_run_max": 0
+          }
+        ],
+        "interior_edge_observations": [
+          {
+            "index": 157,
+            "pts_seconds": 14.973333,
+            "top_right": 417,
+            "middle_right": 458,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00158.png"
+          },
+          {
+            "index": 158,
+            "pts_seconds": 14.986667,
+            "top_right": 365,
+            "middle_right": 405,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00159.png"
+          },
+          {
+            "index": 159,
+            "pts_seconds": 15.003333,
+            "top_right": 314,
+            "middle_right": 355,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00160.png"
+          },
+          {
+            "index": 160,
+            "pts_seconds": 15.025,
+            "top_right": 266,
+            "middle_right": 307,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00161.png"
+          },
+          {
+            "index": 161,
+            "pts_seconds": 15.036667,
+            "top_right": 222,
+            "middle_right": 263,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00162.png"
+          },
+          {
+            "index": 162,
+            "pts_seconds": 15.053333,
+            "top_right": 183,
+            "middle_right": 224,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00163.png"
+          },
+          {
+            "index": 163,
+            "pts_seconds": 15.07,
+            "top_right": 148,
+            "middle_right": 188,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00164.png"
+          },
+          {
+            "index": 164,
+            "pts_seconds": 15.088333,
+            "top_right": 120,
+            "middle_right": 159,
+            "inset_pixels": 39,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00165.png"
+          },
+          {
+            "index": 165,
+            "pts_seconds": 15.105,
+            "top_right": 103,
+            "middle_right": 132,
+            "inset_pixels": 29,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00166.png"
+          },
+          {
+            "index": 201,
+            "pts_seconds": 16.571667,
+            "top_right": 107,
+            "middle_right": 138,
+            "inset_pixels": 31,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00202.png"
+          },
+          {
+            "index": 202,
+            "pts_seconds": 16.586667,
+            "top_right": 149,
+            "middle_right": 191,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00203.png"
+          },
+          {
+            "index": 203,
+            "pts_seconds": 16.603333,
+            "top_right": 200,
+            "middle_right": 241,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00204.png"
+          },
+          {
+            "index": 204,
+            "pts_seconds": 16.621667,
+            "top_right": 248,
+            "middle_right": 289,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00205.png"
+          },
+          {
+            "index": 205,
+            "pts_seconds": 16.641667,
+            "top_right": 292,
+            "middle_right": 333,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00206.png"
+          },
+          {
+            "index": 206,
+            "pts_seconds": 16.646667,
+            "top_right": 292,
+            "middle_right": 333,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00207.png"
+          },
+          {
+            "index": 207,
+            "pts_seconds": 16.651667,
+            "top_right": 331,
+            "middle_right": 373,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00208.png"
+          },
+          {
+            "index": 208,
+            "pts_seconds": 16.673333,
+            "top_right": 365,
+            "middle_right": 408,
+            "inset_pixels": 43,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00209.png"
+          },
+          {
+            "index": 209,
+            "pts_seconds": 16.691667,
+            "top_right": 401,
+            "middle_right": 444,
+            "inset_pixels": 43,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00210.png"
+          },
+          {
+            "index": 210,
+            "pts_seconds": 16.708333,
+            "top_right": 428,
+            "middle_right": 469,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00211.png"
+          },
+          {
+            "index": 244,
+            "pts_seconds": 18.488333,
+            "top_right": 407,
+            "middle_right": 447,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00245.png"
+          },
+          {
+            "index": 245,
+            "pts_seconds": 18.505,
+            "top_right": 354,
+            "middle_right": 396,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00246.png"
+          },
+          {
+            "index": 246,
+            "pts_seconds": 18.52,
+            "top_right": 304,
+            "middle_right": 345,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00247.png"
+          },
+          {
+            "index": 247,
+            "pts_seconds": 18.54,
+            "top_right": 257,
+            "middle_right": 297,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00248.png"
+          },
+          {
+            "index": 248,
+            "pts_seconds": 18.555,
+            "top_right": 214,
+            "middle_right": 255,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00249.png"
+          },
+          {
+            "index": 249,
+            "pts_seconds": 18.571667,
+            "top_right": 175,
+            "middle_right": 217,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00250.png"
+          },
+          {
+            "index": 250,
+            "pts_seconds": 18.59,
+            "top_right": 141,
+            "middle_right": 183,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00251.png"
+          },
+          {
+            "index": 251,
+            "pts_seconds": 18.603333,
+            "top_right": 117,
+            "middle_right": 152,
+            "inset_pixels": 35,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00252.png"
+          },
+          {
+            "index": 252,
+            "pts_seconds": 18.62,
+            "top_right": 100,
+            "middle_right": 127,
+            "inset_pixels": 27,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00253.png"
+          },
+          {
+            "index": 288,
+            "pts_seconds": 20.073333,
+            "top_right": 107,
+            "middle_right": 138,
+            "inset_pixels": 31,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00289.png"
+          },
+          {
+            "index": 289,
+            "pts_seconds": 20.093333,
+            "top_right": 149,
+            "middle_right": 191,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00290.png"
+          },
+          {
+            "index": 290,
+            "pts_seconds": 20.108333,
+            "top_right": 200,
+            "middle_right": 241,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00291.png"
+          },
+          {
+            "index": 291,
+            "pts_seconds": 20.12,
+            "top_right": 248,
+            "middle_right": 289,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00292.png"
+          },
+          {
+            "index": 292,
+            "pts_seconds": 20.14,
+            "top_right": 292,
+            "middle_right": 333,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00293.png"
+          },
+          {
+            "index": 293,
+            "pts_seconds": 20.145,
+            "top_right": 292,
+            "middle_right": 333,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00294.png"
+          },
+          {
+            "index": 294,
+            "pts_seconds": 20.153333,
+            "top_right": 331,
+            "middle_right": 373,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00295.png"
+          },
+          {
+            "index": 295,
+            "pts_seconds": 20.17,
+            "top_right": 366,
+            "middle_right": 408,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00296.png"
+          },
+          {
+            "index": 296,
+            "pts_seconds": 20.191667,
+            "top_right": 402,
+            "middle_right": 444,
+            "inset_pixels": 42,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00297.png"
+          },
+          {
+            "index": 297,
+            "pts_seconds": 20.206667,
+            "top_right": 428,
+            "middle_right": 469,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00298.png"
+          }
+        ],
+        "recorder_exit_code": 0,
+        "first_frame_acknowledged": true,
+        "external_copy_read_back": true
+      },
+      "native_resting_exact_comparisons": [
+        {
+          "state": "replica-transition-modular-start",
+          "shape": [
+            1134,
+            1134,
+            4
+          ],
+          "changed_pixels": 0,
+          "maximum_channel_delta": 0
+        },
+        {
+          "state": "replica-transition-watch-middle",
+          "shape": [
+            1134,
+            1134,
+            4
+          ],
+          "changed_pixels": 0,
+          "maximum_channel_delta": 0
+        },
+        {
+          "state": "replica-transition-modular-return",
+          "shape": [
+            1134,
+            1134,
+            4
+          ],
+          "changed_pixels": 0,
+          "maximum_channel_delta": 0
+        }
+      ],
+      "native_before_crops": [
+        {
+          "state": "replica-transition-modular-start",
+          "file": "replica-baseline-phone-replica-transition-modular-start.png",
+          "sha256": "7e580ac51b19d7f345b5909937760e775feda432077879e107bcfa142cc306a3",
+          "crop_native_pixels": [
+            36,
+            723,
+            1170,
+            1857
+          ],
+          "source_sha256": "7a445fa16b748779e705fd5d6dab128dbb9ed3b8df755275e99243a76e7b3d80"
+        },
+        {
+          "state": "replica-transition-watch-middle",
+          "file": "replica-baseline-phone-replica-transition-watch-middle.png",
+          "sha256": "6306cfc922bebfcec0ac5927591e6b5fd0497d30a0374b22dadfc6fff47d8b20",
+          "crop_native_pixels": [
+            36,
+            723,
+            1170,
+            1857
+          ],
+          "source_sha256": "ed9bced49946b8a5df4421b46468bf89e87674112e00b5442a38dcb66a478687"
+        },
+        {
+          "state": "replica-transition-modular-return",
+          "file": "replica-baseline-phone-replica-transition-modular-return.png",
+          "sha256": "7e580ac51b19d7f345b5909937760e775feda432077879e107bcfa142cc306a3",
+          "crop_native_pixels": [
+            36,
+            723,
+            1170,
+            1857
+          ],
+          "source_sha256": "7a445fa16b748779e705fd5d6dab128dbb9ed3b8df755275e99243a76e7b3d80"
+        }
+      ],
+      "native_after_crops": [
+        {
+          "state": "replica-transition-modular-start",
+          "file": "replica-candidate3-phone-replica-transition-modular-start.png",
+          "sha256": "7e580ac51b19d7f345b5909937760e775feda432077879e107bcfa142cc306a3",
+          "crop_native_pixels": [
+            36,
+            723,
+            1170,
+            1857
+          ],
+          "source_sha256": "be3a67b9596a7285d9505371b3b4fbf4499d3075fd7b61b3a45dad00db16a86e"
+        },
+        {
+          "state": "replica-transition-watch-middle",
+          "file": "replica-candidate3-phone-replica-transition-watch-middle.png",
+          "sha256": "6306cfc922bebfcec0ac5927591e6b5fd0497d30a0374b22dadfc6fff47d8b20",
+          "crop_native_pixels": [
+            36,
+            723,
+            1170,
+            1857
+          ],
+          "source_sha256": "7ccd71b837afa173dffbf50735c0af90f92c90d71dff3d1f2bd848bc47aa86d6"
+        },
+        {
+          "state": "replica-transition-modular-return",
+          "file": "replica-candidate3-phone-replica-transition-modular-return.png",
+          "sha256": "7e580ac51b19d7f345b5909937760e775feda432077879e107bcfa142cc306a3",
+          "crop_native_pixels": [
+            36,
+            723,
+            1170,
+            1857
+          ],
+          "source_sha256": "be3a67b9596a7285d9505371b3b4fbf4499d3075fd7b61b3a45dad00db16a86e"
+        }
+      ]
+    },
+    {
+      "device": "ipad",
+      "geometry": {
+        "app": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "reduce_motion": false,
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      "before": {
+        "checkpoint": "replica-baseline-ipad",
+        "video_sha256": "a7ef24641a72cf84bbcfe52ac64afa9101aea1da2b69b61490ad1646605fb20b",
+        "decoded_frames": 276,
+        "inputs_archive_sha256": "9c9d0364242628a69d291426c9cd0e77d5e8e88a641bc31e50726d012851450c",
+        "input_manifest_sha256": "a13e6bb93d3dd1de65d7f88cce83131a1bcf946b7ddbcf9620750fdf7db7f15f",
+        "frames_index_sha256": "fc4a23e9fe008a6fb8b617021e4a73fdb87ef0e03710b6c82b03e4b36c42094c"
+      },
+      "after": {
+        "checkpoint": "replica-candidate3-ipad",
+        "video_sha256": "2d548ab5c1902f53567ad17ae9abaf797459f101e0b6385579183e427285a94f",
+        "decoded_frames": 364,
+        "frames_index_sha256": "39528689be8285f1e47ed45168a3cecd7acefab905a1eb380cc9076ccb4d4edb",
+        "groups": [
+          {
+            "count": 9,
+            "start_edge": 469,
+            "end_edge": 137,
+            "inset_range": [
+              30,
+              41
+            ],
+            "nearwhite_run_max": 0
+          },
+          {
+            "count": 10,
+            "start_edge": 138,
+            "end_edge": 469,
+            "inset_range": [
+              31,
+              40
+            ],
+            "nearwhite_run_max": 0
+          },
+          {
+            "count": 9,
+            "start_edge": 447,
+            "end_edge": 127,
+            "inset_range": [
+              26,
+              40
+            ],
+            "nearwhite_run_max": 0
+          },
+          {
+            "count": 10,
+            "start_edge": 138,
+            "end_edge": 469,
+            "inset_range": [
+              31,
+              41
+            ],
+            "nearwhite_run_max": 0
+          }
+        ],
+        "interior_edge_observations": [
+          {
+            "index": 167,
+            "pts_seconds": 15.355,
+            "top_right": 428,
+            "middle_right": 469,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00168.png"
+          },
+          {
+            "index": 168,
+            "pts_seconds": 15.368333,
+            "top_right": 376,
+            "middle_right": 416,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00169.png"
+          },
+          {
+            "index": 169,
+            "pts_seconds": 15.388333,
+            "top_right": 325,
+            "middle_right": 365,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00170.png"
+          },
+          {
+            "index": 170,
+            "pts_seconds": 15.405,
+            "top_right": 276,
+            "middle_right": 316,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00171.png"
+          },
+          {
+            "index": 171,
+            "pts_seconds": 15.425,
+            "top_right": 231,
+            "middle_right": 271,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00172.png"
+          },
+          {
+            "index": 172,
+            "pts_seconds": 15.436667,
+            "top_right": 191,
+            "middle_right": 231,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00173.png"
+          },
+          {
+            "index": 173,
+            "pts_seconds": 15.455,
+            "top_right": 156,
+            "middle_right": 195,
+            "inset_pixels": 39,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00174.png"
+          },
+          {
+            "index": 174,
+            "pts_seconds": 15.471667,
+            "top_right": 125,
+            "middle_right": 164,
+            "inset_pixels": 39,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00175.png"
+          },
+          {
+            "index": 175,
+            "pts_seconds": 15.486667,
+            "top_right": 107,
+            "middle_right": 137,
+            "inset_pixels": 30,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00176.png"
+          },
+          {
+            "index": 211,
+            "pts_seconds": 16.955,
+            "top_right": 107,
+            "middle_right": 138,
+            "inset_pixels": 31,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00212.png"
+          },
+          {
+            "index": 212,
+            "pts_seconds": 16.971667,
+            "top_right": 161,
+            "middle_right": 201,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00213.png"
+          },
+          {
+            "index": 213,
+            "pts_seconds": 16.988333,
+            "top_right": 211,
+            "middle_right": 251,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00214.png"
+          },
+          {
+            "index": 214,
+            "pts_seconds": 17.003333,
+            "top_right": 258,
+            "middle_right": 298,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00215.png"
+          },
+          {
+            "index": 215,
+            "pts_seconds": 17.025,
+            "top_right": 301,
+            "middle_right": 341,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00216.png"
+          },
+          {
+            "index": 216,
+            "pts_seconds": 17.03,
+            "top_right": 301,
+            "middle_right": 341,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00217.png"
+          },
+          {
+            "index": 217,
+            "pts_seconds": 17.036667,
+            "top_right": 339,
+            "middle_right": 379,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00218.png"
+          },
+          {
+            "index": 218,
+            "pts_seconds": 17.055,
+            "top_right": 373,
+            "middle_right": 413,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00219.png"
+          },
+          {
+            "index": 219,
+            "pts_seconds": 17.073333,
+            "top_right": 403,
+            "middle_right": 443,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00220.png"
+          },
+          {
+            "index": 220,
+            "pts_seconds": 17.093333,
+            "top_right": 429,
+            "middle_right": 469,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00221.png"
+          },
+          {
+            "index": 251,
+            "pts_seconds": 19.038333,
+            "top_right": 407,
+            "middle_right": 447,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00252.png"
+          },
+          {
+            "index": 252,
+            "pts_seconds": 19.053333,
+            "top_right": 355,
+            "middle_right": 395,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00253.png"
+          },
+          {
+            "index": 253,
+            "pts_seconds": 19.07,
+            "top_right": 305,
+            "middle_right": 345,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00254.png"
+          },
+          {
+            "index": 254,
+            "pts_seconds": 19.095,
+            "top_right": 258,
+            "middle_right": 298,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00255.png"
+          },
+          {
+            "index": 255,
+            "pts_seconds": 19.101667,
+            "top_right": 215,
+            "middle_right": 255,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00256.png"
+          },
+          {
+            "index": 256,
+            "pts_seconds": 19.121667,
+            "top_right": 177,
+            "middle_right": 217,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00257.png"
+          },
+          {
+            "index": 257,
+            "pts_seconds": 19.14,
+            "top_right": 143,
+            "middle_right": 183,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00258.png"
+          },
+          {
+            "index": 258,
+            "pts_seconds": 19.153333,
+            "top_right": 117,
+            "middle_right": 153,
+            "inset_pixels": 36,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00259.png"
+          },
+          {
+            "index": 259,
+            "pts_seconds": 19.17,
+            "top_right": 101,
+            "middle_right": 127,
+            "inset_pixels": 26,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00260.png"
+          },
+          {
+            "index": 295,
+            "pts_seconds": 20.621667,
+            "top_right": 107,
+            "middle_right": 138,
+            "inset_pixels": 31,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00296.png"
+          },
+          {
+            "index": 296,
+            "pts_seconds": 20.638333,
+            "top_right": 149,
+            "middle_right": 190,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00297.png"
+          },
+          {
+            "index": 297,
+            "pts_seconds": 20.655,
+            "top_right": 201,
+            "middle_right": 241,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00298.png"
+          },
+          {
+            "index": 298,
+            "pts_seconds": 20.67,
+            "top_right": 249,
+            "middle_right": 289,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00299.png"
+          },
+          {
+            "index": 299,
+            "pts_seconds": 20.69,
+            "top_right": 293,
+            "middle_right": 333,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00300.png"
+          },
+          {
+            "index": 300,
+            "pts_seconds": 20.695,
+            "top_right": 293,
+            "middle_right": 333,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00301.png"
+          },
+          {
+            "index": 301,
+            "pts_seconds": 20.703333,
+            "top_right": 332,
+            "middle_right": 373,
+            "inset_pixels": 41,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00302.png"
+          },
+          {
+            "index": 302,
+            "pts_seconds": 20.721667,
+            "top_right": 373,
+            "middle_right": 413,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00303.png"
+          },
+          {
+            "index": 303,
+            "pts_seconds": 20.74,
+            "top_right": 403,
+            "middle_right": 443,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00304.png"
+          },
+          {
+            "index": 304,
+            "pts_seconds": 20.755,
+            "top_right": 429,
+            "middle_right": 469,
+            "inset_pixels": 40,
+            "row520_longest_nearwhite_run": 0,
+            "file": "frame-00305.png"
+          }
+        ],
+        "recorder_exit_code": 0,
+        "first_frame_acknowledged": true,
+        "external_copy_read_back": true
+      },
+      "native_resting_exact_comparisons": [
+        {
+          "state": "replica-transition-modular-start",
+          "shape": [
+            1592,
+            1592,
+            4
+          ],
+          "changed_pixels": 0,
+          "maximum_channel_delta": 0
+        },
+        {
+          "state": "replica-transition-watch-middle",
+          "shape": [
+            1592,
+            1592,
+            4
+          ],
+          "changed_pixels": 0,
+          "maximum_channel_delta": 0
+        },
+        {
+          "state": "replica-transition-modular-return",
+          "shape": [
+            1592,
+            1592,
+            4
+          ],
+          "changed_pixels": 0,
+          "maximum_channel_delta": 0
+        }
+      ],
+      "native_before_crops": [
+        {
+          "state": "replica-transition-modular-start",
+          "file": "replica-baseline-ipad-replica-transition-modular-start.png",
+          "sha256": "b9cfff99fe916feb858885b2ac2b315c35c7bcf28b1bf565312f5b75456d8e61",
+          "crop_native_pixels": [
+            24,
+            354,
+            1616,
+            1946
+          ],
+          "source_sha256": "1fb299c7fd794967a2a3d89a32769daf7be32d5b7ec8199910f8faa8cdbe5c6c"
+        },
+        {
+          "state": "replica-transition-watch-middle",
+          "file": "replica-baseline-ipad-replica-transition-watch-middle.png",
+          "sha256": "6b85c65c7310768096942b6682b2544026ca2a2d020431a6f6a51a8459013b6c",
+          "crop_native_pixels": [
+            24,
+            354,
+            1616,
+            1946
+          ],
+          "source_sha256": "d7ce9fb392c889f3da6169597d2f1d20e972f1e431bf5d5c0822ecc03365c436"
+        },
+        {
+          "state": "replica-transition-modular-return",
+          "file": "replica-baseline-ipad-replica-transition-modular-return.png",
+          "sha256": "b9cfff99fe916feb858885b2ac2b315c35c7bcf28b1bf565312f5b75456d8e61",
+          "crop_native_pixels": [
+            24,
+            354,
+            1616,
+            1946
+          ],
+          "source_sha256": "1fb299c7fd794967a2a3d89a32769daf7be32d5b7ec8199910f8faa8cdbe5c6c"
+        }
+      ],
+      "native_after_crops": [
+        {
+          "state": "replica-transition-modular-start",
+          "file": "replica-candidate3-ipad-replica-transition-modular-start.png",
+          "sha256": "b9cfff99fe916feb858885b2ac2b315c35c7bcf28b1bf565312f5b75456d8e61",
+          "crop_native_pixels": [
+            24,
+            354,
+            1616,
+            1946
+          ],
+          "source_sha256": "1fb299c7fd794967a2a3d89a32769daf7be32d5b7ec8199910f8faa8cdbe5c6c"
+        },
+        {
+          "state": "replica-transition-watch-middle",
+          "file": "replica-candidate3-ipad-replica-transition-watch-middle.png",
+          "sha256": "6b85c65c7310768096942b6682b2544026ca2a2d020431a6f6a51a8459013b6c",
+          "crop_native_pixels": [
+            24,
+            354,
+            1616,
+            1946
+          ],
+          "source_sha256": "d7ce9fb392c889f3da6169597d2f1d20e972f1e431bf5d5c0822ecc03365c436"
+        },
+        {
+          "state": "replica-transition-modular-return",
+          "file": "replica-candidate3-ipad-replica-transition-modular-return.png",
+          "sha256": "b9cfff99fe916feb858885b2ac2b315c35c7bcf28b1bf565312f5b75456d8e61",
+          "crop_native_pixels": [
+            24,
+            354,
+            1616,
+            1946
+          ],
+          "source_sha256": "1fb299c7fd794967a2a3d89a32769daf7be32d5b7ec8199910f8faa8cdbe5c6c"
+        }
+      ]
+    }
+  ],
+  "decoded_own_baseline_movie_frames": 530,
+  "decoded_own_final_movie_frames": 713,
+  "actual_final_swipe_transitions": 8,
+  "lossless_resting_viewport_pairs": 6,
+  "native_resting_changed_pixels": 0,
+  "qualification": "All movie timestamps are actual VFR recording PTS. Lossy H264 images normalized to600x600 only support visible geometry; native PNGs1134x1134/1592x1592 support exact resting equality. No calibrated original color, app FPS, input latency, reference corner-radius or spring measurement.",
+  "failures": [
+    {
+      "checkpoint": "candidate1-build",
+      "exit_code": 65,
+      "cause": "Call omitted ONLY_ACTIVE_ARCH=YES ARCHS=arm64; x86_64 app build could not resolve arm64-only existing FeedKit module. No dependency source/config changed.",
+      "source_binding": "No pre-build source receipt; do not relabel this as a frozen test checkpoint."
+    },
+    {
+      "checkpoint": "replica-candidate1-phone",
+      "UI_exit_code": 0,
+      "qualification": "Four repeated swipes passed native UI; geometry improved, but candidate rejected by predeclared resting pixel equality:24,396/24,400/24,396 changed native pixels in three face crops. Outer host backdrop was replaced with black.",
+      "inputs": "replica-candidate1-phone-inputs.json",
+      "native_comparison": "candidate1-phone-native-resting-comparison.json"
+    },
+    {
+      "checkpoint": "candidate2-build",
+      "exit_code": 65,
+      "cause": "Swift6 main-actor inferred modifier could not satisfy nonisolated Animatable data requirement. Marked only scalar fraction and animatableData nonisolated; no unsafe conformance or model isolation relaxation.",
+      "source_binding": "No compiled test run and no frozen input receipt; original build log retained."
+    },
+    {
+      "checkpoint": "replica-final-phone / replica-final-ipad (candidate2; filenames are historical labels, not acceptance)",
+      "UI_exit_codes": [
+        0,
+        0
+      ],
+      "rejected_by": "Predeclared exact native resting-pixel preservation. Phone1,924/1,928/1,924 and iPad2,700/2,700/2,700 changed pixels. All three states retain expected content; narrow edge differs because permanent black backing affects clip antialiasing.",
+      "next_change": "Use dark stage only while the animation is active, ending on native animation completion. Keep original white stage and original viewport clip at rest.",
+      "geometry": "Rounded edges and reversal pass, but those observations alone are insufficient."
+    },
+    {
+      "checkpoint": "replica-regression-phone",
+      "passed": 9,
+      "failed": 1,
+      "failure": "XCTAssertEqualWithAccuracy failed: (\"378.0\") is not equal to (\"388.0\") +/- (\"1.0\")",
+      "cause": "Existing edge-navigation case still called square viewport helper for the now-native rectangular Assistant. Change only its call to assistantRectangle:true; existing content/contained Send/visible viewport assertions remain enforced.",
+      "corrected_checkpoints": [
+        "replica-edge-corrected-phone",
+        "replica-edge-corrected-ipad"
+      ],
+      "product_bytes_changed": false
+    },
+    {
+      "checkpoint": "replica-regression-ipad",
+      "passed": 9,
+      "failed": 1,
+      "failure": "XCTAssertEqualWithAccuracy failed: (\"796.0\") is not equal to (\"715.0\") +/- (\"1.0\")",
+      "cause": "Existing edge-navigation case still called square viewport helper for the now-native rectangular Assistant. Change only its call to assistantRectangle:true; existing content/contained Send/visible viewport assertions remain enforced.",
+      "corrected_checkpoints": [
+        "replica-edge-corrected-phone",
+        "replica-edge-corrected-ipad"
+      ],
+      "product_bytes_changed": false
+    },
+    {
+      "historical_label": "replica-candidate1-phone",
+      "accepted_product": false,
+      "archive_sha256": "0cf75e4d95162bb02784a7a513957de6067f8745f4885a64afa1e910fe7690b7",
+      "inputs_manifest_sha256": "ad43897e4860c23af4d35da27d0205369fa4141ba18bcb5ea1e1048e52612a3b",
+      "UI_exit_code": 0,
+      "qualification": "Named exploratory source checkpoint; native resting equality rejected despite successful UI execution. Labels containing final do not establish acceptance."
+    },
+    {
+      "historical_label": "replica-final-phone",
+      "accepted_product": false,
+      "archive_sha256": "839d2280881ef63c82d26c9620e42090c40f3958dd1dd55f07c9c1d0bd713886",
+      "inputs_manifest_sha256": "e7eafa2f0aabe54f31e85ef363a2459a6063af0cf3b1b9df168ec1741c4a3031",
+      "UI_exit_code": 0,
+      "qualification": "Named exploratory source checkpoint; native resting equality rejected despite successful UI execution. Labels containing final do not establish acceptance."
+    },
+    {
+      "historical_label": "replica-final-ipad",
+      "accepted_product": false,
+      "archive_sha256": "839d2280881ef63c82d26c9620e42090c40f3958dd1dd55f07c9c1d0bd713886",
+      "inputs_manifest_sha256": "e7eafa2f0aabe54f31e85ef363a2459a6063af0cf3b1b9df168ec1741c4a3031",
+      "UI_exit_code": 0,
+      "qualification": "Named exploratory source checkpoint; native resting equality rejected despite successful UI execution. Labels containing final do not establish acceptance."
+    }
+  ],
+  "images": [
+    {
+      "device": "phone",
+      "version": "before",
+      "phase": "advance",
+      "checkpoint": "replica-baseline-phone",
+      "native_recorded_frame_index": 151,
+      "native_pts_seconds": 14.543333,
+      "normalized_mist_edge": 289,
+      "file": "screenshots/face-transition-cards/phone-before-advance.png",
+      "sha256": "423aa427ac811505cfa7d6a79077f958ecc133a15088037a2c15bbdb7fa513d1",
+      "size": [
+        600,
+        600
+      ]
+    },
+    {
+      "device": "phone",
+      "version": "before",
+      "phase": "return",
+      "checkpoint": "replica-baseline-phone",
+      "native_recorded_frame_index": 195,
+      "native_pts_seconds": 16.158333,
+      "normalized_mist_edge": 299,
+      "file": "screenshots/face-transition-cards/phone-before-return.png",
+      "sha256": "b5d77ea67cb509782c6773ec0e94f179e88b150c78dddbe107eb82a3de8a1ee3",
+      "size": [
+        600,
+        600
+      ]
+    },
+    {
+      "device": "phone",
+      "version": "after",
+      "phase": "advance",
+      "checkpoint": "replica-candidate3-phone",
+      "native_recorded_frame_index": 160,
+      "native_pts_seconds": 15.025,
+      "normalized_mist_edge": 307,
+      "file": "screenshots/face-transition-cards/phone-after-advance.png",
+      "sha256": "529e148300b3b94e4ccf0c7cf09fafb9ae0e5b3987d0bf5b6df39a729113f36b",
+      "size": [
+        600,
+        600
+      ]
+    },
+    {
+      "device": "phone",
+      "version": "after",
+      "phase": "return",
+      "checkpoint": "replica-candidate3-phone",
+      "native_recorded_frame_index": 204,
+      "native_pts_seconds": 16.621667,
+      "normalized_mist_edge": 289,
+      "file": "screenshots/face-transition-cards/phone-after-return.png",
+      "sha256": "e8d3623588d6a5288c3799d5df1d4900398bdb751c9ddf2b08ec5ecbb46a82c7",
+      "size": [
+        600,
+        600
+      ]
+    },
+    {
+      "device": "phone",
+      "file": "screenshots/face-transition-cards/phone-own-motion-comparison.jpg",
+      "sha256": "fd51c3fe6277b2fa0086dda2c52723a0dec2faefc8082999d37062af1c2a9470",
+      "size": [
+        1200,
+        680
+      ],
+      "description": "Own recorded viewport samples; before/after positions nearest300, not time/photometric parity"
+    },
+    {
+      "device": "ipad",
+      "version": "before",
+      "phase": "advance",
+      "checkpoint": "replica-baseline-ipad",
+      "native_recorded_frame_index": 165,
+      "native_pts_seconds": 14.733333,
+      "normalized_mist_edge": 281,
+      "file": "screenshots/face-transition-cards/ipad-before-advance.png",
+      "sha256": "6d8c84f398b01580bc154d449e2cba71b594dbd3628995b10b86701a6e5ce73c",
+      "size": [
+        600,
+        600
+      ]
+    },
+    {
+      "device": "ipad",
+      "version": "before",
+      "phase": "return",
+      "checkpoint": "replica-baseline-ipad",
+      "native_recorded_frame_index": 207,
+      "native_pts_seconds": 16.381667,
+      "normalized_mist_edge": 289,
+      "file": "screenshots/face-transition-cards/ipad-before-return.png",
+      "sha256": "4a567059911296914e27a33aa56923df9b114eb5be6612c4950ad1144c64560a",
+      "size": [
+        600,
+        600
+      ]
+    },
+    {
+      "device": "ipad",
+      "version": "after",
+      "phase": "advance",
+      "checkpoint": "replica-candidate3-ipad",
+      "native_recorded_frame_index": 170,
+      "native_pts_seconds": 15.405,
+      "normalized_mist_edge": 316,
+      "file": "screenshots/face-transition-cards/ipad-after-advance.png",
+      "sha256": "26d72c28490c20f98db151bd8499942b3d1ae0012699dc8e365ad62e2a980042",
+      "size": [
+        600,
+        600
+      ]
+    },
+    {
+      "device": "ipad",
+      "version": "after",
+      "phase": "return",
+      "checkpoint": "replica-candidate3-ipad",
+      "native_recorded_frame_index": 214,
+      "native_pts_seconds": 17.003333,
+      "normalized_mist_edge": 298,
+      "file": "screenshots/face-transition-cards/ipad-after-return.png",
+      "sha256": "4389d32716ae896f464697dad09eb16d7cebddd1f3d6ea2116c1a7d3b09e0cbb",
+      "size": [
+        600,
+        600
+      ]
+    },
+    {
+      "device": "ipad",
+      "file": "screenshots/face-transition-cards/ipad-own-motion-comparison.jpg",
+      "sha256": "f90fbdc3953289c79eb0446b7ddbe19aa6460058339c2f1e5d9b3a712ac8d880",
+      "size": [
+        1200,
+        680
+      ],
+      "description": "Own recorded viewport samples; before/after positions nearest300, not time/photometric parity"
+    }
+  ],
+  "unknown": [
+    "Original slow/fast/cancel input rules, latency, acceleration, spring and precise radius.",
+    "Other dynamic outgoing content and complete app-grid/reference transition parity.",
+    "Physical/signing and accessibility-helper acceptance remain paused/separate; no HomeKit/accounts/camera/microphone/calls/messages."
+  ],
+  "native_image_review": {
+    "native_PNGs_decoded": 98,
+    "native_contacts_visually_reviewed": 8,
+    "contacts": [
+      {
+        "file": "replica-candidate3-ipad-contact-1.jpg",
+        "sha256": "d8a49677abac84c0881747f8a4fbb199473d183a21a3a931a523eff0788157d6"
+      },
+      {
+        "file": "replica-candidate3-phone-contact-1.jpg",
+        "sha256": "2456f712fcbd80b09e5917773da98fe61e490a9a9180ad6caf331191e2250333"
+      },
+      {
+        "file": "replica-edge-corrected-ipad-contact-1.jpg",
+        "sha256": "932940b66d92218e3a5c2e7fbcc336e7cf86f5472b50a40704bdd966a038b510"
+      },
+      {
+        "file": "replica-edge-corrected-phone-contact-1.jpg",
+        "sha256": "e4c29f70e0b96e368f4e9c530f2b70b00079778ffa2c2de9a0a021a5f48606f5"
+      },
+      {
+        "file": "replica-regression-ipad-contact-1.jpg",
+        "sha256": "0cc47435523a667d89d73cbcaa63877689af14102b38ef7a1a2edccd87178168"
+      },
+      {
+        "file": "replica-regression-ipad-contact-2.jpg",
+        "sha256": "e2e306e69c74a8873e987a534565423f52dbd782cc839339b7780c94a6590ee7"
+      },
+      {
+        "file": "replica-regression-phone-contact-1.jpg",
+        "sha256": "65deea86b41a8f790f39f76021008f42f2793da2799a4dee671c4a08f176c5b6"
+      },
+      {
+        "file": "replica-regression-phone-contact-2.jpg",
+        "sha256": "66e1a759b877f599d9db5a7503236a3b44c3a65549ca9dc4a3ef52e8613c24ec"
+      }
+    ],
+    "public_own_motion_images": 10,
+    "public_comparison_contacts_reviewed": 2,
+    "native_image_inventory_sha256": "d435bc847aa0c42e967bc785d981c5832c7aa4f2d3c7c1f0c86ff2db0676f497",
+    "qualification": "Actual assistant vision review of decoded contacts; no new human owner, photometric or original-state acceptance."
+  }
+}

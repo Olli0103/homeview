@@ -770,7 +770,7 @@
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "bf716a4a07f552622b590f20b85fba1b972b91cab23362f4a616b254ff97a7d6"
+      "sha256": "ddda9f9a48d3608096a8c25d62e67fc996c02243ee98ef75346aa7d2ab371ea5"
     },
     {
       "path": "Scripts/generate_podcast_caption_fixture.py",
@@ -810,5 +810,13 @@
     "Provenance records and reproducible geometry are not blanket legal clearance",
     "No claim to have visually inspected every historical screenshot",
     "Initial asset-manifest.json intentionally retains its original digest record"
-  ]
+  ],
+  "provenance_source_refresh": {
+    "date": "2026-10-29",
+    "path": "Sources/App/Faces.swift",
+    "previous_sha256": "bf716a4a07f552622b590f20b85fba1b972b91cab23362f4a616b254ff97a7d6",
+    "current_sha256": "ddda9f9a48d3608096a8c25d62e67fc996c02243ee98ef75346aa7d2ab371ea5",
+    "source_change_commit": "435afd3b75d9b58cc94de760e055bf26bb075ab1",
+    "reason": "The already-published per-face color read changed this provenance source; declared asset bytes and attribution are unchanged. Refresh current source binding, not the historical public-rights audit."
+  }
 }

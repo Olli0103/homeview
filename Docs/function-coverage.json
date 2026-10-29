@@ -48,7 +48,8 @@
     ],
     "current": [
       "Richtungsabhängige Übergänge und Raster über unscharfem Face sind implementiert. Federkurven und vollständige Gestenregeln sind eigene Näherungen.",
-      "Diagonale Touch-Konflikte am unveränderten Navigationscode reproduziert und durch eigene dominante-Achse-Regel korrigiert; bestehende Abstände/Randbereiche/Übergänge unverändert.159Modelltests/14gezielteUI/5SDK; reale Ziele, Scrollen, Langdruck, Tap und vier pixel-/bytegleiche ignorierte Gestenpaare geprüft. Docs/navigation-intent.md."
+      "Diagonale Touch-Konflikte am unveränderten Navigationscode reproduziert und durch eigene dominante-Achse-Regel korrigiert; bestehende Abstände/Randbereiche/Übergänge unverändert.159Modelltests/14gezielteUI/5SDK; reale Ziele, Scrollen, Langdruck, Tap und vier pixel-/bytegleiche ignorierte Gestenpaare geprüft. Docs/navigation-intent.md.",
+      "29. Oktober: einzeln gerundete bewegte Karten und Rückrichtungsbindung korrigiert.530 unveränderte/713 korrigierte eigene Recorderframes, acht echte Übergänge; sechs vollständige native Ruhe-Viewportpaare RGBA-exakt.22 erfolgreiche UI-Ausführungen über zwei gebundene Testvarianten plus zwei erhaltene alte Helperfehler;19 Produktdateien unverändert, fünf SDKs. Docs/face-transition-cards.md. Keine Originalkurven-/Abbruch-/Hardwareabnahme."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -62,7 +63,7 @@
     "implementation_status": "partial",
     "acceptance": {
       "functional": "bounded dominant-axis gesture conflict correction and native scroll/longpress/tap regressions verified; complete original gestures, interactive cancellation and hardware remain unverified",
-      "visual": "pending original-state comparison",
+      "visual": "bounded moving-card geometry corrected from observed GIF silhouette; six own native resting pairs unchanged; original radius/curve/complete states remain pending",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
     "completion_criteria": [

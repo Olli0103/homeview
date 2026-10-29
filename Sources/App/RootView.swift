@@ -19,6 +19,20 @@ struct RootView: View {
     }
   }
   @State private var assistantFocusRequest=0
+  @State private var faceTransitionActive=false
+  @State private var faceTransitionRevision=0
+  private func advanceFace(_ direction:Int) {
+    faceTransitionRevision+=1
+    let revision=faceTransitionRevision
+    faceTransitionActive=animate
+    withAnimation(animate ? .spring(response:0.46,dampingFraction:0.95):nil,
+      completionCriteria:.removed) {
+      model.nextFace(direction)
+    } completion: {
+      // A later gesture owns the stage until its own animation completes.
+      if revision == faceTransitionRevision { faceTransitionActive=false }
+    }
+  }
   private var assistantShortcutRevision:UInt64 {
     #if os(iOS) || os(macOS) || os(visionOS)
       AssistantShortcutRequest.shared.revision
@@ -103,7 +117,11 @@ struct RootView: View {
           if model.incomingCall { CallView(incoming: true) }
         }
         .frame(width: contentWidth, height: contentHeight)
-        .background(.white).clipShape(RoundedRectangle(cornerRadius: 84, style: .continuous))
+        .background {
+          (model.route == .face && faceTransitionActive ? Color.black:Color.white)
+            .transaction { $0.animation=nil }
+        }
+        .clipShape(RoundedRectangle(cornerRadius:84,style:.continuous))
         // Night mode includes activity, status banners and toasts, not only the screen.
         .saturation(model.data.night ? 0 : 1)
         .colorMultiply(model.data.night ? Color(red: 1, green: 0, blue: 0) : .white)
@@ -298,8 +316,8 @@ struct RootView: View {
       .onExitCommand { model.homeGesture() }
       .onMoveCommand { direction in
         guard model.route == .face else { return }
-        if direction == .left { model.nextFace(-1) }
-        if direction == .right { model.nextFace(1) }
+        if direction == .left { advanceFace(-1) }
+        if direction == .right { advanceFace(1) }
       }
       .onPlayPauseCommand { model.togglePlayback() }
     #endif
@@ -317,9 +335,7 @@ struct RootView: View {
         case .assistant: model.route = .assistant
         case .controlCenter: model.route = .controlCenter
         case .face(let direction):
-          withAnimation(.easeInOut(duration: 0.3)) {
-            model.nextFace(direction)
-          }
+          advanceFace(direction)
         case nil: break
         }
       }
@@ -328,15 +344,14 @@ struct RootView: View {
   @ViewBuilder private var screen: some View {
     switch model.route {
     case .face:
-      FaceView(selection: model.data.face).id(model.data.face.id)
+      FaceView(selection: model.data.face)
+        .frame(width:600,height:600)
+        .id(model.data.face.id)
         .transition(
           animate
             ? .asymmetric(
-              insertion: .move(edge: model.faceDirection > 0 ? .trailing : .leading),
-              removal: .move(edge: model.faceDirection > 0 ? .leading : .trailing)) : .identity
-        )
-        .animation(
-          animate ? .spring(response: 0.46, dampingFraction: 0.95) : nil, value: model.data.face
+              insertion: .modifier(active:FaceSlideOffset(fraction:1),identity:FaceSlideOffset(fraction:0)),
+              removal: .modifier(active:FaceSlideOffset(fraction:-1),identity:FaceSlideOffset(fraction:0))) : .identity
         )
         .highPriorityGesture(
           LongPressGesture(minimumDuration: 0.65).onEnded { _ in model.route = .editor })
@@ -359,5 +374,24 @@ struct RootView: View {
     case .deviceUnlock: DeviceUnlockView()
     case .call: CallView(incoming: false)
     }
+  }
+}
+
+// Read the current navigation direction in both cards. An outgoing identity
+// otherwise retains the removal edge chosen when it was inserted, which sends
+// both cards the same way after a reversal and uncovers the stage background.
+private struct FaceSlideOffset: ViewModifier, Animatable {
+  @Environment(AppModel.self) private var model
+  nonisolated var fraction:CGFloat
+  nonisolated var animatableData:CGFloat {
+    get { fraction }
+    set { fraction=newValue }
+  }
+  func body(content:Content) -> some View {
+    // Round each card while moving. At rest the existing viewport mask is
+    // the sole rounded clip, preserving its exact edge antialiasing and the
+    // host backdrop (also under night/brightness treatment).
+    content.clipShape(RoundedRectangle(cornerRadius:fraction == 0 ? 0:84,style:.continuous))
+      .offset(x:fraction * 600 * CGFloat(model.faceDirection))
   }
 }

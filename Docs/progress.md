@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Face-Wechsel: gerundete Karten und Rückrichtung · 29. Oktober 2026
+
+[Zwei tatsächlich aufgezeichnete Übergangsfehler korrigiert](face-transition-cards.md): keine gerade innere Kante und kein weißes Panel beim Zurückwischen. Acht echte Wechsel auf iPad/iPhone, sechs vollständige native Ruhe-Viewportpaare exakt unverändert.22 erfolgreiche UI-Ausführungen über zwei dokumentierte Testvarianten, zwei alte Quadrat-Helperfehler erhalten, fünf SDKs;19 Produkt-Bundledateien bleiben durch die gezielte Testkorrektur identisch. Kein neuer Core-Lauf. #6 bleibt für Originalkurven/Abbruch/gesamte Bewegung offen; **40/82 geschlossen,42 offen**.
+
 ## Face-Editor: Farben ohne Querveränderung · 29. Oktober 2026
 
 [Home-Farbänderung färbt Modular nicht mehr ungefragt um](face-color-isolation.md); zwei tatsächliche Vorherfehler und eigene UUID-Dateien belegen die Ursache. Home rendert seine eigene gespeicherte Farbe, der Legacy-Fallback bleibt erhalten. Wirkungslose Home-Clock-Farbauswahl entfernt, gespeicherte Werte nicht gelöscht. 397 Coretests, zwölf gezielte UI-Ausführungen, fünf SDKs; Modular nach Änderung/Neustart und Home Teal nach Neustart jeweils im vollständigen Face-Viewport exakt. #7 bleibt für Originalgeometrie/-optionen offen; **40/82 geschlossen, 42 offen**.
