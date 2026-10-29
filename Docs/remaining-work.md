@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Assistenten-Systemschrift und Done-Rechteck korrigiert](assistant-dynamic-type.md): drei Antwort-Textrollen wachsen nun in größter Accessibility-Kategorie; vier normale Antwortansichten exakt pixelgleich.18 aktuelle UI-Ausführungen/fünf SDKs; Gerätepräferenzen zurückgestellt. Nur dieser Teilumfang, #73 für übrige Flows/Hilfsmittel offen.
+
 - [Manuelles Vorlesen sichtbarer Antwortkarten vervollständigt](card-readout.md):18 Vorherfehler in76AppModel-Assertions; danach405Coretests/76AppModel-Assertions,14 aktuelle UI-Ausführungen/fünf SDKs bestanden. Kein automatisches Sprechen oder versteckte Quellen-/Aktionsinhalte; #36 für Original-/Live-/Hilfsmittelgrenzen offen.
 
 - [iOS-Shortcut-Paketvollständigkeit abgesichert](shortcut-package-completeness.md): drei fehlende generierte Dateien trotz Compilererfolg kontrolliert reproduziert; bestehender Buildweg prüft Artefakte, bewahrt Erstbefund und führt höchstens einen normalen Clean-Build aus. Sechs Tooling-Tests, echter Guard-Wiederherstellungspfad und fünf frische SDKs; kein neuer OS-Hilfsmittelaufruf, #74 offen.

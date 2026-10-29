@@ -212,6 +212,9 @@ private struct SettingsHitRegionStyle: ButtonStyle {
 }
 struct AssistantView: View {
   var focusRequest=0
+  @ScaledMetric(relativeTo:.largeTitle) private var localAnswerSize:CGFloat=35
+  @ScaledMetric(relativeTo:.headline) private var questionSize:CGFloat=19
+  @ScaledMetric(relativeTo:.body) private var answerSize:CGFloat=24
   @Environment(AppModel.self) private var model
   @Environment(\.scenePhase) private var scenePhase
   private var text: String {
@@ -297,19 +300,19 @@ struct AssistantView: View {
             VStack(alignment:.leading,spacing:18) {
               ForEach(Array(model.assistantAI.exchanges.enumerated()),id:\.element.id) { index,exchange in
                 VStack(alignment:.leading,spacing:8) {
-                  Text(exchange.question).font(.system(size:19,weight:.semibold))
+                  Text(exchange.question).font(.system(size:questionSize,weight:.semibold))
                     .accessibilityIdentifier("assistant.ai.question.\(index)")
-                  Text(exchange.answer).font(.system(size:24))
+                  Text(exchange.answer).font(.system(size:answerSize))
                     .accessibilityIdentifier("assistant.ai.answer.\(index)")
                 }.frame(maxWidth:.infinity,alignment:.leading).id(exchange.id)
               }
               if let question=model.assistantAI.pendingQuestion {
-                Text(question).font(.system(size:19,weight:.semibold))
+                Text(question).font(.system(size:questionSize,weight:.semibold))
                 ProgressView().accessibilityIdentifier("assistant.ai.thinking")
               }
             }.padding(.horizontal,34).padding(.vertical,8)
       } else {
-          Text(model.assistantReply).font(.system(size:35,weight:.medium))
+          Text(model.assistantReply).font(.system(size:localAnswerSize,weight:.medium))
             .frame(maxWidth:.infinity,alignment:.leading).padding(.horizontal,34)
             .padding(.top,24).accessibilityIdentifier("assistant.reply")
           if let document=model.assistantDocument {

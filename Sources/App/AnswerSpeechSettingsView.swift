@@ -7,7 +7,9 @@ struct AnswerSpeechSettingsView:View {
     VStack(spacing:0) {
       HStack {
         Text("Answer readout").font(.title2.bold());Spacer()
-        Button("Done") { dismiss() }.accessibilityIdentifier("answer.speech.settings.done")
+        Button { dismiss() } label: {
+          Text("Done").frame(minWidth:44,minHeight:44).contentShape(Rectangle())
+        }.accessibilityIdentifier("answer.speech.settings.done")
       }.padding(24)
       ScrollView {
         VStack(alignment:.leading,spacing:20) {

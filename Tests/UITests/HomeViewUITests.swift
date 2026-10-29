@@ -3,6 +3,62 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func systemTextSizeGeometry(_ name:String,_ elements:[String:XCUIElement]) {
+    var rows:[[String:Any]]=[]
+    for key in elements.keys.sorted() {
+      let item=elements[key]!,f=item.frame
+      rows.append(["id":key,"exists":item.exists,"hittable":item.isHittable,"label":item.label,
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)]])
+    }
+    let attachment=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="system-text-size-"+name+"-geometry";attachment.lifetime = .keepAlways;add(attachment)
+  }
+  func testAssistantSystemTextSizePreservesLiteralCardAndUnsentInput() {
+    launch(["--answer-speech-fixture"]);tap("nav.assistant")
+    let input=app.textFields["assistant.input"],draft="UNSENT_FONT_FIXTURE"
+    input.tap();input.typeText(draft);selectAnswerExample("message")
+    let reply=app.staticTexts["assistant.reply"],scope=app.staticTexts["assistant.card.scope"],message=responseElement("assistant.card.message")
+    XCTAssertTrue(message.waitForExistence(timeout:5));XCTAssertTrue(scope.exists)
+    XCTAssertTrue(reply.label.contains("fictional"));XCTAssertTrue(message.label.contains("Avery Morgan"))
+    XCTAssertTrue(message.label.contains("6:30 PM"));XCTAssertEqual(input.value as? String,draft)
+    systemTextSizeGeometry("message",["reply":reply,"semantic_scope":scope,"message":message,
+      "read":app.buttons["answer.speech.read"],"input":input,"content":app.scrollViews["assistant.content"],"viewport":app.otherElements["reference.viewport"]])
+    viewportShot("system-text-size-message",assistantRectangle:true)
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+  func testAnswerReadoutSettingsSystemTextSizeKeepsDoneAtMinimumHitSize() {
+    launch(["--answer-speech-fixture"]);tap("nav.assistant");tap("answer.speech.settings")
+    let done=app.buttons["answer.speech.settings.done"],title=app.staticTexts["Answer readout"]
+    XCTAssertTrue(done.waitForExistence(timeout:5));XCTAssertTrue(title.exists)
+    systemTextSizeGeometry("readout-settings",["done":done,"title":title,"rate":app.staticTexts["answer.speech.rate.label"],"window":app.windows.firstMatch])
+    shot("system-text-size-readout-settings")
+    let previous=continueAfterFailure;continueAfterFailure=true
+    XCTAssertGreaterThanOrEqual(done.frame.width,44-0.000_001)
+    XCTAssertGreaterThanOrEqual(done.frame.height,44-0.000_001)
+    continueAfterFailure=previous
+    XCTAssertTrue(done.isHittable);done.tap()
+    XCTAssertTrue(app.buttons["answer.speech.read"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.buttons["answer.speech.read"].label,"Unlock readout")
+  }
+  func testOnDeviceAnswerSystemTextSizeKeepsLiteralQuestionAndAnswer() {
+    launch(["--assistant-ai-fixture","normal"]);chooseSyntheticOnDeviceAnswers()
+    let prompt="Fictional recipe title, please."
+    askSyntheticQuestion(prompt)
+    let question=app.staticTexts["assistant.ai.question.0"],answer=app.staticTexts["assistant.ai.answer.0"]
+    XCTAssertTrue(answer.waitForExistence(timeout:5));XCTAssertEqual(question.label,prompt)
+    XCTAssertTrue(answer.label.contains("Moon Soup"));XCTAssertTrue(answer.label.contains("No action was taken"))
+    if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
+    systemTextSizeGeometry("ondevice",["question":question,"answer":answer,
+      "input":app.textFields["assistant.input"],"content":app.scrollViews["assistant.content"],"viewport":app.otherElements["reference.viewport"]])
+    viewportShot("system-text-size-ondevice",assistantRectangle:true)
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+}
+
+extension HomeViewUITests {
   func testAnimatedFaceRoundTripPreservesRestingPixels() throws {
     try faceRoundTrip(animated:true)
   }
