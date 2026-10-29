@@ -6536,6 +6536,39 @@ extension HomeViewUITests {
   private func responseElement(_ id:String)->XCUIElement {
     app.descendants(matching:.any).matching(identifier:id).firstMatch
   }
+  func testAssistantMessageEvidenceIsReadOnlyAndKeepsUnsentDraft() {
+    launch();tap("nav.assistant")
+    let input=app.textFields["assistant.input"],draft="temperature 91"
+    input.tap();input.typeText(draft);selectAnswerExample("message")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("fictional"))
+    let card=responseElement("assistant.card.message");revealPlanControl(card)
+    XCTAssertTrue(card.label.contains("Avery Morgan"));XCTAssertTrue(card.label.contains("6:30 PM"))
+    XCTAssertTrue(card.label.contains("Fictional message"));XCTAssertFalse(app.buttons["assistant.card.message"].exists)
+    XCTAssertFalse(app.buttons["assistant.card.openRecipe"].exists)
+    viewportShot("assistant-message-readonly-evidence",assistantRectangle:true)
+    card.tap();XCTAssertTrue(card.exists);XCTAssertEqual(input.value as? String,draft)
+    activatePlanControl(app.buttons["assistant.card.source.bundled"])
+    XCTAssertTrue(app.buttons["assistant.card.source.done"].waitForExistence(timeout:5))
+    XCTAssertTrue(app.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","No personal calendar, message or account was searched")).firstMatch.exists)
+    XCTAssertFalse(responseElement("assistant.card.source.open").exists)
+    shot("assistant-message-source-no-account-or-link");tap("assistant.card.source.done")
+    activatePlanControl(app.buttons["assistant.card.followup.agenda"])
+    XCTAssertFalse(card.exists);XCTAssertEqual(input.value as? String,draft)
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+  func testAssistantMessageEvidenceClearsOnBackgroundAndExplicitSend() {
+    launch();tap("nav.assistant");selectAnswerExample("message")
+    XCTAssertTrue(responseElement("assistant.card.message").exists)
+    XCUIDevice.shared.press(.home);app.activate()
+    XCTAssertTrue(app.staticTexts["mock.badge"].waitForExistence(timeout:5));tap("nav.assistant")
+    XCTAssertFalse(responseElement("assistant.card.message").exists)
+    selectAnswerExample("message")
+    let input=app.textFields["assistant.input"];input.tap();input.typeText("SYNTHETIC unknown question");tap("assistant.send")
+    XCTAssertFalse(responseElement("assistant.card.message").exists)
+    XCTAssertFalse(app.staticTexts["assistant.card.scope"].exists)
+    shot("assistant-message-cleared-after-local-send")
+  }
   func testAssistantKnowledgeImageSourceAndAgendaFollowUp() {
     launch();tap("nav.assistant");selectAnswerExample("knowledge")
     XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("1842"))

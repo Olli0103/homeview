@@ -3,7 +3,7 @@ import XCTest
 
 final class AssistantResponseDocumentTests:XCTestCase {
   func testExamplesAreDeterministicBoundedAndFollowUpsOnlySelectExamples() {
-    XCTAssertEqual(AssistantResponseExample.allCases.count,6)
+    XCTAssertEqual(AssistantResponseExample.allCases.count,7)
     for example in AssistantResponseExample.allCases {
       let d=example.document
       XCTAssertEqual(d,example.document)
@@ -27,6 +27,17 @@ final class AssistantResponseDocumentTests:XCTestCase {
     XCTAssertFalse(d.recipeActionAvailable)
     XCTAssertEqual(events.map(\.kind),[.birthday,.event,.birthday])
     XCTAssertEqual(events.map(\.detail),["All day","3:00–4:00 PM","All day"])
+  }
+  func testMessageEvidenceIsFictionalReadOnlyAndHasNoExternalSource() {
+    let d=AssistantResponseExample.message.document
+    guard case .message(let message)=d.content else {return XCTFail("Message excerpt expected")}
+    XCTAssertEqual(message.sender,"Avery Morgan")
+    XCTAssertTrue(message.text.contains("Central Station"));XCTAssertTrue(message.text.contains("6:30 PM"))
+    XCTAssertTrue(d.text.contains("fictional"));XCTAssertEqual(d.sources,[.bundled])
+    XCTAssertNil(d.sources[0].url);XCTAssertTrue(d.sources[0].detail.contains("No personal calendar, message or account was searched"))
+    XCTAssertFalse(d.recipeActionAvailable)
+    XCTAssertEqual(d.followUps,[.agenda,.knowledge])
+    XCTAssertNil(AssistantResponseExample(rawValue:"homeview://send-message"))
   }
   func testLoadingEmptyAndFailureHaveNoRecipeActionOrExternalSource() {
     for example in [AssistantResponseExample.loading,.empty,.failure] {

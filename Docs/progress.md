@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Fiktive Nachrichtenkarte als zusätzlicher belegter Antworttyp · 29. Oktober 2026
+
+[Schreibgeschütztes Nachrichtenbeispiel](assistant-message-evidence.md) ergänzt: eigener Absender/Zeit/Auszug, kein Nachrichten-API-/Sende-/Linkpfad.398Coretests, zehn aktuelle iPhone-/iPad-Ausführungen und fünf SDKs bestanden;231Quellen/kompilierte Inputs/Installationen/Archive gebunden.56PNG/sechs Tafeln/vier volle Bilder gesichtet. Original-/VoiceOver-/Live-Kriterien bleiben bei #36 offen; weiter mit übrigen Softwaregrenzen.
+
 ## Vier vorhandene Original-GIFs vollständig eingeordnet · 29. Oktober 2026
 
 [299 Frames aller vier S07-Folgen gesichtet](remaining-original-gifs-20261029.md), Originaldigests/Artikelkontext geprüft. Zusätzliche Kameraface→Home-Folge und Numerals→Assistentenantwort unterscheiden; kein sichtbarer Antwortauslöser, keine automatische Notification daraus. Kamera-Face als Home-Hintergrund bereits in der Replik vorhanden, kein Produktfix aus unbelegter Vorher-App-Hypothese.24 Quellen/51 Referenzzustände unverändert; keine Originalbilder veröffentlicht. #6/#19/#36 weiter offen, Softwarearbeit läuft weiter.

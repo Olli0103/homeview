@@ -2,6 +2,8 @@
 
 20. Oktober 2026 · Teilumsetzung von [#36](https://github.com/Olli0103/homeview/issues/36). **Kein Siri-Anschluss, keine vollständigen dynamischen API-Karten und keine Original-Parity-Abnahme.**
 
+**Späterer eigener Prüfstand, 29. Oktober:** [Schreibgeschütztes fiktives Nachrichtenbeispiel](assistant-message-evidence.md) als siebte Auswahl ergänzt. Die folgenden Sechser-/Testzahlen bleiben historisch an ihren ursprünglichen Stand gebunden.
+
 ## Referenz und bewusste Grenze
 
 Die vorhandenen Originalzustände UI17, UI18 und UI24 zeigen eine weiße Antwortfläche mit gruppierten Kalenderzeilen, eine Wissensantwort mit Quellenchips und Bild sowie eine Rezeptvorschau. Sie belegen diese sichtbaren Typen, nicht alle Zwischenzustände, Quellen-/Aktionsregeln oder eine öffentliche Schnittstelle zu Siri. Die Originalbilder und -grafiken werden nicht mitgeliefert.

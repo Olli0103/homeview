@@ -2,12 +2,13 @@ import Foundation
 
 /// Closed, bundled display examples. Provider/user text is never decoded as a card or action.
 enum AssistantResponseExample:String,CaseIterable,Identifiable,Sendable {
-  case knowledge,agenda,recipe,loading,empty,failure
+  case knowledge,agenda,message,recipe,loading,empty,failure
   var id:String {rawValue}
   var title:String {
     switch self {
     case .knowledge:"Knowledge and image"
     case .agenda:"Sample agenda"
+    case .message:"Sample message"
     case .recipe:"Recipe card"
     case .loading:"Loading preview"
     case .empty:"No results"
@@ -22,6 +23,10 @@ enum AssistantResponseExample:String,CaseIterable,Identifiable,Sendable {
       .init(day:"Friday, April 17",title:"Studio celebration",detail:"3:00–4:00 PM",kind:.event),
       .init(day:"Tuesday, April 28",title:"Sam’s birthday",detail:"All day",kind:.birthday)
     ]),sources:[.bundled],followUps:[.recipe])
+    case .message:.init(text:"In this fictional example, Avery’s train arrives at 6:30 PM on Friday, October 16.",
+      content:.message(.init(sender:"Avery Morgan",timestamp:"Today, 9:41 AM",
+        text:"I’ll arrive at Central Station at 6:30 PM on Friday, October 16.")),
+      sources:[.bundled],followUps:[.agenda,.knowledge])
     case .recipe:.init(text:"Here is the bundled butternut squash soup recipe.",content:.recipe,sources:[.bundled],followUps:[.knowledge])
     case .loading:.init(text:"Loading-state preview",content:.loading,sources:[],followUps:[.knowledge])
     case .empty:.init(text:"No results in this sample.",content:.empty,sources:[],followUps:[.agenda,.recipe])
@@ -31,7 +36,11 @@ enum AssistantResponseExample:String,CaseIterable,Identifiable,Sendable {
 }
 
 struct AssistantResponseDocument:Equatable,Sendable {
-  enum Content:Equatable,Sendable {case illustration,agenda([Event]),recipe,loading,empty,failure}
+  enum Content:Equatable,Sendable {case illustration,agenda([Event]),message(MessageExcerpt),recipe,loading,empty,failure}
+  /// Display-only evidence, with no recipient, URL or executable action.
+  struct MessageExcerpt:Equatable,Sendable {
+    let sender:String,timestamp:String,text:String
+  }
   struct Event:Equatable,Sendable {
     enum Kind:Equatable,Sendable {case birthday,event}
     let day:String,title:String,detail:String
@@ -44,7 +53,7 @@ struct AssistantResponseDocument:Equatable,Sendable {
     var detail:String {
       self == .museum
         ? "Album of cyanotypes of British and Foreign Ferns. This saved factual example was checked on 20 October 2026; it is not a live search. The illustration is drawn by HomeView, not a museum image."
-        : "Fictional agenda entries or the app’s bundled demo recipe. No personal calendar, message or account was searched."
+        : "Fictional agenda/message entries or the app’s bundled demo recipe. No personal calendar, message or account was searched."
     }
     var url:URL? {
       self == .museum ? URL(string:"https://collection.sciencemuseumgroup.org.uk/objects/co416960/album-of-cyanotypes-of-british-and-foreign-ferns"):nil

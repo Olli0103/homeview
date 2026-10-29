@@ -16,6 +16,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Fiktiver Nachrichtenbeleg als zusätzlicher Antworttyp](assistant-message-evidence.md):398Coretests/zehn aktuelle native mobile UI-Ausführungen/fünf SDKs bestanden. Kein Nachrichten-API oder ausführbarer Karteninhalt; #36 für Live-/Original-/Hilfsmittelkriterien offen.
+
 - [Alle vier vorhandenen S07-GIFs vollständig eingeordnet](remaining-original-gifs-20261029.md):299 Frames, Kameraface→Home und Numerals→Assistentenantwort; Artikelkontext geprüft, kein sichtbarer Aktivierungsvorgang oder neue Gestenkennlinie. Ausgewähltes Kamera-Face liegt bereits hinter dem eigenen Home-Raster; keine unbelegte Produktänderung. #6/#19/#36 weiter offen.
 
 - [Native Vision-Fenster/Eingabe/Timer/lokaler Browser](vision-native-runtime.md): vier aktuelle Methoden bestanden, fünf tatsächliche virtuelle Kamerabilder zeitgebunden. Kein Produkt-Rendererfix,165 Produktinputs unverändert. Größenänderung/Mehrfenster, reale APIs und physische Eingabe bleiben separat offen bei #79.

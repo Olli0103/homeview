@@ -31,6 +31,24 @@ struct AssistantResponseView:View {
               .background(event.kind == .birthday ? Color.orange.opacity(0.13):Color.blue.opacity(0.12),in:RoundedRectangle(cornerRadius:22))
           }.accessibilityElement(children:.combine).accessibilityIdentifier("assistant.card.event.\(index)")
         }
+      case .message(let message):
+        VStack(alignment:.leading,spacing:12) {
+          HStack(alignment:.top,spacing:12) {
+            Image(systemName:"message.fill").foregroundStyle(.green)
+              .frame(width:28,height:28).accessibilityHidden(true)
+            VStack(alignment:.leading,spacing:4) {
+              Text(verbatim:message.sender).font(.body.bold())
+              Text(verbatim:message.timestamp).font(.caption).foregroundStyle(.secondary)
+            }
+            Spacer(minLength:0)
+          }
+          Text(verbatim:message.text).fixedSize(horizontal:false,vertical:true)
+          Text("Fictional message · Read-only excerpt").font(.caption).foregroundStyle(.secondary)
+        }.padding(16).frame(maxWidth:.infinity,alignment:.leading)
+          .background(Color.gray.opacity(0.10),in:RoundedRectangle(cornerRadius:22))
+          .accessibilityElement(children:.ignore)
+          .accessibilityLabel("Fictional message from \(message.sender). \(message.timestamp). \(message.text)")
+          .accessibilityIdentifier("assistant.card.message")
       case .recipe:
         SoupExampleIllustration().frame(height:190)
           .clipShape(RoundedRectangle(cornerRadius:22))
