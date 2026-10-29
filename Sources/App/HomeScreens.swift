@@ -72,7 +72,7 @@ struct PersonalView: View {
       }.padding(45)
     }.foregroundStyle(.white).buttonStyle(.plain)
       .sheet(isPresented:Binding(get:{editingProfile != nil},set:{if !$0 { editingProfile=nil }})) {
-        if let profile=editingProfile { PersonalHomeEditor(profile:profile) }
+        if let profile=editingProfile { PersonalHomeEditor(profile:profile).snapshotPrivacyProtected() }
       }
       .onChange(of:model.profile) { _,_ in editingProfile=nil }
   }

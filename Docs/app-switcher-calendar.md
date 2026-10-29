@@ -28,6 +28,8 @@ Die ersten zwei Aufnahmeversuche scheiterten an der falschen Testannahme, ein in
 Finaler Quelldigest: `48ab560e689cc42f62587193e9443da200c2e23e8c606eb3a8f6920a3137211c`.
 Finales Eingabearchiv: `e6b7144cf2f6079440e1ec0d053ff9fe1f22ca3f14f1fe4f362220cfb135fcc5`.
 
+Anschließend separat reproduziert und korrigiert: [Offene Profil-/Stadtdialoge lagen über dieser Root-Abdeckung](app-switcher-dialogs.md). Deren neue Quellen und zwölf UI-Ausführungen bleiben von diesem unveränderten Kalenderstand getrennt.
+
 [Messungen und getrennte Läufe](verification/app-switcher-calendar.json) · [beide ausgeführten Quellenvarianten](verification/app-switcher-calendar-source.json) · [eigene synthetische Appbilder](screenshots/app-switcher-calendar).
 
 **Nur der verbundene synthetische Kalender auf den genannten Simulatoren ist hier geprüft.** Andere persönliche Routen, offene System-/App-Dialoge, echte Unterbrechungen, physische Snapshots, Geräteauthentifizierung, Präsenz und vollständige Medienpolicy bleiben getrennte Kriterien. Keine universelle oder physische Snapshot-Garantie, kein Original-Parity-PASS. F095 bleibt partial/parity=false; #67 bleibt OPEN. Geräte-/Signing-Abnahmen bleiben auf Eigentümerwunsch pausiert, Apple Home bleibt gesperrt.

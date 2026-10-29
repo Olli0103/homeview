@@ -1,0 +1,1252 @@
+{
+  "date": "2026-10-29",
+  "issue": 67,
+  "issue_stays_open": true,
+  "base_commit": "b6fc6b06618b7b9e7186512414cb40afc625ddc7",
+  "source_digest": "f75a2984df9d9be72115cbb84b4c30eed497ca3294d0a4ea082f6da873316cb7",
+  "production_files_changed": [
+    "Sources/App/HomeScreens.swift",
+    "Sources/App/RootView.swift",
+    "Sources/App/WeatherScreen.swift"
+  ],
+  "UI_runs": [
+    {
+      "checkpoint": "baseline-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherSnapshotCoversOpenWeatherCityDraft",
+        "testNativeAppSwitcherSnapshotCoversOpenProfileEditor"
+      ],
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "ae07cfa3b05508a8885b31c1806d97bf0a588c7881ede9f3c316014b40e80ba0",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "9ead577ec5ec0368b54f274cdcd112e3443f33a35269155bed2540ac21603aa1",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "19e77761b802df6c1d73270d565c07ac76db5102ff35724722a33f835893a59c",
+      "summary_sha256": "d21c845a65cd98492f0f57abe41bbe136bcda17dfa8f305c0dd4bdabba22ae8e",
+      "snapshots": [
+        {
+          "case": "profile-dialog",
+          "receipt_sha256": "1f06876f8773eb730d74a7a8e10cacb4dea61fcd70d2201e621d1b75a506e69a",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.07351431810976232,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "weather-dialog",
+          "receipt_sha256": "ee78e846d73b7c60a8855564262b8420e43c05bc6481e7c971ced9c0b19a99de",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.07707638116425658,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherSnapshotCoversOpenWeatherCityDraft",
+        "testNativeAppSwitcherSnapshotCoversOpenProfileEditor"
+      ],
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "ae07cfa3b05508a8885b31c1806d97bf0a588c7881ede9f3c316014b40e80ba0",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "9ead577ec5ec0368b54f274cdcd112e3443f33a35269155bed2540ac21603aa1",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "da5fddebd70bf07fee553e778180e5b91c99557662de0370d6e91917e052df29",
+      "summary_sha256": "88727580cb12f1f564d19795cedae937ba77ec853e3668eac5a95a344571d149",
+      "snapshots": [
+        {
+          "case": "profile-dialog",
+          "receipt_sha256": "85fc591363d438cbad83fa8bb69b207003a48ec6c782646aff292e2a5692bc9f",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6007579987376802,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "weather-dialog",
+          "receipt_sha256": "87ad448bf93114d283bbe5bbc3064a0bad181ed64a8bdcd74098306670629023",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.5995472641646842,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherSnapshotCoversOpenWeatherCityDraft",
+        "testNativeAppSwitcherSnapshotCoversOpenProfileEditor"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "f75a2984df9d9be72115cbb84b4c30eed497ca3294d0a4ea082f6da873316cb7",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "8f00eb9cb5b4d72b73a74cc5fbf23278b91643e827f5b3d196b42a4344ec3b36",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "9c2aa834ccfe3af7f9e6ad124b71e1cc67ba0a082e1746a3ebb52f002ce81ba9",
+      "summary_sha256": "cf5424d7c268ae46f7079c863b2370da8b85e538c2f3f85b4d3bf658f02b20fc",
+      "snapshots": [
+        {
+          "case": "profile-dialog",
+          "receipt_sha256": "f5876472a0580840500dd0ba4f1e2ed5252094c0e1b333abe8bda4195b720fd3",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9826901065596234,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "weather-dialog",
+          "receipt_sha256": "75cd0eabe73d7a5b6318a35dedaaf7673aa9058b967a08eca4c4c2925c0c97b5",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9822629008076607,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherSnapshotCoversOpenWeatherCityDraft",
+        "testNativeAppSwitcherSnapshotCoversOpenProfileEditor"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "f75a2984df9d9be72115cbb84b4c30eed497ca3294d0a4ea082f6da873316cb7",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "8f00eb9cb5b4d72b73a74cc5fbf23278b91643e827f5b3d196b42a4344ec3b36",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "801cff8f208834006d74caa0b89a0de55e8f251b7f2013c87f2c3a99d11e230c",
+      "summary_sha256": "0a127fd159868b45c4001341cec47a56c8cc9457609ceaa4dd8a6a0dfa425851",
+      "snapshots": [
+        {
+          "case": "profile-dialog",
+          "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "weather-dialog",
+          "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testCalendarNativeAppSwitcherSnapshotHidesPersonalContents",
+        "testBackgroundLocksConnectedCalendarAndRequiresFreshDeviceUnlock",
+        "testWeatherCitySheetNativeHitRegionsAndEditableEdges",
+        "testPersonalMediaLayoutPersistsOnlyForItsProfile"
+      ],
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "f75a2984df9d9be72115cbb84b4c30eed497ca3294d0a4ea082f6da873316cb7",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "8f00eb9cb5b4d72b73a74cc5fbf23278b91643e827f5b3d196b42a4344ec3b36",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "2329fb09fe3f3e0beeeb4232a20f0e410be018a8c3647ecbabf2c327ad7a2745",
+      "summary_sha256": "7c91db9d231e690a58cf4c8e7ff520e3eefc9ff562ecbec1746ab3a40f664c03",
+      "snapshots": [
+        {
+          "case": "calendar-background",
+          "receipt_sha256": "353f5991b27ca3a695f5977cdc3357913463cf42df22cdc8dd934407a6e77028",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 3,
+            "blackFraction": 0.9827109294814959,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "calendar-inactive",
+          "receipt_sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testCalendarNativeAppSwitcherSnapshotHidesPersonalContents",
+        "testBackgroundLocksConnectedCalendarAndRequiresFreshDeviceUnlock",
+        "testWeatherCitySheetNativeHitRegionsAndEditableEdges",
+        "testPersonalMediaLayoutPersistsOnlyForItsProfile"
+      ],
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "f75a2984df9d9be72115cbb84b4c30eed497ca3294d0a4ea082f6da873316cb7",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "8f00eb9cb5b4d72b73a74cc5fbf23278b91643e827f5b3d196b42a4344ec3b36",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "d158b657148e7af08a1e808ab6d7e2f964adf72df4d05a966b3080704b0179ed",
+      "summary_sha256": "568f662c4015c677e11e27840bc00026f942d26b45edeae15aa575666fc1722f",
+      "snapshots": [
+        {
+          "case": "calendar-background",
+          "receipt_sha256": "460167a612d6fef1a33ebd1bb3159453553a2c1b0481ef72d9175cc1f45e7991",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 3,
+            "blackFraction": 0.9890882167305919,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "calendar-inactive",
+          "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    }
+  ],
+  "final_executions": 12,
+  "final_passed": 12,
+  "historical_failed_executions": 4,
+  "same_compiled_candidate_and_regression_inputs": true,
+  "baseline_product_comparison": {
+    "compared": 19,
+    "exact": 18,
+    "changed": [
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+        "before_bytes": 14740152,
+        "before_sha256": "f4b76e46c2bea7459a730ac52da4d9340b5ebb44448e7e9fc28659946939df54",
+        "current_bytes": 14740152,
+        "current_sha256": "4b4c1a8cde273e76ecd45cc5d8fdff1161ba84f1c1aacaf1cb7402c0c44a8328"
+      }
+    ],
+    "all_product_sources_unchanged": true,
+    "initial_all19_identity_assertion_failed_before_UI_admission": true,
+    "conclusion": "Only compiled assets changed in test-only rebuild; no whole19 byte-equality claim. Executed baseline bundles individually sealed."
+  },
+  "images": [
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/70E48CFA-C722-4EF0-8ACD-FB2A53C32143.png",
+      "name": "switcher-profile-dialog-inactive-whole-homeview-card_0_32722211-C9D3-465D-AC2B-0C60855CB4A9.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "63a92b137924dc10bec5c6c832d9c66489ce4951455ede220f29a8e244209a35"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/1876495A-5DFA-442B-8E8A-E629DEFDB062.png",
+      "name": "switcher-profile-dialog-inactive-native-system-screen_0_C6CE4C37-4209-4388-A38E-482106E651E4.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "86e4cdcdf2a850ff3ce290a0879d0313f714eb7fe8ecad7bd0631307dd1ff28e"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/75D305F7-DB99-4A2C-8111-D809C4959CB7.png",
+      "name": "switcher-profile-dialog-before_0_AA0A3100-7A51-44AE-8156-23878B971909.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "f1ee9493a2446bb09b905798079ce5e8b61b8a32b1644949e6e4b7d608974a1f",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPhone-before-switcher-profile-dialog-before.png"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/229D69D5-17EB-49AF-8726-E0DE79D60F22.png",
+      "name": "switcher-weather-dialog-inactive-whole-homeview-card_0_E6B56793-7F89-4CEC-AC37-9B1197712F29.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "7a925a9913d9319b2c4c7ec7f161ace21a54e7e5d4c4772580395c0a4b9d9648"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/130C78E4-2C7E-468F-B12B-87DCC3D11A2C.png",
+      "name": "switcher-weather-dialog-inactive-native-system-screen_0_281C15CF-119C-4B12-B1AD-9FC41E31308C.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "9a395c441371659a7b7c401b6e4f5d19fae203caa6d9871227d6bb1b0439b96c"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/9B9C8AEE-D9A1-4156-BFD9-D201890E5CA2.png",
+      "name": "switcher-weather-dialog-draft-before_0_DF6EDFB8-5294-43B0-9544-115D67D734BB.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "c0cc8ff91f891fcd4aef7bef4949c297792ac5a033e9712de598488410916e26",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPhone-before-switcher-weather-dialog-draft-before.png"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/FB1CB12B-1A43-45F0-AEBC-179EECFDF878.png",
+      "name": "switcher-profile-dialog-inactive-whole-homeview-card_0_56EB79F4-D031-4ACD-A773-4B8CBC7412DC.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "32b2f487e687257d05c434080fbe42b890206478f242ea1e0a6c1db497bd685e"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/10C6EFA9-D52B-4234-843F-DCBBC99A802D.png",
+      "name": "switcher-profile-dialog-inactive-native-system-screen_0_AFE3A2B3-8D16-4A36-9DE2-2B77E6D0CBC3.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "9542f2ce3eafe086a95dcf2251d886405098a59cbd633f9453b71c5733d07509"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/42F38D86-60EB-4C27-8032-D8E2243130D3.png",
+      "name": "switcher-profile-dialog-before_0_1F23127B-D006-4831-A0C3-5FF6E89E24D8.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "39f7b3df785e4319fb7fe9aa19742d40b979adf8d2d5c24f295621673298e08d",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPad-before-switcher-profile-dialog-before.png"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/4784B705-13A1-427F-A547-B1BB497B1A7C.png",
+      "name": "switcher-weather-dialog-inactive-whole-homeview-card_0_F3D74F7F-BB31-436B-8ABD-04ABC9BC96A6.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "2a063101be92d4a71492c3e36abee9a536b5d13a1e33b96452073cec47d5fc24"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/7632A9D6-B6C2-4E18-A533-F5F542702B43.png",
+      "name": "switcher-weather-dialog-inactive-native-system-screen_0_3BD7CB01-BC58-4AF7-9926-E885F3617202.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "a8795ba60f7a86ba367ffdeea6b2328b6994cd702e34aec0b8f143a9330cb332"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/8E24BCFB-DBB3-4E71-9800-F594E751CEBF.png",
+      "name": "switcher-weather-dialog-draft-before_0_7FD7BFC1-FED0-418A-9071-6F9D3ABE9E3D.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "0106b5a5d020400394d46732036b6e9b84885f1036cc2b32ad7e6c684c2518c4",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPad-before-switcher-weather-dialog-draft-before.png"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/FF04E2B5-4EB3-4CB1-8A50-AC0ACEF3CCC8.png",
+      "name": "switcher-profile-dialog-returned_0_7436F8BB-2730-4F1B-823A-25C759DA2C92.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "7ed38ea4448d71a93afa7d3397ed9aebd438d45a1f17a97c5e63f991c118c213",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPhone-after-switcher-profile-dialog-returned.png"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/2AAA9276-8471-4231-A2C1-7E79DDB8BA6D.png",
+      "name": "switcher-profile-dialog-inactive-whole-homeview-card_0_FC55E387-2383-475F-84A5-98E236665816.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "60fc8f9c2ee5c0b4f2e6e505816876a3fdb20f1e33de219146b58bfbf0858bb3"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/92ADCC06-A72B-4146-95DF-CAC46E06E207.png",
+      "name": "switcher-profile-dialog-inactive-native-system-screen_0_F6C70507-C692-4BE3-BCBB-F7EB1CB656F1.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "3009580bce0df85d5a047dd88c2b7a9babc654a1ec45ef77bcadb78c508d9acd"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/02D1E36C-3DA3-4842-BD8D-156A68347EF2.png",
+      "name": "switcher-profile-dialog-before_0_8CE79401-0AD2-436E-BD5C-BB1952BC4106.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "a7ccca684967af4c0a6b1cda315e8f489ad9d4cec63673e5098b97896de6e76e",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPhone-after-switcher-profile-dialog-before.png"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/067ABD4C-D4B4-41BB-83B9-AE15DBF4A558.png",
+      "name": "switcher-weather-dialog-returned-without-update_0_EE426B9C-24A0-4006-9BD7-6B283B844E24.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "fe5ce3858729e749fb76c4ad535af467e433858fa165ec60857cbef7577dd600",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPhone-after-switcher-weather-dialog-returned-without-update.png"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/1B218B1B-CBB8-4D2E-8F4A-5A1422D7D415.png",
+      "name": "switcher-weather-dialog-inactive-whole-homeview-card_0_CA7F01EE-F18E-4A89-BED7-13760C2E00AF.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "72518451e5c0201ae4de1427e47a74c7037855dd5fd248e2319a3021505b3b84"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/EDCF0317-1403-4FA0-BAA2-1FFD7006FDA2.png",
+      "name": "switcher-weather-dialog-inactive-native-system-screen_0_2F2153D7-6A3A-4B57-9406-677EFD34D307.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "c83dba570a9e0761876040d013488ab495e4175a494f297eb69c74d22aeff3d5"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/2B348318-4DD8-4B58-AE8C-A65D3DEAC676.png",
+      "name": "switcher-weather-dialog-draft-before_0_8B597402-840D-40E5-882F-BA17B9BE960F.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "742c1a1a8909eb3096a6243fdffabab0193af62bc7490f09380ad1411832d4aa",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPhone-after-switcher-weather-dialog-draft-before.png"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/DD22E1C6-2F7D-4E9B-8A0F-79D9CA150D6B.png",
+      "name": "switcher-profile-dialog-returned_0_89FA1D92-9CCF-46B4-A657-88E235AD94C2.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "c99dedbb02afc70ee7f7915305958d0e6ed7aad267aa90347641c0b6c00c6970",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPad-after-switcher-profile-dialog-returned.png"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/BE65C6A6-3A07-42D0-9E77-74D06D97F164.png",
+      "name": "switcher-profile-dialog-inactive-whole-homeview-card_0_97A4A1EC-6CA4-417D-A104-9D6D621E58EB.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "fef0b72751e92a6c5668647dafb3915c6c8e668813c7546fd26041a7ed870b86"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/92707437-AA9C-4DE0-B194-9FEFD510931C.png",
+      "name": "switcher-profile-dialog-inactive-native-system-screen_0_9DC66B43-2C91-440F-B5A7-A178F2C51710.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "1cb0f202aba5e74f14d13de08fb4d7b98c14fdbf0e906ea08d8afb937fe5a140"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/8F922450-D8D6-4722-A419-0AD76CA51B10.png",
+      "name": "switcher-profile-dialog-before_0_37295657-A14A-4749-A671-0C07F6EDC822.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "8bbd16f82b7659f1ed0323249e25ec498b4da66e1e69e4df7a95193bada3bdfb",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPad-after-switcher-profile-dialog-before.png"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/FDCA75EE-466D-40BB-8697-E6293799489C.png",
+      "name": "switcher-weather-dialog-returned-without-update_0_0AC42E9A-287D-427C-8ED0-BE7132A6D70F.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "19ad16edc387cd31592a788e8d02cc48ba6ab01af6f86bf4ef11b17facfee5a6",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPad-after-switcher-weather-dialog-returned-without-update.png"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/58235AB9-5E29-46E3-A71C-C9FC69BA4802.png",
+      "name": "switcher-weather-dialog-inactive-whole-homeview-card_0_619D2BF1-8AD2-42DB-8D13-0CC812013E64.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "2aa1255c7416342ac2b8691770db66ee5cfce729f635a10f7e95bb96cb617a9b"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/0E959336-6E3E-4DA7-9707-EE9B78107C14.png",
+      "name": "switcher-weather-dialog-inactive-native-system-screen_0_F63A1F6C-A547-4735-9118-D2267B73505E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "6c2fe3b15ec23d72a883fcb1818f42c5a1bef83383a027ddf63007c09f0b0025"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/6D58C7AB-2D8C-42F3-8561-B7DEE71C47E4.png",
+      "name": "switcher-weather-dialog-draft-before_0_EE3BA774-6F2D-4F36-A4E6-71E2E18F10E9.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "f1ed2ecc6028db8b2035935a9f6492edb8b6a2deb306820b4724315a4c42f34e",
+      "public_copy": "Docs/screenshots/app-switcher-dialogs/iPad-after-switcher-weather-dialog-draft-before.png"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/F413CD36-62CE-4480-87C4-A5FEFE01256A.png",
+      "name": "privacy-calendar-locked-after-background_0_C2A41DAC-89BC-4B2D-95EA-6901DDD867B6.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "c9f94ac061af52547acae2a84859fc462711a7f02f8b3e777901cefbf0afcbf2"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/8C14DFCE-EAE2-44A6-BDC4-0C3FC2C46A75.png",
+      "name": "switcher-calendar-return-requires-fresh-unlock_0_A2F0609E-8521-4B5F-9AE4-32157272B61E.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "bf6137141d80bdfec6d23fe7a2224f360eba442bd8a3fdbd729f9fc161f82a76"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/9FACDA68-B9AA-4EF0-8A54-D7C8A7A4ACAE.png",
+      "name": "switcher-background-whole-homeview-card_0_3269DADB-D87A-45F0-8C74-0C4A3C5DF473.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "a0fb3635cb0f06177e6bd6e2972142b0f1d0736175c2e6bfda410d3ae78566d4"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/C08B1F6A-611E-404D-B2A2-2FC12EB3B60A.png",
+      "name": "switcher-background-native-system-screen_0_4D89A4BE-300C-47A5-AFDE-31A9B9CD5373.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "e3d70bdf7801809525a47c2250d11ce0eb3cc67d7ac1c2a0bdbf0428e7b18be5"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/26D0DDEC-42C5-4466-A47A-0626EDACF97D.png",
+      "name": "switcher-calendar-return-after-inactive_0_D575E53F-561F-4C9B-948B-98604A6136E7.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "1104e489111ea4451a7f29c281754ca1e1b4fe66f5abe1e83524dbae25a70f68"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/8CC602FD-17F1-4994-A19F-2937434A1980.png",
+      "name": "switcher-inactive-whole-homeview-card_0_1A56B3D6-7252-482F-A271-34C1B043A09C.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "609b13600e1ece192adb9d8ad0369bdb7917924b9476398225b6ff499f0e1e9f"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/D1384B9D-A191-40C6-A690-B9284BD96B49.png",
+      "name": "switcher-inactive-native-system-screen_0_4D4DF846-E668-49FF-AE3B-55F3AE253DCB.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "39fdbfcce1dc8d9d7b82d716bee43f98b46974dca9dad5330400b2a02dd53336"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/8BE5A62F-492B-4BAF-9061-440349191180.png",
+      "name": "switcher-calendar-visible-before_0_75329838-81B0-4000-A45A-C56E2FCF7CF7.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "1104e489111ea4451a7f29c281754ca1e1b4fe66f5abe1e83524dbae25a70f68"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/D2AC04E4-307A-4AF4-8A1B-D243C441840A.png",
+      "name": "personal-ui16-other-profile-unchanged_0_B5A4BCED-9210-4D45-B32A-59986F232BBD.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "ea0c7cf3970e2cd9dc315d23b6cce6707e3c1804dc9e50a0d5c86354122da673"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/FD4C889A-84C5-4CB0-AD86-6974B8285CF7.png",
+      "name": "personal-ui42-media-layout-alex_0_3E078FFF-DE32-4A73-B6E9-A229182CEEB2.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "4d4e24cbdf85f930f1430865b3a756f5cbd132a72202b92e563f743049b68fd3"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/28D74DE1-D45D-44E5-966F-0F16CA81DCAD.png",
+      "name": "weather-surface-sheet-bottom-edited_0_34D524EC-0C9D-41DA-8754-FB5C1E3AA12F.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "a8e9f509a28d9024c1450857a58d8b6ad06c73c41aa3edccaaaf8dd02a677ade"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/4ACC0A0D-BA22-4910-AA29-567484FECA35.png",
+      "name": "weather-surface-sheet-bottom-before_0_AACDF870-AF72-48D9-82B3-C12E72BDC876.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "68981d9a3e1bcddd1a6c550d9953b75bfc60f628dcf1a4b8371f97b500cd41d9"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/1754C3A8-6E7D-47DC-B33C-329C98E6FCAE.png",
+      "name": "weather-surface-sheet-top-edited_0_E7A76746-0E5C-4DBC-B839-08FC27DE856F.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "59c9942055812d0f1ed5150b1e58ebe80ac02aab10f4545b685ad8ace9c320ed"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/17108A41-0AE0-4452-B990-DDA150F4EC28.png",
+      "name": "weather-surface-sheet-top-before_0_B03B4213-2B2B-4E34-93A4-BAA484FB20C6.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "df24517579c748ab1c269bc6651814f2216eb592f0ec927b35ee982dfb1deaa8"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/966D4101-AFF4-4EDC-9449-5FA77675B594.png",
+      "name": "privacy-calendar-locked-after-background_0_426DEB15-9DAD-478E-BD72-7E2233404D6F.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "7fa1ede546c3d533cdc759632c58920e957610aae76173696f276c0c2cfe643b"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/88DDD7D4-A3D3-41F1-B1FB-1DEAE2873787.png",
+      "name": "switcher-calendar-return-requires-fresh-unlock_0_A1C044A4-7108-4F87-870A-11ADAC322251.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "3f1e31ea0478bc50a8f61f70b4dcfa6481f1ef623e30fdd5a7e7869318168a97"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/DF2D4E35-3FE9-4BFB-8DC5-6E6B58E1D419.png",
+      "name": "switcher-background-whole-homeview-card_0_6BDCA7C2-32E1-48B5-B5E9-5943DC24D186.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "21b9a5eefc8fe526a4fc8b9da851eb488622066d5e784d0d582c73068ea32b62"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/CAB78F19-C4B8-4225-AEF6-CA20922BC1B1.png",
+      "name": "switcher-background-native-system-screen_0_59791AE2-FA53-4A0E-8387-5E1E4F3D3C18.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "613b4d11c63e7c5c8453bdd4eb74bd01f4580c533baa912d6d694f207edf77eb"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/151EFC97-5CE8-488C-94B6-36FD75DB7FC6.png",
+      "name": "switcher-calendar-return-after-inactive_0_997C47FC-894A-40CC-B094-A355E0954546.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "689578590c055f8a213fb71abbe0207fa624b858f58f6a3d511d1adbb3f1fda6"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/BF23D9F1-DB64-4825-952D-16BEF07E53F9.png",
+      "name": "switcher-inactive-whole-homeview-card_0_C3883881-41A9-4D7E-BF9C-3083D9B9BBB3.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "2245673396538ca3964f983963835b0528dde3b098befb0cca88078109d8df6d"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/8B53C3F3-68AA-42D0-B0C6-E16A1DE1263D.png",
+      "name": "switcher-inactive-native-system-screen_0_232E77ED-FC36-4B58-B11C-823DBD46E925.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "69a85d9101e51af652e3c906fe3942e0bd3436e6b7fcc2f10b0c5083b105a2ff"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/875401F3-D620-4EDC-9B72-5784ED52C6BE.png",
+      "name": "switcher-calendar-visible-before_0_0A8A838B-E90C-4628-AFB4-D1BD0C1FE6B3.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "689578590c055f8a213fb71abbe0207fa624b858f58f6a3d511d1adbb3f1fda6"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/A1E73F7F-00B9-4C35-9EC8-47C827BEBF14.png",
+      "name": "personal-ui16-other-profile-unchanged_0_18076D40-7D8F-4015-AAAF-79FD2BC91AD4.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "2ad1d65165d30d4904f51163f1fd8922933c013e4aab266940ad66bc1c033b41"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/426BAD12-961D-439B-8DF3-2F4080291A54.png",
+      "name": "personal-ui42-media-layout-alex_0_4BCBB866-D79F-4D8B-A303-9F8ACF9280F5.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "510ad73ef0cfc2f9cb430f3d842aacc33426ec0df85873555277b37cef2af6bd"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/0E12469E-5553-4EE9-B699-CE82CDD67990.png",
+      "name": "weather-surface-sheet-bottom-edited_0_653F56C3-E546-4820-A811-C47098234F28.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "972c1e009f9d0fb992beed4b3bcf6d93caf608f6337b0a7caed52928142190be"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/5E774170-B511-499D-AE6F-6909754B4615.png",
+      "name": "weather-surface-sheet-bottom-before_0_1DC22943-33CF-4985-9E10-C274E8538CAE.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "fe80e44cd83f5f4ac4025cdd9354f77144bb7b7bc96d1ca86b50b236ae911532"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/5781A610-A117-46CE-9026-2069A94C8AE9.png",
+      "name": "weather-surface-sheet-top-edited_0_60E48F16-A3E8-46DE-A2A5-88A6B3A12C02.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "2207a3e442251f402a52557c450cf9b8bb9174364d306982a12cd50fb503585e"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/FE0A2136-19CA-4AB8-A785-48EBC09690B1.png",
+      "name": "weather-surface-sheet-top-before_0_E7E5FF79-8933-42D1-A32D-A66112D9BA25.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "c75a7396b163ad5045e1a96a5fc38259678ef5efa280b8f19ddf5ad82b60e23e"
+    }
+  ],
+  "image_inspection": {
+    "decoded_PNGs": 56,
+    "baseline_and_candidate_contacts_viewed": [
+      "baseline-phone-review-1.jpg",
+      "baseline-ipad-review-1.jpg",
+      "candidate1-phone-review-1.jpg",
+      "candidate1-ipad-review-1.jpg"
+    ],
+    "regression_contacts_viewed": [
+      "final-regression-phone-review-1.jpg",
+      "final-regression-phone-review-2.jpg",
+      "final-regression-ipad-review-1.jpg",
+      "final-regression-ipad-review-2.jpg"
+    ],
+    "observation": "Before: actual OS cards reveal open profile editor and owned city canary; iPhone weather card includes keyboard. Candidate: four whole cards show black shield, no visible dialog or city draft, keyboard absent; actual inactive return preserves open editor/city draft and Done does not update Berlin.",
+    "full_native_images_viewed": [
+      {
+        "checkpoint": "candidate1-phone",
+        "name": "switcher-weather-dialog-inactive-whole-homeview-card_0_CA7F01EE-F18E-4A89-BED7-13760C2E00AF.png",
+        "sha256": "72518451e5c0201ae4de1427e47a74c7037855dd5fd248e2319a3021505b3b84"
+      },
+      {
+        "checkpoint": "candidate1-ipad",
+        "name": "switcher-weather-dialog-inactive-whole-homeview-card_0_619D2BF1-8AD2-42DB-8D13-0CC812013E64.png",
+        "sha256": "2aa1255c7416342ac2b8691770db66ee5cfce729f635a10f7e95bb96cb617a9b"
+      },
+      {
+        "checkpoint": "final-regression-phone",
+        "name": "weather-surface-sheet-bottom-edited_0_34D524EC-0C9D-41DA-8754-FB5C1E3AA12F.png",
+        "sha256": "a8e9f509a28d9024c1450857a58d8b6ad06c73c41aa3edccaaaf8dd02a677ade"
+      },
+      {
+        "checkpoint": "final-regression-ipad",
+        "name": "weather-surface-sheet-bottom-edited_0_653F56C3-E546-4820-A811-C47098234F28.png",
+        "sha256": "972c1e009f9d0fb992beed4b3bcf6d93caf608f6337b0a7caed52928142190be"
+      }
+    ],
+    "public_own_images_read_back": 12
+  },
+  "scope_limits": [
+    "Two app-owned SwiftUI dialogs plus existing Calendar snapshot/background and normal dialog/profile regressions; not every presentation.",
+    "No physical snapshot or biometric/authentication, presence or full interruption/media policy proof.",
+    "Other app dialogs and native OS message composer remain separately unaccepted; no automatic send/call.",
+    "No Home, live account, real personal permission, alarm or media action.",
+    "No new Core test run; Core sources/tests and package unchanged.",
+    "Pixel fraction is a coarse guard, actual image review remains required."
+  ],
+  "public_raw_system_screens_or_trees": false,
+  "before_and_candidate_source_bound": true,
+  "core_package_inputs_unchanged_from_base": 88,
+  "core_tests_newly_executed": 0,
+  "provenance_manifest_whole_source_hash_refresh": "verification/asset-provenance-source-refresh-snapshot-dialogs.json"
+}

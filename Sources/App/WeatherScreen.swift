@@ -53,7 +53,7 @@ struct WeatherScreen: View {
         }.padding(.horizontal,28).padding(.top,24).padding(.bottom,32)
       }.scrollIndicators(.hidden)
     }.foregroundStyle(.white)
-      .sheet(isPresented:$citySheet) { WeatherCitySheet() }
+      .sheet(isPresented:$citySheet) { WeatherCitySheet().snapshotPrivacyProtected() }
   }
   private var header: some View {
     HStack {
@@ -161,6 +161,7 @@ private enum WeatherMetric: String, CaseIterable, Identifiable {
 private struct WeatherCitySheet: View {
   @Environment(AppModel.self) private var model
   @Environment(\.dismiss) private var dismiss
+  @Environment(\.scenePhase) private var phase
   @State private var draft=""
   @State private var sessionID=UUID()
   @FocusState private var cityFocused:Bool
@@ -201,5 +202,6 @@ private struct WeatherCitySheet: View {
     }.padding(28).frame(minWidth:300,minHeight:320).background(.background)
       .onAppear { sessionID=UUID();draft=model.connections.city }
       .onDisappear { sessionID=UUID() }
+      .onChange(of:phase) { _,value in if value != .active { cityFocused=false } }
   }
 }

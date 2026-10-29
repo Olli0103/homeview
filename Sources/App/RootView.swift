@@ -2,6 +2,27 @@ import AVFoundation
 import Combine
 import SwiftUI
 
+/// Presented sheets sit above RootView's overlay and need their own cover.
+/// Inactivity conceals content without revoking a valid authentication prompt.
+private struct SnapshotPrivacyProtection: ViewModifier {
+  @Environment(\.scenePhase) private var phase
+  func body(content: Content) -> some View {
+    content.overlay {
+      if phase != .active {
+        ZStack {
+          Color.black
+          Label("HomeView locked", systemImage: "lock.shield")
+            .font(.title2).foregroundStyle(.white)
+        }.ignoresSafeArea().accessibilityIdentifier("privacy.snapshot.shield")
+      }
+    }
+  }
+}
+
+extension View {
+  func snapshotPrivacyProtected() -> some View { modifier(SnapshotPrivacyProtection()) }
+}
+
 struct RootView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.scenePhase) private var scenePhase
@@ -204,15 +225,7 @@ struct RootView: View {
   }
   var body: some View {
     viewportContent
-    .overlay {
-      if scenePhase != .active {
-        ZStack {
-          Color.black
-          Label("HomeView locked", systemImage: "lock.shield")
-            .font(.title2).foregroundStyle(.white)
-        }.ignoresSafeArea().accessibilityIdentifier("privacy.snapshot.shield")
-      }
-    }
+    .snapshotPrivacyProtected()
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
 
     .sheet(isPresented:Binding(get:{model.showingLocalReset},set:{ if !$0 { model.cancelLocalReset() } })) {

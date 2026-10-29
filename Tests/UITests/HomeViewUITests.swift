@@ -3651,6 +3651,37 @@ final class HomeViewUITests: XCTestCase {
     tap("device.unlock")
     XCTAssertTrue(app.staticTexts["Device fixture meeting"].waitForExistence(timeout:5))
   }
+  func testNativeAppSwitcherSnapshotCoversOpenWeatherCityDraft() {
+    continueAfterFailure=false
+    launchWeatherSurfaceFixture()
+    touchWeatherControl("weather.cities")
+    let field=app.textFields["weather.app.city.input"],canary="OWNED_PRIVATE_CITY_CANARY"
+    XCTAssertTrue(field.waitForExistence(timeout:5));field.tap();field.typeText(canary)
+    XCTAssertTrue((field.value as? String ?? "").hasSuffix(canary))
+    shot("switcher-weather-dialog-draft-before")
+    let frame=app.frame
+    calendarSwitcherCard(from:app,bounds:frame,checkpoint:"weather-dialog-inactive").tap()
+    XCTAssertTrue(field.waitForExistence(timeout:5))
+    XCTAssertTrue((field.value as? String ?? "").hasSuffix(canary),"Inactive snapshot protection must not discard the open draft")
+    tap("weather.city.done")
+    XCTAssertEqual(app.staticTexts["weather.app.city"].label,"Berlin","No implicit provider update from snapshot protection")
+    shot("switcher-weather-dialog-returned-without-update")
+  }
+  func testNativeAppSwitcherSnapshotCoversOpenProfileEditor() {
+    continueAfterFailure=false
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("nav.apps");tap("personal.profile");tap("profile.Alex")
+    app.buttons["personal.profile"].press(forDuration:1)
+    tap("personal.edit")
+    XCTAssertTrue(app.staticTexts["Home Screen · Alex"].waitForExistence(timeout:5))
+    shot("switcher-profile-dialog-before")
+    let frame=app.frame
+    calendarSwitcherCard(from:app,bounds:frame,checkpoint:"profile-dialog-inactive").tap()
+    XCTAssertTrue(app.staticTexts["Home Screen · Alex"].waitForExistence(timeout:5))
+    tap("personal.editor.done")
+    XCTAssertTrue(app.buttons["personal.profile"].waitForExistence(timeout:5))
+    shot("switcher-profile-dialog-returned")
+  }
   func testDemoArtworkInformationIsExplicitAndNeverAutoplays() {
     launch(["--page","Music"])
     let info=app.buttons["music.artwork.info.demo"]

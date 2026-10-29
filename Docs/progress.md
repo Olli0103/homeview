@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## App-Umschalter: offene Dialoge tatsächlich verdecken · 29. Oktober 2026
+
+[Vier native Vorherfehler korrigiert](app-switcher-dialogs.md): Profil-Editor und Stadtentwurf lagen über der Root-Abdeckung; auf iPhone war auch die Tastatur sichtbar. Gemeinsamer Schutz für Root und diese zwei Präsentationen, Stadtfokus bei Inaktivität gelöst, Entwurf bleibt erhalten. Zwölf aktuelle UI-Ausführungen und fünf SDK-Builds bestanden, tatsächliche Bilder/225 Quellen/alle Eingabearchive/installierte Apps geprüft. Andere Dialoge und physische Snapshot-/Präsenz-/Medienabnahme bleiben bei #67 offen; **40/82 geschlossen, 42 offen**.
+
 ## Kalender: tatsächlicher OS-App-Umschalter · 29. Oktober 2026
 
 [Vier finale UI-Ausführungen](app-switcher-calendar.md) bestehen: zwei echte vollständige HomeView-Karten je iPhone-/iPad-Simulator zeigen den schwarzen Schutz ohne sichtbare Kalenderreste; bloße Inaktivität und echter Home-Hintergrund/Fresh Unlock getrennt. Zwei frühere Testannahmen-/Ausschnittfehler erhalten. 225 Quellen, alle Eingabearchive und installierten Apps geprüft; alle 19 Produktdateien unverändert, keine neuen Core-/SDK-Läufe. Andere persönliche Routen/Sheets und physische Snapshot-/Präsenzabnahme bleiben offen; #67 weiter OPEN, **40/82 geschlossen, 42 offen**.

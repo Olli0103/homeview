@@ -1,5 +1,7 @@
 # Verbleibende Arbeit und Grenzen
 
+- [App-Umschalter: offene Profil-/Stadtdialoge verdecken](app-switcher-dialogs.md): vier echte Vorherfehler korrigiert; zwölf aktuelle UI-Ausführungen und fünf SDKs. Weitere Präsentationen und physische Abnahme bei #67 offen.
+
 - [Kalender im tatsächlichen OS-App-Umschalter](app-switcher-calendar.md): vier finale UI-Ausführungen, vollständige Karten und Hintergrund/Fresh Unlock geprüft. Andere persönliche Routen/Sheets, Präsenz/Medien und physische Snapshots bleiben bei #67 offen.
 
 - [Wetter-Quellenlink: vier echte native Randaufrufe mit richtigem Safari-Ziel](weather-attribution-os-route.md); getrennte Testquelle, Produkt unverändert. #73 bleibt für übrige Kriterien offen.
@@ -97,7 +99,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs, nicht automatis
 | [#64](https://github.com/Olli0103/homeview/issues/64) | Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
 | [#65](https://github.com/Olli0103/homeview/issues/65) | Control Center und Settings mit echten Zuständen abgleichen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#66](https://github.com/Olli0103/homeview/issues/66) | Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen | Offen. Echte Geräte-/Haushaltsidentitätsbindung und persönliche Freigabe nicht vollständig nachgewiesen. |
-| [#67](https://github.com/Olli0103/homeview/issues/67) | Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen | Offen. Weitere Präsenz-/Medien-/Unterbrechungs- und physische Snapshot-Abnahme offen. |
+| [#67](https://github.com/Olli0103/homeview/issues/67) | Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen | Offen. Kalender und zwei offene Dialoge im Simulator geschützt; weitere Präsentationen, Präsenz/Medien/Unterbrechungen und physische Snapshots offen. |
 | [#68](https://github.com/Olli0103/homeview/issues/68) | Gastberechtigungen für Haus, Wetter, Timer und Musik definieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#69](https://github.com/Olli0103/homeview/issues/69) | Secure-Exclaves-Identitätsverarbeitung als Hardwaregrenze dokumentieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#70](https://github.com/Olli0103/homeview/issues/70) | Private Cloud Compute als externe Systemfähigkeit bilanzieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
