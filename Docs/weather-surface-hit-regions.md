@@ -2,6 +2,8 @@
 
 29. Oktober 2026 · weiterer begrenzter Teilfix von [#73](https://github.com/Olli0103/homeview/issues/73), Gesamtissue offen. Der vorherige [Settings-Fix](weather-settings-hit-regions.md) bleibt ein eigener Prüfstand.
 
+Nachtrag: Der unten auf `88b068e` begrenzte Stand öffnete den Quellenlink noch nicht. Der spätere [getrennte OS-Routing-Nachweis](weather-attribution-os-route.md) bestätigt vier tatsächliche Randaufrufe bei unverändertem Produkt. Frühere Ergebnisse bleiben unverändert abgegrenzt.
+
 ## Nachgewiesen und korrigiert
 
 Der Quellenlink ist im unveränderten veröffentlichten Produkt nur 8,40 bzw. 17,91 native Punkte hoch. Beide ungefilterten App-Audits melden ihn. Die iPhone-Städtetaste misst 32,76×32,76 Punkte, die Modustasten 32,76×23,94. Auf iPad sind Städte-/Modustasten bereits groß genug und behalten ihre Dimensionen.

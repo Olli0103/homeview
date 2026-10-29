@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Wetter-Quellenlink: echtes OS-Routing · 29. Oktober 2026
+
+[Vier reale Randaufrufe](weather-attribution-os-route.md) erreichen Safari und den exakten Host in der nativen Adressanzeige; zwei finale UI-Ausführungen bestanden. Zwei alte Selektorfehler separat erhalten. Alle 19 Produktdateien bytegleich zu `88b068e`, keine neuen SDK-/Core-Läufe. Webseite noch nicht vollständig geladen, kein Verfügbarkeits-/Hilfsmittel-/Original-PASS. #73 bleibt offen; **40/82 geschlossen, 42 offen**.
+
 ## Wetter-App und Stadtdialog: native Trefferflächen · 29. Oktober 2026
 
 [Separater App-/Dialog-Fix](weather-surface-hit-regions.md): zwölf finale UI-Ausführungen, vier leere ungefilterte Audits und fünf SDKs; größerer transparenter Quellenlink ohne Verschieben der fünf iPad-Städte-/Modus-Rechtecke. Native Dialogränder, echte Eingabe, explizites Update und Abbrechen geprüft. Drei frühere erfolgreiche/fünf fehlgeschlagene Ausführungen separat, kein neuer Core-Lauf. #73 bleibt für übrige Hilfsmittel-/Original-/Hardwarekriterien offen. **40/82 geschlossen, 42 offen.**

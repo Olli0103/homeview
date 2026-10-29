@@ -763,6 +763,56 @@ extension HomeViewUITests {
     connectService("Weather");openWeather()
     XCTAssertEqual(app.staticTexts["weather.app.city"].label,"Berlin")
   }
+  func testWeatherAttributionNativeEdgesOpenExpectedPublicWebsite() {
+    continueAfterFailure=false
+    let safari=XCUIApplication(bundleIdentifier:"com.apple.mobilesafari")
+    for bottom in [false,true] {
+      launchWeatherSurfaceFixture()
+      XCTAssertEqual(app.state,.runningForeground)
+      let safariBefore=safari.state
+      XCTAssertNotEqual(safariBefore,.runningForeground,"OS target must not already be in front before the edge touch")
+      let source=app.links["Open-Meteo"]
+      scrollPhotoControlFullyIntoView(source,requireHittable:false)
+      weatherSurfaceGeometry(source,bottom ? "link-actual-bottom":"link-actual-top")
+      let f=source.frame
+      let point=[Double(f.midX),Double(bottom ? f.maxY-2:f.minY+2)]
+      weatherSurfaceEdge(source,bottom:bottom)
+      let switched=safari.wait(for:.runningForeground,timeout:10)
+      var report:[String:Any] = ["edge":bottom ? "bottom":"top","point":point,
+        "linkFrame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "expectedURL":"https://open-meteo.com/","safariBeforeState":safariBefore.rawValue,
+        "safariForeground":switched]
+      if !switched {
+        let tree=XCTAttachment(string:app.debugDescription);tree.name="weather-link-no-os-transition";tree.lifetime = .keepAlways;add(tree)
+        shot("weather-link-edge-no-os-transition")
+      } else {
+        // Observed native Safari address fields differ between phone and pad;
+        // neither is a web-page input or the older "URL" identifier.
+        let address=safari.textFields.matching(NSPredicate(format:
+          "identifier == %@ OR identifier == %@","TabBarItemTitle","TabBarItemTitleContainer")).firstMatch
+        let found=address.waitForExistence(timeout:8)
+        report["URLFieldFound"]=found
+        if found {
+          let value=address.value as? String ?? ""
+          // Safari prepends a presentation-only LRM to the displayed address.
+          let clean=value.replacingOccurrences(of:"\u{200E}",with:"")
+            .replacingOccurrences(of:"\u{200F}",with:"").trimmingCharacters(in:.whitespacesAndNewlines)
+          let normalized=clean.contains("://") ? clean:"https://"+clean
+          report["nativeURLFieldIdentifier"]=address.identifier
+          report["nativeURLValue"]=value
+          report["nativeURLHost"]=URL(string:normalized)?.host?.lowercased() ?? ""
+        }
+        let tree=XCTAttachment(string:safari.debugDescription);tree.name="weather-link-native-safari-tree";tree.lifetime = .keepAlways;add(tree)
+        let screen=XCTAttachment(screenshot:safari.screenshot());screen.name=bottom ? "weather-link-safari-bottom":"weather-link-safari-top";screen.lifetime = .keepAlways;add(screen)
+      }
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name=bottom ? "weather-link-bottom-os-receipt":"weather-link-top-os-receipt";a.lifetime = .keepAlways;add(a)
+      XCTAssertTrue(switched,"Actual attribution edge did not open the OS browser")
+      XCTAssertEqual(report["nativeURLHost"] as? String,"open-meteo.com",
+        "Native browser address must prove the expected public destination")
+      safari.terminate()
+    }
+  }
   func testWeatherAppNativeHitRegionsAndActualModeEdges() throws {
     continueAfterFailure=true
     launchWeatherSurfaceFixture()

@@ -1,0 +1,334 @@
+{
+  "date": "2026-10-29",
+  "issue": 73,
+  "issue_stays_open": true,
+  "product_commit": "88b068ed16ba1da715fde54196a80442fd41faa8",
+  "source_digest": "4e5e58b04362d6c0c7c79584d0eb6ef63599596ac98f91be5480915ad1031422",
+  "UI_runs": [
+    {
+      "checkpoint": "attribution-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "66593e266186baa82ae7f133bfec469ce8257981d6b7b5afc42996eeab28f5f8",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "07e566cebdb4d30fed0a9007a9bf720aa81447dcd490236705c600a5df71b66b",
+      "archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "f27f1b39aaa9bf44545667c0b30b813fdd7df9e82dba833ab6169446770595ea",
+      "summary_sha256": "ddca4f561770a7d63a008d8017adf34c22d4ccb961253f8fb55a7405d4c9fd68",
+      "routes": [
+        {
+          "edge": "top",
+          "expectedURL": "https://open-meteo.com/",
+          "linkFrame": [
+            228.29999999999995,
+            461.9199999999999,
+            44.10000000000002,
+            44.10000000000008
+          ],
+          "point": [
+            250.34999999999997,
+            463.9199999999999
+          ],
+          "safariForeground": true,
+          "URLFieldFound": false,
+          "receipt_sha256": "83840ea243ab3ae041ea81c9a1515885d29e7107971ea6a35eb06c1c197ea59b"
+        }
+      ],
+      "private_images": [
+        {
+          "file": "attribution-phone-attachments/C4DB4F86-29C8-4231-A431-23A00998EE9E.png",
+          "name": "weather-link-safari-top_0_20EACDF7-32C1-4174-9D08-47738B84088D.png",
+          "size": [
+            1206,
+            2622
+          ],
+          "sha256": "c63ca3bc2a4fac2e96fb47a2c8cf19dd56918c64790afffb7a02671fb430c6ce"
+        }
+      ]
+    },
+    {
+      "checkpoint": "attribution-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "66593e266186baa82ae7f133bfec469ce8257981d6b7b5afc42996eeab28f5f8",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "07e566cebdb4d30fed0a9007a9bf720aa81447dcd490236705c600a5df71b66b",
+      "archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "0daba7899c477fc0feb14857d41cc572be933eeac35853a71cf099018d9f4344",
+      "summary_sha256": "abb912bceb0a02a444eeb275b3ad2cf54592f509c2a2f4648b2a69b92df4b39e",
+      "routes": [
+        {
+          "edge": "top",
+          "expectedURL": "https://open-meteo.com/",
+          "linkFrame": [
+            469.7,
+            641.9966666666667,
+            88.2233333333333,
+            45.10666666666668
+          ],
+          "point": [
+            513.8116666666666,
+            643.9966666666667
+          ],
+          "safariForeground": true,
+          "URLFieldFound": false,
+          "receipt_sha256": "91a525b1453e1613297e51cfd93fbc8583524407a1495c4f7bb557d7132cfba8"
+        }
+      ],
+      "private_images": [
+        {
+          "file": "attribution-ipad-attachments/E6EE5C2D-9530-470D-B286-624E70FCC57D.png",
+          "name": "weather-link-safari-top_0_7E34F29E-A5C2-4BE4-A547-97C5A772E63D.png",
+          "size": [
+            1640,
+            2360
+          ],
+          "sha256": "a520fcf4bc029f1a8ed586a6a01720ac854058962b2635f52dadfed94563ac8b"
+        }
+      ]
+    },
+    {
+      "checkpoint": "attribution-final-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "4e5e58b04362d6c0c7c79584d0eb6ef63599596ac98f91be5480915ad1031422",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "bcaf8d5276ec5a3c3655bfebe0ed7dc31c47dfb61bf6fec127c79fcf16f0a492",
+      "archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "451b7d06a3e702a9cea401e3185baf3f15c1c2d85d4b16af34b437c8ae0ff27a",
+      "summary_sha256": "fa3d3ecf4b70aff051ab43ff618c2b1960b8758a73e29589a9f783e67219086a",
+      "routes": [
+        {
+          "edge": "bottom",
+          "expectedURL": "https://open-meteo.com/",
+          "linkFrame": [
+            228.29999999999995,
+            461.9199999999999,
+            44.10000000000002,
+            44.10000000000008
+          ],
+          "nativeURLFieldIdentifier": "TabBarItemTitle",
+          "nativeURLHost": "open-meteo.com",
+          "nativeURLValue": "‎open-meteo.com",
+          "point": [
+            250.34999999999997,
+            504.02
+          ],
+          "safariBeforeState": 1,
+          "safariForeground": true,
+          "URLFieldFound": true,
+          "receipt_sha256": "fbfe7c1d50bf302cc54c930fea7a1f270b5df072f5d104f5b6d88b094bf7ea05"
+        },
+        {
+          "edge": "top",
+          "expectedURL": "https://open-meteo.com/",
+          "linkFrame": [
+            228.29999999999995,
+            461.9199999999999,
+            44.10000000000002,
+            44.10000000000008
+          ],
+          "nativeURLFieldIdentifier": "TabBarItemTitle",
+          "nativeURLHost": "open-meteo.com",
+          "nativeURLValue": "‎open-meteo.com",
+          "point": [
+            250.34999999999997,
+            463.9199999999999
+          ],
+          "safariBeforeState": 2,
+          "safariForeground": true,
+          "URLFieldFound": true,
+          "receipt_sha256": "a80a15c028e06a4d4586e9b4de4ec4b84054de97723881c4517bd8191cd704d7"
+        }
+      ],
+      "private_images": [
+        {
+          "file": "attribution-final-phone-attachments/557E3447-573E-4C01-99BE-F94C0AE924C2.png",
+          "name": "weather-link-safari-bottom_0_64891BF4-D342-4C5C-8F1B-98BB400BDF76.png",
+          "size": [
+            1206,
+            2622
+          ],
+          "sha256": "506ead78c6e75e2f6ff66ec6a306e0a835636afed4d1280ebabb7d23cb25db69"
+        },
+        {
+          "file": "attribution-final-phone-attachments/50FAA666-06CB-40C6-8117-F18095EBCAE0.png",
+          "name": "weather-link-safari-top_0_7D8A1A6A-004B-4853-956C-12F06BB197D6.png",
+          "size": [
+            1206,
+            2622
+          ],
+          "sha256": "fafa9672f69bfd949ec542d9ecb11cbad932dbc6f5892d61b4f3773d25f1f38f"
+        }
+      ]
+    },
+    {
+      "checkpoint": "attribution-final-ipad",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "4e5e58b04362d6c0c7c79584d0eb6ef63599596ac98f91be5480915ad1031422",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "bcaf8d5276ec5a3c3655bfebe0ed7dc31c47dfb61bf6fec127c79fcf16f0a492",
+      "archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "0a534d3eee7ca16a2bd45bf502ce2e0796a21820fc927c62b46a07e8656fc60a",
+      "summary_sha256": "e0b53b97ff7be69ee80389f3c242bcfda05844b332a4125fff5dc78787205505",
+      "routes": [
+        {
+          "edge": "bottom",
+          "expectedURL": "https://open-meteo.com/",
+          "linkFrame": [
+            469.7,
+            641.9966666666667,
+            88.2233333333333,
+            45.10666666666668
+          ],
+          "nativeURLFieldIdentifier": "TabBarItemTitleContainer",
+          "nativeURLHost": "open-meteo.com",
+          "nativeURLValue": "‎open-meteo.com",
+          "point": [
+            513.8116666666666,
+            685.1033333333334
+          ],
+          "safariBeforeState": 1,
+          "safariForeground": true,
+          "URLFieldFound": true,
+          "receipt_sha256": "1adf8d4fbfa68dfce32b41bf963b7a82bff8847296454f4126cf565e40b5c1ac"
+        },
+        {
+          "edge": "top",
+          "expectedURL": "https://open-meteo.com/",
+          "linkFrame": [
+            469.7,
+            641.9966666666667,
+            88.2233333333333,
+            45.10666666666668
+          ],
+          "nativeURLFieldIdentifier": "TabBarItemTitleContainer",
+          "nativeURLHost": "open-meteo.com",
+          "nativeURLValue": "‎open-meteo.com",
+          "point": [
+            513.8116666666666,
+            643.9966666666667
+          ],
+          "safariBeforeState": 2,
+          "safariForeground": true,
+          "URLFieldFound": true,
+          "receipt_sha256": "972460e064515584fe45ea923b7f53f940dfa2f3a53def237dcf08fde434b646"
+        }
+      ],
+      "private_images": [
+        {
+          "file": "attribution-final-ipad-attachments/97ABD696-FA6A-465A-9129-A82714290887.png",
+          "name": "weather-link-safari-bottom_0_EB3FA51F-E6A8-43E0-A442-4306350A6272.png",
+          "size": [
+            1640,
+            2360
+          ],
+          "sha256": "dfe779377dbbca7dd04fef739bb8e09ebd629c0bcac31700810733c7f36a19c2"
+        },
+        {
+          "file": "attribution-final-ipad-attachments/6CF9549B-BC24-47A1-B6CE-4D0804936221.png",
+          "name": "weather-link-safari-top_0_F0F72B68-9FE8-4A4D-B364-FD24B312BECF.png",
+          "size": [
+            1640,
+            2360
+          ],
+          "sha256": "a520fcf4bc029f1a8ed586a6a01720ac854058962b2635f52dadfed94563ac8b"
+        }
+      ]
+    }
+  ],
+  "final_successful_executions": 2,
+  "final_real_OS_routes": 4,
+  "earlier_failed_executions": 2,
+  "earlier_top_OS_routes": 2,
+  "earlier_bottom_routes_attempted": false,
+  "first_probe_failure": {
+    "tests_failed": 2,
+    "actual_top_edge_Safari_transitions": 2,
+    "bottom_edges_not_attempted": true,
+    "cause": "Native browser lookup assumed textField identifier URL, but actual iOS27 native toolbar fields are TabBarItemTitle(phone) andTabBarItemTitleContainer(pad), value hasleadingU+200ELRM.",
+    "correction": "Use observed nativeIDs,striponlypresentationLRM/RLMandwhitespace; exactexpectedhostcomparisonretained.",
+    "product_sources_changed": false,
+    "first_executed_source_digest": "66593e266186baa82ae7f133bfec469ce8257981d6b7b5afc42996eeab28f5f8",
+    "first_archive_sha256": "07e566cebdb4d30fed0a9007a9bf720aa81447dcd490236705c600a5df71b66b"
+  },
+  "product_comparison": {
+    "all19_byte_identical": true,
+    "files": 19,
+    "source_changed": false
+  },
+  "final_native_PNGs_decoded": 4,
+  "final_contact_sheets_actually_viewed": 2,
+  "public_webpage_images_copied": false,
+  "new_core_runs": 0,
+  "new_SDK_runs": 0,
+  "previous_12_UI_and_5_SDK_scope": "88b068e and f75795cc; same product, different UITest source, not a combined fourteen-execution current-source suite",
+  "boundaries": [
+    "Real simulator Safari foreground transition and exact native address host, no OpenURLAction stub",
+    "Native field identifiers observed on iOS27; strip only LRM/RLM and whitespace, preserve exact host assertion",
+    "Website load completion/availability and internal website network requests not accepted or monitored; bottom images still white while address is correct",
+    "Only synthetic HomeView weather; no real account, location permission, physical device or Home integration",
+    "No complete assistive-tech or original parity acceptance"
+  ]
+}

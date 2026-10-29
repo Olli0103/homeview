@@ -3301,7 +3301,8 @@
       "Control Center: native Mindestflächen für Close, lokale Regler und Pill-Tasten, scrollbarer Inhalt; zehn UI-Ausführungen, vier leere ungefilterte Auditlisten und 24 Randaktionen bestanden. Unterbrochener Testhelfer-Fehllauf separat erhalten, fünf SDKs bei bytegleichen Produktinputs. Keine echte Hilfsmittelabnahme oder Home-Anbindung. Docs/control-center-hit-regions.md.",
       "Face-Editor: lokale Label-Mindestflächen, tatsächliche Flow-Zeilenaktion und geschützte Inline-Datum-Trefferfläche. 28 UI-Ausführungen über zwei bytegleiche Auswahlläufe, 14 leere ungefilterte Auditlisten, 38 native Rand-Taps und fünf SDKs. Vorherfehler erhalten; andere kleine Previewflächen, schmale Fenster und echte Hilfsmittel-/Originalabnahme offen. Docs/editor-hit-regions.md.",
       "Wetter-Einstellungen: native Stadt-/Einheiten-Trefferflächen und fokussierter sicherer Scrollbereich auf iPad/iPhone nach Vorherfehlern korrigiert. Zehn finale UI-Ausführungen, zwei leere ungefilterte Hitflächen-Audits und fünf SDKs. Keine vollständige Hilfsmittel-/Original-/Hardwareabnahme. Docs/weather-settings-hit-regions.md.",
-      "Wetter-App/Stadtdialog: native Mindestflächen, reale Modus-/Dialogränder, Eingabe und Abbrechen nach Vorherfehlern korrigiert. Zwölf finale UI-Ausführungen, vier leere ungefilterte Audits, fünf SDKs. Fünf iPad-Control-Rechtecke unverändert; kein Original-/Hilfsmittel-/Hardware-PASS. Docs/weather-surface-hit-regions.md."
+      "Wetter-App/Stadtdialog: native Mindestflächen, reale Modus-/Dialogränder, Eingabe und Abbrechen nach Vorherfehlern korrigiert. Zwölf finale UI-Ausführungen, vier leere ungefilterte Audits, fünf SDKs. Fünf iPad-Control-Rechtecke unverändert; kein Original-/Hilfsmittel-/Hardware-PASS. Docs/weather-surface-hit-regions.md.",
+      "Wetter-Quellenlink: vier tatsächliche native Randaufrufe öffnen Safari mit exaktem Host in dessen Adressanzeige. Zwei finale UI-Ausführungen; Produktdateien unverändert, alte Selektorfehler separat. Keine vollständige Webseiten-/Hilfsmittel-/Originalabnahme. Docs/weather-attribution-os-route.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3335,7 +3336,9 @@
       "Docs/weather-settings-hit-regions.md",
       "Docs/verification/weather-settings-hit-regions.json",
       "Docs/weather-surface-hit-regions.md",
-      "Docs/verification/weather-surface-hit-regions.json"
+      "Docs/verification/weather-surface-hit-regions.json",
+      "Docs/weather-attribution-os-route.md",
+      "Docs/verification/weather-attribution-os-route.json"
     ]
   },
   {
