@@ -1,0 +1,53 @@
+import UIKit
+
+@main final class AppDelegate: UIResponder, UIApplicationDelegate {
+  func application(_ application: UIApplication, configurationForConnecting session: UISceneSession,
+    options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    let configuration=UISceneConfiguration(name:"Probe",sessionRole:session.role)
+    configuration.delegateClass=SceneDelegate.self
+    return configuration
+  }
+}
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+  var window: UIWindow?
+  func scene(_ scene: UIScene,willConnectTo session: UISceneSession,options: UIScene.ConnectionOptions) {
+    guard let scene=scene as? UIWindowScene else { return }
+    let window=UIWindow(windowScene:scene)
+    window.rootViewController=Control();window.makeKeyAndVisible();self.window=window
+  }
+}
+final class RuntimeStateLabel: UILabel {
+  override var accessibilityLabel:String? {
+    get {"UIAccessibility VoiceOver running: \(UIAccessibility.isVoiceOverRunning)"}
+    set {}
+  }
+}
+final class Control: UIViewController,UIGestureRecognizerDelegate {
+  let button=UIButton(type:.system),status=UILabel(),runtime=RuntimeStateLabel()
+  var activations=0,backgroundTaps=0
+  override func viewDidLoad() {
+    super.viewDidLoad();view.backgroundColor = .white
+    let title=UILabel();title.text="Independent UIKit VoiceOver probe";title.numberOfLines=0
+    button.setTitle("Native activation target",for:.normal)
+    button.accessibilityLabel="Native activation target";button.accessibilityIdentifier="native.target"
+    button.addTarget(self,action:#selector(activate),for:.touchUpInside)
+    status.accessibilityIdentifier="native.status";status.numberOfLines=0
+    runtime.text="Native UIAccessibility runtime state";runtime.accessibilityIdentifier="native.runtime";runtime.numberOfLines=0
+    let stack=UIStackView(arrangedSubviews:[title,button,status,runtime]);stack.axis = .vertical;stack.spacing=24
+    stack.translatesAutoresizingMaskIntoConstraints=false;view.addSubview(stack)
+    NSLayoutConstraint.activate([stack.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor,constant:24),
+      stack.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor,constant:-24),
+      stack.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor,constant:64),button.heightAnchor.constraint(equalToConstant:60)])
+    let gesture=UITapGestureRecognizer(target:self,action:#selector(background));gesture.cancelsTouchesInView=false;gesture.delegate=self;view.addGestureRecognizer(gesture)
+    refresh()
+  }
+  func gestureRecognizer(_ gestureRecognizer:UIGestureRecognizer,shouldReceive touch:UITouch)->Bool {
+    !button.bounds.contains(touch.location(in:button))
+  }
+  @objc func activate() {activations+=1;refresh()}
+  @objc func background() {backgroundTaps+=1;refresh()}
+  func refresh() {
+    status.text="button=\(activations);background=\(backgroundTaps)"
+    button.accessibilityValue="Activations \(activations)"
+  }
+}

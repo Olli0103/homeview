@@ -1,0 +1,2478 @@
+{
+  "date": "2026-10-30",
+  "issue": 73,
+  "status": "OPEN/F103 partial",
+  "base_commit": "d729685a24a608501a4b955a6fed078f865f6974",
+  "product_changes": 0,
+  "product_resource_inputs_exact_baseline": 165,
+  "source_inputs": 233,
+  "focus_source_digests": [
+    "94305a6fcfa7982880f7b26d56f958ccb1473649280666695d6935dd50fd7035",
+    "68e7ef08a8d0d7cf957b4c8811aca3d2c660617771bbb15af070769ae5b10432"
+  ],
+  "between_focus_pins": "Only UITest source changes: recipe fixture precondition and corrected existing default title; 232 other inputs byte equal. HomeView compiled app files22 byte equal across all eight archives.",
+  "qualified_focus_cases": 12,
+  "all_UI_history": {
+    "executions": 17,
+    "passed": 13,
+    "failed": 4,
+    "passing_observation_not_raw_input": 1,
+    "failed_raw_input": 2,
+    "failed_wrong_recipe_fixture": 2
+  },
+  "results": [
+    {
+      "checkpoint": "pilot-phone",
+      "source_digest": "891316ec45c320c7a8aecd0884384a305cb6bdda190c6323c510bccc41545d9d",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "expected_failures": 0,
+      "xcresult_runtime_warnings": [],
+      "exit_code": 65,
+      "inputs_unchanged": true,
+      "installed_app_bytes_verified": true,
+      "scope": "Failed raw-input experiment"
+    },
+    {
+      "checkpoint": "keyboard-phone",
+      "source_digest": "0649d0a59fc6d4c056d25e5030187b62f60642ec32301c923bb30553836e18c1",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "expected_failures": 0,
+      "xcresult_runtime_warnings": [],
+      "exit_code": 65,
+      "inputs_unchanged": true,
+      "installed_app_bytes_verified": true,
+      "scope": "Failed raw-input experiment"
+    },
+    {
+      "checkpoint": "uikit-control-phone",
+      "source_digest": "ce670c5f0d39cd0f30063bb96374fc1d5544fdebc53b71a66ea78331dc6c2ba2",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "xcresult_runtime_warnings": [],
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "installed_app_bytes_verified": true,
+      "scope": "Independent observation, not raw activation PASS"
+    },
+    {
+      "checkpoint": "focus-phone",
+      "source_digest": "94305a6fcfa7982880f7b26d56f958ccb1473649280666695d6935dd50fd7035",
+      "passed": 5,
+      "failed": 1,
+      "skipped": 0,
+      "expected_failures": 0,
+      "xcresult_runtime_warnings": [],
+      "exit_code": 65,
+      "inputs_unchanged": true,
+      "installed_app_bytes_verified": true,
+      "scope": "Native focus/reported speech"
+    },
+    {
+      "checkpoint": "focus-pad-pilot",
+      "source_digest": "94305a6fcfa7982880f7b26d56f958ccb1473649280666695d6935dd50fd7035",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "xcresult_runtime_warnings": [],
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "installed_app_bytes_verified": true,
+      "scope": "Native focus/reported speech"
+    },
+    {
+      "checkpoint": "focus-pad-rest",
+      "source_digest": "94305a6fcfa7982880f7b26d56f958ccb1473649280666695d6935dd50fd7035",
+      "passed": 4,
+      "failed": 1,
+      "skipped": 0,
+      "expected_failures": 0,
+      "xcresult_runtime_warnings": [],
+      "exit_code": 65,
+      "inputs_unchanged": true,
+      "installed_app_bytes_verified": true,
+      "scope": "Native focus/reported speech"
+    },
+    {
+      "checkpoint": "focus-recipe-phone",
+      "source_digest": "68e7ef08a8d0d7cf957b4c8811aca3d2c660617771bbb15af070769ae5b10432",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "xcresult_runtime_warnings": [],
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "installed_app_bytes_verified": true,
+      "scope": "Native focus/reported speech"
+    },
+    {
+      "checkpoint": "focus-recipe-pad",
+      "source_digest": "68e7ef08a8d0d7cf957b4c8811aca3d2c660617771bbb15af070769ae5b10432",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "xcresult_runtime_warnings": [],
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "installed_app_bytes_verified": true,
+      "scope": "Native focus/reported speech"
+    }
+  ],
+  "native_focus_receipts": [
+    {
+      "checkpoint": "focus-phone",
+      "device": "iPhone",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 3.0499999411404133e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 10.754044291679747,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 10.772259499994107,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 11.321524875005707,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 11.84355674998369,
+          "event": "move-forward",
+          "utterance": "Cameras"
+        },
+        {
+          "elapsed": 12.365511958254501,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 12.89281975000631,
+          "event": "move-forward",
+          "utterance": "Show 9 Button"
+        },
+        {
+          "elapsed": 13.417159083299339,
+          "event": "move-forward",
+          "utterance": "AI-generated demo still, no camera access , Front Door Button"
+        },
+        {
+          "elapsed": 13.933521874947473,
+          "event": "move-forward",
+          "utterance": "AI-generated demo still, no camera access , Back Yard Button"
+        },
+        {
+          "elapsed": 14.455228874925524,
+          "event": "move-forward",
+          "utterance": "AI-generated demo still, no camera access , Living Room Button"
+        },
+        {
+          "elapsed": 14.977157041663304,
+          "event": "move-forward",
+          "utterance": "AI-generated demo still, no camera access , Driveway Button"
+        },
+        {
+          "elapsed": 14.977222374989651,
+          "event": "required-values-result",
+          "found": 6,
+          "missing": []
+        },
+        {
+          "elapsed": 15.495161708327942,
+          "event": "move-backward",
+          "utterance": "AI-generated demo still, no camera access , Living Room Button"
+        },
+        {
+          "elapsed": 15.998730833292939,
+          "event": "move-forward-return",
+          "utterance": "AI-generated demo still, no camera access , Driveway Button"
+        },
+        {
+          "elapsed": 22.749086124938913,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Cameras",
+        "Show 9",
+        "Front Door",
+        "Back Yard",
+        "Living Room",
+        "Driveway"
+      ],
+      "restored": true,
+      "scene": "camera",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Back Yard",
+        "Cameras",
+        "Driveway",
+        "Front Door",
+        "Living Room",
+        "Show 9"
+      ]
+    },
+    {
+      "checkpoint": "focus-phone",
+      "device": "iPhone",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 1.1291704140603542e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 18.459631083416753,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 18.46051845839247,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 19.003816625103354,
+          "event": "move-forward",
+          "utterance": "Faces"
+        },
+        {
+          "elapsed": 19.520014250068925,
+          "event": "move-forward",
+          "utterance": "Done Button"
+        },
+        {
+          "elapsed": 20.04607416666113,
+          "event": "move-forward",
+          "utterance": "Modular Selected Button"
+        },
+        {
+          "elapsed": 20.568014250020497,
+          "event": "move-forward",
+          "utterance": "Watch Modular Not selected Button"
+        },
+        {
+          "elapsed": 21.091566291754134,
+          "event": "move-forward",
+          "utterance": "Infograph Modular Not selected Button"
+        },
+        {
+          "elapsed": 21.60826233343687,
+          "event": "move-forward",
+          "utterance": "Modular Duo Not selected Button"
+        },
+        {
+          "elapsed": 22.1278126250254,
+          "event": "move-forward",
+          "utterance": "Modular Compact Not selected Button"
+        },
+        {
+          "elapsed": 22.646863041678444,
+          "event": "move-forward",
+          "utterance": "Home Modular Not selected Button"
+        },
+        {
+          "elapsed": 23.16906779166311,
+          "event": "move-forward",
+          "utterance": "Home Modular Clock Not selected Button"
+        },
+        {
+          "elapsed": 23.701129500055686,
+          "event": "move-forward",
+          "utterance": "Photos Not selected Button"
+        },
+        {
+          "elapsed": 24.229799500084482,
+          "event": "move-forward",
+          "utterance": "Weather Not selected Button"
+        },
+        {
+          "elapsed": 24.754074750002474,
+          "event": "move-forward",
+          "utterance": "Calendar Not selected Button"
+        },
+        {
+          "elapsed": 25.268225666717626,
+          "event": "move-forward",
+          "utterance": "Flow Not selected Button"
+        },
+        {
+          "elapsed": 25.79249725001864,
+          "event": "move-forward",
+          "utterance": "Fade Not selected Button"
+        },
+        {
+          "elapsed": 26.31456629175227,
+          "event": "move-forward",
+          "utterance": "Numerals Not selected Button"
+        },
+        {
+          "elapsed": 26.845157458330505,
+          "event": "move-forward",
+          "utterance": "Home Camera Not selected Button"
+        },
+        {
+          "elapsed": 27.362012708443217,
+          "event": "move-forward",
+          "utterance": "Top left, Panel, Date Button Choose complication"
+        },
+        {
+          "elapsed": 27.891320750000887,
+          "event": "move-forward",
+          "utterance": "Top right, Panel, Clock Button Choose complication"
+        },
+        {
+          "elapsed": 28.414932458428666,
+          "event": "move-forward",
+          "utterance": "Bottom left, Panel, Music Button Choose complication"
+        },
+        {
+          "elapsed": 28.935298166703433,
+          "event": "move-forward",
+          "utterance": "Bottom right, Panel, Weather Button Choose complication"
+        },
+        {
+          "elapsed": 29.46422304166481,
+          "event": "move-forward",
+          "utterance": "Tap an outlined area to edit"
+        },
+        {
+          "elapsed": 29.991822041687556,
+          "event": "move-forward",
+          "utterance": "Color"
+        },
+        {
+          "elapsed": 30.52096037508454,
+          "event": "move-forward",
+          "utterance": "Mist style Selected Button"
+        },
+        {
+          "elapsed": 31.04531195841264,
+          "event": "move-forward",
+          "utterance": "Sage style Not selected Button"
+        },
+        {
+          "elapsed": 31.570545583381318,
+          "event": "move-forward",
+          "utterance": "Complications"
+        },
+        {
+          "elapsed": 31.570643166662194,
+          "event": "required-values-result",
+          "found": 4,
+          "missing": []
+        },
+        {
+          "elapsed": 32.08235908334609,
+          "event": "move-backward",
+          "utterance": "Sage style Not selected Button"
+        },
+        {
+          "elapsed": 32.6042617916828,
+          "event": "move-forward-return",
+          "utterance": "Complications"
+        },
+        {
+          "elapsed": 39.27413458342198,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Faces",
+        "Done",
+        "Complications",
+        "Top left"
+      ],
+      "restored": true,
+      "scene": "editor",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Complications",
+        "Done",
+        "Faces",
+        "Top left"
+      ]
+    },
+    {
+      "checkpoint": "focus-phone",
+      "device": "iPhone",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 1.0916613973677158e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 12.044705708278343,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 12.045672583277337,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 12.583220416679978,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 13.105460333288647,
+          "event": "move-forward",
+          "utterance": "Front Door"
+        },
+        {
+          "elapsed": 13.623784124967642,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 14.141126708360389,
+          "event": "move-forward",
+          "utterance": "Lock   Image"
+        },
+        {
+          "elapsed": 14.654144666623324,
+          "event": "move-forward",
+          "utterance": "Locked"
+        },
+        {
+          "elapsed": 15.177292249980383,
+          "event": "move-forward",
+          "utterance": "Mock lock · Device authentication required"
+        },
+        {
+          "elapsed": 15.71041783329565,
+          "event": "move-forward",
+          "utterance": "Authenticate Device Button"
+        },
+        {
+          "elapsed": 15.710467749973759,
+          "event": "required-values-result",
+          "found": 4,
+          "missing": []
+        },
+        {
+          "elapsed": 16.234833916649222,
+          "event": "move-backward",
+          "utterance": "Mock lock · Device authentication required"
+        },
+        {
+          "elapsed": 16.752461125026457,
+          "event": "move-forward-return",
+          "utterance": "Authenticate Device Button"
+        },
+        {
+          "elapsed": 23.41666312504094,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Front Door",
+        "Locked",
+        "Mock lock",
+        "Authenticate Device"
+      ],
+      "restored": true,
+      "scene": "lock",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Authenticate Device",
+        "Front Door",
+        "Locked",
+        "Mock lock"
+      ]
+    },
+    {
+      "checkpoint": "focus-phone",
+      "device": "iPhone",
+      "accepted_focus_case": false,
+      "events": [
+        {
+          "elapsed": 9.583309292793274e-06,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 10.735845583258197,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 10.736723833251745,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 11.28048433328513,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 11.807639249949716,
+          "event": "move-forward",
+          "utterance": "Recipes"
+        },
+        {
+          "elapsed": 12.325562416575849,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 12.841700666584074,
+          "event": "move-forward",
+          "utterance": "Recent & Pinned"
+        },
+        {
+          "elapsed": 13.35589374997653,
+          "event": "move-forward",
+          "utterance": "Butternut Squash Soup , 35 min. · Home Cookbook Button"
+        },
+        {
+          "elapsed": 13.884215374942869,
+          "event": "move-forward",
+          "utterance": "Faces Button"
+        },
+        {
+          "elapsed": 14.408714958233759,
+          "event": "move-forward",
+          "utterance": "Apps Button"
+        },
+        {
+          "elapsed": 14.933604249963537,
+          "event": "move-forward",
+          "utterance": "MOCK HOME"
+        },
+        {
+          "elapsed": 15.44983045826666,
+          "event": "move-forward",
+          "utterance": "Assistant Button"
+        },
+        {
+          "elapsed": 15.9780762916198,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 18.31838095828425,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 20.645882499986328,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 22.957488166633993,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 25.304691541590728,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 27.659596083220094,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 29.987533708219416,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 32.317866374971345,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 34.687535999924876,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 36.98399262491148,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 39.341396916657686,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 41.66187858325429,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 43.991901333327405,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 46.33972904155962,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 48.67794945824426,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 51.00149295828305,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 53.32840937492438,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 55.65015899995342,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 57.986342749907635,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 60.28836566663813,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 62.61283887492027,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 64.90341366664506,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 67.24130633322056,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 69.56904337496962,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 71.90654387499671,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 74.23378049989697,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 76.5870525832288,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 78.92060104163829,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 81.28020637494046,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 81.28029020829126,
+          "event": "required-values-result",
+          "found": 2,
+          "missing": [
+            "Garden Tomato Pasta"
+          ]
+        },
+        {
+          "elapsed": 86.54836349992547,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Recipes",
+        "Recent & Pinned",
+        "Garden Tomato Pasta"
+      ],
+      "restored": true,
+      "scene": "recipe",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Recent & Pinned",
+        "Recipes"
+      ]
+    },
+    {
+      "checkpoint": "focus-phone",
+      "device": "iPhone",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 1.2208358384668827e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 10.688542916672304,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 10.68930208333768,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 11.233073916635476,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 11.748624625033699,
+          "event": "move-forward",
+          "utterance": "Settings"
+        },
+        {
+          "elapsed": 12.275729749933816,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 12.800135916681029,
+          "event": "move-forward",
+          "utterance": "Mock home only"
+        },
+        {
+          "elapsed": 13.319117499981076,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected. Other services can be connected b"
+        },
+        {
+          "elapsed": 13.8470523749711,
+          "event": "move-forward",
+          "utterance": "Keep Display On Off Button"
+        },
+        {
+          "elapsed": 14.368907875032164,
+          "event": "move-forward",
+          "utterance": "Reset local app content Button"
+        },
+        {
+          "elapsed": 14.90031241660472,
+          "event": "move-forward",
+          "utterance": "Authenticate, then confirm separately. Nothing is reset by openi"
+        },
+        {
+          "elapsed": 15.423183541628532,
+          "event": "move-forward",
+          "utterance": "Welcome and service overview Button"
+        },
+        {
+          "elapsed": 15.943239458370954,
+          "event": "move-forward",
+          "utterance": "Power adapter information Button"
+        },
+        {
+          "elapsed": 16.4620655416511,
+          "event": "move-forward",
+          "utterance": "selected Reference clock On Button"
+        },
+        {
+          "elapsed": 16.976444666623138,
+          "event": "move-forward",
+          "utterance": "Night mode Off Button"
+        },
+        {
+          "elapsed": 17.49251050001476,
+          "event": "move-forward",
+          "utterance": "Far-view layout Off Button"
+        },
+        {
+          "elapsed": 18.01039387495257,
+          "event": "move-forward",
+          "utterance": "selected Profile present On Button"
+        },
+        {
+          "elapsed": 18.53339904162567,
+          "event": "move-forward",
+          "utterance": "Edit Faces Button"
+        },
+        {
+          "elapsed": 19.051773875020444,
+          "event": "move-forward",
+          "utterance": "Light & brightness Button"
+        },
+        {
+          "elapsed": 19.572994458372705,
+          "event": "move-forward",
+          "utterance": "Mock blinds"
+        },
+        {
+          "elapsed": 20.10178729170002,
+          "event": "move-forward",
+          "utterance": "80%"
+        },
+        {
+          "elapsed": 20.62907733337488,
+          "event": "move-forward",
+          "utterance": "Decrease Mock blinds Button"
+        },
+        {
+          "elapsed": 21.152533708373085,
+          "event": "move-forward",
+          "utterance": "Mock blinds 80% adjustable Swipe up or down with one finger to a"
+        },
+        {
+          "elapsed": 21.677553708315827,
+          "event": "move-forward",
+          "utterance": "Increase Mock blinds Button"
+        },
+        {
+          "elapsed": 22.199234916712157,
+          "event": "move-forward",
+          "utterance": "Mock fan speed"
+        },
+        {
+          "elapsed": 22.715901666670106,
+          "event": "move-forward",
+          "utterance": "45%"
+        },
+        {
+          "elapsed": 23.235883416607976,
+          "event": "move-forward",
+          "utterance": "Decrease Mock fan speed Button"
+        },
+        {
+          "elapsed": 23.76677662495058,
+          "event": "move-forward",
+          "utterance": "Mock fan speed 45% adjustable Swipe up or down with one finger t"
+        },
+        {
+          "elapsed": 24.297410666709766,
+          "event": "move-forward",
+          "utterance": "Increase Mock fan speed Button"
+        },
+        {
+          "elapsed": 24.827206916641444,
+          "event": "move-forward",
+          "utterance": "Simulate doorbell Button"
+        },
+        {
+          "elapsed": 25.353690624935552,
+          "event": "move-forward",
+          "utterance": "Simulate incoming call Button"
+        },
+        {
+          "elapsed": 25.859591708285734,
+          "event": "move-forward",
+          "utterance": "Sign out demo profile Button"
+        },
+        {
+          "elapsed": 26.379965541651472,
+          "event": "move-forward",
+          "utterance": "Native system features"
+        },
+        {
+          "elapsed": 26.911833874997683,
+          "event": "move-forward",
+          "utterance": "Public system APIs can supply our own UI with calendars, reminde"
+        },
+        {
+          "elapsed": 27.43869154166896,
+          "event": "move-forward",
+          "utterance": "Connected services"
+        },
+        {
+          "elapsed": 27.966392250033095,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected"
+        },
+        {
+          "elapsed": 28.49269416660536,
+          "event": "move-forward",
+          "utterance": "Calendar and reminders are protected by your device authenticati"
+        },
+        {
+          "elapsed": 29.025916249956936,
+          "event": "move-forward",
+          "utterance": "Guests can use public weather, local timers, bundled media and p"
+        },
+        {
+          "elapsed": 29.54793295834679,
+          "event": "move-forward",
+          "utterance": "Shared faces"
+        },
+        {
+          "elapsed": 30.079482083325274,
+          "event": "move-forward",
+          "utterance": "Connecting or unlocking never publishes private contents. In Cal"
+        },
+        {
+          "elapsed": 30.602196499938145,
+          "event": "move-forward",
+          "utterance": "No calendar cards shared"
+        },
+        {
+          "elapsed": 31.12941262498498,
+          "event": "move-forward",
+          "utterance": "Calendar"
+        },
+        {
+          "elapsed": 31.649679916677997,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 32.17348212504294,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 32.17354150000028,
+          "event": "required-values-result",
+          "found": 7,
+          "missing": []
+        },
+        {
+          "elapsed": 32.702126874937676,
+          "event": "move-backward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 33.23578820831608,
+          "event": "move-forward-return",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 40.41617312503513,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Settings",
+        "Mock home only",
+        "Native system features",
+        "Connected services",
+        "Apple Home stays disconnected",
+        "Calendar",
+        "Not connected"
+      ],
+      "restored": true,
+      "scene": "settings",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Apple Home stays disconnected",
+        "Calendar",
+        "Connected services",
+        "Mock home only",
+        "Native system features",
+        "Not connected",
+        "Settings"
+      ]
+    },
+    {
+      "checkpoint": "focus-phone",
+      "device": "iPhone",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 1.0166666470468044e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 10.5025712500792,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 10.504327958333306,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 11.039294500020333,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 11.55863633332774,
+          "event": "move-forward",
+          "utterance": "Add another timer Button"
+        },
+        {
+          "elapsed": 12.074343583313748,
+          "event": "move-forward",
+          "utterance": "10:56"
+        },
+        {
+          "elapsed": 12.594822374987416,
+          "event": "move-forward",
+          "utterance": "15 MIN"
+        },
+        {
+          "elapsed": 13.116421958315186,
+          "event": "move-forward",
+          "utterance": "Foreground timer"
+        },
+        {
+          "elapsed": 13.63658812502399,
+          "event": "move-forward",
+          "utterance": "Resume timer Button"
+        },
+        {
+          "elapsed": 14.170957708382048,
+          "event": "move-forward",
+          "utterance": "Delete timer Button"
+        },
+        {
+          "elapsed": 14.171077541657723,
+          "event": "required-values-result",
+          "found": 5,
+          "missing": []
+        },
+        {
+          "elapsed": 14.692667666706257,
+          "event": "move-backward",
+          "utterance": "Resume timer Button"
+        },
+        {
+          "elapsed": 15.204622416640632,
+          "event": "move-forward-return",
+          "utterance": "Delete timer Button"
+        },
+        {
+          "elapsed": 21.752697166637518,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "10:56",
+        "15 MIN",
+        "Foreground timer",
+        "Resume timer",
+        "Delete timer"
+      ],
+      "restored": true,
+      "scene": "timer",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "10:56",
+        "15 MIN",
+        "Delete timer",
+        "Foreground timer",
+        "Resume timer"
+      ]
+    },
+    {
+      "checkpoint": "focus-pad-pilot",
+      "device": "iPad",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 3.8458267226815224e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 11.499568166676909,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 11.500506708282046,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 12.040643541608006,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 12.56894058326725,
+          "event": "move-forward",
+          "utterance": "Cameras"
+        },
+        {
+          "elapsed": 13.09646795829758,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 13.620918541681021,
+          "event": "move-forward",
+          "utterance": "Show 9 Button"
+        },
+        {
+          "elapsed": 14.13459775003139,
+          "event": "move-forward",
+          "utterance": "AI-generated demo still, no camera access , Front Door Button"
+        },
+        {
+          "elapsed": 14.659609874943271,
+          "event": "move-forward",
+          "utterance": "AI-generated demo still, no camera access , Back Yard Button"
+        },
+        {
+          "elapsed": 15.177453541662544,
+          "event": "move-forward",
+          "utterance": "AI-generated demo still, no camera access , Living Room Button"
+        },
+        {
+          "elapsed": 15.694353833328933,
+          "event": "move-forward",
+          "utterance": "AI-generated demo still, no camera access , Driveway Button"
+        },
+        {
+          "elapsed": 15.694416583282873,
+          "event": "required-values-result",
+          "found": 6,
+          "missing": []
+        },
+        {
+          "elapsed": 16.22241137502715,
+          "event": "move-backward",
+          "utterance": "AI-generated demo still, no camera access , Living Room Button"
+        },
+        {
+          "elapsed": 16.745973499957472,
+          "event": "move-forward-return",
+          "utterance": "AI-generated demo still, no camera access , Driveway Button"
+        },
+        {
+          "elapsed": 23.754991458263248,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Cameras",
+        "Show 9",
+        "Front Door",
+        "Back Yard",
+        "Living Room",
+        "Driveway"
+      ],
+      "restored": true,
+      "scene": "camera",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Back Yard",
+        "Cameras",
+        "Driveway",
+        "Front Door",
+        "Living Room",
+        "Show 9"
+      ]
+    },
+    {
+      "checkpoint": "focus-pad-rest",
+      "device": "iPad",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 8.083332795649767e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 16.64263770834077,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 16.645442291744985,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 17.197331791743636,
+          "event": "move-forward",
+          "utterance": "Faces"
+        },
+        {
+          "elapsed": 17.7199476667447,
+          "event": "move-forward",
+          "utterance": "Done Button"
+        },
+        {
+          "elapsed": 18.242649916675873,
+          "event": "move-forward",
+          "utterance": "Modular Selected Button"
+        },
+        {
+          "elapsed": 18.75767816673033,
+          "event": "move-forward",
+          "utterance": "Watch Modular Not selected Button"
+        },
+        {
+          "elapsed": 19.27156479167752,
+          "event": "move-forward",
+          "utterance": "Infograph Modular Not selected Button"
+        },
+        {
+          "elapsed": 19.79722812504042,
+          "event": "move-forward",
+          "utterance": "Modular Duo Not selected Button"
+        },
+        {
+          "elapsed": 20.31422725005541,
+          "event": "move-forward",
+          "utterance": "Modular Compact Not selected Button"
+        },
+        {
+          "elapsed": 20.83403929171618,
+          "event": "move-forward",
+          "utterance": "Home Modular Not selected Button"
+        },
+        {
+          "elapsed": 21.36173066671472,
+          "event": "move-forward",
+          "utterance": "Home Modular Clock Not selected Button"
+        },
+        {
+          "elapsed": 21.882630666717887,
+          "event": "move-forward",
+          "utterance": "Photos Not selected Button"
+        },
+        {
+          "elapsed": 22.410799791687168,
+          "event": "move-forward",
+          "utterance": "Weather Not selected Button"
+        },
+        {
+          "elapsed": 22.944285583333112,
+          "event": "move-forward",
+          "utterance": "Calendar Not selected Button"
+        },
+        {
+          "elapsed": 23.45822999998927,
+          "event": "move-forward",
+          "utterance": "Flow Not selected Button"
+        },
+        {
+          "elapsed": 23.982769541675225,
+          "event": "move-forward",
+          "utterance": "Fade Not selected Button"
+        },
+        {
+          "elapsed": 24.501701958361082,
+          "event": "move-forward",
+          "utterance": "Numerals Not selected Button"
+        },
+        {
+          "elapsed": 25.01970349997282,
+          "event": "move-forward",
+          "utterance": "Home Camera Not selected Button"
+        },
+        {
+          "elapsed": 25.545799041632563,
+          "event": "move-forward",
+          "utterance": "Top left, Panel, Date Button Choose complication"
+        },
+        {
+          "elapsed": 26.073861458338797,
+          "event": "move-forward",
+          "utterance": "Top right, Panel, Clock Button Choose complication"
+        },
+        {
+          "elapsed": 26.5961827916326,
+          "event": "move-forward",
+          "utterance": "Bottom left, Panel, Music Button Choose complication"
+        },
+        {
+          "elapsed": 27.12157225003466,
+          "event": "move-forward",
+          "utterance": "Bottom right, Panel, Weather Button Choose complication"
+        },
+        {
+          "elapsed": 27.648460458382033,
+          "event": "move-forward",
+          "utterance": "Tap an outlined area to edit"
+        },
+        {
+          "elapsed": 28.178386291721836,
+          "event": "move-forward",
+          "utterance": "Color"
+        },
+        {
+          "elapsed": 28.69034454168286,
+          "event": "move-forward",
+          "utterance": "Mist style Selected Button"
+        },
+        {
+          "elapsed": 29.204249541740865,
+          "event": "move-forward",
+          "utterance": "Sage style Not selected Button"
+        },
+        {
+          "elapsed": 29.719157916726544,
+          "event": "move-forward",
+          "utterance": "Complications"
+        },
+        {
+          "elapsed": 29.719261333346367,
+          "event": "required-values-result",
+          "found": 4,
+          "missing": []
+        },
+        {
+          "elapsed": 30.244715916691348,
+          "event": "move-backward",
+          "utterance": "Sage style Not selected Button"
+        },
+        {
+          "elapsed": 30.763854125048965,
+          "event": "move-forward-return",
+          "utterance": "Complications"
+        },
+        {
+          "elapsed": 37.632779833395034,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Faces",
+        "Done",
+        "Complications",
+        "Top left"
+      ],
+      "restored": true,
+      "scene": "editor",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Complications",
+        "Done",
+        "Faces",
+        "Top left"
+      ]
+    },
+    {
+      "checkpoint": "focus-pad-rest",
+      "device": "iPad",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 8.333357982337475e-06,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 12.190980000072159,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 12.191674125031568,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 12.732462583342567,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 13.251096999971196,
+          "event": "move-forward",
+          "utterance": "Front Door"
+        },
+        {
+          "elapsed": 13.778649499989115,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 14.302931916667148,
+          "event": "move-forward",
+          "utterance": "Lock   Image"
+        },
+        {
+          "elapsed": 14.821974541642703,
+          "event": "move-forward",
+          "utterance": "Locked"
+        },
+        {
+          "elapsed": 15.350065083359368,
+          "event": "move-forward",
+          "utterance": "Mock lock · Device authentication required"
+        },
+        {
+          "elapsed": 15.869785374961793,
+          "event": "move-forward",
+          "utterance": "Authenticate Device Button"
+        },
+        {
+          "elapsed": 15.86983054166194,
+          "event": "required-values-result",
+          "found": 4,
+          "missing": []
+        },
+        {
+          "elapsed": 16.387072416720912,
+          "event": "move-backward",
+          "utterance": "Mock lock · Device authentication required"
+        },
+        {
+          "elapsed": 16.907246833317913,
+          "event": "move-forward-return",
+          "utterance": "Authenticate Device Button"
+        },
+        {
+          "elapsed": 23.584325833362527,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Front Door",
+        "Locked",
+        "Mock lock",
+        "Authenticate Device"
+      ],
+      "restored": true,
+      "scene": "lock",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Authenticate Device",
+        "Front Door",
+        "Locked",
+        "Mock lock"
+      ]
+    },
+    {
+      "checkpoint": "focus-pad-rest",
+      "device": "iPad",
+      "accepted_focus_case": false,
+      "events": [
+        {
+          "elapsed": 1.0291696526110172e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 10.44435091665946,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 10.445330625050701,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 10.978887083358131,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 11.497079875087366,
+          "event": "move-forward",
+          "utterance": "Recipes"
+        },
+        {
+          "elapsed": 12.016950958408415,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 12.529998083366081,
+          "event": "move-forward",
+          "utterance": "Recent & Pinned"
+        },
+        {
+          "elapsed": 13.044960250030272,
+          "event": "move-forward",
+          "utterance": "Butternut Squash Soup , 35 min. · Home Cookbook Button"
+        },
+        {
+          "elapsed": 13.563752791727893,
+          "event": "move-forward",
+          "utterance": "Faces Button"
+        },
+        {
+          "elapsed": 14.086578333401121,
+          "event": "move-forward",
+          "utterance": "Apps Button"
+        },
+        {
+          "elapsed": 14.599240583367646,
+          "event": "move-forward",
+          "utterance": "MOCK HOME"
+        },
+        {
+          "elapsed": 15.128844208316877,
+          "event": "move-forward",
+          "utterance": "Assistant Button"
+        },
+        {
+          "elapsed": 15.645241750054993,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 17.97235545841977,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 20.285716874990612,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 22.61861400003545,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 24.94003745832015,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 27.285354625084437,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 29.60519366664812,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 31.94055958336685,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 34.25250050006434,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 36.58865770837292,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 38.90031208342407,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 41.22554291668348,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 43.55280041671358,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 45.88503825000953,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 48.22164095833432,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 50.56779425009154,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 52.90797879174352,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 55.229484000010416,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 57.57955329166725,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 59.90053874999285,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 62.24737620842643,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 64.57647841668222,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 66.90097408334259,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 69.24101070838515,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 71.5702522500651,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 73.90037187503185,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 76.22984141670167,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 78.56681320839562,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 80.90269591670949,
+          "event": "move-forward",
+          "utterance": "Control Center Button"
+        },
+        {
+          "elapsed": 80.9028288749978,
+          "event": "required-values-result",
+          "found": 2,
+          "missing": [
+            "Garden Tomato Pasta"
+          ]
+        },
+        {
+          "elapsed": 86.16159124998376,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Recipes",
+        "Recent & Pinned",
+        "Garden Tomato Pasta"
+      ],
+      "restored": true,
+      "scene": "recipe",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Recent & Pinned",
+        "Recipes"
+      ]
+    },
+    {
+      "checkpoint": "focus-pad-rest",
+      "device": "iPad",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 9.624985978007317e-06,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 10.710624208324589,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 10.71130754170008,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 11.246374999987893,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 11.762584000010975,
+          "event": "move-forward",
+          "utterance": "Settings"
+        },
+        {
+          "elapsed": 12.294208958279341,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 12.824538375018165,
+          "event": "move-forward",
+          "utterance": "Mock home only"
+        },
+        {
+          "elapsed": 13.351948541589081,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected. Other services can be connected b"
+        },
+        {
+          "elapsed": 13.87275612493977,
+          "event": "move-forward",
+          "utterance": "Keep Display On Off Button"
+        },
+        {
+          "elapsed": 14.389965749927796,
+          "event": "move-forward",
+          "utterance": "Reset local app content Button"
+        },
+        {
+          "elapsed": 14.903049416607246,
+          "event": "move-forward",
+          "utterance": "Authenticate, then confirm separately. Nothing is reset by openi"
+        },
+        {
+          "elapsed": 15.427580249961466,
+          "event": "move-forward",
+          "utterance": "Welcome and service overview Button"
+        },
+        {
+          "elapsed": 15.951910708332434,
+          "event": "move-forward",
+          "utterance": "Power adapter information Button"
+        },
+        {
+          "elapsed": 16.471742916619405,
+          "event": "move-forward",
+          "utterance": "selected Reference clock On Button"
+        },
+        {
+          "elapsed": 16.97754300001543,
+          "event": "move-forward",
+          "utterance": "Night mode Off Button"
+        },
+        {
+          "elapsed": 17.507526083267294,
+          "event": "move-forward",
+          "utterance": "Far-view layout Off Button"
+        },
+        {
+          "elapsed": 18.01782299997285,
+          "event": "move-forward",
+          "utterance": "selected Profile present On Button"
+        },
+        {
+          "elapsed": 18.553174208267592,
+          "event": "move-forward",
+          "utterance": "Edit Faces Button"
+        },
+        {
+          "elapsed": 19.07407304167282,
+          "event": "move-forward",
+          "utterance": "Light & brightness Button"
+        },
+        {
+          "elapsed": 19.58965837501455,
+          "event": "move-forward",
+          "utterance": "Mock blinds"
+        },
+        {
+          "elapsed": 20.122413958306424,
+          "event": "move-forward",
+          "utterance": "80%"
+        },
+        {
+          "elapsed": 20.64331254165154,
+          "event": "move-forward",
+          "utterance": "Decrease Mock blinds Button"
+        },
+        {
+          "elapsed": 21.17240249994211,
+          "event": "move-forward",
+          "utterance": "Mock blinds 80% adjustable Swipe up or down with one finger to a"
+        },
+        {
+          "elapsed": 21.701157124945894,
+          "event": "move-forward",
+          "utterance": "Increase Mock blinds Button"
+        },
+        {
+          "elapsed": 22.2213545832783,
+          "event": "move-forward",
+          "utterance": "Mock fan speed"
+        },
+        {
+          "elapsed": 22.739701791666448,
+          "event": "move-forward",
+          "utterance": "45%"
+        },
+        {
+          "elapsed": 23.260374791687354,
+          "event": "move-forward",
+          "utterance": "Decrease Mock fan speed Button"
+        },
+        {
+          "elapsed": 23.780524208326824,
+          "event": "move-forward",
+          "utterance": "Mock fan speed 45% adjustable Swipe up or down with one finger t"
+        },
+        {
+          "elapsed": 24.30394187499769,
+          "event": "move-forward",
+          "utterance": "Increase Mock fan speed Button"
+        },
+        {
+          "elapsed": 24.81546166667249,
+          "event": "move-forward",
+          "utterance": "Simulate doorbell Button"
+        },
+        {
+          "elapsed": 25.341241874964908,
+          "event": "move-forward",
+          "utterance": "Simulate incoming call Button"
+        },
+        {
+          "elapsed": 25.870523291639984,
+          "event": "move-forward",
+          "utterance": "Sign out demo profile Button"
+        },
+        {
+          "elapsed": 26.39336824999191,
+          "event": "move-forward",
+          "utterance": "Native system features"
+        },
+        {
+          "elapsed": 26.92412529163994,
+          "event": "move-forward",
+          "utterance": "Public system APIs can supply our own UI with calendars, reminde"
+        },
+        {
+          "elapsed": 27.45208337495569,
+          "event": "move-forward",
+          "utterance": "Connected services"
+        },
+        {
+          "elapsed": 27.977850000024773,
+          "event": "move-forward",
+          "utterance": "Apple Home stays disconnected"
+        },
+        {
+          "elapsed": 28.4952001250349,
+          "event": "move-forward",
+          "utterance": "Calendar and reminders are protected by your device authenticati"
+        },
+        {
+          "elapsed": 29.016893791616894,
+          "event": "move-forward",
+          "utterance": "Guests can use public weather, local timers, bundled media and p"
+        },
+        {
+          "elapsed": 29.53439487493597,
+          "event": "move-forward",
+          "utterance": "Shared faces"
+        },
+        {
+          "elapsed": 30.151474541635253,
+          "event": "move-forward",
+          "utterance": "Connecting or unlocking never publishes private contents. In Cal"
+        },
+        {
+          "elapsed": 30.677499041659757,
+          "event": "move-forward",
+          "utterance": "No calendar cards shared"
+        },
+        {
+          "elapsed": 31.20397054159548,
+          "event": "move-forward",
+          "utterance": "Calendar"
+        },
+        {
+          "elapsed": 31.723560874932446,
+          "event": "move-forward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 32.25609145825729,
+          "event": "move-forward",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 32.25624549994245,
+          "event": "required-values-result",
+          "found": 7,
+          "missing": []
+        },
+        {
+          "elapsed": 32.78556174994446,
+          "event": "move-backward",
+          "utterance": "Connect Button"
+        },
+        {
+          "elapsed": 33.304868541657925,
+          "event": "move-forward-return",
+          "utterance": "Not connected"
+        },
+        {
+          "elapsed": 40.55363220826257,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Settings",
+        "Mock home only",
+        "Native system features",
+        "Connected services",
+        "Apple Home stays disconnected",
+        "Calendar",
+        "Not connected"
+      ],
+      "restored": true,
+      "scene": "settings",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Apple Home stays disconnected",
+        "Calendar",
+        "Connected services",
+        "Mock home only",
+        "Native system features",
+        "Not connected",
+        "Settings"
+      ]
+    },
+    {
+      "checkpoint": "focus-pad-rest",
+      "device": "iPad",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 8.916598744690418e-06,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 10.314722333336249,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 10.31539779168088,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 10.854325749911368,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 11.378272083238699,
+          "event": "move-forward",
+          "utterance": "Add another timer Button"
+        },
+        {
+          "elapsed": 11.904117124970071,
+          "event": "move-forward",
+          "utterance": "10:56"
+        },
+        {
+          "elapsed": 12.434822999988683,
+          "event": "move-forward",
+          "utterance": "15 MIN"
+        },
+        {
+          "elapsed": 12.956489583244547,
+          "event": "move-forward",
+          "utterance": "Foreground timer"
+        },
+        {
+          "elapsed": 13.484968083328567,
+          "event": "move-forward",
+          "utterance": "Resume timer Button"
+        },
+        {
+          "elapsed": 14.004485749988817,
+          "event": "move-forward",
+          "utterance": "Delete timer Button"
+        },
+        {
+          "elapsed": 14.004595416598022,
+          "event": "required-values-result",
+          "found": 5,
+          "missing": []
+        },
+        {
+          "elapsed": 14.52593408327084,
+          "event": "move-backward",
+          "utterance": "Resume timer Button"
+        },
+        {
+          "elapsed": 15.042070583323948,
+          "event": "move-forward-return",
+          "utterance": "Delete timer Button"
+        },
+        {
+          "elapsed": 21.649680166621692,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "10:56",
+        "15 MIN",
+        "Foreground timer",
+        "Resume timer",
+        "Delete timer"
+      ],
+      "restored": true,
+      "scene": "timer",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "10:56",
+        "15 MIN",
+        "Delete timer",
+        "Foreground timer",
+        "Resume timer"
+      ]
+    },
+    {
+      "checkpoint": "focus-recipe-phone",
+      "device": "iPhone",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 3.38749960064888e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 11.907648166641593,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 11.908859708346426,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 12.446207250002772,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 12.970660708379,
+          "event": "move-forward",
+          "utterance": "Recipes"
+        },
+        {
+          "elapsed": 13.493251708336174,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 14.020470999996178,
+          "event": "move-forward",
+          "utterance": "Recent & Pinned"
+        },
+        {
+          "elapsed": 14.550515916664153,
+          "event": "move-forward",
+          "utterance": "Butternut Squash Soup , 35 min. · Home Cookbook Button"
+        },
+        {
+          "elapsed": 14.55068304168526,
+          "event": "required-values-result",
+          "found": 3,
+          "missing": []
+        },
+        {
+          "elapsed": 15.071945499978028,
+          "event": "move-backward",
+          "utterance": "Recent & Pinned"
+        },
+        {
+          "elapsed": 15.585607208311558,
+          "event": "move-forward-return",
+          "utterance": "Butternut Squash Soup , 35 min. · Home Cookbook Button"
+        },
+        {
+          "elapsed": 22.21260249998886,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Recipes",
+        "Recent & Pinned",
+        "Butternut Squash Soup"
+      ],
+      "restored": true,
+      "scene": "recipe",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Butternut Squash Soup",
+        "Recent & Pinned",
+        "Recipes"
+      ]
+    },
+    {
+      "checkpoint": "focus-recipe-pad",
+      "device": "iPad",
+      "accepted_focus_case": true,
+      "events": [
+        {
+          "elapsed": 3.5250093787908554e-05,
+          "enabled": false,
+          "event": "original-state"
+        },
+        {
+          "elapsed": 11.789634249988012,
+          "enabled": true,
+          "event": "enabled-state"
+        },
+        {
+          "elapsed": 11.790858291671611,
+          "event": "initial-speech",
+          "utterance": "HomeView Reference viewport"
+        },
+        {
+          "elapsed": 12.335091666667722,
+          "event": "move-forward",
+          "utterance": "Close Button"
+        },
+        {
+          "elapsed": 12.855618125060573,
+          "event": "move-forward",
+          "utterance": "Recipes"
+        },
+        {
+          "elapsed": 13.370742750004865,
+          "event": "move-forward",
+          "utterance": "10:09"
+        },
+        {
+          "elapsed": 13.885602583410218,
+          "event": "move-forward",
+          "utterance": "Recent & Pinned"
+        },
+        {
+          "elapsed": 14.413242166745476,
+          "event": "move-forward",
+          "utterance": "Butternut Squash Soup , 35 min. · Home Cookbook Button"
+        },
+        {
+          "elapsed": 14.41331108333543,
+          "event": "required-values-result",
+          "found": 3,
+          "missing": []
+        },
+        {
+          "elapsed": 14.929379208362661,
+          "event": "move-backward",
+          "utterance": "Recent & Pinned"
+        },
+        {
+          "elapsed": 15.444401958375238,
+          "event": "move-forward-return",
+          "utterance": "Butternut Squash Soup , 35 min. · Home Cookbook Button"
+        },
+        {
+          "elapsed": 22.298836375004612,
+          "enabled": false,
+          "event": "restored-state",
+          "matches_original": true
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "required_spoken_values": [
+        "Recipes",
+        "Recent & Pinned",
+        "Butternut Squash Soup"
+      ],
+      "restored": true,
+      "scene": "recipe",
+      "scope": "Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream.",
+      "seen_required": [
+        "Butternut Squash Soup",
+        "Recent & Pinned",
+        "Recipes"
+      ]
+    }
+  ],
+  "raw_input_diagnostics": {
+    "off_target_double_tap": {
+      "native_focus_and_reported_speech_observed": true,
+      "speech_sequence": [
+        "HomeView Reference viewport",
+        "Close Button",
+        "Cameras",
+        "10:09",
+        "Show 9 Button",
+        "Show 9 Button"
+      ],
+      "off_target_double_tap_callback_gate": "FAILED, not accepted; no product cause established",
+      "VoiceOver_original_enabled": false,
+      "VoiceOver_after_enabled": false,
+      "restore_read_back_verified": true,
+      "raw_UI_passed": 0,
+      "raw_UI_failed": 1,
+      "product_inputs_unchanged": 165
+    },
+    "keyboard": {
+      "raw_UI_passed": 0,
+      "raw_UI_failed": 1,
+      "input_route": "Control-Option-Space",
+      "callback_gate": "Failed, not accepted",
+      "native_focus_and_reported_speech": true,
+      "original_enabled": false,
+      "restored_enabled": false,
+      "restoration_read_back_verified": true,
+      "no_product_cause_established": true
+    },
+    "independent_UIKit": {
+      "native_UIKit_positive": "ordinary target tap button0→1,background0",
+      "native_service_enabled": true,
+      "UIAccessibility_isVoiceOverRunning": true,
+      "focused_speech": "Native activation target Activations 1 Button",
+      "offtarget_doubletap": "button stays1, background0→1",
+      "CtrlOptionSpace": "button stays1, background stays1",
+      "restored_original_false_verified": true,
+      "interpretation": "Observed raw-input outcomes reproduce with independent UIKit/default UIButton, without HomeView or SwiftUI. Rules out an exclusively HomeView-specific explanation; underlying event interception/modifier/transport cause remains unproved. Not a raw-touch/key success.",
+      "actual_contact_viewed": "uikit-control-phone-review-1.jpg"
+    }
+  },
+  "archives": {
+    "archives": [
+      {
+        "label": "pilot-phone",
+        "zip_sha256": "2db770e535231810df102d1a709c8cd1acf8ce1f58beee4233137742325c729b",
+        "files_verified": 308,
+        "source_digest": "891316ec45c320c7a8aecd0884384a305cb6bdda190c6323c510bccc41545d9d",
+        "archive_all_bytes_verified": true,
+        "app_files": 22
+      },
+      {
+        "label": "keyboard-phone",
+        "zip_sha256": "18088d1457aaa4c16cd7e59145e29e044234f752e6270ba66f61680d381db6ca",
+        "files_verified": 308,
+        "source_digest": "0649d0a59fc6d4c056d25e5030187b62f60642ec32301c923bb30553836e18c1",
+        "archive_all_bytes_verified": true,
+        "app_files": 22
+      },
+      {
+        "label": "uikit-control-phone",
+        "zip_sha256": "1a5aa85c9910d4dd53ec488f25247859cc99f039caa819996c74d6b94cff891a",
+        "files_verified": 312,
+        "source_digest": "ce670c5f0d39cd0f30063bb96374fc1d5544fdebc53b71a66ea78331dc6c2ba2",
+        "archive_all_bytes_verified": true,
+        "app_files": 22
+      },
+      {
+        "label": "focus-phone",
+        "zip_sha256": "f42181ce04bf13f8ab9061f3d1375502c6ff3be64d0a1d4ca30d6c77baf5ab7a",
+        "files_verified": 308,
+        "source_digest": "94305a6fcfa7982880f7b26d56f958ccb1473649280666695d6935dd50fd7035",
+        "archive_all_bytes_verified": true,
+        "app_files": 22
+      },
+      {
+        "label": "focus-pad-pilot",
+        "zip_sha256": "f42181ce04bf13f8ab9061f3d1375502c6ff3be64d0a1d4ca30d6c77baf5ab7a",
+        "files_verified": 308,
+        "source_digest": "94305a6fcfa7982880f7b26d56f958ccb1473649280666695d6935dd50fd7035",
+        "archive_all_bytes_verified": true,
+        "app_files": 22
+      },
+      {
+        "label": "focus-pad-rest",
+        "zip_sha256": "f42181ce04bf13f8ab9061f3d1375502c6ff3be64d0a1d4ca30d6c77baf5ab7a",
+        "files_verified": 308,
+        "source_digest": "94305a6fcfa7982880f7b26d56f958ccb1473649280666695d6935dd50fd7035",
+        "archive_all_bytes_verified": true,
+        "app_files": 22
+      },
+      {
+        "label": "focus-recipe-phone",
+        "zip_sha256": "46aaf5e6ae07a969c6806b0aaa645580a01d57cad7d9cfd01d7974015e0936bb",
+        "files_verified": 308,
+        "source_digest": "68e7ef08a8d0d7cf957b4c8811aca3d2c660617771bbb15af070769ae5b10432",
+        "archive_all_bytes_verified": true,
+        "app_files": 22
+      },
+      {
+        "label": "focus-recipe-pad",
+        "zip_sha256": "46aaf5e6ae07a969c6806b0aaa645580a01d57cad7d9cfd01d7974015e0936bb",
+        "files_verified": 308,
+        "source_digest": "68e7ef08a8d0d7cf957b4c8811aca3d2c660617771bbb15af070769ae5b10432",
+        "archive_all_bytes_verified": true,
+        "app_files": 22
+      }
+    ],
+    "all_eight_compiled_HomeView_apps_byte_equal": true,
+    "app_file_count": 22
+  },
+  "restoration": "All17 UI executions read back original simulator VoiceOver disabled state. No host VoiceOver or account/device configuration changed.",
+  "viewing": "All six generated native contact sheets actually viewed, including independent UIKit; 26 native PNG attachments decoded. Twelve own viewport PNGs published; full OS screenshots remain private.",
+  "boundaries": [
+    "Native service-reported utterance, not acoustic quality or full paragraph reading. Some long utterances appear as prefixes.",
+    "Required-value set and backward/forward consistency, not complete original or production focus ordering.",
+    "Test-only reference-viewport marker explicitly present in captured stream.",
+    "Ordinary XCTest fixture routing before native service reading is not VoiceOver activation.",
+    "Raw touch/key activation, full flows, other assistive technologies, physical devices and original parity remain unaccepted.",
+    "No current SDK/Core rerun for UITest/Docs-only work; prior d729 five-SDK/405-Core evidence is historical, unchanged product only.",
+    "Known Xcode debugger lookup/duplicate accessibility loader warnings remain in original logs; xcresult runtime warning arrays are separately recorded."
+  ],
+  "images": [
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPhone-camera.png",
+      "checkpoint": "focus-phone",
+      "sha256": "6c64805340277635418303897741a937cb0fc8c27cb15ab60f25b91d838f941f"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPhone-editor.png",
+      "checkpoint": "focus-phone",
+      "sha256": "9f46990bd23edd2ef7b1fe637879a238336011286937a39f140eabe17230c5d3"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPhone-lock.png",
+      "checkpoint": "focus-phone",
+      "sha256": "b5fbf6cf27b222c2d35ad08c827e8d5f8c07c6ecf002cd186232fe52c6b8af51"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPhone-settings.png",
+      "checkpoint": "focus-phone",
+      "sha256": "f0da86a4643ef9ba71fd221462ac9627deb9bee0bdf06292772a5bff344fd718"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPhone-timer.png",
+      "checkpoint": "focus-phone",
+      "sha256": "6ac39e7cac3878356dfde3e5db8dd42580d3b80e09d6a24462eff2ca57b9ebf9"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPad-camera.png",
+      "checkpoint": "focus-pad-pilot",
+      "sha256": "038f820ea8bac0d6cc5267dbc67445d1242eccd363e2958c2251df7db3cdb054"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPad-editor.png",
+      "checkpoint": "focus-pad-rest",
+      "sha256": "c874b09dd49bc923d7c3dfc368a5446c82450a707115467cfbd4562dc867ee0b"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPad-lock.png",
+      "checkpoint": "focus-pad-rest",
+      "sha256": "1d52d407c45cf7df8d6d7a6e1ab600bffe7b571c8eefa6354dcce193e41bb673"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPad-settings.png",
+      "checkpoint": "focus-pad-rest",
+      "sha256": "bba541cecd18bf6d77762950a8861a693a2fd562a3022033a88660522e691ee4"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPad-timer.png",
+      "checkpoint": "focus-pad-rest",
+      "sha256": "85004249e7661e471d0d588ad1a3eedeada1b9f450d291cd7430d900cb14fe72"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPhone-recipe.png",
+      "checkpoint": "focus-recipe-phone",
+      "sha256": "7d8fe90925226a715156dbd3f7ec151057d8ee1da443c44151e2d78a95a0b0e7"
+    },
+    {
+      "path": "Docs/screenshots/native-voiceover-focus/iPad-recipe.png",
+      "checkpoint": "focus-recipe-pad",
+      "sha256": "e8fa723910383e0ee7cf34a01ca605d6301e2c4e0b042b2c05df6f59bd5da8ea"
+    }
+  ]
+}

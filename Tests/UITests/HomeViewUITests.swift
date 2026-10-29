@@ -3,6 +3,99 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func verifyNativeVoiceOverFocus(_ scene:String,arguments:[String],required:[String])throws {
+    continueAfterFailure=true;executionTimeAllowance=180
+    guard #available(iOS 27.0,*) else {XCTFail("Native VoiceOver service requires iOS 27");return}
+    let service=XCUIDevice.shared.voiceOverService,original=service.isEnabled
+    let started=ProcessInfo.processInfo.systemUptime
+    var events:[[String:Any]]=[],seen=Set<String>(),restored=false
+    func record(_ event:String,_ fields:[String:Any]=[:]) {
+      var row=fields;row["event"]=event;row["elapsed"]=ProcessInfo.processInfo.systemUptime-started;events.append(row)
+    }
+    func normalized(_ text:String)->String {
+      text.replacingOccurrences(of:"\u{00a0}",with:" ").replacingOccurrences(of:"&",with:"and").lowercased()
+    }
+    func observe(_ event:String,_ speech:String) {
+      record(event,["utterance":speech])
+      for value in required where normalized(speech).contains(normalized(value)) {seen.insert(value)}
+    }
+    func emit(_ phase:String) {
+      let report:[String:Any]=["scene":scene,"required_spoken_values":required,"seen_required":seen.sorted(),
+        "original_enabled":original,"restored":restored,"phase":phase,"events":events,
+        "scope":"Native VoiceOver service focus/reported speech and backward-forward consistency only; no raw activation, acoustic, physical or original-order acceptance. Test-only reference-viewport marker remains in recorded stream."]
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="native-voiceover-focus-"+scene+"-"+phase;a.lifetime = .keepAlways;add(a)
+    }
+    record("original-state",["enabled":original]);emit("before")
+    defer {
+      do {
+        if service.isEnabled != original {if original {try service.enable()} else {try service.disable()}}
+        restored=service.isEnabled==original
+        record("restored-state",["enabled":service.isEnabled,"matches_original":restored]);XCTAssertTrue(restored)
+      } catch {let e=error as NSError;record("restore-error",["domain":e.domain,"code":e.code]);XCTFail("Restore original simulator VoiceOver state")}
+      emit("after")
+    }
+    launch(arguments+["--persistence-test",UUID().uuidString,"--reset-test-store"])
+    if scene=="recipe" {
+      guard app.buttons["saved.Butternut Squash Soup"].waitForExistence(timeout:5) else {XCTFail("Existing reset-store recipe fixture missing");return}
+    }
+    if scene=="lock" {tap("grid.lock");XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")}
+    if scene=="editor" {
+      let edit=app.buttons["settings.faces"];scrollPhotoControlFullyIntoView(edit);edit.tap()
+      guard app.buttons["editor.done"].waitForExistence(timeout:5) else {XCTFail("Editor fixture did not open");return}
+    }
+    guard app.otherElements["reference.viewport"].waitForExistence(timeout:5) else {XCTFail("Own reference viewport missing before VO");return}
+    // Fixture routing above is ordinary XCTest setup, not VoiceOver activation.
+    do {
+      if !service.isEnabled {try service.enable()}
+      record("enabled-state",["enabled":service.isEnabled])
+      guard service.isEnabled else {XCTFail("Native VoiceOver service not enabled");return}
+      if let initial=try? service.currentSpeech().utterance {observe("initial-speech",initial)}
+      let deadline=ProcessInfo.processInfo.systemUptime+70
+      for _ in 0..<96 {
+        if seen.count==required.count {break}
+        guard ProcessInfo.processInfo.systemUptime<deadline else {break}
+        observe("move-forward",try service.moveForward().utterance)
+      }
+      record("required-values-result",["missing":required.filter {!seen.contains($0)},"found":seen.count])
+      guard seen.count==required.count else {XCTFail("Native VoiceOver did not reach all declared spoken values for \(scene)");return}
+      let anchor=try service.currentSpeech().utterance
+      observe("move-backward",try service.moveBackward().utterance)
+      let returned=try service.moveForward().utterance;observe("move-forward-return",returned)
+      XCTAssertEqual(normalized(returned),normalized(anchor),"Return to the same native focused utterance")
+      viewportShot("native-voiceover-focus-"+scene)
+      switch scene {
+      case "camera":XCTAssertEqual(app.buttons["camera.grid.size"].label,"Show 9");XCTAssertFalse(app.buttons["camera.8"].exists)
+      case "lock":XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked");XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device")
+      case "timer":XCTAssertEqual(app.staticTexts["timer.countdown"].label,"10:56");XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+      case "recipe":XCTAssertTrue(app.buttons["saved.Butternut Squash Soup"].exists);XCTAssertFalse(app.buttons["cooking.next"].exists)
+      case "settings":for kind in ["Calendar","Reminders","Apple Music","Weather"] {XCTAssertEqual(app.buttons["connect."+kind].label,"Connect");XCTAssertEqual(app.staticTexts["connection.status."+kind].label,"Not connected")}
+      case "editor":XCTAssertEqual(app.buttons["select.Modular"].value as? String,"Selected");XCTAssertFalse(app.buttons["complications.done"].exists)
+      default:XCTFail("Unknown native VO scene")
+      }
+    } catch {let e=error as NSError;record("native-service-error",["domain":e.domain,"code":e.code]);XCTFail("Native VoiceOver focus/speech call failed")}
+  }
+  func testNativeVoiceOverCameraFocusSpeechAndRestore()throws {
+    try verifyNativeVoiceOverFocus("camera",arguments:["--page","Cameras"],required:["Cameras","Show 9","Front Door","Back Yard","Living Room","Driveway"])
+  }
+  func testNativeVoiceOverLockFocusSpeechAndRestore()throws {
+    try verifyNativeVoiceOverFocus("lock",arguments:["--page","Home"],required:["Front Door","Locked","Mock lock","Authenticate Device"])
+  }
+  func testNativeVoiceOverTimerFocusSpeechAndRestore()throws {
+    try verifyNativeVoiceOverFocus("timer",arguments:["--reference-timer"],required:["10:56","15 MIN","Foreground timer","Resume timer","Delete timer"])
+  }
+  func testNativeVoiceOverRecipeFocusSpeechAndRestore()throws {
+    try verifyNativeVoiceOverFocus("recipe",arguments:["--page","Recipes"],required:["Recipes","Recent & Pinned","Butternut Squash Soup"])
+  }
+  func testNativeVoiceOverSettingsFocusSpeechAndRestore()throws {
+    try verifyNativeVoiceOverFocus("settings",arguments:["--page","Settings"],required:["Settings","Mock home only","Native system features","Connected services","Apple Home stays disconnected","Calendar","Not connected"])
+  }
+  func testNativeVoiceOverEditorFocusSpeechAndRestore()throws {
+    try verifyNativeVoiceOverFocus("editor",arguments:["--face","Modular","--page","Settings"],required:["Faces","Done","Complications","Top left"])
+  }
+}
+
+extension HomeViewUITests {
   private func cameraTypeCapture(_ state:String,_ roles:[String:XCUIElement],controls:[String:XCUIElement]=[:]) {
     RunLoop.current.run(until:Date().addingTimeInterval(1))
     let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch

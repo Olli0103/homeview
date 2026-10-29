@@ -1,0 +1,35 @@
+[
+  {
+    "checkpoint": "pilot-phone",
+    "path": "Docs/verification/native-voiceover-input-probes/failed-off-target-double-tap.swift.txt",
+    "sha256": "715bf6947229914431c162e2b408564043b437cd7923560cfeaf5a4274f4537c",
+    "frozen_source_digest": "891316ec45c320c7a8aecd0884384a305cb6bdda190c6323c510bccc41545d9d",
+    "scope": "Exact exploratory extension from its frozen ZIP; not normal-target acceptance tests."
+  },
+  {
+    "checkpoint": "keyboard-phone",
+    "path": "Docs/verification/native-voiceover-input-probes/failed-keyboard-route.swift.txt",
+    "sha256": "4d99482aa6ba98a73d3ea8c7b3df6b89f3c2b9062aa2ceef7e1b1490ae9c4410",
+    "frozen_source_digest": "0649d0a59fc6d4c056d25e5030187b62f60642ec32301c923bb30553836e18c1",
+    "scope": "Exact exploratory extension from its frozen ZIP; not normal-target acceptance tests."
+  },
+  {
+    "checkpoint": "uikit-control-phone",
+    "path": "Docs/verification/native-voiceover-input-probes/independent-uikit-observation.swift.txt",
+    "sha256": "5ddd661d1431d1435720afa25f3b5677de556dae900e4b744de7c2ae4a71b4d3",
+    "frozen_source_digest": "ce670c5f0d39cd0f30063bb96374fc1d5544fdebc53b71a66ea78331dc6c2ba2",
+    "scope": "Exact exploratory extension from its frozen ZIP; not normal-target acceptance tests."
+  },
+  {
+    "path": "Docs/verification/native-voiceover-input-probes/NativeVoiceOverControl.swift.txt",
+    "sha256": "838f1c2db5dcf04e80d4545ef3e180ec70646f5ec142a634a03f61f193bde21f",
+    "scope": "Complete independent UIKit control, no HomeView or SwiftUI."
+  },
+  {
+    "checkpoint": "focus-phone/focus-pad-pilot/focus-pad-rest",
+    "path": "Docs/verification/native-voiceover-input-probes/focus-contract-v1-wrong-recipe-fixture.swift.txt",
+    "sha256": "c5c95e7375c18a50e7f1498e6403d0578738de23c34830b061c246ec8d2748ce",
+    "frozen_source_digest": "94305a6fcfa7982880f7b26d56f958ccb1473649280666695d6935dd50fd7035",
+    "scope": "Exact original six-case focus contract. Recipe erroneously expects Garden Tomato Pasta in reset store whose existing default is Butternut Squash Soup. Failure retained, not product cause."
+  }
+]

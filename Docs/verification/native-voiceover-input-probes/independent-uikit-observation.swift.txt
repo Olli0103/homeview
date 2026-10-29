@@ -1,0 +1,150 @@
+extension HomeViewUITests {
+  func testIndependentUIKitVoiceOverInputTransportObservation() throws {
+    continueAfterFailure=true;executionTimeAllowance=240
+    guard #available(iOS 27.0,*) else {XCTFail("Native VoiceOver service requires iOS 27");return}
+    let service=XCUIDevice.shared.voiceOverService,original=service.isEnabled
+    let control=XCUIApplication(bundleIdentifier:"org.example.NativeVoiceOverControl")
+    var events:[[String:Any]]=[]
+    func record(_ event:String,_ fields:[String:Any]=[:]) {var row=fields;row["event"]=event;events.append(row)}
+    defer {
+      do {
+        if service.isEnabled != original {if original {try service.enable()} else {try service.disable()}}
+        record("restored",["original_enabled":original,"enabled":service.isEnabled,"matches_original":service.isEnabled==original])
+        XCTAssertEqual(service.isEnabled,original)
+      } catch {let e=error as NSError;record("restore-error",["domain":e.domain,"code":e.code]);XCTFail("Restore native VoiceOver service")}
+      let report:[String:Any]=["events":events,"raw_input_success_not_asserted":true,
+        "scope":"Independent UIKit positive button callback, actual native VoiceOver focus/speech, and observed touch/keyboard transport. Not a raw-event success or HomeView regression claim."]
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="native-voiceover-uikit-control";a.lifetime = .keepAlways;add(a)
+    }
+    control.launch()
+    let button=control.buttons["native.target"],status=control.staticTexts["native.status"],runtime=control.staticTexts["native.runtime"]
+    guard button.waitForExistence(timeout:10) else {XCTFail("Independent native control not launched");return}
+    record("before-positive",["status":status.label,"runtime":runtime.label,"service_enabled":service.isEnabled])
+    button.tap()
+    guard status.label=="button=1;background=0" else {XCTFail("Ordinary UIKit button callback positive failed");return}
+    record("ordinary-native-button-positive",["status":status.label,"runtime":runtime.label])
+    do {
+      if !service.isEnabled {try service.enable()}
+      record("enabled",["service_enabled":service.isEnabled,"runtime":runtime.label])
+      @MainActor func focusTarget()throws->Bool {
+        if let speech=try? service.currentSpeech().utterance {
+          record("current-speech",["utterance":speech]);if speech.contains("Native activation target") {return true}
+        }
+        let deadline=ProcessInfo.processInfo.systemUptime+45
+        for _ in 0..<24 {
+          guard ProcessInfo.processInfo.systemUptime<deadline else {break}
+          let speech=try service.moveForward().utterance;record("move-forward",["utterance":speech])
+          if speech.contains("Native activation target") {return true}
+        }
+        return false
+      }
+      for route in ["off-target-double-tap","Control-Option-Space"] {
+        guard try focusTarget() else {XCTFail("Native control target was not spoken/focused");return}
+        let speech=try service.currentSpeech().utterance
+        guard speech.contains("Native activation target") else {XCTFail("Native control focus changed");return}
+        record("before-input",["route":route,"speech":speech,"status":status.label,"runtime":runtime.label])
+        if route=="off-target-double-tap" {
+          let point=control.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
+          guard !button.frame.contains(point.screenPoint) else {XCTFail("Control probe must be outside target");return}
+          point.doubleTap()
+        } else {control.typeKey(XCUIKeyboardKey.space,modifierFlags:[.control,.option])}
+        RunLoop.current.run(until:Date().addingTimeInterval(0.5))
+        record("after-input",["route":route,"status":status.label,"runtime":runtime.label,"service_enabled":service.isEnabled])
+        let shot=XCTAttachment(screenshot:control.screenshot());shot.name="native-voiceover-uikit-"+route;shot.lifetime = .keepAlways;add(shot)
+      }
+    } catch {let e=error as NSError;record("native-error",["domain":e.domain,"code":e.code]);XCTFail("Native UIKit transport observation failed")}
+  }
+  func testNativeVoiceOverCameraGridToggleAndRestore() throws {
+    try nativeVoiceOverCameraActivationProbe(keyboard:false)
+  }
+  func testNativeVoiceOverCameraKeyboardToggleAndRestore() throws {
+    try nativeVoiceOverCameraActivationProbe(keyboard:true)
+  }
+  private func nativeVoiceOverCameraActivationProbe(keyboard:Bool) throws {
+    continueAfterFailure=true
+    executionTimeAllowance=300
+    guard #available(iOS 27.0,*) else {XCTFail("Public native VoiceOver service requires iOS 27");return}
+    let service=XCUIDevice.shared.voiceOverService,originalEnabled=service.isEnabled
+    let started=ProcessInfo.processInfo.systemUptime
+    var events:[[String:Any]]=[],restored=false
+    func record(_ event:String,_ fields:[String:Any]=[:]) {
+      var row=fields;row["event"]=event;row["elapsed"]=ProcessInfo.processInfo.systemUptime-started;events.append(row)
+    }
+    func emit(_ phase:String) {
+      let report:[String:Any]=["original_enabled":originalEnabled,"restored":restored,
+        "phase":phase,"events":events,"input_route":keyboard ? "Control-Option-Space":"Off-target double tap",
+        "scope":"API-reported native VoiceOver focus/speech and two local Mock grid actions; not acoustic or physical-device acceptance."]
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="native-voiceover-camera-"+phase;a.lifetime = .keepAlways;add(a)
+    }
+    record("original-state",["enabled":originalEnabled]);emit("before")
+    defer {
+      do {
+        if service.isEnabled != originalEnabled {
+          if originalEnabled {try service.enable()} else {try service.disable()}
+        }
+        restored=service.isEnabled==originalEnabled
+        record("restored-state",["enabled":service.isEnabled,"matches_original":restored])
+        XCTAssertTrue(restored,"Restore only this simulator's original VoiceOver state")
+      } catch {
+        let e=error as NSError;record("restore-error",["domain":e.domain,"code":e.code])
+        XCTFail("Native VoiceOver restoration failed")
+      }
+      emit("after")
+    }
+    launch(["--page","Cameras","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    let toggle=app.buttons["camera.grid.size"]
+    guard toggle.waitForExistence(timeout:5),toggle.label=="Show 9" else {XCTFail("Fresh local four-camera grid missing");return}
+    do {
+      if !service.isEnabled {try service.enable()}
+      record("enabled-state",["enabled":service.isEnabled])
+      guard service.isEnabled else {XCTFail("Native VoiceOver did not become enabled");return}
+      @MainActor func focus(_ literal:String)throws->Bool {
+        let deadline=ProcessInfo.processInfo.systemUptime+60
+        func matches(_ speech:String)->Bool {
+          let normalized=speech.replacingOccurrences(of:"\u{00a0}",with:" ")
+          return normalized.localizedCaseInsensitiveContains(literal)
+        }
+        do {
+          let speech=try service.currentSpeech().utterance
+          record("current-speech",["utterance":speech,"target":literal])
+          if matches(speech) {return true}
+        } catch {
+          let e=error as NSError;record("initial-speech-error",["domain":e.domain,"code":e.code])
+        }
+        for step in 0..<32 {
+          guard ProcessInfo.processInfo.systemUptime<deadline else {break}
+          let speech=try service.moveForward().utterance
+          record("move-forward",["step":step,"utterance":speech,"target":literal])
+          if matches(speech) {return true}
+        }
+        return false
+      }
+      for (before,after,lastExists) in [("Show 9","Show 4",true),("Show 4","Show 9",false)] {
+        guard try focus(before) else {XCTFail("Native VoiceOver did not focus "+before);return}
+        let speech=try service.currentSpeech().utterance
+        record("focused-before-action",["utterance":speech,"expected":before])
+        guard speech.replacingOccurrences(of:"\u{00a0}",with:" ").localizedCaseInsensitiveContains(before) else {XCTFail("Native focus changed before activation");return}
+        if keyboard {
+          record("Control-Option-Space",["expected_after":after])
+          app.typeKey(XCUIKeyboardKey.space,modifierFlags:[.control,.option])
+        } else {
+          let center=app.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)),point=center.screenPoint,f=toggle.frame
+          record("off-target-double-tap",["point":[point.x,point.y],"target_frame":[f.minX,f.minY,f.width,f.height],"point_outside_target":!f.contains(point),"expected_after":after])
+          guard !f.contains(point) else {XCTFail("VoiceOver action probe must not target the grid button's coordinates");return}
+          center.doubleTap()
+        }
+        let expected=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@",after),object:toggle)
+        guard XCTWaiter.wait(for:[expected],timeout:5) == .completed else {XCTFail("Focused native VoiceOver action did not change local grid");return}
+        XCTAssertEqual(app.buttons["camera.8"].exists,lastExists)
+        record("local-callback-observed",["toggle_label":toggle.label,"ninth_slot_exists":app.buttons["camera.8"].exists])
+        viewportShot("native-voiceover-"+(keyboard ? "keyboard-":"touch-")+after.replacingOccurrences(of:" ",with:"-"))
+      }
+    } catch {
+      let e=error as NSError;record("native-service-error",["domain":e.domain,"code":e.code])
+      XCTFail("Native VoiceOver service call failed")
+    }
+  }
+}
+

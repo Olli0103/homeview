@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Native VoiceOver-Fokus-/Sprachausgabe](native-voiceover-focus.md): zwölf qualifizierte Einstiegsfälle auf iPhone/iPad,165 Produktinputs unverändert. Roh-Touch-/Tastaturwege scheitern auch am unabhängigen UIKit-Button; keine ausschließlich HomeView-spezifische Ursache.17 UI-Ausführungen insgesamt13PASS/4FAIL, alle VoiceOver-Rückstellungen zurückgelesen. Zwei falsche Rezeptvorgaben korrigiert, Originalfehler erhalten; #73 bleibt offen.
+
 - [Demo-Kamera: Systemschrift und endliches Accessibility-Scrollraster](camera-dynamic-type.md):22 akzeptierte aktuelle UI-Ausführungen über zwei Testpins bei bytegleicher App/fünf aktuelle SDKs.46 Textbedingungen/vier separate Buchstabenpaare wachsen;20 normale und zwei große eingefrorene Face-Pixelpaare exakt gleich. Vier Overlay-Selektorfehler, vier frühe Lazy-AX-Fehler und ein ungeklärter iPhone-Scrollfehler erhalten; Foto-Kontrast/Hilfsmittel bei #73 offen.
 
 - [Verbindungen und lokale Sperransichten skalieren und kontrastieren](connections-lock-dynamic-type.md):18 akzeptierte aktuelle UI-Ausführungen bei bytegleicher App über drei Testpins, fünf SDKs.62 Textausdehnungs- und48 Kontrastbedingungen grün;22 exakt passende Normalpaare außerhalb der Farbrollen gleich,24 Scrollposen ausdrücklich unqualifiziert. Fünf aktuelle Instrumentfehler erhalten; keine realen Verbindungen oder Authentifizierung, #73 offen.
