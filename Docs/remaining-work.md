@@ -16,15 +16,17 @@
 
 ## Aktueller Arbeitsblock
 
+- [Native TV-Kamera-Gegenkontrolle und fokussierbare Fotogalerie](tv-camera-photos.md): sechs aktuelle TV-Methoden/vier mobile Fotoregressionen/fünf frische SDKs bestanden. Next photo erreicht und Bildnummer frei. Keine Live-Quellen oder Geräteabnahme; #79 offen. Inkrementell fehlende generierte iOS-Shortcut-Sprachdateien separat bei #74 nachprüfen; frische aktuelle Abgabebuilds vollständig.
+
 - [Fiktiver Nachrichtenbeleg als zusätzlicher Antworttyp](assistant-message-evidence.md):398Coretests/zehn aktuelle native mobile UI-Ausführungen/fünf SDKs bestanden. Kein Nachrichten-API oder ausführbarer Karteninhalt; #36 für Live-/Original-/Hilfsmittelkriterien offen.
 
 - [Alle vier vorhandenen S07-GIFs vollständig eingeordnet](remaining-original-gifs-20261029.md):299 Frames, Kameraface→Home und Numerals→Assistentenantwort; Artikelkontext geprüft, kein sichtbarer Aktivierungsvorgang oder neue Gestenkennlinie. Ausgewähltes Kamera-Face liegt bereits hinter dem eigenen Home-Raster; keine unbelegte Produktänderung. #6/#19/#36 weiter offen.
 
 - [Native Vision-Fenster/Eingabe/Timer/lokaler Browser](vision-native-runtime.md): vier aktuelle Methoden bestanden, fünf tatsächliche virtuelle Kamerabilder zeitgebunden. Kein Produkt-Rendererfix,165 Produktinputs unverändert. Größenänderung/Mehrfenster, reale APIs und physische Eingabe bleiben separat offen bei #79.
 
-- [Native Watch-Installation und unabhängige Temperaturaktionen korrigiert](watch-native-runtime.md): zwei aktuelle native Methoden/fünf SDKs bestanden; reduzierte eigenständige Oberfläche, keine Geräte-/Energie-/volle iPad-Abnahme. #79/#81 für übrige Kriterien offen. Erste separate native Vision-Prüfung läuft.
+- [Native Watch-Installation und unabhängige Temperaturaktionen korrigiert](watch-native-runtime.md): zwei aktuelle native Methoden/fünf SDKs bestanden; reduzierte eigenständige Oberfläche, keine Geräte-/Energie-/volle iPad-Abnahme. #79/#81 für übrige Kriterien offen. Separater [Vision-Nachweis](vision-native-runtime.md) liegt vor.
 
-- [Native TV-Remote und Timerfokus](tv-remote-runtime.md): echter Vorherfehler behoben, vier aktuelle TV-Methoden/zwei mobile Timerregressionen/fünf SDKs bestanden. TV-Kamera-/Foto- und übrige Plattform-/Geräteabnahmen bei #79 offen; Watch-Runtime installiert, Prüfung folgt.
+- [Native TV-Remote und Timerfokus](tv-remote-runtime.md): echter Vorherfehler behoben, vier aktuelle TV-Methoden/zwei mobile Timerregressionen/fünf SDKs bestanden. TV-Kamera-/Foto- und übrige Plattform-/Geräteabnahmen bei #79 offen; [Watch](watch-native-runtime.md) und [Vision](vision-native-runtime.md) getrennt nachgewiesen.
 
 - [#3: lokaler Historienbereinigungskandidat](asset-history-cleanup-candidate.md) vorbereitet: bekannter Icon-Blob entfernt, heutiger Baum exakt identisch. Keine öffentliche Umschreibung/pauschale Rechtefreigabe; andere historische Einzelherkunft offen.
 

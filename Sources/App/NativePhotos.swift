@@ -134,9 +134,14 @@ struct NativePhotoControls: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 15) {
       Text("Photos face").font(.system(size: 24, weight: .semibold))
-      Text(
-        "The system photo picker shares only the image you choose. Mock tests never open your photo library."
-      ).font(.system(size: 17)).foregroundStyle(.gray)
+      #if os(tvOS)
+        Text("Photo selection is unavailable in this app on Apple TV. Demo photos below never open your photo library.")
+          .font(.system(size:17)).foregroundStyle(.gray)
+      #else
+        Text(
+          "The system photo picker shares only the image you choose. Mock tests never open your photo library."
+        ).font(.system(size: 17)).foregroundStyle(.gray)
+      #endif
       #if canImport(PhotosUI) && !os(tvOS) && !os(watchOS)
         PhotosPicker(selection: $selection, maxSelectionCount: 10, matching: .images) {
           Label("Choose Photos", systemImage: "photo.on.rectangle")

@@ -1,5 +1,7 @@
 # Native tvOS-Remote und erreichbare Timeraktionen
 
+**Separater späterer Prüfstand:** [Native Kamera-Gegenkontrolle und fokussierbare Demo-Galerie](tv-camera-photos.md). Die hier folgenden früheren Timerzahlen bleiben an ihren ursprünglichen Stand gebunden.
+
 29. Oktober 2026 · Teilumfang [#79](https://github.com/Olli0103/homeview/issues/79). **Tatsächlicher tvOS-Simulatorlauf**, kein umetikettierter iOS-/SDK-PASS.
 
 ## Laufzeit und reproduzierbarer Testaufbau

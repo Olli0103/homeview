@@ -431,7 +431,24 @@ struct PhotoFace: View {
         Image(decorative:image,scale:1).resizable().interpolation(.none)
           .frame(width:600,height:600)
       }
-    }.coordinateSpace(name: "photo-face").clipped().onTapGesture { model.nextPhoto() }
+    }.coordinateSpace(name: "photo-face").clipped()
+    #if os(tvOS)
+      .overlay(alignment:.bottom) {
+        if model.photoCount>1 {
+          HStack {
+            Spacer(minLength:0)
+          Button {model.interact();model.nextPhoto()} label: {
+            Text("Next photo").font(.system(size:18,weight:.semibold))
+              .padding(12).frame(minWidth:44,minHeight:44).contentShape(Rectangle())
+              .background(.black.opacity(0.7),in:Capsule()).foregroundStyle(.white)
+          }.buttonStyle(.plain).accessibilityIdentifier("photo.next")
+            Spacer(minLength:0)
+          }.focusSection().padding(.bottom,96)
+        }
+      }
+    #else
+      .onTapGesture { model.nextPhoto() }
+    #endif
   }
 }
 struct WeatherFace: View {
