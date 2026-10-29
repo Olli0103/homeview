@@ -3,6 +3,67 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func personalEditorContrastCapture(_ state:String,_ elements:[String:XCUIElement]) {
+    func box(_ f:CGRect)->[Double] {[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)]}
+    let before=elements.mapValues {box($0.frame)},began=ProcessInfo.processInfo.systemUptime
+    RunLoop.current.run(until:Date().addingTimeInterval(2))
+    var rows:[[String:Any]]=[]
+    for role in elements.keys.sorted() {
+      let e=elements[role]!,frame=e.frame
+      XCTAssertTrue(e.exists);XCTAssertFalse(frame.isEmpty);XCTAssertTrue(app.frame.contains(frame))
+      let after=box(frame)
+      for i in after.indices {XCTAssertEqual(before[role]![i],after[i],accuracy:0.5)}
+      rows.append(["role":role,"label":e.label,"frame":after,"before_wait_frame":before[role]!,"AX_hittable":e.isHittable])
+    }
+    let data:[String:Any]=["app":box(app.frame),"elements":rows,"declared_wait_seconds":2,
+      "elapsed_seconds":ProcessInfo.processInfo.systemUptime-began]
+    let attachment=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    attachment.name="personal-editor-contrast-"+state+"-geometry";attachment.lifetime = .keepAlways;add(attachment)
+    shot("personal-editor-contrast-"+state)
+  }
+  func testPersonalEditorSettledTextContrastKeepsConfigurationAndRootPixels() {
+    continueAfterFailure=false
+    let owned=UUID().uuidString
+    print("PERSONAL_EDITOR_CONTRAST_OWNED_STORE "+owned)
+    launch(["--persistence-test",owned,"--reset-test-store","--face","Modular","--reduce-motion"])
+    tap("nav.apps");tap("personal.profile");tap("profile.Alex")
+    XCTAssertTrue(app.otherElements["personal.photos.layout"].waitForExistence(timeout:5))
+    RunLoop.current.run(until:Date().addingTimeInterval(2))
+    let root=viewportBytes("personal-editor-contrast-root-before")
+    func configuration()->[String:String] {
+      var value:[String:String]=[:]
+      for key in ["personal.layout.photos","personal.layout.media","personal.layout.weather"]+(0..<4).map({"personal.favorite.\($0)"}) {
+        let e=responseElement(key);XCTAssertTrue(e.exists)
+        value[key]=e.label+" | "+(e.value as? String ?? "")
+      }
+      return value
+    }
+    func openEditor() {
+      app.buttons["personal.profile"].press(forDuration:1);tap("personal.edit")
+      XCTAssertTrue(app.staticTexts["Home Screen · Alex"].waitForExistence(timeout:5))
+    }
+    func labels()->[String:XCUIElement] {
+      ["title":app.staticTexts["Home Screen · Alex"],"layout":app.staticTexts["Layout"],
+        "favorites":app.staticTexts["Favorite apps"],
+        "disclosure":app.staticTexts["Layout choices are saved for this demo profile. They do not unlock personal accounts."]]
+    }
+    openEditor();let before=configuration()
+    personalEditorContrastCapture("personal-first",labels())
+    tap("personal.editor.done");XCTAssertTrue(app.buttons["personal.profile"].waitForExistence(timeout:5))
+    openEditor();XCTAssertEqual(configuration(),before)
+    personalEditorContrastCapture("personal-reopened",labels())
+    tap("personal.editor.done");XCTAssertTrue(app.buttons["personal.profile"].waitForExistence(timeout:5))
+    RunLoop.current.run(until:Date().addingTimeInterval(2))
+    XCTAssertEqual(viewportPixels(root,inset:0),viewportPixels(viewportBytes("personal-editor-contrast-root-returned"),inset:0))
+    tap("nav.assistant");tap("assistant.capabilities")
+    XCTAssertTrue(app.staticTexts["Assistant capabilities"].waitForExistence(timeout:5))
+    personalEditorContrastCapture("capabilities-positive",["positive_title":app.staticTexts["Assistant capabilities"]])
+    tap("assistant.capabilities.done");drawer();tap("app.Home");tap("grid.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+}
+
+extension HomeViewUITests {
   private enum SecondaryHitTarget:String {
     case capabilities,personalEditor,recipeHandoff,musicArtwork,resetCancel,power,notices,timerActivity,voiceCancel
     var identifier:String {

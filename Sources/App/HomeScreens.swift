@@ -252,6 +252,9 @@ private struct PersonalHomeEditor: View {
         .font(.callout).foregroundStyle(.secondary)
       Spacer(minLength:0)
     }.padding(28).frame(minWidth:300,minHeight:420)
+      .foregroundStyle(Color.primary)
+      // Match the dark sheet, not the light reference-canvas environment.
+      .environment(\.colorScheme,.dark)
       .onChange(of:model.profile) { _,value in if value != profile { dismiss() } }
   }
 }

@@ -1,5 +1,7 @@
 # Done-/Cancel-Flächen und native Toolbar-Gegenkontrollen
 
+Separater späterer Folgestand: [Profil-Editor-Kontrast korrigiert](personal-editor-contrast.md). Die folgenden Trefferflächenbefunde und damaligen Grenzen bleiben historisch.
+
 29. Oktober 2026 · begrenzter Teil von [#73](https://github.com/Olli0103/homeview/issues/73), Gesamtissue offen.
 
 ## Ergebnis

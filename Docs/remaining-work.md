@@ -18,7 +18,9 @@
 
 ## Aktueller Arbeitsblock
 
-- [Sieben Done-/Cancel-Trefferrechtecke korrigiert, zwei native Toolbar-Controls unverändert gegengeprüft](secondary-hit-regions.md):36 aktuelle UI-Ausführungen/fünf SDKs. Echte44-Punkte-Randpunkte außerhalb nativer AX-Bounds funktionieren; verworfene Vorbehalte getrennt erhalten. Profil-Editor-Kontrast wird separat weiterverfolgt, #73 offen.
+- [Profil-Editor-Kontrast korrigiert](personal-editor-contrast.md):16 eigene Textmessungen jetzt etwa6–18:1 statt selbst maximal <1,31:1. Acht aktuelle UI-Ausführungen/fünf SDKs; Geometrie, Konfiguration und Rückkehrpixel unverändert. Nur lokales Editorschema, #73 weiter offen.
+
+- [Sieben Done-/Cancel-Trefferrechtecke korrigiert, zwei native Toolbar-Controls unverändert gegengeprüft](secondary-hit-regions.md):36 aktuelle UI-Ausführungen/fünf SDKs. Echte44-Punkte-Randpunkte außerhalb nativer AX-Bounds funktionieren; verworfene Vorbehalte getrennt erhalten. Profil-Editor-Kontrast [im separaten Folgestand korrigiert](personal-editor-contrast.md); #73 offen.
 
 - [Assistenten-Systemschrift und Done-Rechteck korrigiert](assistant-dynamic-type.md): drei Antwort-Textrollen wachsen nun in größter Accessibility-Kategorie; vier normale Antwortansichten exakt pixelgleich.18 aktuelle UI-Ausführungen/fünf SDKs; Gerätepräferenzen zurückgestellt. Nur dieser Teilumfang, #73 für übrige Flows/Hilfsmittel offen.
 
