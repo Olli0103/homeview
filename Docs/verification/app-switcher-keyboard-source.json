@@ -1,0 +1,2727 @@
+{
+  "date": "2026-10-29",
+  "source_variants": [
+    {
+      "source_digest": "ac584125e625297ab836ecddc28eb39a0d8cc6dd0e4b843b90ab0c58fa2f2551",
+      "final": false,
+      "checkpoints": [
+        "baseline-phone",
+        "baseline-ipad"
+      ],
+      "files": [
+        {
+          "path": "HomeViewReplica.xcodeproj/project.pbxproj",
+          "kind": "source",
+          "bytes": 60315,
+          "sha256": "034844b7f5451e8b77e92d2da2fe16cd965e129651c352daa59a0fdcf8ae5702"
+        },
+        {
+          "path": "HomeViewReplica.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+          "kind": "source",
+          "bytes": 383,
+          "sha256": "9cd91cb1de5043e06afd268e13369983f60a22409fedff2b48fef64786442afc"
+        },
+        {
+          "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
+          "kind": "source",
+          "bytes": 2324,
+          "sha256": "d592cf5ee61a485aa772f5aad21d8d6da72eb07ad0d0d2b8f8f372529277f599"
+        },
+        {
+          "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewWatch.xcscheme",
+          "kind": "source",
+          "bytes": 2033,
+          "sha256": "78b2213f86a0264e50e70f10053bfc790bfe23c664e6887c6a290c55c9f2b1da"
+        },
+        {
+          "path": "Package.resolved",
+          "kind": "source",
+          "bytes": 383,
+          "sha256": "c8847f7f0d11227b76d43c295cc6596611c58b666412fef51298f1b959c8df0c"
+        },
+        {
+          "path": "Package.swift",
+          "kind": "source",
+          "bytes": 509,
+          "sha256": "87aa9830cf40dae5b18d58ff685509d42e0d7ad8003c295f627b175d514a7537"
+        },
+        {
+          "path": "Resources/Assets.xcassets/AlbumArt.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/AlbumArt.imageset/image.png",
+          "kind": "source",
+          "bytes": 23517,
+          "sha256": "d53db63436f68e04d6f26a54fa46da4bd2b533f4a3c146e67f654db191fb5208"
+        },
+        {
+          "path": "Resources/Assets.xcassets/AppIcon.appiconset/Contents.json",
+          "kind": "source",
+          "bytes": 215,
+          "sha256": "380b68793f2cfa854be7cce10b1c98ee5032ab707e70d8f771f586e7ea182abc"
+        },
+        {
+          "path": "Resources/Assets.xcassets/AppIcon.appiconset/icon-independent-v2.png",
+          "kind": "source",
+          "bytes": 891172,
+          "sha256": "a6c20b8da16e82972473ef3e2c1153eee048ccc42e1a1110148f19c72dee69fa"
+        },
+        {
+          "path": "Resources/Assets.xcassets/Contents.json",
+          "kind": "source",
+          "bytes": 43,
+          "sha256": "47d7e4a36c59b0f8829154abe3a7f6b7ef0c5ea5cf8a9bfccbc6bdf85e811d1b"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 3742589,
+          "sha256": "9acbcb56c4dbd5b41daa0054985c6b496f99408642bc246b9f3e273be08f8241"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 3073944,
+          "sha256": "14d3fc99123c6ff70c994523790b94f4d34cf18c1e808a3080b1905f4cc73db9"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 3252316,
+          "sha256": "640cce7ae268abee5cf53b424a9c9646ecd03922a9a4b14865ead2c4414b21b7"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 3022112,
+          "sha256": "b0a9540126098aab163deb7627609275600b95f1164aae5784e5e7765adf3db9"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 2818793,
+          "sha256": "4706c1679b463628014e7fbbe64a3be6e3ebafdc864f121c33d4e2d4182f8651"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 2334993,
+          "sha256": "a23cc0c3f9bd409029e2e4451a771d9dceb91821fd2a32dbdaaac8ca0e3f47d7"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 51440,
+          "sha256": "6a494569e8a377f4fe6a1d21cb6bda8024c25848dc78f905a2fe58f660d833ab"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconAlarms.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconAlarms.imageset/image.png",
+          "kind": "source",
+          "bytes": 23193,
+          "sha256": "5db57cfef3d81f472a462feb90715fa76359af9ea5a1b2ada45f4acdffe0022b"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconCalendar.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconCalendar.imageset/image.png",
+          "kind": "source",
+          "bytes": 23375,
+          "sha256": "a6ebff496c8bf0dd216d1f3c97fb954bb2949d1e4b12def159dc7e5110dcddbe"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconFaceTime.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconFaceTime.imageset/image.png",
+          "kind": "source",
+          "bytes": 23119,
+          "sha256": "f2c4e01ad31ab51995a795dfb8bb40eedb3d98b69cef30f4722c3ba4efa6cd69"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconFindMy.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconFindMy.imageset/image.png",
+          "kind": "source",
+          "bytes": 23112,
+          "sha256": "0619d1d988afef3cb0fa424c4a16c52d242f66a6a707ca2948d5f5ce4c136e5e"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconHome.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconHome.imageset/image.png",
+          "kind": "source",
+          "bytes": 23592,
+          "sha256": "a4107899bb299eea1fb938ec202adbceb6d4e9ea61d1d9f9da7fcc234f108663"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconIntercom.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconIntercom.imageset/image.png",
+          "kind": "source",
+          "bytes": 23765,
+          "sha256": "aead7f98e93449c0e538eb2a2ab5aca22c8f65d6a2ce8831794836935e732d61"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconMessages.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconMessages.imageset/image.png",
+          "kind": "source",
+          "bytes": 23497,
+          "sha256": "e53f1b20362924a7d40c85208ab94ef594cca47580bc3439df3da8ef6e40e721"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconMusic.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconMusic.imageset/image.png",
+          "kind": "source",
+          "bytes": 23452,
+          "sha256": "943812f42694050a5c6e12b6051cbc3eb4b7cdcf742057558bd80d57ea4be06d"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconPodcasts.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconPodcasts.imageset/image.png",
+          "kind": "source",
+          "bytes": 23293,
+          "sha256": "5cda483a240793d412059b58ed648dcd9913f66247851f37d85fc8fa92002260"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconReminders.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconReminders.imageset/image.png",
+          "kind": "source",
+          "bytes": 23667,
+          "sha256": "95c1202df19960e8cca6271fc0f94675fd93844ed7cc8913d1af1e9f6f401b58"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconSafari.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconSafari.imageset/image.png",
+          "kind": "source",
+          "bytes": 23353,
+          "sha256": "91a1ae2e4b5a4ac5235ad115b7220fea98fdf28fa1372d0765e8f549fe5f091b"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconSettings.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconSettings.imageset/image.png",
+          "kind": "source",
+          "bytes": 23289,
+          "sha256": "a4c5f5ae1a828062f573f17ba0cd3a873b745baa076b6dd182197e61dc600283"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconTimers.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconTimers.imageset/image.png",
+          "kind": "source",
+          "bytes": 23498,
+          "sha256": "0cb4cebb93b29deb64f1c3851d1489c7671013659fd9757655521e4bb1b5352f"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconWeather.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconWeather.imageset/image.png",
+          "kind": "source",
+          "bytes": 22993,
+          "sha256": "8093f745c479d407fb8be7264f567819233a56ca2bd384d4a52b796bef65abce"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconWorldClock.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconWorldClock.imageset/image.png",
+          "kind": "source",
+          "bytes": 23550,
+          "sha256": "37bbeb999a4dcc41c91af84eae723ba04f40394384f5ae1c7d150717edb1f471"
+        },
+        {
+          "path": "Resources/Assets.xcassets/Soup.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/Soup.imageset/image.png",
+          "kind": "source",
+          "bytes": 23419,
+          "sha256": "18096d661501bf786990a44eb19a2d8c3c97e1584da96c35a4dd26f380ff195f"
+        },
+        {
+          "path": "Resources/FeedKit-LICENSE.txt",
+          "kind": "source",
+          "bytes": 1083,
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "Resources/Info.plist",
+          "kind": "source",
+          "bytes": 1292,
+          "sha256": "90292e4f4fe1b86218deeacccc03572f80c28137e9e65cec50b27e3b474ed074"
+        },
+        {
+          "path": "Resources/MainInfo.plist",
+          "kind": "source",
+          "bytes": 1393,
+          "sha256": "7b0ec0be469b996427bfa325e0a68389fd48858cb1bb66ad637802f1232faae6"
+        },
+        {
+          "path": "Resources/TimerWidgetInfo.plist",
+          "kind": "source",
+          "bytes": 729,
+          "sha256": "03ef18bd0c11de3a13e3219064293e9ef05255689f7f770e12fd8eba2258f7a3"
+        },
+        {
+          "path": "Resources/demo-tone.wav",
+          "kind": "source",
+          "bytes": 176444,
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "Resources/podcast-caption-test.mp4",
+          "kind": "source",
+          "bytes": 365116,
+          "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+        },
+        {
+          "path": "Resources/podcast-test-audio.wav",
+          "kind": "source",
+          "bytes": 1920044,
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        },
+        {
+          "path": "Scripts/build_platforms.py",
+          "kind": "source",
+          "bytes": 1730,
+          "sha256": "e9fa088ea5e5f0c55d1bc92f60c77f915ca6bdc97d7bc1cf0042af91a7fd85fd"
+        },
+        {
+          "path": "Scripts/check_asset_manifest.py",
+          "kind": "source",
+          "bytes": 2123,
+          "sha256": "843b76fe6f7233b77885bc974c737e8e34ef62b7bce0e3293f30d3587578b5fe"
+        },
+        {
+          "path": "Scripts/check_backlog.py",
+          "kind": "source",
+          "bytes": 1390,
+          "sha256": "77909fef46182e0b7946738ae390afd3ad3ecdfaf135412be3660906b8f9fc15"
+        },
+        {
+          "path": "Scripts/check_simultaneous_timer_expiry.py",
+          "kind": "source",
+          "bytes": 4036,
+          "sha256": "3c16e25d34cd8669f45ada5ea246a7e23fc67334bec7e158c7dd5bb6062478b4"
+        },
+        {
+          "path": "Scripts/generate_podcast_caption_fixture.py",
+          "kind": "source",
+          "bytes": 1210,
+          "sha256": "1a1edb5544659d37d6ecd39ed7f8359a702fa76603edf0125052bbb6a7aa4dfc"
+        },
+        {
+          "path": "Scripts/generate_project.py",
+          "kind": "source",
+          "bytes": 13728,
+          "sha256": "2ad3228d8c074224d3774382a280431d157127b65c118747ad4c98643efb8edb"
+        },
+        {
+          "path": "Scripts/make_icon.swift",
+          "kind": "source",
+          "bytes": 2096,
+          "sha256": "3b6fd2816c40d2c2d534dacb41063358e3741aad6d8a6232709205883d719b2a"
+        },
+        {
+          "path": "Scripts/prepare_assets.swift",
+          "kind": "source",
+          "bytes": 1474,
+          "sha256": "3f94224213f299abdbf225637c8de4e229c986c2d613c528e01d642ebd5d8a12"
+        },
+        {
+          "path": "Sources/App/AlternateHomeFace.swift",
+          "kind": "source",
+          "bytes": 2636,
+          "sha256": "d33182eb2a58d6856484d9ee6e38db4401912f1e3c3980e421d9e77dfb2c048e"
+        },
+        {
+          "path": "Sources/App/AnswerSpeechActions.swift",
+          "kind": "source",
+          "bytes": 3072,
+          "sha256": "dbcdc1c7bf1d4eac236b7c6c036a46f69dea1e1d4b5313d9a5971e49be788843"
+        },
+        {
+          "path": "Sources/App/AnswerSpeechSettingsView.swift",
+          "kind": "source",
+          "bytes": 2895,
+          "sha256": "91398c25ab36ccd5d5aff40430984db48133c8295be50f48904bd324e0c99cea"
+        },
+        {
+          "path": "Sources/App/AppIcons.swift",
+          "kind": "source",
+          "bytes": 6506,
+          "sha256": "171f5456c6adb64a55285419afdd277213d2c97c89c07b725584a40039e61f06"
+        },
+        {
+          "path": "Sources/App/AppModel.swift",
+          "kind": "source",
+          "bytes": 85746,
+          "sha256": "f1a9bb0f1d7409b2535f9971d33535316573850a3d98687e0531ab06fd89bff9"
+        },
+        {
+          "path": "Sources/App/AssistantAppShortcut.swift",
+          "kind": "source",
+          "bytes": 1858,
+          "sha256": "c3c8d5212879e96fe095a73cd357d5634f34153b41a35686dceacfb4feb726dd"
+        },
+        {
+          "path": "Sources/App/AssistantCapabilitiesView.swift",
+          "kind": "source",
+          "bytes": 7700,
+          "sha256": "00ede7682e80ad4480f347c3eed42401017c17c8e9ebd2f0c0df86082ddecde8"
+        },
+        {
+          "path": "Sources/App/AssistantPlanView.swift",
+          "kind": "source",
+          "bytes": 2320,
+          "sha256": "9c083a44eb02821d1f12d26f2b07a1aa0a33a6ffa63cbb24754bc697127e3cc0"
+        },
+        {
+          "path": "Sources/App/AssistantResponseView.swift",
+          "kind": "source",
+          "bytes": 9369,
+          "sha256": "c274fc615a9045ebbc9571e8cd7db9c253e1a0d87318bb7da490cc5bee42ad2b"
+        },
+        {
+          "path": "Sources/App/AssistantVoiceSession.swift",
+          "kind": "source",
+          "bytes": 2524,
+          "sha256": "4d78f414284434a1d7cbf0dfac3a708974338a7831abd6d4fe9b44273dde9559"
+        },
+        {
+          "path": "Sources/App/BrowserNavigationFixture.swift",
+          "kind": "source",
+          "bytes": 1826,
+          "sha256": "179e863f55bcb4d0171d9ee874cc10c0dea9d9576fb465309056539d7417ebac"
+        },
+        {
+          "path": "Sources/App/CameraAndCommunication.swift",
+          "kind": "source",
+          "bytes": 14765,
+          "sha256": "83edd110014e834969898050f665b76faa763bd4a03913daabebf84117e16219"
+        },
+        {
+          "path": "Sources/App/ConnectedViews.swift",
+          "kind": "source",
+          "bytes": 18780,
+          "sha256": "353f342d1eb3d72a543a648f863318d479a02ac5f1a86b93e773ed9b1110ff64"
+        },
+        {
+          "path": "Sources/App/Controls.swift",
+          "kind": "source",
+          "bytes": 32078,
+          "sha256": "c5156278470fb2d02d450561adbe28119d4b77a1f70c17335045e3866e839dba"
+        },
+        {
+          "path": "Sources/App/Design.swift",
+          "kind": "source",
+          "bytes": 15066,
+          "sha256": "2f06df4adbc91004544b6c9934a50f34c02d04bb672350b1bf4ef9d3a9f52775"
+        },
+        {
+          "path": "Sources/App/DeviceConnections.swift",
+          "kind": "source",
+          "bytes": 10821,
+          "sha256": "6c73ec2f42007b0023828c18541cb3ecc29976e5d25bf55dfb304154e27493e7"
+        },
+        {
+          "path": "Sources/App/DisplayWakeController.swift",
+          "kind": "source",
+          "bytes": 1426,
+          "sha256": "85ea8ea5f21007bb518c5e6e9d4046b063db80d36fed682d9eff5c5047f277e7"
+        },
+        {
+          "path": "Sources/App/Everyday.swift",
+          "kind": "source",
+          "bytes": 38909,
+          "sha256": "5243ac75f3cc5813d5df3d1fb5ec14029d66b6bec2e9295af37f4fb9b656ab2e"
+        },
+        {
+          "path": "Sources/App/FaceEditor.swift",
+          "kind": "source",
+          "bytes": 17411,
+          "sha256": "fee00d5894cc803a1ece1528c53d9663902ea951cddc266cad2f6200b27149d6"
+        },
+        {
+          "path": "Sources/App/Faces.swift",
+          "kind": "source",
+          "bytes": 34786,
+          "sha256": "ddda9f9a48d3608096a8c25d62e67fc996c02243ee98ef75346aa7d2ab371ea5"
+        },
+        {
+          "path": "Sources/App/FlowDigitContours.swift",
+          "kind": "source",
+          "bytes": 4984,
+          "sha256": "c05e80a4379d75b141d886ae25794e0fa8129b639f472eac9d6b3426c38a0fc0"
+        },
+        {
+          "path": "Sources/App/FlowMaterial.metal",
+          "kind": "source",
+          "bytes": 4216,
+          "sha256": "ffeb84962febb4267f111b4d63fe8e54605edbeea8251f1fa03600cd4f8e0e75"
+        },
+        {
+          "path": "Sources/App/HomeScreens.swift",
+          "kind": "source",
+          "bytes": 24478,
+          "sha256": "68a296f4f5d9d6ef1039420cf71e380f5a62c2969d858e21d110628fc69c11bb"
+        },
+        {
+          "path": "Sources/App/HomeViewApp.swift",
+          "kind": "source",
+          "bytes": 857,
+          "sha256": "3bd36df7e1f753b203ab34e29cd3fbda866786680ad22122ac44d942bc64ce6e"
+        },
+        {
+          "path": "Sources/App/HouseNoticesView.swift",
+          "kind": "source",
+          "bytes": 4432,
+          "sha256": "bef54b93fbe731cf627e19a25f21521fc116270f80e9f57487212b81d9730a5b"
+        },
+        {
+          "path": "Sources/App/LocalAudioEngine.swift",
+          "kind": "source",
+          "bytes": 2803,
+          "sha256": "1c2b3284f90ea3965d3d287b7d0131a0e350c55bd5fecdde2268bde0aa5697c0"
+        },
+        {
+          "path": "Sources/App/LocalResetView.swift",
+          "kind": "source",
+          "bytes": 4610,
+          "sha256": "c64d522a8dc63a54bb10258a2facd6206e435e405c4bd97281467407351eb3fe"
+        },
+        {
+          "path": "Sources/App/Motion.swift",
+          "kind": "source",
+          "bytes": 8551,
+          "sha256": "ea8fb1e7efa64234ab79df678f5ee09a1e0258de81e44a5b71baf874cdc9cd2f"
+        },
+        {
+          "path": "Sources/App/MusicArtworkInformation.swift",
+          "kind": "source",
+          "bytes": 2852,
+          "sha256": "11796ddaeb752346b86faeac4fce30156f60b6d6da2cbbaecf8bc3919d77d5cc"
+        },
+        {
+          "path": "Sources/App/NativeAlarms.swift",
+          "kind": "source",
+          "bytes": 5098,
+          "sha256": "2f7dc3ee188b9eeec76e79ad13c041043486c1162a52a4b632ac5021894b7d6c"
+        },
+        {
+          "path": "Sources/App/NativeAnswerSpeech.swift",
+          "kind": "source",
+          "bytes": 4548,
+          "sha256": "1ee1550a609d60a04215f562311b630d0db9bb666e9ad8b42341112f7f4f89c3"
+        },
+        {
+          "path": "Sources/App/NativeAssistantAnswers.swift",
+          "kind": "source",
+          "bytes": 4502,
+          "sha256": "69113df39041d856d0ad7f12512a14ce7c10b9119f959e2742b2b6dd4b2b323f"
+        },
+        {
+          "path": "Sources/App/NativeBrowser.swift",
+          "kind": "source",
+          "bytes": 17837,
+          "sha256": "c829f34752ecc0bbe6726a8b0da6e5ec3f863eb26c9c5d8a90a7c659b396cb78"
+        },
+        {
+          "path": "Sources/App/NativeMirror.swift",
+          "kind": "source",
+          "bytes": 8591,
+          "sha256": "0eddb29e28a8590a8127a8d007adfb22dcde508990e1a7393d36916693e0e33b"
+        },
+        {
+          "path": "Sources/App/NativePhotos.swift",
+          "kind": "source",
+          "bytes": 16798,
+          "sha256": "e02bc2a65f498c21cc7f9124e87d426b450b184b8560fc74b7cf927b3e82087b"
+        },
+        {
+          "path": "Sources/App/NativeServices.swift",
+          "kind": "source",
+          "bytes": 9889,
+          "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+        },
+        {
+          "path": "Sources/App/NativeTimerLiveActivity.swift",
+          "kind": "source",
+          "bytes": 4066,
+          "sha256": "593d93e96c208667ce1a3ad88c0dd53dc0b32ea4351347ec447095a485e1f180"
+        },
+        {
+          "path": "Sources/App/NativeViewportMarker.swift",
+          "kind": "source",
+          "bytes": 1099,
+          "sha256": "965fe9f7e058d31405a90b6262c4c3ca273872ec9fd803a58e8ea1c67a8cf159"
+        },
+        {
+          "path": "Sources/App/NativeVoice.swift",
+          "kind": "source",
+          "bytes": 10788,
+          "sha256": "d90732a4e2f262050d66c497d6fa8ae11b6e08213c5dfb1fd9f8c7ac38a2c2af"
+        },
+        {
+          "path": "Sources/App/PhotoClockInkRasterizer.swift",
+          "kind": "source",
+          "bytes": 2839,
+          "sha256": "fa6142f1cfbc4f695ef7896255d67da069a02628e17f975fc3fed0faf00b9fdb"
+        },
+        {
+          "path": "Sources/App/PhotoLayoutFixture.swift",
+          "kind": "source",
+          "bytes": 5078,
+          "sha256": "841bff3090e57e9a7b2d9a801a6fcc40f22485d24fceec8d9377d8dfee89dc5a"
+        },
+        {
+          "path": "Sources/App/PhotoTallGlyphs.swift",
+          "kind": "source",
+          "bytes": 4224,
+          "sha256": "3be93d1957a68adbf00c0d1c173d5467a512cf5207ee2cfd03db8b9eff56384b"
+        },
+        {
+          "path": "Sources/App/PodcastActions.swift",
+          "kind": "source",
+          "bytes": 3778,
+          "sha256": "5e776c0138f8df0a5a96d1540d33941b7b686a38d7ae68a7ef7b01d3dda0c43a"
+        },
+        {
+          "path": "Sources/App/PodcastCaptions.swift",
+          "kind": "source",
+          "bytes": 3103,
+          "sha256": "9bbc9a3a4fddb9357240a9798701d5c21acb507a823d92a7032a1ad1ab8ebafa"
+        },
+        {
+          "path": "Sources/App/PodcastPlayback.swift",
+          "kind": "source",
+          "bytes": 10576,
+          "sha256": "772c115a2d4730ab7bb4c20644f4f40b8aec74df2db0fc242e48b76251707611"
+        },
+        {
+          "path": "Sources/App/PowerCapabilitiesView.swift",
+          "kind": "source",
+          "bytes": 3660,
+          "sha256": "6db8c594bbc0531a0d711092605ab65755d7000be07406da42a53933ebea843b"
+        },
+        {
+          "path": "Sources/App/PrismScene.metal",
+          "kind": "source",
+          "bytes": 2834,
+          "sha256": "d6eec229c8c2dcfd5e0bad6a0a80d5e72cd52bfe2ace98501dd21e146f0062d6"
+        },
+        {
+          "path": "Sources/App/RecipeHandoffActions.swift",
+          "kind": "source",
+          "bytes": 3676,
+          "sha256": "7f7ac10fe8481582991b6f6fbcbec3e4877a371647882c35cc97cf15bb5e168a"
+        },
+        {
+          "path": "Sources/App/RecipeHandoffController.swift",
+          "kind": "source",
+          "bytes": 2697,
+          "sha256": "f2e94c008c001a8773b652fe2b79c5d000cc14c1da5d3382924fe0a20f512adc"
+        },
+        {
+          "path": "Sources/App/RecipeHandoffView.swift",
+          "kind": "source",
+          "bytes": 1536,
+          "sha256": "debd0e112a2f82e7ce7c4247c7110930b72e59765942c5023d80db0cf9d34c34"
+        },
+        {
+          "path": "Sources/App/RootView.swift",
+          "kind": "source",
+          "bytes": 18801,
+          "sha256": "7fb57dbe423d053916295ded1f3c7249ede6f612ff5b726a64c7f4c66ad12cb9"
+        },
+        {
+          "path": "Sources/App/SetupIntroductionView.swift",
+          "kind": "source",
+          "bytes": 4881,
+          "sha256": "445550bc5030c8bafbaaa33df6fe8ae05692b85fab81b00d4982d153e4c3f107"
+        },
+        {
+          "path": "Sources/App/SharedAlbums.swift",
+          "kind": "source",
+          "bytes": 15263,
+          "sha256": "67da476ec1b41dadf26bb95a70c360aca85f25e0d9e8c1cd2a62a90d3ba918bb"
+        },
+        {
+          "path": "Sources/App/SystemActions.swift",
+          "kind": "source",
+          "bytes": 3500,
+          "sha256": "3926f604d07302035c0d9a2f0c30456d07a09af943098461b4c9434b45dc95a2"
+        },
+        {
+          "path": "Sources/App/TimerActivitySettingsView.swift",
+          "kind": "source",
+          "bytes": 2091,
+          "sha256": "4d351f30c91d6d71439877beca52a3fbb92abcbe87f9646a98051e4e61b4716c"
+        },
+        {
+          "path": "Sources/App/WatchRoot.swift",
+          "kind": "source",
+          "bytes": 1719,
+          "sha256": "1481379f30b21720adabf89071bfceefb25d3d0841839b455863be7140ec27a8"
+        },
+        {
+          "path": "Sources/App/WeatherClouds.metal",
+          "kind": "source",
+          "bytes": 5703,
+          "sha256": "ed351414f4942115a805f867a5b2eb64573202631fbf2dfc39471683ed713d25"
+        },
+        {
+          "path": "Sources/App/WeatherGlass.swift",
+          "kind": "source",
+          "bytes": 1402,
+          "sha256": "3e965677b3984e2091206c04d0107b44ab22e8893469ebf2c32a1a3afdd45f17"
+        },
+        {
+          "path": "Sources/App/WeatherLightSpur.metal",
+          "kind": "source",
+          "bytes": 942,
+          "sha256": "2adc743b00b409e1443c8bebb2e659e7d800e8e1b9a0405ea1a5b0aec164f70a"
+        },
+        {
+          "path": "Sources/App/WeatherScreen.swift",
+          "kind": "source",
+          "bytes": 10341,
+          "sha256": "54a8c73515f35e86f9db03543f96c31939f4e1ed0f3f38736e40cbe91ac66514"
+        },
+        {
+          "path": "Sources/App/WeatherService.swift",
+          "kind": "source",
+          "bytes": 2337,
+          "sha256": "3921ee5426399c326610cfa4f25d27e6baf2018f6a827210edfbef8ae692be78"
+        },
+        {
+          "path": "Sources/Core/AlarmRecurrence.swift",
+          "kind": "source",
+          "bytes": 2858,
+          "sha256": "7223931e1fae63512aedeef99a9b6570a7162503f4ea2ebf85789b2eb6a1d469"
+        },
+        {
+          "path": "Sources/Core/AlbumDisplay.swift",
+          "kind": "source",
+          "bytes": 10693,
+          "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573"
+        },
+        {
+          "path": "Sources/Core/AnonymousPresencePolicy.swift",
+          "kind": "source",
+          "bytes": 5978,
+          "sha256": "6e86fb5ea8f28d0e02cd6517826459e60938eaa52e3e5f510622168355711d67"
+        },
+        {
+          "path": "Sources/Core/AnswerSpeechSession.swift",
+          "kind": "source",
+          "bytes": 3700,
+          "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e"
+        },
+        {
+          "path": "Sources/Core/AssistantConversation.swift",
+          "kind": "source",
+          "bytes": 5049,
+          "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1"
+        },
+        {
+          "path": "Sources/Core/AssistantLimits.swift",
+          "kind": "source",
+          "bytes": 251,
+          "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584"
+        },
+        {
+          "path": "Sources/Core/AssistantResponseDocument.swift",
+          "kind": "source",
+          "bytes": 2952,
+          "sha256": "f8ad454fb137ab03d43c267c23aecff554b97eb089fb56acb4cd7d3ee8e8dd2a"
+        },
+        {
+          "path": "Sources/Core/BrowserPolicy.swift",
+          "kind": "source",
+          "bytes": 1367,
+          "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+        },
+        {
+          "path": "Sources/Core/CalendarAgenda.swift",
+          "kind": "source",
+          "bytes": 1432,
+          "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+        },
+        {
+          "path": "Sources/Core/CalendarPresentation.swift",
+          "kind": "source",
+          "bytes": 1798,
+          "sha256": "cb173f15e0d4667743117b27a533da9f6dc3d2302038401970b3bf6f67727d7c"
+        },
+        {
+          "path": "Sources/Core/ConicGradientModel.swift",
+          "kind": "source",
+          "bytes": 1384,
+          "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3"
+        },
+        {
+          "path": "Sources/Core/ConnectedDataSession.swift",
+          "kind": "source",
+          "bytes": 21371,
+          "sha256": "f04cd662576a2d7cdab1a534d62c0c5704c86dd1e3d03ddb2a60e27d09116eb5"
+        },
+        {
+          "path": "Sources/Core/ConnectedModels.swift",
+          "kind": "source",
+          "bytes": 1378,
+          "sha256": "6b0ea8f93b0247a9f1fc59b32c30d25564a4db1554e0eefd5b6e3a0ef883bf2e"
+        },
+        {
+          "path": "Sources/Core/DataConnection.swift",
+          "kind": "source",
+          "bytes": 244,
+          "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+        },
+        {
+          "path": "Sources/Core/DemoActionPlan.swift",
+          "kind": "source",
+          "bytes": 6817,
+          "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11"
+        },
+        {
+          "path": "Sources/Core/DemoDoorbell.swift",
+          "kind": "source",
+          "bytes": 2014,
+          "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398"
+        },
+        {
+          "path": "Sources/Core/EverydayVoiceCommand.swift",
+          "kind": "source",
+          "bytes": 4238,
+          "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c"
+        },
+        {
+          "path": "Sources/Core/FaceConfiguration.swift",
+          "kind": "source",
+          "bytes": 8390,
+          "sha256": "de97ad42252c790e25868e76f82ca8c6595e31740eef5134d6664f0cedada6ac"
+        },
+        {
+          "path": "Sources/Core/FlowCompute.swift",
+          "kind": "source",
+          "bytes": 15081,
+          "sha256": "85c66eb9b067313922729c73c533d308dc5fcbdcd56c3d8fcc85112ce330d97d"
+        },
+        {
+          "path": "Sources/Core/FlowComputeSession.swift",
+          "kind": "source",
+          "bytes": 3736,
+          "sha256": "05b410a7436cbc158eefb74d1ce8df4faf29d221b10c44b17ff6bd8dac742781"
+        },
+        {
+          "path": "Sources/Core/FlowSimulation.swift",
+          "kind": "source",
+          "bytes": 9779,
+          "sha256": "fbb8b2c86a8d25eb2935fcd547c88ab95fc24c53dae2210ff994da36731d1d70"
+        },
+        {
+          "path": "Sources/Core/FlowTypography.swift",
+          "kind": "source",
+          "bytes": 3569,
+          "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+        },
+        {
+          "path": "Sources/Core/GuestAccessPolicy.swift",
+          "kind": "source",
+          "bytes": 902,
+          "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+        },
+        {
+          "path": "Sources/Core/HouseNotices.swift",
+          "kind": "source",
+          "bytes": 5720,
+          "sha256": "53c592315988c2d83762bd77e3b75283490c3716342d7178e2d6aef533fd5732"
+        },
+        {
+          "path": "Sources/Core/LocalStateFileReader.swift",
+          "kind": "source",
+          "bytes": 1376,
+          "sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837"
+        },
+        {
+          "path": "Sources/Core/LocalStateReset.swift",
+          "kind": "source",
+          "bytes": 7709,
+          "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb"
+        },
+        {
+          "path": "Sources/Core/Models.swift",
+          "kind": "source",
+          "bytes": 17756,
+          "sha256": "3f287818198ada8ea2c6d60cf74860a9b4eef6715257aa324285fd6f6f039ef3"
+        },
+        {
+          "path": "Sources/Core/MusicPlaybackGate.swift",
+          "kind": "source",
+          "bytes": 1485,
+          "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5"
+        },
+        {
+          "path": "Sources/Core/PersonalHomeConfiguration.swift",
+          "kind": "source",
+          "bytes": 2107,
+          "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc"
+        },
+        {
+          "path": "Sources/Core/PhotoClockInk.swift",
+          "kind": "source",
+          "bytes": 2348,
+          "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9"
+        },
+        {
+          "path": "Sources/Core/PhotoMaskRasterizer.swift",
+          "kind": "source",
+          "bytes": 941,
+          "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+        },
+        {
+          "path": "Sources/Core/PhotoPlacement.swift",
+          "kind": "source",
+          "bytes": 13992,
+          "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae"
+        },
+        {
+          "path": "Sources/Core/PodcastFeedParser.swift",
+          "kind": "source",
+          "bytes": 2154,
+          "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e"
+        },
+        {
+          "path": "Sources/Core/PodcastFeedTransport.swift",
+          "kind": "source",
+          "bytes": 1884,
+          "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97"
+        },
+        {
+          "path": "Sources/Core/PodcastLibrary.swift",
+          "kind": "source",
+          "bytes": 2934,
+          "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+        },
+        {
+          "path": "Sources/Core/PowerAdapterInformation.swift",
+          "kind": "source",
+          "bytes": 639,
+          "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616"
+        },
+        {
+          "path": "Sources/Core/RecipeParser.swift",
+          "kind": "source",
+          "bytes": 8475,
+          "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
+        },
+        {
+          "path": "Sources/Core/RecipeTransfer.swift",
+          "kind": "source",
+          "bytes": 3400,
+          "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+        },
+        {
+          "path": "Sources/Core/SetupIntroduction.swift",
+          "kind": "source",
+          "bytes": 198,
+          "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8"
+        },
+        {
+          "path": "Sources/Core/SnapshotMigration.swift",
+          "kind": "source",
+          "bytes": 9608,
+          "sha256": "cc24c10d1f7fd0e8e99a6e40556051b062239fd57fef21f4f0492c4fc758dffd"
+        },
+        {
+          "path": "Sources/Core/TimerLiveActivity.swift",
+          "kind": "source",
+          "bytes": 4008,
+          "sha256": "88d8e0f7b5f9c144e60489a391eb3a6ea33b33b8ddf48e4a19cee6773dd98020"
+        },
+        {
+          "path": "Sources/Core/ViewportNavigationIntent.swift",
+          "kind": "source",
+          "bytes": 1260,
+          "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341"
+        },
+        {
+          "path": "Sources/Core/WeatherData.swift",
+          "kind": "source",
+          "bytes": 6698,
+          "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+        },
+        {
+          "path": "Sources/Core/WorldClock.swift",
+          "kind": "source",
+          "bytes": 9482,
+          "sha256": "f2fa5fe6493f4cf0ba7a126f41df98c2e90a0bd1eeaac8ac5fd178c59d7bdbbc"
+        },
+        {
+          "path": "Sources/Shared/HomeViewTimerAttributes.swift",
+          "kind": "source",
+          "bytes": 221,
+          "sha256": "c82c97999ff1765de34976481ff5158356003a0a870715f8b207ab8f042fda92"
+        },
+        {
+          "path": "Sources/Widgets/HomeViewTimerWidget.swift",
+          "kind": "source",
+          "bytes": 2097,
+          "sha256": "94f01e5f7b175a9fe71317005002b71979c52f556f0e0c25e5a510e8a3be54fc"
+        },
+        {
+          "path": "Tests/BoundaryTests/RecipeHandoffBoundaryProbe.swift",
+          "kind": "source",
+          "bytes": 3193,
+          "sha256": "46ad41740303d6d276ebeee658f2d8ab14a4ccd49f1d784b2f2b4ae2b6438e10"
+        },
+        {
+          "path": "Tests/CoreTests/AlarmRecurrenceTests.swift",
+          "kind": "source",
+          "bytes": 5600,
+          "sha256": "1db522c696d0ce89073c5f2103fe77f1176ab5888f6850c25bb6f18d3e2591f2"
+        },
+        {
+          "path": "Tests/CoreTests/AlbumDisplayTests.swift",
+          "kind": "source",
+          "bytes": 20209,
+          "sha256": "c251f8f3783c6699b058bd386b59835af55aaeee3deb81aa2046915659478c39"
+        },
+        {
+          "path": "Tests/CoreTests/AnonymousPresencePolicyTests.swift",
+          "kind": "source",
+          "bytes": 9338,
+          "sha256": "afd8ed942d44fce5c2eb1d1f807fb7acede0011b395652c5a52123774690ca48"
+        },
+        {
+          "path": "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+          "kind": "source",
+          "bytes": 6131,
+          "sha256": "ea26acafb7a4e039af97f3328b48a92d9e4211fd65cbcae28037df45716a19cb"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+          "kind": "source",
+          "bytes": 1100,
+          "sha256": "75eba1015caf3b25e51444492280ec4977e2a5071c37b60d8cd3601981199c60"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantConversationTests.swift",
+          "kind": "source",
+          "bytes": 7467,
+          "sha256": "95b4060b83f4d1ee600ef67e74bcc5866e8944b249ff0ac2587046b9625e9451"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+          "kind": "source",
+          "bytes": 1965,
+          "sha256": "4bd27a33b521fd86d48e0623be31efbd8aa4efcbc9737c7e2c1fcf6cc5efcc91"
+        },
+        {
+          "path": "Tests/CoreTests/BrowserPolicyTests.swift",
+          "kind": "source",
+          "bytes": 2201,
+          "sha256": "3789d2d58f7ad0f02f5887a42c93d59cc66be0c60dd9b99515f2f82de4567c04"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarAgendaTests.swift",
+          "kind": "source",
+          "bytes": 2699,
+          "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarBoundaryTests.swift",
+          "kind": "source",
+          "bytes": 2325,
+          "sha256": "667b3b82bcdd635ba91c73b6ae50d71f4fbf51499877b24d933da552b1527769"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarLocaleTests.swift",
+          "kind": "source",
+          "bytes": 3988,
+          "sha256": "64ddc425a96909ba43ba40203be5893a66bcebbfb0054715e630bf1b088fe656"
+        },
+        {
+          "path": "Tests/CoreTests/ConicGradientTests.swift",
+          "kind": "source",
+          "bytes": 1498,
+          "sha256": "b2ae979fd299597c4275ec3085afb49b8e2c2bf080ef75dd384ca90e12e75f2a"
+        },
+        {
+          "path": "Tests/CoreTests/DemoActionPlanTests.swift",
+          "kind": "source",
+          "bytes": 5974,
+          "sha256": "4989acd77a49de6a252ddfaa732600a9265d08aa9117ce8ee85802232b2908fb"
+        },
+        {
+          "path": "Tests/CoreTests/DemoDoorbellTests.swift",
+          "kind": "source",
+          "bytes": 4306,
+          "sha256": "45bac13d2e9d597f81918ce5d4c472e7494150375e5a383d5cffadfd087058c2"
+        },
+        {
+          "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+          "kind": "source",
+          "bytes": 50899,
+          "sha256": "9c0376273dd9f769ea2598d550c6760ee15bf8697dd58813621122d7c8bfdb40"
+        },
+        {
+          "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+          "kind": "source",
+          "bytes": 2086,
+          "sha256": "d27995a922e1c5c346f8687425a5d775bab205b4abe49ad8547d6626653ab55b"
+        },
+        {
+          "path": "Tests/CoreTests/FaceCatalogueRecoveryTests.swift",
+          "kind": "source",
+          "bytes": 2939,
+          "sha256": "53130d5cad5051c7d6d876463aa509b0b423fe7e973920ad8e923f889db69ec9"
+        },
+        {
+          "path": "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+          "kind": "source",
+          "bytes": 5685,
+          "sha256": "a848907b433a55eb467a078551d6ba2a61d8b989f839ec9a4f1f59b83ad86b28"
+        },
+        {
+          "path": "Tests/CoreTests/FlowComputeTests.swift",
+          "kind": "source",
+          "bytes": 8161,
+          "sha256": "1098b3ea16231ecfd370fde9f85cf5f62eb134456eb105302a9f2ee48014b12b"
+        },
+        {
+          "path": "Tests/CoreTests/FlowTypographyTests.swift",
+          "kind": "source",
+          "bytes": 2447,
+          "sha256": "fda513fc05d95a89a3ceacb2ecdd68a19c3941784dca369bdda4d19eac98d76d"
+        },
+        {
+          "path": "Tests/CoreTests/GuestSafetyTests.swift",
+          "kind": "source",
+          "bytes": 1541,
+          "sha256": "2a1b47af26c87a24ffb9089f330a4dc11cfb74830c0d270ccd7f746fe1e0d2cd"
+        },
+        {
+          "path": "Tests/CoreTests/HomeViewCoreTests.swift",
+          "kind": "source",
+          "bytes": 11252,
+          "sha256": "24458b3609de5eaf6a38f3822e10f34f0ec338ead874f44be5bd243e5a32839b"
+        },
+        {
+          "path": "Tests/CoreTests/HouseNoticeTests.swift",
+          "kind": "source",
+          "bytes": 6777,
+          "sha256": "d8e6c73588e8bf229c5de209de1ee3760f052cc3a2bf7e2ca59c9edab00f5f4c"
+        },
+        {
+          "path": "Tests/CoreTests/LocalStateFileReaderTests.swift",
+          "kind": "source",
+          "bytes": 3240,
+          "sha256": "1ecdcb07b482feca5df946fee4e6048558371df50b38dd2a9f209d9bbccaedf4"
+        },
+        {
+          "path": "Tests/CoreTests/LocalStateResetTests.swift",
+          "kind": "source",
+          "bytes": 7290,
+          "sha256": "a315fb47b878e6b5165fab6706fd3c71a6c55bdcf76b12e14dee995b3ec3555e"
+        },
+        {
+          "path": "Tests/CoreTests/MusicPlaybackGateTests.swift",
+          "kind": "source",
+          "bytes": 3516,
+          "sha256": "b0b95bb382b6a479d06946fd67a44b71fc9361e30edac917b93d8f263ca1d6e7"
+        },
+        {
+          "path": "Tests/CoreTests/PersistenceAcceptanceTests.swift",
+          "kind": "source",
+          "bytes": 8031,
+          "sha256": "7a60c5781f4a043ddef22ec59a3049febe77e7baf72c665d9460af7b262ab2d2"
+        },
+        {
+          "path": "Tests/CoreTests/PersonalHomeTests.swift",
+          "kind": "source",
+          "bytes": 3310,
+          "sha256": "e7c218f72c2b66542d70012a143b30c3790e9b16ef09a5f9a8b485d117bd424d"
+        },
+        {
+          "path": "Tests/CoreTests/PhotoClockInkTests.swift",
+          "kind": "source",
+          "bytes": 6810,
+          "sha256": "0171a1f7486c06a176c873dbc9f5f98cee82322f99a332c8c031f1c7ad442821"
+        },
+        {
+          "path": "Tests/CoreTests/PhotoPlacementTests.swift",
+          "kind": "source",
+          "bytes": 10883,
+          "sha256": "dd3f4bcbc04c9ad0feccd925916a42541db6cff9329af9e3f12f618baeb13022"
+        },
+        {
+          "path": "Tests/CoreTests/PodcastTests.swift",
+          "kind": "source",
+          "bytes": 6992,
+          "sha256": "662bb7087897d5e33e16c7a37c632984215f18dbbd283e59e90996a5bc854bc1"
+        },
+        {
+          "path": "Tests/CoreTests/PowerAdapterInformationTests.swift",
+          "kind": "source",
+          "bytes": 1315,
+          "sha256": "e6998839b624de9ce13d702abb7fcb09a2cd5e69319a15dcea97fa04d7e5de16"
+        },
+        {
+          "path": "Tests/CoreTests/RecipeParserTests.swift",
+          "kind": "source",
+          "bytes": 4181,
+          "sha256": "0fa0d28fe1658ef580c3bf309bc9d7382d9968adcdf35c40ccac35898b2857b8"
+        },
+        {
+          "path": "Tests/CoreTests/RecipeTransferTests.swift",
+          "kind": "source",
+          "bytes": 5342,
+          "sha256": "dd505824664e92202d442c6abb18b67280feec1b731875e3b4768cc7116360b3"
+        },
+        {
+          "path": "Tests/CoreTests/SetupIntroductionTests.swift",
+          "kind": "source",
+          "bytes": 2947,
+          "sha256": "f7cc98d3db797009470821bc1c1690895ff26846c1984b87e3bf7d0f409afc3f"
+        },
+        {
+          "path": "Tests/CoreTests/SharedPanelTests.swift",
+          "kind": "source",
+          "bytes": 7250,
+          "sha256": "57059f84343be67bf1b4ac6f1019cada5100007ea525201f099e05941943341f"
+        },
+        {
+          "path": "Tests/CoreTests/SnapshotMigrationTests.swift",
+          "kind": "source",
+          "bytes": 15373,
+          "sha256": "faf212029d5e3a40ee48d633bc30bea981660ddd83467da28b8b8dc8a1de3eb5"
+        },
+        {
+          "path": "Tests/CoreTests/TimerLiveActivityTests.swift",
+          "kind": "source",
+          "bytes": 7083,
+          "sha256": "118ea7f90f19c1c80940675a2c45cec13a036b4ad122746d9ab008ebed3d71f3"
+        },
+        {
+          "path": "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+          "kind": "source",
+          "bytes": 4068,
+          "sha256": "d27bbba71e017c88e09f33bcf64e5ecc57c6a0eec000f658bcbe2ca8d8885763"
+        },
+        {
+          "path": "Tests/CoreTests/WatchFacesTests.swift",
+          "kind": "source",
+          "bytes": 9214,
+          "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
+        },
+        {
+          "path": "Tests/CoreTests/WeatherTests.swift",
+          "kind": "source",
+          "bytes": 5723,
+          "sha256": "a3aa9bb2852b44088207b7d0c1c8bac354fbe8f17fb2134abfa98654b3d4692c"
+        },
+        {
+          "path": "Tests/CoreTests/WorldClockTests.swift",
+          "kind": "source",
+          "bytes": 11769,
+          "sha256": "ced9a5640261b5622afb785e783d3fbe13cb7edecc9de62e32a0e521985a74cf"
+        },
+        {
+          "path": "Tests/NativeProbes/AssistantResponseGate.swift",
+          "kind": "source",
+          "bytes": 4726,
+          "sha256": "5d265fbac7778abce832f1b38613f415a2b01c9f01e5a1a092463bdf61c981bd"
+        },
+        {
+          "path": "Tests/NativeProbes/SimultaneousTimerExpiry.swift",
+          "kind": "source",
+          "bytes": 6460,
+          "sha256": "4e81533b1f5743a718d619738874e9db881ea6ba4781790dd653a97d82206ce3"
+        },
+        {
+          "path": "Tests/UITests/HomeViewUITests.swift",
+          "kind": "source",
+          "bytes": 410712,
+          "sha256": "e267a8fbd5cde913c30bba8dd83382c5aca87bce6d5c4a113703c3faa1efe4ac"
+        }
+      ]
+    },
+    {
+      "source_digest": "9612b6671648a330a6199830cc0097a16a6c6eae8e7224fa2eb23f5f3211eb59",
+      "final": true,
+      "checkpoints": [
+        "candidate1-phone",
+        "candidate1-ipad",
+        "final-regression-phone",
+        "final-regression-ipad"
+      ],
+      "files": [
+        {
+          "path": "HomeViewReplica.xcodeproj/project.pbxproj",
+          "kind": "source",
+          "bytes": 60315,
+          "sha256": "034844b7f5451e8b77e92d2da2fe16cd965e129651c352daa59a0fdcf8ae5702"
+        },
+        {
+          "path": "HomeViewReplica.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+          "kind": "source",
+          "bytes": 383,
+          "sha256": "9cd91cb1de5043e06afd268e13369983f60a22409fedff2b48fef64786442afc"
+        },
+        {
+          "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewReplica.xcscheme",
+          "kind": "source",
+          "bytes": 2324,
+          "sha256": "d592cf5ee61a485aa772f5aad21d8d6da72eb07ad0d0d2b8f8f372529277f599"
+        },
+        {
+          "path": "HomeViewReplica.xcodeproj/xcshareddata/xcschemes/HomeViewWatch.xcscheme",
+          "kind": "source",
+          "bytes": 2033,
+          "sha256": "78b2213f86a0264e50e70f10053bfc790bfe23c664e6887c6a290c55c9f2b1da"
+        },
+        {
+          "path": "Package.resolved",
+          "kind": "source",
+          "bytes": 383,
+          "sha256": "c8847f7f0d11227b76d43c295cc6596611c58b666412fef51298f1b959c8df0c"
+        },
+        {
+          "path": "Package.swift",
+          "kind": "source",
+          "bytes": 509,
+          "sha256": "87aa9830cf40dae5b18d58ff685509d42e0d7ad8003c295f627b175d514a7537"
+        },
+        {
+          "path": "Resources/Assets.xcassets/AlbumArt.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/AlbumArt.imageset/image.png",
+          "kind": "source",
+          "bytes": 23517,
+          "sha256": "d53db63436f68e04d6f26a54fa46da4bd2b533f4a3c146e67f654db191fb5208"
+        },
+        {
+          "path": "Resources/Assets.xcassets/AppIcon.appiconset/Contents.json",
+          "kind": "source",
+          "bytes": 215,
+          "sha256": "380b68793f2cfa854be7cce10b1c98ee5032ab707e70d8f771f586e7ea182abc"
+        },
+        {
+          "path": "Resources/Assets.xcassets/AppIcon.appiconset/icon-independent-v2.png",
+          "kind": "source",
+          "bytes": 891172,
+          "sha256": "a6c20b8da16e82972473ef3e2c1153eee048ccc42e1a1110148f19c72dee69fa"
+        },
+        {
+          "path": "Resources/Assets.xcassets/Contents.json",
+          "kind": "source",
+          "bytes": 43,
+          "sha256": "47d7e4a36c59b0f8829154abe3a7f6b7ef0c5ea5cf8a9bfccbc6bdf85e811d1b"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraBackYardV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 3742589,
+          "sha256": "9acbcb56c4dbd5b41daa0054985c6b496f99408642bc246b9f3e273be08f8241"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraDrivewayV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 3073944,
+          "sha256": "14d3fc99123c6ff70c994523790b94f4d34cf18c1e808a3080b1905f4cc73db9"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraFrontDoorV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 3252316,
+          "sha256": "640cce7ae268abee5cf53b424a9c9646ecd03922a9a4b14865ead2c4414b21b7"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoCameraLivingRoomV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 3022112,
+          "sha256": "b0a9540126098aab163deb7627609275600b95f1164aae5784e5e7765adf3db9"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPhotoLandscapeV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 2818793,
+          "sha256": "4706c1679b463628014e7fbbe64a3be6e3ebafdc864f121c33d4e2d4182f8651"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPhotoPortraitV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 2334993,
+          "sha256": "a23cc0c3f9bd409029e2e4451a771d9dceb91821fd2a32dbdaaac8ca0e3f47d7"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 149,
+          "sha256": "e5e18411a59b11bbd6dbc0366668f8a6ef982ac0b3e54344b8f0ed8a0a0acd57"
+        },
+        {
+          "path": "Resources/Assets.xcassets/DemoPortraitNativeAlphaReplayV1.imageset/image.png",
+          "kind": "source",
+          "bytes": 51440,
+          "sha256": "6a494569e8a377f4fe6a1d21cb6bda8024c25848dc78f905a2fe58f660d833ab"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconAlarms.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconAlarms.imageset/image.png",
+          "kind": "source",
+          "bytes": 23193,
+          "sha256": "5db57cfef3d81f472a462feb90715fa76359af9ea5a1b2ada45f4acdffe0022b"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconCalendar.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconCalendar.imageset/image.png",
+          "kind": "source",
+          "bytes": 23375,
+          "sha256": "a6ebff496c8bf0dd216d1f3c97fb954bb2949d1e4b12def159dc7e5110dcddbe"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconFaceTime.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconFaceTime.imageset/image.png",
+          "kind": "source",
+          "bytes": 23119,
+          "sha256": "f2c4e01ad31ab51995a795dfb8bb40eedb3d98b69cef30f4722c3ba4efa6cd69"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconFindMy.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconFindMy.imageset/image.png",
+          "kind": "source",
+          "bytes": 23112,
+          "sha256": "0619d1d988afef3cb0fa424c4a16c52d242f66a6a707ca2948d5f5ce4c136e5e"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconHome.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconHome.imageset/image.png",
+          "kind": "source",
+          "bytes": 23592,
+          "sha256": "a4107899bb299eea1fb938ec202adbceb6d4e9ea61d1d9f9da7fcc234f108663"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconIntercom.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconIntercom.imageset/image.png",
+          "kind": "source",
+          "bytes": 23765,
+          "sha256": "aead7f98e93449c0e538eb2a2ab5aca22c8f65d6a2ce8831794836935e732d61"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconMessages.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconMessages.imageset/image.png",
+          "kind": "source",
+          "bytes": 23497,
+          "sha256": "e53f1b20362924a7d40c85208ab94ef594cca47580bc3439df3da8ef6e40e721"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconMusic.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconMusic.imageset/image.png",
+          "kind": "source",
+          "bytes": 23452,
+          "sha256": "943812f42694050a5c6e12b6051cbc3eb4b7cdcf742057558bd80d57ea4be06d"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconPodcasts.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconPodcasts.imageset/image.png",
+          "kind": "source",
+          "bytes": 23293,
+          "sha256": "5cda483a240793d412059b58ed648dcd9913f66247851f37d85fc8fa92002260"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconReminders.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconReminders.imageset/image.png",
+          "kind": "source",
+          "bytes": 23667,
+          "sha256": "95c1202df19960e8cca6271fc0f94675fd93844ed7cc8913d1af1e9f6f401b58"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconSafari.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconSafari.imageset/image.png",
+          "kind": "source",
+          "bytes": 23353,
+          "sha256": "91a1ae2e4b5a4ac5235ad115b7220fea98fdf28fa1372d0765e8f549fe5f091b"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconSettings.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconSettings.imageset/image.png",
+          "kind": "source",
+          "bytes": 23289,
+          "sha256": "a4c5f5ae1a828062f573f17ba0cd3a873b745baa076b6dd182197e61dc600283"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconTimers.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconTimers.imageset/image.png",
+          "kind": "source",
+          "bytes": 23498,
+          "sha256": "0cb4cebb93b29deb64f1c3851d1489c7671013659fd9757655521e4bb1b5352f"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconWeather.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconWeather.imageset/image.png",
+          "kind": "source",
+          "bytes": 22993,
+          "sha256": "8093f745c479d407fb8be7264f567819233a56ca2bd384d4a52b796bef65abce"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconWorldClock.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/IconWorldClock.imageset/image.png",
+          "kind": "source",
+          "bytes": 23550,
+          "sha256": "37bbeb999a4dcc41c91af84eae723ba04f40394384f5ae1c7d150717edb1f471"
+        },
+        {
+          "path": "Resources/Assets.xcassets/Soup.imageset/Contents.json",
+          "kind": "source",
+          "bytes": 148,
+          "sha256": "189571e628e32b09412f034256e5503d7cbfd01a0f6ddb9b4240bbb1a1bf4954"
+        },
+        {
+          "path": "Resources/Assets.xcassets/Soup.imageset/image.png",
+          "kind": "source",
+          "bytes": 23419,
+          "sha256": "18096d661501bf786990a44eb19a2d8c3c97e1584da96c35a4dd26f380ff195f"
+        },
+        {
+          "path": "Resources/FeedKit-LICENSE.txt",
+          "kind": "source",
+          "bytes": 1083,
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "Resources/Info.plist",
+          "kind": "source",
+          "bytes": 1292,
+          "sha256": "90292e4f4fe1b86218deeacccc03572f80c28137e9e65cec50b27e3b474ed074"
+        },
+        {
+          "path": "Resources/MainInfo.plist",
+          "kind": "source",
+          "bytes": 1393,
+          "sha256": "7b0ec0be469b996427bfa325e0a68389fd48858cb1bb66ad637802f1232faae6"
+        },
+        {
+          "path": "Resources/TimerWidgetInfo.plist",
+          "kind": "source",
+          "bytes": 729,
+          "sha256": "03ef18bd0c11de3a13e3219064293e9ef05255689f7f770e12fd8eba2258f7a3"
+        },
+        {
+          "path": "Resources/demo-tone.wav",
+          "kind": "source",
+          "bytes": 176444,
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "Resources/podcast-caption-test.mp4",
+          "kind": "source",
+          "bytes": 365116,
+          "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+        },
+        {
+          "path": "Resources/podcast-test-audio.wav",
+          "kind": "source",
+          "bytes": 1920044,
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        },
+        {
+          "path": "Scripts/build_platforms.py",
+          "kind": "source",
+          "bytes": 1730,
+          "sha256": "e9fa088ea5e5f0c55d1bc92f60c77f915ca6bdc97d7bc1cf0042af91a7fd85fd"
+        },
+        {
+          "path": "Scripts/check_asset_manifest.py",
+          "kind": "source",
+          "bytes": 2123,
+          "sha256": "843b76fe6f7233b77885bc974c737e8e34ef62b7bce0e3293f30d3587578b5fe"
+        },
+        {
+          "path": "Scripts/check_backlog.py",
+          "kind": "source",
+          "bytes": 1390,
+          "sha256": "77909fef46182e0b7946738ae390afd3ad3ecdfaf135412be3660906b8f9fc15"
+        },
+        {
+          "path": "Scripts/check_simultaneous_timer_expiry.py",
+          "kind": "source",
+          "bytes": 4036,
+          "sha256": "3c16e25d34cd8669f45ada5ea246a7e23fc67334bec7e158c7dd5bb6062478b4"
+        },
+        {
+          "path": "Scripts/generate_podcast_caption_fixture.py",
+          "kind": "source",
+          "bytes": 1210,
+          "sha256": "1a1edb5544659d37d6ecd39ed7f8359a702fa76603edf0125052bbb6a7aa4dfc"
+        },
+        {
+          "path": "Scripts/generate_project.py",
+          "kind": "source",
+          "bytes": 13728,
+          "sha256": "2ad3228d8c074224d3774382a280431d157127b65c118747ad4c98643efb8edb"
+        },
+        {
+          "path": "Scripts/make_icon.swift",
+          "kind": "source",
+          "bytes": 2096,
+          "sha256": "3b6fd2816c40d2c2d534dacb41063358e3741aad6d8a6232709205883d719b2a"
+        },
+        {
+          "path": "Scripts/prepare_assets.swift",
+          "kind": "source",
+          "bytes": 1474,
+          "sha256": "3f94224213f299abdbf225637c8de4e229c986c2d613c528e01d642ebd5d8a12"
+        },
+        {
+          "path": "Sources/App/AlternateHomeFace.swift",
+          "kind": "source",
+          "bytes": 2636,
+          "sha256": "d33182eb2a58d6856484d9ee6e38db4401912f1e3c3980e421d9e77dfb2c048e"
+        },
+        {
+          "path": "Sources/App/AnswerSpeechActions.swift",
+          "kind": "source",
+          "bytes": 3072,
+          "sha256": "dbcdc1c7bf1d4eac236b7c6c036a46f69dea1e1d4b5313d9a5971e49be788843"
+        },
+        {
+          "path": "Sources/App/AnswerSpeechSettingsView.swift",
+          "kind": "source",
+          "bytes": 2895,
+          "sha256": "91398c25ab36ccd5d5aff40430984db48133c8295be50f48904bd324e0c99cea"
+        },
+        {
+          "path": "Sources/App/AppIcons.swift",
+          "kind": "source",
+          "bytes": 6506,
+          "sha256": "171f5456c6adb64a55285419afdd277213d2c97c89c07b725584a40039e61f06"
+        },
+        {
+          "path": "Sources/App/AppModel.swift",
+          "kind": "source",
+          "bytes": 85746,
+          "sha256": "f1a9bb0f1d7409b2535f9971d33535316573850a3d98687e0531ab06fd89bff9"
+        },
+        {
+          "path": "Sources/App/AssistantAppShortcut.swift",
+          "kind": "source",
+          "bytes": 1858,
+          "sha256": "c3c8d5212879e96fe095a73cd357d5634f34153b41a35686dceacfb4feb726dd"
+        },
+        {
+          "path": "Sources/App/AssistantCapabilitiesView.swift",
+          "kind": "source",
+          "bytes": 7700,
+          "sha256": "00ede7682e80ad4480f347c3eed42401017c17c8e9ebd2f0c0df86082ddecde8"
+        },
+        {
+          "path": "Sources/App/AssistantPlanView.swift",
+          "kind": "source",
+          "bytes": 2320,
+          "sha256": "9c083a44eb02821d1f12d26f2b07a1aa0a33a6ffa63cbb24754bc697127e3cc0"
+        },
+        {
+          "path": "Sources/App/AssistantResponseView.swift",
+          "kind": "source",
+          "bytes": 9369,
+          "sha256": "c274fc615a9045ebbc9571e8cd7db9c253e1a0d87318bb7da490cc5bee42ad2b"
+        },
+        {
+          "path": "Sources/App/AssistantVoiceSession.swift",
+          "kind": "source",
+          "bytes": 2524,
+          "sha256": "4d78f414284434a1d7cbf0dfac3a708974338a7831abd6d4fe9b44273dde9559"
+        },
+        {
+          "path": "Sources/App/BrowserNavigationFixture.swift",
+          "kind": "source",
+          "bytes": 1826,
+          "sha256": "179e863f55bcb4d0171d9ee874cc10c0dea9d9576fb465309056539d7417ebac"
+        },
+        {
+          "path": "Sources/App/CameraAndCommunication.swift",
+          "kind": "source",
+          "bytes": 14765,
+          "sha256": "83edd110014e834969898050f665b76faa763bd4a03913daabebf84117e16219"
+        },
+        {
+          "path": "Sources/App/ConnectedViews.swift",
+          "kind": "source",
+          "bytes": 18909,
+          "sha256": "8e6055dd2351cdacec924374ef8467af96c620dfbf134e2af65199856e67671f"
+        },
+        {
+          "path": "Sources/App/Controls.swift",
+          "kind": "source",
+          "bytes": 32123,
+          "sha256": "f8fdff0a8a378e3c3db7d745a4801a114d00edb333f3570fcaa202d07ce3257c"
+        },
+        {
+          "path": "Sources/App/Design.swift",
+          "kind": "source",
+          "bytes": 15066,
+          "sha256": "2f06df4adbc91004544b6c9934a50f34c02d04bb672350b1bf4ef9d3a9f52775"
+        },
+        {
+          "path": "Sources/App/DeviceConnections.swift",
+          "kind": "source",
+          "bytes": 10821,
+          "sha256": "6c73ec2f42007b0023828c18541cb3ecc29976e5d25bf55dfb304154e27493e7"
+        },
+        {
+          "path": "Sources/App/DisplayWakeController.swift",
+          "kind": "source",
+          "bytes": 1426,
+          "sha256": "85ea8ea5f21007bb518c5e6e9d4046b063db80d36fed682d9eff5c5047f277e7"
+        },
+        {
+          "path": "Sources/App/Everyday.swift",
+          "kind": "source",
+          "bytes": 38909,
+          "sha256": "5243ac75f3cc5813d5df3d1fb5ec14029d66b6bec2e9295af37f4fb9b656ab2e"
+        },
+        {
+          "path": "Sources/App/FaceEditor.swift",
+          "kind": "source",
+          "bytes": 17411,
+          "sha256": "fee00d5894cc803a1ece1528c53d9663902ea951cddc266cad2f6200b27149d6"
+        },
+        {
+          "path": "Sources/App/Faces.swift",
+          "kind": "source",
+          "bytes": 34786,
+          "sha256": "ddda9f9a48d3608096a8c25d62e67fc996c02243ee98ef75346aa7d2ab371ea5"
+        },
+        {
+          "path": "Sources/App/FlowDigitContours.swift",
+          "kind": "source",
+          "bytes": 4984,
+          "sha256": "c05e80a4379d75b141d886ae25794e0fa8129b639f472eac9d6b3426c38a0fc0"
+        },
+        {
+          "path": "Sources/App/FlowMaterial.metal",
+          "kind": "source",
+          "bytes": 4216,
+          "sha256": "ffeb84962febb4267f111b4d63fe8e54605edbeea8251f1fa03600cd4f8e0e75"
+        },
+        {
+          "path": "Sources/App/HomeScreens.swift",
+          "kind": "source",
+          "bytes": 24478,
+          "sha256": "68a296f4f5d9d6ef1039420cf71e380f5a62c2969d858e21d110628fc69c11bb"
+        },
+        {
+          "path": "Sources/App/HomeViewApp.swift",
+          "kind": "source",
+          "bytes": 857,
+          "sha256": "3bd36df7e1f753b203ab34e29cd3fbda866786680ad22122ac44d942bc64ce6e"
+        },
+        {
+          "path": "Sources/App/HouseNoticesView.swift",
+          "kind": "source",
+          "bytes": 4432,
+          "sha256": "bef54b93fbe731cf627e19a25f21521fc116270f80e9f57487212b81d9730a5b"
+        },
+        {
+          "path": "Sources/App/LocalAudioEngine.swift",
+          "kind": "source",
+          "bytes": 2803,
+          "sha256": "1c2b3284f90ea3965d3d287b7d0131a0e350c55bd5fecdde2268bde0aa5697c0"
+        },
+        {
+          "path": "Sources/App/LocalResetView.swift",
+          "kind": "source",
+          "bytes": 4610,
+          "sha256": "c64d522a8dc63a54bb10258a2facd6206e435e405c4bd97281467407351eb3fe"
+        },
+        {
+          "path": "Sources/App/Motion.swift",
+          "kind": "source",
+          "bytes": 8551,
+          "sha256": "ea8fb1e7efa64234ab79df678f5ee09a1e0258de81e44a5b71baf874cdc9cd2f"
+        },
+        {
+          "path": "Sources/App/MusicArtworkInformation.swift",
+          "kind": "source",
+          "bytes": 2852,
+          "sha256": "11796ddaeb752346b86faeac4fce30156f60b6d6da2cbbaecf8bc3919d77d5cc"
+        },
+        {
+          "path": "Sources/App/NativeAlarms.swift",
+          "kind": "source",
+          "bytes": 5098,
+          "sha256": "2f7dc3ee188b9eeec76e79ad13c041043486c1162a52a4b632ac5021894b7d6c"
+        },
+        {
+          "path": "Sources/App/NativeAnswerSpeech.swift",
+          "kind": "source",
+          "bytes": 4548,
+          "sha256": "1ee1550a609d60a04215f562311b630d0db9bb666e9ad8b42341112f7f4f89c3"
+        },
+        {
+          "path": "Sources/App/NativeAssistantAnswers.swift",
+          "kind": "source",
+          "bytes": 4502,
+          "sha256": "69113df39041d856d0ad7f12512a14ce7c10b9119f959e2742b2b6dd4b2b323f"
+        },
+        {
+          "path": "Sources/App/NativeBrowser.swift",
+          "kind": "source",
+          "bytes": 17837,
+          "sha256": "c829f34752ecc0bbe6726a8b0da6e5ec3f863eb26c9c5d8a90a7c659b396cb78"
+        },
+        {
+          "path": "Sources/App/NativeMirror.swift",
+          "kind": "source",
+          "bytes": 8591,
+          "sha256": "0eddb29e28a8590a8127a8d007adfb22dcde508990e1a7393d36916693e0e33b"
+        },
+        {
+          "path": "Sources/App/NativePhotos.swift",
+          "kind": "source",
+          "bytes": 16798,
+          "sha256": "e02bc2a65f498c21cc7f9124e87d426b450b184b8560fc74b7cf927b3e82087b"
+        },
+        {
+          "path": "Sources/App/NativeServices.swift",
+          "kind": "source",
+          "bytes": 9889,
+          "sha256": "73e5fb4833478cbe6670812429c6acfbc63cca2ebf530e2253e50447f99c57fd"
+        },
+        {
+          "path": "Sources/App/NativeTimerLiveActivity.swift",
+          "kind": "source",
+          "bytes": 4066,
+          "sha256": "593d93e96c208667ce1a3ad88c0dd53dc0b32ea4351347ec447095a485e1f180"
+        },
+        {
+          "path": "Sources/App/NativeViewportMarker.swift",
+          "kind": "source",
+          "bytes": 1099,
+          "sha256": "965fe9f7e058d31405a90b6262c4c3ca273872ec9fd803a58e8ea1c67a8cf159"
+        },
+        {
+          "path": "Sources/App/NativeVoice.swift",
+          "kind": "source",
+          "bytes": 10788,
+          "sha256": "d90732a4e2f262050d66c497d6fa8ae11b6e08213c5dfb1fd9f8c7ac38a2c2af"
+        },
+        {
+          "path": "Sources/App/PhotoClockInkRasterizer.swift",
+          "kind": "source",
+          "bytes": 2839,
+          "sha256": "fa6142f1cfbc4f695ef7896255d67da069a02628e17f975fc3fed0faf00b9fdb"
+        },
+        {
+          "path": "Sources/App/PhotoLayoutFixture.swift",
+          "kind": "source",
+          "bytes": 5078,
+          "sha256": "841bff3090e57e9a7b2d9a801a6fcc40f22485d24fceec8d9377d8dfee89dc5a"
+        },
+        {
+          "path": "Sources/App/PhotoTallGlyphs.swift",
+          "kind": "source",
+          "bytes": 4224,
+          "sha256": "3be93d1957a68adbf00c0d1c173d5467a512cf5207ee2cfd03db8b9eff56384b"
+        },
+        {
+          "path": "Sources/App/PodcastActions.swift",
+          "kind": "source",
+          "bytes": 3778,
+          "sha256": "5e776c0138f8df0a5a96d1540d33941b7b686a38d7ae68a7ef7b01d3dda0c43a"
+        },
+        {
+          "path": "Sources/App/PodcastCaptions.swift",
+          "kind": "source",
+          "bytes": 3103,
+          "sha256": "9bbc9a3a4fddb9357240a9798701d5c21acb507a823d92a7032a1ad1ab8ebafa"
+        },
+        {
+          "path": "Sources/App/PodcastPlayback.swift",
+          "kind": "source",
+          "bytes": 10576,
+          "sha256": "772c115a2d4730ab7bb4c20644f4f40b8aec74df2db0fc242e48b76251707611"
+        },
+        {
+          "path": "Sources/App/PowerCapabilitiesView.swift",
+          "kind": "source",
+          "bytes": 3660,
+          "sha256": "6db8c594bbc0531a0d711092605ab65755d7000be07406da42a53933ebea843b"
+        },
+        {
+          "path": "Sources/App/PrismScene.metal",
+          "kind": "source",
+          "bytes": 2834,
+          "sha256": "d6eec229c8c2dcfd5e0bad6a0a80d5e72cd52bfe2ace98501dd21e146f0062d6"
+        },
+        {
+          "path": "Sources/App/RecipeHandoffActions.swift",
+          "kind": "source",
+          "bytes": 3676,
+          "sha256": "7f7ac10fe8481582991b6f6fbcbec3e4877a371647882c35cc97cf15bb5e168a"
+        },
+        {
+          "path": "Sources/App/RecipeHandoffController.swift",
+          "kind": "source",
+          "bytes": 2697,
+          "sha256": "f2e94c008c001a8773b652fe2b79c5d000cc14c1da5d3382924fe0a20f512adc"
+        },
+        {
+          "path": "Sources/App/RecipeHandoffView.swift",
+          "kind": "source",
+          "bytes": 1536,
+          "sha256": "debd0e112a2f82e7ce7c4247c7110930b72e59765942c5023d80db0cf9d34c34"
+        },
+        {
+          "path": "Sources/App/RootView.swift",
+          "kind": "source",
+          "bytes": 18801,
+          "sha256": "7fb57dbe423d053916295ded1f3c7249ede6f612ff5b726a64c7f4c66ad12cb9"
+        },
+        {
+          "path": "Sources/App/SetupIntroductionView.swift",
+          "kind": "source",
+          "bytes": 4881,
+          "sha256": "445550bc5030c8bafbaaa33df6fe8ae05692b85fab81b00d4982d153e4c3f107"
+        },
+        {
+          "path": "Sources/App/SharedAlbums.swift",
+          "kind": "source",
+          "bytes": 15263,
+          "sha256": "67da476ec1b41dadf26bb95a70c360aca85f25e0d9e8c1cd2a62a90d3ba918bb"
+        },
+        {
+          "path": "Sources/App/SystemActions.swift",
+          "kind": "source",
+          "bytes": 3500,
+          "sha256": "3926f604d07302035c0d9a2f0c30456d07a09af943098461b4c9434b45dc95a2"
+        },
+        {
+          "path": "Sources/App/TimerActivitySettingsView.swift",
+          "kind": "source",
+          "bytes": 2091,
+          "sha256": "4d351f30c91d6d71439877beca52a3fbb92abcbe87f9646a98051e4e61b4716c"
+        },
+        {
+          "path": "Sources/App/WatchRoot.swift",
+          "kind": "source",
+          "bytes": 1719,
+          "sha256": "1481379f30b21720adabf89071bfceefb25d3d0841839b455863be7140ec27a8"
+        },
+        {
+          "path": "Sources/App/WeatherClouds.metal",
+          "kind": "source",
+          "bytes": 5703,
+          "sha256": "ed351414f4942115a805f867a5b2eb64573202631fbf2dfc39471683ed713d25"
+        },
+        {
+          "path": "Sources/App/WeatherGlass.swift",
+          "kind": "source",
+          "bytes": 1402,
+          "sha256": "3e965677b3984e2091206c04d0107b44ab22e8893469ebf2c32a1a3afdd45f17"
+        },
+        {
+          "path": "Sources/App/WeatherLightSpur.metal",
+          "kind": "source",
+          "bytes": 942,
+          "sha256": "2adc743b00b409e1443c8bebb2e659e7d800e8e1b9a0405ea1a5b0aec164f70a"
+        },
+        {
+          "path": "Sources/App/WeatherScreen.swift",
+          "kind": "source",
+          "bytes": 10341,
+          "sha256": "54a8c73515f35e86f9db03543f96c31939f4e1ed0f3f38736e40cbe91ac66514"
+        },
+        {
+          "path": "Sources/App/WeatherService.swift",
+          "kind": "source",
+          "bytes": 2337,
+          "sha256": "3921ee5426399c326610cfa4f25d27e6baf2018f6a827210edfbef8ae692be78"
+        },
+        {
+          "path": "Sources/Core/AlarmRecurrence.swift",
+          "kind": "source",
+          "bytes": 2858,
+          "sha256": "7223931e1fae63512aedeef99a9b6570a7162503f4ea2ebf85789b2eb6a1d469"
+        },
+        {
+          "path": "Sources/Core/AlbumDisplay.swift",
+          "kind": "source",
+          "bytes": 10693,
+          "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573"
+        },
+        {
+          "path": "Sources/Core/AnonymousPresencePolicy.swift",
+          "kind": "source",
+          "bytes": 5978,
+          "sha256": "6e86fb5ea8f28d0e02cd6517826459e60938eaa52e3e5f510622168355711d67"
+        },
+        {
+          "path": "Sources/Core/AnswerSpeechSession.swift",
+          "kind": "source",
+          "bytes": 3700,
+          "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e"
+        },
+        {
+          "path": "Sources/Core/AssistantConversation.swift",
+          "kind": "source",
+          "bytes": 5049,
+          "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1"
+        },
+        {
+          "path": "Sources/Core/AssistantLimits.swift",
+          "kind": "source",
+          "bytes": 251,
+          "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584"
+        },
+        {
+          "path": "Sources/Core/AssistantResponseDocument.swift",
+          "kind": "source",
+          "bytes": 2952,
+          "sha256": "f8ad454fb137ab03d43c267c23aecff554b97eb089fb56acb4cd7d3ee8e8dd2a"
+        },
+        {
+          "path": "Sources/Core/BrowserPolicy.swift",
+          "kind": "source",
+          "bytes": 1367,
+          "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+        },
+        {
+          "path": "Sources/Core/CalendarAgenda.swift",
+          "kind": "source",
+          "bytes": 1432,
+          "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+        },
+        {
+          "path": "Sources/Core/CalendarPresentation.swift",
+          "kind": "source",
+          "bytes": 1798,
+          "sha256": "cb173f15e0d4667743117b27a533da9f6dc3d2302038401970b3bf6f67727d7c"
+        },
+        {
+          "path": "Sources/Core/ConicGradientModel.swift",
+          "kind": "source",
+          "bytes": 1384,
+          "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3"
+        },
+        {
+          "path": "Sources/Core/ConnectedDataSession.swift",
+          "kind": "source",
+          "bytes": 21371,
+          "sha256": "f04cd662576a2d7cdab1a534d62c0c5704c86dd1e3d03ddb2a60e27d09116eb5"
+        },
+        {
+          "path": "Sources/Core/ConnectedModels.swift",
+          "kind": "source",
+          "bytes": 1378,
+          "sha256": "6b0ea8f93b0247a9f1fc59b32c30d25564a4db1554e0eefd5b6e3a0ef883bf2e"
+        },
+        {
+          "path": "Sources/Core/DataConnection.swift",
+          "kind": "source",
+          "bytes": 244,
+          "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+        },
+        {
+          "path": "Sources/Core/DemoActionPlan.swift",
+          "kind": "source",
+          "bytes": 6817,
+          "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11"
+        },
+        {
+          "path": "Sources/Core/DemoDoorbell.swift",
+          "kind": "source",
+          "bytes": 2014,
+          "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398"
+        },
+        {
+          "path": "Sources/Core/EverydayVoiceCommand.swift",
+          "kind": "source",
+          "bytes": 4238,
+          "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c"
+        },
+        {
+          "path": "Sources/Core/FaceConfiguration.swift",
+          "kind": "source",
+          "bytes": 8390,
+          "sha256": "de97ad42252c790e25868e76f82ca8c6595e31740eef5134d6664f0cedada6ac"
+        },
+        {
+          "path": "Sources/Core/FlowCompute.swift",
+          "kind": "source",
+          "bytes": 15081,
+          "sha256": "85c66eb9b067313922729c73c533d308dc5fcbdcd56c3d8fcc85112ce330d97d"
+        },
+        {
+          "path": "Sources/Core/FlowComputeSession.swift",
+          "kind": "source",
+          "bytes": 3736,
+          "sha256": "05b410a7436cbc158eefb74d1ce8df4faf29d221b10c44b17ff6bd8dac742781"
+        },
+        {
+          "path": "Sources/Core/FlowSimulation.swift",
+          "kind": "source",
+          "bytes": 9779,
+          "sha256": "fbb8b2c86a8d25eb2935fcd547c88ab95fc24c53dae2210ff994da36731d1d70"
+        },
+        {
+          "path": "Sources/Core/FlowTypography.swift",
+          "kind": "source",
+          "bytes": 3569,
+          "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+        },
+        {
+          "path": "Sources/Core/GuestAccessPolicy.swift",
+          "kind": "source",
+          "bytes": 902,
+          "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+        },
+        {
+          "path": "Sources/Core/HouseNotices.swift",
+          "kind": "source",
+          "bytes": 5720,
+          "sha256": "53c592315988c2d83762bd77e3b75283490c3716342d7178e2d6aef533fd5732"
+        },
+        {
+          "path": "Sources/Core/LocalStateFileReader.swift",
+          "kind": "source",
+          "bytes": 1376,
+          "sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837"
+        },
+        {
+          "path": "Sources/Core/LocalStateReset.swift",
+          "kind": "source",
+          "bytes": 7709,
+          "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb"
+        },
+        {
+          "path": "Sources/Core/Models.swift",
+          "kind": "source",
+          "bytes": 17756,
+          "sha256": "3f287818198ada8ea2c6d60cf74860a9b4eef6715257aa324285fd6f6f039ef3"
+        },
+        {
+          "path": "Sources/Core/MusicPlaybackGate.swift",
+          "kind": "source",
+          "bytes": 1485,
+          "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5"
+        },
+        {
+          "path": "Sources/Core/PersonalHomeConfiguration.swift",
+          "kind": "source",
+          "bytes": 2107,
+          "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc"
+        },
+        {
+          "path": "Sources/Core/PhotoClockInk.swift",
+          "kind": "source",
+          "bytes": 2348,
+          "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9"
+        },
+        {
+          "path": "Sources/Core/PhotoMaskRasterizer.swift",
+          "kind": "source",
+          "bytes": 941,
+          "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+        },
+        {
+          "path": "Sources/Core/PhotoPlacement.swift",
+          "kind": "source",
+          "bytes": 13992,
+          "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae"
+        },
+        {
+          "path": "Sources/Core/PodcastFeedParser.swift",
+          "kind": "source",
+          "bytes": 2154,
+          "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e"
+        },
+        {
+          "path": "Sources/Core/PodcastFeedTransport.swift",
+          "kind": "source",
+          "bytes": 1884,
+          "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97"
+        },
+        {
+          "path": "Sources/Core/PodcastLibrary.swift",
+          "kind": "source",
+          "bytes": 2934,
+          "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+        },
+        {
+          "path": "Sources/Core/PowerAdapterInformation.swift",
+          "kind": "source",
+          "bytes": 639,
+          "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616"
+        },
+        {
+          "path": "Sources/Core/RecipeParser.swift",
+          "kind": "source",
+          "bytes": 8475,
+          "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
+        },
+        {
+          "path": "Sources/Core/RecipeTransfer.swift",
+          "kind": "source",
+          "bytes": 3400,
+          "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+        },
+        {
+          "path": "Sources/Core/SetupIntroduction.swift",
+          "kind": "source",
+          "bytes": 198,
+          "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8"
+        },
+        {
+          "path": "Sources/Core/SnapshotMigration.swift",
+          "kind": "source",
+          "bytes": 9608,
+          "sha256": "cc24c10d1f7fd0e8e99a6e40556051b062239fd57fef21f4f0492c4fc758dffd"
+        },
+        {
+          "path": "Sources/Core/TimerLiveActivity.swift",
+          "kind": "source",
+          "bytes": 4008,
+          "sha256": "88d8e0f7b5f9c144e60489a391eb3a6ea33b33b8ddf48e4a19cee6773dd98020"
+        },
+        {
+          "path": "Sources/Core/ViewportNavigationIntent.swift",
+          "kind": "source",
+          "bytes": 1260,
+          "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341"
+        },
+        {
+          "path": "Sources/Core/WeatherData.swift",
+          "kind": "source",
+          "bytes": 6698,
+          "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+        },
+        {
+          "path": "Sources/Core/WorldClock.swift",
+          "kind": "source",
+          "bytes": 9482,
+          "sha256": "f2fa5fe6493f4cf0ba7a126f41df98c2e90a0bd1eeaac8ac5fd178c59d7bdbbc"
+        },
+        {
+          "path": "Sources/Shared/HomeViewTimerAttributes.swift",
+          "kind": "source",
+          "bytes": 221,
+          "sha256": "c82c97999ff1765de34976481ff5158356003a0a870715f8b207ab8f042fda92"
+        },
+        {
+          "path": "Sources/Widgets/HomeViewTimerWidget.swift",
+          "kind": "source",
+          "bytes": 2097,
+          "sha256": "94f01e5f7b175a9fe71317005002b71979c52f556f0e0c25e5a510e8a3be54fc"
+        },
+        {
+          "path": "Tests/BoundaryTests/RecipeHandoffBoundaryProbe.swift",
+          "kind": "source",
+          "bytes": 3193,
+          "sha256": "46ad41740303d6d276ebeee658f2d8ab14a4ccd49f1d784b2f2b4ae2b6438e10"
+        },
+        {
+          "path": "Tests/CoreTests/AlarmRecurrenceTests.swift",
+          "kind": "source",
+          "bytes": 5600,
+          "sha256": "1db522c696d0ce89073c5f2103fe77f1176ab5888f6850c25bb6f18d3e2591f2"
+        },
+        {
+          "path": "Tests/CoreTests/AlbumDisplayTests.swift",
+          "kind": "source",
+          "bytes": 20209,
+          "sha256": "c251f8f3783c6699b058bd386b59835af55aaeee3deb81aa2046915659478c39"
+        },
+        {
+          "path": "Tests/CoreTests/AnonymousPresencePolicyTests.swift",
+          "kind": "source",
+          "bytes": 9338,
+          "sha256": "afd8ed942d44fce5c2eb1d1f807fb7acede0011b395652c5a52123774690ca48"
+        },
+        {
+          "path": "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+          "kind": "source",
+          "bytes": 6131,
+          "sha256": "ea26acafb7a4e039af97f3328b48a92d9e4211fd65cbcae28037df45716a19cb"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+          "kind": "source",
+          "bytes": 1100,
+          "sha256": "75eba1015caf3b25e51444492280ec4977e2a5071c37b60d8cd3601981199c60"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantConversationTests.swift",
+          "kind": "source",
+          "bytes": 7467,
+          "sha256": "95b4060b83f4d1ee600ef67e74bcc5866e8944b249ff0ac2587046b9625e9451"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+          "kind": "source",
+          "bytes": 1965,
+          "sha256": "4bd27a33b521fd86d48e0623be31efbd8aa4efcbc9737c7e2c1fcf6cc5efcc91"
+        },
+        {
+          "path": "Tests/CoreTests/BrowserPolicyTests.swift",
+          "kind": "source",
+          "bytes": 2201,
+          "sha256": "3789d2d58f7ad0f02f5887a42c93d59cc66be0c60dd9b99515f2f82de4567c04"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarAgendaTests.swift",
+          "kind": "source",
+          "bytes": 2699,
+          "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarBoundaryTests.swift",
+          "kind": "source",
+          "bytes": 2325,
+          "sha256": "667b3b82bcdd635ba91c73b6ae50d71f4fbf51499877b24d933da552b1527769"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarLocaleTests.swift",
+          "kind": "source",
+          "bytes": 3988,
+          "sha256": "64ddc425a96909ba43ba40203be5893a66bcebbfb0054715e630bf1b088fe656"
+        },
+        {
+          "path": "Tests/CoreTests/ConicGradientTests.swift",
+          "kind": "source",
+          "bytes": 1498,
+          "sha256": "b2ae979fd299597c4275ec3085afb49b8e2c2bf080ef75dd384ca90e12e75f2a"
+        },
+        {
+          "path": "Tests/CoreTests/DemoActionPlanTests.swift",
+          "kind": "source",
+          "bytes": 5974,
+          "sha256": "4989acd77a49de6a252ddfaa732600a9265d08aa9117ce8ee85802232b2908fb"
+        },
+        {
+          "path": "Tests/CoreTests/DemoDoorbellTests.swift",
+          "kind": "source",
+          "bytes": 4306,
+          "sha256": "45bac13d2e9d597f81918ce5d4c472e7494150375e5a383d5cffadfd087058c2"
+        },
+        {
+          "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+          "kind": "source",
+          "bytes": 50899,
+          "sha256": "9c0376273dd9f769ea2598d550c6760ee15bf8697dd58813621122d7c8bfdb40"
+        },
+        {
+          "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+          "kind": "source",
+          "bytes": 2086,
+          "sha256": "d27995a922e1c5c346f8687425a5d775bab205b4abe49ad8547d6626653ab55b"
+        },
+        {
+          "path": "Tests/CoreTests/FaceCatalogueRecoveryTests.swift",
+          "kind": "source",
+          "bytes": 2939,
+          "sha256": "53130d5cad5051c7d6d876463aa509b0b423fe7e973920ad8e923f889db69ec9"
+        },
+        {
+          "path": "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+          "kind": "source",
+          "bytes": 5685,
+          "sha256": "a848907b433a55eb467a078551d6ba2a61d8b989f839ec9a4f1f59b83ad86b28"
+        },
+        {
+          "path": "Tests/CoreTests/FlowComputeTests.swift",
+          "kind": "source",
+          "bytes": 8161,
+          "sha256": "1098b3ea16231ecfd370fde9f85cf5f62eb134456eb105302a9f2ee48014b12b"
+        },
+        {
+          "path": "Tests/CoreTests/FlowTypographyTests.swift",
+          "kind": "source",
+          "bytes": 2447,
+          "sha256": "fda513fc05d95a89a3ceacb2ecdd68a19c3941784dca369bdda4d19eac98d76d"
+        },
+        {
+          "path": "Tests/CoreTests/GuestSafetyTests.swift",
+          "kind": "source",
+          "bytes": 1541,
+          "sha256": "2a1b47af26c87a24ffb9089f330a4dc11cfb74830c0d270ccd7f746fe1e0d2cd"
+        },
+        {
+          "path": "Tests/CoreTests/HomeViewCoreTests.swift",
+          "kind": "source",
+          "bytes": 11252,
+          "sha256": "24458b3609de5eaf6a38f3822e10f34f0ec338ead874f44be5bd243e5a32839b"
+        },
+        {
+          "path": "Tests/CoreTests/HouseNoticeTests.swift",
+          "kind": "source",
+          "bytes": 6777,
+          "sha256": "d8e6c73588e8bf229c5de209de1ee3760f052cc3a2bf7e2ca59c9edab00f5f4c"
+        },
+        {
+          "path": "Tests/CoreTests/LocalStateFileReaderTests.swift",
+          "kind": "source",
+          "bytes": 3240,
+          "sha256": "1ecdcb07b482feca5df946fee4e6048558371df50b38dd2a9f209d9bbccaedf4"
+        },
+        {
+          "path": "Tests/CoreTests/LocalStateResetTests.swift",
+          "kind": "source",
+          "bytes": 7290,
+          "sha256": "a315fb47b878e6b5165fab6706fd3c71a6c55bdcf76b12e14dee995b3ec3555e"
+        },
+        {
+          "path": "Tests/CoreTests/MusicPlaybackGateTests.swift",
+          "kind": "source",
+          "bytes": 3516,
+          "sha256": "b0b95bb382b6a479d06946fd67a44b71fc9361e30edac917b93d8f263ca1d6e7"
+        },
+        {
+          "path": "Tests/CoreTests/PersistenceAcceptanceTests.swift",
+          "kind": "source",
+          "bytes": 8031,
+          "sha256": "7a60c5781f4a043ddef22ec59a3049febe77e7baf72c665d9460af7b262ab2d2"
+        },
+        {
+          "path": "Tests/CoreTests/PersonalHomeTests.swift",
+          "kind": "source",
+          "bytes": 3310,
+          "sha256": "e7c218f72c2b66542d70012a143b30c3790e9b16ef09a5f9a8b485d117bd424d"
+        },
+        {
+          "path": "Tests/CoreTests/PhotoClockInkTests.swift",
+          "kind": "source",
+          "bytes": 6810,
+          "sha256": "0171a1f7486c06a176c873dbc9f5f98cee82322f99a332c8c031f1c7ad442821"
+        },
+        {
+          "path": "Tests/CoreTests/PhotoPlacementTests.swift",
+          "kind": "source",
+          "bytes": 10883,
+          "sha256": "dd3f4bcbc04c9ad0feccd925916a42541db6cff9329af9e3f12f618baeb13022"
+        },
+        {
+          "path": "Tests/CoreTests/PodcastTests.swift",
+          "kind": "source",
+          "bytes": 6992,
+          "sha256": "662bb7087897d5e33e16c7a37c632984215f18dbbd283e59e90996a5bc854bc1"
+        },
+        {
+          "path": "Tests/CoreTests/PowerAdapterInformationTests.swift",
+          "kind": "source",
+          "bytes": 1315,
+          "sha256": "e6998839b624de9ce13d702abb7fcb09a2cd5e69319a15dcea97fa04d7e5de16"
+        },
+        {
+          "path": "Tests/CoreTests/RecipeParserTests.swift",
+          "kind": "source",
+          "bytes": 4181,
+          "sha256": "0fa0d28fe1658ef580c3bf309bc9d7382d9968adcdf35c40ccac35898b2857b8"
+        },
+        {
+          "path": "Tests/CoreTests/RecipeTransferTests.swift",
+          "kind": "source",
+          "bytes": 5342,
+          "sha256": "dd505824664e92202d442c6abb18b67280feec1b731875e3b4768cc7116360b3"
+        },
+        {
+          "path": "Tests/CoreTests/SetupIntroductionTests.swift",
+          "kind": "source",
+          "bytes": 2947,
+          "sha256": "f7cc98d3db797009470821bc1c1690895ff26846c1984b87e3bf7d0f409afc3f"
+        },
+        {
+          "path": "Tests/CoreTests/SharedPanelTests.swift",
+          "kind": "source",
+          "bytes": 7250,
+          "sha256": "57059f84343be67bf1b4ac6f1019cada5100007ea525201f099e05941943341f"
+        },
+        {
+          "path": "Tests/CoreTests/SnapshotMigrationTests.swift",
+          "kind": "source",
+          "bytes": 15373,
+          "sha256": "faf212029d5e3a40ee48d633bc30bea981660ddd83467da28b8b8dc8a1de3eb5"
+        },
+        {
+          "path": "Tests/CoreTests/TimerLiveActivityTests.swift",
+          "kind": "source",
+          "bytes": 7083,
+          "sha256": "118ea7f90f19c1c80940675a2c45cec13a036b4ad122746d9ab008ebed3d71f3"
+        },
+        {
+          "path": "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+          "kind": "source",
+          "bytes": 4068,
+          "sha256": "d27bbba71e017c88e09f33bcf64e5ecc57c6a0eec000f658bcbe2ca8d8885763"
+        },
+        {
+          "path": "Tests/CoreTests/WatchFacesTests.swift",
+          "kind": "source",
+          "bytes": 9214,
+          "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
+        },
+        {
+          "path": "Tests/CoreTests/WeatherTests.swift",
+          "kind": "source",
+          "bytes": 5723,
+          "sha256": "a3aa9bb2852b44088207b7d0c1c8bac354fbe8f17fb2134abfa98654b3d4692c"
+        },
+        {
+          "path": "Tests/CoreTests/WorldClockTests.swift",
+          "kind": "source",
+          "bytes": 11769,
+          "sha256": "ced9a5640261b5622afb785e783d3fbe13cb7edecc9de62e32a0e521985a74cf"
+        },
+        {
+          "path": "Tests/NativeProbes/AssistantResponseGate.swift",
+          "kind": "source",
+          "bytes": 4726,
+          "sha256": "5d265fbac7778abce832f1b38613f415a2b01c9f01e5a1a092463bdf61c981bd"
+        },
+        {
+          "path": "Tests/NativeProbes/SimultaneousTimerExpiry.swift",
+          "kind": "source",
+          "bytes": 6460,
+          "sha256": "4e81533b1f5743a718d619738874e9db881ea6ba4781790dd653a97d82206ce3"
+        },
+        {
+          "path": "Tests/UITests/HomeViewUITests.swift",
+          "kind": "source",
+          "bytes": 410712,
+          "sha256": "e267a8fbd5cde913c30bba8dd83382c5aca87bce6d5c4a113703c3faa1efe4ac"
+        }
+      ]
+    }
+  ]
+}

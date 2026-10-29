@@ -51,4 +51,6 @@ Finales UI-Eingabearchiv: `8f00eb9cb5b4d72b73a74cc5fbf23278b91643e827f5b3d196b42
 
 ## Offene Grenzen
 
+Anschließend separat geprüft und korrigiert: [Tastaturen auf normaler Assistenten-/Reminder-Route](app-switcher-keyboard.md). Deren Quellen und zehn UI-Ausführungen sind nicht Teil der hier dokumentierten Zwölferprüfung.
+
 **#67 bleibt OPEN, F095 partial/parity=false.** Zwei App-Dialoge und der Kalender sind damit geprüft, nicht jede Präsentation. Andere App-Dialoge und der native Messages-Composer sind gesondert offen; keine Nachricht oder Verbindung wird automatisch ausgelöst. Physische Snapshots/Authentifizierung, echte Präsenz, sämtliche Unterbrechungs-/Medienregeln und Original-Parity bleiben unbelegt. Geräte-/Signing-Abnahmen bleiben auf Eigentümerwunsch pausiert; keine Home-Anbindung, persönlichen Konten, Systemalarme oder Live-Medien.

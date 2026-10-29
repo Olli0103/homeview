@@ -211,6 +211,7 @@ struct DeviceUnlockView: View {
 }
 struct DeviceRemindersView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
   @State private var title = ""
   @FocusState private var inputFocused: Bool
   var body: some View {
@@ -278,6 +279,7 @@ struct DeviceRemindersView: View {
     }.onChange(of: model.connections.personalUnlocked) { _, unlocked in
       if !unlocked { title = ""; inputFocused = false }
     }
+    .onChange(of:phase) { _,value in if value != .active { inputFocused=false } }
   }
 }
 struct DeviceMusicView: View {

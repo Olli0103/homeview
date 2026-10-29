@@ -1,0 +1,901 @@
+{
+  "date": "2026-10-29",
+  "issue": 67,
+  "issue_stays_open": true,
+  "base_commit": "d0312c2907a10a0c5418b3b3ab70565a10f95cee",
+  "production_files_changed": [
+    "Sources/App/Controls.swift",
+    "Sources/App/ConnectedViews.swift"
+  ],
+  "source_digest": "9612b6671648a330a6199830cc0097a16a6c6eae8e7224fa2eb23f5f3211eb59",
+  "UI_runs": [
+    {
+      "checkpoint": "baseline-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherSnapshotCoversUnsentAssistantKeyboardDraft",
+        "testNativeAppSwitcherSnapshotCoversUnaddedReminderKeyboardDraft"
+      ],
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "ac584125e625297ab836ecddc28eb39a0d8cc6dd0e4b843b90ab0c58fa2f2551",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "823900c7ae95ad8d06dd388b61939ee8b5b84812c5f7798bc880575f9262cc47",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "2102271e7babb38948d385b066abe6b7615e577ba7ac8285a18c7d6cd5958dd5",
+      "log_sha256": "d9df021f7fa5e82288a512cd61939309e356e9786b8448123405353c1e3eedfd",
+      "snapshots": [
+        {
+          "case": "reminder",
+          "receipt_sha256": "c20863bc379d984012179a30e4e4db22cb601f5b5abd434957e49b7714ff7ae9",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6210288672867867,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "assistant",
+          "receipt_sha256": "d50ba3cf46f9258fb85d1879a82093e90e66bb328d9f82918fa709d4795576c1",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.6208770614692654,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherSnapshotCoversUnsentAssistantKeyboardDraft",
+        "testNativeAppSwitcherSnapshotCoversUnaddedReminderKeyboardDraft"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "ac584125e625297ab836ecddc28eb39a0d8cc6dd0e4b843b90ab0c58fa2f2551",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "823900c7ae95ad8d06dd388b61939ee8b5b84812c5f7798bc880575f9262cc47",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "0fb8ce56d14857cecfd779cf37162280ce92560cb0242a75cf729ae741724ef8",
+      "log_sha256": "c4c20fa74b92e089b7a6257dae41529543b8fce2e6503665f24c43db34f15e79",
+      "snapshots": [
+        {
+          "case": "reminder",
+          "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "assistant",
+          "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherSnapshotCoversUnsentAssistantKeyboardDraft",
+        "testNativeAppSwitcherSnapshotCoversUnaddedReminderKeyboardDraft"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "9612b6671648a330a6199830cc0097a16a6c6eae8e7224fa2eb23f5f3211eb59",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "cec3dc6b33659ef76ea91e701f188d4bd9abb1ba8858245909b2a04431ed8e95",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "d805b7f32e680571f09660043e9b78dc7b15f6612a5fa665025906cd286c404e",
+      "log_sha256": "d924127032a476c1750bd15455b54427bb707afc14706d395187a1cc8837beac",
+      "snapshots": [
+        {
+          "case": "reminder",
+          "receipt_sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "assistant",
+          "receipt_sha256": "b131ba705932f0c5e9d6ac694d0d7221f67758e199b35efd7060f869f93c1a7c",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9827068992385528,
+            "blackThreshold": 20,
+            "cardFrame": [
+              63.31073895145386,
+              128.97906926261362,
+              275.3785220970923,
+              598.7085281414394
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-429FE333-07DE-4D96-AF79-67E50E061C95",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              189,
+              386,
+              828,
+              1798
+            ],
+            "screenFrame": [
+              0,
+              0,
+              402,
+              874
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testNativeAppSwitcherSnapshotCoversUnsentAssistantKeyboardDraft",
+        "testNativeAppSwitcherSnapshotCoversUnaddedReminderKeyboardDraft"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "9612b6671648a330a6199830cc0097a16a6c6eae8e7224fa2eb23f5f3211eb59",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "cec3dc6b33659ef76ea91e701f188d4bd9abb1ba8858245909b2a04431ed8e95",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "63e1904c83b9a3093c966c508ee52e0e25c2d994714b5f249a87f1470cc2256a",
+      "log_sha256": "333a3bf0dee4cf08ff018e9577fa0f5ef4471d631d5135de929921e7b1dc0c8d",
+      "snapshots": [
+        {
+          "case": "reminder",
+          "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        },
+        {
+          "case": "assistant",
+          "receipt_sha256": "adae0d166040e5cad1ac397347371e42b72e8aa5b9c5183dbbba01cc209b5581",
+          "data": {
+            "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+            "appState": 4,
+            "blackFraction": 0.9900319221245812,
+            "blackThreshold": 20,
+            "cardFrame": [
+              506.9491525423728,
+              124,
+              239.05084745762707,
+              344
+            ],
+            "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-FE680770-A950-4668-9A1C-0B690DDA32D8",
+            "cardLabel": "HomeView",
+            "minimumBlackFraction": 0.98,
+            "pixelFrame": [
+              1013,
+              248,
+              479,
+              688
+            ],
+            "screenFrame": [
+              0,
+              0,
+              820,
+              1180
+            ],
+            "systemState": 4,
+            "wholeCardVisible": true
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend",
+        "testConnectedReminderCRUDUsesProviderReadback",
+        "testVoicePreviewRequiresSendBeforeMockCommand"
+      ],
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "9612b6671648a330a6199830cc0097a16a6c6eae8e7224fa2eb23f5f3211eb59",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "cec3dc6b33659ef76ea91e701f188d4bd9abb1ba8858245909b2a04431ed8e95",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "f67b7bf9a0f9533a817131c72c33d1ec16adca8dbeab2e343ff6a1b1e067e2a3",
+      "log_sha256": "ddf5af58191fe1a9c34d60840bf1faa561c9945461f6948207b533f0d323fb59",
+      "snapshots": []
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tests": [
+        "testAssistantDraftSurvivesNavigationButNeverBackgroundOrImplicitSend",
+        "testConnectedReminderCRUDUsesProviderReadback",
+        "testVoicePreviewRequiresSendBeforeMockCommand"
+      ],
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "9612b6671648a330a6199830cc0097a16a6c6eae8e7224fa2eb23f5f3211eb59",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_entries_read_back": 281,
+      "archive_sha256": "cec3dc6b33659ef76ea91e701f188d4bd9abb1ba8858245909b2a04431ed8e95",
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "summary_sha256": "1248f00ca1b8bf8f7bd5857940c91f4db859b840f30979be61be945d7cef24ea",
+      "log_sha256": "aee0c8e355c362490c5e6be423a5a7dcea139d8d0a947d64396a1c8045e66948",
+      "snapshots": []
+    }
+  ],
+  "final_executions": 10,
+  "final_passed": 10,
+  "historical_executions": 4,
+  "historical_passed": 2,
+  "historical_failed": 2,
+  "same_compiled_candidate_and_regression_inputs": true,
+  "baseline_product_comparison": {
+    "compared": 19,
+    "exact": 19,
+    "changed": [],
+    "all_product_sources_unchanged": true
+  },
+  "core_package_test_inputs_unchanged": 88,
+  "core_tests_newly_executed": 0,
+  "images": [
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/69DFA43F-EB01-40EE-8F6C-3D8DE4060DF4.png",
+      "name": "switcher-reminder-keyboard-inactive-whole-homeview-card_0_51AEE7A1-0D45-482C-B03E-4330C56CDD13.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "49b9e597bcb4697ebba45ba546b2bf5a6149b35ca4f039433425ebf2e92bcf2e"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/D2BC4B75-03F8-4406-83B7-BDC00D9081BA.png",
+      "name": "switcher-reminder-keyboard-inactive-native-system-screen_0_46B3A245-E2EE-4349-A731-E1B615F8773C.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "31b26a05c68b73fa0ab91df505f2b6d6f5fc0ea62225725de90995ee31f36ff1"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/409C6BDD-1DA4-49E9-981F-840465B4ED6F.png",
+      "name": "switcher-reminder-keyboard-draft-before_0_C6DCD9C6-2AEF-4497-9227-1252ABD1B6F4.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "48de31024cf52cafb59bc7974307d3856dde7531cbd87990f54108e03c03aabc",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPhone-before-switcher-reminder-keyboard-draft-before.png"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/8116CA44-860E-40AC-964B-44ABB7249C1C.png",
+      "name": "switcher-assistant-keyboard-inactive-whole-homeview-card_0_DC478CC5-8474-4078-B4DE-48C2E86E7BEE.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "5d7c31d5acd3afb14c19f938010006e77aa54faa5e7435fbad2ed39eb2cca629"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/4BBD10B8-7B65-4575-801D-041D14800BD7.png",
+      "name": "switcher-assistant-keyboard-inactive-native-system-screen_0_BF5F7998-0B7C-4404-BB91-0F4FB8340262.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "a0607c004bef153074dd70bb58d5993a7cd7924aac1af25be91a14899f7654de"
+    },
+    {
+      "checkpoint": "baseline-phone",
+      "file": "baseline-phone-attachments/FA58209D-ACD1-46FF-B080-A94F8567AC71.png",
+      "name": "switcher-assistant-keyboard-draft-before_0_7402B07E-83FE-4ABD-A2B0-7A75662F833C.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "b5fcb05a3ee61ca89a1af4d291fec0c4d1d6611e907ebde00590ac1d817ba0c9",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPhone-before-switcher-assistant-keyboard-draft-before.png"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/C2537E67-8EA1-4CBD-9E3A-006FA85F1E48.png",
+      "name": "switcher-reminder-keyboard-draft-returned-unadded_0_79895843-7225-474A-AE1D-0330EA031BE9.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "dcf1a87e00ff82407cc574ab58791e46d54bb6cf77ae41ed34e24aedc483326a",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPad-before-switcher-reminder-keyboard-draft-returned-unadded.png"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/DB739260-A87F-4296-9882-755B11AB79DD.png",
+      "name": "switcher-reminder-keyboard-inactive-whole-homeview-card_0_AF2C710E-A931-4ECB-A65A-4277EFC9906B.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "bb1ef545ff4be4e2aae802ae909ed7d987a2dcc924028f93b3c42d957dac84d5"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/28209555-6C13-4F25-AC8D-4986BF44AAE6.png",
+      "name": "switcher-reminder-keyboard-inactive-native-system-screen_0_47F70E40-E11A-45B6-B65E-348FCE0966BD.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "be420e281da2faf50518c2b2336a2358ce62aeac637eacecdec6d3db21c47b44"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/A73E8E7C-C119-4E6D-9CA8-F8E6CC438C8C.png",
+      "name": "switcher-reminder-keyboard-draft-before_0_8B3317F9-BA6D-4B3D-91C6-3AD5F5629C6E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "ef2de1699cf0de414ad1e378deab5975c100cfc3a1e0d82a1e4c592ae99435df",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPad-before-switcher-reminder-keyboard-draft-before.png"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/BC88EB04-FCB5-48F4-B697-D60969B2E693.png",
+      "name": "switcher-assistant-keyboard-draft-returned-unsent_0_AA3CA4B5-CBA0-43C5-A4DA-50F326641495.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "c0764059b819abf9adefb1aeb8291cf290743f42479ae6ac690a9eff2ab8dbf7",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPad-before-switcher-assistant-keyboard-draft-returned-unsent.png"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/3A73CFA7-5CA6-4DB3-BCC5-F4CF92B24726.png",
+      "name": "switcher-assistant-keyboard-inactive-whole-homeview-card_0_E3813555-9FE2-417A-90C7-E2C01C03D842.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "2f072503107786d51a5576fc6548d71f3596293541ac36030d52a234e4cd822d"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/3D075191-097D-4027-AB55-634EF53FA45C.png",
+      "name": "switcher-assistant-keyboard-inactive-native-system-screen_0_7185C076-75BF-454E-A313-B2BF97EB2E0E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "e9501e06ee3eeb732e5a0c24455c9c59f3d269a5e1f0466262ce68321d98b442"
+    },
+    {
+      "checkpoint": "baseline-ipad",
+      "file": "baseline-ipad-attachments/B21364B9-4C2D-48B1-96B0-124C8D6161C5.png",
+      "name": "switcher-assistant-keyboard-draft-before_0_C43E9626-B63A-4008-8B7B-7CCAD89AACFA.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "2e48454d289a6862ef064e1aca06979cc1c6617b0f5283de1bd6cb321effc23e",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPad-before-switcher-assistant-keyboard-draft-before.png"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/4FEE79A8-6EBA-4AD9-A35D-1569D2E113C1.png",
+      "name": "switcher-reminder-keyboard-draft-returned-unadded_0_A8A6866A-92A5-452E-A7B6-D9799DAE3B13.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "99f701f920c25a47089487a20877f465e4a60980200fb7988f0a2b1a62be91bf",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPhone-after-switcher-reminder-keyboard-draft-returned-unadded.png"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/ABE49103-BD85-4637-9FA1-8D0719BFC450.png",
+      "name": "switcher-reminder-keyboard-inactive-whole-homeview-card_0_B024543D-DB8E-4555-876F-6BF882538736.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "11d908b0eeae145f0f0ce603b7e26c49183c75578936f8dd712ce77a01ba0846"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/90419D0D-B431-4D19-83B4-A2AA373D88D4.png",
+      "name": "switcher-reminder-keyboard-inactive-native-system-screen_0_C71F7FF8-17B4-478B-B228-6016898760ED.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "4d41963dbae2af07f572cd306e9c06981ee3cc20d0b11e2d35465b1f494079e5"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/C46A58BD-B126-4982-812A-F6020FBAFE44.png",
+      "name": "switcher-reminder-keyboard-draft-before_0_1AE19AB9-F1D8-4480-B78D-20A2BB215584.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "24fda58d8e0f92f4a7f1684dfa855876c51a341ecd0a95ea28c4308909a45ce6",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPhone-after-switcher-reminder-keyboard-draft-before.png"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/CBAD3E4F-6528-4FEF-8373-2EE8AD0B6304.png",
+      "name": "switcher-assistant-keyboard-draft-returned-unsent_0_5EE2F7AA-92A9-456D-9557-A415B06F88F9.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "323c469de0110ccd489d6ece310f929876b58132fadbd3c6b2a074e112c46015",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPhone-after-switcher-assistant-keyboard-draft-returned-unsent.png"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/51DFEEC3-083F-40EC-92A4-0818A63F9510.png",
+      "name": "switcher-assistant-keyboard-inactive-whole-homeview-card_0_94EE8103-FC27-4D2A-9E5F-E3699CF952F7.png",
+      "size": [
+        828,
+        1798
+      ],
+      "sha256": "e180cb1cc1787b3255f3a89b57b1150cda7bc21c12132f11005a2a4e5cac03db"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/1F79D495-B7ED-4E24-AED4-7E4F2402889A.png",
+      "name": "switcher-assistant-keyboard-inactive-native-system-screen_0_9438EBAF-0AB0-453E-9642-41DCED1413CC.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "e94ba4a28dae57473e8dea38f2d2454c46a4a788ce0e7fd863277ce1556304d7"
+    },
+    {
+      "checkpoint": "candidate1-phone",
+      "file": "candidate1-phone-attachments/A61FAB7E-BE40-4AA1-B86F-E8A1D9A34630.png",
+      "name": "switcher-assistant-keyboard-draft-before_0_6D245562-65D6-4C59-8FD0-3A23864F29CF.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "36edf61ec761635072d1ec2cb5fc24821213fec35895ffecdac72e1be70245f0",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPhone-after-switcher-assistant-keyboard-draft-before.png"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/8CE0DFA5-2F6A-475E-ADEA-5F27E2E3F711.png",
+      "name": "switcher-reminder-keyboard-draft-returned-unadded_0_C2C2069D-FDB0-419B-815E-CEC5C7D32F3E.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "8f2fb7b514b705cc1083638d442da8c7c048103ef861ba216a6a94bd8873641d",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPad-after-switcher-reminder-keyboard-draft-returned-unadded.png"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/2E4D4DB8-F9A4-42D5-A173-4A2AEBA71257.png",
+      "name": "switcher-reminder-keyboard-inactive-whole-homeview-card_0_ECF3AD6C-CC90-48B6-B215-6BFFFDF0CE0F.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "dae77d8623a7fca0c876977707e9e189c2aa651bddddb34459163b14cf939e9d"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/037D8A7A-DEAD-4B4C-A0CE-792AAEA76CDB.png",
+      "name": "switcher-reminder-keyboard-inactive-native-system-screen_0_919CF4E1-E536-4D05-8B58-21FF0BD8F8EB.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "9ba4812508f931d67b3ea5e37449e88ffa8aed06e627e7c3761ba02a652288de"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/CF672074-B20E-4852-8539-AFD3FA590F3D.png",
+      "name": "switcher-reminder-keyboard-draft-before_0_EC32CE80-F566-4086-8873-15896E1471E2.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "ef2de1699cf0de414ad1e378deab5975c100cfc3a1e0d82a1e4c592ae99435df",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPad-after-switcher-reminder-keyboard-draft-before.png"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/6D356C27-E236-4156-983C-A0E083F76CD9.png",
+      "name": "switcher-assistant-keyboard-draft-returned-unsent_0_968024F6-ED96-4A5B-93F5-F0687F94661D.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "af3cd82a13f72b7f11086b9c97218287b3062922f8f1a2086163dd0bd80330eb",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPad-after-switcher-assistant-keyboard-draft-returned-unsent.png"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/CAA4B084-88FF-4BAD-8831-4F581B735158.png",
+      "name": "switcher-assistant-keyboard-inactive-whole-homeview-card_0_13E4B91F-9A9A-4401-BC56-5311F223FA0D.png",
+      "size": [
+        479,
+        688
+      ],
+      "sha256": "2f072503107786d51a5576fc6548d71f3596293541ac36030d52a234e4cd822d"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/AC75E3B3-ED01-473E-9547-3821E9F3AC25.png",
+      "name": "switcher-assistant-keyboard-inactive-native-system-screen_0_D35CCE10-21A6-4843-97CF-AB721F9F373B.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "60f5964b881f4a48f3b95ddf0750f86b38604f171daf582d1a3dadf81acd3bf2"
+    },
+    {
+      "checkpoint": "candidate1-ipad",
+      "file": "candidate1-ipad-attachments/339505AB-42D6-456F-9F67-6C84A0602963.png",
+      "name": "switcher-assistant-keyboard-draft-before_0_9757B7BC-4FAA-4A6A-A4D4-1FBC5416C1A3.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "c0764059b819abf9adefb1aeb8291cf290743f42479ae6ac690a9eff2ab8dbf7",
+      "public_copy": "Docs/screenshots/app-switcher-keyboard/iPad-after-switcher-assistant-keyboard-draft-before.png"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/C406AC73-6D11-4188-9B66-994BBC389DEC.png",
+      "name": "assistant-draft-cleared-after-background_0_DD21C1AE-0433-4047-8DCE-836767023901.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "52c6bd7cecc840da8e5d0e5a58e8daae106bebba8732940b2d4357596deb8700"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/55C7157D-86C2-4F69-BE64-CA2FB77054D8.png",
+      "name": "connected-reminders-fixture_0_982284BD-92C8-47C9-8DC7-2D20AAD025EF.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "2d04bf4b0c9593d47e07f71ce45fc2dfd0106fd5f16f1e65e652ae52da47be04"
+    },
+    {
+      "checkpoint": "final-regression-phone",
+      "file": "final-regression-phone-attachments/3127961D-BAE0-4B9A-92DD-56A4647BC80A.png",
+      "name": "native-voice-preview-mock_0_0740B08C-6554-42DA-9F7A-3384B8928876.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "448e6112cc0c62cb52aa32c3ee69a8614f5bb05b7891d80f5b531d8ddeec3bbb"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/DB109110-18F6-48B0-BBD2-69285FD381EE.png",
+      "name": "assistant-draft-cleared-after-background_0_2F1EA657-6866-4A64-8C4D-93D2176A5BC0.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "85cf52c1677b767b873786ad4917729d13c1897d4cdf2c5f69af7ed63e53a115"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/8852D5F2-33FE-4F4E-894A-954B91FCBB96.png",
+      "name": "connected-reminders-fixture_0_0FEC11F2-027C-40A1-99FC-856DAE2F7D39.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "2f2314dcd7d8e4acb60831a370e03f020aa2dbda8cef7e2734092ef08c945a69"
+    },
+    {
+      "checkpoint": "final-regression-ipad",
+      "file": "final-regression-ipad-attachments/7AB0FB70-281F-40F5-9188-4C3E511C1D37.png",
+      "name": "native-voice-preview-mock_0_89871925-8F5B-476D-AE99-35F27F5ED603.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "1fd3b83a8c6d18368ade52314b7b7b94ded3aa028fa1cc2218e85eb528b3de6b"
+    }
+  ],
+  "image_inspection": {
+    "decoded_PNGs": 36,
+    "contacts_viewed": [
+      "baseline-phone-review-1.jpg",
+      "baseline-ipad-review-1.jpg",
+      "candidate1-phone-review-1.jpg",
+      "candidate1-ipad-review-1.jpg",
+      "final-regression-phone-review-1.jpg",
+      "final-regression-ipad-review-1.jpg"
+    ],
+    "full_images_viewed": [
+      {
+        "checkpoint": "baseline-phone",
+        "name": "switcher-assistant-keyboard-inactive-whole-homeview-card_0_DC478CC5-8474-4078-B4DE-48C2E86E7BEE.png",
+        "sha256": "5d7c31d5acd3afb14c19f938010006e77aa54faa5e7435fbad2ed39eb2cca629"
+      },
+      {
+        "checkpoint": "candidate1-phone",
+        "name": "switcher-assistant-keyboard-inactive-whole-homeview-card_0_94EE8103-FC27-4D2A-9E5F-E3699CF952F7.png",
+        "sha256": "e180cb1cc1787b3255f3a89b57b1150cda7bc21c12132f11005a2a4e5cac03db"
+      }
+    ],
+    "observation": "Before iPhone: root cover already hides draft text but OS keyboard with generic suggestions remains visible. No visible canary leak claimed. Both iPad baseline cases already pass. Candidate: complete shield with keyboard absent on both devices, actual inactive card return preserves draft; assistant reply remains unchanged and no fixture reminder is added.",
+    "public_own_images_read_back": 14
+  },
+  "scope_limits": [
+    "Two focused input routes only; not all fields, dialogs, system presenters or physical devices.",
+    "No new Send/Add in snapshot cases. Existing regression deliberately sends a local mock command and changes only an owned fixture reminder; no real service action.",
+    "No root/auth/session revocation change; inactivity focus dismissal does not erase draft.",
+    "Simulator snapshot images and declared pixel guard, no OCR, timing or physical guarantee.",
+    "No Home, account connection, real permissions, messages/calls, live recording/playback or system alarms."
+  ],
+  "preparation_errors": [
+    {
+      "stage": "premature attachment export while UI run still active",
+      "exit_code": 64,
+      "result_reader": "Info.plist not yet present in unfinished result bundle",
+      "UI_run_not_cancelled_or_modified": true,
+      "product_failure": false,
+      "action": "Wait for collected runner completion, then export finalized bundle; do not diagnose unfinished bundle as corruption."
+    }
+  ]
+}

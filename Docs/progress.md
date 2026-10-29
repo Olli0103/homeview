@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## App-Umschalter: Assistenten-/Reminder-Tastaturen · 29. Oktober 2026
+
+[Zwei iPhone-Vorherfehler korrigiert](app-switcher-keyboard.md): Tastatur/Vorschläge blieben über der Root-Abdeckung; Entwurfstext war bereits verdeckt, zwei iPad-Gegenkontrollen bereits grün. Nur vorhandene FocusStates bei Inaktivität gelöst, Entwürfe bleiben erhalten. Zehn aktuelle UI-Ausführungen und fünf SDKs bestanden; getrennte 225-Quellen-/App-/Test-/Archivbindung. Andere Eingaben, Präsentationen und physische Snapshot-/Präsenz-/Medienabnahmen bleiben bei #67 offen; **40/82 geschlossen, 42 offen**.
+
 ## App-Umschalter: offene Dialoge tatsächlich verdecken · 29. Oktober 2026
 
 [Vier native Vorherfehler korrigiert](app-switcher-dialogs.md): Profil-Editor und Stadtentwurf lagen über der Root-Abdeckung; auf iPhone war auch die Tastatur sichtbar. Gemeinsamer Schutz für Root und diese zwei Präsentationen, Stadtfokus bei Inaktivität gelöst, Entwurf bleibt erhalten. Zwölf aktuelle UI-Ausführungen und fünf SDK-Builds bestanden, tatsächliche Bilder/225 Quellen/alle Eingabearchive/installierte Apps geprüft. Andere Dialoge und physische Snapshot-/Präsenz-/Medienabnahme bleiben bei #67 offen; **40/82 geschlossen, 42 offen**.

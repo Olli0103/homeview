@@ -420,6 +420,7 @@ struct AssistantView: View {
       .onChange(of:model.incomingCall) { _,_ in cancelVoiceIfContextInvalid() }
       .onChange(of:model.demoDoorbell.current?.id) { _,_ in cancelVoiceIfContextInvalid() }
       .onChange(of: scenePhase) { _, phase in
+        if phase != .active { typing=false }
         if phase == .background || (phase != .active && voice.phase != .preparing) {
           cancelVoiceForContextChange()
         }

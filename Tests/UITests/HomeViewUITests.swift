@@ -3682,6 +3682,36 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.buttons["personal.profile"].waitForExistence(timeout:5))
     shot("switcher-profile-dialog-returned")
   }
+  func testNativeAppSwitcherSnapshotCoversUnsentAssistantKeyboardDraft() {
+    continueAfterFailure=false
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("nav.assistant")
+    let field=app.textFields["assistant.input"],canary="OWNED_PRIVATE_ASSISTANT_CANARY"
+    field.tap();field.typeText(canary)
+    XCTAssertEqual(field.value as? String,canary)
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    shot("switcher-assistant-keyboard-draft-before")
+    let frame=app.frame
+    calendarSwitcherCard(from:app,bounds:frame,checkpoint:"assistant-keyboard-inactive").tap()
+    XCTAssertTrue(field.waitForExistence(timeout:5));XCTAssertEqual(field.value as? String,canary)
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    shot("switcher-assistant-keyboard-draft-returned-unsent")
+  }
+  func testNativeAppSwitcherSnapshotCoversUnaddedReminderKeyboardDraft() {
+    continueAfterFailure=false
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    connectService("Reminders");drawer();tap("app.Reminders");tap("device.unlock")
+    XCTAssertTrue(app.buttons["device.reminder.Device fixture reminder"].waitForExistence(timeout:5))
+    let field=app.textFields["device.reminder.input"],canary="OWNED_PRIVATE_REMINDER_CANARY"
+    field.tap();field.typeText(canary)
+    XCTAssertEqual(field.value as? String,canary)
+    shot("switcher-reminder-keyboard-draft-before")
+    let frame=app.frame
+    calendarSwitcherCard(from:app,bounds:frame,checkpoint:"reminder-keyboard-inactive").tap()
+    XCTAssertTrue(field.waitForExistence(timeout:5));XCTAssertEqual(field.value as? String,canary)
+    XCTAssertFalse(app.buttons["device.reminder."+canary].exists,"Inactive protection must not create a reminder")
+    shot("switcher-reminder-keyboard-draft-returned-unadded")
+  }
   func testDemoArtworkInformationIsExplicitAndNeverAutoplays() {
     launch(["--page","Music"])
     let info=app.buttons["music.artwork.info.demo"]
