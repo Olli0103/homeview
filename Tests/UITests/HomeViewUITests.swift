@@ -7430,3 +7430,82 @@ extension HomeViewUITests {
     }
   }
 }
+
+
+extension HomeViewUITests {
+  private func verifyPresentedSnapshot(_ checkpoint:String,done:String,checkReturn:()->Void = {}) {
+    XCTAssertTrue(app.buttons[done].waitForExistence(timeout:5))
+    shot("switcher-sheets-"+checkpoint+"-before")
+    calendarSwitcherCard(from:app,bounds:app.frame,checkpoint:checkpoint).tap()
+    XCTAssertTrue(app.buttons[done].waitForExistence(timeout:5))
+    shot("switcher-sheets-"+checkpoint+"-returned")
+    checkReturn()
+    tap(done)
+  }
+  func testNativeAppSwitcherCoversDetailAndEditorSheets() {
+    continueAfterFailure=true
+    launch(["--page","World Clock","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("world.detail.open.Europe/Berlin")
+    verifyPresentedSnapshot("world-detail",done:"world.detail.done")
+    XCTAssertTrue(app.buttons["world.detail.open.Europe/Berlin"].exists)
+    app.terminate();launchFaceEditorAudit("Modular")
+    let slot=app.buttons["widget.0"];scrollEditorIntoView(slot);slot.tap()
+    verifyPresentedSnapshot("complication-picker",done:"complications.done")
+    XCTAssertTrue(app.buttons["editor.done"].exists)
+    app.terminate();launch(["--page","Music","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("music.artwork.info.demo")
+    verifyPresentedSnapshot("artwork-info",done:"music.artwork.done")
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+  func testNativeAppSwitcherCoversControlAndSettingsSheets() {
+    continueAfterFailure=true
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--timer-activity-fixture"])
+    openMockNotices();tap("notices.load");tap("notices.authenticate")
+    XCTAssertTrue(app.staticTexts["Synthetic Alex arrived"].waitForExistence(timeout:5))
+    verifyPresentedSnapshot("house-notices",done:"notices.done")
+    tap("controls.settings")
+    let power=app.buttons["settings.power"];scrollPhotoControlFullyIntoView(power);power.tap()
+    verifyPresentedSnapshot("power-settings",done:"power.capabilities.done")
+    openTimerActivitySettings()
+    XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"0")
+    verifyPresentedSnapshot("timer-activity-settings",done:"timer.activity.done")
+    openTimerActivitySettings()
+    XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"0")
+    tap("timer.activity.done")
+  }
+  func testNativeAppSwitcherCoversAssistantSheetsWithoutSendingDraft() {
+    continueAfterFailure=true
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--answer-speech-fixture"])
+    tap("nav.assistant")
+    let input=app.textFields["assistant.input"],draft="OWNED_SHEETS_UNSENT_DRAFT"
+    input.tap();input.typeText(draft)
+    if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
+    tap("assistant.capabilities")
+    verifyPresentedSnapshot("assistant-capabilities",done:"assistant.capabilities.done")
+    XCTAssertEqual(input.value as? String,draft)
+    tap("answer.speech.settings")
+    verifyPresentedSnapshot("answer-readout-settings",done:"answer.speech.settings.done")
+    XCTAssertEqual(input.value as? String,draft)
+    selectAnswerExample("knowledge")
+    activatePlanControl(app.buttons["assistant.card.source.museum"])
+    verifyPresentedSnapshot("assistant-source",done:"assistant.card.source.done")
+    XCTAssertEqual(input.value as? String,draft)
+    XCTAssertFalse(app.staticTexts["assistant.exampleRecipe.title"].exists)
+  }
+  func testNativeAppSwitcherCoversSetupAndResetWithoutDeletion() {
+    continueAfterFailure=true
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("settings.introduction")
+    verifyPresentedSnapshot("setup-introduction",done:"setup.later")
+    openResetReview();authenticateSyntheticReset()
+    let field=app.textFields["reset.confirmation"]
+    scrollResetControlFullyIntoView(field);field.tap();field.typeText("NOT_RESET")
+    XCTAssertFalse(app.buttons["reset.confirm"].isEnabled)
+    verifyPresentedSnapshot("local-reset",done:"reset.cancel") {
+      XCTAssertEqual(field.value as? String,"NOT_RESET")
+      XCTAssertFalse(app.buttons["reset.confirm"].isEnabled)
+    }
+    XCTAssertFalse(app.staticTexts["settings.reset.status"].label.contains("Local app content reset"))
+    XCTAssertTrue(app.buttons["settings.reset"].exists)
+  }
+}

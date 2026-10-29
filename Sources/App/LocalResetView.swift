@@ -18,6 +18,7 @@ import LocalAuthentication
 
 struct LocalResetView:View {
   @Environment(AppModel.self) private var model
+  @Environment(\.scenePhase) private var phase
   @State private var confirmation=""
   @FocusState private var confirming:Bool
   private var disclosedStatus:String {
@@ -72,6 +73,7 @@ struct LocalResetView:View {
         }.frame(maxWidth:.infinity,alignment:.leading).padding(24)
       }
     }.frame(minWidth:300,minHeight:400).background(.white).foregroundStyle(.black)
+      .onChange(of:phase) { _,phase in if phase != .active { confirming=false } }
       .onChange(of:model.localResetRequestGeneration) { _,_ in confirmation="" }
     #if !os(tvOS)
       .interactiveDismissDisabled()

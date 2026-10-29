@@ -229,10 +229,10 @@ struct RootView: View {
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
 
     .sheet(isPresented:Binding(get:{model.showingLocalReset},set:{ if !$0 { model.cancelLocalReset() } })) {
-      LocalResetView()
+      LocalResetView().snapshotPrivacyProtected()
     }
     .sheet(isPresented:Binding(get:{model.showingIntroduction},set:{model.showingIntroduction=$0})) {
-      SetupIntroductionView()
+      SetupIntroductionView().snapshotPrivacyProtected()
     }
     .task {
       model.setTimerActivityForeground(scenePhase == .active)

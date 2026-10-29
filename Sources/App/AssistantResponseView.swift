@@ -90,6 +90,7 @@ struct AssistantResponseView:View {
         }.padding(24).frame(minWidth:280,minHeight:300)
           .background(.white).foregroundStyle(.black).tint(.blue)
           .preferredColorScheme(.light)
+          .snapshotPrivacyProtected()
       }
   }
 }

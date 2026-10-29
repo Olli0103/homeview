@@ -634,7 +634,7 @@ struct WorldClockView: View {
           .multilineTextAlignment(.center).padding(.horizontal, 30).padding(.bottom, 14)
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
-    .sheet(item: $detail) { city in WorldClockDetail(city: city) }
+    .sheet(item: $detail) { city in WorldClockDetail(city: city).snapshotPrivacyProtected() }
   }
 }
 struct WorldClockDetail: View {

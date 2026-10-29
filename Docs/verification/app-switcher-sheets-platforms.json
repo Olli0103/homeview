@@ -1,0 +1,413 @@
+{
+  "builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T11:21:15.502718+00:00",
+      "ended": "2026-10-29T11:21:49.460125+00:00",
+      "log_sha256": "06ade31bb1a5143bea59fa1e37f0b84b21636f8e91429beb8c6e2dd7ef040843"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-29T11:21:49.460669+00:00",
+      "ended": "2026-10-29T11:22:21.943291+00:00",
+      "log_sha256": "aaa3771728582402edeadc17dc4e95f685b0b4fd93fc8326763ee3da3c6a5bcc"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T11:22:21.943854+00:00",
+      "ended": "2026-10-29T11:22:49.365584+00:00",
+      "log_sha256": "3fbff71301407a78baab7f7ffe1525bacd0e22dbd42fafa8d893cf5917ccec65"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T11:22:49.366121+00:00",
+      "ended": "2026-10-29T11:23:17.558687+00:00",
+      "log_sha256": "d5019ffc243f99926de6346d5c213e2831191f2ed53a8decfa7ae8a2ba52d160"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T11:23:17.559209+00:00",
+      "ended": "2026-10-29T11:23:27.267327+00:00",
+      "log_sha256": "369336f32885de86d2abdb681a43e976ef097ffe51a6744e4ceb98b88702a14f"
+    }
+  ],
+  "products": [
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Info.plist",
+      "bytes": 3111,
+      "sha256": "f288ed97483fdd3503726b41c3226ba2b1912a03a2316cebbd19fde0aaf87347"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "291996145dc69b4f66f68de40231660f07b2ea7c5ea82310c505d7383437ae64"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica.debug.dylib",
+      "bytes": 26566024,
+      "sha256": "0974158d2e6b64ba409a530979cada69dcc07d55625188fcd81770df3adfaa3e"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/MacOS/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "ef42e4140edff5aa41beea98327030af0bc0a463fc79a07b6ba04d72088f6690"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/Assets.car",
+      "bytes": 14232664,
+      "sha256": "767d8e5b21a7fb9a20db530d5e9fe8e9dbd350c150b5a867ba06398435fe36a7"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/default.metallib",
+      "bytes": 71552,
+      "sha256": "2d900cbbfd77ccef3c3d572f238e0f3b856a08d9ccdb38dd9e64e509e58878ed"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/Assets.car",
+      "bytes": 14236856,
+      "sha256": "b4c9d7d3bd6c0bb265ec47c0a72d60d24793158eb38b32d94e58c98e502ab3ae"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "3160e2ea49777d39cd34e27900f51d1baf52232dfdcd6b11d38643f8b845b28d"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "bytes": 24893640,
+      "sha256": "b466e5742912f65ff66f0122b0bd1d0497ba892aedc0863b62ee70e7d6ada589"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+      "bytes": 2116,
+      "sha256": "d74455a14609276831ff9d1d3c84c8201cb9c36c313b1f290026083a817a8f95"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "670e17274069643540183ea4a2bc7f9e4d071010627b412e93fa8e1f07081b75"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/default.metallib",
+      "bytes": 73120,
+      "sha256": "4bc27cae4df99c4a034115102721f3de1aba4b333b5b23217ac207ddb4563fd7"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+      "bytes": 15425,
+      "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+      "bytes": 22442,
+      "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+      "bytes": 15242504,
+      "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "9f0488e8e9edd7e03f63b298d6f0c752f54b698c7b7bc40ce44bb33511c8f7fd"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "bytes": 26488152,
+      "sha256": "448c4674e37ab0dc0333fb3073f73417d2230b0db07eb2c5d6a5c4c85b7a4f99"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+      "bytes": 2366,
+      "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/nlu.lzfse",
+      "bytes": 2124,
+      "sha256": "72c26a41e8e6e783d2a5dda4a78850b688bd84a9743773421d504574e0f4fad5"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/root.ssu.yaml",
+      "bytes": 926,
+      "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "bytes": 40224,
+      "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "bytes": 261104,
+      "sha256": "cba46236d636ce6aa30717e3a745990839d776023a0f9275f1384506bb0d9a19"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+      "bytes": 774,
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+      "bytes": 16752,
+      "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+      "bytes": 73088,
+      "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "bytes": 40224,
+      "sha256": "c78d242145cb07b2b7ac478fe2c2514e89514bcc39e277adf01344f324289152"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "bytes": 295952,
+      "sha256": "74ebdccddf073f5998aa64638db0bf8487f450c881a5d5705e52d4c47c8947d8"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/Info.plist",
+      "bytes": 774,
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/__preview.dylib",
+      "bytes": 16768,
+      "sha256": "266e6199c94ea97332a5288d350ee22a4425698c7358d01cd4b72f704c142c7e"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/Assets.car",
+      "bytes": 14236856,
+      "sha256": "a771995aac5ec007e91664e4428067ac0555610c4b215035bfc3e79c79a932ed"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch",
+      "bytes": 40224,
+      "sha256": "7cbd76f08b69d235082ed075ff3aaa495b617031354cf30409b4b0d802addffe"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch.debug.dylib",
+      "bytes": 2584504,
+      "sha256": "aa2f2355f10ff26dd7c4b9075c58e3d1a998d8976535eb9a72d571ac24042887"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+      "bytes": 1790,
+      "sha256": "e6fe5c5f57b9822793aa774728f04ed953f8d72189b15e604c1f477219c67296"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "bf73f1f668d076a35153530e76ea07d6ae5a749fdf5f87c63273b33277d69de9"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/Assets.car",
+      "bytes": 14236856,
+      "sha256": "b2f643d74a2e6016352536f6e3ce8a2d753afd36329ff9d633c6e830df180909"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "b6c0b1924d646910576dce9015f7d80b290ca351bdf0468eef215405b0a94597"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "bytes": 26209672,
+      "sha256": "8c991e69101d1ad4bbbb9ff84c84a39668f229cc11898ba83650bdaefe35b478"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+      "bytes": 2069,
+      "sha256": "b8bc0f89ac84e91aab3c67e7d621ac970cba3e3914d592d32b1b1d31a66bb66b"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "f969dc8b19bebb6ffb9280f2343858d8a568ff2373374385700dcae25761a1b4"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/default.metallib",
+      "bytes": 73136,
+      "sha256": "5ce1f26d647310d55fc2249c5cba4735e94a07626545edbb8e169d5fdce1b955"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    }
+  ],
+  "archive_sha256": "2bf3497417bc99508a05d1269f788748e4417740723de0694d4ad472c90eb5e0",
+  "all_product_bytes_read_back": true
+}

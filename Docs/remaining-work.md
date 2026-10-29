@@ -1,5 +1,7 @@
 # Verbleibende Arbeit und Grenzen
 
+- [Elf zusätzliche Sheet-Präsentationen geschützt](app-switcher-sheets.md): 22 tatsächliche Vorher-Snapshots korrigiert, 20 finale UI-Ausführungen/fünf SDKs. Native OS-Composer, Alerts/weitere Felder und physische/Präsenz-/Mediengrenzen bei #67 offen.
+
 - [App-Umschalter: Tastatur über Assistenten-/Reminder-Schutz schließen](app-switcher-keyboard.md): zwei iPhone-Vorherfehler und zwei schon grüne iPad-Gegenkontrollen getrennt; zehn finale UI-Ausführungen/fünf SDKs. Keine pauschale Snapshot-Abnahme.
 
 - [App-Umschalter: offene Profil-/Stadtdialoge verdecken](app-switcher-dialogs.md): vier echte Vorherfehler korrigiert; zwölf aktuelle UI-Ausführungen und fünf SDKs. Weitere Präsentationen und physische Abnahme bei #67 offen.

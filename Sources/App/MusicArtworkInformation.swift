@@ -16,7 +16,7 @@ struct MusicArtworkInfoButton: View {
     }.buttonStyle(.plain).foregroundStyle(.primary)
       .accessibilityLabel("Artwork and lyrics information")
       .accessibilityIdentifier("music.artwork.info." + source.rawValue)
-      .sheet(isPresented: $presented) { MusicArtworkInformation(source: source) }
+      .sheet(isPresented: $presented) { MusicArtworkInformation(source: source).snapshotPrivacyProtected() }
   }
 }
 

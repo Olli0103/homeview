@@ -82,7 +82,7 @@ struct ControlCenterView: View {
         }.padding(.horizontal, 30).padding(.bottom, 22)
       }.accessibilityIdentifier("controls.content")
     }.background(Color(white: 0.95)).foregroundStyle(.black)
-      .sheet(isPresented:$showingHouseNotices) {HouseNoticesView()}
+      .sheet(isPresented:$showingHouseNotices) {HouseNoticesView().snapshotPrivacyProtected()}
   }
   private func control(
     _ symbol: String, _ label: String, _ active: Bool, action: @escaping () -> Void
@@ -188,8 +188,8 @@ struct SettingsView: View {
       }
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
-      .sheet(isPresented:$showingPowerCapabilities) { PowerCapabilitiesView() }
-      .sheet(isPresented:$showingTimerActivitySettings) {TimerActivitySettingsView()}
+      .sheet(isPresented:$showingPowerCapabilities) { PowerCapabilitiesView().snapshotPrivacyProtected() }
+      .sheet(isPresented:$showingTimerActivitySettings) {TimerActivitySettingsView().snapshotPrivacyProtected()}
   }
   private func setting(_ title: String, _ on: Bool, action: @escaping () -> Void) -> some View {
     Button(action: action) {
@@ -404,8 +404,8 @@ struct AssistantView: View {
     }.background(.white).foregroundStyle(.black)
       .onAppear { typing=true }
       .onChange(of:focusRequest) { _,_ in typing=true }
-      .sheet(isPresented:$showingCapabilities) { AssistantCapabilitiesView() }
-      .sheet(isPresented:$showingAnswerSpeechSettings) { AnswerSpeechSettingsView() }
+      .sheet(isPresented:$showingCapabilities) { AssistantCapabilitiesView().snapshotPrivacyProtected() }
+      .sheet(isPresented:$showingAnswerSpeechSettings) { AnswerSpeechSettingsView().snapshotPrivacyProtected() }
       .onChange(of:voice.transcript) { _,value in
         if !value.isEmpty,canEdit,voiceSession.acceptsTranscript,
           voiceDraftGeneration==model.personalSessionGeneration { text=value }
