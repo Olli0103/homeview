@@ -78,7 +78,7 @@ struct ConnectionControls: View {
               .onChange(of:canvasScale) { _,_ in
                 if weatherCityFocused { revealWeatherCity() }
               }
-            WeatherSettingsUnitsPicker(selection:Binding(get:{model.connections.weatherUnits},
+            WeatherUnitsPicker(selection:Binding(get:{model.connections.weatherUnits},
               set:{model.connections.weatherUnits=$0}),minimumHeight:minimumHitSide)
             Link("Weather data by Open-Meteo", destination: URL(string: "https://open-meteo.com/")!)
               .font(.system(size: 15))
@@ -96,19 +96,20 @@ struct ConnectionControls: View {
     }
   }
 }
-// Only the scaled settings caller opts in. Unscaled weather sheets retain
-// their existing system Picker and platform-specific presentation.
-private struct WeatherSettingsUnitsPicker: View {
+// Scaled settings supply a canvas-adjusted height; unscaled forms supply
+// native points. Both retain the standard public segmented control.
+struct WeatherUnitsPicker: View {
   @Binding var selection: WeatherUnits
   var minimumHeight: CGFloat
+  var identifier = "weather.units"
   var body: some View {
     #if os(iOS) || os(visionOS)
-      NativeWeatherUnitsPicker(selection:$selection,minimumHeight:minimumHeight)
+      NativeWeatherUnitsPicker(selection:$selection,minimumHeight:minimumHeight,identifier:identifier)
         .frame(height:minimumHeight)
     #else
       Picker("Weather units",selection:$selection) {
         ForEach(WeatherUnits.allCases,id:\.self) { Text($0.rawValue).tag($0) }
-      }.pickerStyle(.segmented).accessibilityIdentifier("weather.units")
+      }.pickerStyle(.segmented).accessibilityIdentifier(identifier)
     #endif
   }
 }
@@ -116,16 +117,18 @@ private struct WeatherSettingsUnitsPicker: View {
 private struct NativeWeatherUnitsPicker: UIViewRepresentable {
   @Binding var selection: WeatherUnits
   var minimumHeight: CGFloat
+  var identifier: String
   func makeCoordinator() -> Coordinator { Coordinator(selection:$selection) }
   func makeUIView(context:Context) -> UISegmentedControl {
     let control=UISegmentedControl(items:WeatherUnits.allCases.map(\.rawValue))
-    control.accessibilityIdentifier="weather.units"
+    control.accessibilityIdentifier=identifier
     control.accessibilityLabel="Weather units"
     control.addTarget(context.coordinator,action:#selector(Coordinator.changed(_:)),for:.valueChanged)
     return control
   }
   func updateUIView(_ control:UISegmentedControl,context:Context) {
     context.coordinator.selection=$selection
+    control.accessibilityIdentifier=identifier
     control.selectedSegmentIndex=WeatherUnits.allCases.firstIndex(of:selection) ?? 0
   }
   func sizeThatFits(_ proposal:ProposedViewSize,uiView:UISegmentedControl,context:Context) -> CGSize? {

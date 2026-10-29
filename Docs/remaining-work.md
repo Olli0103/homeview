@@ -4,6 +4,7 @@
 
 ## Aktueller Arbeitsblock
 
+- [Wetter-App und Stadtdialog: native Trefferflächen korrigiert](weather-surface-hit-regions.md); zwölf finale UI-Ausführungen, vier leere Audits, fünf SDKs. #73 weiter offen für übrige Kriterien.
 - [Wetter-Einstellungen: Stadtfeld/Einheiten und Tastatur-Sichtbarkeit korrigiert](weather-settings-hit-regions.md); zehn finale UI-Ausführungen/fünf SDKs. #73 bleibt für übrige Accessibility-Kriterien offen.
 - [Fade-Zeitabbildung nachgeprüft](fade-time-mapping-review.md): sichtbare Lücke bei geschätzter 9:25-Pose; keine weitere Fade-Sequenz in sieben zusätzlichen Filmzeitpunkten. Keine geratene Sekundenbindung übernommen; #18 offen.
 - [Native Mac-Startgrenze](mac-runtime-boundary.md) dokumentiert: Builds vorhanden, kein beobachteter UI-Methodenlauf. Keine unbelegte Cmd+A-Änderung, keine Hostberechtigungen aktiviert. #79 bleibt offen; übrige Software-/Referenzarbeit unabhängig fortsetzen.

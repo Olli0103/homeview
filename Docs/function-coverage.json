@@ -3300,7 +3300,8 @@
       "Einstellungen: zu kleine native Tasten und Mock-Regler sowie fehlende Boolean-AXwerte korrigiert; getrennte Vorherfehler erhalten. Acht letzte betroffene UI-Ausführungen, zehn leere ungefilterte Auditlisten und fünf SDKs; vorherige 18/20 UI-Ergebnisse ausdrücklich historisch. Keine echte Hilfsmittel-/Hardwareabnahme; Wetterfeld/Einheitenwähler separat offen. Docs/settings-hit-regions.md.",
       "Control Center: native Mindestflächen für Close, lokale Regler und Pill-Tasten, scrollbarer Inhalt; zehn UI-Ausführungen, vier leere ungefilterte Auditlisten und 24 Randaktionen bestanden. Unterbrochener Testhelfer-Fehllauf separat erhalten, fünf SDKs bei bytegleichen Produktinputs. Keine echte Hilfsmittelabnahme oder Home-Anbindung. Docs/control-center-hit-regions.md.",
       "Face-Editor: lokale Label-Mindestflächen, tatsächliche Flow-Zeilenaktion und geschützte Inline-Datum-Trefferfläche. 28 UI-Ausführungen über zwei bytegleiche Auswahlläufe, 14 leere ungefilterte Auditlisten, 38 native Rand-Taps und fünf SDKs. Vorherfehler erhalten; andere kleine Previewflächen, schmale Fenster und echte Hilfsmittel-/Originalabnahme offen. Docs/editor-hit-regions.md.",
-      "Wetter-Einstellungen: native Stadt-/Einheiten-Trefferflächen und fokussierter sicherer Scrollbereich auf iPad/iPhone nach Vorherfehlern korrigiert. Zehn finale UI-Ausführungen, zwei leere ungefilterte Hitflächen-Audits und fünf SDKs. Keine vollständige Hilfsmittel-/Original-/Hardwareabnahme. Docs/weather-settings-hit-regions.md."
+      "Wetter-Einstellungen: native Stadt-/Einheiten-Trefferflächen und fokussierter sicherer Scrollbereich auf iPad/iPhone nach Vorherfehlern korrigiert. Zehn finale UI-Ausführungen, zwei leere ungefilterte Hitflächen-Audits und fünf SDKs. Keine vollständige Hilfsmittel-/Original-/Hardwareabnahme. Docs/weather-settings-hit-regions.md.",
+      "Wetter-App/Stadtdialog: native Mindestflächen, reale Modus-/Dialogränder, Eingabe und Abbrechen nach Vorherfehlern korrigiert. Zwölf finale UI-Ausführungen, vier leere ungefilterte Audits, fünf SDKs. Fünf iPad-Control-Rechtecke unverändert; kein Original-/Hilfsmittel-/Hardware-PASS. Docs/weather-surface-hit-regions.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3332,7 +3333,9 @@
       "Docs/editor-hit-regions.md",
       "Docs/verification/editor-hit-regions.json",
       "Docs/weather-settings-hit-regions.md",
-      "Docs/verification/weather-settings-hit-regions.json"
+      "Docs/verification/weather-settings-hit-regions.json",
+      "Docs/weather-surface-hit-regions.md",
+      "Docs/verification/weather-surface-hit-regions.json"
     ]
   },
   {

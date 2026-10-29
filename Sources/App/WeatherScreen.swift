@@ -4,6 +4,8 @@ import SwiftUI
 /// repeated below a second clock/header. All forecast values come from a source.
 struct WeatherScreen: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  private var minimumHitSide: CGFloat { (44 / max(0.01,canvasScale)).rounded(.up) }
   @State private var citySheet = false
   @State private var metric = WeatherMetric.temperature
   private var reading: WeatherReading? {
@@ -57,7 +59,8 @@ struct WeatherScreen: View {
     HStack {
       Button { citySheet=true } label: {
         Image(systemName:"list.bullet").font(.system(size:24,weight:.medium))
-          .frame(width:52,height:52).background(.white.opacity(0.15),in:Circle())
+          .frame(width:max(52,minimumHitSide),height:max(52,minimumHitSide))
+          .background(.white.opacity(0.15),in:Circle())
           .contentShape(Circle())
       }.accessibilityLabel("Weather cities").accessibilityIdentifier("weather.cities")
       Spacer()
@@ -72,7 +75,14 @@ struct WeatherScreen: View {
       if !model.connections.weatherDemo {
         HStack(spacing:8) {
           Text("Sunrise \(reading?.sunLabel(reading?.sunrise) ?? "—") · AQI not supplied")
-          Link("Open-Meteo",destination:URL(string:"https://open-meteo.com/")!)
+          // Preserve the source row's reference layout; only its transparent
+          // Link hit region grows. Adjacent mode controls must not overlap it.
+          Text("Open-Meteo").hidden().overlay {
+            Link(destination:URL(string:"https://open-meteo.com/")!) {
+              Text("Open-Meteo").frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
+                .contentShape(Rectangle())
+            }
+          }
         }
       }
     }.font(.system(size:11)).foregroundStyle(.white.opacity(0.85)).padding(.bottom,6)
@@ -90,7 +100,7 @@ struct WeatherScreen: View {
           ForEach(WeatherMetric.allCases) { item in
             Button { metric=item } label: {
               Image(systemName:item.symbol).font(.system(size:23))
-                .frame(width:52,height:38)
+                .frame(width:max(52,minimumHitSide),height:max(38,minimumHitSide))
                 .background(metric==item ? .white.opacity(0.17):.clear,in:Capsule())
                 .contentShape(Capsule())
             }.accessibilityLabel(item.rawValue).accessibilityIdentifier("weather.mode."+item.rawValue)
@@ -153,22 +163,28 @@ private struct WeatherCitySheet: View {
   @Environment(\.dismiss) private var dismiss
   @State private var draft=""
   @State private var sessionID=UUID()
+  @FocusState private var cityFocused:Bool
   var body: some View {
     VStack(alignment:.leading,spacing:22) {
       HStack {
         Text("Weather city").font(.title2.bold())
-        Spacer();Button("Done") { dismiss() }.accessibilityIdentifier("weather.city.done")
+        Spacer()
+        Button { dismiss() } label: {
+          Text("Done").frame(minWidth:44,minHeight:44).contentShape(Rectangle())
+        }.accessibilityIdentifier("weather.city.done")
       }
-      TextField("City",text:$draft).accessibilityIdentifier("weather.app.city.input")
+      TextField("City",text:$draft).focused($cityFocused)
+        .frame(minHeight:44).contentShape(Rectangle()).onTapGesture {cityFocused=true}
+        .accessibilityIdentifier("weather.app.city.input")
         #if !os(tvOS)
         .textFieldStyle(.roundedBorder)
         #endif
-      Picker("Units",selection:Binding(get:{model.connections.weatherUnits},set:{model.connections.weatherUnits=$0})) {
-        ForEach(WeatherUnits.allCases,id:\.self) { Text($0.rawValue).tag($0) }
-      }.pickerStyle(.segmented).accessibilityIdentifier("weather.app.units")
+      // Sheets are native-sized; do not apply the underlying face's scale.
+      WeatherUnitsPicker(selection:Binding(get:{model.connections.weatherUnits},
+        set:{model.connections.weatherUnits=$0}),minimumHeight:44,identifier:"weather.app.units")
       Text(model.connections.status[.weather] ?? "Connect to public Open-Meteo weather for this city.")
         .font(.callout).foregroundStyle(.secondary).accessibilityIdentifier("weather.app.city.status")
-      Button("Update weather") {
+      Button {
         let requestedCity=draft
         let ticket=sessionID,reset=model.localResetGeneration
         model.connections.city=requestedCity
@@ -177,6 +193,8 @@ private struct WeatherCitySheet: View {
           guard ticket==sessionID,model.connections.city==requestedCity,!Task.isCancelled else { return }
           if model.connections.weather != nil && !model.connections.weatherFetchFailed { dismiss() }
         }
+      } label: {
+        Text("Update weather").frame(minWidth:44,minHeight:44).contentShape(Rectangle())
       }.disabled(model.connections.busy.contains(.weather) || draft.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty)
         .accessibilityIdentifier("weather.app.city.update")
       Spacer(minLength:0)

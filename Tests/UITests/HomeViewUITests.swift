@@ -726,6 +726,109 @@ extension HomeViewUITests {
 }
 
 extension HomeViewUITests {
+  private func weatherSurfaceGeometry(_ element:XCUIElement,_ state:String,sheet:Bool=false) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let f=element.frame,v=sheet ? app.frame:app.otherElements["reference.viewport"].frame
+    let keyboard=app.keyboards.firstMatch
+    let data:[String:Any] = ["identifier":element.identifier,"label":element.label,
+      "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "containingFrame":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "hittable":element.isHittable,"value":String(describing:element.value),"sheet":sheet,
+      "keyboardVisible":keyboard.exists]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="weather-surface-native-"+state;a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(v.contains(f));XCTAssertGreaterThanOrEqual(f.width,44);XCTAssertGreaterThanOrEqual(f.height,44)
+    // These scaled weather buttons historically report isHittable=false even
+    // when their actual screen-coordinate touches work. Assert the outcome.
+  }
+  private func weatherSurfaceEdge(_ element:XCUIElement,bottom:Bool=false) {
+    let f=element.frame
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:f.midX,dy:bottom ? f.maxY-2:f.minY+2)).tap()
+  }
+  private func weatherSurfaceAudit(_ state:String) throws {
+    var findings:[[String:Any]]=[]
+    try app.performAccessibilityAudit(for:.hitRegion) { issue in
+      let f=issue.element?.frame ?? .zero
+      findings.append(["identifier":issue.element?.identifier ?? "","label":issue.element?.label ?? "",
+        "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+        "description":issue.compactDescription,"detail":issue.detailedDescription])
+      return true
+    }
+    let a=XCTAttachment(data:try JSONSerialization.data(withJSONObject:findings,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="weather-surface-"+state+"-all-findings";a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(findings.isEmpty,"Unfiltered weather audit: \(findings)")
+  }
+  private func launchWeatherSurfaceFixture() {
+    launch(["--page","Settings","--weather-forecast-fixture","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    connectService("Weather");openWeather()
+    XCTAssertEqual(app.staticTexts["weather.app.city"].label,"Berlin")
+  }
+  func testWeatherAppNativeHitRegionsAndActualModeEdges() throws {
+    continueAfterFailure=true
+    launchWeatherSurfaceFixture()
+    for (name,legend,bottom) in [("Wind","Wind (mph)",false),("Precipitation","Precipitation (%)",true),("Temperature","Temperature (°F)",false)] {
+      let button=app.buttons["weather.mode."+name]
+      scrollPhotoControlFullyIntoView(button,requireHittable:false)
+      weatherSurfaceGeometry(button,"mode-"+name);weatherSurfaceEdge(button,bottom:bottom)
+      XCTAssertEqual(app.staticTexts["weather.metric"].label,legend)
+      XCTAssertEqual(button.value as? String,"Selected")
+    }
+    let source=app.links["Open-Meteo"]
+    scrollPhotoControlFullyIntoView(source,requireHittable:false)
+    weatherSurfaceGeometry(source,"attribution-not-invoked")
+    for name in ["Temperature","Precipitation","Wind"] {
+      XCTAssertFalse(source.frame.intersects(app.buttons["weather.mode."+name].frame),
+        "Expanded attribution target must not steal touches from "+name)
+    }
+    viewportShot("weather-surface-app-modes-and-attribution")
+    try weatherSurfaceAudit("app")
+    for bottom in [false,true] {
+      let cities=app.buttons["weather.cities"]
+      // The visible first header cannot be scrolled forty points below its
+      // natural top inset. Its complete native rectangle is already visible.
+      for _ in 0..<8 {
+        if app.otherElements["reference.viewport"].frame.contains(cities.frame) {break}
+        app.scrollViews.firstMatch.swipeDown()
+      }
+      weatherSurfaceGeometry(cities,bottom ? "cities-bottom":"cities-top")
+      weatherSurfaceEdge(cities,bottom:bottom)
+      XCTAssertTrue(app.textFields["weather.app.city.input"].waitForExistence(timeout:5))
+      tap("weather.city.done")
+    }
+    viewportShot("weather-surface-app-returned-from-cities")
+  }
+  func testWeatherCitySheetNativeHitRegionsAndEditableEdges() throws {
+    continueAfterFailure=true
+    launchWeatherSurfaceFixture()
+    for bottom in [false,true] {
+      touchWeatherControl("weather.cities")
+      let field=app.textFields["weather.app.city.input"],done=app.buttons["weather.city.done"]
+      let update=app.buttons["weather.app.city.update"],units=app.segmentedControls["weather.app.units"]
+      for (element,name) in [(field,"city"),(done,"done"),(update,"update"),
+        (units.buttons["°F / mph"],"fahrenheit"),(units.buttons["°C / km/h"],"celsius")] {
+        weatherSurfaceGeometry(element,"sheet-"+name,sheet:true)
+      }
+      shot(bottom ? "weather-surface-sheet-bottom-before":"weather-surface-sheet-top-before")
+      if !bottom {try weatherSurfaceAudit("sheet")}
+      let choice=units.buttons[bottom ? "°F / mph":"°C / km/h"]
+      weatherSurfaceEdge(choice,bottom:bottom);XCTAssertTrue(choice.isSelected)
+      weatherSurfaceEdge(update,bottom:bottom)
+      expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:field);waitForExpectations(timeout:5)
+      touchWeatherControl("weather.cities")
+      XCTAssertTrue(field.waitForExistence(timeout:5));XCTAssertEqual(field.value as? String,"Berlin")
+      weatherSurfaceEdge(field,bottom:bottom)
+      XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout:5));field.typeText("X")
+      XCTAssertTrue((field.value as? String ?? "").hasSuffix("X"))
+      weatherSurfaceGeometry(field,"sheet-focused-city",sheet:true)
+      let available=CGRect(x:app.frame.minX,y:app.frame.minY,width:app.frame.width,
+        height:app.keyboards.firstMatch.frame.minY-app.frame.minY).insetBy(dx:12,dy:12)
+      XCTAssertTrue(available.contains(field.frame),"Sheet city field must stay fully above the keyboard")
+      shot(bottom ? "weather-surface-sheet-bottom-edited":"weather-surface-sheet-top-edited")
+      weatherSurfaceEdge(done,bottom:bottom)
+      expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:field);waitForExpectations(timeout:5)
+      XCTAssertEqual(app.staticTexts["weather.app.city"].label,"Berlin","Done must not implicitly update the edited city")
+    }
+  }
   private func weatherSettingsGeometry(_ element:XCUIElement,_ state:String) {
     let f=element.frame,v=app.otherElements["reference.viewport"].frame
     let data:[String:Any] = ["identifier":element.identifier,"label":element.label,
@@ -1165,13 +1268,13 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(button.waitForExistence(timeout: 5), "Missing \(id)")
     button.tap()
   }
-  func scrollPhotoControlFullyIntoView(_ element:XCUIElement) {
+  func scrollPhotoControlFullyIntoView(_ element:XCUIElement,requireHittable:Bool=true) {
     XCTAssertTrue(element.waitForExistence(timeout:5))
     let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"]
     for _ in 0..<24 {
       let safe=scroll.frame.intersection(viewport.frame).insetBy(dx:0,dy:40)
       let target=element.frame
-      if element.isHittable && safe.contains(target) { break }
+      if (!requireHittable || element.isHittable) && safe.contains(target) { break }
       // Full flicks overshoot a short phone viewport and oscillate around the
       // target. Drag only the measured gap, then hold to stop scroll inertia.
       // Use the content gutter: a central drag can be captured by a Slider.

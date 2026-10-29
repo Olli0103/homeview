@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Wetter-App und Stadtdialog: native Trefferflächen · 29. Oktober 2026
+
+[Separater App-/Dialog-Fix](weather-surface-hit-regions.md): zwölf finale UI-Ausführungen, vier leere ungefilterte Audits und fünf SDKs; größerer transparenter Quellenlink ohne Verschieben der fünf iPad-Städte-/Modus-Rechtecke. Native Dialogränder, echte Eingabe, explizites Update und Abbrechen geprüft. Drei frühere erfolgreiche/fünf fehlgeschlagene Ausführungen separat, kein neuer Core-Lauf. #73 bleibt für übrige Hilfsmittel-/Original-/Hardwarekriterien offen. **40/82 geschlossen, 42 offen.**
+
 ## Wetter-Einstellungen: native Trefferflächen und fokussierte Sichtbarkeit · 29. Oktober 2026
 
 [Stadtfeld und Einheitenwahl korrigiert](weather-settings-hit-regions.md): zehn finale UI-Ausführungen, fünf SDKs, vier echte Rand-Eingaben und zwei leere ungefilterte Auditlisten. Zusätzliche iPad-Abschneidung nach Tastaturöffnung vor Veröffentlichung gefunden und korrigiert. Frühere elf erfolgreiche/fünf fehlgeschlagene Ausführungen separat; kein neuer Core-Lauf. #73 bleibt für übrige Hilfsmittel-/Original-/Hardwarekriterien offen; **40/82 geschlossen, 42 offen**.

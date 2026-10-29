@@ -1,5 +1,7 @@
 # Wetter-Einstellungen: Trefferflächen und sichtbare Eingabe
 
+Separater Folgestand: [Wetter-App und Stadtdialog](weather-surface-hit-regions.md). Die folgenden Angaben einschließlich der damals unveränderten unskalierten Picker bleiben ihrem historischen Stand zugeordnet.
+
 29. Oktober 2026 · begrenzter Teilfix von [#73](https://github.com/Olli0103/homeview/issues/73), Gesamtissue weiter offen.
 
 ## Reproduziert und korrigiert
