@@ -64,4 +64,29 @@ struct AssistantResponseDocument:Equatable,Sendable {
   let sources:[Source]
   let followUps:[AssistantResponseExample]
   var recipeActionAvailable:Bool {content == .recipe}
+  /// Manual Read covers the visible answer/card, not hidden source sheets,
+  /// follow-up controls, recipe ingredients or executable links.
+  var readoutText:String {
+    let card:String
+    switch content {
+    case .illustration:
+      card="Illustration: pale fern-like branches on a deep-blue background. HomeView illustration. Not a historical print."
+    case .agenda(let events):
+      card=events.map {[$0.day,$0.title,$0.detail].joined(separator:". ")}.joined(separator:"\n")
+    case .message(let message):
+      card="Fictional message from \(message.sender). \(message.timestamp). \(message.text)\nFictional message. Read-only excerpt."
+    case .recipe:
+      let recipe=RecipeDocument.soup
+      card="Illustration of a bowl of soup.\n\(recipe.title). \(recipe.source). \(recipe.durationMinutes) min. \(recipe.servingsLabel)."
+    case .loading:
+      card="Loading preview. Preview only. No request is running; choose another example below."
+    case .empty:
+      card="No matching sample. Try a different example. No personal sources were searched."
+    case .failure:
+      card="Result unavailable. Nothing was changed. Choose another example; there is no automatic retry."
+    }
+    let sourceNames=sources.map {"Source: "+$0.title+"."}.joined(separator:"\n")
+    return ["Bundled answer example. Not a live or personal result.",text,card,sourceNames]
+      .filter {!$0.isEmpty}.joined(separator:"\n")
+  }
 }

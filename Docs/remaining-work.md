@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Manuelles Vorlesen sichtbarer Antwortkarten vervollständigt](card-readout.md):18 Vorherfehler in76AppModel-Assertions; danach405Coretests/76AppModel-Assertions,14 aktuelle UI-Ausführungen/fünf SDKs bestanden. Kein automatisches Sprechen oder versteckte Quellen-/Aktionsinhalte; #36 für Original-/Live-/Hilfsmittelgrenzen offen.
+
 - [iOS-Shortcut-Paketvollständigkeit abgesichert](shortcut-package-completeness.md): drei fehlende generierte Dateien trotz Compilererfolg kontrolliert reproduziert; bestehender Buildweg prüft Artefakte, bewahrt Erstbefund und führt höchstens einen normalen Clean-Build aus. Sechs Tooling-Tests, echter Guard-Wiederherstellungspfad und fünf frische SDKs; kein neuer OS-Hilfsmittelaufruf, #74 offen.
 
 - [Native TV-Kamera-Gegenkontrolle und fokussierbare Fotogalerie](tv-camera-photos.md): sechs aktuelle TV-Methoden/vier mobile Fotoregressionen/fünf frische SDKs bestanden. Next photo erreicht und Bildnummer frei. Keine Live-Quellen oder Geräteabnahme; #79 offen. Die dort zusätzlich beobachtete inkrementelle Shortcut-Verpackungsgrenze ist [separat reproduziert und abgesichert](shortcut-package-completeness.md).

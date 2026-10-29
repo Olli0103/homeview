@@ -6,6 +6,17 @@ import Foundation
       !ProcessInfo.processInfo.arguments.contains("--system-alarms"),
       Bundle.main.url(forResource:"demo-tone",withExtension:"wav")==nil else {fatalError("Local probe only")}
     let m=AppModel();var checks:[String:Bool]=[:]
+    func visibleCardFragments(_ example:AssistantResponseExample)->[String] {
+      switch example {
+      case .knowledge:["pale fern-like branches","HomeView illustration","Not a historical print"]
+      case .agenda:["Wednesday, April 1","Riley’s birthday","All day","Friday, April 17","Studio celebration","3:00–4:00 PM","Tuesday, April 28","Sam’s birthday"]
+      case .message:["Avery Morgan","Today, 9:41 AM","I’ll arrive at Central Station","Read-only excerpt"]
+      case .recipe:["Butternut Squash Soup","Home Cookbook","35 min","Serves 4"]
+      case .loading:["No request is running"]
+      case .empty:["No personal sources were searched"]
+      case .failure:["Nothing was changed","no automatic retry"]
+      }
+    }
     func state()throws->Data {try Snapshot.canonicalBytes(JSONEncoder().encode(m.data))}
     let initial=try state(),draft="plan: temperature 90; timer for 10 seconds"
     m.assistantInput=draft
@@ -15,7 +26,11 @@ import Foundation
     for example in AssistantResponseExample.allCases {
       m.showAssistantExample(example)
       checks[example.rawValue+"_exact_document"]=m.assistantDocument==example.document
-      checks[example.rawValue+"_readout_text_matches"]=m.answerReadoutText==example.document.text
+      let readout=m.answerReadoutText ?? ""
+      checks[example.rawValue+"_readout_answer_preserved"]=readout.contains(example.document.text)
+      checks[example.rawValue+"_readout_visible_card_included"]=visibleCardFragments(example).allSatisfy {readout.contains($0)}
+      checks[example.rawValue+"_readout_sample_scope_included"]=readout.contains("Bundled answer example") && readout.contains("Not a live or personal result")
+      checks[example.rawValue+"_readout_sources_named"]=example.document.sources.allSatisfy {readout.contains($0.title)}
       checks[example.rawValue+"_draft_not_sent"]=m.assistantInput==draft
       checks[example.rawValue+"_no_state_mutation"]=try state()==initial
       checks[example.rawValue+"_no_pending_actions"]=m.demoPlan==nil && m.route == .assistant
@@ -60,5 +75,6 @@ import Foundation
     let observations:[String:Any]=["route_after_canary_action":String(describing:m.route),"selected_recipe_after_canary_action":m.recipe.title,"example_recipe_title":RecipeDocument.soup.title]
     let failures=checks.filter {!$0.value}.map(\.key).sorted()
     print(String(data:try JSONSerialization.data(withJSONObject:["checks":checks,"assertions":checks.count,"failed":failures,"observations":observations,"verdict":failures.isEmpty ? "PASS":"FAIL"],options:[.sortedKeys]),encoding:.utf8)!)
+    exit(failures.isEmpty ? 0:1)
   }
 }

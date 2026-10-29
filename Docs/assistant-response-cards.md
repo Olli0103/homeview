@@ -40,7 +40,7 @@ Ein erster nativer Vorbereitungsbuild wollte einen privaten Modus-Setter verwend
 
 ## Weiter offen
 
-Tatsächliche VoiceOver-/Switch-Control-Sitzungen, vollständiger Fokus-/Ansagen-/Dynamic-Type-/Kontrasttest, physische Geräte und Originalgeometrie/-animation. Keine produktive persönliche Kalenderantwort, Nachrichtensuche, dynamische Webantwort oder Quellenprüfung eines Live-Modells implementiert. Readout erhält den Antworttext, nicht automatisch die vollständigen Kartenzeilen. F046 bleibt teilweise und `parity_accepted=false`; #36 bleibt offen.
+Tatsächliche VoiceOver-/Switch-Control-Sitzungen, vollständiger Fokus-/Ansagen-/Dynamic-Type-/Kontrasttest, physische Geräte und Originalgeometrie/-animation. Keine produktive persönliche Kalenderantwort, Nachrichtensuche, dynamische Webantwort oder Quellenprüfung eines Live-Modells implementiert. Auf diesem historischen Stand erhält Readout nur den Antworttext; [sichtbare Karteninhalte werden in einem späteren getrennten Fix ergänzt](card-readout.md). F046 bleibt teilweise und `parity_accepted=false`; #36 bleibt offen.
 
 Nur eigene synthetische Beispiele und Mock-Befehle, keine realen Konten, Mikrofon-/Kameraaufnahme, Systemalarme oder neuen Live-Activities. **Keine Home-Anbindung.**
 

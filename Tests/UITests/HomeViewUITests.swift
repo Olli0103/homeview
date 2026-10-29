@@ -5618,6 +5618,28 @@ extension HomeViewUITests {
     XCTAssertEqual(app.buttons["answer.speech.read"].label,"Read")
     XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("stopped"))
   }
+  func testCardReadoutRequiresExplicitReadAndChangingCardsStopsWithoutSendingDraft() {
+    launch(["--answer-speech-fixture"]);tap("nav.assistant")
+    let input=app.textFields["assistant.input"],draft="temperature 91"
+    input.tap();input.typeText(draft);selectAnswerExample("message")
+    let read=app.buttons["answer.speech.read"]
+    XCTAssertEqual(read.label,"Unlock readout")
+    revealPlanControl(read);unlockSyntheticReadout();startSyntheticReadout()
+    XCTAssertTrue(responseElement("assistant.card.message").exists)
+    viewportShot("card-readout-message-explicit-synthetic",assistantRectangle:true)
+    selectAnswerExample("agenda")
+    XCTAssertEqual(read.label,"Read");XCTAssertEqual(input.value as? String,draft)
+    XCTAssertTrue(app.staticTexts["answer.speech.status"].label.contains("stopped"))
+    revealPlanControl(read);startSyntheticReadout()
+    selectAnswerExample("recipe")
+    XCTAssertEqual(read.label,"Read");XCTAssertEqual(input.value as? String,draft)
+    XCTAssertTrue(app.buttons["assistant.card.openRecipe"].exists)
+    revealPlanControl(read);startSyntheticReadout();tap("answer.speech.read")
+    XCTAssertEqual(read.label,"Read")
+    viewportShot("card-readout-recipe-stopped-without-opening",assistantRectangle:true)
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
   func testAnswerReadoutUnavailableDeniedAndMutedDoNotSpeak() {
     launch(["--answer-speech-fixture","--answer-speech-unavailable"]);tap("nav.assistant")
     tap("answer.speech.read")

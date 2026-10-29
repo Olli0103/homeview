@@ -10,7 +10,7 @@ Die Karte enthält ausschließlich erfundene feste Angaben: Avery Morgan, Centra
 
 `MessageExcerpt` ist nur ein Darstellungstyp mit drei Textfeldern, ohne Empfänger, URL oder Aktion. Alle Texte werden wörtlich dargestellt. Kein User-/Providertext wird zum Kartenformat oder Befehl. Die Karte ist kein Button; Tap behält Ansicht und ungesendeten Entwurf. Der Quellenchip öffnet nur die lokale Erklärung, ohne externen Link oder Accounts. Folgebuttons wählen ausdrücklich ein anderes gespeichertes Beispiel. Die einzige bestehende Karten-Navigation bleibt das separat bewusste Öffnen des gebündelten Rezeptbeispiels.
 
-Beispiele bleiben im Arbeitsspeicher. Neue Antwort, ausdrückliches Send, Navigation und Hintergrund-/Sperrpfade verwerfen die Karte nach der vorhandenen Politik. Im On-device-Modus entstehen keine persönlichen oder dynamischen Karten. Der Vorlesepfad erhält weiterhin den Antworttext, nicht automatisch alle Kartenzeilen; eine tatsächliche VoiceOver-Abnahme wird aus der AX-Beschriftung nicht abgeleitet.
+Beispiele bleiben im Arbeitsspeicher. Neue Antwort, ausdrückliches Send, Navigation und Hintergrund-/Sperrpfade verwerfen die Karte nach der vorhandenen Politik. Im On-device-Modus entstehen keine persönlichen oder dynamischen Karten. Auf diesem historischen Stand erhält der Vorlesepfad nur den Antworttext; der [spätere Anschlussfix](card-readout.md) ergänzt sichtbare Karteninhalte. Eine tatsächliche VoiceOver-Abnahme wird weder aus der AX-Beschriftung noch dem Vorlesetext abgeleitet.
 
 ## Geprüfter Stand
 

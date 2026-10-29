@@ -19,7 +19,7 @@ extension AppModel {
   }
   var answerReadoutText:String? {
     if assistantUsesAI { return assistantAI.busy ? nil:assistantAI.exchanges.last?.answer }
-    return assistantReply
+    return assistantDocument?.readoutText ?? assistantReply
   }
   #if !os(watchOS)
   func readAssistantAnswer() async {
