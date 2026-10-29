@@ -16,6 +16,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Alle vier vorhandenen S07-GIFs vollständig eingeordnet](remaining-original-gifs-20261029.md):299 Frames, Kameraface→Home und Numerals→Assistentenantwort; Artikelkontext geprüft, kein sichtbarer Aktivierungsvorgang oder neue Gestenkennlinie. Ausgewähltes Kamera-Face liegt bereits hinter dem eigenen Home-Raster; keine unbelegte Produktänderung. #6/#19/#36 weiter offen.
+
 - [Native Vision-Fenster/Eingabe/Timer/lokaler Browser](vision-native-runtime.md): vier aktuelle Methoden bestanden, fünf tatsächliche virtuelle Kamerabilder zeitgebunden. Kein Produkt-Rendererfix,165 Produktinputs unverändert. Größenänderung/Mehrfenster, reale APIs und physische Eingabe bleiben separat offen bei #79.
 
 - [Native Watch-Installation und unabhängige Temperaturaktionen korrigiert](watch-native-runtime.md): zwei aktuelle native Methoden/fünf SDKs bestanden; reduzierte eigenständige Oberfläche, keine Geräte-/Energie-/volle iPad-Abnahme. #79/#81 für übrige Kriterien offen. Erste separate native Vision-Prüfung läuft.

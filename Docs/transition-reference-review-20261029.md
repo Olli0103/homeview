@@ -11,7 +11,7 @@ Zwei bereits katalogisierte S07-GIFs aus dem [TechRadar-Hands-on vom 14. Oktober
 
 Alle 158 vollständigen Frame-PNGs wurden gespeichert/dekodiert, vier Tafeln gesichtet und drei Übergangsframes zusätzlich groß betrachtet. Originale, abgeleitete Bilder und Kontaktbögen bleiben privat auf der externen Projektakte. [Digests, tatsächliche GIF-Zeiten und Grenzen](verification/original-transition-gifs-20261029.json). Die eingefrorenen 24 Quellen / 51 Referenzzustände werden **nicht** um diese erneute Auswertung erhöht.
 
-Die frühere S07-Formulierung „vier Gesten-GIFs“ ist zu weit: Vier animierte GIFs sind nicht vier Gestentraces. Die vollständig geprüfte Snoopy-Folge liefert keinen Nachweis einer Navigation; die verbleibenden zwei GIFs sind nicht Teil dieser vollständigen Nachprüfung.
+Die frühere S07-Formulierung „vier Gesten-GIFs“ ist zu weit: Vier animierte GIFs sind nicht vier Gestentraces. Die vollständig geprüfte Snoopy-Folge liefert keinen Nachweis einer Navigation; die verbleibenden zwei GIFs sind nicht Teil dieses früheren Zweier-Prüfstands. **Anschließend ebenfalls vollständig geprüft:** [alle vier Folgen,299 Frames und korrigierter Artikelkontext](remaining-original-gifs-20261029.md).
 
 Die erste Folge zeigt reaktive Fluidziffern → verblassende Analogziffern → Modular mit Agenda/Datum/Uhr/Wetter → Foto mit Tiefenuhr → Home mit großer Analoguhr. Die erste Ansicht wird weiterhin nicht ungeprüft als eigenes Flow identifiziert. Sichtbare Nachbarn in diesem Demoaufbau beweisen keine vollständige feste Standardreihenfolge oder die Abwesenheit einer benutzerabhängigen Reihenfolge. Deshalb wird `Face.allCases` nicht allein auf dieser Grundlage umsortiert.
 

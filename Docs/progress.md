@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Vier vorhandene Original-GIFs vollständig eingeordnet · 29. Oktober 2026
+
+[299 Frames aller vier S07-Folgen gesichtet](remaining-original-gifs-20261029.md), Originaldigests/Artikelkontext geprüft. Zusätzliche Kameraface→Home-Folge und Numerals→Assistentenantwort unterscheiden; kein sichtbarer Antwortauslöser, keine automatische Notification daraus. Kamera-Face als Home-Hintergrund bereits in der Replik vorhanden, kein Produktfix aus unbelegter Vorher-App-Hypothese.24 Quellen/51 Referenzzustände unverändert; keine Originalbilder veröffentlicht. #6/#19/#36 weiter offen, Softwarearbeit läuft weiter.
+
 ## Native Vision-Matrix ohne Produktänderung · 29. Oktober 2026
 
 [Vier aktuelle Vision-Methoden bestanden](vision-native-runtime.md): kontrolliertes Fenster/Mock-Thermostat, lokaler Timer, ungesendete Eingabe und lokaler WebKit-Inhalt. Fünf tatsächlich gesichtete Simulator-Kamerabilder vollständig an Haltezustände gebunden; fehlerhafte Screenshot-APIs/zu späte ältere Captures getrennt.165 Produktquell-/Ressourcendateien unverändert zu `6eaf5f7`,231 gesamte Inputs gebunden. Keine neue physische/Original-/Mehrfensterabnahme; #79 bleibt offen, Gesamtauftrag läuft weiter.
