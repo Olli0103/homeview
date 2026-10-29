@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Demo-Kamera: Systemschrift und endliches Accessibility-Scrollraster](camera-dynamic-type.md):22 akzeptierte aktuelle UI-Ausführungen über zwei Testpins bei bytegleicher App/fünf aktuelle SDKs.46 Textbedingungen/vier separate Buchstabenpaare wachsen;20 normale und zwei große eingefrorene Face-Pixelpaare exakt gleich. Vier Overlay-Selektorfehler, vier frühe Lazy-AX-Fehler und ein ungeklärter iPhone-Scrollfehler erhalten; Foto-Kontrast/Hilfsmittel bei #73 offen.
+
 - [Verbindungen und lokale Sperransichten skalieren und kontrastieren](connections-lock-dynamic-type.md):18 akzeptierte aktuelle UI-Ausführungen bei bytegleicher App über drei Testpins, fünf SDKs.62 Textausdehnungs- und48 Kontrastbedingungen grün;22 exakt passende Normalpaare außerhalb der Farbrollen gleich,24 Scrollposen ausdrücklich unqualifiziert. Fünf aktuelle Instrumentfehler erhalten; keine realen Verbindungen oder Authentifizierung, #73 offen.
 
 - [Rezept-Systemschrift, Scrollwege und vier Textfarben korrigiert](recipe-dynamic-type.md): zwölf aktuelle UI-Ausführungen/fünf SDKs;46 Textausdehnungsbedingungen und16 Farbbedingungen grün.14 normale Rezeptpaare außerhalb der Farbrollen gleich, zwei Timer-Einrichtungsbilder exakt gleich. Vier anfängliche Helferfehler und drei unqualifizierte Eck-ROIs erhalten; #73 für übrige Flows/Hilfsmittel offen.

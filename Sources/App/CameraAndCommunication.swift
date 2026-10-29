@@ -25,15 +25,16 @@ struct DemoCameraBadge: View {
 struct CameraGrid: View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var canvasScale
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.body) private var toggleSize:CGFloat=18
+  @ScaledMetric(relativeTo:.body) private var tileSize:CGFloat=19
+  @ScaledMetric(relativeTo:.caption) private var smallTileSize:CGFloat=14
   var isFace = false
   @State private var nine = false
   private var minimumControl:CGFloat {ceil(44 / max(canvasScale,0.001))}
-  private func tiles(height:CGFloat) -> some View {
-    LazyVGrid(
-      columns: Array(repeating: GridItem(.flexible(), spacing: 7), count: nine ? 3 : 2),
-      spacing: 7
-    ) {
-      ForEach(0..<(nine ? 9 : 4), id: \.self) { i in
+  private func cameraTile(_ i:Int,height:CGFloat)->some View {
         Button {
           model.route = .camera(i)
         } label: {
@@ -41,13 +42,16 @@ struct CameraGrid: View {
             MockCameraScene(index: i)
               .overlay(alignment: .topTrailing) { DemoCameraBadge().padding(9) }
             Text(["Front Door", "Back Yard", "Living Room", "Driveway"][i % 4]).font(
-              .system(size: nine ? 14 : 19, weight: .medium)
+              .system(size:isFace ? (nine ? 14:19):(nine ? smallTileSize:tileSize),weight:.medium)
             ).foregroundStyle(.white).padding(12)
               .background(model.data.night ? Color.black.opacity(0.95):Color.clear).shadow(radius: 2)
           }.frame(height:height).clipped().contentShape(Rectangle())
         }.frame(height:height).clipShape(RoundedRectangle(cornerRadius:24))
           .accessibilityIdentifier("camera.\(i)")
-      }
+  }
+  private func tiles(height:CGFloat)->some View {
+    LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:7),count:nine ? 3:2),spacing:7) {
+      ForEach(0..<(nine ? 9:4),id:\.self) {i in cameraTile(i,height:height)}
     }
   }
   var body: some View {
@@ -55,14 +59,23 @@ struct CameraGrid: View {
       Color.black
       VStack(spacing: 8) {
         if !isFace {
-          AppHeader(title:"Cameras",light:true,closeSize:max(48,minimumControl))
+          AppHeader(title:"Cameras",light:true,closeSize:max(48,minimumControl),
+            titleFontSize:headerSize,clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
           Button {nine.toggle()} label: {
-            Text(nine ? "Show 4":"Show 9").font(.system(size:18))
+            Text(nine ? "Show 4":"Show 9").font(.system(size:toggleSize))
               .frame(minWidth:minimumControl,minHeight:minimumControl).contentShape(Rectangle())
           }.foregroundStyle(.white).accessibilityIdentifier("camera.grid.size")
         }
         if isFace {
           tiles(height:288).padding(8)
+        } else if textSize.isAccessibilitySize {
+          ScrollView {
+            // This finite demo list keeps every named slot in the AX tree;
+            // lazy offscreen rows are not available to named navigation yet.
+            VStack(spacing:7) {
+              ForEach(0..<(nine ? 9:4),id:\.self) {i in cameraTile(i,height:180)}
+            }.padding(15)
+          }.accessibilityIdentifier("camera.grid.accessible.content")
         } else {
           // Reserve the actual header/control height, then fit every demo slot
           // inside the remaining canvas, including the final row's bottom edge.
@@ -79,42 +92,72 @@ struct CameraGrid: View {
 struct CameraDetail: View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var canvasScale
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.title) private var titleSize:CGFloat=29
+  @ScaledMetric(relativeTo:.body) private var statusSize:CGFloat=17
+  @ScaledMetric(relativeTo:.title2) private var timeSize:CGFloat=22
+  @ScaledMetric(relativeTo:.headline) private var unavailableSize:CGFloat=25
   private var controlSize:CGFloat {max(62,ceil(44 / max(canvasScale,0.001)))}
   var index: Int
   var doorbell = false
   var onClose: (() -> Void)?
   var onGrid: (() -> Void)?
-  var body: some View {
+  var body:some View {
     ZStack {
-      MockCameraScene(index: index)
-      VStack {
-        HStack {
+      MockCameraScene(index:index)
+      Group {
+        if textSize.isAccessibilitySize {
+          VStack(spacing:0) {
+            ScrollView {
+              VStack(spacing:0) {
+                heading
+                if !model.data.home.online {unavailable.padding(.vertical,20)}
+              }
+            }.accessibilityIdentifier("camera.detail.accessible.content")
+            actions
+          }
+        } else {
+          VStack {
+            heading
+            Spacer()
+            if !model.data.home.online {unavailable;Spacer()}
+            actions
+          }
+        }
+      }.foregroundStyle(.white)
+    }.onDisappear {model.talking=false}
+  }
+  private var heading:some View {
+        HStack(alignment:textSize.isAccessibilitySize ? .top:.center) {
           VStack(alignment: .leading, spacing: 6) {
             Text(["Front Door", "Back Yard", "Living Room", "Driveway"][index % 4]).font(
-              .system(size: 29, weight: .semibold))
+              .system(size:titleSize,weight:.semibold))
             if doorbell {
-              Text("Doorbell · DEMO").font(.system(size:17,weight:.semibold))
+              Text("Doorbell · DEMO").font(.system(size:statusSize,weight:.semibold))
                 .accessibilityIdentifier("doorbell.demo.label")
             }
             Label(model.data.home.online ? "Demo still" : "Offline · Demo still", systemImage: "circle.fill")
-              .font(.system(size: 17)).foregroundStyle(model.data.home.online ? .white : .orange)
+              .font(.system(size:statusSize)).foregroundStyle(model.data.home.online ? .white : .orange)
               .accessibilityElement(children: .ignore)
               .accessibilityLabel(model.data.home.online ? "Demo still" : "Offline · Demo still")
               .accessibilityIdentifier("camera.demo.status")
               .accessibilityRespondsToUserInteraction(false)
           }
           Spacer()
-          Text(model.dateLabel("h:mm")).font(.system(size: 22))
+          Text(model.dateLabel("h:mm")).font(.system(size:timeSize))
+            .fixedSize(horizontal:textSize.isAccessibilitySize,vertical:textSize.isAccessibilitySize)
             .accessibilityIdentifier("camera.time")
         }.padding(34).background(
           LinearGradient(
             colors: [.black.opacity(0.6), .clear], startPoint: .top, endPoint: .bottom))
-        Spacer()
-        if !model.data.home.online {
-          Text("Mock camera unavailable").font(.system(size: 25, weight: .semibold)).padding()
-            .background(.black.opacity(0.5), in: Capsule())
-          Spacer()
-        }
+  }
+  private var unavailable:some View {
+    Text("Mock camera unavailable").font(.system(size:unavailableSize,weight:.semibold)).padding()
+      .fixedSize(horizontal:false,vertical:textSize.isAccessibilitySize)
+      .multilineTextAlignment(textSize.isAccessibilitySize ? .center:.leading)
+      .background(.black.opacity(0.5),in:Capsule())
+  }
+  private var actions:some View {
         HStack {
           RoundButton(
             symbol: "xmark", color: .red, foreground: .white, size:controlSize, label: "Close camera"
@@ -143,8 +186,6 @@ struct CameraDetail: View {
         }.padding(32).background(
           LinearGradient(
             colors: [.clear, .black.opacity(0.6)], startPoint: .top, endPoint: .bottom))
-      }.foregroundStyle(.white)
-    }.onDisappear { model.talking = false }
   }
 }
 struct IntercomView: View {

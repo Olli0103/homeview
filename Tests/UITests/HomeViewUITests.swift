@@ -3,6 +3,114 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func cameraTypeCapture(_ state:String,_ roles:[String:XCUIElement],controls:[String:XCUIElement]=[:]) {
+    RunLoop.current.run(until:Date().addingTimeInterval(1))
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
+    func row(_ e:XCUIElement)->[String:Any] {
+      let f=e.frame,inside=recipeTypeScrollContains(e,scroll)
+      let clip=inside ? scroll.frame.intersection(viewport):viewport
+      return ["id":e.identifier,"label":e.label,"value":e.value as? String ?? "",
+        "element_type":e.elementType.rawValue,"frame":box(f),"actual_clip":box(clip),
+        "inside_scroll":inside,"fully_in_clip":axContains(clip,f)]
+    }
+    var selected:[[String:Any]]=[],missing:[String]=[]
+    for name in roles.keys.sorted() {
+      let e=roles[name]!
+      if e.exists {var r=row(e);r["role"]=name;selected.append(r)} else {missing.append(name)}
+    }
+    var targets:[[String:Any]]=[]
+    for name in controls.keys.sorted() {
+      let e=controls[name]!;XCTAssertTrue(e.exists)
+      var r=row(e);r["role"]=name;targets.append(r)
+    }
+    let report:[String:Any]=["viewport":box(viewport),"roles":selected,
+      "missing_text_children_not_PASS":missing,"controls_not_font_metrics":targets,
+      "all_static_text":app.staticTexts.allElementsBoundByIndex.map(row)]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="camera-type-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
+    viewportShot("camera-type-"+state)
+  }
+  private func cameraTypeDetailRoles(offline:Bool=false,doorbell:Bool=false,room:String="Front Door")->[String:XCUIElement] {
+    let root:XCUIElement=doorbell ? app.otherElements["doorbell.overlay"]:app
+    var roles:[String:XCUIElement]=["room":root.staticTexts[room],
+      "status_static_label":root.descendants(matching:.any)["camera.demo.status"],"time":root.staticTexts["camera.time"]]
+    if offline {roles["unavailable"]=root.staticTexts["Mock camera unavailable"]}
+    if doorbell {roles["doorbell_demo"]=root.staticTexts["doorbell.demo.label"]}
+    return roles
+  }
+  func testMockCameraToggleRenderedInkInventory() {
+    continueAfterFailure=false
+    launch(["--page","Cameras","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    let toggle=app.buttons["camera.grid.size"]
+    XCTAssertEqual(toggle.label,"Show 9")
+    cameraTypeCapture("toggle-four",[:],controls:["toggle":toggle])
+    activateRecipeTypeControl(toggle)
+    XCTAssertEqual(toggle.label,"Show 4");XCTAssertTrue(app.buttons["camera.8"].exists)
+    cameraTypeCapture("toggle-nine",[:],controls:["toggle":toggle])
+    activateRecipeTypeControl(toggle)
+    XCTAssertEqual(toggle.label,"Show 9");XCTAssertFalse(app.buttons["camera.8"].exists)
+  }
+  func testMockCameraSystemTextSizeInventory() {
+    continueAfterFailure=false
+    launch(["--page","Cameras","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    func gridRoles()->[String:XCUIElement] {[
+      "header":app.staticTexts["Cameras"],"clock":app.staticTexts["10:09"],
+      "toggle_text":app.buttons["camera.grid.size"].staticTexts.firstMatch,
+      "tile_text":app.buttons["camera.0"].staticTexts.matching(NSPredicate(format:"label == %@","Front Door")).firstMatch]}
+    cameraTypeCapture("grid-four",gridRoles(),controls:["toggle":app.buttons["camera.grid.size"],"first_tile":app.buttons["camera.0"]])
+    activateRecipeTypeControl(app.buttons["camera.grid.size"])
+    XCTAssertTrue(app.buttons["camera.8"].exists)
+    cameraTypeCapture("grid-nine",gridRoles(),controls:["last_tile":app.buttons["camera.8"]])
+    activateRecipeTypeControl(app.buttons["camera.8"])
+    XCTAssertEqual(app.descendants(matching:.any)["camera.demo.status"].label,"Demo still")
+    XCTAssertEqual(app.staticTexts["camera.time"].label,"10:09")
+    cameraTypeCapture("front-door",cameraTypeDetailRoles(),controls:["talk":app.buttons["camera.talk"],"grid":app.buttons["camera.grid"],"close":app.buttons["camera.close"]])
+    activateRecipeTypeControl(app.buttons["camera.talk"])
+    XCTAssertEqual(app.buttons["camera.talk"].value as? String,"On (demo)")
+    activateRecipeTypeControl(app.buttons["camera.talk"])
+    XCTAssertEqual(app.buttons["camera.talk"].value as? String,"Off (demo)")
+    let gone=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:app.staticTexts["Mock talkback off"])
+    XCTAssertEqual(XCTWaiter.wait(for:[gone],timeout:7),.completed)
+    cameraTypeCapture("talk-off",cameraTypeDetailRoles())
+    activateRecipeTypeControl(app.buttons["camera.grid"])
+    XCTAssertTrue(app.buttons["camera.2"].waitForExistence(timeout:5))
+    activateRecipeTypeControl(app.buttons["camera.2"])
+    XCTAssertEqual(app.buttons["camera.talk"].value as? String,"Off (demo)")
+    cameraTypeCapture("living-room",cameraTypeDetailRoles(room:"Living Room"))
+    activateRecipeTypeControl(app.buttons["camera.close"])
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    launch(["--face","Home Camera","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    XCTAssertTrue(app.buttons["camera.3"].exists)
+    cameraTypeCapture("face-frozen",[:],controls:["first_tile":app.buttons["camera.0"],"last_tile":app.buttons["camera.3"]])
+  }
+  func testMockCameraOfflineAndDoorbellSystemTextSizeInventory() {
+    continueAfterFailure=false
+    launch(["--face","Home Camera","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("nav.controls");tap("controls.online");tap("nav.faces");tap("camera.0")
+    XCTAssertEqual(app.descendants(matching:.any)["camera.demo.status"].label,"Offline · Demo still")
+    XCTAssertTrue(app.staticTexts["Mock camera unavailable"].exists)
+    cameraTypeCapture("offline",cameraTypeDetailRoles(offline:true),controls:["close":app.buttons["camera.close"],"grid":app.buttons["camera.grid"],"talk":app.buttons["camera.talk"]])
+    let warning=app.staticTexts["Mock camera unavailable"]
+    revealRecipeTypeElement(warning,margin:10,horizontalMargin:0)
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    let clip=recipeTypeScrollContains(warning,scroll) ? scroll.frame.intersection(viewport):viewport
+    XCTAssertTrue(axContains(clip,warning.frame),"The complete short offline warning must be readable")
+    cameraTypeCapture("offline-warning-visible",["unavailable":warning])
+    activateRecipeTypeControl(app.buttons["camera.close"])
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    launch(["--face","Home Camera","--doorbell-fixture","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("fixture.doorbell.new")
+    XCTAssertTrue(app.staticTexts["doorbell.demo.label"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["fixture.doorbell.route"].label,"face")
+    cameraTypeCapture("doorbell",cameraTypeDetailRoles(doorbell:true),controls:["dismiss":app.buttons["doorbell.dismiss"],"talk":app.buttons["camera.talk"],"grid":app.buttons["camera.grid"]])
+    activateRecipeTypeControl(app.buttons["doorbell.dismiss"])
+    XCTAssertFalse(app.staticTexts["doorbell.demo.label"].exists)
+    XCTAssertTrue(app.otherElements["face.Home Camera"].waitForExistence(timeout:5))
+  }
+}
+
+extension HomeViewUITests {
   private func connectionsLockTypeCapture(_ state:String,_ roles:[String:XCUIElement],onlyVisibleNeighbors:Bool=false) {
     RunLoop.current.run(until:Date().addingTimeInterval(2))
     func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
@@ -166,9 +274,20 @@ extension HomeViewUITests {
     XCTAssertTrue(element.waitForExistence(timeout:5))
     let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"].frame
     let insideScroll=recipeTypeScrollContains(element,scroll)
+    let recordCamera=element.identifier.hasPrefix("camera.")
+    var cameraTrace:[[String:Any]]=[],cameraReached=false
+    defer {
+      if recordCamera {
+        let report:[String:Any]=["id":element.identifier,"inside_scroll":insideScroll,"reached":cameraReached,"steps":cameraTrace]
+        let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+        a.name="camera-scroll-trace-"+element.identifier;a.lifetime = .keepAlways;add(a)
+        if !cameraReached {viewportShot("camera-scroll-failure-"+element.identifier)}
+      }
+    }
     for _ in 0..<16 {
       let clip=(insideScroll ? scroll.frame.intersection(viewport):viewport).insetBy(dx:horizontalMargin ?? margin,dy:margin),f=element.frame
-      if axContains(clip,f) || (f.height>clip.height && f.intersection(clip).height>=min(44,clip.height)) {return}
+      if recordCamera {cameraTrace.append(["frame":[f.minX,f.minY,f.width,f.height],"clip":[clip.minX,clip.minY,clip.width,clip.height]])}
+      if axContains(clip,f) || (f.height>clip.height && f.intersection(clip).height>=min(44,clip.height)) {cameraReached=true;return}
       guard insideScroll else {XCTFail("Recipe target is outside its actual clip: "+element.identifier);return}
       let gap=f.minY<clip.minY ? f.minY-clip.minY-10:f.maxY-clip.maxY+10
       let distance=min(max(abs(gap),24),clip.height*0.6)*(gap<0 ? -1:1),y=clip.midY
