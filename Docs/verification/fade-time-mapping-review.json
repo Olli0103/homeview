@@ -1,0 +1,261 @@
+{
+  "date": "2026-10-29",
+  "issue": 18,
+  "issue_stays_open": true,
+  "product_commit": "802bb5704979d9a92a20efab23ac14f089e1fb83",
+  "new_product_code": false,
+  "new_test_code": false,
+  "new_test_or_sdk_runs": false,
+  "original_parity": false,
+  "source_digest": "17cb586b3a6358f0be9f814ac9aaccbc3a4420096aa920a8f552292c350eefe3",
+  "source_count": 225,
+  "compiled_product_count": 19,
+  "source_manifest": "Docs/verification/face-transition-cards-source.json",
+  "receipt": {
+    "date": "2026-10-29T07:16:50.594222+00:00",
+    "source_digest": "17cb586b3a6358f0be9f814ac9aaccbc3a4420096aa920a8f552292c350eefe3",
+    "source_files": 225,
+    "compiled_files": 19,
+    "archive_sha256": "a18a41997306f95530cac42057fbdb459ea1d765ba88dec395527a9b4e9f7e27",
+    "archive_read_back": true,
+    "installed_app_verified_before": true,
+    "device": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+    "scope": "observational native screenshots only; estimated GIF hand pose, not original clock/time or algorithm proof",
+    "captures": [
+      {
+        "label": "ui12",
+        "command": [
+          "xcrun",
+          "simctl",
+          "launch",
+          "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+          "org.example.HomeViewReplica",
+          "--uitesting",
+          "--reference-clock",
+          "--reference-date",
+          "2026-10-14T10:09:30Z",
+          "--reference-zone",
+          "UTC",
+          "--face",
+          "Fade",
+          "--reduce-motion",
+          "--persistence-test",
+          "23E8FC32-D329-49CE-A555-9105A7695C07"
+        ],
+        "launch_result": "org.example.HomeViewReplica: 21867",
+        "readiness": [
+          {
+            "attempt": 1,
+            "pixel": [
+              255,
+              255,
+              255
+            ],
+            "ready": false
+          },
+          {
+            "attempt": 2,
+            "pixel": [
+              214,
+              184,
+              182
+            ],
+            "ready": true
+          }
+        ],
+        "file": "own-fade-v3-ui12.png",
+        "bytes": 1512792,
+        "sha256": "a5f17c8f22f0483cea5391c0813dd7a8f790ea2f430c28f0c26a7ca8affbe460",
+        "public_file": "Docs/screenshots/fade-pose-20261029/own-ui12.png"
+      },
+      {
+        "label": "gif-estimate",
+        "command": [
+          "xcrun",
+          "simctl",
+          "launch",
+          "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+          "org.example.HomeViewReplica",
+          "--uitesting",
+          "--reference-clock",
+          "--reference-date",
+          "2026-10-14T09:25:10Z",
+          "--reference-zone",
+          "UTC",
+          "--face",
+          "Fade",
+          "--reduce-motion",
+          "--persistence-test",
+          "23E8FC32-D329-49CE-A555-9105A7695C07"
+        ],
+        "launch_result": "org.example.HomeViewReplica: 21911",
+        "readiness": [
+          {
+            "attempt": 1,
+            "pixel": [
+              255,
+              255,
+              255
+            ],
+            "ready": false
+          },
+          {
+            "attempt": 2,
+            "pixel": [
+              214,
+              184,
+              182
+            ],
+            "ready": true
+          }
+        ],
+        "file": "own-fade-v3-gif-estimate.png",
+        "bytes": 1522472,
+        "sha256": "510e3473ffeb09bf4970664972c06f9b3253a3c4ecd504f112f397319c9f6665",
+        "public_file": "Docs/screenshots/fade-pose-20261029/own-gif-estimate.png"
+      }
+    ],
+    "inputs_unchanged": true,
+    "installed_app_verified_after": true
+  },
+  "original_pose_sources": [
+    {
+      "id": "UI12",
+      "source_sha256": "b168611754bad3462d27c08152fb6032c28721c4dc50e4ce4c04a78cebbf12b6",
+      "scope": "official montage crop; no native 600px capture"
+    },
+    {
+      "id": "S07-2SGgVQxTxWtexDdgiVfKnQ",
+      "source_sha256": "4c740fe2483c54c0a145d7267c3c3eb809ebc3f4831a83aed4f51b84286c33e7",
+      "frames": [
+        7,
+        15
+      ],
+      "hand_pose_is_estimated": true
+    },
+    {
+      "id": "S08",
+      "source_sha256": "32bcc29c51e94c8e4534f6b7869b2f8ffacb0d856fc03a262793fbb27a2205fe"
+    },
+    {
+      "id": "S09",
+      "source_sha256": "4e87aca6f3e250b335f710327998e81e9b772340d993c3e907c0e7e5426f5f95"
+    }
+  ],
+  "video": {
+    "source_id": "V03",
+    "url": "https://www.youtube.com/watch?v=v3wcg4Vi4u0",
+    "duration_seconds": 833.401,
+    "sampled_timestamps": 7,
+    "continuous_review": false,
+    "additional_fade_frames": 0,
+    "frames": [
+      {
+        "requested_seconds": 342,
+        "actual_seconds": 342,
+        "decoded_frame": null,
+        "ad": false,
+        "private_image_sha256": "773ce634d54a512fb3f4e7410072bde7b571569c640afee89a4dbc3211b3ef4a",
+        "capture_metadata_sha256": "7a0e1b60b2829eb5458552b4259fc0ab30de416d7e64bd503caaecfe6af26829",
+        "representation": "derived video JPEG"
+      },
+      {
+        "requested_seconds": 344,
+        "actual_seconds": 344,
+        "decoded_frame": {
+          "mediaTime": 343.976966,
+          "presentedFrames": 82,
+          "width": 1920,
+          "height": 1080
+        },
+        "ad": false,
+        "private_image_sha256": "6264c79ea64cae31fd265fa1f30bbd12cdad8dd5e5f60e6e7eaa62113e1a9988",
+        "capture_metadata_sha256": "bb9cebe8b6f5cc43cb8f2a90edd0a7fcf10c7cc9a02c7ffc19d4a8ce3a91a816",
+        "representation": "derived video JPEG"
+      },
+      {
+        "requested_seconds": 346,
+        "actual_seconds": 346,
+        "decoded_frame": {
+          "mediaTime": 345.978966,
+          "presentedFrames": 83,
+          "width": 1920,
+          "height": 1080
+        },
+        "ad": false,
+        "private_image_sha256": "6ac5901acb18157cab0d47f4b7f3a5bd0dbaecc8b5a392f59c37c99345df1bf3",
+        "capture_metadata_sha256": "1f440bc520f462932d8dce8e1c41bd38482e990d0bb83f886dcdea5005970554",
+        "representation": "derived video JPEG"
+      },
+      {
+        "requested_seconds": 348,
+        "actual_seconds": 348,
+        "decoded_frame": {
+          "mediaTime": 347.980966,
+          "presentedFrames": 84,
+          "width": 1920,
+          "height": 1080
+        },
+        "ad": false,
+        "private_image_sha256": "f952293393302ae61a5ec847fddafeb28f9543623e92635f2d857bf608350864",
+        "capture_metadata_sha256": "3bf4954c0b5d4a21e5aefb0b608f44fdb5e3434190d709657973e76dfce178bc",
+        "representation": "derived video JPEG"
+      },
+      {
+        "requested_seconds": 350,
+        "actual_seconds": 350,
+        "decoded_frame": {
+          "mediaTime": 349.982966,
+          "presentedFrames": 85,
+          "width": 1920,
+          "height": 1080
+        },
+        "ad": false,
+        "private_image_sha256": "6d371185c7d44d5f73c348d495147ad627f5eb552a096412013e6c1c0cbd58ed",
+        "capture_metadata_sha256": "f35184c058be05009cc28f6e96d2f368e074b3ca27d0176f8df8e6bc4dab8c3d",
+        "representation": "derived video JPEG"
+      },
+      {
+        "requested_seconds": 352,
+        "actual_seconds": 352,
+        "decoded_frame": {
+          "mediaTime": 351.984966,
+          "presentedFrames": 86,
+          "width": 1920,
+          "height": 1080
+        },
+        "ad": false,
+        "private_image_sha256": "f851c054005feb1373caffdeac5acdfa608446916abe5ba839566fd03dee7433",
+        "capture_metadata_sha256": "b3af767d1a0db761b247189e6dcad175d315786e5b0a959c9a2562a80845487d",
+        "representation": "derived video JPEG"
+      },
+      {
+        "requested_seconds": 354,
+        "actual_seconds": 354,
+        "decoded_frame": {
+          "mediaTime": 353.986966,
+          "presentedFrames": 87,
+          "width": 1920,
+          "height": 1080
+        },
+        "ad": false,
+        "private_image_sha256": "69e036970528c8abf444039854582254b7b22a933dcef84b2d06d48f97d01f5f",
+        "capture_metadata_sha256": "3edcf20662b1230e96e3a15c372560d928fd35c025e842cfcc2ad40352febe9c",
+        "representation": "browser screenshot"
+      }
+    ]
+  },
+  "known_failures": [
+    "First full browser evaluate image response truncated at 16000 characters; rejected",
+    "Two subsequent canvas image transfers failed expected character length; rejected; 346 retried at smaller derived size, 354 browser screenshot retained",
+    "Two stdout screenshot files were zero bytes despite command exit 0; rejected",
+    "Two subsequent native captures showed white launch surface; rejected; final readiness-gated captures accepted"
+  ],
+  "limits": [
+    "No original numeral-period/seconds binding established",
+    "No full-image original pixel comparison claimed",
+    "Final own captures use reduced motion; not an animation or gradient phase mapping acceptance",
+    "No new source or reference state counted",
+    "No real account, Home connection, microphone/camera, playback, alarm, call or message"
+  ]
+}

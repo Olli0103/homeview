@@ -4,6 +4,7 @@
 
 ## Aktueller Arbeitsblock
 
+- [Fade-Zeitabbildung nachgeprüft](fade-time-mapping-review.md): sichtbare Lücke bei geschätzter 9:25-Pose; keine weitere Fade-Sequenz in sieben zusätzlichen Filmzeitpunkten. Keine geratene Sekundenbindung übernommen; #18 offen.
 - [Native Mac-Startgrenze](mac-runtime-boundary.md) dokumentiert: Builds vorhanden, kein beobachteter UI-Methodenlauf. Keine unbelegte Cmd+A-Änderung, keine Hostberechtigungen aktiviert. #79 bleibt offen; übrige Software-/Referenzarbeit unabhängig fortsetzen.
 - [Face-Karten und Rückrichtung korrigiert](face-transition-cards.md): native Vorher-/Nachher-Filme belegen den Fix, sechs volle Ruhepaare pixelgleich.22 erfolgreiche UI-Ausführungen über zwei Testvarianten, zwei alte Testannahmen-Fehler behalten, fünf SDKs. #6 bleibt für Originalkurven und vollständige Bewegungsabnahme offen.
 - [Editor-Farben isoliert](face-color-isolation.md): Home ändert Modular nicht mehr ungefragt; feste Home-Clock-Palette bietet keine wirkungslosen Farbtasten. 397 Coretests, zwölf UI-Ausführungen, fünf SDKs; eigene gespeicherte Zustände und exakte Pixel geprüft. #7 bleibt für vollständigen Originaleditor offen.

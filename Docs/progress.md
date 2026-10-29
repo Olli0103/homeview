@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Fade: offene Zeitabbildung eingegrenzt · 29. Oktober 2026
+
+[Zwei eigene Uhrposen und gezielte Nachsichtung von sieben Filmzeitpunkten](fade-time-mapping-review.md) zeigen die verbleibende Ausblendfenster-Lücke, liefern aber keine Originalperiode. Sekundenbindung verworfen, unveränderte Produktbytes; keine neue Test-/SDK-Abnahme. #18 bleibt offen. Weiter mit Wetter-Bedienflächen.
+
 ## Mac-Runtime: Startgrenze getrennt festgehalten · 29. Oktober 2026
 
 [Native Mac-Prüfvorbereitung](mac-runtime-boundary.md): zwei erfolgreiche native Testbuilds, aber keine beobachtete UI-Testmethode in zwei begrenzten Runner-Startversuchen. Archive/Prozessbereinigung erhalten, keine Appfehlfunktion oder UI-Erfolg erfunden. Developer-Modus ist aus, Gateway-Computerzugang nicht verfügbar; Ursache nicht pauschal behauptet, Hostkonfiguration unverändert. #79 offen, Cmd+A unverändert; anderer Software-/Referenzumfang wird fortgesetzt.
