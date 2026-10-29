@@ -42,6 +42,8 @@ struct AppHeader: View {
   // Opt-in for scaled screens that require a native-sized Close control.
   // Other callers retain the existing 48-point reference-canvas size.
   var closeSize:CGFloat = 48
+  var titleFontSize:CGFloat = 23
+  var clockFontSize:CGFloat = 22
   var body: some View {
     ZStack {
       HStack {
@@ -50,11 +52,11 @@ struct AppHeader: View {
           foreground: light ? .white : .black, size:closeSize, label: "Close"
         ) { model.route = .personal }.accessibilityIdentifier("close")
         Spacer()
-        Text(model.clock, style: .time).font(.system(size: 22, weight: .medium))
+        Text(model.clock, style: .time).font(.system(size: clockFontSize, weight: .medium))
           .environment(\.timeZone, model.displayTimeZone)
       }
       if !title.isEmpty {
-        Text(title).font(.system(size: 23, weight: .semibold))
+        Text(title).font(.system(size: titleFontSize, weight: .semibold))
           .lineLimit(1).minimumScaleFactor(0.7).frame(maxWidth: 310)
           .allowsHitTesting(false)
       }
@@ -66,11 +68,12 @@ struct Pill: View {
   var symbol: String
   var tint: Color = .black.opacity(0.08)
   var textColor: Color = .primary
+  var fontSize:CGFloat = 21
   var minimumHeight: CGFloat = 0
   var action: () -> Void
   var body: some View {
     Button(action: action) {
-      Label(title, systemImage: symbol).font(.system(size: 21, weight: .medium)).frame(
+      Label(title, systemImage: symbol).font(.system(size: fontSize, weight: .medium)).frame(
         maxWidth: .infinity
       ).padding(.vertical, 17).frame(minHeight: minimumHeight)
         .background(tint, in: Capsule()).foregroundStyle(textColor)

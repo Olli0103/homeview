@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Timer-Einrichtung skaliert ohne geänderte Normalansicht](timer-setup-dynamic-type.md): sechs Vorher-Vergrößerungsbedingungen korrigiert;20 aktuelle UI-Ausführungen/fünf SDKs, sechs normale Aufnahmen exakt pixelgleich. Acht Start-Randaktionen waren schon vorher grün und bleiben es, trotz kleinerer AX-Höhe auf dem iPhone. #73 offen für übrige Flows/Hilfsmittel.
+
 - [Timer-Systemschrift und Accessibility-Anordnung korrigiert](timer-dynamic-type.md): drei Rollen wachsen auf iPhone/iPad, echte Auswahl/Löschen erhalten pausierte Peer-Werte. Vier normale Ansichten exakt pixelgleich;20 akzeptierte UI-Ausführungen über zwei Testpins bei bytegleicher App/fünf SDKs. Vorherige Eingabe- und Zeitfensterfehler erhalten; #73 weiter offen.
 
 - [TV-/Vision-Settings ohne Aktivierung inventarisiert](os-speech-settings-inventory-20261029.md): fünf erfolgreiche OS-Oberflächenfälle, zwei frühere Eingabeversuche getrennt erhalten. Vision Live Speech sichtbar Off; bekannte positive Such-/Menükontrollen fehlen ebenfalls, daher keine negative RTT-/TV-OS-Behauptung.165 Produktinputs unverändert; #74 offen, weitere App-Arbeit läuft.

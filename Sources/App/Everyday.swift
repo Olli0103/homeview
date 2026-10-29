@@ -128,6 +128,10 @@ struct TimerView: View {
   @ScaledMetric(relativeTo:.headline) private var titleSize:CGFloat=30
   @ScaledMetric(relativeTo:.caption) private var statusSize:CGFloat=14
   @ScaledMetric(relativeTo:.body) private var choiceSize:CGFloat=18
+  @ScaledMetric(relativeTo:.headline) private var setupHeaderSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var setupClockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.largeTitle) private var setupDurationSize:CGFloat=58
+  @ScaledMetric(relativeTo:.headline) private var setupStartSize:CGFloat=21
   @State private var minutes = 15
   @State private var controlsVisible = !ProcessInfo.processInfo.arguments.contains(
     "--reference-resting")
@@ -298,9 +302,12 @@ struct TimerView: View {
     }.background(.black).foregroundStyle(.white)
       .accessibilityIdentifier("timer.accessible.content")
   }
-  private var timerSetup: some View {
+  @ViewBuilder private var timerSetup: some View {
+    if textSize.isAccessibilitySize {
+      accessibleTimerSetup
+    } else {
     VStack(spacing: 20) {
-      AppHeader(title: "Timers", light: true)
+      AppHeader(title:"Timers",light:true,titleFontSize:setupHeaderSize,clockFontSize:setupClockSize)
       Spacer()
       Image(systemName: "timer").font(.system(size: 76)).foregroundStyle(Color.timerAccent)
       HStack(spacing: 30) {
@@ -308,12 +315,12 @@ struct TimerView: View {
           symbol: "minus", color: .white.opacity(0.12), foreground: .white,
           label: "Decrease minutes"
         ) { minutes = max(1, minutes - 1) }
-        Text("\(minutes) min").font(.system(size: 58, weight: .medium, design: .rounded))
+        Text("\(minutes) min").font(.system(size: setupDurationSize, weight: .medium, design: .rounded))
         RoundButton(
           symbol: "plus", color: .white.opacity(0.12), foreground: .white, label: "Increase minutes"
         ) { minutes = min(1440, minutes + 1) }
       }
-      Pill(title: "Start Timer", symbol: "play.fill", tint: .timerAccent, textColor: .black) {
+      Pill(title: "Start Timer", symbol: "play.fill", tint: .timerAccent, textColor: .black,fontSize:setupStartSize) {
         model.addTimer(seconds: Double(minutes * 60), title: "\(minutes) min")
       }.padding(.horizontal, 65).accessibilityIdentifier("timer.start")
       HStack(spacing: 14) {
@@ -324,6 +331,44 @@ struct TimerView: View {
       }
       Spacer()
     }.foregroundStyle(.white)
+    }
+  }
+  private var accessibleTimerSetup:some View {
+    ScrollView {
+      VStack(spacing:24) {
+        HStack(spacing:12) {
+          RoundButton(symbol:"xmark",color:.white.opacity(0.18),foreground:.white,
+            size:accessibleControlSize,label:"Close") {model.route = .personal}
+            .accessibilityIdentifier("close")
+          Spacer(minLength:0)
+          Text("Timers").font(.system(size:setupHeaderSize,weight:.semibold))
+          Spacer(minLength:0)
+          Color.clear.frame(width:accessibleControlSize,height:1).accessibilityHidden(true)
+        }.padding(.horizontal,32).padding(.top,32)
+        Text(model.clock,style:.time).font(.system(size:setupClockSize,weight:.medium))
+          .environment(\.timeZone,model.displayTimeZone)
+        Text("\(minutes) min").font(.system(size:setupDurationSize,weight:.medium,design:.rounded))
+          .multilineTextAlignment(.center).fixedSize(horizontal:false,vertical:true).padding(.horizontal,32)
+        HStack(spacing:40) {
+          RoundButton(symbol:"minus",color:.white.opacity(0.12),foreground:.white,
+            size:accessibleControlSize,label:"Decrease minutes") {minutes=max(1,minutes-1)}
+          RoundButton(symbol:"plus",color:.white.opacity(0.12),foreground:.white,
+            size:accessibleControlSize,label:"Increase minutes") {minutes=min(1440,minutes+1)}
+        }
+        Pill(title:"Start Timer",symbol:"play.fill",tint:.timerAccent,textColor:.black,fontSize:setupStartSize) {
+          model.addTimer(seconds:Double(minutes*60),title:"\(minutes) min")
+        }.padding(.horizontal,65).accessibilityIdentifier("timer.start")
+        LazyVGrid(columns:[GridItem(.flexible()),GridItem(.flexible())],spacing:16) {
+          ForEach([1,5,15,30],id:\.self) { m in
+            Button {minutes=m} label: {
+              Text("\(m) min").padding(13).frame(maxWidth:.infinity)
+                .background(.white.opacity(0.1),in:Capsule())
+            }
+          }
+        }.padding(.horizontal,40)
+      }.frame(maxWidth:.infinity).padding(.bottom,64)
+    }.background(.black).foregroundStyle(.white)
+      .accessibilityIdentifier("timer.setup.accessible.content")
   }
 }
 struct RecipeCover: View {

@@ -3,9 +3,54 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func timerSetupDuration(_ label:String)->XCUIElement {
+    let items=app.staticTexts.matching(NSPredicate(format:"label == %@",label))
+    XCTAssertGreaterThan(items.count,0)
+    let index=(0..<items.count).max {items.element(boundBy:$0).frame.height<items.element(boundBy:$1).frame.height}!
+    return items.element(boundBy:index)
+  }
+  private func launchEmptyTimerSetup() {
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--page","Timers"])
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+    XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
+  }
+  func testTimerSetupSystemTextSizeKeepsDurationAndPresetControls() {
+    launchEmptyTimerSetup()
+    let duration=timerSetupDuration("15 min"),title=app.staticTexts["Timers"],start=app.buttons["timer.start"]
+    revealAccessibleTimerElement(title);revealAccessibleTimerElement(duration);revealAccessibleTimerElement(start)
+    systemTextSizeGeometry("timer-setup",["title":title,"duration":duration,"start_control":start,
+      "viewport":app.otherElements["reference.viewport"]])
+    viewportShot("system-text-size-timer-setup")
+    let decrease=app.buttons["Decrease minutes"],increase=app.buttons["Increase minutes"]
+    revealAccessibleTimerElement(decrease);decrease.tap();XCTAssertTrue(timerSetupDuration("14 min").exists)
+    revealAccessibleTimerElement(increase);increase.tap();XCTAssertTrue(timerSetupDuration("15 min").exists)
+    let preset=app.buttons["5 min"];revealAccessibleTimerElement(preset);preset.tap()
+    XCTAssertTrue(timerSetupDuration("5 min").exists);XCTAssertFalse(app.staticTexts["timer.countdown"].exists)
+  }
+  private func verifyTimerSetupStartCorner(bottomRight:Bool) {
+    launchEmptyTimerSetup()
+    let start=app.buttons["timer.start"];revealAccessibleTimerElement(start)
+    let f=start.frame,target=CGRect(x:f.midX-22,y:f.midY-22,width:44,height:44)
+    XCTAssertTrue(axContains(app.otherElements["reference.viewport"].frame,target));XCTAssertTrue(start.isEnabled)
+    systemTextSizeGeometry(bottomRight ? "timer-setup-start-bottom-right":"timer-setup-start-top-left",
+      ["start_control":start,"viewport":app.otherElements["reference.viewport"]])
+    viewportShot(bottomRight ? "timer-setup-start-bottom-right":"timer-setup-start-top-left")
+    let offset:CGFloat=bottomRight ? 42:2
+    app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:target.minX+offset-app.frame.minX,dy:target.minY+offset-app.frame.minY)).tap()
+    XCTAssertTrue(app.staticTexts["timer.countdown"].waitForExistence(timeout:3))
+    XCTAssertEqual(app.staticTexts["timer.title"].label,"15 MIN")
+    revealAccessibleTimerElement(app.buttons["timer.pause"]);tap("timer.pause")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    let remaining=timerSelectionSeconds();XCTAssertGreaterThan(remaining,870);XCTAssertLessThanOrEqual(remaining,900)
+    revealAccessibleTimerElement(app.buttons["timer.delete"]);tap("timer.delete")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+  }
+  func testTimerSetupStartTopLeftMinimum44PointAction() {verifyTimerSetupStartCorner(bottomRight:false)}
+  func testTimerSetupStartBottomRightMinimum44PointAction() {verifyTimerSetupStartCorner(bottomRight:true)}
   private func revealAccessibleTimerElement(_ element:XCUIElement) {
     XCTAssertTrue(element.waitForExistence(timeout:5))
-    let scroll=app.scrollViews["timer.accessible.content"]
+    let readout=app.scrollViews["timer.accessible.content"],setup=app.scrollViews["timer.setup.accessible.content"]
+    let scroll=readout.exists ? readout:setup
     guard scroll.exists else {return}
     var poses:[[String:Any]]=[]
     defer {
