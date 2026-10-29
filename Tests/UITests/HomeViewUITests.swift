@@ -1724,6 +1724,38 @@ final class HomeViewUITests: XCTestCase {
     app.terminate()
     launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
   }
+  func testWorldClockDaylightRendersOnBothSidesOfMidnight() {
+    launch(["--page","World Clock","--persistence-test",UUID().uuidString,"--reset-test-store",
+      "--reference-date","2026-06-21T12:00:00Z","--reference-zone","UTC"])
+    tap("world.add")
+    let search=app.textFields["world.search"]
+    search.tap();search.typeText("Reykjavik");tap("world.choose.Atlantic/Reykjavik")
+    let detail=app.buttons["world.detail.open.Atlantic/Reykjavik"]
+    if !detail.isHittable { app.swipeUp() }
+    detail.tap()
+    let bar=app.otherElements["world.daylight.bar"]
+    XCTAssertTrue(bar.waitForExistence(timeout:5))
+    XCTAssertTrue((bar.value as? String ?? "").contains("Sunrise"))
+    let screenshot=bar.screenshot()
+    let attachment=XCTAttachment(screenshot:screenshot)
+    attachment.name="world-reykjavik-midnight-bar";attachment.lifetime = .keepAlways;add(attachment)
+    let image=screenshot.image.cgImage!,width=image.width,height=image.height
+    var pixels=[UInt8](repeating:0,count:width*height*4)
+    let rendered=pixels.withUnsafeMutableBytes { buffer -> Bool in
+      guard let context=CGContext(data:buffer.baseAddress,width:width,height:height,bitsPerComponent:8,
+        bytesPerRow:width*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue) else {return false}
+      context.draw(image,in:CGRect(x:0,y:0,width:width,height:height));return true
+    }
+    XCTAssertTrue(rendered);XCTAssertGreaterThan(width,100);XCTAssertGreaterThan(height,5)
+    func orange(_ fraction:Double)->Bool {
+      let index=((height/2)*width+Int(Double(width-1)*fraction))*4
+      return pixels[index]>200 && pixels[index+1]>80 && pixels[index+2]<100
+    }
+    XCTAssertFalse(orange(0.05),"Night between the early sunset and sunrise must remain dark")
+    XCTAssertTrue(orange(0.5),"Daylight after sunrise must not be clamped to zero when sunset is earlier")
+    shot("world-reykjavik-midnight-detail")
+    tap("world.detail.done")
+  }
   func testWorldClockOffersEveryZoneAndExplainsMissingSunPosition() {
     let id = UUID().uuidString
     launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
@@ -1738,6 +1770,15 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.staticTexts["world.detail.time"].waitForExistence(timeout: 3))
     XCTAssertTrue(app.staticTexts["No sun position for this time zone."].exists)
     XCTAssertTrue(app.staticTexts["Current light unknown"].exists)
+    let unknownBar=app.otherElements["world.daylight.bar"].screenshot().image.cgImage!
+    var sample=[UInt8](repeating:0,count:4)
+    sample.withUnsafeMutableBytes { buffer in
+      let context=CGContext(data:buffer.baseAddress,width:1,height:1,bitsPerComponent:8,bytesPerRow:4,
+        space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+      context.draw(unknownBar,in:CGRect(x:0,y:0,width:1,height:1))
+    }
+    XCTAssertLessThanOrEqual(Int(sample.prefix(3).max()!)-Int(sample.prefix(3).min()!),3,
+      "Unknown light must be neutral, not a translucent overlay on the purple night bar")
     shot("world-detail-derived-zone")
     tap("world.detail.done")
     XCTAssertFalse(app.staticTexts["world.detail.time"].waitForExistence(timeout: 2))

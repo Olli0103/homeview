@@ -694,25 +694,27 @@ struct DaylightBar: View {
     VStack(alignment: .leading, spacing: 8) {
       GeometryReader { geometry in
         let width = geometry.size.width
-        let dawn = CGFloat(sun.sunriseFraction ?? 0.25)
-        let dusk = CGFloat(sun.sunsetFraction ?? 0.75)
         ZStack(alignment: .leading) {
           Capsule().fill(Color.indigo.opacity(0.85))
           switch sun.kind {
           case .normal:
-            Capsule().fill(Color.orange.opacity(0.85))
-              .frame(width: max(0, width * min(1, max(0, dusk - dawn))))
-              .offset(x: width * min(1, max(0, dawn)))
+            ForEach(sun.daylightIntervals.indices,id:\.self) { index in
+              let interval=sun.daylightIntervals[index]
+              Rectangle().fill(Color.orange.opacity(0.85))
+                .frame(width:width * CGFloat(interval.upperBound-interval.lowerBound))
+                .offset(x:width * CGFloat(interval.lowerBound))
+            }
           case .polarDay:
             Capsule().fill(Color.orange.opacity(0.85))
           case .polarNight:
             Capsule().fill(Color.indigo.opacity(0.85))
           case .unavailable:
-            Capsule().fill(Color.gray.opacity(0.25))
+            Capsule().fill(Color(white:0.88))
           }
-        }
+        }.clipShape(Capsule())
       }.frame(height: 14)
         .accessibilityLabel("Day and night course")
+        .accessibilityValue(status)
         .accessibilityIdentifier("world.daylight.bar")
       Text(status).font(.system(size: 13)).foregroundStyle(.gray)
       Text(daylight == nil ? "Current light unknown" : (daylight! ? "Currently daylight" : "Currently night"))

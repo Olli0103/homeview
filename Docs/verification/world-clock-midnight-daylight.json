@@ -1,0 +1,316 @@
+{
+  "date": "2026-10-29",
+  "issue": 53,
+  "status": "bounded_fixes_passed_original_acceptance_open",
+  "base_commit": "a72c4f8914ff482b90daf72108bb60b580c48ee6",
+  "source_digest": "26f6f6ed7ea90a7b5ff4cd28c9008ed3303c6ea847d29965a54ee3a2b76f0eb9",
+  "core": {
+    "command": "swift test",
+    "passed": 397,
+    "failed": 0,
+    "world_clock_methods": 13,
+    "core_inputs_identical_after_final_view_only_edit": true,
+    "log_sha256": "b13a2d7245c57ec571d3c6d5b9648e49c6ff63ab0d110716cae33093cea7bfe4"
+  },
+  "ui_runs": [
+    {
+      "checkpoint": "daylight-neutral-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "result": "Passed",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testWorldClockDaylightRendersOnBothSidesOfMidnight",
+        "testWorldClockOffersEveryZoneAndExplainsMissingSunPosition",
+        "testWorldClockAddsFractionalZoneAndPersistsRemoval",
+        "testAssistantShortcutDismissalAndSoftwareKeyboardSend"
+      ],
+      "source_files": 225,
+      "compiled_files": 51,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "archive_sha256": "99b1672ec58c600359f80571c3a25eb0668391ded6da2edccaf14748970f9476",
+      "archive_read_back": true
+    },
+    {
+      "checkpoint": "daylight-neutral-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "result": "Passed",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "tests": [
+        "testWorldClockDaylightRendersOnBothSidesOfMidnight",
+        "testWorldClockOffersEveryZoneAndExplainsMissingSunPosition",
+        "testWorldClockAddsFractionalZoneAndPersistsRemoval",
+        "testAssistantShortcutDismissalAndSoftwareKeyboardSend"
+      ],
+      "source_files": 225,
+      "compiled_files": 51,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "archive_sha256": "99b1672ec58c600359f80571c3a25eb0668391ded6da2edccaf14748970f9476",
+      "archive_read_back": true
+    }
+  ],
+  "final_ui_executions": 8,
+  "unique_ui_methods": 4,
+  "full_ui_suite": false,
+  "sdk_builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T04:37:25.307877+00:00",
+      "ended": "2026-10-29T04:37:34.398782+00:00",
+      "log": "ios-final-build.log",
+      "log_sha256": "f331a1ed925099b5455e10b78b5f42ab8027fc1a49b2d7f8806e61e3b224ba80"
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-29T04:37:34.399295+00:00",
+      "ended": "2026-10-29T04:37:42.049073+00:00",
+      "log": "macos-final-build.log",
+      "log_sha256": "53568b1632949082394ccb10d7ff502228eccf5a1aa1997472d1530e93e2c8ef"
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T04:37:42.049584+00:00",
+      "ended": "2026-10-29T04:37:49.009812+00:00",
+      "log": "tvos-final-build.log",
+      "log_sha256": "f287b280b145436f98e2fb74b27f1be221d97934d9c5189809cf0b913042a27e"
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T04:37:49.010289+00:00",
+      "ended": "2026-10-29T04:37:56.714161+00:00",
+      "log": "visionos-final-build.log",
+      "log_sha256": "90dbf5abf30c5bfe84cb76d21281ca9d5b44b763d6fd937e6e12d7d43b95805f"
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-29T04:37:56.714634+00:00",
+      "ended": "2026-10-29T04:37:58.098892+00:00",
+      "log": "watchos-final-build.log",
+      "log_sha256": "bdb074aa671c1315f0b4185058bff573b0abec3951c8b522b33d085a915264da"
+    }
+  ],
+  "sdk_products_manifest": "Docs/verification/world-clock-midnight-platforms.json",
+  "images": [
+    {
+      "path": "Docs/screenshots/world-clock-midnight-daylight/phone-26f6f6ed7ea9-reykjavik.png",
+      "state": "reykjavik",
+      "checkpoint": "daylight-neutral-phone",
+      "sha256": "c658c4d519e8996a57a60906ee53ec2edbf84eb36523ea67a245b642ebedeb0c",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "Docs/screenshots/world-clock-midnight-daylight/phone-26f6f6ed7ea9-reykjavik-bar.png",
+      "state": "reykjavik-bar",
+      "checkpoint": "daylight-neutral-phone",
+      "sha256": "0b2c1d87b6d64669bd8b2b4f09113f8f7ff0451b50c59ad55cc8f2d519adb121",
+      "pixels": [
+        1038,
+        42
+      ]
+    },
+    {
+      "path": "Docs/screenshots/world-clock-midnight-daylight/phone-26f6f6ed7ea9-sydney.png",
+      "state": "sydney",
+      "checkpoint": "daylight-neutral-phone",
+      "sha256": "6a20b26d03b259f47cfab984fcf2e9c1c748c75555cc6be8f44bfa0d2fc7be7e",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "Docs/screenshots/world-clock-midnight-daylight/phone-26f6f6ed7ea9-no-coordinates.png",
+      "state": "no-coordinates",
+      "checkpoint": "daylight-neutral-phone",
+      "sha256": "65a30289090328cc70ef8a2acbd8d71330244670330354b5d6161ce1141670b6",
+      "pixels": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "path": "Docs/screenshots/world-clock-midnight-daylight/ipad-26f6f6ed7ea9-reykjavik.png",
+      "state": "reykjavik",
+      "checkpoint": "daylight-neutral-ipad",
+      "sha256": "fe1f34f66e6af78ef89164814a3930b3d36c43d7d8f620bb29f15f64671693ad",
+      "pixels": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "path": "Docs/screenshots/world-clock-midnight-daylight/ipad-26f6f6ed7ea9-reykjavik-bar.png",
+      "state": "reykjavik-bar",
+      "checkpoint": "daylight-neutral-ipad",
+      "sha256": "8888d88f052debafb7426c6cc94822e529f7d907774a00b92707a3bf81cf2bcc",
+      "pixels": [
+        1048,
+        28
+      ]
+    },
+    {
+      "path": "Docs/screenshots/world-clock-midnight-daylight/ipad-26f6f6ed7ea9-sydney.png",
+      "state": "sydney",
+      "checkpoint": "daylight-neutral-ipad",
+      "sha256": "2b4e933a58cf9c66acaf4be67d67a26432ffdec753fa3bbdac0f4a16863fa01c",
+      "pixels": [
+        1640,
+        2360
+      ]
+    },
+    {
+      "path": "Docs/screenshots/world-clock-midnight-daylight/ipad-26f6f6ed7ea9-no-coordinates.png",
+      "state": "no-coordinates",
+      "checkpoint": "daylight-neutral-ipad",
+      "sha256": "639461dcc38146e8b1940b7d7601e985e1d8926696e8803d7ac0df6cb5255b4a",
+      "pixels": [
+        1640,
+        2360
+      ]
+    }
+  ],
+  "final_pngs_decoded": 16,
+  "visual_review": {
+    "contact_sheets": 1,
+    "states": [
+      "Reykjavik daylight across midnight",
+      "Sydney normal day",
+      "Shanghai no coordinates"
+    ],
+    "additional_full_size_images": [
+      "phone Reykjavik",
+      "iPad Shanghai"
+    ],
+    "observed": "Daylight retained after midnight-crossing sunset; unknown light now visibly gray, not purple. Not original-reference parity."
+  },
+  "historical_checkpoint": {
+    "source_digest": "67faac6f9981e95ae6754175e09db01ff9262ad3e6ea9f7a8f0b19fa484eb6d5",
+    "functional_ui_passes": 8,
+    "visual_failure": "Transparent gray retained underlying purple night color for unavailable coordinates. Historical images retained unchanged.",
+    "images": [
+      {
+        "path": "Docs/screenshots/world-clock-midnight-daylight/phone-67faac6f9981-reykjavik.png",
+        "state": "reykjavik",
+        "checkpoint": "daylight-phone",
+        "sha256": "d2c8180b0646b1ffd0578b8755db289a18d030ba82afaf009263ca041e77a21b",
+        "pixels": [
+          1206,
+          2622
+        ]
+      },
+      {
+        "path": "Docs/screenshots/world-clock-midnight-daylight/phone-67faac6f9981-reykjavik-bar.png",
+        "state": "reykjavik-bar",
+        "checkpoint": "daylight-phone",
+        "sha256": "0b2c1d87b6d64669bd8b2b4f09113f8f7ff0451b50c59ad55cc8f2d519adb121",
+        "pixels": [
+          1038,
+          42
+        ]
+      },
+      {
+        "path": "Docs/screenshots/world-clock-midnight-daylight/phone-67faac6f9981-sydney.png",
+        "state": "sydney",
+        "checkpoint": "daylight-phone",
+        "sha256": "e34750475a34d1acd1eb5b44500b9970a4ae58c86a76ab9310bf07109d48116a",
+        "pixels": [
+          1206,
+          2622
+        ]
+      },
+      {
+        "path": "Docs/screenshots/world-clock-midnight-daylight/phone-67faac6f9981-no-coordinates.png",
+        "state": "no-coordinates",
+        "checkpoint": "daylight-phone",
+        "sha256": "06d721bad442dbda622ed106b881ce2a012bcb5e18038694756ddb922d342b00",
+        "pixels": [
+          1206,
+          2622
+        ]
+      },
+      {
+        "path": "Docs/screenshots/world-clock-midnight-daylight/ipad-67faac6f9981-reykjavik.png",
+        "state": "reykjavik",
+        "checkpoint": "daylight-ipad",
+        "sha256": "fe1f34f66e6af78ef89164814a3930b3d36c43d7d8f620bb29f15f64671693ad",
+        "pixels": [
+          1640,
+          2360
+        ]
+      },
+      {
+        "path": "Docs/screenshots/world-clock-midnight-daylight/ipad-67faac6f9981-reykjavik-bar.png",
+        "state": "reykjavik-bar",
+        "checkpoint": "daylight-ipad",
+        "sha256": "8888d88f052debafb7426c6cc94822e529f7d907774a00b92707a3bf81cf2bcc",
+        "pixels": [
+          1048,
+          28
+        ]
+      },
+      {
+        "path": "Docs/screenshots/world-clock-midnight-daylight/ipad-67faac6f9981-sydney.png",
+        "state": "sydney",
+        "checkpoint": "daylight-ipad",
+        "sha256": "2b4e933a58cf9c66acaf4be67d67a26432ffdec753fa3bbdac0f4a16863fa01c",
+        "pixels": [
+          1640,
+          2360
+        ]
+      },
+      {
+        "path": "Docs/screenshots/world-clock-midnight-daylight/ipad-67faac6f9981-no-coordinates.png",
+        "state": "no-coordinates",
+        "checkpoint": "daylight-ipad",
+        "sha256": "437c65b1669b1d7b6a91cf656f98743f6c50ada16fede5f195b828b2ff1f97d0",
+        "pixels": [
+          1640,
+          2360
+        ]
+      }
+    ],
+    "pngs_decoded": 16
+  },
+  "limitations": [
+    "Low-order offline sun model unchanged; no ephemeris accuracy acceptance.",
+    "No reviewed Apple HomeView world-clock detail reference; original geometry and motion remain unaccepted.",
+    "No physical/signing/account/sensor/Home acceptance."
+  ],
+  "issue_closed": false
+}

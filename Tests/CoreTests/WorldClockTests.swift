@@ -154,4 +154,41 @@ final class WorldClockTests: XCTestCase {
     let underscore = WorldCity.city(for: "America/Port_of_Spain")
     XCTAssertEqual(underscore?.name, "Port of Spain")
   }
+  func testReykjavikDaylightWrapsAcrossLocalMidnight() throws {
+    let reykjavik=city("Atlantic/Reykjavik")
+    let window=DaylightWindow.compute(latitude:reykjavik.latitude,longitude:reykjavik.longitude,
+      dayOf:date("2026-06-21T12:00:00Z"),zone:reykjavik.timeZone)
+    XCTAssertEqual(window.kind,.normal)
+    let rise=try XCTUnwrap(window.sunriseFraction),set=try XCTUnwrap(window.sunsetFraction)
+    XCTAssertLessThan(set,rise,"The previous solar day's sunset falls just after local midnight")
+    // The existing renderer subtracts these in the opposite order and clamps
+    // to zero, incorrectly painting this 21-hour daylight day entirely dark.
+    XCTAssertGreaterThan(set + 1 - rise,0.85)
+    XCTAssertEqual(window.daylightIntervals,[0...set,rise...1])
+    XCTAssertFalse(window.daylightIntervals.contains { $0.contains((rise+set)/2) })
+  }
+  func testDaylightIntervalsAgreeWithSunPositionAcrossPolarTransitionsAndDST() throws {
+    let dates=["2026-03-29T12:00:00Z","2026-10-25T12:00:00Z","2026-05-17T12:00:00Z",
+      "2026-07-26T12:00:00Z","2026-06-21T12:00:00Z","2026-12-21T12:00:00Z"]
+    var singleCrossings=0
+    for identifier in ["Europe/Oslo","Atlantic/Reykjavik","Europe/Berlin","Australia/Sydney"] {
+      let place=city(identifier)
+      var calendar=Calendar(identifier:.gregorian);calendar.timeZone=place.timeZone
+      for value in dates {
+        let instant=date(value),day=try XCTUnwrap(calendar.dateInterval(of:.day,for:instant))
+        let sun=DaylightWindow.compute(latitude:place.latitude,longitude:place.longitude,dayOf:instant,zone:place.timeZone)
+        if (sun.sunrise == nil) != (sun.sunset == nil) { singleCrossings+=1 }
+        for span in sun.daylightIntervals {
+          XCTAssertGreaterThanOrEqual(span.lowerBound,0);XCTAssertLessThanOrEqual(span.upperBound,1)
+        }
+        for minute in stride(from:5,to:Int(day.duration/60),by:10) {
+          let fraction=Double(minute)*60/day.duration
+          let altitude=SolarPosition.altitude(at:day.start.addingTimeInterval(Double(minute)*60),
+            latitude:place.latitude!,longitude:place.longitude!)
+          XCTAssertEqual(sun.daylightIntervals.contains { $0.contains(fraction) },altitude >= -0.833,"\(identifier) \(value) minute \(minute)")
+        }
+      }
+    }
+    XCTAssertGreaterThan(singleCrossings,0,"Include at least one sunrise-only or sunset-only local day")
+  }
 }

@@ -2149,7 +2149,8 @@
       "Tag-/Nachtverlauf je lokalem Kalendertag mit Auf-/Untergang, Polartag/-nacht und Detail-Sheet; Offline-Naeherung niedriger Ordnung, keine Ephemeride.",
       "Two-calendar-day distance at the date line now explicitly labelled; existing +/-1 labels retained. See Docs/world-clock-date-distance.md.",
       "Rejected city saves retain picker and search; explicit Done still works. Docs/world-clock-write-boundary.md.",
-      "Zonen- und Tagesverlaufsumsatz: Docs/world-clock-zones-daylight.md."
+      "Zonen- und Tagesverlaufsumsatz: Docs/world-clock-zones-daylight.md.",
+      "Korrektur von Tageslicht ueber Mitternacht und Tagen mit nur einer Horizontkreuzung; unbekannter Sonnenstand neutralgrau. Docs/world-clock-midnight-daylight.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2175,7 +2176,9 @@
       "Docs/world-clock-write-boundary.md",
       "Docs/verification/world-clock-write-boundary.json",
       "Docs/world-clock-zones-daylight.md",
-      "Docs/verification/world-clock-zones-daylight.json"
+      "Docs/verification/world-clock-zones-daylight.json",
+      "Docs/world-clock-midnight-daylight.md",
+      "Docs/verification/world-clock-midnight-daylight.json"
     ]
   },
   {

@@ -67,6 +67,10 @@ struct DaylightWindow: Sendable, Equatable {
   /// next midnight. Absent when no crossing exists.
   var sunriseFraction: Double?
   var sunsetFraction: Double?
+  /// Actual illuminated spans of this local day, including daylight on both
+  /// sides of midnight and days with only one horizon crossing. Fractions are
+  /// elapsed positions in the local day, which can have 23 or 25 hours.
+  var daylightIntervals: [ClosedRange<Double>] = []
 
   static func compute(latitude: Double?, longitude: Double?, dayOf instant: Date, zone: TimeZone) -> Self {
     guard let latitude, let longitude else { return .init() }
@@ -81,6 +85,8 @@ struct DaylightWindow: Sendable, Equatable {
     let horizon = -0.833
     var sunrise: Date?, sunset: Date?
     var previous = altitude(start)
+    var daylightStart: Double? = previous >= horizon ? 0 : nil
+    var intervals: [ClosedRange<Double>] = []
     var cursor = start
     while cursor < end {
       let step = min(cursor.addingTimeInterval(600), end)
@@ -93,18 +99,29 @@ struct DaylightWindow: Sendable, Equatable {
           if (altitude(mid) >= horizon) == startsAbove { low = mid } else { high = mid }
         }
         let crossing = low.addingTimeInterval(high.timeIntervalSince(low) / 2)
-        if startsAbove { sunset = crossing } else { sunrise = crossing }
+        let fraction=min(1,max(0,crossing.timeIntervalSince(start) / span))
+        if startsAbove {
+          sunset=crossing
+          if let daylightStart { intervals.append(daylightStart...fraction) }
+          daylightStart=nil
+        } else {
+          sunrise=crossing
+          daylightStart=fraction
+        }
       }
       previous = current
       cursor = step
     }
+    if let daylightStart { intervals.append(daylightStart...1) }
     if sunrise == nil && sunset == nil {
       let noon = start.addingTimeInterval(span / 2)
-      return .init(kind: altitude(noon) >= horizon ? .polarDay : .polarNight)
+      let light=altitude(noon) >= horizon
+      return .init(kind: light ? .polarDay : .polarNight,daylightIntervals:light ? [0...1]:[])
     }
     return .init(kind: .normal, sunrise: sunrise, sunset: sunset,
       sunriseFraction: sunrise.map { $0.timeIntervalSince(start) / span },
-      sunsetFraction: sunset.map { $0.timeIntervalSince(start) / span })
+      sunsetFraction: sunset.map { $0.timeIntervalSince(start) / span },
+      daylightIntervals:intervals)
   }
 }
 

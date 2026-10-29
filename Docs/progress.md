@@ -1,5 +1,13 @@
 # Bearbeitungsstand
 
+## Weltuhr und aktueller Backlog · 29. Oktober 2026
+
+**39/82 ursprüngliche Issues geschlossen, 43 offen; kein neues Issue ohne erfüllte Abnahme geschlossen.** Die frühere Restliste enthielt bereits abgeschlossene Pakete und alte Gesamtzahlen. [Aktuelle vollständige Liste](remaining-work.md) und [GitHub-Abgleich aller 82 Nummern](verification/backlog-reconciliation-20261029.json) ersetzen diesen veralteten Stand.
+
+Die Weltuhr zeichnet Tageslicht über lokale Mitternacht und an Tagen mit nur einer Horizontkreuzung korrekt; unbekannter Sonnenstand ist neutralgrau statt violett. 397 Coretests bestanden, mit 13 Weltuhr-Methoden. Die [gebundenen aktuellen UI-/SDK-Nachweise](verification/world-clock-midnight-daylight.json) und [Grenzen](world-clock-midnight-daylight.md) bleiben von Original-Parity getrennt; #53 bleibt offen.
+
+Der [rohe Escape-/Return-Pfad](assistant-raw-key-transport.md) bleibt ungeklärt. Zehn erfolglose Ausführungen an fünf eingefrorenen Ständen sind erhalten, kein erfolgloser Adapter ist übernommen. Die vorhandenen Software-Send-/Dismiss-Wege werden getrennt geprüft; #38 bleibt offen. Keine Geräte-/Signing-Abnahme oder Home-Anbindung gestartet.
+
 ## Fortlaufender Gesamtauftrag
 
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere

@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-29",
+  "issue": 38,
+  "base_commit": "a72c4f8914ff482b90daf72108bb60b580c48ee6",
+  "status": "unresolved_no_candidate_delivered",
+  "checkpoints": [
+    {
+      "checkpoint": "baseline-phone",
+      "source_digest": "893b9092240131fde6299e240dab75112b463fbe47fa207996ddbe436e608f18",
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "archive_sha256": "5b8f19c41aecb3d65f2179e1148153b74fe4f18876aa2a95d6834fb0bcf3e01f",
+      "archive_read_back": true
+    },
+    {
+      "checkpoint": "keyboard-fix-phone",
+      "source_digest": "64722494b8749ffb78686c3f3f747a2cf372cbd9ec94890a2ac43d3baa8fef83",
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "archive_sha256": "1b6e56b408e7cd02397790c35d3970495037bdbaca54a34aefd9e2ef4b8a256b",
+      "archive_read_back": true
+    },
+    {
+      "checkpoint": "keyhandler-phone",
+      "source_digest": "ca7c65ee857d6f0fb6af818f883a17edc3b87ac196246587246c6720f4ebae07",
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "archive_sha256": "4b13357a0e3690dcfc5cb5ff3277a5056fe88e76c9411a6a5e105dfde4a0f9bb",
+      "archive_read_back": true
+    },
+    {
+      "checkpoint": "transport-phone",
+      "source_digest": "9369f5fd17b9d9dc5b23fe3d5249e6e9342797a5ad82aa5f1daac738d0cd072b",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "archive_sha256": "6089189eabfa2b4669586135f335025704d06c38a953824c44ea5e64b4516746",
+      "archive_read_back": true
+    },
+    {
+      "checkpoint": "native-responder-phone",
+      "source_digest": "d8e3d68c9f7ab4dc5e0f0011597487d15f02ae3346400b937291086c829e7882",
+      "passed": 0,
+      "failed": 3,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "archive_sha256": "76a3a062f1bfb071b2f41a230677ccc39c8bf41110751e701ba68b61e161ccd3",
+      "archive_read_back": true
+    }
+  ],
+  "supporting_external_report": "https://github.com/kaeawc/auto-mobile/issues/7439",
+  "external_report_is_root_cause_proof": false,
+  "physical_keyboard_accepted": false
+}
