@@ -3,27 +3,33 @@ import SwiftUI
 struct ConnectionControls: View {
   var revealWeatherCity: () -> Void = {}
   @Environment(AppModel.self) private var model
+  @ScaledMetric(relativeTo:.headline) private var sectionSize:CGFloat=24
+  @ScaledMetric(relativeTo:.body) private var homeSize:CGFloat=19
+  @ScaledMetric(relativeTo:.body) private var policySize:CGFloat=17
+  @ScaledMetric(relativeTo:.body) private var detailSize:CGFloat=16
+  @ScaledMetric(relativeTo:.headline) private var serviceSize:CGFloat=22
+  @ScaledMetric(relativeTo:.caption) private var captionSize:CGFloat=15
   @Environment(\.scenePhase) private var phase
   @Environment(\.nativeCanvasScale) private var canvasScale
   @FocusState private var weatherCityFocused: Bool
   private var minimumHitSide: CGFloat { (44 / max(0.01, canvasScale)).rounded(.up) }
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
-      Text("Connected services").font(.system(size: 24, weight: .semibold))
+      Text("Connected services").font(.system(size: sectionSize, weight: .semibold))
       Label("Apple Home stays disconnected", systemImage: "house.badge.exclamationmark")
-        .font(.system(size: 19)).foregroundStyle(.gray).accessibilityIdentifier(
+        .font(.system(size: homeSize)).foregroundStyle(.black.opacity(0.65)).accessibilityIdentifier(
           "connections.home.locked")
       Text(
         "Calendar and reminders are protected by your device authentication. Other Apple apps' private history is not imported."
       )
-      .font(.system(size: 17)).foregroundStyle(.gray)
+      .font(.system(size: policySize)).foregroundStyle(.black.opacity(0.65))
       Text("Guests can use public weather, local timers, bundled media and public podcast feeds. Apple Music stays private unless an authenticated device holder explicitly shares the current queue. Sharing ends on background, new search, reconnect or app restart.")
-        .font(.system(size:16)).foregroundStyle(.gray).accessibilityIdentifier("guest.policy.summary")
+        .font(.system(size:detailSize)).foregroundStyle(.black.opacity(0.65)).accessibilityIdentifier("guest.policy.summary")
       SharedPanelControls()
       ForEach(DataConnection.allCases) { kind in
         VStack(alignment: .leading, spacing: 7) {
           HStack {
-            Text(kind.rawValue).font(.system(size: 22, weight: .medium))
+            Text(kind.rawValue).font(.system(size: serviceSize, weight: .medium))
             Spacer()
             let on = model.connections.enabled.contains(kind)
             Button(on ? "Disconnect" : "Connect") {
@@ -38,8 +44,8 @@ struct ConnectionControls: View {
             }.disabled(model.connections.busy.contains(kind))
               .accessibilityIdentifier("connect.\(kind.rawValue)")
           }
-          Text(model.connections.status[kind] ?? "Not connected").font(.system(size: 16))
-            .foregroundStyle(.gray)
+          Text(model.connections.status[kind] ?? "Not connected").font(.system(size: detailSize))
+            .foregroundStyle(.black.opacity(0.65))
             .accessibilityIdentifier("connection.status.\(kind.rawValue)")
           if model.connections.requested.contains(kind), !model.connections.enabled.contains(kind) {
             Button("Disconnect") { _ = model.disconnectService(kind) }
@@ -51,7 +57,7 @@ struct ConnectionControls: View {
                 .accessibilityIdentifier("guest.music.use")
             }
             Text(model.connections.guestMusicShared ? "Current queue shared · Search remains private":"Guest music sharing is off")
-              .font(.system(size:15)).accessibilityIdentifier("guest.music.status")
+              .font(.system(size:captionSize)).accessibilityIdentifier("guest.music.status")
             if model.connections.personalUnlocked {
               Button(model.connections.guestMusicShared ? "Stop guest sharing":"Share current queue with guests") {
                 _ = model.connections.setGuestMusicSharing(!model.connections.guestMusicShared)
@@ -83,7 +89,7 @@ struct ConnectionControls: View {
             WeatherUnitsPicker(selection:Binding(get:{model.connections.weatherUnits},
               set:{model.connections.weatherUnits=$0}),minimumHeight:minimumHitSide)
             Link("Weather data by Open-Meteo", destination: URL(string: "https://open-meteo.com/")!)
-              .font(.system(size: 15))
+              .font(.system(size: captionSize))
             if model.connections.requested.contains(.weather) {
               Button("Update weather") {
                 let reset=model.localResetGeneration
@@ -148,11 +154,13 @@ private struct NativeWeatherUnitsPicker: UIViewRepresentable {
 #endif
 struct SharedPanelControls: View {
   @Environment(AppModel.self) private var model
+  @ScaledMetric(relativeTo:.headline) private var sectionSize:CGFloat=22
+  @ScaledMetric(relativeTo:.body) private var policySize:CGFloat=16
   var body: some View {
     VStack(alignment:.leading,spacing:10) {
-      Text("Shared faces").font(.system(size:22,weight:.semibold))
+      Text("Shared faces").font(.system(size:sectionSize,weight:.semibold))
       Text("Connecting or unlocking never publishes private contents. In Calendar, share one selected event per display label (up to four). Only title, time and calendar source are published as a snapshot. Demo labels are not household identities. Publications stay in memory until revoked, disconnected, backgrounded or restarted.")
-        .font(.system(size:16)).foregroundStyle(.secondary)
+        .font(.system(size:policySize)).foregroundStyle(.black.opacity(0.65))
       if model.connections.sharedCalendarCards.isEmpty {
         Text("No calendar cards shared").accessibilityIdentifier("shared.calendar.empty")
       }
@@ -170,23 +178,55 @@ struct SharedPanelControls: View {
 struct DeviceUnlockView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.scenePhase) private var scenePhase
+  @Environment(\.dynamicTypeSize) private var textSize
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.largeTitle) private var titleSize:CGFloat=33
+  @ScaledMetric(relativeTo:.body) private var policySize:CGFloat=22
+  @ScaledMetric(relativeTo:.headline) private var actionSize:CGFloat=21
   @State private var unlockTask: Task<Void, Never>?
+  private var minimumHitSide:CGFloat {ceil(44/max(0.01,canvasScale))}
   private func cancelUnlock() {
     unlockTask?.cancel()
     unlockTask = nil
   }
-  var body: some View {
-    VStack(spacing: 24) {
-      AppHeader(title: "Personal access")
-      Spacer()
-      Image(systemName: "lock.shield").font(.system(size: 76)).foregroundStyle(.blue)
-      Text("Unlock personal data").font(.system(size: 33, weight: .semibold))
-      Text("Use this device's authentication for connected personal content and shared album choices.")
-        .font(.system(size: 22)).multilineTextAlignment(.center).foregroundStyle(.gray)
-      Pill(
-        title: "Unlock", symbol: "person.crop.circle.badge.checkmark", tint: .blue,
-        textColor: .white
-      ) {
+  var body:some View {
+    Group {
+      if textSize.isAccessibilitySize {
+        VStack(spacing:24) {
+          header
+          ScrollView {
+            VStack(spacing:24) {symbol;title;policy;unlockAction}.padding(.vertical,32)
+          }.accessibilityIdentifier("device.unlock.accessible.content")
+        }
+      } else {
+        VStack(spacing:24) {header;Spacer();symbol;title;policy;unlockAction;Spacer()}
+      }
+    }.padding(.horizontal,32).background(.white).foregroundStyle(.black)
+      .onDisappear {cancelUnlock()}
+      .onChange(of:scenePhase) {_,phase in
+        // A system authentication prompt may make the scene inactive.
+        if phase == .background {cancelUnlock()}
+      }
+  }
+  private var header:some View {
+    AppHeader(title:"Personal access",closeSize:textSize.isAccessibilitySize ? max(48,minimumHitSide):48,
+      titleFontSize:headerSize,clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
+  }
+  private var symbol:some View {
+    Image(systemName:"lock.shield").font(.system(size:76)).foregroundStyle(.blue)
+  }
+  private var title:some View {
+    Text("Unlock personal data").font(.system(size:titleSize,weight:.semibold))
+  }
+  private var policy:some View {
+    Text("Use this device's authentication for connected personal content and shared album choices.")
+      .font(.system(size:policySize)).multilineTextAlignment(.center).foregroundStyle(.black.opacity(0.65))
+  }
+  private var unlockAction:some View {
+    Pill(title:"Unlock",symbol:"person.crop.circle.badge.checkmark",tint:.blue,textColor:.white,
+      fontSize:actionSize,minimumHeight:textSize.isAccessibilitySize ? minimumHitSide:0) {
         cancelUnlock()
         unlockTask = Task {
           guard !Task.isCancelled else { return }
@@ -202,13 +242,6 @@ struct DeviceUnlockView: View {
           }
         }
       }.accessibilityIdentifier("device.unlock")
-      Spacer()
-    }.padding(.horizontal, 32).background(.white).foregroundStyle(.black)
-      .onDisappear { cancelUnlock() }
-      .onChange(of: scenePhase) { _, phase in
-        // A system authentication prompt may make the scene inactive.
-        if phase == .background { cancelUnlock() }
-      }
   }
 }
 struct DeviceRemindersView: View {

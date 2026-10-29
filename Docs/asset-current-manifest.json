@@ -766,7 +766,7 @@
     },
     {
       "path": "Sources/App/HomeScreens.swift",
-      "sha256": "177296b7f4c15ba8cd70a959d5e4cd4990697196cce261b77db4bd9893abadd7"
+      "sha256": "37428137fcb65becbac504d984e5807fa4dcb7dbfbd03946a2a387bdf27a01b1"
     },
     {
       "path": "Sources/App/Faces.swift",
@@ -846,5 +846,14 @@
     "unchanged_DemoAlbumCover_sha256": "dbe90bc39145bfed61196fc08c0f855e456594a3965e8c3ab14efe5991e2158c",
     "all_resource_and_attribution_declarations_unchanged": true,
     "reason": "Refresh stale whole-source binding after already-published editor Done hit area and local semantic contrast changes. Procedural album artwork, resource bytes and rights declarations are unchanged; not a new historical-rights verdict."
+  },
+  "connections_lock_provenance_source_refresh": {
+    "date": "2026-10-29",
+    "reason": "LockView-only DynamicType,AXscroll and localpolicycolor. All other HomeScreens bytes and the lock symbol selection/font112/green-orange rendering expression retained.",
+    "path": "Sources/App/HomeScreens.swift",
+    "previous_sha256": "177296b7f4c15ba8cd70a959d5e4cd4990697196cce261b77db4bd9893abadd7",
+    "current_sha256": "37428137fcb65becbac504d984e5807fa4dcb7dbfbd03946a2a387bdf27a01b1",
+    "resource_bytes_changed": false,
+    "new_artwork_or_historical_rights_verdict": false
   }
 }

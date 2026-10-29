@@ -98,25 +98,35 @@ struct ControlCenterView: View {
 }
 struct SettingsView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.headline) private var mockSize:CGFloat=27
+  @ScaledMetric(relativeTo:.body) private var policySize:CGFloat=18
+  @ScaledMetric(relativeTo:.body) private var rowSize:CGFloat=23
+  @ScaledMetric(relativeTo:.headline) private var sectionSize:CGFloat=24
+  @ScaledMetric(relativeTo:.body) private var bodySize:CGFloat=17
+  @ScaledMetric(relativeTo:.caption) private var captionSize:CGFloat=15
   @Environment(\.nativeCanvasScale) private var canvasScale
   private var minimumHitSide: CGFloat { (44 / max(0.01, canvasScale)).rounded(.up) }
   @State private var showingPowerCapabilities=false
   @State private var showingTimerActivitySettings=false
   var body: some View {
     VStack(spacing: 12) {
-      AppHeader(title: "Settings", closeSize: max(48, minimumHitSide))
+      AppHeader(title:"Settings",closeSize:max(48,minimumHitSide),titleFontSize:headerSize,
+        clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
       ScrollViewReader { reader in
       ScrollView {
         VStack(alignment: .leading, spacing: 22) {
           if let note = model.storeRecoveryNote {
-            Text(note).font(.system(size: 17)).foregroundStyle(.orange)
+            Text(note).font(.system(size: bodySize)).foregroundStyle(.orange)
               .accessibilityIdentifier("store.recovery")
           }
           Label("Mock home only", systemImage: "shield.lefthalf.filled").font(
-            .system(size: 27, weight: .semibold))
+            .system(size: mockSize, weight: .semibold))
           Text(
             "Apple Home stays disconnected. Other services can be connected below. The system photo picker shares only chosen photos. Automated tests use synthetic data."
-          ).font(.system(size: 18)).foregroundStyle(.gray)
+          ).font(.system(size: policySize)).foregroundStyle(.black.opacity(0.65))
           if model.display.supported {
             Button {
               model.updateLocalControls { $0.keepDisplayOn.toggle() }
@@ -125,21 +135,21 @@ struct SettingsView: View {
                 Text("Keep Display On")
                 Spacer()
                 Image(systemName: model.display.active ? "checkmark.circle.fill" : "circle")
-              }.font(.system(size: 23)).contentShape(Rectangle())
+              }.font(.system(size: rowSize)).contentShape(Rectangle())
             }.accessibilityIdentifier("settings.keepawake").accessibilityValue(
               model.display.active ? "On" : "Off")
           }
           Button("Reset local app content") { model.presentLocalReset() }
-            .font(.system(size:23)).accessibilityIdentifier("settings.reset")
-          Text(model.localResetStatus).font(.system(size:15)).foregroundStyle(.gray)
+            .font(.system(size:rowSize)).accessibilityIdentifier("settings.reset")
+          Text(model.localResetStatus).font(.system(size:captionSize)).foregroundStyle(.gray)
             .accessibilityIdentifier("settings.reset.status")
           Button("Welcome and service overview") { model.showingIntroduction=true }
-            .font(.system(size:23)).accessibilityIdentifier("settings.introduction")
+            .font(.system(size:rowSize)).accessibilityIdentifier("settings.introduction")
           Button("Power adapter information") { showingPowerCapabilities=true }
-            .font(.system(size:23)).accessibilityIdentifier("settings.power")
+            .font(.system(size:rowSize)).accessibilityIdentifier("settings.power")
           if model.timerLiveActivity.supported {
             Button("Timer Live Activities") {showingTimerActivitySettings=true}
-              .font(.system(size:23)).accessibilityIdentifier("settings.timer-activity")
+              .font(.system(size:rowSize)).accessibilityIdentifier("settings.timer-activity")
           }
           setting("Reference clock", model.referenceClock) { model.referenceClock.toggle() }
           setting("Night mode", model.data.night) {
@@ -151,38 +161,38 @@ struct SettingsView: View {
           setting("Profile present", model.simulatedPresence) {
             if model.authorized { model.signOut() } else { model.route = .privacy }
           }
-          Button("Edit Faces") { model.route = .editor }.font(.system(size: 23))
+          Button("Edit Faces") { model.route = .editor }.font(.system(size: rowSize))
             .accessibilityIdentifier("settings.faces")
-          Button("Light & brightness") { model.route = .light }.font(.system(size: 23))
+          Button("Light & brightness") { model.route = .light }.font(.system(size: rowSize))
           ValueAdjuster(value: model.data.home.blinds, label: "Mock blinds", minimumHitSide: minimumHitSide) {
             model.command(.blinds($0))
           }
           ValueAdjuster(value: model.data.home.fanSpeed, label: "Mock fan speed", minimumHitSide: minimumHitSide) {
             model.command(.fanSpeed($0))
           }
-          Button("Simulate doorbell") { model.simulateDoorbell() }.font(.system(size: 23))
+          Button("Simulate doorbell") { model.simulateDoorbell() }.font(.system(size: rowSize))
             .accessibilityIdentifier("settings.doorbell")
-          Button("Simulate incoming call") { model.incomingCall = true }.font(.system(size: 23))
+          Button("Simulate incoming call") { model.incomingCall = true }.font(.system(size: rowSize))
             .accessibilityIdentifier("settings.call")
-          Button("Sign out demo profile") { model.signOut() }.font(.system(size: 23))
+          Button("Sign out demo profile") { model.signOut() }.font(.system(size: rowSize))
           Divider()
-          Text("Native system features").font(.system(size: 24, weight: .semibold))
+          Text("Native system features").font(.system(size: sectionSize, weight: .semibold))
           Text(
             "Public system APIs can supply our own UI with calendars, reminders, photos, media and alarms. The original Clock/Home/FaceTime interfaces are not embeddable. Personal Siri, Messages history, HomePod Intercom and Find My are simulations here."
-          ).font(.system(size: 18)).foregroundStyle(.gray)
+          ).font(.system(size: policySize)).foregroundStyle(.black.opacity(0.65))
           ConnectionControls(revealWeatherCity: {
             reader.scrollTo("settings.weather.city",anchor:.center)
           })
           NativeAlarmControls()
           NativePhotoControls()
           Divider()
-          Text("Mock command log").font(.system(size: 24, weight: .semibold))
+          Text("Mock command log").font(.system(size: sectionSize, weight: .semibold))
           ForEach(Array(model.data.home.audit.suffix(12).enumerated()), id: \.offset) { _, entry in
-            Text(entry).font(.system(size: 17, design: .monospaced)).foregroundStyle(.gray)
+            Text(entry).font(.system(size: bodySize, design: .monospaced)).foregroundStyle(.gray)
           }
           Text(
             "Original artwork reference: Apple HomeView, October 2026. This independent prototype is not an Apple product."
-          ).font(.system(size: 15)).foregroundStyle(.gray)
+          ).font(.system(size: captionSize)).foregroundStyle(.gray)
         }.padding(32)
           .buttonStyle(SettingsHitRegionStyle(minimumSide: minimumHitSide))
       }
@@ -198,7 +208,7 @@ struct SettingsView: View {
         Spacer()
         Image(systemName: on ? "checkmark.circle.fill" : "circle").foregroundStyle(
           on ? .green : .gray)
-      }.font(.system(size: 23)).contentShape(Rectangle())
+      }.font(.system(size: rowSize)).contentShape(Rectangle())
     }.accessibilityValue(on ? "On" : "Off")
   }
 }

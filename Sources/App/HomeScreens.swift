@@ -484,22 +484,48 @@ struct LightView: View {
 }
 struct LockView: View {
   @Environment(AppModel.self) private var model
-  var body: some View {
-    VStack(spacing: 25) {
-      AppHeader(title: "Front Door")
-      Spacer()
-      Image(systemName: model.data.home.locked ? "lock.fill" : "lock.open.fill").font(
-        .system(size: 112)
-      ).foregroundStyle(model.data.home.locked ? .green : .orange)
-      Text(model.data.home.locked ? "Locked" : "Unlocked").font(
-        .system(size: 45, weight: .semibold)
-      ).accessibilityIdentifier("lock.state")
-      Text("Mock lock · Device authentication required").font(.system(size: 20)).foregroundStyle(.gray)
-      Pill(
-        title: model.canControlMockSecurity
-          ? (model.data.home.locked ? "Unlock" : "Lock") : "Authenticate Device",
-        symbol: model.canControlMockSecurity ? "lock.open" : "lock.shield"
-      ) {
+  @Environment(\.dynamicTypeSize) private var textSize
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.largeTitle) private var stateSize:CGFloat=45
+  @ScaledMetric(relativeTo:.body) private var policySize:CGFloat=20
+  @ScaledMetric(relativeTo:.headline) private var actionSize:CGFloat=21
+  private var minimumHitSide:CGFloat {ceil(44/max(0.01,canvasScale))}
+  var body:some View {
+    Group {
+      if textSize.isAccessibilitySize {
+        VStack(spacing:25) {
+          header
+          ScrollView {
+            VStack(spacing:25) {symbol;state;policy;lockAction}.padding(.vertical,32)
+          }.accessibilityIdentifier("lock.accessible.content")
+        }
+      } else {
+        VStack(spacing:25) {header;Spacer();symbol;state;policy;lockAction;Spacer()}
+      }
+    }.padding(.horizontal,30).background(.white).foregroundStyle(.black)
+  }
+  private var header:some View {
+    AppHeader(title:"Front Door",closeSize:textSize.isAccessibilitySize ? max(48,minimumHitSide):48,
+      titleFontSize:headerSize,clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
+  }
+  private var symbol:some View {
+    Image(systemName:model.data.home.locked ? "lock.fill":"lock.open.fill")
+      .font(.system(size:112)).foregroundStyle(model.data.home.locked ? .green:.orange)
+  }
+  private var state:some View {
+    Text(model.data.home.locked ? "Locked":"Unlocked").font(.system(size:stateSize,weight:.semibold))
+      .accessibilityIdentifier("lock.state")
+  }
+  private var policy:some View {
+    Text("Mock lock · Device authentication required").font(.system(size:policySize))
+      .foregroundStyle(.black.opacity(0.65))
+  }
+  private var lockAction:some View {
+    Pill(title:model.canControlMockSecurity ? (model.data.home.locked ? "Unlock":"Lock"):"Authenticate Device",
+      symbol:model.canControlMockSecurity ? "lock.open":"lock.shield",fontSize:actionSize,
+      minimumHeight:textSize.isAccessibilitySize ? minimumHitSide:0) {
         if model.canControlMockSecurity {
           model.command(.lock)
         } else {
@@ -507,8 +533,6 @@ struct LockView: View {
           model.route = .deviceUnlock
         }
       }.accessibilityIdentifier("lock.action")
-      Spacer()
-    }.padding(.horizontal, 30).background(.white).foregroundStyle(.black)
   }
 }
 struct PrivacyView: View {

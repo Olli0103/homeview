@@ -3,6 +3,158 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func connectionsLockTypeCapture(_ state:String,_ roles:[String:XCUIElement],onlyVisibleNeighbors:Bool=false) {
+    RunLoop.current.run(until:Date().addingTimeInterval(2))
+    func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    func row(_ e:XCUIElement,_ measuredFrame:CGRect?=nil)->[String:Any] {
+      let frame=measuredFrame ?? e.frame
+      let inside=recipeTypeScrollContains(e,scroll)
+      let clip=inside ? scroll.frame.intersection(viewport):viewport
+      let intersection=frame.intersection(clip)
+      return ["id":e.identifier,"label":e.label,"frame":box(frame),"inside_scroll":inside,
+        "effective_clip":box(clip),"fully_in_clip":axContains(clip,frame),
+        "visible_intersection":intersection.isNull ? [0,0,0,0]:box(intersection)]
+    }
+    var selected:[[String:Any]]=[]
+    for role in roles.keys.sorted() {
+      let e=roles[role]!;XCTAssertTrue(e.exists);XCTAssertFalse(e.frame.isEmpty)
+      var r=row(e);r["role"]=role;r["value"]=e.value as? String ?? "";selected.append(r)
+    }
+    // Retain visible neighbors and the predeclared offscreen font targets;
+    // do not repeatedly query unrelated offscreen settings for every pose.
+    var extraLabels:[String]=[]
+    if !onlyVisibleNeighbors {
+      if state=="native-features" {
+        extraLabels=["Public system APIs can supply our own UI with calendars, reminders, photos, media and alarms. The original Clock/Home/FaceTime interfaces are not embeddable. Personal Siri, Messages history, HomePod Intercom and Find My are simulations here."]
+      } else if state=="connections-home" {
+        extraLabels=["Calendar and reminders are protected by your device authentication. Other Apple apps' private history is not imported."]
+      } else if state=="shared-heading" {
+        extraLabels=["Connecting or unlocking never publishes private contents. In Calendar, share one selected event per display label (up to four). Only title, time and calendar source are published as a snapshot. Demo labels are not household identities. Publications stay in memory until revoked, disconnected, backgrounded or restarted."]
+      } else if state=="lock" {extraLabels=["Locked","Mock lock · Device authentication required","Authenticate Device"]}
+      else if state=="unlock-gate" {extraLabels=["Unlock personal data","Use this device's authentication for connected personal content and shared album choices.","Unlock"]}
+    }
+    var extraFrames=roles.values.filter {$0.elementType == .staticText}.map(\.frame)
+    for literal in extraLabels {
+      let e=app.staticTexts.matching(NSPredicate(format:"label == %@",literal)).firstMatch
+      if e.exists {extraFrames.append(e.frame)}
+    }
+    let texts=app.staticTexts.allElementsBoundByIndex.compactMap {e->[String:Any]? in
+      let frame=e.frame
+      guard frame.intersects(viewport) || (!onlyVisibleNeighbors && extraFrames.contains(frame)) else {return nil}
+      return row(e,frame)
+    }
+    let report:[String:Any]=["viewport":box(viewport),"roles":selected,
+      "static_text_scope":"Viewport intersections plus declared offscreen measurement targets; not an exhaustive AX tree.",
+      "offscreen_measurement_labels":extraLabels,"all_static_text":texts]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="connections-lock-type-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
+    viewportShot("connections-lock-type-"+state)
+  }
+  private func revealConnectionsParagraphStart(_ element:XCUIElement) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"].frame
+    XCTAssertTrue(recipeTypeScrollContains(element,scroll))
+    for _ in 0..<32 {
+      let clip=scroll.frame.intersection(viewport).insetBy(dx:10,dy:10),f=element.frame
+      // A declared visible excerpt for color measurement, not a claim that
+      // the whole paragraph fits. Interaction probes retain full controls.
+      let start=CGRect(x:f.minX,y:f.minY,width:f.width,height:min(64,f.height))
+      if axContains(clip,start) {return}
+      let gap=start.minY<clip.minY ? start.minY-clip.minY-10:start.maxY-clip.maxY+10
+      let distance=min(max(abs(gap),24),clip.height*0.6)*(gap<0 ? -1:1)
+      let a=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:clip.minX+8,dy:clip.midY+distance/2))
+      let b=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:clip.minX+8,dy:clip.midY-distance/2))
+      a.press(forDuration:0.1,thenDragTo:b,withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    XCTFail("Policy paragraph start was not visibly reachable")
+  }
+  func testConnectionsPolicyExcerptsWithoutConnectionOrAuthentication() {
+    continueAfterFailure=false
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    let policies=[
+      ("native-description-visible","Public system APIs can supply our own UI with calendars, reminders, photos, media and alarms. The original Clock/Home/FaceTime interfaces are not embeddable. Personal Siri, Messages history, HomePod Intercom and Find My are simulations here."),
+      ("connections-privacy-visible","Calendar and reminders are protected by your device authentication. Other Apple apps' private history is not imported."),
+      ("shared-policy-visible","Connecting or unlocking never publishes private contents. In Calendar, share one selected event per display label (up to four). Only title, time and calendar source are published as a snapshot. Demo labels are not household identities. Publications stay in memory until revoked, disconnected, backgrounded or restarted.")]
+    for (state,literal) in policies {
+      let text=app.staticTexts.matching(NSPredicate(format:"label == %@",literal)).firstMatch
+      revealConnectionsParagraphStart(text)
+      connectionsLockTypeCapture(state,["text":text],onlyVisibleNeighbors:true)
+    }
+    for name in ["Calendar","Reminders","Apple Music","Weather"] {
+      let status=app.staticTexts["connection.status."+name]
+      revealRecipeTypeElement(status,margin:10)
+      XCTAssertEqual(status.label,"Not connected");XCTAssertEqual(app.buttons["connect."+name].label,"Connect")
+      connectionsLockTypeCapture("service-"+name.replacingOccurrences(of:" ",with:"-")+"-status-visible",["status":status],onlyVisibleNeighbors:true)
+    }
+    drawer();tap("app.Home");tap("grid.lock")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    let lockPolicy=app.staticTexts["Mock lock · Device authentication required"]
+    revealRecipeTypeElement(lockPolicy,margin:10,horizontalMargin:0)
+    connectionsLockTypeCapture("lock-policy-visible",["policy":lockPolicy],onlyVisibleNeighbors:true)
+    activateRecipeTypeControl(app.buttons["lock.action"],horizontalMargin:0)
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:5))
+    let gatePolicy=app.staticTexts["Use this device's authentication for connected personal content and shared album choices."]
+    revealRecipeTypeElement(gatePolicy,margin:10,horizontalMargin:0)
+    connectionsLockTypeCapture("unlock-policy-visible",["policy":gatePolicy],onlyVisibleNeighbors:true)
+    // Observe text only: never Connect, Update, publish, offer or Unlock.
+    tap("close");XCTAssertTrue(app.buttons["all.apps"].waitForExistence(timeout:5))
+    tap("all.apps");tap("app.Home");tap("grid.lock")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device")
+  }
+
+  func testConnectionsAndLockSystemTextSizeReadOnlyInventory() {
+    continueAfterFailure=false
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    let warning=app.staticTexts.matching(NSPredicate(format:"label == %@",
+      "Apple Home stays disconnected. Other services can be connected below. The system photo picker shares only chosen photos. Automated tests use synthetic data.")).firstMatch
+    connectionsLockTypeCapture("settings-top",["title":app.staticTexts["Settings"],"scope":warning])
+    for (state,e) in [
+      ("native-features",app.staticTexts["Native system features"]),
+      ("connections-heading",app.staticTexts["Connected services"]),
+      ("connections-home",app.staticTexts["connections.home.locked"]),
+      ("connections-guest",app.staticTexts["guest.policy.summary"]),
+      ("shared-heading",app.staticTexts["Shared faces"]),
+      ("shared-empty",app.staticTexts["shared.calendar.empty"])] {
+      revealRecipeTypeElement(e,margin:10)
+      connectionsLockTypeCapture(state,["text":e])
+    }
+    for name in ["Calendar","Reminders","Apple Music","Weather"] {
+      let button=app.buttons["connect."+name],status=app.staticTexts["connection.status."+name]
+      revealRecipeTypeElement(button,margin:10)
+      XCTAssertEqual(button.label,"Connect");XCTAssertEqual(status.label,"Not connected")
+      connectionsLockTypeCapture("service-"+name.replacingOccurrences(of:" ",with:"-"),
+        ["service":app.staticTexts[name],"connect_control":button,"status":status])
+    }
+    // Deliberately never press Connect, Update, links, sharing or authentication.
+    drawer();tap("app.Home");tap("grid.lock")
+    let locked=app.staticTexts["lock.state"],action=app.buttons["lock.action"]
+    XCTAssertEqual(locked.label,"Locked");XCTAssertEqual(action.label,"Authenticate Device")
+    connectionsLockTypeCapture("lock",["state":locked,"policy":app.staticTexts["Mock lock · Device authentication required"],"action_control":action])
+    activateRecipeTypeControl(action,horizontalMargin:0)
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:5))
+    connectionsLockTypeCapture("unlock-gate",["title":app.staticTexts["Unlock personal data"],
+      "policy":app.staticTexts["Use this device's authentication for connected personal content and shared album choices."],"unlock_control":app.buttons["device.unlock"]])
+    let unlock=app.buttons["device.unlock"]
+    revealRecipeTypeElement(unlock,margin:10,horizontalMargin:0)
+    let gateScroll=app.scrollViews.firstMatch,gateViewport=app.otherElements["reference.viewport"].frame
+    let gateClip=recipeTypeScrollContains(unlock,gateScroll) ? gateScroll.frame.intersection(gateViewport):gateViewport
+    XCTAssertTrue(axContains(gateClip,unlock.frame),"Observe the full Unlock control without invoking authentication")
+    connectionsLockTypeCapture("unlock-control-visible",["unlock_control":unlock],onlyVisibleNeighbors:true)
+    // Leaving this local gate never invokes the Unlock callback or provider.
+    tap("close")
+    XCTAssertTrue(app.buttons["all.apps"].waitForExistence(timeout:5))
+    connectionsLockTypeCapture("returned-personal",["all_apps_control":app.buttons["all.apps"]])
+    tap("all.apps");tap("app.Home");tap("grid.lock")
+    XCTAssertEqual(locked.label,"Locked");XCTAssertEqual(action.label,"Authenticate Device")
+    tap("close");XCTAssertTrue(app.buttons["all.apps"].waitForExistence(timeout:5))
+    tap("all.apps");tap("app.Home");tap("grid.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+}
+
+extension HomeViewUITests {
   private func recipeTypeScrollContains(_ element:XCUIElement,_ scroll:XCUIElement)->Bool {
     guard scroll.exists else {return false}
     let candidates=scroll.descendants(matching:element.elementType)
@@ -10,12 +162,12 @@ extension HomeViewUITests {
       ? candidates.matching(NSPredicate(format:"label == %@",element.label)).count>0
       : candidates.matching(identifier:element.identifier).count>0
   }
-  private func revealRecipeTypeElement(_ element:XCUIElement,margin:CGFloat=2) {
+  private func revealRecipeTypeElement(_ element:XCUIElement,margin:CGFloat=2,horizontalMargin:CGFloat?=nil) {
     XCTAssertTrue(element.waitForExistence(timeout:5))
     let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"].frame
     let insideScroll=recipeTypeScrollContains(element,scroll)
     for _ in 0..<16 {
-      let clip=(insideScroll ? scroll.frame.intersection(viewport):viewport).insetBy(dx:margin,dy:margin),f=element.frame
+      let clip=(insideScroll ? scroll.frame.intersection(viewport):viewport).insetBy(dx:horizontalMargin ?? margin,dy:margin),f=element.frame
       if axContains(clip,f) || (f.height>clip.height && f.intersection(clip).height>=min(44,clip.height)) {return}
       guard insideScroll else {XCTFail("Recipe target is outside its actual clip: "+element.identifier);return}
       let gap=f.minY<clip.minY ? f.minY-clip.minY-10:f.maxY-clip.maxY+10
@@ -26,8 +178,8 @@ extension HomeViewUITests {
     }
     XCTFail("Recipe target was never visibly reachable: "+element.identifier)
   }
-  private func activateRecipeTypeControl(_ element:XCUIElement) {
-    revealRecipeTypeElement(element)
+  private func activateRecipeTypeControl(_ element:XCUIElement,horizontalMargin:CGFloat?=nil) {
+    revealRecipeTypeElement(element,horizontalMargin:horizontalMargin)
     let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
     let clip=recipeTypeScrollContains(element,scroll) ? scroll.frame.intersection(viewport):viewport
     let visible=element.frame.intersection(clip).insetBy(dx:2,dy:2)
