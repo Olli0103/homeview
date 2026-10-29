@@ -1117,7 +1117,7 @@
       "F048",
       "F049"
     ],
-    "current": "Obere Randgeste und Texteingabe sind implementiert. Nicht alle Referenzzustände oder Unterbrechungen sind vermessen.",
+    "current": "Ursprüngliche synthetische Eingabe-Abnahme abgeschlossen: sichtbare iPad-Hoch-/Querformat-Eingabe, kein implizites Senden, realer OS-Control-Center-Wechsel, Cmd-Period und Entwurfslifecycle. Raw-Key-/physische Hilfsmittel-/Original-Parity ausdrücklich offen.",
     "tasks": [
       "Randgeste, Tastatur, Entwurf, Abbruch und Rückkehr bei Navigation abnehmen",
       "Konflikte mit Control Center, Scrollen und systemweiten Gesten prüfen",
@@ -1129,13 +1129,24 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/38",
     "issue_number": 38,
-    "state": "open",
-    "github_state": "open",
+    "state": "completed",
+    "github_state": "closed",
     "github_state_verified_on": "2026-10-29",
     "progress_evidence": [
       "Docs/assistant-raw-key-transport.md",
-      "Docs/verification/assistant-raw-key-transport.json"
-    ]
+      "Docs/verification/assistant-raw-key-transport.json",
+      "Docs/assistant-input-acceptance.md",
+      "Docs/verification/assistant-input-acceptance.json"
+    ],
+    "completion": {
+      "date": "2026-10-29",
+      "evidence": [
+        "Docs/assistant-input-acceptance.md",
+        "Docs/verification/assistant-input-acceptance.json",
+        "Docs/verification/assistant-input-acceptance-source.json"
+      ],
+      "scope": "Original synthetic software input criterion, not physical keyboard/assistive/original parity. Those gates remain #73/#77/#78 and F048/F049 partial/parity=false."
+    }
   },
   {
     "key": "AI-07",

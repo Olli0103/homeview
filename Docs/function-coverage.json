@@ -1511,7 +1511,8 @@
       "AI-06"
     ],
     "current": [
-      "Own assistant uses an unscaled, keyboard-aware rectangular input surface; Send measures 48 points in tested iPad/iPhone portrait and landscape. Cmd-Shift-S, visible keyboard dismissal, unsent draft lifecycle and app-edge/scroll arbitration verified. See Docs/assistant-input.md."
+      "Own assistant uses an unscaled, keyboard-aware rectangular input surface; Send measures 48 points in tested iPad/iPhone portrait and landscape. Cmd-Shift-S, visible keyboard dismissal, unsent draft lifecycle and app-edge/scroll arbitration verified. See Docs/assistant-input.md.",
+      "#38 ursprüngliche synthetische Software-Abnahme abgeschlossen: 18 gezielte UI-Ausführungen auf identischen Quellen, echte OS-Control-Center-Unterbrechung, Cmd-Period ohne Senden, Rotation und sichtbarer Composer. Fünf SDKs. Unabhängige UIKit-App reproduziert rohe Spezialtasten-No-ops; kein Raw-Key-/physischer Hilfsmittel-/Original-PASS. Docs/assistant-input-acceptance.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1524,7 +1525,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "Bounded own software input flow verified. Raw Escape/Return, physical assistive technology, OS-edge and original gesture acceptance remain open.",
+      "functional": "Original bounded own software input acceptance completed (#38). Actual simulator OS Control Center and Cmd-Period verified. Raw hardware keys, physical assistive technology, exhaustive OS gestures and original equivalence remain unaccepted under #73/#77/#78.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
@@ -1542,7 +1543,8 @@
       "AI-06"
     ],
     "current": [
-      "Own assistant uses an unscaled, keyboard-aware rectangular input surface; Send measures 48 points in tested iPad/iPhone portrait and landscape. Cmd-Shift-S, visible keyboard dismissal, unsent draft lifecycle and app-edge/scroll arbitration verified. See Docs/assistant-input.md."
+      "Own assistant uses an unscaled, keyboard-aware rectangular input surface; Send measures 48 points in tested iPad/iPhone portrait and landscape. Cmd-Shift-S, visible keyboard dismissal, unsent draft lifecycle and app-edge/scroll arbitration verified. See Docs/assistant-input.md.",
+      "#38 ursprüngliche synthetische Software-Abnahme abgeschlossen: 18 gezielte UI-Ausführungen auf identischen Quellen, echte OS-Control-Center-Unterbrechung, Cmd-Period ohne Senden, Rotation und sichtbarer Composer. Fünf SDKs. Unabhängige UIKit-App reproduziert rohe Spezialtasten-No-ops; kein Raw-Key-/physischer Hilfsmittel-/Original-PASS. Docs/assistant-input-acceptance.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1555,7 +1557,7 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "Bounded own software input flow verified. Raw Escape/Return, physical assistive technology, OS-edge and original gesture acceptance remain open.",
+      "functional": "Original bounded own software input acceptance completed (#38). Actual simulator OS Control Center and Cmd-Period verified. Raw hardware keys, physical assistive technology, exhaustive OS gestures and original equivalence remain unaccepted under #73/#77/#78.",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },

@@ -1,6 +1,6 @@
 # Assistenteneingabe · Software-Abnahme für #38
 
-29. Oktober 2026 · [AI-06 / #38](https://github.com/Olli0103/homeview/issues/38). Eigene HomeView-Eingabe, **kein Siri und keine vollständige Original-Parity**.
+29. Oktober 2026 · [AI-06 / #38 geschlossen](https://github.com/Olli0103/homeview/issues/38) im ursprünglichen synthetischen Softwareumfang. [Gelieferter Code und gebundene Nachweise](https://github.com/Olli0103/homeview/commit/a0d2b4559614901a644192ddbb0d93e188fb1046). Eigene HomeView-Eingabe, **kein Siri und keine vollständige Original-Parity**.
 
 ## Unverändertes Kriterium
 

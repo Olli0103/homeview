@@ -1,11 +1,12 @@
 # Verbleibende Arbeit und Grenzen
 
-29. Oktober 2026. **39 von 82 ursprünglichen Paketen geschlossen, 43 offen.** Alle ursprünglichen Nummern wurden mit den aktuellen offenen und geschlossenen GitHub-Issues abgeglichen. Das zusätzliche Community-Issue #83 ist geschlossen und wird nicht in den ursprünglichen Nenner eingerechnet. [Read-back](verification/backlog-reconciliation-20261029.json).
+29. Oktober 2026. **40 von 82 ursprünglichen Paketen geschlossen, 42 offen.** Alle ursprünglichen Nummern wurden mit den aktuellen offenen und geschlossenen GitHub-Issues abgeglichen. Das zusätzliche Community-Issue #83 ist geschlossen und wird nicht in den ursprünglichen Nenner eingerechnet. [Read-back](verification/backlog-reconciliation-20261029.json).
 
 ## Aktueller Arbeitsblock
 
 - Weltuhr: Tageslicht über Mitternacht und einzelne Horizontkreuzungen korrekt als Intervalle darstellen; unbekannten Sonnenstand neutral markieren. [Umsetzung und Grenzen](world-clock-midnight-daylight.md). #53 bleibt wegen der fehlenden konkreten Originalreferenz offen.
-- Assistenteneingabe: zehn erfolglose Spezialtasten-Ausführungen an fünf eingefrorenen Ständen sind erhalten; kein erfolgloser Adapter wird geliefert. [Befund](assistant-raw-key-transport.md). #38 bleibt offen.
+- Assistenteneingabe: [#38 im ursprünglichen synthetischen Softwareumfang abgeschlossen](assistant-input-acceptance.md). 18 aktuelle UI-Ausführungen und fünf SDKs; echter OS-Control-Center-Wechsel und Cmd-Period ohne Senden. Unabhängige UIKit-No-ops sind kein Raw-Key-PASS; physische Hilfsmittel und Original-Parity bei #73/#77/#78 bleiben offen.
+- Nächster Softwarepfad: tatsächlicher App-Shortcut-Aufruf aus Apples Kurzbefehle-App auf einem eigenen frischen Simulator, einschließlich normalem Start ohne UITesting-Speicher. #74 bleibt bis zur getrennten Bilanz offen.
 - Geräte-/Signing-Abnahmen bleiben auf [ausdrücklichen Eigentümerwunsch pausiert](device-acceptance-hold.md). Das pausiert keine übrige Softwarearbeit und ist keine Erlaubnis zum Schließen unerfüllter Kriterien.
 
 ## Verbindlicher Vorrang
@@ -55,7 +56,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs, nicht automatis
 | [#35](https://github.com/Olli0103/homeview/issues/35) | Mehrschrittige Aktionen mit Bestätigung und Teilfehlern ausführen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#36](https://github.com/Olli0103/homeview/issues/36) | Antwortansicht mit Text, Bildern und Karten vervollständigen | Offen. Lokale Antwortkarten vorhanden; tatsächliche VoiceOver- und Originalabnahme fehlen. |
 | [#37](https://github.com/Olli0103/homeview/issues/37) | Wakeword und Siri-Aktivierung als getrennte Systemgrenze behandeln | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
-| [#38](https://github.com/Olli0103/homeview/issues/38) | Assistenten-Geste, Texteingabe und Entwurfserhalt abnehmen | Offen. Softwareeingabe funktioniert; roher Escape-/Return-Pfad weiter ungeklärt. Kein erfolgloser Adapter geliefert. |
+| [#38](https://github.com/Olli0103/homeview/issues/38) | Assistenten-Geste, Texteingabe und Entwurfserhalt abnehmen | Geschlossen im ursprünglichen synthetischen Softwareumfang; physische Hilfsmittel/Original-Parity bleiben #73/#77/#78. |
 | [#39](https://github.com/Olli0103/homeview/issues/39) | Dialogverlauf und geräteübergreifende Fortsetzung klären | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#40](https://github.com/Olli0103/homeview/issues/40) | Antwortstimme, Tempo und Medienunterbrechungen ergänzen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#41](https://github.com/Olli0103/homeview/issues/41) | Dienstverfügbarkeit, Sprachen und Limits sichtbar machen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
