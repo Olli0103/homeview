@@ -1,0 +1,1378 @@
+{
+  "date": "2026-10-29",
+  "issue": 73,
+  "issue_stays_open": true,
+  "source_digest": "482b48e2ccb9510e4f91d690243e4e98fd3d206f159ebe975b56a08c9fc42711",
+  "scope": "Scaled Settings weather city/units native hit regions and keyboard-focus visibility; synthetic fixtures only; no original or physical assistive-tech acceptance",
+  "UI_runs": [
+    {
+      "checkpoint": "weather-baseline-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherUnitsNativeHeightAndActualEdges",
+        "testSettingsWeatherCityNativeHeightAndEditableEdges"
+      ],
+      "source_digest": "c30694193a7a00c9923a544ae00dd81cfcebdcf10554b476a5558c50f1d46205",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "631e2893345066ad36dbd618aec51157be1fb705a1d70e1638ea7609947e3b78",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "c60d2aca00154ce25a20844d9e8358e9f3f93967550ef8dc75372d4723a81684",
+      "summary_sha256": "b215b9f372fbf3800c893afa1a2132fb3376b53f6442a04385d7f3a99e2328c2",
+      "failures": [
+        {
+          "failureText": "XCTAssertGreaterThanOrEqual failed: (\"26.459999999999923\") is less than (\"44.0\")",
+          "targetName": "HomeViewUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges()",
+          "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges",
+          "testName": "testSettingsWeatherCityNativeHeightAndEditableEdges()"
+        },
+        {
+          "failureText": "XCTAssertGreaterThanOrEqual failed: (\"20.160000000000025\") is less than (\"44.0\")",
+          "targetName": "HomeViewUITests",
+          "testIdentifier": 2,
+          "testIdentifierString": "HomeViewUITests/testSettingsWeatherUnitsNativeHeightAndActualEdges()",
+          "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherUnitsNativeHeightAndActualEdges",
+          "testName": "testSettingsWeatherUnitsNativeHeightAndActualEdges()"
+        }
+      ]
+    },
+    {
+      "checkpoint": "weather-baseline-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherUnitsNativeHeightAndActualEdges",
+        "testSettingsWeatherCityNativeHeightAndEditableEdges"
+      ],
+      "source_digest": "c30694193a7a00c9923a544ae00dd81cfcebdcf10554b476a5558c50f1d46205",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "631e2893345066ad36dbd618aec51157be1fb705a1d70e1638ea7609947e3b78",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "d9b0cc99d0cb04e146027b6e20aa02ab81a5943c1b5c709e0a052554342a2655",
+      "summary_sha256": "c239c3891df287618c24034ba1d7c65fccf128371e1a6442c9afdf194bdfc8ee",
+      "failures": [
+        {
+          "failureText": "XCTAssertTrue failed",
+          "targetName": "HomeViewUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges()",
+          "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges",
+          "testName": "testSettingsWeatherCityNativeHeightAndEditableEdges()"
+        },
+        {
+          "failureText": "XCTAssertGreaterThanOrEqual failed: (\"42.453333333333376\") is less than (\"44.0\")",
+          "targetName": "HomeViewUITests",
+          "testIdentifier": 2,
+          "testIdentifierString": "HomeViewUITests/testSettingsWeatherUnitsNativeHeightAndActualEdges()",
+          "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherUnitsNativeHeightAndActualEdges",
+          "testName": "testSettingsWeatherUnitsNativeHeightAndActualEdges()"
+        }
+      ]
+    },
+    {
+      "checkpoint": "weather-candidate1-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherUnitsNativeHeightAndActualEdges",
+        "testSettingsWeatherCityNativeHeightAndEditableEdges"
+      ],
+      "source_digest": "ecd91b15634757e3efc8068e1eaaf2cea035bcee2b59404c4abbb1dd23fb5284",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "3190ef44c4dfa894b552eac9225a3b27dc8d16b0ad8baf6dee3033a6f98867fb",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "add1776082afe6c818ad31d0a6f3d3f7017507e7fc630ef37dd7ad27b32e02bb",
+      "summary_sha256": "8475599bca328baab4661f7aade5ac06464ba0c516f0a5f7dabf02f29befccad",
+      "failures": []
+    },
+    {
+      "checkpoint": "weather-candidate1-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherUnitsNativeHeightAndActualEdges",
+        "testSettingsWeatherCityNativeHeightAndEditableEdges"
+      ],
+      "source_digest": "ecd91b15634757e3efc8068e1eaaf2cea035bcee2b59404c4abbb1dd23fb5284",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "3190ef44c4dfa894b552eac9225a3b27dc8d16b0ad8baf6dee3033a6f98867fb",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "7c07deedae369866dc44ed77205c30176d3ba10f556ae6c43aeb112040430fc3",
+      "summary_sha256": "6241ab09fa468cfa195017d6746613843c7cd2fedc6c0de68a6907f6ce506742",
+      "failures": []
+    },
+    {
+      "checkpoint": "weather-regression-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherUnconnectedAutomaticHitRegionAudit",
+        "testWeatherForecastModesAndCitySheetUseOnlyConnectedFixtureData",
+        "testWeatherLateCityResultCannotDismissReopenedEditor"
+      ],
+      "source_digest": "ecd91b15634757e3efc8068e1eaaf2cea035bcee2b59404c4abbb1dd23fb5284",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "3190ef44c4dfa894b552eac9225a3b27dc8d16b0ad8baf6dee3033a6f98867fb",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "32e41801f6ab507b9abf1651584e17d9e5312460027dea18517fb76a5ffc1c1a",
+      "summary_sha256": "be9c7b984b4f3a3e80b80a6759171e27da7f2332f7b917b45bd06db156583183",
+      "failures": []
+    },
+    {
+      "checkpoint": "weather-regression-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherUnconnectedAutomaticHitRegionAudit",
+        "testWeatherForecastModesAndCitySheetUseOnlyConnectedFixtureData",
+        "testWeatherLateCityResultCannotDismissReopenedEditor"
+      ],
+      "source_digest": "ecd91b15634757e3efc8068e1eaaf2cea035bcee2b59404c4abbb1dd23fb5284",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "3190ef44c4dfa894b552eac9225a3b27dc8d16b0ad8baf6dee3033a6f98867fb",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "a94a9e7fcf7526579e94355e17b612d3b6c23b3f38d7f1f9618f99c2fee26bea",
+      "summary_sha256": "055a699090708e51839091f44199404be05f87986792dbe59a7bd5b43a82ce19",
+      "failures": []
+    },
+    {
+      "checkpoint": "weather-focused-baseline-phone",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherCityNativeHeightAndEditableEdges"
+      ],
+      "source_digest": "7fbe782da490c949b112766b645ead8e508cc5273b4fd65e9c4d0f69aa8af794",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "16a08cd0746d57f8f0071eb8960cf72119f8dc5ad1543169d8cca1b0029931bf",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "b9658da5ab874f2307e5684033d36ef3a97f86e2c02533f39090677d2022d76b",
+      "summary_sha256": "377ce5af98401752afca44f69c41829a9ef366988c5268aa076a2ab83de215bb",
+      "failures": []
+    },
+    {
+      "checkpoint": "weather-focused-baseline-ipad",
+      "final": false,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherCityNativeHeightAndEditableEdges"
+      ],
+      "source_digest": "7fbe782da490c949b112766b645ead8e508cc5273b4fd65e9c4d0f69aa8af794",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "16a08cd0746d57f8f0071eb8960cf72119f8dc5ad1543169d8cca1b0029931bf",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "7fd70bf361dedd42baa55f84f6468ac06b2f40a2fbbc58fa55de1c6867ede157",
+      "summary_sha256": "8b3a8f641e2ca6e0f4af601fbc39147c977ab05ed0fd3db84dd1b95b4ed34827",
+      "failures": [
+        {
+          "failureText": "XCTAssertTrue failed - Focused city field must remain fully inside the same safe scroll area used before editing",
+          "targetName": "HomeViewUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges()",
+          "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges",
+          "testName": "testSettingsWeatherCityNativeHeightAndEditableEdges()"
+        }
+      ]
+    },
+    {
+      "checkpoint": "weather-candidate2-ipad-focus",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherCityNativeHeightAndEditableEdges"
+      ],
+      "source_digest": "482b48e2ccb9510e4f91d690243e4e98fd3d206f159ebe975b56a08c9fc42711",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "9aabd56bbb8f5d82dfd88a4490f857329339b7abba9cf4aa7f0b312ecb600687",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "4f6805fc2d4367d571438c825e811a2d5d9b07137b3c954d5957ce27257181ea",
+      "summary_sha256": "5fc825f34408b0326c35ff71d8c61d05dbf5adbe461d89d41b634a65f5d60075",
+      "failures": []
+    },
+    {
+      "checkpoint": "weather-final-phone",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+        "deviceName": "iPhone 18 Pro",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherCityNativeHeightAndEditableEdges",
+        "testSettingsWeatherUnitsNativeHeightAndActualEdges",
+        "testSettingsWeatherUnconnectedAutomaticHitRegionAudit",
+        "testWeatherForecastModesAndCitySheetUseOnlyConnectedFixtureData",
+        "testWeatherLateCityResultCannotDismissReopenedEditor"
+      ],
+      "source_digest": "482b48e2ccb9510e4f91d690243e4e98fd3d206f159ebe975b56a08c9fc42711",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "9aabd56bbb8f5d82dfd88a4490f857329339b7abba9cf4aa7f0b312ecb600687",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "7e17285a0c34bcbd0c219da81f7103e2fefb73c80c3aa9f37b81088f3d9314e3",
+      "summary_sha256": "dca71750f970458ffabd2432e76ab370520990bd907b96ce04a6be7ce76e44e9",
+      "failures": []
+    },
+    {
+      "checkpoint": "weather-final-ipad-regression",
+      "final": true,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+        "deviceName": "iPad Air 11-inch (M4)",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "test_methods": [
+        "testSettingsWeatherUnitsNativeHeightAndActualEdges",
+        "testSettingsWeatherUnconnectedAutomaticHitRegionAudit",
+        "testWeatherForecastModesAndCitySheetUseOnlyConnectedFixtureData",
+        "testWeatherLateCityResultCannotDismissReopenedEditor"
+      ],
+      "source_digest": "482b48e2ccb9510e4f91d690243e4e98fd3d206f159ebe975b56a08c9fc42711",
+      "source_files": 225,
+      "compiled_files": 55,
+      "archive_sha256": "9aabd56bbb8f5d82dfd88a4490f857329339b7abba9cf4aa7f0b312ecb600687",
+      "all_archive_entries_read_back": 281,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "6a8a245ecf8e007969269cb082ed33f26830585e9238cbb50fb8bc592ed6b6c4",
+      "summary_sha256": "81c50084fdb8a8b35ba3d3578d70b6258992b4e9772408798a37a40feb734507",
+      "failures": []
+    }
+  ],
+  "final_UI_executions": 10,
+  "final_unique_UI_methods": 5,
+  "historical_successful_UI_executions": 11,
+  "historical_failed_UI_executions": 5,
+  "total_executions_across_separate_stands": 26,
+  "final_native_city_edge_edits": 4,
+  "final_units_edge_selection_changes": 6,
+  "final_unfiltered_audit_lists": 2,
+  "final_audit_findings": 0,
+  "baseline": {
+    "date": "2026-10-29",
+    "before_product_change": true,
+    "unchanged_product_files_vs_bebe247": 19,
+    "UI_methods_per_device": 2,
+    "runs": [
+      {
+        "checkpoint": "weather-baseline-phone",
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_digest": "c30694193a7a00c9923a544ae00dd81cfcebdcf10554b476a5558c50f1d46205",
+        "archive_sha256": "631e2893345066ad36dbd618aec51157be1fb705a1d70e1638ea7609947e3b78",
+        "all_zip_entries_read_back": 281,
+        "installed_app_verified": true,
+        "geometry": [
+          {
+            "frame": [
+              32.16,
+              548.6499999999999,
+              337.67999999999995,
+              26.459999999999923
+            ],
+            "hittable": true,
+            "identifier": "weather.city",
+            "label": "",
+            "value": "Optional(Berlin)",
+            "viewport": [
+              12,
+              241,
+              378,
+              378
+            ]
+          },
+          {
+            "frame": [
+              201,
+              464.2299999999998,
+              168.83999999999997,
+              20.160000000000025
+            ],
+            "hittable": true,
+            "identifier": "",
+            "label": "°C / km/h",
+            "value": "Optional()",
+            "viewport": [
+              12,
+              241,
+              378,
+              378
+            ]
+          },
+          {
+            "frame": [
+              32.16,
+              464.2299999999998,
+              168.84,
+              20.160000000000025
+            ],
+            "hittable": true,
+            "identifier": "",
+            "label": "°F / mph",
+            "value": "Optional()",
+            "viewport": [
+              12,
+              241,
+              378,
+              378
+            ]
+          },
+          {
+            "frame": [
+              201,
+              464.2299999999998,
+              168.83999999999997,
+              20.160000000000025
+            ],
+            "hittable": true,
+            "identifier": "",
+            "label": "°C / km/h",
+            "value": "Optional()",
+            "viewport": [
+              12,
+              241,
+              378,
+              378
+            ]
+          }
+        ],
+        "failures": [
+          {
+            "failureText": "XCTAssertGreaterThanOrEqual failed: (\"26.459999999999923\") is less than (\"44.0\")",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges",
+            "testName": "testSettingsWeatherCityNativeHeightAndEditableEdges()"
+          },
+          {
+            "failureText": "XCTAssertGreaterThanOrEqual failed: (\"20.160000000000025\") is less than (\"44.0\")",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 2,
+            "testIdentifierString": "HomeViewUITests/testSettingsWeatherUnitsNativeHeightAndActualEdges()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherUnitsNativeHeightAndActualEdges",
+            "testName": "testSettingsWeatherUnitsNativeHeightAndActualEdges()"
+          }
+        ],
+        "scope": "City method stopped after first top-edge focus/type failure, so no completed baseline bottom-edge attempt; units method completed all three selection changes but failed native minimum heights"
+      },
+      {
+        "checkpoint": "weather-baseline-ipad",
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_digest": "c30694193a7a00c9923a544ae00dd81cfcebdcf10554b476a5558c50f1d46205",
+        "archive_sha256": "631e2893345066ad36dbd618aec51157be1fb705a1d70e1638ea7609947e3b78",
+        "all_zip_entries_read_back": 281,
+        "installed_app_verified": true,
+        "geometry": [
+          {
+            "frame": [
+              54.45333333333333,
+              870.8466666666667,
+              711.0933333333332,
+              55.72000000000003
+            ],
+            "hittable": true,
+            "identifier": "weather.city",
+            "label": "",
+            "value": "Optional(Berlin)",
+            "viewport": [
+              12,
+              177,
+              796,
+              796
+            ]
+          },
+          {
+            "frame": [
+              410,
+              891.41,
+              355.5466666666666,
+              42.453333333333376
+            ],
+            "hittable": true,
+            "identifier": "",
+            "label": "°C / km/h",
+            "value": "Optional()",
+            "viewport": [
+              12,
+              177,
+              796,
+              796
+            ]
+          },
+          {
+            "frame": [
+              54.45333333333333,
+              891.41,
+              355.5466666666667,
+              42.453333333333376
+            ],
+            "hittable": true,
+            "identifier": "",
+            "label": "°F / mph",
+            "value": "Optional()",
+            "viewport": [
+              12,
+              177,
+              796,
+              796
+            ]
+          },
+          {
+            "frame": [
+              410,
+              891.41,
+              355.5466666666666,
+              42.453333333333376
+            ],
+            "hittable": true,
+            "identifier": "",
+            "label": "°C / km/h",
+            "value": "Optional()",
+            "viewport": [
+              12,
+              177,
+              796,
+              796
+            ]
+          }
+        ],
+        "failures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherCityNativeHeightAndEditableEdges",
+            "testName": "testSettingsWeatherCityNativeHeightAndEditableEdges()"
+          },
+          {
+            "failureText": "XCTAssertGreaterThanOrEqual failed: (\"42.453333333333376\") is less than (\"44.0\")",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 2,
+            "testIdentifierString": "HomeViewUITests/testSettingsWeatherUnitsNativeHeightAndActualEdges()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testSettingsWeatherUnitsNativeHeightAndActualEdges",
+            "testName": "testSettingsWeatherUnitsNativeHeightAndActualEdges()"
+          }
+        ],
+        "scope": "City method stopped after first top-edge focus/type failure, so no completed baseline bottom-edge attempt; units method completed all three selection changes but failed native minimum heights"
+      }
+    ]
+  },
+  "test_only_rebuild_product_comparison": {
+    "changed_compiled_product_files": [
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+        "before": {
+          "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+          "kind": "compiled",
+          "bytes": 14740152,
+          "sha256": "4b4c1a8cde273e76ecd45cc5d8fdff1161ba84f1c1aacaf1cb7402c0c44a8328"
+        },
+        "after": {
+          "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+          "kind": "compiled",
+          "bytes": 14740152,
+          "sha256": "f4b76e46c2bea7459a730ac52da4d9340b5ebb44448e7e9fc28659946939df54"
+        }
+      }
+    ],
+    "changed_sources": [
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "product_sources_unchanged": true,
+    "not_byte_identical": true
+  },
+  "historical_core": {
+    "bound_source_files": 88,
+    "unchanged_vs_transition_release": true,
+    "new_core_test_run": false,
+    "historical_core_tests": 397,
+    "historical_checkpoint": "435afd3b75d9b58cc94de760e055bf26bb075ab1"
+  },
+  "final_SDKs_passed": 5,
+  "historical_first_candidate_SDKs_passed": 5,
+  "final_SDK_control": {
+    "files": [
+      {
+        "path": "build_platforms.py",
+        "sha256": "dfb953b62552ccdd6ec5e406bce6ad24a4eec537af3798b2bfd94884c999bc40"
+      },
+      {
+        "path": "seal_platforms.py",
+        "sha256": "2b024191ac595b36edca874728178dff8a5c929569cc02b78cc7c1282c7d6677"
+      }
+    ],
+    "archive_sha256": "6fc3b8ef03ffa5b89ecafac5db799dc861b6221610441367aa0019b154dd7822",
+    "all_entries_read_back": true
+  },
+  "final_decoded_native_PNGs": 30,
+  "final_reviewed_contact_sheets": [
+    {
+      "file": "weather-candidate2-ipad-focus-review-1.jpg",
+      "sha256": "b298d4617b30215b77004106f0abacb8ce4ce652cad694df517b19c7c55a83e7"
+    },
+    {
+      "file": "weather-final-phone-review-1.jpg",
+      "sha256": "0657d10668fc71eab229ec521a90de304bcf10547d4a0949f3283acc84ed7284"
+    },
+    {
+      "file": "weather-final-phone-review-2.jpg",
+      "sha256": "342fb6527fb930a617e5a375262ef60af1ef06875a06da69b8ced1f94ce984cd"
+    },
+    {
+      "file": "weather-final-ipad-regression-review-1.jpg",
+      "sha256": "0940a9fab4a9dcc8c02df83f9f61384f786ae87c505e0c3f55bb3797ee98ab65"
+    }
+  ],
+  "final_native_geometry": [
+    {
+      "name": "weather-settings-native-city-focused-bottom_0_22BB7261-B21C-4F77-88D3-259E65F6ED48.json",
+      "data": {
+        "frame": [
+          76.33999999999995,
+          443.645,
+          667.3200000000002,
+          52.29000000000002
+        ],
+        "hittable": true,
+        "identifier": "weather.city",
+        "label": "",
+        "value": "Optional(BerlinX)",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      },
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "name": "weather-settings-native-city-bottom_0_2FE5213F-F903-4B40-8D12-F24BCC4982F5.json",
+      "data": {
+        "frame": [
+          54.45333333333333,
+          870.8466666666667,
+          711.0933333333332,
+          55.72000000000003
+        ],
+        "hittable": true,
+        "identifier": "weather.city",
+        "label": "",
+        "value": "Optional(Berlin)",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "name": "weather-settings-native-city-focused-top_0_304B6606-0F67-4110-87F2-3A24F86A1AB9.json",
+      "data": {
+        "frame": [
+          76.33999999999995,
+          443.645,
+          667.3200000000002,
+          52.29000000000002
+        ],
+        "hittable": true,
+        "identifier": "weather.city",
+        "label": "",
+        "value": "Optional(BerlinX)",
+        "viewport": [
+          36.5,
+          44,
+          747,
+          747
+        ]
+      },
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "name": "weather-settings-native-city-top_0_395ED88F-335D-4835-90E0-314E3DB54E91.json",
+      "data": {
+        "frame": [
+          54.45333333333333,
+          870.8466666666667,
+          711.0933333333332,
+          55.72000000000003
+        ],
+        "hittable": true,
+        "identifier": "weather.city",
+        "label": "",
+        "value": "Optional(Berlin)",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "name": "weather-settings-native-city-focused-bottom_0_B9748A88-BAB1-4A18-9C1A-C9C9560EDBCC.json",
+      "data": {
+        "frame": [
+          32.16,
+          294.3399999999997,
+          337.67999999999995,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "weather.city",
+        "label": "",
+        "value": "Optional(BerlinX)",
+        "viewport": [
+          12,
+          94,
+          378,
+          378
+        ]
+      },
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "name": "weather-settings-native-city-bottom_0_B9C64DDA-607D-46D8-84B6-792DED307971.json",
+      "data": {
+        "frame": [
+          32.16,
+          531.0099999999998,
+          337.67999999999995,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "weather.city",
+        "label": "",
+        "value": "Optional(Berlin)",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "name": "weather-settings-native-city-focused-top_0_B7E9B12A-CC94-40D9-82F6-EB1B977611AD.json",
+      "data": {
+        "frame": [
+          32.16,
+          294.3399999999997,
+          337.67999999999995,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "weather.city",
+        "label": "",
+        "value": "Optional(BerlinX)",
+        "viewport": [
+          12,
+          94,
+          378,
+          378
+        ]
+      },
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "name": "weather-settings-native-city-top_0_9627333B-6779-426A-A1F4-92DBC64D4DA1.json",
+      "data": {
+        "frame": [
+          32.16,
+          531.0099999999998,
+          337.67999999999995,
+          44.10000000000002
+        ],
+        "hittable": true,
+        "identifier": "weather.city",
+        "label": "",
+        "value": "Optional(Berlin)",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "name": "settings-hit-region-weather-all-findings_0_4FA1AF78-11B0-4842-995E-39E8F0524033.json",
+      "data": [],
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "name": "weather-settings-native-units-2_0_8A000A5C-DC12-4361-9635-CBCE39E3C752.json",
+      "data": {
+        "frame": [
+          201,
+          420.1299999999998,
+          168.83999999999997,
+          44.73000000000002
+        ],
+        "hittable": true,
+        "identifier": "",
+        "label": "°C / km/h",
+        "value": "Optional()",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "name": "weather-settings-native-units-1_0_D20F60D1-1AE4-4B07-ADD3-429CC0C7C532.json",
+      "data": {
+        "frame": [
+          32.16,
+          420.1299999999998,
+          168.84,
+          44.73000000000002
+        ],
+        "hittable": true,
+        "identifier": "",
+        "label": "°F / mph",
+        "value": "Optional()",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "name": "weather-settings-native-units-0_0_933D339D-C8A4-41CB-B9B8-3BAB84E9877F.json",
+      "data": {
+        "frame": [
+          201,
+          420.1299999999998,
+          168.83999999999997,
+          44.73000000000002
+        ],
+        "hittable": true,
+        "identifier": "",
+        "label": "°C / km/h",
+        "value": "Optional()",
+        "viewport": [
+          12,
+          241,
+          378,
+          378
+        ]
+      },
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "name": "settings-hit-region-weather-all-findings_0_62E90772-9FA8-4DDC-84D5-D281E50775C7.json",
+      "data": [],
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "name": "weather-settings-native-units-2_0_C347CA96-91E4-48EE-9A2C-211CADA604B1.json",
+      "data": {
+        "frame": [
+          410,
+          884.7766666666666,
+          355.5466666666666,
+          46.43333333333328
+        ],
+        "hittable": true,
+        "identifier": "",
+        "label": "°C / km/h",
+        "value": "Optional()",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "name": "weather-settings-native-units-1_0_894EDE17-D6C4-450A-B0DF-D53DD72A0B3D.json",
+      "data": {
+        "frame": [
+          54.45333333333333,
+          884.7766666666666,
+          355.5466666666667,
+          46.43333333333328
+        ],
+        "hittable": true,
+        "identifier": "",
+        "label": "°F / mph",
+        "value": "Optional()",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "name": "weather-settings-native-units-0_0_1C74E247-17BF-4A02-8768-5ABA276AE7F4.json",
+      "data": {
+        "frame": [
+          410,
+          884.7766666666666,
+          355.5466666666666,
+          46.43333333333328
+        ],
+        "hittable": true,
+        "identifier": "",
+        "label": "°C / km/h",
+        "value": "Optional()",
+        "viewport": [
+          12,
+          177,
+          796,
+          796
+        ]
+      },
+      "checkpoint": "weather-final-ipad-regression"
+    }
+  ],
+  "final_native_images": [
+    {
+      "file": "weather-candidate2-ipad-focus-attachments/9948FC25-F1EF-4BB2-867E-43117F0DBA0E.png",
+      "name": "weather-settings-city-bottom-edited_0_9093E26C-FEAB-497D-A8CF-4759BCF1F64A.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "ced241cf60cb14681b51acbec0e2bea8e9f7f4647ea7d6b22fb66b727f22db51",
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "file": "weather-candidate2-ipad-focus-attachments/19D6CD80-65E9-4C35-AEE5-365B73E659FB.png",
+      "name": "screen-weather-settings-city-bottom-before_0_8F2AD786-8427-49B7-886A-D3BD89202B8C.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "dfa90e235a0594fc076c34040781f776e67930f32baffb18c401222147c49c74",
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "file": "weather-candidate2-ipad-focus-attachments/D54B5154-D929-45EE-A79E-6A5C8D366EE7.png",
+      "name": "viewport-weather-settings-city-bottom-before_0_0036D000-B5DB-411B-82C5-58B425CBC468.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "028369f8d5412c98724855a6012cf3331b165c48c7ac17cd71f2c2a34e70926d",
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "file": "weather-candidate2-ipad-focus-attachments/F6C553E9-ADC8-4752-B02C-6D8BEB26FADC.png",
+      "name": "weather-settings-city-top-edited_0_50A5634A-F8E0-4FB0-B69C-8623CE78E374.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "ced241cf60cb14681b51acbec0e2bea8e9f7f4647ea7d6b22fb66b727f22db51",
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "file": "weather-candidate2-ipad-focus-attachments/9AF1D154-9981-45C1-BE60-C7E461D6BDE7.png",
+      "name": "screen-weather-settings-city-top-before_0_32ADF052-F533-4A4C-96FB-D92D00EF904F.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "dfa90e235a0594fc076c34040781f776e67930f32baffb18c401222147c49c74",
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "file": "weather-candidate2-ipad-focus-attachments/C413E991-670D-4014-910E-3446E91083B3.png",
+      "name": "viewport-weather-settings-city-top-before_0_2B94F52F-7BA0-499D-92DD-A4552EA0E306.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "028369f8d5412c98724855a6012cf3331b165c48c7ac17cd71f2c2a34e70926d",
+      "checkpoint": "weather-candidate2-ipad-focus"
+    },
+    {
+      "file": "weather-final-phone-attachments/5D1488F4-04FA-428C-86EF-F11E3A8F4BD4.png",
+      "name": "weather-settings-city-bottom-edited_0_618D0B32-2C3A-4A58-8C7F-A414C8A3502C.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "3f66d9e8457beda64573cf6a102e7b9da1d78318c29bb8ba2d00f74beeed7eb3",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/AD3CD79A-2EC4-4CD0-AC17-F17620AC454D.png",
+      "name": "screen-weather-settings-city-bottom-before_0_B6DAE4DB-E855-4123-8D82-C4B0E48472F5.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "51c180444e0f6a1cb27bf986c3538ef1369ac657152b87d593899e10542b1b39",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/BFAE5D31-73FC-437F-8DE6-64B31EEBECC4.png",
+      "name": "viewport-weather-settings-city-bottom-before_0_2447531B-0520-4FE3-9134-48B5C49E2F86.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "334d03693ef81757b58e77db8e5796a46ca37ea7fc7e4c2b66cdc4fc3af48ba6",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/8ADE1C76-99CE-4CC5-95F4-44717B141978.png",
+      "name": "weather-settings-city-top-edited_0_26CE4768-0CEF-4AA5-8BDF-E00F6506CE67.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "1e50edae62197e8a42d005347c0fc4e2ae5f7e0c36b1f1f7bf376152efa5bdae",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/F5B81CA9-D3D9-4882-B1BA-E6B1266E3C6E.png",
+      "name": "screen-weather-settings-city-top-before_0_84A7D9F8-E6A4-422A-B3F7-42B3849C276F.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "d4a7e9514160cc6b411f924acdf852a6d1c3566d7d99cfce8d2b91e2bad3a35f",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/4671A105-CC95-4D74-8141-B030EF22FFD6.png",
+      "name": "viewport-weather-settings-city-top-before_0_FB9B036A-AD76-4D7D-9E82-0AACA2263289.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "334d03693ef81757b58e77db8e5796a46ca37ea7fc7e4c2b66cdc4fc3af48ba6",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/A8675AE8-B7EE-4285-A399-7A1E171E9057.png",
+      "name": "screen-settings-hit-region-weather_0_DE638FEA-94E8-4E7D-AE0B-48192CE49538.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "955d59cb0b0c9e8529c8888cbea69c612cacf23ac4199b43a3bb02cfa8d7a271",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/C976B608-180F-45DF-AD84-83F908BF8285.png",
+      "name": "viewport-settings-hit-region-weather_0_A8BAF03C-3D71-462A-9BC9-B7B087CD4C88.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "334d03693ef81757b58e77db8e5796a46ca37ea7fc7e4c2b66cdc4fc3af48ba6",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/9C49A17A-D536-4A8F-8C74-ED5766EDA53A.png",
+      "name": "screen-weather-settings-units-celsius-selected_0_2F4DCF51-D5AA-4D3A-9CE4-316D0288F27A.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "deedd14a61efcfda2a0f708443b9bbdcade187694ba3aae8fa510b82a44a725b",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/CC66C916-C60F-4A93-AE2C-0E58C524C63E.png",
+      "name": "viewport-weather-settings-units-celsius-selected_0_B316E676-D7E0-4D7F-9D15-5281F928C02F.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "099008c12188538e49e746df0594732a94d728222647c5754a475f360e6cdd04",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/94D1E2C4-8DB8-48D0-8C88-F838E315F450.png",
+      "name": "screen-weather-settings-units-before_0_01946625-9961-45DB-92E7-EAE6330B0C14.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "92d196f5695fbc9feb9b45612ef6e380da9d8a2459db8a97cd5bdaa7c6ce94b7",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/A4738B6E-8E2D-40A2-96E1-72447947CD1F.png",
+      "name": "viewport-weather-settings-units-before_0_296F26CF-F44F-4ED3-9308-115B8D778AE1.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "sha256": "057da0c1fd4c47cba6270cca4b967f3821601d8563820f316d3c61ba00f3aeb7",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/73345585-3E03-4541-85A1-760C5188184F.png",
+      "name": "weather-app-city-changed-celsius_0_BDCD2213-F454-479D-8304-058597D37467.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "4537b1114540a2cba1f4ea2e6f8628088a9902d54f19e52b403cc6c4a7452ccc",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/6A090E63-238C-44ED-8178-BD68785683CB.png",
+      "name": "weather-app-source-hourly-precipitation_0_2C6CAABD-3762-4D82-A819-D90951354DAB.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "25a2f5b0c9e551b61f6049171f28982dd701ef7d4a0170d4eab43030b47c503e",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-phone-attachments/5D7A5BFA-898F-4B81-88C3-B8D8D178D61C.png",
+      "name": "weather-app-late-result-new-editor-preserved_0_129AA80B-0AD6-47FE-87EA-A3D77FB44CBC.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "ccc86081cec24f02994683e05f177d5615d2154e678dd12bd1388575110006b1",
+      "checkpoint": "weather-final-phone"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/3BFF37E2-23FE-4EA0-A6AA-95E99D88EAD3.png",
+      "name": "screen-settings-hit-region-weather_0_43BFF324-081A-46C1-B1D0-985B6A94FDEE.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "dfa90e235a0594fc076c34040781f776e67930f32baffb18c401222147c49c74",
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/AC77ECE3-0F97-417E-9716-BA9D79934667.png",
+      "name": "viewport-settings-hit-region-weather_0_3F685F97-9D8D-472D-92FE-AC9B514B27CA.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "028369f8d5412c98724855a6012cf3331b165c48c7ac17cd71f2c2a34e70926d",
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/EF6F4D6C-4F09-46FA-8767-0EDB39E221D4.png",
+      "name": "screen-weather-settings-units-celsius-selected_0_79AF9D12-C8E2-433C-884F-B6DFEDDE69C8.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "7b431988eaff0734113187715afd2a74046a16b02c2c97ecc1f8f16be3bd7700",
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/6F8AADB3-9C94-4AA1-9166-7D8C3B22483A.png",
+      "name": "viewport-weather-settings-units-celsius-selected_0_F2434349-EC31-45CB-9651-C634B756FC28.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "9eaf2f72f5fd921a80ab30fe08e59d8d198f2696addcb3246a0b6effb3adc0d3",
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/2B085002-B3FA-4ED0-8E54-3E24465536E4.png",
+      "name": "screen-weather-settings-units-before_0_7933FCB8-5B3E-400F-8441-408A3779B2F9.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "b782c47523aac55fef7d6adca490c1ea1fb2ae9c97657c0499aa2cdcef7fc2bc",
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/8007E657-2321-44ED-AD10-E0D49754AD4B.png",
+      "name": "viewport-weather-settings-units-before_0_C7A3AE87-CA58-4158-852D-995C61FEF9D4.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "sha256": "7c911685479ec57b0e21f766701bf2a49d8cb0a7a067c3483dc1a9dc3fbaadd8",
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/B89876D5-7231-4730-B865-4B7CE6DF0040.png",
+      "name": "weather-app-city-changed-celsius_0_4A107A59-C6E5-4264-903C-9E7E6A0ED686.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "8b9e78782b5d1bda2f80f77bd8fc55516f976ff72c5833d09b44a6abccbf98aa",
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/D4DDCAF3-B39B-43D0-9A9A-15D177B05565.png",
+      "name": "weather-app-source-hourly-precipitation_0_41A8558E-E853-4829-94FF-CCFEDC705B24.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "91036ffc388c5cac4d6a0a7d522b3630577cec78a3c5828a243d498c9229cc3f",
+      "checkpoint": "weather-final-ipad-regression"
+    },
+    {
+      "file": "weather-final-ipad-regression-attachments/5F90EC5A-B209-4A90-92BB-402E1080E206.png",
+      "name": "weather-app-late-result-new-editor-preserved_0_2764E9B9-A2BB-49CF-8F14-49457844E1C3.png",
+      "size": [
+        1640,
+        2360
+      ],
+      "sha256": "636338cb5b89625535d785b6edd43ee93ec9ad64b5ed1616295656c351b2ccfa",
+      "checkpoint": "weather-final-ipad-regression"
+    }
+  ],
+  "published_images": [
+    {
+      "file": "screenshots/weather-settings-hit-regions/phone-before-city.png",
+      "checkpoint": "weather-baseline-phone",
+      "name": "before-city",
+      "sha256": "5eaa94bd4b9274a0046c1a8fa1c866932e0d9eb703599960c3b7657141cb7d96",
+      "bytes": 84431
+    },
+    {
+      "file": "screenshots/weather-settings-hit-regions/phone-before-units.png",
+      "checkpoint": "weather-baseline-phone",
+      "name": "before-units",
+      "sha256": "d800aa7acf2f2db7f9aec25c8b203f800d47a61ec9856dc02a39ea82082c6cfd",
+      "bytes": 100984
+    },
+    {
+      "file": "screenshots/weather-settings-hit-regions/phone-after-city.png",
+      "checkpoint": "weather-final-phone",
+      "name": "after-city",
+      "sha256": "3f66d9e8457beda64573cf6a102e7b9da1d78318c29bb8ba2d00f74beeed7eb3",
+      "bytes": 211887
+    },
+    {
+      "file": "screenshots/weather-settings-hit-regions/phone-after-units.png",
+      "checkpoint": "weather-final-phone",
+      "name": "after-units",
+      "sha256": "099008c12188538e49e746df0594732a94d728222647c5754a475f360e6cdd04",
+      "bytes": 97890
+    },
+    {
+      "file": "screenshots/weather-settings-hit-regions/ipad-before-city.png",
+      "checkpoint": "weather-baseline-ipad",
+      "name": "before-city",
+      "sha256": "f3b8e0284ab292eb5eedfc8eff8fa1ba4c14ab7708abb762ca642e3695c41772",
+      "bytes": 243272
+    },
+    {
+      "file": "screenshots/weather-settings-hit-regions/ipad-before-units.png",
+      "checkpoint": "weather-baseline-ipad",
+      "name": "before-units",
+      "sha256": "da343a314bfed3e194ce563486d5a5e6af4242da5bc89435827300a927ab47c1",
+      "bytes": 219401
+    },
+    {
+      "file": "screenshots/weather-settings-hit-regions/ipad-after-city.png",
+      "checkpoint": "weather-candidate2-ipad-focus",
+      "name": "after-city",
+      "sha256": "ced241cf60cb14681b51acbec0e2bea8e9f7f4647ea7d6b22fb66b727f22db51",
+      "bytes": 305474
+    },
+    {
+      "file": "screenshots/weather-settings-hit-regions/ipad-after-units.png",
+      "checkpoint": "weather-final-ipad-regression",
+      "name": "after-units",
+      "sha256": "9eaf2f72f5fd921a80ab30fe08e59d8d198f2696addcb3246a0b6effb3adc0d3",
+      "bytes": 211665
+    }
+  ],
+  "known_control_failures": [
+    "A postprocessing probe used Python without Pillow; no UI test or product result involved; dedicated existing image venv used afterward",
+    "An attempted 19-file byte-identity assertion on the stronger-test rebuild failed: only Assets.car changed, while 18 product files including code and all resource source bytes were unchanged. No 19/19 identity is claimed for that rebuild."
+  ],
+  "limits": [
+    "No new Core run; historical397 tests remain historical",
+    "No raw-key transport, VoiceOver, Voice Control, Switch Control, AssistiveTouch, Dynamic Type, contrast/zoom or physical-device acceptance",
+    "Unscaled weather city sheet and weather app controls are not newly minimum-hit-size accepted by this Settings-only change",
+    "No original pixel equality claimed; no Home/account, real permission prompt, playback, alarm, camera/microphone, call or message effects"
+  ]
+}

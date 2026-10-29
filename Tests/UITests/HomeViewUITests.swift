@@ -726,6 +726,53 @@ extension HomeViewUITests {
 }
 
 extension HomeViewUITests {
+  private func weatherSettingsGeometry(_ element:XCUIElement,_ state:String) {
+    let f=element.frame,v=app.otherElements["reference.viewport"].frame
+    let data:[String:Any] = ["identifier":element.identifier,"label":element.label,
+      "frame":[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)],
+      "viewport":[Double(v.minX),Double(v.minY),Double(v.width),Double(v.height)],
+      "hittable":element.isHittable,"value":String(describing:element.value)]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="weather-settings-native-"+state;a.lifetime = .keepAlways;add(a)
+    XCTAssertTrue(v.contains(f));XCTAssertTrue(element.isHittable)
+    XCTAssertGreaterThanOrEqual(f.width,44);XCTAssertGreaterThanOrEqual(f.height,44)
+  }
+  func testSettingsWeatherUnitsNativeHeightAndActualEdges() {
+    continueAfterFailure=true
+    launchUnconnectedSettingsAudit()
+    let units=app.segmentedControls["weather.units"]
+    scrollPhotoControlFullyIntoView(units)
+    viewportShot("weather-settings-units-before")
+    for (index,title) in ["°C / km/h","°F / mph","°C / km/h"].enumerated() {
+      let choice=units.buttons[title]
+      weatherSettingsGeometry(choice,"units-"+String(index))
+      let f=choice.frame
+      app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:f.midX,dy:index==1 ? f.maxY-2:f.minY+2)).tap()
+      XCTAssertTrue(choice.isSelected,"Actual segment edge did not select "+title)
+    }
+    viewportShot("weather-settings-units-celsius-selected")
+  }
+  func testSettingsWeatherCityNativeHeightAndEditableEdges() {
+    continueAfterFailure=true
+    for bottom in [false,true] {
+      launchUnconnectedSettingsAudit()
+      let city=app.textFields["weather.city"]
+      scrollPhotoControlFullyIntoView(city)
+      weatherSettingsGeometry(city,bottom ? "city-bottom":"city-top")
+      viewportShot(bottom ? "weather-settings-city-bottom-before":"weather-settings-city-top-before")
+      let f=city.frame
+      app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:f.midX,dy:bottom ? f.maxY-2:f.minY+2)).tap()
+      XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout:5))
+      city.typeText("X")
+      XCTAssertTrue((city.value as? String ?? "").hasSuffix("X"),"Native city entry was not edited")
+      weatherSettingsGeometry(city,bottom ? "city-focused-bottom":"city-focused-top")
+      let editingSafeArea=app.scrollViews.firstMatch.frame.intersection(
+        app.otherElements["reference.viewport"].frame).insetBy(dx:0,dy:40)
+      XCTAssertTrue(editingSafeArea.contains(city.frame),"Focused city field must remain fully inside the same safe scroll area used before editing")
+      shot(bottom ? "weather-settings-city-bottom-edited":"weather-settings-city-top-edited")
+      app.terminate()
+    }
+  }
   private func launchUnconnectedSettingsAudit() {
     launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
     XCTAssertTrue(app.buttons["settings.reset"].waitForExistence(timeout:5))

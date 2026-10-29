@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct ConnectionControls: View {
+  var revealWeatherCity: () -> Void = {}
   @Environment(AppModel.self) private var model
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  @FocusState private var weatherCityFocused: Bool
+  private var minimumHitSide: CGFloat { (44 / max(0.01, canvasScale)).rounded(.up) }
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text("Connected services").font(.system(size: 24, weight: .semibold))
@@ -62,13 +66,20 @@ struct ConnectionControls: View {
               "City",
               text: Binding(get: { model.connections.city }, set: { model.connections.city = $0 })
             )
-            .textFieldStyle(.plain).padding(10).background(
+            .textFieldStyle(.plain).focused($weatherCityFocused)
+              .frame(minHeight:max(0,minimumHitSide-20)).padding(10).background(
               .gray.opacity(0.08), in: RoundedRectangle(cornerRadius: 10)
-            ).accessibilityIdentifier("weather.city")
-            Picker("Weather units", selection: Binding(get: { model.connections.weatherUnits },
-              set: { model.connections.weatherUnits = $0 })) {
-              ForEach(WeatherUnits.allCases, id: \.self) { units in Text(units.rawValue).tag(units) }
-            }.pickerStyle(.segmented).accessibilityIdentifier("weather.units")
+            ).contentShape(Rectangle()).onTapGesture { weatherCityFocused=true }
+              .accessibilityIdentifier("weather.city")
+              .id("settings.weather.city")
+              .onChange(of:weatherCityFocused) { _,focused in
+                if focused { revealWeatherCity() }
+              }
+              .onChange(of:canvasScale) { _,_ in
+                if weatherCityFocused { revealWeatherCity() }
+              }
+            WeatherSettingsUnitsPicker(selection:Binding(get:{model.connections.weatherUnits},
+              set:{model.connections.weatherUnits=$0}),minimumHeight:minimumHitSide)
             Link("Weather data by Open-Meteo", destination: URL(string: "https://open-meteo.com/")!)
               .font(.system(size: 15))
             if model.connections.requested.contains(.weather) {
@@ -85,6 +96,51 @@ struct ConnectionControls: View {
     }
   }
 }
+// Only the scaled settings caller opts in. Unscaled weather sheets retain
+// their existing system Picker and platform-specific presentation.
+private struct WeatherSettingsUnitsPicker: View {
+  @Binding var selection: WeatherUnits
+  var minimumHeight: CGFloat
+  var body: some View {
+    #if os(iOS) || os(visionOS)
+      NativeWeatherUnitsPicker(selection:$selection,minimumHeight:minimumHeight)
+        .frame(height:minimumHeight)
+    #else
+      Picker("Weather units",selection:$selection) {
+        ForEach(WeatherUnits.allCases,id:\.self) { Text($0.rawValue).tag($0) }
+      }.pickerStyle(.segmented).accessibilityIdentifier("weather.units")
+    #endif
+  }
+}
+#if os(iOS) || os(visionOS)
+private struct NativeWeatherUnitsPicker: UIViewRepresentable {
+  @Binding var selection: WeatherUnits
+  var minimumHeight: CGFloat
+  func makeCoordinator() -> Coordinator { Coordinator(selection:$selection) }
+  func makeUIView(context:Context) -> UISegmentedControl {
+    let control=UISegmentedControl(items:WeatherUnits.allCases.map(\.rawValue))
+    control.accessibilityIdentifier="weather.units"
+    control.accessibilityLabel="Weather units"
+    control.addTarget(context.coordinator,action:#selector(Coordinator.changed(_:)),for:.valueChanged)
+    return control
+  }
+  func updateUIView(_ control:UISegmentedControl,context:Context) {
+    context.coordinator.selection=$selection
+    control.selectedSegmentIndex=WeatherUnits.allCases.firstIndex(of:selection) ?? 0
+  }
+  func sizeThatFits(_ proposal:ProposedViewSize,uiView:UISegmentedControl,context:Context) -> CGSize? {
+    CGSize(width:proposal.width ?? uiView.intrinsicContentSize.width,height:minimumHeight)
+  }
+  @MainActor final class Coordinator: NSObject {
+    var selection: Binding<WeatherUnits>
+    init(selection:Binding<WeatherUnits>) {self.selection=selection}
+    @objc func changed(_ control:UISegmentedControl) {
+      guard WeatherUnits.allCases.indices.contains(control.selectedSegmentIndex) else {return}
+      selection.wrappedValue=WeatherUnits.allCases[control.selectedSegmentIndex]
+    }
+  }
+}
+#endif
 struct SharedPanelControls: View {
   @Environment(AppModel.self) private var model
   var body: some View {

@@ -105,6 +105,7 @@ struct SettingsView: View {
   var body: some View {
     VStack(spacing: 12) {
       AppHeader(title: "Settings", closeSize: max(48, minimumHitSide))
+      ScrollViewReader { reader in
       ScrollView {
         VStack(alignment: .leading, spacing: 22) {
           if let note = model.storeRecoveryNote {
@@ -169,7 +170,9 @@ struct SettingsView: View {
           Text(
             "Public system APIs can supply our own UI with calendars, reminders, photos, media and alarms. The original Clock/Home/FaceTime interfaces are not embeddable. Personal Siri, Messages history, HomePod Intercom and Find My are simulations here."
           ).font(.system(size: 18)).foregroundStyle(.gray)
-          ConnectionControls()
+          ConnectionControls(revealWeatherCity: {
+            reader.scrollTo("settings.weather.city",anchor:.center)
+          })
           NativeAlarmControls()
           NativePhotoControls()
           Divider()
@@ -182,6 +185,7 @@ struct SettingsView: View {
           ).font(.system(size: 15)).foregroundStyle(.gray)
         }.padding(32)
           .buttonStyle(SettingsHitRegionStyle(minimumSide: minimumHitSide))
+      }
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
       .sheet(isPresented:$showingPowerCapabilities) { PowerCapabilitiesView() }

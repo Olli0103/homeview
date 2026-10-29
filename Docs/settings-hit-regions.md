@@ -1,5 +1,7 @@
 # Einstellungen: tatsächliche Touchflächen und Werte
 
+Separater Folgestand vom 29. Oktober: [Wetterfeld und Einheitenwahl einschließlich fokussierter Sichtbarkeit](weather-settings-hit-regions.md). Die folgenden Ergebnisse und damaligen Grenzen bleiben historisch.
+
 20. Oktober 2026 · begrenzter Teilfix von [#73](https://github.com/Olli0103/homeview/issues/73). Das Gesamtissue bleibt offen.
 
 ## Reproduzierter Befund

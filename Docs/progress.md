@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Wetter-Einstellungen: native Trefferflächen und fokussierte Sichtbarkeit · 29. Oktober 2026
+
+[Stadtfeld und Einheitenwahl korrigiert](weather-settings-hit-regions.md): zehn finale UI-Ausführungen, fünf SDKs, vier echte Rand-Eingaben und zwei leere ungefilterte Auditlisten. Zusätzliche iPad-Abschneidung nach Tastaturöffnung vor Veröffentlichung gefunden und korrigiert. Frühere elf erfolgreiche/fünf fehlgeschlagene Ausführungen separat; kein neuer Core-Lauf. #73 bleibt für übrige Hilfsmittel-/Original-/Hardwarekriterien offen; **40/82 geschlossen, 42 offen**.
+
 ## Fade: offene Zeitabbildung eingegrenzt · 29. Oktober 2026
 
 [Zwei eigene Uhrposen und gezielte Nachsichtung von sieben Filmzeitpunkten](fade-time-mapping-review.md) zeigen die verbleibende Ausblendfenster-Lücke, liefern aber keine Originalperiode. Sekundenbindung verworfen, unveränderte Produktbytes; keine neue Test-/SDK-Abnahme. #18 bleibt offen. Weiter mit Wetter-Bedienflächen.
