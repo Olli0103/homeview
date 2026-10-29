@@ -766,7 +766,7 @@
     },
     {
       "path": "Sources/App/HomeScreens.swift",
-      "sha256": "68a296f4f5d9d6ef1039420cf71e380f5a62c2969d858e21d110628fc69c11bb"
+      "sha256": "177296b7f4c15ba8cd70a959d5e4cd4990697196cce261b77db4bd9893abadd7"
     },
     {
       "path": "Sources/App/Faces.swift",
@@ -830,5 +830,21 @@
     "reason": "Add TV-only Next photo control; runtime glyph/artwork definitions and all58 resource bytes unchanged. This refresh is not a historical-rights verdict.",
     "native_focus_row_added": true,
     "native_focused_caption_clearance_adjusted": true
+  },
+  "personal_editor_provenance_source_refresh": {
+    "date": "2026-10-29",
+    "source": "Sources/App/HomeScreens.swift",
+    "previous_sha256": "68a296f4f5d9d6ef1039420cf71e380f5a62c2969d858e21d110628fc69c11bb",
+    "current_sha256": "177296b7f4c15ba8cd70a959d5e4cd4990697196cce261b77db4bd9893abadd7",
+    "previous_source_commit": "eb81e22",
+    "published_source_change_commits": [
+      "bc8d419",
+      "3aa94a6"
+    ],
+    "already_stale_in_published_478f536": true,
+    "only_PersonalHomeEditor_block_changed": true,
+    "unchanged_DemoAlbumCover_sha256": "dbe90bc39145bfed61196fc08c0f855e456594a3965e8c3ab14efe5991e2158c",
+    "all_resource_and_attribution_declarations_unchanged": true,
+    "reason": "Refresh stale whole-source binding after already-published editor Done hit area and local semantic contrast changes. Procedural album artwork, resource bytes and rights declarations are unchanged; not a new historical-rights verdict."
   }
 }

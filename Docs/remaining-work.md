@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Timer-Systemschrift und Accessibility-Anordnung korrigiert](timer-dynamic-type.md): drei Rollen wachsen auf iPhone/iPad, echte Auswahl/Löschen erhalten pausierte Peer-Werte. Vier normale Ansichten exakt pixelgleich;20 akzeptierte UI-Ausführungen über zwei Testpins bei bytegleicher App/fünf SDKs. Vorherige Eingabe- und Zeitfensterfehler erhalten; #73 weiter offen.
+
 - [TV-/Vision-Settings ohne Aktivierung inventarisiert](os-speech-settings-inventory-20261029.md): fünf erfolgreiche OS-Oberflächenfälle, zwei frühere Eingabeversuche getrennt erhalten. Vision Live Speech sichtbar Off; bekannte positive Such-/Menükontrollen fehlen ebenfalls, daher keine negative RTT-/TV-OS-Behauptung.165 Produktinputs unverändert; #74 offen, weitere App-Arbeit läuft.
 
 - [Profil-Editor-Kontrast korrigiert](personal-editor-contrast.md):16 eigene Textmessungen jetzt etwa6–18:1 statt selbst maximal <1,31:1. Acht aktuelle UI-Ausführungen/fünf SDKs; Geometrie, Konfiguration und Rückkehrpixel unverändert. Nur lokales Editorschema, #73 weiter offen.

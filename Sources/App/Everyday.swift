@@ -123,6 +123,11 @@ struct CalendarView: View {
 }
 struct TimerView: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.dynamicTypeSize) private var textSize
+  @Environment(\.nativeCanvasScale) private var canvasScale
+  @ScaledMetric(relativeTo:.headline) private var titleSize:CGFloat=30
+  @ScaledMetric(relativeTo:.caption) private var statusSize:CGFloat=14
+  @ScaledMetric(relativeTo:.body) private var choiceSize:CGFloat=18
   @State private var minutes = 15
   @State private var controlsVisible = !ProcessInfo.processInfo.arguments.contains(
     "--reference-resting")
@@ -142,12 +147,15 @@ struct TimerView: View {
       Color.black
       if let t = selected {
         TimerTicks(fraction: max(0, min(1, t.remaining(at: model.now) / t.duration)))
+        if textSize.isAccessibilitySize {
+          accessibleTimer(t)
+        } else {
         VStack(spacing: -10) {
           Text(t.display(at: model.now)).font(.system(size: 112, weight: .medium, design: .rounded))
             .monospacedDigit().lineLimit(1).minimumScaleFactor(0.5)
             .accessibilityIdentifier("timer.countdown")
           Text(t.remaining(at: model.now) == 0 ? "DONE" : t.title.uppercased()).font(
-            .system(size: 30, weight: .semibold)
+            .system(size: titleSize, weight: .semibold)
           ).lineLimit(1).minimumScaleFactor(0.5).foregroundStyle(Color.timerAccent)
             .accessibilityIdentifier("timer.title")
         }.foregroundStyle(.white).frame(maxWidth:.infinity).padding(.horizontal,94).offset(y: -6)
@@ -166,7 +174,7 @@ struct TimerView: View {
             Spacer()
             Text(
               model.data.nativeTimerIDs.contains(t.id) ? "System alert enabled" : "Foreground timer"
-            ).font(.system(size: 14)).foregroundStyle(.gray).accessibilityIdentifier(
+            ).font(.system(size: statusSize)).foregroundStyle(.gray).accessibilityIdentifier(
               "timer.systemStatus")
             HStack(spacing: 30) {
               RoundButton(
@@ -194,7 +202,7 @@ struct TimerView: View {
                     Button {
                       model.selectedTimer = timer.id
                     } label: {
-                      Text(timer.display(at: model.now)).font(.system(size: 18)).foregroundStyle(.white).padding(10)
+                      Text(timer.display(at: model.now)).font(.system(size: choiceSize)).foregroundStyle(.white).padding(10)
                         .background(.white.opacity(timer.id == t.id ? 0.25 : 0.1), in: Capsule())
                     }
                     .accessibilityIdentifier("timer.select."+timer.id.uuidString)
@@ -202,7 +210,7 @@ struct TimerView: View {
                     .accessibilityValue(timer.id == t.id ? "Selected":"Not selected")
                   }
                 }.padding(.horizontal, 40)
-              }.frame(height:44).padding(.bottom,10)
+              }.frame(height:choiceHeight).padding(.bottom,10)
                 .accessibilityElement(children:.contain)
                 .accessibilityIdentifier("timer.choices")
                 .accessibilityLabel("Timer choices")
@@ -218,6 +226,7 @@ struct TimerView: View {
             .accessibilityHint("Shows pause, resume and delete controls.")
             .accessibilityIdentifier("timer.revealControls")
         }
+        }
       } else {
         timerSetup
       }
@@ -230,6 +239,64 @@ struct TimerView: View {
           controlsVisible = false
         }
       }
+  }
+  private var choiceHeight:CGFloat { max(44,ceil(choiceSize*1.3+20)) }
+  private var accessibleControlSize:CGFloat { max(62,ceil(44/max(canvasScale,0.01))) }
+  private func accessibleTimer(_ t:Countdown) -> some View {
+    // Large text gets its own scrollable reading order, not a compressed dial.
+    // Keep explicit actions available even when the normal dial is resting.
+    ScrollView {
+      VStack(spacing:24) {
+        HStack {
+          RoundButton(symbol:"xmark",color:.white.opacity(0.14),foreground:.white,
+            size:accessibleControlSize,label:"Close") { model.route = .personal }
+          Spacer()
+          RoundButton(symbol:"plus",color:.white.opacity(0.14),foreground:.white,
+            size:accessibleControlSize,label:"Add another timer") {
+              model.addTimer(seconds:Double(minutes*60),title:"\(minutes) min")
+            }
+        }.padding(.horizontal,32).padding(.top,32)
+        VStack(spacing:8) {
+          Text(t.display(at:model.now)).font(.system(size:112,weight:.medium,design:.rounded))
+            .monospacedDigit().lineLimit(1).minimumScaleFactor(0.5)
+            .accessibilityIdentifier("timer.countdown")
+          Text(t.remaining(at:model.now)==0 ? "DONE":t.title.uppercased())
+            .font(.system(size:titleSize,weight:.semibold)).foregroundStyle(Color.timerAccent)
+            .multilineTextAlignment(.center).fixedSize(horizontal:false,vertical:true)
+            .accessibilityIdentifier("timer.title")
+        }.padding(.horizontal,32)
+        Text(model.data.nativeTimerIDs.contains(t.id) ? "System alert enabled":"Foreground timer")
+          .font(.system(size:statusSize)).foregroundStyle(.gray)
+          .multilineTextAlignment(.center).padding(.horizontal,32)
+          .accessibilityIdentifier("timer.systemStatus")
+        HStack(spacing:30) {
+          RoundButton(symbol:t.deadline==nil ? "play.fill":"pause.fill",
+            color:.timerAccent.opacity(0.22),foreground:.timerAccent,size:accessibleControlSize,
+            label:t.deadline==nil ? "Resume timer":"Pause timer") { model.toggleTimer(t.id) }
+            .disabled(t.remaining(at:model.now)==0).accessibilityIdentifier("timer.pause")
+          RoundButton(symbol:"trash",color:.white.opacity(0.14),foreground:.white,
+            size:accessibleControlSize,label:"Delete timer") { model.removeTimer(t.id) }
+            .accessibilityIdentifier("timer.delete")
+        }
+        if model.data.timers.count>1 {
+          ScrollView(.horizontal) {
+            HStack {
+              ForEach(model.data.timers) { timer in
+                Button { model.selectedTimer=timer.id } label: {
+                  Text(timer.display(at:model.now)).font(.system(size:choiceSize)).padding(10)
+                    .background(.white.opacity(timer.id==t.id ? 0.25:0.1),in:Capsule())
+                }.accessibilityIdentifier("timer.select."+timer.id.uuidString)
+                  .accessibilityLabel(timer.title+" timer, "+timer.display(at:model.now))
+                  .accessibilityValue(timer.id==t.id ? "Selected":"Not selected")
+              }
+            }.padding(.horizontal,40)
+          }.frame(height:choiceHeight).accessibilityElement(children:.contain)
+            .accessibilityIdentifier("timer.choices").accessibilityLabel("Timer choices")
+            .accessibilityValue("\(model.data.timers.count) timers")
+        }
+      }.frame(maxWidth:.infinity).padding(.bottom,64)
+    }.background(.black).foregroundStyle(.white)
+      .accessibilityIdentifier("timer.accessible.content")
   }
   private var timerSetup: some View {
     VStack(spacing: 20) {

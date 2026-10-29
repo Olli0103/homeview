@@ -3,6 +3,83 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  private func revealAccessibleTimerElement(_ element:XCUIElement) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let scroll=app.scrollViews["timer.accessible.content"]
+    guard scroll.exists else {return}
+    var poses:[[String:Any]]=[]
+    defer {
+      let data=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:poses,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      data.name="timer-accessible-scroll-"+element.identifier;data.lifetime = .keepAlways;add(data)
+      shot("timer-accessible-reached-"+element.identifier)
+    }
+    for step in 0..<12 {
+      let safe=scroll.frame.intersection(app.otherElements["reference.viewport"].frame).insetBy(dx:16,dy:16)
+      let f=element.frame
+      func box(_ r:CGRect)->[Double] {[r.minX,r.minY,r.width,r.height]}
+      poses.append(["step":step,"target":box(f),"scroll":box(scroll.frame),"safe":box(safe),"AX_hittable":element.isHittable])
+      // Text need not be an AX hit target. Buttons are verified by their
+      // enabled state, exact visible bounds and actual selection/delete result.
+      if axContains(safe,f) {return}
+      if f.minY<safe.minY {scroll.swipeDown(velocity:.slow)} else {scroll.swipeUp(velocity:.slow)}
+    }
+    XCTFail("Timer element never became fully visible: \(element.identifier) \(element.frame)")
+  }
+  private func verifyAccessibleTimerChoice(_ number:Int,title:String,value:String) {
+    XCTAssertEqual(app.staticTexts["timer.title"].label,title)
+    XCTAssertEqual(app.staticTexts["timer.countdown"].label,value)
+    XCTAssertEqual(timerChoice(number).value as? String,"Selected")
+    let choices=app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH %@","timer.select."))
+    XCTAssertEqual((0..<choices.count).filter {choices.element(boundBy:$0).value as? String == "Selected"}.count,1)
+  }
+  func testTimerSystemTextSizeKeepsPausedValueAndDeleteAction() {
+    launch(["--reference-timer"])
+    let title=app.staticTexts["timer.title"],status=app.staticTexts["timer.systemStatus"],countdown=app.staticTexts["timer.countdown"]
+    XCTAssertTrue(countdown.waitForExistence(timeout:5))
+    XCTAssertEqual(countdown.label,"10:56");XCTAssertEqual(title.label,"15 MIN")
+    XCTAssertEqual(status.label,"Foreground timer");XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    let viewport=app.otherElements["reference.viewport"]
+    revealAccessibleTimerElement(countdown);revealAccessibleTimerElement(title)
+    XCTAssertTrue(axContains(viewport.frame,title.frame));viewportShot("system-text-size-timer-single-title")
+    revealAccessibleTimerElement(status);XCTAssertTrue(axContains(viewport.frame,status.frame))
+    systemTextSizeGeometry("timer-single",["title":title,"status":status,"countdown":countdown,
+      "pause":app.buttons["timer.pause"],"delete":app.buttons["timer.delete"],"viewport":viewport])
+    viewportShot("system-text-size-timer-single")
+    revealAccessibleTimerElement(app.buttons["timer.pause"])
+    revealAccessibleTimerElement(app.buttons["timer.delete"]);tap("timer.delete")
+    XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+    XCTAssertFalse(countdown.exists)
+  }
+  func testTimerChoicesSystemTextSizeKeepsSelectionAndPeerValues() {
+    launch(["--multiple-timers-fixture"])
+    let choices=app.scrollViews["timer.choices"],tea=timerChoice(101),countdown=app.staticTexts["timer.countdown"]
+    XCTAssertTrue(choices.waitForExistence(timeout:5))
+    XCTAssertEqual(countdown.label,"10:00");XCTAssertEqual(app.staticTexts["timer.title"].label,"BREAD")
+    XCTAssertEqual(tea.label,"Tea timer, 03:00");XCTAssertEqual(tea.value as? String,"Not selected")
+    revealAccessibleTimerElement(tea)
+    systemTextSizeGeometry("timer-choices",["choice":tea,"choices":choices,"title":app.staticTexts["timer.title"],
+      "status":app.staticTexts["timer.systemStatus"],"countdown":countdown,"viewport":app.otherElements["reference.viewport"]])
+    viewportShot("system-text-size-timer-choices")
+    XCTAssertTrue(axContains(choices.frame,tea.frame),"choice=\(tea.frame), row=\(choices.frame)")
+    XCTAssertTrue(tea.isEnabled)
+    if app.scrollViews["timer.accessible.content"].exists {
+      // This nested scroll's visible, enabled button can report false AX
+      // hittability. Deliver real pointer input, then require exact read-back.
+      let f=tea.frame
+      app.coordinate(withNormalizedOffset:.zero)
+        .withOffset(CGVector(dx:f.midX-app.frame.minX,dy:f.midY-app.frame.minY)).tap()
+    } else {tea.tap()}
+    verifyAccessibleTimerChoice(101,title:"TEA",value:"03:00")
+    revealAccessibleTimerElement(app.staticTexts["timer.title"])
+    revealAccessibleTimerElement(app.buttons["timer.delete"]);tap("timer.delete")
+    XCTAssertFalse(timerChoice(101).exists)
+    verifyAccessibleTimerChoice(103,title:"BREAD",value:"10:00")
+    revealAccessibleTimerElement(countdown)
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+  }
+}
+
+extension HomeViewUITests {
   private func personalEditorContrastCapture(_ state:String,_ elements:[String:XCUIElement]) {
     func box(_ f:CGRect)->[Double] {[Double(f.minX),Double(f.minY),Double(f.width),Double(f.height)]}
     let before=elements.mapValues {box($0.frame)},began=ProcessInfo.processInfo.systemUptime
@@ -5109,18 +5186,41 @@ extension HomeViewUITests {
     let frame=countdown.frame
     let timeTouch=app.coordinate(withNormalizedOffset:.zero).withOffset(
       CGVector(dx:frame.midX-app.frame.minX,dy:frame.midY-app.frame.minY))
+    var timing:[String:Double]=[:]
+    defer {
+      let report=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:timing,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      report.name="timer-idle-monotonic-touch-windows";report.lifetime = .keepAlways;add(report)
+    }
+    let firstSent=ProcessInfo.processInfo.systemUptime
+    timing["first_sent"]=firstSent
     timeTouch.tap()
+    let firstReturned=ProcessInfo.processInfo.systemUptime
+    timing["first_returned"]=firstReturned
     XCTAssertTrue(pause.waitForExistence(timeout:3))
     XCTAssertEqual(pause.label,"Resume timer")
-    Thread.sleep(forTimeInterval:2.8)
+    // AX polling also consumes the real four-second visibility window.
+    // Anchor the second touch to dispatch time, not to polling completion.
+    Thread.sleep(forTimeInterval:max(0,firstSent+2.8-ProcessInfo.processInfo.systemUptime))
+    XCTAssertLessThan(ProcessInfo.processInfo.systemUptime-firstSent,3.8,"Test input exceeded its first reveal window")
     XCTAssertTrue(pause.exists)
+    let secondSent=ProcessInfo.processInfo.systemUptime
+    timing["second_sent"]=secondSent
+    XCTAssertLessThan(secondSent-firstSent,3.8,"AX query consumed the second-touch budget")
     timeTouch.tap()
-    Thread.sleep(forTimeInterval:2.3)
+    let secondReturned=ProcessInfo.processInfo.systemUptime
+    timing["second_returned"]=secondReturned
+    let checkAt=max(secondReturned+2.3,firstReturned+5.2)
+    XCTAssertLessThan(checkAt-secondSent,3.8,"Test input left no valid reset observation window")
+    Thread.sleep(forTimeInterval:max(0,checkAt-ProcessInfo.processInfo.systemUptime))
+    let checked=ProcessInfo.processInfo.systemUptime
+    timing["checked"]=checked
+    XCTAssertGreaterThan(checked-firstReturned,5)
+    XCTAssertLessThan(checked-secondSent,3.8)
     // More than five seconds after the first reveal, but fewer than four since
     // the second real touch: a mere one-shot show timer would already have hidden.
     XCTAssertTrue(pause.exists)
     XCTAssertEqual(countdown.label,"10:56")
-    viewportShot("timer-idle-touch-reset-visible")
+    shot("timer-idle-touch-reset-visible")
     expectation(for:NSPredicate(format:"exists == false"),evaluatedWith:pause)
     waitForExpectations(timeout:8)
     XCTAssertEqual(countdown.label,"10:56")
