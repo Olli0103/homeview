@@ -2,6 +2,8 @@
 
 20. Oktober 2026 · Teilimplementierung von [#74](https://github.com/Olli0103/homeview/issues/74). **Keine Siri-/OS-Shortcut- oder Geräteauthentifizierungs-Abnahme.**
 
+Historischer 20.-Oktober-Stand. [Am 29. Oktober tatsächliche Entdeckung und Kalt-/Warm-Prozessaufrufe aus Apples Kurzbefehle-App auf iPad/iPhone bestanden](assistant-os-shortcut.md). Keine Siri-, gesperrte Geräte-, Mac-/Vision- oder physische Authentifizierungsabnahme dadurch.
+
 ## Begrenzter Einstieg
 
 `OpenHomeViewAssistantIntent` deklariert einen parameterlosen App Intent für iOS/iPadOS, macOS und visionOS. Der Provider bietet **Open Assistant** mit der Phrase **Open ${applicationName} assistant** an. Die Aktion öffnet ausschließlich das Eingabefeld der eigenen HomeView-Oberfläche. Keine Aufnahme, kein Senden, kein Antwort-Vorlesen und kein Entsperren persönlicher Inhalte werden angestoßen. tvOS und Watch stellen diesen Einstieg nicht bereit.

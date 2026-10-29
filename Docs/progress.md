@@ -8,6 +8,8 @@ Die Weltuhr zeichnet Tageslicht über lokale Mitternacht und an Tagen mit nur ei
 
 Der [rohe Escape-/Return-Pfad](assistant-raw-key-transport.md) bleibt ohne Raw-Key-/Hardwareabnahme: eine unabhängige reine UIKit-App reproduziert dieselben No-ops auf beiden Simulatoren. Frühere Fehler bleiben erhalten, kein erfolgloser Adapter oder Cmd-Return-Kandidat ist übernommen. F048/F049 bleiben partial/parity=false; physische Hilfsmittel und Original-Parity bei #73/#77/#78 offen. Weiter mit tatsächlichem Kurzbefehle-Aufruf aus Apples App auf einem eigenen frischen Simulator. Keine Geräte-/Signing-Abnahme oder Home-Anbindung gestartet.
 
+**Kurzbefehle-OS-Aufruf danach bestanden:** [zwei finale iPad-/iPhone-Ausführungen mit vier echten Kalt-/Warmaufrufen](assistant-os-shortcut.md). Normale App ohne UITesting-Flags, dieselbe Prozess-PID über den Warmaufruf, Hintergrundentwurf gelöscht und keine Mock-Aktion. Alle 19 Produkt-Bundledateien zum #38-Stand bytegleich; keine neuen SDK-/Core-Läufe behauptet. Fünf eigene Diagnosefehler bleiben erhalten. #74 bleibt wegen der übrigen OS-Hilfsmittel-/Plattformgrenzen offen.
+
 ## Fortlaufender Gesamtauftrag
 
 Ein erfolgreicher Zwischencommit beendet den Parity-Auftrag nicht. Weitere

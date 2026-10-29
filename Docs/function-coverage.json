@@ -3338,7 +3338,8 @@
       "SYS-11"
     ],
     "current": [
-      "Eigener parameterloser App-Shortcut-Einstieg für iOS/macOS/visionOS und tatsächliche quellseitige Podcast-Untertitel im bestehenden AVPlayer-Pfad. Native/Simulator-Nachweise von OS-Hilfsmitteln getrennt; echte Siri-/Shortcuts-, Live-Speech-/Live-Captions-/Vocal-Shortcut-/RTT- und Geräteabnahmen bleiben offen."
+      "Eigener parameterloser App-Shortcut-Einstieg für iOS/macOS/visionOS und tatsächliche quellseitige Podcast-Untertitel im bestehenden AVPlayer-Pfad. Native/Simulator-Nachweise von OS-Hilfsmitteln getrennt; echte Siri-/Shortcuts-, Live-Speech-/Live-Captions-/Vocal-Shortcut-/RTT- und Geräteabnahmen bleiben offen.",
+      "29. Oktober: tatsächliche eigene App-Shortcut-Entdeckung und OS-Kalt-/Warmaufrufe auf iPad/iPhone bestanden, normale App ohne UITesting-Flags. Hintergrund löscht Entwurf, kein implizites Senden/Mock-Befehl. Zwei finale UI-Ausführungen/vier OS-Aktionen, Produktbytes unverändert. Docs/assistant-os-shortcut.md. Kein Siri-/Vocal-Shortcut-, OS-Live-Speech/-Captions-/RTT-/Hardware-PASS; #74 offen."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3375,7 +3376,8 @@
       "SYS-11"
     ],
     "current": [
-      "Eigener parameterloser App-Shortcut-Einstieg für iOS/macOS/visionOS und tatsächliche quellseitige Podcast-Untertitel im bestehenden AVPlayer-Pfad. Native/Simulator-Nachweise von OS-Hilfsmitteln getrennt; echte Siri-/Shortcuts-, Live-Speech-/Live-Captions-/Vocal-Shortcut-/RTT- und Geräteabnahmen bleiben offen."
+      "Eigener parameterloser App-Shortcut-Einstieg für iOS/macOS/visionOS und tatsächliche quellseitige Podcast-Untertitel im bestehenden AVPlayer-Pfad. Native/Simulator-Nachweise von OS-Hilfsmitteln getrennt; echte Siri-/Shortcuts-, Live-Speech-/Live-Captions-/Vocal-Shortcut-/RTT- und Geräteabnahmen bleiben offen.",
+      "29. Oktober: tatsächliche eigene App-Shortcut-Entdeckung und OS-Kalt-/Warmaufrufe auf iPad/iPhone bestanden, normale App ohne UITesting-Flags. Hintergrund löscht Entwurf, kein implizites Senden/Mock-Befehl. Zwei finale UI-Ausführungen/vier OS-Aktionen, Produktbytes unverändert. Docs/assistant-os-shortcut.md. Kein Siri-/Vocal-Shortcut-, OS-Live-Speech/-Captions-/RTT-/Hardware-PASS; #74 offen."
     ],
     "parity_accepted": false,
     "issue_urls": [

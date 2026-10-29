@@ -1,0 +1,76 @@
+import CoreGraphics
+import UIKit
+import XCTest
+
+// Temporary diagnostic probe: removed from the normal target after archiving.
+extension HomeViewUITests {
+  func testOwnedFreshShortcutsDiscoveryProbe() {
+    guard ["4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C","A29CB742-0898-4407-8BE0-3457BF56FD20"]
+      .contains(ProcessInfo.processInfo.environment["SIMULATOR_UDID"] ?? "") else {
+      XCTFail("This probe is restricted to its fresh, owned, account-free simulator");return
+    }
+    app.launchArguments=[];app.launchEnvironment=[:];app.launch()
+    if app.buttons["setup.next"].waitForExistence(timeout:5) {
+      tap("setup.next");tap("setup.next");tap("setup.finish")
+    }
+    XCTAssertTrue(app.buttons["nav.assistant"].waitForExistence(timeout:8))
+    app.terminate()
+    let shortcuts=XCUIApplication(bundleIdentifier:"com.apple.shortcuts")
+    shortcuts.launch()
+    XCTAssertEqual(shortcuts.state,.runningForeground)
+    if shortcuts.buttons["Continue"].waitForExistence(timeout:3) { shortcuts.buttons["Continue"].tap() }
+    if shortcuts.buttons["BackButton"].exists { shortcuts.buttons["BackButton"].tap() }
+    if shortcuts.buttons["Show Sidebar"].exists {shortcuts.buttons["Show Sidebar"].firstMatch.tap()}
+    let ownEntry=shortcuts.collectionViews["library.sidebar"].staticTexts["HomeView"]
+    XCTAssertTrue(ownEntry.waitForExistence(timeout:5));ownEntry.tap()
+    let sidebar=shortcuts.navigationBars["WFSidebarView"]
+    if sidebar.exists {sidebar.buttons["Hide Sidebar"].tap()}
+    let tree=XCTAttachment(string:shortcuts.debugDescription)
+    tree.name="owned-shortcuts-homeview-accessibility";tree.lifetime = .keepAlways;add(tree)
+    let picture=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+    picture.name="owned-shortcuts-homeview-screen";picture.lifetime = .keepAlways;add(picture)
+    XCTAssertEqual(app.state,.notRunning,"Cold invocation must start from a terminated HomeView process")
+    let ownShortcuts=shortcuts.otherElements["org.example.HomeViewReplica_auto_shortcuts"]
+    XCTAssertTrue(ownShortcuts.staticTexts["Open Assistant"].waitForExistence(timeout:5))
+    let action=ownShortcuts.buttons["text.bubble"]
+    XCTAssertTrue(action.waitForExistence(timeout:5))
+    XCTAssertTrue(action.isHittable,"The visible OS action must not remain behind the iPad sidebar")
+    action.tap()
+    XCTAssertTrue(app.wait(for:.runningForeground,timeout:12))
+    XCTAssertTrue(app.textFields["assistant.input"].waitForExistence(timeout:8))
+    XCTAssertTrue(app.buttons["assistant.keyboard.dismiss"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    let focusTree=XCTAttachment(string:app.debugDescription)
+    focusTree.name="owned-shortcuts-cold-focused-accessibility";focusTree.lifetime = .keepAlways;add(focusTree)
+    if app.buttons["Continue"].exists { app.buttons["Continue"].tap() }
+    XCTAssertGreaterThan(app.keyboards.keys.count,10,"Actual software keyboard, not only a focus flag")
+    let opened=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+    opened.name="owned-shortcuts-cold-assistant-opened";opened.lifetime = .keepAlways;add(opened)
+    tap("assistant.keyboard.dismiss");tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+    tap("nav.assistant")
+    let field=app.textFields["assistant.input"]
+    field.tap();field.typeText("temperature 73")
+    XCTAssertEqual(field.value as? String,"temperature 73")
+    tap("assistant.keyboard.dismiss")
+    shortcuts.activate()
+    XCTAssertTrue(shortcuts.wait(for:.runningForeground,timeout:8))
+    expectation(for:NSPredicate { _,_ in
+      self.app.state == .runningBackground || self.app.state == .runningBackgroundSuspended
+    },evaluatedWith:app)
+    waitForExpectations(timeout:8)
+    let warmState=app.state
+    XCTAssertTrue(warmState == .runningBackground || warmState == .runningBackgroundSuspended)
+    XCTAssertTrue(action.waitForExistence(timeout:5));XCTAssertTrue(action.isHittable);action.tap()
+    XCTAssertTrue(app.wait(for:.runningForeground,timeout:12))
+    XCTAssertTrue(field.waitForExistence(timeout:8))
+    XCTAssertTrue(["","Type a request"].contains(field.value as? String ?? "unexpected"),
+      "Actual background entry must clear the draft before OS Shortcut return")
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"What can I help you with?")
+    let returned=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+    returned.name="owned-shortcuts-warm-background-draft-cleared";returned.lifetime = .keepAlways;add(returned)
+    if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+  }
+}

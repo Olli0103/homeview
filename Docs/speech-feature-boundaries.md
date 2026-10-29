@@ -4,7 +4,7 @@
 
 **Recherche und Quellprüfung, keine Hilfsmittel-/Hardwareabnahme. #74 bleibt offen; F104/F105 bleiben ohne Parity.** Diese Funktionen sind nicht durch ein einziges Textfeld erfüllt.
 
-**Fortschritt nach diesem Quellbefund:** [Eigener App-Shortcut-Einstieg](assistant-app-shortcut.md) mit Compilermetadaten und direkter nativer Body-/Root-Prüfung. Die unten beschriebene fehlende Registrierung gilt für den datierten Stand `441f78a`; tatsächliche Systemausführung bleibt offen.
+**Fortschritt nach diesem Quellbefund:** [Eigener App-Shortcut-Einstieg](assistant-app-shortcut.md) mit Compilermetadaten und direkter nativer Body-/Root-Prüfung. **29. Oktober:** [tatsächliche Entdeckung und OS-Kalt-/Warmaufrufe auf iPhone/iPad](assistant-os-shortcut.md) bestanden, normale App ohne Fixtureargumente. Die unten beschriebenen früheren Softwarelücken gelten nur für `441f78a`; Siri, Mac-/Vision-Systemausführung und physische Authentifizierung bleiben offen.
 
 **Weitere Softwarelieferung, 22. Oktober:** [Quellseitige Podcast-Untertitel](podcast-source-captions.md) im bestehenden AVPlayer-Pfad. Die unten beschriebene fehlende Legible-Auswahl gilt für den datierten Quellbefund, nicht den aktuellen Softwarestand. OS-Live-Captions und echte Hilfsmittelabnahmen bleiben getrennt.
 
@@ -17,8 +17,8 @@
 | Antwort vorlesen | AVSpeechSynthesizer auf iOS/iPadOS, macOS und visionOS; tvOS/watchOS ausgeschlossen. Persönliche Stimmen werden herausgefiltert; kein Telephony-Uplink | kein System-Live-Speech, kein Personal Voice, keine eingespeiste Telefonstimme |
 | Live Captions | kein eigener kontinuierlicher Medien-/Umgebungstranskriptionsdienst | Apples OS-Hilfsmittel ist keine eigene Integration |
 | RTT | kein eigener RTT-Transport, Zeichensendeprozess oder Telefonie-Stack | Chatentwurf und externe Telefonübergabe sind kein RTT |
-| App Shortcuts | kein `AppIntent` oder `AppShortcutsProvider` in Sources | vorhandene Tastaturkürzel sind keine registrierten Sprach-/App-Kurzbefehle |
-| Medienuntertitel | eigener Podcastpfad spielt Audio über AVPlayer; keine eigene Legible-Track-Auswahl oder Video-Caption-Oberfläche | Antworttext, Kalender-„subtitle“ und Songtexte sind keine zeitcodierten Untertitel |
+| App Shortcuts | seit 20. Oktober eigener parameterloser AppIntent/Provider für iOS/iPadOS, macOS und visionOS; seit 29. Oktober tatsächlicher OS-Kalt-/Warmaufruf auf iPad/iPhone belegt | kein Siri-/Vocal-Shortcut-Sprachaufruf; Mac/Vision bisher Compiler-/Bodybelege, keine neue physische Authentifizierung |
+| Medienuntertitel | seit 22. Oktober tatsächliche mitgelieferte Legible-Spuren im eigenen Podcast-AVPlayer-Pfad, native Auswahl/Automatic/Off und zeitcodierte Ausgabe geprüft | kein OS-Live-Captions-Dienst, keine ASR, erfundenen Transkripte oder allgemeine Stream-/Sprachkompatibilität |
 
 Quellorte: `NativeVoice.swift`, `NativeAnswerSpeech.swift`, `Controls.swift`, `PodcastPlayback.swift`, `RootView.swift`, `HomeViewApp.swift`, `WatchRoot.swift`. [Dateidigests und abgegrenzte Befunde](verification/speech-feature-boundaries.json). Die kompilierten Guards sind Quellbefunde, keine neuen Plattform-Laufzeittests.
 
@@ -43,13 +43,13 @@ S1 ist ein weiterhin abrufbarer Apple-Supportartikel mit Veröffentlichungsdatum
 
 Apple beschreibt `AppIntent`, `AppShortcutsProvider` und `AppShortcut` als öffentliche deklarative App-Einstiegspunkte [S11]. Der Compiler erzeugt Metadaten; deren Existenz ist weder eine ausgeführte Siri-Sitzung noch Besitz eines systemweiten Wakewords. Die installierte öffentliche SDK-27-Schnittstelle enthält diese Verträge und `supportedModes`; `openAppWhenRun` verweist für neuere Systeme auf `supportedModes`. SDK-Deklaration, jeweilige Plattformdarstellung und tatsächliche Ausführung bleiben getrennte Nachweise.
 
-**Konkrete Softwarelücke:** HomeView stellt noch keinen solchen Einstieg bereit. Ein begrenzter nächster Schritt ist „HomeView-Assistent öffnen“: ausschließlich eigene Oberfläche in den Vordergrund, kein automatisches Senden/Abspielen, keine Aufnahme, keine Freigabe persönlicher Inhalte und kein Home-Zugriff. Eine fehlende Registrierung ist keine öffentliche API-Blockade. App-Ausführung, kalter/warm gestarteter Zustand und Metadatenextraktion sind vor einer Integrationsbehauptung zu prüfen; Siri-/Vocal-Shortcut-Ausführung bleibt eigene Geräteabnahme.
+**Historische Softwarelücke am 20. Oktober:** inzwischen als [eigener Assistenten-Einstieg](assistant-app-shortcut.md) geliefert. Am 29. Oktober tatsächliche [OS-Entdeckung und Kalt-/Warmaufrufe](assistant-os-shortcut.md) auf beiden mobilen Simulatoren: ausschließlich Oberfläche öffnen, kein Senden/Abspielen, keine Aufnahme, persönliche Freigabe oder Home. Der reale Hintergrundwechsel löscht den alten Entwurf; der Shortcut stellt ihn nicht wieder her. Siri/Vocal Shortcuts, andere Plattform-Laufzeiten und gesperrte physische Geräte bleiben eigene offene Abnahmen.
 
 ### Untertitel für eigene Medien
 
 AVFoundation bietet `AVMediaSelectionGroup`, `AVMediaSelectionOption`, die Mediencharakteristik `.legible` und Auswahl über `AVPlayerItem.select(_:in:)`; AVKit/AVPlayerLayer können entsprechende Spuren darstellen [S12]. Das setzt tatsächlich vorhandene Medien-/Untertitelspuren voraus. Die API erzeugt aus einem Audio-Podcast keine Untertitel und liest nicht automatisch fremde App-/Anrufinhalte aus.
 
-**Konkrete Softwarelücke:** kein eigener Caption-fähiger Video-/Track-Auswahlpfad und kein synthetischer Untertitel-Playbacknachweis. Falls eigene Videoangebote aufgenommen werden, zuerst eigenes Video plus eigene WebVTT-/Untertitelspur, Auswahl/Aus/fehlende Spur und Rendernachweis prüfen. Für den vorhandenen Audio-Podcast keine leeren Caption-Schalter oder erfundenen Texte anbieten.
+**Historische Softwarelücke am 20. Oktober:** am 22. Oktober als [quellseitige Podcast-Untertitel](podcast-source-captions.md) geschlossen, einschließlich tatsächlicher AVPlayer-Cue-Callbacks und eigener synthetischer Marker. Ohne Spur bleibt die Auswahl deaktiviert. Das ist kein neues Videoangebot, kein OS-Live-Captions-Ersatz und kein Nachweis beliebiger Streams/Formate/Sprachen.
 
 ### OS-Hilfsmittel und Telefonie
 
@@ -57,9 +57,9 @@ Live Speech, Live Captions und Vocal Shortcuts werden laut Apple bewusst in den 
 
 ## Noch benötigte Abnahme
 
-- Eigener öffentlicher App-Einstieg und synthetischer Kalt-/Warmstartnachweis, ohne implizite Aktion.
+- Eigener App-Einstieg: OS-Kalt-/Warmaufrufe auf iPad/iPhone bestanden; Mac-/Vision-Laufzeit, Siri-/Vocal-Shortcut-Aufruf, gesperrtes Gerät und Mehrfenster-Zielwahl bleiben offen.
 - OS-Funktion je tatsächlich vorhandenem Zielgerät, Sprache/Region und Hilfsmittel protokollieren; echte Dictation und Type to Siri ausdrücklich separat.
-- Für eigene Medien tatsächliche Untertitelspuren prüfen; kontinuierliche Live Captions nicht mit Textdarstellung gleichsetzen.
+- Eigene Medien: begrenzter tatsächlicher Quellen-/Cue-Nachweis geliefert; breite Stream-/Format-/Sprach- und Watch-Abnahme offen. Kontinuierliche Live Captions nicht damit gleichsetzen.
 - RTT nur mit ausdrücklich autorisierter passender Telefonie-/Anbieterkonfiguration prüfen. Keine Anrufe oder Nachrichten als Teil dieser Recherche.
 - Die als ungeklärt markierten Zellen weiter klären, nicht aus einer leeren Suche als „nicht unterstützt“ deklarieren.
 

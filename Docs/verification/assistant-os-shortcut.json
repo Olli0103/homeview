@@ -1,0 +1,431 @@
+{
+  "date": "2026-10-29",
+  "issue": 74,
+  "issue_stays_open": true,
+  "scope": "Actual own App Shortcut discovery and OS invocation, cold and already-running process, iOS/iPadOS Simulator; no Siri, physical authentication or OS assistive-tech acceptance",
+  "base_commit": "a2ca3ccd47f84835493b4724c96bd6f6bee0f685",
+  "executed_source_digest": "e506c2773d651b792958407dfa2b5dc9a0079cf4bc724577b758fd40e28c5a1f",
+  "executed_source_manifest": "Docs/verification/assistant-os-shortcut-source.json",
+  "final_UI_executions": 2,
+  "OS_action_invocations": 4,
+  "final_unique_UI_methods": 1,
+  "final_runs": [
+    {
+      "checkpoint": "shortcuts-os-final-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "A29CB742-0898-4407-8BE0-3457BF56FD20",
+        "deviceName": "HomeView Shortcuts iPad QA 20261029",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "e506c2773d651b792958407dfa2b5dc9a0079cf4bc724577b758fd40e28c5a1f",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "6b0c1e0ddd9b7889116e01f91509a06ec09bb4baafd9b95ed7dfc5ee54261bda",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "aa36e864c1de86684897c1fbcd357c9eef2212768952db7e0bea2a330b1a42f2"
+    },
+    {
+      "checkpoint": "shortcuts-os-final-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+        "deviceName": "HomeView Shortcuts QA 20261029",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "e506c2773d651b792958407dfa2b5dc9a0079cf4bc724577b758fd40e28c5a1f",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "6b0c1e0ddd9b7889116e01f91509a06ec09bb4baafd9b95ed7dfc5ee54261bda",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "c9ce22c44346ffb0d058164681932845a5d46797cc0a4271994c3e7e7ae7acea"
+    }
+  ],
+  "full_suite": false,
+  "normal_process_readback": [
+    {
+      "device": "phone",
+      "cold_app_pid": 99883,
+      "same_pid_still_running_after_warm_invocation": true,
+      "uitesting_flag": false,
+      "reference_clock_flag": false,
+      "provider_action": "HomeView > Open Assistant",
+      "no_test_app_launch_between_cold_and_warm": true
+    },
+    {
+      "device": "ipad",
+      "cold_app_pid": 99905,
+      "same_pid_still_running_after_warm_invocation": true,
+      "uitesting_flag": false,
+      "reference_clock_flag": false,
+      "provider_action": "HomeView > Open Assistant",
+      "no_test_app_launch_between_cold_and_warm": true
+    }
+  ],
+  "owned_fresh_simulators": [
+    {
+      "created": "2026-10-29T05:23:43.860777+00:00",
+      "device_id": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+      "purpose": "isolated OS Shortcuts invocation with synthetic default app data; no accounts"
+    },
+    {
+      "device_id": "A29CB742-0898-4407-8BE0-3457BF56FD20",
+      "created": "2026-10-29T05:34:25.659640+00:00",
+      "purpose": "same isolated normal-demo OS Shortcut acceptance on primary iPad target; no accounts"
+    }
+  ],
+  "product_bundle_files_byte_identical_to_AI06_release": 19,
+  "delivered_225_source_inputs_restored_to_AI06_bytes": true,
+  "temporary_diagnostic_test_removed_from_normal_target": true,
+  "diagnostic_excerpt": "Docs/verification/assistant-os-shortcut-probes/executed-cold-warm-probe.swift.txt",
+  "new_product_code": false,
+  "new_core_run": false,
+  "new_SDK_builds": 0,
+  "reused_SDK_and_core_evidence": "Docs/verification/assistant-input-acceptance.json",
+  "history_all_executions": [
+    {
+      "checkpoint": "shortcuts-cold-native-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "A29CB742-0898-4407-8BE0-3457BF56FD20",
+        "deviceName": "HomeView Shortcuts iPad QA 20261029",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "c55f984fe339692633562be67d6a7dd9dd98b225c4f884b2527e603db5aa161a",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "bfc5861b68329397c1542baa4f3db831d0542eba135e8c9e197d2aa55a00a577",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "b42cb819b592f86def2e481efd1e9b7e3c9cb3a575c2f28ac759afdaf91f19ce"
+    },
+    {
+      "checkpoint": "shortcuts-cold-native-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+        "deviceName": "HomeView Shortcuts QA 20261029",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "c55f984fe339692633562be67d6a7dd9dd98b225c4f884b2527e603db5aa161a",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "bfc5861b68329397c1542baa4f3db831d0542eba135e8c9e197d2aa55a00a577",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "2e08299493e81e8cf1b7a897991b7198abd5c83250f47db56ec663d5335cb0ba"
+    },
+    {
+      "checkpoint": "shortcuts-cold-start",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+        "deviceName": "HomeView Shortcuts QA 20261029",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "871f66658225bd3330474cc9181d57c677b7f3f3ac7a7fa9e9333e5cbc59f6f4",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "bcddadc90bf3f072f25ef4a0d63513ddbc1c7d7b9d35f4ffba5d10256602fb34",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "de4fa0fa4b1be47337f53e54b934bb60f68c4404810119dbafb8b0c0711db8a3"
+    },
+    {
+      "checkpoint": "shortcuts-cold-warm-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "A29CB742-0898-4407-8BE0-3457BF56FD20",
+        "deviceName": "HomeView Shortcuts iPad QA 20261029",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "cdd1d24ee37a00e0ada6d06ed87ec77c00884a1d28894e968b3ec9dd45ae4779",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "08746e609f38a2b2eda3627d3901bc78225b936cb82ff2529c96acde7c83d9cd",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "c7397c3c82262ec08ee709ce3a8e170ba3b46993b2de173174294f39791cc7d6"
+    },
+    {
+      "checkpoint": "shortcuts-cold-warm-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+        "deviceName": "HomeView Shortcuts QA 20261029",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "cdd1d24ee37a00e0ada6d06ed87ec77c00884a1d28894e968b3ec9dd45ae4779",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "08746e609f38a2b2eda3627d3901bc78225b936cb82ff2529c96acde7c83d9cd",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "676c3c8bfbcbcedf9292b945e0ac70d7940d82848c23a4a623927ec5e5757c24"
+    },
+    {
+      "checkpoint": "shortcuts-cold-warm-transition-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "A29CB742-0898-4407-8BE0-3457BF56FD20",
+        "deviceName": "HomeView Shortcuts iPad QA 20261029",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "0844230fff73166df81af744eb9fdeed5b65dc4ef2ece0229d68da864ed863d2",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "3e2b73a71595083da21f244259ee5a2d04f332e2ec0a84483380c1ab142e2aa3",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "49726b0b92c10d7637e3501817abb6946645334fde22882a9708d8e7490b5d72"
+    },
+    {
+      "checkpoint": "shortcuts-cold-warm-transition-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+        "deviceName": "HomeView Shortcuts QA 20261029",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "0844230fff73166df81af744eb9fdeed5b65dc4ef2ece0229d68da864ed863d2",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "3e2b73a71595083da21f244259ee5a2d04f332e2ec0a84483380c1ab142e2aa3",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "476bf54cefbddcb6299e6f1a8a3599269cd3c666befc709bc1309df774a7bdbc"
+    },
+    {
+      "checkpoint": "shortcuts-discovery",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+        "deviceName": "HomeView Shortcuts QA 20261029",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "e5f07b28c710afbe07449e26a7089ced7f8f39ced68c987d7a7a9d757c51144d",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "2933957219037dfba7c2534dd83e7ddc8ad6d2e05f78fa6e98d524ce16f641e8",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "f72ca34a19c0340a8786727597fe83c91c04b41ec7c63be870cd0884e933f07f"
+    },
+    {
+      "checkpoint": "shortcuts-library-discovery",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+        "deviceName": "HomeView Shortcuts QA 20261029",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "82ce3fbfdf55761c16f64498f7b7b01d08f206c8d553c221def69cf67759160f",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "8adccfdf193bd35a93285a445a70556d381f2a9b19221e4b7b10de3f8b2986fb",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "9af8c6fbc5588d788eb4b975bf89de848d12b9ff5553691683bcfaf16f07c2a4"
+    },
+    {
+      "checkpoint": "shortcuts-os-final-ipad",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "A29CB742-0898-4407-8BE0-3457BF56FD20",
+        "deviceName": "HomeView Shortcuts iPad QA 20261029",
+        "modelName": "iPad Air 11-inch (M4)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "e506c2773d651b792958407dfa2b5dc9a0079cf4bc724577b758fd40e28c5a1f",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "6b0c1e0ddd9b7889116e01f91509a06ec09bb4baafd9b95ed7dfc5ee54261bda",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "aa36e864c1de86684897c1fbcd357c9eef2212768952db7e0bea2a330b1a42f2"
+    },
+    {
+      "checkpoint": "shortcuts-os-final-phone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "4AD5E9A7-0B6F-406C-A5FF-27CF359A5F1C",
+        "deviceName": "HomeView Shortcuts QA 20261029",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_digest": "e506c2773d651b792958407dfa2b5dc9a0079cf4bc724577b758fd40e28c5a1f",
+      "source_files": 225,
+      "compiled_files": 51,
+      "archive_sha256": "6b0c1e0ddd9b7889116e01f91509a06ec09bb4baafd9b95ed7dfc5ee54261bda",
+      "archive_read_back": true,
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "log_sha256": "c9ce22c44346ffb0d058164681932845a5d46797cc0a4271994c3e7e7ae7acea"
+    }
+  ],
+  "history_totals_including_final": {
+    "executions": 11,
+    "passed": 6,
+    "failed": 5,
+    "skipped": 0
+  },
+  "failure_boundaries": [
+    "First action selector expected a button titled Open Assistant; actual native icon button is inside the labelled own-provider group",
+    "iPad app entry is a sidebar text, not the iPhone button",
+    "iPad sidebar starts collapsed after relaunch",
+    "Immediate background-state observation raced native application activation; bounded true-background wait added",
+    "iPad sidebar occluded the action; explicitly close it and require real hittability before tapping"
+  ],
+  "decoded_final_PNGs": 6,
+  "contact_sheets_reviewed": 2,
+  "published_images": [
+    {
+      "device": "phone",
+      "state": "owned-shortcuts-cold-assistant-opened",
+      "path": "Docs/screenshots/assistant-os-shortcut/phone-owned-shortcuts-cold-assistant-opened.png",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "de28b8c58ff01d6f2136dec79dcf3d01bf99515f28c1dde259fe11989d60b4af"
+    },
+    {
+      "device": "phone",
+      "state": "owned-shortcuts-homeview-screen",
+      "path": "Docs/screenshots/assistant-os-shortcut/phone-owned-shortcuts-homeview-screen.png",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "sha256": "406ef253f89bda8d9b48d6ff6167d452974b1b955cde067c9a196889a928a7c5"
+    },
+    {
+      "device": "ipad",
+      "state": "owned-shortcuts-cold-assistant-opened",
+      "path": "Docs/screenshots/assistant-os-shortcut/ipad-owned-shortcuts-cold-assistant-opened.png",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "1a9a37da7b05d0f5ec18f023e7c503db0043beb1a5186dc72cf4b0af724677fb"
+    },
+    {
+      "device": "ipad",
+      "state": "owned-shortcuts-homeview-screen",
+      "path": "Docs/screenshots/assistant-os-shortcut/ipad-owned-shortcuts-homeview-screen.png",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "sha256": "256b95be52bb805eabbf5763ff08955a4b2473f48682a73ff62153f8b42b376c"
+    }
+  ],
+  "image_qualification": "Two warm-return screenshots were captured while the keyboard was settling; retained privately, not published or treated as static keyboard geometry. Final cold keyboard images show actual keys and input; current AI06 geometry is separately proven on identical product bytes.",
+  "physical_authentication_or_hardware_test": false,
+  "Siri_or_Vocal_Shortcut_run": false,
+  "personal_accounts_microphone_camera_calls_Home_used": false,
+  "parity_accepted": false
+}

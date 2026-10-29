@@ -2182,7 +2182,7 @@
       "F104",
       "F105"
     ],
-    "current": "Eigener parameterloser App-Shortcut-Einstieg für iOS/macOS/visionOS und tatsächliche quellseitige Podcast-Untertitel im bestehenden AVPlayer-Pfad. Native/Simulator-Nachweise von OS-Hilfsmitteln getrennt; echte Siri-/Shortcuts-, Live-Speech-/Live-Captions-/Vocal-Shortcut-/RTT- und Geräteabnahmen bleiben offen.",
+    "current": "Eigene App-/OS-Fähigkeiten getrennt bilanziert. Parameterloser öffentlicher App Shortcut und quellseitige Podcast-Untertitel geliefert. Tatsächliche OS-Entdeckung sowie Kalt-/Warmaufrufe aus Apples Kurzbefehle-App auf frischen iPad-/iPhone-Simulatoren bestanden, ohne Fixtureargumente oder implizite Aktion. Übrige OS-Hilfsmittel, RTT, Mac-/Vision-Systemausführung, unbekannte Plattformzellen und physische Abnahmen offen.",
     "tasks": [
       "App-eigene und OS-bereitgestellte Unterstützung getrennt erfassen",
       "Öffentliche App-Intents/Shortcuts und Untertitel für eigene Medien prüfen",
@@ -2200,7 +2200,9 @@
       "Docs/speech-feature-boundaries.md",
       "Docs/verification/speech-feature-boundaries.json",
       "Docs/assistant-app-shortcut.md",
-      "Docs/verification/assistant-app-shortcut.json"
+      "Docs/verification/assistant-app-shortcut.json",
+      "Docs/assistant-os-shortcut.md",
+      "Docs/verification/assistant-os-shortcut.json"
     ],
     "github_state": "open",
     "github_state_verified_on": "2026-10-29"

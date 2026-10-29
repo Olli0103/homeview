@@ -6,7 +6,7 @@
 
 - Weltuhr: Tageslicht über Mitternacht und einzelne Horizontkreuzungen korrekt als Intervalle darstellen; unbekannten Sonnenstand neutral markieren. [Umsetzung und Grenzen](world-clock-midnight-daylight.md). #53 bleibt wegen der fehlenden konkreten Originalreferenz offen.
 - Assistenteneingabe: [#38 im ursprünglichen synthetischen Softwareumfang abgeschlossen](assistant-input-acceptance.md). 18 aktuelle UI-Ausführungen und fünf SDKs; echter OS-Control-Center-Wechsel und Cmd-Period ohne Senden. Unabhängige UIKit-No-ops sind kein Raw-Key-PASS; physische Hilfsmittel und Original-Parity bei #73/#77/#78 bleiben offen.
-- Nächster Softwarepfad: tatsächlicher App-Shortcut-Aufruf aus Apples Kurzbefehle-App auf einem eigenen frischen Simulator, einschließlich normalem Start ohne UITesting-Speicher. #74 bleibt bis zur getrennten Bilanz offen.
+- [Tatsächlicher App-Shortcut-Aufruf aus Apples Kurzbefehle-App](assistant-os-shortcut.md) auf eigenen frischen iPad-/iPhone-Simulatoren bestanden: normaler OS-Kaltstart und Warmaufruf ohne UITesting-Speicher/Flags, keine implizite Aktion. #74 bleibt für übrige Hilfsmittel-/Plattformgrenzen offen.
 - Geräte-/Signing-Abnahmen bleiben auf [ausdrücklichen Eigentümerwunsch pausiert](device-acceptance-hold.md). Das pausiert keine übrige Softwarearbeit und ist keine Erlaubnis zum Schließen unerfüllter Kriterien.
 
 ## Verbindlicher Vorrang
@@ -92,7 +92,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs, nicht automatis
 | [#71](https://github.com/Olli0103/homeview/issues/71) | Ersteinrichtung, Capability-Erklärung und verbundene Angebote ausarbeiten | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#72](https://github.com/Olli0103/homeview/issues/72) | Unzureichenden Stromadapter auf unterstützter Hardware erkennen oder ausweisen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#73](https://github.com/Olli0103/homeview/issues/73) | Accessibility über alle zentralen Flows abnehmen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
-| [#74](https://github.com/Olli0103/homeview/issues/74) | Live Speech, Captions, RTT und Shortcuts pro Plattform klären | Offen. Eigene Shortcuts/Quelluntertitel vorhanden; OS-Hilfsmittel, RTT und tatsächliche Systemausführung nicht abgenommen. |
+| [#74](https://github.com/Olli0103/homeview/issues/74) | Live Speech, Captions, RTT und Shortcuts pro Plattform klären | Offen. Eigene Untertitel und tatsächliche Kurzbefehle-Kalt-/Warmaufrufe auf iPad/iPhone belegt; übrige OS-Hilfsmittel, RTT, Mac-/Vision-Laufzeit und physische Abnahmen offen. |
 | [#75](https://github.com/Olli0103/homeview/issues/75) | On-device-Spracherkennung auf echter Hardware abnehmen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
 | [#76](https://github.com/Olli0103/homeview/issues/76) | Finalen öffentlichen Stand mit vollständiger iPad-/iPhone-Regression einfrieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#77](https://github.com/Olli0103/homeview/issues/77) | Physisches iPad signieren, installieren und dauerhaft betreiben | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
