@@ -16,6 +16,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [#3: lokaler Historienbereinigungskandidat](asset-history-cleanup-candidate.md) vorbereitet: bekannter Icon-Blob entfernt, heutiger Baum exakt identisch. Keine öffentliche Umschreibung/pauschale Rechtefreigabe; andere historische Einzelherkunft offen.
+
 - [Sprache/RTT: aktuelle spezialisierte OS-Pfade und einzelne Grenzen](speech-platform-update-20261029.md). Zwölf Live-Speech-/RTT-Zellen bilanziert, drei OS-Pfade noch nicht positiv geklärt; tatsächliche Hilfsmittel-/Gesprächsabnahmen getrennt. #74 bleibt offen.
 
 - [Wetter-App und Stadtdialog: native Trefferflächen korrigiert](weather-surface-hit-regions.md); zwölf finale UI-Ausführungen, vier leere Audits, fünf SDKs. #73 weiter offen für übrige Kriterien.

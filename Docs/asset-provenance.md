@@ -2,6 +2,8 @@
 
 Stand: 20. Oktober 2026 · [Issue #3](https://github.com/Olli0103/homeview/issues/3)
 
+**29. Oktober:** [Getrennter lokaler Bereinigungskandidat](asset-history-cleanup-candidate.md) entfernt gezielt den bekannten historischen Icon-Blob bei exakt identischem aktuellem Dateibaum. Keine öffentliche Umschreibung oder vollständige historische Rechteabnahme.
+
 ## Gefundener Fehler
 
 Das ältere App-Icon `icon-1024.png` war kein vollständig eigenständiges Projektbild: `Scripts/make_icon.swift` rasterisierte `NSImage(systemSymbolName:"house.fill")` in den selbst gezeichneten Hintergrund. Die generische Angabe „project-generated“ im historischen Assetindex unterschied diesen Systemsymbol-Anteil nicht. Der API-Aufruf überträgt keine Urheber-/Lizenzrechte am Systemsymbol auf das Projekt.

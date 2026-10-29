@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-29",
+  "issue": 3,
+  "scope": "Disposable local candidate strips only the positively identified historical mixed SF Symbol icon blob. No public ref changed; no complete historical rights clearance.",
+  "before": {
+    "head": "d42d80914f320b97d6a89e2c5062033aa5254c8c",
+    "tree": "f1ffeed68be33805a9f416eaf9186a4610ac429c",
+    "refs": [
+      "d42d80914f320b97d6a89e2c5062033aa5254c8c refs/heads/main"
+    ],
+    "commits": 421,
+    "objects": 6963,
+    "blobs": 4514,
+    "blob_bytes_read": 1141095642,
+    "object_list_sha256": "b07e28ddaf27eb44ab57a8363944ac2d534c0b3e19df8805ccac60fd27f727f9",
+    "blob_manifest_sha256": "acd594d80428fe2117c5313f68818955a795bcaa803116110f02f8d4c8ff0fa5"
+  },
+  "candidate": {
+    "head": "9b13ad0876ea8db98a85f9150de90eab4604d3b8",
+    "tree": "f1ffeed68be33805a9f416eaf9186a4610ac429c",
+    "refs": [
+      "9b13ad0876ea8db98a85f9150de90eab4604d3b8 refs/heads/main"
+    ],
+    "commits": 421,
+    "objects": 6962,
+    "blobs": 4513,
+    "blob_bytes_read": 1140180644,
+    "object_list_sha256": "0b7b69d86798440c3728cdfcc0aa50d3eb2e692cc340a27fec6ea94591ac8121",
+    "blob_manifest_sha256": "691df3d87043ddfd9f8989697e16ced78df2cb5fa8d382047f2fd23067ddaf89"
+  },
+  "current_tree_identical": true,
+  "removed_blobs": [
+    "4cf10c89b02c60b53f23d3ca491c1a0c7a344610"
+  ],
+  "added_blobs": [],
+  "mapped_commits": 421,
+  "changed_commit_ids": 421,
+  "commit_map_sha256": "996bbd7c15cd44fd8b86721fcafaf8719ed170d7dfff84514a51a8c7ead73430",
+  "original_bundle_bytes": 944492898,
+  "original_bundle_sha256": "3afb0cd232edc0bb20ba5476c478d155433a3f2cec78226ce1f3c3ba424604bf",
+  "original_bundle_verified": true,
+  "filter_tool": {
+    "source": "https://pypi.org/pypi/git-filter-repo/2.47.0/json",
+    "project": {
+      "Homepage": "https://github.com/newren/git-filter-repo",
+      "Issues": "https://github.com/newren/git-filter-repo/issues/",
+      "Source": "https://github.com/newren/git-filter-repo"
+    },
+    "version": "2.47.0",
+    "wheel": "git_filter_repo-2.47.0-py3-none-any.whl",
+    "sha256": "2cd04929b9024e83e65db571cbe36aec65ead0cb5f9ec5abe42158654af5ad83",
+    "local_digest_matches_pypi": true,
+    "license": "MIT"
+  },
+  "remote_mutations": 0,
+  "approval_required_before_remote_history_rewrite": true,
+  "limitations": [
+    "Candidate is bound to d42d809; later main commits require a fresh candidate",
+    "Old checkouts/forks and embedded old commit/blob links are not automatically migrated",
+    "Old GitHub commit/blob URLs or caches may remain reachable; local reachability removal is not global erasure",
+    "Earlier app-icon asset is removed from historical trees; old historical build/resource completeness changes",
+    "Other historical screenshot/glyph authorship remains separately unaccepted; this is not all of issue #3"
+  ]
+}
