@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-30",
+  "repository": "Olli0103/homeview",
+  "query": "repo:Olli0103/homeview is:issue is:open",
+  "requested_limit": 100,
+  "returned_open": 33,
+  "original_total": 82,
+  "completed_original": 48,
+  "explicit_scope_exclusions": [
+    {
+      "issue": 14,
+      "reason": "Owner excluded Snoopy rights scope; not implemented"
+    }
+  ],
+  "open_original_ids": [
+    6,
+    7,
+    11,
+    15,
+    16,
+    17,
+    18,
+    20,
+    23,
+    26,
+    27,
+    28,
+    29,
+    36,
+    43,
+    44,
+    47,
+    48,
+    49,
+    51,
+    52,
+    53,
+    56,
+    57,
+    61,
+    64,
+    67,
+    73,
+    75,
+    77,
+    78,
+    79,
+    81
+  ],
+  "closed_issue": {
+    "number": 19,
+    "state": "closed",
+    "state_reason": "completed",
+    "title": "[FACE-10] Numerals-Typografie und analoge Uhrvarianten kalibrieren",
+    "labels": [
+      {
+        "name": "type:implementation",
+        "color": "0e8a16",
+        "description": ""
+      },
+      {
+        "name": "priority:P1",
+        "color": "d93f0b",
+        "description": ""
+      },
+      {
+        "name": "area:faces",
+        "color": "1d76db",
+        "description": ""
+      }
+    ],
+    "assignees": null,
+    "exact_readback_verified": true,
+    "original_acceptance_unchanged": true,
+    "body_sha256": "4bdd92d6179cf179612902482e9250ca5e1309d28ec4268f4c26c2de733c3272"
+  },
+  "no_other_issue_modified": true,
+  "physical_signing_and_home_holds_unchanged": true
+}

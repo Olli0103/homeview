@@ -2,6 +2,8 @@
 
 30. Oktober 2026 · [#19](https://github.com/Olli0103/homeview/issues/19)
 
+**Späterer Abschluss:** Die damals fehlende UI09 ist inzwischen [umgesetzt und verglichen](abstract-ui09.md); #19 ist im ursprünglichen Uhrenvertrag closed/completed. Die folgenden Ergebnisse bleiben der historische analoge Teilstand03c9ef4, nicht die Behauptung einer vollständigen Originalparität.
+
 **Teillieferung, #19 bleibt offen:** Der zugeordnete ursprüngliche F018-Vertrag enthält auch UI09, die unbenannte abstrakte Digitalansicht. Deren0/1/9-Formen sind noch nicht implementiert/verglichen. Die unten geprüften analogen Varianten ersetzen dieses Kriterium nicht; die nächste Umsetzung adressiert genau diese Lücke, ohne UI09 als Flow oder zusätzlichen bestätigten Original-Face-Namen auszugeben.
 
 ## Umfang

@@ -40,7 +40,7 @@ Varianten sind keine zusätzlichen eindeutig benannten Faces. Der Katalog lässt
 | Home Modular | UI07, UI21 | Home Modular vorhanden; Prismendetail unter #20, echte Home-Quelle ausdrücklich gesperrt |
 | Monatskalender | UI08 | Calendar vorhanden; restliche Locale-/Monats-/Stildetails unter #22 offen |
 | Unbenannte Digitalvariante | UI09 | Eigene Replik unter dem Arbeitsnamen Abstract; Originalname/Identität ungeklärt, keine Flow-Gleichsetzung. [Umsetzung und Vergleich](abstract-ui09.md) |
-| Große analoge Ziffern | UI10 | Arbeitsname Numerals; vollständige Formen-/Zeit-/Stilabnahme unter #19 offen |
+| Große analoge Ziffern | UI10 | Arbeitsname Numerals; [ursprünglicher Formen-/Zeitenvertrag #19 abgeschlossen](abstract-ui09.md), vollständige Originalparität unter #78 offen |
 | Verblassende analoge Ziffern | UI12 | Arbeitsname Fade; vollständige Original-Zeitkurve unter #18 offen |
 | Große Home-Analoguhr | UI45 | Home Modular Clock vorhanden; Perspektive, exakter Name/Licht weiterhin begrenzt belegt |
 | Reaktive Digitaluhr | UI47 | Pressebeschriftung nennt Flow; Formen/Fluid unter #15/#16 offen, Foto ist kein nativer Pixelscreen |
