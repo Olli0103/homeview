@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [TV-Rezept: Schritttext mit echtem VoiceOver-Remote-Fokus](tv-recipe-voiceover.md): sechs aktuelle UI-Ausführungen und fünf SDKs/77 Produkte bestanden; 19 gemeldete Rezept-Fokus-/Sprachwerte, echte Vor-/Zurück-/Finish-Aktionen und exakte Zustandsrückstellungen. **Nur 1/4 ganze Normalbildpaare strikt bestanden, drei weiterhin nicht abgenommen**; große Abweichung auch bei identischen Appbytes, kleine19/13-Pixel-Ursachen ungeklärt. #73 offen, ursprüngliche Kriterien erhalten; weiter zum nächsten zentralen Hilfsmittelflow.
+
 - [TV-Timer: VoiceOver mit tatsächlichem Fokus-Rückweg](tv-timer-voiceover-refocus.md): ein neuer begrenzter vollständiger Timer-Flow und zehn gemeldete Fokuswerte bestanden; ursprünglicher Sofortansagefehler bleibt getrennt erhalten. Keine Produktänderung, zwölf Appdateien exakt zur vorigen nativen TV-Abnahme, VoiceOver-Ausgangszustand zurückgestellt. #73 bleibt offen, weitere zentrale Hilfsmittelpfade folgen.
 
 - [iOS27-Hilfsmittelmenü tatsächlich inventarisiert](assistive-settings-surface.md): zwei read-only Menüinventuren abgeschlossen, ursprünglicher nicht erreichter Touch-Pfad erhalten. AssistiveTouch, Sprach-/Schaltersteuerung und Zoom in diesen beobachteten Simulator-Menüs nicht erreichbar; nativer Zustand unverändert aus. Keine Hilfsmittel-/Produktabnahme, Diagnose aus Standardtarget entfernt, Produkt unverändert. #73 bleibt offen; weiter zum TV-Timer-Sprachfokus.

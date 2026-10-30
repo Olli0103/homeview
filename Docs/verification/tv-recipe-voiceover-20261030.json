@@ -1,0 +1,659 @@
+{
+  "date": "2026-10-30",
+  "issue": 73,
+  "base_commit": "e5c36fd2ddce3692cb6b097af877971d17b77453",
+  "source_manifest": "9ded663776ab93f06e8e1fef58ff201701f62bb4eb91f55fc4d5e656d59a9804",
+  "source_input_files": 253,
+  "changed_files": [
+    "Sources/App/Everyday.swift",
+    "Tests/TVUITests/HomeViewTVUITests.swift"
+  ],
+  "product_scope": "CookingView only: TV-only native VoiceOver environment enables step/text Remote focus and disables its decorative focus effect. No normal layout/font/color changes requested, no other platform branch modified.",
+  "ui_ledger": {
+    "executions": [
+      {
+        "stage": "baseline",
+        "device": "tv",
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "f16cf6114eecfa286f69a01f1ec17add208c6ab95ce07ce2c283188978d61bf6",
+        "source_and_inputs_unchanged": true,
+        "installed_app_before": true,
+        "installed_app_after": true,
+        "installed_runner_after": true,
+        "scope": "historical"
+      },
+      {
+        "stage": "recovery",
+        "device": "tv",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "c732da1f657420d22fcd315ccb3dcebe12b43e472c1afd83eeeaa5c99b64923f",
+        "source_and_inputs_unchanged": true,
+        "installed_app_before": true,
+        "installed_app_after": true,
+        "installed_runner_after": true,
+        "scope": "State restoration only, not App usability"
+      },
+      {
+        "stage": "qualified",
+        "device": "tv",
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "e88608b15a6c0e1ccc0dd01eda2248397e5ecc10f46cf0895554bdd0889e2aa1",
+        "source_and_inputs_unchanged": true,
+        "installed_app_before": true,
+        "installed_app_after": true,
+        "installed_runner_after": true,
+        "scope": "historical"
+      },
+      {
+        "stage": "candidate",
+        "device": "tv",
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "cc3585dab49104c637aac7a5c478faa64992599ef51b88d49d9299f939bf0856",
+        "source_and_inputs_unchanged": true,
+        "installed_app_before": true,
+        "installed_app_after": true,
+        "installed_runner_after": true,
+        "scope": "historical"
+      },
+      {
+        "stage": "final",
+        "device": "tv",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "9ded663776ab93f06e8e1fef58ff201701f62bb4eb91f55fc4d5e656d59a9804",
+        "source_and_inputs_unchanged": true,
+        "installed_app_before": true,
+        "installed_app_after": true,
+        "installed_runner_after": true,
+        "scope": "current accepted functional execution"
+      },
+      {
+        "stage": "regression",
+        "device": "tv",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "9ded663776ab93f06e8e1fef58ff201701f62bb4eb91f55fc4d5e656d59a9804",
+        "source_and_inputs_unchanged": true,
+        "installed_app_before": true,
+        "installed_app_after": true,
+        "installed_runner_after": true,
+        "scope": "current accepted functional execution"
+      },
+      {
+        "stage": "mobile",
+        "device": "phone",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "9ded663776ab93f06e8e1fef58ff201701f62bb4eb91f55fc4d5e656d59a9804",
+        "source_and_inputs_unchanged": true,
+        "installed_app_before": true,
+        "installed_app_after": true,
+        "installed_runner_after": true,
+        "scope": "current accepted functional execution"
+      },
+      {
+        "stage": "mobile",
+        "device": "ipad",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "9ded663776ab93f06e8e1fef58ff201701f62bb4eb91f55fc4d5e656d59a9804",
+        "source_and_inputs_unchanged": true,
+        "installed_app_before": true,
+        "installed_app_after": true,
+        "installed_runner_after": true,
+        "scope": "current accepted functional execution"
+      }
+    ],
+    "all_executions_passed": 9,
+    "all_executions_failed": 3,
+    "all_executions_total": 12,
+    "current_accepted_functional_executions": 6,
+    "current_source_sha256": "9ded663776ab93f06e8e1fef58ff201701f62bb4eb91f55fc4d5e656d59a9804",
+    "initial_ui_test_compile_failure_not_counted_as_ui_execution": true,
+    "pixel_criteria_separate": "1strictPASS3strictFAIL; no blanketvisualPASS"
+  },
+  "native_recipe": {
+    "speech_checks": 19,
+    "reading_states": [
+      1,
+      2,
+      1,
+      3
+    ],
+    "all_required_speech_observed": true,
+    "native_report_independent_byte_exact": true,
+    "original_false_restored": true,
+    "whole_paragraph_reported_speech_tested": false,
+    "readings": [
+      {
+        "elapsed": 30.66845429164823,
+        "event": "recipe-reading",
+        "full_ax_label": "Heat the olive oil in a large pot. Add the onion and cook until soft.",
+        "required_reported_excerpt": "Heat the olive oil in a large pot.",
+        "step": 1,
+        "whole_paragraph_reported_speech_tested": false
+      },
+      {
+        "elapsed": 55.02299087494612,
+        "event": "recipe-reading",
+        "full_ax_label": "Add the squash and vegetable stock. Bring to a boil, then reduce the heat and simmer until tender.",
+        "required_reported_excerpt": "Add the squash and vegetable stock.",
+        "step": 2,
+        "whole_paragraph_reported_speech_tested": false
+      },
+      {
+        "elapsed": 74.37812770833261,
+        "event": "recipe-reading",
+        "full_ax_label": "Heat the olive oil in a large pot. Add the onion and cook until soft.",
+        "required_reported_excerpt": "Heat the olive oil in a large pot.",
+        "step": 1,
+        "whole_paragraph_reported_speech_tested": false
+      },
+      {
+        "elapsed": 110.23109787504654,
+        "event": "recipe-reading",
+        "full_ax_label": "Blend until smooth. Season with salt and pepper. Serve with sage and a drizzle of olive oil.",
+        "required_reported_excerpt": "Blend until smooth.",
+        "step": 3,
+        "whole_paragraph_reported_speech_tested": false
+      }
+    ],
+    "finished_event": {
+      "cooking_text_gone": true,
+      "elapsed": 121.90948812500574,
+      "event": "recipe-finished",
+      "recipe_cover_returned": true
+    }
+  },
+  "pixel_contract": {
+    "entire_native_image": true,
+    "width": 1920,
+    "height": 1080,
+    "mask_or_tolerance_relaxed": false,
+    "original_contract_passed_pairs": 1,
+    "original_contract_failed_pairs": 3,
+    "states": [
+      {
+        "state": "native-tv-recipe-normal-step-1",
+        "changed_rgba_pixels": 0,
+        "difference_bbox": null,
+        "png_bytes_equal": true,
+        "width": 1920,
+        "height": 1080,
+        "before_sha256": "887f57cdcd756d648feaeaae67f3a9fc95c4fdb62a90d19eacc00b7ff38808af",
+        "after_sha256": "887f57cdcd756d648feaeaae67f3a9fc95c4fdb62a90d19eacc00b7ff38808af"
+      },
+      {
+        "state": "native-tv-recipe-normal-step-2",
+        "changed_rgba_pixels": 45825,
+        "difference_bbox": [
+          544,
+          762,
+          1375,
+          968
+        ],
+        "png_bytes_equal": false,
+        "width": 1920,
+        "height": 1080,
+        "before_sha256": "e519fd21f4c5750f3d138df17dcca67b7b23697564fc75be0243689f992615d9",
+        "after_sha256": "7cb886b77e90c45a16c64c53c166432ee5937cff610128a0aacc45564bfeb3c2"
+      },
+      {
+        "state": "native-tv-recipe-normal-step-1-returned",
+        "changed_rgba_pixels": 19,
+        "difference_bbox": [
+          831,
+          329,
+          1187,
+          409
+        ],
+        "png_bytes_equal": false,
+        "width": 1920,
+        "height": 1080,
+        "before_sha256": "005c6d7b24e2115e92c298ead692663cbe22178cd083c59998d89eaf0f39f211",
+        "after_sha256": "6f8ccc8e28b57e0cc0119b15c5c8a3e9bbc863a6723457b0011cb1edb24a88ee"
+      },
+      {
+        "state": "native-tv-recipe-normal-step-3",
+        "changed_rgba_pixels": 13,
+        "difference_bbox": [
+          604,
+          817,
+          1329,
+          952
+        ],
+        "png_bytes_equal": false,
+        "width": 1920,
+        "height": 1080,
+        "before_sha256": "655c787ed94cd8d7a5cccc4685e70f7a7ea0096a63cdcc4dbb3d52e827490f0e",
+        "after_sha256": "8e23fcf74d7eb7c9a953e0a4373969b98d55eca745a71acf7540d56b745c6b95"
+      }
+    ]
+  },
+  "same_app_control": {
+    "candidate_final_app_files_byte_exact": 12,
+    "rows": [
+      {
+        "state": "native-tv-recipe-normal-step-1",
+        "original_qualified_vs_final_changed_pixels": 0,
+        "same_app_candidate_vs_final_changed_pixels": 0,
+        "qualified_vs_candidate_changed_pixels": 0,
+        "original_changed_positions_also_changed_in_same_app_control": 0,
+        "scope": "Same installed App bytes and normal method; separate native captures. Variation not assigned a precise renderer/focus/timing cause; original strict failures retained."
+      },
+      {
+        "state": "native-tv-recipe-normal-step-2",
+        "original_qualified_vs_final_changed_pixels": 45825,
+        "same_app_candidate_vs_final_changed_pixels": 45824,
+        "qualified_vs_candidate_changed_pixels": 28,
+        "original_changed_positions_also_changed_in_same_app_control": 45824,
+        "scope": "Same installed App bytes and normal method; separate native captures. Variation not assigned a precise renderer/focus/timing cause; original strict failures retained."
+      },
+      {
+        "state": "native-tv-recipe-normal-step-1-returned",
+        "original_qualified_vs_final_changed_pixels": 19,
+        "same_app_candidate_vs_final_changed_pixels": 0,
+        "qualified_vs_candidate_changed_pixels": 19,
+        "original_changed_positions_also_changed_in_same_app_control": 0,
+        "scope": "Same installed App bytes and normal method; separate native captures. Variation not assigned a precise renderer/focus/timing cause; original strict failures retained."
+      },
+      {
+        "state": "native-tv-recipe-normal-step-3",
+        "original_qualified_vs_final_changed_pixels": 13,
+        "same_app_candidate_vs_final_changed_pixels": 0,
+        "qualified_vs_candidate_changed_pixels": 13,
+        "original_changed_positions_also_changed_in_same_app_control": 0,
+        "scope": "Same installed App bytes and normal method; separate native captures. Variation not assigned a precise renderer/focus/timing cause; original strict failures retained."
+      }
+    ]
+  },
+  "frame_diagnostic": {
+    "comparison": "After-the-fact geometry diagnostic, NOT a replacement or relaxation of failed whole-image contract",
+    "native_rectangles_equal": 20,
+    "states": [
+      {
+        "state": "native-tv-recipe-normal-step-1",
+        "before_and_after_frames_exact": {
+          "reference.viewport": [
+            512.0,
+            72.0,
+            896.0,
+            896.0
+          ],
+          "cooking.step": [
+            564.3,
+            254.2,
+            74.7,
+            32.9
+          ],
+          "cooking.text": [
+            564.3,
+            307.9,
+            751.1,
+            116.5
+          ],
+          "cooking.next": [
+            607.6,
+            811.2,
+            704.9,
+            134.4
+          ],
+          "window": [
+            0.0,
+            0.0,
+            1920.0,
+            1080.0
+          ]
+        }
+      },
+      {
+        "state": "native-tv-recipe-normal-step-2",
+        "before_and_after_frames_exact": {
+          "reference.viewport": [
+            512.0,
+            72.0,
+            896.0,
+            896.0
+          ],
+          "cooking.step": [
+            564.3,
+            254.2,
+            79.1,
+            32.9
+          ],
+          "cooking.text": [
+            564.3,
+            307.9,
+            767.6,
+            179.2
+          ],
+          "cooking.next": [
+            601.6,
+            805.2,
+            716.8,
+            146.3
+          ],
+          "window": [
+            0.0,
+            0.0,
+            1920.0,
+            1080.0
+          ]
+        }
+      },
+      {
+        "state": "native-tv-recipe-normal-step-1-returned",
+        "before_and_after_frames_exact": {
+          "reference.viewport": [
+            512.0,
+            72.0,
+            896.0,
+            896.0
+          ],
+          "cooking.step": [
+            564.3,
+            254.2,
+            74.7,
+            32.9
+          ],
+          "cooking.text": [
+            564.3,
+            307.9,
+            751.1,
+            116.5
+          ],
+          "cooking.next": [
+            607.6,
+            811.2,
+            704.9,
+            134.4
+          ],
+          "window": [
+            0.0,
+            0.0,
+            1920.0,
+            1080.0
+          ]
+        }
+      },
+      {
+        "state": "native-tv-recipe-normal-step-3",
+        "before_and_after_frames_exact": {
+          "reference.viewport": [
+            512.0,
+            72.0,
+            896.0,
+            896.0
+          ],
+          "cooking.step": [
+            564.3,
+            254.2,
+            79.1,
+            32.9
+          ],
+          "cooking.text": [
+            564.3,
+            307.9,
+            781.0,
+            179.2
+          ],
+          "cooking.next": [
+            601.6,
+            805.2,
+            716.8,
+            146.3
+          ],
+          "window": [
+            0.0,
+            0.0,
+            1920.0,
+            1080.0
+          ]
+        }
+      }
+    ],
+    "original_pixel_failures_retained": true
+  },
+  "scope_limits": [
+    "Original pixel failures remain failures; no universal visual PASS.",
+    "Whole AX labels and short reported speech excerpts verified, not complete paragraph or acoustic acceptance.",
+    "Fresh real Remote refocus before repeated Next is separate from automatic announcements.",
+    "State recovery after an internal missing-match exception recorded independently; recovery is not App usability.",
+    "Full central-flow accessibility, Original/physical acceptance and other assistive services remain open."
+  ],
+  "historical_failures": [
+    "One initial UI-test compiler failure: missing actor annotations on local test helpers; zero App UI methods.",
+    "One wrong recipe-library entry; required target missing. An internal XCTest snapshot exception bypassed defer despite nonfatal assertion mode and left VoiceOver on. Independent native recovery observed true and restored the recorded original false. Required existence guard now precedes focus queries; recovery method removed from normal target.",
+    "Qualified original test: normal PASS, native Step focus FAIL; exact original false state restored and independently verified.",
+    "First product candidate: normal PASS, reading steps1/2/back succeeds, repeated Next retains keyboard focus but reports MOCK HOME; whole test remains FAIL. Final explicit step/Next focus readback passes without claiming automatic announcements."
+  ],
+  "sdk_final": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "executed": true,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": {
+            "valid": false,
+            "errors": [
+              "root.ssu.yaml: missing or empty",
+              "nlu/nlu.lzfse: missing or empty",
+              "nlu/*.version: missing or empty",
+              "root.ssu.yaml: unreadable metadata"
+            ],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 0,
+          "executed": true,
+          "clean_metadata_recovery": true,
+          "shortcut_artifacts": {
+            "valid": true,
+            "errors": [],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+                "bytes": 1,
+                "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+              },
+              {
+                "path": "nlu/nlu.lzfse",
+                "bytes": 2124,
+                "sha256": "45eb8ec0d2487b641e78e0ef33087947649f342bc7195b9afa07a47a6c223761"
+              },
+              {
+                "path": "root.ssu.yaml",
+                "bytes": 926,
+                "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "executed": true,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ],
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "executed": true,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ],
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "executed": true,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ],
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "executed": true,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ],
+      "storage_headroom_ok": true
+    }
+  ],
+  "sdk_output_files": 77,
+  "sdk_delta_files": 3,
+  "compiled_inputs": [
+    {
+      "manifest": "baseline/compiled-inputs.json",
+      "files": 18,
+      "archive_creation_full_byte_readback": true,
+      "delta_files": 1,
+      "delta_sha256": "b9c16d68d9a76c5c0a0c056daac654ba5f99734afa02d635016dfe08e09cf5b5"
+    },
+    {
+      "manifest": "candidate/compiled-inputs.json",
+      "files": 18,
+      "archive_creation_full_byte_readback": true,
+      "delta_files": 1,
+      "delta_sha256": "65cf1842894200ff512eb6bf6ce2b815668b59d3717e2ef033097ded6595e169"
+    },
+    {
+      "manifest": "final/compiled-inputs.json",
+      "files": 18,
+      "archive_creation_full_byte_readback": true,
+      "delta_files": 1,
+      "delta_sha256": "f5ac0c5c80a4283a2cd3431c4c1318cd7f38d81f8d32878b27d813f734479b67"
+    },
+    {
+      "manifest": "mobile/compiled-inputs.json",
+      "files": 31,
+      "archive_creation_full_byte_readback": true,
+      "delta_files": 1,
+      "delta_sha256": "11087da95b117ce0d4629a0433bc252d8b4aa0dfa718b3950ae84a560045ed66"
+    },
+    {
+      "manifest": "qualified/compiled-inputs.json",
+      "files": 18,
+      "archive_creation_full_byte_readback": true,
+      "delta_files": 1,
+      "delta_sha256": "aab07430c7c3d247908611ada823af19fe5ebf84d9d06f4f9b9663ad9f979914"
+    },
+    {
+      "manifest": "recovery/compiled-inputs.json",
+      "files": 18,
+      "archive_creation_full_byte_readback": true,
+      "delta_files": 1,
+      "delta_sha256": "b11899a4f94c1f83cff2e04c367dff56474b3b4065da2d4a10ce369de6428f6d"
+    }
+  ],
+  "regression_reuses_final_compiled_inputs": true,
+  "core_reuse": {
+    "previous_source_sha256": "e032b9cea96420dc80ba7fec96e90e9dbd4365ac73a0e37dac5e78b21bbc6704",
+    "previous_receipt_sha256": "cc8176b436c8c40b2b069d229a2e999a161016014ccb6b7e9b9d95b8222d58ba",
+    "current_core_and_package_input_files_exact": 96,
+    "previous_passed": 458,
+    "new_executions": 0
+  },
+  "source_manifests_reconstructed": 8,
+  "native_pngs_decoded": 137,
+  "contact_pages_reviewed": 12,
+  "full_native_images_reviewed": 4,
+  "own_public_images": [
+    {
+      "path": "Docs/verification/tv-recipe-voiceover-images/step-1.png",
+      "bytes": 178924,
+      "sha256": "7ce5944101cfdea51668d570e5c159efccb5c87e43d8ca400ac0139574396365"
+    },
+    {
+      "path": "Docs/verification/tv-recipe-voiceover-images/step-3.png",
+      "bytes": 155283,
+      "sha256": "ddfc4642c691c19e30769a53fe8e23d35a4c6a2e27dc1e988d6de44b806fdfbd"
+    }
+  ],
+  "private_artifact_seal": {
+    "sha256": "2bfd5891f807c0e46a49ee4be7d34bab1c3f04a4f1c8967b8fdeebc7c7326ece",
+    "count": 1429,
+    "bytes": 134155032
+  },
+  "holds_preserved": [
+    "synthetic fixtures and MockHome only",
+    "no real Home/account/microphone/camera access",
+    "no real timer alert or handoff",
+    "physical/signing paused",
+    "no host/security changes",
+    "no subagents"
+  ],
+  "sdk_output_source_sha256": "9ded663776ab93f06e8e1fef58ff201701f62bb4eb91f55fc4d5e656d59a9804",
+  "sdk_output_delta_archive_sha256": "d37a00f8bd363c51c30fe0a411977733302a2e718ec37459009289f07ca379cb",
+  "ios_shortcut_artifacts_valid": true
+}

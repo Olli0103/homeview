@@ -2,6 +2,60 @@ import XCTest
 import UIKit
 
 extension HomeViewTVUITests {
+  @MainActor func testNativeTVRecipeNormalReferenceSteps() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native state getter requires tvOS27")}
+    XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)
+    let app=launch(nil,extra:["--screen-recipe"])
+    select(app.buttons["recipe.start"],in:app,maxMoves:80)
+    XCTAssertEqual(app.descendants(matching:.any)["cooking.step"].label,"Step 1 of 3");capture(app,"native-tv-recipe-normal-step-1")
+    select(app.buttons["cooking.next"],in:app,maxMoves:80)
+    XCTAssertEqual(app.descendants(matching:.any)["cooking.step"].label,"Step 2 of 3");capture(app,"native-tv-recipe-normal-step-2")
+    select(app.buttons["Previous step"],in:app,maxMoves:80)
+    XCTAssertEqual(app.descendants(matching:.any)["cooking.step"].label,"Step 1 of 3");capture(app,"native-tv-recipe-normal-step-1-returned")
+    select(app.buttons["cooking.next"],in:app,maxMoves:80)
+    select(app.buttons["cooking.next"],in:app,maxMoves:80)
+    XCTAssertEqual(app.descendants(matching:.any)["cooking.step"].label,"Step 3 of 3");capture(app,"native-tv-recipe-normal-step-3")
+  }
+
+
+  @MainActor func testNativeTVVoiceOverRecipeReadStepsBackAndFinish() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native service requires tvOS27")}
+    try withNativeTVVoiceOver(page:"Recipes",name:"recipe") {app,service,record in
+      guard nativeTVVoiceOverFocus(app.buttons["saved.Butternut Squash Soup"],required:"Butternut Squash Soup",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select)
+      guard nativeTVVoiceOverFocus(app.buttons["recipe.start"],required:"Start Cooking",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select)
+      let step=app.descendants(matching:.any)["cooking.step"],text=app.descendants(matching:.any)["cooking.text"]
+      let full=["Heat the olive oil in a large pot. Add the onion and cook until soft.",
+        "Add the squash and vegetable stock. Bring to a boil, then reduce the heat and simmer until tender.",
+        "Blend until smooth. Season with salt and pepper. Serve with sage and a drizzle of olive oil."]
+      let excerpts=["Heat the olive oil in a large pot.","Add the squash and vegetable stock.","Blend until smooth."]
+      @MainActor func read(_ index:Int)->Bool {
+        XCTAssertTrue(text.waitForExistence(timeout:5));XCTAssertEqual(text.label,full[index])
+        XCTAssertEqual(step.label,"Step \(index+1) of 3")
+        guard nativeTVVoiceOverFocus(step,required:"Step \(index+1) of 3",in:app,service:service,record:record,maxMoves:16),
+          nativeTVVoiceOverFocus(text,required:excerpts[index],in:app,service:service,record:record,maxMoves:16) else {return false}
+        record("recipe-reading",["step":index+1,"full_ax_label":text.label,"required_reported_excerpt":excerpts[index],
+          "whole_paragraph_reported_speech_tested":false])
+        capture(app,"native-tv-voiceover-recipe-step-\(index+1)");return true
+      }
+      @MainActor func next(_ label:String)->Bool {
+        // A repeated Next action can retain keyboard focus without a fresh
+        // VoiceOver focus event. Read the actual step before revisiting it.
+        guard nativeTVVoiceOverFocus(step,required:step.label,in:app,service:service,record:record,maxMoves:16) else {return false}
+        guard nativeTVVoiceOverFocus(app.buttons["cooking.next"],required:label,in:app,service:service,record:record) else {return false}
+        XCUIRemote.shared.press(.select);return true
+      }
+      guard read(0),next("Next Step"),read(1) else {return}
+      guard nativeTVVoiceOverFocus(app.buttons["Previous step"],required:"Previous step",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select)
+      guard read(0),next("Next Step"),next("Next Step"),read(2),next("Finish") else {return}
+      XCTAssertTrue(app.buttons["recipe.start"].waitForExistence(timeout:5));XCTAssertFalse(text.exists)
+      record("recipe-finished",["recipe_cover_returned":app.buttons["recipe.start"].exists,"cooking_text_gone":!text.exists])
+      capture(app,"native-tv-voiceover-recipe-finished")
+    }
+  }
+
   @MainActor func testNativeTVVoiceOverTimerRemoteRefocusPauseStartAndDelete() throws {
     guard #available(tvOS 27.0,*) else {throw XCTSkip("Native service requires tvOS27")}
     try withNativeTVVoiceOver(page:nil,extra:["--reference-timer"],name:"timer-refocus") {app,service,record in
@@ -52,8 +106,11 @@ extension HomeViewTVUITests {
   }
   @available(tvOS 27.0,*) @MainActor
   private func nativeTVVoiceOverFocus(_ target:XCUIElement,required:String,in app:XCUIApplication,
-    service:XCUIVoiceOverService,record:(String,[String:Any])->Void)->Bool {
-    select(target,in:app,maxMoves:80,activate:false)
+    service:XCUIVoiceOverService,record:(String,[String:Any])->Void,maxMoves:Int=80)->Bool {
+    guard target.waitForExistence(timeout:5) else {
+      record("missing-native-focus-target",["required":required]);XCTFail("Required native focus target not reached");return false
+    }
+    select(target,in:app,maxMoves:maxMoves,activate:false)
     guard target.hasFocus,target.isEnabled else {XCTFail("Exact native target focus required before speech or Select");return false}
     var speech=""
     let spoken=XCTNSPredicateExpectation(predicate:NSPredicate {_,_ in

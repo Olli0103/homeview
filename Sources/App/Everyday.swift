@@ -469,6 +469,9 @@ struct IngredientsView: View {
 }
 struct CookingView: View {
   @Environment(AppModel.self) private var model
+  #if os(tvOS)
+    @Environment(\.accessibilityVoiceOverEnabled) private var tvVoiceOverEnabled
+  #endif
   @Environment(\.nativeCanvasScale) private var canvasScale
   @Environment(\.dynamicTypeSize) private var textSize
   @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
@@ -525,9 +528,16 @@ struct CookingView: View {
     VStack(alignment:.leading,spacing:14) {
       Text("Step \(model.cookingStep+1)").font(.system(size:stepSize)).foregroundStyle(.black.opacity(0.65))
         .accessibilityLabel("Step \(model.cookingStep+1) of \(model.recipe.steps.count)")
+        #if os(tvOS)
+          .focusable(tvVoiceOverEnabled).focusEffectDisabled()
+        #endif
         .accessibilityIdentifier("cooking.step")
       Text(model.recipe.steps[model.cookingStep].text).font(.system(size:instructionSize,weight:.regular))
-        .lineSpacing(6).frame(maxWidth:.infinity,alignment:.leading).accessibilityIdentifier("cooking.text")
+        .lineSpacing(6).frame(maxWidth:.infinity,alignment:.leading)
+        #if os(tvOS)
+          .focusable(tvVoiceOverEnabled).focusEffectDisabled()
+        #endif
+        .accessibilityIdentifier("cooking.text")
     }.padding(.horizontal,35).padding(.top,16)
   }
   private var handoff:some View {
