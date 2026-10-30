@@ -20,7 +20,7 @@
 
 ## Aktueller Arbeitsblock
 
-- **Fortsetzung nach Speicherpause:** [bestehenden SDK-Builder abgesichert](build-storage.md), 15 Tooling-Tests und echte nichtausführende Platz-Abbruchprobe; kein weiterer großer Build und keine automatische Löschung. Flow-Originalformen bleiben quellbegrenzt. Anschließend isolierte Prüfung auf Verlust fremder Mock-Gerätezustände.
+- **Fortsetzung nach Speicherpause:** [bestehenden SDK-Builder abgesichert](build-storage.md), 15 Tooling-Tests und echte nichtausführende Platz-Abbruchprobe; kein weiterer großer Build und keine automatische Löschung. Flow-Originalformen bleiben quellbegrenzt. [Tatsächlicher Mock-Nachbarverlust korrigiert](mock-home-neighbour-preservation.md): gleiche 275 native Bedingungen vorher79/196, nachher275/0; fünf SDKs/73 bytegeprüfte Ausgaben. Keine neue Issue-Schließung.
 
 - [Eigene TV-/Vision-Quelluntertitel nativ geprüft](tv-vision-source-captions.md): zwei getrennte akzeptierte Vollfälle, sechs erhaltene Fehlversuche; TV-Cue durch Remote erreichbar und Rückweg zur Feedliste korrigiert. Fünf finale SDKs/73Outputs/242Inputs; Core unverändert. #74 weiter offen für übrige OS-Pfade und sichtbare Vision-Warmzielwahl.
 

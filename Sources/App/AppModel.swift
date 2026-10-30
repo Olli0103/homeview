@@ -1331,10 +1331,13 @@ final class AppModel {
     case .lock,.scene:nil
     }
     if let (slot,value)=control {requestHomeControl(slot,value:value);return}
-    var candidate=data.home
     do {
+      // Scenes are still local mocks. Preserve the latest unrelated device
+      // values/audit and honour current offline or unreadable stored state.
+      var candidate=try readMockControlSnapshot()
+      let before=HomeMockControls.values(candidate)
       try candidate.transact(command,authorized:canControlMockSecurity)
-      let before=HomeMockControls.values(data.home),after=HomeMockControls.values(candidate)
+      let after=HomeMockControls.values(candidate)
       for slot in HomeControlSlot.allCases where before[HomeMockControls.id(slot)] != after[HomeMockControls.id(slot)] {
         guard canWriteHomeControl(slot),let value=after[HomeMockControls.id(slot)],
           homeControlDescriptor(slot)?.accepts(value,forWrite:true) == true else {throw HomeControlFailure.unavailable}

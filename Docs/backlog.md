@@ -516,7 +516,7 @@ Abhängigkeiten: HOME-01, SYS-03.
 <a id="home-04"></a>
 ### HOME-04: Szenen und Routinen mit nachgewiesenem Umfang bedienen
 
-Drei lokale Szenen sind vorhanden, kein eigenständiger Dauerautomationsdienst.
+Drei lokale Szenen sind vorhanden, kein eigenständiger Dauerautomationsdienst. Gezielte Mock-Korrektur30.Oktober: aktuelle gespeicherte Nachbarwerte, Schlosszustand und Audit statt altem Cache erhalten; Offline/beschädigt ohne Schreibversuch.275 native Bedingungen vorher79PASS/196FAIL, nachher275PASS; fünf SDKs/73 Ausgaben. Keine echte Home-Szene oder heterogener Teilfehlertransport. Docs/mock-home-neighbour-preservation.md.
 
 Offen:
 

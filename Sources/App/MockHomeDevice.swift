@@ -26,14 +26,17 @@ import Foundation
     return result
   }
   func reading(_ key:HomeCharacteristicID)->Result<HomeCharacteristicReading,HomeControlFailure> {
-    guard let model,let descriptor=descriptors[key] else {return .failure(.unsupported)}
+    guard let model else {return .failure(.unavailable)}
     do {
-      let home=try model.readMockControlSnapshot()
-      guard home.online else {return .failure(.offline)}
-      guard let value=HomeMockControls.values(home)[key] else {return .failure(.unsupported)}
-      let reading=HomeCharacteristicReading(descriptor:descriptor,value:value)
-      return reading.valid ? .success(reading):.failure(.unsupported)
+      return reading(key,home:try model.readMockControlSnapshot())
     } catch {return .failure(.unavailable)}
+  }
+  private func reading(_ key:HomeCharacteristicID,home:MockHome)->Result<HomeCharacteristicReading,HomeControlFailure> {
+    guard let descriptor=descriptors[key] else {return .failure(.unsupported)}
+    guard home.online else {return .failure(.offline)}
+    guard let value=HomeMockControls.values(home)[key] else {return .failure(.unsupported)}
+    let reading=HomeCharacteristicReading(descriptor:descriptor,value:value)
+    return reading.valid ? .success(reading):.failure(.unsupported)
   }
   func read(_ key:HomeCharacteristicID,completion:@escaping @MainActor @Sendable (Result<HomeCharacteristicReading,HomeControlFailure>)->Void) {
     // Only the explicit owned-store fixture holds a preflight; normal reads are synchronous.
@@ -84,11 +87,15 @@ import Foundation
     completion:@escaping @MainActor @Sendable (Result<Void,HomeControlFailure>)->Void) {
     let key=HomeMockControls.id(slot)
     guard let model,model.homeControlsActive,model.homeControlState(slot) == .writing else {completion(.failure(.unavailable));return}
-    switch reading(key) {
+    // Validate and change the same freshly read mock-home snapshot. Starting
+    // from model.data.home would silently restore stale neighbours and a lock
+    // even though this characteristic's optimistic precondition still matches.
+    var candidate:MockHome
+    do {candidate=try model.readMockControlSnapshot()} catch {completion(.failure(.unavailable));return}
+    switch reading(key,home:candidate) {
     case .failure(let error):completion(.failure(error))
     case .success(let actual):
       guard actual==expected,actual.descriptor.accepts(value,forWrite:true) else {completion(.failure(.changed));return}
-      var candidate=model.data.home
       do {try HomeMockControls.apply(slot,value:value,to:&candidate)} catch {completion(.failure(.invalidValue));return}
       guard model.commitMockHomeControl(candidate) else {completion(.failure(.unverified));return}
       completion(.success(()))
