@@ -3558,31 +3558,41 @@ final class HomeViewUITests: XCTestCase {
     launch(["--page","Home","--persistence-test",UUID().uuidString,"--reset-test-store"])
     tap("grid.lock")
     let auth=app.buttons["lock.action"]
-    activateRecipeTypeControl(auth)
+    activateRecipeTypeControl(auth,horizontalMargin:0)
     let unlock=app.buttons["device.unlock"]
-    activateRecipeTypeControl(unlock);tap("grid.lock")
+    activateRecipeTypeControl(unlock,horizontalMargin:0);tap("grid.lock")
     let action=app.buttons["lock.action"]
-    activateRecipeTypeControl(action)
+    activateRecipeTypeControl(action,horizontalMargin:0)
     let confirm=app.buttons["lock.confirm"],cancel=app.buttons["lock.cancel"]
-    revealRecipeTypeElement(cancel)
+    revealRecipeTypeElement(cancel,horizontalMargin:0)
     XCTAssertGreaterThanOrEqual(cancel.frame.width,43.5)
     XCTAssertGreaterThanOrEqual(cancel.frame.height,43.5)
-    systemTextSizeGeometry("mock-lock-cancel",["cancel":cancel])
-    activateRecipeTypeControl(cancel)
+    systemTextSizeGeometry("mock-lock-cancel",["cancel":cancel,"clip_scroll":app.scrollViews.firstMatch,"viewport":app.otherElements["reference.viewport"]])
+    activateRecipeTypeControl(cancel,horizontalMargin:0)
     XCTAssertFalse(confirm.exists)
-    activateRecipeTypeControl(action)
-    revealRecipeTypeElement(confirm)
-    systemTextSizeGeometry("mock-lock-confirmation",["confirm":confirm])
+    activateRecipeTypeControl(action,horizontalMargin:0)
+    revealRecipeTypeElement(confirm,horizontalMargin:0)
+    systemTextSizeGeometry("mock-lock-confirmation",["confirm":confirm,"clip_scroll":app.scrollViews.firstMatch,"viewport":app.otherElements["reference.viewport"]])
     viewportShot("mock-lock-largest-confirmation-before-action")
     XCTAssertGreaterThanOrEqual(confirm.frame.width,43.5)
     XCTAssertGreaterThanOrEqual(confirm.frame.height,43.5)
-    activateRecipeTypeControl(confirm);waitForMockLockState("Unlocked")
+    activateRecipeTypeControl(confirm,horizontalMargin:0);waitForMockLockState("Unlocked")
     let state=app.staticTexts["lock.state"]
     revealRecipeTypeElement(state)
     let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"].frame
     let clip=recipeTypeScrollContains(state,scroll) ? scroll.frame.intersection(viewport):viewport
     XCTAssertTrue(axContains(clip,state.frame),"The confirmed state must actually fit in its own visible clip")
     viewportShot("mock-lock-largest-confirmed")
+  }
+  func testMockLockLargestInitialGeometryOnly() {
+    continueAfterFailure=false
+    XCTAssertEqual(UIApplication.shared.preferredContentSizeCategory,.accessibilityExtraExtraExtraLarge)
+    launch(["--page","Home","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("grid.lock")
+    systemTextSizeGeometry("mock-lock-initial",["action":app.buttons["lock.action"],"scroll":app.scrollViews.firstMatch,
+      "viewport":app.otherElements["reference.viewport"]])
+    let a=XCTAttachment(string:app.debugDescription);a.name="mock-lock-largest-initial-hierarchy";a.lifetime = .keepAlways;add(a)
+    viewportShot("mock-lock-largest-initial-diagnostic")
   }
   func testMockLockConfirmedReadbackPersistsWithoutPersistingAuthorization() {
     continueAfterFailure=false

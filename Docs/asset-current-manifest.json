@@ -766,11 +766,11 @@
     },
     {
       "path": "Sources/App/HomeScreens.swift",
-      "sha256": "37428137fcb65becbac504d984e5807fa4dcb7dbfbd03946a2a387bdf27a01b1"
+      "sha256": "2487976a5ec0ce119cfc9fa58a6b978d41d98b871f757813bfe17d1b1f99a7b7"
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "dfc7a7bd1e2acaabde1a9230b8a9e5b18d33511e437ca25e1f7d0c71b02787b3"
+      "sha256": "70152f76bf13b0508d6d8f6ae5149ac4bb9714babecb3f07f82c269c89b77ee5"
     },
     {
       "path": "Scripts/generate_podcast_caption_fixture.py",
@@ -855,5 +855,13 @@
     "current_sha256": "37428137fcb65becbac504d984e5807fa4dcb7dbfbd03946a2a387bdf27a01b1",
     "resource_bytes_changed": false,
     "new_artwork_or_historical_rights_verdict": false
+  },
+  "mock_lock_provenance_source_refresh": {
+    "date": "2026-10-30",
+    "paths": [
+      "Sources/App/HomeScreens.swift",
+      "Sources/App/Faces.swift"
+    ],
+    "reason": "Current whole-source fingerprints after mock-lock state publication and confirmation UI changes; no asset geometry, existing authorship or historical rights verdict changed."
   }
 }

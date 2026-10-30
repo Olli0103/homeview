@@ -86,8 +86,11 @@ enum LockDeviceError: Error { case unavailable, denied, stateChanged, notWritabl
     phase=writeAttempted ? .unverified : (expired ? .expired : .cancelled)
     status=writeAttempted ? "Outcome unverified · A command may have been sent. Refresh before another action." : message
   }
-  func revoke() { stop("Authorization discarded · No command sent",clearReading:true) }
-  func cancelProposal() { stop("Cancelled · No command sent") }
+  func revoke() { stop("Authorization discarded · No pending approval",clearReading:true) }
+  func cancelProposal() {
+    guard phase == .approval,proposal != nil else { return }
+    stop("Cancelled · No command sent")
+  }
   func expireApproval() {
     if busy,let operationCreated,!ageValid(operationCreated) {
       stop("Lock check expired · No command sent",expired:true);return

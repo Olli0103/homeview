@@ -52,6 +52,11 @@ import XCTest
     XCTAssertEqual(s.phase,.confirmed);XCTAssertEqual(s.reading?.state,.unlocked)
     await s.confirm(id:id);XCTAssertEqual(p.writes,1)
   }
+  func testLateCancelCannotRelabelAnAlreadyConfirmedWriteAsNotSent() async throws {
+    let (s,p,_)=setup();await s.prepare();await s.confirm(id:try XCTUnwrap(s.proposal?.id))
+    let status=s.status;s.cancelProposal()
+    XCTAssertEqual(s.phase,.confirmed);XCTAssertEqual(s.status,status);XCTAssertEqual(p.writes,1)
+  }
   func testRelockingUsesAnExplicitTargetAndFreshApproval() async throws {
     let (s,p,_)=setup();p.value=LockReading(state:.unlocked)
     await s.prepare();XCTAssertEqual(s.proposal?.targetLocked,true)
