@@ -733,6 +733,16 @@ struct MusicView: View {
 struct WorldClockView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.scenePhase) private var phase
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.body) private var actionSize:CGFloat=18
+  @ScaledMetric(relativeTo:.title3) private var choiceSize:CGFloat=22
+  @ScaledMetric(relativeTo:.caption) private var zoneSize:CGFloat=12
+  @ScaledMetric(relativeTo:.title2) private var citySize:CGFloat=25
+  @ScaledMetric(relativeTo:.caption) private var infoSize:CGFloat=13
+  @ScaledMetric(relativeTo:.largeTitle) private var timeSize:CGFloat=34
+  @ScaledMetric(relativeTo:.caption) private var policySize:CGFloat=12
   @FocusState private var inputFocused:Bool
   @Environment(\.nativeCanvasScale) private var canvasScale
   private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
@@ -753,7 +763,8 @@ struct WorldClockView: View {
   }
   var body: some View {
     VStack(spacing: 8) {
-      AppHeader(title: choosing ? "Add City" : "World Clock",closeSize:max(48,minimumHitSide))
+      AppHeader(title: choosing ? "Add City" : "World Clock",closeSize:max(48,minimumHitSide),
+        titleFontSize:headerSize,clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
       HStack {
         Text(choosing ? "Choose a time zone" : "\(selected.count) of 12 cities")
         Spacer()
@@ -763,7 +774,7 @@ struct WorldClockView: View {
             .contentShape(Rectangle())
         }.disabled(!choosing && selected.count >= 12)
           .accessibilityIdentifier("world.add")
-      }.font(.system(size: 18)).padding(.horizontal, 30)
+      }.font(.system(size:actionSize)).padding(.horizontal, 30)
       if choosing {
         TextField("Search all time zones", text: $search).textFieldStyle(.plain)
           .padding(12).background(.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 12))
@@ -779,12 +790,12 @@ struct WorldClockView: View {
                 HStack(spacing: 8) {
                   VStack(alignment: .leading, spacing: 2) {
                     Text(city.name)
-                    Text(city.zone).font(.system(size: 12)).foregroundStyle(.gray)
+                    Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.gray)
                   }
                   Spacer()
                   Image(systemName: "plus.circle")
                 }
-                  .font(.system(size: 22)).padding(14)
+                  .font(.system(size:choiceSize)).padding(14)
                   .frame(minHeight:minimumHitSide).contentShape(Rectangle())
               }.accessibilityIdentifier("world.choose.\(city.zone)")
             }
@@ -799,6 +810,27 @@ struct WorldClockView: View {
                 referenceZone: model.displayTimeZone)
               HStack(spacing: 8) {
                 Button { detail = city } label: {
+                  if textSize.isAccessibilitySize {
+                    VStack(alignment:.leading,spacing:8) {
+                      HStack(alignment:.top,spacing:12) {
+                        Image(systemName:reading.daylight == nil ? "clock"
+                          :(reading.daylight! ? "sun.max.fill":"moon.fill"))
+                          .foregroundStyle(reading.daylight == nil ? .gray
+                            :(reading.daylight! ? .orange:.indigo))
+                          .accessibilityLabel(reading.daylight == nil ? "No sun position"
+                            :(reading.daylight! ? "Daylight estimate":"Night estimate"))
+                        VStack(alignment:.leading,spacing:4) {
+                          Text(city.name).font(.system(size:citySize,weight:.medium))
+                          Text(reading.date+" · "+reading.offset).font(.system(size:infoSize))
+                          if let relation=reading.dayRelation {
+                            Text(relation).font(.system(size:infoSize,weight:.semibold))
+                          }
+                        }
+                      }
+                      Text(reading.time).font(.system(size:timeSize,weight:.light)).monospacedDigit()
+                        .accessibilityIdentifier("world.time.\(city.zone)")
+                    }.frame(maxWidth:.infinity,alignment:.leading).contentShape(Rectangle())
+                  } else {
                   HStack(spacing: 12) {
                     Image(systemName: reading.daylight == nil ? "clock"
                       : (reading.daylight! ? "sun.max.fill" : "moon.fill"))
@@ -807,21 +839,22 @@ struct WorldClockView: View {
                       .accessibilityLabel(reading.daylight == nil ? "No sun position"
                         : (reading.daylight! ? "Daylight estimate" : "Night estimate"))
                     VStack(alignment: .leading, spacing: 4) {
-                      Text(city.name).font(.system(size: 25, weight: .medium))
-                      Text(reading.date + " · " + reading.offset).font(.system(size: 13))
+                      Text(city.name).font(.system(size:citySize,weight:.medium))
+                      Text(reading.date + " · " + reading.offset).font(.system(size:infoSize))
                       if let relation=reading.dayRelation {
                         Text(relation)
-                          .font(.system(size: 13, weight: .semibold))
+                          .font(.system(size:infoSize,weight:.semibold))
                       }
                     }
                     Spacer(minLength: 0)
-                    Text(reading.time).font(.system(size: 34, weight: .light)).monospacedDigit()
+                    Text(reading.time).font(.system(size:timeSize,weight:.light)).monospacedDigit()
                       .accessibilityIdentifier("world.time.\(city.zone)")
                   }.contentShape(Rectangle())
+                  }
                 }.buttonStyle(.plain)
                   .accessibilityIdentifier("world.detail.open.\(city.zone)")
                 Button { model.removeWorldCity(city.zone) } label: {
-                  Image(systemName: "minus.circle").font(.system(size: 22)).padding(8)
+                  Image(systemName: "minus.circle").font(.system(size:choiceSize)).padding(8)
                     .frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
                     .contentShape(Rectangle())
                 }.accessibilityLabel("Remove \(city.name)")
@@ -832,19 +865,30 @@ struct WorldClockView: View {
               Divider().padding(.horizontal, 30)
             }
             if selected.isEmpty { Text("Add a city to see its local time.").padding(30) }
+            if textSize.isAccessibilitySize {worldPolicy}
           }
         }
-        Text("Tap a city for day and night. Sun position is an offline estimate.")
-          .font(.system(size: 12)).foregroundStyle(.gray)
-          .multilineTextAlignment(.center).padding(.horizontal, 30).padding(.bottom, 14)
+        if !textSize.isAccessibilitySize {worldPolicy}
       }
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
     .sheet(item: $detail) { city in WorldClockDetail(city: city).snapshotPrivacyProtected() }
+  }
+  private var worldPolicy:some View {
+    Text("Tap a city for day and night. Sun position is an offline estimate.")
+      .font(.system(size:policySize)).foregroundStyle(.gray)
+      .multilineTextAlignment(.center).padding(.horizontal,30).padding(.bottom,14)
   }
 }
 struct WorldClockDetail: View {
   @Environment(AppModel.self) private var model
   @Environment(\.dismiss) private var dismiss
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.title) private var citySize:CGFloat=28
+  @ScaledMetric(relativeTo:.caption) private var zoneSize:CGFloat=13
+  @ScaledMetric(relativeTo:.headline) private var doneSize:CGFloat=18
+  @ScaledMetric(relativeTo:.largeTitle) private var timeSize:CGFloat=72
+  @ScaledMetric(relativeTo:.body) private var dateSize:CGFloat=16
+  @ScaledMetric(relativeTo:.subheadline) private var relationSize:CGFloat=15
   let city: WorldCity
   private var reading: WorldClockReading {
     WorldClockReading(city: city, instant: model.clock, referenceZone: model.displayTimeZone)
@@ -857,31 +901,51 @@ struct WorldClockDetail: View {
     return formatter.string(from: date)
   }
   var body: some View {
-    let reading = reading
-    VStack(spacing: 18) {
-      HStack {
-        VStack(alignment: .leading, spacing: 2) {
-          Text(city.name).font(.system(size: 28, weight: .medium))
-          Text(city.zone).font(.system(size: 13)).foregroundStyle(.gray)
+    let reading=reading
+    VStack(spacing:18) {
+      if textSize.isAccessibilitySize {
+        VStack(alignment:.leading,spacing:8) {
+          HStack {Spacer();done}
+          Text(city.name).font(.system(size:citySize,weight:.medium))
+          Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.gray)
+        }.frame(maxWidth:.infinity,alignment:.leading)
+        ScrollView {
+          VStack(spacing:18) {detailReading(reading)}.frame(maxWidth:.infinity)
         }
-        Spacer()
-        Button { dismiss() } label: {
-          Text("Done").font(.system(size: 18, weight: .semibold))
-            .padding(.horizontal, 6).frame(minHeight: 44).contentShape(Rectangle())
-        }.accessibilityIdentifier("world.detail.done")
+      } else {
+        HStack {
+          VStack(alignment:.leading,spacing:2) {
+            Text(city.name).font(.system(size:citySize,weight:.medium))
+            Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.gray)
+          }
+          Spacer()
+          done
+        }
+        detailReading(reading)
+        Spacer(minLength:0)
       }
-      Text(reading.time).font(.system(size: 72, weight: .thin)).monospacedDigit()
-        .accessibilityIdentifier("world.detail.time")
-      Text(reading.date + " · " + reading.offset).font(.system(size: 16))
-      if let relation = reading.dayRelation {
-        Text(relation).font(.system(size: 15, weight: .semibold))
-      }
-      DaylightBar(sun: reading.sun, daylight: reading.daylight, localTime: localTime)
-      Spacer(minLength: 0)
     }.padding(28).background(.white).foregroundStyle(.black)
+  }
+  private var done:some View {
+    Button {dismiss()} label: {
+      Text("Done").font(.system(size:doneSize,weight:.semibold))
+        .padding(.horizontal,6).frame(minHeight:44).contentShape(Rectangle())
+    }.accessibilityIdentifier("world.detail.done")
+  }
+  @ViewBuilder private func detailReading(_ reading:WorldClockReading)->some View {
+    // Large digital numerals remain one line inside a narrow native sheet.
+    Text(reading.time).font(.system(size:min(timeSize,112),weight:.thin)).monospacedDigit()
+      .accessibilityIdentifier("world.detail.time")
+    Text(reading.date+" · "+reading.offset).font(.system(size:dateSize))
+    if let relation=reading.dayRelation {
+      Text(relation).font(.system(size:relationSize,weight:.semibold))
+    }
+    DaylightBar(sun:reading.sun,daylight:reading.daylight,localTime:localTime)
   }
 }
 struct DaylightBar: View {
+  @ScaledMetric(relativeTo:.caption) private var statusSize:CGFloat=13
+  @ScaledMetric(relativeTo:.caption2) private var estimateSize:CGFloat=11
   let sun: DaylightWindow
   let daylight: Bool?
   let localTime: (Date) -> String
@@ -921,11 +985,11 @@ struct DaylightBar: View {
         .accessibilityLabel("Day and night course")
         .accessibilityValue(status)
         .accessibilityIdentifier("world.daylight.bar")
-      Text(status).font(.system(size: 13)).foregroundStyle(.gray)
+      Text(status).font(.system(size:statusSize)).foregroundStyle(.gray)
       Text(daylight == nil ? "Current light unknown" : (daylight! ? "Currently daylight" : "Currently night"))
-        .font(.system(size: 13, weight: .semibold))
+        .font(.system(size:statusSize,weight:.semibold))
       Text("Offline estimate from a low-order solar model, not an ephemeris.")
-        .font(.system(size: 11)).foregroundStyle(.gray)
+        .font(.system(size:estimateSize)).foregroundStyle(.gray)
     }
   }
 }

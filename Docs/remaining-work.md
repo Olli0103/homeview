@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Weltuhr: Liste, Städtewahl und natives Detail skalieren](world-clock-dynamic-type.md):18 aktuelle UI-Ausführungen/fünf SDKs,38 gemeldete Textausdehnungen wachsen und48 ganze normale Root-/Sheet-Paare exakt gleich. Vier native Messinstrumentfehler erhalten, acht AX-Textkind-Gaps und Lese-/Kontrast-/Hilfsmittelgrenzen offen; #53/#73 bleiben offen.
+
 - [Podcast-Texte auf weißem Root kontrastiert](podcast-contrast.md):20 native normale Farbbedingungen jetzt6,90–7,00:1; zwölf aktuelle UI-Ausführungen/fünf SDKs.22 vorab qualifizierte Außenvergleiche exakt,50 Zielrahmen gleich;28 Scrollposen unqualifiziert. Nur neun lokale Farben geändert; #73 bleibt für weitere Flows/Lese-/Hilfsmittelgrenzen offen.
 
 - [Podcast-UI: Systemschrift ohne geänderte Normalansicht](podcast-controls-dynamic-type.md): zwölf aktuelle UI-Ausführungen/fünf SDKs,40 gemeldete Textausdehnungen wachsen,50 ganze normale RGBA-Paare exakt gleich. Native Feed-Controls schon vorher skalierend/unverändert; acht AX-Textkind-Gaps, Lese-/Kontrast-/Hilfsmittelgrenzen offen. Neue Inventuren ohne Wiedergabe, separate bestehende Caption-Regression nur mit stummem eigenem Bundle; #73 offen.

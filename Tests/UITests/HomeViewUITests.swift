@@ -261,6 +261,120 @@ extension HomeViewUITests {
 }
 
 extension HomeViewUITests {
+  private func worldTypeLaunch() {
+    launch(["--page","World Clock","--persistence-test",UUID().uuidString,"--reset-test-store",
+      "--reference-date","2026-01-01T01:00:00Z","--reference-zone","UTC"])
+  }
+  private func worldTypeSheetContainer()->XCUIElement {
+    let window=app.windows.firstMatch.frame
+    let candidates=app.otherElements.containing(.button,identifier:"world.detail.done")
+      .containing(.staticText,identifier:"world.detail.time").allElementsBoundByIndex.filter { e in
+        let f=e.frame
+        return [f.minX,f.minY,f.width,f.height].allSatisfy(\.isFinite)
+          && f.width>0 && f.height>0 && axContains(window,f)
+      }
+    XCTAssertFalse(candidates.isEmpty,"Native detail must have a finite container bound to both unique sheet targets")
+    return candidates.min { $0.frame.width * $0.frame.height < $1.frame.width * $1.frame.height } ?? app.windows.firstMatch
+  }
+  private func worldTypeObserve(_ state:String,_ element:XCUIElement,control:Bool=false,sheet:Bool=false,excerpt:Bool=false) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    if !sheet {revealRecipeTypeElement(element,margin:0,horizontalMargin:0)}
+    let surface=sheet ? worldTypeSheetContainer():app.otherElements["reference.viewport"]
+    let scroll=sheet ? surface.scrollViews.firstMatch:app.scrollViews.firstMatch
+    if sheet,recipeTypeScrollContains(element,scroll) {
+      for _ in 0..<16 {
+        let clip=surface.frame.intersection(scroll.frame),f=element.frame
+        if axContains(clip,f) || (excerpt && f.height>clip.height && f.intersection(clip).height>=44) {break}
+        let gap=f.minY<clip.minY ? f.minY-clip.minY-10:f.maxY-clip.maxY+10
+        let distance=min(max(abs(gap),24),clip.height*0.6)*(gap<0 ? -1:1)
+        let origin=app.coordinate(withNormalizedOffset:.zero)
+        origin.withOffset(CGVector(dx:clip.minX+8,dy:clip.midY+distance/2))
+          .press(forDuration:0.1,thenDragTo:origin.withOffset(CGVector(dx:clip.minX+8,dy:clip.midY-distance/2)),withVelocity:.slow,thenHoldForDuration:0.2)
+      }
+    }
+    RunLoop.current.run(until:Date().addingTimeInterval(0.3))
+    let viewport=surface.frame
+    func box(_ r:CGRect)->[Double] {
+      let values=[r.minX,r.minY,r.width,r.height]
+      return values.allSatisfy(\.isFinite) ? values.map(Double.init):[0,0,0,0]
+    }
+    func row(_ e:XCUIElement)->[String:Any] {
+      let inside=recipeTypeScrollContains(e,scroll)
+      let clip=inside ? scroll.frame.intersection(viewport):viewport
+      return ["id":e.identifier,"label":e.label,"frame":box(e.frame),"clip":box(clip),
+        "inside_scroll":inside,"fully_in_clip":axContains(clip,e.frame),
+        "geometry_finite":[e.frame.minX,e.frame.minY,e.frame.width,e.frame.height].allSatisfy(\.isFinite),
+        "visible_intersection":box(e.frame.intersection(clip))]
+    }
+    var report:[String:Any]=["state":state,"control_envelope_not_font_metric":control,
+      "reading_scope":excerpt ? "declared paragraph excerpt, not whole reading":"reported short-text extent; native pixels separately reviewed, no AX-only full-reading PASS",
+      "coordinate_lane":sheet ? "smallest finite native container containing unique sheet Done and time, actual sheet scroll if present":"scaled root, actual scroll clip",
+      "target":row(element)]
+    if control {
+      let child=element.staticTexts.firstMatch;report["text_child_exists"]=child.exists
+      if child.exists {report["text_child"]=row(child)}
+    }
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="photo-type-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
+    if sheet {
+      let screen=app.screenshot(),pixels=screen.image.cgImage!,window=app.windows.firstMatch.frame
+      let scale=CGFloat(pixels.width)/window.width
+      let crop=CGRect(x:viewport.minX*scale,y:viewport.minY*scale,width:viewport.width*scale,height:viewport.height*scale).integral
+      guard let own=pixels.cropping(to:crop) else {XCTFail("Native sheet crop failed");return}
+      let image=XCTAttachment(image:UIImage(cgImage:own));image.name="viewport-photo-type-"+state;image.lifetime = .keepAlways;add(image)
+      let g=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["state":state,"native_container_points":box(viewport),"crop_pixels":box(crop),"screenshot_pixels":[pixels.width,pixels.height]],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      g.name="world-sheet-crop-"+state;g.lifetime = .keepAlways;add(g)
+      shot("world-type-"+state)
+    } else {viewportShot("photo-type-"+state)}
+  }
+  func testWorldClockSelectedAndChooserSystemTextSizeInventory() {
+    continueAfterFailure=false;worldTypeLaunch()
+    worldTypeObserve("world-heading",app.staticTexts["World Clock"])
+    worldTypeObserve("world-count",app.staticTexts["4 of 12 cities"])
+    worldTypeObserve("world-add",app.buttons["world.add"],control:true)
+    let first=app.buttons["world.detail.open.America/Los_Angeles"]
+    worldTypeObserve("world-city",first.staticTexts["San Francisco"])
+    worldTypeObserve("world-date-offset",first.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","UTC")).firstMatch)
+    worldTypeObserve("world-day-relation",first.staticTexts["Previous day"])
+    worldTypeObserve("world-time",app.staticTexts["world.time.America/Los_Angeles"])
+    worldTypeObserve("world-policy",app.staticTexts["Tap a city for day and night. Sun position is an offline estimate."],excerpt:true)
+    podcastTypeActivate(app.buttons["world.add"])
+    worldTypeObserve("world-chooser-heading",app.staticTexts["Add City"])
+    worldTypeObserve("world-chooser-policy",app.staticTexts["Choose a time zone"])
+    worldTypeObserve("world-done",app.buttons["world.add"],control:true)
+    worldTypeObserve("world-search",app.textFields["world.search"],control:true)
+    let london=app.buttons["world.choose.Europe/London"]
+    worldTypeObserve("world-choice-name",london.staticTexts["London"])
+    worldTypeObserve("world-choice-zone",london.staticTexts["Europe/London"])
+    podcastTypeActivate(london)
+    XCTAssertEqual(app.buttons["world.add"].label,"Add City")
+    XCTAssertTrue(app.staticTexts["5 of 12 cities"].exists)
+    let remove=app.buttons["world.remove.Europe/London"]
+    podcastTypeActivate(remove)
+    XCTAssertFalse(remove.exists);XCTAssertTrue(app.staticTexts["4 of 12 cities"].exists)
+    tap("close");XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    worldTypeObserve("positive-settings-heading",app.staticTexts["Settings"])
+  }
+  func testWorldClockNativeDetailSystemTextSizeInventory() {
+    continueAfterFailure=false;worldTypeLaunch()
+    podcastTypeActivate(app.buttons["world.detail.open.America/Los_Angeles"])
+    XCTAssertTrue(app.staticTexts["world.detail.time"].waitForExistence(timeout:5))
+    let surface=worldTypeSheetContainer()
+    let hierarchy=XCTAttachment(string:app.debugDescription);hierarchy.name="world-detail-type-hierarchy";hierarchy.lifetime = .keepAlways;add(hierarchy)
+    worldTypeObserve("world-detail-city",surface.staticTexts["San Francisco"],sheet:true)
+    worldTypeObserve("world-detail-zone",surface.staticTexts["America/Los_Angeles"],sheet:true)
+    worldTypeObserve("world-detail-done",surface.buttons["world.detail.done"],control:true,sheet:true)
+    worldTypeObserve("world-detail-time",surface.staticTexts["world.detail.time"],sheet:true)
+    worldTypeObserve("world-detail-date-offset",surface.staticTexts.matching(NSPredicate(format:"label CONTAINS %@","UTC")).firstMatch,sheet:true)
+    worldTypeObserve("world-detail-relation",surface.staticTexts["Previous day"],sheet:true)
+    worldTypeObserve("world-detail-sun",surface.staticTexts.matching(NSPredicate(format:"label BEGINSWITH %@","Sunrise")).firstMatch,sheet:true)
+    worldTypeObserve("world-detail-light",surface.staticTexts["Currently daylight"],sheet:true)
+    worldTypeObserve("world-detail-policy",surface.staticTexts["Offline estimate from a low-order solar model, not an ephemeris."],sheet:true,excerpt:true)
+    XCTAssertTrue(app.buttons["world.detail.done"].isHittable);tap("world.detail.done")
+    XCTAssertFalse(app.staticTexts["world.detail.time"].exists)
+    XCTAssertTrue(app.staticTexts["4 of 12 cities"].exists)
+  }
   private func podcastTypeObserve(_ state:String,_ element:XCUIElement,control:Bool=false,excerpt:Bool=false) {
     revealRecipeTypeElement(element,margin:0,horizontalMargin:0)
     RunLoop.current.run(until:Date().addingTimeInterval(0.5))
