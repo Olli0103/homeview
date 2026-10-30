@@ -2,6 +2,95 @@ import XCTest
 import UIKit
 
 extension HomeViewTVUITests {
+  @MainActor func testNativeTVMockLockPersonalHomeReturnWithoutAuthentication() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native state getter requires tvOS27")}
+    XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)
+    let app=launch("Home",extra:["--mock-lock-state","low-battery"])
+    select(app.buttons["grid.lock"],in:app,maxMoves:80)
+    select(app.buttons["lock.action"],in:app,maxMoves:80)
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:5))
+    select(app.buttons["close"],in:app,maxMoves:80)
+    select(app.buttons["app.Messages"],in:app,maxMoves:80,activate:false)
+    capture(app,"native-tv-personal-messages-focused-not-activated")
+    select(app.buttons["app.Home"],in:app,maxMoves:80)
+    select(app.buttons["grid.lock"],in:app,maxMoves:80)
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device")
+    XCTAssertFalse(app.buttons["lock.confirm"].exists)
+    capture(app,"native-tv-personal-return-lock-without-authentication")
+    XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)
+  }
+
+  @MainActor func testNativeTVMockLockNormalRefreshGateCloseReference() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native state getter requires tvOS27")}
+    XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)
+    let app=launch("Home",extra:["--mock-lock-state","low-battery"])
+    select(app.buttons["grid.lock"],in:app,maxMoves:80)
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    XCTAssertEqual(app.staticTexts["lock.battery"].label,"Low battery · 15%")
+    select(app.buttons["lock.action"],in:app,maxMoves:80,activate:false)
+    capture(app,"native-tv-lock-normal-initial")
+    select(app.buttons["lock.refresh"],in:app,maxMoves:80)
+    XCTAssertEqual(app.staticTexts["lock.status"].label,"Observed mock state · No command sent")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    capture(app,"native-tv-lock-normal-refreshed")
+    select(app.buttons["lock.action"],in:app,maxMoves:80)
+    XCTAssertTrue(app.buttons["device.unlock"].waitForExistence(timeout:5))
+    select(app.buttons["close"],in:app,maxMoves:80,activate:false)
+    capture(app,"native-tv-lock-normal-gate-close")
+    XCUIRemote.shared.press(.select)
+    select(app.buttons["nav.faces"],in:app,maxMoves:80)
+    let faceLock=app.buttons.matching(NSPredicate(format:"label == %@","Door Lock, Front Door")).firstMatch
+    select(faceLock,in:app,maxMoves:80)
+    select(app.buttons["lock.action"],in:app,maxMoves:80,activate:false)
+    XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    XCTAssertFalse(app.buttons["lock.confirm"].exists)
+    capture(app,"native-tv-lock-normal-returned")
+    XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)
+  }
+
+  @MainActor func testNativeTVVoiceOverMockLockReadRefreshGateCancel() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native service requires tvOS27")}
+    try withNativeTVVoiceOver(page:"Home",extra:["--mock-lock-state","low-battery"],name:"mock-lock") {app,service,record in
+      executionTimeAllowance=420
+      @MainActor func read(_ target:XCUIElement,_ required:String)->Bool {
+        nativeTVVoiceOverFocus(target,required:required,in:app,service:service,record:record)
+      }
+      guard read(app.buttons["grid.lock"],"Front Door") else {return}
+      XCUIRemote.shared.press(.select)
+      guard app.staticTexts["lock.state"].waitForExistence(timeout:5) else {XCTFail("Actual mock-lock detail required");return}
+      guard read(app.staticTexts["app.header.title"],"Front Door"),read(app.staticTexts["lock.state"],"Locked") else {return}
+      let stateSpeech=try service.currentSpeech().utterance.lowercased()
+      XCTAssertTrue(stateSpeech == "locked" || stateSpeech.hasPrefix("locked "),"Do not accept Unlocked as Locked")
+      XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+      guard read(app.staticTexts["Mock lock · Device authentication required"],"Mock lock"),
+        read(app.staticTexts["lock.battery"],"Low battery") else {return}
+      XCTAssertEqual(app.staticTexts["lock.battery"].label,"Low battery · 15%")
+      XCTAssertTrue(try service.currentSpeech().utterance.contains("15"))
+      guard read(app.staticTexts["lock.status"],"No command sent"),read(app.buttons["lock.refresh"],"Refresh state") else {return}
+      XCUIRemote.shared.press(.select)
+      XCTAssertEqual(app.staticTexts["lock.status"].label,"Observed mock state · No command sent")
+      guard read(app.staticTexts["lock.state"],"Locked"),read(app.buttons["lock.action"],"Authenticate Device") else {return}
+      XCUIRemote.shared.press(.select)
+      guard app.buttons["device.unlock"].waitForExistence(timeout:5) else {XCTFail("Local authentication gate required, no authentication callback permitted");return}
+      XCTAssertEqual(app.buttons["device.unlock"].label,"Unlock")
+      guard read(app.staticTexts["app.header.title"],"Personal access"),read(app.buttons["close"],"Close") else {return}
+      capture(app,"native-tv-voiceover-lock-gate-without-authentication")
+      XCUIRemote.shared.press(.select)
+      guard read(app.buttons["app.Home"],"Home") else {return}
+      XCTAssertEqual(app.buttons["app.Home"].label,"Home");XCUIRemote.shared.press(.select)
+      guard read(app.buttons["grid.lock"],"Front Door") else {return}
+      XCUIRemote.shared.press(.select)
+      guard read(app.buttons["lock.action"],"Authenticate Device") else {return}
+      XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked");XCTAssertFalse(app.buttons["lock.confirm"].exists)
+      record("mock-lock-returned-without-authentication",["state":app.staticTexts["lock.state"].label,
+        "action":app.buttons["lock.action"].label,"proposal_absent":!app.buttons["lock.confirm"].exists,
+        "device_unlock_never_selected":true,"scope":"Owned local MockHome refresh/read; no authentication or lock command" ] )
+      capture(app,"native-tv-voiceover-lock-returned-locked")
+    }
+  }
+
   @MainActor func testNativeTVEditorNormalHeaderSlotCancelClockAndDone() throws {
     guard #available(tvOS 27.0,*) else {throw XCTSkip("Native state getter requires tvOS27")}
     XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)

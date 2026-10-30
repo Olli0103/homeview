@@ -22,6 +22,9 @@ struct PersonalView: View {
     ZStack {
       FaceView(selection:model.data.face).blur(radius:22).overlay(.black.opacity(0.28))
         .allowsHitTesting(false).accessibilityHidden(true)
+        #if os(tvOS)
+          .disabled(true)
+        #endif
       VStack(alignment:.leading,spacing:configuration.layout == .photos ? 30:24) {
         header
         if configuration.layout != .photos {
@@ -507,6 +510,9 @@ struct LightView: View {
 }
 struct LockView: View {
   @Environment(AppModel.self) private var model
+  #if os(tvOS)
+    @Environment(\.accessibilityVoiceOverEnabled) private var tvVoiceOverEnabled
+  #endif
   @Environment(\.dynamicTypeSize) private var textSize
   @Environment(\.nativeCanvasScale) private var canvasScale
   @State private var lockTask: Task<Void,Never>?
@@ -541,12 +547,18 @@ struct LockView: View {
       symbol;state;policy
       Text(model.securityLock.reading?.batteryText ?? "Battery level unavailable")
         .font(.system(size:policySize)).accessibilityIdentifier("lock.battery")
+        #if os(tvOS)
+          .focusable(tvVoiceOverEnabled).focusEffectDisabled()
+        #endif
     }.frame(maxWidth:.infinity)
   }
   private var requestStatus:some View {
     Text(model.securityLock.status).font(.system(size:policySize))
       .multilineTextAlignment(.center).fixedSize(horizontal:false,vertical:true)
       .accessibilityIdentifier("lock.status")
+      #if os(tvOS)
+        .focusable(tvVoiceOverEnabled).focusEffectDisabled()
+      #endif
   }
   private var refreshAction:some View {
     Pill(title:"Refresh state",symbol:"arrow.clockwise",fontSize:actionSize,minimumHeight:minimumHitSide) {
@@ -566,10 +578,16 @@ struct LockView: View {
     Text(model.securityLock.reading?.state.title ?? "Unknown").font(.system(size:stateSize,weight:.semibold))
       .accessibilityIdentifier("lock.state")
       .accessibilityHint("Last observed mock state. The request status is shown separately.")
+      #if os(tvOS)
+        .focusable(tvVoiceOverEnabled).focusEffectDisabled()
+      #endif
   }
   private var policy:some View {
     Text("Mock lock · Device authentication required").font(.system(size:policySize))
       .foregroundStyle(.black.opacity(0.65))
+      #if os(tvOS)
+        .focusable(tvVoiceOverEnabled).focusEffectDisabled()
+      #endif
   }
   @ViewBuilder private var lockAction:some View {
     if let proposal=model.securityLock.proposal {

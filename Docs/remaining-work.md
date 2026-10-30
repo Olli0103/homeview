@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [TV-Schloss: Lesefokus und persönlicher Rückweg korrigiert](tv-lock-voiceover.md): 14 native gemeldete Werte, Refresh/Gate-Close und tatsächliche Home-Rückkehr ohne Authentifizierung. Vier finale ganze Schloss-/Gate-Bilder exakt; frühere Refresh-Variation und zusätzlicher ganzer Startbildschirm mit7.064Pixeln FAIL bleiben erhalten. Kein pauschaler Pixel-/Original-PASS, #73 offen.
+
 - [TV-Editor: versteckten Vorschau-Fokus korrigiert](tv-editor-voiceover.md): vier aktuelle UI-Ausführungen bestanden, 17 native Fokus-/Sprachwerte, Slot-Abbruch/Clock/Neustart und exakte VoiceOver-Rückstellung. Ganze festgelegte Vorschau362×361 mit0RGBA-Unterschieden; keine ganze Editor-/Originalabnahme. Drei Vorherfehler erhalten; #73/#7 offen.
 
 - [TV-Rezept: Schritttext mit echtem VoiceOver-Remote-Fokus](tv-recipe-voiceover.md): sechs aktuelle UI-Ausführungen und fünf SDKs/77 Produkte bestanden; 19 gemeldete Rezept-Fokus-/Sprachwerte, echte Vor-/Zurück-/Finish-Aktionen und exakte Zustandsrückstellungen. **Nur 1/4 ganze Normalbildpaare strikt bestanden, drei weiterhin nicht abgenommen**; große Abweichung auch bei identischen Appbytes, kleine19/13-Pixel-Ursachen ungeklärt. #73 offen, ursprüngliche Kriterien erhalten; weiter zum nächsten zentralen Hilfsmittelflow.

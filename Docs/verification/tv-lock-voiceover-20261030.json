@@ -1,0 +1,488 @@
+{
+  "date": "2026-10-30",
+  "issue": 73,
+  "base_commit": "f3ca700e086377cf865e2847b1dcd2798ac7426b",
+  "source_manifest": "b9990c995770801d45546c4cf876e795afb53b7688c509697d80b67b40273cf6",
+  "source_input_files": 253,
+  "native_voiceover_source_manifest": "efc04edf5b4f9ccf6ded19d5fecbfbf13879c946df09bb7a7d8fbdfe74f13a09",
+  "changed_files": [
+    "Sources/App/HomeScreens.swift",
+    "Tests/TVUITests/HomeViewTVUITests.swift"
+  ],
+  "product_scope": "TV-only readonly PersonalView background disabled. Four LockView read texts are focusable only while native VoiceOver is enabled, decorative focus effect disabled. No fonts/colors/layout or non-TV source branches restyled. AppDrawer background not changed in this patch.",
+  "ui_ledger": [
+    {
+      "stage": "before",
+      "device": "tv",
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "7c0b6752cdaa65f2a27fb4050ea65e61d306ff98be10e6c00d4c8780d353d140",
+      "compiled_inputs_and_sources_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "historical pre-product-change execution"
+    },
+    {
+      "stage": "qualified",
+      "device": "tv",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "bf1ed93dd44933bd09ee8b22d3ffdc4b11b65f8866ce4fb131aa07eff6b3e8e2",
+      "compiled_inputs_and_sources_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "historical pre-product-change execution"
+    },
+    {
+      "stage": "reference",
+      "device": "tv",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "161bf0b263ecb46f11a769092a4be073e7150fff5ecd46d2385ca4488f8972e3",
+      "compiled_inputs_and_sources_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "historical pre-product-change execution"
+    },
+    {
+      "stage": "candidate",
+      "device": "tv",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "efc04edf5b4f9ccf6ded19d5fecbfbf13879c946df09bb7a7d8fbdfe74f13a09",
+      "compiled_inputs_and_sources_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "current execution, includes repeated normal-image control"
+    },
+    {
+      "stage": "final",
+      "device": "tv",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "b9990c995770801d45546c4cf876e795afb53b7688c509697d80b67b40273cf6",
+      "compiled_inputs_and_sources_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "current execution, includes repeated normal-image control"
+    },
+    {
+      "stage": "mobile",
+      "device": "phone",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "b9990c995770801d45546c4cf876e795afb53b7688c509697d80b67b40273cf6",
+      "compiled_inputs_and_sources_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "current execution, includes repeated normal-image control"
+    },
+    {
+      "stage": "mobile",
+      "device": "ipad",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "b9990c995770801d45546c4cf876e795afb53b7688c509697d80b67b40273cf6",
+      "compiled_inputs_and_sources_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "current execution, includes repeated normal-image control"
+    }
+  ],
+  "current_ui_executions_passed": 6,
+  "current_normal_method_includes_one_repeat_image_control": true,
+  "native_review": {
+    "reported_focus_checks": 14,
+    "all_specific_utterances_reviewed": true,
+    "exact_original_false_restored": true,
+    "independent_report_byte_exact": true,
+    "callbacks": [
+      {
+        "action": "Authenticate Device",
+        "device_unlock_never_selected": true,
+        "elapsed": 88.10889366664924,
+        "event": "mock-lock-returned-without-authentication",
+        "proposal_absent": true,
+        "scope": "Owned local MockHome refresh/read; no authentication or lock command",
+        "state": "Locked"
+      }
+    ]
+  },
+  "native_scope": "Fourteen required short native reported values and actual Remote callbacks; own test Reference viewport marker occurs in Home utterance. Locked state verified separately from Unlocked; full64-character hint and acoustic reading not claimed. Never activates Unlock, Messages, Connect or a lock-command callback.",
+  "original_state_restorations": [
+    {
+      "stage": "before",
+      "original_enabled": false,
+      "restored": true,
+      "independent_report_byte_exact": true,
+      "report_sha256": "ab6eb0bd05e744c6dfc2d60cbf2153fd4dcd3a39488f90cb46b7205f9b5543d7"
+    },
+    {
+      "stage": "candidate",
+      "original_enabled": false,
+      "restored": true,
+      "independent_report_byte_exact": true,
+      "report_sha256": "4596ee0240f1d10763317ecdaa14964f04790c27c4e08500a45f52f4a850cdff"
+    }
+  ],
+  "same_app_identity": {
+    "native_tv_app_files_byte_exact": 12,
+    "test_pins_distinct": true,
+    "product_unchanged": true,
+    "normal4image_method_unchanged": true,
+    "native_success_path_unchanged": true
+  },
+  "initial_candidate_pixel_contract": {
+    "pairs": [
+      {
+        "state": "native-tv-lock-normal-initial",
+        "before": "reference/tv-attachments/67C8872F-3BAF-4815-8A94-CF7B5CE73648.png",
+        "after": "candidate/tv-attachments/04A0482A-4E7D-4F4E-9E70-3599BF6F1D06.png",
+        "width": 1920,
+        "height": 1080,
+        "changed_rgba_pixels": 0,
+        "png_bytes_equal": true,
+        "passed": true
+      },
+      {
+        "state": "native-tv-lock-normal-refreshed",
+        "before": "reference/tv-attachments/5D2EBBE1-B395-4DF9-BE1E-E624829BBC94.png",
+        "after": "candidate/tv-attachments/8E03B761-D78C-45C9-9C40-C5E8FB367E8C.png",
+        "width": 1920,
+        "height": 1080,
+        "changed_rgba_pixels": 26537,
+        "png_bytes_equal": false,
+        "passed": false
+      },
+      {
+        "state": "native-tv-lock-normal-gate-close",
+        "before": "reference/tv-attachments/A08E9FDE-80C5-47CB-A233-8DA3D77E12E3.png",
+        "after": "candidate/tv-attachments/37277E56-186F-4342-A590-8197044AD79D.png",
+        "width": 1920,
+        "height": 1080,
+        "changed_rgba_pixels": 0,
+        "png_bytes_equal": true,
+        "passed": true
+      },
+      {
+        "state": "native-tv-lock-normal-returned",
+        "before": "reference/tv-attachments/F8D049F0-CAC4-4964-A727-DDC70930EB63.png",
+        "after": "candidate/tv-attachments/D139EE5F-CE59-444F-B71A-C49FBFD28C11.png",
+        "width": 1920,
+        "height": 1080,
+        "changed_rgba_pixels": 0,
+        "png_bytes_equal": true,
+        "passed": true
+      }
+    ],
+    "all_four_contracts_passed": false,
+    "mask_or_tolerance_changed": false,
+    "historical_uncompleted_reference_failures_retained": true
+  },
+  "same_app_pixel_diagnostic_and_final_contract": {
+    "same_app_files": 12,
+    "same_normal_method": true,
+    "pairs": [
+      {
+        "state": "native-tv-lock-normal-initial",
+        "candidate_vs_final_changed_rgba_pixels": 0,
+        "original_reference_vs_final_changed_rgba_pixels": 0,
+        "final_image": "final/tv-attachments/E1F95A17-EE94-452B-8CB5-562BAF7798EC.png",
+        "original_reference_vs_final_png_bytes_equal": true
+      },
+      {
+        "state": "native-tv-lock-normal-refreshed",
+        "candidate_vs_final_changed_rgba_pixels": 26537,
+        "original_reference_vs_final_changed_rgba_pixels": 0,
+        "final_image": "final/tv-attachments/17968044-07EA-4041-A2D7-F80F24DDCF88.png",
+        "original_reference_vs_final_png_bytes_equal": true
+      },
+      {
+        "state": "native-tv-lock-normal-gate-close",
+        "candidate_vs_final_changed_rgba_pixels": 0,
+        "original_reference_vs_final_changed_rgba_pixels": 0,
+        "final_image": "final/tv-attachments/205890E6-CB24-4B7D-A162-C0D81269981B.png",
+        "original_reference_vs_final_png_bytes_equal": true
+      },
+      {
+        "state": "native-tv-lock-normal-returned",
+        "candidate_vs_final_changed_rgba_pixels": 0,
+        "original_reference_vs_final_changed_rgba_pixels": 0,
+        "final_image": "final/tv-attachments/3091D420-083D-4242-A032-BEC423A3266B.png",
+        "original_reference_vs_final_png_bytes_equal": true
+      }
+    ],
+    "original_pixel_failure_retained": true,
+    "precise_cause_not_claimed": true,
+    "all_four_reference_vs_final_strict_passed": true
+  },
+  "additional_personal_image_contract": {
+    "before": "qualified/tv-attachments/180E32B5-4A3E-4632-8F97-FEC3FB9103F6.png",
+    "after": "final/tv-attachments/5CAB2328-1054-4E41-BECB-D75E97392CB2.png",
+    "whole_size": [
+      1920,
+      1080
+    ],
+    "changed_rgba_pixels": 7064,
+    "png_bytes_equal": false,
+    "passed": false,
+    "scope": "Additional predeclared wholePersonal image, declaration before this newfinaltest/capture but after initial productcandidate edit. No originalFAIL waived.",
+    "diagnostic_changed_pixel_bbox": [
+      622,
+      160,
+      1003,
+      710
+    ],
+    "after_fact_localisation_only": {
+      "pixels_inside_prior_messages_ax_rect": 151,
+      "pixels_outside_prior_messages_ax_rect": 6913
+    }
+  },
+  "pixel_scope": "Final four whole1920x1080 Lock/Gate images pass zeroRGBA and PNG-byte equality. Earlier candidate Refresh26537pixel FAIL retained and reproduced between same12App files and same normal method. Additional wholePersonal7064pixel FAIL remains unexplained; no mask/tolerance/wholeOriginal PASS. AdditionalPersonal declaration was after initial productedit, before newfinalordinarytest/capture.",
+  "historical_failures": [
+    "Before normal: AppDrawer Home target disappears during directional selection; exact cause unproved, not a wrong-action success.",
+    "Before native: actual DoorLock/Header speech positive, required Locked state cannot receive intended focus. Originalfalse restored.",
+    "Qualified normal: direct Personal Home return fails at80moves; actual trace alternates Messages and hidden background thermostat. Actual screenshot/tree reviewed. Reference normal uses visible Faces/FaceDoorLock return while native and extra normal controls retain PersonalHome path.",
+    "Normal reference before any productedit passes, but is not counted as current product execution.",
+    "Initial candidate Refresh whole-image26537pixel mismatch retained even though later final4pairs pass; additional wholePersonal7064pixel mismatch remainsFAIL."
+  ],
+  "compiled_inputs": [
+    {
+      "manifest": "before/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "f0adfbe53f1f5c373d792bc700bbc5eab8cb048fd9919342be6f585f6b5a6beb"
+    },
+    {
+      "manifest": "qualified/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "af044c313f1a4730b6c34423de235d80741f46b22bc3fe34cf3cd261d742cafc"
+    },
+    {
+      "manifest": "reference/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "49cce39227c1990bc22b3e5cbcece2120ffa7df075e6a29c93b27832877ee179"
+    },
+    {
+      "manifest": "candidate/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "b10879ee6dac23ee3e9ab89574507de4c15ba454a217f66433cbb0be2dee9ee5"
+    },
+    {
+      "manifest": "final/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "a03b3ee64e2b7d4e5713709424f9a15a0960766cf599de8ce748d98967abb5f8"
+    },
+    {
+      "manifest": "mobile/compiled-inputs.json",
+      "files": 31,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "e65a5661c720e7696fc68a8fe6105124348b230ce2d7699ba2ce940307d12a43"
+    }
+  ],
+  "core_reuse": {
+    "previous_source_sha256": "e032b9cea96420dc80ba7fec96e90e9dbd4365ac73a0e37dac5e78b21bbc6704",
+    "previous_receipt_sha256": "cc8176b436c8c40b2b069d229a2e999a161016014ccb6b7e9b9d95b8222d58ba",
+    "current_core_and_package_input_files_exact": 96,
+    "previous_passed": 458,
+    "new_executions": 0
+  },
+  "source_manifests_reconstructed": 6,
+  "native_pngs_decoded": 141,
+  "visual_review": {
+    "all_contact_pages_reviewed": true,
+    "contact_pages_reviewed": 13,
+    "contact_selection": "9TV pages contain all81TV images;2phone+2iPad pages contain all15viewportposes/device. All30mobilewhole-screen counterparts decoded but not individually included incontacts; no blanket whole-screen UI/reading claim.",
+    "full_native_images_reviewed": 4,
+    "full_native_scope": [
+      "historical TV Lock unreadablefocus",
+      "historical TV Personal Messages/hiddenbackgroundtrace",
+      "current native TV Locked text focus",
+      "current ordinary TV Personal Messages focus"
+    ],
+    "additional_after_fact_comparison_contact_viewed": true,
+    "partial_mobile_scroll_poses_retained": "Read-only inventory snapshots, not complete simultaneous paragraph/battery-reading acceptance.",
+    "pixel_failures_retained": true
+  },
+  "sdk_final": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": {
+            "valid": false,
+            "errors": [
+              "root.ssu.yaml: missing or empty",
+              "nlu/nlu.lzfse: missing or empty",
+              "nlu/*.version: missing or empty",
+              "root.ssu.yaml: unreadable metadata"
+            ],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": true,
+          "shortcut_artifacts": {
+            "valid": true,
+            "errors": [],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+                "bytes": 1,
+                "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+              },
+              {
+                "path": "nlu/nlu.lzfse",
+                "bytes": 2124,
+                "sha256": "af5bede5c97d72348dbde9b5cd39697d7711cd9be78d928d6a920d5f6f4b153f"
+              },
+              {
+                "path": "root.ssu.yaml",
+                "bytes": 926,
+                "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ]
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ]
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ]
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ]
+    }
+  ],
+  "sdk_output_files": 77,
+  "sdk_delta_files": 3,
+  "sdk_delta_sha256": "99abf18a1906cff189cd54fda760e358465e87d780d59b7e906fd5eebc6e8d0e",
+  "own_public_images": [
+    {
+      "path": "Docs/verification/tv-lock-voiceover-images/native-state.png",
+      "bytes": 117529,
+      "sha256": "a585d16766131e30e223b8b51bad6d3cf19b2ef9c64a43b272fb809d90c2144e"
+    },
+    {
+      "path": "Docs/verification/tv-lock-voiceover-images/personal-home.png",
+      "bytes": 809117,
+      "sha256": "168ffbe4e35bcf90a1d49a0752e6a4bd8e4c6275f15d335b57192176807f3642"
+    }
+  ],
+  "holds_preserved": [
+    "synthetic fixtures and local MockHome only",
+    "no real Home/account/personal-store/authentication/microphone/camera/OS transfer",
+    "physical/signing paused",
+    "no host/security changes",
+    "no subagents"
+  ],
+  "remaining": "Issue73 OPEN/F103partial/parityfalse; wholePersonal/earlierrecipe/imageOriginal/other assistive/physical gates remain open.",
+  "asset_binding_review": {
+    "initial_preflight_failed": "Changed provenance source Sources/App/HomeScreens.swift; current binding at base hash, product TV focus edit changed whole-file hash",
+    "initial_failure_preserved_in_git_base": "f3ca700e086377cf865e2847b1dcd2798ac7426b",
+    "current_manifest_sha256": "8fadbe1b42539e3b78ca1614d319c5d869659eecb98cdbb1cc797fdcb5dc3ac3",
+    "refresh": {
+      "date": "2026-10-30",
+      "base_commit": "f3ca700e086377cf865e2847b1dcd2798ac7426b",
+      "path": "Sources/App/HomeScreens.swift",
+      "previous_sha256": "ad6017944395c331b577b5eb40116f931b683b4e2d5f4f8a6b7432017f8f0666",
+      "current_sha256": "318528b26ef0094a73485c979ac29dc2a9ce8cf33a4c753ffaa68397285c8602",
+      "reason": "Current whole-source fingerprint after TV-only readonly Personal background focus exclusion and native VoiceOver reading focus on four LockView texts. DemoAlbumCover source block byte-exact to base; no resource or declared authorship/license/rights change.",
+      "demo_album_cover_source_block_unchanged": true,
+      "resource_bytes_changed": false
+    },
+    "resource_files": 59,
+    "provenance_inputs": 18,
+    "final_checker_exit_code": 0,
+    "final_checker_stdout": "59 current resources and 18 provenance inputs validated; no historical rights verdict\n"
+  },
+  "private_artifact_seal": {
+    "sha256": "bbd155de5d4784e9cdb32b22d3f73bc739281dbe94caa61ebf729d26e7af2452",
+    "count": 1339,
+    "bytes": 260250075
+  }
+}

@@ -779,7 +779,7 @@
     },
     {
       "path": "Sources/App/HomeScreens.swift",
-      "sha256": "ad6017944395c331b577b5eb40116f931b683b4e2d5f4f8a6b7432017f8f0666"
+      "sha256": "318528b26ef0094a73485c979ac29dc2a9ce8cf33a4c753ffaa68397285c8602"
     },
     {
       "path": "Sources/App/Faces.swift",
@@ -913,5 +913,15 @@
       }
     ],
     "reason": "Only sourced EU-AQI value/label and independently timed CAMS attribution added to the existing face; no resource, font contour, shader, original-reference or declared author/license change. Refresh current source binding, not a new historical-rights verdict."
+  },
+  "tv_lock_focus_source_refresh": {
+    "date": "2026-10-30",
+    "base_commit": "f3ca700e086377cf865e2847b1dcd2798ac7426b",
+    "path": "Sources/App/HomeScreens.swift",
+    "previous_sha256": "ad6017944395c331b577b5eb40116f931b683b4e2d5f4f8a6b7432017f8f0666",
+    "current_sha256": "318528b26ef0094a73485c979ac29dc2a9ce8cf33a4c753ffaa68397285c8602",
+    "reason": "Current whole-source fingerprint after TV-only readonly Personal background focus exclusion and native VoiceOver reading focus on four LockView texts. DemoAlbumCover source block byte-exact to base; no resource or declared authorship/license/rights change.",
+    "demo_album_cover_source_block_unchanged": true,
+    "resource_bytes_changed": false
   }
 }
