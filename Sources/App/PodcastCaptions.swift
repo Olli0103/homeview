@@ -59,7 +59,7 @@ struct PodcastCaptionControls:View {
           .accessibilityValue(loaded ? model.podcastPlayer.captionSelection:"Unavailable")
           .accessibilityIdentifier("podcast.captions")
         Text(loaded ? model.podcastPlayer.captionStatus:"Captions are checked when this episode is played.")
-          .font(.system(size:statusSize)).foregroundStyle(.secondary)
+          .font(.system(size:statusSize)).foregroundStyle(.black.opacity(0.65))
           .accessibilityIdentifier("podcast.captions.status")
       }
       if loaded,!model.podcastPlayer.captionText.isEmpty {

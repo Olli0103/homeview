@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Podcast-Texte auf weißem Root kontrastiert](podcast-contrast.md):20 native normale Farbbedingungen jetzt6,90–7,00:1; zwölf aktuelle UI-Ausführungen/fünf SDKs.22 vorab qualifizierte Außenvergleiche exakt,50 Zielrahmen gleich;28 Scrollposen unqualifiziert. Nur neun lokale Farben geändert; #73 bleibt für weitere Flows/Lese-/Hilfsmittelgrenzen offen.
+
 - [Podcast-UI: Systemschrift ohne geänderte Normalansicht](podcast-controls-dynamic-type.md): zwölf aktuelle UI-Ausführungen/fünf SDKs,40 gemeldete Textausdehnungen wachsen,50 ganze normale RGBA-Paare exakt gleich. Native Feed-Controls schon vorher skalierend/unverändert; acht AX-Textkind-Gaps, Lese-/Kontrast-/Hilfsmittelgrenzen offen. Neue Inventuren ohne Wiedergabe, separate bestehende Caption-Regression nur mit stummem eigenem Bundle; #73 offen.
 
 - [Pausierte Demo-Musik skaliert und scrollt](demo-music-dynamic-type.md): acht akzeptierte aktuelle UI-Ausführungen/fünf SDKs. 14 Textausdehnungen wachsen, alle 16 normalen ganzen RGBA-Paare exakt gleich; vier übernommene Scroll-Instrumentfehler erhalten. Kein Playback/Provider-/Kontrast-/Hilfsmittel-PASS, #73 offen.
