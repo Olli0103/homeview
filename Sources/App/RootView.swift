@@ -276,6 +276,7 @@ struct RootView: View {
       model.setTimerActivityForeground(scenePhase == .active)
       model.localResetForeground=scenePhase == .active
       model.setLockForeground(scenePhase == .active)
+      model.setHomeControlsForeground(scenePhase == .active)
       model.presentIntroductionOnLaunch()
       model.setAnswerSpeechForeground(scenePhase == .active)
       consumeAssistantShortcut()
@@ -321,6 +322,7 @@ struct RootView: View {
       model.setTimerActivityForeground(false)
       model.localResetForeground=false
       model.setLockForeground(false)
+      model.setHomeControlsForeground(false)
       model.setAnswerSpeechForeground(false)
       model.connections.endSharedPanelSession()
       model.recipeHandoff.stop()
@@ -338,6 +340,7 @@ struct RootView: View {
       model.setTimerActivityForeground(phase == .active)
       model.localResetForeground=phase == .active
       model.setLockForeground(phase == .active)
+      model.setHomeControlsForeground(phase == .active)
       model.setAnswerSpeechForeground(phase == .active)
       if phase != .active { model.recipeHandoff.stopOffering() }
       model.setAlbumDisplayActive(phase == .active)

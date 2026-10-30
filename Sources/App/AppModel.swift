@@ -9,6 +9,82 @@ import SwiftUI
 
 @MainActor @Observable
 final class AppModel {
+  @ObservationIgnored private var homeDeviceStorage:MockHomeDevice?
+  @ObservationIgnored private var homeSessionStorage:HomeDeviceSession?
+  private var homeForeground=false
+  private(set) var lastHomeCommandState:HomeControlOperationState = .idle
+  var homeControlsActive:Bool {homeForeground && !storeReadOnly && homeSessionStorage?.active == true}
+  var homeControls:HomeDeviceSession {
+    if let homeSessionStorage {return homeSessionStorage}
+    let provider=MockHomeDevice(model:self);homeDeviceStorage=provider
+    let values=HomeMockControls.values(data.home)
+    let initial=Dictionary(uniqueKeysWithValues:provider.descriptors.values.compactMap {descriptor -> (HomeCharacteristicID,HomeCharacteristicReading)? in
+      guard let value=values[descriptor.id] else {return nil}
+      return(descriptor.id,HomeCharacteristicReading(descriptor:descriptor,value:value))
+    })
+    let session=HomeDeviceSession(provider:provider,initial:initial,contextAllowed:{[weak self] in
+      self?.homeForeground == true && self?.storeReadOnly == false
+    },failure:{[weak self] failure in self?.error=failure.localizedDescription})
+    homeSessionStorage=session;return session
+  }
+  func setHomeControlsForeground(_ active:Bool) {
+    homeForeground=active
+    if active {homeControls.start()} else {homeSessionStorage?.stop()}
+  }
+  func homeControlState(_ slot:HomeControlSlot)->HomeControlOperationState {
+    homeSessionStorage?.state(HomeMockControls.id(slot)) ?? .idle
+  }
+  func homeControlDescriptor(_ slot:HomeControlSlot)->HomeCharacteristicDescriptor? {
+    homeControls.descriptor(HomeMockControls.id(slot))
+  }
+  func canWriteHomeControl(_ slot:HomeControlSlot)->Bool {homeControls.canWrite(HomeMockControls.id(slot))}
+  var observedHome:MockHome {
+    guard let homeSessionStorage else {return data.home}
+    var result=data.home
+    // Only values actually observed by the session replace this last-known local projection.
+    for slot in HomeControlSlot.allCases {
+      guard let value=homeSessionStorage.readings[HomeMockControls.id(slot)]?.value else {continue}
+      switch slot {
+      case .temperature:if let n=value.number {result.temperature=Int(n)}
+      case .thermostatMode:result.thermostatMode=value.mode
+      case .entryLight:if let b=value.flag {result.entryLight=b}
+      case .bedroomLight:if let b=value.flag {result.bedroomLight=b}
+      case .brightness:if let n=value.number {result.brightness=n}
+      case .fan:if let b=value.flag {result.fan=b}
+      case .fanSpeed:if let n=value.number {result.fanSpeed=n}
+      case .blinds:if let n=value.number {result.blinds=n}
+      }
+    }
+    return result
+  }
+  func stepHomeControl(_ slot:HomeControlSlot,direction:Int) {
+    guard writableStore() else {return}
+    guard let domain=homeControlDescriptor(slot)?.numeric,
+      let current=homeControls.readings[HomeMockControls.id(slot)]?.value.number,
+      let next=domain.next(from:current,direction:direction,continuousIncrement:slot == .temperature ? 1:10) else {return}
+    requestHomeControl(slot,value:.number(next))
+  }
+  @discardableResult func requestHomeControl(_ slot:HomeControlSlot,value:HomeControlValue)->HomeControlOperationState {
+    guard writableStore() else {return .failed(.readOnly)}
+    let result=homeControls.request(HomeMockControls.id(slot),value:value);lastHomeCommandState=result
+    if case .failed(let failure)=result {error=failure.localizedDescription}
+    return result
+  }
+  func readMockControlSnapshot() throws -> MockHome {
+    if ephemeral || storeReadOnly {return data.home}
+    guard let bytes=try LocalStateFileReader.read(store) else {return data.home}
+    return try Snapshot.decodeMigrating(bytes).home
+  }
+  @discardableResult func commitMockHomeControl(_ home:MockHome)->Bool {
+    guard homeControlsActive,updateLocalControls({$0.home=home}) else {return false}
+    do {
+      guard try readMockControlSnapshot()==home else {throw HomeControlFailure.unverified}
+      return true
+    } catch {
+      storeReadOnly=true;storeRecoveryNote="A mock device write could not be verified. Restart and recover saved state before writing again."
+      return false
+    }
+  }
   #if !os(watchOS)
     let connections = DeviceConnections()
     @ObservationIgnored private var lockSessionStorage: LockActionSession?
@@ -1171,13 +1247,14 @@ final class AppModel {
   }
   @discardableResult
   func persist() -> Bool {
-    guard !ephemeral else { commitTimerActivityProjection();return true }
+    guard !ephemeral else { commitTimerActivityProjection();homeDeviceStorage?.publishChanges();return true }
     guard writableStore() else { return false }
     do {
       try FileManager.default.createDirectory(
         at: store.deletingLastPathComponent(), withIntermediateDirectories: true)
       try JSONEncoder().encode(data).write(to: store, options: .atomic)
       commitTimerActivityProjection()
+      homeDeviceStorage?.publishChanges()
       return true
     } catch { self.error = "Could not save local demo state."; return false }
   }
@@ -1227,16 +1304,35 @@ final class AppModel {
   }
   func interact() { lastInteraction = Date() }
   func command(_ command: HomeCommand) {
+    lastHomeCommandState = .idle
     if case .lock=command {
       error="Open Front Door and confirm the mock security action separately. No command sent."
       return
     }
-    guard writableStore() else { return }
+    guard writableStore() else {lastHomeCommandState = .failed(.readOnly);return}
+    let control:(HomeControlSlot,HomeControlValue)? = switch command {
+    case .temperature(let value):(.temperature,.number(Double(value)))
+    case .thermostatMode(let value):(.thermostatMode,.mode(value))
+    case .entryLight:(.entryLight,.flag(!observedHome.entryLight))
+    case .bedroomLight:(.bedroomLight,.flag(!observedHome.bedroomLight))
+    case .brightness(let value):(.brightness,.number(value))
+    case .fan:(.fan,.flag(!observedHome.fan))
+    case .fanSpeed(let value):(.fanSpeed,.number(value))
+    case .blinds(let value):(.blinds,.number(value))
+    case .lock,.scene:nil
+    }
+    if let (slot,value)=control {requestHomeControl(slot,value:value);return}
     var candidate=data.home
     do {
       try candidate.transact(command,authorized:canControlMockSecurity)
-      updateLocalControls { $0.home=candidate }
-    } catch { self.error = error.localizedDescription }
+      let before=HomeMockControls.values(data.home),after=HomeMockControls.values(candidate)
+      for slot in HomeControlSlot.allCases where before[HomeMockControls.id(slot)] != after[HomeMockControls.id(slot)] {
+        guard canWriteHomeControl(slot),let value=after[HomeMockControls.id(slot)],
+          homeControlDescriptor(slot)?.accepts(value,forWrite:true) == true else {throw HomeControlFailure.unavailable}
+      }
+      guard commitMockHomeControl(candidate) else {lastHomeCommandState = .unverified;return}
+      lastHomeCommandState = .confirmed
+    } catch { self.error = error.localizedDescription;lastHomeCommandState = .failed(.unavailable) }
   }
   func navigate(_ page: AppPage) {
     if demoDoorbell.current != nil { dismissDemoDoorbell() }
@@ -1328,6 +1424,7 @@ final class AppModel {
     }
   }
   func tick() {
+    homeSessionStorage?.tick()
     #if !os(watchOS)
       lockSessionStorage?.expireApproval()
     #endif
@@ -1776,12 +1873,23 @@ final class AppModel {
   }
   private func applyDemoPlanStep(_ step:DemoActionPlan.Step)->DemoActionPlan.Result {
     guard demoPlanContextActive,!storeReadOnly else { return .failed("Local demo authorization is no longer active.") }
+    let device:(HomeControlSlot,HomeControlValue)? = switch step.operation {
+    case .temperature(let value):(.temperature,.number(Double(value)))
+    case .brightness(let value):(.brightness,.number(Double(value)))
+    case .foregroundTimer:nil
+    }
+    if let (slot,value)=device {
+      switch requestHomeControl(slot,value:value) {
+      case .confirmed:return .confirmed(step.operation.summary+" · Device state read back")
+      case .failed(let failure):return .failed(failure.localizedDescription)
+      default:return .unverified("Device outcome is not confirmed. Further plan steps stopped; no automatic retry.")
+      }
+    }
     let previous=data
     var candidate=data
     do {
       switch step.operation {
-      case .temperature(let value):try candidate.home.transact(.temperature(value))
-      case .brightness(let value):try candidate.home.transact(.brightness(Double(value)))
+      case .temperature,.brightness:return .failed("Unsupported plan dispatch. No change for this step.")
       case .foregroundTimer(let seconds,let title):
         guard candidate.timers.count<12,!candidate.timers.contains(where:{$0.id==step.id}) else {
           return .failed("Timer limit or duplicate step identifier. No duplicate timer was created.")
@@ -1834,13 +1942,13 @@ final class AppModel {
     switch AssistantIntent(assistantInput) {
     case .scene(let s):
       command(.scene(s))
-      assistantReply = error ?? "\(s) is set in the mock home."
+      assistantReply = homeCommandReply("\(s) is set in the mock home.")
     case .temperature(let t):
       command(.temperature(t))
-      assistantReply = error ?? "The mock thermostat is set to \(t)°."
+      assistantReply = homeCommandReply("The mock thermostat is set to \(t)°.")
     case .light:
       command(.entryLight)
-      assistantReply = error ?? "The entryway light is \(data.home.entryLight ? "on" : "off")."
+      assistantReply = homeCommandReply("The entryway light is \(observedHome.entryLight ? "on" : "off").")
     case .timer:
       assistantReply = "Specify an explicit timer duration, for example ‘set a timer for 5 minutes’."
     case .recipe:
@@ -1867,6 +1975,14 @@ final class AppModel {
         "Try ‘set a timer for 5 minutes’, ‘temperature 70’, ‘good night’, ‘lights’, or ‘show recipe’. This is a local demo assistant, not Siri AI."
     }
     assistantInput = ""
+  }
+  private func homeCommandReply(_ confirmed:String)->String {
+    switch lastHomeCommandState {
+    case .confirmed:return confirmed
+    case .failed(let failure):return error ?? failure.localizedDescription
+    case .checking,.writing,.verifying:return "Mock device command pending. The result is not confirmed."
+    case .idle,.unverified:return error ?? "Mock device outcome is unverified. No automatic retry."
+    }
   }
   func showAssistantExample(_ example:AssistantResponseExample) {
     guard !Task.isCancelled,assistantInteractionActive,!assistantUsesAI else {return}

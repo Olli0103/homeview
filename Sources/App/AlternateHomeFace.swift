@@ -23,7 +23,7 @@ struct AlternateHomeFace: View {
             } label: {
               Tile(glass: true) {
                 VStack(spacing: 12) {
-                  Text("\(model.data.home.temperature)–\(model.data.home.temperature)").font(
+                  Text("\(model.observedHome.temperature)–\(model.observedHome.temperature)").font(
                     .system(size: 36, weight: .medium))
                   Text("Thermostat").font(.system(size: 17, weight: .semibold))
                   Text("Living Room").font(.system(size: 16)).opacity(model.data.night ? 1:0.6)
@@ -54,7 +54,7 @@ struct AlternateHomeFace: View {
   private func scene(_ symbol: String, _ title: String) -> some View {
     Button {
       model.command(.scene(title))
-      model.banner("\(title) · Mock scene applied")
+      if model.lastHomeCommandState == .confirmed {model.banner("\(title) · Mock scene applied")}
     } label: {
       Tile(glass: true) {
         VStack(spacing: 12) {

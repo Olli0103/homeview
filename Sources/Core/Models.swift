@@ -84,6 +84,9 @@ enum Route: Equatable {
 
 struct MockHome: Codable, Equatable, Sendable {
   var temperature = 68
+  // Absent in older stores means the previous explicit Cool-only mock. Unknown
+  // nonnil modes remain invalid, rather than silently becoming another mode.
+  var thermostatMode: Int? = nil
   var entryLight = true
   var bedroomLight = true
   var brightness = 75.0
@@ -101,6 +104,9 @@ struct MockHome: Codable, Equatable, Sendable {
     case .temperature(let t):
       guard (50...90).contains(t) else { throw HomeError.invalidValue }
       temperature = t
+    case .thermostatMode(let mode):
+      guard (0...3).contains(mode) else { throw HomeError.invalidValue }
+      thermostatMode=mode
     case .entryLight: entryLight.toggle()
     case .bedroomLight: bedroomLight.toggle()
     case .brightness(let v):
@@ -152,6 +158,7 @@ struct MockHome: Codable, Equatable, Sendable {
 }
 enum HomeCommand: Sendable {
   case temperature(Int)
+  case thermostatMode(Int)
   case entryLight, bedroomLight
   case brightness(Double)
   case fan
@@ -167,6 +174,7 @@ enum HomeCommand: Sendable {
   var description: String {
     switch self {
     case .temperature(let t): "Thermostat set to \(t)°"
+    case .thermostatMode(let mode): "Thermostat mode \(mode)"
     case .entryLight: "Entryway light toggled"
     case .bedroomLight: "Bedroom light toggled"
     case .brightness(let v): "Brightness \(Int(v))%"

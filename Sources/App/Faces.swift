@@ -70,7 +70,7 @@ struct HomeModularFace: View {
               Button {
                 model.route = .thermostat
               } label: {
-                Text("\(model.data.home.temperature)").font(
+                Text("\(model.observedHome.temperature)").font(
                   .system(size: 164, weight: .medium, design: .rounded)
                 ).kerning(-2.125).scaleEffect(x:0.967,y:1)
                   .offset(x:1,y:13.5).frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -80,7 +80,7 @@ struct HomeModularFace: View {
                 temperatureArrow(
                   symbol:"chevron.down", offsetX:15,
                   label:"Decrease temperature"
-                ) { model.command(.temperature(model.data.home.temperature - 1)) }
+                ) { model.stepHomeControl(.temperature,direction:-1) }
                 .accessibilityIdentifier("temperature.decrease")
                 Spacer(minLength: 0)
                 VStack(spacing: 2) {
@@ -91,7 +91,7 @@ struct HomeModularFace: View {
                 temperatureArrow(
                   symbol:"chevron.up", offsetX:-13.5,
                   label:"Increase temperature"
-                ) { model.command(.temperature(model.data.home.temperature + 1)) }
+                ) { model.stepHomeControl(.temperature,direction:1) }
                 .accessibilityIdentifier("temperature.increase")
               }.padding(.bottom, 24).padding(.horizontal, 10)
             }
@@ -105,7 +105,7 @@ struct HomeModularFace: View {
             }
             Button {
               model.command(.scene("Good Night"))
-              model.banner("Good Night · Mock scene applied")
+              if model.lastHomeCommandState == .confirmed {model.banner("Good Night · Mock scene applied")}
             } label: {
               Tile(glass: true) {
                 VStack(spacing: 14) {

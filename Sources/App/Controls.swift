@@ -164,12 +164,16 @@ struct SettingsView: View {
           Button("Edit Faces") { model.route = .editor }.font(.system(size: rowSize))
             .accessibilityIdentifier("settings.faces")
           Button("Light & brightness") { model.route = .light }.font(.system(size: rowSize))
-          ValueAdjuster(value: model.data.home.blinds, label: "Mock blinds", minimumHitSide: minimumHitSide) {
+          ValueAdjuster(value: model.observedHome.blinds, range:homeControlRange(.blinds), label: "Mock blinds", minimumHitSide: minimumHitSide,
+            deviceDomain:model.homeControlDescriptor(.blinds)?.numeric,controlEnabled:model.canWriteHomeControl(.blinds)) {
             model.command(.blinds($0))
           }
-          ValueAdjuster(value: model.data.home.fanSpeed, label: "Mock fan speed", minimumHitSide: minimumHitSide) {
+          HomeControlStatus(slot:.blinds)
+          ValueAdjuster(value: model.observedHome.fanSpeed, range:homeControlRange(.fanSpeed), label: "Mock fan speed", minimumHitSide: minimumHitSide,
+            deviceDomain:model.homeControlDescriptor(.fanSpeed)?.numeric,controlEnabled:model.canWriteHomeControl(.fanSpeed)) {
             model.command(.fanSpeed($0))
           }
+          HomeControlStatus(slot:.fanSpeed)
           Button("Simulate doorbell") { model.simulateDoorbell() }.font(.system(size: rowSize))
             .accessibilityIdentifier("settings.doorbell")
           Button("Simulate incoming call") { model.incomingCall = true }.font(.system(size: rowSize))
@@ -200,6 +204,10 @@ struct SettingsView: View {
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
       .sheet(isPresented:$showingPowerCapabilities) { PowerCapabilitiesView().snapshotPrivacyProtected() }
       .sheet(isPresented:$showingTimerActivitySettings) {TimerActivitySettingsView().snapshotPrivacyProtected()}
+  }
+  private func homeControlRange(_ slot:HomeControlSlot)->ClosedRange<Double> {
+    guard let domain=model.homeControlDescriptor(slot)?.numeric else {return 0...100}
+    return domain.minimum...domain.maximum
   }
   private func setting(_ title: String, _ on: Bool, action: @escaping () -> Void) -> some View {
     Button(action: action) {

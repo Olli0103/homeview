@@ -314,6 +314,8 @@ struct ValueAdjuster: View {
   var range: ClosedRange<Double> = 0...100
   var label: String
   var minimumHitSide: CGFloat = 0
+  var deviceDomain:HomeNumericDomain? = nil
+  var controlEnabled=true
   var set: @MainActor @Sendable (Double) -> Void
   var body: some View {
     VStack(spacing: 12) {
@@ -325,7 +327,9 @@ struct ValueAdjuster: View {
       }
       HStack {
         RoundButton(symbol: "minus", size: max(48, minimumHitSide), label: "Decrease \(label)") {
-          set(max(range.lowerBound, value - 10))
+          if let deviceDomain {
+            if let next=deviceDomain.next(from:value,direction:-1,continuousIncrement:10) {set(next)}
+          } else {set(max(range.lowerBound, value - 10))}
         }
         #if os(tvOS) || os(watchOS)
           ProgressView(value: value, total: range.upperBound)
@@ -333,21 +337,45 @@ struct ValueAdjuster: View {
           if minimumHitSide > 0 {
             #if os(iOS) || os(visionOS)
               MinimumHitSlider(value: value, range: range, label: label,
-                minimumHeight: minimumHitSide, set: set)
+                minimumHeight: minimumHitSide, set: adjusted)
                 .frame(height: minimumHitSide)
             #else
-              Slider(value: Binding(get: { value }, set: set), in: range)
+              Slider(value: Binding(get: { value }, set: adjusted), in: range)
                 .accessibilityLabel(label).frame(minHeight: minimumHitSide)
             #endif
           } else {
-            Slider(value: Binding(get: { value }, set: set), in: range).accessibilityLabel(label)
+            Slider(value: Binding(get: { value }, set: adjusted), in: range).accessibilityLabel(label)
           }
         #endif
         RoundButton(symbol: "plus", size: max(48, minimumHitSide), label: "Increase \(label)") {
-          set(min(range.upperBound, value + 10))
+          if let deviceDomain {
+            if let next=deviceDomain.next(from:value,direction:1,continuousIncrement:10) {set(next)}
+          } else {set(min(range.upperBound, value + 10))}
         }
       }
-    }.font(.system(size: 22))
+    }.font(.system(size: 22)).disabled(!controlEnabled)
+  }
+  private func adjusted(_ proposed:Double) {
+    guard proposed.isFinite else {return}
+    guard let deviceDomain else {set(proposed);return}
+    let candidate:Double
+    if let step=deviceDomain.step {
+      let maximumIndex=floor((deviceDomain.maximum-deviceDomain.minimum)/step)
+      let index=min(maximumIndex,max(0,((proposed-deviceDomain.minimum)/step).rounded()))
+      candidate=deviceDomain.minimum+index*step
+    } else {candidate=min(deviceDomain.maximum,max(deviceDomain.minimum,proposed))}
+    if deviceDomain.accepts(candidate) {set(candidate)}
+  }
+}
+
+struct HomeControlStatus:View {
+  @Environment(AppModel.self) private var model
+  var slot:HomeControlSlot
+  var body:some View {
+    let state=model.homeControlState(slot)
+    Text(model.homeControlDescriptor(slot)?.writable == false ? "Read-only device · Observed state":state.text)
+      .font(.system(size:17)).multilineTextAlignment(.center).fixedSize(horizontal:false,vertical:true)
+      .accessibilityIdentifier("home.control.status.\(slot.rawValue)")
   }
 }
 

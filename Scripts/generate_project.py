@@ -58,7 +58,7 @@ def make_target(name,platform,sources,uitest=False,widget=False,test_target='Hom
 make_target('HomeViewReplica','universal',[f for f in files if not f.startswith('Sources/Widgets/')])
 make_target('HomeViewTimerWidget','ios',[f for f in files if f.split('/')[-1] in ['TimerLiveActivity.swift','HomeViewTimerAttributes.swift','HomeViewTimerWidget.swift']],widget=True)
 watchfiles=[f for f in files if f.split('/')[-1] in ['AlarmRecurrence.swift','Models.swift','GuestAccessPolicy.swift','DataConnection.swift','SetupIntroduction.swift','AssistantResponseDocument.swift','LocalStateFileReader.swift','SnapshotMigration.swift','AlbumDisplay.swift','PersonalHomeConfiguration.swift','EverydayVoiceCommand.swift','AssistantLimits.swift','AssistantConversation.swift','NativeAssistantAnswers.swift','AnswerSpeechSession.swift','NativeAnswerSpeech.swift','AnswerSpeechActions.swift','WorldClock.swift','CalendarPresentation.swift','DemoDoorbell.swift','PodcastLibrary.swift','PhotoPlacement.swift','PhotoClockInk.swift','FaceConfiguration.swift','ConnectedModels.swift','HomeViewApp.swift','AppModel.swift','WatchRoot.swift','LocalAudioEngine.swift','DisplayWakeController.swift']]
-watchfiles += [f for f in files if f.split('/')[-1] in ['TimerLiveActivity.swift','NativeTimerLiveActivity.swift']]
+watchfiles += [f for f in files if f.split('/')[-1] in ['TimerLiveActivity.swift','NativeTimerLiveActivity.swift','HomeDeviceContract.swift','HomeDeviceSession.swift','MockHomeDevice.swift']]
 make_target('HomeViewWatch','watch',watchfiles)
 make_target('HomeViewUITests','ios',['Tests/UITests/HomeViewUITests.swift'],True)
 make_target('HomeViewTVUITests','tvos',['Tests/TVUITests/HomeViewTVUITests.swift'],True)

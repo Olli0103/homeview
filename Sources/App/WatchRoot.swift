@@ -12,19 +12,19 @@ import Combine
           Section("Mock Home") {
             HStack {
               Image(systemName: "thermometer.medium")
-              Text("\(model.data.home.temperature)°")
+              Text("\(model.observedHome.temperature)°")
               Spacer()
-              Button { model.command(.temperature(model.data.home.temperature - 1)) } label: {
+              Button { model.stepHomeControl(.temperature,direction:-1) } label: {
                 Text("−").frame(width:44,height:44).contentShape(Rectangle())
               }
-              Button { model.command(.temperature(model.data.home.temperature + 1)) } label: {
+              Button { model.stepHomeControl(.temperature,direction:1) } label: {
                 Text("+").frame(width:44,height:44).contentShape(Rectangle())
               }
             }
             // Automatic List-row buttons otherwise execute both actions.
             // Explicit per-button hit regions keep each tap independent.
             .buttonStyle(.plain)
-            Button(model.data.home.entryLight ? "Lights On" : "Lights Off") {
+            Button(model.observedHome.entryLight ? "Lights On" : "Lights Off") {
               model.command(.entryLight)
             }
             Button("Good Night") { model.command(.scene("Good Night")) }
@@ -41,9 +41,12 @@ import Combine
       .onReceive(scenePhase == .active ? pulse.eraseToAnyPublisher()
         : Empty<Date,Never>().eraseToAnyPublisher()) { _ in model.tick() }
       .onChange(of:scenePhase) { _,phase in
+        model.setHomeControlsForeground(phase == .active)
         // Absolute deadlines must catch up when the watch surface resumes.
         if phase == .active { model.tick() }
       }
+      .task {model.setHomeControlsForeground(scenePhase == .active)}
+      .onDisappear {model.setHomeControlsForeground(false)}
     }
   }
 #endif

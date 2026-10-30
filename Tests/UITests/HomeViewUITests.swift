@@ -3548,9 +3548,114 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertFalse(app.buttons["lock.confirm"].exists)
     viewportShot("mock-lock-cancel-no-command")
   }
+  func testMockThermostatModeChoiceRequiresObservedHeatingState() {
+    continueAfterFailure=false
+    launch(["--screen-thermostat","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+    app.buttons["Cooling mode"].tap()
+    viewportShot("home-controls-mode-picker-or-placeholder")
+    let heat=app.buttons["Heat"]
+    XCTAssertTrue(heat.waitForExistence(timeout:5),"Thermostat mode selection must be an actual supported control, not only a mock banner")
+    heat.tap()
+    XCTAssertTrue(app.staticTexts["Heating to"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°","A mode change does not fabricate a new target temperature")
+    viewportShot("home-controls-heating-confirmed")
+  }
   private func waitForMockLockState(_ expected:String) {
     let condition=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@",expected),object:app.staticTexts["lock.state"])
     XCTAssertEqual(XCTWaiter.wait(for:[condition],timeout:5),.completed)
+  }
+  private func openMockDeviceControl(_ slot:String,store:String,scenario:String?=nil,reset:Bool=true) {
+    var args=["--persistence-test",store]
+    if reset {args.append("--reset-test-store")}
+    if slot == "temperature" {args.append("--screen-thermostat")}
+    else {args += ["--page","Settings"]}
+    if let scenario {args += ["--mock-control-case",scenario,slot]}
+    launch(args)
+    if slot == "brightness" {activateRecipeTypeControl(app.buttons["Light & brightness"],horizontalMargin:0)}
+    else if slot != "temperature" {revealRecipeTypeElement(mockDeviceIncrease(slot),horizontalMargin:0)}
+  }
+  private func mockDeviceIncrease(_ slot:String)->XCUIElement {
+    switch slot {
+    case "temperature":app.buttons["thermostat.up"]
+    case "brightness":app.buttons["Increase Brightness"]
+    case "fanSpeed":app.buttons["Increase Mock fan speed"]
+    default:app.buttons["Increase Mock blinds"]
+    }
+  }
+  private func mockDeviceValue(_ slot:String)->XCUIElement {
+    app.staticTexts[slot == "temperature" ? "thermostat.value":"adjuster.value."+(slot == "brightness" ? "Brightness":slot == "fanSpeed" ? "Mock fan speed":"Mock blinds")]
+  }
+  private func exerciseMockDeviceContract(_ slot:String,initial:String,success:String,foreign:String) {
+    continueAfterFailure=false;executionTimeAllowance=240
+    for scenario in ["delayed","timeout","denied","foreign"] {
+      let store=UUID().uuidString
+      openMockDeviceControl(slot,store:store,scenario:scenario)
+      XCTAssertEqual(mockDeviceValue(slot).label,initial)
+      activateRecipeTypeControl(mockDeviceIncrease(slot),horizontalMargin:0)
+      let status=app.staticTexts["home.control.status."+slot]
+      if scenario == "delayed" {
+        XCTAssertTrue(status.label.contains("pending"),"An outstanding callback must not report success")
+        XCTAssertEqual(mockDeviceValue(slot).label,initial,"No optimistic value while the mock device has not applied the command")
+        viewportShot("device-"+slot+"-pending")
+        let done=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Confirmed by device state"),object:status)
+        XCTAssertEqual(XCTWaiter.wait(for:[done],timeout:12),.completed)
+        XCTAssertEqual(mockDeviceValue(slot).label,success)
+      } else {
+        XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout:15))
+        app.alerts.buttons["OK"].tap()
+        if scenario == "timeout" {XCTAssertTrue(status.label.contains("timed out"))}
+        if scenario == "denied" {XCTAssertTrue(status.label.contains("unverified"))}
+        if scenario == "foreign" {XCTAssertTrue(status.label.contains("changed"))}
+        XCTAssertEqual(mockDeviceValue(slot).label,scenario == "foreign" ? foreign:initial)
+      }
+      revealRecipeTypeElement(status,horizontalMargin:0)
+      viewportShot("device-"+slot+"-"+scenario+"-terminal")
+      print("DEVICE_CONTRACT slot=\(slot) scenario=\(scenario) value=\(mockDeviceValue(slot).label) status=\(status.label) store=\(store)")
+      app.terminate()
+      openMockDeviceControl(slot,store:store,reset:false)
+      XCTAssertEqual(mockDeviceValue(slot).label,scenario == "delayed" ? success:scenario == "foreign" ? foreign:initial)
+      XCTAssertFalse(app.staticTexts["home.control.status."+slot].label.contains("pending"),"No command is automatically replayed after restart")
+    }
+  }
+  func testMockThermostatSuccessTimeoutDenialAndForeignChange() {
+    exerciseMockDeviceContract("temperature",initial:"68°",success:"69°",foreign:"74°")
+  }
+  func testMockLightBrightnessSuccessTimeoutDenialAndForeignChange() {
+    exerciseMockDeviceContract("brightness",initial:"75%",success:"85%",foreign:"40%")
+  }
+  func testMockFanSpeedSuccessTimeoutDenialAndForeignChange() {
+    exerciseMockDeviceContract("fanSpeed",initial:"45%",success:"55%",foreign:"65%")
+  }
+  func testMockBlindsSuccessTimeoutDenialAndForeignChange() {
+    exerciseMockDeviceContract("blinds",initial:"80%",success:"90%",foreign:"35%")
+  }
+  func testMockDeviceAdvertisedStepAndReadOnlyControls() {
+    continueAfterFailure=false;executionTimeAllowance=240
+    for (slot,expected) in [("temperature","70°"),("brightness","80%"),("fanSpeed","50%"),("blinds","85%")] {
+      openMockDeviceControl(slot,store:UUID().uuidString,scenario:"stepped")
+      activateRecipeTypeControl(mockDeviceIncrease(slot),horizontalMargin:0)
+      XCTAssertEqual(mockDeviceValue(slot).label,expected,"Use the advertised five-unit step, not the normal increment")
+      viewportShot("device-"+slot+"-advertised-step")
+      openMockDeviceControl(slot,store:UUID().uuidString,scenario:"read-only")
+      XCTAssertFalse(mockDeviceIncrease(slot).isEnabled)
+      XCTAssertTrue(app.staticTexts["home.control.status."+slot].label.contains("Read-only"))
+      viewportShot("device-"+slot+"-read-only")
+    }
+  }
+  func testAllMockThermostatModesPersistWithoutChangingSetpoint() {
+    continueAfterFailure=false
+    let store=UUID().uuidString
+    openMockDeviceControl("temperature",store:store)
+    for (mode,state) in [("Off","System off"),("Auto","Auto target"),("Heat","Heating to"),("Cool","Cooling to")] {
+      tap("thermostat.mode");app.buttons[mode].tap()
+      XCTAssertTrue(app.staticTexts[state].waitForExistence(timeout:5))
+      XCTAssertEqual(mockDeviceValue("temperature").label,"68°")
+      XCTAssertTrue(app.staticTexts["home.control.status.thermostatMode"].label.contains("Confirmed"))
+      app.terminate();openMockDeviceControl("temperature",store:store,reset:false)
+      XCTAssertTrue(app.staticTexts[state].exists)
+    }
+    viewportShot("device-all-modes-persisted-cool")
   }
   func testMockLockLargestSystemTextKeepsConfirmationReachable() {
     continueAfterFailure=false

@@ -360,9 +360,9 @@ struct HomeGrid: View {
             date: model.clock, timeZone: model.displayTimeZone, tint: .violetInk, handColor: .black,
             secondsColor: .violetInk, embossedHands: true, hourReach: 0.5, minuteReach: 0.94)
         }.accessibilityLabel("Thermostat").accessibilityIdentifier("grid.thermostat")
-        tile("lamp.ceiling.fill", "Lights", "Entryway", model.data.home.entryLight) {
+        tile("lamp.ceiling.fill", "Lights", "Entryway", model.observedHome.entryLight) {
           model.command(.entryLight)
-        }.accessibilityIdentifier("grid.entrylight")
+        }.accessibilityIdentifier("grid.entrylight").disabled(!model.canWriteHomeControl(.entryLight))
         tile("waveform", "Intercom", "Everywhere", false) { model.navigate(.intercom) }
       }
       HStack(spacing: 10) {
@@ -376,19 +376,22 @@ struct HomeGrid: View {
         tile("homekit", "", "", false) { model.route = .personal }
         tile("sun.max.fill", "Good Morning", "Scene", model.data.home.lastScene == "Good Morning") {
           model.command(.scene("Good Morning"))
-          model.banner("Good Morning · Mock scene applied")
+          if model.lastHomeCommandState == .confirmed {model.banner("Good Morning · Mock scene applied")}
         }.accessibilityIdentifier("scene.goodmorning")
       }
       HStack(spacing: 10) {
-        tile("lightbulb.fill", "Lights", "Bedroom", model.data.home.bedroomLight) {
+        tile("lightbulb.fill", "Lights", "Bedroom", model.observedHome.bedroomLight) {
           model.command(.bedroomLight)
-        }.accessibilityIdentifier("grid.bedroomlight")
-        tile("fan.desk", "Fan", "Office", model.data.home.fan) { model.command(.fan) }
-          .accessibilityIdentifier("grid.fan")
+        }.accessibilityIdentifier("grid.bedroomlight").disabled(!model.canWriteHomeControl(.bedroomLight))
+        tile("fan.desk", "Fan", "Office", model.observedHome.fan) { model.command(.fan) }
+          .accessibilityIdentifier("grid.fan").disabled(!model.canWriteHomeControl(.fan))
         tile(
           model.observedMockLockSymbol, "Door Lock", "Front Door",
           model.observedMockLockState == .unlocked
         ) { model.route = .lock }.accessibilityIdentifier("grid.lock")
+      }
+      ForEach([HomeControlSlot.entryLight,.bedroomLight,.fan],id:\.self) {slot in
+        if model.homeControlState(slot) != .idle {HomeControlStatus(slot:slot)}
       }
     }.padding(12).background(.white).buttonStyle(.plain).foregroundStyle(.gray)
   }
@@ -422,41 +425,54 @@ struct HomeGrid: View {
 
 struct ThermostatView: View {
   @Environment(AppModel.self) private var model
+  private var mode:Int {model.observedHome.thermostatMode ?? 2}
+  private var modeName:String {switch mode {case 0:"Off";case 1:"Heat";case 2:"Cool";case 3:"Auto";default:"Unavailable"}}
+  private var modeState:String {switch mode {case 0:"System off";case 1:"Heating to";case 2:"Cooling to";case 3:"Auto target";default:"Mode unavailable"}}
   var body: some View {
     ZStack {
       Color(red: 0.08, green: 0.58, blue: 0.82)
       VStack {
         AppHeader(title: "Thermostat", light: true)
         Spacer()
-        Text("Cooling to").font(.system(size: 27, weight: .regular))
+        Text(modeState).font(.system(size: 27, weight: .regular)).accessibilityIdentifier("thermostat.mode.state")
         HStack(spacing: 0) {
           RoundButton(
             symbol: "chevron.down", color: .clear, foreground: .white, size: 76,
             label: "Decrease temperature"
-          ) { model.command(.temperature(model.data.home.temperature - 1)) }
+          ) { model.stepHomeControl(.temperature,direction:-1) }
+          .disabled(model.homeControlState(.temperature).pending || model.observedHome.temperature<=Int(model.homeControlDescriptor(.temperature)?.numeric?.minimum ?? 50))
           .accessibilityIdentifier("thermostat.down")
           Spacer(minLength: 0)
-          Text("\(model.data.home.temperature)").font(.system(size: 170, weight: .light))
-            .monospacedDigit().accessibilityLabel("\(model.data.home.temperature)°")
+          Text("\(model.observedHome.temperature)").font(.system(size: 170, weight: .light))
+            .monospacedDigit().accessibilityLabel("\(model.observedHome.temperature)°")
             .accessibilityIdentifier("thermostat.value")
           Spacer(minLength: 0)
           RoundButton(
             symbol: "chevron.up", color: .clear, foreground: .white, size: 76,
             label: "Increase temperature"
-          ) { model.command(.temperature(model.data.home.temperature + 1)) }
+          ) { model.stepHomeControl(.temperature,direction:1) }
+          .disabled(model.homeControlState(.temperature).pending || model.observedHome.temperature>=Int(model.homeControlDescriptor(.temperature)?.numeric?.maximum ?? 90))
           .accessibilityIdentifier("thermostat.up")
         }.padding(.horizontal, 28)
         HStack(spacing: 10) {
           Label("70°", systemImage: "thermometer.medium")
           Label("30%", systemImage: "humidity")
         }.font(.system(size: 23)).opacity(0.65)
+        HomeControlStatus(slot:.temperature)
+        if model.homeControlState(.thermostatMode) != .idle {HomeControlStatus(slot:.thermostatMode)}
         Spacer()
         HStack {
           Spacer()
-          RoundButton(
-            symbol: "thermometer.medium", color: .white.opacity(0.12), foreground: .white, size: 60,
-            label: "Cooling mode"
-          ) { model.banner("Cool mode · Mock thermostat") }
+          Menu {
+            ForEach([0,1,2,3].filter {model.homeControlDescriptor(.thermostatMode)?.modes.contains($0) == true},id:\.self) {value in
+              Button(["Off","Heat","Cool","Auto"][value]) {model.command(.thermostatMode(value))}
+            }
+          } label: {
+            Image(systemName:"thermometer.medium").font(.system(size:26,weight:.semibold))
+              .frame(width:60,height:60).background(.white.opacity(0.12),in:Circle())
+          }.accessibilityLabel(mode == 2 ? "Cooling mode":"\(modeName) mode")
+            .accessibilityIdentifier("thermostat.mode")
+            .disabled(!model.canWriteHomeControl(.thermostatMode))
         }.padding(.horizontal, 28).padding(.bottom, 26)
       }
     }.foregroundStyle(.white)
@@ -468,18 +484,25 @@ struct LightView: View {
     VStack(spacing: 25) {
       AppHeader(title: "Entryway")
       Spacer()
-      Image(systemName: model.data.home.entryLight ? "lightbulb.fill" : "lightbulb").font(
+      Image(systemName: model.observedHome.entryLight ? "lightbulb.fill" : "lightbulb").font(
         .system(size: 110)
-      ).foregroundStyle(model.data.home.entryLight ? .orange : .gray)
-      Text(model.data.home.entryLight ? "On" : "Off").font(.system(size: 45, weight: .semibold))
-      Pill(title: model.data.home.entryLight ? "Turn Off" : "Turn On", symbol: "power") {
+      ).foregroundStyle(model.observedHome.entryLight ? .orange : .gray)
+      Text(model.observedHome.entryLight ? "On" : "Off").font(.system(size: 45, weight: .semibold))
+      Pill(title: model.observedHome.entryLight ? "Turn Off" : "Turn On", symbol: "power") {
         model.command(.entryLight)
-      }
-      ValueAdjuster(value: model.data.home.brightness, label: "Brightness") {
+      }.disabled(!model.canWriteHomeControl(.entryLight))
+      HomeControlStatus(slot:.entryLight)
+      ValueAdjuster(value: model.observedHome.brightness, range:controlRange(.brightness), label: "Brightness",
+        deviceDomain:model.homeControlDescriptor(.brightness)?.numeric,controlEnabled:model.canWriteHomeControl(.brightness)) {
         model.command(.brightness($0))
       }
+      HomeControlStatus(slot:.brightness)
       Spacer()
     }.padding(.horizontal, 30).background(.white).foregroundStyle(.black)
+  }
+  private func controlRange(_ slot:HomeControlSlot)->ClosedRange<Double> {
+    guard let domain=model.homeControlDescriptor(slot)?.numeric else {return 0...100}
+    return domain.minimum...domain.maximum
   }
 }
 struct LockView: View {
