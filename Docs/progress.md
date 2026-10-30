@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## Wetterdaten und eigene Zustandsillustrationen · 30. Oktober 2026
+
+[#21 im ursprünglichen Daten-/eigenen Illustrationsvertrag abgeschlossen](weather-air-quality.md).457Coretests,6isolierteTransportszenarien,10finaleMobiltests/5SDKs;36Zustandskombinationen auf beiden Geräten gesichtet. Quellenbelegter CAMS-EU-AQI mit eigener Modellzeit, fehlende Werte bleiben unbekannt. F019 partial/parity=false; #78/#81 bleiben offen. **46 erledigt ·1 ausgeschlossen ·35 offen.** Weiter mit #67, kein Ende des Gesamtauftrags.
+
 ## Native TV-Kameras und fokussierbare Fotogalerie · 29. Oktober 2026
 
 [TV-Foto-Weiter-Aktion ergänzt](tv-camera-photos.md): Kamera-Gegenkontrolle bereits vorher grün; finale Fokuszeile erreicht Next photo ohne Face-Verlust und mit50,8Punkten Abstand zur Bildnummer. Zehn aktuelle UI-Ausführungen/fünf frische SDKs bestanden;231Quellen/zwölf Archive/Installationen gebunden.161PNG/18Tafeln/acht volle Bilder gesichtet. Historische Testannahmen, verworfene Kandidaten und inkrementelle Shortcut-Metadatenlücke getrennt erhalten. #79/#74 für übrige Kriterien offen, Gesamtauftrag läuft weiter.

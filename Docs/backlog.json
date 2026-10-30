@@ -667,10 +667,20 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/21",
     "issue_number": 21,
-    "state": "open",
+    "state": "completed",
     "implementation_note": "Veröffentlichte, jeweils eigene historische Prüfstände: weather-data.md, weather-app.md, weather-clouds.md, weather-glass.md, weather-light.md. Keine nachträgliche Gesamt- oder Originalabnahme. Aktueller Tageswolken-Schritt: weather-cloud-light.md. UI05-Layout: weather-ui05-layout.md;139Core/10gezielteUI/5SDK, keine Originalabnahme.",
-    "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state": "closed",
+    "github_state_verified_on": "2026-10-30",
+    "github_state_reason": "completed",
+    "completion": {
+      "date": "2026-10-30",
+      "evidence": [
+        "Docs/weather-air-quality.md",
+        "Docs/verification/weather-air-quality-20261030.json",
+        "Docs/verification/weather-air-quality-source-20261030.json"
+      ],
+      "scope": "Original sourced data/own-illustration contract. F019 remains partial/parity=false; exact Apple/weather visuals and physical performance remain #78/#81."
+    }
   },
   {
     "key": "FACE-13",
