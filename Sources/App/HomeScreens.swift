@@ -494,24 +494,41 @@ struct LockView: View {
   @ScaledMetric(relativeTo:.headline) private var actionSize:CGFloat=21
   private var minimumHitSide:CGFloat {ceil(44/max(0.01,canvasScale))}
   var body:some View {
-    VStack(spacing:16) {
-      header
-      ScrollView {
-        VStack(spacing:20) {
-          symbol;state;policy
-          Text(model.securityLock.reading?.batteryText ?? "Battery level unavailable")
-            .font(.system(size:policySize)).accessibilityIdentifier("lock.battery")
-          Text(model.securityLock.status).font(.system(size:policySize))
-            .accessibilityIdentifier("lock.status")
-        }.frame(maxWidth:.infinity).padding(.vertical,12)
-      }.accessibilityIdentifier("lock.accessible.content")
-      lockAction
-      Pill(title:"Refresh state",symbol:"arrow.clockwise",fontSize:actionSize,minimumHeight:minimumHitSide) {
-        lockTask?.cancel();lockTask=Task { await model.securityLock.refresh() }
-      }.disabled(model.securityLock.busy).accessibilityIdentifier("lock.refresh")
+    Group {
+      if textSize.isAccessibilitySize {
+        VStack(spacing:16) {
+          header
+          ScrollView {
+            VStack(spacing:20) { details;requestStatus;lockAction;refreshAction }.padding(.vertical,12)
+          }.accessibilityIdentifier("lock.accessible.content")
+        }
+      } else {
+        VStack(spacing:16) {
+          header
+          ScrollView { details.padding(.vertical,12) }.accessibilityIdentifier("lock.accessible.content")
+          requestStatus;lockAction;refreshAction
+        }
+      }
     }.padding(.horizontal,30).padding(.bottom,12).background(.white).foregroundStyle(.black)
       .task { await model.securityLock.refresh() }
       .onDisappear { lockTask?.cancel();lockTask=nil;model.revokeLockApproval() }
+  }
+  private var details:some View {
+    VStack(spacing:20) {
+      symbol;state;policy
+      Text(model.securityLock.reading?.batteryText ?? "Battery level unavailable")
+        .font(.system(size:policySize)).accessibilityIdentifier("lock.battery")
+    }.frame(maxWidth:.infinity)
+  }
+  private var requestStatus:some View {
+    Text(model.securityLock.status).font(.system(size:policySize))
+      .multilineTextAlignment(.center).fixedSize(horizontal:false,vertical:true)
+      .accessibilityIdentifier("lock.status")
+  }
+  private var refreshAction:some View {
+    Pill(title:"Refresh state",symbol:"arrow.clockwise",fontSize:actionSize,minimumHeight:minimumHitSide) {
+      lockTask?.cancel();lockTask=Task { await model.securityLock.refresh() }
+    }.disabled(model.securityLock.busy).accessibilityIdentifier("lock.refresh")
   }
   private var header:some View {
     AppHeader(title:"Front Door",closeSize:textSize.isAccessibilitySize ? max(48,minimumHitSide):48,
@@ -536,7 +553,8 @@ struct LockView: View {
       VStack(spacing:8) {
         Text(proposal.targetLocked ? "Lock mock Front Door?":"Unlock mock Front Door?")
           .font(.system(size:policySize,weight:.semibold))
-        HStack(spacing:12) {
+        let layout=textSize.isAccessibilitySize ? AnyLayout(VStackLayout(spacing:12)):AnyLayout(HStackLayout(spacing:12))
+        layout {
           Pill(title:proposal.title,symbol:"checkmark.shield",tint:.orange,fontSize:actionSize,minimumHeight:minimumHitSide) {
             lockTask?.cancel();lockTask=Task { await model.securityLock.confirm(id:proposal.id) }
           }.accessibilityIdentifier("lock.confirm")

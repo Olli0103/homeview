@@ -3552,6 +3552,38 @@ final class HomeViewUITests: XCTestCase {
     let condition=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@",expected),object:app.staticTexts["lock.state"])
     XCTAssertEqual(XCTWaiter.wait(for:[condition],timeout:5),.completed)
   }
+  func testMockLockLargestSystemTextKeepsConfirmationReachable() {
+    continueAfterFailure=false
+    XCTAssertEqual(UIApplication.shared.preferredContentSizeCategory,.accessibilityExtraExtraExtraLarge)
+    launch(["--page","Home","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("grid.lock")
+    let auth=app.buttons["lock.action"]
+    activateRecipeTypeControl(auth)
+    let unlock=app.buttons["device.unlock"]
+    activateRecipeTypeControl(unlock);tap("grid.lock")
+    let action=app.buttons["lock.action"]
+    activateRecipeTypeControl(action)
+    let confirm=app.buttons["lock.confirm"],cancel=app.buttons["lock.cancel"]
+    revealRecipeTypeElement(cancel)
+    XCTAssertGreaterThanOrEqual(cancel.frame.width,43.5)
+    XCTAssertGreaterThanOrEqual(cancel.frame.height,43.5)
+    systemTextSizeGeometry("mock-lock-cancel",["cancel":cancel])
+    activateRecipeTypeControl(cancel)
+    XCTAssertFalse(confirm.exists)
+    activateRecipeTypeControl(action)
+    revealRecipeTypeElement(confirm)
+    systemTextSizeGeometry("mock-lock-confirmation",["confirm":confirm])
+    viewportShot("mock-lock-largest-confirmation-before-action")
+    XCTAssertGreaterThanOrEqual(confirm.frame.width,43.5)
+    XCTAssertGreaterThanOrEqual(confirm.frame.height,43.5)
+    activateRecipeTypeControl(confirm);waitForMockLockState("Unlocked")
+    let state=app.staticTexts["lock.state"]
+    revealRecipeTypeElement(state)
+    let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"].frame
+    let clip=recipeTypeScrollContains(state,scroll) ? scroll.frame.intersection(viewport):viewport
+    XCTAssertTrue(axContains(clip,state.frame),"The confirmed state must actually fit in its own visible clip")
+    viewportShot("mock-lock-largest-confirmed")
+  }
   func testMockLockConfirmedReadbackPersistsWithoutPersistingAuthorization() {
     continueAfterFailure=false
     let id=UUID().uuidString

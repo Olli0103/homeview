@@ -10,6 +10,8 @@
 	<string>Show calendars you explicitly authorize.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Use the camera only when explicitly opening a live mirror.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Authenticate to access personal content and confirm mock security actions in HomeView.</string>
 	<key>NSHomeKitUsageDescription</key>
 	<string>Connect to a home only after an explicit live-mode setup. The current build uses a mock home.</string>
 	<key>NSMicrophoneUsageDescription</key>
