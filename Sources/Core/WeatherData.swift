@@ -47,7 +47,7 @@ struct WeatherReading: Sendable {
     case 45, 48: "Fog"
     case 51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82: "Rain"
     case 71, 73, 75, 77, 85, 86: "Snow"
-    case 95, 96, 99: "Thunderstorms"
+    case 95, 96, 97, 99: "Thunderstorms"
     default: "Condition unavailable"
     }
   }
@@ -113,6 +113,7 @@ struct OpenMeteoForecast: Decodable {
     var precipitation: Double?
   }
   struct Daily: Decodable {
+    var time: [Double?]?
     var temperature_2m_max: [Double?]?
     var temperature_2m_min: [Double?]?
     var sunrise: [Double?]?
@@ -139,14 +140,20 @@ struct OpenMeteoForecast: Decodable {
       guard let seconds = WeatherReading.valid(first(values), in: 1...32_503_680_000) else { return nil }
       return Date(timeIntervalSince1970: seconds)
     }
+    let sunrise = date(daily?.sunrise), sunset = date(daily?.sunset)
+    // Open-Meteo uses daily-boundary pairs for polar night/day, not real sun events.
+    // Bind both markers to the supplied daily time; midnight alone is not enough.
+    let polarBoundaryPair = date(daily?.time).map { start in
+      sunrise == start && (sunset == start || sunset == start.addingTimeInterval(86_400))
+    } ?? false
     return WeatherReading(city: city,
       temperature: WeatherReading.valid(current.temperature_2m, in: -150...180),
       high: WeatherReading.valid(first(daily?.temperature_2m_max), in: -150...180),
       low: WeatherReading.valid(first(daily?.temperature_2m_min), in: -150...180),
       humidity: WeatherReading.valid(current.relative_humidity_2m, in: 0...100),
       wind: WeatherReading.valid(current.wind_speed_10m, in: 0...400),
-      code: current.weather_code, sunset: date(daily?.sunset), utcOffset: utc_offset_seconds,
-      observedAt: Date(timeIntervalSince1970: current.time), sunrise: date(daily?.sunrise),
+      code: current.weather_code, sunset: polarBoundaryPair ? nil : sunset, utcOffset: utc_offset_seconds,
+      observedAt: Date(timeIntervalSince1970: current.time), sunrise: polarBoundaryPair ? nil : sunrise,
       isDay: current.is_day == 0 ? false : current.is_day == 1 ? true : nil,
       cloudCover: WeatherReading.valid(current.cloud_cover, in: 0...100),
       precipitation: WeatherReading.valid(current.precipitation, in: 0...10_000),

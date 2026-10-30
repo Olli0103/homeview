@@ -1,0 +1,298 @@
+{
+  "date": "2026-10-30",
+  "issue": 21,
+  "state": "open",
+  "feature": "F019",
+  "parity_accepted": false,
+  "base": "f393d9b801c16a75f6ce15568ce7cde3cda79f88",
+  "source_inputs": {
+    "count": 245,
+    "sha256": "59d1403ac033652515ae3315d8dccaa24e4e20b787c0b170427d0e9e9af07648",
+    "digest_encoding": "UTF-8 canonical files JSON, sorted keys and compact separators",
+    "changed_files": [
+      "Sources/App/DeviceConnections.swift",
+      "Sources/Core/WeatherData.swift",
+      "Tests/CoreTests/WeatherTests.swift",
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "all_unchanged_during_final_SDK_UI": true,
+    "all_fully_reconstructed_read_back": true
+  },
+  "product_changes": [
+    "Add documented WW97 to existing Thunderstorms group",
+    "Decode first daily.time and omit polar day-boundary solar-event marker pairs only when both bind exactly to that start",
+    "Synthetic provider-only heavy thunderstorm and decoded polar day/night fixture controls; real WeatherService unchanged"
+  ],
+  "source_review": {
+    "provider_docs": {
+      "url": "https://open-meteo.com/en/docs",
+      "retrieval_date": "2026-10-30",
+      "status": 200,
+      "truncated": false,
+      "full_tool_result_sha256": "506eb92cee8b46781a4339d61a7a9c99d9788df9d9617d3343ab3f430addc959",
+      "coverage": "Full-page WW table includes97 Heavy thunderstorm plus unix/DST timezone guidance; initial main-content extraction omitted WW table"
+    },
+    "official_solar": {
+      "url": "https://github.com/open-meteo/open-meteo/blob/3660b7db86435b0d816f7b6b4f350bba03fd4e99/Sources/App/Helper/Solar/SunRiseSet.swift",
+      "commit": "3660b7db86435b0d816f7b6b4f350bba03fd4e99",
+      "git_blob_sha": "81076e4246839244d6916f5b75efcd72706ffdee",
+      "content_sha256": "571e65b9407b871f19c22cdbb87f9450382d085d0363bc477d08e1587d7d1bf2",
+      "review_scope": "calculateSunRiseSet polarNight and polarDay cases; not full solar-model accuracy proof",
+      "upstream_code_not_copied_into_repo": true
+    },
+    "independent_public_polar_response": {
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=78.22334&longitude=15.64689&daily=sunrise%2Csunset&timezone=auto&timeformat=unixtime&forecast_days=2",
+      "receipt_sha256": "283017bb302c57bd84da03b017e34ce540717fc7069d8bf264f58c0d0e84c6e1",
+      "daily_time_equals_sunrise_and_sunset": true
+    },
+    "preserved_retrieval_failure": "Native urllib docs HTTP403; main extractor lacked WW table. Successful full-page fallback retained."
+  },
+  "core_stages": [
+    {
+      "stage": "before",
+      "test_methods": 15,
+      "failed_methods": 1,
+      "failed_conditions": 10,
+      "log_sha256": "0037d550ff1939e6c9d91cb90b5a5e5e5cf57d6c058b4dea936a0740dfe88459"
+    },
+    {
+      "stage": "after",
+      "test_methods": 454,
+      "failed_methods": 0,
+      "failed_conditions": 0,
+      "log_sha256": "0cdd967ae031d07297d0f86e25fa452ce75e3a79932ee34ddd508d251a7aa6b1"
+    },
+    {
+      "stage": "polar-before",
+      "test_methods": 1,
+      "failed_methods": 1,
+      "failed_conditions": 24,
+      "log_sha256": "928b59ba6afacb1c1a867408c7c5afe88a8eae707f74e8d2c06b94b3b8bb0512"
+    },
+    {
+      "stage": "final",
+      "test_methods": 455,
+      "failed_methods": 0,
+      "failed_conditions": 0,
+      "log_sha256": "08dbdb944062f0524bc4d2d8bbf3cb6f704680e973832f240ae77c58dac8fab6"
+    }
+  ],
+  "final_core": {
+    "passed": 455,
+    "failed": 0,
+    "new_WeatherTests_methods": 6,
+    "input_count": 94,
+    "input_sha256": "4e83b4a2b87f214311feeb20bbe05a562db44f9e7bc271fa6343db646a31b1a7",
+    "all_final_sources_reconstructed_from_before_plus_delta": true,
+    "same_polar_regression_source_before_after": true,
+    "no_post_commit_repeat_run_claimed": true
+  },
+  "fixtures": {
+    "documented_WW_codes": 29,
+    "day_night_vectors": 58,
+    "each_checks_current_and_hourly": true,
+    "conditions_are_existing_coarse_groups_not_full_WW_detail_labels": true,
+    "polar_null_and_zero_sun_events": true,
+    "polar_boundary_pairs": true,
+    "unknown_daylight_not_inferred": true,
+    "ordinary_midnight_and_single_event_preserved": true,
+    "IANA_event_DST_and_fractional_offset_fallback": true,
+    "first_missing_event_not_borrowed_from_later_day": true
+  },
+  "actual_public_fetch": {
+    "method": "Compiled real unchanged WeatherService with each corresponding WeatherData revision and identical own driver",
+    "before": {
+      "aqi_requested": false,
+      "completed_unix": 1793362012.4345589,
+      "condition": "Fog",
+      "future_24h_count": 24,
+      "GPS_account_personal_or_Home_access": false,
+      "hour_count": 48,
+      "humidity_percent": 89,
+      "observed_unix": 1793361600,
+      "requested_public_city": "Longyearbyen",
+      "resolved_city": "Longyearbyen",
+      "scope": "Actual unchanged WeatherService and current WeatherData; one public city, not a live observation of every WMO state/polar season or original effects.",
+      "source": "Open-Meteo",
+      "source_is_day": false,
+      "source_offset_seconds": 3600,
+      "started_unix": 1793362012.258141,
+      "sunrise_label": "12:00 AM",
+      "sunrise_unix": 1793314800,
+      "sunset_label": "12:00 AM",
+      "sunset_unix": 1793314800,
+      "temperature_f": 30.6,
+      "timezone": "Arctic/Longyearbyen",
+      "weather_code": 45,
+      "wind_mph": 4
+    },
+    "after": {
+      "aqi_requested": false,
+      "completed_unix": 1793362185.638756,
+      "condition": "Fog",
+      "future_24h_count": 24,
+      "GPS_account_personal_or_Home_access": false,
+      "hour_count": 48,
+      "humidity_percent": 89,
+      "observed_unix": 1793361600,
+      "requested_public_city": "Longyearbyen",
+      "resolved_city": "Longyearbyen",
+      "scope": "Actual unchanged WeatherService and current WeatherData; one public city, not a live observation of every WMO state/polar season or original effects.",
+      "source": "Open-Meteo",
+      "source_is_day": false,
+      "source_offset_seconds": 3600,
+      "started_unix": 1793362185.467066,
+      "sunrise_label": "—",
+      "sunrise_unix": null,
+      "sunset_label": "—",
+      "sunset_unix": null,
+      "temperature_f": 30.6,
+      "timezone": "Arctic/Longyearbyen",
+      "weather_code": 45,
+      "wind_mph": 4
+    },
+    "before_binary_sha256": "98b86a82bea8fd60038679a3918385af6771957f5d8e2aa0176acb91c510dccf",
+    "after_binary_sha256": "9373fd839769c0a90381bb2b60661566e427f12077e7ea28460076d7cba6f6bd",
+    "WeatherService_source_identical": true,
+    "source_inputs_after": [
+      {
+        "name": "WeatherData.swift",
+        "bytes": 7157,
+        "sha256": "4d9a5aca9322ad58e5d270daa984246bea3aac658ef61495b0c8f6837d55d0d4"
+      },
+      {
+        "name": "WeatherService.swift",
+        "bytes": 2337,
+        "sha256": "3921ee5426399c326610cfa4f25d27e6baf2018f6a827210edfbef8ae692be78"
+      },
+      {
+        "name": "WeatherPublicProbe.swift",
+        "bytes": 1788,
+        "sha256": "db98375ef24a74b92bce71d8173d35d0a36e1807645ffbc97ff79938bbe1f0b3"
+      }
+    ],
+    "no_all_states_or_both_polar_seasons_live_claim": true
+  },
+  "SDKs": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "attempts": 2
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "attempts": 1
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "attempts": 1
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "attempts": 1
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "attempts": 1
+    }
+  ],
+  "SDK_products": {
+    "files": 73,
+    "changed_files": 5,
+    "delta_bytes": 26436881,
+    "delta_sha256": "a09b002af0f1332e403772053e3313b2a3a400fdf79649144f4dff64e602bf55",
+    "all_products_fully_reconstructed_read_back": true,
+    "iOS_metadata_clean_recovery_preserved": true
+  },
+  "mobile": {
+    "executions": 10,
+    "methods_per_device": 5,
+    "results": [
+      {
+        "device": "phone",
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "structured_runtime_warnings": [],
+        "summary_sha256": "f995b923ae54d10e9975743f5079ad47a7fa0123f2a2d19941f4e099836ede6e",
+        "receipt_sha256": "bcf8e157b9cb5874b7461e2b3c6e70484147cd145a889fb0854244eb5703dab8",
+        "installed_app_before_after_and_runner_tests_after_verified": true
+      },
+      {
+        "device": "ipad",
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "structured_runtime_warnings": [],
+        "summary_sha256": "837c7ed056f52012b17ae197d04aaddaebbf0fd345eca140a669fe49a432a2b9",
+        "receipt_sha256": "82bf7e2144454cb33db6182091114c509c741a2db5ac19f8f3486864e7a71850",
+        "installed_app_before_after_and_runner_tests_after_verified": true
+      }
+    ],
+    "shared_inputs": {
+      "all245sources_fully_reconstructed_read_back": true,
+      "all32compiled_inputs_fully_reconstructed_read_back": true,
+      "changed_test_input_files": 1,
+      "test_input_delta_sha256": "e674af13afe2b3dea484d91a40d907f72f4e9cc2bdfa73bb035e4392cda27a8f",
+      "test_input_delta_bytes": 1135003,
+      "new_app_binary_copies": 0,
+      "app_exact_to_new_five_SDKs": true,
+      "source_sha256": "59d1403ac033652515ae3315d8dccaa24e4e20b787c0b170427d0e9e9af07648"
+    },
+    "no_before_UI_failure_claim": true,
+    "not_complete_accessibility_or_effect_parity": true
+  },
+  "images": {
+    "fully_decoded_png": 22,
+    "selected_states_actually_viewed": 22,
+    "contact_pages_actually_viewed": 4,
+    "additional_full_views": [
+      {
+        "device": "phone",
+        "states": [
+          "weather-effect-thunderstorms",
+          "weather-polar-day-unknown-solar-events",
+          "weather-polar-night-unknown-solar-events"
+        ]
+      },
+      {
+        "device": "ipad",
+        "states": [
+          "weather-effect-thunderstorms",
+          "weather-polar-day-unknown-solar-events",
+          "weather-polar-night-unknown-solar-events"
+        ]
+      }
+    ],
+    "published_copies": 8,
+    "manifest": "../screenshots/weather-source-edge-states-20261030/manifest.json",
+    "no_exact_before_after_or_original_pixel_comparison": true
+  },
+  "terminal_results": {
+    "bundles": 2,
+    "file_count": 124,
+    "bytes": 16187605,
+    "inventory_sha256": "fde154d2332c8a7262ff06f959588ac9a16998e39dbcecf30e5107fcdbf116ff",
+    "sealed_in_place_no_full_duplicate_result_archives": true
+  },
+  "private_evidence": {
+    "sealed_files": 227,
+    "sealed_bytes": 77024735,
+    "seal_sha256": "8682cbd795bde4a5b61292aa2bb39e0a1e5b83fbb2d142613cb2de87d6d91cec",
+    "all_files_fully_read_back": true
+  },
+  "fulfilled_original_tasks": [
+    "Fehlende Werte nicht erfinden",
+    "Offline/veraltet/Ort geändert und Einheiten prüfen"
+  ],
+  "unfulfilled_original_scope": [
+    "Complete original effects/cloud phase/rain/frost/light/refraction/transition and typeface acceptance",
+    "AQI not supplied by existing forecast path, remains unknown",
+    "Physical energy/frame-time/performance and original parity acceptance"
+  ],
+  "holds": "No Home construction/discovery/control, real personal providers/accounts/capture, physical/signing or OS/Gateway changes. Snoopy excluded."
+}

@@ -247,9 +247,16 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
       return WeatherReading(city: city,temperature:nil,high:nil,low:nil,humidity:nil,wind:nil,
         code:nil,sunset:nil,utcOffset:20700,observedAt:Date())
     }
+    if args.contains("--weather-polar-night") || args.contains("--weather-polar-day") {
+      let day=args.contains("--weather-polar-day"),now=Date().timeIntervalSince1970
+      let start=floor(now/86_400)*86_400
+      let json="{\"utc_offset_seconds\":0,\"timezone\":\"Etc/UTC\",\"current\":{\"time\":\(now),\"temperature_2m\":22,\"weather_code\":0,\"is_day\":\(day ? 1:0),\"cloud_cover\":0},\"daily\":{\"time\":[\(start)],\"sunrise\":[\(start)],\"sunset\":[\(start+(day ? 86_400:0))]}}"
+      return try JSONDecoder().decode(OpenMeteoForecast.self,from:Data(json.utf8)).reading(city:"Fixture City")
+    }
     let stale = args.contains("--weather-stale-night")
     let snow = args.contains("--weather-snow")
     let rain = args.contains("--weather-rain")
+    let heavyThunderstorm = args.contains("--weather-heavy-thunderstorm")
     let clear = args.contains("--weather-clear")
     let forecast = args.contains("--weather-forecast-fixture")
     let observed = stale ? Date().addingTimeInterval(-7200) : Date()
@@ -264,7 +271,7 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
       }
     }
     return WeatherReading(
-      city: forecast ? city : "Fixture City", temperature: snow ? 22 : 55, high: 60, low: 48, humidity: 70, wind: 8, code: snow ? 73 : rain ? 61 : clear ? 0 : 2,
+      city: forecast ? city : "Fixture City", temperature: snow ? 22 : 55, high: 60, low: 48, humidity: 70, wind: 8, code: snow ? 73 : rain ? 61 : heavyThunderstorm ? 97 : clear ? 0 : 2,
       sunset: Fixtures.date, utcOffset: 0, observedAt: observed,
       sunrise: nil,isDay: !stale,cloudCover:clear ? 0 : 40,hourly:hours)
   }

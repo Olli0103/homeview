@@ -1,0 +1,93 @@
+{
+  "scope": "Actual current owned synthetic UI, no original/hardware/performance claim",
+  "files": [
+    {
+      "file": "phone-weather-effect-thunderstorms.png",
+      "sha256": "baaae3290040e553202e2aeb94aa6c9695694768f7492959c279117a269680b8",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "device": "phone",
+      "state": "weather-effect-thunderstorms",
+      "test": "HomeViewUITests/testWeatherRainSnowAndDemoHaveDistinctSources()"
+    },
+    {
+      "file": "phone-weather-missing-metrics-no-fabricated-aqi.png",
+      "sha256": "ec032cb09ef406f37ea8edf3f985a5c6b6f368c6d792c96bf13a0108ca031d0d",
+      "pixels": [
+        1206,
+        2622
+      ],
+      "device": "phone",
+      "state": "weather-missing-metrics-no-fabricated-aqi",
+      "test": "HomeViewUITests/testWeatherMissingValuesRemainUnknownAndUnitsAreExplicit()"
+    },
+    {
+      "file": "phone-weather-polar-day-unknown-solar-events.png",
+      "sha256": "0e8b29326c543e15ff8063e0d20a0412bd261e64bd69cfd21e3ca1b67c8cc439",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "device": "phone",
+      "state": "weather-polar-day-unknown-solar-events",
+      "test": "HomeViewUITests/testWeatherPolarDayAndNightDoNotShowBoundarySunTimes()"
+    },
+    {
+      "file": "phone-weather-polar-night-unknown-solar-events.png",
+      "sha256": "a2761c38355ca0a87d27179bbef0d57a17d6a9d2bd0d65922103a2fb66159658",
+      "pixels": [
+        1134,
+        1134
+      ],
+      "device": "phone",
+      "state": "weather-polar-night-unknown-solar-events",
+      "test": "HomeViewUITests/testWeatherPolarDayAndNightDoNotShowBoundarySunTimes()"
+    },
+    {
+      "file": "ipad-weather-effect-thunderstorms.png",
+      "sha256": "2c307cbcc505868c719f43fa31d8d1eae5d7ae6442aa899fb5ff85b916e64a48",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "device": "ipad",
+      "state": "weather-effect-thunderstorms",
+      "test": "HomeViewUITests/testWeatherRainSnowAndDemoHaveDistinctSources()"
+    },
+    {
+      "file": "ipad-weather-missing-metrics-no-fabricated-aqi.png",
+      "sha256": "f032227b03b29538b946d627be25ea3a7f880e15e5269b38b0e4d110eb541268",
+      "pixels": [
+        1640,
+        2360
+      ],
+      "device": "ipad",
+      "state": "weather-missing-metrics-no-fabricated-aqi",
+      "test": "HomeViewUITests/testWeatherMissingValuesRemainUnknownAndUnitsAreExplicit()"
+    },
+    {
+      "file": "ipad-weather-polar-day-unknown-solar-events.png",
+      "sha256": "95c8cf84c9838130bb558d0905f71490cd0326cc580bdf4569f1785ddf1d035b",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "device": "ipad",
+      "state": "weather-polar-day-unknown-solar-events",
+      "test": "HomeViewUITests/testWeatherPolarDayAndNightDoNotShowBoundarySunTimes()"
+    },
+    {
+      "file": "ipad-weather-polar-night-unknown-solar-events.png",
+      "sha256": "746dc018f987cc53251a40f2caf8b5300ee7db6fed95f24de6685418c4d3fa15",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "device": "ipad",
+      "state": "weather-polar-night-unknown-solar-events",
+      "test": "HomeViewUITests/testWeatherPolarDayAndNightDoNotShowBoundarySunTimes()"
+    }
+  ]
+}

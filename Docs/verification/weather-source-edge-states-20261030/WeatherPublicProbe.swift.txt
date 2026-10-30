@@ -1,0 +1,29 @@
+import Foundation
+import Darwin
+
+@main struct WeatherPublicProbe {
+  static func main() async {
+    let requested="Longyearbyen",started=Date()
+    do {
+      let reading=try await WeatherService().fetch(city:requested)
+      func nullable<T>(_ value:T?)->Any { value.map {$0 as Any} ?? NSNull() }
+      let record:[String:Any]=["source":"Open-Meteo","requested_public_city":requested,
+        "resolved_city":reading.city,"started_unix":started.timeIntervalSince1970,
+        "completed_unix":Date().timeIntervalSince1970,"observed_unix":reading.observedAt.timeIntervalSince1970,
+        "temperature_f":nullable(reading.temperature),"wind_mph":nullable(reading.wind),
+        "humidity_percent":nullable(reading.humidity),"weather_code":nullable(reading.code),
+        "condition":reading.condition,"source_is_day":nullable(reading.isDay),
+        "sunrise_unix":nullable(reading.sunrise?.timeIntervalSince1970),
+        "sunset_unix":nullable(reading.sunset?.timeIntervalSince1970),
+        "sunrise_label":reading.sunLabel(reading.sunrise),"sunset_label":reading.sunsetLabel,
+        "timezone":nullable(reading.timeZoneID),"source_offset_seconds":reading.utcOffset,
+        "hour_count":reading.hourly.count,"future_24h_count":reading.upcomingHours.count,
+        "aqi_requested":false,"GPS_account_personal_or_Home_access":false,
+        "scope":"Actual unchanged WeatherService and current WeatherData; one public city, not a live observation of every WMO state/polar season or original effects."]
+      print(String(data:try JSONSerialization.data(withJSONObject:record,options:[.sortedKeys,.prettyPrinted]),encoding:.utf8)!)
+    } catch {
+      print("PUBLIC_WEATHER_PROBE_FAILED \(String(describing:type(of:error))) \((error as NSError).code)")
+      Darwin.exit(1)
+    }
+  }
+}

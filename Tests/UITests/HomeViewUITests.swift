@@ -6223,11 +6223,22 @@ final class HomeViewUITests: XCTestCase {
     launch(["--page","Weather"])
     XCTAssertTrue(app.staticTexts["weather.source"].label.hasPrefix("Demo"))
     shot("weather-explicit-demo-source")
-    for (flag,label) in [("--weather-rain","Rain"),("--weather-snow","Snow")] {
+    for (flag,label) in [("--weather-rain","Rain"),("--weather-snow","Snow"),
+      ("--weather-heavy-thunderstorm","Thunderstorms")] {
       launch(["--page","Settings",flag]); connectService("Weather");openWeather()
       XCTAssertTrue(app.staticTexts[label].exists)
       XCTAssertFalse(app.staticTexts["weather.source"].label.hasPrefix("Demo"))
       shot("weather-effect-"+label.lowercased())
+    }
+  }
+  func testWeatherPolarDayAndNightDoNotShowBoundarySunTimes() {
+    for phase in ["night","day"] {
+      launch(["--page","Settings","--weather-polar-"+phase]);connectService("Weather");openWeather()
+      XCTAssertTrue(app.staticTexts["Clear"].exists)
+      XCTAssertTrue(app.staticTexts["Sunrise — · AQI not supplied"].exists)
+      XCTAssertFalse(app.staticTexts["12:00 AM"].exists,"Polar boundary markers are not two actual midnight sun events")
+      XCTAssertFalse(app.staticTexts["weather.source"].label.hasPrefix("Demo"))
+      viewportBytes("weather-polar-"+phase+"-unknown-solar-events")
     }
   }
   func viewportBytes(_ name: String) -> Data {
