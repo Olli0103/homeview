@@ -1,0 +1,132 @@
+extension HomeViewUITests {
+  private func verifyNativeMotionSurface(_ scene:String)throws {
+    guard app.wait(for:.runningForeground,timeout:10),app.otherElements["reference.viewport"].waitForExistence(timeout:5) else {throw NSError(domain:"HomeView.NativeMotionProbe",code:10)}
+    let surface:XCUIElement
+    switch scene {
+    case "flow":surface=app.otherElements["face.Flow"]
+    case "home-prism":surface=app.otherElements["face.Home Modular"]
+    case "weather-face":surface=app.otherElements["face.Weather"]
+    case "weather-app":surface=app.staticTexts["weather.app.city"]
+    default:throw NSError(domain:"HomeView.NativeMotionProbe",code:11)
+    }
+    guard surface.waitForExistence(timeout:5) else {throw NSError(domain:"HomeView.NativeMotionProbe",code:12)}
+  }
+  private func nativeMotionRegionHasContent(_ data:Data)->Bool {
+    guard data.count>=400,data.count%4==0 else {return false}
+    return data.withUnsafeBytes { (b:UnsafeRawBufferPointer)->Bool in
+      var varied=0
+      for i in stride(from:0,to:b.count,by:4) {
+        if max(abs(Int(b[i])-Int(b[0])),max(abs(Int(b[i+1])-Int(b[1])),abs(Int(b[i+2])-Int(b[2]))))>16 {
+          varied+=1;if varied>=100 {return true}
+        }
+      }
+      return false
+    }
+  }
+  private func nativeSystemMotionSwitch(_ settings:XCUIApplication)throws->XCUIElement {
+    if settings.state == .notRunning {settings.launch()} else if settings.state != .runningForeground {settings.activate()}
+    guard settings.wait(for:.runningForeground,timeout:15) else {throw NSError(domain:"HomeView.NativeMotionProbe",code:1)}
+    let reduced=settings.switches["REDUCE_MOTION"].firstMatch
+    if !reduced.waitForExistence(timeout:2) {
+      let accessibility=settings.buttons["com.apple.settings.accessibility"].firstMatch
+      if accessibility.exists {guard accessibility.isHittable else {throw NSError(domain:"HomeView.NativeMotionProbe",code:2)};accessibility.tap()}
+      let motion=settings.buttons["Motion"].firstMatch.exists ? settings.buttons["Motion"].firstMatch
+        : settings.cells["Motion"].firstMatch.exists ? settings.cells["Motion"].firstMatch:settings.staticTexts["Motion"].firstMatch
+      guard motion.waitForExistence(timeout:8),motion.isHittable else {throw NSError(domain:"HomeView.NativeMotionProbe",code:3)}
+      motion.tap()
+    }
+    guard reduced.waitForExistence(timeout:8) else {throw NSError(domain:"HomeView.NativeMotionProbe",code:4)}
+    return reduced
+  }
+  private func setNativeSystemMotion(_ enabled:Bool,settings:XCUIApplication)throws->[String:Any] {
+    let reduced=try nativeSystemMotionSwitch(settings),expected=enabled ? "1":"0"
+    guard let before=reduced.value as? String,before=="0" || before=="1" else {throw NSError(domain:"HomeView.NativeMotionProbe",code:5)}
+    var tapped=false
+    if before != expected {
+      // The observed named AX switch contains the actual physical switch, not the label button.
+      let physical=reduced.switches.firstMatch
+      guard physical.exists,physical.isHittable,settings.frame.contains(physical.frame) else {throw NSError(domain:"HomeView.NativeMotionProbe",code:6)}
+      physical.tap();tapped=true
+    }
+    let value=XCTNSPredicateExpectation(predicate:NSPredicate(format:"value == %@",expected),object:reduced)
+    guard XCTWaiter.wait(for:[value],timeout:10) == .completed else {throw NSError(domain:"HomeView.NativeMotionProbe",code:7)}
+    let native=XCTNSPredicateExpectation(predicate:NSPredicate {_,_ in UIAccessibility.isReduceMotionEnabled==enabled},object:nil)
+    guard XCTWaiter.wait(for:[native],timeout:10) == .completed else {throw NSError(domain:"HomeView.NativeMotionProbe",code:8)}
+    return ["switch_before":before,"switch_after":reduced.value as? String ?? "",
+      "native_UIAccessibility_reduce_motion":UIAccessibility.isReduceMotionEnabled,"physical_switch_tapped":tapped]
+  }
+  private func verifyNativeSystemMotion(_ scene:String,arguments:[String],pixels:(Data)->Data)throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=true;executionTimeAllowance=300
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences"),start=ProcessInfo.processInfo.systemUptime
+    var original:Bool?,restored=false,events:[[String:Any]]=[]
+    func record(_ event:String,_ fields:[String:Any]=[:]) {var row=fields;row["event"]=event;row["elapsed"]=ProcessInfo.processInfo.systemUptime-start;events.append(row)}
+    func emit(_ phase:String) {
+      var report:[String:Any]=["scene":scene,"phase":phase,
+        "restored":restored,"events":events,
+        "scope":"Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."]
+      if let original {report["original_enabled"]=original} else {report["original_enabled"]=NSNull()}
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="native-motion-system-"+scene+"-"+phase;a.lifetime = .keepAlways;add(a)
+    }
+    defer {
+      app.terminate()
+      if let original {
+        do {let state=try setNativeSystemMotion(original,settings:settings);restored=UIAccessibility.isReduceMotionEnabled==original;record("restored-original",state);XCTAssertTrue(restored)}
+        catch {let e=error as NSError;record("restore-error",["domain":e.domain,"code":e.code]);XCTFail("Restore original real simulator Reduce Motion setting")}
+      }
+      emit("after")
+    }
+    do {
+      let control=try nativeSystemMotionSwitch(settings)
+      guard let raw=control.value as? String,raw=="0" || raw=="1" else {throw NSError(domain:"HomeView.NativeMotionProbe",code:9)}
+      original=raw=="1";record("original-state",["switch_value":raw,"native_UIAccessibility_reduce_motion":UIAccessibility.isReduceMotionEnabled]);emit("before")
+      record("OFF-readback",try setNativeSystemMotion(false,settings:settings))
+      launch(arguments+["--animation-test","--persistence-test",UUID().uuidString,"--reset-test-store"])
+      XCTAssertFalse(app.launchArguments.contains("--reduce-motion"));XCTAssertFalse(UIAccessibility.isReduceMotionEnabled)
+      try verifyNativeMotionSurface(scene)
+      RunLoop.current.run(until:Date().addingTimeInterval(1))
+      let offStart=ProcessInfo.processInfo.systemUptime,off=pixels(viewportBytes("native-system-motion-"+scene+"-off-first"))
+      XCTAssertTrue(nativeMotionRegionHasContent(off),"Moving ROI must not be a uniform blank capture")
+      Thread.sleep(forTimeInterval:1.5)
+      let moving=off != pixels(viewportBytes("native-system-motion-"+scene+"-off-later"))
+      record("OFF-moving-positive",["different_RGBA":moving,"sample_elapsed":ProcessInfo.processInfo.systemUptime-offStart,"no_reduce_motion_argument":true]);XCTAssertTrue(moving)
+      record("ON-readback",try setNativeSystemMotion(true,settings:settings))
+      app.activate();try verifyNativeMotionSurface(scene)
+      XCTAssertTrue(UIAccessibility.isReduceMotionEnabled)
+      let counter=app.staticTexts["flow.compute.test"]
+      if scene=="flow" {
+        guard counter.waitForExistence(timeout:5) else {XCTFail("Existing Flow compute diagnostic missing");return}
+        let idle=XCTNSPredicateExpectation(predicate:NSPredicate(format:"value CONTAINS %@","pending=false"),object:counter)
+        guard XCTWaiter.wait(for:[idle],timeout:10) == .completed else {XCTFail("Flow pending work did not quiesce");return}
+      }
+      RunLoop.current.run(until:Date().addingTimeInterval(0.7))
+      let beforeCounter=scene=="flow" ? counter.value as? String ?? "":""
+      let onStart=ProcessInfo.processInfo.systemUptime,frozen=pixels(viewportBytes("native-system-motion-"+scene+"-on-first"))
+      XCTAssertTrue(nativeMotionRegionHasContent(frozen),"Still ROI must contain the expected nonuniform content, not a blank screen")
+      Thread.sleep(forTimeInterval:1.5)
+      let same=frozen==pixels(viewportBytes("native-system-motion-"+scene+"-on-later"))
+      let afterCounter=scene=="flow" ? counter.value as? String ?? "":""
+      record("ON-still-region",["equal_RGBA":same,"sample_elapsed":ProcessInfo.processInfo.systemUptime-onStart,
+        "native_UIAccessibility_reduce_motion":UIAccessibility.isReduceMotionEnabled,"flow_counter_before":beforeCounter,"flow_counter_after":afterCounter]);XCTAssertTrue(same)
+      if scene=="flow" {XCTAssertTrue(beforeCounter.contains("active=true"));XCTAssertTrue(beforeCounter.contains("pending=false"));XCTAssertEqual(beforeCounter,afterCounter,"No additional Flow revision after actual OS Reduce Motion")}
+      record("OFF-again-readback",try setNativeSystemMotion(false,settings:settings))
+      app.activate();try verifyNativeMotionSurface(scene);XCTAssertFalse(UIAccessibility.isReduceMotionEnabled)
+      RunLoop.current.run(until:Date().addingTimeInterval(0.7))
+      let returnStart=ProcessInfo.processInfo.systemUptime,returned=pixels(viewportBytes("native-system-motion-"+scene+"-off-return-first"))
+      XCTAssertTrue(nativeMotionRegionHasContent(returned))
+      Thread.sleep(forTimeInterval:1.5)
+      let resumed=returned != pixels(viewportBytes("native-system-motion-"+scene+"-off-return-later"))
+      record("OFF-moving-return",["different_RGBA":resumed,"sample_elapsed":ProcessInfo.processInfo.systemUptime-returnStart,
+        "native_UIAccessibility_reduce_motion":UIAccessibility.isReduceMotionEnabled,"same_app_lifetime":true]);XCTAssertTrue(resumed)
+    } catch {let e=error as NSError;record("probe-error",["domain":e.domain,"code":e.code]);XCTFail("Native OS Reduce Motion probe failed")}
+    #else
+    XCTFail("OS preference mutation is restricted to owned simulator tests")
+    #endif
+  }
+  func testNativeSystemReduceMotionFlowAndRestore()throws {try verifyNativeSystemMotion("flow",arguments:["--face","Flow"],pixels:flowPixels)}
+  func testNativeSystemReduceMotionWeatherAppAndRestore()throws {try verifyNativeSystemMotion("weather-app",arguments:["--page","Weather"],pixels:weatherSkyPixels)}
+  func testNativeSystemReduceMotionWeatherFaceAndRestore()throws {try verifyNativeSystemMotion("weather-face",arguments:["--face","Weather"],pixels:weatherGlassPixels)}
+  func testNativeSystemReduceMotionHomePrismAndRestore()throws {try verifyNativeSystemMotion("home-prism",arguments:["--face","Home Modular"],pixels:{self.viewportPixels($0)})}
+}
+

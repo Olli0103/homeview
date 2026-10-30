@@ -1,0 +1,25 @@
+extension HomeViewUITests {
+  func testReadOnlySimulatorSystemSettingsRootForMotionInventory() {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=120
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences")
+    settings.launch();XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
+    let all=settings.descendants(matching:.any).allElementsBoundByIndex
+    let rows:[[String:Any]]=all.prefix(1000).map {e in
+      let f=e.frame
+      return ["id":e.identifier,"label":e.label,"value":e.value as? String ?? "",
+        "type":e.elementType.rawValue,"frame":[f.minX,f.minY,f.width,f.height],"hittable":e.isHittable]
+    }
+    let report:[String:Any]=["scope":"Read-only actual simulator Settings root inventory. No preference/feature action, no HomeView runtime or Reduce Motion acceptance.",
+      "total_nodes":all.count,"recorded_nodes":rows.count,"rows":rows,
+      "native_UIAccessibility_reduce_motion":UIAccessibility.isReduceMotionEnabled,
+      "OS_version":ProcessInfo.processInfo.operatingSystemVersionString]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="native-motion-settings-root";a.lifetime = .keepAlways;add(a)
+    let shot=XCTAttachment(screenshot:settings.screenshot());shot.name="native-motion-settings-root-screen";shot.lifetime = .keepAlways;add(shot)
+    #else
+    XCTFail("This diagnostic is restricted to the owned simulator environment")
+    #endif
+  }
+}
+

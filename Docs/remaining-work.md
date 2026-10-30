@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Tatsächliches OS-Reduce-Motion statt bloßem Launchflag](system-reduce-motion.md): acht PID-gebundene OFF→ON→OFF-Fälle auf beiden Simulatoren; acht exakt stille und16 bewegte Regionpaare. Alle17 Präferenz-Ausführungen zurückgestellt/zurückgelesen,165 Produktinputs unverändert. Frühere ungemessene Lifetime-Marker und ein Indexfehler bleiben getrennt; #73 offen.
+
 - [Verbindungsaktionen nennen ihren Dienst](service-action-labels.md): 16 AX-/native Namensbedingungen rot→grün; zehn akzeptierte aktuelle UI-Ausführungen/fünf SDKs. Vier ganze Normal-/Fokus-Pixelpaare exakt gleich. Alte Wiederverbindungsfehler auch mit Vorher-App reproduziert, spätere Beobachtung ausdrücklich keine Ursachenklärung; sichtbare Eingabevorbereitung qualifiziert, alle Callback-/Rückkehrbedingungen erhalten. #73 offen.
 
 - [Native VoiceOver-Fokus-/Sprachausgabe](native-voiceover-focus.md): zwölf qualifizierte Einstiegsfälle auf iPhone/iPad,165 Produktinputs unverändert. Roh-Touch-/Tastaturwege scheitern auch am unabhängigen UIKit-Button; keine ausschließlich HomeView-spezifische Ursache.17 UI-Ausführungen insgesamt13PASS/4FAIL, alle VoiceOver-Rückstellungen zurückgelesen. Zwei falsche Rezeptvorgaben korrigiert, Originalfehler erhalten; #73 bleibt offen.

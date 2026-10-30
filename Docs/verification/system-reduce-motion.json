@@ -1,0 +1,3258 @@
+{
+  "date": "2026-10-30",
+  "issue": "73 remains OPEN/F103 partial",
+  "base_commit": "0c42086b41842877b1720f5776c44d1568ba1931",
+  "product_changes": 0,
+  "product_resource_inputs_exact_baseline": 165,
+  "source_inputs": 233,
+  "current_test_source_digest": "6c9c4ea64700ba21bf46454235243e41d94b43eb592236865d5a029b623b9051",
+  "current_PID_bound_UI_executions": 8,
+  "current_methods": [
+    "Flow",
+    "Home Modular prism",
+    "Weather app clouds",
+    "Weather face glass"
+  ],
+  "native_switch_and_UIKit_OFF_ON_OFF_verified": true,
+  "all_current_PID_continuity_verified": true,
+  "public_PID_source": "Root attributes from public XCUIApplication.debugDescription; unknown format fails. No private processID/KVC.",
+  "pair_analysis": {
+    "pairs": [
+      {
+        "device": "phone",
+        "scene": "flow",
+        "mode": "OFF",
+        "box_native_pixels": [
+          56,
+          56,
+          1078,
+          1078
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/92D7AE26-BA3F-4D2D-A5F0-B149E614E7FB.png",
+          "name": "native-system-motion-flow-off-first_0_69D9CFE6-B588-4363-9CAE-E91B1A457061.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "57542d7e38c9f634bf3432f5f8843cd8ff5becf2268da2217de247cbbd0c9257"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/59D7253F-0549-4AF3-A981-27D2296C18E1.png",
+          "name": "native-system-motion-flow-off-later_0_0A7C2489-89AE-4141-8E15-6F340F7D0314.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "4fb3c5b64edbdd4def4519127bb39ac80c818c48bed4ae97814055142508af51"
+        },
+        "changed_RGBA_pixels": 1042962,
+        "changed_channels": 2583011,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "flow",
+        "mode": "ON",
+        "box_native_pixels": [
+          56,
+          56,
+          1078,
+          1078
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/BEB6358C-6D64-4990-83EF-C7803A5022A6.png",
+          "name": "native-system-motion-flow-on-first_0_CDDFE132-DF1E-461F-BC85-0D7351CE1F73.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "a4e1d99885c2ad08c651f465ab0d0cdccb8e0c9bd8b178d08cd1086b3bd41252"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/150ADF79-4A9E-436D-A3B0-7275D92F3DAD.png",
+          "name": "native-system-motion-flow-on-later_0_5E1BB29A-8E52-4105-858D-F64136266E97.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "a4e1d99885c2ad08c651f465ab0d0cdccb8e0c9bd8b178d08cd1086b3bd41252"
+        },
+        "changed_RGBA_pixels": 0,
+        "changed_channels": 0,
+        "expected": "exact zero",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "flow",
+        "mode": "OFF-return",
+        "box_native_pixels": [
+          56,
+          56,
+          1078,
+          1078
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/2966C8CC-6EED-40FE-9319-551C938AED0C.png",
+          "name": "native-system-motion-flow-off-return-first_0_7C063756-6495-4769-B207-A0A171D65ABD.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "7968e5d3185271630db6562c19aed8a2b64bb7d41f8e5fb3809e09fbea7c5a42"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/1BC0CB47-DBB0-42C1-9DE0-9F0523E8BF6E.png",
+          "name": "native-system-motion-flow-off-return-later_0_29250C46-52E3-4776-8EEA-57AC8B8B57ED.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "abe7a4288bdd5867e9538b8cda51a6e6dee873e5f816c2a7c0a3bbb216ed9e46"
+        },
+        "changed_RGBA_pixels": 1043869,
+        "changed_channels": 2742412,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "home-prism",
+        "mode": "OFF",
+        "box_native_pixels": [
+          113,
+          113,
+          1021,
+          1021
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/1B8D24B0-8132-4039-81CA-5B5E7F4936FE.png",
+          "name": "native-system-motion-home-prism-off-first_0_1652BE50-B639-4D67-B496-2BB8071AB88F.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "4ee309ebdeef484f18c6c252b46425808e41c72f500e5dc50838a677515a0f89"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/8A75C193-B0B4-4765-9E99-9F0DA704CF14.png",
+          "name": "native-system-motion-home-prism-off-later_0_F03D4A26-98FA-4077-A59F-BD9346110A1C.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "9f771028a86e4f7ca6a68ee9df405b521076c57ee21e6c34e952a9e1a0cd8a58"
+        },
+        "changed_RGBA_pixels": 194602,
+        "changed_channels": 429347,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "home-prism",
+        "mode": "ON",
+        "box_native_pixels": [
+          113,
+          113,
+          1021,
+          1021
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/0245B0DB-8F26-4385-B015-9479CEE5BCBD.png",
+          "name": "native-system-motion-home-prism-on-first_0_32335886-5E5D-44AE-8625-1B326A581334.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "e90348f8cfd08e35e1f582a12044ff41aee90f3cf4a3481f5866f4655ea9d750"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/B4B8E2C6-CD6A-4B54-9187-2CD0ED356C0C.png",
+          "name": "native-system-motion-home-prism-on-later_0_BA8E69C6-6790-4255-90B5-060EA3A8AA56.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "e90348f8cfd08e35e1f582a12044ff41aee90f3cf4a3481f5866f4655ea9d750"
+        },
+        "changed_RGBA_pixels": 0,
+        "changed_channels": 0,
+        "expected": "exact zero",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "home-prism",
+        "mode": "OFF-return",
+        "box_native_pixels": [
+          113,
+          113,
+          1021,
+          1021
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/11346DD6-B8B9-4028-BE96-EAA56D8F39DD.png",
+          "name": "native-system-motion-home-prism-off-return-first_0_FF64E002-86F4-40FE-BA5E-6AE6B0EBB49C.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "7a4c11da2697a340e914a0ff74b7cc480dfb5f88baeac57147982f565df60fbc"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/00A02D60-1069-44C5-B7C0-BA8D61716013.png",
+          "name": "native-system-motion-home-prism-off-return-later_0_EC102974-0A9C-4DCB-B526-C6A2019FA82F.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "48a4b239caea2aa9f9898f2235570594b24b6fec62868965baae6f34425b3e9c"
+        },
+        "changed_RGBA_pixels": 176859,
+        "changed_channels": 373305,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "weather-app",
+        "mode": "OFF",
+        "box_native_pixels": [
+          226,
+          39,
+          851,
+          193
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/6FAB370F-B3B1-4180-ADD6-35FC4C69A950.png",
+          "name": "native-system-motion-weather-app-off-first_0_EFD61C08-2E77-4A53-A38D-D4E089F16DCE.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "c90895b0f1e855562ab6249cd9b9e56c8ea32d9b82495f6875da59f48bcaaff6"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/B43047E4-B3A7-4A00-BC28-359B96CB6576.png",
+          "name": "native-system-motion-weather-app-off-later_0_2CF8DC37-560F-477A-BE68-C070D9CFC8CB.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "428d50ade9a9c52e70ec02128418020211489140831afd44f2dec9bb3326b404"
+        },
+        "changed_RGBA_pixels": 71284,
+        "changed_channels": 183291,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "weather-app",
+        "mode": "ON",
+        "box_native_pixels": [
+          226,
+          39,
+          851,
+          193
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/5D236372-DB27-4FC1-B06C-ADD2424EACF5.png",
+          "name": "native-system-motion-weather-app-on-first_0_FEE3D295-912E-4C9C-ABCA-BBEA661D13B8.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "5898ac7cb8f2e0c88d4d26eb14130d7653dcdc7ab33f4ed725e322eac0eb47bf"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/B83747B4-BF61-430E-838B-2A6F17061981.png",
+          "name": "native-system-motion-weather-app-on-later_0_C79FD7C9-9ABA-47AA-9619-AFE25F153BF7.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "5898ac7cb8f2e0c88d4d26eb14130d7653dcdc7ab33f4ed725e322eac0eb47bf"
+        },
+        "changed_RGBA_pixels": 0,
+        "changed_channels": 0,
+        "expected": "exact zero",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "weather-app",
+        "mode": "OFF-return",
+        "box_native_pixels": [
+          226,
+          39,
+          851,
+          193
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/11E63662-75E9-4B6F-989F-3513B062352C.png",
+          "name": "native-system-motion-weather-app-off-return-first_0_019BAA91-F168-44EF-9603-E96543B8F649.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "6f748d541106cec5ec5de28a664caac8557287e72aa036c55428a9b7342a1894"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/575D4CB6-098C-4984-B381-36CAFBE52856.png",
+          "name": "native-system-motion-weather-app-off-return-later_0_B137A526-875C-4C4A-A20B-A9C341DE5DA1.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "86fb5119d0a3711ce58475760816dc9ae225ae00dd21cffa0589fd44612fe546"
+        },
+        "changed_RGBA_pixels": 81479,
+        "changed_channels": 213584,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "weather-face",
+        "mode": "OFF",
+        "box_native_pixels": [
+          56,
+          226,
+          738,
+          704
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/0A2BC7DB-9CA6-4E75-AAC9-1CCA0D894F21.png",
+          "name": "native-system-motion-weather-face-off-first_0_00AA6E1A-A972-49D7-8FBE-8A9051473B43.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "bdd0928aa3eb6d14d3197604bb60ed0db83ee02f890c14ac2d55c3f9bb2f7f24"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/23AB9E00-AE0D-4F89-9CD6-C72DE334E34D.png",
+          "name": "native-system-motion-weather-face-off-later_0_E3626F19-B1BA-4B9A-B5E7-761AA2795BF6.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "334c6f211a313c76e2eaf09ceba6e75da43667f75994ba8ad83f1a890d2a623e"
+        },
+        "changed_RGBA_pixels": 202191,
+        "changed_channels": 465731,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "weather-face",
+        "mode": "ON",
+        "box_native_pixels": [
+          56,
+          226,
+          738,
+          704
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/8D18E9EB-956A-44F1-898F-4074C0C2D049.png",
+          "name": "native-system-motion-weather-face-on-first_0_BC113565-7AC7-42F9-B11F-6231009A7D42.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "0717a6045b6def7e8fb37e5cfcad1d716e6df180bca866629b2bc86091723d9e"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/E983A925-04BF-480F-85BC-0F92AFC6AE63.png",
+          "name": "native-system-motion-weather-face-on-later_0_678A47AE-FED8-4F1F-A622-896688222E4B.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "0717a6045b6def7e8fb37e5cfcad1d716e6df180bca866629b2bc86091723d9e"
+        },
+        "changed_RGBA_pixels": 0,
+        "changed_channels": 0,
+        "expected": "exact zero",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "phone",
+        "scene": "weather-face",
+        "mode": "OFF-return",
+        "box_native_pixels": [
+          56,
+          226,
+          738,
+          704
+        ],
+        "before": {
+          "file": "native-system-pid-phone-attachments/03795237-CC27-4DD3-AADB-73304AD152CD.png",
+          "name": "native-system-motion-weather-face-off-return-first_0_0482A087-E644-4788-996B-A695C62F7310.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "8b06915ceebc3d209c9c90144666f02538ae11fa2b5f0e0ce851c16d1525dd14"
+        },
+        "after": {
+          "file": "native-system-pid-phone-attachments/42FEADCC-65D2-4128-9D38-9804E8E4A10C.png",
+          "name": "native-system-motion-weather-face-off-return-later_0_D3CC60FD-9D43-499B-A58C-C6FB6563313C.png",
+          "size": [
+            1134,
+            1134
+          ],
+          "sha256": "f6f6c74b8865f01a5e13eafe28c5f898f7318bed6657a07b146fa40bb2297425"
+        },
+        "changed_RGBA_pixels": 207709,
+        "changed_channels": 468263,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "flow",
+        "mode": "OFF",
+        "box_native_pixels": [
+          79,
+          79,
+          1513,
+          1513
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/0E24075A-705C-4EA5-846A-91BB8DEF88AB.png",
+          "name": "native-system-motion-flow-off-first_0_6BC4050A-2516-41BE-BCE2-97F0DFC8D829.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "3240ee8403546519c6dac8241615b6c606f9b3d30157c0738181b1b7661e45ad"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/0D5D2448-1342-43E8-9B35-2CC9747D3F54.png",
+          "name": "native-system-motion-flow-off-later_0_007C430D-673E-4B57-AC77-916F3DADC617.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "4c2e8371c0f574be81ee35106fec0da70262cd18e3c23c27b4fdd4eae9946bdd"
+        },
+        "changed_RGBA_pixels": 2054917,
+        "changed_channels": 5141544,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "flow",
+        "mode": "ON",
+        "box_native_pixels": [
+          79,
+          79,
+          1513,
+          1513
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/B587ACE3-0034-456B-B34D-F6F7085F56FE.png",
+          "name": "native-system-motion-flow-on-first_0_86E83B11-65B6-4908-8E83-E1839E04197F.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "63013694d87fa9f3b280f1e29850e16e0c979266476c49a2304e9c437284c62a"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/A71C58BC-65FA-4FED-898E-7AB857616CCC.png",
+          "name": "native-system-motion-flow-on-later_0_03971F07-27C3-465B-A9C2-5804AAC5CFD5.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "63013694d87fa9f3b280f1e29850e16e0c979266476c49a2304e9c437284c62a"
+        },
+        "changed_RGBA_pixels": 0,
+        "changed_channels": 0,
+        "expected": "exact zero",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "flow",
+        "mode": "OFF-return",
+        "box_native_pixels": [
+          79,
+          79,
+          1513,
+          1513
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/AE480126-1762-4975-91CE-B82865944111.png",
+          "name": "native-system-motion-flow-off-return-first_0_847D6BC1-E765-4C46-A6D9-E7A98E16DDD7.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "4d2b3b46ac42ad1d0cde9475b1fe47ed496e24e5c21f7f42ee106dbb5dafd739"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/8770C8FD-4AEE-443A-B815-2460CA2C9CFC.png",
+          "name": "native-system-motion-flow-off-return-later_0_94746527-C487-4E63-9A18-50ACED19EDBD.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "c2ca295e1e7426d0fba3bc5e675c109f020f9111b1c64893c9d91389d6a10259"
+        },
+        "changed_RGBA_pixels": 2047741,
+        "changed_channels": 5938277,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "home-prism",
+        "mode": "OFF",
+        "box_native_pixels": [
+          159,
+          159,
+          1433,
+          1433
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/84180F8B-A0EE-4740-A3A3-B71C6AFD76C1.png",
+          "name": "native-system-motion-home-prism-off-first_0_0F2CAD1B-C798-4F69-96C3-3649C7448735.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "9bbe83f4670dec343d62c3080008d48d620f51c13edde17e7283fba686cf35a5"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/00248C08-5D4E-4C52-9EE1-0AE349ABBD02.png",
+          "name": "native-system-motion-home-prism-off-later_0_BAAAF2B3-0FEE-452D-8D0B-950170500497.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "465a48adb830fc4b5df5dc2d4d8800055530e2203c3f900fc59489decde763de"
+        },
+        "changed_RGBA_pixels": 361528,
+        "changed_channels": 820993,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "home-prism",
+        "mode": "ON",
+        "box_native_pixels": [
+          159,
+          159,
+          1433,
+          1433
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/D401CE67-83DD-4552-B39B-8EF35D0FAD6B.png",
+          "name": "native-system-motion-home-prism-on-first_0_9EA47972-1C1A-439F-9C40-DFCF4726FAC3.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "b7a0508b8742c2c8fc10451fb0616dbde3db0e16cd60a9a0b12338230ceb2c1d"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/76016660-D2A2-4824-B911-FDB73F5DF18F.png",
+          "name": "native-system-motion-home-prism-on-later_0_55F87ACC-A151-409C-BC03-3960C9E8FFB7.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "b7a0508b8742c2c8fc10451fb0616dbde3db0e16cd60a9a0b12338230ceb2c1d"
+        },
+        "changed_RGBA_pixels": 0,
+        "changed_channels": 0,
+        "expected": "exact zero",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "home-prism",
+        "mode": "OFF-return",
+        "box_native_pixels": [
+          159,
+          159,
+          1433,
+          1433
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/98B6ACF5-C49B-4A37-ABB3-D7077B2FDAC7.png",
+          "name": "native-system-motion-home-prism-off-return-first_0_A71EC037-285B-46DA-AABF-A05934ADEDD4.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "144e3e894eb3c3dac6b75b767a162b73ac5f018305eb94230bdd0b95b956fffa"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/459B967E-E615-4A8C-8BBD-9D51C3AAD787.png",
+          "name": "native-system-motion-home-prism-off-return-later_0_0905A643-FD68-4EE0-9DE3-4BC1522090FD.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "3b4ce8531b8da8e879b46270074451f9544762bef5b16c8142f76f3a62c89d25"
+        },
+        "changed_RGBA_pixels": 307793,
+        "changed_channels": 671088,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "weather-app",
+        "mode": "OFF",
+        "box_native_pixels": [
+          318,
+          55,
+          1194,
+          271
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/8E63E395-7083-452D-AB5C-4417E6108B6D.png",
+          "name": "native-system-motion-weather-app-off-first_0_66110329-E179-48E6-8ED4-4CF675A02F48.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "230d9d483def18613946bfe1377cd9f5a15b2bab76d22e753b961cfc119f7ac9"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/FB2D04D6-6343-442A-855C-D7CD0B390A3B.png",
+          "name": "native-system-motion-weather-app-off-later_0_D95E5F60-65CC-436E-9044-1C1972E3CB8C.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "a4c2b3f630c144ff759d633e07032c2b44c532643c9d327b2c97f8407674b115"
+        },
+        "changed_RGBA_pixels": 138304,
+        "changed_channels": 352992,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "weather-app",
+        "mode": "ON",
+        "box_native_pixels": [
+          318,
+          55,
+          1194,
+          271
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/DB65E8DC-8F78-409E-BC8C-393EE6200B1F.png",
+          "name": "native-system-motion-weather-app-on-first_0_007C9609-B7C8-4B6A-A3B3-FDEAFA79E23A.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "a2fcee0f8f01e1f4b3119d2a06d69d55220b37bb1f5567fc7cdf6e5b4f2ba51d"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/B16BE783-3DEC-473A-A972-B1A2C06D2A17.png",
+          "name": "native-system-motion-weather-app-on-later_0_9EAB16FA-B088-4287-9E3E-4E8EB5C3699B.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "a2fcee0f8f01e1f4b3119d2a06d69d55220b37bb1f5567fc7cdf6e5b4f2ba51d"
+        },
+        "changed_RGBA_pixels": 0,
+        "changed_channels": 0,
+        "expected": "exact zero",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "weather-app",
+        "mode": "OFF-return",
+        "box_native_pixels": [
+          318,
+          55,
+          1194,
+          271
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/44D60519-CBE4-4A1F-B9AC-EE416CEF4FBD.png",
+          "name": "native-system-motion-weather-app-off-return-first_0_7722A344-2383-4273-8C83-C483B9D67CD1.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "cb536008012cf4364cf32841a85b8203d0d288e31b54929ee2e406ac0f34faff"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/429EB5B3-ED3F-4227-97E1-1A1F16FBBB3F.png",
+          "name": "native-system-motion-weather-app-off-return-later_0_7A89773D-4829-4E17-B1F8-328E830B2229.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "c9adca3b3c84f1af4ccff28ed1f2c779e9ced49acab858141a73e02c4273e82e"
+        },
+        "changed_RGBA_pixels": 162529,
+        "changed_channels": 427505,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "weather-face",
+        "mode": "OFF",
+        "box_native_pixels": [
+          79,
+          318,
+          1035,
+          988
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/E1F6E249-C7C9-4AD6-82B0-1244C241A684.png",
+          "name": "native-system-motion-weather-face-off-first_0_1BE8DB60-175F-484C-9565-871E4118B7B9.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "410ef2684edde5ce8deeab2744d1f753dce41fd5e7f957be0fcb6271243a81a0"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/BAFE3694-0B08-4557-A214-7E08E19FC101.png",
+          "name": "native-system-motion-weather-face-off-later_0_6861A8F4-D847-4623-AA04-817D65682C85.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "678f5ea146530cb85c5bd0119bf8331033fc8a7c7d06473fd6a9b9441c666aa3"
+        },
+        "changed_RGBA_pixels": 398743,
+        "changed_channels": 916674,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "weather-face",
+        "mode": "ON",
+        "box_native_pixels": [
+          79,
+          318,
+          1035,
+          988
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/7A135DC7-689B-4DB0-B915-A9BB854806ED.png",
+          "name": "native-system-motion-weather-face-on-first_0_AA0F34DD-DA74-46E5-AFD4-6E0918349B31.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "9b8dfe7750718ef57653fdbbc64ec475c914d95e0e23d24a2bb284e12d6f7b3f"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/034E1392-D333-4559-86B3-F94E193CBF6C.png",
+          "name": "native-system-motion-weather-face-on-later_0_F38B51C5-6D06-4844-9EFA-ACAE8798ED69.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "9b8dfe7750718ef57653fdbbc64ec475c914d95e0e23d24a2bb284e12d6f7b3f"
+        },
+        "changed_RGBA_pixels": 0,
+        "changed_channels": 0,
+        "expected": "exact zero",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      },
+      {
+        "device": "pad",
+        "scene": "weather-face",
+        "mode": "OFF-return",
+        "box_native_pixels": [
+          79,
+          318,
+          1035,
+          988
+        ],
+        "before": {
+          "file": "native-system-pid-pad-attachments/9C768A86-F555-4B2B-B086-7D0D16F7C589.png",
+          "name": "native-system-motion-weather-face-off-return-first_0_6007C3DB-C7D7-4924-9570-1C8221FC9A91.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "0c4ac0b66fa5a4372be8c1e3a43e31c59316f42714d0b9c233da8635d183bc28"
+        },
+        "after": {
+          "file": "native-system-pid-pad-attachments/5F9142E5-7937-43A3-ABC2-7F405C798FD2.png",
+          "name": "native-system-motion-weather-face-off-return-later_0_E3F1809B-A0CF-40A2-BDDA-1D58E8AEDCAD.png",
+          "size": [
+            1592,
+            1592
+          ],
+          "sha256": "47705c266a5d7f0a87cef034e74fdb66df4ea787d20b427cca2370ce6ee34c6e"
+        },
+        "changed_RGBA_pixels": 412317,
+        "changed_channels": 937239,
+        "expected": "positive",
+        "qualified": true,
+        "method": "Existing predeclared crop, CGRect.integral-equivalent bounds; decoded full RGBA, no registration/mask/tolerance."
+      }
+    ],
+    "native_reports": [
+      {
+        "checkpoint": "native-system-pid-phone",
+        "events": [
+          {
+            "elapsed": 2.1373522917274386,
+            "event": "original-state",
+            "native_UIAccessibility_reduce_motion": false,
+            "switch_value": "0"
+          },
+          {
+            "elapsed": 6.510657250066288,
+            "event": "OFF-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 15.023720083408989,
+            "event": "application-PID-OFF",
+            "pid": 46881,
+            "source": "Public XCUIApplication.debugDescription root attributes"
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 18.12798966676928,
+            "event": "OFF-moving-positive",
+            "no_reduce_motion_argument": true,
+            "sample_elapsed": 2.1035919582936913
+          },
+          {
+            "elapsed": 23.748025250039063,
+            "event": "ON-readback",
+            "native_UIAccessibility_reduce_motion": true,
+            "physical_switch_tapped": true,
+            "switch_after": "1",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 26.037875875015743,
+            "event": "application-PID-ON",
+            "matches_initial": true,
+            "pid": 46881
+          },
+          {
+            "elapsed": 30.920197666739114,
+            "equal_RGBA": true,
+            "event": "ON-still-region",
+            "flow_counter_after": "active=true;revision=151;pending=false;fallback=false",
+            "flow_counter_before": "active=true;revision=151;pending=false;fallback=false",
+            "native_UIAccessibility_reduce_motion": true,
+            "sample_elapsed": 2.011549708317034
+          },
+          {
+            "elapsed": 36.16593695839401,
+            "event": "OFF-again-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": true,
+            "switch_after": "0",
+            "switch_before": "1"
+          },
+          {
+            "elapsed": 38.55005691666156,
+            "event": "application-PID-OFF-return",
+            "matches_initial": true,
+            "pid": 46881
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 41.39526012504939,
+            "event": "OFF-moving-return",
+            "native_UIAccessibility_reduce_motion": false,
+            "same_app_lifetime": true,
+            "sample_elapsed": 2.1368259167065844
+          },
+          {
+            "elapsed": 47.06199825007934,
+            "event": "restored-original",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          }
+        ],
+        "original_enabled": false,
+        "phase": "after",
+        "restored": true,
+        "scene": "flow",
+        "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+      },
+      {
+        "checkpoint": "native-system-pid-phone",
+        "events": [
+          {
+            "elapsed": 2.2414933749241754,
+            "event": "original-state",
+            "native_UIAccessibility_reduce_motion": false,
+            "switch_value": "0"
+          },
+          {
+            "elapsed": 6.608394124894403,
+            "event": "OFF-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 14.623499083332717,
+            "event": "application-PID-OFF",
+            "pid": 47209,
+            "source": "Public XCUIApplication.debugDescription root attributes"
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 17.671194291557185,
+            "event": "OFF-moving-positive",
+            "no_reduce_motion_argument": true,
+            "sample_elapsed": 2.0452345000812784
+          },
+          {
+            "elapsed": 23.278547333320603,
+            "event": "ON-readback",
+            "native_UIAccessibility_reduce_motion": true,
+            "physical_switch_tapped": true,
+            "switch_after": "1",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 25.792527583311312,
+            "event": "application-PID-ON",
+            "matches_initial": true,
+            "pid": 47209
+          },
+          {
+            "elapsed": 28.575207999907434,
+            "equal_RGBA": true,
+            "event": "ON-still-region",
+            "flow_counter_after": "",
+            "flow_counter_before": "",
+            "native_UIAccessibility_reduce_motion": true,
+            "sample_elapsed": 2.081751500023529
+          },
+          {
+            "elapsed": 33.66554099996574,
+            "event": "OFF-again-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": true,
+            "switch_after": "0",
+            "switch_before": "1"
+          },
+          {
+            "elapsed": 35.975713124964386,
+            "event": "application-PID-OFF-return",
+            "matches_initial": true,
+            "pid": 47209
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 38.761356458300725,
+            "event": "OFF-moving-return",
+            "native_UIAccessibility_reduce_motion": false,
+            "same_app_lifetime": true,
+            "sample_elapsed": 2.0780032499460503
+          },
+          {
+            "elapsed": 44.36130979156587,
+            "event": "restored-original",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          }
+        ],
+        "original_enabled": false,
+        "phase": "after",
+        "restored": true,
+        "scene": "home-prism",
+        "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+      },
+      {
+        "checkpoint": "native-system-pid-phone",
+        "events": [
+          {
+            "elapsed": 2.173616374959238,
+            "event": "original-state",
+            "native_UIAccessibility_reduce_motion": false,
+            "switch_value": "0"
+          },
+          {
+            "elapsed": 6.491501916665584,
+            "event": "OFF-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 14.431572416680865,
+            "event": "application-PID-OFF",
+            "pid": 47480,
+            "source": "Public XCUIApplication.debugDescription root attributes"
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 18.017373041715473,
+            "event": "OFF-moving-positive",
+            "no_reduce_motion_argument": true,
+            "sample_elapsed": 2.5761256667319685
+          },
+          {
+            "elapsed": 23.696818624972366,
+            "event": "ON-readback",
+            "native_UIAccessibility_reduce_motion": true,
+            "physical_switch_tapped": true,
+            "switch_after": "1",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 26.103870999999344,
+            "event": "application-PID-ON",
+            "matches_initial": true,
+            "pid": 47480
+          },
+          {
+            "elapsed": 28.898018708336167,
+            "equal_RGBA": true,
+            "event": "ON-still-region",
+            "flow_counter_after": "",
+            "flow_counter_before": "",
+            "native_UIAccessibility_reduce_motion": true,
+            "sample_elapsed": 2.0925183333456516
+          },
+          {
+            "elapsed": 33.96263770828955,
+            "event": "OFF-again-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": true,
+            "switch_after": "0",
+            "switch_before": "1"
+          },
+          {
+            "elapsed": 36.360677791642956,
+            "event": "application-PID-OFF-return",
+            "matches_initial": true,
+            "pid": 47480
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 39.18811208335683,
+            "event": "OFF-moving-return",
+            "native_UIAccessibility_reduce_motion": false,
+            "same_app_lifetime": true,
+            "sample_elapsed": 2.122432458330877
+          },
+          {
+            "elapsed": 44.73741462500766,
+            "event": "restored-original",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          }
+        ],
+        "original_enabled": false,
+        "phase": "after",
+        "restored": true,
+        "scene": "weather-app",
+        "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+      },
+      {
+        "checkpoint": "native-system-pid-phone",
+        "events": [
+          {
+            "elapsed": 2.1502393333939835,
+            "event": "original-state",
+            "native_UIAccessibility_reduce_motion": false,
+            "switch_value": "0"
+          },
+          {
+            "elapsed": 6.452733833342791,
+            "event": "OFF-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 14.387731875060126,
+            "event": "application-PID-OFF",
+            "pid": 47812,
+            "source": "Public XCUIApplication.debugDescription root attributes"
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 17.791515916702338,
+            "event": "OFF-moving-positive",
+            "no_reduce_motion_argument": true,
+            "sample_elapsed": 2.401253291638568
+          },
+          {
+            "elapsed": 23.49236191669479,
+            "event": "ON-readback",
+            "native_UIAccessibility_reduce_motion": true,
+            "physical_switch_tapped": true,
+            "switch_after": "1",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 25.773409500019625,
+            "event": "application-PID-ON",
+            "matches_initial": true,
+            "pid": 47812
+          },
+          {
+            "elapsed": 28.54115858336445,
+            "equal_RGBA": true,
+            "event": "ON-still-region",
+            "flow_counter_after": "",
+            "flow_counter_before": "",
+            "native_UIAccessibility_reduce_motion": true,
+            "sample_elapsed": 2.0675377500010654
+          },
+          {
+            "elapsed": 33.63941558334045,
+            "event": "OFF-again-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": true,
+            "switch_after": "0",
+            "switch_before": "1"
+          },
+          {
+            "elapsed": 35.98892312508542,
+            "event": "application-PID-OFF-return",
+            "matches_initial": true,
+            "pid": 47812
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 38.80074029171374,
+            "event": "OFF-moving-return",
+            "native_UIAccessibility_reduce_motion": false,
+            "same_app_lifetime": true,
+            "sample_elapsed": 2.1116330000804737
+          },
+          {
+            "elapsed": 44.38741029170342,
+            "event": "restored-original",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          }
+        ],
+        "original_enabled": false,
+        "phase": "after",
+        "restored": true,
+        "scene": "weather-face",
+        "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+      },
+      {
+        "checkpoint": "native-system-pid-pad",
+        "events": [
+          {
+            "elapsed": 2.242372708278708,
+            "event": "original-state",
+            "native_UIAccessibility_reduce_motion": false,
+            "switch_value": "0"
+          },
+          {
+            "elapsed": 6.725364374928176,
+            "event": "OFF-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 15.57800762495026,
+            "event": "application-PID-OFF",
+            "pid": 46886,
+            "source": "Public XCUIApplication.debugDescription root attributes"
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 18.893788541667163,
+            "event": "OFF-moving-positive",
+            "no_reduce_motion_argument": true,
+            "sample_elapsed": 2.312082291697152
+          },
+          {
+            "elapsed": 25.0678807082586,
+            "event": "ON-readback",
+            "native_UIAccessibility_reduce_motion": true,
+            "physical_switch_tapped": true,
+            "switch_after": "1",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 27.361172250006348,
+            "event": "application-PID-ON",
+            "matches_initial": true,
+            "pid": 46886
+          },
+          {
+            "elapsed": 32.44053370831534,
+            "equal_RGBA": true,
+            "event": "ON-still-region",
+            "flow_counter_after": "active=true;revision=156;pending=false;fallback=false",
+            "flow_counter_before": "active=true;revision=156;pending=false;fallback=false",
+            "native_UIAccessibility_reduce_motion": true,
+            "sample_elapsed": 2.223736874992028
+          },
+          {
+            "elapsed": 38.09762445825618,
+            "event": "OFF-again-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": true,
+            "switch_after": "0",
+            "switch_before": "1"
+          },
+          {
+            "elapsed": 40.446111999917775,
+            "event": "application-PID-OFF-return",
+            "matches_initial": true,
+            "pid": 46886
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 43.50157112500165,
+            "event": "OFF-moving-return",
+            "native_UIAccessibility_reduce_motion": false,
+            "same_app_lifetime": true,
+            "sample_elapsed": 2.354961583390832
+          },
+          {
+            "elapsed": 49.34746329160407,
+            "event": "restored-original",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          }
+        ],
+        "original_enabled": false,
+        "phase": "after",
+        "restored": true,
+        "scene": "flow",
+        "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+      },
+      {
+        "checkpoint": "native-system-pid-pad",
+        "events": [
+          {
+            "elapsed": 2.266338916728273,
+            "event": "original-state",
+            "native_UIAccessibility_reduce_motion": false,
+            "switch_value": "0"
+          },
+          {
+            "elapsed": 6.8159222500398755,
+            "event": "OFF-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 15.051768958335742,
+            "event": "application-PID-OFF",
+            "pid": 47225,
+            "source": "Public XCUIApplication.debugDescription root attributes"
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 18.355112833320163,
+            "event": "OFF-moving-positive",
+            "no_reduce_motion_argument": true,
+            "sample_elapsed": 2.29737370822113
+          },
+          {
+            "elapsed": 24.608437416725792,
+            "event": "ON-readback",
+            "native_UIAccessibility_reduce_motion": true,
+            "physical_switch_tapped": true,
+            "switch_after": "1",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 26.890765250078402,
+            "event": "application-PID-ON",
+            "matches_initial": true,
+            "pid": 47225
+          },
+          {
+            "elapsed": 29.955843375064433,
+            "equal_RGBA": true,
+            "event": "ON-still-region",
+            "flow_counter_after": "",
+            "flow_counter_before": "",
+            "native_UIAccessibility_reduce_motion": true,
+            "sample_elapsed": 2.3646854165708646
+          },
+          {
+            "elapsed": 35.62005137500819,
+            "event": "OFF-again-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": true,
+            "switch_after": "0",
+            "switch_before": "1"
+          },
+          {
+            "elapsed": 38.02592454175465,
+            "event": "application-PID-OFF-return",
+            "matches_initial": true,
+            "pid": 47225
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 41.03287012502551,
+            "event": "OFF-moving-return",
+            "native_UIAccessibility_reduce_motion": false,
+            "same_app_lifetime": true,
+            "sample_elapsed": 2.3052514999872074
+          },
+          {
+            "elapsed": 46.750560083426535,
+            "event": "restored-original",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          }
+        ],
+        "original_enabled": false,
+        "phase": "after",
+        "restored": true,
+        "scene": "home-prism",
+        "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+      },
+      {
+        "checkpoint": "native-system-pid-pad",
+        "events": [
+          {
+            "elapsed": 2.2787055416265503,
+            "event": "original-state",
+            "native_UIAccessibility_reduce_motion": false,
+            "switch_value": "0"
+          },
+          {
+            "elapsed": 6.763023166684434,
+            "event": "OFF-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 14.920829624985345,
+            "event": "application-PID-OFF",
+            "pid": 47515,
+            "source": "Public XCUIApplication.debugDescription root attributes"
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 18.284394791699015,
+            "event": "OFF-moving-positive",
+            "no_reduce_motion_argument": true,
+            "sample_elapsed": 2.3602845416171476
+          },
+          {
+            "elapsed": 24.5032032916788,
+            "event": "ON-readback",
+            "native_UIAccessibility_reduce_motion": true,
+            "physical_switch_tapped": true,
+            "switch_after": "1",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 26.835675250040367,
+            "event": "application-PID-ON",
+            "matches_initial": true,
+            "pid": 47515
+          },
+          {
+            "elapsed": 29.864385999972,
+            "equal_RGBA": true,
+            "event": "ON-still-region",
+            "flow_counter_after": "",
+            "flow_counter_before": "",
+            "native_UIAccessibility_reduce_motion": true,
+            "sample_elapsed": 2.3199674582574517
+          },
+          {
+            "elapsed": 35.43562504160218,
+            "event": "OFF-again-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": true,
+            "switch_after": "0",
+            "switch_before": "1"
+          },
+          {
+            "elapsed": 37.802903333329596,
+            "event": "application-PID-OFF-return",
+            "matches_initial": true,
+            "pid": 47515
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 40.788865874987096,
+            "event": "OFF-moving-return",
+            "native_UIAccessibility_reduce_motion": false,
+            "same_app_lifetime": true,
+            "sample_elapsed": 2.284142999909818
+          },
+          {
+            "elapsed": 46.56049554166384,
+            "event": "restored-original",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          }
+        ],
+        "original_enabled": false,
+        "phase": "after",
+        "restored": true,
+        "scene": "weather-app",
+        "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+      },
+      {
+        "checkpoint": "native-system-pid-pad",
+        "events": [
+          {
+            "elapsed": 2.3116842500166968,
+            "event": "original-state",
+            "native_UIAccessibility_reduce_motion": false,
+            "switch_value": "0"
+          },
+          {
+            "elapsed": 6.8775580417132005,
+            "event": "OFF-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 14.871188166667707,
+            "event": "application-PID-OFF",
+            "pid": 47856,
+            "source": "Public XCUIApplication.debugDescription root attributes"
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 18.19258562498726,
+            "event": "OFF-moving-positive",
+            "no_reduce_motion_argument": true,
+            "sample_elapsed": 2.320298000006005
+          },
+          {
+            "elapsed": 24.377068875008263,
+            "event": "ON-readback",
+            "native_UIAccessibility_reduce_motion": true,
+            "physical_switch_tapped": true,
+            "switch_after": "1",
+            "switch_before": "0"
+          },
+          {
+            "elapsed": 26.84258429170586,
+            "event": "application-PID-ON",
+            "matches_initial": true,
+            "pid": 47856
+          },
+          {
+            "elapsed": 29.846849624998868,
+            "equal_RGBA": true,
+            "event": "ON-still-region",
+            "flow_counter_after": "",
+            "flow_counter_before": "",
+            "native_UIAccessibility_reduce_motion": true,
+            "sample_elapsed": 2.2961204167222604
+          },
+          {
+            "elapsed": 35.429272541659884,
+            "event": "OFF-again-readback",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": true,
+            "switch_after": "0",
+            "switch_before": "1"
+          },
+          {
+            "elapsed": 37.86309466662351,
+            "event": "application-PID-OFF-return",
+            "matches_initial": true,
+            "pid": 47856
+          },
+          {
+            "different_RGBA": true,
+            "elapsed": 40.87363666668534,
+            "event": "OFF-moving-return",
+            "native_UIAccessibility_reduce_motion": false,
+            "same_app_lifetime": true,
+            "sample_elapsed": 2.3093791666906327
+          },
+          {
+            "elapsed": 46.587801333284006,
+            "event": "restored-original",
+            "native_UIAccessibility_reduce_motion": false,
+            "physical_switch_tapped": false,
+            "switch_after": "0",
+            "switch_before": "0"
+          }
+        ],
+        "original_enabled": false,
+        "phase": "after",
+        "restored": true,
+        "scene": "weather-face",
+        "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+      }
+    ],
+    "all24pairs_qualified": true
+  },
+  "sample_observation_interval_seconds": {
+    "min": 2.011549708317034,
+    "max": 2.5761256667319685
+  },
+  "history": {
+    "UI_executions": 22,
+    "passed": 21,
+    "failed": 1,
+    "earlier_scopes": "Five OS-only inventories (4PASS/1indexedAXFAIL), first Flow pilot1PASS, earlier visual-only matrix8PASS, current measured-PID matrix8PASS. Only last8 are current no-restart acceptance.",
+    "failed_build": "One test-only default-argument function-reference compiler error at8ddadc…; original source/log preserved,0UI/pref writes at that failed build."
+  },
+  "results": [
+    {
+      "checkpoint": "root-phone",
+      "scope": "Settings-only read-only inventory, not product runtime",
+      "source_digest": "21dff9b8918a1bb02ee0a8f0abbae8cd81b2d8ca845500f44f9ac9f7fe647c1f",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": false,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "root-pad",
+      "scope": "Settings-only read-only inventory, not product runtime",
+      "source_digest": "21dff9b8918a1bb02ee0a8f0abbae8cd81b2d8ca845500f44f9ac9f7fe647c1f",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": false,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "motion-menu-phone",
+      "scope": "Settings-only read-only inventory, not product runtime",
+      "source_digest": "710abf456c52b97d48bc31623bb456094bee5171fde4aecdb3458dfbd3a36a40",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": false,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "motion-menu-pad",
+      "scope": "Settings-only read-only inventory, not product runtime",
+      "source_digest": "710abf456c52b97d48bc31623bb456094bee5171fde4aecdb3458dfbd3a36a40",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": false,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "stable-menu-phone",
+      "scope": "Settings-only read-only inventory, not product runtime",
+      "source_digest": "76a7e427be8036dbd236693ffd4428967bd5d6968a01b2e212cf0b010d245dce",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": false,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "native-flow-pilot-phone",
+      "scope": "First OFF/ON Flow calibration",
+      "source_digest": "1dec301a2192589d8d79053870f7724f8caff8b3b6f9e827a356e340d057d815",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "native-system-matrix-phone",
+      "scope": "Earlier visual/switch matrix; literal lifetime flag is not PID proof",
+      "source_digest": "757431356076c69a98991ad7765f625aabddc9d9d8c6ab13c7754e458747a613",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "native-system-matrix-pad",
+      "scope": "Earlier visual/switch matrix; literal lifetime flag is not PID proof",
+      "source_digest": "757431356076c69a98991ad7765f625aabddc9d9d8c6ab13c7754e458747a613",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "native-system-pid-phone",
+      "scope": "Current PID-bound OFF/ON/OFF matrix",
+      "source_digest": "6c9c4ea64700ba21bf46454235243e41d94b43eb592236865d5a029b623b9051",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    },
+    {
+      "checkpoint": "native-system-pid-pad",
+      "scope": "Current PID-bound OFF/ON/OFF matrix",
+      "source_digest": "6c9c4ea64700ba21bf46454235243e41d94b43eb592236865d5a029b623b9051",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "xcresult_runtime_warnings": [],
+      "inputs_unchanged": true,
+      "installed_app_verified": true,
+      "installed_runner_verified": true,
+      "Settings_identity_unchanged": true
+    }
+  ],
+  "all17_preference_mutation_executions_restored_original_false_and_read_back": true,
+  "mutable_case_receipts": [
+    {
+      "checkpoint": "native-flow-pilot-phone",
+      "events": [
+        {
+          "elapsed": 2.165899833315052,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.495430374983698,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 16.6914355000481,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.072534666629508
+        },
+        {
+          "elapsed": 22.282852916629054,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 28.607006041682325,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "active=true;revision=128;pending=false;fallback=false",
+          "flow_counter_before": "active=true;revision=128;pending=false;fallback=false",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 1.998481583315879
+        },
+        {
+          "elapsed": 34.755048583378084,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "flow",
+      "scope": "Actual owned-simulator OS Reduce Motion, OFF moving positive/ON exact still region, no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-matrix-phone",
+      "events": [
+        {
+          "elapsed": 2.2109401666093618,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.563025083276443,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.06771433330141,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.068732541752979
+        },
+        {
+          "elapsed": 23.633926749927923,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 30.702797833364457,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "active=true;revision=150;pending=false;fallback=false",
+          "flow_counter_before": "active=true;revision=150;pending=false;fallback=false",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.0393861250486225
+        },
+        {
+          "elapsed": 35.81258812500164,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 41.15804466663394,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.2364228749647737
+        },
+        {
+          "elapsed": 46.62004033336416,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "flow",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-matrix-phone",
+      "events": [
+        {
+          "elapsed": 2.1800304582575336,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.517380791599862,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 17.369693999993615,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.065703916712664
+        },
+        {
+          "elapsed": 22.95938141667284,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 28.052374624996446,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.119916750001721
+        },
+        {
+          "elapsed": 33.12508224998601,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 38.18253433331847,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.14577899989672
+        },
+        {
+          "elapsed": 43.724353541620076,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "home-prism",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-matrix-phone",
+      "events": [
+        {
+          "elapsed": 2.173217499977909,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.4408225833904,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 17.54441654169932,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.2712309166090563
+        },
+        {
+          "elapsed": 23.227672208333388,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 28.266670375014655,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.068135374924168
+        },
+        {
+          "elapsed": 33.422459916677326,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 38.4737217084039,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.100901000085287
+        },
+        {
+          "elapsed": 44.02747970831115,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "weather-app",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-matrix-phone",
+      "events": [
+        {
+          "elapsed": 2.2280564584070817,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.517990416730754,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 17.361871750093997,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.116412500035949
+        },
+        {
+          "elapsed": 22.96884870843496,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 27.990037166746333,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.0468988333595917
+        },
+        {
+          "elapsed": 33.10335458337795,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 38.980817250092514,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.9163192083360627
+        },
+        {
+          "elapsed": 44.676005791756324,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "weather-face",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-matrix-pad",
+      "events": [
+        {
+          "elapsed": 2.2505984583403915,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.681187791749835,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.754040666739456,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.261909958324395
+        },
+        {
+          "elapsed": 24.945380333345383,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 32.22926950000692,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "active=true;revision=155;pending=false;fallback=false",
+          "flow_counter_before": "active=true;revision=155;pending=false;fallback=false",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.221136249951087
+        },
+        {
+          "elapsed": 37.96661962498911,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 43.22010241670068,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.287016833317466
+        },
+        {
+          "elapsed": 48.93563762505073,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "flow",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-matrix-pad",
+      "events": [
+        {
+          "elapsed": 2.337707083323039,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.816913666669279,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.273678333265707,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.2995751249836758
+        },
+        {
+          "elapsed": 24.68742587498855,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 30.011302458238788,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.3734228332759812
+        },
+        {
+          "elapsed": 35.66057887498755,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 40.885378249920905,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.2853413749253377
+        },
+        {
+          "elapsed": 46.80401395831723,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "home-prism",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-matrix-pad",
+      "events": [
+        {
+          "elapsed": 2.2737953333416954,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.771789166610688,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 17.89426441665273,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.3487045416841283
+        },
+        {
+          "elapsed": 24.055967666674405,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 29.35729554167483,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.3253053333610296
+        },
+        {
+          "elapsed": 34.959938208339736,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 40.21769312501419,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.3023412915645167
+        },
+        {
+          "elapsed": 46.03560229158029,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "weather-app",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-matrix-pad",
+      "events": [
+        {
+          "elapsed": 2.3000354999676347,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.8394695416791365,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.05746000004001,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.326534374966286
+        },
+        {
+          "elapsed": 24.243252250016667,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 29.760088750044815,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.5528941666707397
+        },
+        {
+          "elapsed": 35.60988504171837,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 40.78130504162982,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.2950434166705236
+        },
+        {
+          "elapsed": 46.65884533338249,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "weather-face",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-pid-phone",
+      "events": [
+        {
+          "elapsed": 2.1373522917274386,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.510657250066288,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 15.023720083408989,
+          "event": "application-PID-OFF",
+          "pid": 46881,
+          "source": "Public XCUIApplication.debugDescription root attributes"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.12798966676928,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.1035919582936913
+        },
+        {
+          "elapsed": 23.748025250039063,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 26.037875875015743,
+          "event": "application-PID-ON",
+          "matches_initial": true,
+          "pid": 46881
+        },
+        {
+          "elapsed": 30.920197666739114,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "active=true;revision=151;pending=false;fallback=false",
+          "flow_counter_before": "active=true;revision=151;pending=false;fallback=false",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.011549708317034
+        },
+        {
+          "elapsed": 36.16593695839401,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "elapsed": 38.55005691666156,
+          "event": "application-PID-OFF-return",
+          "matches_initial": true,
+          "pid": 46881
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 41.39526012504939,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.1368259167065844
+        },
+        {
+          "elapsed": 47.06199825007934,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "flow",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-pid-phone",
+      "events": [
+        {
+          "elapsed": 2.2414933749241754,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.608394124894403,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 14.623499083332717,
+          "event": "application-PID-OFF",
+          "pid": 47209,
+          "source": "Public XCUIApplication.debugDescription root attributes"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 17.671194291557185,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.0452345000812784
+        },
+        {
+          "elapsed": 23.278547333320603,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 25.792527583311312,
+          "event": "application-PID-ON",
+          "matches_initial": true,
+          "pid": 47209
+        },
+        {
+          "elapsed": 28.575207999907434,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.081751500023529
+        },
+        {
+          "elapsed": 33.66554099996574,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "elapsed": 35.975713124964386,
+          "event": "application-PID-OFF-return",
+          "matches_initial": true,
+          "pid": 47209
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 38.761356458300725,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.0780032499460503
+        },
+        {
+          "elapsed": 44.36130979156587,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "home-prism",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-pid-phone",
+      "events": [
+        {
+          "elapsed": 2.173616374959238,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.491501916665584,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 14.431572416680865,
+          "event": "application-PID-OFF",
+          "pid": 47480,
+          "source": "Public XCUIApplication.debugDescription root attributes"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.017373041715473,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.5761256667319685
+        },
+        {
+          "elapsed": 23.696818624972366,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 26.103870999999344,
+          "event": "application-PID-ON",
+          "matches_initial": true,
+          "pid": 47480
+        },
+        {
+          "elapsed": 28.898018708336167,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.0925183333456516
+        },
+        {
+          "elapsed": 33.96263770828955,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "elapsed": 36.360677791642956,
+          "event": "application-PID-OFF-return",
+          "matches_initial": true,
+          "pid": 47480
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 39.18811208335683,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.122432458330877
+        },
+        {
+          "elapsed": 44.73741462500766,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "weather-app",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-pid-phone",
+      "events": [
+        {
+          "elapsed": 2.1502393333939835,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.452733833342791,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 14.387731875060126,
+          "event": "application-PID-OFF",
+          "pid": 47812,
+          "source": "Public XCUIApplication.debugDescription root attributes"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 17.791515916702338,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.401253291638568
+        },
+        {
+          "elapsed": 23.49236191669479,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 25.773409500019625,
+          "event": "application-PID-ON",
+          "matches_initial": true,
+          "pid": 47812
+        },
+        {
+          "elapsed": 28.54115858336445,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.0675377500010654
+        },
+        {
+          "elapsed": 33.63941558334045,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "elapsed": 35.98892312508542,
+          "event": "application-PID-OFF-return",
+          "matches_initial": true,
+          "pid": 47812
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 38.80074029171374,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.1116330000804737
+        },
+        {
+          "elapsed": 44.38741029170342,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "weather-face",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-pid-pad",
+      "events": [
+        {
+          "elapsed": 2.242372708278708,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.725364374928176,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 15.57800762495026,
+          "event": "application-PID-OFF",
+          "pid": 46886,
+          "source": "Public XCUIApplication.debugDescription root attributes"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.893788541667163,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.312082291697152
+        },
+        {
+          "elapsed": 25.0678807082586,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 27.361172250006348,
+          "event": "application-PID-ON",
+          "matches_initial": true,
+          "pid": 46886
+        },
+        {
+          "elapsed": 32.44053370831534,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "active=true;revision=156;pending=false;fallback=false",
+          "flow_counter_before": "active=true;revision=156;pending=false;fallback=false",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.223736874992028
+        },
+        {
+          "elapsed": 38.09762445825618,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "elapsed": 40.446111999917775,
+          "event": "application-PID-OFF-return",
+          "matches_initial": true,
+          "pid": 46886
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 43.50157112500165,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.354961583390832
+        },
+        {
+          "elapsed": 49.34746329160407,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "flow",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-pid-pad",
+      "events": [
+        {
+          "elapsed": 2.266338916728273,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.8159222500398755,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 15.051768958335742,
+          "event": "application-PID-OFF",
+          "pid": 47225,
+          "source": "Public XCUIApplication.debugDescription root attributes"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.355112833320163,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.29737370822113
+        },
+        {
+          "elapsed": 24.608437416725792,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 26.890765250078402,
+          "event": "application-PID-ON",
+          "matches_initial": true,
+          "pid": 47225
+        },
+        {
+          "elapsed": 29.955843375064433,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.3646854165708646
+        },
+        {
+          "elapsed": 35.62005137500819,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "elapsed": 38.02592454175465,
+          "event": "application-PID-OFF-return",
+          "matches_initial": true,
+          "pid": 47225
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 41.03287012502551,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.3052514999872074
+        },
+        {
+          "elapsed": 46.750560083426535,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "home-prism",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-pid-pad",
+      "events": [
+        {
+          "elapsed": 2.2787055416265503,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.763023166684434,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 14.920829624985345,
+          "event": "application-PID-OFF",
+          "pid": 47515,
+          "source": "Public XCUIApplication.debugDescription root attributes"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.284394791699015,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.3602845416171476
+        },
+        {
+          "elapsed": 24.5032032916788,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 26.835675250040367,
+          "event": "application-PID-ON",
+          "matches_initial": true,
+          "pid": 47515
+        },
+        {
+          "elapsed": 29.864385999972,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.3199674582574517
+        },
+        {
+          "elapsed": 35.43562504160218,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "elapsed": 37.802903333329596,
+          "event": "application-PID-OFF-return",
+          "matches_initial": true,
+          "pid": 47515
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 40.788865874987096,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.284142999909818
+        },
+        {
+          "elapsed": 46.56049554166384,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "weather-app",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    },
+    {
+      "checkpoint": "native-system-pid-pad",
+      "events": [
+        {
+          "elapsed": 2.3116842500166968,
+          "event": "original-state",
+          "native_UIAccessibility_reduce_motion": false,
+          "switch_value": "0"
+        },
+        {
+          "elapsed": 6.8775580417132005,
+          "event": "OFF-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 14.871188166667707,
+          "event": "application-PID-OFF",
+          "pid": 47856,
+          "source": "Public XCUIApplication.debugDescription root attributes"
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 18.19258562498726,
+          "event": "OFF-moving-positive",
+          "no_reduce_motion_argument": true,
+          "sample_elapsed": 2.320298000006005
+        },
+        {
+          "elapsed": 24.377068875008263,
+          "event": "ON-readback",
+          "native_UIAccessibility_reduce_motion": true,
+          "physical_switch_tapped": true,
+          "switch_after": "1",
+          "switch_before": "0"
+        },
+        {
+          "elapsed": 26.84258429170586,
+          "event": "application-PID-ON",
+          "matches_initial": true,
+          "pid": 47856
+        },
+        {
+          "elapsed": 29.846849624998868,
+          "equal_RGBA": true,
+          "event": "ON-still-region",
+          "flow_counter_after": "",
+          "flow_counter_before": "",
+          "native_UIAccessibility_reduce_motion": true,
+          "sample_elapsed": 2.2961204167222604
+        },
+        {
+          "elapsed": 35.429272541659884,
+          "event": "OFF-again-readback",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": true,
+          "switch_after": "0",
+          "switch_before": "1"
+        },
+        {
+          "elapsed": 37.86309466662351,
+          "event": "application-PID-OFF-return",
+          "matches_initial": true,
+          "pid": 47856
+        },
+        {
+          "different_RGBA": true,
+          "elapsed": 40.87363666668534,
+          "event": "OFF-moving-return",
+          "native_UIAccessibility_reduce_motion": false,
+          "same_app_lifetime": true,
+          "sample_elapsed": 2.3093791666906327
+        },
+        {
+          "elapsed": 46.587801333284006,
+          "event": "restored-original",
+          "native_UIAccessibility_reduce_motion": false,
+          "physical_switch_tapped": false,
+          "switch_after": "0",
+          "switch_before": "0"
+        }
+      ],
+      "original_enabled": false,
+      "phase": "after",
+      "restored": true,
+      "scene": "weather-face",
+      "scope": "Actual owned-simulator OS Reduce Motion, same-app OFF moving/ON exact still/OFF moving return, expected foreground surface and nonblank region; no --reduce-motion argument. Not physical power, original motion, other assistive or full-flow acceptance."
+    }
+  ],
+  "prior_continuity_gap": {
+    "prior_matrix": "Eight raw UI PASS/24 pixel pairs qualified, original settings restored.",
+    "gap": "Literal same_app_lifetime=true was not an independent PID measurement; activate can launch if process has exited. No evidence that any restart occurred either.",
+    "resolution": "Use PID in first line of public XCUIApplication.debugDescription, fail on unknown format, require same PID in all three foreground/surface-qualified phases. No private processID/KVC API. Repeat affected matrix at new test-only checkpoint; keep prior results at original scope."
+  },
+  "archives": [
+    {
+      "checkpoint": "root-phone",
+      "archive_sha256": "86706492693165b9c5938ae521c67aee22ce0bd01d6c2f9fc32b9a098e34827e",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "root-pad",
+      "archive_sha256": "86706492693165b9c5938ae521c67aee22ce0bd01d6c2f9fc32b9a098e34827e",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "motion-menu-phone",
+      "archive_sha256": "eabd23042abcaa2a4551962ea5bdd100b672d1510550e8d3a24299b51ebf9abe",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "motion-menu-pad",
+      "archive_sha256": "eabd23042abcaa2a4551962ea5bdd100b672d1510550e8d3a24299b51ebf9abe",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "stable-menu-phone",
+      "archive_sha256": "6ac8b601b16dcd09360bfbadfdffb95d8ef7b8a979ac598b02f3b10c227d0717",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "native-flow-pilot-phone",
+      "archive_sha256": "3fa9e9c4a566dd9d3a987e21e4ffaa7335ca3990b1be26e6ba76897ede078add",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "native-system-matrix-phone",
+      "archive_sha256": "b17023313884fc21058666fcc8922f1e02f502f45f6bb33d30fd1072c45ddf5c",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "native-system-matrix-pad",
+      "archive_sha256": "b17023313884fc21058666fcc8922f1e02f502f45f6bb33d30fd1072c45ddf5c",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "native-system-pid-phone",
+      "archive_sha256": "f547df07c40744e41683c8d6512865ad0e069086a4b5c43cf3a61dec354decd5",
+      "all_files_read_back": true,
+      "file_count": 309
+    },
+    {
+      "checkpoint": "native-system-pid-pad",
+      "archive_sha256": "f547df07c40744e41683c8d6512865ad0e069086a4b5c43cf3a61dec354decd5",
+      "all_files_read_back": true,
+      "file_count": 309
+    }
+  ],
+  "compiled_app22_bytes_equal_across_all10archives": true,
+  "installation_scope": "Five OS-only groups preserve installed_app_verified=false; actual test runner/Settings identity verified. Functional groups explicitly install and byteverify own App before/after. No historical OS-only field relabelled.",
+  "Settings_identities": [
+    {
+      "bundle_identifier": "com.apple.Preferences",
+      "version": "2027.0.10.401",
+      "Info_plist_sha256": "5fc9b8ccb4d053f8dfcab793ea6ddbf945b01d0c98634583dfecf24dd420f7e4",
+      "executable_sha256": "57388b494507655c4414e25400d07f5d4692f25f24230625adfbbb5ba2f4365a"
+    },
+    {
+      "bundle_identifier": "com.apple.Preferences",
+      "version": "2027.0.10.401",
+      "Info_plist_sha256": "5fc9b8ccb4d053f8dfcab793ea6ddbf945b01d0c98634583dfecf24dd420f7e4",
+      "executable_sha256": "57388b494507655c4414e25400d07f5d4692f25f24230625adfbbb5ba2f4365a"
+    }
+  ],
+  "instrumentation_limits": [
+    "Initial full-root per-node queries took roughly70s phone/240s pad. Requested executionTimeAllowance120 was not wall-enforced: xctestrun TestTimeoutsEnabled=false. No hard-timeout claim.",
+    "Live indexed Settings query failed at node21. Stable public snapshot-string capture preserves exact navigation/switch assertions; old source/failure retained.",
+    "Earlier same_app_lifetime=true was literal intent, not a process measurement. Earlier8 visual/switch passes are not current no-restart acceptance."
+  ],
+  "Core_and_SDK": "Product165/Core89 unchanged. No fresh5SDK/405Core rerun for test/docs-only work;0c42086 product gates are historical.",
+  "viewing": {
+    "native_PNG_decoded": 106,
+    "native_contacts_generated_and_actually_viewed": 13,
+    "public_own_PNG": 16,
+    "full_OS_screens_remain_private": true
+  },
+  "boundaries": [
+    "Only named predefined rendered regions and short recorded sampling intervals; no forever-still, whole-frame, all-animation or energy claim.",
+    "Only four continuous-motion renderer scenes on two owned iOS27 simulators. Fade, transitions, other assistive technologies, physical/signing and original motion parity remain separate.",
+    "Actual OS setting, --animation-test enabled, no --reduce-motion flag. Synthetic MockHome only, no account/Home/microphone/camera/message/call change."
+  ],
+  "images": [
+    {
+      "path": "Docs/screenshots/system-reduce-motion/phone-flow-off-first.png",
+      "sha256": "57542d7e38c9f634bf3432f5f8843cd8ff5becf2268da2217de247cbbd0c9257",
+      "checkpoint": "native-system-pid-phone",
+      "state": "off-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/phone-flow-on-first.png",
+      "sha256": "a4e1d99885c2ad08c651f465ab0d0cdccb8e0c9bd8b178d08cd1086b3bd41252",
+      "checkpoint": "native-system-pid-phone",
+      "state": "on-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/phone-home-prism-off-first.png",
+      "sha256": "4ee309ebdeef484f18c6c252b46425808e41c72f500e5dc50838a677515a0f89",
+      "checkpoint": "native-system-pid-phone",
+      "state": "off-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/phone-home-prism-on-first.png",
+      "sha256": "e90348f8cfd08e35e1f582a12044ff41aee90f3cf4a3481f5866f4655ea9d750",
+      "checkpoint": "native-system-pid-phone",
+      "state": "on-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/phone-weather-app-off-first.png",
+      "sha256": "c90895b0f1e855562ab6249cd9b9e56c8ea32d9b82495f6875da59f48bcaaff6",
+      "checkpoint": "native-system-pid-phone",
+      "state": "off-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/phone-weather-app-on-first.png",
+      "sha256": "5898ac7cb8f2e0c88d4d26eb14130d7653dcdc7ab33f4ed725e322eac0eb47bf",
+      "checkpoint": "native-system-pid-phone",
+      "state": "on-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/phone-weather-face-off-first.png",
+      "sha256": "bdd0928aa3eb6d14d3197604bb60ed0db83ee02f890c14ac2d55c3f9bb2f7f24",
+      "checkpoint": "native-system-pid-phone",
+      "state": "off-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/phone-weather-face-on-first.png",
+      "sha256": "0717a6045b6def7e8fb37e5cfcad1d716e6df180bca866629b2bc86091723d9e",
+      "checkpoint": "native-system-pid-phone",
+      "state": "on-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/pad-flow-off-first.png",
+      "sha256": "3240ee8403546519c6dac8241615b6c606f9b3d30157c0738181b1b7661e45ad",
+      "checkpoint": "native-system-pid-pad",
+      "state": "off-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/pad-flow-on-first.png",
+      "sha256": "63013694d87fa9f3b280f1e29850e16e0c979266476c49a2304e9c437284c62a",
+      "checkpoint": "native-system-pid-pad",
+      "state": "on-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/pad-home-prism-off-first.png",
+      "sha256": "9bbe83f4670dec343d62c3080008d48d620f51c13edde17e7283fba686cf35a5",
+      "checkpoint": "native-system-pid-pad",
+      "state": "off-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/pad-home-prism-on-first.png",
+      "sha256": "b7a0508b8742c2c8fc10451fb0616dbde3db0e16cd60a9a0b12338230ceb2c1d",
+      "checkpoint": "native-system-pid-pad",
+      "state": "on-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/pad-weather-app-off-first.png",
+      "sha256": "230d9d483def18613946bfe1377cd9f5a15b2bab76d22e753b961cfc119f7ac9",
+      "checkpoint": "native-system-pid-pad",
+      "state": "off-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/pad-weather-app-on-first.png",
+      "sha256": "a2fcee0f8f01e1f4b3119d2a06d69d55220b37bb1f5567fc7cdf6e5b4f2ba51d",
+      "checkpoint": "native-system-pid-pad",
+      "state": "on-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/pad-weather-face-off-first.png",
+      "sha256": "410ef2684edde5ce8deeab2744d1f753dce41fd5e7f957be0fcb6271243a81a0",
+      "checkpoint": "native-system-pid-pad",
+      "state": "off-first"
+    },
+    {
+      "path": "Docs/screenshots/system-reduce-motion/pad-weather-face-on-first.png",
+      "sha256": "9b8dfe7750718ef57653fdbbc64ec475c914d95e0e23d24a2bb284e12d6f7b3f",
+      "checkpoint": "native-system-pid-pad",
+      "state": "on-first"
+    }
+  ]
+}

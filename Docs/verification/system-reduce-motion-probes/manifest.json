@@ -1,0 +1,26 @@
+[
+  {
+    "path": "Docs/verification/system-reduce-motion-probes/read-only-full-root-inventory.swift.txt",
+    "sha256": "0650795d9aab3ea6487fd3baebe2b73d65ac5183ce27fdcff12f11684ba3a2b4",
+    "source_digest": "21dff9b8918a1bb02ee0a8f0abbae8cd81b2d8ca845500f44f9ac9f7fe647c1f",
+    "scope": "Exact completed read-only Settings root diagnostic; not product/Reduce Motion acceptance. Full-tree hittability queries were slow; requested executionTimeAllowance120 was not an enforced wall deadline because xctestrun TestTimeoutsEnabled=false."
+  },
+  {
+    "path": "Docs/verification/system-reduce-motion-probes/indexed-menu-inventory.swift.txt",
+    "sha256": "bb56ed0fe54e18853b46f591cafd2b51d7681b496aa02648aadb8d8424b57bff",
+    "source_digest": "710abf456c52b97d48bc31623bb456094bee5171fde4aecdb3458dfbd3a36a40",
+    "scope": "Exact first targeted menu probe. Pad passed real Motion/switch0/nativegetterfalse; phone failed indexed AX snapshot at node21. No preference toggle; no OS capability absence/product cause claimed."
+  },
+  {
+    "path": "Docs/verification/system-reduce-motion-probes/first-off-on-flow-pilot.swift.txt",
+    "sha256": "229bebd859fb4185b26c99962cd1f9b25033ec34f051487b2c11c3ef3959a933",
+    "source_digest": "1dec301a2192589d8d79053870f7724f8caff8b3b6f9e827a356e340d057d815",
+    "scope": "Successful first actual-OS OFF/ON Flow pilot, native state0\u21921\u21920 restored/readback. No claim of OFF-again moving-return control; stronger matrix adds that distinct condition and surface/nonblank guards."
+  },
+  {
+    "path": "Docs/verification/system-reduce-motion-probes/first-off-on-off-matrix.swift.txt",
+    "sha256": "2957211006cb87c5fa50ddd802e966b5195c37e2299aa4bcd6493e473cb44e47",
+    "source_digest": "757431356076c69a98991ad7765f625aabddc9d9d8c6ab13c7754e458747a613",
+    "scope": "Eight visual/switch OFF\u2192ON\u2192OFF cases passed. same_app_lifetime field was literal test intent, not measured PID continuity; preserve as visual/state observations, not no-restart acceptance. Stronger checkpoint adds public AX PID measurements."
+  }
+]

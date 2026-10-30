@@ -1,0 +1,48 @@
+extension HomeViewUITests {
+  private func captureNativeMotionSettings(_ settings:XCUIApplication,_ stage:String) {
+    let buttons=settings.buttons.allElementsBoundByIndex,switches=settings.switches.allElementsBoundByIndex
+    let texts=settings.staticTexts.allElementsBoundByIndex
+    let started=ProcessInfo.processInfo.systemUptime
+    var rows:[[String:Any]]=[]
+    for e in Array(buttons.prefix(100))+Array(switches.prefix(40)) {
+      if ProcessInfo.processInfo.systemUptime-started>25 {break}
+      rows.append(["id":e.identifier,"label":e.label,"type":e.elementType.rawValue,
+        "value":e.elementType == .switch ? e.value as? String ?? "":""])
+    }
+    let report:[String:Any]=["stage":stage,"controls":rows,
+      "button_count":buttons.count,"switch_count":switches.count,"recorded_controls":rows.count,
+      "text_labels":texts.prefix(100).map(\.label),"total_static_text":texts.count,
+      "native_UIAccessibility_reduce_motion":UIAccessibility.isReduceMotionEnabled,
+      "scope":"Read-only owned simulator Settings navigation/control inventory; no preference action or HomeView runtime acceptance. Controls/text are bounded excerpts, not a complete OS capability list."]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="native-motion-settings-"+stage;a.lifetime = .keepAlways;add(a)
+    let shot=XCTAttachment(screenshot:settings.screenshot());shot.name="native-motion-settings-"+stage+"-screen";shot.lifetime = .keepAlways;add(shot)
+  }
+  func testReadOnlySimulatorAccessibilityMotionSettingInventory() {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    let original=UIAccessibility.isReduceMotionEnabled
+    let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences")
+    settings.launch();XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
+    let accessibility=settings.buttons["com.apple.settings.accessibility"]
+    guard accessibility.waitForExistence(timeout:10) else {captureNativeMotionSettings(settings,"missing-root-target");XCTFail("Observed Settings Accessibility button missing");return}
+    XCTAssertTrue(accessibility.isHittable);accessibility.tap()
+    captureNativeMotionSettings(settings,"accessibility")
+    let motion=settings.buttons["Motion"].firstMatch.exists ? settings.buttons["Motion"].firstMatch
+      : settings.cells["Motion"].firstMatch.exists ? settings.cells["Motion"].firstMatch:settings.staticTexts["Motion"].firstMatch
+    guard motion.waitForExistence(timeout:10) else {XCTFail("Motion menu target not reached; no OS absence inference");return}
+    XCTAssertTrue(motion.isHittable);motion.tap()
+    let reduced=settings.switches["Reduce Motion"].firstMatch
+    let found=reduced.waitForExistence(timeout:10)
+    captureNativeMotionSettings(settings,"motion")
+    guard found else {XCTFail("Reduce Motion switch not identified; no OS absence inference");return}
+    let raw=reduced.value as? String
+    XCTAssertTrue(raw=="0" || raw=="1","Record actual native switch format")
+    XCTAssertEqual(UIAccessibility.isReduceMotionEnabled,raw=="1")
+    XCTAssertEqual(UIAccessibility.isReduceMotionEnabled,original,"Read-only inventory must not change the preference")
+    #else
+    XCTFail("This diagnostic is restricted to the owned simulator environment")
+    #endif
+  }
+}
+
