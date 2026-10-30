@@ -2,6 +2,9 @@ import Foundation
 
 /// Public Open-Meteo forecast. No account/key, GPS, personal store or HomeKit.
 struct WeatherService {
+  // A caller-owned session also permits isolated transport verification without
+  // contacting a provider. Ordinary app requests use a fresh ephemeral session.
+  var session: URLSession? = nil
   private struct Places: Decodable {
     struct Place: Decodable {
       let name: String
@@ -12,7 +15,7 @@ struct WeatherService {
     let results: [Place]?
   }
   private func get<T: Decodable>(
-    _ type: T.Type, host: String, path: String, query: [String: String]
+    _ type: T.Type, host: String, path: String, query: [String: String], timeout: TimeInterval = 15
   ) async throws -> T {
     var c = URLComponents()
     c.scheme = "https"
@@ -22,10 +25,10 @@ struct WeatherService {
       URLQueryItem(name: $0.key, value: $0.value)
     }
     guard let url = c.url else { throw URLError(.badURL) }
-    let session = URLSession(configuration: .ephemeral)
-    defer { session.finishTasksAndInvalidate() }
+    let session = self.session ?? URLSession(configuration: .ephemeral)
+    defer { if self.session == nil { session.finishTasksAndInvalidate() } }
     var request = URLRequest(url: url)
-    request.timeoutInterval = 15
+    request.timeoutInterval = timeout
     let (bytes, response) = try await session.data(for: request)
     guard let http = response as? HTTPURLResponse, http.statusCode == 200, bytes.count < 1_000_000
     else { throw URLError(.badServerResponse) }
@@ -48,6 +51,21 @@ struct WeatherService {
         "wind_speed_unit": "mph", "timezone": "auto", "timeformat": "unixtime",
         "forecast_days": "2",
       ])
-    return try f.reading(city: p.name)
+    var reading = try f.reading(city: p.name)
+    try Task.checkCancellation()
+    // Optional, independently timed CAMS model. A failed pollution request must
+    // not discard usable weather; cancellation still belongs to the caller.
+    do {
+      let air = try await get(OpenMeteoAirQuality.self,
+        host: "air-quality-api.open-meteo.com", path: "/v1/air-quality",
+        query: ["latitude": String(p.latitude), "longitude": String(p.longitude),
+          "current": "european_aqi", "timeformat": "unixtime", "timezone": "GMT"], timeout: 8)
+      reading.airQuality = air.reading
+    } catch {
+      try Task.checkCancellation()
+      if error is CancellationError || (error as? URLError)?.code == .cancelled { throw error }
+    }
+    try Task.checkCancellation()
+    return reading
   }
 }

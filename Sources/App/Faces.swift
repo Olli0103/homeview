@@ -486,7 +486,8 @@ struct WeatherFace: View {
           detail(
             "humidity.fill", humidity,
             "Humidity")
-          detail("aqi.low", model.connections.weatherDemo ? "21":"—", "AQI")
+          detail("aqi.low", model.connections.weatherDemo ? "21":model.connections.weather?.airQuality?.value ?? "—",
+            model.connections.weatherDemo || model.connections.weather?.airQuality == nil ? "AQI":"EU AQI")
         }.padding(.bottom, inApp ? 44 : 4)
           .padding(.leading, inApp ? 0 : -17).padding(.trailing, inApp ? 0 : -33)
           .offset(y: inApp ? 0 : 5)
@@ -508,6 +509,10 @@ struct WeatherFace: View {
     .overlay(alignment: .bottomLeading) {
       VStack(alignment: .leading, spacing: 2) {
         Text(model.connections.weatherSource(at: model.now)).accessibilityIdentifier("weather.source")
+        if !model.connections.weatherDemo, let reading=model.connections.weather,let air=reading.airQuality {
+          Text(air.sourceLabel(at:model.now,zone:reading.timeZone))
+            .accessibilityIdentifier("weather.air-quality.source")
+        }
         if inApp && !model.connections.weatherDemo {
           HStack {
             Text("Sunrise \(model.connections.weather?.sunLabel(model.connections.weather?.sunrise) ?? "—") · AQI not supplied")

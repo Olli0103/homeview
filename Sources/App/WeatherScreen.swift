@@ -74,7 +74,9 @@ struct WeatherScreen: View {
       Text(model.connections.weatherSource(at:model.now)).accessibilityIdentifier("weather.source")
       if !model.connections.weatherDemo {
         HStack(spacing:8) {
-          Text("Sunrise \(reading?.sunLabel(reading?.sunrise) ?? "—") · AQI not supplied")
+          Text("Sunrise \(reading?.sunLabel(reading?.sunrise) ?? "—") · " +
+            (reading?.airQuality.map { "EU AQI \($0.value) · Model estimate" } ?? "AQI not supplied"))
+            .accessibilityIdentifier("weather.air-quality.value")
           // Preserve the source row's reference layout; only its transparent
           // Link hit region grows. Adjacent mode controls must not overlap it.
           Text("Open-Meteo").hidden().overlay {
@@ -82,6 +84,16 @@ struct WeatherScreen: View {
               Text("Open-Meteo").frame(minWidth:minimumHitSide,minHeight:minimumHitSide)
                 .contentShape(Rectangle())
             }
+          }
+        }
+        if let air = reading?.airQuality {
+          Text(air.sourceLabel(at: model.now, zone: reading?.timeZone ?? .gmt))
+            .accessibilityIdentifier("weather.air-quality.source")
+          HStack(spacing: 10) {
+            Text("CAMS ENSEMBLE / CAMS global")
+            Link("CAMS", destination: URL(string: "https://atmosphere.copernicus.eu/")!)
+              .padding(.vertical, 8).frame(minHeight: minimumHitSide)
+              .accessibilityLabel("CAMS air quality data source")
           }
         }
       }

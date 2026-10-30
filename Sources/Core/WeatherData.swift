@@ -29,6 +29,7 @@ struct WeatherReading: Sendable {
   var precipitation: Double?
   var hourly: [WeatherHour] = []
   var timeZoneID: String?
+  var airQuality: AirQualityReading?
   var timeZone: TimeZone {
     timeZoneID.flatMap(TimeZone.init(identifier:)) ?? TimeZone(secondsFromGMT:utcOffset) ?? .gmt
   }
@@ -80,6 +81,40 @@ struct WeatherReading: Sendable {
   }
   var upcomingHours: [WeatherHour] {
     hourly.filter { $0.time > observedAt && $0.time.timeIntervalSince(observedAt) <= 86_400 }
+  }
+}
+
+/// A separately timed model estimate, not a local pollution-sensor measurement.
+/// The European index is not interchangeable with the US AQI scale.
+struct AirQualityReading: Sendable {
+  let europeanIndex: Double
+  let validAt: Date
+  var value: String { europeanIndex.formatted(.number.precision(.fractionLength(0...1))) }
+  func stale(at now: Date) -> Bool {
+    now.timeIntervalSince(validAt) > 3600 || validAt.timeIntervalSince(now) > 300
+  }
+  func sourceLabel(at now: Date, zone: TimeZone) -> String {
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "en_US")
+    formatter.timeZone = zone
+    formatter.dateFormat = "MMM d, h:mm a"
+    return "CAMS via Open-Meteo · Model for \(formatter.string(from: validAt))" + (stale(at: now) ? " · Outdated" : "")
+  }
+}
+
+/// Own decoder for the documented `current=european_aqi&timeformat=unixtime`
+/// endpoint. Missing/invalid current fields never become an invented index/time.
+struct OpenMeteoAirQuality: Decodable {
+  struct Current: Decodable {
+    var time: Double?
+    var european_aqi: Double?
+  }
+  var current: Current?
+  var reading: AirQualityReading? {
+    guard let current,
+      let time = WeatherReading.valid(current.time, in: 1...32_503_680_000),
+      let index = current.european_aqi, index.isFinite, index >= 0 else { return nil }
+    return AirQualityReading(europeanIndex: index, validAt: Date(timeIntervalSince1970: time))
   }
 }
 

@@ -243,6 +243,22 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
     if args.contains("--weather-fail") || args.contains("--weather-cached-failure") && weatherCalls > 1 {
       throw URLError(.notConnectedToInternet)
     }
+    if args.contains("--weather-illustration-matrix") {
+      // Explicit synthetic sequence only; no real provider/library is created.
+      let codes=[0,2,3,48,61,73,97,0,98]
+      let index=min(weatherCalls-1,codes.count-1),code=codes[index]
+      let cold=index==7 || code==73,day = !args.contains("--weather-matrix-night")
+      let cover=code==0 ? 0:code==2 ? 40:95
+      let current:[String:Any]=["time":Date().timeIntervalSince1970,"temperature_2m":cold ? 22:55,
+        "relative_humidity_2m":70,"wind_speed_10m":8,"weather_code":code,
+        "is_day":day ? 1:0,"cloud_cover":cover]
+      let daily:[String:[Double]]=["sunset":[Fixtures.date.timeIntervalSince1970],
+        "temperature_2m_max":[60],"temperature_2m_min":[cold ? 20:48]]
+      let payload:[String:Any]=["utc_offset_seconds":0,"timezone":"Etc/UTC","current":current,"daily":daily]
+      let bytes=try JSONSerialization.data(withJSONObject:payload)
+      return try JSONDecoder().decode(OpenMeteoForecast.self,from:bytes)
+        .reading(city:"Matrix WW\(code)"+(index==7 ? " frost":""))
+    }
     if args.contains("--weather-missing") {
       return WeatherReading(city: city,temperature:nil,high:nil,low:nil,humidity:nil,wind:nil,
         code:nil,sunset:nil,utcOffset:20700,observedAt:Date())
@@ -270,10 +286,16 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
           wind:Double(8+i),code:i%3==1 ? 2:0,isDay:true))
       }
     }
-    return WeatherReading(
+    var reading = WeatherReading(
       city: forecast ? city : "Fixture City", temperature: snow ? 22 : 55, high: 60, low: 48, humidity: 70, wind: 8, code: snow ? 73 : rain ? 61 : heavyThunderstorm ? 97 : clear ? 0 : 2,
       sunset: Fixtures.date, utcOffset: 0, observedAt: observed,
       sunrise: nil,isDay: !stale,cloudCover:clear ? 0 : 40,hourly:hours)
+    if args.contains("--weather-air-quality") || args.contains("--weather-air-quality-stale") {
+      let validAt = Date().addingTimeInterval(args.contains("--weather-air-quality-stale") ? -7200:0)
+      let air = "{\"current\":{\"time\":\(validAt.timeIntervalSince1970),\"european_aqi\":42}}"
+      reading.airQuality = try JSONDecoder().decode(OpenMeteoAirQuality.self,from:Data(air.utf8)).reading
+    }
+    return reading
   }
   func unlock() async -> Bool { !ProcessInfo.processInfo.arguments.contains("--device-unlock-denied") }
 }

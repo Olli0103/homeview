@@ -2,6 +2,38 @@ import XCTest
 @testable import HomeViewCore
 
 final class WeatherTests: XCTestCase {
+  func testAirQualityUsesItsOwnSourceTimeAndEuropeanScale() throws {
+    let source = #"{"current":{"time":1700000000,"european_aqi":142.5}}"#
+    let air = try XCTUnwrap(JSONDecoder().decode(OpenMeteoAirQuality.self,from:Data(source.utf8)).reading)
+    XCTAssertEqual(air.europeanIndex,142.5,"European AQI may exceed100; do not clamp to a US or percentage scale")
+    XCTAssertEqual(air.validAt.timeIntervalSince1970,1700000000)
+    XCTAssertFalse(air.stale(at:air.validAt.addingTimeInterval(3600)))
+    XCTAssertTrue(air.stale(at:air.validAt.addingTimeInterval(3601)))
+    XCTAssertFalse(air.stale(at:air.validAt.addingTimeInterval(-300)))
+    XCTAssertTrue(air.stale(at:air.validAt.addingTimeInterval(-301)))
+    let label = air.sourceLabel(at:air.validAt.addingTimeInterval(7200),zone:.gmt)
+    XCTAssertTrue(label.contains("CAMS"));XCTAssertTrue(label.contains("Model for"))
+    XCTAssertTrue(label.contains("Outdated"));XCTAssertTrue(label.contains("Nov 14, 10:13 PM"))
+  }
+  func testMissingNullNegativeAndInvalidAirQualityNeverInventAValueOrTime() throws {
+    let decoder=JSONDecoder()
+    for json in ["{}",#"{"current":null}"#,#"{"current":{}}"#,
+      #"{"current":{"time":1700000000,"european_aqi":null}}"#,
+      #"{"current":{"time":1700000000,"european_aqi":-1}}"#,
+      #"{"current":{"time":0,"european_aqi":42}}"#,
+      #"{"current":{"time":32503680001,"european_aqi":42}}"#,
+      #"{"current":{"time":null,"european_aqi":42}}"#] {
+      XCTAssertNil(try decoder.decode(OpenMeteoAirQuality.self,from:Data(json.utf8)).reading,json)
+    }
+    for value in [0.0,20,100,101,900] {
+      let json="{\"current\":{\"time\":1700000000,\"european_aqi\":\(value)}}"
+      XCTAssertEqual(try decoder.decode(OpenMeteoAirQuality.self,from:Data(json.utf8)).reading?.europeanIndex,value)
+    }
+    for json in [#"{"current":{"time":"now","european_aqi":42}}"#,
+      #"{"current":{"time":1700000000,"european_aqi":"good"}}"#] {
+      XCTAssertThrowsError(try decoder.decode(OpenMeteoAirQuality.self,from:Data(json.utf8)))
+    }
+  }
   private func parse(_ json: String) throws -> WeatherReading {
     try JSONDecoder().decode(OpenMeteoForecast.self, from: Data(json.utf8)).reading(city: "Synthetic")
   }

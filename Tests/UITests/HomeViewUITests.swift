@@ -5899,6 +5899,31 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertLessThan(sunrise.maxY,viewport.maxY - 8)
     shot("weather-missing-metrics-no-fabricated-aqi")
   }
+  func testWeatherEuropeanAirQualityKeepsSourceTimeAndUnavailableFallbackSeparate() {
+    for flag in ["--weather-air-quality","--weather-air-quality-stale"] {
+      launch(["--face","Weather","--page","Settings",flag]);connectService("Weather");openWeather()
+      let value=app.staticTexts["weather.air-quality.value"]
+      let source=app.staticTexts["weather.air-quality.source"]
+      XCTAssertTrue(value.label.contains("EU AQI 42 · Model estimate"),value.label)
+      XCTAssertTrue(source.label.contains("CAMS via Open-Meteo · Model for"),source.label)
+      XCTAssertEqual(source.label.contains("Outdated"),flag.contains("stale"))
+      XCTAssertTrue(app.staticTexts["CAMS ENSEMBLE / CAMS global"].exists)
+      XCTAssertTrue(app.links["CAMS air quality data source"].exists)
+      let viewport=app.otherElements["reference.viewport"].frame
+      XCTAssertTrue(viewport.contains(value.frame));XCTAssertTrue(viewport.contains(source.frame))
+      viewportShot(flag.contains("stale") ? "weather-aqi-stale-independent-model-time":"weather-aqi-current-cams-model")
+      tap("nav.faces")
+      // The same connected source, not the fixed demo AQI, reaches the face.
+      XCTAssertTrue(app.otherElements["face.Weather"].waitForExistence(timeout:5))
+      XCTAssertEqual(app.staticTexts["weather.detail.EU AQI"].label,"42")
+      viewportShot(flag.contains("stale") ? "weather-face-aqi-stale":"weather-face-aqi-current")
+    }
+    launch(["--page","Settings","--weather-missing"]);connectService("Weather");openWeather()
+    XCTAssertTrue(app.staticTexts["weather.air-quality.value"].label.contains("AQI not supplied"))
+    XCTAssertFalse(app.staticTexts["weather.air-quality.source"].exists)
+    XCTAssertFalse(app.links["CAMS air quality data source"].exists)
+    viewportShot("weather-aqi-unavailable-not-zero")
+  }
   func testWeatherAppUsesSeparateCenteredCityAndConditionsLayout() {
     launch(["--page","Weather"])
     let city=app.staticTexts["weather.app.city"],temperature=app.staticTexts["weather.temperature"]
@@ -9861,4 +9886,36 @@ extension HomeViewUITests {
     tap("nav.faces");tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°","No unsent command execution")
   }
+}
+
+
+extension HomeViewUITests {
+  private func verifyWeatherIllustrationMatrix(night:Bool) {
+    continueAfterFailure=false;executionTimeAllowance=900
+    launch(["--face","Weather","--page","Settings","--weather-illustration-matrix"] +
+      (night ? ["--weather-matrix-night"]:[]))
+    connectService("Weather")
+    let variants:[(Int,String,String)]=[(0,"Clear","55°"),(2,"Partly Cloudy","55°"),
+      (3,"Overcast","55°"),(48,"Fog","55°"),(61,"Rain","55°"),(73,"Snow","22°"),
+      (97,"Thunderstorms","55°"),(0,"Clear","22°"),(98,"Condition unavailable","55°")]
+    for (index,item) in variants.enumerated() {
+      if index>0 {
+        drawer();tap("app.Settings")
+        let update=app.buttons["weather.update"];scrollPhotoControlFullyIntoView(update);update.tap()
+      }
+      tap("nav.faces")
+      let state="weather-matrix-"+(night ? "night":"day")+"-\(index)-ww\(item.0)"
+      verifyWeatherFaceBounds(temperature:item.2,wind:"8 mph",humidity:"70%",aqi:"—",name:state+"-face")
+      app.otherElements["face.Weather"].tap()
+      let city=app.staticTexts["weather.app.city"]
+      XCTAssertEqual(city.label,"Matrix WW\(item.0)"+(index==7 ? " frost":""))
+      XCTAssertTrue(app.staticTexts[item.1].exists)
+      XCTAssertEqual(app.staticTexts["weather.temperature"].label,item.2)
+      XCTAssertTrue(app.staticTexts["weather.source"].label.hasPrefix("Observed"))
+      XCTAssertTrue(app.staticTexts["weather.air-quality.value"].label.contains("AQI not supplied"))
+      viewportShot(state+"-app")
+    }
+  }
+  @objc func testWeatherIllustrationMatrixDayKeepsEveryMetricVisible() {verifyWeatherIllustrationMatrix(night:false)}
+  @objc func testWeatherIllustrationMatrixNightKeepsEveryMetricVisible() {verifyWeatherIllustrationMatrix(night:true)}
 }
