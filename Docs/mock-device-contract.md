@@ -1,6 +1,6 @@
 # Typisierte lokale Gerätesteuerung
 
-30. Oktober 2026 · [#24 / HOME-02](https://github.com/Olli0103/homeview/issues/24) · Produktcode `0619708`. **Ursprünglicher synthetischer Gerätevertrag erfüllt; keine reale Home-/Original-/Hardwareabnahme.**
+30. Oktober 2026 · [#24 / HOME-02](https://github.com/Olli0103/homeview/issues/24) · Produktcode `0619708`. **Ursprünglicher synthetischer Gerätevertrag erfüllt; #24 als closed/completed mit exaktem Body zurückgelesen. Keine reale Home-/Original-/Hardwareabnahme.**
 
 [Gebundener Bericht](verification/mock-device-contract.json) · [242 Quelleingaben](verification/mock-device-contract-sources.json) · [17 eigene Aufnahmen mit Capture-Pins](verification/mock-device-contract-images.json).
 

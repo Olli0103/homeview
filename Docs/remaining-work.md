@@ -1,6 +1,6 @@
 # Verbleibende Arbeit und Grenzen
 
-**Aktuell30.Oktober:41 ursprüngliche Issues erledigt,1 Snoopy-Ausschluss,40 offen.** [Vollständiger frischer GitHub-Abgleich](verification/backlog-reconciliation-20261030.json). [#25](https://github.com/Olli0103/homeview/issues/25) ist im ursprünglichen Mock-Sicherheitsumfang geschlossen; F028 bleibt ohne reale Home-/Original-Parity. Nächster unabhängiger Softwareblock:#24 unter unveränderter Home-Sperre.
+**Aktuell30.Oktober:42 ursprüngliche Issues erledigt,1 Snoopy-Ausschluss,39 offen.** [Vollständiger frischer GitHub-Abgleich](verification/backlog-reconciliation-20261030.json). [#25](https://github.com/Olli0103/homeview/issues/25) ist im ursprünglichen Mock-Sicherheitsumfang geschlossen; F028 bleibt ohne reale Home-/Original-Parity. #24 ist ebenfalls nach seinem ursprünglichen synthetischen Gerätevertrag abgeschlossen; weiter mit der originalen Rechercheabnahme von #74 unter unveränderten Home-/Geräte-Holds.
 
 - [Zwei native Fehlermeldungen im App-Umschalter geschützt](app-switcher-alerts.md): vier Vorherfehler und vier verworfene Rückkehrfehler erhalten; zwölf aktuelle UI-Ausführungen/fünf SDKs bestanden. Meldung, Picker und Read-only-Speicher bleiben erhalten. Weitere OS-Composer, physische/Präsenz-/Mediengrenzen bei #67 offen.
 
@@ -20,7 +20,7 @@
 
 ## Aktueller Arbeitsblock
 
-- [#24: ursprünglicher synthetischer Gerätevertrag geprüft](mock-device-contract.md): alle vier Regler mit Erfolg/Timeout/Ablehnung/Fremdänderung und Neustarts;449Coretests, letzte neun native Mobil-/TV-/Watch-Ausführungen/fünf SDKs. Read-only-/Stale-Metadata-/Plan-Dialogfehler getrennt korrigiert. Keine reale Home-/Original-Parity; Veröffentlichung und Issue-Read-back werden separat verbucht.
+- [#24: ursprünglicher synthetischer Gerätevertrag geprüft](mock-device-contract.md): alle vier Regler mit Erfolg/Timeout/Ablehnung/Fremdänderung und Neustarts;449Coretests, letzte neun native Mobil-/TV-/Watch-Ausführungen/fünf SDKs. Read-only-/Stale-Metadata-/Plan-Dialogfehler getrennt korrigiert. Keine reale Home-/Original-Parity; Veröffentlicht mit `06ba7e7`; Issue24 als closed/completed mit exaktem Body und unveränderter ursprünglicher Abnahme zurückgelesen.
 
 - [#25: ursprünglicher Mock-Schloss-Sicherheitsvertrag erfüllt](mock-lock-security.md):429Coretests, zwölf aktuelle native UI-Ausführungen/fünf SDKs sowie unabhängige1152Vektoren/5775Bedingungen und Terminal-Cancel-Gegenprobe bestanden. Gerätefreigabe statt Demo-Profil, separate30s-Einmalbestätigung, Widerruf, Unknown/Jammed/Batteriefehler und nichtoptimistischer Read-back. Echte Home-/Identitätsbindung bleibt #23/#66, F028partial/parity=false. Veröffentlichung sowie geschlossener Issue-State mitreasoncompleted, unverändertem Aufgaben-/Abnahmetext und Labels frisch zurückgelesen; Zähler jetzt40offen. Danach #24: typisierter Geräte-/Read-back-Vertrag unter unveränderter Home-Sperre, nicht weitere kleine Schriftpakete.
 
