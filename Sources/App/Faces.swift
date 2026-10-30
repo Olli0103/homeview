@@ -276,7 +276,8 @@ struct FlowFace: View {
     } else {
     FlowArtwork(date: model.clock, timeZone: model.displayTimeZone, far: model.data.far,
       typeface: model.data.configuration(for: .flow).flowTypeface,
-      showBackground: model.data.configuration(for: .flow).flowBackground, highContrastNight:model.data.night)
+      showBackground: model.data.configuration(for: .flow).flowBackground, highContrastNight:model.data.night,
+      palette:model.data.configuration(for:.flow).flowPalette)
       .clipped().animation(.easeInOut(duration: 0.8), value: model.data.far)
     }
   }

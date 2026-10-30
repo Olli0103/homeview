@@ -767,11 +767,11 @@
     },
     {
       "path": "Sources/App/FlowDigitContours.swift",
-      "sha256": "c05e80a4379d75b141d886ae25794e0fa8129b639f472eac9d6b3426c38a0fc0"
+      "sha256": "6cb6da46e93eff79e8a8e56d762c789c8ee92c163977244d9f59cceb6a97a9c5"
     },
     {
       "path": "Sources/Core/FlowTypography.swift",
-      "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+      "sha256": "f1b6ce79916887e0a67f25de74e7f42afd8f899f3fb7e58a9627f035b2a8c19e"
     },
     {
       "path": "Sources/App/PhotoTallGlyphs.swift",
@@ -783,7 +783,7 @@
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "f770e032dd71751298ae4628c51fd173502d131b562c0658c40efadce272e96f"
+      "sha256": "25cf8f205495ab677741f9a45bd3cc1fdad00f7742e14c6532ec89867554e60f"
     },
     {
       "path": "Scripts/generate_podcast_caption_fixture.py",
@@ -797,6 +797,10 @@
     {
       "path": "Sources/App/AbstractClockFace.swift",
       "sha256": "b2dd5218d431e530f4c50449c0aff5f730d98d11896fd19e40725d6579e1a0db"
+    },
+    {
+      "path": "Sources/App/FlowAppearanceEditor.swift",
+      "sha256": "b857b2c7738e9af3788057c055cd3482d7a2faa6c10e3f704b8126ac1e749bde"
     }
   ],
   "runtime_and_code_assets": [
@@ -949,5 +953,36 @@
     "current_sha256": "796d36e855021739df82ea689cc36e8bc22c508111d898e02774bcc757ac2d89",
     "scope": "Only own fallback contours2..8 normalized with nonzero winding to remove internal overlap edges. Observed0/1/9, all resources and prior renderers unchanged."
   },
-  "abstract_ui09_legibility_refresh": "Own fallback weight reduced to existing minimum after visual comparison: heavy own2/5 looked alike. Observed0/1/9, existingFlow and resources unchanged."
+  "abstract_ui09_legibility_refresh": "Own fallback weight reduced to existing minimum after visual comparison: heavy own2/5 looked alike. Observed0/1/9, existingFlow and resources unchanged.",
+  "flow_appearance_source_refresh": {
+    "date": "2026-10-30",
+    "changes": [
+      {
+        "path": "Sources/App/Faces.swift",
+        "before": "f770e032dd71751298ae4628c51fd173502d131b562c0658c40efadce272e96f",
+        "after": "25cf8f205495ab677741f9a45bd3cc1fdad00f7742e14c6532ec89867554e60f"
+      }
+    ],
+    "scope": "Own staged public SwiftUI controls and own channel tints; color filtering is identity at default Automatic and disabled in night/mask. Later geometry/inline changes recorded separately. No original assets/font data or historical rights verdict."
+  },
+  "flow_appearance_reference_refresh": {
+    "date": "2026-10-30",
+    "changes": [
+      {
+        "path": "Sources/App/FlowDigitContours.swift",
+        "before": "c05e80a4379d75b141d886ae25794e0fa8129b639f472eac9d6b3426c38a0fc0",
+        "after": "6cb6da46e93eff79e8a8e56d762c789c8ee92c163977244d9f59cceb6a97a9c5"
+      },
+      {
+        "path": "Sources/App/FlowAppearanceEditor.swift",
+        "before": "6a10efc4bdcdcb983b1871849ed2520b71aea0dd0f4a3e2feb40e91ad0511fe7",
+        "after": "542eda23cb590dc06fd0dc798bf2adef2c4c04238bc722934895de9a51d84f3c"
+      }
+    ],
+    "scope": "UI37 observed inline time arrangement added as own third working variant with public runtime text. UI47 observed0/1/9 share own UI09 geometry; fallback stroke overlaps normalized. Unknown original font family and palette metadata remain unclaimed."
+  },
+  "flow_inline_final_refresh": "Only inline public-font weight strengthened after actual UI37 comparison; appearance scroller identified for one aggregate reachability case. No private font outlines, resources or original palette metadata imported.",
+  "fallback_legibility_refresh": "Own fallback stroke range0.20–0.24 instead of0.32–0.44 after actual heavy-axis atlases merged2/3 and5/8. Known stencil0/1/9 geometry/inline font and stored settings unchanged. Not reconstructed unseen original typeface metrics.",
+  "flow_clock_value_refresh": "Expose the same rendered time explicitly on the existing Flow clock root label. New test originally queried an unqualified nested Flow time element, absent in native snapshot; no internal cause inferred.",
+  "flow_clock_scope_refresh": "Clock label/time belongs to artwork, not its separate test-counter overlay. Preserve original compute revision/freeze/night guards without changing deadline or expected values."
 }

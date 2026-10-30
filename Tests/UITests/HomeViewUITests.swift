@@ -1861,6 +1861,8 @@ extension HomeViewUITests {
     launch(["--face","Flow","--animation-test","--reduce-motion"])
     let report=app.staticTexts["flow.compute.test"]
     XCTAssertTrue(report.waitForExistence(timeout:8))
+    let diagnostic=XCTAttachment(string:String(describing:report.value))
+    diagnostic.name="flow-compute-value-before-expectation";diagnostic.lifetime = .keepAlways;add(diagnostic)
     expectation(for:NSPredicate(format:"value CONTAINS %@","revision=1;pending=false"),evaluatedWith:report)
     waitForExpectations(timeout:8)
     let before=viewportBytes("flow-compute-reduced-accepted")
@@ -4049,6 +4051,30 @@ final class HomeViewUITests: XCTestCase {
       }
     }
   }
+  func testFlowFallbackTimesRenderBothOwnStyles() {
+    for style in 0...1 {
+      let id=UUID().uuidString
+      for (index,item) in [
+        ("0628","2026-04-01T06:28:00Z","06:28"),
+        ("2357","2026-04-01T23:57:00Z","23:57"),
+        ("0416","2026-04-01T04:16:00Z","04:16")
+      ].enumerated() {
+        app.terminate()
+        var args=["--persistence-test",id,"--face","Flow","--reduce-motion",
+          "--reference-date",item.1,"--reference-zone","Etc/UTC"]
+        if index==0 {args.append("--reset-test-store")}
+        launch(args)
+        if index==0 && style==1 {
+          app.otherElements["face.Flow"].press(forDuration:1)
+          tap("flow.typeface.1");tap("editor.done")
+        }
+        let time=app.descendants(matching:.any).matching(NSPredicate(format:"label == %@","Flow clock")).firstMatch
+        XCTAssertTrue(time.waitForExistence(timeout:5))
+        XCTAssertEqual(time.value as? String,item.2)
+        viewportShot("flow-fallback-style\(style)-"+item.0)
+      }
+    }
+  }
   func testWorldClockAddsFractionalZoneAndPersistsRemoval() {
     let id = UUID().uuidString
     launch(["--page", "World Clock", "--persistence-test", id, "--reset-test-store"])
@@ -4237,6 +4263,129 @@ final class HomeViewUITests: XCTestCase {
     app.otherElements["face.Flow"].press(forDuration: 1)
     XCTAssertEqual(app.switches["flow.background"].value as? String, "0")
     tap("editor.done")
+  }
+  private func openFlowAppearance() {
+    if !app.buttons["editor.done"].exists {
+      app.otherElements["face.Flow"].press(forDuration:1)
+    }
+    let open=app.buttons["flow.appearance.open"]
+    for _ in 0..<3 where !open.isHittable {app.scrollViews["editor.content"].swipeUp()}
+    XCTAssertTrue(open.isHittable);open.tap()
+    XCTAssertTrue(app.buttons["flow.appearance.page.color"].waitForExistence(timeout:5))
+  }
+  func testFlowAppearanceCancelKeepsStoredFontAndAutomaticPalette() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--reset-test-store","--face","Flow","--reduce-motion"])
+    app.otherElements["face.Flow"].press(forDuration:1)
+    tap("flow.typeface.1")
+    openFlowAppearance()
+    XCTAssertEqual(app.buttons["flow.appearance.palette.0"].value as? String,"Selected")
+    tap("flow.appearance.palette.2")
+    XCTAssertEqual(app.buttons["flow.appearance.palette.2"].value as? String,"Selected")
+    viewportShot("flow-appearance-color-draft")
+    tap("flow.appearance.page.font");tap("flow.appearance.font.2")
+    viewportShot("flow-appearance-font-draft")
+    tap("flow.appearance.cancel")
+    XCTAssertEqual(app.buttons["flow.typeface.1"].value as? String,"Selected")
+    openFlowAppearance()
+    XCTAssertEqual(app.buttons["flow.appearance.palette.0"].value as? String,"Selected")
+    tap("flow.appearance.page.font")
+    XCTAssertEqual(app.buttons["flow.appearance.font.1"].value as? String,"Selected")
+    tap("flow.appearance.cancel");tap("editor.done")
+    app.terminate();launch(["--persistence-test",id,"--reduce-motion"])
+    openFlowAppearance()
+    XCTAssertEqual(app.buttons["flow.appearance.palette.0"].value as? String,"Selected")
+    tap("flow.appearance.page.font")
+    XCTAssertEqual(app.buttons["flow.appearance.font.1"].value as? String,"Selected")
+    tap("flow.appearance.cancel");tap("editor.done")
+  }
+  func testFlowAppearanceAllChoicesAreReachableAndLastChoicePersists() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--reset-test-store","--face","Flow","--reduce-motion"])
+    openFlowAppearance()
+    let choices=app.scrollViews["flow.appearance.choices"]
+    func choose(_ kind:String,_ index:Int) {
+      let button=app.buttons["flow.appearance."+kind+"."+String(index)]
+      for _ in 0..<6 {
+        let pane=choices.frame,target=button.frame
+        if pane.insetBy(dx:-0.01,dy:-0.01).contains(target) {break}
+        if target.midY<pane.midY {choices.swipeDown()} else {choices.swipeUp()}
+      }
+      let frame=button.frame
+      XCTAssertTrue(choices.frame.insetBy(dx:-0.01,dy:-0.01).contains(frame))
+      //0.01pt is numerical precision, not a reduced touch-size contract.
+      XCTAssertGreaterThanOrEqual(frame.width,43.99)
+      XCTAssertGreaterThanOrEqual(frame.height,43.99)
+      app.coordinate(withNormalizedOffset:.zero)
+        .withOffset(CGVector(dx:frame.midX-app.frame.minX,dy:frame.midY-app.frame.minY)).tap()
+      XCTAssertEqual(button.value as? String,"Selected")
+    }
+    for index in [1,0,2,3,4,5,6,7] {choose("palette",index)}
+    viewportShot("flow-appearance-all-colors-last-selected")
+    tap("flow.appearance.page.font")
+    for index in 0...2 {choose("font",index)}
+    viewportShot("flow-appearance-all-fonts-inline-selected")
+    tap("flow.appearance.done");tap("editor.done")
+    viewportShot("flow-appearance-last-color-inline-saved")
+    app.terminate();launch(["--persistence-test",id,"--reduce-motion"])
+    openFlowAppearance()
+    XCTAssertEqual(app.buttons["flow.appearance.palette.7"].value as? String,"Selected")
+    tap("flow.appearance.page.font")
+    XCTAssertEqual(app.buttons["flow.appearance.font.2"].value as? String,"Selected")
+    tap("flow.appearance.cancel");tap("editor.done")
+  }
+  func testFlowAppearanceSavesBothChoicesAcrossRestartAndKeepsNightGuard() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--reset-test-store","--face","Flow","--reduce-motion"])
+    openFlowAppearance()
+    tap("flow.appearance.palette.2")
+    tap("flow.appearance.page.font");tap("flow.appearance.font.2")
+    tap("flow.appearance.done")
+    XCTAssertEqual(app.buttons["flow.typeface.2"].value as? String,"Selected")
+    tap("editor.done")
+    viewportShot("flow-appearance-saved-palette")
+    app.terminate();launch(["--persistence-test",id,"--reduce-motion"])
+    openFlowAppearance()
+    XCTAssertEqual(app.buttons["flow.appearance.palette.2"].value as? String,"Selected")
+    tap("flow.appearance.page.font")
+    XCTAssertEqual(app.buttons["flow.appearance.font.2"].value as? String,"Selected")
+    tap("flow.appearance.automatic")
+    XCTAssertEqual(app.buttons["flow.appearance.palette.0"].value as? String,"Selected")
+    tap("flow.appearance.cancel");tap("editor.done")
+    // Cancelling Automatic must not replace the already saved palette.
+    openFlowAppearance()
+    XCTAssertEqual(app.buttons["flow.appearance.palette.2"].value as? String,"Selected")
+    tap("flow.appearance.cancel");tap("editor.done")
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    let pixels=[UInt8](viewportPixels(viewportBytes("flow-appearance-saved-palette-night"),inset:0))
+    var lit=0,wrong=0
+    for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+      lit+=1
+      if Double(pixels[i+1])>Double(pixels[i])*0.4 || Double(pixels[i+2])>Double(pixels[i])*0.4 {wrong+=1}
+    }
+    XCTAssertGreaterThan(lit,100);XCTAssertEqual(wrong,0)
+  }
+  func testFlowAppearanceRejectedSaveRetainsDraftAndCancelDoesNotPersist() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--reset-test-store","--state-future-fixture","--face","Flow","--reduce-motion"])
+    openFlowAppearance();tap("flow.appearance.palette.2")
+    tap("flow.appearance.page.font");tap("flow.appearance.font.2")
+    tap("flow.appearance.done");dismissLocalWriteError()
+    XCTAssertTrue(app.buttons["flow.appearance.cancel"].exists)
+    XCTAssertEqual(app.buttons["flow.appearance.font.2"].value as? String,"Selected")
+    tap("flow.appearance.page.color")
+    XCTAssertEqual(app.buttons["flow.appearance.palette.2"].value as? String,"Selected")
+    viewportShot("flow-appearance-rejected-save-keeps-draft")
+    tap("flow.appearance.cancel")
+    openFlowAppearance()
+    XCTAssertEqual(app.buttons["flow.appearance.palette.0"].value as? String,"Selected")
+    tap("flow.appearance.page.font")
+    XCTAssertEqual(app.buttons["flow.appearance.font.0"].value as? String,"Selected")
+    tap("flow.appearance.cancel");tap("editor.done")
+    app.terminate();launch(["--persistence-test",id,"--face","Flow","--reduce-motion"])
+    openFlowAppearance()
+    XCTAssertEqual(app.buttons["flow.appearance.palette.0"].value as? String,"Selected")
+    tap("flow.appearance.cancel");tap("editor.done")
   }
   func testCameraGridDetailAndTalkbackAreLocal() {
     launch(["--page", "Cameras"])

@@ -69,6 +69,7 @@ struct FlowArtwork: View {
   var typeface = 0
   var showBackground = true
   var highContrastNight = false
+  var palette = 0
   @State private var frames = FlowFrames()
   @State private var impulse = SIMD2<Float>.zero
   var body: some View {
@@ -108,7 +109,8 @@ struct FlowArtwork: View {
         }
       }
       }
-    }.clipped().contentShape(Rectangle())
+    }.clipped().modifier(FlowPaletteTreatment(index:palette,disabled:highContrastNight || drawsMaskFixture))
+      .contentShape(Rectangle())
       #if !os(tvOS)
         .gesture(
           DragGesture(minimumDistance: 3).onChanged { value in
@@ -124,6 +126,8 @@ struct FlowArtwork: View {
         if scenePhase == .active && !night {frames.activate()} else {frames.deactivate()}
       }
       .onDisappear {frames.deactivate()}
+      .accessibilityLabel("Flow clock")
+      .accessibilityValue(displayedTime)
       .overlay {
         if ProcessInfo.processInfo.arguments.contains("--uitesting") {
           Text("active=\(frames.session.active);revision=\(frames.session.revision);pending=\(frames.session.isWorking);fallback=\(frames.session.usingCPUFallback)")
@@ -132,7 +136,6 @@ struct FlowArtwork: View {
             .accessibilityIdentifier("flow.compute.test")
         }
       }
-      .accessibilityLabel("Flow clock")
   }
   private func fluidImage(_ frame: CGImage) -> some View {
     Image(decorative: frame, scale: 1).resizable().interpolation(.high)
@@ -147,6 +150,9 @@ struct FlowArtwork: View {
     return args.contains("--uitesting") && args.contains("--flow-mask")
   }
   private var usesNativeGlass: Bool {
+    // The inline variant is ordinary public runtime text, not a bundled or
+    // extracted font outline. Its alpha is treated by our existing material.
+    if typeface == 2 {return false}
     #if os(visionOS)
       return false
     #else
@@ -162,22 +168,38 @@ struct FlowArtwork: View {
       else { shape.fill(.clear) }
     #endif
   }
-  private func numerals(at time: Double, nativeGlass: Bool = false) -> some View {
+  private func displayedDigits()->[Int] {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = timeZone
     let hour = calendar.component(.hour, from: date)
     let minute = calendar.component(.minute, from: date)
     let twelveHour = !ProcessInfo.processInfo.arguments.contains("--reference-clock")
       && (DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: .current)?.contains("a") ?? false)
-    let digits = FlowTypography.digits(hour: hour, minute: minute, twelveHour: twelveHour)
+    return FlowTypography.digits(hour: hour, minute: minute, twelveHour: twelveHour)
+  }
+  private var displayedTime:String {
+    let digits=displayedDigits()
+    return String(format:"%d%d:%d%d",digits[0],digits[1],digits[2],digits[3])
+  }
+  @ViewBuilder private func numerals(at time: Double, nativeGlass: Bool = false) -> some View {
+    let digits=displayedDigits()
     let axes = FlowTypography.animated(at: fixedGlyphsFixture ? 0 : time)
-    return VStack(spacing: 30) {
+    if typeface == 2 {
+      Text(String(format:"%d%d:%d%d",digits[0],digits[1],digits[2],digits[3]))
+        .font(.system(size:240,weight:.semibold,design:.rounded)).monospacedDigit().tracking(-6)
+        .lineLimit(1).minimumScaleFactor(0.5).padding(.horizontal,34)
+        .scaleEffect(x:1,y:1.6).frame(maxWidth:.infinity,maxHeight:.infinity)
+        .accessibilityLabel("Flow time")
+        .accessibilityValue(String(format:"%d%d:%d%d",digits[0],digits[1],digits[2],digits[3]))
+    } else {
+    VStack(spacing: 30) {
       numeralRow(Array(digits.prefix(2)), axes: axes, nativeGlass: nativeGlass)
       numeralRow(Array(digits.suffix(2)), axes: axes, nativeGlass: nativeGlass)
     }.padding(.horizontal, far ? 36 : 44).padding(.vertical, 34)
       .accessibilityElement(children: .ignore)
       .accessibilityLabel("Flow time")
       .accessibilityValue(String(format: "%d%d:%d%d", digits[0], digits[1], digits[2], digits[3]))
+    }
   }
   private func numeralRow(_ digits: [Int], axes: FlowTypography, nativeGlass: Bool) -> some View {
     GeometryReader { geometry in

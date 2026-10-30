@@ -35,10 +35,11 @@ struct FaceConfiguration: Codable, Equatable, Sendable {
   var theme = 0
   var flowTypeface = 0
   var flowBackground = true
+  var flowPalette = 0
 }
 extension FaceConfiguration {
   private static let knownSlotIDs = Set(Face.allCases.flatMap(\.slots).map(\.id))
-  private enum CodingKeys: String, CodingKey { case complications, theme, flowTypeface, flowBackground }
+  private enum CodingKeys: String, CodingKey { case complications, theme, flowTypeface, flowBackground, flowPalette }
   private struct SlotKey: CodingKey {
     var stringValue: String
     var intValue: Int? { nil }
@@ -51,8 +52,9 @@ extension FaceConfiguration {
     self.init()
     let values = try decoder.container(keyedBy:CodingKeys.self)
     if let raw = try? values.decode(Int.self,forKey:.theme), (0...1).contains(raw) { theme = raw }
-    if let raw = try? values.decode(Int.self,forKey:.flowTypeface), (0...1).contains(raw) { flowTypeface = raw }
+    if let raw = try? values.decode(Int.self,forKey:.flowTypeface), (0...2).contains(raw) { flowTypeface = raw }
     flowBackground = (try? values.decode(Bool.self,forKey:.flowBackground)) ?? true
+    if let raw = try? values.decode(Int.self,forKey:.flowPalette), (0...7).contains(raw) { flowPalette = raw }
     if let slots = try? values.nestedContainer(keyedBy:SlotKey.self,forKey:.complications) {
       let keys = slots.allKeys.filter { !$0.stringValue.isEmpty && $0.stringValue.count <= 128 }
         .sorted {

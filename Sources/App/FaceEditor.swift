@@ -140,12 +140,22 @@ struct FaceEditor: View {
   @State private var selection: Selection?
   @State private var highlightedSlot: String?
   @State private var slotSaveError:String?
+  @State private var showingFlowAppearance = false
   private var face: Face { model.data.face }
   private func select(_ slot: FaceSlot) {
     highlightedSlot = slot.id
     selection = Selection(face: face, slot: slot)
   }
   var body: some View {
+    Group {
+      if showingFlowAppearance {
+        FlowAppearanceEditor(configuration:model.data.configuration(for:.flow)) {
+          showingFlowAppearance=false
+        }
+      } else { standardEditor }
+    }
+  }
+  private var standardEditor: some View {
     VStack(spacing: 0) {
       HStack {
         Text("Faces").font(.system(size: headingSize, weight: .bold))
@@ -354,14 +364,18 @@ struct FaceEditor: View {
   }
   private var flowOptions: some View {
     VStack(spacing: 14) {
+      Button { showingFlowAppearance=true } label: {
+        Label("Color and font",systemImage:"paintpalette")
+          .frame(maxWidth:.infinity,minHeight:minimumHitSide).contentShape(Rectangle())
+      }.accessibilityIdentifier("flow.appearance.open")
       HStack {
         Text("Typeface")
         Spacer()
-        ForEach(0..<2) { i in
+        ForEach(0..<3) { i in
           Button {
             model.updateLocalControls { $0.editConfiguration(for:.flow) { $0.flowTypeface=i } }
           } label: {
-            Text(i == 0 ? "I" : "II").frame(width: 55, height: 38)
+            Text(["I","II","III"][i]).frame(width: 55, height: 38)
               .background(
                 model.data.configuration(for: .flow).flowTypeface == i
                   ? .lilac : .gray.opacity(0.12), in: Capsule())

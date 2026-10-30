@@ -2,6 +2,40 @@ import XCTest
 @testable import HomeViewCore
 
 final class FaceConfigurationMigrationTests: XCTestCase {
+  func testAllOwnFlowPalettesRoundTripWithoutChangingSiblingState() throws {
+    for palette in 0...7 {
+      for font in 0...2 {
+      var state=Snapshot()
+      state.editConfiguration(for:.modular) {$0.theme=1;$0.complications["panel0"] = .timer}
+      let sibling=state.configuration(for:.modular)
+      state.editConfiguration(for:.flow) {$0.flowPalette=palette;$0.flowTypeface=font;$0.flowBackground=false}
+      let restored=try Snapshot.decodeMigrating(JSONEncoder().encode(state))
+      XCTAssertEqual(restored.configuration(for:.flow).flowPalette,palette)
+      XCTAssertEqual(restored.configuration(for:.flow).flowTypeface,font)
+      XCTAssertFalse(restored.configuration(for:.flow).flowBackground)
+      XCTAssertEqual(restored.configuration(for:.modular),sibling)
+      XCTAssertEqual(restored.theme,0)
+      }
+    }
+  }
+  func testLegacyFlowWithoutPaletteKeepsTypefaceAndBackground() throws {
+    let state=try restore(["Flow":["theme":1,"flowTypeface":1,"flowBackground":false]])
+    let c=state.configuration(for:.flow)
+    XCTAssertEqual(c.flowPalette,0)
+    XCTAssertEqual(c.theme,1)
+    XCTAssertEqual(c.flowTypeface,1)
+    XCTAssertFalse(c.flowBackground)
+  }
+  func testMalformedFlowPaletteFallsBackWithoutDiscardingOtherFields() throws {
+    for invalid:Any in [-1,8,Int.max,"ice",true,NSNull()] {
+      let state=try restore(["Flow":["flowPalette":invalid,"theme":1,"flowTypeface":1,"flowBackground":false]])
+      let c=state.configuration(for:.flow)
+      XCTAssertEqual(c.flowPalette,0)
+      XCTAssertEqual(c.theme,1)
+      XCTAssertEqual(c.flowTypeface,1)
+      XCTAssertFalse(c.flowBackground)
+    }
+  }
   func testNumeralsPaletteSurvivesStorageWithoutChangingLegacyOrSiblingThemes() throws {
     XCTAssertEqual(Face.numerals.definition.options,[.color])
     var state=Snapshot()

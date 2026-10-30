@@ -1,7 +1,8 @@
 import Foundation
 
-/// Stroke-safe reconstruction tuned to the broad inflated numerals in UI47.
-/// Coordinates are project-owned geometry, not extracted Apple font outlines.
+/// Stroke-safe own fallback metrics, not extracted Apple font outlines.
+/// Observed UI47 0/1/9 use their separate geometric shapes. Unobserved fallback
+/// counters must remain open instead of merging 2/3 or 5/8 at the heavy axis.
 struct FlowTypography: Equatable, Sendable {
   let width: Double
   let weight: Double
@@ -9,7 +10,7 @@ struct FlowTypography: Equatable, Sendable {
     self.width = width.isFinite ? min(1.06, max(0.9, width)) : 1
     self.weight = weight.isFinite ? min(1, max(0, weight)) : 0.5
   }
-  var stroke: Double { 0.32 + weight * 0.12 }
+  var stroke: Double { 0.20 + weight * 0.04 }
   var advance: Double { 0.83 * width }
   var tracking: Double { 0.075 }
   var pairWidth: Double { 2 * advance + tracking }
