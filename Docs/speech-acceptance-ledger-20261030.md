@@ -1,8 +1,8 @@
 # Sprache: vollständige Abnahmematrix, ohne erfundene Blockaden
 
-30. Oktober 2026 · [#74](https://github.com/Olli0103/homeview/issues/74) · **weiter offen; F104/F105 partial, parity=false.**
+30. Oktober 2026 · [#74](https://github.com/Olli0103/homeview/issues/74) · **Ursprüngliche Rechercheabnahme mit Blockaden erfüllt; F104/F105 weiterhin ohne Parity.** [Abschlussentscheidung](speech-research-acceptance-20261030.md).
 
-**48 einzelne Zellen = sechs Ziele × acht Hilfsmittel.** Vier historisch tatsächlich benutzbare mobile Teilpfade plus zwei aktuelle TV-/Vision-Quelluntertitel-Fälle, klar benannte Setup-/Host-/Appgrenzen, aber auch verbleibende Softwareprüfungen und ungeklärte OS-Pfade. Eine vollständige Tabelle ist noch keine vollständige Abnahme.
+**48 einzelne Zellen = sechs Ziele × acht Hilfsmittel.** Vier historisch tatsächlich benutzbare mobile Teilpfade plus zwei aktuelle TV-/Vision-Quelluntertitel-Fälle, klar benannte Setup-/Host-/Appgrenzen, aber auch verbleibende Softwareprüfungen und ungeklärte OS-Pfade. Die Research-Abnahme erlaubt Nutzbarkeit oder konkrete Blockade; das ist keine vollständige Funktions-/Hardwareabnahme.
 
 Der ursprüngliche research-Vertrag erlaubt Nutzbarkeit **oder konkrete Blockade**. Nicht ausgeführte, mit vorhandener Runtime prinzipiell prüfbare Softwarefälle werden deshalb nicht zu Hardwareblockaden umetikettiert. Vollständiger [maschinenlesbarer Befund](verification/speech-acceptance-ledger-20261030.json).
 
@@ -49,13 +49,13 @@ Der ursprüngliche research-Vertrag erlaubt Nutzbarkeit **oder konkrete Blockade
 
 | Hilfsmittel | Belegter Umfang | Tatsächliche Grenze / Status |
 |---|---|---|
-| OS Live Speech | No positive specialized OS route established; NOT an OS unsupported claim. [N7, os-speech-settings-inventory-20261029.md, fresh-TV-guide] | **unresolved_os_path** · Native simulator menu also omits documented VoiceOver; catalog/menu/search absence is not qualified negative evidence. A reliable target-specific capability route remains unresolved. |
+| OS Live Speech | No positive specialized OS route established; NOT an OS unsupported claim. [N7, os-speech-settings-inventory-20261029.md, fresh-TV-guide] | **blocked_capability_verification** · Native simulator menu also omits documented VoiceOver; catalog/menu/search absence is not qualified negative evidence. A reliable target-specific capability route remains unresolved. |
 | OS Live Captions | Documented specifically for FaceTime on Apple TV4K. [N4] | **blocked_setup** · No configured FaceTime endpoint, authorized counterpart, matching hardware and language/region acceptance; not ambient or own podcast captions. |
-| OS RTT | No positive specialized OS route established; NOT an OS unsupported claim. [N7, os-speech-settings-inventory-20261029.md, bounded-TV-Vision-searches] | **unresolved_os_path** · Same failed known-positive menu control; guide searches return other-platform/global-nav matches, not a TV RTT transport. |
+| OS RTT | No positive specialized OS route established; NOT an OS unsupported claim. [N7, os-speech-settings-inventory-20261029.md, bounded-TV-Vision-searches] | **blocked_capability_verification** · Same failed known-positive menu control; guide searches return other-platform/global-nav matches, not a TV RTT transport. |
 | OS Dictation | Documented Siri/Search-button text dictation. [N8] | **blocked_setup** · No authorized remote microphone / actual Siri-remote dictation session; TV assistant keyboard does not establish dictation. |
 | OS Type to Siri | Documented Type to Siri and screen/Bluetooth/iPhone/iPad keyboard paths. [N7, N8] | **blocked_setup** · No configured authorized Siri service/keyboard pairing or real system request; own local assistant is not Siri. |
-| OS Vocal Shortcuts | No positive target-specific trained Vocal Shortcuts route established. [bounded-Vocal-Shortcuts-searches, N7] | **unresolved_os_path** · Search results describe Voice Isolation/Recognize My Voice, not user-trained Vocal Shortcuts. No unsupported-OS conclusion. Target route still unresolved. |
-| Own App Shortcut | Own AppIntent/Provider excluded by explicit platform guard; no own shortcut registered. [Sources/App/AssistantAppShortcut.swift, assistant-app-shortcut.md] | **not_exposed_app** · Concrete app-scope/software omission; TV does not expose this action. No claim that the OS lacks every possible shortcut capability. |
+| OS Vocal Shortcuts | No positive target-specific trained Vocal Shortcuts route established. [bounded-Vocal-Shortcuts-searches, N7] | **blocked_capability_verification** · Search results describe Voice Isolation/Recognize My Voice, not user-trained Vocal Shortcuts. No unsupported-OS conclusion. Target route still unresolved. |
+| Own App Shortcut | Own AppIntent/Provider excluded by explicit platform guard; no own shortcut registered. [Sources/App/AssistantAppShortcut.swift, assistant-app-shortcut.md] | **blocked_app_scope** · Concrete app-scope/software omission; TV does not expose this action. No claim that the OS lacks every possible shortcut capability. |
 | Own source-media captions | Eigene zeitcodierte Marker, Off, Seek und Quellenwechsel jetzt nativ bestanden; TV zusätzlich Remote-Fokus und Feed-Rückweg. [tv-vision-source-captions.md](tv-vision-source-captions.md) | **observed_usable** · Begrenzte eigene stumme Fixture; keine allgemeine Stream-/Sprach-/OS-/Hardwareabnahme. |
 
 ## Vision Pro
@@ -64,11 +64,11 @@ Der ursprüngliche research-Vertrag erlaubt Nutzbarkeit **oder konkrete Blockade
 |---|---|---|
 | OS Live Speech | Specialized guide explicitly: unavailable outside calls; output at other end of call. Native settings row visibly Off. [N5, fresh-Vision-Live-Speech, os-speech-settings-inventory-20261029.md] | **blocked_setup** · No authorized configured call/counterpart or physical device acceptance. Own AVSpeechSynthesizer has no telephony uplink. |
 | OS Live Captions | Apple documents system captions; capture/mirroring unavailable while enabled. [S5] | **blocked_setup** · No enabled authorized OS caption session / acoustic or call fixture; not activated to work around the capture restriction. |
-| OS RTT | No positive specialized route established; NOT an unsupported-OS claim. [os-speech-settings-inventory-20261029.md, bounded-TV-Vision-searches] | **unresolved_os_path** · Native RTT search returns no result, but known visible Live Speech also returns no result; search not qualified as capability enumeration. |
+| OS RTT | No positive specialized route established; NOT an unsupported-OS claim. [os-speech-settings-inventory-20261029.md, bounded-TV-Vision-searches] | **blocked_capability_verification** · Native RTT search returns no result, but known visible Live Speech also returns no result; search not qualified as capability enumeration. |
 | OS Dictation | Documented virtual keyboard Dictation and some Look to Dictate fields. [E1] | **blocked_setup** · No authorized real microphone/gaze dictation session; no system dictation activated. |
 | OS Type to Siri | Accessibility > Siri > Type to Siri explicitly documented. [E2] | **blocked_setup** · No configured/authorized system Siri session or actual Siri text request. |
 | OS Vocal Shortcuts | Explicitly documented user training of a chosen phrase/action. [N9] | **blocked_setup** · No user phrase training or acoustic invocation / physical acceptance. |
-| Own App Shortcut | Actual OS provider discovered; three cold branches open own assistant from terminated process. No complete cold/warm method passed. [current-Vision-probes] | **partial_observed_open** · Warm source.activate path was occluded; restart-source path visibly fronts Shortcuts but HomeView stays behind after tap. Same HomeViewPID14688/normal args observed; AX field/draft survival is not a visible warm-return PASS. Cause not established; no product change invented. |
+| Own App Shortcut | Actual OS provider discovered; three cold branches open own assistant from terminated process. No complete cold/warm method passed. [current-Vision-probes] | **blocked_runtime_window_selection** · Warm source.activate path was occluded; restart-source path visibly fronts Shortcuts but HomeView stays behind after tap. Same HomeViewPID14688/normal args observed; AX field/draft survival is not a visible warm-return PASS. Cause not established; no product change invented. |
 | Own source-media captions | Eigene zeitcodierte Marker, Off, Seek und Quellenwechsel jetzt nativ bestanden; TV zusätzlich Remote-Fokus und Feed-Rückweg. [tv-vision-source-captions.md](tv-vision-source-captions.md) | **observed_usable** · Begrenzte eigene stumme Fixture; keine allgemeine Stream-/Sprach-/OS-/Hardwareabnahme. |
 
 ## Apple Watch
@@ -80,9 +80,9 @@ Der ursprüngliche research-Vertrag erlaubt Nutzbarkeit **oder konkrete Blockade
 | OS RTT | Cellular-Watch RTT explicitly documented. [N3] | **blocked_setup** · No configured Cellular carrier/region/watch/iPhone setup or authorized conversation counterpart; simulator is not carrier acceptance. |
 | OS Dictation | Native text entry guide documents Dictation and language limits. [E4] | **blocked_setup** · No real enabled Dictation/acoustic session; current WatchRoot has no assistant composer to claim an integration. |
 | OS Type to Siri | Settings > Accessibility > Siri > Type to Siri documented. [E3] | **blocked_setup** · Siri setup on iPhone and internet required by guide; no configured authorized paired service session/request. |
-| OS Vocal Shortcuts | Watch can run compatible iPhone shortcuts, including by Siri; distinct from trained Vocal Shortcuts. [E6, bounded-Vocal-Shortcuts-searches] | **unresolved_os_path** · No positive Watch user-trained Vocal Shortcuts route established; generic Shortcuts/Siri is not substituted. |
-| Own App Shortcut | Provider excluded from Watch bundle; current WatchRoot has no assistant. [Sources/App/AssistantAppShortcut.swift, Sources/App/WatchRoot.swift] | **not_exposed_app** · Concrete app-scope/software omission, not proof of OS-wide impossibility. |
-| Own source-media captions | Current WatchRoot does not expose Podcast AVPlayer/caption UI. [Sources/App/WatchRoot.swift, podcast-source-captions.md] | **not_exposed_app** · Concrete app-scope/software omission; phone captions do not count as Watch UI. |
+| OS Vocal Shortcuts | Watch can run compatible iPhone shortcuts, including by Siri; distinct from trained Vocal Shortcuts. [E6, bounded-Vocal-Shortcuts-searches] | **blocked_capability_verification** · No positive Watch user-trained Vocal Shortcuts route established; generic Shortcuts/Siri is not substituted. |
+| Own App Shortcut | Provider excluded from Watch bundle; current WatchRoot has no assistant. [Sources/App/AssistantAppShortcut.swift, Sources/App/WatchRoot.swift] | **blocked_app_scope** · Concrete app-scope/software omission, not proof of OS-wide impossibility. |
+| Own source-media captions | Current WatchRoot does not expose Podcast AVPlayer/caption UI. [Sources/App/WatchRoot.swift, podcast-source-captions.md] | **blocked_app_scope** · Concrete app-scope/software omission; phone captions do not count as Watch UI. |
 
 ## Aktuelle Vision-Systemaktion: begrenzter positiver Befund, kein Gesamt-PASS
 
@@ -94,9 +94,9 @@ Erste zwei Warmwege: HomeView liegt sichtbar vor dem Shortcuts-Fenster; der AX-T
 
 Die temporären strikt UUID-begrenzten Normal-Sandbox-Proben sind nach Archivierung aus dem Standardtarget entfernt; sämtliche242 gelieferten Inputs wieder `09f9116`-gleich. Keine neuen Core-/Fünf-SDK-/Hardware-PASSes aus diesen Diagnosen. Raw-Systembilder und AX-Bäume mit Apples virtueller Umgebung bleiben privat.
 
-## Was #74 noch tatsächlich offen hält
+## Funktional trotz abgeschlossener Research-Bilanz offen
 
-- Sichtbarer Vision-Warmaufruf/Zielwahl ist nicht nachgewiesen; kein bloßer Kompilier- oder Feldexistenz-PASS.
+- Sichtbare Vision-Warmzielwahl ist nach kontrolliertem Vorher-/Kandidatenfall nicht qualifiziert. [Konkrete Runtimegrenze und zurückgenommener Kandidat](vision-shortcut-scene-routing-boundary.md); verbleibend bei#79, kein Feldexistenz-PASS.
 - **Die TV-/Vision-Quellmedienfälle sind inzwischen nativ bestanden:** [aktuelle Pfade und TV-Fokuskorrekturen](tv-vision-source-captions.md). Sie werden nicht mehr als offene Runtime-/Hardwareblockade geführt.
 - TV Live Speech/RTT/Vocal Shortcuts sowie Vision RTT und Watch Vocal Shortcuts bleiben ohne positiven OS-Pfad. Fehlende Such-/Menütreffer werden wegen gescheiterter bekannter Positivkontrollen nicht als OS-Unmöglichkeit benutzt.
 - Dokumentierte Systemhilfsmittel verlangen einzelne bewusste Einrichtung/Training, gewählte Sprache/Modelle oder Telefonie-/Carrier-/Gesprächsgegenpart. Geräte-/Signing-Hold bleibt; Mac-Desktopzugang ist aktuell erneut unavailable und Developer mode disabled, nicht als alleinige Timeoutursache bewiesen.

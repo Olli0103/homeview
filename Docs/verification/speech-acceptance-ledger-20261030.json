@@ -2,9 +2,19 @@
   "date": "2026-10-30",
   "issue": 74,
   "original_acceptance_unchanged": true,
-  "research_acceptance": "Usability per target/tool OR concrete blockade; a text field does not cover F105.",
-  "status": "open",
-  "why_open": "Visible Vision warm invocation remains unqualified; five OS routes unresolved, not proved impossible. Setup/host/app boundaries remain distinct.",
+  "research_acceptance": {
+    "original_text": "Nachgewiesene Nutzbarkeit je Zielplattform und Hilfsmittel oder konkrete Blockade. Ein Textfeld erfüllt nicht sämtliche F105-Unterfunktionen.",
+    "cells_accounted": 48,
+    "observed_bounded_usability": 6,
+    "documented_blockades": 42,
+    "all_four_original_work_items": true,
+    "unknown_OS_support_preserved": 5,
+    "functional_or_hardware_parity_claimed": false,
+    "all_previously_available_caption_paths_executed": true,
+    "Vision_candidate_rejected_and_reverted": true
+  },
+  "status": "original_research_acceptance_met_with_blockers",
+  "why_open": "Research concluded under original usability OR concrete blockade contract; feature/device/runtime acceptance remains separate, especially#73/#75/#77/#79.",
   "implementation_partial": true,
   "parity": false,
   "dimensions": {
@@ -16,9 +26,9 @@
     "blocked_setup": 31,
     "observed_usable": 6,
     "blocked_host": 2,
-    "unresolved_os_path": 5,
-    "not_exposed_app": 3,
-    "partial_observed_open": 1
+    "blocked_capability_verification": 5,
+    "blocked_app_scope": 3,
+    "blocked_runtime_window_selection": 1
   },
   "cells": [
     {
@@ -30,7 +40,10 @@
       ],
       "boundary": "No enabled/trained assistive session, chosen voice/model, acoustic or call acceptance in the current owner-held physical scope.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPhone",
@@ -41,7 +54,10 @@
       ],
       "boundary": "No enabled OS transcription session or authorized microphone/call fixture; own legible media cues are not OS captions.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPhone",
@@ -52,7 +68,10 @@
       ],
       "boundary": "No configured carrier/region/phone pair and authorized RTT conversation partner; app has no RTT transport.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPhone",
@@ -63,7 +82,10 @@
       ],
       "boundary": "No enabled system dictation, chosen language/model and authorized acoustic session; own Speech/AVAudioEngine recognition is a separate API.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPhone",
@@ -74,7 +96,10 @@
       ],
       "boundary": "No configured and authorized Siri service session. No own shortcut invocation is counted as a Siri conversation.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPhone",
@@ -85,7 +110,10 @@
       ],
       "boundary": "No user-trained phrase or authorized acoustic invocation; AppShortcuts metadata does not train a Vocal Shortcut.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPhone",
@@ -97,7 +125,8 @@
       ],
       "boundary": "Historical29Oct checkpoint, unlocked fresh account-free simulator only; no Siri, physical authentication, multiwindow or other OS-version acceptance.",
       "status": "observed_usable",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "observed_bounded_usability"
     },
     {
       "platform": "iPhone",
@@ -109,7 +138,8 @@
       ],
       "boundary": "Historical22Oct checkpoint; bounded own tone/markers, not general streams, languages, format or acoustic/physical acceptance.",
       "status": "observed_usable",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "observed_bounded_usability"
     },
     {
       "platform": "iPad",
@@ -120,7 +150,10 @@
       ],
       "boundary": "No enabled/trained assistive session, chosen voice/model, acoustic or call acceptance in the current owner-held physical scope.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPad",
@@ -131,7 +164,10 @@
       ],
       "boundary": "No enabled OS transcription session or authorized microphone/call fixture; own legible media cues are not OS captions.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPad",
@@ -142,7 +178,10 @@
       ],
       "boundary": "No configured carrier/region/phone pair and authorized RTT conversation partner; app has no RTT transport.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPad",
@@ -153,7 +192,10 @@
       ],
       "boundary": "No enabled system dictation, chosen language/model and authorized acoustic session; own Speech/AVAudioEngine recognition is a separate API.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPad",
@@ -164,7 +206,10 @@
       ],
       "boundary": "No configured and authorized Siri service session. No own shortcut invocation is counted as a Siri conversation.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPad",
@@ -175,7 +220,10 @@
       ],
       "boundary": "No user-trained phrase or authorized acoustic invocation; AppShortcuts metadata does not train a Vocal Shortcut.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "iPad",
@@ -187,7 +235,8 @@
       ],
       "boundary": "Historical29Oct checkpoint, unlocked fresh account-free simulator only; no Siri, physical authentication, multiwindow or other OS-version acceptance.",
       "status": "observed_usable",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "observed_bounded_usability"
     },
     {
       "platform": "iPad",
@@ -199,7 +248,8 @@
       ],
       "boundary": "Historical22Oct checkpoint; bounded own tone/markers, not general streams, languages, format or acoustic/physical acceptance.",
       "status": "observed_usable",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "observed_bounded_usability"
     },
     {
       "platform": "Mac",
@@ -210,7 +260,10 @@
       ],
       "boundary": "No enabled/trained assistive session, chosen voice/model, acoustic or call acceptance in the current owner-held physical scope. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Authorized functioning interactive Mac UI/runner environment; no single cause inferred from Developer mode state."
     },
     {
       "platform": "Mac",
@@ -221,7 +274,10 @@
       ],
       "boundary": "No enabled OS transcription session or authorized microphone/call fixture; own legible media cues are not OS captions. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Authorized functioning interactive Mac UI/runner environment; no single cause inferred from Developer mode state."
     },
     {
       "platform": "Mac",
@@ -232,7 +288,10 @@
       ],
       "boundary": "No configured carrier/region/phone pair and authorized RTT conversation partner; app has no RTT transport. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Authorized functioning interactive Mac UI/runner environment; no single cause inferred from Developer mode state."
     },
     {
       "platform": "Mac",
@@ -243,7 +302,10 @@
       ],
       "boundary": "No enabled system dictation, chosen language/model and authorized acoustic session; own Speech/AVAudioEngine recognition is a separate API. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Authorized functioning interactive Mac UI/runner environment; no single cause inferred from Developer mode state."
     },
     {
       "platform": "Mac",
@@ -254,7 +316,10 @@
       ],
       "boundary": "No configured and authorized Siri service session. No own shortcut invocation is counted as a Siri conversation. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Authorized functioning interactive Mac UI/runner environment; no single cause inferred from Developer mode state."
     },
     {
       "platform": "Mac",
@@ -265,7 +330,10 @@
       ],
       "boundary": "No user-trained phrase or authorized acoustic invocation; AppShortcuts metadata does not train a Vocal Shortcut. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Authorized functioning interactive Mac UI/runner environment; no single cause inferred from Developer mode state."
     },
     {
       "platform": "Mac",
@@ -278,7 +346,10 @@
       ],
       "boundary": "Mac interactive desktop unavailable and zero-method runner attempts; no direct perform substitution for OS use.",
       "status": "blocked_host",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Authorized functioning interactive Mac UI/runner environment; no single cause inferred from Developer mode state."
     },
     {
       "platform": "Mac",
@@ -291,7 +362,10 @@
       ],
       "boundary": "Mac interactive desktop unavailable; actual Mac selection/cue/return not executed.",
       "status": "blocked_host",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Authorized functioning interactive Mac UI/runner environment; no single cause inferred from Developer mode state."
     },
     {
       "platform": "Apple TV",
@@ -302,9 +376,13 @@
         "os-speech-settings-inventory-20261029.md",
         "fresh-TV-guide"
       ],
-      "boundary": "Native simulator menu also omits documented VoiceOver; catalog/menu/search absence is not qualified negative evidence. A reliable target-specific capability route remains unresolved.",
-      "status": "unresolved_os_path",
-      "parity": false
+      "boundary": "Native simulator menu also omits documented VoiceOver; catalog/menu/search absence is not qualified negative evidence. A reliable target-specific capability route remains unresolved. No reliable target-specific affirmative route in the bounded official-source inventory; unavailable trustworthy capability enumeration and owner-held configured/physical/acoustic scope prevent usability acceptance here. This is a verification blockade, not a negative OS/API finding.",
+      "status": "blocked_capability_verification",
+      "parity": false,
+      "support_status": "unknown_not_unsupported",
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple TV",
@@ -315,7 +393,10 @@
       ],
       "boundary": "No configured FaceTime endpoint, authorized counterpart, matching hardware and language/region acceptance; not ambient or own podcast captions.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple TV",
@@ -326,9 +407,13 @@
         "os-speech-settings-inventory-20261029.md",
         "bounded-TV-Vision-searches"
       ],
-      "boundary": "Same failed known-positive menu control; guide searches return other-platform/global-nav matches, not a TV RTT transport.",
-      "status": "unresolved_os_path",
-      "parity": false
+      "boundary": "Same failed known-positive menu control; guide searches return other-platform/global-nav matches, not a TV RTT transport. No reliable target-specific affirmative route in the bounded official-source inventory; unavailable trustworthy capability enumeration and owner-held configured/physical/acoustic scope prevent usability acceptance here. This is a verification blockade, not a negative OS/API finding.",
+      "status": "blocked_capability_verification",
+      "parity": false,
+      "support_status": "unknown_not_unsupported",
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple TV",
@@ -339,7 +424,10 @@
       ],
       "boundary": "No authorized remote microphone / actual Siri-remote dictation session; TV assistant keyboard does not establish dictation.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple TV",
@@ -351,7 +439,10 @@
       ],
       "boundary": "No configured authorized Siri service/keyboard pairing or real system request; own local assistant is not Siri.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple TV",
@@ -361,9 +452,13 @@
         "bounded-Vocal-Shortcuts-searches",
         "N7"
       ],
-      "boundary": "Search results describe Voice Isolation/Recognize My Voice, not user-trained Vocal Shortcuts. No unsupported-OS conclusion. Target route still unresolved.",
-      "status": "unresolved_os_path",
-      "parity": false
+      "boundary": "Search results describe Voice Isolation/Recognize My Voice, not user-trained Vocal Shortcuts. No unsupported-OS conclusion. Target route still unresolved. No reliable target-specific affirmative route in the bounded official-source inventory; unavailable trustworthy capability enumeration and owner-held configured/physical/acoustic scope prevent usability acceptance here. This is a verification blockade, not a negative OS/API finding.",
+      "status": "blocked_capability_verification",
+      "parity": false,
+      "support_status": "unknown_not_unsupported",
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple TV",
@@ -373,9 +468,12 @@
         "Sources/App/AssistantAppShortcut.swift",
         "assistant-app-shortcut.md"
       ],
-      "boundary": "Concrete app-scope/software omission; TV does not expose this action. No claim that the OS lacks every possible shortcut capability.",
-      "status": "not_exposed_app",
-      "parity": false
+      "boundary": "Concrete app-scope/software omission; TV does not expose this action. No claim that the OS lacks every possible shortcut capability. Concrete current application-scope omission, not a platform prohibition; research records it without claiming implementation.",
+      "status": "blocked_app_scope",
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple TV",
@@ -387,7 +485,8 @@
       ],
       "boundary": "Bounded own tone/timedtext fixture on simulator only; not broad streams, languages, OS LiveCaptions or physical/acoustic acceptance.",
       "status": "observed_usable",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "observed_bounded_usability"
     },
     {
       "platform": "Vision Pro",
@@ -400,7 +499,10 @@
       ],
       "boundary": "No authorized configured call/counterpart or physical device acceptance. Own AVSpeechSynthesizer has no telephony uplink.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Vision Pro",
@@ -411,7 +513,10 @@
       ],
       "boundary": "No enabled authorized OS caption session / acoustic or call fixture; not activated to work around the capture restriction.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Vision Pro",
@@ -421,9 +526,13 @@
         "os-speech-settings-inventory-20261029.md",
         "bounded-TV-Vision-searches"
       ],
-      "boundary": "Native RTT search returns no result, but known visible Live Speech also returns no result; search not qualified as capability enumeration.",
-      "status": "unresolved_os_path",
-      "parity": false
+      "boundary": "Native RTT search returns no result, but known visible Live Speech also returns no result; search not qualified as capability enumeration. No reliable target-specific affirmative route in the bounded official-source inventory; unavailable trustworthy capability enumeration and owner-held configured/physical/acoustic scope prevent usability acceptance here. This is a verification blockade, not a negative OS/API finding.",
+      "status": "blocked_capability_verification",
+      "parity": false,
+      "support_status": "unknown_not_unsupported",
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Vision Pro",
@@ -434,7 +543,10 @@
       ],
       "boundary": "No authorized real microphone/gaze dictation session; no system dictation activated.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Vision Pro",
@@ -445,7 +557,10 @@
       ],
       "boundary": "No configured/authorized system Siri session or actual Siri text request.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Vision Pro",
@@ -456,18 +571,26 @@
       ],
       "boundary": "No user phrase training or acoustic invocation / physical acceptance.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Vision Pro",
       "tool": "Own App Shortcut",
       "support": "Actual OS provider discovered; three cold branches open own assistant from terminated process. No complete cold/warm method passed.",
       "evidence": [
-        "current-Vision-probes"
+        "current-Vision-probes",
+        "vision-shortcut-scene-routing-boundary.md",
+        "verification/vision-shortcut-scene-routing-boundary.json"
       ],
-      "boundary": "Warm source.activate path was occluded; restart-source path visibly fronts Shortcuts but HomeView stays behind after tap. Same HomeViewPID14688/normal args observed; AX field/draft survival is not a visible warm-return PASS. Cause not established; no product change invented.",
-      "status": "partial_observed_open",
-      "parity": false
+      "boundary": "Cold start and actual warm navigation observed; visible warm target stays behind Shortcuts in two identical bound methods, including rejected public scene-routing candidate. Current native/interactive environment has no qualified automatic visible warm path; root cause and other public paths not ruled out. Runtime acceptance continues in#79.",
+      "status": "blocked_runtime_window_selection",
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Existing#79 Vision window/input acceptance with qualified spatial target selection; no automatic warm visibility PASS."
     },
     {
       "platform": "Vision Pro",
@@ -479,7 +602,8 @@
       ],
       "boundary": "Bounded own tone/timedtext fixture on simulator only; not broad streams, languages, OS LiveCaptions or physical/acoustic acceptance.",
       "status": "observed_usable",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "observed_bounded_usability"
     },
     {
       "platform": "Apple Watch",
@@ -490,7 +614,10 @@
       ],
       "boundary": "No enabled voice/download/accessibility shortcut, acoustic/physical session or authorized call. WatchRoot has no own assistant/TTS.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple Watch",
@@ -501,7 +628,10 @@
       ],
       "boundary": "No paired nearby same-account iPhone, selected audio hardware and authorized iPhone-microphone Live Listen session.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple Watch",
@@ -512,7 +642,10 @@
       ],
       "boundary": "No configured Cellular carrier/region/watch/iPhone setup or authorized conversation counterpart; simulator is not carrier acceptance.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple Watch",
@@ -523,7 +656,10 @@
       ],
       "boundary": "No real enabled Dictation/acoustic session; current WatchRoot has no assistant composer to claim an integration.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple Watch",
@@ -534,7 +670,10 @@
       ],
       "boundary": "Siri setup on iPhone and internet required by guide; no configured authorized paired service session/request.",
       "status": "blocked_setup",
-      "parity": false
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple Watch",
@@ -544,9 +683,13 @@
         "E6",
         "bounded-Vocal-Shortcuts-searches"
       ],
-      "boundary": "No positive Watch user-trained Vocal Shortcuts route established; generic Shortcuts/Siri is not substituted.",
-      "status": "unresolved_os_path",
-      "parity": false
+      "boundary": "No positive Watch user-trained Vocal Shortcuts route established; generic Shortcuts/Siri is not substituted. No reliable target-specific affirmative route in the bounded official-source inventory; unavailable trustworthy capability enumeration and owner-held configured/physical/acoustic scope prevent usability acceptance here. This is a verification blockade, not a negative OS/API finding. E6 establishes compatible iPhone shortcuts/Siri only, not Watch Vocal-Shortcut training; no Watch-menu negative test claimed.",
+      "status": "blocked_capability_verification",
+      "parity": false,
+      "support_status": "unknown_not_unsupported",
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple Watch",
@@ -556,9 +699,12 @@
         "Sources/App/AssistantAppShortcut.swift",
         "Sources/App/WatchRoot.swift"
       ],
-      "boundary": "Concrete app-scope/software omission, not proof of OS-wide impossibility.",
-      "status": "not_exposed_app",
-      "parity": false
+      "boundary": "Concrete app-scope/software omission, not proof of OS-wide impossibility. Concrete current application-scope omission, not a platform prohibition; research records it without claiming implementation.",
+      "status": "blocked_app_scope",
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     },
     {
       "platform": "Apple Watch",
@@ -568,9 +714,12 @@
         "Sources/App/WatchRoot.swift",
         "podcast-source-captions.md"
       ],
-      "boundary": "Concrete app-scope/software omission; phone captions do not count as Watch UI.",
-      "status": "not_exposed_app",
-      "parity": false
+      "boundary": "Concrete app-scope/software omission; phone captions do not count as Watch UI. Concrete current application-scope omission, not a platform prohibition; research records it without claiming implementation.",
+      "status": "blocked_app_scope",
+      "parity": false,
+      "research_acceptance_basis": "concrete_documented_blockade",
+      "functional_acceptance": "not_accepted",
+      "continuation": "Qualified target/device/service/acoustic setup after existing hold, or a reliable affirmative public route; current app-scope omissions remain explicit."
     }
   ]
 }

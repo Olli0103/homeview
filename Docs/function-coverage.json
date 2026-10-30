@@ -3375,7 +3375,8 @@
       "Eigener parameterloser App-Shortcut-Einstieg für iOS/macOS/visionOS und tatsächliche quellseitige Podcast-Untertitel im bestehenden AVPlayer-Pfad. Native/Simulator-Nachweise von OS-Hilfsmitteln getrennt; echte Siri-/Shortcuts-, Live-Speech-/Live-Captions-/Vocal-Shortcut-/RTT- und Geräteabnahmen bleiben offen.",
       "29. Oktober: tatsächliche eigene App-Shortcut-Entdeckung und OS-Kalt-/Warmaufrufe auf iPad/iPhone bestanden, normale App ohne UITesting-Flags. Hintergrund löscht Entwurf, kein implizites Senden/Mock-Befehl. Zwei finale UI-Ausführungen/vier OS-Aktionen, Produktbytes unverändert. Docs/assistant-os-shortcut.md. Kein Siri-/Vocal-Shortcut-, OS-Live-Speech/-Captions-/RTT-/Hardware-PASS; #74 offen.",
       "29. Oktober: Neun aktuelle Apple-Guide-Haupttexte ergänzen einzelne Plattformgrenzen; zwölf Live-Speech-/RTT-Zellen bilanziert. Vision-Live-Speech calls-only; TV-FaceTime-Captions und Watch-iPhone-Live-Listen-Fernanzeige getrennt. Docs/speech-platform-update-20261029.md. Drei OS-Pfade und tatsächliche Hilfsmittel-/Telefonieabnahme offen; keine Parity.",
-      "30.Oktober: vollständige48-Zellen-Matrix, eigene TV-/Vision-Quelluntertitel nativ bestanden; zwei TV-only Fokuskorrekturen. Acht aktuelle Caption-Methoden2PASS6FAIL, zwei getrennte akzeptierte Pins und fünf finale SDKs. Keine OS-LiveSpeech/-Captions-/RTT-/Siri-/physische Abnahme; Vision-OS-Warmzielwahl offen. Docs/tv-vision-source-captions.md und Docs/speech-acceptance-ledger-20261030.md. #74 bleibt offen."
+      "30.Oktober: vollständige48-Zellen-Matrix, eigene TV-/Vision-Quelluntertitel nativ bestanden; zwei TV-only Fokuskorrekturen. Acht aktuelle Caption-Methoden2PASS6FAIL, zwei getrennte akzeptierte Pins und fünf finale SDKs. Keine OS-LiveSpeech/-Captions-/RTT-/Siri-/physische Abnahme; Vision-OS-Warmzielwahl offen. Docs/tv-vision-source-captions.md und Docs/speech-acceptance-ledger-20261030.md. #74 bleibt offen.",
+      "30.Oktober: ursprüngliche Research-Abnahme von#74 mit48Einzelzellen Nutzbarkeit ODER konkrete Blockade erfüllt;6begrenzte eigene positive Pfade/42benannte Grenzen. Keine funktionale/physische Parity. Vision-Warmzielwahl bleibt nach erfolglosem zurückgenommenem öffentlichen Kandidaten Runtimegrenze bei#79; fünf OS-Unterstützungen ausdrücklich unbekannt. Docs/speech-research-acceptance-20261030.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3403,8 +3404,16 @@
       "Docs/speech-acceptance-ledger-20261030.md",
       "Docs/verification/speech-acceptance-ledger-20261030.json",
       "Docs/tv-vision-source-captions.md",
-      "Docs/verification/tv-vision-source-captions.json"
-    ]
+      "Docs/verification/tv-vision-source-captions.json",
+      "Docs/speech-research-acceptance-20261030.md",
+      "Docs/verification/speech-research-acceptance-20261030.json",
+      "Docs/vision-shortcut-scene-routing-boundary.md"
+    ],
+    "research_assessment": {
+      "original_scope_complete_with_blockers": true,
+      "functional_or_device_acceptance": false,
+      "evidence": "Docs/verification/speech-research-acceptance-20261030.json"
+    }
   },
   {
     "id": "F105",
@@ -3419,7 +3428,8 @@
       "Eigener parameterloser App-Shortcut-Einstieg für iOS/macOS/visionOS und tatsächliche quellseitige Podcast-Untertitel im bestehenden AVPlayer-Pfad. Native/Simulator-Nachweise von OS-Hilfsmitteln getrennt; echte Siri-/Shortcuts-, Live-Speech-/Live-Captions-/Vocal-Shortcut-/RTT- und Geräteabnahmen bleiben offen.",
       "29. Oktober: tatsächliche eigene App-Shortcut-Entdeckung und OS-Kalt-/Warmaufrufe auf iPad/iPhone bestanden, normale App ohne UITesting-Flags. Hintergrund löscht Entwurf, kein implizites Senden/Mock-Befehl. Zwei finale UI-Ausführungen/vier OS-Aktionen, Produktbytes unverändert. Docs/assistant-os-shortcut.md. Kein Siri-/Vocal-Shortcut-, OS-Live-Speech/-Captions-/RTT-/Hardware-PASS; #74 offen.",
       "29. Oktober: Neun aktuelle Apple-Guide-Haupttexte ergänzen einzelne Plattformgrenzen; zwölf Live-Speech-/RTT-Zellen bilanziert. Vision-Live-Speech calls-only; TV-FaceTime-Captions und Watch-iPhone-Live-Listen-Fernanzeige getrennt. Docs/speech-platform-update-20261029.md. Drei OS-Pfade und tatsächliche Hilfsmittel-/Telefonieabnahme offen; keine Parity.",
-      "30.Oktober: vollständige48-Zellen-Matrix, eigene TV-/Vision-Quelluntertitel nativ bestanden; zwei TV-only Fokuskorrekturen. Acht aktuelle Caption-Methoden2PASS6FAIL, zwei getrennte akzeptierte Pins und fünf finale SDKs. Keine OS-LiveSpeech/-Captions-/RTT-/Siri-/physische Abnahme; Vision-OS-Warmzielwahl offen. Docs/tv-vision-source-captions.md und Docs/speech-acceptance-ledger-20261030.md. #74 bleibt offen."
+      "30.Oktober: vollständige48-Zellen-Matrix, eigene TV-/Vision-Quelluntertitel nativ bestanden; zwei TV-only Fokuskorrekturen. Acht aktuelle Caption-Methoden2PASS6FAIL, zwei getrennte akzeptierte Pins und fünf finale SDKs. Keine OS-LiveSpeech/-Captions-/RTT-/Siri-/physische Abnahme; Vision-OS-Warmzielwahl offen. Docs/tv-vision-source-captions.md und Docs/speech-acceptance-ledger-20261030.md. #74 bleibt offen.",
+      "30.Oktober: ursprüngliche Research-Abnahme von#74 mit48Einzelzellen Nutzbarkeit ODER konkrete Blockade erfüllt;6begrenzte eigene positive Pfade/42benannte Grenzen. Keine funktionale/physische Parity. Vision-Warmzielwahl bleibt nach erfolglosem zurückgenommenem öffentlichen Kandidaten Runtimegrenze bei#79; fünf OS-Unterstützungen ausdrücklich unbekannt. Docs/speech-research-acceptance-20261030.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -3449,7 +3459,15 @@
       "Docs/speech-acceptance-ledger-20261030.md",
       "Docs/verification/speech-acceptance-ledger-20261030.json",
       "Docs/tv-vision-source-captions.md",
-      "Docs/verification/tv-vision-source-captions.json"
-    ]
+      "Docs/verification/tv-vision-source-captions.json",
+      "Docs/speech-research-acceptance-20261030.md",
+      "Docs/verification/speech-research-acceptance-20261030.json",
+      "Docs/vision-shortcut-scene-routing-boundary.md"
+    ],
+    "research_assessment": {
+      "original_scope_complete_with_blockers": true,
+      "functional_or_device_acceptance": false,
+      "evidence": "Docs/verification/speech-research-acceptance-20261030.json"
+    }
   }
 ]

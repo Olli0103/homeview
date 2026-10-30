@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-30",
+  "product_base": "90f3540b9f047693605aca19f770a4d3d5f053f6",
+  "result": "Rejected candidate; no new product implementation delivered.",
+  "native_methods": {
+    "executed": 2,
+    "passed": 0,
+    "failed": 2,
+    "additional_launcher_failure_before_methods": 1,
+    "rows": [
+      {
+        "id": "before",
+        "exit_code": 65,
+        "methods_executed": 0,
+        "captures": 0,
+        "captures_within_held_states": false,
+        "inputs_unchanged": true,
+        "archive_full_read_back": true,
+        "archive_sha256": "d3314ea09dccd624135f675581aa877116df8a39a9afdbfd54386a66cabe652e",
+        "installed_own_app_verified": true,
+        "runner_verified": false,
+        "same_pid_at_three_states": false,
+        "pid": null
+      },
+      {
+        "id": "before2",
+        "exit_code": 65,
+        "methods_executed": 1,
+        "captures": 6,
+        "captures_within_held_states": true,
+        "inputs_unchanged": true,
+        "archive_full_read_back": true,
+        "archive_sha256": "e633285d17ddd10b50bb3db4dfd582dc1e0b5fffd65fbacb919034d20eca31b6",
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "same_pid_at_three_states": true,
+        "pid": 35923
+      },
+      {
+        "id": "candidate",
+        "exit_code": 65,
+        "methods_executed": 1,
+        "captures": 6,
+        "captures_within_held_states": true,
+        "inputs_unchanged": true,
+        "archive_full_read_back": true,
+        "archive_sha256": "2535bd8aeafcea211c84e45ffd67d80ef847938685aca8bf6e8eeb1fa198a858",
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "same_pid_at_three_states": true,
+        "pid": 39199
+      }
+    ]
+  },
+  "observed_boundary": {
+    "cold": "Own native OS action starts terminated process and opens composer.",
+    "warm": "Composer absent on own face before OS action, present after action; actual held camera still shows Shortcuts in front. Navigation exists, visible spatial warm return is not accepted.",
+    "last_assertion": "Final thermostat check fails because intended control not reached; no final post-warm68-degree PASS.",
+    "no_negative_API_claim": "Failed candidate does not prove visionOS/API impossibility or a single root cause."
+  },
+  "controlled_candidate": {
+    "files_changed": [
+      "Sources/App/AssistantAppShortcut.swift",
+      "Sources/App/HomeViewApp.swift"
+    ],
+    "other_identical_inputs": 240,
+    "same_native_test_bytes": true,
+    "public_api": "TargetContentProvidingIntent plus handlesExternalEvents/onAppIntentExecution scene registration, Vision-only.",
+    "callback": "No-op; existing authenticated/cancellable perform/RAM request remained sole mutator.",
+    "invariants": {
+      "perform_and_request_and_auth_source_byte_unchanged": true,
+      "one_parameterless_action_metadata_exactly_equal_before": true,
+      "caveat": "Equal action metadata alone is not Scene runtime success; current native candidate still pending.",
+      "only_two_Vision_guarded_product_sources_changed": true,
+      "direct_perform_calls_from_probe": 0,
+      "scene_callback_requests_or_mutates_model": false,
+      "existing_external_activity_allowing_wildcard_preserved": true
+    },
+    "reverted": true
+  },
+  "actual_virtual_camera_review": {
+    "decoded": 12,
+    "fully_visible_contacts_reviewed": 2,
+    "before_face_source_return_and_candidate_return_direct_full_frames_reviewed": true,
+    "images_private": true
+  },
+  "restoration": {
+    "published_head": "90f3540b9f047693605aca19f770a4d3d5f053f6",
+    "all242published_inputs_exact": true,
+    "temporary_normal_sandbox_probe_removed": true,
+    "both_product_candidate_files_reverted": true,
+    "active_worktree_clean": true,
+    "owned_QA_published_App_installed_byte_verified": true,
+    "own_candidate_process_termination_code": 0,
+    "no_new_Core_or_SDK_claim_after_exact_revert": true
+  },
+  "fresh_host_observations": {
+    "observed_after": "2026-10-30T08:24:23.751224+00:00",
+    "DevToolsSecurity": "Developer mode is currently disabled.",
+    "gateway_computer": "Gateway computer is unavailable; enable its computer provider and desktop session",
+    "single_timeout_root_cause_proved": false,
+    "configuration_changed": false
+  },
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/appintents/directing-app-intents-to-your-apps-scenes",
+      "status": 200,
+      "truncated": false,
+      "text_sha256": "bae2ebae60b5f02c8be7d8b338211705707949dca27b3a70eb98c788ad6b31ab",
+      "used_for_routing_claim": true
+    },
+    {
+      "url": "https://developer.apple.com/documentation/swiftui/view/onappintentexecution(_:perform:)",
+      "status": 200,
+      "truncated": false,
+      "text_sha256": "1c4cdf5523d1a5ef8fd3feaa002f6a8fadcc4cf8bb584c1df14a5f74ac51e2bd",
+      "used_for_routing_claim": true
+    },
+    {
+      "url": "https://developer.apple.com/videos/play/wwdc2025/275/",
+      "status": 200,
+      "truncated": true,
+      "text_sha256": "97f179493e40b34d1c0ed90f85af7db01831211f7e33f560066df1807300baf4",
+      "used_for_routing_claim": false
+    }
+  ],
+  "no_new_Core_or_five_SDK_claim": true,
+  "physical_signing_Home_holds_unchanged": true
+}

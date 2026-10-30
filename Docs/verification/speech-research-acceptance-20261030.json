@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-30",
+  "original_issue": 74,
+  "original_acceptance": "Nachgewiesene Nutzbarkeit je Zielplattform und Hilfsmittel oder konkrete Blockade. Ein Textfeld erfüllt nicht sämtliche F105-Unterfunktionen.",
+  "criteria_unchanged": true,
+  "research_accepted_with_blockers": true,
+  "function_and_device_parity": false,
+  "counts": {
+    "blocked_setup": 31,
+    "observed_usable": 6,
+    "blocked_host": 2,
+    "blocked_capability_verification": 5,
+    "blocked_app_scope": 3,
+    "blocked_runtime_window_selection": 1
+  },
+  "work_item_evidence": [
+    "App versus OS support in48cells",
+    "Public AppIntents and AVFoundation own-source captions reviewed and executed where available",
+    "Siri/foreign telephony never claimed as own implementation",
+    "Twelve LiveSpeech/RTT target cells individually accounted"
+  ],
+  "open_acceptance_owners": {
+    "73": "Actual assistive-flow acceptance and training",
+    "75": "On-device microphone/model/voice hardware acceptance",
+    "77": "Owner-held signing/physical iPad acceptance",
+    "79": "Mac host interaction and Vision spatial window/input runtime acceptance"
+  },
+  "unknown_support_is_not_unsupported": true,
+  "rejected_scene_candidate": "vision-shortcut-scene-routing-boundary.json",
+  "product_remains": "90f3540b9f047693605aca19f770a4d3d5f053f6",
+  "review_basis": "Original research acceptance permits an evidenced blockade; no requirement has been removed and no failed method relabeled PASS."
+}
