@@ -261,6 +261,137 @@ extension HomeViewUITests {
 }
 
 extension HomeViewUITests {
+  private func revealPhotoTypeElement(_ element:XCUIElement) {
+    XCTAssertTrue(element.waitForExistence(timeout:5))
+    let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"].frame
+    let inside=recipeTypeScrollContains(element,scroll)
+    var trace:[[String:Any]]=[]
+    defer {
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:trace,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="photo-type-scroll-trace-"+element.identifier;a.lifetime = .keepAlways;add(a)
+    }
+    for _ in 0..<72 {
+      // Keep text and switches away from the rounded viewport corners. A long
+      // paragraph is an excerpt probe, not simultaneous whole-text visibility.
+      let clip=inside ? scroll.frame.intersection(viewport).insetBy(dx:0,dy:40):viewport
+      let f=element.frame
+      trace.append(["frame":[f.minX,f.minY,f.width,f.height],"clip":[clip.minX,clip.minY,clip.width,clip.height]])
+      if axContains(clip,f) || (f.height>clip.height && f.intersection(clip).height>=min(44,clip.height)) {return}
+      guard inside else {XCTFail("Photo target outside its containing viewport");return}
+      let gap=f.minY<clip.minY ? f.minY-clip.minY-10:f.maxY-clip.maxY+10
+      let distance=min(max(abs(gap),24),clip.height*0.8)*(gap<0 ? -1:1)
+      let start=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:clip.minX+8,dy:clip.midY+distance/2))
+      let end=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:clip.minX+8,dy:clip.midY-distance/2))
+      start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    viewportShot("photo-type-scroll-failure-"+element.identifier)
+    XCTFail("Photo target not reached within the declared finite scroll budget")
+  }
+  private func photoTypeOpenSyntheticAlbumChoices() {
+    let load=app.buttons["photos.shared.load"]
+    revealPhotoTypeElement(load);load.tap()
+    if app.buttons["device.unlock"].waitForExistence(timeout:2) {
+      tap("device.unlock");revealPhotoTypeElement(load);load.tap()
+    }
+    XCTAssertTrue(app.buttons["photos.shared.fixture"].waitForExistence(timeout:6))
+  }
+  private func photoTypeObserve(_ state:String,_ element:XCUIElement,control:Bool=false) {
+    revealPhotoTypeElement(element)
+    RunLoop.current.run(until:Date().addingTimeInterval(0.5))
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
+    func row(_ e:XCUIElement)->[String:Any] {
+      let clip=recipeTypeScrollContains(e,scroll) ? scroll.frame.intersection(viewport):viewport
+      return ["id":e.identifier,"label":e.label,"frame":box(e.frame),"clip":box(clip),
+        "fully_in_clip":axContains(clip,e.frame),"visible_intersection":box(e.frame.intersection(clip))]
+    }
+    var report:[String:Any]=["state":state,"control_envelope_not_font_metric":control,"target":row(element)]
+    if control {
+      let text=element.staticTexts.firstMatch
+      report["text_child_exists"]=text.exists
+      if text.exists {report["text_child"]=row(text)}
+    }
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="photo-type-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
+    viewportShot("photo-type-"+state)
+  }
+  func testPhotoSettingsSystemTextSizeInventoryWithoutLibrary() {
+    continueAfterFailure=false
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    photoTypeObserve("positive-settings-heading",app.staticTexts["Settings"])
+    photoTypeObserve("heading",app.staticTexts["Photos face"])
+    photoTypeObserve("picker-policy",app.staticTexts.matching(NSPredicate(format:"label == %@",
+      "The system photo picker shares only the image you choose. Mock tests never open your photo library.")).firstMatch)
+    photoTypeObserve("choose-control",app.buttons.matching(NSPredicate(format:"label CONTAINS %@","Choose Photos")).firstMatch,control:true)
+    photoTypeObserve("album-locked-control",app.buttons["photos.shared.load"],control:true)
+    photoTypeObserve("demo-control",app.buttons["photos.demo"],control:true)
+    let gallery=app.buttons["photos.gallery"]
+    photoTypeObserve("gallery-control",gallery,control:true)
+    activateRecipeTypeControl(gallery)
+    XCTAssertTrue(app.staticTexts["photo.index"].waitForExistence(timeout:8))
+    XCTAssertTrue(app.staticTexts["photo.index"].label.contains("OF 2"))
+    albumSettings()
+    let rotate=app.switches["photos.rotate"]
+    photoTypeObserve("rotation-control",rotate,control:true)
+    revealPhotoTypeElement(rotate);rotate.tap();XCTAssertEqual(rotate.value as? String,"0")
+    let remove=app.buttons["Remove Selected Photo"]
+    photoTypeObserve("remove-control",remove,control:true)
+    activateRecipeTypeControl(remove)
+    XCTAssertFalse(app.buttons["photos.layout.reset"].exists)
+    XCTAssertFalse(app.switches["photos.rotate"].exists)
+  }
+  func testPhotoLayoutSystemTextSizeInventoryKeepsAdjustAndReset() {
+    continueAfterFailure=false
+    launch(["--photo-layout-fixture","edges","--photo-layout-settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    photoTypeObserve("position-heading",app.staticTexts["Clock position"])
+    let top=app.buttons["photos.clock.top"],bottom=app.buttons["photos.clock.bottom"]
+    photoTypeObserve("top-control",top,control:true)
+    activateRecipeTypeControl(top);XCTAssertEqual(top.value as? String,"Selected")
+    activateRecipeTypeControl(bottom);XCTAssertEqual(bottom.value as? String,"Selected")
+    let automatic=app.switches["photos.crop.auto"]
+    photoTypeObserve("automatic-control",automatic,control:true)
+    revealPhotoTypeElement(automatic);automatic.tap();XCTAssertEqual(automatic.value as? String,"0")
+    photoTypeObserve("crop-policy",app.staticTexts["Adjust the crop for this photo. Automatic framing preserves detected subjects."])
+    let horizontal=app.sliders["photos.crop.horizontal"],vertical=app.sliders["photos.crop.vertical"]
+    photoTypeObserve("horizontal-control",horizontal,control:true)
+    revealRecipeTypeElement(horizontal,horizontalMargin:0);horizontal.adjust(toNormalizedSliderPosition:0.85)
+    photoTypeObserve("vertical-control",vertical,control:true)
+    revealRecipeTypeElement(vertical,horizontalMargin:0);vertical.adjust(toNormalizedSliderPosition:0.2)
+    let reset=app.buttons["photos.layout.reset"]
+    photoTypeObserve("reset-control",reset,control:true)
+    activateRecipeTypeControl(reset)
+    XCTAssertEqual(automatic.value as? String,"1")
+    XCTAssertEqual(app.buttons["photos.clock.automatic"].value as? String,"Selected")
+    tap("nav.faces")
+    XCTAssertTrue(app.staticTexts["photo.layout.test"].label.contains("full=true"))
+  }
+  func testSharedAlbumSystemTextSizeInventoryKeepsExplicitLinkAndDisconnect() {
+    continueAfterFailure=false
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    photoTypeOpenSyntheticAlbumChoices()
+    photoTypeObserve("album-load-control",app.buttons["photos.shared.load"],control:true)
+    photoTypeObserve("album-notice",app.staticTexts["photos.shared.display.notice"])
+    photoTypeObserve("album-first-choice",app.buttons["photos.shared.fixture"],control:true)
+    photoTypeObserve("album-second-choice",app.buttons["photos.shared.second"],control:true)
+    linkSyntheticAlbum()
+    waitForPhotoMetadata("assets=fixture-a,fixture-b")
+    albumSettings()
+    photoTypeObserve("album-linked-title",app.staticTexts["Synthetic shared album"])
+    photoTypeObserve("album-linked-notice",app.staticTexts.matching(NSPredicate(format:"label == %@",
+      "New photos from this album appear on this shared display while HomeView is active. Up to ten photos are kept.")).firstMatch)
+    photoTypeObserve("album-status",app.staticTexts["photos.shared.status"])
+    let refresh=app.buttons["photos.shared.refresh"]
+    photoTypeObserve("album-refresh-control",refresh,control:true)
+    activateRecipeTypeControl(refresh)
+    let disconnect=app.buttons["photos.shared.disconnect"]
+    photoTypeObserve("album-disconnect-control",disconnect,control:true)
+    activateRecipeTypeControl(disconnect)
+    XCTAssertFalse(refresh.exists)
+    XCTAssertFalse(app.buttons["Remove Selected Photo"].exists)
+  }
+}
+
+extension HomeViewUITests {
   private func verifyNativeMotionSurface(_ scene:String)throws->Int {
     guard app.wait(for:.runningForeground,timeout:10),app.otherElements["reference.viewport"].waitForExistence(timeout:5) else {throw NSError(domain:"HomeView.NativeMotionProbe",code:10)}
     let surface:XCUIElement

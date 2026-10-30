@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Foto-/Album-Einstellungen: Systemschrift und Kontrast](photo-controls-accessibility.md): 18 aktuelle UI-Ausführungen/fünf SDKs grün. 26 native Textbedingungen wachsen; 18 qualifizierte Kontrastbedingungen 7,00:1, zwei XXXL-Ganztext-ROIs bleiben unqualifiziert. Keine pauschale Normalpixel-/Hilfsmittel-/Original-Parity; #73/#11 offen.
+
 - [Native Fotoauswahl auf Fenster-Ebene geschützt, iPhone-Tastaturebene offen](native-photos-snapshot.md): zehn aktuelle neue UI-Ausführungen mit neun PASS/einem ausdrücklich offenen 98%-Keyboardguard; zwölf bestehende Regressionen und fünf SDKs grün. Bild-/Suchinhalt verdeckt, ausstehende Auswahl/Suchentwurf erhalten. Kein vollständiger #67-Abschluss.
 
 - [Tatsächliches OS-Reduce-Motion statt bloßem Launchflag](system-reduce-motion.md): acht PID-gebundene OFF→ON→OFF-Fälle auf beiden Simulatoren; acht exakt stille und16 bewegte Regionpaare. Alle17 Präferenz-Ausführungen zurückgestellt/zurückgelesen,165 Produktinputs unverändert. Frühere ungemessene Lifetime-Marker und ein Indexfehler bleiben getrennt; #73 offen.
@@ -157,7 +159,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs oder einen ausdr
 | [#64](https://github.com/Olli0103/homeview/issues/64) | Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
 | [#65](https://github.com/Olli0103/homeview/issues/65) | Control Center und Settings mit echten Zuständen abgleichen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#66](https://github.com/Olli0103/homeview/issues/66) | Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen | Offen. Echte Geräte-/Haushaltsidentitätsbindung und persönliche Freigabe nicht vollständig nachgewiesen. |
-| [#67](https://github.com/Olli0103/homeview/issues/67) | Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen | Offen. Kalender, dokumentierte Sheets/Eingaberouten und zwei generische native Fehleralerts im Simulator geschützt; weitere OS-Präsentationen, Präsenz/Medien/Unterbrechungen und physische Snapshots offen. |
+| [#67](https://github.com/Olli0103/homeview/issues/67) | Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen | Offen. Kalender, dokumentierte Sheets/Eingaberouten, zwei generische native Fehleralerts und nativer Foto-Picker-Inhalt im Simulator geschützt; separate iPhone-Picker-Tastaturebene, weitere OS-Präsentationen, Präsenz/Medien/Unterbrechungen und physische Snapshots offen. |
 | [#68](https://github.com/Olli0103/homeview/issues/68) | Gastberechtigungen für Haus, Wetter, Timer und Musik definieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#69](https://github.com/Olli0103/homeview/issues/69) | Secure-Exclaves-Identitätsverarbeitung als Hardwaregrenze dokumentieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#70](https://github.com/Olli0103/homeview/issues/70) | Private Cloud Compute als externe Systemfähigkeit bilanzieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |

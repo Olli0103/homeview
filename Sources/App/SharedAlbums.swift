@@ -288,6 +288,9 @@ func makeAlbumPhotoProvider() -> any AlbumPhotoProvider {
 
 struct SharedAlbumControls: View {
   @Environment(AppModel.self) private var model
+  @ScaledMetric(relativeTo:.body) private var actionSize:CGFloat=21
+  @ScaledMetric(relativeTo:.footnote) private var statusSize:CGFloat=16
+  @ScaledMetric(relativeTo:.headline) private var albumTitleSize:CGFloat=19
   @State private var task: Task<Void,Never>?
   @State private var importing = false
   private func importOnce(_ album: DisplayAlbum) {
@@ -309,7 +312,7 @@ struct SharedAlbumControls: View {
           .accessibilityIdentifier("photos.shared.load")
         if !model.albumCatalogue.albums.isEmpty {
           Text("Keep updated lets new photos from the chosen album appear on this shared display while HomeView is active. Up to ten copies are kept until you disconnect.")
-            .font(.system(size:16)).foregroundStyle(.secondary)
+            .font(.system(size:statusSize)).foregroundStyle(.black.opacity(0.65))
             .accessibilityIdentifier("photos.shared.display.notice")
         }
         ForEach(model.albumCatalogue.albums) { album in
@@ -322,19 +325,19 @@ struct SharedAlbumControls: View {
         }
       }
       if !model.albumCatalogue.status.isEmpty {
-        Text(model.albumCatalogue.status).font(.system(size:16)).foregroundStyle(.secondary)
+        Text(model.albumCatalogue.status).font(.system(size:statusSize)).foregroundStyle(.black.opacity(0.65))
       }
       if let grant=model.data.albumDisplay {
-        Text(grant.album.title).font(.system(size:19,weight:.semibold))
+        Text(grant.album.title).font(.system(size:albumTitleSize,weight:.semibold))
         Text("New photos from this album appear on this shared display while HomeView is active. Up to ten photos are kept.")
-          .font(.system(size:16)).foregroundStyle(.secondary)
+          .font(.system(size:statusSize)).foregroundStyle(.black.opacity(0.65))
         Button("Update now") { model.refreshDisplayAlbum() }
           .disabled(model.albumUpdates.busy).accessibilityIdentifier("photos.shared.refresh")
         Button("Disconnect and remove linked copies") { model.disconnectDisplayAlbum() }
           .accessibilityIdentifier("photos.shared.disconnect")
       }
       if !model.albumUpdates.status.isEmpty {
-        Text(model.albumUpdates.status).font(.system(size:16)).foregroundStyle(.secondary)
+        Text(model.albumUpdates.status).font(.system(size:statusSize)).foregroundStyle(.black.opacity(0.65))
           .accessibilityIdentifier("photos.shared.status")
       }
       if let report=model.albumFixtureReport {
@@ -344,7 +347,7 @@ struct SharedAlbumControls: View {
         Button("Revoke synthetic Photos access") { model.revokeAlbumFixture() }
           .accessibilityIdentifier("photos.shared.fixture.revoke")
       }
-    }.font(.system(size:21))
+    }.font(.system(size:actionSize))
       .onChange(of:model.connections.personalUnlocked) { _,unlocked in
         if !unlocked { task?.cancel(); model.albumCatalogue.invalidate() }
       }

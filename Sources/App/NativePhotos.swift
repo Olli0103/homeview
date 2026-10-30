@@ -127,25 +127,29 @@ struct PhotoGlassClock: View {
 
 struct NativePhotoControls: View {
   @Environment(AppModel.self) private var model
+  @ScaledMetric(relativeTo:.title2) private var headingSize:CGFloat=24
+  @ScaledMetric(relativeTo:.body) private var policySize:CGFloat=17
+  @ScaledMetric(relativeTo:.body) private var actionSize:CGFloat=21
+  @ScaledMetric(relativeTo:.footnote) private var noteSize:CGFloat=16
   #if canImport(PhotosUI) && !os(tvOS) && !os(watchOS)
     @State private var selection: [PhotosPickerItem] = []
     @State private var loadTask: Task<Void, Never>?
   #endif
   var body: some View {
     VStack(alignment: .leading, spacing: 15) {
-      Text("Photos face").font(.system(size: 24, weight: .semibold))
+      Text("Photos face").font(.system(size: headingSize, weight: .semibold))
       #if os(tvOS)
         Text("Photo selection is unavailable in this app on Apple TV. Demo photos below never open your photo library.")
-          .font(.system(size:17)).foregroundStyle(.gray)
+          .font(.system(size:policySize)).foregroundStyle(.black.opacity(0.65))
       #else
         Text(
           "The system photo picker shares only the image you choose. Mock tests never open your photo library."
-        ).font(.system(size: 17)).foregroundStyle(.gray)
+        ).font(.system(size: policySize)).foregroundStyle(.black.opacity(0.65))
       #endif
       #if canImport(PhotosUI) && !os(tvOS) && !os(watchOS)
         PhotosPicker(selection: $selection, maxSelectionCount: 10, matching: .images) {
           Label("Choose Photos", systemImage: "photo.on.rectangle")
-        }.font(.system(size: 21))
+        }.font(.system(size: actionSize))
           .onChange(of: selection) { _, items in
             loadTask?.cancel()
             let reset=model.localResetGeneration
@@ -184,7 +188,7 @@ struct NativePhotoControls: View {
         #elseif canImport(UIKit)
           if let bytes = UIImage(named: DemoPhotoAssets.portrait)?.pngData() { model.setPhoto(bytes) }
         #endif
-      }.font(.system(size: 21)).accessibilityIdentifier("photos.demo")
+      }.font(.system(size: actionSize)).accessibilityIdentifier("photos.demo")
       Button("Use Demo Gallery") {
         #if os(macOS)
           let images = DemoPhotoAssets.gallery.compactMap { name -> Data? in
@@ -199,7 +203,7 @@ struct NativePhotoControls: View {
           let images: [Data] = []
         #endif
         model.setGallery(images)
-      }.font(.system(size: 21)).accessibilityIdentifier("photos.gallery")
+      }.font(.system(size: actionSize)).accessibilityIdentifier("photos.gallery")
       if model.photoCount > 1 {
         Toggle(
           "Rotate every 30 seconds",
@@ -212,10 +216,10 @@ struct NativePhotoControls: View {
       if model.photoData != nil {
         if model.photoAnalysisFinished && model.photoForegroundData == nil {
           Text("Depth effect is unavailable for this photo. You can adjust the clock position below.")
-            .font(.system(size:16)).foregroundStyle(.secondary)
+            .font(.system(size:noteSize)).foregroundStyle(.black.opacity(0.65))
         }
         PhotoLayoutControls()
-        Button("Remove Selected Photo") { model.setPhoto(nil) }.font(.system(size: 21))
+        Button("Remove Selected Photo") { model.setPhoto(nil) }.font(.system(size: actionSize))
       }
     }
   }
@@ -223,6 +227,10 @@ struct NativePhotoControls: View {
 
 struct PhotoLayoutControls: View {
   @Environment(AppModel.self) private var model
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.headline) private var headingSize:CGFloat=21
+  @ScaledMetric(relativeTo:.body) private var controlSize:CGFloat=18
+  @ScaledMetric(relativeTo:.footnote) private var hintSize:CGFloat=16
   private func change(_ edit: (inout PhotoAdjustment) -> Void) {
     var value = model.photoAdjustment
     edit(&value)
@@ -230,8 +238,10 @@ struct PhotoLayoutControls: View {
   }
   var body: some View {
     VStack(alignment: .leading, spacing: 14) {
-      Text("Clock position").font(.system(size: 21, weight: .semibold))
-      HStack {
+      Text("Clock position").font(.system(size: headingSize, weight: .semibold))
+      let positions=textSize.isAccessibilitySize
+        ? AnyLayout(VStackLayout(alignment:.leading,spacing:10)):AnyLayout(HStackLayout())
+      positions {
         ForEach(PhotoClockPosition.allCases) { position in
           Button(position == .automatic ? "Auto" : position.rawValue.capitalized) {
             change { $0.clock = position }
@@ -247,7 +257,7 @@ struct PhotoLayoutControls: View {
         .accessibilityIdentifier("photos.crop.auto")
       if !model.photoAdjustment.automaticCrop {
         Text("Adjust the crop for this photo. Automatic framing preserves detected subjects.")
-          .font(.system(size: 16)).foregroundStyle(.gray)
+          .font(.system(size: hintSize)).foregroundStyle(.black.opacity(0.65))
         #if !os(tvOS)
           Slider(value: Binding(get: { model.photoAdjustment.horizontal },
                                 set: { value in change { $0.horizontal = value } }), in: 0...1) {
@@ -261,7 +271,7 @@ struct PhotoLayoutControls: View {
       }
       Button("Reset photo layout") { model.adjustPhoto(.init()) }
         .accessibilityIdentifier("photos.layout.reset")
-    }.font(.system(size: 18))
+    }.font(.system(size: controlSize))
   }
 }
 
