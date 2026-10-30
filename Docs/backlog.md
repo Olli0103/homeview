@@ -500,9 +500,9 @@ Abhängigkeiten: HOME-01.
 <a id="home-03"></a>
 ### HOME-03: Türschloss mit echter Autorisierung und Zustandsbestätigung absichern
 
-Demo-Profil schützt ein Mock-Schloss. Das ist keine Autorisierung für ein echtes Schloss.
+Öffentliche Geräteinhaberfreigabe statt Demo-Profil, separate kurzlebige Einmalbestätigung und bestätigte Mock-Zustände einschließlich Unknown/Jammed/Batteriefehler umgesetzt. Ursprünglicher synthetischer Sicherheitsvertrag geprüft; echte Home-/Haushaltsbindung und physische Authentifizierung bleiben gesperrt, keine Original-Parity.
 
-Offen:
+Ursprüngliche Kriterien (synthetischer Softwarevertrag erfüllt; echte Home-Anbindung bleibt gesperrt):
 
 - Geräteauthentifizierung und explizite Bestätigung für Sicherheitsaktionen vorsehen
 - Schlosszustand, unbekannt, blockiert und Batteriefehler behandeln

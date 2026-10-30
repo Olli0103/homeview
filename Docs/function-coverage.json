@@ -899,7 +899,7 @@
       "HOME-03"
     ],
     "current": [
-      "Demo-Profil schützt ein Mock-Schloss. Das ist keine Autorisierung für ein echtes Schloss."
+      "Öffentliche Geräteinhaberfreigabe statt Demo-Profil, separate kurzlebige Einmalbestätigung und bestätigte Mock-Zustände einschließlich Unknown/Jammed/Batteriefehler umgesetzt. Ursprünglicher synthetischer Sicherheitsvertrag geprüft; echte Home-/Haushaltsbindung und physische Authentifizierung bleiben gesperrt, keine Original-Parity."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -910,11 +910,11 @@
       "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
     },
     "target": "iPad core",
-    "implementation_status": "blocked",
+    "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "verified synthetic mock-lock authorization, explicit confirmation, revocation/expiry and provider read-back contract; no real Home",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "real Home and physical authentication not exercised; owner holds and dependencies #23/#66/#77 remain"
     },
     "completion_criteria": [
       "Nur Mock-/Testheim-Sicherheitsfälle, kein echtes Schloss in automatischen Tests. Abgebrochene oder abgelaufene Autorisierung sendet keinen Befehl."

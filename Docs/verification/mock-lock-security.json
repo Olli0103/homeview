@@ -1,0 +1,4422 @@
+{
+  "date": "2026-10-30",
+  "code_commit": "0dc370c264b92121777c01664aef6063741dd5da",
+  "source_digest": "b6273cf1b5b93c2b71bd7b0794e48fcc2fa56ca37af922a5d30c834137acf77b",
+  "source_files": 238,
+  "scope": "Original issue25 expressly accepts Mock/test-home security cases. All realHome/hardware/signing gates remain; F028partial/parityfalse. Device-owner authentication is not named household identity.",
+  "current_UI": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0
+  },
+  "history_UI": {
+    "total": 28,
+    "passed": 23,
+    "failed": 5,
+    "before_product_failure": 1,
+    "retained_instrument_failures": 4,
+    "geometry_only_PASS_not_functional": 1,
+    "earlier_normal_PASS_not_current": 10
+  },
+  "results": [
+    {
+      "label": "before-phone",
+      "current_functional_acceptance": false,
+      "diagnostic_only": false,
+      "source_digest": "0bb54a3107cab0139e9278e8306373a042f807eb0d014945f76a9e3bd632c0f9",
+      "source_count": 235,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "074A25A3-C5F2-440A-9233-928F47D5C809",
+              "deviceName": "HomeView Photo Privacy Phone 20261030",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1793337677.664,
+        "passedTests": 0,
+        "result": "Failed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793337658.361,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertEqual failed: (\"Unlocked\") is not equal to (\"Locked\") - Preparing a security action must not send it",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HomeViewUITests/testMockLockProposalAndCancelNeverSendACommand()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockLockProposalAndCancelNeverSendACommand",
+            "testName": "testMockLockProposalAndCancelNeverSendACommand()"
+          }
+        ],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=074A25A3-C5F2-440A-9233-928F47D5C809",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/before-phone.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockProposalAndCancelNeverSendACommand"
+      ],
+      "started": "2026-10-30T05:20:56.143137+00:00",
+      "ended": "2026-10-30T05:21:17.695648+00:00",
+      "archive_sha256": "e43a66ce21a458162157e51d45116ad2ff4f8d7811bf066c6325abe97add2d6a",
+      "archive_entries": 312,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 0,
+      "log_sha256": "54d586d332715f9f593275bdacce94a816679c5139b8266765cf988e3ed02ee5"
+    },
+    {
+      "label": "current-phone",
+      "current_functional_acceptance": false,
+      "diagnostic_only": false,
+      "source_digest": "606c253097b4028426a0e385feab765946e60f49b58c25d9959ba782a4ffc223",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "074A25A3-C5F2-440A-9233-928F47D5C809",
+              "deviceName": "HomeView Photo Privacy Phone 20261030",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 5,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793338378.472,
+        "passedTests": 5,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793338209.886,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 5
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=074A25A3-C5F2-440A-9233-928F47D5C809",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/current-phone.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockProposalAndCancelNeverSendACommand",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testGuestPersonalContentGateAndMockLockAuthentication",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockConfirmedReadbackPersistsWithoutPersistingAuthorization",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockBackgroundDiscardsPendingConfirmation",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockUnknownJammedAndBatteryFaultNeverOfferACommand"
+      ],
+      "started": "2026-10-30T05:30:05.598826+00:00",
+      "ended": "2026-10-30T05:32:58.513641+00:00",
+      "archive_sha256": "49f34b567f31fbf46edd6b65452905ea0438b48aa5f7aff9cd9b65c4e15631f3",
+      "archive_entries": 312,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 20,
+      "log_sha256": "449bbd396ec8bff560d045091b5d8561fc99b0a4d2428a330ce7be1247f75d7f"
+    },
+    {
+      "label": "current-ipad",
+      "current_functional_acceptance": false,
+      "diagnostic_only": false,
+      "source_digest": "606c253097b4028426a0e385feab765946e60f49b58c25d9959ba782a4ffc223",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+              "deviceName": "HomeView Photo Privacy Pad 20261030",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 5,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793338379.777,
+        "passedTests": 5,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793338209.765,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 5
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/current-ipad.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockProposalAndCancelNeverSendACommand",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testGuestPersonalContentGateAndMockLockAuthentication",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockConfirmedReadbackPersistsWithoutPersistingAuthorization",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockBackgroundDiscardsPendingConfirmation",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockUnknownJammedAndBatteryFaultNeverOfferACommand"
+      ],
+      "started": "2026-10-30T05:30:05.633397+00:00",
+      "ended": "2026-10-30T05:32:59.828843+00:00",
+      "archive_sha256": "49f34b567f31fbf46edd6b65452905ea0438b48aa5f7aff9cd9b65c4e15631f3",
+      "archive_entries": 312,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 20,
+      "log_sha256": "edcc6d7471ee2838d6894459cab219707700ceb74f8e50351668bd8b34e2efa7"
+    },
+    {
+      "label": "ax-probe-phone",
+      "current_functional_acceptance": false,
+      "diagnostic_only": false,
+      "source_digest": "53857ea5fbed3cf97f884cfd470aa1860f32c81bc7eecbc4bce8d447184cec53",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "074A25A3-C5F2-440A-9233-928F47D5C809",
+              "deviceName": "HomeView Photo Privacy Phone 20261030",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1793338553.652,
+        "passedTests": 0,
+        "result": "Failed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793338519.874,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable",
+            "testName": "testMockLockLargestSystemTextKeepsConfirmationReachable()"
+          }
+        ],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=074A25A3-C5F2-440A-9233-928F47D5C809",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/ax-probe-phone.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable"
+      ],
+      "started": "2026-10-30T05:35:17.315588+00:00",
+      "ended": "2026-10-30T05:35:53.689565+00:00",
+      "archive_sha256": "b59838bdd5b1ba9359c922d378f20df3eaad4e104f9526f2d8e64c6f83a41c81",
+      "archive_entries": 316,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 0,
+      "log_sha256": "8c9c2582218f3df16020ff4b1be1b24317dd355a0af48550765cbed661a91cc4"
+    },
+    {
+      "label": "ax-probe-ipad",
+      "current_functional_acceptance": false,
+      "diagnostic_only": false,
+      "source_digest": "53857ea5fbed3cf97f884cfd470aa1860f32c81bc7eecbc4bce8d447184cec53",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+              "deviceName": "HomeView Photo Privacy Pad 20261030",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1793338563.349,
+        "passedTests": 0,
+        "result": "Failed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793338519.874,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable",
+            "testName": "testMockLockLargestSystemTextKeepsConfirmationReachable()"
+          }
+        ],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/ax-probe-ipad.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable"
+      ],
+      "started": "2026-10-30T05:35:17.368797+00:00",
+      "ended": "2026-10-30T05:36:03.382124+00:00",
+      "archive_sha256": "b59838bdd5b1ba9359c922d378f20df3eaad4e104f9526f2d8e64c6f83a41c81",
+      "archive_entries": 316,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 0,
+      "log_sha256": "531fb677cad00dbc8db14e7dbd35a91f8b2f00bc5191cbe636afa9390b350934"
+    },
+    {
+      "label": "ax-final-phone",
+      "current_functional_acceptance": false,
+      "diagnostic_only": false,
+      "source_digest": "39c89c2f0e71d23ab51c04a821e755f13859f6b74bfa3dc547ee2ab8618e3070",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "074A25A3-C5F2-440A-9233-928F47D5C809",
+              "deviceName": "HomeView Photo Privacy Phone 20261030",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1793338800.275,
+        "passedTests": 0,
+        "result": "Failed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793338760.397,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "failed - Recipe target was never visibly reachable: lock.action",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable",
+            "testName": "testMockLockLargestSystemTextKeepsConfirmationReachable()"
+          }
+        ],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=074A25A3-C5F2-440A-9233-928F47D5C809",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/ax-final-phone.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable"
+      ],
+      "started": "2026-10-30T05:39:17.640032+00:00",
+      "ended": "2026-10-30T05:40:00.309999+00:00",
+      "archive_sha256": "85cf520c1090b7cf5a02fa063c3b089c3dd08f21dc9bd95bc640849176001afa",
+      "archive_entries": 313,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 0,
+      "log_sha256": "824d543d57835496d2362b7f9db530d144162e78bfff5f4aeda104d52df6391f"
+    },
+    {
+      "label": "ax-final-ipad",
+      "current_functional_acceptance": false,
+      "diagnostic_only": false,
+      "source_digest": "39c89c2f0e71d23ab51c04a821e755f13859f6b74bfa3dc547ee2ab8618e3070",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+              "deviceName": "HomeView Photo Privacy Pad 20261030",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1793338794.109,
+        "passedTests": 0,
+        "result": "Failed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793338760.369,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "failed - Recipe target was never visibly reachable: lock.action",
+            "targetName": "HomeViewUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable()",
+            "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable",
+            "testName": "testMockLockLargestSystemTextKeepsConfirmationReachable()"
+          }
+        ],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/ax-final-ipad.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable"
+      ],
+      "started": "2026-10-30T05:39:17.561456+00:00",
+      "ended": "2026-10-30T05:39:54.145880+00:00",
+      "archive_sha256": "85cf520c1090b7cf5a02fa063c3b089c3dd08f21dc9bd95bc640849176001afa",
+      "archive_entries": 313,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 0,
+      "log_sha256": "44cd0b6d6ad1102d5aa48cad6278a319733e688f7eaf3c9be4b8100f66108030"
+    },
+    {
+      "label": "ax-diagnostic-phone",
+      "current_functional_acceptance": false,
+      "diagnostic_only": true,
+      "source_digest": "02477ab3f7c1bb22f40a1918b8a3dfb54f085878a42b0c0a914ab4140430e264",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "074A25A3-C5F2-440A-9233-928F47D5C809",
+              "deviceName": "HomeView Photo Privacy Phone 20261030",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793339016.57,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793339001.777,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=074A25A3-C5F2-440A-9233-928F47D5C809",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/ax-diagnostic-phone.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockLargestInitialGeometryOnly"
+      ],
+      "started": "2026-10-30T05:43:19.467233+00:00",
+      "ended": "2026-10-30T05:43:36.600580+00:00",
+      "archive_sha256": "e64b0a56f94c45b0fa944696c68e862554b376e677a562de4ed9c356256415bd",
+      "archive_entries": 313,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 2,
+      "log_sha256": "6465b9715f59a3f4bf4651793a6d81d49d627a8c7a5aae1e372ab2a091d346d0"
+    },
+    {
+      "label": "ax-accepted-phone",
+      "current_functional_acceptance": true,
+      "diagnostic_only": false,
+      "source_digest": "b6273cf1b5b93c2b71bd7b0794e48fcc2fa56ca37af922a5d30c834137acf77b",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "074A25A3-C5F2-440A-9233-928F47D5C809",
+              "deviceName": "HomeView Photo Privacy Phone 20261030",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793339212.866,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793339152.986,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=074A25A3-C5F2-440A-9233-928F47D5C809",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/ax-accepted-phone.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable"
+      ],
+      "started": "2026-10-30T05:45:50.401197+00:00",
+      "ended": "2026-10-30T05:46:52.902857+00:00",
+      "archive_sha256": "e08493a4f3a6f6c615edf9d02af28a998009ecfb2e2f2613bea6317e0122010c",
+      "archive_entries": 313,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 4,
+      "log_sha256": "1dec829a43993931c55f0ea234701d349982a1d6d74682ad86d84cf196c39284"
+    },
+    {
+      "label": "ax-accepted-ipad",
+      "current_functional_acceptance": true,
+      "diagnostic_only": false,
+      "source_digest": "b6273cf1b5b93c2b71bd7b0794e48fcc2fa56ca37af922a5d30c834137acf77b",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+              "deviceName": "HomeView Photo Privacy Pad 20261030",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793339219.237,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793339153.055,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/ax-accepted-ipad.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockLargestSystemTextKeepsConfirmationReachable"
+      ],
+      "started": "2026-10-30T05:45:50.428461+00:00",
+      "ended": "2026-10-30T05:46:59.282229+00:00",
+      "archive_sha256": "e08493a4f3a6f6c615edf9d02af28a998009ecfb2e2f2613bea6317e0122010c",
+      "archive_entries": 313,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 4,
+      "log_sha256": "486d33534014f01f8eb0c6fe08c7a1534d457f8f9352df70fb4202ba164ae7f3"
+    },
+    {
+      "label": "release-phone",
+      "current_functional_acceptance": true,
+      "diagnostic_only": false,
+      "source_digest": "b6273cf1b5b93c2b71bd7b0794e48fcc2fa56ca37af922a5d30c834137acf77b",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "074A25A3-C5F2-440A-9233-928F47D5C809",
+              "deviceName": "HomeView Photo Privacy Phone 20261030",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 5,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793339412.884,
+        "passedTests": 5,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793339255.334,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 5
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=074A25A3-C5F2-440A-9233-928F47D5C809",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/release-phone.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockProposalAndCancelNeverSendACommand",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testGuestPersonalContentGateAndMockLockAuthentication",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockConfirmedReadbackPersistsWithoutPersistingAuthorization",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockBackgroundDiscardsPendingConfirmation",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockUnknownJammedAndBatteryFaultNeverOfferACommand"
+      ],
+      "started": "2026-10-30T05:47:31.541276+00:00",
+      "ended": "2026-10-30T05:50:12.925931+00:00",
+      "archive_sha256": "224e3645b7e878619414795b2c93992f8aec88bb81b006198b07f411c8303106",
+      "archive_entries": 312,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 20,
+      "log_sha256": "aa71b8dee4a62ee7efa03938cc721ec3a67183d6cdee4b21928595d79810b660"
+    },
+    {
+      "label": "release-ipad",
+      "current_functional_acceptance": true,
+      "diagnostic_only": false,
+      "source_digest": "b6273cf1b5b93c2b71bd7b0794e48fcc2fa56ca37af922a5d30c834137acf77b",
+      "source_count": 238,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+              "deviceName": "HomeView Photo Privacy Pad 20261030",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 5,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793339417.503,
+        "passedTests": 5,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793339255.451,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 5
+      },
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "id=EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-resultBundlePath",
+        "<artifact>/release-ipad.xcresult",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockProposalAndCancelNeverSendACommand",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testGuestPersonalContentGateAndMockLockAuthentication",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockConfirmedReadbackPersistsWithoutPersistingAuthorization",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockBackgroundDiscardsPendingConfirmation",
+        "-only-testing:HomeViewUITests/HomeViewUITests/testMockLockUnknownJammedAndBatteryFaultNeverOfferACommand"
+      ],
+      "started": "2026-10-30T05:47:31.974571+00:00",
+      "ended": "2026-10-30T05:50:17.554214+00:00",
+      "archive_sha256": "224e3645b7e878619414795b2c93992f8aec88bb81b006198b07f411c8303106",
+      "archive_entries": 312,
+      "all_entry_bytes_read_back": true,
+      "source_App_Runner_install_unchanged": true,
+      "native_PNG": 20,
+      "log_sha256": "4d6220ba6bb2db28ceb69120d3676983cb044c8486dd79638f7f0c07c606d331"
+    }
+  ],
+  "Core_final": {
+    "tests": 429,
+    "failures": 0,
+    "input_files": 91,
+    "all_input_bytes_unchanged": true,
+    "log_sha256": "f859aae290c30e88875d16e593bdcfc3e0aadebd13aa6a9faa27367dea1a0113",
+    "inputs": {
+      "source": "02477ab3f7c1bb22f40a1918b8a3dfb54f085878a42b0c0a914ab4140430e264",
+      "files": [
+        {
+          "path": "Package.resolved",
+          "kind": "source",
+          "bytes": 383,
+          "sha256": "c8847f7f0d11227b76d43c295cc6596611c58b666412fef51298f1b959c8df0c"
+        },
+        {
+          "path": "Package.swift",
+          "kind": "source",
+          "bytes": 509,
+          "sha256": "87aa9830cf40dae5b18d58ff685509d42e0d7ad8003c295f627b175d514a7537"
+        },
+        {
+          "path": "Sources/Core/AlarmRecurrence.swift",
+          "kind": "source",
+          "bytes": 2858,
+          "sha256": "7223931e1fae63512aedeef99a9b6570a7162503f4ea2ebf85789b2eb6a1d469"
+        },
+        {
+          "path": "Sources/Core/AlbumDisplay.swift",
+          "kind": "source",
+          "bytes": 10693,
+          "sha256": "ffe151186baa66e52479993f641868dd2f5c73ee470aeca3f340966102369573"
+        },
+        {
+          "path": "Sources/Core/AnonymousPresencePolicy.swift",
+          "kind": "source",
+          "bytes": 5978,
+          "sha256": "6e86fb5ea8f28d0e02cd6517826459e60938eaa52e3e5f510622168355711d67"
+        },
+        {
+          "path": "Sources/Core/AnswerSpeechSession.swift",
+          "kind": "source",
+          "bytes": 3700,
+          "sha256": "237f7d0d2b3e8897135954edde26d5073663e89869f37574926ac5f3b40feb0e"
+        },
+        {
+          "path": "Sources/Core/AssistantConversation.swift",
+          "kind": "source",
+          "bytes": 5049,
+          "sha256": "14e7c3eee443dc7187d13b30f2715d8aea7d0bbf1ef7477f9b22ccb1c3c702d1"
+        },
+        {
+          "path": "Sources/Core/AssistantLimits.swift",
+          "kind": "source",
+          "bytes": 251,
+          "sha256": "0c5bfd0fb5e61cb97ba2a0ad90bd71c756c6a1a3fea14ba4a874e20c35634584"
+        },
+        {
+          "path": "Sources/Core/AssistantResponseDocument.swift",
+          "kind": "source",
+          "bytes": 4968,
+          "sha256": "1632c696eb2793ffe46a2392679881b176bb65c6f90f0fc8c141b74f9c821b12"
+        },
+        {
+          "path": "Sources/Core/BrowserPolicy.swift",
+          "kind": "source",
+          "bytes": 1367,
+          "sha256": "4bb66c6048d0624a1a50b08ca9b32c40542394816642e7941d0507dca6704942"
+        },
+        {
+          "path": "Sources/Core/CalendarAgenda.swift",
+          "kind": "source",
+          "bytes": 1432,
+          "sha256": "9f98fceb9bd6f757b66d508dd1caef42bdb4523a2c51e7c857ace906cfffb8bd"
+        },
+        {
+          "path": "Sources/Core/CalendarPresentation.swift",
+          "kind": "source",
+          "bytes": 1798,
+          "sha256": "cb173f15e0d4667743117b27a533da9f6dc3d2302038401970b3bf6f67727d7c"
+        },
+        {
+          "path": "Sources/Core/ConicGradientModel.swift",
+          "kind": "source",
+          "bytes": 1384,
+          "sha256": "b388e6e0cbd1e0a8ad43cb95fe92d17b8dc827f4f5cceffa1e008aefb0a562f3"
+        },
+        {
+          "path": "Sources/Core/ConnectedDataSession.swift",
+          "kind": "source",
+          "bytes": 21371,
+          "sha256": "f04cd662576a2d7cdab1a534d62c0c5704c86dd1e3d03ddb2a60e27d09116eb5"
+        },
+        {
+          "path": "Sources/Core/ConnectedModels.swift",
+          "kind": "source",
+          "bytes": 1378,
+          "sha256": "6b0ea8f93b0247a9f1fc59b32c30d25564a4db1554e0eefd5b6e3a0ef883bf2e"
+        },
+        {
+          "path": "Sources/Core/DataConnection.swift",
+          "kind": "source",
+          "bytes": 244,
+          "sha256": "f96b7933edbe6bf19ac41c02cba3e0a06a0aefeaa94b480faf1f1ad931f43a9d"
+        },
+        {
+          "path": "Sources/Core/DemoActionPlan.swift",
+          "kind": "source",
+          "bytes": 6817,
+          "sha256": "9958cafa2287881f064f57662b3b241cbf2e538d10113e4014d58ab183611f11"
+        },
+        {
+          "path": "Sources/Core/DemoDoorbell.swift",
+          "kind": "source",
+          "bytes": 2014,
+          "sha256": "b4ed48ead85b58c2164e2e87d70ba0e7793192eb956115fa0b9fd841b8dff398"
+        },
+        {
+          "path": "Sources/Core/EverydayVoiceCommand.swift",
+          "kind": "source",
+          "bytes": 4238,
+          "sha256": "700c5dcc06827ede1d9165c1c46857bfac7e67f663da539ce65dfdb52d813e1c"
+        },
+        {
+          "path": "Sources/Core/FaceConfiguration.swift",
+          "kind": "source",
+          "bytes": 8390,
+          "sha256": "de97ad42252c790e25868e76f82ca8c6595e31740eef5134d6664f0cedada6ac"
+        },
+        {
+          "path": "Sources/Core/FlowCompute.swift",
+          "kind": "source",
+          "bytes": 15081,
+          "sha256": "85c66eb9b067313922729c73c533d308dc5fcbdcd56c3d8fcc85112ce330d97d"
+        },
+        {
+          "path": "Sources/Core/FlowComputeSession.swift",
+          "kind": "source",
+          "bytes": 3736,
+          "sha256": "05b410a7436cbc158eefb74d1ce8df4faf29d221b10c44b17ff6bd8dac742781"
+        },
+        {
+          "path": "Sources/Core/FlowSimulation.swift",
+          "kind": "source",
+          "bytes": 9779,
+          "sha256": "fbb8b2c86a8d25eb2935fcd547c88ab95fc24c53dae2210ff994da36731d1d70"
+        },
+        {
+          "path": "Sources/Core/FlowTypography.swift",
+          "kind": "source",
+          "bytes": 3569,
+          "sha256": "2825d650db5108a5cecfd393cbb425b7c68e20efe8228b43f1c7224ba4d098aa"
+        },
+        {
+          "path": "Sources/Core/GuestAccessPolicy.swift",
+          "kind": "source",
+          "bytes": 902,
+          "sha256": "739a08fe8a20869eaf1916f9a47b97e054877e5f3f900c64f451dfa17538d17a"
+        },
+        {
+          "path": "Sources/Core/HouseNotices.swift",
+          "kind": "source",
+          "bytes": 5720,
+          "sha256": "53c592315988c2d83762bd77e3b75283490c3716342d7178e2d6aef533fd5732"
+        },
+        {
+          "path": "Sources/Core/LocalStateFileReader.swift",
+          "kind": "source",
+          "bytes": 1376,
+          "sha256": "ef60addab6f986ab316ff8c04d94abf828c4f78631b1d19383d6359289bb7837"
+        },
+        {
+          "path": "Sources/Core/LocalStateReset.swift",
+          "kind": "source",
+          "bytes": 7709,
+          "sha256": "ae9dab1efa8bc3945a9778bd6449a5d5f51e5adf2f9cbc180cbd2680bbae58cb"
+        },
+        {
+          "path": "Sources/Core/LockActionSession.swift",
+          "kind": "source",
+          "bytes": 9606,
+          "sha256": "31c4ea52f75ccfbe85184ff22a4e3f6dda00fff48c6b48dd5d0a31177c006ee1"
+        },
+        {
+          "path": "Sources/Core/Models.swift",
+          "kind": "source",
+          "bytes": 17756,
+          "sha256": "3f287818198ada8ea2c6d60cf74860a9b4eef6715257aa324285fd6f6f039ef3"
+        },
+        {
+          "path": "Sources/Core/MusicPlaybackGate.swift",
+          "kind": "source",
+          "bytes": 1485,
+          "sha256": "9fdc4fb20483cc67fd60b9be1f4793b7557907d460e822b401f359b22da658a5"
+        },
+        {
+          "path": "Sources/Core/PersonalHomeConfiguration.swift",
+          "kind": "source",
+          "bytes": 2107,
+          "sha256": "8d0ad8c9d5a856341d7fe18a4018dfdf0c957f6a99bca5958b32666bf06492cc"
+        },
+        {
+          "path": "Sources/Core/PhotoClockInk.swift",
+          "kind": "source",
+          "bytes": 2348,
+          "sha256": "f7d485650b33099c358067675f13fefe3b8d3f788c793d4a0c1db260f2ec5ae9"
+        },
+        {
+          "path": "Sources/Core/PhotoMaskRasterizer.swift",
+          "kind": "source",
+          "bytes": 941,
+          "sha256": "8cd2a06b5b9fdc125f70154fda02542094898dd79f2be24214b185c01bb1ff6c"
+        },
+        {
+          "path": "Sources/Core/PhotoPlacement.swift",
+          "kind": "source",
+          "bytes": 13992,
+          "sha256": "4e2771aab221d05ae118b1a7bed870b7b80b0a8142309cbc05166f888f162cae"
+        },
+        {
+          "path": "Sources/Core/PodcastFeedParser.swift",
+          "kind": "source",
+          "bytes": 2154,
+          "sha256": "3ed655080bdbf018cc418939865951f87f1e761277f8d442add85283737cbb7e"
+        },
+        {
+          "path": "Sources/Core/PodcastFeedTransport.swift",
+          "kind": "source",
+          "bytes": 1884,
+          "sha256": "7a607b08eeadb1d99cee476d3322c8cfc45534e4ac983809640fdaed3b05eb97"
+        },
+        {
+          "path": "Sources/Core/PodcastLibrary.swift",
+          "kind": "source",
+          "bytes": 2934,
+          "sha256": "a03b763fa6643486afefb8b4c76edbf85a721c38c2354decd054518b9a9142ba"
+        },
+        {
+          "path": "Sources/Core/PowerAdapterInformation.swift",
+          "kind": "source",
+          "bytes": 639,
+          "sha256": "f31397bb90b56a0990514ee535c2a8690dac7c8f93e4bb09da4a452bd80b4616"
+        },
+        {
+          "path": "Sources/Core/RecipeParser.swift",
+          "kind": "source",
+          "bytes": 8475,
+          "sha256": "11f5f302cbe57b284daab20d0231c1574ceb8b2cb1cd85d1566f22e0dc24c8da"
+        },
+        {
+          "path": "Sources/Core/RecipeTransfer.swift",
+          "kind": "source",
+          "bytes": 3400,
+          "sha256": "78de72cc68980dca39427f7975542a220b5e5ab87c9fb90ad07ccb6495caafd4"
+        },
+        {
+          "path": "Sources/Core/SetupIntroduction.swift",
+          "kind": "source",
+          "bytes": 198,
+          "sha256": "f1d27ac929cb7413b2cf2b665b0e04766e1ecbe583e512adef380a35d8a38ef8"
+        },
+        {
+          "path": "Sources/Core/SnapshotMigration.swift",
+          "kind": "source",
+          "bytes": 9608,
+          "sha256": "cc24c10d1f7fd0e8e99a6e40556051b062239fd57fef21f4f0492c4fc758dffd"
+        },
+        {
+          "path": "Sources/Core/TimerLiveActivity.swift",
+          "kind": "source",
+          "bytes": 4008,
+          "sha256": "88d8e0f7b5f9c144e60489a391eb3a6ea33b33b8ddf48e4a19cee6773dd98020"
+        },
+        {
+          "path": "Sources/Core/ViewportNavigationIntent.swift",
+          "kind": "source",
+          "bytes": 1260,
+          "sha256": "1013347534e0d029f5fa1b69e6c6f85b7d711d5027cc405f1549874bb0207341"
+        },
+        {
+          "path": "Sources/Core/WeatherData.swift",
+          "kind": "source",
+          "bytes": 6698,
+          "sha256": "1c80deddff30da66f796e0cc736e9a5b215cd512ce8e37863d6bc2184d1e19e3"
+        },
+        {
+          "path": "Sources/Core/WorldClock.swift",
+          "kind": "source",
+          "bytes": 9482,
+          "sha256": "f2fa5fe6493f4cf0ba7a126f41df98c2e90a0bd1eeaac8ac5fd178c59d7bdbbc"
+        },
+        {
+          "path": "Tests/CoreTests/AlarmRecurrenceTests.swift",
+          "kind": "source",
+          "bytes": 5600,
+          "sha256": "1db522c696d0ce89073c5f2103fe77f1176ab5888f6850c25bb6f18d3e2591f2"
+        },
+        {
+          "path": "Tests/CoreTests/AlbumDisplayTests.swift",
+          "kind": "source",
+          "bytes": 20209,
+          "sha256": "c251f8f3783c6699b058bd386b59835af55aaeee3deb81aa2046915659478c39"
+        },
+        {
+          "path": "Tests/CoreTests/AnonymousPresencePolicyTests.swift",
+          "kind": "source",
+          "bytes": 9338,
+          "sha256": "afd8ed942d44fce5c2eb1d1f807fb7acede0011b395652c5a52123774690ca48"
+        },
+        {
+          "path": "Tests/CoreTests/AnswerSpeechSessionTests.swift",
+          "kind": "source",
+          "bytes": 6131,
+          "sha256": "ea26acafb7a4e039af97f3328b48a92d9e4211fd65cbcae28037df45716a19cb"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantCommandBoundaryTests.swift",
+          "kind": "source",
+          "bytes": 1100,
+          "sha256": "75eba1015caf3b25e51444492280ec4977e2a5071c37b60d8cd3601981199c60"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantConversationTests.swift",
+          "kind": "source",
+          "bytes": 7467,
+          "sha256": "95b4060b83f4d1ee600ef67e74bcc5866e8944b249ff0ac2587046b9625e9451"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantResponseDocumentTests.swift",
+          "kind": "source",
+          "bytes": 2745,
+          "sha256": "f8c62d673dbc321d56887573d83c50251443f4bb53026a454c5224e1228c57ba"
+        },
+        {
+          "path": "Tests/CoreTests/AssistantResponseReadoutTests.swift",
+          "kind": "source",
+          "bytes": 4244,
+          "sha256": "e6473e262bb213b7acf3f2c711fd41035d4b35c559c67ee9c3ba6b473b58e8ca"
+        },
+        {
+          "path": "Tests/CoreTests/BrowserPolicyTests.swift",
+          "kind": "source",
+          "bytes": 2201,
+          "sha256": "3789d2d58f7ad0f02f5887a42c93d59cc66be0c60dd9b99515f2f82de4567c04"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarAgendaTests.swift",
+          "kind": "source",
+          "bytes": 2699,
+          "sha256": "9bfba19599869591f430cac426e9826d1f2a2157309df34a32db7a8c2e4760e9"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarBoundaryTests.swift",
+          "kind": "source",
+          "bytes": 2325,
+          "sha256": "667b3b82bcdd635ba91c73b6ae50d71f4fbf51499877b24d933da552b1527769"
+        },
+        {
+          "path": "Tests/CoreTests/CalendarLocaleTests.swift",
+          "kind": "source",
+          "bytes": 3988,
+          "sha256": "64ddc425a96909ba43ba40203be5893a66bcebbfb0054715e630bf1b088fe656"
+        },
+        {
+          "path": "Tests/CoreTests/ConicGradientTests.swift",
+          "kind": "source",
+          "bytes": 1498,
+          "sha256": "b2ae979fd299597c4275ec3085afb49b8e2c2bf080ef75dd384ca90e12e75f2a"
+        },
+        {
+          "path": "Tests/CoreTests/DemoActionPlanTests.swift",
+          "kind": "source",
+          "bytes": 5974,
+          "sha256": "4989acd77a49de6a252ddfaa732600a9265d08aa9117ce8ee85802232b2908fb"
+        },
+        {
+          "path": "Tests/CoreTests/DemoDoorbellTests.swift",
+          "kind": "source",
+          "bytes": 4306,
+          "sha256": "45bac13d2e9d597f81918ce5d4c472e7494150375e5a383d5cffadfd087058c2"
+        },
+        {
+          "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+          "kind": "source",
+          "bytes": 50899,
+          "sha256": "9c0376273dd9f769ea2598d550c6760ee15bf8697dd58813621122d7c8bfdb40"
+        },
+        {
+          "path": "Tests/CoreTests/EverydayVoiceCommandTests.swift",
+          "kind": "source",
+          "bytes": 2086,
+          "sha256": "d27995a922e1c5c346f8687425a5d775bab205b4abe49ad8547d6626653ab55b"
+        },
+        {
+          "path": "Tests/CoreTests/FaceCatalogueRecoveryTests.swift",
+          "kind": "source",
+          "bytes": 2939,
+          "sha256": "53130d5cad5051c7d6d876463aa509b0b423fe7e973920ad8e923f889db69ec9"
+        },
+        {
+          "path": "Tests/CoreTests/FaceConfigurationMigrationTests.swift",
+          "kind": "source",
+          "bytes": 5685,
+          "sha256": "a848907b433a55eb467a078551d6ba2a61d8b989f839ec9a4f1f59b83ad86b28"
+        },
+        {
+          "path": "Tests/CoreTests/FlowComputeTests.swift",
+          "kind": "source",
+          "bytes": 8161,
+          "sha256": "1098b3ea16231ecfd370fde9f85cf5f62eb134456eb105302a9f2ee48014b12b"
+        },
+        {
+          "path": "Tests/CoreTests/FlowTypographyTests.swift",
+          "kind": "source",
+          "bytes": 2447,
+          "sha256": "fda513fc05d95a89a3ceacb2ecdd68a19c3941784dca369bdda4d19eac98d76d"
+        },
+        {
+          "path": "Tests/CoreTests/GuestSafetyTests.swift",
+          "kind": "source",
+          "bytes": 1541,
+          "sha256": "2a1b47af26c87a24ffb9089f330a4dc11cfb74830c0d270ccd7f746fe1e0d2cd"
+        },
+        {
+          "path": "Tests/CoreTests/HomeViewCoreTests.swift",
+          "kind": "source",
+          "bytes": 11252,
+          "sha256": "24458b3609de5eaf6a38f3822e10f34f0ec338ead874f44be5bd243e5a32839b"
+        },
+        {
+          "path": "Tests/CoreTests/HouseNoticeTests.swift",
+          "kind": "source",
+          "bytes": 6777,
+          "sha256": "d8e6c73588e8bf229c5de209de1ee3760f052cc3a2bf7e2ca59c9edab00f5f4c"
+        },
+        {
+          "path": "Tests/CoreTests/LocalStateFileReaderTests.swift",
+          "kind": "source",
+          "bytes": 3240,
+          "sha256": "1ecdcb07b482feca5df946fee4e6048558371df50b38dd2a9f209d9bbccaedf4"
+        },
+        {
+          "path": "Tests/CoreTests/LocalStateResetTests.swift",
+          "kind": "source",
+          "bytes": 7290,
+          "sha256": "a315fb47b878e6b5165fab6706fd3c71a6c55bdcf76b12e14dee995b3ec3555e"
+        },
+        {
+          "path": "Tests/CoreTests/LockActionSessionTests.swift",
+          "kind": "source",
+          "bytes": 12826,
+          "sha256": "695d77dcc46c7066fe262e50c6a3972a7bede251b6de6a447381ad1af811b101"
+        },
+        {
+          "path": "Tests/CoreTests/MusicPlaybackGateTests.swift",
+          "kind": "source",
+          "bytes": 3516,
+          "sha256": "b0b95bb382b6a479d06946fd67a44b71fc9361e30edac917b93d8f263ca1d6e7"
+        },
+        {
+          "path": "Tests/CoreTests/PersistenceAcceptanceTests.swift",
+          "kind": "source",
+          "bytes": 8031,
+          "sha256": "7a60c5781f4a043ddef22ec59a3049febe77e7baf72c665d9460af7b262ab2d2"
+        },
+        {
+          "path": "Tests/CoreTests/PersonalHomeTests.swift",
+          "kind": "source",
+          "bytes": 3310,
+          "sha256": "e7c218f72c2b66542d70012a143b30c3790e9b16ef09a5f9a8b485d117bd424d"
+        },
+        {
+          "path": "Tests/CoreTests/PhotoClockInkTests.swift",
+          "kind": "source",
+          "bytes": 6810,
+          "sha256": "0171a1f7486c06a176c873dbc9f5f98cee82322f99a332c8c031f1c7ad442821"
+        },
+        {
+          "path": "Tests/CoreTests/PhotoPlacementTests.swift",
+          "kind": "source",
+          "bytes": 10883,
+          "sha256": "dd3f4bcbc04c9ad0feccd925916a42541db6cff9329af9e3f12f618baeb13022"
+        },
+        {
+          "path": "Tests/CoreTests/PodcastTests.swift",
+          "kind": "source",
+          "bytes": 6992,
+          "sha256": "662bb7087897d5e33e16c7a37c632984215f18dbbd283e59e90996a5bc854bc1"
+        },
+        {
+          "path": "Tests/CoreTests/PowerAdapterInformationTests.swift",
+          "kind": "source",
+          "bytes": 1315,
+          "sha256": "e6998839b624de9ce13d702abb7fcb09a2cd5e69319a15dcea97fa04d7e5de16"
+        },
+        {
+          "path": "Tests/CoreTests/RecipeParserTests.swift",
+          "kind": "source",
+          "bytes": 4181,
+          "sha256": "0fa0d28fe1658ef580c3bf309bc9d7382d9968adcdf35c40ccac35898b2857b8"
+        },
+        {
+          "path": "Tests/CoreTests/RecipeTransferTests.swift",
+          "kind": "source",
+          "bytes": 5342,
+          "sha256": "dd505824664e92202d442c6abb18b67280feec1b731875e3b4768cc7116360b3"
+        },
+        {
+          "path": "Tests/CoreTests/SetupIntroductionTests.swift",
+          "kind": "source",
+          "bytes": 2947,
+          "sha256": "f7cc98d3db797009470821bc1c1690895ff26846c1984b87e3bf7d0f409afc3f"
+        },
+        {
+          "path": "Tests/CoreTests/SharedPanelTests.swift",
+          "kind": "source",
+          "bytes": 7250,
+          "sha256": "57059f84343be67bf1b4ac6f1019cada5100007ea525201f099e05941943341f"
+        },
+        {
+          "path": "Tests/CoreTests/SnapshotMigrationTests.swift",
+          "kind": "source",
+          "bytes": 15373,
+          "sha256": "faf212029d5e3a40ee48d633bc30bea981660ddd83467da28b8b8dc8a1de3eb5"
+        },
+        {
+          "path": "Tests/CoreTests/TimerLiveActivityTests.swift",
+          "kind": "source",
+          "bytes": 7083,
+          "sha256": "118ea7f90f19c1c80940675a2c45cec13a036b4ad122746d9ab008ebed3d71f3"
+        },
+        {
+          "path": "Tests/CoreTests/ViewportNavigationIntentTests.swift",
+          "kind": "source",
+          "bytes": 4068,
+          "sha256": "d27bbba71e017c88e09f33bcf64e5ecc57c6a0eec000f658bcbe2ca8d8885763"
+        },
+        {
+          "path": "Tests/CoreTests/WatchFacesTests.swift",
+          "kind": "source",
+          "bytes": 9214,
+          "sha256": "8996021122952a9ca11b8c825b54937f7d34ab12a474cfeae1d9e6e709100f10"
+        },
+        {
+          "path": "Tests/CoreTests/WeatherTests.swift",
+          "kind": "source",
+          "bytes": 5723,
+          "sha256": "a3aa9bb2852b44088207b7d0c1c8bac354fbe8f17fb2134abfa98654b3d4692c"
+        },
+        {
+          "path": "Tests/CoreTests/WorldClockTests.swift",
+          "kind": "source",
+          "bytes": 11769,
+          "sha256": "ced9a5640261b5622afb785e783d3fbe13cb7edecc9de62e32a0e521985a74cf"
+        }
+      ],
+      "full_Core_count": 429,
+      "scope": "Full final Core suite includes late-cancel regression. Subsequent changes limited to UI-test instrumentation/docs; verify all91Corebytes unchanged before publication."
+    }
+  },
+  "earlier_Core": "23targeted and428full before late-cancel repair, not additional current coverage.",
+  "independent_security_gate": {
+    "head": "0dc370c264b92121777c01664aef6063741dd5da",
+    "clean_after": true,
+    "all91Core_input_bytes_unchanged": true,
+    "independent_source_exact_Git_blob": true,
+    "external_matrix": {
+      "assertions": 5775,
+      "combinatorial_vectors": 1152,
+      "result": "PASS",
+      "scope": "Independent external fixture executable compiled with exact committed production LockActionSession. No XCTest source reused, no device/auth/Home/provider/OS actions. MainActor reentrancy and uncertainty, not cross-process/distributed exactly-once or hardware."
+    },
+    "same_late_cancel_probe": {
+      "before": "FAIL: late cancel relabels an already confirmed write as no command sent",
+      "after": "PASS: late cancel preserves confirmed result and single write",
+      "source_sha256": "f4ac1e977c3eda35eb7b0775af8cbb08f2f1033bed9e287c6eab5a73fc744904"
+    },
+    "driver_sha256": "449d171c0d275341d6a2f8246fdbb948d84481cb932969347e8cb3b3316975f6",
+    "binary_sha256": "6c5b9d537207a487711de8c312897cb608749a5e51d555e308d340ca6d48513f",
+    "scope": "Independent source-derived external fixture matrix, not a different human reviewer, OS authentication, real Home, physical or original parity certification."
+  },
+  "public_auth_contract": {
+    "url": "https://developer.apple.com/documentation/bundleresources/information-property-list/nsfaceidusagedescription",
+    "fetchedAt": "2026-10-30T05:34:10.994Z",
+    "HTTP_status": 200,
+    "key_definition": "A message that tells people why the app is requesting the ability to authenticate with Face ID.",
+    "public_SDK_header": "LAContext.h",
+    "SDK_header_sha256": "bd7ec695a39347053225fd64c1447e778e6c73457339fb3ba438b679b1dfd6cf",
+    "warning_lines": [
+      182,
+      323
+    ],
+    "warning": "Applications should also supply NSFaceIDUsageDescription key in the Info.plist.",
+    "before_key_absent_in_both_source_Info_and_built_App": true,
+    "runtime_inference": "No physical Face ID evaluation or crash/fallback behavior observed. Metadata prerequisite fixed, not a hardware/authentication PASS."
+  },
+  "actual_UI_metadata": {
+    "old_archived_App_Info_sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00",
+    "old_key_absent": true,
+    "new_App_Info_sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b",
+    "new_App_value_exact": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+    "both_source_Info_values_exact": true,
+    "device_authentication_evaluated": false
+  },
+  "SDK_waves": [
+    {
+      "name": "initial606",
+      "current": false,
+      "source": "606c253097b4028426a0e385feab765946e60f49b58c25d9959ba782a4ffc223",
+      "builds": [
+        {
+          "platform": "iOS",
+          "sdk": "iphonesimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:30:01.718995+00:00",
+          "ended": "2026-10-30T05:30:39.934629+00:00",
+          "log": "<artifact>/final-five-sdk/ios-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "generic/platform=iOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=1,2",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:30:01.718995+00:00",
+              "ended": "2026-10-30T05:30:39.934629+00:00",
+              "log": "<artifact>/final-five-sdk/ios-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "iphonesimulator",
+                "-destination",
+                "generic/platform=iOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=1,2",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false,
+              "shortcut_artifacts": {
+                "valid": true,
+                "errors": [],
+                "files": [
+                  {
+                    "path": "extract.actionsdata",
+                    "bytes": 1764,
+                    "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+                  },
+                  {
+                    "path": "nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+                    "bytes": 1,
+                    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+                  },
+                  {
+                    "path": "nlu/nlu.lzfse",
+                    "bytes": 2124,
+                    "sha256": "24c406efaaa912d75e8a3b37cc2367a302eae28ba5c4b6418e13e052c964219f"
+                  },
+                  {
+                    "path": "root.ssu.yaml",
+                    "bytes": 926,
+                    "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+                  },
+                  {
+                    "path": "version.json",
+                    "bytes": 53,
+                    "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+                  }
+                ]
+              }
+            }
+          ],
+          "ios_shortcut_artifacts_valid": true
+        },
+        {
+          "platform": "macOS",
+          "sdk": "macosx",
+          "exit_code": 0,
+          "started": "2026-10-30T05:30:39.936389+00:00",
+          "ended": "2026-10-30T05:31:16.506432+00:00",
+          "log": "<artifact>/final-five-sdk/macos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "macosx",
+            "-destination",
+            "platform=macOS",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:30:39.936389+00:00",
+              "ended": "2026-10-30T05:31:16.506432+00:00",
+              "log": "<artifact>/final-five-sdk/macos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "macosx",
+                "-destination",
+                "platform=macOS",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "tvOS",
+          "sdk": "appletvsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:31:16.507007+00:00",
+          "ended": "2026-10-30T05:31:48.200966+00:00",
+          "log": "<artifact>/final-five-sdk/tvos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "appletvsimulator",
+            "-destination",
+            "generic/platform=tvOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=3",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:31:16.507007+00:00",
+              "ended": "2026-10-30T05:31:48.200966+00:00",
+              "log": "<artifact>/final-five-sdk/tvos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "appletvsimulator",
+                "-destination",
+                "generic/platform=tvOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=3",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "visionOS",
+          "sdk": "xrsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:31:48.201545+00:00",
+          "ended": "2026-10-30T05:32:21.118481+00:00",
+          "log": "<artifact>/final-five-sdk/visionos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "xrsimulator",
+            "-destination",
+            "generic/platform=visionOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=7",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:31:48.201545+00:00",
+              "ended": "2026-10-30T05:32:21.118481+00:00",
+              "log": "<artifact>/final-five-sdk/visionos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "xrsimulator",
+                "-destination",
+                "generic/platform=visionOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=7",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "watchOS",
+          "sdk": "watchsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:32:21.119107+00:00",
+          "ended": "2026-10-30T05:32:31.079865+00:00",
+          "log": "<artifact>/final-five-sdk/watchos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewWatch",
+            "-sdk",
+            "watchsimulator",
+            "-destination",
+            "generic/platform=watchOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=4",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:32:21.119107+00:00",
+              "ended": "2026-10-30T05:32:31.079865+00:00",
+              "log": "<artifact>/final-five-sdk/watchos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewWatch",
+                "-sdk",
+                "watchsimulator",
+                "-destination",
+                "generic/platform=watchOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=4",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        }
+      ],
+      "products": {
+        "files": [
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Info.plist",
+            "bytes": 3111,
+            "sha256": "f288ed97483fdd3503726b41c3226ba2b1912a03a2316cebbd19fde0aaf87347"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "8e999156a834c7e6d7e79bf76a05e016830ad47399964ced39eac1bc952c7bb5"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica.debug.dylib",
+            "bytes": 28608216,
+            "sha256": "55f9b03d8fa53a11cec6d1a762015370a35734830f46f2286b1ec57f73520767"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "ef42e4140edff5aa41beea98327030af0bc0a463fc79a07b6ba04d72088f6690"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Assets.car",
+            "bytes": 14232664,
+            "sha256": "767d8e5b21a7fb9a20db530d5e9fe8e9dbd350c150b5a867ba06398435fe36a7"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/default.metallib",
+            "bytes": 71552,
+            "sha256": "2d900cbbfd77ccef3c3d572f238e0f3b856a08d9ccdb38dd9e64e509e58878ed"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "b4c9d7d3bd6c0bb265ec47c0a72d60d24793158eb38b32d94e58c98e502ab3ae"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "26954b0c48e9bb2f99cb92ede3b3496f27eca01e96c4f105eea6982043db0606"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 26926520,
+            "sha256": "052a87f8685bc277edf0e62bf7ab3551cc890ef1680ffe40475819c464d14933"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2116,
+            "sha256": "d74455a14609276831ff9d1d3c84c8201cb9c36c313b1f290026083a817a8f95"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "670e17274069643540183ea4a2bc7f9e4d071010627b412e93fa8e1f07081b75"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73120,
+            "sha256": "4bc27cae4df99c4a034115102721f3de1aba4b333b5b23217ac207ddb4563fd7"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+            "bytes": 15425,
+            "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+            "bytes": 22442,
+            "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 15242504,
+            "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "6a4d9ab05a704537d584c28beea7ccdd7f8946e894adcfabee1dc0d919ede829"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 28519368,
+            "sha256": "1a154b2fd799d21839f524ea255612c355040fed95d02fd28556221c153ee332"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2366,
+            "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+            "bytes": 1,
+            "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/nlu.lzfse",
+            "bytes": 2124,
+            "sha256": "24c406efaaa912d75e8a3b37cc2367a302eae28ba5c4b6418e13e052c964219f"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/root.ssu.yaml",
+            "bytes": 926,
+            "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+            "bytes": 40224,
+            "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+            "bytes": 261104,
+            "sha256": "1fd7efa45cc7b71ed7d7a3b80a5b6a4c6e9fd4e2c74ce62c87348dae31bdaa79"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+            "bytes": 774,
+            "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+            "bytes": 16752,
+            "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73088,
+            "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+            "bytes": 40224,
+            "sha256": "c78d242145cb07b2b7ac478fe2c2514e89514bcc39e277adf01344f324289152"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+            "bytes": 295984,
+            "sha256": "736b9219259850976999f84cac09d5587961c771c60ac046d95bef0d043e0094"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/Info.plist",
+            "bytes": 774,
+            "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/__preview.dylib",
+            "bytes": 16768,
+            "sha256": "266e6199c94ea97332a5288d350ee22a4425698c7358d01cd4b72f704c142c7e"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "a771995aac5ec007e91664e4428067ac0555610c4b215035bfc3e79c79a932ed"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch",
+            "bytes": 40224,
+            "sha256": "7cbd76f08b69d235082ed075ff3aaa495b617031354cf30409b4b0d802addffe"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch.debug.dylib",
+            "bytes": 2612072,
+            "sha256": "378dff1bbfd97863540868f524a186504b8780ecba27c9a44cb606f63bbc2c0f"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+            "bytes": 1766,
+            "sha256": "deef71535f26ea1ead2687b624eae0ff6dabb69775725f6a66dbe63cbf11060d"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "bf73f1f668d076a35153530e76ea07d6ae5a749fdf5f87c63273b33277d69de9"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "b2f643d74a2e6016352536f6e3ce8a2d753afd36329ff9d633c6e830df180909"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "c0a60694a27f953c8d6800de41c00ab68791ef4213e2781c5be84d5207c21d9a"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 28237800,
+            "sha256": "e2d08f1042a46c6098a404261b62055e972a42a7185110fda41e882fe31afdb2"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2069,
+            "sha256": "b8bc0f89ac84e91aab3c67e7d621ac970cba3e3914d592d32b1b1d31a66bb66b"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "f969dc8b19bebb6ffb9280f2343858d8a568ff2373374385700dcae25761a1b4"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73136,
+            "sha256": "5ce1f26d647310d55fc2249c5cba4735e94a07626545edbb8e169d5fdce1b955"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          }
+        ],
+        "archive_sha256": "7f160f6ef21fcc40119ec598a8a5e059b2ac42ba5f8b486afb7d4ba1e8d91cb7",
+        "read_back": true,
+        "inputs_unchanged": true
+      },
+      "Info_readback": [
+        {
+          "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": null,
+          "sha256": "d74455a14609276831ff9d1d3c84c8201cb9c36c313b1f290026083a817a8f95"
+        },
+        {
+          "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": null,
+          "sha256": "3d336e4ef3237e822b8278e16e47bacd8173e8469ba7b57c0b61aa630437fd00"
+        },
+        {
+          "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+          "Face_ID_description": null,
+          "sha256": "deef71535f26ea1ead2687b624eae0ff6dabb69775725f6a66dbe63cbf11060d"
+        },
+        {
+          "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": null,
+          "sha256": "b8bc0f89ac84e91aab3c67e7d621ac970cba3e3914d592d32b1b1d31a66bb66b"
+        }
+      ]
+    },
+    {
+      "name": "pre-late-cancel39c",
+      "current": false,
+      "source": "39c89c2f0e71d23ab51c04a821e755f13859f6b74bfa3dc547ee2ab8618e3070",
+      "builds": [
+        {
+          "platform": "iOS",
+          "sdk": "iphonesimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:39:12.847551+00:00",
+          "ended": "2026-10-30T05:39:25.838954+00:00",
+          "log": "<artifact>/final-five-sdk/ios-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "generic/platform=iOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=1,2",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:39:12.847551+00:00",
+              "ended": "2026-10-30T05:39:25.838954+00:00",
+              "log": "<artifact>/final-five-sdk/ios-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "iphonesimulator",
+                "-destination",
+                "generic/platform=iOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=1,2",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false,
+              "shortcut_artifacts": {
+                "valid": true,
+                "errors": [],
+                "files": [
+                  {
+                    "path": "extract.actionsdata",
+                    "bytes": 1764,
+                    "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+                  },
+                  {
+                    "path": "nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+                    "bytes": 1,
+                    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+                  },
+                  {
+                    "path": "nlu/nlu.lzfse",
+                    "bytes": 2124,
+                    "sha256": "45c97c155e295656c4bc796da1ef64cd8a83506374a8461b9fb294835175e684"
+                  },
+                  {
+                    "path": "root.ssu.yaml",
+                    "bytes": 926,
+                    "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+                  },
+                  {
+                    "path": "version.json",
+                    "bytes": 53,
+                    "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+                  }
+                ]
+              }
+            }
+          ],
+          "ios_shortcut_artifacts_valid": true
+        },
+        {
+          "platform": "macOS",
+          "sdk": "macosx",
+          "exit_code": 0,
+          "started": "2026-10-30T05:39:25.841538+00:00",
+          "ended": "2026-10-30T05:39:38.799209+00:00",
+          "log": "<artifact>/final-five-sdk/macos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "macosx",
+            "-destination",
+            "platform=macOS",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:39:25.841538+00:00",
+              "ended": "2026-10-30T05:39:38.799209+00:00",
+              "log": "<artifact>/final-five-sdk/macos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "macosx",
+                "-destination",
+                "platform=macOS",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "tvOS",
+          "sdk": "appletvsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:39:38.799780+00:00",
+          "ended": "2026-10-30T05:39:49.382306+00:00",
+          "log": "<artifact>/final-five-sdk/tvos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "appletvsimulator",
+            "-destination",
+            "generic/platform=tvOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=3",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:39:38.799780+00:00",
+              "ended": "2026-10-30T05:39:49.382306+00:00",
+              "log": "<artifact>/final-five-sdk/tvos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "appletvsimulator",
+                "-destination",
+                "generic/platform=tvOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=3",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "visionOS",
+          "sdk": "xrsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:39:49.383022+00:00",
+          "ended": "2026-10-30T05:39:59.672115+00:00",
+          "log": "<artifact>/final-five-sdk/visionos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "xrsimulator",
+            "-destination",
+            "generic/platform=visionOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=7",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:39:49.383022+00:00",
+              "ended": "2026-10-30T05:39:59.672115+00:00",
+              "log": "<artifact>/final-five-sdk/visionos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "xrsimulator",
+                "-destination",
+                "generic/platform=visionOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=7",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "watchOS",
+          "sdk": "watchsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:39:59.672716+00:00",
+          "ended": "2026-10-30T05:40:01.487783+00:00",
+          "log": "<artifact>/final-five-sdk/watchos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewWatch",
+            "-sdk",
+            "watchsimulator",
+            "-destination",
+            "generic/platform=watchOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=4",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:39:59.672716+00:00",
+              "ended": "2026-10-30T05:40:01.487783+00:00",
+              "log": "<artifact>/final-five-sdk/watchos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewWatch",
+                "-sdk",
+                "watchsimulator",
+                "-destination",
+                "generic/platform=watchOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=4",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        }
+      ],
+      "products": {
+        "files": [
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Info.plist",
+            "bytes": 3253,
+            "sha256": "00ade6ed8692d31e40effde63eb24de42809fb5988bb5f4c45c9629761dddc09"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "8e999156a834c7e6d7e79bf76a05e016830ad47399964ced39eac1bc952c7bb5"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica.debug.dylib",
+            "bytes": 28696776,
+            "sha256": "38155917a1e8b1ccb074227750e5262c0be50566b725d3b50f58d652f0423381"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "ef42e4140edff5aa41beea98327030af0bc0a463fc79a07b6ba04d72088f6690"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Assets.car",
+            "bytes": 14232664,
+            "sha256": "767d8e5b21a7fb9a20db530d5e9fe8e9dbd350c150b5a867ba06398435fe36a7"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/default.metallib",
+            "bytes": 71552,
+            "sha256": "2d900cbbfd77ccef3c3d572f238e0f3b856a08d9ccdb38dd9e64e509e58878ed"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "b4c9d7d3bd6c0bb265ec47c0a72d60d24793158eb38b32d94e58c98e502ab3ae"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "26954b0c48e9bb2f99cb92ede3b3496f27eca01e96c4f105eea6982043db0606"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 27015128,
+            "sha256": "5f2bd71879fdc0622775097c7d80e12a7dd787a972aed2932136017758eb3641"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2238,
+            "sha256": "1aaf27c60965a35dd296adaeb788ed9a54b00488e86415458473c7198384d703"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "670e17274069643540183ea4a2bc7f9e4d071010627b412e93fa8e1f07081b75"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73120,
+            "sha256": "4bc27cae4df99c4a034115102721f3de1aba4b333b5b23217ac207ddb4563fd7"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+            "bytes": 15425,
+            "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+            "bytes": 22442,
+            "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 15242504,
+            "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "6a4d9ab05a704537d584c28beea7ccdd7f8946e894adcfabee1dc0d919ede829"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 28591384,
+            "sha256": "931042da7da16b9981c4edf2dc2d8e713f71caa07144361a1437db794bdd3af5"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2488,
+            "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+            "bytes": 1,
+            "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/nlu.lzfse",
+            "bytes": 2124,
+            "sha256": "45c97c155e295656c4bc796da1ef64cd8a83506374a8461b9fb294835175e684"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/root.ssu.yaml",
+            "bytes": 926,
+            "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+            "bytes": 40224,
+            "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+            "bytes": 261104,
+            "sha256": "1fd7efa45cc7b71ed7d7a3b80a5b6a4c6e9fd4e2c74ce62c87348dae31bdaa79"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+            "bytes": 774,
+            "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+            "bytes": 16752,
+            "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73088,
+            "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+            "bytes": 40224,
+            "sha256": "c78d242145cb07b2b7ac478fe2c2514e89514bcc39e277adf01344f324289152"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+            "bytes": 295984,
+            "sha256": "736b9219259850976999f84cac09d5587961c771c60ac046d95bef0d043e0094"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/Info.plist",
+            "bytes": 774,
+            "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/__preview.dylib",
+            "bytes": 16768,
+            "sha256": "266e6199c94ea97332a5288d350ee22a4425698c7358d01cd4b72f704c142c7e"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "a771995aac5ec007e91664e4428067ac0555610c4b215035bfc3e79c79a932ed"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch",
+            "bytes": 40224,
+            "sha256": "7cbd76f08b69d235082ed075ff3aaa495b617031354cf30409b4b0d802addffe"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch.debug.dylib",
+            "bytes": 2612072,
+            "sha256": "378dff1bbfd97863540868f524a186504b8780ecba27c9a44cb606f63bbc2c0f"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+            "bytes": 1888,
+            "sha256": "8959eb2cf5183d039a531124408fccf21345622723ebf2a620d73eab81aede21"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "bf73f1f668d076a35153530e76ea07d6ae5a749fdf5f87c63273b33277d69de9"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "b2f643d74a2e6016352536f6e3ce8a2d753afd36329ff9d633c6e830df180909"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "c0a60694a27f953c8d6800de41c00ab68791ef4213e2781c5be84d5207c21d9a"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 28326520,
+            "sha256": "b8802e91d02d769623d88ef46a0acdf515e0b2d72357d8c43c4b4d9050f85b29"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2191,
+            "sha256": "867b3419211945a79074901c4c8c2e719824f505dc178705a6da1b0b435bada5"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "f969dc8b19bebb6ffb9280f2343858d8a568ff2373374385700dcae25761a1b4"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73136,
+            "sha256": "5ce1f26d647310d55fc2249c5cba4735e94a07626545edbb8e169d5fdce1b955"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          }
+        ],
+        "archive_sha256": "d9efa520a10f1c910237f1f5e4102d0d7099224cccfe87dfdc5b098f677c04ec",
+        "read_back": true,
+        "inputs_unchanged": true
+      },
+      "Info_readback": [
+        {
+          "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+          "sha256": "1aaf27c60965a35dd296adaeb788ed9a54b00488e86415458473c7198384d703"
+        },
+        {
+          "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+          "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b"
+        },
+        {
+          "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+          "Face_ID_description": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+          "sha256": "8959eb2cf5183d039a531124408fccf21345622723ebf2a620d73eab81aede21"
+        },
+        {
+          "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+          "sha256": "867b3419211945a79074901c4c8c2e719824f505dc178705a6da1b0b435bada5"
+        }
+      ]
+    },
+    {
+      "name": "current-b627",
+      "current": true,
+      "source": "b6273cf1b5b93c2b71bd7b0794e48fcc2fa56ca37af922a5d30c834137acf77b",
+      "builds": [
+        {
+          "platform": "iOS",
+          "sdk": "iphonesimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:45:45.635990+00:00",
+          "ended": "2026-10-30T05:46:27.427649+00:00",
+          "log": "<artifact>/final-five-sdk/ios-metadata-recovery-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "generic/platform=iOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=1,2",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "clean",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:45:45.635990+00:00",
+              "ended": "2026-10-30T05:45:54.224078+00:00",
+              "log": "<artifact>/final-five-sdk/ios-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "iphonesimulator",
+                "-destination",
+                "generic/platform=iOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=1,2",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false,
+              "shortcut_artifacts": {
+                "valid": false,
+                "errors": [
+                  "root.ssu.yaml: missing or empty",
+                  "nlu/nlu.lzfse: missing or empty",
+                  "nlu/*.version: missing or empty",
+                  "root.ssu.yaml: unreadable metadata"
+                ],
+                "files": [
+                  {
+                    "path": "extract.actionsdata",
+                    "bytes": 1764,
+                    "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+                  },
+                  {
+                    "path": "version.json",
+                    "bytes": 53,
+                    "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+                  }
+                ]
+              }
+            },
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:45:54.225427+00:00",
+              "ended": "2026-10-30T05:46:27.427649+00:00",
+              "log": "<artifact>/final-five-sdk/ios-metadata-recovery-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "iphonesimulator",
+                "-destination",
+                "generic/platform=iOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=1,2",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "clean",
+                "build"
+              ],
+              "clean_metadata_recovery": true,
+              "shortcut_artifacts": {
+                "valid": true,
+                "errors": [],
+                "files": [
+                  {
+                    "path": "extract.actionsdata",
+                    "bytes": 1764,
+                    "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+                  },
+                  {
+                    "path": "nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+                    "bytes": 1,
+                    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+                  },
+                  {
+                    "path": "nlu/nlu.lzfse",
+                    "bytes": 2125,
+                    "sha256": "36499ded9c7d146dd4b921760cef4751b26c0ee14b09a56de5cc1c4c50f52a5a"
+                  },
+                  {
+                    "path": "root.ssu.yaml",
+                    "bytes": 926,
+                    "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+                  },
+                  {
+                    "path": "version.json",
+                    "bytes": 53,
+                    "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+                  }
+                ]
+              }
+            }
+          ],
+          "ios_shortcut_artifacts_valid": true
+        },
+        {
+          "platform": "macOS",
+          "sdk": "macosx",
+          "exit_code": 0,
+          "started": "2026-10-30T05:46:27.429449+00:00",
+          "ended": "2026-10-30T05:46:54.265150+00:00",
+          "log": "<artifact>/final-five-sdk/macos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "macosx",
+            "-destination",
+            "platform=macOS",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:46:27.429449+00:00",
+              "ended": "2026-10-30T05:46:54.265150+00:00",
+              "log": "<artifact>/final-five-sdk/macos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "macosx",
+                "-destination",
+                "platform=macOS",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "tvOS",
+          "sdk": "appletvsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:46:54.265752+00:00",
+          "ended": "2026-10-30T05:47:19.150712+00:00",
+          "log": "<artifact>/final-five-sdk/tvos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "appletvsimulator",
+            "-destination",
+            "generic/platform=tvOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=3",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:46:54.265752+00:00",
+              "ended": "2026-10-30T05:47:19.150712+00:00",
+              "log": "<artifact>/final-five-sdk/tvos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "appletvsimulator",
+                "-destination",
+                "generic/platform=tvOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=3",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "visionOS",
+          "sdk": "xrsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:47:19.151281+00:00",
+          "ended": "2026-10-30T05:47:47.273077+00:00",
+          "log": "<artifact>/final-five-sdk/visionos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "xrsimulator",
+            "-destination",
+            "generic/platform=visionOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=7",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:47:19.151281+00:00",
+              "ended": "2026-10-30T05:47:47.273077+00:00",
+              "log": "<artifact>/final-five-sdk/visionos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewReplica",
+                "-sdk",
+                "xrsimulator",
+                "-destination",
+                "generic/platform=visionOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=7",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        },
+        {
+          "platform": "watchOS",
+          "sdk": "watchsimulator",
+          "exit_code": 0,
+          "started": "2026-10-30T05:47:47.273692+00:00",
+          "ended": "2026-10-30T05:47:53.292966+00:00",
+          "log": "<artifact>/final-five-sdk/watchos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "<repo>/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewWatch",
+            "-sdk",
+            "watchsimulator",
+            "-destination",
+            "generic/platform=watchOS Simulator",
+            "-derivedDataPath",
+            "<artifact>/final-five-sdk",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=4",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "attempts": [
+            {
+              "exit_code": 0,
+              "started": "2026-10-30T05:47:47.273692+00:00",
+              "ended": "2026-10-30T05:47:53.292966+00:00",
+              "log": "<artifact>/final-five-sdk/watchos-final-build.log",
+              "command": [
+                "xcodebuild",
+                "-project",
+                "<repo>/HomeViewReplica.xcodeproj",
+                "-scheme",
+                "HomeViewWatch",
+                "-sdk",
+                "watchsimulator",
+                "-destination",
+                "generic/platform=watchOS Simulator",
+                "-derivedDataPath",
+                "<artifact>/final-five-sdk",
+                "CODE_SIGNING_ALLOWED=NO",
+                "TARGETED_DEVICE_FAMILY=4",
+                "ONLY_ACTIVE_ARCH=YES",
+                "ARCHS=arm64",
+                "build"
+              ],
+              "clean_metadata_recovery": false
+            }
+          ],
+          "ios_shortcut_artifacts_valid": null
+        }
+      ],
+      "products": {
+        "files": [
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Info.plist",
+            "bytes": 3253,
+            "sha256": "00ade6ed8692d31e40effde63eb24de42809fb5988bb5f4c45c9629761dddc09"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "8e999156a834c7e6d7e79bf76a05e016830ad47399964ced39eac1bc952c7bb5"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica.debug.dylib",
+            "bytes": 28697208,
+            "sha256": "8da8ab0569b84855c2fbc8fb479aa2a8e3e73c1ea2699fd7dbcc1a966617c729"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/MacOS/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "ef42e4140edff5aa41beea98327030af0bc0a463fc79a07b6ba04d72088f6690"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Assets.car",
+            "bytes": 14232664,
+            "sha256": "767d8e5b21a7fb9a20db530d5e9fe8e9dbd350c150b5a867ba06398435fe36a7"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/default.metallib",
+            "bytes": 71552,
+            "sha256": "2d900cbbfd77ccef3c3d572f238e0f3b856a08d9ccdb38dd9e64e509e58878ed"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "b4c9d7d3bd6c0bb265ec47c0a72d60d24793158eb38b32d94e58c98e502ab3ae"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "26954b0c48e9bb2f99cb92ede3b3496f27eca01e96c4f105eea6982043db0606"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 27015560,
+            "sha256": "1834cb40887cb5496c9f1d154759ad11865fe4ea765370b8debb0c973072ea28"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2238,
+            "sha256": "1aaf27c60965a35dd296adaeb788ed9a54b00488e86415458473c7198384d703"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "670e17274069643540183ea4a2bc7f9e4d071010627b412e93fa8e1f07081b75"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73120,
+            "sha256": "4bc27cae4df99c4a034115102721f3de1aba4b333b5b23217ac207ddb4563fd7"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+            "bytes": 15425,
+            "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+            "bytes": 22442,
+            "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 15242504,
+            "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "6a4d9ab05a704537d584c28beea7ccdd7f8946e894adcfabee1dc0d919ede829"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 28591816,
+            "sha256": "10457eefa386b8a5536cccafcf1303e8dfb3aec698d5d03d78139515afa06779"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2488,
+            "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+            "bytes": 1,
+            "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/nlu.lzfse",
+            "bytes": 2125,
+            "sha256": "36499ded9c7d146dd4b921760cef4751b26c0ee14b09a56de5cc1c4c50f52a5a"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/root.ssu.yaml",
+            "bytes": 926,
+            "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+            "bytes": 40224,
+            "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+            "bytes": 261104,
+            "sha256": "1fd7efa45cc7b71ed7d7a3b80a5b6a4c6e9fd4e2c74ce62c87348dae31bdaa79"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+            "bytes": 774,
+            "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+            "bytes": 16752,
+            "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73088,
+            "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+            "bytes": 40224,
+            "sha256": "c78d242145cb07b2b7ac478fe2c2514e89514bcc39e277adf01344f324289152"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+            "bytes": 295984,
+            "sha256": "736b9219259850976999f84cac09d5587961c771c60ac046d95bef0d043e0094"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/Info.plist",
+            "bytes": 774,
+            "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+          },
+          {
+            "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/__preview.dylib",
+            "bytes": 16768,
+            "sha256": "266e6199c94ea97332a5288d350ee22a4425698c7358d01cd4b72f704c142c7e"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "a771995aac5ec007e91664e4428067ac0555610c4b215035bfc3e79c79a932ed"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch",
+            "bytes": 40224,
+            "sha256": "7cbd76f08b69d235082ed075ff3aaa495b617031354cf30409b4b0d802addffe"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch.debug.dylib",
+            "bytes": 2612072,
+            "sha256": "378dff1bbfd97863540868f524a186504b8780ecba27c9a44cb606f63bbc2c0f"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+            "bytes": 1888,
+            "sha256": "8959eb2cf5183d039a531124408fccf21345622723ebf2a620d73eab81aede21"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "bf73f1f668d076a35153530e76ea07d6ae5a749fdf5f87c63273b33277d69de9"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Assets.car",
+            "bytes": 14236856,
+            "sha256": "b2f643d74a2e6016352536f6e3ce8a2d753afd36329ff9d633c6e830df180909"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica",
+            "bytes": 40224,
+            "sha256": "c0a60694a27f953c8d6800de41c00ab68791ef4213e2781c5be84d5207c21d9a"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+            "bytes": 28326936,
+            "sha256": "f967ab1d9e6a5a3fd7d77889204bb63c95aa451dd876ffed6544855428614c28"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+            "bytes": 2191,
+            "sha256": "867b3419211945a79074901c4c8c2e719824f505dc178705a6da1b0b435bada5"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+            "bytes": 1764,
+            "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+            "bytes": 53,
+            "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/PkgInfo",
+            "bytes": 8,
+            "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/__preview.dylib",
+            "bytes": 16760,
+            "sha256": "f969dc8b19bebb6ffb9280f2343858d8a568ff2373374385700dcae25761a1b4"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/default.metallib",
+            "bytes": 73136,
+            "sha256": "5ce1f26d647310d55fc2249c5cba4735e94a07626545edbb8e169d5fdce1b955"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/demo-tone.wav",
+            "bytes": 176444,
+            "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+            "bytes": 365116,
+            "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+          },
+          {
+            "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+            "bytes": 1920044,
+            "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+          }
+        ],
+        "archive_sha256": "9350a8ecf131139083cd366c731ac4f45c44b38bf5485f6230d6d1e5941f6f28",
+        "read_back": true,
+        "inputs_unchanged": true
+      },
+      "Info_readback": [
+        {
+          "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+          "sha256": "1aaf27c60965a35dd296adaeb788ed9a54b00488e86415458473c7198384d703"
+        },
+        {
+          "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+          "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b"
+        },
+        {
+          "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+          "Face_ID_description": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+          "sha256": "8959eb2cf5183d039a531124408fccf21345622723ebf2a620d73eab81aede21"
+        },
+        {
+          "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+          "Face_ID_description": "Authenticate to access personal content and confirm mock security actions in HomeView.",
+          "sha256": "867b3419211945a79074901c4c8c2e719824f505dc178705a6da1b0b435bada5"
+        }
+      ]
+    }
+  ],
+  "UI_package_lanes": {
+    "UI_App_count": 19,
+    "standard_iOS_count": 22,
+    "missing_UI": [
+      "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+      "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/nlu.lzfse",
+      "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/root.ssu.yaml"
+    ],
+    "OS_Shortcut_invocation": false
+  },
+  "large_native_controls": [
+    {
+      "device": "phone",
+      "control": {
+        "exists": true,
+        "frame": [
+          30.899999618530273,
+          405.42999267578125,
+          340.20001220703125,
+          66.14999389648438
+        ],
+        "hittable": true,
+        "id": "confirm",
+        "label": "Confirm Unlock"
+      },
+      "actual_clip": [
+        30.899999999999995,
+        366.5800000000001,
+        371.1000000000001,
+        611.44
+      ],
+      "native_44_and_actual_clip": true,
+      "horizontal_inset": 0,
+      "vertical_reveal_margin": 2,
+      "scope": "Actual cancel/confirm callbacks are in the same successful method. No44ptedge/corner or assistive-device audit claimed."
+    },
+    {
+      "device": "phone",
+      "control": {
+        "exists": true,
+        "frame": [
+          30.899999618530273,
+          455.8299865722656,
+          340.20001220703125,
+          66.14999389648438
+        ],
+        "hittable": true,
+        "id": "cancel",
+        "label": "Cancel"
+      },
+      "actual_clip": [
+        30.899999999999995,
+        366.5800000000001,
+        371.1000000000001,
+        611.44
+      ],
+      "native_44_and_actual_clip": true,
+      "horizontal_inset": 0,
+      "vertical_reveal_margin": 2,
+      "scope": "Actual cancel/confirm callbacks are in the same successful method. No44ptedge/corner or assistive-device audit claimed."
+    },
+    {
+      "device": "ipad",
+      "control": {
+        "exists": true,
+        "frame": [
+          51.79999923706055,
+          813.7999877929688,
+          716.4000244140625,
+          138.63665771484375
+        ],
+        "hittable": true,
+        "id": "confirm",
+        "label": "Confirm Unlock"
+      },
+      "actual_clip": [
+        51.8,
+        432.3833333333334,
+        768.2,
+        957.0800000000002
+      ],
+      "native_44_and_actual_clip": true,
+      "horizontal_inset": 0,
+      "vertical_reveal_margin": 2,
+      "scope": "Actual cancel/confirm callbacks are in the same successful method. No44ptedge/corner or assistive-device audit claimed."
+    },
+    {
+      "device": "ipad",
+      "control": {
+        "exists": true,
+        "frame": [
+          51.79999923706055,
+          809.8200073242188,
+          716.4000244140625,
+          138.63665771484375
+        ],
+        "hittable": true,
+        "id": "cancel",
+        "label": "Cancel"
+      },
+      "actual_clip": [
+        51.8,
+        432.38333333333327,
+        768.2,
+        957.0799999999999
+      ],
+      "native_44_and_actual_clip": true,
+      "horizontal_inset": 0,
+      "vertical_reveal_margin": 2,
+      "scope": "Actual cancel/confirm callbacks are in the same successful method. No44ptedge/corner or assistive-device audit claimed."
+    }
+  ],
+  "preferences": [
+    {
+      "device": "074A25A3-C5F2-440A-9233-928F47D5C809",
+      "original": "large",
+      "script_sha256": "e56e8acaa107c17cb4bd2781ae15f273d05c52f15e247d8dfe53d361d8b895a6",
+      "started": "2026-10-30T05:35:12.733868+00:00",
+      "requested_read_back": "accessibility-extra-extra-extra-large",
+      "exit_code": 65,
+      "restored": "large",
+      "ended": "2026-10-30T05:35:54.581449+00:00",
+      "script_unchanged": true
+    },
+    {
+      "device": "EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+      "original": "large",
+      "script_sha256": "e56e8acaa107c17cb4bd2781ae15f273d05c52f15e247d8dfe53d361d8b895a6",
+      "started": "2026-10-30T05:35:12.733814+00:00",
+      "requested_read_back": "accessibility-extra-extra-extra-large",
+      "exit_code": 65,
+      "restored": "large",
+      "ended": "2026-10-30T05:36:04.226488+00:00",
+      "script_unchanged": true
+    },
+    {
+      "device": "074A25A3-C5F2-440A-9233-928F47D5C809",
+      "original": "large",
+      "script_sha256": "3b6b761e665f295cc51e75bc0f16b6bd062786fa55be43734351c860e3217c0d",
+      "started": "2026-10-30T05:39:12.809012+00:00",
+      "requested_read_back": "accessibility-extra-extra-extra-large",
+      "exit_code": 65,
+      "restored": "large",
+      "ended": "2026-10-30T05:40:01.217002+00:00",
+      "script_unchanged": true
+    },
+    {
+      "device": "EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+      "original": "large",
+      "script_sha256": "3b6b761e665f295cc51e75bc0f16b6bd062786fa55be43734351c860e3217c0d",
+      "started": "2026-10-30T05:39:12.808441+00:00",
+      "requested_read_back": "accessibility-extra-extra-extra-large",
+      "exit_code": 65,
+      "restored": "large",
+      "ended": "2026-10-30T05:39:55.064675+00:00",
+      "script_unchanged": true
+    },
+    {
+      "device": "074A25A3-C5F2-440A-9233-928F47D5C809",
+      "original": "large",
+      "script_sha256": "ef816ef3208e3bd1506c2408a09e74b35488a85a297143e96c4e0f61f6e58368",
+      "started": "2026-10-30T05:43:15.185088+00:00",
+      "requested_read_back": "accessibility-extra-extra-extra-large",
+      "exit_code": 0,
+      "restored": "large",
+      "ended": "2026-10-30T05:43:37.439738+00:00",
+      "script_unchanged": true
+    },
+    {
+      "device": "074A25A3-C5F2-440A-9233-928F47D5C809",
+      "original": "large",
+      "script_sha256": "ef816ef3208e3bd1506c2408a09e74b35488a85a297143e96c4e0f61f6e58368",
+      "started": "2026-10-30T05:45:45.605418+00:00",
+      "requested_read_back": "accessibility-extra-extra-extra-large",
+      "exit_code": 0,
+      "restored": "large",
+      "ended": "2026-10-30T05:46:54.035482+00:00",
+      "script_unchanged": true
+    },
+    {
+      "device": "EA9740FB-0BE9-4F94-AE30-C315AC95270E",
+      "original": "large",
+      "script_sha256": "ef816ef3208e3bd1506c2408a09e74b35488a85a297143e96c4e0f61f6e58368",
+      "started": "2026-10-30T05:45:45.606069+00:00",
+      "requested_read_back": "accessibility-extra-extra-extra-large",
+      "exit_code": 0,
+      "restored": "large",
+      "ended": "2026-10-30T05:47:00.534491+00:00",
+      "script_unchanged": true
+    }
+  ],
+  "visual_review": {
+    "actually_viewed": [
+      {
+        "file": "release-phone-review-1.jpg",
+        "sha256": "3b6f1e2a955d41d06886feebad3ad4c5fb4ffa45fc53beedf15f8053d9884f69"
+      },
+      {
+        "file": "release-phone-review-2.jpg",
+        "sha256": "4cf1404e5b0f851002a8e7b4fb0a52935e239de3b6844cd435a26856726a03c7"
+      },
+      {
+        "file": "release-ipad-review-1.jpg",
+        "sha256": "0c5793e31fbe712c5a952741fdcf73cca60cc242e7d9094dcb6b77113861afca"
+      },
+      {
+        "file": "release-ipad-review-2.jpg",
+        "sha256": "1b55b5fadb7d9f0ee82aaf243a5f45ac1d6950301274ba2ac4dfbcd4f6aacf6d"
+      },
+      {
+        "file": "ax-accepted-phone-review-1.jpg",
+        "sha256": "d069485d94d25977f612e20bd682b92d830f53d4753e4ad447a727691dbd2bad"
+      },
+      {
+        "file": "ax-accepted-ipad-review-1.jpg",
+        "sha256": "f71987348e7ed84ca58f9ea6fbaaf4d6afe7e3a180cea5154c61bca65d74bc55"
+      },
+      {
+        "file": "current-phone-review-1.jpg",
+        "sha256": "5b74a5456c802c68a801ec4d00dafaef0f88c9cd456a15b792dc8939dd51a7b4"
+      },
+      {
+        "file": "current-phone-review-2.jpg",
+        "sha256": "5eb43ef42b241271f68abbd5ea972d3f78bf222e063b691db32b6f1a11bdac59"
+      },
+      {
+        "file": "current-ipad-review-1.jpg",
+        "sha256": "fd0fff055c043bcfa213932000a29ecabe234839602e65c723b91b4c00cac37d"
+      },
+      {
+        "file": "current-ipad-review-2.jpg",
+        "sha256": "fd248ec06b2caaa81b82f912d8d9be16923d30baddac1070ddcee2aa30d7ae86"
+      },
+      {
+        "file": "ax-diagnostic-phone-review-1.jpg",
+        "sha256": "c07b1b2be1f1b2b811a3e57fe59d22ca023f7fcbb9de266e86a85aca9c93e18b"
+      }
+    ],
+    "current_contacts": 6,
+    "earlier_contacts": 5,
+    "whole_and_owned_PNG": "All48currentPNG actuallyreviewedthrough6contacts, including duplicates. Earlier40normal+2diagnostic also viewed, no beforePNG exists.",
+    "reading_limit": "Largest saved poses clip nontarget prose; button/cancel/confirm and confirmed-state literal checked, not complete paragraphs or native assistive reading."
+  },
+  "PNG_decoded_total": 90,
+  "current_PNG": 48,
+  "public_images": [
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/phone-mock-lock-proposal-no-command.png",
+      "source_run": "release-phone",
+      "source_attachment": "viewport-mock-lock-proposal-no-command_0_A8D1D4EB-544C-47D9-9DE2-B1B73B514CC1.png",
+      "sha256": "01527a922a8c5360dc5a13565fea9f05df67776b7216a5d9cb7e98d39007521e",
+      "size": [
+        1134,
+        1134
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/phone-mock-lock-cancel-no-command.png",
+      "source_run": "release-phone",
+      "source_attachment": "viewport-mock-lock-cancel-no-command_0_D6D77566-4C18-4728-8B85-4EFFCD4E40E2.png",
+      "sha256": "476d6a933c978c8fdcca8b3de651a6fa3183b9234fa4a3b8dbf888466e158325",
+      "size": [
+        1134,
+        1134
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/phone-mock-lock-confirmed-low-battery.png",
+      "source_run": "release-phone",
+      "source_attachment": "viewport-mock-lock-confirmed-low-battery_0_EC49235C-8FF7-435B-97CF-3A5FF621AC30.png",
+      "sha256": "3918914961012913d07df11a1770b7a04c385ec8e5eceb2a6b761d7b1a835438",
+      "size": [
+        1134,
+        1134
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/phone-mock-lock-unavailable-unknown.png",
+      "source_run": "release-phone",
+      "source_attachment": "viewport-mock-lock-unavailable-unknown_0_F62742A0-F2FC-41CD-B8D3-2EC2F9F17773.png",
+      "sha256": "33f6f0565bc76b44989260ed05e78fdf0f691e4febb324ac23c9b2f7d619fcab",
+      "size": [
+        1134,
+        1134
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/phone-mock-lock-unavailable-jammed.png",
+      "source_run": "release-phone",
+      "source_attachment": "viewport-mock-lock-unavailable-jammed_0_B85D6B01-2B2C-4E86-B699-9B2496207DBD.png",
+      "sha256": "f52ae2bb9426170d6c90a208f64eed6d23429d863472427e0eed11944ef62207",
+      "size": [
+        1134,
+        1134
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/phone-mock-lock-unavailable-battery-fault.png",
+      "source_run": "release-phone",
+      "source_attachment": "viewport-mock-lock-unavailable-battery-fault_0_C12F969D-D237-4F52-9BAD-C681D4C7C71A.png",
+      "sha256": "c5cea204682a5149680485eb2c4cc718c20aa5ced5bf7c6a74b0190f2454a6d5",
+      "size": [
+        1134,
+        1134
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/phone-mock-lock-largest-confirmation-before-action.png",
+      "source_run": "ax-accepted-phone",
+      "source_attachment": "viewport-mock-lock-largest-confirmation-before-action_0_86BB016F-4CA3-4041-8841-8FF12AE11E24.png",
+      "sha256": "c0263a13496e6b5f6e3bc69744906e85d217abfcbc7d556d59dca156f676f8b1",
+      "size": [
+        1134,
+        1134
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/phone-mock-lock-largest-confirmed.png",
+      "source_run": "ax-accepted-phone",
+      "source_attachment": "viewport-mock-lock-largest-confirmed_0_859E16E6-54C9-4C7A-B4E2-FF86B8A87A74.png",
+      "sha256": "3658b469b13ea73e85e8e619645f7c96f2387cd9c5090a63b861d12f69452dd1",
+      "size": [
+        1134,
+        1134
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/ipad-mock-lock-proposal-no-command.png",
+      "source_run": "release-ipad",
+      "source_attachment": "viewport-mock-lock-proposal-no-command_0_09B96853-79D3-4EB9-BDB5-6801C6D4D766.png",
+      "sha256": "d9467f26103340766091c3371ba095bf8055c8049ccdcfe8c2983fd0b94bb478",
+      "size": [
+        1592,
+        1592
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/ipad-mock-lock-cancel-no-command.png",
+      "source_run": "release-ipad",
+      "source_attachment": "viewport-mock-lock-cancel-no-command_0_5514A3EC-0265-405E-92F8-7FBFE45C8E58.png",
+      "sha256": "1291ce4b95e45eb7f92eee07e1f40ab001679b1271bea4b1b9abc1775fda33a1",
+      "size": [
+        1592,
+        1592
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/ipad-mock-lock-confirmed-low-battery.png",
+      "source_run": "release-ipad",
+      "source_attachment": "viewport-mock-lock-confirmed-low-battery_0_7431B73C-927E-4C65-A1FC-68ADD85F9E1C.png",
+      "sha256": "6b563a991e254660951210f990f480d2be78ee3b0939afe4c09f6d857c152ac0",
+      "size": [
+        1592,
+        1592
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/ipad-mock-lock-unavailable-unknown.png",
+      "source_run": "release-ipad",
+      "source_attachment": "viewport-mock-lock-unavailable-unknown_0_6722CD74-0AF4-423F-8A27-778D53913D71.png",
+      "sha256": "13d3f091572468abb87ab8fb279ae284717480337f1f4cf2b3bca42f1e5d4236",
+      "size": [
+        1592,
+        1592
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/ipad-mock-lock-unavailable-jammed.png",
+      "source_run": "release-ipad",
+      "source_attachment": "viewport-mock-lock-unavailable-jammed_0_235EA5BF-1BE4-4EF5-9CEB-27E3DFAE2A0A.png",
+      "sha256": "56066904acc33ac158c6c462e12e52ff4eaba29f410847e5dea5cb6b82d6889f",
+      "size": [
+        1592,
+        1592
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/ipad-mock-lock-unavailable-battery-fault.png",
+      "source_run": "release-ipad",
+      "source_attachment": "viewport-mock-lock-unavailable-battery-fault_0_80CBCA20-491B-4F3F-A597-E96D61EBC255.png",
+      "sha256": "6b2bf1c2e3716e6d70ead825092db4d7ceda83f1bf54dcecf6379f2aac7cacf2",
+      "size": [
+        1592,
+        1592
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/ipad-mock-lock-largest-confirmation-before-action.png",
+      "source_run": "ax-accepted-ipad",
+      "source_attachment": "viewport-mock-lock-largest-confirmation-before-action_0_1C3B0F0A-21A2-446B-A5A5-0D7A292803D0.png",
+      "sha256": "69902c69452d9f30256d4ee9ac1f2f190a9fa7e0aed036d26a2d96c61563418e",
+      "size": [
+        1592,
+        1592
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    },
+    {
+      "file": "Docs/verification/images/mock-lock-security-20261030/ipad-mock-lock-largest-confirmed.png",
+      "source_run": "ax-accepted-ipad",
+      "source_attachment": "viewport-mock-lock-largest-confirmed_0_E5436BD6-BC1E-439A-A82D-A4BA768DAB80.png",
+      "sha256": "14129bfae297cf824ac33bdbe9729784ed7115bcb8d222294de80e0ecde00b6f",
+      "size": [
+        1592,
+        1592
+      ],
+      "unmodified_native_own_viewport": true,
+      "limits": "Actual saved scroll pose; no full-paragraph, original-parity or physical/assistive acceptance. Phone prompt prefix can be above clip while Confirm Unlock remains explicit."
+    }
+  ],
+  "AX_instrument_failures": {
+    "first_two_FAIL": "Wrong ancestor: fixed footer required inside details scroll +40pt inset.",
+    "next_two_FAIL": "Artificial2pt horizontal inset made a full-width control impossible to contain; helper oscillation not a demonstrated product failure.",
+    "actual_initial_geometry": [
+      {
+        "exists": true,
+        "frame": [
+          30.899999618530273,
+          871.6300048828125,
+          340.20001220703125,
+          110.66998291015625
+        ],
+        "hittable": false,
+        "id": "action",
+        "label": "Authenticate Device"
+      },
+      {
+        "exists": true,
+        "frame": [
+          30.899999999999995,
+          366.58,
+          340.2000000000001,
+          244.85999999999996
+        ],
+        "hittable": true,
+        "id": "scroll",
+        "label": ""
+      },
+      {
+        "exists": true,
+        "frame": [
+          12,
+          241,
+          378,
+          378
+        ],
+        "hittable": true,
+        "id": "viewport",
+        "label": "Reference viewport"
+      }
+    ],
+    "button_width": 340.20001220703125,
+    "scroll_width": 340.2000000000001,
+    "width_difference": 1.2207031147681846e-05,
+    "diagnostic_UI_only": 1,
+    "actual_owned_diagnostic_images_viewed": true,
+    "resolution": "Use existing horizontalMargin0 for full-width controls. Actual clip not expanded, vertical2pt margin/native44pt guards and real cancel/reproposal/confirm callbacks retained.",
+    "reading": "Initial diagnostic is a scroll pose, not full-paragraph reading or a functional/security acceptance.",
+    "old_fails_retained": 4
+  },
+  "baseline_scope": {
+    "product_inputs_unchanged": true,
+    "only_changed_input": [
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "source_count": 235,
+    "baseline_UI_failure_is_separate_confirmation": true
+  },
+  "build_preparation": [
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "started": "2026-10-30T05:38:16.217941+00:00",
+      "source_digest": "39c89c2f0e71d23ab51c04a821e755f13859f6b74bfa3dc547ee2ab8618e3070",
+      "exit_code": 0,
+      "ended": "2026-10-30T05:38:34.024442+00:00",
+      "inputs_unchanged": true
+    },
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "started": "2026-10-30T05:37:33.018932+00:00",
+      "source_digest": "47bf5f9ac27375a9765f4d74d89f0c4078180d989676972cffbbcb477250d2ac",
+      "exit_code": 65,
+      "ended": "2026-10-30T05:37:38.468916+00:00",
+      "inputs_unchanged": true
+    },
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "started": "2026-10-30T05:19:59.239797+00:00",
+      "source_digest": "0bb54a3107cab0139e9278e8306373a042f807eb0d014945f76a9e3bd632c0f9",
+      "exit_code": 0,
+      "ended": "2026-10-30T05:20:44.315813+00:00",
+      "inputs_unchanged": true
+    },
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "started": "2026-10-30T05:27:06.308139+00:00",
+      "source_digest": "20d025921fb81ed7a4fda8db339fe38c007f3c5a15160f71c40db2968f1682f8",
+      "exit_code": 0,
+      "ended": "2026-10-30T05:27:38.554009+00:00",
+      "inputs_unchanged": true
+    },
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "started": "2026-10-30T05:28:26.726749+00:00",
+      "source_digest": "606c253097b4028426a0e385feab765946e60f49b58c25d9959ba782a4ffc223",
+      "exit_code": 0,
+      "ended": "2026-10-30T05:28:46.959162+00:00",
+      "inputs_unchanged": true
+    },
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "started": "2026-10-30T05:42:02.149588+00:00",
+      "source_digest": "02477ab3f7c1bb22f40a1918b8a3dfb54f085878a42b0c0a914ab4140430e264",
+      "exit_code": 0,
+      "ended": "2026-10-30T05:42:18.502409+00:00",
+      "inputs_unchanged": true
+    },
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "started": "2026-10-30T05:34:36.463745+00:00",
+      "source_digest": "53857ea5fbed3cf97f884cfd470aa1860f32c81bc7eecbc4bce8d447184cec53",
+      "exit_code": 0,
+      "ended": "2026-10-30T05:34:48.604980+00:00",
+      "inputs_unchanged": true
+    },
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "<repo>/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "<artifact>/ui-build",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "started": "2026-10-30T05:44:24.378806+00:00",
+      "source_digest": "b6273cf1b5b93c2b71bd7b0794e48fcc2fa56ca37af922a5d30c834137acf77b",
+      "exit_code": 0,
+      "ended": "2026-10-30T05:44:35.200166+00:00",
+      "inputs_unchanged": true
+    }
+  ],
+  "limits": [
+    "No physical FaceID/TouchID/passcode or actual lock/home/event source was evaluated. Fixture DeviceConnections grant tests software ownership gates only.",
+    "Existing device-authenticated foreground session is necessary; each mock command additionally requires its own30secondsingleuseproposal. This is not newly claiming per-command biometric reauthentication or household identity.",
+    "A post-send interruption/error/late reply is unverified, not a fictitious zero-effect cancellation; no retry. Observation and provider state are separate in LockView/Home/Face.",
+    "No normal pixel-identity, broad Accessibility, original geometry/motion, voice-control/VoiceOver, network/provider/hardware/performance or Home parity certificate. Largest saved poses may clip nontarget prose; explicit controls and confirmed-state visibility actually checked.",
+    "One initial genericPython/PIL-extractor preparation error and one AnyLayout ternary compilation failure are retained;0UI from the compile failure. Four failingAXmethods remain failures, not converted into Product PASS.",
+    "Only current five SDKs count; two earlier separate fiveSDKwaves retained. Compiler success and metadata presence are not OS authentication or Shortcuts execution."
+  ],
+  "current_UI_Info_readback": {
+    "archive": "release-phone-inputs.zip",
+    "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b",
+    "Face_ID_description_exact": true,
+    "installed_App_readback": true
+  }
+}

@@ -761,7 +761,7 @@
     "functions": [
       "F028"
     ],
-    "current": "Demo-Profil schützt ein Mock-Schloss. Das ist keine Autorisierung für ein echtes Schloss.",
+    "current": "Öffentliche Geräteinhaberfreigabe statt Demo-Profil, separate kurzlebige Einmalbestätigung und bestätigte Mock-Zustände einschließlich Unknown/Jammed/Batteriefehler umgesetzt. Ursprünglicher synthetischer Sicherheitsvertrag geprüft; echte Home-/Haushaltsbindung und physische Authentifizierung bleiben gesperrt, keine Original-Parity.",
     "tasks": [
       "Geräteauthentifizierung und explizite Bestätigung für Sicherheitsaktionen vorsehen",
       "Schlosszustand, unbekannt, blockiert und Batteriefehler behandeln",

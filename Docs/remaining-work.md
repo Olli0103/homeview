@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [#25: ursprünglicher Mock-Schloss-Sicherheitsvertrag erfüllt](mock-lock-security.md):429Coretests, zwölf aktuelle native UI-Ausführungen/fünf SDKs sowie unabhängige1152Vektoren/5775Bedingungen und Terminal-Cancel-Gegenprobe bestanden. Gerätefreigabe statt Demo-Profil, separate30s-Einmalbestätigung, Widerruf, Unknown/Jammed/Batteriefehler und nichtoptimistischer Read-back. Echte Home-/Identitätsbindung bleibt #23/#66, F028partial/parity=false. Veröffentlichung und Issue-State werden separat zurückgelesen; noch kein vorweggenommener neuer Zähler. Danach #24: typisierter Geräte-/Read-back-Vertrag unter unveränderter Home-Sperre, nicht weitere kleine Schriftpakete.
+
 - **Abschlussorientierung,30.Oktober:** weiter40 ursprüngliche Issues erledigt,1 Snoopy-Ausschluss,41 offen. Die letzten Schrift-/Kontrastlieferungen schließen kein weiteres Issue. Alle41 ursprünglichen Abschlusskriterien erneut gelesen; nicht pauschal als Hardwareblockaden eingestuft. Nächster unabhängiger Softwareblock: **#25** (explizite kurzlebige Bestätigung, Zustandsbestätigung und negative Mock-Sicherheitsfälle). Keine Änderung der Home-Sperre. Mac-Abnahme bei#79 bleibt konkret blockiert: Entwicklermodus weiterhin aus, Gateway-Computerzugang nicht verfügbar, kein verbundener Computer-Node; frühere erfolglose Starts werden nicht blind wiederholt oder durch SDK-Builds ersetzt.
 
 - [Weltuhr-Kontrastdurchgang abgeschlossen](world-clock-contrast.md):16 aktuelle UI-Ausführungen/fünf SDKs, zehn normale Textbedingungen6,90–7,00:1.27 von36 vorab qualifizierten Außenvergleichen exakt; neun iPhone-Paare am OS-Home-Indikator strikt fehlgeschlagen, zwölf weitere Posen weiterhin unqualifiziert. Kein aufgeweichter Bildvertrag und keine Issue-Schließung.
