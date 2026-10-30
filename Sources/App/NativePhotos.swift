@@ -135,6 +135,16 @@ struct NativePhotoControls: View {
     @State private var selection: [PhotosPickerItem] = []
     @State private var loadTask: Task<Void, Never>?
   #endif
+  #if os(iOS)
+    @State private var showingPrivatePicker = false
+  #endif
+  #if canImport(PhotosUI) && !os(tvOS) && !os(watchOS)
+    private var legacyPicker: some View {
+      PhotosPicker(selection: $selection, maxSelectionCount: 10, matching: .images) {
+        Label("Choose Photos", systemImage: "photo.on.rectangle")
+      }
+    }
+  #endif
   var body: some View {
     VStack(alignment: .leading, spacing: 15) {
       Text("Photos face").font(.system(size: headingSize, weight: .semibold))
@@ -147,8 +157,21 @@ struct NativePhotoControls: View {
         ).font(.system(size: policySize)).foregroundStyle(.black.opacity(0.65))
       #endif
       #if canImport(PhotosUI) && !os(tvOS) && !os(watchOS)
-        PhotosPicker(selection: $selection, maxSelectionCount: 10, matching: .images) {
-          Label("Choose Photos", systemImage: "photo.on.rectangle")
+        Group {
+          #if os(iOS)
+          if #available(iOS 27.0, *) {
+            Button { showingPrivatePicker = true } label: {
+              Label("Choose Photos", systemImage: "photo.on.rectangle")
+            }
+            .fullScreenCover(isPresented: $showingPrivatePicker) {
+              PrivatePhotoPicker { selection = $0 }
+            }
+          } else {
+            legacyPicker
+          }
+          #else
+          legacyPicker
+          #endif
         }.font(.system(size: actionSize))
           .onChange(of: selection) { _, items in
             loadTask?.cancel()
@@ -389,3 +412,80 @@ enum PhotoThumbnail {
     return output as Data
   }
 }
+
+#if os(iOS)
+/// Keep the search draft in our scene so its keyboard can be resigned for an
+/// inactive snapshot. The photo grid remains Apple's out-of-process picker;
+/// only an explicit Done shares the user's pending items with the importer.
+@available(iOS 27.0, *)
+private struct PrivatePhotoPicker: View {
+  @Environment(\.dismiss) private var dismiss
+  @Environment(\.scenePhase) private var phase
+  @Environment(AppModel.self) private var model
+  let confirm: ([PhotosPickerItem]) -> Void
+  @State private var pending: [PhotosPickerItem] = []
+  @State private var query = ""
+  @State private var appliedQuery = ""
+  @State private var resumeSearch = false
+  @FocusState private var searchFocused: Bool
+
+  var body: some View {
+    NavigationStack {
+      VStack(spacing: 0) {
+        TextField("Search Photos", text: $query)
+          .textFieldStyle(.roundedBorder).padding()
+          .accessibilityIdentifier("photos.private.search")
+          .focused($searchFocused).submitLabel(.search)
+          .textInputAutocapitalization(.never).autocorrectionDisabled(true)
+          .onSubmit { searchFocused = false }
+        PhotosPicker(selection: $pending, maxSelectionCount: 10,
+                     selectionBehavior: .continuous, matching: .images) {
+          Text("Photos")
+        }
+          .photosPickerStyle(.inline)
+          .photosPickerDisabledCapabilities([.search, .selectionActions])
+          .photosPickerSearchText(PHPickerSearchText(appliedQuery))
+          // This SDK/runtime did not apply changes to an existing picker.
+          // Recreate only after a short idle period, not on every keystroke.
+          .id(appliedQuery)
+          .photosPickerAccessoryVisibility(.hidden, edges: .bottom)
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+      }
+      .navigationTitle("Choose Photos").navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .cancellationAction) {
+          Button("Cancel", role: .cancel) { dismiss() }
+            .frame(minWidth: 44, minHeight: 44)
+        }
+        ToolbarItem(placement: .confirmationAction) {
+          Button("Done") { confirm(pending); dismiss() }
+            .frame(minWidth: 44, minHeight: 44).disabled(pending.isEmpty)
+        }
+      }
+    }
+    .preferredColorScheme(.light).foregroundStyle(.primary).font(.body)
+    .snapshotPrivacyProtected()
+    .task(id: query) {
+      do {
+        try await Task.sleep(for: .milliseconds(250))
+        try Task.checkCancellation()
+        appliedQuery = query
+      } catch is CancellationError {} catch {}
+    }
+    .onChange(of: phase) { _, value in
+      if value != .active {
+        resumeSearch = resumeSearch || searchFocused
+        searchFocused = false
+      } else if resumeSearch {
+        resumeSearch = false
+        searchFocused = true
+      }
+    }
+    .onChange(of: model.localResetGeneration) { _, _ in
+      pending = []; query = ""; resumeSearch = false; searchFocused = false
+      dismiss()
+    }
+    .onDisappear { resumeSearch = false; searchFocused = false }
+  }
+}
+#endif

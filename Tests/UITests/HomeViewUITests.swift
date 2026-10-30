@@ -191,16 +191,21 @@ extension HomeViewUITests {
     #if targetEnvironment(simulator)
     continueAfterFailure=false;executionTimeAllowance=180
     _=try openIsolatedPopulatedNativePhotosPicker()
-    let bar=app.otherElements["photosSearchBar"].firstMatch
-    if bar.exists {
-      // The observed iPad control is an AX Other, not a SearchField or Search button.
-      XCTAssertTrue(app.frame.contains(bar.frame));XCTAssertTrue(bar.isEnabled)
-      bar.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)).tap()
+    let owned=app.textFields["photos.private.search"].firstMatch
+    let field:XCUIElement
+    if owned.exists {
+      field=owned
     } else {
-      let search=app.buttons["Search"].firstMatch
-      XCTAssertTrue(search.waitForExistence(timeout:5));XCTAssertTrue(search.isHittable);search.tap()
+      let bar=app.otherElements["photosSearchBar"].firstMatch
+      if bar.exists {
+        XCTAssertTrue(app.frame.contains(bar.frame));XCTAssertTrue(bar.isEnabled)
+        bar.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)).tap()
+      } else {
+        let search=app.buttons["Search"].firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout:5));XCTAssertTrue(search.isHittable);search.tap()
+      }
+      field=app.otherElements["photosSearchBar"].textViews.firstMatch
     }
-    let field=app.otherElements["photosSearchBar"].textViews.firstMatch
     let found=field.waitForExistence(timeout:10)
     let tree=XCTAttachment(string:app.debugDescription);tree.name="native-photos-search-before-input-hierarchy";tree.lifetime = .keepAlways;add(tree)
     XCTAssertTrue(found)
@@ -9918,4 +9923,89 @@ extension HomeViewUITests {
   }
   @objc func testWeatherIllustrationMatrixDayKeepsEveryMetricVisible() {verifyWeatherIllustrationMatrix(night:false)}
   @objc func testWeatherIllustrationMatrixNightKeepsEveryMetricVisible() {verifyWeatherIllustrationMatrix(night:true)}
+}
+
+extension HomeViewUITests {
+  func testIsolatedSyntheticPhotoSearchAppliesQueryAndDoneExplicitlyImports() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    _=try openIsolatedPopulatedNativePhotosPicker()
+    let query="HOMEVIEW67_PRIVATE_SEARCH",field=app.textFields["photos.private.search"].firstMatch
+    XCTAssertTrue(field.exists);field.tap();field.typeText(query)
+    XCTAssertEqual(field.value as? String,query)
+    XCTAssertTrue(app.staticTexts["No Results"].firstMatch.waitForExistence(timeout:15),
+      "A retained app-owned draft alone does not prove the public picker search update applied")
+    XCTAssertFalse(app.buttons["Done"].firstMatch.isEnabled)
+    shot("native-photos-query-applied-no-results")
+    field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:query.count))
+    let fixture=app.images.matching(identifier:"PXGGridLayout-Info").firstMatch
+    XCTAssertTrue(fixture.waitForExistence(timeout:15));XCTAssertTrue(fixture.isHittable)
+    XCTAssertTrue(syntheticPhotoCanary(fixture.screenshot().pngRepresentation,checkpoint:"query-cleared-owned-canary"))
+    XCTAssertFalse(app.staticTexts["No Results"].firstMatch.exists)
+    fixture.tap()
+    let done=app.buttons["Done"].firstMatch
+    let ready=XCTNSPredicateExpectation(predicate:NSPredicate(format:"enabled == true"),object:done)
+    XCTAssertEqual(XCTWaiter.wait(for:[ready],timeout:10),.completed)
+    shot("native-photos-query-applied-owned-selection-pending")
+    field.typeText(query)
+    XCTAssertTrue(app.staticTexts["No Results"].firstMatch.waitForExistence(timeout:15))
+    XCTAssertTrue(done.isEnabled,"Changing the query must retain the uncommitted selection")
+    field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:query.count))
+    XCTAssertTrue(fixture.waitForExistence(timeout:15))
+    XCTAssertTrue(done.isEnabled)
+    done.tap()
+    // A successful existing import intentionally navigates to the Photos face.
+    XCTAssertTrue(app.descendants(matching:.any)["photo.clock"].firstMatch.waitForExistence(timeout:15))
+    XCTAssertTrue(syntheticPhotoCanary(XCUIScreen.main.screenshot().pngRepresentation,checkpoint:"explicit-import-face"))
+    shot("native-photos-explicit-import-confirmed-face")
+    albumSettings()
+    let remove=app.buttons["Remove Selected Photo"].firstMatch
+    XCTAssertTrue(remove.waitForExistence(timeout:15),"Only explicit confirmation may trigger an import")
+    scrollPhotoControlFullyIntoView(remove);XCTAssertTrue(remove.isHittable)
+    shot("native-photos-explicit-import-confirmed")
+    remove.tap()
+    albumSettings()
+    XCTAssertFalse(remove.exists)
+    #else
+    throw XCTSkip("Only opt-in isolated synthetic simulator media")
+    #endif
+  }
+}
+
+extension HomeViewUITests {
+  func testIsolatedSyntheticPhotoQueryThenSecondSelectionKeepsBothOwnedItems() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    _=try openIsolatedPopulatedNativePhotosPicker()
+    let tiles=app.images.matching(identifier:"PXGGridLayout-Info")
+    XCTAssertGreaterThanOrEqual(tiles.count,2)
+    let first=tiles.element(boundBy:0),second=tiles.element(boundBy:1)
+    XCTAssertTrue(first.isHittable);XCTAssertTrue(second.isHittable)
+    XCTAssertTrue(syntheticPhotoCanary(first.screenshot().pngRepresentation,checkpoint:"multi-first-owned"))
+    XCTAssertTrue(syntheticPhotoCanary(second.screenshot().pngRepresentation,checkpoint:"multi-second-owned"),
+      "A second separately provisioned own fixture is required; never touch an OS sample photo")
+    first.tap()
+    let done=app.buttons["Done"].firstMatch,field=app.textFields["photos.private.search"].firstMatch
+    XCTAssertTrue(done.isEnabled)
+    let query="HOMEVIEW67_PRIVATE_SEARCH"
+    field.tap();field.typeText(query)
+    XCTAssertTrue(app.staticTexts["No Results"].firstMatch.waitForExistence(timeout:15))
+    XCTAssertTrue(done.isEnabled)
+    field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:query.count))
+    XCTAssertTrue(second.waitForExistence(timeout:15));XCTAssertTrue(second.isHittable)
+    XCTAssertTrue(syntheticPhotoCanary(second.screenshot().pngRepresentation,checkpoint:"multi-second-owned-after-query"))
+    shot("native-photos-multi-query-return-first-selection")
+    second.tap()
+    shot("native-photos-multi-query-two-owned-pending")
+    done.tap()
+    let index=app.staticTexts["photo.index"]
+    XCTAssertTrue(index.waitForExistence(timeout:15))
+    XCTAssertTrue(index.label.contains("OF 2"),
+      "Selecting a new item after the query changes must not replace the earlier pending selection")
+    XCTAssertTrue(syntheticPhotoCanary(XCUIScreen.main.screenshot().pngRepresentation,checkpoint:"multi-confirmed-face"))
+    shot("native-photos-multi-query-explicit-import-two")
+    #else
+    throw XCTSkip("Only separately provisioned synthetic simulator media")
+    #endif
+  }
 }
