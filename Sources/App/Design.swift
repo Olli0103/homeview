@@ -60,7 +60,12 @@ struct AppHeader: View {
           }
           if !title.isEmpty {
             Text(title).font(.system(size:titleFontSize,weight:.semibold))
-              .frame(maxWidth:.infinity,alignment:.leading).allowsHitTesting(false)
+              .frame(maxWidth:.infinity,alignment:.leading)
+              #if os(tvOS)
+                .modifier(TVVoiceOverHeading())
+              #else
+                .allowsHitTesting(false)
+              #endif
           }
         }
       } else {
@@ -77,13 +82,27 @@ struct AppHeader: View {
       if !title.isEmpty {
         Text(title).font(.system(size: titleFontSize, weight: .semibold))
           .lineLimit(1).minimumScaleFactor(0.7).frame(maxWidth: 310)
-          .allowsHitTesting(false)
+          #if os(tvOS)
+            .modifier(TVVoiceOverHeading())
+          #else
+            .allowsHitTesting(false)
+          #endif
       }
     }
       }
     }.foregroundStyle(light ? .white : .black).padding(.horizontal, 28).padding(.top, 24)
   }
 }
+#if os(tvOS)
+private struct TVVoiceOverHeading:ViewModifier {
+  @Environment(\.accessibilityVoiceOverEnabled) private var voiceOverEnabled
+  func body(content:Content)->some View {
+    content.allowsHitTesting(voiceOverEnabled).focusable(voiceOverEnabled)
+      .focusEffectDisabled().accessibilityAddTraits(.isHeader)
+      .accessibilityIdentifier("app.header.title")
+  }
+}
+#endif
 struct Pill: View {
   var title: String
   var symbol: String

@@ -1,6 +1,112 @@
 import XCTest
 import UIKit
 
+extension HomeViewTVUITests {
+  @MainActor func testNativeTVVoiceOverCameraRemoteReadingAndGridAction() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native service requires tvOS27")}
+    try withNativeTVVoiceOver(page:"Cameras",name:"camera") {app,service,record in
+      guard nativeTVVoiceOverFocus(app.descendants(matching:.any)["app.header.title"],required:"Cameras",in:app,service:service,record:record) else {return}
+      for (index,name) in ["Front Door","Back Yard","Living Room","Driveway"].enumerated() {
+        guard nativeTVVoiceOverFocus(app.buttons["camera.\(index)"],required:name,in:app,service:service,record:record) else {return}
+      }
+      let toggle=app.buttons["camera.grid.size"]
+      guard nativeTVVoiceOverFocus(toggle,required:"Show 9",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select)
+      XCTAssertEqual(toggle.label,"Show 4");XCTAssertTrue(app.buttons["camera.8"].waitForExistence(timeout:5))
+      guard nativeTVVoiceOverFocus(toggle,required:"Show 4",in:app,service:service,record:record) else {return}
+      record("camera-grid-callback",["toggle":toggle.label,"ninth_demo_camera_exists":app.buttons["camera.8"].exists])
+      capture(app,"native-tv-voiceover-camera-nine-remote")
+    }
+  }
+  @available(tvOS 27.0,*) @MainActor
+  private func nativeTVVoiceOverFocus(_ target:XCUIElement,required:String,in app:XCUIApplication,
+    service:XCUIVoiceOverService,record:(String,[String:Any])->Void)->Bool {
+    select(target,in:app,maxMoves:80,activate:false)
+    guard target.hasFocus,target.isEnabled else {XCTFail("Exact native target focus required before speech or Select");return false}
+    var speech=""
+    let spoken=XCTNSPredicateExpectation(predicate:NSPredicate {_,_ in
+      speech=(try? service.currentSpeech().utterance) ?? ""
+      return speech.lowercased().contains(required.lowercased())
+    },object:nil)
+    let result=XCTWaiter.wait(for:[spoken],timeout:8)
+    record("native-remote-spoken-focus",["identifier":target.identifier,"label":target.label,"required":required,
+      "has_focus":target.hasFocus,"utterance":speech,"required_speech_observed":result == .completed,
+      "native_service_enabled":service.isEnabled])
+    XCTAssertEqual(result,.completed,"The intended native focused control must actually be reported by VoiceOver")
+    return result == .completed && target.hasFocus && service.isEnabled
+  }
+
+  @available(tvOS 27.0,*) @MainActor
+  private func withNativeTVVoiceOver(page:String?,extra:[String]=[],name:String,
+    body:(XCUIApplication,XCUIVoiceOverService,(String,[String:Any])->Void)throws->Void) throws {
+    #if targetEnvironment(simulator)
+    guard (ProcessInfo.processInfo.environment["SIMULATOR_DEVICE_NAME"] ?? "").hasPrefix("HomeView TV QA ") else {
+      throw XCTSkip("Opt-in native service probe requires an owned synthetic TV simulator")
+    }
+    #else
+    throw XCTSkip("Physical-device/signing acceptance is separately paused")
+    #endif
+    continueAfterFailure=true;executionTimeAllowance=240
+    let service=XCUIDevice.shared.voiceOverService,original=service.isEnabled
+    let runID=UUID().uuidString,started=ProcessInfo.processInfo.systemUptime
+    var events:[[String:Any]]=[],restored=false
+    func record(_ event:String,_ fields:[String:Any]) {
+      var row=fields;row["event"]=event;row["elapsed"]=ProcessInfo.processInfo.systemUptime-started;events.append(row)
+    }
+    func emit(_ phase:String) {
+      let report:[String:Any]=["scene":name,"run_id":runID,"original_enabled":original,"restored":restored,
+        "phase":phase,"events":events,"geometry_marker_enabled":true,
+        "scope":"Actual native TV VoiceOver reported focused controls and verified Remote callbacks. Ordinary fixture setup and directional routing are recorded, not original order, global next-element API traversal, acoustic, physical or full-flow accessibility acceptance."]
+      let data=try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys])
+      do {
+        let directory=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+        try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
+        try data.write(to:directory.appendingPathComponent("homeview-tv-vo-remote-"+name+"-"+runID+"-"+phase+".json"),options:.atomic)
+      } catch {XCTFail("Persist own-runner native VoiceOver report")}
+      let a=XCTAttachment(data:data,uniformTypeIdentifier:"public.json");a.name="native-tv-voiceover-remote-"+name+"-"+phase;a.lifetime = .keepAlways;add(a)
+    }
+    func dismissNotice(_ checkpoint:String)->Bool {
+      let system=XCUIApplication(bundleIdentifier:"com.apple.PineBoard"),notice=system.alerts["VoiceOver Navigation Updates"]
+      guard notice.waitForExistence(timeout:3) else {return true}
+      let focused=notice.buttons.matching(NSPredicate(format:"label == %@","OK")).allElementsBoundByIndex.filter {$0.hasFocus}
+      record("observed-system-notice",["checkpoint":checkpoint,"focused_OK_count":focused.count])
+      guard focused.count==1,let okay=focused.first,okay.isEnabled,notice.frame.contains(okay.frame) else {
+        XCTFail("Only the actually focused OK in the observed informational notice may be selected");return false
+      }
+      XCUIRemote.shared.press(.select)
+      let gone=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:notice)
+      let result=XCTWaiter.wait(for:[gone],timeout:5)
+      record("observed-system-notice-return",["checkpoint":checkpoint,"gone":result == .completed])
+      XCTAssertEqual(result,.completed);return result == .completed
+    }
+    record("original-state",["enabled":original]);emit("before")
+    defer {
+      do {
+        if service.isEnabled != original {if original {try service.enable()} else {try service.disable()}}
+        restored=service.isEnabled==original
+        record("restored-state",["enabled":service.isEnabled,"matches_original":restored]);XCTAssertTrue(restored)
+      } catch {let e=error as NSError;record("restore-error",["domain":e.domain,"code":e.code]);XCTFail("Restore original owned TV simulator VoiceOver state")}
+      emit("after")
+    }
+    guard dismissNotice("before-fixture") else {return}
+    let app=launch(page,extra:extra)
+    // The ordinary fixture helper makes navigation fatal. Restore cleanup-safe
+    // independent assertions before any service mutation, including failures.
+    continueAfterFailure=true
+    let window=app.windows.firstMatch.frame
+    guard [window.minX,window.minY,window.width,window.height].allSatisfy(\.isFinite),window.width>0,window.height>0 else {
+      XCTFail("Actual finite native window required");return
+    }
+    XCTAssertTrue(app.otherElements["reference.viewport"].exists)
+    record("native-window",["frame":[window.minX,window.minY,window.width,window.height]])
+    if !service.isEnabled {try service.enable()}
+    record("enabled-state",["enabled":service.isEnabled])
+    guard service.isEnabled,dismissNotice("after-enable") else {XCTFail("Native VoiceOver setup incomplete");return}
+    app.activate();guard app.wait(for:.runningForeground,timeout:10) else {XCTFail("Own app must return after system notice");return}
+    try body(app,service,record)
+  }
+}
+
 final class HomeViewTVUITests:XCTestCase {
   func testNativeTVMockDeviceAdvertisedRangeAndStep() {
     let app=launch("Settings",extra:["--mock-control-case","stepped","blinds"])
