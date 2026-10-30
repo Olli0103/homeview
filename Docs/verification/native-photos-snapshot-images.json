@@ -1,0 +1,143 @@
+{
+  "images": [
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/phone-grid-whole-card.png",
+      "sha256": "6fbba7e9c12b3d1393a554f797af0745635bc346153832217b30382e4b91abec",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "6fbba7e9c12b3d1393a554f797af0745635bc346153832217b30382e4b91abec",
+      "checkpoint": "switcher-photos-grid-inactive",
+      "black_fraction": 0.9861776101196713,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/phone-home-background-whole-card.png",
+      "sha256": "9f7fc265fd77f8e42e3fa551819ddb16e88e66f0c026f06430a037dfa999b2bd",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "9f7fc265fd77f8e42e3fa551819ddb16e88e66f0c026f06430a037dfa999b2bd",
+      "checkpoint": "switcher-photos-home-background",
+      "black_fraction": 0.9861769384125142,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/phone-pending-selection-whole-card.png",
+      "sha256": "8d20678950be948bb8b323c864782c8f4ba2034af31feb645c8debfccb40a928",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "8d20678950be948bb8b323c864782c8f4ba2034af31feb645c8debfccb40a928",
+      "checkpoint": "switcher-photos-pending-selection",
+      "black_fraction": 0.9861769384125142,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/phone-preview-whole-card.png",
+      "sha256": "2a3bf64de63b29e846b4bef992692738389ee73c9f4596e8885c18ad4044646a",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "2a3bf64de63b29e846b4bef992692738389ee73c9f4596e8885c18ad4044646a",
+      "checkpoint": "switcher-photos-preview",
+      "black_fraction": 0.9861776101196713,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/phone-search-keyboard-OPEN-FAIL-whole-card.png",
+      "sha256": "8c6038dbb9a6e0428694539bc09acaed8b2fb7c4ec9831c9994d0ed3a71db398",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "8c6038dbb9a6e0428694539bc09acaed8b2fb7c4ec9831c9994d0ed3a71db398",
+      "checkpoint": "switcher-photos-search-keyboard",
+      "black_fraction": 0.6545201861434874,
+      "privacy_guard_pass": false,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/phone-before-owned-canary-only.png",
+      "sha256": "05e6bfbcb7b32ea39bcdcbdf2324bf44aa796e232f2e8302c8bfccea2bafb9f8",
+      "origin": "Own synthetic canary-only rectangular crop from the actual BEFORE whole-card image; no resizing, masking or replacement. Raw OS sample-photo card remains private.",
+      "source_sha256": "ca4d00dbb1b7f30befaf50282cd9f588d4b4c42a5f43ff4cf9a186fdb226dbc0",
+      "source_size": [
+        828,
+        1798
+      ],
+      "crop_box": [
+        125,
+        610,
+        703,
+        1188
+      ],
+      "owned_raster_plane_fraction": 0.9998772763736067,
+      "crop": true,
+      "privacy_guard_applies_to_whole_source_not_this_crop": true
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/pad-grid-whole-card.png",
+      "sha256": "2db5c03cd5f9a49eef16433b8e3860519dffed1153d532b6983cee1969d755c0",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "2db5c03cd5f9a49eef16433b8e3860519dffed1153d532b6983cee1969d755c0",
+      "checkpoint": "switcher-photos-grid-inactive",
+      "black_fraction": 0.9913202122954445,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/pad-home-background-whole-card.png",
+      "sha256": "487e9462496a160301b47a4374af4ccb076c3f0ad13f0e5d5445fd56152c0dfa",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "487e9462496a160301b47a4374af4ccb076c3f0ad13f0e5d5445fd56152c0dfa",
+      "checkpoint": "switcher-photos-home-background",
+      "black_fraction": 0.9913202122954445,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/pad-pending-selection-whole-card.png",
+      "sha256": "8d2ce27ca00fdd567bab2501aa3c318afd78066c0760138da401ab6bc2bc16c1",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "8d2ce27ca00fdd567bab2501aa3c318afd78066c0760138da401ab6bc2bc16c1",
+      "checkpoint": "switcher-photos-pending-selection",
+      "black_fraction": 0.9913202122954445,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/pad-preview-whole-card.png",
+      "sha256": "0d938622ef8cb229548c5fa374d466c9802fcbdc5567fab822d6a7d2a524dc9e",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "0d938622ef8cb229548c5fa374d466c9802fcbdc5567fab822d6a7d2a524dc9e",
+      "checkpoint": "switcher-photos-preview",
+      "black_fraction": 0.9913202122954445,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/pad-search-keyboard-whole-card.png",
+      "sha256": "8715dce68d3d37e6733263e26ccc486d8967d9355e2cb823e01fa39ea7f3922b",
+      "origin": "Unmodified whole own-app card crop from actual OS App Switcher capture. No sample photo visible; failed phone keyboard case explicitly retained.",
+      "source_sha256": "8715dce68d3d37e6733263e26ccc486d8967d9355e2cb823e01fa39ea7f3922b",
+      "checkpoint": "switcher-photos-search-keyboard",
+      "black_fraction": 0.9913202122954445,
+      "privacy_guard_pass": true,
+      "crop": false
+    },
+    {
+      "path": "Docs/verification/images/native-photos-snapshot-20261030/pad-before-owned-canary-only.png",
+      "sha256": "88639c6cc1962f0f507eedb7f44edfef21815c97cb446ce6545d3bb7fcc1e4cf",
+      "origin": "Own synthetic canary-only rectangular crop from the actual BEFORE whole-card image; no resizing, masking or replacement. Raw OS sample-photo card remains private.",
+      "source_sha256": "ec4671b14cfbff09ae1c416932624acccdedafcfa3bc78434f12c79e165ef0b6",
+      "source_size": [
+        476,
+        684
+      ],
+      "crop_box": [
+        97,
+        120,
+        249,
+        272
+      ],
+      "owned_raster_plane_fraction": 0.9993074792243767,
+      "crop": true,
+      "privacy_guard_applies_to_whole_source_not_this_crop": true
+    }
+  ],
+  "scope": "Twelve actually reviewed own-material images: ten unmodified own-app whole cards including the explicitly failed iPhone keyboard case; two own-canary-only before crops. No raw OS sample-photo grids, OS background cards, logs or binaries published."
+}

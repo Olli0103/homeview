@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Native Fotoauswahl auf Fenster-Ebene geschützt, iPhone-Tastaturebene offen](native-photos-snapshot.md): zehn aktuelle neue UI-Ausführungen mit neun PASS/einem ausdrücklich offenen 98%-Keyboardguard; zwölf bestehende Regressionen und fünf SDKs grün. Bild-/Suchinhalt verdeckt, ausstehende Auswahl/Suchentwurf erhalten. Kein vollständiger #67-Abschluss.
+
 - [Tatsächliches OS-Reduce-Motion statt bloßem Launchflag](system-reduce-motion.md): acht PID-gebundene OFF→ON→OFF-Fälle auf beiden Simulatoren; acht exakt stille und16 bewegte Regionpaare. Alle17 Präferenz-Ausführungen zurückgestellt/zurückgelesen,165 Produktinputs unverändert. Frühere ungemessene Lifetime-Marker und ein Indexfehler bleiben getrennt; #73 offen.
 
 - [Verbindungsaktionen nennen ihren Dienst](service-action-labels.md): 16 AX-/native Namensbedingungen rot→grün; zehn akzeptierte aktuelle UI-Ausführungen/fünf SDKs. Vier ganze Normal-/Fokus-Pixelpaare exakt gleich. Alte Wiederverbindungsfehler auch mit Vorher-App reproduziert, spätere Beobachtung ausdrücklich keine Ursachenklärung; sichtbare Eingabevorbereitung qualifiziert, alle Callback-/Rückkehrbedingungen erhalten. #73 offen.

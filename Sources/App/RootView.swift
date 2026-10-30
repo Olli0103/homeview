@@ -258,6 +258,11 @@ struct RootView: View {
   }
   var body: some View {
     viewportContent
+    .background {
+      #if os(iOS)
+        NativeSnapshotShield().frame(width:0,height:0).allowsHitTesting(false)
+      #endif
+    }
     .snapshotPrivacyProtected()
     .background(Color(white: 0.025)).preferredColorScheme(.dark)
 

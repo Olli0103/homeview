@@ -12,4 +12,4 @@ Generate the Xcode project with Scripts/generate_project.py. Do not add private 
 
 Build/test success does not establish visual or functional parity. Keep simulator, physical-device and live-account evidence separate. Track unresolved system-only capabilities as blocked, never silently replace them with a claimed live integration.
 
-The main app discovers Swift sources automatically, but `Scripts/generate_project.py` maintains an explicit reduced Watch source allowlist. When adding a Core type referenced by shared models or AppModel, include that dependency in the Watch list and regenerate the project; an iOS build alone does not validate this boundary.
+The main app project generator discovers Swift sources automatically; rerun `Scripts/generate_project.py` after adding or removing a source file. The generator maintains an explicit reduced Watch source allowlist. When adding a Core type referenced by shared models or AppModel, include that dependency in the Watch list and regenerate the project; an iOS build alone does not validate this boundary.

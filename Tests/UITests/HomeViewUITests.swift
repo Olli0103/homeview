@@ -3,6 +3,264 @@ import UIKit
 import XCTest
 
 extension HomeViewUITests {
+  func testIsolatedSyntheticNativePhotosPickerPresentationInventory() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    let environment=ProcessInfo.processInfo.environment
+    let deviceName=environment["SIMULATOR_DEVICE_NAME"] ?? "",deviceID=environment["SIMULATOR_UDID"] ?? ""
+    let identity=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["device_name":deviceName,"device_id":deviceID,
+      "scope":"Only a newly created named synthetic-photo simulator may open the native picker. No existing personal library."],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    identity.name="native-photos-isolated-runtime";identity.lifetime = .keepAlways;add(identity)
+    try requireIsolatedSyntheticPhotoSimulator()
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    let choose=app.buttons.matching(NSPredicate(format:"label CONTAINS %@","Choose Photos")).firstMatch
+    scrollPhotoControlFullyIntoView(choose)
+    shot("native-photos-picker-before-opening")
+    choose.tap()
+    let cancel=app.buttons["Cancel"].firstMatch
+    let found=cancel.waitForExistence(timeout:15)
+    let loading=app.staticTexts["Loading…"].firstMatch
+    let settled=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:loading)
+    let settledResult=XCTWaiter.wait(for:[settled],timeout:45)
+    let presented=XCUIScreen.main.screenshot()
+    let pixels=[UInt8](viewportPixels(presented.pngRepresentation,inset:0));var magenta=0,cyan=0
+    for i in stride(from:0,to:pixels.count,by:4) {
+      let r=pixels[i],g=pixels[i+1],b=pixels[i+2]
+      if r>180 && g<100 && b>160 {magenta+=1}
+      if r<100 && g>150 && b>150 {cyan+=1}
+    }
+    let content=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["magenta_pixels":magenta,"cyan_pixels":cyan,
+      "minimum_each":1000,"loading_disappeared":settledResult == .completed,
+      "scope":"Positive visibility of the owned magenta/cyan fixture; no selection made. Actual saved image review also required."],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    content.name="native-photos-presented-canary";content.lifetime = .keepAlways;add(content)
+    let tree=XCTAttachment(string:app.debugDescription);tree.name="native-photos-picker-presented-hierarchy";tree.lifetime = .keepAlways;add(tree)
+    shot("native-photos-picker-presented")
+    guard found else {XCTFail("Native picker cancel target not identified; no system capability absence inferred");return}
+    cancel.tap()
+    let gone=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:cancel)
+    XCTAssertEqual(XCTWaiter.wait(for:[gone],timeout:8),.completed)
+    XCTAssertTrue(choose.exists);XCTAssertTrue(choose.isHittable)
+    shot("native-photos-picker-cancelled-no-selection")
+    XCTAssertEqual(settledResult,.completed,"Keep a loading-only presentation distinct from a populated picker")
+    XCTAssertGreaterThan(magenta,1000,"Synthetic fixture must actually be visible before privacy acceptance")
+    XCTAssertGreaterThan(cyan,1000,"Both checkerboard colors must actually be visible")
+    #else
+    XCTFail("Synthetic PhotosPicker probe is simulator-only")
+    #endif
+  }
+}
+
+extension HomeViewUITests {
+  private func requireIsolatedSyntheticPhotoSimulator() throws {
+    let e=ProcessInfo.processInfo.environment
+    guard (e["SIMULATOR_DEVICE_NAME"] ?? "").hasPrefix("HomeView Photo Privacy ") else {
+      throw XCTSkip("Opt-in probe requires a separately provisioned fresh synthetic-photo simulator; never open an existing personal library")
+    }
+  }
+  private func syntheticPhotoCanary(_ png:Data,checkpoint:String,record:Bool=true)->Bool {
+    let pixels=[UInt8](viewportPixels(png,inset:0));var magenta=0,cyan=0
+    for i in stride(from:0,to:pixels.count,by:4) {
+      let r=pixels[i],g=pixels[i+1],b=pixels[i+2]
+      if r>180 && g<100 && b>160 {magenta+=1}
+      if r<100 && g>150 && b>150 {cyan+=1}
+    }
+    if record {
+      let data:[String:Any]=["magenta_pixels":magenta,"cyan_pixels":cyan,"minimum_each":1000,
+        "scope":"Positive visibility of the owned synthetic checkerboard; actual image review also required."]
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="native-photos-canary-"+checkpoint;a.lifetime = .keepAlways;add(a)
+    }
+    return magenta>1000 && cyan>1000
+  }
+  private func openIsolatedPopulatedNativePhotosPicker() throws->XCUIElement {
+    try requireIsolatedSyntheticPhotoSimulator()
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    let choose=app.buttons.matching(NSPredicate(format:"label CONTAINS %@","Choose Photos")).firstMatch
+    scrollPhotoControlFullyIntoView(choose);choose.tap()
+    XCTAssertTrue(app.buttons["Cancel"].firstMatch.waitForExistence(timeout:15))
+    let loading=app.staticTexts["Loading…"].firstMatch
+    let wait=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:loading)
+    XCTAssertEqual(XCTWaiter.wait(for:[wait],timeout:45),.completed)
+    let fixture=app.images.matching(identifier:"PXGGridLayout-Info").firstMatch
+    XCTAssertTrue(fixture.waitForExistence(timeout:10));XCTAssertTrue(fixture.isHittable)
+    XCTAssertTrue(app.frame.contains(fixture.frame))
+    XCTAssertTrue(syntheticPhotoCanary(fixture.screenshot().pngRepresentation,checkpoint:"grid-tile-before"),"Never interact with a tile until both owned fixture colors are visible")
+    shot("native-photos-populated-grid-before")
+    return fixture
+  }
+  func testIsolatedSyntheticNativePhotosPickerGridSwitcherPrivacy() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    _=try openIsolatedPopulatedNativePhotosPicker()
+    calendarSwitcherCard(from:app,bounds:app.frame,checkpoint:"photos-grid-inactive",preserveReturnOnPrivacyFailure:true).tap()
+    XCTAssertTrue(app.buttons["Cancel"].firstMatch.waitForExistence(timeout:10))
+    let fixture=app.images.matching(identifier:"PXGGridLayout-Info").firstMatch
+    XCTAssertTrue(fixture.waitForExistence(timeout:10));XCTAssertTrue(syntheticPhotoCanary(fixture.screenshot().pngRepresentation,checkpoint:"grid-tile-return"))
+    shot("native-photos-populated-grid-return")
+    app.buttons["Cancel"].firstMatch.tap()
+    XCTAssertTrue(app.buttons.matching(NSPredicate(format:"label CONTAINS %@","Choose Photos")).firstMatch.waitForExistence(timeout:10))
+    shot("native-photos-grid-cancelled-no-selection")
+    #else
+    XCTFail("Isolated synthetic media only")
+    #endif
+  }
+  private func assertSyntheticPhotoGridReturned(_ checkpoint:String) {
+    XCTAssertTrue(app.buttons["Cancel"].firstMatch.waitForExistence(timeout:10))
+    let fixture=app.images.matching(identifier:"PXGGridLayout-Info").firstMatch
+    XCTAssertTrue(fixture.waitForExistence(timeout:10))
+    XCTAssertTrue(syntheticPhotoCanary(fixture.screenshot().pngRepresentation,checkpoint:checkpoint))
+    shot("native-photos-"+checkpoint)
+  }
+  private func cancelSyntheticPhotosWithoutImport() {
+    app.buttons["Cancel"].firstMatch.tap()
+    let choose=app.buttons.matching(NSPredicate(format:"label CONTAINS %@","Choose Photos")).firstMatch
+    XCTAssertTrue(choose.waitForExistence(timeout:10));XCTAssertTrue(choose.isHittable)
+    XCTAssertFalse(app.buttons["Remove Selected Photo"].exists,"Cancel must not import the pending synthetic selection")
+  }
+  func testIsolatedSyntheticNativePhotosPickerPendingSelectionSwitcherPrivacy() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    let fixture=try openIsolatedPopulatedNativePhotosPicker(),done=app.buttons["Done"].firstMatch
+    XCTAssertTrue(done.exists);XCTAssertFalse(done.isEnabled)
+    fixture.tap()
+    let selected=XCTNSPredicateExpectation(predicate:NSPredicate(format:"enabled == true"),object:done)
+    XCTAssertEqual(XCTWaiter.wait(for:[selected],timeout:10),.completed)
+    let before=XCTAttachment(string:app.debugDescription);before.name="native-photos-pending-selection-before-hierarchy";before.lifetime = .keepAlways;add(before)
+    shot("native-photos-pending-selection-before")
+    calendarSwitcherCard(from:app,bounds:app.frame,checkpoint:"photos-pending-selection",preserveReturnOnPrivacyFailure:true).tap()
+    assertSyntheticPhotoGridReturned("pending-selection-return")
+    XCTAssertTrue(done.isEnabled,"The pending selection must survive inactivity; never confirm it in this probe")
+    let after=XCTAttachment(string:app.debugDescription);after.name="native-photos-pending-selection-return-hierarchy";after.lifetime = .keepAlways;add(after)
+    cancelSyntheticPhotosWithoutImport()
+    #else
+    throw XCTSkip("Isolated simulator only")
+    #endif
+  }
+  func testIsolatedSyntheticNativePhotosPickerPreviewSwitcherPrivacy() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    let fixture=try openIsolatedPopulatedNativePhotosPicker()
+    fixture.press(forDuration:1.2)
+    let preview=app.otherElements.matching(NSPredicate(format:"label == %@","Preview")).firstMatch
+    XCTAssertTrue(preview.waitForExistence(timeout:5));XCTAssertTrue(app.frame.contains(preview.frame))
+    XCTAssertTrue(syntheticPhotoCanary(XCUIScreen.main.screenshot().pngRepresentation,checkpoint:"preview-before"))
+    shot("native-photos-preview-before")
+    calendarSwitcherCard(from:app,bounds:app.frame,checkpoint:"photos-preview",preserveReturnOnPrivacyFailure:true).tap()
+    let returnStart=ProcessInfo.processInfo.systemUptime
+    let immediate=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+    immediate.name="native-photos-preview-return-immediate";immediate.lifetime = .keepAlways;add(immediate)
+    let state=app.state.rawValue
+    let foreground=app.wait(for:.runningForeground,timeout:10)
+    let returned=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["state_observed_after_immediate_image":state,
+      "running_foreground_after_wait":foreground,"return_observation_elapsed":ProcessInfo.processInfo.systemUptime-returnStart,
+      "scope":"Separate the immediate card/activation transition from actual foreground picker restoration. Original canary, picker, selection and cancel conditions remain required."],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    returned.name="native-photos-preview-return-foreground";returned.lifetime = .keepAlways;add(returned)
+    XCTAssertTrue(foreground)
+    let visible=XCTNSPredicateExpectation(predicate:NSPredicate {_,_ in
+      self.syntheticPhotoCanary(XCUIScreen.main.screenshot().pngRepresentation,checkpoint:"preview-return-poll",record:false)
+    },object:nil)
+    let visibility=XCTWaiter.wait(for:[visible],timeout:8)
+    let readiness=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["canary_visible_within_wait":visibility == .completed,
+      "elapsed_after_card_tap_API_return":ProcessInfo.processInfo.systemUptime-returnStart,"requested_visibility_wait":8,
+      "scope":"Bounded actual-image readiness after the OS card return, not instant presentation, scene-active, touch-latency or physical proof. Original canary thresholds unchanged."],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    readiness.name="native-photos-preview-return-canary-readiness";readiness.lifetime = .keepAlways;add(readiness)
+    XCTAssertEqual(visibility,.completed)
+    XCTAssertTrue(syntheticPhotoCanary(XCUIScreen.main.screenshot().pngRepresentation,checkpoint:"preview-return"))
+    let restored=preview.exists
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["native_preview_still_present":restored,
+      "scope":"Native transient preview may close on deactivation; underlying picker and no-selection state must remain. No search or pending selection waiver."],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="native-photos-preview-return-state";a.lifetime = .keepAlways;add(a)
+    shot("native-photos-preview-return")
+    if restored {
+      // Use the observed dimmed content above the preview, not the Home-indicator gutter.
+      let point=CGPoint(x:app.frame.midX,y:preview.frame.minY-30)
+      XCTAssertGreaterThan(point.y,app.frame.minY+60)
+      XCTAssertTrue(app.frame.contains(point));XCTAssertFalse(preview.frame.contains(point))
+      app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:point.x,dy:point.y)).tap()
+      let gone=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:preview)
+      XCTAssertEqual(XCTWaiter.wait(for:[gone],timeout:5),.completed)
+    }
+    assertSyntheticPhotoGridReturned("preview-grid-return")
+    XCTAssertFalse(app.buttons["Done"].firstMatch.isEnabled)
+    cancelSyntheticPhotosWithoutImport()
+    #else
+    throw XCTSkip("Isolated simulator only")
+    #endif
+  }
+  func testIsolatedSyntheticNativePhotosPickerSearchKeyboardSwitcherPrivacy() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    _=try openIsolatedPopulatedNativePhotosPicker()
+    let bar=app.otherElements["photosSearchBar"].firstMatch
+    if bar.exists {
+      // The observed iPad control is an AX Other, not a SearchField or Search button.
+      XCTAssertTrue(app.frame.contains(bar.frame));XCTAssertTrue(bar.isEnabled)
+      bar.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)).tap()
+    } else {
+      let search=app.buttons["Search"].firstMatch
+      XCTAssertTrue(search.waitForExistence(timeout:5));XCTAssertTrue(search.isHittable);search.tap()
+    }
+    let field=app.otherElements["photosSearchBar"].textViews.firstMatch
+    let found=field.waitForExistence(timeout:10)
+    let tree=XCTAttachment(string:app.debugDescription);tree.name="native-photos-search-before-input-hierarchy";tree.lifetime = .keepAlways;add(tree)
+    XCTAssertTrue(found)
+    let keyboardIntro=app.otherElements["UIContinuousPathIntroductionView"].firstMatch
+    if keyboardIntro.exists {
+      let proceed=keyboardIntro.buttons["Continue"].firstMatch
+      XCTAssertTrue(proceed.isHittable);proceed.tap()
+      let gone=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:keyboardIntro)
+      XCTAssertEqual(XCTWaiter.wait(for:[gone],timeout:5),.completed)
+    }
+    field.tap();field.typeText("HOMEVIEW67_PRIVATE_SEARCH")
+    XCTAssertEqual(field.value as? String,"HOMEVIEW67_PRIVATE_SEARCH")
+    XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout:5))
+    shot("native-photos-search-keyboard-before")
+    calendarSwitcherCard(from:app,bounds:app.frame,checkpoint:"photos-search-keyboard",preserveReturnOnPrivacyFailure:true).tap()
+    XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,"HOMEVIEW67_PRIVATE_SEARCH")
+    XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout:5))
+    shot("native-photos-search-keyboard-return")
+    // Do not guess between search-cancel and picker-cancel targets or confirm media.
+    app.terminate()
+    #else
+    throw XCTSkip("Isolated simulator only")
+    #endif
+  }
+  func testIsolatedSyntheticNativePhotosPickerHomeBackgroundPrivacy() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    _=try openIsolatedPopulatedNativePhotosPicker()
+    let bounds=app.frame
+    XCUIDevice.shared.press(.home)
+    let background=XCTNSPredicateExpectation(predicate:NSPredicate {_,_ in
+      self.app.state == .runningBackground || self.app.state == .runningBackgroundSuspended
+    },object:nil)
+    XCTAssertEqual(XCTWaiter.wait(for:[background],timeout:10),.completed)
+    let system=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+    calendarSwitcherCard(from:system,bounds:bounds,checkpoint:"photos-home-background",preserveReturnOnPrivacyFailure:true).tap()
+    assertSyntheticPhotoGridReturned("home-background-return")
+    XCTAssertFalse(app.buttons["Done"].firstMatch.isEnabled)
+    cancelSyntheticPhotosWithoutImport()
+    #else
+    throw XCTSkip("Isolated simulator only")
+    #endif
+  }
+  func testIsolatedSyntheticNativePhotosPickerPreviewPresentationInventory() throws {
+    #if targetEnvironment(simulator)
+    continueAfterFailure=false;executionTimeAllowance=180
+    let fixture=try openIsolatedPopulatedNativePhotosPicker()
+    fixture.press(forDuration:1.2)
+    let tree=XCTAttachment(string:app.debugDescription);tree.name="native-photos-long-press-hierarchy";tree.lifetime = .keepAlways;add(tree)
+    shot("native-photos-long-press-presentation")
+    XCTAssertTrue(syntheticPhotoCanary(XCUIScreen.main.screenshot().pngRepresentation,checkpoint:"long-press-visible"))
+    // Exploratory presentation inventory only: terminate without selecting or confirming.
+    app.terminate()
+    #else
+    XCTFail("Isolated synthetic media only")
+    #endif
+  }
+}
+
+extension HomeViewUITests {
   private func verifyNativeMotionSurface(_ scene:String)throws->Int {
     guard app.wait(for:.runningForeground,timeout:10),app.otherElements["reference.viewport"].waitForExistence(timeout:5) else {throw NSError(domain:"HomeView.NativeMotionProbe",code:10)}
     let surface:XCUIElement
