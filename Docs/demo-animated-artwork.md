@@ -1,6 +1,6 @@
 # Own animated artwork: actual local playback · #58
 
-30 October 2026. This extends the [dated public-capability decision](music-artwork-and-lyrics.md). It does **not** acquire Apple Music animations or lyric rights. #58 remains open for the remaining source/system acceptance; F079 is partial, parity=false.
+30 October 2026. This extends the [dated public-capability decision](music-artwork-and-lyrics.md). It does **not** acquire Apple Music animations or lyric rights. #58 is closed/completed in its original conditional public-capability contract; F079 remains partial, parity=false. [Exact original-body/task/state read-back](verification/demo-animated-artwork-issue-readback-20261030.json).
 
 ## Supported content and rights
 
@@ -50,3 +50,5 @@ The generator's public legacy AVAssetWriter calls emitted four macOS27 deprecati
 | ![Honest source information](verification/demo-animated-artwork-images/phone-information.png) | ![Honest source information](verification/demo-animated-artwork-images/ipad-information.png) |
 
 Remaining acceptance is not hidden: optional library lyrics and OS animated-Now-Playing integration are not delivered, catalog transport/rights are not inferred, real-account/physical playback remains held at #57, and original comparison remains at #78. Static covers alone do not close F079; the newly proven own movie is a partial implementation, not general original parity. No Home, real-library/account, camera/microphone, message, call, signing, TCC or host configuration change was made.
+
+The original four task strings and acceptance sentence are unchanged. Closure does not require implementing every possible public provider/API: it records the supported own content and explicitly unsupported catalog/library/system paths. Real-account/hardware playback remains #57, original comparison #78 and the remaining platform matrix #79. [Complete fresh backlog reconciliation](verification/backlog-reconciliation-after-artwork-20261030.json):47 original completed,1 scope exclusion,34 open.

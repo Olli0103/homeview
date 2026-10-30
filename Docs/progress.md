@@ -2,7 +2,7 @@
 
 ## Eigener animierter Artworkpfad ·30.Oktober2026
 
-[Tatsächliches lokales Video statt statischem Ersatz](demo-animated-artwork.md): eigener MIT-Clip mit nativem Renderer, Motion-/Autoplay-/Stromspar-/Thermalsperren und begrenzter Bundlequelle.458Coretests,20nativeMatrixfälle und vier exakt erhaltene pausierte Viewports; ursprünglicher visionOS-Compilerfehler und korrigierte separate Abnahme im Nachweis. #58 bleibt für übrige Quellen-/System-/Originalgrenzen offen, F079 partial/parity=false. Gesamtauftrag läuft weiter.
+[Tatsächliches lokales Video statt statischem Ersatz](demo-animated-artwork.md): eigener MIT-Clip mit nativem Renderer, Motion-/Autoplay-/Stromspar-/Thermalsperren und begrenzter Bundlequelle.458Coretests,20nativeMatrixfälle und vier exakt erhaltene pausierte Viewports; ursprünglicher visionOS-Compilerfehler und korrigierte separate Abnahme im Nachweis. #58 im ursprünglichen fähigkeitsabhängigen Aufgabenvertrag abgeschlossen und vollständig als closed/completed zurückgelesen; F079 bleibt partial/parity=false. **47 erledigt ·1 ausgeschlossen ·34 offen.** Übrige Quellen-/System-/Original-/Gerätekriterien bleiben getrennt; Gesamtauftrag läuft weiter.
 
 ## Native iOS27-Fotosuche und Mehrfachauswahl ·30.Oktober2026
 

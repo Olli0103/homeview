@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-30",
+  "issue_number": 58,
+  "url": "https://github.com/Olli0103/homeview/issues/58",
+  "body_exact": true,
+  "title_exact": true,
+  "labels_unchanged": true,
+  "assignees_unchanged": true,
+  "state": "closed",
+  "state_reason": "completed",
+  "original_tasks_unchanged_except_checked": true,
+  "original_acceptance_unchanged": true,
+  "snapshot": {
+    "url": "https://github.com/Olli0103/homeview/issues/58",
+    "title": "[MEDIA-02] Animiertes Artwork und Lyrics pro öffentlicher Fähigkeit entscheiden",
+    "issue_number": 58,
+    "body": "<!-- homeview-backlog:MEDIA-02 -->\n\n## Ziel\n\nAnimiertes Artwork und Lyrics pro öffentlicher Fähigkeit entscheiden.\n\n## Stand\n\nUrsprünglicher fähigkeitsabhängiger Aufgabenvertrag abgeschlossen: öffentliche Felder/Rechte/Transportwege geprüft, nicht gelieferte Lyrics sichtbar gekennzeichnet, kein Scraping oder falscher Demo-Lyrictext, eigener berechtigter Videopfad mit tatsächlich geprüfter Wiedergabe und Motion-/Cachegrenzen. Keine allgemeine Original-Lyrics-/Kataloganimation- oder System-/Hardware-Parity.\n\nPriorität: P2. Typ: blocked. Bereich: media.\n\n## Referenzumfang\n\n- F079: Cover, animiertes Artwork und Lyrics\n\n## Konkrete Arbeit\n\n- [x] Offiziell verfügbare Felder/Rechte und Animationstransporte prüfen\n- [x] Nicht verfügbare Lyrics ehrlich ausweisen\n- [x] Keine fremden Lyrics scrapen oder Demo-Text als echte Lyrics darstellen\n- [x] Reduce Motion und Cachegrenzen für Animationen vorsehen\n\n## Abnahme\n\nFähigkeitsnachweis und tatsächliche Wiedergabe je unterstütztem Inhalt; statische Cover allein schließen F079 nicht.\n\n## Abhängigkeiten\n\n[MEDIA-01](https://github.com/Olli0103/homeview/blob/main/Docs/backlog.md#media-01), [PUB-01](https://github.com/Olli0103/homeview/blob/main/Docs/backlog.md#pub-01)\n\n## Testgrenze\n\nAutomatisierte Tests verwenden synthetische persönliche Daten und MockHome. Apple Home bleibt gesperrt, bis der Eigentümer die Einrichtung ausdrücklich fortsetzt. Keine Nachrichten oder Anrufe automatisch ausführen. Persönliche Accounts und physische Geräte werden gesondert und bewusst abgenommen.\n\nStand: 17. Oktober 2026. Quellen und ursprüngliche Referenzbilder werden nicht mit veröffentlicht. Build-Erfolg ist keine Originalgleichheit. Vollständige Zuordnung in [Docs/function-coverage.json](https://github.com/Olli0103/homeview/blob/main/Docs/function-coverage.json).\n\n\n## Öffentliche Teilpfade und sichtbare Grenzen · 19. Oktober 2026\n\nBelegcommit `5cf885a`, finale Oberfläche `54b2727` · [Fähigkeitsmatrix, eigene Aufnahmen und Abnahmegrenzen](https://github.com/Olli0103/homeview/blob/main/Docs/music-artwork-and-lyrics.md).\n\nMusicKit liefert im geprüften Artwork-Pfad eine Bild-URL; Song.hasLyrics ist nur ein Katalog-Boolean, nicht Text oder Zeilentiming. Öffentlicher MediaPlayer-Lyrics-Text einzelner vorhandener Medienobjekte ist optional und kein garantierter Apple-Music-Katalogzugang. Die zugehörige eigene Bibliotheks-/Item-Integration ist nicht implementiert, nicht pauschal unmöglich. MediaPlayer bietet außerdem eigene animierte Now-Playing-Metadaten: Die App muss selbst passende Vorschau und lokale, berechtigt nutzbare Videoassets liefern. Das ist weder ein Abrufrecht für Apples Kataloganimationen noch ein fertiger In-App-Renderer.\n\n15 Typprüfungen mit drei eigenen Compile-only-Proben über fünf aktuelle SDKs: 13 kompilieren, zwei bestätigen die ausdrücklich nicht verfügbare MPMediaItem-Klasse auf macOS/watchOS. Keine Funktion wurde ausgeführt, keine Bibliothek, Lyrics, Medien, Berechtigungen oder Now-Playing-Daten gelesen/geschrieben. Fünf aktuelle App-SDK-Builds bestehen. Öffentliche Quellen samt Datum/Hashes und eigene Proben sind gebunden; keine SDK-Header oder fremden Referenzbilder werden verteilt.\n\nEine Informationstaste in Demo- und Apple-Music-Player erklärt jetzt statische Cover, nicht gelieferte Lyrics/Animationsassets und fehlende Video-Downloads/-Caches. Kein Demo-Text wird als Lyrics ausgegeben, keine Website gescrapt, kein Track gewechselt oder neu gestartet. Die Texte enthalten keine privaten Song-/Accountdaten. Die erweiterte Quellenentscheidung behandelt öffentliche API-Verfügbarkeit und Nutzungsrechte getrennt.\n\nErster UI-Lauf: sechs Funktionstests bestanden, aber tatsächliche Bildsichtung verwarf schwarzen Titel auf dunklem Sheet. Dieser visuelle Fehler bleibt dokumentiert. Nach konsistenter Farbumgebung bestehen nochmals alle sechs betroffenen Ausführungen (drei Methoden auf beiden Geräten); die finalen Bilder sind gesichtet. Insgesamt zwölf erfolgreiche funktionale UI-Ausführungen, ein historischer visueller Fehler-Prüfstand, null Skips/strukturierte Runtimewarnungen. Quellen, 22 kompilierte Eingaben und installierte Appbytes je Prüfstand unverändert; zwölf PNGs decodiert, vier Übersichten gesichtet, acht eigene Bilder einschließlich zwei klar historischer Fehlerbilder veröffentlicht. Kein neuer Core-Lauf für die zur 279-Test-Abnahme bytegleichen Corequellen behauptet.\n\n**#58 bleibt OPEN; F079 bleibt blocked/parity=false.** Echte Lyrics mit Timing, lizenzierte animierte Assets, deren Adapter/Renderer/Cache und tatsächliche Wiedergabe je Quelle fehlen. Statische Cover, eine Erklärung und erfolgreiche Typprüfungen schließen den Originalumfang nicht ab. Keine reale Subscription, akustische/physische/System-Lockscreen-Abnahme oder Home-Anbindung.\n\n\n<!-- homeview-update:own-animated-artwork-20261030 -->\n## Ursprünglicher Fähigkeitsvertrag abgeschlossen · 30. Oktober 2026\n\n[Produkt d353bb1](https://github.com/Olli0103/homeview/commit/d353bb111a2d57c18c381aa281a56007a92a5b25) · [veröffentlichte Abnahme 6c32968](https://github.com/Olli0103/homeview/commit/6c329684f1ddde64a953e13649fabd3623b1726d) · [Umfang, eigene Bilder und Grenzen](https://github.com/Olli0103/homeview/blob/main/Docs/demo-animated-artwork.md) · [quellengebundener Prüfbericht](https://github.com/Olli0103/homeview/blob/main/Docs/verification/demo-animated-artwork-20261030.json).\n\nAlle vier ursprünglichen Aufgaben und der unveränderte fähigkeitsabhängige Abnahmetext sind abgeglichen. Der unterstützte Animationsinhalt ist ein eigener MIT-Clip: vier Sekunden, 512×512, 12fps, 93.364Bytes, keine Audio-/Foto-/Font-/Katalogeingabe. Er läuft tatsächlich in einem öffentlichen AVQueuePlayer/AVPlayerLooper/AVPlayerLayer, nicht bloß als statisches Cover oder erfolgreiche Play-Taste. Native Decodierung belegt vier verschiedene farbige Frames und null Audiotracks. Bestehende öffentliche Quellen-/Rechteentscheidung bleibt gültig; optionale MPMediaItem-Lyrics und eigene OS-Now-Playing-Metadaten sind weiterhin mögliche, aber nicht implementierte Teil-APIs und werden nicht als unmöglich bezeichnet. Die Aufgabe verlangt eine Entscheidung je öffentlicher Fähigkeit, nicht die Implementierung jedes möglichen API-/Providerpfads.\n\nDemo- und Katalog-Information erklären ihre tatsächlichen Quellen und fehlenden Lyrics. Kein Scraping, keine erfundenen Songtexte. Ein fester Bundle-Clip mit 1.000.000-Byte-Eingabegrenze, keine Downloads oder persistenten Videocaches; Decoder-RAM wird nicht mit Dateigröße gleichgesetzt. Video nur bei ausdrücklichem Demo-Playback, aktiver Scene, erlaubter Bewegung/Autoplay und ohne Stromspar-/hohe Thermalsperre; Pause/Unmount gibt Queue/Items/Looper frei. Statisches bisheriges Cover bleibt erhalten.\n\n458Coretests, vier getrennte unveränderte Baseline-Ausführungen, vier Renderer-Piloten, 20native Matrixfälle und zwei getrennte Kontrollen nach dem visionOS-Fix bestanden; keine erfundene gemeinsame30er-Vollsuite. Vier pausierte native Normal-/Reduce-Motion-Viewports exakt RGBA-gleich. 18 unabhängige Matrix-ROI-Paare: sechs bewegt, zwölf still; weitere zehn nach dem engen Plattform-Guard. 142PNG decodiert, 16Kontaktseiten tatsächlich gesichtet. 253Auslieferungsinputs entsprechen dem Codecommit und vollständig rekonstruierten Quellarchiven, installierte App-/Runnerbytes und kompilierte Inputs exakt. Fünf korrigierte SDKs/77Produkte zurückgelesen; erster echter visionOS-Compilerfehler und normale iOS-SSU-Clean-Recovery erhalten. 998terminalen Belegdateien in-place versiegelt/zurückgelesen, keine unveränderten Archive pro Gerät dupliziert.\n\n**#58 closed/completed ausschließlich im ursprünglichen fähigkeitsabhängigen Aufgabenvertrag. F079 bleibt partial/parity=false.** Kein allgemeiner Katalog-Animations-/Lyrics-/Timingzugang, keine akustische/physische oder OS-Lockscreen-/Now-Playing-Abnahme. Echte MusicKit-/Account-/Hardwarewiedergabe bleibt #57, Originalvergleich #78, übrige Plattformruntime #79. Keine Originalkriterien gestrichen oder eigenen Medien als Original verkauft. Home-/Geräte-/Signing-Holds bleiben unverändert; Gesamtbacklog wird weiter bearbeitet.\n",
+    "state": "closed",
+    "user": {
+      "login": "Olli0103",
+      "name": "Olli0103",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/51629451?v=4",
+      "id": 51629451
+    },
+    "assignees": null,
+    "labels": [
+      {
+        "name": "type:blocked",
+        "color": "5319e7",
+        "description": ""
+      },
+      {
+        "name": "priority:P2",
+        "color": "fbca04",
+        "description": ""
+      },
+      {
+        "name": "area:media",
+        "color": "1d76db",
+        "description": ""
+      }
+    ],
+    "milestone": null,
+    "state_reason": "completed",
+    "comments": 0,
+    "created_at": "2026-10-17T12:27:05Z",
+    "updated_at": "2026-10-30T15:25:11Z",
+    "closed_at": "2026-10-30T15:25:10Z",
+    "display_url": "https://github.com/Olli0103/homeview/issues/58",
+    "display_title": "[MEDIA-02] Animiertes Artwork und Lyrics pro öffentlicher Fähigkeit entscheiden"
+  }
+}

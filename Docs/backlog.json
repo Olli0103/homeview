@@ -1740,7 +1740,7 @@
     "functions": [
       "F079"
     ],
-    "current": "Statische Cover und quellspezifische Information zu fehlenden Lyrics/Animationen. Öffentliche Pfade getrennt geprüft: MusicKit-Bild/hasLyrics, optionaler MediaPlayer-Lyrics-Text und eigene lokale animierte Now-Playing-Assets. Keine Animationen/Lyrics importiert; eigener Medienadapter und tatsächliche Wiedergabe bleiben offen. Docs/music-artwork-and-lyrics.md.",
+    "current": "Ursprünglicher fähigkeitsabhängiger Aufgabenvertrag abgeschlossen: öffentliche Felder/Rechte/Transporte, ehrlich nicht gelieferte Lyrics, kein Scraping und tatsächlicher eigener MIT-Videopfad mit Motion-/Autoplay-/Power-/Thermal-/Datei-/Cachegrenzen. 458Coretests,20nativeMatrixfälle plus2separateKontrollen nach visionOS-Guard,5korrigierteSDKs/77Produkte. F079 partial/parity=false; keine allgemeine Katalog-/System-/Original-/Hardwareabnahme. Docs/demo-animated-artwork.md.",
     "tasks": [
       "Offiziell verfügbare Felder/Rechte und Animationstransporte prüfen",
       "Nicht verfügbare Lyrics ehrlich ausweisen",
@@ -1754,12 +1754,21 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/58",
     "issue_number": 58,
-    "state": "open",
+    "state": "closed",
     "progress_evidence": [
       "Docs/music-artwork-and-lyrics.md"
     ],
-    "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state": "closed",
+    "github_state_verified_on": "2026-10-30",
+    "completion": {
+      "date": "2026-10-30",
+      "scope": "Original conditional public-capability tasks and actual supported own-content playback, not full F079 parity",
+      "evidence": [
+        "Docs/demo-animated-artwork.md",
+        "Docs/verification/demo-animated-artwork-20261030.json",
+        "Docs/verification/demo-animated-artwork-issue-readback-20261030.json"
+      ]
+    }
   },
   {
     "key": "MEDIA-03",

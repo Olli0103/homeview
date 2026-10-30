@@ -988,9 +988,9 @@ Abnahme: Synthetischer Vertrag plus separat bewusster Playback-Test auf Hardware
 <a id="media-02"></a>
 ### MEDIA-02: Animiertes Artwork und Lyrics pro öffentlicher Fähigkeit entscheiden
 
-Statische Cover werden angezeigt. Keine allgemeine Original-Lyrics- oder animierte-Artwork-Integration.
+Ursprünglicher fähigkeitsabhängiger Aufgabenvertrag am30.Oktober abgeschlossen: öffentliche Felder/Rechte/Transportwege geprüft, nicht gelieferte Lyrics sichtbar, kein Scraping oder falsche Demo-Lyrics. Eigener MIT-Videopfad tatsächlich wiedergegeben, Motion-/Autoplay-/Power-/Thermalsperren und Datei-/Cachegrenzen belegt. [Abnahme und Grenzen](demo-animated-artwork.md). F079 bleibt partial/parity=false; keine allgemeine Katalog-/System-/Original-/Hardwareabnahme.
 
-Offen:
+Im ursprünglichen Vertrag abgeschlossen:
 
 - Offiziell verfügbare Felder/Rechte und Animationstransporte prüfen
 - Nicht verfügbare Lyrics ehrlich ausweisen
