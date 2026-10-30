@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [TV-Editor: versteckten Vorschau-Fokus korrigiert](tv-editor-voiceover.md): vier aktuelle UI-Ausführungen bestanden, 17 native Fokus-/Sprachwerte, Slot-Abbruch/Clock/Neustart und exakte VoiceOver-Rückstellung. Ganze festgelegte Vorschau362×361 mit0RGBA-Unterschieden; keine ganze Editor-/Originalabnahme. Drei Vorherfehler erhalten; #73/#7 offen.
+
 - [TV-Rezept: Schritttext mit echtem VoiceOver-Remote-Fokus](tv-recipe-voiceover.md): sechs aktuelle UI-Ausführungen und fünf SDKs/77 Produkte bestanden; 19 gemeldete Rezept-Fokus-/Sprachwerte, echte Vor-/Zurück-/Finish-Aktionen und exakte Zustandsrückstellungen. **Nur 1/4 ganze Normalbildpaare strikt bestanden, drei weiterhin nicht abgenommen**; große Abweichung auch bei identischen Appbytes, kleine19/13-Pixel-Ursachen ungeklärt. #73 offen, ursprüngliche Kriterien erhalten; weiter zum nächsten zentralen Hilfsmittelflow.
 
 - [TV-Timer: VoiceOver mit tatsächlichem Fokus-Rückweg](tv-timer-voiceover-refocus.md): ein neuer begrenzter vollständiger Timer-Flow und zehn gemeldete Fokuswerte bestanden; ursprünglicher Sofortansagefehler bleibt getrennt erhalten. Keine Produktänderung, zwölf Appdateien exakt zur vorigen nativen TV-Abnahme, VoiceOver-Ausgangszustand zurückgestellt. #73 bleibt offen, weitere zentrale Hilfsmittelpfade folgen.

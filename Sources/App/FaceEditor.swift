@@ -288,6 +288,9 @@ struct FaceEditor: View {
     VStack(spacing: 8) {
       ZStack(alignment: .topLeading) {
         FaceView(selection: face).allowsHitTesting(false).accessibilityHidden(true)
+          #if os(tvOS)
+            .disabled(true)
+          #endif
         ForEach(face.definition.placements, id: \.slot.id) { placement in
           let slot = placement.slot
           let hit = previewHitRect(placement)

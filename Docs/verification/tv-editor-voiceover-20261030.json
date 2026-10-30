@@ -1,0 +1,396 @@
+{
+  "date": "2026-10-30",
+  "issue": 73,
+  "base_commit": "8335862417509487fe5439f9fa672fec7813fef4",
+  "source_manifest": "85ea3e87e2cbb29de0742a0a0260987acbc0afd387f4333cdc9bd66942df0483",
+  "source_input_files": 253,
+  "native_voiceover_source_manifest": "81023906fee67cdd3fc927e5ebcf7343e07b88c4e3b3314c9041d164f3df34e7",
+  "changed_files": [
+    "Sources/App/FaceEditor.swift",
+    "Tests/TVUITests/HomeViewTVUITests.swift"
+  ],
+  "product_scope": "TV-only disabled(true) on the readonly nested FaceView preview. Interactive sibling slot overlays remain enabled. No non-TV source branch or layout restyled.",
+  "ui_ledger": [
+    {
+      "stage": "before",
+      "device": "tv",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "b92b7c148b2fe6c5c3e7120724603ad83614c6605f882c0f3c09c432c575ee57",
+      "source_and_compiled_inputs_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "historical failed execution"
+    },
+    {
+      "stage": "refocus",
+      "device": "tv",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "024c340f94b88e085fdbfebe720d2cc848dbbccdca8e362821b59e8c3696fa5e",
+      "source_and_compiled_inputs_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "historical failed execution"
+    },
+    {
+      "stage": "diagnostic",
+      "device": "tv",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "de07d1817f3cbbd81b18c4862ba1b481ddcc0d578d5869263fb03622fba35a8d",
+      "source_and_compiled_inputs_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "historical failed execution"
+    },
+    {
+      "stage": "candidate",
+      "device": "tv",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "81023906fee67cdd3fc927e5ebcf7343e07b88c4e3b3314c9041d164f3df34e7",
+      "source_and_compiled_inputs_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "current accepted functional execution"
+    },
+    {
+      "stage": "normal",
+      "device": "tv",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "85ea3e87e2cbb29de0742a0a0260987acbc0afd387f4333cdc9bd66942df0483",
+      "source_and_compiled_inputs_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "current accepted functional execution"
+    },
+    {
+      "stage": "mobile",
+      "device": "phone",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "85ea3e87e2cbb29de0742a0a0260987acbc0afd387f4333cdc9bd66942df0483",
+      "source_and_compiled_inputs_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "current accepted functional execution"
+    },
+    {
+      "stage": "mobile",
+      "device": "ipad",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "source_sha256": "85ea3e87e2cbb29de0742a0a0260987acbc0afd387f4333cdc9bd66942df0483",
+      "source_and_compiled_inputs_unchanged": true,
+      "installed_app_and_runner_bound": true,
+      "scope": "current accepted functional execution"
+    }
+  ],
+  "native_review": {
+    "reported_focus_checks": 17,
+    "all_specific_utterances_reviewed": true,
+    "exact_original_false_restored": true,
+    "independent_report_byte_exact": true,
+    "callbacks": [
+      {
+        "elapsed": 78.97565299994312,
+        "event": "editor-style-selected",
+        "utterance": "sage style selected button",
+        "value": "Selected"
+      },
+      {
+        "elapsed": 216.14868704159744,
+        "event": "editor-restart-preserved",
+        "reset_argument_removed": true,
+        "sage_selected": true,
+        "slot_label": "Top left, Panel, Clock"
+      },
+      {
+        "elapsed": 233.18232841661666,
+        "event": "editor-returned",
+        "footer_faces_has_focus": true,
+        "selected_face_exists": true
+      }
+    ],
+    "no_focus_failure_observations": true
+  },
+  "original_state_restorations": [
+    {
+      "stage": "before",
+      "original_enabled": false,
+      "restored": true,
+      "independent_report_sha256": "c46f030571c1b5c5ab29daab6da02028af17bafa9fac24602e2f342378723451"
+    },
+    {
+      "stage": "refocus",
+      "original_enabled": false,
+      "restored": true,
+      "independent_report_sha256": "65d8d93c155a0a48108c4fc804f99cbdf687f008082e1af03290ce946de52bd9"
+    },
+    {
+      "stage": "diagnostic",
+      "original_enabled": false,
+      "restored": true,
+      "independent_report_sha256": "1aca07ab541aeaf41bdac24c0299ae267074eb0b83d3e33a8bb448c61a58625b"
+    },
+    {
+      "stage": "candidate",
+      "original_enabled": false,
+      "restored": true,
+      "independent_report_sha256": "84c56804db7765145ddc445c2276acbaace557e4213ab4cfd39150a75b6de7af"
+    }
+  ],
+  "normal_app_identity": {
+    "same_native_app_files": 12,
+    "candidate_vo_app_byte_exact_normal_app": true,
+    "test_source_pins_distinct": true,
+    "native_vo_success_path_assertions_unchanged": true,
+    "changes_only_new_normal_method_and_on_failure_state_guard": true
+  },
+  "preview_pixel_contract": {
+    "before_image": "diagnostic/tv-attachments/EB67CB9A-19C5-44FF-9641-18A7B7C4DF96.png",
+    "after_image": "candidate/tv-attachments/019873AF-FC6E-46EE-9E85-3B45B5F3B926.png",
+    "fixed_crop": [
+      779,
+      271,
+      1141,
+      632
+    ],
+    "width": 362,
+    "height": 361,
+    "changed_rgba_pixels": 0,
+    "rgba_bytes_equal": true,
+    "max_channel_difference": 0,
+    "contract_passed": true,
+    "threshold_or_mask_changed": false
+  },
+  "compiled_inputs": [
+    {
+      "manifest": "before/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "54879ac5347d9ad1d6450c5214e0571474d3b74f900edb080117c0665b84fdd1"
+    },
+    {
+      "manifest": "refocus/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "6e9c4a2e0a2e24abdb5bc208ec26931e1f5547547bd24cab638a3e64fb8cd3cd"
+    },
+    {
+      "manifest": "diagnostic/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "e404b263fa90bd263d3c0b3ce2a94c5c1b8c928de3038aa98eb516f8f3801f10"
+    },
+    {
+      "manifest": "candidate/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "23dd76bd866f74e6b9bf75ec856ada47c04672618e369c1ace006b1b9a8d8c0c"
+    },
+    {
+      "manifest": "normal/compiled-inputs.json",
+      "files": 18,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "859aab2fc64c89025668117313dea0135f93495014ae554b153d4df1560c0a29"
+    },
+    {
+      "manifest": "mobile/compiled-inputs.json",
+      "files": 31,
+      "all_inputs_read_back": true,
+      "delta_files": 1,
+      "delta_sha256": "c5d6d0f2116438d598b8dc245c1a56790a9c3c5f3e08fc8bea9404e8768ee003"
+    }
+  ],
+  "core_reuse": {
+    "previous_source_sha256": "e032b9cea96420dc80ba7fec96e90e9dbd4365ac73a0e37dac5e78b21bbc6704",
+    "previous_receipt_sha256": "cc8176b436c8c40b2b069d229a2e999a161016014ccb6b7e9b9d95b8222d58ba",
+    "current_core_and_package_input_files_exact": 96,
+    "previous_passed": 458,
+    "new_executions": 0
+  },
+  "source_manifests_reconstructed": 7,
+  "native_pngs_decoded": 63,
+  "contact_pages_reviewed": 6,
+  "full_native_images_reviewed": 4,
+  "own_public_images": [
+    {
+      "path": "Docs/verification/tv-editor-voiceover-images/restarted.png",
+      "bytes": 178145,
+      "sha256": "fed2553f9822051f3e0ce5b458a97def7a236699e2a6b400451f57e13b29c843"
+    },
+    {
+      "path": "Docs/verification/tv-editor-voiceover-images/sage-clock-face.png",
+      "bytes": 274637,
+      "sha256": "9ad8c33cb46bf349b5ad8a266ce49ad916f4dd27b707897669e82f3b5954f824"
+    }
+  ],
+  "historical_failures": [
+    "Initial before run retains keyboard focus on the initial selected face but reports Complications, not required selected-face speech; test FAIL retained.",
+    "Refocus run reads selected face/style and cancels the slot, then loses visible AX focus after header/preview navigation; whole run FAIL retained.",
+    "Separate unchanged-product diagnostic remains foreground with no visible AX focus at both observations (4.489s apart); actual pixels show focus glow on the weather control inside the hidden readonly preview. Whole run FAIL retained."
+  ],
+  "preparation_errors": [
+    "Initial crop based on padded AX bounds could not establish uniform preview scale; retained as measurement preparation error.",
+    "First color mode selected the cyan-overlay inner color, not the literal Sage background. Correct literal-source-color whole-preview contract declared before product build.",
+    "An untested wrong-working-directory edit was fully reverted before contract declaration, then reapplied and frozen. No candidate UI run precedes that contract.",
+    "One analyst relative artifact path lookup failed; corrected with the actual artifact root. No test failure or rerun invented.",
+    "First Core-input inventory used an incorrect test directory and selected only50; corrected to actual Tests/CoreTests and all96 exact inputs before reuse.",
+    "Delivery preflight rejected an assumed33 mobile compiled inputs; actual manifest has31. Corrected the report/count before sealing; no product/test rerun."
+  ],
+  "scope_limits": [
+    "Preview strict PASS is the fixed whole362x361 preview rectangle only; no whole-editor/all-face/Original PASS.",
+    "Earlier recipe whole-image failures (1/4 PASS,3 FAIL) remain open and are not erased by this separate preview comparison.",
+    "Native reported short values and actual Remote callbacks, not acoustic or complete central-flow accessibility acceptance.",
+    "Four accepted UI executions use two distinct test source pins. Product inputs and12 native TV App files are identical.",
+    "Original geometry/palette, other assistive services and physical/signing acceptance remain separate open/paused."
+  ],
+  "holds_preserved": [
+    "synthetic fixtures and MockHome only",
+    "no real Home/account/microphone/camera access",
+    "no OS transfer/authentication/physical/signing",
+    "no host/security changes",
+    "no subagents"
+  ],
+  "sdk_final": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": {
+            "valid": false,
+            "errors": [
+              "root.ssu.yaml: missing or empty",
+              "nlu/nlu.lzfse: missing or empty",
+              "nlu/*.version: missing or empty",
+              "root.ssu.yaml: unreadable metadata"
+            ],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": true,
+          "shortcut_artifacts": {
+            "valid": true,
+            "errors": [],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+                "bytes": 1,
+                "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+              },
+              {
+                "path": "nlu/nlu.lzfse",
+                "bytes": 2125,
+                "sha256": "451636baa2f5ead9be587a96bc2c17d92e0fe25a7605f6d551d099af1136c2b6"
+              },
+              {
+                "path": "root.ssu.yaml",
+                "bytes": 926,
+                "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ]
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ]
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ]
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "shortcut_artifacts": null
+        }
+      ]
+    }
+  ],
+  "sdk_output_files": 77,
+  "sdk_delta_files": 3,
+  "sdk_products_delta_sha256": "3cfa0dbf187b65cbecae0c22285fbf53e823484fc6ba229937fa4669f47459e3",
+  "private_artifact_seal": {
+    "sha256": "490ec08f7660fd272fa8d2d39de3ea7575dabae6103aadee37e7f1f50e523a31",
+    "count": 921,
+    "bytes": 115794883
+  }
+}

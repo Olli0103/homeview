@@ -2,6 +2,106 @@ import XCTest
 import UIKit
 
 extension HomeViewTVUITests {
+  @MainActor func testNativeTVEditorNormalHeaderSlotCancelClockAndDone() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native state getter requires tvOS27")}
+    XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)
+    let app=launch("Settings",extra:["--face","Modular"])
+    select(app.buttons["settings.faces"],in:app,maxMoves:80)
+    select(app.buttons["editor.done"],in:app,maxMoves:80,activate:false)
+    select(app.buttons["widget.0"],in:app,maxMoves:80)
+    select(app.buttons["complications.done"],in:app,maxMoves:80)
+    let dismissed=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:app.buttons["complications.done"])
+    XCTAssertEqual(XCTWaiter.wait(for:[dismissed],timeout:5),.completed)
+    XCTAssertTrue(app.buttons["widget.0"].label.contains("Date"))
+    capture(app,"native-tv-editor-normal-cancelled")
+    select(app.buttons["editor.done"],in:app,maxMoves:80,activate:false)
+    select(app.buttons["widget.0"],in:app,maxMoves:80)
+    select(app.buttons["complication.choose.Clock"],in:app,maxMoves:80)
+    XCTAssertTrue(app.buttons["widget.0"].label.contains("Clock"))
+    select(app.buttons["editor.done"],in:app,maxMoves:80)
+    XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+    capture(app,"native-tv-editor-normal-clock-returned")
+    XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)
+  }
+
+  @MainActor func testNativeTVVoiceOverEditorStyleSlotCancelAndRestart() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native service requires tvOS27")}
+    try withNativeTVVoiceOver(page:"Settings",extra:["--face","Modular"],name:"editor") {app,service,record in
+      executionTimeAllowance=420
+      @MainActor func focus(_ id:String,_ required:String,via:String?=nil)->Bool {
+        let target=app.buttons[id]
+        guard target.waitForExistence(timeout:5) else {XCTFail("Required editor target not reached");return false}
+        if target.hasFocus,let via {
+          let neighbor=app.buttons[via]
+          guard neighbor.waitForExistence(timeout:5) else {XCTFail("Observed editor refocus neighbor not reached");return false}
+          select(neighbor,in:app,maxMoves:80,activate:false)
+          guard neighbor.hasFocus else {XCTFail("Actual neighbor focus required before revisit");return false}
+          record("editor-explicit-focus-revisit",["target":id,"via":via,"neighbor_focus_verified":true,
+            "intermediate_speech_not_required":true])
+        }
+        let result=nativeTVVoiceOverFocus(target,required:required,in:app,service:service,record:record)
+        if !result {
+          @MainActor func observe(_ phase:String) {
+            let state=app.state
+            let visibleFocus=state == .runningForeground
+              ? app.descendants(matching:.any).allElementsBoundByIndex.first(where:{$0.hasFocus}):nil
+            record("editor-failed-focus-observation",["phase":phase,"wanted":id,"app_state":String(describing:state),
+              "visible_focus_id":visibleFocus?.identifier ?? "NONE","visible_focus_label":visibleFocus?.label ?? "NONE",
+              "native_speech":(try? service.currentSpeech().utterance) ?? "unavailable","native_service_enabled":service.isEnabled])
+            let shot=XCTAttachment(screenshot:XCUIScreen.main.screenshot());shot.name="native-tv-editor-focus-loss-"+phase;shot.lifetime = .keepAlways;add(shot)
+          }
+          observe("immediate")
+          RunLoop.current.run(until:Date().addingTimeInterval(3))
+          observe("after-three-seconds")
+        }
+        return result
+      }
+      @MainActor func enter()->Bool {
+        guard focus("settings.faces","Edit Faces") else {return false}
+        XCUIRemote.shared.press(.select)
+        guard focus("select.Modular","Modular",via:"select.Home Modular") else {return false}
+        XCTAssertEqual(app.buttons["select.Modular"].value as? String,"Selected");return true
+      }
+      guard enter(),focus("Sage style","Sage style") else {return}
+      XCUIRemote.shared.press(.select)
+      guard focus("Mist style","Mist style"),focus("Sage style","Sage style") else {return}
+      XCTAssertEqual(app.buttons["Sage style"].value as? String,"Selected")
+      let selectedSpeech=try service.currentSpeech().utterance.lowercased()
+      XCTAssertTrue(selectedSpeech.contains("selected"));XCTAssertFalse(selectedSpeech.contains("not selected"))
+      record("editor-style-selected",["value":app.buttons["Sage style"].value as? String ?? "missing","utterance":selectedSpeech])
+      guard focus("widget.0","Top left") else {return}
+      XCTAssertTrue(app.buttons["widget.0"].label.contains("Date"))
+      XCUIRemote.shared.press(.select);capture(app,"native-tv-voiceover-editor-picker-before-cancel")
+      guard focus("complications.done","Done",via:"complication.choose.Off") else {return}
+      XCUIRemote.shared.press(.select)
+      guard focus("widget.0","Date",via:"editor.done") else {return}
+      XCUIRemote.shared.press(.select);capture(app,"native-tv-voiceover-editor-picker-before-clock")
+      guard focus("complication.choose.Clock","Clock",via:"complications.done") else {return}
+      XCUIRemote.shared.press(.select)
+      guard focus("widget.0","Clock",via:"editor.done") else {return}
+      XCTAssertTrue(app.buttons["widget.0"].label.contains("Clock"));XCTAssertFalse(app.buttons["complications.done"].exists)
+      guard focus("editor.done","Done") else {return}
+      XCUIRemote.shared.press(.select)
+      guard app.otherElements["face.Modular"].waitForExistence(timeout:5) else {XCTFail("Done must return to the selected face");return}
+      capture(app,"native-tv-voiceover-editor-sage-clock-face")
+      let savedArguments=app.launchArguments.filter {$0 != "--reset-test-store"}
+      XCTAssertTrue(savedArguments.contains("--persistence-test"));app.terminate();app.launchArguments=savedArguments;app.launch()
+      guard app.staticTexts["mock.badge"].waitForExistence(timeout:20),service.isEnabled else {XCTFail("Same owned store and native service required after restart");return}
+      guard enter(),focus("Sage style","Sage style") else {return}
+      XCTAssertEqual(app.buttons["Sage style"].value as? String,"Selected")
+      guard focus("widget.0","Clock") else {return}
+      XCTAssertTrue(app.buttons["widget.0"].label.contains("Clock"))
+      record("editor-restart-preserved",["sage_selected":app.buttons["Sage style"].value as? String == "Selected",
+        "slot_label":app.buttons["widget.0"].label,"reset_argument_removed":!savedArguments.contains("--reset-test-store")])
+      capture(app,"native-tv-voiceover-editor-restarted")
+      guard focus("editor.done","Done") else {return}
+      XCUIRemote.shared.press(.select)
+      XCTAssertTrue(app.otherElements["face.Modular"].waitForExistence(timeout:5))
+      guard focus("nav.faces","Faces",via:"nav.apps") else {return}
+      record("editor-returned",["selected_face_exists":app.otherElements["face.Modular"].exists,"footer_faces_has_focus":app.buttons["nav.faces"].hasFocus])
+    }
+  }
+
   @MainActor func testNativeTVRecipeNormalReferenceSteps() throws {
     guard #available(tvOS 27.0,*) else {throw XCTSkip("Native state getter requires tvOS27")}
     XCTAssertFalse(XCUIDevice.shared.voiceOverService.isEnabled)
