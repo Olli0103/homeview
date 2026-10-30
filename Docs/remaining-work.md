@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [#3: explizit freigegebene Historienbereinigung veröffentlicht und ursprüngliche Ersatzasset-/Quellhygiene-Kriterien abgeglichen](asset-history-publication-20261030.md). Heutiger Produktbaum exakt identisch, 129 andere lokale Refs erhalten. Keine pauschale Original-/Gerätefreigabe; GitHub-Schließung nach Veröffentlichung separat zurücklesen.
+
 - [Separaten Mock-Schlossadapter auf aktuellen Speicherstand umgestellt](mock-lock-current-observation.md): identische20native Bedingungen vorher8PASS/12FAIL, nachher20PASS; sechs aktuelle iPhone-/iPad-UI-Ausführungen und fünf SDKs. Bestätigung verwirft fremde Schlossänderung; kein Home-/Geräte-/Original-PASS und keine neue Issue-Schließung. Weiter zum unveränderten historischen Assetumfang von #3.
 
 - **Fortsetzung nach Speicherpause:** [bestehenden SDK-Builder abgesichert](build-storage.md), 15 Tooling-Tests und echte nichtausführende Platz-Abbruchprobe; kein weiterer großer Build und keine automatische Löschung. Flow-Originalformen bleiben quellbegrenzt. [Tatsächlicher Mock-Nachbarverlust korrigiert](mock-home-neighbour-preservation.md): gleiche 275 native Bedingungen vorher79/196, nachher275/0; fünf SDKs/73 bytegeprüfte Ausgaben. Keine neue Issue-Schließung.

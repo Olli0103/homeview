@@ -2,6 +2,8 @@
 
 29. Oktober 2026 · Teilumfang [#3](https://github.com/Olli0103/homeview/issues/3), **keine öffentliche Historienänderung** und keine pauschale Rechtefreigabe.
 
+**Historischer Prüfstand:** Am [30. Oktober mit frisch abgeglichenem 471-Commit-Kandidaten ausdrücklich freigegeben, veröffentlicht und zurückgelesen](asset-history-publication-20261030.md). Die nachfolgenden 421-Commit-Zahlen und die damalige ausstehende Freigabe bleiben unverändert historisch.
+
 Der [bekannte frühere Provenienzfehler](asset-provenance.md) wurde jetzt in einer getrennten lokalen Kopie gezielt entfernbar gemacht. Keine Änderung am laufenden Arbeitsrepo, keine privaten Worktree-Branches als Quelle, kein Force-Push.
 
 ## Tatsächlich vorbereiteter Umfang

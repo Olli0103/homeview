@@ -46,8 +46,11 @@ inside the project's own background. Its previous generic project-generated
 description did not distinguish that component. Do not treat that historical
 symbol component as independently authored or relicensed by this project's
 MIT notice. The current icon-independent-v2.png replaces it with original
-primitive geometry. The historical bytes remain in Git; this correction is
-not a history rewrite or clearance of all historical material. See
+primitive geometry. On 30 October 2026, the known historical icon blob was
+removed from the official public main's reachable history after explicit
+owner approval. The complete current product tree stayed identical. This does
+not erase GitHub caches, old object URLs, forks or private recovery copies, and
+does not relicense system material. See Docs/asset-history-publication-20261030.md,
 Docs/asset-provenance.md and Docs/asset-current-manifest.json for scope.
 
 Any future third-party source or bundled asset must retain its own applicable

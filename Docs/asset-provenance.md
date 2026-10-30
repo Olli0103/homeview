@@ -2,6 +2,8 @@
 
 Stand: 20. Oktober 2026 · [Issue #3](https://github.com/Olli0103/homeview/issues/3)
 
+**Aktueller Abschluss, 30. Oktober:** [gezielte Historienbereinigung veröffentlicht und ursprüngliche Asset-Kriterien abgeglichen](asset-history-publication-20261030.md). Der folgende Text bleibt der historische 20.-Oktober-Prüfstand; seine damaligen Aussagen zur erreichbaren alten Icondatei und zum offenen Issue sind keine aktuellen Statusangaben.
+
 **29. Oktober:** [Getrennter lokaler Bereinigungskandidat](asset-history-cleanup-candidate.md) entfernt gezielt den bekannten historischen Icon-Blob bei exakt identischem aktuellem Dateibaum. Keine öffentliche Umschreibung oder vollständige historische Rechteabnahme.
 
 ## Gefundener Fehler

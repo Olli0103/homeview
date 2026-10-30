@@ -68,7 +68,7 @@
     "priority": "P0",
     "kind": "implementation",
     "functions": [],
-    "current": "Die öffentliche Kopie ersetzt 17 Referenzgrafiken und abgeleitete OS-Ziffernkonturen durch eigene geometrische Platzhalter. Aktueller Ressourcenindex mit57Dateien/16Provenienzeingaben und eigenem App-Icon ohne Systemsymbol ergänzt.17geometrischeRaster bytegleichreproduziert,5SDKsbestanden.371öffentlicheCommits/3731Blobs bis65a4210 vollständiggelesen;historischerAppicon-SF-Anteilbewusstqualifiziert,nichtumgeschriebenoderpauschalfreigegeben. Docs/asset-provenance.md.",
+    "current": "Ursprüngliche unabhängige Ersatzasset-/Quellhygiene-Kriterien am30.Oktober abgeglichen:58Ressourcen/17Herkunftsquellen,471öffentlicheCommits/5135vollständiggehashteBlobs,2327dekodierteRaster,2302direkteBildbelege,7gelesenehistorischeGlyphenquellen. ExaktfreigegebenerIconblob ausMain-Historie entfernt; heutigerProduktbaumidentisch. KeinCache-/Fork-Purge, keineOriginal-Parity-/Geräteabnahme.",
     "tasks": [
       "Eigenständige App-Icons, Rezeptbilder, Demo-Fotos und Cover mit dokumentierter Herkunft erstellen oder geeignet lizenzieren",
       "Flow- und Numerals-Typografie ohne extrahierte Schriftkonturen entwickeln",
@@ -81,14 +81,23 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/3",
     "issue_number": 3,
-    "state": "open",
+    "state": "completed",
     "progress_evidence": [
       "Docs/asset-provenance.md",
       "Docs/asset-current-manifest.json",
       "Docs/verification/asset-provenance.json"
     ],
     "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state_verified_on": "2026-10-29",
+    "completion": {
+      "date": "2026-10-30",
+      "evidence": [
+        "Docs/asset-history-publication-20261030.md",
+        "Docs/verification/asset-history-publication-20261030.json",
+        "Docs/asset-current-manifest.json"
+      ],
+      "scope": "Original independent replacement-assets and reachable public-source hygiene, not visual parity, physical acceptance or general rights certification."
+    }
   },
   {
     "key": "PUB-02",
