@@ -39,7 +39,7 @@ Varianten sind keine zusätzlichen eindeutig benannten Faces. Der Katalog lässt
 | Wetter | UI05, UI19, UI20 | Weather vorhanden; Nah/Fern unterschieden, komplette Effekte/Licht unter #21 offen |
 | Home Modular | UI07, UI21 | Home Modular vorhanden; Prismendetail unter #20, echte Home-Quelle ausdrücklich gesperrt |
 | Monatskalender | UI08 | Calendar vorhanden; restliche Locale-/Monats-/Stildetails unter #22 offen |
-| Unbenannte Digitalvariante | UI09 | Name/Identität ungeklärt; nicht stillschweigend zu einem weiteren bekannten Face oder zu Flow erklärt |
+| Unbenannte Digitalvariante | UI09 | Eigene Replik unter dem Arbeitsnamen Abstract; Originalname/Identität ungeklärt, keine Flow-Gleichsetzung. [Umsetzung und Vergleich](abstract-ui09.md) |
 | Große analoge Ziffern | UI10 | Arbeitsname Numerals; vollständige Formen-/Zeit-/Stilabnahme unter #19 offen |
 | Verblassende analoge Ziffern | UI12 | Arbeitsname Fade; vollständige Original-Zeitkurve unter #18 offen |
 | Große Home-Analoguhr | UI45 | Home Modular Clock vorhanden; Perspektive, exakter Name/Licht weiterhin begrenzt belegt |
@@ -52,7 +52,7 @@ Varianten sind keine zusätzlichen eindeutig benannten Faces. Der Katalog lässt
 
 Die Lesereihenfolge UI01–UI12 einer Marketingmontage ist **keine** bestätigte Carousel-Reihenfolge. Ein gesampelter Event-GIF zeigt nacheinander reaktive Ziffern, verblassende Analoguhr, Modular mit Agenda, Foto-Tiefenuhr und große Home-Analoguhr. Die Endpunkte bei 0/630/2310/3780/5250 ms und die überlappenden Zwischenbilder sind dokumentiert. Das ist eine beobachtete Teilfolge, keine komplette Originalreihenfolge oder gemessene Wischgeschwindigkeit.
 
-Der aktuelle Replik-Carousel besitzt 14 stabile Identitäten in der deklarierten Enum-Reihenfolge. Sieben Layouts bieten die vorhandenen zwei Farboptionen, Flow bietet Solid/Stencil und Hintergrund an/aus. Sechs andere Faces haben keine solche Editoroption. Die vollständige Originalpalette ist aus dem einzelnen Farbeditor-Foto UI37 nicht rekonstruierbar; diese Lücke bleibt #7 zugeordnet. Der aktuelle Default jedes Faces ist aufgenommen, nicht jede denkbare Stylekombination als Original akzeptiert.
+Der aktuelle Replik-Carousel besitzt seit dem 30. Oktober 15 stabile Identitäten in der deklarierten Enum-Reihenfolge. Sieben Layouts bieten die vorhandenen zwei Farboptionen, Flow bietet Solid/Stencil und Hintergrund an/aus. Sieben andere Faces haben keine solche Editoroption. Abstract ist ausschließlich ein eigener Arbeitsname für die bereits katalogisierte UI09-Gruppe; die Zahl der Originalgruppen steigt dadurch nicht. Die vollständige Originalpalette ist aus dem einzelnen Farbeditor-Foto UI37 nicht rekonstruierbar; diese Lücke bleibt #7 zugeordnet. Der aktuelle Default jedes Faces ist aufgenommen, nicht jede denkbare Stylekombination als Original akzeptiert.
 
 ## Fehlende und widersprüchliche Zustände
 

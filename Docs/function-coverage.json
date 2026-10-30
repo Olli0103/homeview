@@ -583,7 +583,8 @@
     ],
     "current": [
       "Numerals verwendet kalibrierte öffentliche gerundete Runtime-Typografie, längeren Minutenzeiger, Relief und offene Nabe; die alternative Home-Rasteruhr wurde getrennt angepasst. Exakte Originalschrift, alle Uhrzeiten/Stile und Lichtdetails bleiben offen.",
-      "30.Oktober: zweite belegte Numerals-Palette Lavender/Pink mit Editor, Speicherung, Nacht-Rückkehr, Ganzbild-Grünerhalt und Modular-Isolation ergänzt.469Coretests,6aktuelle native Flows,5SDK. Die mitzugeordnete abstrakte Digitalansicht UI09 bleibt als konkrete ursprüngliche Restlücke offen; keine stille Gleichsetzung mit Flow. Docs/numerals-observed-variants.md."
+      "30.Oktober: zweite belegte Numerals-Palette Lavender/Pink mit Editor, Speicherung, Nacht-Rückkehr, Ganzbild-Grünerhalt und Modular-Isolation ergänzt.469Coretests,6aktuelle native Flows,5SDK. Die mitzugeordnete abstrakte Digitalansicht UI09 bleibt als konkrete ursprüngliche Restlücke offen; keine stille Gleichsetzung mit Flow. Docs/numerals-observed-variants.md.",
+      "30.Oktober: UI09 unter eigener Arbeitsbezeichnung Abstract ergänzt, beobachtete0/1/9 als eigene Geometrie, andere Ziffern ausdrücklich eigene Fallbacks. Vergleich10:09, Auswahl/Neustart/Nacht, Tokyo und zusätzliche Zeiten dokumentiert. Keine bestätigte Flow-Identität; bestehende Flow-/Numerals-Renderer unverändert. Docs/abstract-ui09.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -596,8 +597,8 @@
     "target": "iPad core",
     "implementation_status": "partial",
     "acceptance": {
-      "functional": "bounded reference-clock, Numerals and alternative Home-clock checks passed; complete style/time range remains pending",
-      "visual": "pending original-state comparison",
+      "functional": "Reference-clock times, stored selection, zone/time changes and both observed Numerals palettes checked in bounded native runs; no global OS format preference changed.",
+      "visual": "Referenced UI09/UI10 shapes and the linked analog poses visually compared and documented; fine material/lighting, unavailable original typeface family and full pixel/animation parity remain unaccepted.",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
     "completion_criteria": [

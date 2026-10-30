@@ -5311,6 +5311,59 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.otherElements["face.Home Modular Clock"].waitForExistence(timeout:5))
     viewportShot("numerals-palettes-event-home-clock-approx-0925")
   }
+  func testAbstractReferenceClockSelectionPersistsAndNightReturns() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--reset-test-store","--face","Abstract","--reduce-motion"])
+    XCTAssertTrue(app.otherElements["face.Abstract"].waitForExistence(timeout:5))
+    let reading=app.descendants(matching:.any).matching(NSPredicate(format:"label == %@","Abstract clock")).firstMatch
+    XCTAssertEqual(reading.value as? String,"10:09")
+    viewportShot("abstract-ui09-reference")
+    app.otherElements["face.Abstract"].press(forDuration:1)
+    XCTAssertTrue(app.buttons["editor.done"].waitForExistence(timeout:5))
+    let button=app.buttons["select.Abstract"],first=app.buttons["select.Modular"]
+    let viewport=app.otherElements["reference.viewport"].frame
+    for _ in 0..<8 where !button.isHittable {
+      let y=first.frame.midY
+      app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:viewport.maxX-24,dy:y))
+        .press(forDuration:0.05,thenDragTo:app.coordinate(withNormalizedOffset:.zero)
+          .withOffset(CGVector(dx:viewport.minX+24,dy:y)))
+    }
+    XCTAssertTrue(button.isHittable);button.tap()
+    XCTAssertEqual(button.value as? String,"Selected")
+    XCTAssertFalse(app.buttons["Lavender style"].exists)
+    shot("abstract-ui09-editor-selection");tap("editor.done")
+    app.terminate();launch(["--persistence-test",id,"--reduce-motion"])
+    XCTAssertTrue(app.otherElements["face.Abstract"].waitForExistence(timeout:5))
+    XCTAssertEqual(reading.value as? String,"10:09")
+    viewportShot("abstract-ui09-restart")
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    let pixels=[UInt8](viewportPixels(viewportBytes("abstract-ui09-night"),inset:0))
+    var lit=0,wrong=0
+    for i in stride(from:0,to:pixels.count,by:4) where pixels[i]>25 {
+      lit+=1
+      if Double(pixels[i+1])>Double(pixels[i])*0.4 || Double(pixels[i+2])>Double(pixels[i])*0.4 {wrong+=1}
+    }
+    XCTAssertGreaterThan(lit,100);XCTAssertEqual(wrong,0)
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    XCTAssertTrue(app.otherElements["face.Abstract"].exists)
+    XCTAssertEqual(reading.value as? String,"10:09")
+    viewportShot("abstract-ui09-day-return")
+  }
+  func testAbstractClockZonesAndUnobservedDigitFallbacks() {
+    for (name,date,zone,expected) in [
+      ("tokyo","2026-04-01T01:09:30Z","Asia/Tokyo","10:09"),
+      ("0628","2026-04-01T06:28:00Z","Etc/UTC","06:28"),
+      ("2357","2026-04-01T23:57:00Z","Etc/UTC","23:57"),
+      ("0416","2026-04-01T04:16:00Z","Etc/UTC","04:16")
+    ] {
+      app.terminate();launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--face","Abstract","--reduce-motion",
+        "--reference-date",date,"--reference-zone",zone])
+      XCTAssertTrue(app.otherElements["face.Abstract"].waitForExistence(timeout:5))
+      let reading=app.descendants(matching:.any).matching(NSPredicate(format:"label == %@","Abstract clock")).firstMatch
+      XCTAssertEqual(reading.value as? String,expected)
+      viewportShot("abstract-ui09-"+name)
+    }
+  }
   func testVisualReferenceAtlas() {
     for (reference, face) in [
       ("UI01", "Modular"), ("UI07", "Home Modular"), ("UI08", "Calendar"), ("UI10", "Numerals"),

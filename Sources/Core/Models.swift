@@ -27,6 +27,8 @@ enum Face: String, CaseIterable, Codable, Identifiable, Sendable {
   case fade = "Fade"
   case numerals = "Numerals"
   case cameras = "Home Camera"
+  /// Working replica label for UI09, not an asserted Apple face name.
+  case abstractDigital = "Abstract"
   var id: String { rawValue }
 }
 enum AppPage: String, CaseIterable, Identifiable, Sendable {

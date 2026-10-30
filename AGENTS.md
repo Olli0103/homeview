@@ -35,3 +35,5 @@ retention policy is authorized. The earlier 522-directory deletion approval appl
 only to that frozen historical list, not to regenerated or future caches.
 
 The main app project generator discovers Swift sources automatically; rerun `Scripts/generate_project.py` after adding or removing a source file. The generator maintains an explicit reduced Watch source allowlist. When adding a Core type referenced by shared models or AppModel, include that dependency in the Watch list and regenerate the project; an iOS build alone does not validate this boundary.
+
+Direct simulator UI commands on these owned Apple Silicon devices must use `ONLY_ACTIVE_ARCH=YES ARCHS=arm64` for both build-for-testing and test-without-building, matching the common SDK builder. Do not accidentally request x86_64 against the existing arm64 FeedKit products and then treat the resulting preparation failure as an app regression. Preserve an actual failed preparation; correct the invocation without changing product sources.

@@ -18,6 +18,7 @@ struct FaceView: View {
       case .fade: FadeFace()
       case .numerals: NumeralsFace()
       case .cameras: CameraGrid(isFace: true)
+      case .abstractDigital: AbstractClockFace()
       }
     }.accessibilityElement(children: .contain).accessibilityIdentifier(
       "face.\((selection ?? model.data.face).id)")
