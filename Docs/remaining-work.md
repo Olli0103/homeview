@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [iOS26-Mindestpfad: native Vorbereitung vor App-Test blockiert](ios26-native-preparation.md): offizielles Archiv, alle vier Restore-Komponenten und verwaltete Runtimekopie bytegeprüft; Zusatzverifier scheitert identisch auch an vorhandener offizieller iOS27-Runtime. Frischer Phone-Start meldet Finished, aber Import/OS-Fotos/Screenshot/Appinstallation hängen. Null native App-Tests; sechs OS-Dateien unverändert, kein Importretry, keine Produktänderung. #67-Legacypfad bleibt offen; nächste unabhängige Abnahme: tatsächlicher tvOS27-VoiceOver-Service.
+
 - [#79: native TV-Medien und Fokusnavigation korrigiert](tv-media-focus.md): sieben TV-Flows, separate ganze1920×1080-Ruheaufnahme exakt, beide mobile Viewports exakt und fünf SDKs/77Produkte. Nur tvOS-Fokusguide, vier frühere Fehler erhalten; #79 für übrige Kriterien offen.
 
 - [#58: eigener berechtigter animierter Artworkpfad](demo-animated-artwork.md): tatsächlicher lokaler Videorenderer, Motion-/Autoplay-/Stromspar-/Thermalsperren, keine Downloads oder persistenten Videocaches. #58 im ursprünglichen fähigkeitsabhängigen Aufgabenvertrag abgeschlossen; F079 partial/parity=false, übrige Quellen-/System-/Original-/Geräteabnahmen getrennt. Statische Katalogcover und fehlende Lyrics werden weiterhin ehrlich ausgewiesen.
