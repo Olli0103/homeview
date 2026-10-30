@@ -231,6 +231,9 @@ struct RootView: View {
           }.accessibilityLabel("Control Center").accessibilityIdentifier("nav.controls")
         }.font(.system(size: 18)).foregroundStyle(.white.opacity(0.7)).buttonStyle(.plain).frame(
           height: 30)
+        #if os(tvOS)
+          .frame(maxWidth: .infinity).focusSection()
+        #endif
         if ProcessInfo.processInfo.arguments.contains("--uitesting"),
            ProcessInfo.processInfo.arguments.contains("--doorbell-fixture") {
           VStack(spacing:2) {

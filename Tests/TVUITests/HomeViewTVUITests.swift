@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 final class HomeViewTVUITests:XCTestCase {
   func testNativeTVMockDeviceAdvertisedRangeAndStep() {
@@ -236,5 +237,115 @@ final class HomeViewTVUITests:XCTestCase {
     let receipt=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
     receipt.name="tv-native-focus-discovery";receipt.lifetime = .keepAlways;add(receipt)
     XCTAssertTrue(rows.contains { ($0["focused"] as? [[String:String]])?.isEmpty == false },"Native remote must reach an actual focusable control")
+  }
+}
+
+@MainActor extension HomeViewTVUITests {
+  private func mutedTVDemoArtwork(_ reduced:Bool)->XCUIApplication {
+    let app=launch("Music",extra:["--animation-test"]+(reduced ? ["--reduce-motion"]:[]))
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    select(app.buttons["nav.controls"],in:app,maxMoves:80)
+    let volume=app.staticTexts["adjuster.value.Demo audio"]
+    XCTAssertTrue(volume.waitForExistence(timeout:5))
+    let decrease=app.buttons["Decrease Demo audio"]
+    select(decrease,in:app,maxMoves:100,activate:false)
+    for _ in 0..<10 {
+      if volume.label == "0%" {break}
+      XCTAssertTrue(decrease.hasFocus)
+      XCUIRemote.shared.press(.select)
+    }
+    XCTAssertEqual(volume.label,"0%","Only the own demo audio must be muted before explicit playback")
+    capture(app,"tv-artwork-own-audio-zero")
+    select(app.buttons["nav.apps"],in:app,maxMoves:100)
+    select(app.buttons["all.apps"],in:app,maxMoves:100)
+    select(app.buttons["app.Music"],in:app,maxMoves:100)
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    return app
+  }
+  private func tvArtworkPixels(_ app:XCUIApplication,_ name:String)->Data {
+    let viewport=app.otherElements["reference.viewport"].frame
+    let button=app.buttons["music.artwork.info.demo"].frame
+    XCTAssertGreaterThan(viewport.width,0)
+    // Native tvOS AX buttons include additional activation padding, so their
+    // width is not the source72-point overlay width. This fixed viewport ROI
+    // was qualified in the unchanged paused native baseline before product edits.
+    let area=CGRect(x:viewport.minX+viewport.width*0.40,y:viewport.minY+viewport.height*0.23,
+      width:viewport.width*0.20,height:viewport.height*0.15)
+    let image=app.screenshot().image.cgImage!,scale=CGFloat(image.width)/app.frame.width
+    let crop=CGRect(x:(area.minX-app.frame.minX)*scale,y:(area.minY-app.frame.minY)*scale,
+      width:area.width*scale,height:area.height*scale).integral
+    XCTAssertTrue(CGRect(x:0,y:0,width:image.width,height:image.height).contains(crop))
+    let extracted=image.cropping(to:crop)!,width=extracted.width,height=extracted.height
+    let shot=XCTAttachment(image:UIImage(cgImage:extracted));shot.name=name+"-fixed-cover-roi";shot.lifetime = .keepAlways;add(shot)
+    let rect:(CGRect)->[Double]={[Double($0.minX),Double($0.minY),Double($0.width),Double($0.height)]}
+    let geometry=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["viewport":rect(viewport),
+      "info":rect(button),"global_roi":rect(area),"pixel_roi":rect(crop),
+      "scope":"Fixed own viewport x40–60%,y23–38% ROI qualified against unchanged native paused baseline before product edit. Native TV AX padding is not rendered cover geometry. Excludes DEMO/info/focus/player/progress; requalify actual final captures."],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    geometry.name=name+"-geometry";geometry.lifetime = .keepAlways;add(geometry)
+    var data=Data(count:width*height*4)
+    data.withUnsafeMutableBytes { bytes in
+      let context=CGContext(data:bytes.baseAddress,width:width,height:height,bitsPerComponent:8,
+        bytesPerRow:width*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+      context.draw(extracted,in:CGRect(x:0,y:0,width:width,height:height))
+    }
+    return data
+  }
+  private func tvArtworkChanged(_ a:Data,_ b:Data)->Int {
+    XCTAssertEqual(a.count,b.count);return zip(a,b).reduce(0){$0+($1.0 == $1.1 ? 0:1)}
+  }
+  private func settleTVArtwork(_ seconds:Double=0.8) {RunLoop.current.run(until:Date().addingTimeInterval(seconds))}
+  func testNativeTVDemoArtworkActualRemoteMotionPauseAndBackground() {
+    continueAfterFailure=false;executionTimeAllowance=300
+    let app=mutedTVDemoArtwork(false),play=app.buttons["player.play"]
+    select(play,in:app,maxMoves:100)
+    expectation(for:NSPredicate(format:"label == %@","Pause"),evaluatedWith:play);waitForExpectations(timeout:10)
+    settleTVArtwork(1.5)
+    let first=tvArtworkPixels(app,"tv-artwork-moving-a");settleTVArtwork()
+    let second=tvArtworkPixels(app,"tv-artwork-moving-b");settleTVArtwork()
+    XCTAssertGreaterThan(tvArtworkChanged(first,second),100)
+    XCTAssertGreaterThan(tvArtworkChanged(second,tvArtworkPixels(app,"tv-artwork-moving-c")),100)
+    capture(app,"tv-artwork-playing-native")
+    select(play,in:app,maxMoves:100);XCTAssertEqual(play.label,"Play");settleTVArtwork()
+    let paused=tvArtworkPixels(app,"tv-artwork-explicit-pause-a");settleTVArtwork()
+    XCTAssertEqual(tvArtworkChanged(paused,tvArtworkPixels(app,"tv-artwork-explicit-pause-b")),0)
+    select(play,in:app,maxMoves:100)
+    expectation(for:NSPredicate(format:"label == %@","Pause"),evaluatedWith:play);waitForExpectations(timeout:10)
+    XCUIRemote.shared.press(.home)
+    XCTAssertTrue(app.wait(for:.runningBackground,timeout:10) || app.state == .runningBackgroundSuspended)
+    app.activate();XCTAssertTrue(play.waitForExistence(timeout:10));settleTVArtwork(1.5)
+    let resumed=play.label == "Pause",returned=tvArtworkPixels(app,"tv-artwork-background-a");settleTVArtwork()
+    let changes=tvArtworkChanged(returned,tvArtworkPixels(app,"tv-artwork-background-b"))
+    if resumed {XCTAssertGreaterThan(changes,100);select(play,in:app,maxMoves:100)}
+    else {XCTAssertEqual(changes,0)}
+    XCTAssertEqual(play.label,"Play");capture(app,"tv-artwork-paused-native")
+    let state=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["audio_observed_continued_after_return":resumed,
+      "scope":"Actual Home/background return; cover must follow existing observed demo audio state. No new background audio promise."],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    state.name="tv-artwork-background-audio-state";state.lifetime = .keepAlways;add(state)
+  }
+  func testNativeTVDemoArtworkReducedMotionKeepsPlayingStatic() {
+    continueAfterFailure=false;executionTimeAllowance=240
+    let app=mutedTVDemoArtwork(true),play=app.buttons["player.play"]
+    select(play,in:app,maxMoves:100)
+    expectation(for:NSPredicate(format:"label == %@","Pause"),evaluatedWith:play);waitForExpectations(timeout:10)
+    settleTVArtwork(1.5)
+    let first=tvArtworkPixels(app,"tv-artwork-reduced-a");settleTVArtwork()
+    XCTAssertEqual(tvArtworkChanged(first,tvArtworkPixels(app,"tv-artwork-reduced-b")),0)
+    capture(app,"tv-artwork-playing-reduced-native")
+    select(play,in:app,maxMoves:100);XCTAssertEqual(play.label,"Play")
+  }
+}
+
+@MainActor extension HomeViewTVUITests {
+  func testNativeTVMatchedCloseFocusedPausedMusicReference() {
+    continueAfterFailure=false
+    let app=launch("Music",extra:["--animation-test"])
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    XCTAssertTrue(app.buttons["close"].hasFocus,"Match the original native baseline focus, not a different focused footer state")
+    capture(app,"tv-music-matched-close-paused-reference")
+    let rect:(CGRect)->[Double]={[Double($0.minX),Double($0.minY),Double($0.width),Double($0.height)]}
+    var bounds:[String:[Double]]=["viewport":rect(app.otherElements["reference.viewport"].frame)]
+    for id in ["nav.faces","nav.apps","nav.assistant","nav.controls"] {bounds[id]=rect(app.buttons[id].frame)}
+    let data=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:bounds,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    data.name="tv-music-matched-reference-geometry";data.lifetime = .keepAlways;add(data)
   }
 }
