@@ -1,0 +1,203 @@
+{
+  "issue": 24,
+  "date": "2026-10-30",
+  "code_commit": "0619708484c75f7ab6c0c497590d1ea9f6fa9dcf",
+  "source_digest": "27e59e5a81aa6d967afc9e7b5d66280090c6c4133dc092cf4cf2779f491c1200",
+  "original_acceptance": "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat.",
+  "acceptance_scope": "Original synthetic-device contract only; no real Home, hardware, assistive-technology or original parity.",
+  "original_tasks_met": [
+    "Eight characteristic types, units, min/max/step and per-characteristic read/write rights across five mock devices",
+    "Pending/failed operations and independently observed foreign updates",
+    "Success only after matching observed value and unchanged current descriptor",
+    "Thermostat modes, light brightness, fan speed and blinds separately exercised"
+  ],
+  "core_tests": 449,
+  "core_input_count": 94,
+  "core_inputs_unchanged_since_tests_and_gate": true,
+  "independent_matrix": {
+    "vectors": 480,
+    "conditions": 2520,
+    "passed": true,
+    "reviewer": "Separate parent-run fixture, not another agent/human"
+  },
+  "stale_metadata_identical_probe": {
+    "before_writes": 1,
+    "before_passed": false,
+    "after_writes": 0,
+    "after_passed": true
+  },
+  "native_history": [
+    {
+      "checkpoint": "before-phone",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "fdb74539ff8373fb385f41258dc05016a8acd7f325b4deec522893a86d109a6b",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "integrated-mode-phone",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "56b3e58c7ea0ebe855cb1522cc74f2bdb1fe032aef744a620426790031336ec6",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "matrix-phone",
+      "passed": 6,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "a5e4c54fa3204349ceb7c1a0833046a34409456ec759bc72b8e3629977d9bc4e",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "matrix-pad",
+      "passed": 6,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "a5e4c54fa3204349ceb7c1a0833046a34409456ec759bc72b8e3629977d9bc4e",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "current-phone",
+      "passed": 8,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "f89e2d195d91bb8d799e517c85a2a6bff14af1f2919968414768911119c9af97",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "current-pad",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "f89e2d195d91bb8d799e517c85a2a6bff14af1f2919968414768911119c9af97",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "current-watch",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "ad2f86dfe9d4cbf73f14a8a0996f308df52c875b22b047ee1f7ea67331c76d35",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "delivery-phone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "2fa02c5e5d125a4bfaa5db26ee7e8692af273f997df923e167f902bc0993d7cb",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "delivery-pad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "2fa02c5e5d125a4bfaa5db26ee7e8692af273f997df923e167f902bc0993d7cb",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "delivery-tv",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "b5c13c7bf33e57db2df01f2e28d42c645b465b85e38e912b81596b443c1d25a8",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    },
+    {
+      "checkpoint": "delivery-watch",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warning_count": 0,
+      "archive_sha256": "3264fdc540592afad76fe6645a07df8c0dc18f3dfd00b8516278e48159442f37",
+      "inputs_unchanged": true,
+      "all_entries_read_back_at_creation_container_digest_rechecked_at_delivery": true,
+      "installed_app_and_runner_verified": true
+    }
+  ],
+  "native_history_totals": {
+    "executions": 45,
+    "passed": 41,
+    "failed": 4
+  },
+  "delivery_native": {
+    "executions": 9,
+    "passed": 9,
+    "failed": 0,
+    "methods": "Three each iPhone/iPad, one TV, two Watch. No single final combined 45-run batch claimed."
+  },
+  "per_device_native_outcomes": "Four main controls × success/timeout/denial/asynchronous foreign update on each phone/pad, plus fresh process readback/no replay, accepted at initial 57164ff pin; subsequent targeted metadata/current regression/delivery pins explicitly separated. Current 20 Core contract methods cover all eight characteristic slots.",
+  "five_SDKs": {
+    "passed": 5,
+    "product_files": 73,
+    "archive_sha256": "996b9d8ec30870a055ac4fff8bf695f01c9098543343a41b69cb602b15f8a994",
+    "all_outputs_read_back": true,
+    "all_product_inputs_exact_to_code_commit": true,
+    "only_snapshot_difference_to_final_all_inputs": [
+      "Tests/UITests/HomeViewUITests.swift"
+    ],
+    "reason": "Only iOS UITest capture now dismisses keyboard and reveals actual status before screenshot; no SDK app target compiles that test file. Every SDK product input unchanged.",
+    "tooling_tests": 6,
+    "ios_metadata_recovery": "One standard clean/build after successful but incomplete iOS AppIntents outputs; attempts retained, no OS/Siri invocation claimed."
+  },
+  "images": {
+    "decoded_PNGs": 212,
+    "all_contact_sheets_actually_viewed": true,
+    "contacts_viewed": 23,
+    "additional_full_plan_failure_viewed": true,
+    "limits": [
+      "Initial phone fan-foreign image retains an alert after attempted acknowledgement; not counted as a visible dismissed-state proof. Separate final test explicitly waits for disappearance and requires new deliberate 75% action on both devices. Snapshot alert guard unchanged.",
+      "Earlier phone assistant capture has result/status outside its keyboard-reduced clip; final unchanged assertions plus keyboard dismissal and actual scroll reveal capture the visible status.",
+      "Some settings screenshots have lower unrelated rows clipped; no complete page/assistive/edge-target/parity acceptance is claimed."
+    ]
+  },
+  "source_files": 242,
+  "unchanged_security_boundaries": [
+    "NativeHomeKitService constructor always throws; entire NativeServices.swift unchanged from b314b4f",
+    "MockLockDevice and LockActionSession unchanged",
+    "Physical/signing and real Home setup remain owner-held; no permission/account/media/OS/Gateway changes",
+    "Snoopy excluded; no force push/history rewrite"
+  ],
+  "remaining_feature_parity": [
+    "F024",
+    "F025",
+    "F026",
+    "F027",
+    "F031"
+  ],
+  "parity_accepted": false
+}

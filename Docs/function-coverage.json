@@ -775,7 +775,8 @@
       "HOME-02"
     ],
     "current": [
-      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen.",
+      "30. Oktober: ursprünglicher synthetischer Gerätevertrag aus #24 erfüllt: typisierte acht Charakteristiken/Fähigkeiten, Metadaten-/Callback-Fencing, Pending/Fehler/Fremdänderung und passendes Read-back; vier Hauptregler mit allen vier Ergebnisarten/Neustarts separat.449Coretests und getrennte native Pins (letzter neun Ausführungen), fünf SDKs. Docs/mock-device-contract.md. Keine reale Home-/Original-Parity; #23 und Geräte-/Signing-Hold bleiben separat."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -786,11 +787,11 @@
       "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
     },
     "target": "iPad core",
-    "implementation_status": "blocked",
+    "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "passed original synthetic device contract; real Home explicitly separate (#23)",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "real Home setup held behind #23; physical/signing owner hold unchanged"
     },
     "completion_criteria": [
       "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
@@ -806,7 +807,8 @@
       "HOME-02"
     ],
     "current": [
-      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen.",
+      "30. Oktober: ursprünglicher synthetischer Gerätevertrag aus #24 erfüllt: typisierte acht Charakteristiken/Fähigkeiten, Metadaten-/Callback-Fencing, Pending/Fehler/Fremdänderung und passendes Read-back; vier Hauptregler mit allen vier Ergebnisarten/Neustarts separat.449Coretests und getrennte native Pins (letzter neun Ausführungen), fünf SDKs. Docs/mock-device-contract.md. Keine reale Home-/Original-Parity; #23 und Geräte-/Signing-Hold bleiben separat."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -817,11 +819,11 @@
       "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
     },
     "target": "iPad core",
-    "implementation_status": "blocked",
+    "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "passed original synthetic device contract; real Home explicitly separate (#23)",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "real Home setup held behind #23; physical/signing owner hold unchanged"
     },
     "completion_criteria": [
       "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
@@ -837,7 +839,8 @@
       "HOME-02"
     ],
     "current": [
-      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen.",
+      "30. Oktober: ursprünglicher synthetischer Gerätevertrag aus #24 erfüllt: typisierte acht Charakteristiken/Fähigkeiten, Metadaten-/Callback-Fencing, Pending/Fehler/Fremdänderung und passendes Read-back; vier Hauptregler mit allen vier Ergebnisarten/Neustarts separat.449Coretests und getrennte native Pins (letzter neun Ausführungen), fünf SDKs. Docs/mock-device-contract.md. Keine reale Home-/Original-Parity; #23 und Geräte-/Signing-Hold bleiben separat."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -848,11 +851,11 @@
       "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
     },
     "target": "iPad core",
-    "implementation_status": "blocked",
+    "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "passed original synthetic device contract; real Home explicitly separate (#23)",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "real Home setup held behind #23; physical/signing owner hold unchanged"
     },
     "completion_criteria": [
       "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
@@ -868,7 +871,8 @@
       "HOME-02"
     ],
     "current": [
-      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen.",
+      "30. Oktober: ursprünglicher synthetischer Gerätevertrag aus #24 erfüllt: typisierte acht Charakteristiken/Fähigkeiten, Metadaten-/Callback-Fencing, Pending/Fehler/Fremdänderung und passendes Read-back; vier Hauptregler mit allen vier Ergebnisarten/Neustarts separat.449Coretests und getrennte native Pins (letzter neun Ausführungen), fünf SDKs. Docs/mock-device-contract.md. Keine reale Home-/Original-Parity; #23 und Geräte-/Signing-Hold bleiben separat."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -879,11 +883,11 @@
       "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
     },
     "target": "iPad core",
-    "implementation_status": "blocked",
+    "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "passed original synthetic device contract; real Home explicitly separate (#23)",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "real Home setup held behind #23; physical/signing owner hold unchanged"
     },
     "completion_criteria": [
       "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
@@ -992,7 +996,8 @@
       "HOME-02"
     ],
     "current": [
-      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen."
+      "Bedienflächen und lokale Zustandsänderungen existieren. Keine realen Charakteristiken oder Geräte werden angesprochen.",
+      "30. Oktober: ursprünglicher synthetischer Gerätevertrag aus #24 erfüllt: typisierte acht Charakteristiken/Fähigkeiten, Metadaten-/Callback-Fencing, Pending/Fehler/Fremdänderung und passendes Read-back; vier Hauptregler mit allen vier Ergebnisarten/Neustarts separat.449Coretests und getrennte native Pins (letzter neun Ausführungen), fünf SDKs. Docs/mock-device-contract.md. Keine reale Home-/Original-Parity; #23 und Geräte-/Signing-Hold bleiben separat."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -1003,11 +1008,11 @@
       "reason": "Kein konkreter Bild-/Sequenzzustand in dieser Zeile; die Aussage bleibt berichtet und ist nicht live verifiziert."
     },
     "target": "iPad core",
-    "implementation_status": "blocked",
+    "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "passed original synthetic device contract; real Home explicitly separate (#23)",
       "visual": "pending original-state comparison",
-      "device_service": "pending where required; classify explicitly before acceptance"
+      "device_service": "real Home setup held behind #23; physical/signing owner hold unchanged"
     },
     "completion_criteria": [
       "Synthetische Geräte mit Erfolg, Timeout, Ablehnung und asynchroner Fremdänderung. Spätere reale Testheim-Abnahme separat."
