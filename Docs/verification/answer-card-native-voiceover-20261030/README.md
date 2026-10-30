@@ -1,0 +1,3 @@
+# Archived experiments, not normal test-target source
+
+The full-reading extension planned nine cases; only the two iPhone knowledge/message pilots were executed and both failed their complete-literal contract. The other seven cases were not executed. The independent UIKit observation executed once and observed output-prefix behavior; it is not a complete-reading/audio PASS. These exact source texts are archived outside the normal UITest target. No compiled fixture, private Apple header or proprietary reference image is distributed. The normal target retains only `testNativeMessageReadOnlyQualificationAndRestore`.

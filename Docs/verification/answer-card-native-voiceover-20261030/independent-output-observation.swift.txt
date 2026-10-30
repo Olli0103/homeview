@@ -1,0 +1,52 @@
+
+
+extension HomeViewUITests {
+  func testIndependentUIKitVoiceOverLongOutputObservation()throws {
+    continueAfterFailure=true;executionTimeAllowance=180
+    guard #available(iOS 27.0,*) else {XCTFail("Native service requires iOS27");return}
+    let service=XCUIDevice.shared.voiceOverService,original=service.isEnabled
+    let control=XCUIApplication(bundleIdentifier:"org.example.NativeVoiceOverOutputControl")
+    var events:[[String:Any]]=[],restored=false
+    let full="A long standard UIKit control has this complete owned calibration sentence. It keeps every word in its accessible label, ending with the marker ZEBRA END."
+    func record(_ event:String,_ fields:[String:Any]=[:]) {var row=fields;row["event"]=event;events.append(row)}
+    defer {
+      do {
+        if service.isEnabled != original {if original {try service.enable()} else {try service.disable()}}
+        restored=service.isEnabled==original;XCTAssertTrue(restored)
+        record("restored",["original":original,"enabled":service.isEnabled,"matches_original":restored,"native_runtime":control.staticTexts["native.runtime"].label])
+      } catch {XCTFail("Restore original simulator VoiceOver state")}
+      let report:[String:Any]=["full_owned_literal":full,"full_literal_characters":full.count,"restored":restored,"events":events,
+        "scope":"Independent UIKit/standard UIButton, ordinary positive callbacks, full AX label vs actual native reported utterance. Observation only; no complete spoken/audio or raw activation PASS."]
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="native-voiceover-independent-long-output";a.lifetime = .keepAlways;add(a)
+    }
+    if service.isEnabled {try service.disable()}
+    control.launch()
+    let short=control.buttons["native.short"],long=control.buttons["native.long"],status=control.staticTexts["native.status"],runtime=control.staticTexts["native.runtime"]
+    guard short.waitForExistence(timeout:10),long.exists else {XCTFail("Independent control not launched");return}
+    XCTAssertEqual(long.label,full);record("full-AX-label",["label":long.label,"characters":long.label.count])
+    short.tap();long.tap();XCTAssertEqual(status.label,"short=1;long=1")
+    record("ordinary-positive-callbacks",["status":status.label])
+    try service.enable();XCTAssertTrue(service.isEnabled)
+    let enabled=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","true"),object:runtime)
+    XCTAssertEqual(XCTWaiter.wait(for:[enabled],timeout:5),.completed)
+    record("actual-native-enabled",["service_enabled":service.isEnabled,"runtime":runtime.label])
+    var foundShort=false,foundLong=false
+    for _ in 0..<20 {
+      let speech=try service.moveForward().utterance
+      record("move-forward",["utterance":speech,"characters":speech.count])
+      if speech.hasPrefix("Short native control") {foundShort=true}
+      if speech.hasPrefix(String(full.prefix(30))) {foundLong=true;break}
+    }
+    XCTAssertTrue(foundShort);guard foundLong else {XCTFail("Native focus did not reach long standard control");return}
+    for pause in [0.0,2.0,6.0] {
+      if pause>0 {RunLoop.current.run(until:Date().addingTimeInterval(pause))}
+      let speech=try service.currentSpeech().utterance
+      record("current-focused-output",["pause_before_seconds":pause,"utterance":speech,"characters":speech.count,
+        "complete_literal_present":speech.contains(full),"matches_same_full_label_prefix":full.hasPrefix(speech)])
+      XCTAssertTrue(speech.hasPrefix(String(full.prefix(30))))
+    }
+    XCTAssertEqual(long.label,full);XCTAssertEqual(status.label,"short=1;long=1")
+    let image=XCTAttachment(screenshot:control.screenshot());image.name="native-voiceover-long-standard-control";image.lifetime = .keepAlways;add(image)
+  }
+}

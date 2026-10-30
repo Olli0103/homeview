@@ -47,7 +47,7 @@ struct AssistantResponseView:View {
         }.padding(16).frame(maxWidth:.infinity,alignment:.leading)
           .background(Color.gray.opacity(0.10),in:RoundedRectangle(cornerRadius:22))
           .accessibilityElement(children:.ignore)
-          .accessibilityLabel("Fictional message from \(message.sender). \(message.timestamp). \(message.text)")
+          .accessibilityLabel("Read-only excerpt. Fictional message from \(message.sender). \(message.timestamp). \(message.text)")
           .accessibilityIdentifier("assistant.card.message")
       case .recipe:
         SoupExampleIllustration().frame(height:190)

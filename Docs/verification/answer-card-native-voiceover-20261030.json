@@ -1,0 +1,319 @@
+{
+  "date": "2026-10-30",
+  "issue": 36,
+  "issue_state": "open",
+  "feature": "F046",
+  "parity": false,
+  "base_commit": "cadffae87ed7eca3c091131ef81f7708ae8d51fc",
+  "source_input_count": 245,
+  "source_sha256": "d9dc440021ae02cdd8da8dd142f3e97ec66a34d8252a6cd77cf0c088eeddce5c",
+  "product_changes": [
+    "Prefix visible read-only qualifier in ignored-child message accessibility label"
+  ],
+  "normal_regression": "testNativeMessageReadOnlyQualificationAndRestore",
+  "same_regression_source_before_after": true,
+  "changed_vs_failing_qualifier_baseline": [
+    "Sources/App/AssistantResponseView.swift"
+  ],
+  "stages": [
+    {
+      "phase": "pilot",
+      "device": "phone",
+      "scope": "Full-literal reading; retained failures, not current release gate",
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "executions": 2,
+      "structured_runtime_warnings": [],
+      "summary_sha256": "25329f139e084f57c513db17d5d17eef28161133de75d7b3a1876fc087c6122f",
+      "receipt_sha256": "c8d701cab3c99fbb763d62c9aadb9330ad1b58f5b8b0d0edc0ee71eceb7bb652",
+      "summary_start": 1793359029.9,
+      "summary_finish": 1793359279.849
+    },
+    {
+      "phase": "calibration",
+      "device": "phone",
+      "scope": "Independent standard UIKit output observation, not complete-reading PASS",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "executions": 1,
+      "structured_runtime_warnings": [],
+      "summary_sha256": "c27eefa7c1326ef00ab41d51bc2dbd8a53c0f370450153d3df07bc3aa722d0f3",
+      "receipt_sha256": "944a39c798dd71c1ae486296476beb79dbe26e98e20fa5e37d21c82163025993",
+      "summary_start": 1793359673.643,
+      "summary_finish": 1793359704.148
+    },
+    {
+      "phase": "readonly-before",
+      "device": "phone",
+      "scope": "Identical final regression against unmodified product; retained failing baseline",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "executions": 1,
+      "structured_runtime_warnings": [],
+      "summary_sha256": "204eb9797c9c7d302b67874bcc0981cb181e8c60bacbb6b7b36bc3f1a9787c42",
+      "receipt_sha256": "3f301fd24b4dea0352168454cd7dd92da33ed301f2884250d9b7f916f55f18ce",
+      "summary_start": 1793359961.831,
+      "summary_finish": 1793360009.616
+    },
+    {
+      "phase": "readonly-after2",
+      "device": "phone",
+      "scope": "Current qualifier regression and six existing card regressions",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "executions": 7,
+      "structured_runtime_warnings": [],
+      "summary_sha256": "5eac817e7e6c6b8a50740f79e6c355a2223f6d01b215b7a70e467660ef332505",
+      "receipt_sha256": "5d5fd20bdd72e4c3456cadc87361fa29e2c7ecb433e5c75b4f97887926bc5815",
+      "summary_start": 1793360585.997,
+      "summary_finish": 1793360864.081
+    },
+    {
+      "phase": "readonly-after2",
+      "device": "ipad",
+      "scope": "Current qualifier regression and six existing card regressions",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "executions": 7,
+      "structured_runtime_warnings": [],
+      "summary_sha256": "93a0509611eb3d939670c6a1cf625b50c4bffb660ff8b006e22a34e44e0e4344",
+      "receipt_sha256": "110f6de702dbf16f4e239d51fc42b3da4509091b00062f3b1d4a7ad1770cbce2",
+      "summary_start": 1793360867.386,
+      "summary_finish": 1793361144.106
+    }
+  ],
+  "current_ui": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "structured_runtime_warnings": 0,
+    "installed_app_before_after_and_runner_test_after_byte_verified": true,
+    "compiled_launch_inputs": 32,
+    "all_sources_unchanged": true
+  },
+  "native_qualification": {
+    "baseline_full_AX_chars": 117,
+    "after_full_AX_chars": 136,
+    "baseline_readonly_reported": false,
+    "after_both_readonly_reported": true,
+    "after_both_reported_prefix": "Read-only excerpt. Fictional message from Avery Morgan. Today, 9",
+    "reported_prefix_characters": 64,
+    "complete_AX_sender_timestamp_body_preserved": true,
+    "whole_body_or_timestamp_spoken_not_proven": true,
+    "all_six_native_executions_restored_original_false": true
+  },
+  "independent_standard_control": {
+    "framework": "UIKit/default UIButton",
+    "full_label_characters": 154,
+    "short_output_characters": 41,
+    "repeated_long_output_characters": [
+      64,
+      64,
+      64
+    ],
+    "same_focus_offsets_seconds": [
+      0,
+      2,
+      8
+    ],
+    "ordinary_short_and_long_callbacks_positive": true,
+    "actual_UIAccessibility_runtime_true_and_restored_false": true,
+    "underlying_implementation_cause": "unknown",
+    "scope": "Observed SDK/runtime output boundary, not product-only diagnosis, universal future limit, whole speech or acoustic quality proof"
+  },
+  "sdk": {
+    "platforms": [
+      {
+        "platform": "iOS",
+        "exit_code": 0,
+        "attempt_count": 2
+      },
+      {
+        "platform": "macOS",
+        "exit_code": 0,
+        "attempt_count": 1
+      },
+      {
+        "platform": "tvOS",
+        "exit_code": 0,
+        "attempt_count": 1
+      },
+      {
+        "platform": "visionOS",
+        "exit_code": 0,
+        "attempt_count": 1
+      },
+      {
+        "platform": "watchOS",
+        "exit_code": 0,
+        "attempt_count": 1
+      }
+    ],
+    "product_file_count": 73,
+    "all_products_byte_read_back": true,
+    "changed_product_files": 5,
+    "delta_bytes": 26412069,
+    "delta_sha256": "bffc6c8399af1d25a863191d2a1f9163aa64ca1ec963f53f9b2d822d4b30fd64",
+    "iOS_metadata_clean_recovery": true,
+    "after_recovery_missing_UI_preparation": {
+      "executions": 0,
+      "failure_preserved": true,
+      "standard_build_for_testing_restored_inputs": true
+    }
+  },
+  "input_reconstruction": {
+    "source_delta_sha256": "a36fd3e46f6ce233d2056b31b48e7de3b9313a5ef468c0279ff5d182220f21f0",
+    "source_delta_bytes": 6260,
+    "new_source_files": 1,
+    "new_compiled_binary_copies": 0,
+    "all245sources_read_back": true,
+    "all_compiled_inputs_read_back": 32,
+    "same_UITest_runner_and_launch_bytes_as_failed_before": true,
+    "app_bytes_exact_to_new_five_SDK_outputs": true,
+    "new_UI_preparation_builds": 1,
+    "SDK_delta_sha256": "bffc6c8399af1d25a863191d2a1f9163aa64ca1ec963f53f9b2d822d4b30fd64"
+  },
+  "pixel_preservation": {
+    "contract": {
+      "scope": "Before/after decoded whole own assistant viewport, prior-to-VoiceOver normal capture; not original parity or native focused-ring comparison.",
+      "before_file": "readonly-before/phone-attachments/F3AA4A5A-546D-4496-B0AF-1494CB7F1886.png",
+      "before_name": "viewport-native-message-qualifier-before-voiceover_0_2B34B25D-D104-42AC-A8BF-870D6E71BE46.png",
+      "before_sha256": "f79e32bc025832045a84824872b98239951ce48f8d351afafec868d1964132d2",
+      "required_changed_RGBA_pixels": 0,
+      "device": "phone",
+      "fixture": "same unsent temperature91 and fictional Avery card, reference10:09",
+      "masks_registration_tolerance_allowed": false,
+      "matching_own_geometry_required": true,
+      "pad_has_no_fresh_before_pair": true
+    },
+    "before_sha256": "f79e32bc025832045a84824872b98239951ce48f8d351afafec868d1964132d2",
+    "after_file": "readonly-after2/phone-attachments/A22B72D8-CB46-48AB-9E98-1BE8310E510E.png",
+    "after_name": "viewport-native-message-qualifier-before-voiceover_0_75E6C61F-DC2E-47D7-8D28-D42EE56F2143.png",
+    "after_sha256": "f79e32bc025832045a84824872b98239951ce48f8d351afafec868d1964132d2",
+    "dimensions": [
+      1134,
+      2046
+    ],
+    "changed_RGBA_pixels": 0,
+    "changed_bounds": null,
+    "whole_own_viewport_exact": true,
+    "no_mask_or_registration": true,
+    "native_focused_ring_not_compared": true,
+    "pad_pair_not_claimed": true,
+    "geometry_before_after": [
+      {
+        "phase": "readonly-before",
+        "path": "readonly-before/phone-attachments/C103FC02-107E-45C7-9790-F6BA078465AD.json",
+        "sha256": "0b338cd9d661bf24be9e1bd090c7a3ef1c73dec1abfdb7c2834c4ce1e1fe678e",
+        "geometry": {
+          "crop_pixels": [
+            36,
+            267,
+            1134,
+            2046
+          ],
+          "reference": "native-message-qualifier-before-voiceover",
+          "screenshot_pixels": [
+            1206,
+            2622
+          ],
+          "viewport_points": [
+            12,
+            89,
+            378,
+            682
+          ]
+        }
+      },
+      {
+        "phase": "readonly-after2",
+        "path": "readonly-after2/phone-attachments/DBCD86EA-2D1B-4478-AF77-0AC7EACDF675.json",
+        "sha256": "0b338cd9d661bf24be9e1bd090c7a3ef1c73dec1abfdb7c2834c4ce1e1fe678e",
+        "geometry": {
+          "crop_pixels": [
+            36,
+            267,
+            1134,
+            2046
+          ],
+          "reference": "native-message-qualifier-before-voiceover",
+          "screenshot_pixels": [
+            1206,
+            2622
+          ],
+          "viewport_points": [
+            12,
+            89,
+            378,
+            682
+          ]
+        }
+      }
+    ],
+    "matching_own_geometry_verified": true
+  },
+  "image_review": [
+    {
+      "phase_device": "calibration-phone",
+      "decoded_png_count": 1,
+      "selected_state_count": 1,
+      "viewed_contact_pages": 0,
+      "report_sha256": "46f203bb6b0c41fb314424b67bb9dccc5315ae993806364aa24ab370ae159da8"
+    },
+    {
+      "phase_device": "pilot-phone",
+      "decoded_png_count": 6,
+      "selected_state_count": 3,
+      "viewed_contact_pages": 0,
+      "report_sha256": "c03e16040ba493eed23022b2ded1b6c1dfd77b0755330e25bb43c1955879611f"
+    },
+    {
+      "phase_device": "readonly-after2-ipad",
+      "decoded_png_count": 47,
+      "selected_state_count": 26,
+      "viewed_contact_pages": 4,
+      "report_sha256": "58ec12380846a62301be21689546be28c0186ed9da80f8883d3f41c1fee09d2e"
+    },
+    {
+      "phase_device": "readonly-after2-phone",
+      "decoded_png_count": 47,
+      "selected_state_count": 26,
+      "viewed_contact_pages": 4,
+      "report_sha256": "7dd673bee246bac0e76ff8a53ec4559e8543a1765ce94a45b447e6ea19467f9f"
+    },
+    {
+      "phase_device": "readonly-before-phone",
+      "decoded_png_count": 6,
+      "selected_state_count": 4,
+      "viewed_contact_pages": 1,
+      "report_sha256": "bdd4bb68dbb1c866fe816f5c34a4202b35f544004c3654d462cbdd6968c3f33a"
+    }
+  ],
+  "published_screenshots": "../screenshots/answer-card-native-voiceover-20261030/manifest.json",
+  "archived_experiment_sources": "answer-card-native-voiceover-20261030/README.md",
+  "private_evidence_seal": {
+    "sha256": "cc2ff43792040b59956d49cc4dd7f0d5698db5f44016ffe9bd2bb02c28298dd5",
+    "file_count": 855,
+    "bytes": 117284177,
+    "all_files_fully_read_back": true
+  },
+  "terminal_results": {
+    "inventory_sha256": "739c3fb6ca9c5bb40ffdf826a766448e623bb7510c353a93e278fb8177956bd2",
+    "bundle_count": 5,
+    "file_count": 528,
+    "bytes": 42705665,
+    "sealed_in_place_without_full_duplicate_archives": true
+  },
+  "no_new_core_run": true,
+  "remaining": [
+    "Whole long native paragraph/card reading unproven; two full-literal pilots remain FAIL",
+    "Unexecuted seven of nine proposed full-reading cases are not PASS",
+    "Switch Control/Dynamic Type/contrast/physical-device acceptance and complete original geometry/motion/live dynamic card coverage remain separate"
+  ],
+  "privacy": "Synthetic UUID stores/fictional messages only; no personal providers or capture, no real message/call/Home action, no production splitting to fit output reporter"
+}

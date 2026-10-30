@@ -9794,3 +9794,60 @@ extension HomeViewUITests {
     verifyRootInputSnapshot(app.textFields["browser.address"],"browser-address")
   }
 }
+
+extension HomeViewUITests {
+  func testNativeMessageReadOnlyQualificationAndRestore()throws {
+    continueAfterFailure=true;executionTimeAllowance=180
+    guard #available(iOS 27.0,*) else {XCTFail("Native VoiceOver service requires iOS27");return}
+    let service=XCUIDevice.shared.voiceOverService,original=service.isEnabled
+    var events:[[String:Any]]=[],restored=false
+    func normalized(_ text:String)->String {text.lowercased().components(separatedBy:CharacterSet.alphanumerics.inverted).joined()}
+    func record(_ event:String,_ fields:[String:Any]=[:]) {var row=fields;row["event"]=event;events.append(row)}
+    defer {
+      do {
+        if service.isEnabled != original {if original {try service.enable()} else {try service.disable()}}
+        restored=service.isEnabled==original;XCTAssertTrue(restored)
+        record("restored",["original":original,"enabled":service.isEnabled,"matches_original":restored])
+      } catch {XCTFail("Restore original owned-simulator VoiceOver state")}
+      let report:[String:Any]=["events":events,"restored":restored,
+        "scope":"Actual native short read-only/fictional/sender qualification plus separate full AX source fields. Native output reporter previously observed64character prefix even for independent UIKit. No whole-body/timestamp spoken, raw activation, acoustic or original-parity PASS."]
+      let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+      a.name="native-message-readonly-qualification";a.lifetime = .keepAlways;add(a)
+    }
+    if service.isEnabled {try service.disable()}
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store"]);tap("nav.assistant")
+    let field=app.textFields["assistant.input"],draft="temperature 91"
+    field.tap();field.typeText(draft);selectAnswerExample("message")
+    let card=responseElement("assistant.card.message");revealPlanControl(card)
+    let label=card.label
+    record("actual-full-AX-card",["label":label,"characters":label.count])
+    for value in ["Avery Morgan","Today, 9:41 AM","I’ll arrive at Central Station at 6:30 PM on Friday, October 16."] {
+      XCTAssertTrue(label.contains(value),"Preserve complete declared source field in the AX label")
+    }
+    XCTAssertTrue(normalized(label).contains(normalized("Read-only excerpt")),"Visible read-only qualifier must not disappear from the ignored-child accessible element")
+    viewportShot("native-message-qualifier-before-voiceover",assistantRectangle:true)
+    try service.enable();XCTAssertTrue(service.isEnabled)
+    record("native-enabled",["enabled":service.isEnabled])
+    var target:String?
+    let deadline=ProcessInfo.processInfo.systemUptime+45
+    for _ in 0..<32 {
+      guard ProcessInfo.processInfo.systemUptime<deadline else {break}
+      let speech=try service.moveForward().utterance;record("move-forward",["utterance":speech,"characters":speech.count])
+      if normalized(speech).contains(normalized("Fictional message")),speech.contains("Avery Morgan") {target=speech;break}
+    }
+    guard let target else {XCTFail("Native focus did not reach the fictional message card");return}
+    let readonly=normalized(target).contains(normalized("Read-only excerpt"))
+    record("target-native-qualification",["utterance":target,"characters":target.count,"read_only_reported":readonly])
+    XCTAssertTrue(readonly,"Native focused card must identify the read-only nature, not merely sender/time")
+    let anchor=try service.currentSpeech().utterance
+    record("move-backward",["utterance":try service.moveBackward().utterance])
+    let returned=try service.moveForward().utterance;record("move-forward-return",["utterance":returned])
+    XCTAssertEqual(normalized(returned),normalized(anchor))
+    XCTAssertEqual(field.value as? String,draft,"Reading must not submit or lose the draft")
+    XCTAssertFalse(app.buttons["assistant.card.message"].exists,"The excerpt remains non-executable")
+    viewportShot("native-message-qualifier-focused",assistantRectangle:true)
+    try service.disable();XCTAssertFalse(service.isEnabled)
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°","No unsent command execution")
+  }
+}

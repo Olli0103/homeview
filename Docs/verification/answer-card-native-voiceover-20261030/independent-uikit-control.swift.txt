@@ -1,0 +1,51 @@
+import UIKit
+
+@main final class AppDelegate: UIResponder, UIApplicationDelegate {
+  func application(_ application: UIApplication, configurationForConnecting session: UISceneSession,
+    options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    let configuration=UISceneConfiguration(name:"Probe",sessionRole:session.role)
+    configuration.delegateClass=SceneDelegate.self
+    return configuration
+  }
+}
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+  var window: UIWindow?
+  func scene(_ scene: UIScene,willConnectTo session: UISceneSession,options: UIScene.ConnectionOptions) {
+    guard let scene=scene as? UIWindowScene else { return }
+    let window=UIWindow(windowScene:scene)
+    window.rootViewController=Control();window.makeKeyAndVisible();self.window=window
+  }
+}
+final class RuntimeStateLabel: UILabel {
+  override var accessibilityLabel:String? {
+    get {"UIAccessibility VoiceOver running: \(UIAccessibility.isVoiceOverRunning)"}
+    set {}
+  }
+}
+final class Control: UIViewController {
+  let short=UIButton(type:.system),long=UIButton(type:.system),status=UILabel(),runtime=RuntimeStateLabel()
+  var shortCount=0,longCount=0
+  override func viewDidLoad() {
+    super.viewDidLoad();view.backgroundColor = .white
+    let title=UILabel();title.text="Independent UIKit long-output observation";title.numberOfLines=0
+    short.setTitle("Short native control",for:.normal);short.accessibilityIdentifier="native.short"
+    long.setTitle("A long standard UIKit control has this complete owned calibration sentence. It keeps every word in its accessible label, ending with the marker ZEBRA END.",for:.normal);long.accessibilityLabel="A long standard UIKit control has this complete owned calibration sentence. It keeps every word in its accessible label, ending with the marker ZEBRA END."
+    long.accessibilityIdentifier="native.long";long.titleLabel?.numberOfLines=0;long.titleLabel?.font=UIFont.systemFont(ofSize:17)
+    short.addTarget(self,action:#selector(shortAction),for:.touchUpInside)
+    long.addTarget(self,action:#selector(longAction),for:.touchUpInside)
+    status.accessibilityIdentifier="native.status";status.numberOfLines=0
+    runtime.text="Native UIAccessibility runtime state";runtime.accessibilityIdentifier="native.runtime";runtime.numberOfLines=0
+    let stack=UIStackView(arrangedSubviews:[title,short,long,status,runtime]);stack.axis = .vertical;stack.spacing=24
+    stack.translatesAutoresizingMaskIntoConstraints=false;view.addSubview(stack)
+    NSLayoutConstraint.activate([stack.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor,constant:24),
+      stack.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor,constant:-24),
+      stack.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor,constant:32),short.heightAnchor.constraint(equalToConstant:60),long.heightAnchor.constraint(equalToConstant:170)])
+    refresh()
+  }
+  @objc func shortAction() {shortCount+=1;refresh()}
+  @objc func longAction() {longCount+=1;refresh()}
+  func refresh() {
+    status.text="short=\(shortCount);long=\(longCount)"
+    short.accessibilityValue="Activations \(shortCount)";long.accessibilityValue="Activations \(longCount)"
+  }
+}

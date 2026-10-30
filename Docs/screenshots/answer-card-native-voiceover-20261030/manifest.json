@@ -1,0 +1,77 @@
+{
+  "scope": "Owned synthetic app captures; no original image parity or full utterance claim",
+  "files": [
+    {
+      "file": "readonly-before-phone-native-message-qualifier-before-voiceover.png",
+      "sha256": "f79e32bc025832045a84824872b98239951ce48f8d351afafec868d1964132d2",
+      "pixels": [
+        1134,
+        2046
+      ],
+      "state": "native-message-qualifier-before-voiceover",
+      "phase": "readonly-before",
+      "device": "phone",
+      "test": "HomeViewUITests/testNativeMessageReadOnlyQualificationAndRestore()"
+    },
+    {
+      "file": "readonly-before-phone-native-message-qualifier-focused.png",
+      "sha256": "db141879228db1c60f74538e9046047e824eef543f0ebb8b85add275c84a380f",
+      "pixels": [
+        1134,
+        2046
+      ],
+      "state": "native-message-qualifier-focused",
+      "phase": "readonly-before",
+      "device": "phone",
+      "test": "HomeViewUITests/testNativeMessageReadOnlyQualificationAndRestore()"
+    },
+    {
+      "file": "readonly-after2-phone-native-message-qualifier-before-voiceover.png",
+      "sha256": "f79e32bc025832045a84824872b98239951ce48f8d351afafec868d1964132d2",
+      "pixels": [
+        1134,
+        2046
+      ],
+      "state": "native-message-qualifier-before-voiceover",
+      "phase": "readonly-after2",
+      "device": "phone",
+      "test": "HomeViewUITests/testNativeMessageReadOnlyQualificationAndRestore()"
+    },
+    {
+      "file": "readonly-after2-phone-native-message-qualifier-focused.png",
+      "sha256": "db141879228db1c60f74538e9046047e824eef543f0ebb8b85add275c84a380f",
+      "pixels": [
+        1134,
+        2046
+      ],
+      "state": "native-message-qualifier-focused",
+      "phase": "readonly-after2",
+      "device": "phone",
+      "test": "HomeViewUITests/testNativeMessageReadOnlyQualificationAndRestore()"
+    },
+    {
+      "file": "readonly-after2-ipad-native-message-qualifier-before-voiceover.png",
+      "sha256": "b0a81bc0332b4dc7743939e95850c6bb15ff231e3ef4e1c1244f2fc79d5d16a0",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "state": "native-message-qualifier-before-voiceover",
+      "phase": "readonly-after2",
+      "device": "ipad",
+      "test": "HomeViewUITests/testNativeMessageReadOnlyQualificationAndRestore()"
+    },
+    {
+      "file": "readonly-after2-ipad-native-message-qualifier-focused.png",
+      "sha256": "18e847b33c1e7dd4f4812fff78493a4559b7446df901f92de21e305171e2af6e",
+      "pixels": [
+        1592,
+        1592
+      ],
+      "state": "native-message-qualifier-focused",
+      "phase": "readonly-after2",
+      "device": "ipad",
+      "test": "HomeViewUITests/testNativeMessageReadOnlyQualificationAndRestore()"
+    }
+  ]
+}
