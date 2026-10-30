@@ -24,7 +24,7 @@ final class AppModel {
     })
     let session=HomeDeviceSession(provider:provider,initial:initial,contextAllowed:{[weak self] in
       self?.homeForeground == true && self?.storeReadOnly == false
-    },failure:{[weak self] failure in self?.error=failure.localizedDescription})
+    },failure:{[weak self] failure in self?.showHomeControlFailure(failure)})
     homeSessionStorage=session;return session
   }
   func setHomeControlsForeground(_ active:Bool) {
@@ -67,8 +67,16 @@ final class AppModel {
   @discardableResult func requestHomeControl(_ slot:HomeControlSlot,value:HomeControlValue)->HomeControlOperationState {
     guard writableStore() else {return .failed(.readOnly)}
     let result=homeControls.request(HomeMockControls.id(slot),value:value);lastHomeCommandState=result
-    if case .failed(let failure)=result {error=failure.localizedDescription}
+    if case .failed(let failure)=result {showHomeControlFailure(failure)}
     return result
+  }
+  private func showHomeControlFailure(_ failure:HomeControlFailure) {
+    #if !os(watchOS)
+      // A confirmed multi-step plan owns its per-step result presentation.
+      // A second global alert hides that result and blocks the phone scroll path.
+      if route == .assistant,demoPlan != nil {return}
+    #endif
+    error=failure.localizedDescription
   }
   func readMockControlSnapshot() throws -> MockHome {
     if ephemeral || storeReadOnly {return data.home}

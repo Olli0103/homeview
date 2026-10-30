@@ -3669,9 +3669,26 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(status.label.contains("pending"))
     let done=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Confirmed by device state"),object:status)
     XCTAssertEqual(XCTWaiter.wait(for:[done],timeout:12),.completed)
+    if app.buttons["assistant.keyboard.dismiss"].exists {tap("assistant.keyboard.dismiss")}
+    revealRecipeTypeElement(status,horizontalMargin:0)
     viewportShot("device-assistant-live-confirmed-status",assistantRectangle:true)
     tap("nav.faces");tap("home.thermostat")
     XCTAssertEqual(mockDeviceValue("temperature").label,"72°")
+  }
+  func testMockDeviceForeignErrorCanBeAcknowledgedAndControlReused() {
+    continueAfterFailure=false
+    openMockDeviceControl("fanSpeed",store:UUID().uuidString,scenario:"foreign")
+    activateRecipeTypeControl(mockDeviceIncrease("fanSpeed"),horizontalMargin:0)
+    XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout:8));app.alerts.buttons["OK"].tap()
+    let gone=XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:app.alerts.firstMatch)
+    XCTAssertEqual(XCTWaiter.wait(for:[gone],timeout:5),.completed,"The actually visible error must be dismissible")
+    XCTAssertEqual(mockDeviceValue("fanSpeed").label,"65%")
+    activateRecipeTypeControl(mockDeviceIncrease("fanSpeed"),horizontalMargin:0)
+    XCTAssertEqual(mockDeviceValue("fanSpeed").label,"75%")
+    let status=app.staticTexts["home.control.status.fanSpeed"]
+    XCTAssertTrue(status.label.contains("Confirmed by device state"))
+    revealRecipeTypeElement(status,horizontalMargin:0)
+    viewportShot("device-foreign-error-acknowledged-and-explicit-retry-confirmed")
   }
   func testMockLockLargestSystemTextKeepsConfirmationReachable() {
     continueAfterFailure=false
@@ -8195,6 +8212,7 @@ extension HomeViewUITests {
     runSyntheticPlan()
     expectation(for:NSPredicate(format:"label CONTAINS %@","1 of 3"),evaluatedWith:app.staticTexts["assistant.plan.status"])
     waitForExpectations(timeout:8)
+    XCTAssertFalse(app.alerts.firstMatch.exists,"Plan failures belong in the visible per-step result, not a blocking global alert")
     XCTAssertTrue(app.staticTexts["assistant.plan.step.0"].label.hasPrefix("Confirmed"))
     XCTAssertTrue(app.staticTexts["assistant.plan.step.1"].label.hasPrefix("Failed"))
     XCTAssertTrue(app.staticTexts["assistant.plan.step.2"].label.contains("Previous step was not confirmed"))

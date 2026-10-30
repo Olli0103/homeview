@@ -1,6 +1,17 @@
 import XCTest
 
 final class HomeViewTVUITests:XCTestCase {
+  func testNativeTVMockDeviceAdvertisedRangeAndStep() {
+    let app=launch("Settings",extra:["--mock-control-case","stepped","blinds"])
+    let value=app.staticTexts["adjuster.value.Mock blinds"]
+    XCTAssertEqual(value.label,"80%")
+    select(app.buttons["Increase Mock blinds"],in:app,maxMoves:80)
+    XCTAssertEqual(value.label,"85%")
+    let indicator=app.descendants(matching:.any)["adjuster.progress.Mock blinds"]
+    XCTAssertTrue(indicator.exists);XCTAssertEqual(indicator.value as? String,"85%")
+    XCTAssertTrue(app.staticTexts["home.control.status.blinds"].label.contains("Confirmed by device state"))
+    capture(app,"tv-device-advertised-range-step-confirmed")
+  }
   func testReadOnlyTVAccessibilityMenuInventory() {
     continueAfterFailure=false
     let settings=XCUIApplication(bundleIdentifier:"com.apple.TVSettings")

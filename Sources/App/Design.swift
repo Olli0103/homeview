@@ -332,7 +332,10 @@ struct ValueAdjuster: View {
           } else {set(max(range.lowerBound, value - 10))}
         }
         #if os(tvOS) || os(watchOS)
-          ProgressView(value: value, total: range.upperBound)
+          ProgressView(value:min(max(0,value-range.lowerBound),range.upperBound-range.lowerBound),
+            total:range.upperBound>range.lowerBound ? range.upperBound-range.lowerBound:1)
+            .accessibilityValue("\(Int(value))%")
+            .accessibilityIdentifier("adjuster.progress.\(label)")
         #else
           if minimumHitSide > 0 {
             #if os(iOS) || os(visionOS)
