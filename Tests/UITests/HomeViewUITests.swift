@@ -5238,6 +5238,79 @@ final class HomeViewUITests: XCTestCase {
     XCTAssertTrue(app.otherElements["face.Fade"].waitForExistence(timeout:5))
     viewportShot("numerals-shared-fade-regression")
   }
+  func testNumeralsObservedPalettesPersistWithoutChangingOtherFaces() {
+    let id=UUID().uuidString
+    launch(["--persistence-test",id,"--reset-test-store","--face","Modular","--reduce-motion"])
+    let modular=viewportBytes("numerals-palettes-modular-before")
+    app.terminate();launch(["--persistence-test",id,"--face","Numerals","--reduce-motion"])
+    let green=viewportBytes("numerals-palettes-green-before")
+    app.otherElements["face.Numerals"].press(forDuration:1)
+    XCTAssertTrue(app.buttons["Lavender style"].waitForExistence(timeout:3),"The second observed Numerals palette is missing")
+    tap("Lavender style");tap("editor.done")
+    let lavender=viewportBytes("numerals-palettes-lavender")
+    XCTAssertNotEqual(viewportPixels(green,inset:0),viewportPixels(lavender,inset:0))
+    app.terminate();launch(["--persistence-test",id,"--reduce-motion"])
+    XCTAssertTrue(app.otherElements["face.Numerals"].waitForExistence(timeout:5))
+    XCTAssertEqual(viewportPixels(lavender,inset:0),viewportPixels(viewportBytes("numerals-palettes-lavender-restart"),inset:0))
+    app.otherElements["face.Numerals"].press(forDuration:1)
+    XCTAssertEqual(app.buttons["Lavender style"].value as? String,"Selected")
+    tap("editor.done")
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    let night=[UInt8](viewportPixels(viewportBytes("numerals-palettes-night"),inset:0))
+    var red=0,other=0
+    // Use the existing whole-viewport night contract, not an unqualified
+    // demand for literally zero green/blue after native color conversion.
+    for i in stride(from:0,to:night.count,by:4) where night[i]>25 {
+      red+=1
+      if Double(night[i+1])>Double(night[i])*0.4 || Double(night[i+2])>Double(night[i])*0.4 {other+=1}
+    }
+    XCTAssertGreaterThan(red,100);XCTAssertEqual(other,0)
+    tap("nav.controls");tap("controls.night");tap("nav.faces")
+    XCTAssertEqual(viewportPixels(lavender,inset:0),viewportPixels(viewportBytes("numerals-palettes-day-restored"),inset:0))
+    app.terminate();launch(["--persistence-test",id,"--face","Modular","--reduce-motion"])
+    XCTAssertEqual(viewportPixels(modular,inset:0),viewportPixels(viewportBytes("numerals-palettes-modular-after"),inset:0))
+    app.terminate();launch(["--persistence-test",id,"--face","Numerals","--reduce-motion"])
+    app.otherElements["face.Numerals"].press(forDuration:1)
+    tap("Green style");tap("editor.done")
+    XCTAssertEqual(viewportPixels(green,inset:0),viewportPixels(viewportBytes("numerals-palettes-green-restored"),inset:0))
+  }
+  func testNumeralsReferenceZonesAndTwelveHourPeriodicity() {
+    let id=UUID().uuidString
+    let fixed=["--persistence-test",id,"--face","Numerals","--reduce-motion"]
+    let original=["--reference-date","2026-10-13T11:27:55Z","--reference-zone","Etc/UTC"]
+    launch(fixed+["--reset-test-store"]+original)
+    app.otherElements["face.Numerals"].press(forDuration:1)
+    tap("Lavender style");tap("editor.done")
+    let morning=viewportBytes("numerals-palettes-reference-lavender-time")
+    for (name,date,zone,locale) in [
+      ("tokyo","2026-10-13T02:27:55Z","Asia/Tokyo","en_US"),
+      ("evening","2026-10-13T23:27:55Z","Etc/UTC","en_US"),
+      ("locale-gb","2026-10-13T11:27:55Z","Etc/UTC","en_GB")
+    ] {
+      app.terminate();launch(fixed+["--reference-date",date,"--reference-zone",zone,"-AppleLocale",locale])
+      XCTAssertTrue(app.staticTexts["TUE 13"].waitForExistence(timeout:5))
+      XCTAssertEqual(viewportPixels(morning,inset:0),viewportPixels(viewportBytes("numerals-palettes-"+name),inset:0))
+    }
+    for (reference,flag,value) in [("UI07","--face","Home Modular"),("UI45","--face","Home Modular Clock"),("UI13","--page","Home"),("UI12","--face","Fade")] {
+      app.terminate();launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--reduce-motion",flag,value])
+      viewportShot("numerals-palettes-shared-clock-"+reference)
+    }
+  }
+  func testNumeralsAndHomeClockEventReferencePoses() {
+    // Event photographs do not supply a calibrated timestamp. These controlled
+    // representative poses are explicitly labelled approximate in the report.
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--face","Numerals","--reduce-motion",
+      "--reference-date","2026-10-13T11:25:55Z","--reference-zone","Etc/UTC"])
+    app.otherElements["face.Numerals"].press(forDuration:1)
+    tap("Lavender style");tap("editor.done")
+    XCTAssertTrue(app.staticTexts["TUE 13"].exists)
+    viewportShot("numerals-palettes-event-approx-1125")
+    app.terminate()
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--face","Home Modular Clock","--reduce-motion",
+      "--reference-date","2026-10-13T09:25:15Z","--reference-zone","Etc/UTC"])
+    XCTAssertTrue(app.otherElements["face.Home Modular Clock"].waitForExistence(timeout:5))
+    viewportShot("numerals-palettes-event-home-clock-approx-0925")
+  }
   func testVisualReferenceAtlas() {
     for (reference, face) in [
       ("UI01", "Modular"), ("UI07", "Home Modular"), ("UI08", "Calendar"), ("UI10", "Numerals"),

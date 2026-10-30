@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [#19: belegte analoge Varianten geliefert, UI09 bleibt konkrete Restlücke](numerals-observed-variants.md):469Coretests, sechs aktuelle native Flows und fünf SDKs. Zweite Numerals-Palette ergänzt, Speicherung/Nacht-Rückkehr/Nachbarn und Zeitzonen geprüft; beide grünen Vorher-/Nachher-Viewports exakt0RGBA. F018 referenziert jedoch zusätzlich die noch fehlende unbenannte Digitalansicht UI09. #19 bleibt deshalb offen; nächster zusammenhängender Implementierungsblock ist genau diese sichtbare Variante, nicht weitere Mikrotests der fertigen Palette.
+
 **Effizienzkorrektur des Eigentümers, 30. Oktober:** Alle 34 offenen ursprünglichen Aufgaben-/Abnahmeverträge einmal gebündelt mit dem aktuellen GitHub-Bestand abgeglichen. Die Settings-/VoiceOver-Einzelprobe ist gestoppt, unveröffentlichte Produkt-/Teständerungen sind zurückgenommen und der tatsächliche VoiceOver-Ausgangswert ist wieder aus. Keine weiteren Fokus-/Pixel-Mikroproben ohne materielle Lücke oder konkretes ursprüngliches Abschlusskriterium. Zusammenhängende Softwarepakete bekommen einen gemeinsamen relevanten Gate; unveränderte Suites werden nicht pro Einzelcontrol wiederholt. Die unten getrennten Home-/Geräte-/Original-/Runtimegrenzen bleiben erhalten, nicht pauschal zu Erledigungen umbenannt.
 
 - [Musik-Mediathek, Queue, Fortschritt und Audio-Ausgabewahl](music-library-queue.md): zusammenhängendes #57/#61-Paket statt weiterer #73-Einzelproben. Final467Coretests, zwei abschließende iPhone-/iPad-Medienflows und fünf SDKs bestanden. Erste mobile Auswahl5PASS/1iPad-ZeilentapFAIL erhalten; ganze Zeilentrefferfläche korrigiert. Reale MusicKit-/AirPlay-/Signing-/Hardwareabnahme bleibt gesondert offen; keine Issue-Schließung aus synthetischem Playback.

@@ -219,6 +219,20 @@ final class HomeViewCoreTests: XCTestCase {
     let tokyo = ClockGeometry(date: Fixtures.date, timeZone: TimeZone(secondsFromGMT: 9 * 3600)!)
     XCTAssertEqual(tokyo.hours, 7 + 9.5 / 60, accuracy: 0.000001)
   }
+  func testAnalogClockEquivalentLocalReadingsAndTwelveHourPeriodicity() throws {
+    let formatter=ISO8601DateFormatter()
+    func reading(_ iso:String,_ zone:String) throws -> ClockGeometry {
+      ClockGeometry(date:try XCTUnwrap(formatter.date(from:iso)),timeZone:try XCTUnwrap(TimeZone(identifier:zone)))
+    }
+    let morning=try reading("2026-10-13T11:27:55Z","Etc/UTC")
+    for other in [try reading("2026-10-13T23:27:55Z","Etc/UTC"),try reading("2026-10-13T02:27:55Z","Asia/Tokyo")] {
+      XCTAssertEqual(other.hours,morning.hours);XCTAssertEqual(other.minutes,morning.minutes);XCTAssertEqual(other.seconds,morning.seconds)
+    }
+    for instant in ["2026-11-01T05:30:00Z","2026-11-01T06:30:00Z"] {
+      let repeated=try reading(instant,"America/New_York")
+      XCTAssertEqual(repeated.hours,1.5);XCTAssertEqual(repeated.minutes,30)
+    }
+  }
 
   func testClockSubsecondSweepAndWeatherConditionMapping() {
     let date = Fixtures.date.addingTimeInterval(0.25)

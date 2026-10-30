@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-30",
+  "issue": 19,
+  "state": "partial/open",
+  "unmet_original_criterion": "F018 explicitly references UI09 as well as UI10; the unclassified abstract digital UI09 renderer is still missing. No closure from the analog-only delivery.",
+  "core": {
+    "passed": 469,
+    "failed": 0,
+    "log_sha256": "d9e5f072fd37235798f08b41199303f378033e8d6926bf238f3a73aeb8df7278"
+  },
+  "native": {
+    "before": [
+      {
+        "device": "phone",
+        "exit_code": 65,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "warnings": []
+      },
+      {
+        "device": "pad",
+        "exit_code": 65,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "warnings": []
+      }
+    ],
+    "candidate_phone": [
+      {
+        "device": "phone",
+        "exit_code": 65,
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "warnings": []
+      }
+    ],
+    "corrected": [
+      {
+        "device": "phone",
+        "exit_code": 0,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "warnings": []
+      },
+      {
+        "device": "pad",
+        "exit_code": 0,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "warnings": []
+      }
+    ],
+    "current_accepted_flows": 6,
+    "total_executions": 9,
+    "passes": 6,
+    "retained_failures": 3,
+    "test_pins": 2,
+    "app_files_exactly_identical_between_test_pins": 20,
+    "current_source_manifest_sha256": "e302120778d781ac4964aa0045f3314943c4ae63a7536b0b0c8480fde81509a0",
+    "scope": "Candidate iPhone matrix PASS reused; corrected phone persistence/events and corrected iPad persistence/events/matrix PASS. Earlier palette-missing and unqualified literal-zero GB failures retained."
+  },
+  "preservation": {
+    "whole_rgba_boundary": 0,
+    "masks": false,
+    "before_after_green": [
+      {
+        "device": "phone",
+        "changed_rgba_pixels": 0,
+        "maximum_channel_difference": 0
+      },
+      {
+        "device": "pad",
+        "changed_rgba_pixels": 0,
+        "maximum_channel_difference": 0
+      }
+    ],
+    "other_native_assertions": [
+      "restart",
+      "night return",
+      "green restoration",
+      "Modular sibling"
+    ],
+    "night_qualification": {
+      "initial_literal_zero_gb": "FAIL retained,23756 pixels; rawPNGmaximumG=6/B=6",
+      "existing_contract": "testModularNightWholeViewportContainsNoColorLeak: litR>25; G/B each<=0.4R",
+      "same_saved_png_existing_contract": {
+        "lit": 230265,
+        "wrong": 0
+      },
+      "production_change_for_test_correction": false,
+      "correction": "New test assumption replaced with pre-existing app-wide night criterion; original FAIL not relabelled PASS. Whole night-return/green/Modular preservation contracts remain exactly0RGBA."
+    }
+  },
+  "installed_app_after_tests": [
+    {
+      "device": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+      "matched_app_files": 20
+    },
+    {
+      "device": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+      "matched_app_files": 20
+    }
+  ],
+  "sdks": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "attempts": 2,
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "attempts": 1,
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "attempts": 1,
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "attempts": 1,
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "attempts": 1,
+      "storage_headroom_ok": true
+    }
+  ],
+  "source_references": {
+    "UI10": "b60c79578ff7ce9743d1aff308daffae50159c698964606bc8a859da6f7b6908",
+    "S07_frame0": "099c70acbeaa984f6bae17828a4a6ea005deb8275c938c86c36a8d6226ae8b35",
+    "originals_private_only": true,
+    "new_original_states": 0
+  },
+  "published_own_images": [
+    {
+      "path": "Docs/screenshots/numerals-observed-variants/phone-green.png",
+      "sha256": "41ea1aae224d66c6aa7d0b2cb0bbb4b97cb56bc50eff818875316905c30a4d61"
+    },
+    {
+      "path": "Docs/screenshots/numerals-observed-variants/phone-lavender.png",
+      "sha256": "04985d9bee88626e2d778d687af02a81785207ba1e69339f7465dcb65112ba52"
+    },
+    {
+      "path": "Docs/screenshots/numerals-observed-variants/pad-green.png",
+      "sha256": "6d1e61a2d428e0ecdc7303a8740039eeaabdbb21604365fdffe52f6369594749"
+    },
+    {
+      "path": "Docs/screenshots/numerals-observed-variants/pad-lavender.png",
+      "sha256": "6d8a132dd8869390aef2915bb11cb784f268e35cb985ed265d1dc911d6a94281"
+    }
+  ],
+  "visual_review": {
+    "palette_and_event_controls": 10,
+    "shared_clock_controls": 8,
+    "original_pixel_parity": false,
+    "event_times_are_representative_not_measured_seconds": true
+  },
+  "holds_unchanged": [
+    "Real Home disabled",
+    "physical and signing acceptance paused"
+  ],
+  "no_extracted_fonts_or_original_images_published": true
+}

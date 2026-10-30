@@ -783,7 +783,7 @@
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "ec3f388bc8eeac9dc3ab12a2ef0f1e9d1d6956c5a4e922b4c300c88a858e3709"
+      "sha256": "302e95995897c80c63e90d4154255c01a63ca1324dd87b3c498af8f514db84cc"
     },
     {
       "path": "Scripts/generate_podcast_caption_fixture.py",
@@ -923,5 +923,11 @@
     "reason": "Current whole-source fingerprint after TV-only readonly Personal background focus exclusion and native VoiceOver reading focus on four LockView texts. DemoAlbumCover source block byte-exact to base; no resource or declared authorship/license/rights change.",
     "demo_album_cover_source_block_unchanged": true,
     "resource_bytes_changed": false
+  },
+  "numerals_palette_source_refresh": {
+    "date": "2026-10-30",
+    "previous_sha256": "ec3f388bc8eeac9dc3ab12a2ef0f1e9d1d6956c5a4e922b4c300c88a858e3709",
+    "current_sha256": "302e95995897c80c63e90d4154255c01a63ca1324dd87b3c498af8f514db84cc",
+    "scope": "Own runtime Numerals palette only. All code outside NumeralsFace and all resource/author/license/origin bytes unchanged; not a new historical rights verdict."
   }
 }

@@ -194,7 +194,8 @@ struct FaceEditor: View {
                   }
                 } label: {
                   Circle().fill(
-                    face == .modular
+                    face == .numerals ? NumeralsFace.paletteBackground(i)
+                    : face == .modular
                       ? (i == 0 ? .mist : Color(red: 0.73, green: 0.76, blue: 0.63))
                       : face == .home
                         ? (i == 0 ? .purple : .teal)
@@ -280,6 +281,7 @@ struct FaceEditor: View {
       }
   }
   private func colorLabel(_ index: Int) -> String {
+    if face == .numerals { return index == 0 ? "Green style":"Lavender style" }
     if face == .modular { return index == 0 ? "Mist style" : "Sage style" }
     if face == .home { return index == 0 ? "Purple style" : "Teal style" }
     return index == 0 ? "Orange style" : "Mint style"

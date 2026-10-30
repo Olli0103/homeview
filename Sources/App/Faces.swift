@@ -324,22 +324,30 @@ struct FadeFace: View {
 }
 struct NumeralsFace: View {
   @Environment(AppModel.self) private var model
+  static func paletteBackground(_ theme:Int)->Color {
+    theme == 1 ? Color(red:149.0/255,green:161.0/255,blue:235.0/255)
+      : Color(red:62.0/255,green:147.0/255,blue:92.0/255)
+  }
+  static func paletteInk(_ theme:Int)->Color {
+    theme == 1 ? Color(red:184.0/255,green:100.0/255,blue:200.0/255):.black
+  }
   var body: some View {
+    let theme=model.data.configuration(for:.numerals).theme
     ZStack {
-      model.data.night ? Color.black:Color(red: 62.0 / 255, green: 147.0 / 255, blue: 92.0 / 255)
+      model.data.night ? Color.black:Self.paletteBackground(theme)
       Group {
         Text("12").font(.system(size: 335, weight: .light, design: .rounded)).tracking(0).scaleEffect(x:0.88,y:1).position(
           x: 286, y: 152)
         Text("9").font(.system(size: 337, weight: .light, design: .rounded)).position(x: 120, y: 296)
         Text("3").font(.system(size: 337, weight: .light, design: .rounded)).position(x: 475, y: 296)
         Text("6").font(.system(size: 341, weight: .light, design: .rounded)).position(x: 300, y: 442)
-      }.foregroundStyle(model.data.night ? Color.white:Color.black).accessibilityHidden(true)
+      }.foregroundStyle(model.data.night ? Color.white:Self.paletteInk(theme)).accessibilityHidden(true)
       AnalogClock(
         date: model.clock, timeZone: model.displayTimeZone, tint: .white, numbered: false,
         showTicks: false, embossedHands:true, minuteReach:0.94,secondsReach:0.98)
-        .overlay { Circle().fill(model.data.night ? Color.black:Color(red:62.0/255,green:147.0/255,blue:92.0/255)).frame(width:12,height:12).accessibilityHidden(true) }
+        .overlay { Circle().fill(model.data.night ? Color.black:Self.paletteBackground(theme)).frame(width:12,height:12).accessibilityHidden(true) }
       Text(model.dateLabel("EEE d").uppercased()).font(.system(size: 34, weight: .medium))
-        .foregroundStyle(model.data.night ? Color.white:Color.black)
+        .foregroundStyle(model.data.night ? Color.white:Self.paletteInk(theme))
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading).padding(.horizontal,43).padding(.bottom,34)
     }.clipped()
   }

@@ -2,6 +2,20 @@ import XCTest
 @testable import HomeViewCore
 
 final class FaceConfigurationMigrationTests: XCTestCase {
+  func testNumeralsPaletteSurvivesStorageWithoutChangingLegacyOrSiblingThemes() throws {
+    XCTAssertEqual(Face.numerals.definition.options,[.color])
+    var state=Snapshot()
+    XCTAssertEqual(state.configuration(for:.numerals).theme,0)
+    state.editConfiguration(for:.numerals) {$0.theme=1}
+    let restored=try Snapshot.decodeMigrating(JSONEncoder().encode(state))
+    XCTAssertEqual(restored.configuration(for:.numerals).theme,1)
+    XCTAssertEqual(restored.theme,0)
+    for face in [Face.modular,.home,.homeClock,.watchModular] {
+      XCTAssertEqual(restored.configuration(for:face).theme,0)
+      XCTAssertNil(restored.faceConfigurations[face.id])
+    }
+    XCTAssertEqual(restored.configuration(for:.numerals).complications,[:])
+  }
   private func restore(_ configurations: [String:Any]) throws -> Snapshot {
     var state = Snapshot()
     state.home.temperature = 74
