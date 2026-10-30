@@ -4,6 +4,8 @@
 
 The owner has explicitly requested completion of the entire issue backlog, not a single fix or checkpoint. Continue to the next eligible issue after each verified delivery; a commit, green test batch or partial issue update is not a stopping condition. Involve the owner only for a concrete missing requirement or authorization that cannot be resolved from available sources. Preserve original acceptance criteria and the separate Home/device/signing holds; never close an unmet criterion to reduce the counter. Keep the current execution/blocker matrix in Docs/remaining-work.md.
 
+The owner's 30 October efficiency correction is explicit: batch coherent remaining functionality and use shared relevant checks. Do not restart per-control focus/pixel microprobes merely because a broad issue is still open. A new probe must address a concrete material gap or an original closure criterion; stop at a demonstrated external blocker. After a green package gate, publish and proceed to the next eligible package instead of repeating unchanged suites or expanding receipt work.
+
 Use synthetic personal data and MockHome in automated tests. Never construct HMHomeManager, discover real homes or operate real devices in this revision. The HomeKit adapter deliberately throws until its owner explicitly resumes setup.
 
 Real calendar, reminders, photos, microphone, camera and music access require an explicit in-app connection. Never send messages or make calls automatically. Device authentication protects personal stores, demo profile selection is not authentication.

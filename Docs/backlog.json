@@ -1716,7 +1716,7 @@
       "F081",
       "F082"
     ],
-    "current": "Katalogsuche, Artwork, ApplicationMusicPlayer und kompakte Leiste sind angebunden, reale Signierung/Abo-/Hardwareabnahme fehlt. Persönliche Bibliothek ist unvollständig.",
+    "current": "Öffentliche MusicKit-Mediathek mit begrenzter Titelsuche, geladene Ergebnis-Queue, nativer Titelabgleich und Fortschritt implementiert. Unterbrechung/Ausgabegerätverlust pausieren eigene Audiowege; native iOS-Ausgabewahl ergänzt. Synthetische Nachweise in Docs/music-library-queue.md; echtes Provisioning, Abonnement/Region/Offline/Widerruf und Hardware-Playback bleiben offen.",
     "tasks": [
       "App-Service-Provisioning und Freigaben mit eigenem Signing korrekt einrichten",
       "Bibliothek/Katalog, Queue, vor/zurück, Fortschritt und Fremdunterbrechungen behandeln",
@@ -1831,7 +1831,7 @@
     "functions": [
       "F086"
     ],
-    "current": "Keine bewiesene AirPlay-Mehrraumsteuerung in dieser App.",
+    "current": "Öffentlicher iOS-AVRoutePickerView und aktueller AVAudioSession-Ausgabestatus im verbundenen Player implementiert; andere Ziele verweisen auf Systemsteuerung. Tests konstruieren keinen echten Picker und lesen keine Route. Keine hörbare Empfänger-/Lautstärke-/Mehrraumabnahme; Docs/music-library-queue.md.",
     "tasks": [
       "Öffentliche Route-Picker-/AVAudioSession- und MusicKit-Fähigkeiten je Ziel prüfen",
       "Tatsächliche Route, Verbindungsabbruch und Lautstärke darstellen",

@@ -100,7 +100,16 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
   }
   func searchMusic(_ text: String) async throws -> [DeviceTrack] {
     #if canImport(MusicKit) && (os(iOS) || os(macOS) || os(visionOS))
+      musicCreated = true
       return try await music.search(text)
+    #else
+      throw NativeServiceError.unavailable
+    #endif
+  }
+  func libraryMusic(_ text:String) async throws -> [DeviceTrack] {
+    #if canImport(MusicKit) && (os(iOS) || os(macOS) || os(visionOS))
+      musicCreated = true
+      return try await music.library(text)
     #else
       throw NativeServiceError.unavailable
     #endif
@@ -138,6 +147,13 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
       0
     #endif
   }
+  var musicCurrentTrackID:String? {
+    #if canImport(MusicKit) && (os(iOS) || os(macOS) || os(visionOS))
+      musicCreated ? music.currentTrackID:nil
+    #else
+      nil
+    #endif
+  }
   func resetLocalCaches() {
     #if canImport(MusicKit) && (os(iOS) || os(macOS) || os(visionOS))
       if musicCreated { music.resetLocalCaches() }
@@ -167,6 +183,7 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
     DeviceReminder(id: "fixture", title: "Device fixture reminder", completed: false, listTitle: "Synthetic list")
   ]
   private var playing = false
+  private var selectedMusicID:String?
   func authorized(_ kind: DataConnection) -> Bool { true }
   func authorizePersonal(_ kind: DataConnection) async throws {
     if ProcessInfo.processInfo.arguments.contains("--connection-denied") {
@@ -222,18 +239,31 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
   func removeReminder(_ id: String) async throws { list.removeAll { $0.id == id } }
   func authorizeMusic() async throws {}
   func searchMusic(_ text: String) async throws -> [DeviceTrack] {
-    [
+    fixtureMusicIDs=["song1","song2"]
+    return [
       DeviceTrack(
         id: "song1", title: "Connected fixture song", artist: "Synthetic Artist", artwork: nil),
       DeviceTrack(
         id: "song2", title: "Second fixture song", artist: "Synthetic Artist", artwork: nil),
     ]
   }
-  func playMusic(_ index: Int) async throws { playing = true }
+  func libraryMusic(_ text:String) async throws -> [DeviceTrack] {
+    let songs=[DeviceTrack(id:"library1",title:"Library fixture song",artist:"Synthetic Library",artwork:nil,duration:180),
+      DeviceTrack(id:"library2",title:"Another library song",artist:"Synthetic Library",artwork:nil)]
+    let values=text.isEmpty ? songs:songs.filter {$0.title.localizedCaseInsensitiveContains(text)}
+    fixtureMusicIDs=values.map(\.id)
+    return values
+  }
+  private var fixtureMusicIDs=["song1","song2"]
+  func playMusic(_ index: Int) async throws {
+    guard fixtureMusicIDs.indices.contains(index) else {throw HomeError.notFound}
+    selectedMusicID=fixtureMusicIDs[index];playing=true
+  }
   func resumeMusic() async throws { playing = true }
   func pauseMusic() { playing = false }
   var musicPlaying: Bool { playing }
   var musicTime: Double { 12 }
+  var musicCurrentTrackID:String? { selectedMusicID }
   func weather(_ city: String) async throws -> WeatherReading {
     weatherCalls += 1
     let args = ProcessInfo.processInfo.arguments

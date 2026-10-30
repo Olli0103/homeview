@@ -183,7 +183,7 @@ enum NativeServiceError: Error, LocalizedError {
   import MusicKit
   @MainActor
   final class NativeMusicService {
-    private var results: MusicItemCollection<Song> = []
+    private var results: [Song] = []
     private var searchGeneration = 0
     private let playback = MusicPlaybackGate(pause: { ApplicationMusicPlayer.shared.pause() })
     func search(_ text: String) async throws -> [DeviceTrack] {
@@ -196,20 +196,41 @@ enum NativeServiceError: Error, LocalizedError {
       var request = MusicCatalogSearchRequest(term: text, types: [Song.self])
       request.limit = 20
       let songs = try await request.response().songs
-      guard searchGeneration==ticket,!Task.isCancelled else { throw CancellationError() }
-      results = songs
-      return songs.map {
+      guard searchGeneration==ticket,!Task.isCancelled,
+        MusicAuthorization.currentStatus == .authorized else { throw CancellationError() }
+      results = Array(songs)
+      return tracks(results)
+    }
+    func library(_ text:String) async throws -> [DeviceTrack] {
+      searchGeneration+=1;let ticket=searchGeneration
+      try Task.checkCancellation()
+      guard MusicAuthorization.currentStatus == .authorized else {
+        throw NativeServiceError.permissionDenied
+      }
+      var request=MusicLibraryRequest<Song>()
+      request.limit=100
+      request.sort(by:\.title,ascending:true)
+      if !text.isEmpty { request.filter(text:text) }
+      let songs=try await request.response().items
+      guard searchGeneration==ticket,!Task.isCancelled,
+        MusicAuthorization.currentStatus == .authorized else { throw CancellationError() }
+      results=Array(songs)
+      return tracks(results)
+    }
+    private func tracks(_ songs:[Song])->[DeviceTrack] {
+      songs.map {
         DeviceTrack(
           id: $0.id.rawValue, title: $0.title, artist: $0.artistName,
-          artwork: $0.artwork?.url(width: 512, height: 512))
+          artwork: $0.artwork?.url(width: 512, height: 512),duration:$0.duration)
       }
     }
     func play(index: Int) async throws {
       guard results.indices.contains(index) else { throw HomeError.notFound }
       let song=results[index]
+      let queue=results
       try await playback.run {
         let player=ApplicationMusicPlayer.shared
-        player.queue = .init(for:[song])
+        player.queue = .init(for:queue,startingAt:song)
         try await player.play()
       }
     }
@@ -221,6 +242,7 @@ enum NativeServiceError: Error, LocalizedError {
     }
     var isPlaying: Bool { ApplicationMusicPlayer.shared.state.playbackStatus == .playing }
     var playbackTime: Double { ApplicationMusicPlayer.shared.playbackTime }
+    var currentTrackID:String? { ApplicationMusicPlayer.shared.queue.currentEntry?.item?.id.rawValue }
     func resume() async throws {
       try await playback.run { try await ApplicationMusicPlayer.shared.play() }
     }

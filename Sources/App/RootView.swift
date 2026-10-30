@@ -305,11 +305,13 @@ struct RootView: View {
       model.tick();model.synchronizeTimerActivity()
     }
     #if os(iOS) || os(tvOS) || os(visionOS)
-      .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.interruptionNotification)) { _ in
-        model.stopAnswerSpeech();model.pauseFeedPodcast()
+      .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.interruptionNotification)) { note in
+        if (note.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt)==AVAudioSession.InterruptionType.began.rawValue {
+          model.stopAudioForVoice()
+        }
       }
       .onReceive(NotificationCenter.default.publisher(for:AVAudioSession.routeChangeNotification)) { note in
-        if (note.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt)==AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue { model.stopAnswerSpeech();model.pauseFeedPodcast() }
+        if (note.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt)==AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue { model.stopAudioForVoice() }
       }
     #endif
     .onChange(of: model.route) { _, route in if route == .privacy { model.lockPersonalAccess() } }

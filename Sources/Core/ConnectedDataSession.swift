@@ -12,18 +12,22 @@ protocol DeviceDataProvider: AnyObject {
   func removeReminder(_ id: String) async throws
   func authorizeMusic() async throws
   func searchMusic(_ text: String) async throws -> [DeviceTrack]
+  func libraryMusic(_ text: String) async throws -> [DeviceTrack]
   func playMusic(_ index: Int) async throws
   func resumeMusic() async throws
   func pauseMusic()
   func resetLocalCaches()
   var musicPlaying: Bool { get }
   var musicTime: Double { get }
+  var musicCurrentTrackID: String? { get }
   func weather(_ city: String) async throws -> WeatherReading
   func unlock() async -> Bool
 }
 
 extension DeviceDataProvider {
   func resetLocalCaches() { pauseMusic() }
+  func libraryMusic(_ text: String) async throws -> [DeviceTrack] { throw CocoaError(.featureUnsupported) }
+  var musicCurrentTrackID: String? { nil }
 }
 
 @MainActor @Observable
@@ -45,6 +49,7 @@ final class DeviceConnections {
   private(set) var currentTrack: Int?
   private(set) var musicPlaying = false
   private(set) var musicTime = 0.0
+  private(set) var musicLibrary = false
   private(set) var weather: WeatherReading?
   private(set) var personalUnlocked = false
   /// Explicitly approved current queue, RAM only. Not source/OS permission.
@@ -365,8 +370,19 @@ final class DeviceConnections {
     }
   }
   func searchMusic(_ query: String) async {
-    guard musicSearchAllowed, !busy.contains(.music),
-      !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    await browseMusic(query, library:false)
+  }
+  func selectMusicCatalog() {
+    guard musicSearchAllowed,!busy.contains(.music),musicLibrary else {return}
+    endGuestMusicSession();tracks=[];currentTrack=nil;musicLibrary=false
+    status[.music]="Search Apple Music."
+  }
+  func loadMusicLibrary(_ query: String = "") async {
+    await browseMusic(query, library:true)
+  }
+  private func browseMusic(_ query:String, library:Bool) async {
+    guard !Task.isCancelled, musicSearchAllowed, !busy.contains(.music),
+      library || !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     else { return }
     // A new search changes the queue; prior guest consent cannot follow it.
     _ = setGuestMusicSharing(false)
@@ -374,20 +390,26 @@ final class DeviceConnections {
     busy.insert(.music)
     defer { if generation[.music] == ticket { busy.remove(.music) } }
     do {
-      let values = try await provider.searchMusic(String(query.prefix(200)))
+      let term=String(query.trimmingCharacters(in:.whitespacesAndNewlines).prefix(200))
+      let values = try await (library ? provider.libraryMusic(term):provider.searchMusic(term))
       guard generation[.music] == ticket, musicSearchAllowed, !Task.isCancelled else { return }
       musicActionGeneration += 1
       provider.pauseMusic()
       musicPlaying = false
       currentTrack = nil
       tracks = values
+      musicLibrary = library
+      status[.music] = values.isEmpty ? (library ? "No songs found in your library.":"No songs found.")
+        : library ? "\(values.count) library songs · Up to 100 shown; search to narrow the list."
+        : "\(values.count) catalog songs"
     } catch {
       guard generation[.music] == ticket, musicSearchAllowed, !Task.isCancelled else { return }
-      status[.music] = "Music search unavailable. Check access and your subscription."
+      status[.music] = library ? "Music library unavailable. Check access and your connection."
+        : "Music search unavailable. Check access and your subscription."
     }
   }
   func playMusic(_ index: Int) async {
-    guard musicAccessAllowed, tracks.indices.contains(index), !Task.isCancelled else { return }
+    guard musicAccessAllowed, !busy.contains(.music), tracks.indices.contains(index), !Task.isCancelled else { return }
     let connection = generation[.music]
     musicActionGeneration += 1
     let action = musicActionGeneration
@@ -401,6 +423,7 @@ final class DeviceConnections {
       try await provider.playMusic(index)
       guard current() else { return }
       currentTrack = index
+      status[.music]="Song selected."
       pollMusic()
     } catch {
       guard current() else { return }
@@ -439,6 +462,15 @@ final class DeviceConnections {
     guard musicAccessAllowed else { musicPlaying=false;musicTime=0;return }
     musicPlaying = provider.musicPlaying
     musicTime = provider.musicTime
+    // The native queue can advance without a HomeView button press. Never
+    // keep presenting the last selected title as the currently playing one.
+    if !busy.contains(.music),(currentTrack != nil || musicPlaying),let id=provider.musicCurrentTrackID {
+      currentTrack=tracks.firstIndex { $0.id == id }
+      if currentTrack == nil {
+        musicActionGeneration+=1;provider.pauseMusic();musicPlaying=false;musicTime=0
+        status[.music]="The current song is outside this queue. Choose a song again."
+      }
+    }
   }
   /// Authorization status only: no permission prompt or personal read. Keep the
   /// user's connection choice, but require explicit reconnect after revocation.

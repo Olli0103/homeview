@@ -1,0 +1,219 @@
+{
+  "date": "2026-10-30",
+  "issues": [
+    57,
+    61
+  ],
+  "original_contracts_and_issue_states_unchanged": true,
+  "core": {
+    "tests": 467,
+    "failures": 0,
+    "new_library_queue_methods": 9,
+    "log_sha256": "b93e889741f08f636bdc094530296441d0be3f917ec3394e9be818e83068dd6a"
+  },
+  "mobile": {
+    "initial_source": {
+      "results": [
+        {
+          "device": "phone",
+          "exit_code": 0,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "warnings": []
+        },
+        {
+          "device": "pad",
+          "exit_code": 65,
+          "passed": 2,
+          "failed": 1,
+          "skipped": 0,
+          "warnings": []
+        }
+      ],
+      "source_manifest_sha256": "5ca232dc52ae4205a80be125728a6f717402985da4ce7dccc3e67bc35eed2486",
+      "retained_failure": "iPad library row tap did not expose player title; original snapshot error retained"
+    },
+    "final_source": {
+      "results": [
+        {
+          "device": "phone",
+          "exit_code": 0,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "warnings": []
+        },
+        {
+          "device": "pad",
+          "exit_code": 0,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "warnings": []
+        }
+      ],
+      "source_manifest_sha256": "a6201a82472293e104426e237242a5fd194e704436a780b5d867f2df9f7a06cc",
+      "swift_package_project_files": 173,
+      "changed_inputs": [
+        {
+          "path": "HomeViewReplica.xcodeproj/project.pbxproj",
+          "sha256": "0c2ed896c4b4d092d5d6b9fa9dbe65e7e96a28926fa124a1d61158dcbf0ce476"
+        },
+        {
+          "path": "Sources/App/AudioRouteControls.swift",
+          "sha256": "9b781c6a29bfcecc8ced6fd8c10544f0979a80aa50328f674aa6f011b2ad06fe"
+        },
+        {
+          "path": "Sources/App/ConnectedViews.swift",
+          "sha256": "3cd0a7e1f9c23f71e3d86a1d4049241c3c8117d323c91b288a6a523456c47efc"
+        },
+        {
+          "path": "Sources/App/DeviceConnections.swift",
+          "sha256": "3128d2f0979e84e90e1353260703c999229121b3b8e317baa2cf0069540b7d05"
+        },
+        {
+          "path": "Sources/App/NativeServices.swift",
+          "sha256": "24908322a5b2177193f4d2e22561befcb603e6c626682b738d546d771f39d76c"
+        },
+        {
+          "path": "Sources/App/RootView.swift",
+          "sha256": "f4e03cdf1ba962873b65b789759a69b285eb7364bf996a46b6a3f00922a4d12b"
+        },
+        {
+          "path": "Sources/Core/ConnectedDataSession.swift",
+          "sha256": "7d24c088e4368c3102802353142f0d1d18285a8ea92b75aef5264f25005bdee4"
+        },
+        {
+          "path": "Sources/Core/ConnectedModels.swift",
+          "sha256": "c6718b6b991c914a8dbc6ec83270ff1ca7a12c922af574af421a71b470d45e12"
+        },
+        {
+          "path": "Tests/CoreTests/DeviceConnectionTests.swift",
+          "sha256": "96187bc565b0a3258cd877277a53da3943a187d023cd044e09f02989ad118a2e"
+        },
+        {
+          "path": "Tests/UITests/HomeViewUITests.swift",
+          "sha256": "63b4266b8751ec19b520f78eb6ec02dd1de0b584136923a4f7aa9d847cddffc6"
+        }
+      ],
+      "compiled_manifest_sha256": "d86662d146492db5c35d6e9386cd3b52ac304a0b09be2cef1d88a633192c4d9d",
+      "compiled_products_archive_sha256": "c42397f7de13f69d02959fae02223d69341bb65f773f7dc07fb88f349e4370a3",
+      "sources_and_mobile_archive_entries_read_back": true
+    },
+    "scope": "Synthetic fixtures only. Final test covers library selection, row tap, native-id fixture navigation, boundaries, supplied progress, route non-construction, pause, empty result and catalog return. Earlier regressions are not final-source reruns."
+  },
+  "sdks": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false
+        },
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": true
+        }
+      ],
+      "ios_shortcut_artifacts_valid": true,
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true
+    }
+  ],
+  "images": {
+    "final_viewports_decoded_and_reviewed": 8,
+    "copies": [
+      {
+        "path": "Docs/screenshots/music-library-queue/phone-library.png",
+        "sha256": "1b7623a7b7ba5700fdc0ddce2a27059471bd46d5a22204788a36e34d25694287",
+        "scope": "Final owned synthetic native viewport; no real account or receiver"
+      },
+      {
+        "path": "Docs/screenshots/music-library-queue/phone-player.png",
+        "sha256": "318c78ece732bb30851581c1cddf57608b397d3687ea2bf38310473c4236dfb4",
+        "scope": "Final owned synthetic native viewport; no real account or receiver"
+      },
+      {
+        "path": "Docs/screenshots/music-library-queue/pad-library.png",
+        "sha256": "2b21a1438629fdf57152261dbf6d3c682566daacf0530c88610d6cebe734e937",
+        "scope": "Final owned synthetic native viewport; no real account or receiver"
+      },
+      {
+        "path": "Docs/screenshots/music-library-queue/pad-player.png",
+        "sha256": "b9b908eeca8d13ff74c84bc0ea4ce0483ee87983e4b639213c97feab8b8580e9",
+        "scope": "Final owned synthetic native viewport; no real account or receiver"
+      }
+    ],
+    "original_comparison": false
+  },
+  "not_verified": [
+    "Native MusicKit library/account/playback/subscription/region/offline behavior",
+    "Actual OS audio interruption and receiver route/volume/disconnect behavior",
+    "Audible AirPlay or multiroom delivery",
+    "Physical signing/authentication or original UI parity"
+  ],
+  "holds": [
+    "Real Home remains disabled",
+    "Physical/device/signing acceptance remains paused"
+  ],
+  "backlog": {
+    "original_total": 82,
+    "completed": 47,
+    "explicit_snoopy_exclusion": 1,
+    "open": 34
+  }
+}

@@ -20,6 +20,10 @@
 
 ## Aktueller Arbeitsblock
 
+**Effizienzkorrektur des Eigentümers, 30. Oktober:** Alle 34 offenen ursprünglichen Aufgaben-/Abnahmeverträge einmal gebündelt mit dem aktuellen GitHub-Bestand abgeglichen. Die Settings-/VoiceOver-Einzelprobe ist gestoppt, unveröffentlichte Produkt-/Teständerungen sind zurückgenommen und der tatsächliche VoiceOver-Ausgangswert ist wieder aus. Keine weiteren Fokus-/Pixel-Mikroproben ohne materielle Lücke oder konkretes ursprüngliches Abschlusskriterium. Zusammenhängende Softwarepakete bekommen einen gemeinsamen relevanten Gate; unveränderte Suites werden nicht pro Einzelcontrol wiederholt. Die unten getrennten Home-/Geräte-/Original-/Runtimegrenzen bleiben erhalten, nicht pauschal zu Erledigungen umbenannt.
+
+- [Musik-Mediathek, Queue, Fortschritt und Audio-Ausgabewahl](music-library-queue.md): zusammenhängendes #57/#61-Paket statt weiterer #73-Einzelproben. Final467Coretests, zwei abschließende iPhone-/iPad-Medienflows und fünf SDKs bestanden. Erste mobile Auswahl5PASS/1iPad-ZeilentapFAIL erhalten; ganze Zeilentrefferfläche korrigiert. Reale MusicKit-/AirPlay-/Signing-/Hardwareabnahme bleibt gesondert offen; keine Issue-Schließung aus synthetischem Playback.
+
 - [TV-Schloss: Lesefokus und persönlicher Rückweg korrigiert](tv-lock-voiceover.md): 14 native gemeldete Werte, Refresh/Gate-Close und tatsächliche Home-Rückkehr ohne Authentifizierung. Vier finale ganze Schloss-/Gate-Bilder exakt; frühere Refresh-Variation und zusätzlicher ganzer Startbildschirm mit7.064Pixeln FAIL bleiben erhalten. Kein pauschaler Pixel-/Original-PASS, #73 offen.
 
 - [TV-Editor: versteckten Vorschau-Fokus korrigiert](tv-editor-voiceover.md): vier aktuelle UI-Ausführungen bestanden, 17 native Fokus-/Sprachwerte, Slot-Abbruch/Clock/Neustart und exakte VoiceOver-Rückstellung. Ganze festgelegte Vorschau362×361 mit0RGBA-Unterschieden; keine ganze Editor-/Originalabnahme. Drei Vorherfehler erhalten; #73/#7 offen.

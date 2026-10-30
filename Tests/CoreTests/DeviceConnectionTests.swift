@@ -32,6 +32,14 @@ final class DeviceConnectionTests: XCTestCase {
     var searchReplies: [String:CheckedContinuation<[DeviceTrack], any Error>] = [:]
     var onSearch: ((String)->Void)?
     var pauseCalls = 0
+    var libraryCalls=0
+    var libraryQuery:String?
+    var libraryDelayed=false
+    var libraryError=false
+    var libraryReply:CheckedContinuation<[DeviceTrack],any Error>?
+    var currentMusicID:String?
+    var reportedPlaying=false
+    var libraryItems=[DeviceTrack(id:"library-own",title:"Synthetic library song",artist:"Fixture",artwork:nil)]
     var musicPermissionRequests=0
     var playCalls=0
     var resumeCalls=0
@@ -109,13 +117,22 @@ final class DeviceConnectionTests: XCTestCase {
       playCalls+=1
       if delayPlayback { try await withCheckedThrowingContinuation { playbackReply=$0;onPlayback?() } }
     }
+    func libraryMusic(_ text:String) async throws -> [DeviceTrack] {
+      libraryCalls+=1;libraryQuery=text
+      if libraryDelayed {
+        return try await withCheckedThrowingContinuation {libraryReply=$0;onStart?()}
+      }
+      if libraryError {throw CocoaError(.fileReadUnknown)}
+      return libraryItems
+    }
     func resumeMusic() async throws {
       resumeCalls+=1
       if delayPlayback { try await withCheckedThrowingContinuation { resumeReply=$0;onPlayback?() } }
     }
-    func pauseMusic() { pauseCalls += 1 }
-    var musicPlaying: Bool { false }
+    func pauseMusic() { pauseCalls += 1;reportedPlaying=false }
+    var musicPlaying: Bool { reportedPlaying }
     var musicTime: Double { 0 }
+    var musicCurrentTrackID:String? {currentMusicID}
     func weather(_ city: String) async throws -> WeatherReading {
       if delayWeather {
         return try await withCheckedThrowingContinuation { weatherReply = $0; onStart?() }
@@ -910,5 +927,100 @@ extension DeviceConnectionTests {
     XCTAssertFalse(session.guestMusicShared);XCTAssertTrue(session.tracks.isEmpty);XCTAssertTrue(session.enabled.isEmpty)
     let fresh=DeviceConnections(provider:Provider())
     XCTAssertFalse(fresh.guestMusicShared);XCTAssertTrue(fresh.tracks.isEmpty)
+  }
+}
+
+extension DeviceConnectionTests {
+  func testMusicLibraryRequiresExplicitAuthenticatedRequest() async {
+    let p=Provider(),session=DeviceConnections(provider:p)
+    await session.loadMusicLibrary();XCTAssertTrue(session.tracks.isEmpty);XCTAssertEqual(p.libraryCalls,0)
+    _ = await session.unlock();await session.connect(.music)
+    XCTAssertEqual(p.libraryCalls,0)
+    await session.loadMusicLibrary()
+    XCTAssertEqual(p.libraryCalls,1);XCTAssertEqual(session.tracks.map(\.id),["library-own"])
+    XCTAssertTrue(session.musicLibrary);XCTAssertNil(session.currentTrack)
+    XCTAssertEqual(p.playCalls,0)
+    XCTAssertTrue(session.status[.music]?.contains("100") == true)
+  }
+  func testMusicLibraryQueryIsBoundedAndCatalogSwitchClearsPrivateResults() async {
+    let p=Provider(),c=DeviceConnections(provider:p);_ = await c.unlock();await c.connect(.music)
+    await c.loadMusicLibrary("  "+String(repeating:"x",count:240)+"  ")
+    XCTAssertEqual(p.libraryQuery,String(repeating:"x",count:200))
+    await c.playMusic(0);XCTAssertEqual(c.currentTrack,0)
+    c.selectMusicCatalog()
+    XCTAssertFalse(c.musicLibrary);XCTAssertTrue(c.tracks.isEmpty);XCTAssertNil(c.currentTrack)
+    XCTAssertFalse(c.guestMusicShared);XCTAssertEqual(p.playCalls,1)
+  }
+  func testMusicLibraryEmptyAndUnavailableAreDifferentStates() async {
+    let p=Provider(),s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.music)
+    await s.loadMusicLibrary();p.libraryError=true
+    await s.loadMusicLibrary("unavailable")
+    XCTAssertEqual(s.tracks.count,1);XCTAssertTrue(s.status[.music]?.contains("unavailable") == true)
+    p.libraryError=false;p.libraryItems=[];await s.loadMusicLibrary("absent")
+    XCTAssertTrue(s.tracks.isEmpty);XCTAssertNil(s.currentTrack)
+    XCTAssertEqual(s.status[.music],"No songs found in your library.")
+  }
+  func testMusicLibraryLateResponseCannotRestoreLockedOrDisconnectedData() async throws {
+    for disconnect in [false,true] {
+      let p=Provider(),c=DeviceConnections(provider:p);_ = await c.unlock();await c.connect(.music)
+      p.libraryDelayed=true
+      let started=expectation(description:"library read suspended");p.onStart={started.fulfill()}
+      let read=Task {await c.loadMusicLibrary()};await fulfillment(of:[started],timeout:2)
+      if disconnect {c.disconnect(.music)} else {c.lock()}
+      try XCTUnwrap(p.libraryReply).resume(returning:p.libraryItems);await read.value
+      XCTAssertTrue(c.tracks.isEmpty);XCTAssertNil(c.currentTrack);XCTAssertFalse(c.busy.contains(.music))
+      XCTAssertEqual(p.playCalls,0)
+    }
+  }
+  func testMusicLibraryCancellationAndRevocationDropResults() async throws {
+    for revoked in [false,true] {
+      let p=Provider(),s=DeviceConnections(provider:p);_ = await s.unlock();await s.connect(.music)
+      p.libraryDelayed=true
+      let started=expectation(description:"library read suspended");p.onStart={started.fulfill()}
+      let read=Task {await s.loadMusicLibrary()};await fulfillment(of:[started],timeout:2)
+      if revoked {p.revoked.insert(.music)} else {read.cancel()}
+      try XCTUnwrap(p.libraryReply).resume(returning:p.libraryItems);await read.value
+      XCTAssertTrue(s.tracks.isEmpty);XCTAssertNil(s.currentTrack);XCTAssertFalse(s.busy.contains(.music))
+      XCTAssertEqual(p.playCalls,0)
+    }
+  }
+  func testMusicLibraryGuestCannotBrowseEvenWhenQueueShared() async {
+    let p=Provider(),s=DeviceConnections(provider:p)
+    _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary();await s.playMusic(0)
+    XCTAssertTrue(s.setGuestMusicSharing(true));s.lock()
+    await s.loadMusicLibrary("private query")
+    XCTAssertEqual(p.libraryCalls,1);XCTAssertTrue(s.guestMusicShared)
+    XCTAssertEqual(s.sharedMusicTrack?.id,"library-own")
+  }
+  func testMusicQueueTracksNativeAdvanceAndDoesNotInventUnknownTitle() async {
+    let p=Provider(),s=DeviceConnections(provider:p)
+    p.libraryItems.append(DeviceTrack(id:"second",title:"Second synthetic song",artist:"Fixture",artwork:nil))
+    _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary();await s.playMusic(0)
+    p.currentMusicID="second";p.reportedPlaying=true;s.pollMusic()
+    XCTAssertEqual(s.currentTrack,1);XCTAssertTrue(s.musicPlaying)
+    p.currentMusicID="not-in-this-queue";s.pollMusic();XCTAssertNil(s.currentTrack)
+    XCTAssertFalse(s.musicPlaying);XCTAssertFalse(p.reportedPlaying)
+    XCTAssertTrue(s.status[.music]?.contains("outside this queue") == true)
+    p.reportedPlaying=false;s.selectMusicCatalog();s.pollMusic()
+    XCTAssertNil(s.currentTrack);XCTAssertTrue(s.tracks.isEmpty)
+  }
+  func testMusicLibraryReplacementRevokesGuestQueueConsent() async {
+    let p=Provider(),s=DeviceConnections(provider:p)
+    _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary();await s.playMusic(0)
+    XCTAssertTrue(s.setGuestMusicSharing(true))
+    await s.loadMusicLibrary("new search")
+    XCTAssertFalse(s.guestMusicShared);XCTAssertNil(s.currentTrack);XCTAssertFalse(s.musicPlaying)
+    XCTAssertEqual(p.playCalls,1)
+  }
+  func testMusicLibraryPendingReplacementCannotPlayAnOldResult() async throws {
+    let p=Provider(),s=DeviceConnections(provider:p)
+    _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary()
+    p.libraryDelayed=true
+    let started=expectation(description:"replacement library read suspended");p.onStart={started.fulfill()}
+    let read=Task {await s.loadMusicLibrary("replacement")};await fulfillment(of:[started],timeout:2)
+    await s.playMusic(0)
+    XCTAssertEqual(p.playCalls,0);XCTAssertNil(s.currentTrack)
+    try XCTUnwrap(p.libraryReply).resume(returning:p.libraryItems);await read.value
+    await s.playMusic(0);XCTAssertEqual(p.playCalls,1);XCTAssertEqual(s.currentTrack,0)
   }
 }

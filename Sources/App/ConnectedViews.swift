@@ -338,14 +338,27 @@ struct DeviceMusicView: View {
     VStack(spacing: 12) {
       AppHeader(title: "Apple Music", light: true)
       if model.connections.personalUnlocked && (browsing || model.connections.currentTrack == nil) {
+        HStack(spacing:24) {
+          Button("Apple Music") {query="";browsing=true;model.connections.selectMusicCatalog()}
+            .accessibilityIdentifier("music.source.catalog")
+            .accessibilityAddTraits(model.connections.musicLibrary ? []:.isSelected)
+            .disabled(model.connections.busy.contains(.music))
+          Button("Your Library") {
+            query="";queryFocused=false;browsing=true
+            Task {await model.connections.loadMusicLibrary()}
+          }.accessibilityIdentifier("music.source.library")
+            .accessibilityAddTraits(model.connections.musicLibrary ? .isSelected:[])
+            .disabled(model.connections.busy.contains(.music))
+        }.font(.system(size:20,weight:.semibold))
         HStack {
-          TextField("Search Apple Music", text: $query).textFieldStyle(.plain).focused(
+          TextField("",text:$query,prompt:Text(model.connections.musicLibrary ? "Search Your Library":"Search Apple Music").foregroundStyle(.white.opacity(0.7))).textFieldStyle(.plain).focused(
             $queryFocused
           )
           .onSubmit { search() }
           .accessibilityIdentifier("music.search.input")
           .onChange(of:phase) { _,phase in if phase != .active { queryFocused=false } }
           Button("Search") { search() }.accessibilityIdentifier("music.search")
+            .disabled(model.connections.busy.contains(.music))
         }.font(.system(size: 22)).padding(18).background(.white.opacity(0.12), in: Capsule())
           .padding(
             .horizontal, 28)
@@ -360,12 +373,13 @@ struct DeviceMusicView: View {
         Text(song.title).font(.system(size: 27, weight: .semibold)).lineLimit(1)
           .accessibilityIdentifier("music.current.title")
         Text(song.artist).font(.system(size: 20)).opacity(0.7)
+        progress(song)
         HStack(spacing: 40) {
           Button {
             play(max(0, index - 1))
           } label: {
             Image(systemName: "backward.fill")
-          }
+          }.accessibilityLabel("Previous track").disabled(index==0)
           Button {
             model.togglePlayback()
           } label: {
@@ -376,8 +390,9 @@ struct DeviceMusicView: View {
             play(min(model.connections.tracks.count - 1, index + 1))
           } label: {
             Image(systemName: "forward.fill")
-          }
+          }.accessibilityLabel("Next track").disabled(index==model.connections.tracks.count-1)
         }.font(.system(size: 32))
+        AudioRouteControls()
       }
       if browsing || model.connections.currentTrack == nil {
         ScrollView {
@@ -396,8 +411,9 @@ struct DeviceMusicView: View {
                   }
                   Spacer()
                   Image(systemName: "play.fill")
-                }.font(.system(size: 21)).padding(.horizontal, 32)
+                }.font(.system(size: 21)).padding(.horizontal, 32).contentShape(Rectangle())
               }.accessibilityIdentifier("music.result.\(index)")
+                .disabled(model.connections.busy.contains(.music))
             }
           }
         }
@@ -407,7 +423,7 @@ struct DeviceMusicView: View {
       }
       Text(model.connections.status[.music] ?? "Search for a song").font(.system(size: 16)).opacity(
         0.7
-      ).padding(.bottom, 20)
+      ).padding(.bottom, 20).accessibilityIdentifier("music.status")
     }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
       .foregroundStyle(.white).background(
         LinearGradient(
@@ -418,9 +434,23 @@ struct DeviceMusicView: View {
       if !unlocked { query="";queryFocused=false;browsing=false }
     }
   }
+  @ViewBuilder private func progress(_ song:DeviceTrack)->some View {
+    if let duration=song.duration,duration.isFinite,duration>0,duration<Double(Int.max/2) {
+      let time=model.connections.musicTime
+      let elapsed=time.isFinite ? min(duration,max(0,time)):0
+      ProgressView(value:elapsed,total:duration).tint(.white).padding(.horizontal,40)
+        .accessibilityLabel("Playback progress")
+        .accessibilityValue("\(Int(elapsed)) of \(Int(duration)) seconds")
+        .accessibilityIdentifier("music.connected.progress")
+        .accessibilityRespondsToUserInteraction(false)
+    }
+  }
   private func search() {
     queryFocused = false
-    Task { await model.connections.searchMusic(query) }
+    Task {
+      if model.connections.musicLibrary {await model.connections.loadMusicLibrary(query)}
+      else {await model.connections.searchMusic(query)}
+    }
   }
   private func play(_ index: Int) {
     model.stopAudioForVoice()

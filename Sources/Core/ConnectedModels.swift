@@ -44,4 +44,5 @@ struct DeviceTrack: Identifiable, Sendable {
   let title: String
   let artist: String
   let artwork: URL?
+  var duration: TimeInterval? = nil
 }
