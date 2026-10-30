@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-30",
+  "repository": "Olli0103/homeview",
+  "published_commit": "142a77998782d000b3931535e7322761ec2ff501",
+  "original_total": 82,
+  "completed": 48,
+  "owner_scope_excluded": [
+    14
+  ],
+  "open_count": 33,
+  "open_original_ids": [
+    6,
+    7,
+    11,
+    15,
+    16,
+    17,
+    18,
+    20,
+    23,
+    26,
+    27,
+    28,
+    29,
+    36,
+    43,
+    44,
+    47,
+    48,
+    49,
+    51,
+    52,
+    53,
+    56,
+    57,
+    61,
+    64,
+    67,
+    73,
+    75,
+    77,
+    78,
+    79,
+    81
+  ],
+  "query": "repo:Olli0103/homeview is:issue is:open",
+  "requested_limit": 100,
+  "readbacks": [
+    {
+      "number": 7,
+      "title": "[FACE-03] Räumlichen Face-Editor vollständig kalibrieren",
+      "state": "open",
+      "state_reason": null,
+      "labels": [
+        {
+          "name": "priority:P1",
+          "color": "d93f0b",
+          "description": ""
+        },
+        {
+          "name": "type:validation",
+          "color": "0e8a16",
+          "description": ""
+        },
+        {
+          "name": "area:faces",
+          "color": "1d76db",
+          "description": ""
+        }
+      ],
+      "assignees": null,
+      "full_body_and_metadata_exact": true,
+      "original_acceptance_unchanged": true,
+      "body_sha256": "b38b6984c6abe91dfd5709d3a3c37268d3ec5215289711fa7bd810fff097b8d8"
+    },
+    {
+      "number": 15,
+      "title": "[FLOW-01] Variable Flow-Ziffern mit korrekten Metriken entwickeln",
+      "state": "open",
+      "state_reason": "reopened",
+      "labels": [
+        {
+          "name": "type:implementation",
+          "color": "0e8a16",
+          "description": ""
+        },
+        {
+          "name": "priority:P1",
+          "color": "d93f0b",
+          "description": ""
+        },
+        {
+          "name": "area:faces",
+          "color": "1d76db",
+          "description": ""
+        }
+      ],
+      "assignees": null,
+      "full_body_and_metadata_exact": true,
+      "original_acceptance_unchanged": true,
+      "body_sha256": "4db9bc01abaced7fc6517eddcd0cb91ccdbcc4ba9c1ebbf7c7005009ab42cdc0"
+    }
+  ],
+  "holds_unchanged": [
+    "Real Home setup paused",
+    "Physical/signing acceptance paused"
+  ],
+  "no_unmet_issue_closed": true,
+  "remaining_boundary_groups": [
+    {
+      "count": 9,
+      "kind": "Original-state/font/palette/gesture/material acceptance",
+      "issues": [
+        6,
+        7,
+        11,
+        15,
+        16,
+        18,
+        20,
+        53,
+        78
+      ]
+    },
+    {
+      "count": 5,
+      "kind": "Explicit real Home hold",
+      "issues": [
+        23,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "count": 15,
+      "kind": "Physical/signing/account/receiver/audio/system-state/long-run acceptance",
+      "issues": [
+        17,
+        43,
+        44,
+        47,
+        48,
+        49,
+        51,
+        52,
+        56,
+        57,
+        61,
+        64,
+        75,
+        77,
+        81
+      ]
+    },
+    {
+      "count": 4,
+      "kind": "Runtime/host/assistive capability boundaries",
+      "issues": [
+        36,
+        67,
+        73,
+        79
+      ]
+    }
+  ]
+}
