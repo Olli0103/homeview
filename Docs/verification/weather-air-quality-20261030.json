@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-30",
+  "issue": 21,
+  "code_commit": "ac564fe06aaa97bef9d615db45d62fd5bbfe46f1",
+  "scope": "Original weather-data and own state-illustration contract only; F019 remains partial/parity=false, exact original and physical acceptance not granted.",
+  "source_manifest": "weather-air-quality-source-20261030.json",
+  "core": {
+    "passed": 457,
+    "failed": 0,
+    "source_inputs_unchanged_to_code": true,
+    "result_sha256": "7caf369e7970215ae9753077c13df0aa58efda15467865a325ee9b0b96ba1d9c",
+    "log_sha256": "bb84cb7636d68c3d855ecba516ebb89f1cdca3f65337d219d79b744e8d1a2093",
+    "archive_sha256": "fe843def6ed6e7925a837acb126ce2deabefdcb11cdf81e9e671748cdc6dd824"
+  },
+  "transport": {
+    "passed_scenarios": 6,
+    "failed": 0,
+    "live_requests": 0,
+    "scenarios": [
+      "success",
+      "optional503",
+      "malformedJSON",
+      "missingIndex",
+      "cancelled",
+      "forecastFailure"
+    ],
+    "result": {
+      "exit_code": 0,
+      "output": "WEATHER_AQI_TRANSPORT_PASS scenarios=6 live_requests=0\n",
+      "stderr": "",
+      "binary_sha256": "655b53e7f387adc8791354c1c26495b70742f8b4d2d12344e71594faaffb3ee8"
+    }
+  },
+  "native_checkpoints": {
+    "ui": {
+      "phone": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "70bea158fe4b766d67d632c5f65f8543b016e3ab701d2387297d3a4de5f51e9d",
+        "started": "2026-10-30T12:43:23.043618+00:00",
+        "finished": "2026-10-30T12:51:25.304533+00:00",
+        "installed_app_before_exact": true,
+        "installed_app_after_exact": true,
+        "installed_runner_after_exact": true,
+        "sources_and_compiled_inputs_unchanged": true
+      },
+      "ipad": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "70bea158fe4b766d67d632c5f65f8543b016e3ab701d2387297d3a4de5f51e9d",
+        "started": "2026-10-30T12:51:27.657802+00:00",
+        "finished": "2026-10-30T12:59:25.873442+00:00",
+        "installed_app_before_exact": true,
+        "installed_app_after_exact": true,
+        "installed_runner_after_exact": true,
+        "sources_and_compiled_inputs_unchanged": true
+      }
+    },
+    "matrix-ui": {
+      "phone": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "ddc17786165db8049f576320d777a3be689efdabc774309068fe8ca914311286",
+        "started": "2026-10-30T13:03:05.579541+00:00",
+        "finished": "2026-10-30T13:17:42.602685+00:00",
+        "installed_app_before_exact": true,
+        "installed_app_after_exact": true,
+        "installed_runner_after_exact": true,
+        "sources_and_compiled_inputs_unchanged": true
+      },
+      "ipad": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "ddc17786165db8049f576320d777a3be689efdabc774309068fe8ca914311286",
+        "started": "2026-10-30T13:17:47.277015+00:00",
+        "finished": "2026-10-30T13:31:25.876227+00:00",
+        "installed_app_before_exact": true,
+        "installed_app_after_exact": true,
+        "installed_runner_after_exact": true,
+        "sources_and_compiled_inputs_unchanged": true
+      }
+    },
+    "header-before": {
+      "phone": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "4ddf68ed3e4a499c2f635df7bedf7c8466f9e39aa8c5dbbd914abf3eba4e6f95",
+        "started": "2026-10-30T13:44:01.691362+00:00",
+        "finished": "2026-10-30T13:45:53.070702+00:00",
+        "installed_app_before_exact": true,
+        "installed_app_after_exact": true,
+        "installed_runner_after_exact": true,
+        "sources_and_compiled_inputs_unchanged": true
+      },
+      "ipad": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "runtime_warnings": [],
+        "source_sha256": "4ddf68ed3e4a499c2f635df7bedf7c8466f9e39aa8c5dbbd914abf3eba4e6f95",
+        "started": "2026-10-30T13:45:54.681384+00:00",
+        "finished": "2026-10-30T13:47:39.629112+00:00",
+        "installed_app_before_exact": true,
+        "installed_app_after_exact": true,
+        "installed_runner_after_exact": true,
+        "sources_and_compiled_inputs_unchanged": true
+      }
+    }
+  },
+  "accepted_current_matrix": {
+    "test_executions": 10,
+    "failed": 0,
+    "skipped": 0,
+    "condition_light_device_combinations": 36,
+    "face_and_app_states": 72,
+    "cases_per_light": [
+      "clear",
+      "partlyCloudy",
+      "overcast",
+      "fog",
+      "rain",
+      "snowAndFrost",
+      "heavyThunderstorm97",
+      "clearFrost",
+      "unknown98"
+    ],
+    "OS_light_source": "is_day fixture, not a physical solar observation or OS dark-mode proof",
+    "all29documented_codes_day_night_current_hourly": "Core fixture coverage, not29distinctoriginalanimations",
+    "all_current_app_and_test_inputs_fully_archived_read_back": true,
+    "compiled_input_files": 32,
+    "image_review": {
+      "nativePNG_decoded": 170,
+      "selected_states_reviewed": 88,
+      "contact_pages_actually_viewed": 16,
+      "full_native_unavailable_phone_image_also_viewed": true
+    }
+  },
+  "sdk": {
+    "platforms": [
+      {
+        "platform": "iOS",
+        "exit_code": 0,
+        "metadata_clean_recovery": true
+      },
+      {
+        "platform": "macOS",
+        "exit_code": 0,
+        "metadata_clean_recovery": false
+      },
+      {
+        "platform": "tvOS",
+        "exit_code": 0,
+        "metadata_clean_recovery": false
+      },
+      {
+        "platform": "visionOS",
+        "exit_code": 0,
+        "metadata_clean_recovery": false
+      },
+      {
+        "platform": "watchOS",
+        "exit_code": 0,
+        "metadata_clean_recovery": false
+      }
+    ],
+    "products": 73,
+    "products_manifest_sha256": "1ab088df5856c7dc6ac1f8d945689f08651aa1c8cc836266b8b860370b4d41de",
+    "products_fully_read_back": true,
+    "single_shared_external_DerivedData": true,
+    "minimum_free_reserve_gib": 16,
+    "no_automatic_cleanup": true
+  },
+  "public_fetches": {
+    "first": {
+      "exit_code": 0,
+      "result": {
+        "air_source_label": "CAMS · Model for Oct 30, 1:00 PM",
+        "air_valid_unix": 1793361600,
+        "european_aqi": 43,
+        "finished": 1793364179.35413,
+        "hour_count": 48,
+        "live_optional_data_returned": true,
+        "personal_GPS_Home_account_access": false,
+        "public_city": "Berlin",
+        "started": 1793364179.057183,
+        "temperature_f": 48.2,
+        "weather_valid_unix": 1793363400
+      },
+      "compiled_inputs": {
+        "Sources/Core/WeatherData.swift": "9998d87e7c9e36dfa0c5f93994f52d353aced4fee9c495f29539fe49037b65bb",
+        "Sources/App/WeatherService.swift": "177363bfe8f029736254a61d52a9cce486724f1e816f1e5564ff94d2302a8813"
+      },
+      "probe_sha256": "35a7693e5715056b2d8d7da567c98e4c8f0f19aaf73a912924c3cebf4db21949",
+      "binary_sha256": "8cd475b1a4ebcdfaf62e75f526f28773907cd1c20afc923d6914c5cc5d8e26d9"
+    },
+    "final": {
+      "exit_code": 0,
+      "result": {
+        "air_source_label": "CAMS via Open-Meteo · Model for Oct 30, 2:00 PM",
+        "air_valid_unix": 1793365200,
+        "european_aqi": 42,
+        "finished": 1793365219.965289,
+        "hour_count": 48,
+        "live_optional_data_returned": true,
+        "personal_GPS_Home_account_access": false,
+        "public_city": "Berlin",
+        "started": 1793365219.215695,
+        "temperature_f": 47.9,
+        "weather_valid_unix": 1793365200
+      },
+      "compiled_inputs": {
+        "Sources/Core/WeatherData.swift": "2b126c9dd6c83928fa38b6c1a5147863bb029c0ae1ea503dcf0107c64cbf4004",
+        "Sources/App/WeatherService.swift": "177363bfe8f029736254a61d52a9cce486724f1e816f1e5564ff94d2302a8813"
+      },
+      "probe_sha256": "35a7693e5715056b2d8d7da567c98e4c8f0f19aaf73a912924c3cebf4db21949",
+      "binary_sha256": "7b9ed758d42651e7893a3ca5a9c2b0e34f361f29f251e9c54fea72642d5fa4d8"
+    }
+  },
+  "public_source_decision": {
+    "date": "2026-10-30",
+    "scope": "Public documented air-quality transport; no proprietary reference assets or new account access",
+    "primary_source": "https://open-meteo.com/en/docs/air-quality-api",
+    "read_status": 200,
+    "read_truncated": false,
+    "facts_used": [
+      "GET /v1/air-quality accepts coordinates and current=european_aqi.",
+      "timeformat=unixtime returns UTC epoch seconds, not pre-offset local epoch seconds.",
+      "European AQI can exceed100; it is not the US AQI or a percentage.",
+      "Values are forecasts/model estimates from CAMS European ENSEMBLE and CAMS global, not an onsite pollution sensor.",
+      "Attribution to CAMS ENSEMBLE and Open-Meteo is required."
+    ],
+    "implementation": {
+      "fixed_host": "air-quality-api.open-meteo.com",
+      "request_timeout_seconds": 8,
+      "timeout_scope": "URLRequest timeout; not a separately enforced total wall-clock deadline",
+      "optional_failure": "Retain usable forecast with unknown AQI; do not swallow cancellation.",
+      "validity": "Own positive source timestamp, finite nonnegative European index, separate one-hour/five-minute future age checks.",
+      "capabilities_not_claimed": [
+        "US AQI",
+        "sensor measurement",
+        "live observation of all weather conditions",
+        "Apple original effects",
+        "physical energy/frame rate acceptance"
+      ]
+    }
+  },
+  "honest_exploratory_limit": {
+    "initial_thumbnail_overlap_impression_retracted": true,
+    "header_product_bytes_never_changed": true,
+    "native_original_has_no_overlap": true,
+    "phone_gutters_points": {
+      "missingCondition": 43.67999664306643,
+      "failedForecast": 53.76001373291018
+    },
+    "ipad_gutters_points": {
+      "missingCondition": 90.87665089925133,
+      "failedForecast": 112.10333546956383
+    },
+    "unqualified_absolute_clock_pixel_assertions": {
+      "phone": "pass, all three poses exact",
+      "ipad": "two failed assertions,347RGBA bytes each; observed clock-y shift0.075791points under different content. Not a product collision or a passed exact-image control."
+    },
+    "exact_exploratory_sources_inputs_results_images_preserved": true,
+    "exploratory_probe_not_in_normal_regression_target": true,
+    "final_normal_UITest_file_exactly_restored_to_accepted_matrix": true
+  },
+  "assets": {
+    "resources": 58,
+    "provenance_inputs": 17,
+    "resource_bytes_unchanged": true,
+    "only_current_Faces_source_binding_refreshed": true,
+    "no_new_historical_rights_verdict": true
+  },
+  "limits": [
+    "No new Apple original state/curve/pixel parity",
+    "Rain/thunderstorms share an own precipitation illustration; no distinct original model perWWsubcode",
+    "No physical energy/frame-rate/optical/accessibility acceptance",
+    "CAMS is a model estimate, not an onsite pollution sensor",
+    "URLRequest timeout is not a separately enforced total wall deadline",
+    "Home/account/camera/microphone/signing/device holds unchanged"
+  ],
+  "published_images": "../screenshots/weather-air-quality-20261030/manifest.json"
+}
