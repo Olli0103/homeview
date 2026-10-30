@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-30",
+  "base_commit": "3af4c1d803a27b376189653bb919e841fb461464",
+  "scope": "Build-tool capacity guard; no product/SDK/UI/Core acceptance",
+  "source_inputs": 243,
+  "source_digest": "9fa752346d2080e656aed89def3fb91a38be28965b87dded16a0bccf667efa18",
+  "product_inputs_unchanged": 179,
+  "tooling_tests": 15,
+  "tooling_failed": 0,
+  "tooling_exit_code": 0,
+  "real_destination_probe": {
+    "normal_reserve_bytes": 17179869184,
+    "normal_free_bytes": 68871184384,
+    "normal_preflight_passed": true,
+    "unfulfillable_reserve_exit": 75,
+    "xcode_started": false,
+    "derived_data_created": false
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 3436,
+      "sha256": "5badd10b76584a99c695c199dd36140481938cacfefece6a7a77bea97f35887c"
+    },
+    {
+      "path": "Scripts/build_platforms.py",
+      "bytes": 9095,
+      "sha256": "602e2ef010ac9fc2bffbc33380cbf0b5e8976d699a578f724a5d6616f7f23f89"
+    },
+    {
+      "path": "Tests/Tooling/test_build_platforms.py",
+      "bytes": 11375,
+      "sha256": "77ec162ddbf73585128a832ccccd043c46e4806d9711ad7b1d8cc628b4d5108c"
+    }
+  ],
+  "limits": [
+    "No in-flight quota/reservation",
+    "No guard on direct xcodebuild invocations",
+    "No automatic cleanup or future deletion approval",
+    "No new SDK/UI/Core runs",
+    "No original or physical acceptance"
+  ]
+}

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import subprocess
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -85,6 +86,115 @@ class ShortcutBuildTests(unittest.TestCase):
         result = builds.ios_shortcut_artifacts(self.build)
         self.assertFalse(result['valid'])
         self.assertEqual(len(result['errors']), 4)
+
+
+class StorageBuildTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.build = self.root / 'new' / 'derived'
+
+    @staticmethod
+    def capacity(gib):
+        return SimpleNamespace(total=512 * 1024 ** 3, free=int(gib * 1024 ** 3))
+
+    def test_low_space_never_creates_derived_data_or_invokes_xcode(self):
+        sentinel = self.root / 'keep.xcresult'
+        sentinel.write_bytes(b'owned evidence remains intact')
+        with patch.object(builds.shutil, 'disk_usage', return_value=self.capacity(15.99)), \
+                patch.object(builds.subprocess, 'run') as run:
+            row = builds.build_platform(self.root, self.build, builds.CONFIGS[0])
+        run.assert_not_called()
+        self.assertFalse(self.build.parent.exists())
+        self.assertEqual(row['failure_code'], 'BUILD_STORAGE_LOW')
+        self.assertFalse(row['attempts'][0]['executed'])
+        self.assertEqual(sentinel.read_bytes(), b'owned evidence remains intact')
+
+    def test_exact_reserve_is_sufficient_and_records_both_observations(self):
+        with patch.object(builds.shutil, 'disk_usage', return_value=self.capacity(16)), \
+                patch.object(builds.subprocess, 'run', return_value=subprocess.CompletedProcess([], 0)) as run:
+            row = builds.build_platform(self.root, self.build, builds.CONFIGS[1])
+        self.assertEqual(row['exit_code'], 0)
+        self.assertTrue(row['storage_headroom_ok'])
+        self.assertEqual(run.call_count, 1)
+        for key in ('storage_before', 'storage_after'):
+            self.assertEqual(row['attempts'][0][key]['free_bytes'], 16 * 1024 ** 3)
+
+    def test_unreadable_capacity_fails_closed_before_xcode(self):
+        with patch.object(builds.shutil, 'disk_usage', side_effect=PermissionError), \
+                patch.object(builds.subprocess, 'run') as run:
+            row = builds.build_platform(self.root, self.build, builds.CONFIGS[1])
+        run.assert_not_called()
+        self.assertEqual(row['failure_code'], 'BUILD_STORAGE_UNAVAILABLE')
+        self.assertFalse(self.build.exists())
+
+    def test_destination_symlink_measures_the_resolved_target(self):
+        target = self.root / 'real'
+        target.mkdir()
+        link = self.root / 'link'
+        link.symlink_to(target, target_is_directory=True)
+        with patch.object(builds.shutil, 'disk_usage', return_value=self.capacity(64)) as usage:
+            result = builds.storage_preflight(link / 'not-created')
+        usage.assert_called_once_with(target.resolve())
+        self.assertEqual(result['destination'], str(target / 'not-created'))
+
+    def test_absent_external_volume_is_not_created_on_the_boot_disk(self):
+        with patch.object(Path, 'is_mount', return_value=False), \
+                patch.object(builds.shutil, 'disk_usage') as usage, \
+                patch.object(builds.subprocess, 'run') as run:
+            row = builds.build_platform(self.root, Path('/Volumes/HomeViewMissingFixture/derived'), builds.CONFIGS[1])
+        run.assert_not_called()
+        usage.assert_not_called()
+        self.assertEqual(row['attempts'][0]['storage_before']['error'], 'VolumeNotMounted')
+
+    def test_recovery_clean_is_not_launched_after_headroom_is_lost(self):
+        capacities = [self.capacity(64), self.capacity(15), self.capacity(15)]
+        with patch.object(builds.shutil, 'disk_usage', side_effect=capacities), \
+                patch.object(builds.subprocess, 'run', return_value=subprocess.CompletedProcess([], 0)) as run:
+            row = builds.build_platform(self.root, self.build, builds.CONFIGS[0])
+        self.assertEqual(run.call_count, 1)
+        self.assertFalse(row['attempts'][0]['shortcut_artifacts']['valid'])
+        self.assertEqual(row['failure_code'], 'BUILD_STORAGE_LOW')
+        self.assertFalse(row['attempts'][1]['executed'])
+        self.assertTrue(row['attempts'][1]['clean_metadata_recovery'])
+
+    def test_main_stops_before_the_next_sdk_when_a_build_consumes_the_reserve(self):
+        with patch.object(builds, '__file__', str(self.root / 'Scripts/build_platforms.py')), \
+                patch.dict(builds.os.environ, {'HOMEVIEW_BUILD_DIR': str(self.build), 'HOMEVIEW_MIN_FREE_GIB': '16'}), \
+                patch.object(builds, 'CONFIGS', builds.CONFIGS[1:3]), \
+                patch.object(builds.shutil, 'disk_usage', side_effect=[self.capacity(64), self.capacity(15)]), \
+                patch.object(builds.subprocess, 'run', return_value=subprocess.CompletedProcess([], 0)) as run, \
+                patch('builtins.print'):
+            exit_code = builds.main()
+        self.assertEqual(exit_code, 1)
+        self.assertEqual(run.call_count, 1)
+        rows = json.loads((self.root / 'Evidence/builds.json').read_text())
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['exit_code'], 0)  # Compiler success is not relabelled.
+        self.assertFalse(rows[0]['storage_headroom_ok'])
+
+    def test_invalid_reserves_cannot_disable_the_guard(self):
+        for value in ('0', '-1', 'NaN', 'Infinity', '-Infinity', 'typo', '0.00000000001'):
+            with self.subTest(value=value), patch.dict(builds.os.environ, {'HOMEVIEW_MIN_FREE_GIB': value}):
+                with self.assertRaises(ValueError):
+                    builds.configured_min_free_bytes()
+        with patch.dict(builds.os.environ, {'HOMEVIEW_MIN_FREE_GIB': '20.5'}):
+            self.assertEqual(builds.configured_min_free_bytes(), int(20.5 * 1024 ** 3))
+
+    def test_reusing_compiler_cache_does_not_overwrite_previous_build_logs(self):
+        def write_log(command, **kwargs):
+            kwargs['stdout'].write('attempt marker\n')
+            return subprocess.CompletedProcess(command, 0)
+        with patch.object(builds.shutil, 'disk_usage', return_value=self.capacity(64)), \
+                patch.object(builds.subprocess, 'run', side_effect=write_log):
+            first = builds.build_platform(self.root, self.build, builds.CONFIGS[1])
+            original = Path(first['log']).read_bytes()
+            second = builds.build_platform(self.root, self.build, builds.CONFIGS[1])
+        self.assertNotEqual(first['log'], second['log'])
+        self.assertEqual(Path(first['log']).read_bytes(), original)
+        self.assertEqual(first['command'][first['command'].index('-derivedDataPath') + 1],
+                         second['command'][second['command'].index('-derivedDataPath') + 1])
 
 
 if __name__ == '__main__':

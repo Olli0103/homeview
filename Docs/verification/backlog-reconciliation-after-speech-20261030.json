@@ -1,0 +1,600 @@
+{
+  "date": "2026-10-30",
+  "scope": "Original1..82; additional community83 excluded from denominator",
+  "completed": 43,
+  "excluded": [
+    {
+      "issue_number": 14,
+      "state_reason": "not_planned",
+      "reason": "Owner explicitly excludes Snoopy because of rights"
+    }
+  ],
+  "open": 38,
+  "independent_queries": {
+    "open_results": 38,
+    "closed_results": 45,
+    "unique_originals": 82
+  },
+  "issue74": {
+    "state": "closed",
+    "state_reason": "completed",
+    "original_acceptance_unchanged": true,
+    "reason": "Research acceptance: bounded usability OR concrete blockades; not F104/F105 functional parity."
+  },
+  "originals": [
+    {
+      "issue_number": 1,
+      "title": "[BASE-01] Verbindlichen Parity-Vertrag und API-Grenzen festschreiben",
+      "url": "https://github.com/Olli0103/homeview/issues/1",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 2,
+      "title": "[BASE-02] Vollständigen Referenzsatz für Zustände und Bewegungen sichern",
+      "url": "https://github.com/Olli0103/homeview/issues/2",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 3,
+      "title": "[PUB-01] Redistribuierbare Grafik- und Typografiegrundlage herstellen",
+      "url": "https://github.com/Olli0103/homeview/issues/3",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 4,
+      "title": "[PUB-02] Quelllizenz und Veröffentlichungsunterlagen festlegen",
+      "url": "https://github.com/Olli0103/homeview/issues/4",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 5,
+      "title": "[FACE-01] Face-Katalog und Varianten vollständig gegen Referenz abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/5",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 6,
+      "title": "[FACE-02] Face-Wechsel und App-Raster-Übergänge vermessen",
+      "url": "https://github.com/Olli0103/homeview/issues/6",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 7,
+      "title": "[FACE-03] Räumlichen Face-Editor vollständig kalibrieren",
+      "url": "https://github.com/Olli0103/homeview/issues/7",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 8,
+      "title": "[FACE-04] Geteilte Modular-Inhalte mit echten Freigaben trennen",
+      "url": "https://github.com/Olli0103/homeview/issues/8",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 9,
+      "title": "[FACE-05] Persönlichen Home Screen und App-Anordnung abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/9",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 10,
+      "title": "[FACE-06] Entfernung und Bewegung durch nachgewiesene Präsenzquelle steuern",
+      "url": "https://github.com/Olli0103/homeview/issues/10",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 11,
+      "title": "[PHOTO-01] Foto-Galerie und geteilte Alben vervollständigen",
+      "url": "https://github.com/Olli0103/homeview/issues/11",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 12,
+      "title": "[PHOTO-02] Motivgeschützte Uhrplatzierung und Bildausschnitt berechnen",
+      "url": "https://github.com/Olli0103/homeview/issues/12",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 13,
+      "title": "[FACE-07] Tageszeit-, Nacht- und reduzierte Face-Zustände vervollständigen",
+      "url": "https://github.com/Olli0103/homeview/issues/13",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 14,
+      "title": "[FACE-08] Snoopy-Szenen, Atlanten und Timelines klären",
+      "url": "https://github.com/Olli0103/homeview/issues/14",
+      "state": "closed",
+      "state_reason": "not_planned"
+    },
+    {
+      "issue_number": 15,
+      "title": "[FLOW-01] Variable Flow-Ziffern mit korrekten Metriken entwickeln",
+      "url": "https://github.com/Olli0103/homeview/issues/15",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 16,
+      "title": "[FLOW-02] Flow-Glas, Fluidparameter und Originalbewegung kalibrieren",
+      "url": "https://github.com/Olli0103/homeview/issues/16",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 17,
+      "title": "[FLOW-03] CPU-Fluid schrittweise auf Metal-Texturen portieren",
+      "url": "https://github.com/Olli0103/homeview/issues/17",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 18,
+      "title": "[FACE-09] Fade-Verlauf und zeitabhängige Ziffern abgleichen",
+      "url": "https://github.com/Olli0103/homeview/issues/18",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 19,
+      "title": "[FACE-10] Numerals-Typografie und analoge Uhrvarianten kalibrieren",
+      "url": "https://github.com/Olli0103/homeview/issues/19",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 20,
+      "title": "[FACE-11] Prismen-Hintergrund und analoge Materialschichten angleichen",
+      "url": "https://github.com/Olli0103/homeview/issues/20",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 21,
+      "title": "[FACE-12] Wetterdaten, Wolken, Regen und Frost vollständig abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/21",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 22,
+      "title": "[FACE-13] Monatskalender-Face vollständig abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/22",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 23,
+      "title": "[HOME-01] HomeKit-Einrichtung und Adapter nach ausdrücklichem Fortsetzen implementieren",
+      "url": "https://github.com/Olli0103/homeview/issues/23",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 24,
+      "title": "[HOME-02] Thermostat, Licht, Lüfter und Beschattung echt anbinden",
+      "url": "https://github.com/Olli0103/homeview/issues/24",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 25,
+      "title": "[HOME-03] Türschloss mit echter Autorisierung und Zustandsbestätigung absichern",
+      "url": "https://github.com/Olli0103/homeview/issues/25",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 26,
+      "title": "[HOME-04] Szenen und Routinen mit nachgewiesenem Umfang bedienen",
+      "url": "https://github.com/Olli0103/homeview/issues/26",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 27,
+      "title": "[CAM-01] Echte Kamera-Streams bis neun Feeds und Detailaktionen anbinden",
+      "url": "https://github.com/Olli0103/homeview/issues/27",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 28,
+      "title": "[CAM-02] Türklingel-Ereignis und Unterbrechungsregeln umsetzen",
+      "url": "https://github.com/Olli0103/homeview/issues/28",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 29,
+      "title": "[CAM-03] Gegensprechen mit Audio-Lifecycle und Freigaben ergänzen",
+      "url": "https://github.com/Olli0103/homeview/issues/29",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 30,
+      "title": "[HOME-05] HKSV-Erkennung und Archivsuche als API-Lücke entscheiden",
+      "url": "https://github.com/Olli0103/homeview/issues/30",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 31,
+      "title": "[HOME-06] Hausereignisse in einer gruppierten Mitteilungsansicht darstellen",
+      "url": "https://github.com/Olli0103/homeview/issues/31",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 32,
+      "title": "[HOME-07] Rauch-/CO-Geräuscherkennung und eigene Sensoren auf Machbarkeit prüfen",
+      "url": "https://github.com/Olli0103/homeview/issues/32",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 33,
+      "title": "[AI-01] Allgemeinwissen und fortgesetzten Dialog durch echten Assistenten ersetzen",
+      "url": "https://github.com/Olli0103/homeview/issues/33",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 34,
+      "title": "[AI-02] Persönlichen Kontext und Onscreen Awareness sicher begrenzen",
+      "url": "https://github.com/Olli0103/homeview/issues/34",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 35,
+      "title": "[AI-03] Mehrschrittige Aktionen mit Bestätigung und Teilfehlern ausführen",
+      "url": "https://github.com/Olli0103/homeview/issues/35",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 36,
+      "title": "[AI-04] Antwortansicht mit Text, Bildern und Karten vervollständigen",
+      "url": "https://github.com/Olli0103/homeview/issues/36",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 37,
+      "title": "[AI-05] Wakeword und Siri-Aktivierung als getrennte Systemgrenze behandeln",
+      "url": "https://github.com/Olli0103/homeview/issues/37",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 38,
+      "title": "[AI-06] Assistenten-Geste, Texteingabe und Entwurfserhalt abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/38",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 39,
+      "title": "[AI-07] Dialogverlauf und geräteübergreifende Fortsetzung klären",
+      "url": "https://github.com/Olli0103/homeview/issues/39",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 40,
+      "title": "[AI-08] Antwortstimme, Tempo und Medienunterbrechungen ergänzen",
+      "url": "https://github.com/Olli0103/homeview/issues/40",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 41,
+      "title": "[AI-09] Dienstverfügbarkeit, Sprachen und Limits sichtbar machen",
+      "url": "https://github.com/Olli0103/homeview/issues/41",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 42,
+      "title": "[COM-01] FaceTime-Annahme und aktive Anrufsteuerung als API-Lücke bilanzieren",
+      "url": "https://github.com/Olli0103/homeview/issues/42",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 43,
+      "title": "[COM-02] Center Stage auf geeigneter Kamera-Hardware prüfen",
+      "url": "https://github.com/Olli0103/homeview/issues/43",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 44,
+      "title": "[COM-03] Explizite Nachrichten- und Anruf-Systemübergaben abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/44",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 45,
+      "title": "[COM-04] Intercom zu HomePods und persönlichen Geräten auf Machbarkeit prüfen",
+      "url": "https://github.com/Olli0103/homeview/issues/45",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 46,
+      "title": "[COM-05] Find-My-Geräte, AirTags und Personen ehrlich abgrenzen",
+      "url": "https://github.com/Olli0103/homeview/issues/46",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 47,
+      "title": "[DAY-01] Kalenderverbindung und Agenda auf echter Hardware abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/47",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 48,
+      "title": "[DAY-02] Erinnerungen mit Listenrechten und Read-back abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/48",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 49,
+      "title": "[DAY-03] Mehrere Timer und große Countdown-Ansicht vollständig abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/49",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 50,
+      "title": "[DAY-04] Sprachbefehle für Timer und Kochschritte vervollständigen",
+      "url": "https://github.com/Olli0103/homeview/issues/50",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 51,
+      "title": "[DAY-05] Live Activities für Timer und zulässige Aktivitäten implementieren",
+      "url": "https://github.com/Olli0103/homeview/issues/51",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 52,
+      "title": "[DAY-06] Eigene Wecker über Neustart und Gerätebetrieb abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/52",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 53,
+      "title": "[DAY-07] Weltuhr um Zonenwahl und Tag-/Nachtanzeige ergänzen",
+      "url": "https://github.com/Olli0103/homeview/issues/53",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 54,
+      "title": "[DAY-08] Browser-Navigation und sichere externe Inhalte abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/54",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 55,
+      "title": "[DAY-09] Rezeptimport, Kochansicht und Bibliothek an Randfällen vervollständigen",
+      "url": "https://github.com/Olli0103/homeview/issues/55",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 56,
+      "title": "[DAY-10] Rezept-Handoff über öffentliche Continuity-Technik implementieren",
+      "url": "https://github.com/Olli0103/homeview/issues/56",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 57,
+      "title": "[MEDIA-01] MusicKit-Suche, Bibliothek und Player produktiv abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/57",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 58,
+      "title": "[MEDIA-02] Animiertes Artwork und Lyrics pro öffentlicher Fähigkeit entscheiden",
+      "url": "https://github.com/Olli0103/homeview/issues/58",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 59,
+      "title": "[MEDIA-03] Podcasts durch echte frei zugängliche Feedwiedergabe ergänzen",
+      "url": "https://github.com/Olli0103/homeview/issues/59",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 60,
+      "title": "[MEDIA-04] Weitere Medien und Drittanbieter-Angebote auf Zugriffsmöglichkeiten prüfen",
+      "url": "https://github.com/Olli0103/homeview/issues/60",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 61,
+      "title": "[MEDIA-05] AirPlay-Routenauswahl und Mehrraumwiedergabe abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/61",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 62,
+      "title": "[MEDIA-06] Gast- und Peer-to-peer-AirPlay separat klären",
+      "url": "https://github.com/Olli0103/homeview/issues/62",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 63,
+      "title": "[MEDIA-07] Medien- und Anruf-Handoff pro Inhaltstyp abgrenzen",
+      "url": "https://github.com/Olli0103/homeview/issues/63",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 64,
+      "title": "[SYS-01] Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/64",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 65,
+      "title": "[SYS-02] Control Center und Settings mit echten Zuständen abgleichen",
+      "url": "https://github.com/Olli0103/homeview/issues/65",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 66,
+      "title": "[SYS-03] Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen",
+      "url": "https://github.com/Olli0103/homeview/issues/66",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 67,
+      "title": "[SYS-04] Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen",
+      "url": "https://github.com/Olli0103/homeview/issues/67",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 68,
+      "title": "[SYS-05] Gastberechtigungen für Haus, Wetter, Timer und Musik definieren",
+      "url": "https://github.com/Olli0103/homeview/issues/68",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 69,
+      "title": "[SYS-06] Secure-Exclaves-Identitätsverarbeitung als Hardwaregrenze dokumentieren",
+      "url": "https://github.com/Olli0103/homeview/issues/69",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 70,
+      "title": "[SYS-07] Private Cloud Compute als externe Systemfähigkeit bilanzieren",
+      "url": "https://github.com/Olli0103/homeview/issues/70",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 71,
+      "title": "[SYS-08] Ersteinrichtung, Capability-Erklärung und verbundene Angebote ausarbeiten",
+      "url": "https://github.com/Olli0103/homeview/issues/71",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 72,
+      "title": "[SYS-09] Unzureichenden Stromadapter auf unterstützter Hardware erkennen oder ausweisen",
+      "url": "https://github.com/Olli0103/homeview/issues/72",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 73,
+      "title": "[SYS-10] Accessibility über alle zentralen Flows abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/73",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 74,
+      "title": "[SYS-11] Live Speech, Captions, RTT und Shortcuts pro Plattform klären",
+      "url": "https://github.com/Olli0103/homeview/issues/74",
+      "state": "closed",
+      "state_reason": "completed"
+    },
+    {
+      "issue_number": 75,
+      "title": "[SYS-12] On-device-Spracherkennung auf echter Hardware abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/75",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 76,
+      "title": "[QA-01] Finalen öffentlichen Stand mit vollständiger iPad-/iPhone-Regression einfrieren",
+      "url": "https://github.com/Olli0103/homeview/issues/76",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 77,
+      "title": "[QA-02] Physisches iPad signieren, installieren und dauerhaft betreiben",
+      "url": "https://github.com/Olli0103/homeview/issues/77",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 78,
+      "title": "[QA-03] Visuelle Parity aller belegten Zustände und Animationen abnehmen",
+      "url": "https://github.com/Olli0103/homeview/issues/78",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 79,
+      "title": "[QA-04] macOS, tvOS, visionOS und Watch als eigene Plattformabnahmen führen",
+      "url": "https://github.com/Olli0103/homeview/issues/79",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 80,
+      "title": "[QA-05] Persistenz, Migration, Offline und späte Antworten systematisch prüfen",
+      "url": "https://github.com/Olli0103/homeview/issues/80",
+      "state": "closed",
+      "state_reason": null
+    },
+    {
+      "issue_number": 81,
+      "title": "[QA-06] Dauerleistung, Energie und Animation-Lifecycle vermessen",
+      "url": "https://github.com/Olli0103/homeview/issues/81",
+      "state": "open",
+      "state_reason": null
+    },
+    {
+      "issue_number": 82,
+      "title": "[EXTRA-01] Palette, Bounce-Gitter und Flux als optionale Watch-inspirierte Erweiterungen bewerten",
+      "url": "https://github.com/Olli0103/homeview/issues/82",
+      "state": "closed",
+      "state_reason": null
+    }
+  ]
+}

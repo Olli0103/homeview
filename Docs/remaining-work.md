@@ -1,6 +1,6 @@
 # Verbleibende Arbeit und Grenzen
 
-**Aktuell30.Oktober:42 ursprüngliche Issues erledigt,1 Snoopy-Ausschluss,39 offen.** [Vollständiger frischer GitHub-Abgleich](verification/backlog-reconciliation-20261030.json). [#25](https://github.com/Olli0103/homeview/issues/25) ist im ursprünglichen Mock-Sicherheitsumfang geschlossen; F028 bleibt ohne reale Home-/Original-Parity. #24 ist ebenfalls nach seinem ursprünglichen synthetischen Gerätevertrag abgeschlossen; weiter mit der originalen Rechercheabnahme von #74 unter unveränderten Home-/Geräte-Holds.
+**Aktuell, 30. Oktober: 43 ursprüngliche Issues erledigt, 1 Snoopy-Ausschluss, 38 offen.** [Vollständiger GitHub-Abgleich nach #74](verification/backlog-reconciliation-after-speech-20261030.json). #24/#25 sind im ursprünglichen synthetischen Vertrag abgeschlossen, #74 als Fähigkeitsrecherche mit konkreten Blockaden; keine pauschale Original-/Home-/Geräteabnahme. Die Speicherpause ist nach der freigegebenen exakten Cachebereinigung beendet. [Build-Speichergrenze](build-storage.md).
 
 - [Zwei native Fehlermeldungen im App-Umschalter geschützt](app-switcher-alerts.md): vier Vorherfehler und vier verworfene Rückkehrfehler erhalten; zwölf aktuelle UI-Ausführungen/fünf SDKs bestanden. Meldung, Picker und Read-only-Speicher bleiben erhalten. Weitere OS-Composer, physische/Präsenz-/Mediengrenzen bei #67 offen.
 
@@ -19,6 +19,8 @@
 29. Oktober 2026. **41 von 82 ursprünglichen Paketen geschlossen, 41 offen: 40 im dokumentierten Umfang abgeschlossen und 1 ausdrücklicher Scope-Ausschluss (#14/Snoopy, `not_planned`, nicht implementiert).** [Eigentümerentscheidung](scope-exclusions.md). Der vollständige [40/42-Abgleich](verification/backlog-reconciliation-20261029.json) bleibt als früherer Prüfstand erhalten; die zusätzliche #14-Schließung ist [exakt zurückgelesen](verification/snoopy-scope-exclusion-20261029.json). Das zusätzliche Community-Issue #83 ist geschlossen und wird nicht in den ursprünglichen Nenner eingerechnet.
 
 ## Aktueller Arbeitsblock
+
+- **Fortsetzung nach Speicherpause:** [bestehenden SDK-Builder abgesichert](build-storage.md), 15 Tooling-Tests und echte nichtausführende Platz-Abbruchprobe; kein weiterer großer Build und keine automatische Löschung. Flow-Originalformen bleiben quellbegrenzt. Anschließend isolierte Prüfung auf Verlust fremder Mock-Gerätezustände.
 
 - [Eigene TV-/Vision-Quelluntertitel nativ geprüft](tv-vision-source-captions.md): zwei getrennte akzeptierte Vollfälle, sechs erhaltene Fehlversuche; TV-Cue durch Remote erreichbar und Rückweg zur Feedliste korrigiert. Fünf finale SDKs/73Outputs/242Inputs; Core unverändert. #74 weiter offen für übrige OS-Pfade und sichtbare Vision-Warmzielwahl.
 
@@ -138,7 +140,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs oder einen ausdr
 | [#21](https://github.com/Olli0103/homeview/issues/21) | Wetterdaten, Wolken, Regen und Frost vollständig abnehmen | Offen; zusätzliche Software-, Originalzustands-/Geometrie-/Bewegungsabnahme erforderlich. |
 | [#22](https://github.com/Olli0103/homeview/issues/22) | Monatskalender-Face vollständig abnehmen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#23](https://github.com/Olli0103/homeview/issues/23) | HomeKit-Einrichtung und Adapter nach ausdrücklichem Fortsetzen implementieren | Offen; reale Home-Einrichtung/-Geräte im laufenden Auftrag nicht freigegeben. Übrige Grenzen bleiben erhalten. |
-| [#24](https://github.com/Olli0103/homeview/issues/24) | Thermostat, Licht, Lüfter und Beschattung echt anbinden | Offen; reale Home-Einrichtung/-Geräte im laufenden Auftrag nicht freigegeben. Übrige Grenzen bleiben erhalten. |
+| [#24](https://github.com/Olli0103/homeview/issues/24) | Thermostat, Licht, Lüfter und Beschattung echt anbinden | Geschlossen im ursprünglichen synthetischen Gerätevertrag; echte Home-/Hardware-/Originalabnahme bleibt separat offen. |
 | [#25](https://github.com/Olli0103/homeview/issues/25) | Türschloss mit echter Autorisierung und Zustandsbestätigung absichern | Geschlossen im ursprünglichen Mock-Sicherheitsvertrag: Gerätefreigabe, separate Einmalbestätigung, Widerruf, Fehlerzustände und bestätigter Read-back. Reales Home und Haushaltsbindung bleiben #23/#66; F028partial/parity=false. |
 | [#26](https://github.com/Olli0103/homeview/issues/26) | Szenen und Routinen mit nachgewiesenem Umfang bedienen | Offen; reale Home-Einrichtung/-Geräte im laufenden Auftrag nicht freigegeben. Übrige Grenzen bleiben erhalten. |
 | [#27](https://github.com/Olli0103/homeview/issues/27) | Echte Kamera-Streams bis neun Feeds und Detailaktionen anbinden | Offen; reale Home-Einrichtung/-Geräte im laufenden Auftrag nicht freigegeben. Übrige Grenzen bleiben erhalten. |
@@ -188,7 +190,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs oder einen ausdr
 | [#71](https://github.com/Olli0103/homeview/issues/71) | Ersteinrichtung, Capability-Erklärung und verbundene Angebote ausarbeiten | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#72](https://github.com/Olli0103/homeview/issues/72) | Unzureichenden Stromadapter auf unterstützter Hardware erkennen oder ausweisen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#73](https://github.com/Olli0103/homeview/issues/73) | Accessibility über alle zentralen Flows abnehmen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
-| [#74](https://github.com/Olli0103/homeview/issues/74) | Live Speech, Captions, RTT und Shortcuts pro Plattform klären | Offen. Eigene Untertitel und tatsächliche Kurzbefehle-Kalt-/Warmaufrufe auf iPad/iPhone belegt; übrige OS-Hilfsmittel, RTT, Mac-/Vision-Laufzeit und physische Abnahmen offen. |
+| [#74](https://github.com/Olli0103/homeview/issues/74) | Live Speech, Captions, RTT und Shortcuts pro Plattform klären | Geschlossen als ursprüngliche Fähigkeitsrecherche: benutzbare Teilpfade oder konkrete Blockaden je Plattform/Hilfsmittel. Keine funktionale Vollabnahme von F104/F105. |
 | [#75](https://github.com/Olli0103/homeview/issues/75) | On-device-Spracherkennung auf echter Hardware abnehmen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
 | [#76](https://github.com/Olli0103/homeview/issues/76) | Finalen öffentlichen Stand mit vollständiger iPad-/iPhone-Regression einfrieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#77](https://github.com/Olli0103/homeview/issues/77) | Physisches iPad signieren, installieren und dauerhaft betreiben | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
