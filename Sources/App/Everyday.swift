@@ -790,7 +790,7 @@ struct WorldClockView: View {
                 HStack(spacing: 8) {
                   VStack(alignment: .leading, spacing: 2) {
                     Text(city.name)
-                    Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.gray)
+                    Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.black.opacity(0.65))
                   }
                   Spacer()
                   Image(systemName: "plus.circle")
@@ -875,7 +875,7 @@ struct WorldClockView: View {
   }
   private var worldPolicy:some View {
     Text("Tap a city for day and night. Sun position is an offline estimate.")
-      .font(.system(size:policySize)).foregroundStyle(.gray)
+      .font(.system(size:policySize)).foregroundStyle(.black.opacity(0.65))
       .multilineTextAlignment(.center).padding(.horizontal,30).padding(.bottom,14)
   }
 }
@@ -907,7 +907,7 @@ struct WorldClockDetail: View {
         VStack(alignment:.leading,spacing:8) {
           HStack {Spacer();done}
           Text(city.name).font(.system(size:citySize,weight:.medium))
-          Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.gray)
+          Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.black.opacity(0.65))
         }.frame(maxWidth:.infinity,alignment:.leading)
         ScrollView {
           VStack(spacing:18) {detailReading(reading)}.frame(maxWidth:.infinity)
@@ -916,7 +916,7 @@ struct WorldClockDetail: View {
         HStack {
           VStack(alignment:.leading,spacing:2) {
             Text(city.name).font(.system(size:citySize,weight:.medium))
-            Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.gray)
+            Text(city.zone).font(.system(size:zoneSize)).foregroundStyle(.black.opacity(0.65))
           }
           Spacer()
           done
@@ -985,11 +985,11 @@ struct DaylightBar: View {
         .accessibilityLabel("Day and night course")
         .accessibilityValue(status)
         .accessibilityIdentifier("world.daylight.bar")
-      Text(status).font(.system(size:statusSize)).foregroundStyle(.gray)
+      Text(status).font(.system(size:statusSize)).foregroundStyle(.black.opacity(0.65))
       Text(daylight == nil ? "Current light unknown" : (daylight! ? "Currently daylight" : "Currently night"))
         .font(.system(size:statusSize,weight:.semibold))
       Text("Offline estimate from a low-order solar model, not an ephemeris.")
-        .font(.system(size:estimateSize)).foregroundStyle(.gray)
+        .font(.system(size:estimateSize)).foregroundStyle(.black.opacity(0.65))
     }
   }
 }
