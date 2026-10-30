@@ -2,6 +2,38 @@ import XCTest
 import UIKit
 
 extension HomeViewTVUITests {
+  @MainActor func testNativeTVVoiceOverTimerRemoteRefocusPauseStartAndDelete() throws {
+    guard #available(tvOS 27.0,*) else {throw XCTSkip("Native service requires tvOS27")}
+    try withNativeTVVoiceOver(page:nil,extra:["--reference-timer"],name:"timer-refocus") {app,service,record in
+      let pause=app.buttons["timer.pause"],delete=app.buttons["timer.delete"]
+      guard nativeTVVoiceOverFocus(pause,required:"Resume timer",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select);XCTAssertEqual(pause.label,"Pause timer")
+      capture(app,"native-tv-voiceover-timer-resumed-before-refocus")
+      // Revisit the changed action through a real neighboring Remote focus.
+      // This is not an assertion of an unsolicited announcement on label change.
+      guard nativeTVVoiceOverFocus(delete,required:"Delete timer",in:app,service:service,record:record),
+        nativeTVVoiceOverFocus(pause,required:"Pause timer",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select);XCTAssertEqual(pause.label,"Resume timer")
+      guard nativeTVVoiceOverFocus(delete,required:"Delete timer",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select)
+      let start=app.buttons["timer.start"]
+      XCTAssertTrue(start.waitForExistence(timeout:5))
+      guard nativeTVVoiceOverFocus(start,required:"Start",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select)
+      XCTAssertTrue(app.staticTexts["timer.countdown"].waitForExistence(timeout:5))
+      guard nativeTVVoiceOverFocus(delete,required:"Delete timer",in:app,service:service,record:record),
+        nativeTVVoiceOverFocus(pause,required:"Pause timer",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select);XCTAssertEqual(pause.label,"Resume timer")
+      guard nativeTVVoiceOverFocus(delete,required:"Delete timer",in:app,service:service,record:record),
+        nativeTVVoiceOverFocus(pause,required:"Resume timer",in:app,service:service,record:record),
+        nativeTVVoiceOverFocus(delete,required:"Delete timer",in:app,service:service,record:record) else {return}
+      XCUIRemote.shared.press(.select);XCTAssertTrue(start.waitForExistence(timeout:5))
+      record("timer-refocus-callbacks",["returned_to_setup":start.exists,"running_timer_deleted":!pause.exists,
+        "automatic_label_change_announcement_tested":false,"native_remote_focus_revisits":true])
+      capture(app,"native-tv-voiceover-timer-refocus-deleted")
+    }
+  }
+
   @MainActor func testNativeTVVoiceOverCameraRemoteReadingAndGridAction() throws {
     guard #available(tvOS 27.0,*) else {throw XCTSkip("Native service requires tvOS27")}
     try withNativeTVVoiceOver(page:"Cameras",name:"camera") {app,service,record in

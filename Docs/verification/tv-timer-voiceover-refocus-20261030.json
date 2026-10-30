@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-30",
+  "issue": 73,
+  "base_commit": "910efde72e74cb2fef7497dcdafb3ae3081c2025",
+  "source_manifest": "6146bfdceda50b5e3ca1938ce70ca6c6d28c0a4939db441367cf6eec2c9b2420",
+  "source_inputs": 253,
+  "changed_files": [
+    "Tests/TVUITests/HomeViewTVUITests.swift"
+  ],
+  "product_changes": [],
+  "runtime": "tvOS27.0/24J360, owned Apple TV 4K 1080p simulator",
+  "current_execution": {
+    "passedTests": 1,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "runtimeWarnings": []
+  },
+  "native_review": {
+    "original_state": false,
+    "restored_original": true,
+    "independent_report_byte_exact": true,
+    "reported_focuses": [
+      {
+        "elapsed": 15.681528291665018,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.pause",
+        "label": "Resume timer",
+        "native_service_enabled": true,
+        "required": "Resume timer",
+        "required_speech_observed": true,
+        "utterance": "Resume timer Button"
+      },
+      {
+        "elapsed": 18.85562616668176,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.delete",
+        "label": "Delete timer",
+        "native_service_enabled": true,
+        "required": "Delete timer",
+        "required_speech_observed": true,
+        "utterance": "Delete timer Button"
+      },
+      {
+        "elapsed": 21.6698926249519,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.pause",
+        "label": "Pause timer",
+        "native_service_enabled": true,
+        "required": "Pause timer",
+        "required_speech_observed": true,
+        "utterance": "Pause timer Button"
+      },
+      {
+        "elapsed": 24.653403166681528,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.delete",
+        "label": "Delete timer",
+        "native_service_enabled": true,
+        "required": "Delete timer",
+        "required_speech_observed": true,
+        "utterance": "Delete timer Button"
+      },
+      {
+        "elapsed": 28.795988291618414,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.start",
+        "label": "Start Timer",
+        "native_service_enabled": true,
+        "required": "Start",
+        "required_speech_observed": true,
+        "utterance": "Start Timer Button"
+      },
+      {
+        "elapsed": 33.27799487498123,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.delete",
+        "label": "Delete timer",
+        "native_service_enabled": true,
+        "required": "Delete timer",
+        "required_speech_observed": true,
+        "utterance": "Delete timer Button"
+      },
+      {
+        "elapsed": 36.06269125000108,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.pause",
+        "label": "Pause timer",
+        "native_service_enabled": true,
+        "required": "Pause timer",
+        "required_speech_observed": true,
+        "utterance": "Pause timer Button"
+      },
+      {
+        "elapsed": 39.13182524999138,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.delete",
+        "label": "Delete timer",
+        "native_service_enabled": true,
+        "required": "Delete timer",
+        "required_speech_observed": true,
+        "utterance": "Delete timer Button"
+      },
+      {
+        "elapsed": 41.976749125053175,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.pause",
+        "label": "Resume timer",
+        "native_service_enabled": true,
+        "required": "Resume timer",
+        "required_speech_observed": true,
+        "utterance": "Resume timer Button"
+      },
+      {
+        "elapsed": 44.77137658337597,
+        "event": "native-remote-spoken-focus",
+        "has_focus": true,
+        "identifier": "timer.delete",
+        "label": "Delete timer",
+        "native_service_enabled": true,
+        "required": "Delete timer",
+        "required_speech_observed": true,
+        "utterance": "Delete timer Button"
+      }
+    ],
+    "actual_callback_event": {
+      "automatic_label_change_announcement_tested": false,
+      "elapsed": 46.08723275002558,
+      "event": "timer-refocus-callbacks",
+      "native_remote_focus_revisits": true,
+      "returned_to_setup": true,
+      "running_timer_deleted": true
+    },
+    "native_app_files": 12,
+    "native_app_all_exact_previous_delivery": true,
+    "compiled_inputs": 18
+  },
+  "pngs_decoded": 12,
+  "contact_sheets_reviewed": 1,
+  "one_full_native_image_reviewed": true,
+  "scope": "Actual native Remote refocus, reported labels and callbacks. Does not waive old immediate same-target speech failure or establish automatic announcement, acoustic, physical, original ordering or all-flow accessibility. Exact original false state restored; independent runner report byte-identical to attachment.",
+  "reused_not_new": "Previous TV VoiceOver five SDK/77 output and Core458 evidence; all product sources unchanged. Current 12 App files byte-exact to that accepted native TV application. Only current UI-test method was built/executed.",
+  "artifact_seal": {
+    "sha256": "0e67f89f6abaa880b292d8f788994e522c7be7fdab2d0fa6d6105ec41b702898",
+    "count": 145,
+    "bytes": 4685792
+  }
+}
