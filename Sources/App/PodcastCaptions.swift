@@ -30,11 +30,17 @@ struct PodcastCaptionChoice:Identifiable,Equatable {
 struct PodcastCaptionControls:View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var scale
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.body) private var menuSize:CGFloat=17
+  @ScaledMetric(relativeTo:.footnote) private var statusSize:CGFloat=16
   let loaded:Bool
   private var side:CGFloat {ceil(44/max(0.01,scale))}
   var body:some View {
     VStack(spacing:10) {
-      HStack(alignment:.center,spacing:12) {
+      let layout=textSize.isAccessibilitySize
+        ? AnyLayout(VStackLayout(alignment:.leading,spacing:12))
+        : AnyLayout(HStackLayout(alignment:.center,spacing:12))
+      layout {
         Menu {
           Button("Automatic") {model.podcastPlayer.selectCaption("automatic")}
             .accessibilityIdentifier("podcast.captions.automatic")
@@ -46,14 +52,14 @@ struct PodcastCaptionControls:View {
           }
         } label: {
           Label("Captions",systemImage:"captions.bubble")
-            .font(.system(size:max(17,ceil(17/max(0.01,scale)))))
+            .font(.system(size:max(menuSize,ceil(menuSize/max(0.01,scale)))))
             .frame(minWidth:side,minHeight:side).contentShape(Rectangle())
         }.disabled(!loaded || model.podcastPlayer.captionChoices.isEmpty)
           .accessibilityLabel("Podcast captions")
           .accessibilityValue(loaded ? model.podcastPlayer.captionSelection:"Unavailable")
           .accessibilityIdentifier("podcast.captions")
         Text(loaded ? model.podcastPlayer.captionStatus:"Captions are checked when this episode is played.")
-          .font(.system(size:16)).foregroundStyle(.secondary)
+          .font(.system(size:statusSize)).foregroundStyle(.secondary)
           .accessibilityIdentifier("podcast.captions.status")
       }
       if loaded,!model.podcastPlayer.captionText.isEmpty {

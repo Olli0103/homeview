@@ -261,6 +261,99 @@ extension HomeViewUITests {
 }
 
 extension HomeViewUITests {
+  private func podcastTypeObserve(_ state:String,_ element:XCUIElement,control:Bool=false,excerpt:Bool=false) {
+    revealRecipeTypeElement(element,margin:0,horizontalMargin:0)
+    RunLoop.current.run(until:Date().addingTimeInterval(0.5))
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
+    func row(_ e:XCUIElement)->[String:Any] {
+      let clip=recipeTypeScrollContains(e,scroll) ? scroll.frame.intersection(viewport):viewport
+      return ["id":e.identifier,"label":e.label,"frame":box(e.frame),"clip":box(clip),
+        "fully_in_clip":axContains(clip,e.frame),"visible_intersection":box(e.frame.intersection(clip))]
+    }
+    let clip=recipeTypeScrollContains(element,scroll) ? scroll.frame.intersection(viewport):viewport
+    if excerpt {XCTAssertGreaterThanOrEqual(element.frame.intersection(clip).height,min(44,element.frame.height))}
+    else {XCTAssertTrue(axContains(clip,element.frame))}
+    var report:[String:Any]=["state":state,"control_envelope_not_font_metric":control,
+      "reading_scope":excerpt ? "declared paragraph excerpt, not whole reading":"whole short text or control",
+      "target":row(element)]
+    if control {
+      let text=element.staticTexts.firstMatch;report["text_child_exists"]=text.exists
+      if text.exists {report["text_child"]=row(text)}
+    }
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="photo-type-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
+    viewportShot("photo-type-"+state)
+  }
+  private func pausedPodcastTypeLaunch() {
+    launch(["--page","Podcasts","--podcast-fixture","--mute-podcast-fixture","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play Demo Episode")
+  }
+  private func podcastTypeActivate(_ element:XCUIElement) {
+    revealRecipeTypeElement(element,margin:0,horizontalMargin:0)
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    let clip=recipeTypeScrollContains(element,scroll) ? scroll.frame.intersection(viewport):viewport
+    XCTAssertTrue(axContains(clip,element.frame));XCTAssertTrue(element.isHittable);element.tap()
+  }
+  func testPodcastDemoAndEmptyRSSSystemTextSizeInventoryWithoutPlayback() {
+    continueAfterFailure=false;pausedPodcastTypeLaunch()
+    podcastTypeObserve("podcast-heading",app.staticTexts["Podcasts"])
+    podcastTypeObserve("podcast-demo-title",app.staticTexts["A Quiet Morning"])
+    podcastTypeObserve("podcast-demo-source",app.staticTexts["Demo episode · Local audio"])
+    podcastTypeObserve("podcast-demo-play",app.buttons["podcast.play"],control:true)
+    podcastTypeObserve("podcast-navigation",app.buttons["podcast.feeds"],control:true)
+    podcastTypeActivate(app.buttons["podcast.feeds"])
+    podcastTypeObserve("podcast-feed-heading",app.staticTexts["Public RSS feeds"])
+    podcastTypeObserve("podcast-feed-policy",app.staticTexts.matching(NSPredicate(format:"label == %@",
+      "Add a feed URL yourself. No private subscriptions are imported. Selecting an episode never starts playback automatically.")).firstMatch,excerpt:true)
+    podcastTypeObserve("podcast-feed-address",app.textFields["podcast.feed.url"],control:true)
+    podcastTypeObserve("podcast-feed-load",app.buttons["podcast.feed.load"],control:true)
+    podcastTypeObserve("podcast-empty-feed-status",app.staticTexts["podcast.feed.status"])
+    podcastTypeActivate(app.buttons["podcast.feeds"])
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play Demo Episode")
+    tap("close");XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    podcastTypeObserve("positive-settings-heading",app.staticTexts["Settings"])
+  }
+  func testPodcastOwnedRSSSystemTextSizeInventoryNeverAutoplays() {
+    continueAfterFailure=false;pausedPodcastTypeLaunch()
+    podcastTypeActivate(app.buttons["podcast.feeds"])
+    podcastTypeActivate(app.buttons["podcast.feed.fixture"])
+    let first=app.buttons["podcast.episode.0"]
+    XCTAssertTrue(first.waitForExistence(timeout:8))
+    podcastTypeObserve("podcast-loaded-feed-status",app.staticTexts["podcast.feed.status"])
+    podcastTypeObserve("podcast-owned-feed-title",app.staticTexts["HomeView Test Feed"])
+    podcastTypeObserve("podcast-owned-feed-host",app.staticTexts["fixtures.invalid"])
+    podcastTypeObserve("podcast-choice-title",app.staticTexts["Own Audio Episode One"])
+    podcastTypeObserve("podcast-choice-duration",app.staticTexts.matching(NSPredicate(format:"label == %@","1:00")).firstMatch)
+    podcastTypeActivate(first)
+    XCTAssertEqual(app.staticTexts["podcast.title"].label,"Own Audio Episode One")
+    XCTAssertTrue(app.staticTexts["podcast.status"].label.contains("Paused"))
+    podcastTypeObserve("podcast-episode-title",app.staticTexts["podcast.title"])
+    podcastTypeObserve("podcast-episode-source",app.staticTexts["HomeView Test Feed"])
+    podcastTypeObserve("podcast-episode-disclosure",app.staticTexts["Public RSS · Not Apple Podcasts account sync"])
+    podcastTypeObserve("podcast-episode-position",app.staticTexts["podcast.position"])
+    podcastTypeObserve("podcast-episode-play",app.buttons["podcast.play"],control:true)
+    podcastTypeObserve("podcast-episode-status",app.staticTexts["podcast.status"])
+    podcastTypeObserve("podcast-captions-policy",app.staticTexts["podcast.captions.status"])
+    podcastTypeObserve("podcast-captions-menu",app.buttons["podcast.captions"],control:true)
+    XCTAssertFalse(app.buttons["podcast.captions"].isEnabled)
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play")
+    XCTAssertTrue(app.staticTexts["podcast.status"].label.contains("Paused"))
+    podcastTypeActivate(app.buttons["podcast.demo"])
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play Demo Episode")
+    podcastTypeActivate(app.buttons["podcast.feeds"])
+    let remove=app.buttons["podcast.feed.remove"]
+    podcastTypeObserve("podcast-feed-remove",remove,control:true)
+    podcastTypeActivate(remove)
+    XCTAssertFalse(first.exists);XCTAssertTrue(app.staticTexts["podcast.feed.status"].label.contains("removed"))
+    podcastTypeActivate(app.buttons["podcast.feeds"])
+    XCTAssertEqual(app.buttons["podcast.play"].label,"Play Demo Episode")
+    tap("close");XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+  }
+}
+
+extension HomeViewUITests {
   private func revealPhotoTypeElement(_ element:XCUIElement) {
     XCTAssertTrue(element.waitForExistence(timeout:5))
     let scroll=app.scrollViews.firstMatch,viewport=app.otherElements["reference.viewport"].frame

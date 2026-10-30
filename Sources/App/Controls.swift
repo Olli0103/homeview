@@ -517,12 +517,28 @@ struct SafariLanding: View {
 struct PodcastsView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.scenePhase) private var phase
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.body) private var navigationSize:CGFloat=19
+  @ScaledMetric(relativeTo:.title) private var episodeTitleSize:CGFloat=30
+  @ScaledMetric(relativeTo:.body) private var sourceSize:CGFloat=18
+  @ScaledMetric(relativeTo:.footnote) private var disclosureSize:CGFloat=15
+  @ScaledMetric(relativeTo:.body) private var positionSize:CGFloat=23
+  @ScaledMetric(relativeTo:.body) private var transportSize:CGFloat=28
+  @ScaledMetric(relativeTo:.body) private var policySize:CGFloat=17
+  @ScaledMetric(relativeTo:.largeTitle) private var demoTitleSize:CGFloat=34
+  @ScaledMetric(relativeTo:.body) private var actionSize:CGFloat=21
+  @ScaledMetric(relativeTo:.headline) private var feedHeadingSize:CGFloat=27
+  @ScaledMetric(relativeTo:.footnote) private var feedStatusSize:CGFloat=16
+  @ScaledMetric(relativeTo:.headline) private var feedTitleSize:CGFloat=22
+  @ScaledMetric(relativeTo:.footnote) private var hostSize:CGFloat=14
   @State private var feeds = false
   @State private var address = ""
   @FocusState private var typing: Bool
   var body: some View {
     VStack(spacing:12) {
-      AppHeader(title:"Podcasts")
+      AppHeader(title:"Podcasts",titleFontSize:headerSize,clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
       HStack {
         Button(feeds ? "Player":"RSS feeds") { feeds.toggle() }
           .accessibilityIdentifier("podcast.feeds")
@@ -530,17 +546,17 @@ struct PodcastsView: View {
         if model.data.podcasts.selectedEpisode != nil {
           Button("Demo") { model.usePodcastDemo() }.accessibilityIdentifier("podcast.demo")
         }
-      }.font(.system(size:19)).padding(.horizontal,30)
+      }.font(.system(size:navigationSize)).padding(.horizontal,30)
       ScrollView {
         VStack(spacing:20) {
           if feeds { feedControls }
           else if let episode=model.data.podcasts.selectedEpisode {
             Image(systemName:"mic.circle.fill").font(.system(size:72)).foregroundStyle(.purple)
-            Text(episode.title).font(.system(size:30,weight:.semibold)).multilineTextAlignment(.center)
+            Text(episode.title).font(.system(size:episodeTitleSize,weight:.semibold)).multilineTextAlignment(.center)
               .accessibilityIdentifier("podcast.title")
-            Text(model.currentPodcastSource).font(.system(size:18)).foregroundStyle(.secondary)
-            Text("Public RSS · Not Apple Podcasts account sync").font(.system(size:15)).foregroundStyle(.secondary)
-            Text(positionLabel).font(.system(size:23,design:.monospaced))
+            Text(model.currentPodcastSource).font(.system(size:sourceSize)).foregroundStyle(.secondary)
+            Text("Public RSS · Not Apple Podcasts account sync").font(.system(size:disclosureSize)).foregroundStyle(.secondary)
+            Text(positionLabel).font(.system(size:positionSize,design:.monospaced))
               .accessibilityIdentifier("podcast.position")
             HStack(spacing:24) {
               Button { model.seekPodcast(by:-15) } label: { Image(systemName:"gobackward.15") }
@@ -550,16 +566,16 @@ struct PodcastsView: View {
               }.accessibilityIdentifier("podcast.play")
               Button { model.seekPodcast(by:15) } label: { Image(systemName:"goforward.15") }
                 .accessibilityLabel("Forward 15 seconds").accessibilityIdentifier("podcast.forward")
-            }.font(.system(size:28)).padding(.vertical,12)
+            }.font(.system(size:transportSize)).padding(.vertical,12)
             Text(model.podcastPlayer.episodeID==episode.id ? model.podcastPlayer.status:"Paused · Saved position")
-              .font(.system(size:17)).foregroundStyle(.secondary).accessibilityIdentifier("podcast.status")
+              .font(.system(size:policySize)).foregroundStyle(.secondary).accessibilityIdentifier("podcast.status")
             PodcastCaptionControls(loaded:model.podcastPlayer.episodeID==episode.id)
           } else {
             Image(systemName:"mic.circle.fill").font(.system(size:100)).foregroundStyle(.purple)
-            Text("A Quiet Morning").font(.system(size:34,weight:.semibold))
-            Text("Demo episode · Local audio").font(.system(size:21)).foregroundStyle(.secondary)
+            Text("A Quiet Morning").font(.system(size:demoTitleSize,weight:.semibold))
+            Text("Demo episode · Local audio").font(.system(size:actionSize)).foregroundStyle(.secondary)
             Pill(title:model.podcastPlaying ? "Pause":"Play Demo Episode",
-              symbol:model.podcastPlaying ? "pause.fill":"play.fill",tint:.purple,textColor:.white) {
+              symbol:model.podcastPlaying ? "pause.fill":"play.fill",tint:.purple,textColor:.white,fontSize:actionSize) {
               model.togglePodcast()
             }.accessibilityIdentifier("podcast.play")
           }
@@ -578,9 +594,9 @@ struct PodcastsView: View {
   }
   private var feedControls: some View {
     VStack(alignment:.leading,spacing:18) {
-      Text("Public RSS feeds").font(.system(size:27,weight:.semibold))
+      Text("Public RSS feeds").font(.system(size:feedHeadingSize,weight:.semibold))
       Text("Add a feed URL yourself. No private subscriptions are imported. Selecting an episode never starts playback automatically.")
-        .font(.system(size:17)).foregroundStyle(.secondary)
+        .font(.system(size:policySize)).foregroundStyle(.secondary)
       TextField("https://…/podcast.xml",text:$address).textFieldStyle(.plain)
         .focused($typing).onSubmit { typing=false }
         .padding(12).background(.gray.opacity(0.08),in:RoundedRectangle(cornerRadius:12))
@@ -592,24 +608,24 @@ struct PodcastsView: View {
         Button("Load own test feed") { Task { await model.importPodcastFeed(PodcastFixture.feedURL.absoluteString) } }
           .accessibilityIdentifier("podcast.feed.fixture")
       }
-      Text(model.podcastStatus).font(.system(size:16)).foregroundStyle(.secondary)
+      Text(model.podcastStatus).font(.system(size:feedStatusSize)).foregroundStyle(.secondary)
         .accessibilityIdentifier("podcast.feed.status")
       ForEach(model.data.podcasts.feeds) { feed in
         VStack(alignment:.leading,spacing:12) {
           HStack {
-            Text(feed.title).font(.system(size:22,weight:.semibold))
+            Text(feed.title).font(.system(size:feedTitleSize,weight:.semibold))
             Spacer()
             Button("Remove") { model.removePodcastFeed(feed.id) }
               .accessibilityIdentifier("podcast.feed.remove")
           }
-          Text(feed.url.host ?? "RSS").font(.system(size:14)).foregroundStyle(.secondary)
+          Text(feed.url.host ?? "RSS").font(.system(size:hostSize)).foregroundStyle(.secondary)
           ForEach(Array(feed.episodes.enumerated()),id:\.element.id) { index,episode in
             Button {
               model.selectPodcastEpisode(episode.id);feeds=false
             } label: {
               VStack(alignment:.leading,spacing:5) {
-                Text(episode.title).font(.system(size:21))
-                Text(episode.duration.map(time) ?? "Duration not supplied").font(.system(size:15)).foregroundStyle(.secondary)
+                Text(episode.title).font(.system(size:actionSize))
+                Text(episode.duration.map(time) ?? "Duration not supplied").font(.system(size:disclosureSize)).foregroundStyle(.secondary)
               }.frame(maxWidth:.infinity,alignment:.leading).padding(.vertical,8).contentShape(Rectangle())
             }.accessibilityIdentifier("podcast.episode."+String(index))
           }
