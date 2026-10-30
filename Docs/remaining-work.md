@@ -1,6 +1,6 @@
 # Verbleibende Arbeit und Grenzen
 
-**Aktuell, 30. Oktober: 44 ursprüngliche Issues erledigt, 1 Snoopy-Ausschluss, 37 offen.** [Frischer vollständiger GitHub-Abgleich nach #3](verification/backlog-reconciliation-after-assets-20261030.json). [Vollständiger GitHub-Abgleich nach #74](verification/backlog-reconciliation-after-speech-20261030.json). #24/#25 sind im ursprünglichen synthetischen Vertrag abgeschlossen, #74 als Fähigkeitsrecherche mit konkreten Blockaden; keine pauschale Original-/Home-/Geräteabnahme. Die Speicherpause ist nach der freigegebenen exakten Cachebereinigung beendet. [Build-Speichergrenze](build-storage.md).
+**Aktuell, 30. Oktober: 45 ursprüngliche Issues erledigt, 1 Snoopy-Ausschluss, 36 offen.** [Frischer vollständiger GitHub-Abgleich nach #66](verification/backlog-reconciliation-after-profiles-20261030.json). [Vollständiger GitHub-Abgleich nach #74](verification/backlog-reconciliation-after-speech-20261030.json). #24/#25 sind im ursprünglichen synthetischen Vertrag abgeschlossen, #74 als Fähigkeitsrecherche mit konkreten Blockaden; keine pauschale Original-/Home-/Geräteabnahme. Die Speicherpause ist nach der freigegebenen exakten Cachebereinigung beendet. [Build-Speichergrenze](build-storage.md).
 
 - [Zwei native Fehlermeldungen im App-Umschalter geschützt](app-switcher-alerts.md): vier Vorherfehler und vier verworfene Rückkehrfehler erhalten; zwölf aktuelle UI-Ausführungen/fünf SDKs bestanden. Meldung, Picker und Read-only-Speicher bleiben erhalten. Weitere OS-Composer, physische/Präsenz-/Mediengrenzen bei #67 offen.
 
@@ -20,7 +20,7 @@
 
 ## Aktueller Arbeitsblock
 
-- [#66: ursprünglicher synthetischer Mehrnutzer-/Freigabevertrag](six-profile-authentication-boundary.md):788nativeBedingungen/14aktuellemobileUI-Ausführungen bestanden,keineProduktcodeänderung/keinneuerSDK-Build. ÖffentlicheCompanion-Policybelegt,nichtaktiviert;F093/F094/F096bleibenblocked/parity=false. GitHub-Schließung nach Veröffentlichung getrennt zurücklesen.
+- [#66: ursprünglicher synthetischer Mehrnutzer-/Freigabevertrag](six-profile-authentication-boundary.md):788nativeBedingungen/14aktuellemobileUI-Ausführungen bestanden,keineProduktcodeänderung/keinneuerSDK-Build. ÖffentlicheCompanion-Policybelegt,nichtaktiviert;F093/F094/F096bleibenblocked/parity=false. GitHub-Schließung closed/completed mit vollständigem Body, Titel und unveränderten Labels exakt zurückgelesen.
 
 - [#3: explizit freigegebene Historienbereinigung veröffentlicht und ursprüngliche Ersatzasset-/Quellhygiene-Kriterien abgeglichen](asset-history-publication-20261030.md). Heutiger Produktbaum exakt identisch, 129 andere lokale Refs erhalten. Keine pauschale Original-/Gerätefreigabe; GitHub-Schließung als completed mit exaktem vollständigem Body, Titel und unveränderten Labels zurückgelesen.
 
@@ -188,7 +188,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs oder einen ausdr
 | [#63](https://github.com/Olli0103/homeview/issues/63) | Medien- und Anruf-Handoff pro Inhaltstyp abgrenzen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#64](https://github.com/Olli0103/homeview/issues/64) | Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
 | [#65](https://github.com/Olli0103/homeview/issues/65) | Control Center und Settings mit echten Zuständen abgleichen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
-| [#66](https://github.com/Olli0103/homeview/issues/66) | Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen | Offen. Echte Geräte-/Haushaltsidentitätsbindung und persönliche Freigabe nicht vollständig nachgewiesen. |
+| [#66](https://github.com/Olli0103/homeview/issues/66) | Sechs Nutzer, Gerätebindung und persönliche Freigabe sicher vervollständigen | Geschlossen im ursprünglichen synthetischen Isolations-/Freigabevertrag; F093/F094/F096 bleiben blocked/parity=false, keine echte Personen-/Partnergeräteabnahme. |
 | [#67](https://github.com/Olli0103/homeview/issues/67) | Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen | Offen. Kalender, dokumentierte Sheets/Eingaberouten, zwei generische native Fehleralerts und nativer Foto-Picker-Inhalt im Simulator geschützt; separate iPhone-Picker-Tastaturebene, weitere OS-Präsentationen, Präsenz/Medien/Unterbrechungen und physische Snapshots offen. |
 | [#68](https://github.com/Olli0103/homeview/issues/68) | Gastberechtigungen für Haus, Wetter, Timer und Musik definieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#69](https://github.com/Olli0103/homeview/issues/69) | Secure-Exclaves-Identitätsverarbeitung als Hardwaregrenze dokumentieren | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |

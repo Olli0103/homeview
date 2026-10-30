@@ -1975,8 +1975,8 @@
     "issue_url": "https://github.com/Olli0103/homeview/issues/66",
     "issue_number": 66,
     "state": "completed",
-    "github_state": "open",
-    "github_state_verified_on": "2026-10-29",
+    "github_state": "closed",
+    "github_state_verified_on": "2026-10-30",
     "completion": {
       "date": "2026-10-30",
       "evidence": [
@@ -1985,7 +1985,8 @@
         "Tests/NativeProbes/SixProfileAuthenticationBoundary.swift"
       ],
       "scope": "Original synthetic multiuser isolation and device-authentication boundary; no actual six-person recognition, partner-device or physical acceptance."
-    }
+    },
+    "github_state_reason": "completed"
   },
   {
     "key": "SYS-04",
