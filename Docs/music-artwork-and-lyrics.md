@@ -1,5 +1,7 @@
 # Artwork and lyrics: supplied content vs public API surface · #58
 
+**Historical checkpoint, 19 October.** The own bundled-video path described as missing below is now partially implemented and natively exercised: [30 October renderer, lifecycle/cache bounds, tests and remaining limits](demo-animated-artwork.md). Catalog lyric/animation access and system presentation remain unaccepted; the historical evidence and failures below are retained, not rewritten as current results.
+
 19 October 2026. Public documentation and installed SDK 27.0 checked without executing catalog, library, authorization or Now Playing APIs. The new player information sheet uses no media request. Apple Home remains disconnected.
 
 ## Capability decision

@@ -1,0 +1,2402 @@
+{
+  "date": "2026-10-30",
+  "issue": 58,
+  "code_commit": "d353bb111a2d57c18c381aa281a56007a92a5b25",
+  "scope": "Original conditional public-capability contract; own bundled content actually rendered, not full F079/original/catalog/system/hardware parity",
+  "source_manifests": {
+    "before": {
+      "file": "demo-animated-artwork-before-source-20261030.json",
+      "sha256": "e18c280b0bde7471f7455880868d3a476fbe5d8b336ed56977107ac89146a6e7"
+    },
+    "candidate": {
+      "file": "demo-animated-artwork-candidate-source-20261030.json",
+      "sha256": "e032b9cea96420dc80ba7fec96e90e9dbd4365ac73a0e37dac5e78b21bbc6704"
+    },
+    "final": {
+      "file": "demo-animated-artwork-final-source-20261030.json",
+      "sha256": "0b7d6e8da35cc1be07bfba8227ac89c23236bfd8657b123b9020ddf2428a04b7"
+    },
+    "delivery": {
+      "file": "demo-animated-artwork-delivery-source-20261030.json",
+      "sha256": "e979785e45d4a07d25dbe2ecbe59dfdd00e34797fe9bbb0c6006475d75b704a0"
+    }
+  },
+  "checkpoints": {
+    "before": {
+      "devices": {
+        "phone": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "id=3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "-parallel-testing-enabled",
+            "NO",
+            "-collect-test-diagnostics",
+            "never",
+            "-resultBundlePath",
+            "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/before/phone.xcresult",
+            "CODE_SIGNING_ALLOWED=NO",
+            "test-without-building",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedNormalReference",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedReducedReference"
+          ],
+          "started": "2026-10-30T14:49:25.506601+00:00",
+          "finished": "2026-10-30T14:50:01.085654+00:00",
+          "exit_code": 0,
+          "source_manifest": "e18c280b0bde7471f7455880868d3a476fbe5d8b336ed56977107ac89146a6e7",
+          "all_sources_compiled_inputs_unchanged": true,
+          "installed_app_before": true,
+          "installed_app_after": true,
+          "installed_runner_after": true
+        },
+        "ipad": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "id=D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "-parallel-testing-enabled",
+            "NO",
+            "-collect-test-diagnostics",
+            "never",
+            "-resultBundlePath",
+            "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/before/ipad.xcresult",
+            "CODE_SIGNING_ALLOWED=NO",
+            "test-without-building",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedNormalReference",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedReducedReference"
+          ],
+          "started": "2026-10-30T14:50:02.703399+00:00",
+          "finished": "2026-10-30T14:50:38.192517+00:00",
+          "exit_code": 0,
+          "source_manifest": "e18c280b0bde7471f7455880868d3a476fbe5d8b336ed56977107ac89146a6e7",
+          "all_sources_compiled_inputs_unchanged": true,
+          "installed_app_before": true,
+          "installed_app_after": true,
+          "installed_runner_after": true
+        }
+      },
+      "compiled_inputs": 32,
+      "compiled_manifest_sha256": "14fcf1e0b4f113ca3de6171458c881c5a9e75e71256c15ec6f70cb6af795abbd",
+      "compiled_archive_sha256": "9a59a6bb15669dec03a39ec90bbc8dad85b2fa90933f82c4ea4e86c3d80f5955"
+    },
+    "candidate": {
+      "devices": {
+        "phone": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "id=3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "-parallel-testing-enabled",
+            "NO",
+            "-collect-test-diagnostics",
+            "never",
+            "-resultBundlePath",
+            "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/candidate/phone.xcresult",
+            "CODE_SIGNING_ALLOWED=NO",
+            "test-without-building",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedNormalReference",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkActuallyMovesThenPausesAndSurvivesBackground"
+          ],
+          "started": "2026-10-30T14:58:13.826969+00:00",
+          "finished": "2026-10-30T14:59:26.162210+00:00",
+          "exit_code": 0,
+          "source_manifest": "e032b9cea96420dc80ba7fec96e90e9dbd4365ac73a0e37dac5e78b21bbc6704",
+          "all_sources_compiled_inputs_unchanged": true,
+          "installed_app_before": true,
+          "installed_app_after": true,
+          "installed_runner_after": true
+        },
+        "ipad": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "id=D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "-parallel-testing-enabled",
+            "NO",
+            "-collect-test-diagnostics",
+            "never",
+            "-resultBundlePath",
+            "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/candidate/ipad.xcresult",
+            "CODE_SIGNING_ALLOWED=NO",
+            "test-without-building",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedNormalReference",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkActuallyMovesThenPausesAndSurvivesBackground"
+          ],
+          "started": "2026-10-30T14:59:27.588177+00:00",
+          "finished": "2026-10-30T15:00:27.042107+00:00",
+          "exit_code": 0,
+          "source_manifest": "e032b9cea96420dc80ba7fec96e90e9dbd4365ac73a0e37dac5e78b21bbc6704",
+          "all_sources_compiled_inputs_unchanged": true,
+          "installed_app_before": true,
+          "installed_app_after": true,
+          "installed_runner_after": true
+        }
+      },
+      "compiled_inputs": 30,
+      "compiled_manifest_sha256": "9098963980f0221b495888cdef4208678ea50aa4f38c452993420517a175db1e",
+      "compiled_archive_sha256": "33a891a98053fbb63c30cae68ee38dd7425e1b25da4b2c4caae5ef71fcf999f2"
+    },
+    "final": {
+      "devices": {
+        "phone": {
+          "passed": 10,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "id=3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "-parallel-testing-enabled",
+            "NO",
+            "-collect-test-diagnostics",
+            "never",
+            "-resultBundlePath",
+            "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/final/phone.xcresult",
+            "CODE_SIGNING_ALLOWED=NO",
+            "test-without-building",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedNormalReference",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedReducedReference",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkActuallyMovesThenPausesAndSurvivesBackground",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkReducedMotionKeepsPlayingCoverStatic",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkAutoplayRestrictionKeepsPlayingCoverStatic",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkLowPowerRestrictionKeepsPlayingCoverStatic",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkThermalRestrictionKeepsPlayingCoverStatic",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkInformationIsExplicitAndNeverAutoplays",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testConnectedArtworkInformationKeepsTheExplicitQueuePlaying",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testArtworkInformationWithReducedMotionNeverAddsAnimationOrLyrics"
+          ],
+          "started": "2026-10-30T15:03:30.747065+00:00",
+          "finished": "2026-10-30T15:08:30.464225+00:00",
+          "exit_code": 0,
+          "source_manifest": "0b7d6e8da35cc1be07bfba8227ac89c23236bfd8657b123b9020ddf2428a04b7",
+          "all_sources_compiled_inputs_unchanged": true,
+          "installed_app_before": true,
+          "installed_app_after": true,
+          "installed_runner_after": true
+        },
+        "ipad": {
+          "passed": 10,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "id=D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "-parallel-testing-enabled",
+            "NO",
+            "-collect-test-diagnostics",
+            "never",
+            "-resultBundlePath",
+            "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/final/ipad.xcresult",
+            "CODE_SIGNING_ALLOWED=NO",
+            "test-without-building",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedNormalReference",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkPausedReducedReference",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkActuallyMovesThenPausesAndSurvivesBackground",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkReducedMotionKeepsPlayingCoverStatic",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkAutoplayRestrictionKeepsPlayingCoverStatic",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkLowPowerRestrictionKeepsPlayingCoverStatic",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkThermalRestrictionKeepsPlayingCoverStatic",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkInformationIsExplicitAndNeverAutoplays",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testConnectedArtworkInformationKeepsTheExplicitQueuePlaying",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testArtworkInformationWithReducedMotionNeverAddsAnimationOrLyrics"
+          ],
+          "started": "2026-10-30T15:08:32.175601+00:00",
+          "finished": "2026-10-30T15:13:35.246930+00:00",
+          "exit_code": 0,
+          "source_manifest": "0b7d6e8da35cc1be07bfba8227ac89c23236bfd8657b123b9020ddf2428a04b7",
+          "all_sources_compiled_inputs_unchanged": true,
+          "installed_app_before": true,
+          "installed_app_after": true,
+          "installed_runner_after": true
+        }
+      },
+      "compiled_inputs": 30,
+      "compiled_manifest_sha256": "013a0acc65e0b31eb8a336c41932e61276a7a250c71b594f3bd2b8b06af43c96",
+      "compiled_archive_sha256": "0bedf8784d1e207309a676d0b8ea058274c64f4d101fad0c7a838dfe56033328"
+    },
+    "delivery": {
+      "devices": {
+        "phone": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "id=3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "-parallel-testing-enabled",
+            "NO",
+            "-collect-test-diagnostics",
+            "never",
+            "-resultBundlePath",
+            "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/delivery/phone.xcresult",
+            "CODE_SIGNING_ALLOWED=NO",
+            "test-without-building",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkActuallyMovesThenPausesAndSurvivesBackground"
+          ],
+          "started": "2026-10-30T15:21:37.663370+00:00",
+          "finished": "2026-10-30T15:22:28.420641+00:00",
+          "exit_code": 0,
+          "source_manifest": "e979785e45d4a07d25dbe2ecbe59dfdd00e34797fe9bbb0c6006475d75b704a0",
+          "all_sources_compiled_inputs_unchanged": true,
+          "installed_app_before": true,
+          "installed_app_after": true,
+          "installed_runner_after": true
+        },
+        "ipad": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "id=D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "-parallel-testing-enabled",
+            "NO",
+            "-collect-test-diagnostics",
+            "never",
+            "-resultBundlePath",
+            "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/delivery/ipad.xcresult",
+            "CODE_SIGNING_ALLOWED=NO",
+            "test-without-building",
+            "-only-testing:HomeViewUITests/HomeViewUITests/testDemoArtworkActuallyMovesThenPausesAndSurvivesBackground"
+          ],
+          "started": "2026-10-30T15:22:30.029095+00:00",
+          "finished": "2026-10-30T15:23:22.299594+00:00",
+          "exit_code": 0,
+          "source_manifest": "e979785e45d4a07d25dbe2ecbe59dfdd00e34797fe9bbb0c6006475d75b704a0",
+          "all_sources_compiled_inputs_unchanged": true,
+          "installed_app_before": true,
+          "installed_app_after": true,
+          "installed_runner_after": true
+        }
+      },
+      "compiled_inputs": 33,
+      "compiled_manifest_sha256": "19210ab20af837d885c39f29e99cde027be67ff6194d646297dd4ff880e63513",
+      "compiled_archive_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+    }
+  },
+  "core": {
+    "command": [
+      "swift",
+      "test",
+      "--disable-automatic-resolution"
+    ],
+    "exit_code": 0,
+    "passed": 458,
+    "failed": 0,
+    "source_sha256": "e032b9cea96420dc80ba7fec96e90e9dbd4365ac73a0e37dac5e78b21bbc6704",
+    "core_package_test_inputs_unchanged_to_final": true,
+    "files": [
+      {
+        "path": "Contents/Info.plist",
+        "bytes": 1214,
+        "sha256": "2a7fe508540bd68c6eecb054d00b2fb6ecfdca1beb0d8578c63354e3084fead8"
+      },
+      {
+        "path": "Contents/MacOS/HomeViewCoreTests",
+        "bytes": 15432048,
+        "sha256": "c9886d8e6d6b6339debf57ba300dda2bb23dd5df1b0cb23e20e52421556fe984"
+      },
+      {
+        "path": "Contents/_CodeSignature/CodeResources",
+        "bytes": 2200,
+        "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b"
+      }
+    ],
+    "archive_sha256": "08810dbb4e1051c99172cf0ff17c83240dfb329062f8d54e632e124c1a9f0a71",
+    "log_sha256": "c70424cf34a767f87cde565f6e69699b3deeadaef3a3a272e717516f79157cf2"
+  },
+  "native_decoder": {
+    "account_or_library_access": false,
+    "audio_tracks": 0,
+    "bytes": 93364,
+    "distinct_decoded_frames": 4,
+    "duration_seconds": 4,
+    "file_sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6",
+    "fps": 12,
+    "frames": [
+      {
+        "actual_seconds": 0,
+        "decoded_RGBA_sha256": "533a8366813a4a076b0d8b42c481a2350ff3cec3bc4c3b17d13f28e8cf5c35a6",
+        "height": 512,
+        "nonblack_RGB_fraction": 1,
+        "requested_seconds": 0,
+        "width": 512
+      },
+      {
+        "actual_seconds": 1,
+        "decoded_RGBA_sha256": "2918fb91539b2da0e82c2908e1ead2abd3eaf0d86155286856cbe1e266cb9d25",
+        "height": 512,
+        "nonblack_RGB_fraction": 1,
+        "requested_seconds": 1,
+        "width": 512
+      },
+      {
+        "actual_seconds": 2,
+        "decoded_RGBA_sha256": "f5b4f4260fcfc6d2624d90e681429f8f18c1b0e2bd13aa0f4298f249892fd2d0",
+        "height": 512,
+        "nonblack_RGB_fraction": 1,
+        "requested_seconds": 2,
+        "width": 512
+      },
+      {
+        "actual_seconds": 3,
+        "decoded_RGBA_sha256": "3402161168e49baf6d2d7ae961ef0de6aa239f416f83ea20151a6f8c7303d3fd",
+        "height": 512,
+        "nonblack_RGB_fraction": 1,
+        "requested_seconds": 3,
+        "width": 512
+      }
+    ],
+    "local_file": true,
+    "video_tracks": 1
+  },
+  "matrix_pixel_controls": {
+    "phone": {
+      "device": "phone",
+      "pairs": [
+        {
+          "first": "moving-a",
+          "second": "moving-b",
+          "expected_moving": true,
+          "changed_RGBA_channels": 123901,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "bc1e929286bf220db663055f0fd851348742a482073b2465e1fbd5c48e9f3941",
+          "second_png_sha256": "5212f26c034ca16f0c33a9448d30034e53148600b06111231e7b4ee84642a364"
+        },
+        {
+          "first": "moving-b",
+          "second": "moving-c",
+          "expected_moving": true,
+          "changed_RGBA_channels": 147751,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "5212f26c034ca16f0c33a9448d30034e53148600b06111231e7b4ee84642a364",
+          "second_png_sha256": "bd21554b167c5a049153710084a2636c8f6494cca816835261a67677669fac8d"
+        },
+        {
+          "first": "explicit-pause-a",
+          "second": "explicit-pause-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d",
+          "second_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d"
+        },
+        {
+          "first": "background-return-a",
+          "second": "background-return-b",
+          "expected_moving": true,
+          "changed_RGBA_channels": 123800,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1b1b343b9a97589672db679c0f3e5b141f49d005907048d2e570675a38e9aba6",
+          "second_png_sha256": "e8324aa458817c7ca3587376b83792f87c612b7f85364b62ab198de32bd713ef"
+        },
+        {
+          "first": "paused-a",
+          "second": "paused-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d",
+          "second_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d"
+        },
+        {
+          "first": "reduced-a",
+          "second": "reduced-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d",
+          "second_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d"
+        },
+        {
+          "first": "autoplay-off-a",
+          "second": "autoplay-off-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d",
+          "second_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d"
+        },
+        {
+          "first": "low-power-a",
+          "second": "low-power-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d",
+          "second_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d"
+        },
+        {
+          "first": "thermal-a",
+          "second": "thermal-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d",
+          "second_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d"
+        }
+      ],
+      "background_audio_observed": {
+        "demo_audio_still_playing_after_return": true,
+        "scope": "Observe the existing app audio lifecycle separately; actual cover must follow that state. No new background audio promise."
+      },
+      "all_original_native_ROI_contracts_unchanged": true,
+      "RGB_and_alpha_channels_compared": true
+    },
+    "ipad": {
+      "device": "ipad",
+      "pairs": [
+        {
+          "first": "moving-a",
+          "second": "moving-b",
+          "expected_moving": true,
+          "changed_RGBA_channels": 247448,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "7a6e76d3b839f4649bedc4070c375a358f038741ab870f0d3f58fe2909da10ae",
+          "second_png_sha256": "77a64e0fed795bdd7c9361da4d70d73e7f43249db2cf674e317b2a976f521bb7"
+        },
+        {
+          "first": "moving-b",
+          "second": "moving-c",
+          "expected_moving": true,
+          "changed_RGBA_channels": 289637,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "77a64e0fed795bdd7c9361da4d70d73e7f43249db2cf674e317b2a976f521bb7",
+          "second_png_sha256": "bf204ad3df296183bf311a4f47e66fa058a216e0e8b922b7ff044fab4d46a3a0"
+        },
+        {
+          "first": "explicit-pause-a",
+          "second": "explicit-pause-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4",
+          "second_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4"
+        },
+        {
+          "first": "background-return-a",
+          "second": "background-return-b",
+          "expected_moving": true,
+          "changed_RGBA_channels": 241372,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b59caf4f29ced10d095d4b6cff53b2df0f48754056cdf51c913345b1ba07fc1c",
+          "second_png_sha256": "dbaedddd5597b22e214c82edaae6f912cb86a6eeed41453a6cf0b5248a63b08b"
+        },
+        {
+          "first": "paused-a",
+          "second": "paused-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4",
+          "second_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4"
+        },
+        {
+          "first": "reduced-a",
+          "second": "reduced-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4",
+          "second_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4"
+        },
+        {
+          "first": "autoplay-off-a",
+          "second": "autoplay-off-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4",
+          "second_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4"
+        },
+        {
+          "first": "low-power-a",
+          "second": "low-power-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4",
+          "second_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4"
+        },
+        {
+          "first": "thermal-a",
+          "second": "thermal-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4",
+          "second_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4"
+        }
+      ],
+      "background_audio_observed": {
+        "demo_audio_still_playing_after_return": true,
+        "scope": "Observe the existing app audio lifecycle separately; actual cover must follow that state. No new background audio promise."
+      },
+      "all_original_native_ROI_contracts_unchanged": true,
+      "RGB_and_alpha_channels_compared": true
+    }
+  },
+  "post_vision_guard_pixel_controls": {
+    "phone": {
+      "device": "phone",
+      "pairs": [
+        {
+          "first": "moving-a",
+          "second": "moving-b",
+          "expected_moving": true,
+          "changed_RGBA_channels": 122458,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "bc1e929286bf220db663055f0fd851348742a482073b2465e1fbd5c48e9f3941",
+          "second_png_sha256": "7ae037f67f5ca1f3d9651d5c0a9647056cfc7116651d5a38ca8c46614ef4ef11"
+        },
+        {
+          "first": "moving-b",
+          "second": "moving-c",
+          "expected_moving": true,
+          "changed_RGBA_channels": 146547,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "7ae037f67f5ca1f3d9651d5c0a9647056cfc7116651d5a38ca8c46614ef4ef11",
+          "second_png_sha256": "dd3611498a8bd300eb7982884d4a46e5ea7ae3fc46de27c5de3883b1b64ba811"
+        },
+        {
+          "first": "explicit-pause-a",
+          "second": "explicit-pause-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d",
+          "second_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d"
+        },
+        {
+          "first": "background-return-a",
+          "second": "background-return-b",
+          "expected_moving": true,
+          "changed_RGBA_channels": 123901,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "bc1e929286bf220db663055f0fd851348742a482073b2465e1fbd5c48e9f3941",
+          "second_png_sha256": "5212f26c034ca16f0c33a9448d30034e53148600b06111231e7b4ee84642a364"
+        },
+        {
+          "first": "paused-a",
+          "second": "paused-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            256,
+            256
+          ],
+          "first_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d",
+          "second_png_sha256": "1429f7e54499c7c3a8cf686a046ee488f91b252c36fbc126a1db84319c45ca4d"
+        }
+      ],
+      "background_audio_observed": {
+        "demo_audio_still_playing_after_return": true,
+        "scope": "Observe the existing app audio lifecycle separately; actual cover must follow that state. No new background audio promise."
+      },
+      "all_original_native_ROI_contracts_unchanged": true,
+      "RGB_and_alpha_channels_compared": true
+    },
+    "ipad": {
+      "device": "ipad",
+      "pairs": [
+        {
+          "first": "moving-a",
+          "second": "moving-b",
+          "expected_moving": true,
+          "changed_RGBA_channels": 247448,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "7a6e76d3b839f4649bedc4070c375a358f038741ab870f0d3f58fe2909da10ae",
+          "second_png_sha256": "77a64e0fed795bdd7c9361da4d70d73e7f43249db2cf674e317b2a976f521bb7"
+        },
+        {
+          "first": "moving-b",
+          "second": "moving-c",
+          "expected_moving": true,
+          "changed_RGBA_channels": 289637,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "77a64e0fed795bdd7c9361da4d70d73e7f43249db2cf674e317b2a976f521bb7",
+          "second_png_sha256": "bf204ad3df296183bf311a4f47e66fa058a216e0e8b922b7ff044fab4d46a3a0"
+        },
+        {
+          "first": "explicit-pause-a",
+          "second": "explicit-pause-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4",
+          "second_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4"
+        },
+        {
+          "first": "background-return-a",
+          "second": "background-return-b",
+          "expected_moving": true,
+          "changed_RGBA_channels": 241151,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "7a6e76d3b839f4649bedc4070c375a358f038741ab870f0d3f58fe2909da10ae",
+          "second_png_sha256": "dbaedddd5597b22e214c82edaae6f912cb86a6eeed41453a6cf0b5248a63b08b"
+        },
+        {
+          "first": "paused-a",
+          "second": "paused-b",
+          "expected_moving": false,
+          "changed_RGBA_channels": 0,
+          "passed": true,
+          "dimensions": [
+            359,
+            359
+          ],
+          "first_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4",
+          "second_png_sha256": "b2756227aae434de43203a86038d5e2829a13259b21743bc8ce07d7c9c144ca4"
+        }
+      ],
+      "background_audio_observed": {
+        "demo_audio_still_playing_after_return": true,
+        "scope": "Observe the existing app audio lifecycle separately; actual cover must follow that state. No new background audio promise."
+      },
+      "all_original_native_ROI_contracts_unchanged": true,
+      "RGB_and_alpha_channels_compared": true
+    }
+  },
+  "paused_preservation": [
+    {
+      "state": "phone-normal",
+      "dimensions_equal": true,
+      "changed_RGBA_channels": 0,
+      "exact": true,
+      "scope": "Whole own paused viewport, normal/reduced matching method and pose; no original renderer claim."
+    },
+    {
+      "state": "ipad-normal",
+      "dimensions_equal": true,
+      "changed_RGBA_channels": 0,
+      "exact": true,
+      "scope": "Whole own paused viewport, normal/reduced matching method and pose; no original renderer claim."
+    },
+    {
+      "state": "phone-normal",
+      "dimensions_equal": true,
+      "changed_RGBA_channels": 0,
+      "exact": true,
+      "scope": "Whole own paused viewport, normal/reduced matching method and pose; no original renderer claim."
+    },
+    {
+      "state": "phone-reduced",
+      "dimensions_equal": true,
+      "changed_RGBA_channels": 0,
+      "exact": true,
+      "scope": "Whole own paused viewport, normal/reduced matching method and pose; no original renderer claim."
+    },
+    {
+      "state": "ipad-normal",
+      "dimensions_equal": true,
+      "changed_RGBA_channels": 0,
+      "exact": true,
+      "scope": "Whole own paused viewport, normal/reduced matching method and pose; no original renderer claim."
+    },
+    {
+      "state": "ipad-reduced",
+      "dimensions_equal": true,
+      "changed_RGBA_channels": 0,
+      "exact": true,
+      "scope": "Whole own paused viewport, normal/reduced matching method and pose; no original renderer claim."
+    }
+  ],
+  "images": {
+    "pngs_decoded": 142,
+    "actually_viewed_contact_pages": 16,
+    "public_own_images": [
+      {
+        "path": "Docs/verification/demo-animated-artwork-images/phone-playing.png",
+        "sha256": "7826fc0767d626eca364f83a38a68ad9858e1ef3aa8e8daf2dc892c512b5a249",
+        "bytes": 1098509
+      },
+      {
+        "path": "Docs/verification/demo-animated-artwork-images/phone-paused.png",
+        "sha256": "b82b4db810ea32139c79cfca7492bed3a246fe28b8731ed3309abfbb98057728",
+        "bytes": 1164978
+      },
+      {
+        "path": "Docs/verification/demo-animated-artwork-images/phone-reduced-playing-static.png",
+        "sha256": "51b1c179224b5dd1200e70e5e8ab1d1dafaae7f314b3fa0ddf07d27d4e224e7d",
+        "bytes": 1165059
+      },
+      {
+        "path": "Docs/verification/demo-animated-artwork-images/phone-information.png",
+        "sha256": "e915533b54eb9fc6c005e2072dadd76edba8470b0e76d33ac62bd5f67cbd770f",
+        "bytes": 214829
+      },
+      {
+        "path": "Docs/verification/demo-animated-artwork-images/ipad-playing.png",
+        "sha256": "f30be49cb1785b9c475287503652a541ec4cefb4ab8a96bdfa7a91364c0bd713",
+        "bytes": 2137731
+      },
+      {
+        "path": "Docs/verification/demo-animated-artwork-images/ipad-paused.png",
+        "sha256": "dc9103bad04192555ef0126d6e3bbd80532197c2eff9578d47683c1a25c247bc",
+        "bytes": 2304858
+      },
+      {
+        "path": "Docs/verification/demo-animated-artwork-images/ipad-reduced-playing-static.png",
+        "sha256": "fd82849de806e89f52eab23bfef05add5b97002cff8bce532c412b4129aa4322",
+        "bytes": 2305517
+      },
+      {
+        "path": "Docs/verification/demo-animated-artwork-images/ipad-information.png",
+        "sha256": "7e79fef75ab1987b4343a04156e77a78808a70599e48108367e3427a16fcb441",
+        "bytes": 958259
+      }
+    ],
+    "public_image_checkpoint": "final20 before the visionOS-only API guard; both delivery movie/pause/background states separately actually viewed"
+  },
+  "initial_sdk_attempts": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-30T15:15:40.346199+00:00",
+      "ended": "2026-10-30T15:16:14.749692+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/6853a960cc3a46db81370337e63f8f7a/ios-metadata-recovery-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=1,2",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "clean",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:15:40.346199+00:00",
+          "ended": "2026-10-30T15:15:44.495244+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/6853a960cc3a46db81370337e63f8f7a/ios-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "generic/platform=iOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=1,2",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:15:40.346376+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62471774208,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:15:44.495304+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62469148672,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "shortcut_artifacts": {
+            "valid": false,
+            "errors": [
+              "root.ssu.yaml: missing or empty",
+              "nlu/nlu.lzfse: missing or empty",
+              "nlu/*.version: missing or empty",
+              "root.ssu.yaml: unreadable metadata"
+            ],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:15:44.496680+00:00",
+          "ended": "2026-10-30T15:16:14.749692+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/6853a960cc3a46db81370337e63f8f7a/ios-metadata-recovery-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "generic/platform=iOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=1,2",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "clean",
+            "build"
+          ],
+          "clean_metadata_recovery": true,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:15:44.496685+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62469148672,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:16:14.749756+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62969085952,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "shortcut_artifacts": {
+            "valid": true,
+            "errors": [],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+                "bytes": 1,
+                "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+              },
+              {
+                "path": "nlu/nlu.lzfse",
+                "bytes": 2124,
+                "sha256": "8134697892a71986da622d9c011e471f54a1d72223c9e7a71edf3cc98943ed87"
+              },
+              {
+                "path": "root.ssu.yaml",
+                "bytes": 926,
+                "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": true,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-30T15:16:14.752353+00:00",
+      "ended": "2026-10-30T15:16:41.558201+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/830bb88a31e14557a3c69431ea4a4dad/macos-final-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "macosx",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:16:14.752353+00:00",
+          "ended": "2026-10-30T15:16:41.558201+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/830bb88a31e14557a3c69431ea4a4dad/macos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "macosx",
+            "-destination",
+            "platform=macOS",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:16:14.752361+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62969085952,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:16:41.558265+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62814814208,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-30T15:16:41.559218+00:00",
+      "ended": "2026-10-30T15:17:09.850177+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/eb7c392cd9974ed8b7b60a6b5ff303b8/tvos-final-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "appletvsimulator",
+        "-destination",
+        "generic/platform=tvOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=3",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:16:41.559218+00:00",
+          "ended": "2026-10-30T15:17:09.850177+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/eb7c392cd9974ed8b7b60a6b5ff303b8/tvos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "appletvsimulator",
+            "-destination",
+            "generic/platform=tvOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=3",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:16:41.559224+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62814801920,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:17:09.850231+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62646706176,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 65,
+      "started": "2026-10-30T15:17:09.851120+00:00",
+      "ended": "2026-10-30T15:17:29.844527+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/f9c517070a2d465d8e26aa6d3c35f09b/visionos-final-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "xrsimulator",
+        "-destination",
+        "generic/platform=visionOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=7",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 65,
+          "started": "2026-10-30T15:17:09.851120+00:00",
+          "ended": "2026-10-30T15:17:29.844527+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/f9c517070a2d465d8e26aa6d3c35f09b/visionos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "xrsimulator",
+            "-destination",
+            "generic/platform=visionOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=7",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:17:09.851124+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62646693888,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:17:29.844589+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62545686528,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-30T15:17:29.845495+00:00",
+      "ended": "2026-10-30T15:17:37.558750+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/d9233a959ce2449b8aa72d3aa001db97/watchos-final-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewWatch",
+        "-sdk",
+        "watchsimulator",
+        "-destination",
+        "generic/platform=watchOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=4",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:17:29.845495+00:00",
+          "ended": "2026-10-30T15:17:37.558750+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/d9233a959ce2449b8aa72d3aa001db97/watchos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewWatch",
+            "-sdk",
+            "watchsimulator",
+            "-destination",
+            "generic/platform=watchOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=4",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:17:29.845500+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62545686528,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:17:37.558821+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62515949568,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    }
+  ],
+  "corrected_sdk_attempts": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-30T15:18:47.711220+00:00",
+      "ended": "2026-10-30T15:19:26.991209+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/398109ccdd5d44a1946f6aa5bab1b931/ios-metadata-recovery-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=1,2",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "clean",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:18:47.711220+00:00",
+          "ended": "2026-10-30T15:18:57.200412+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/398109ccdd5d44a1946f6aa5bab1b931/ios-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "generic/platform=iOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=1,2",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:18:47.711395+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62503337984,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:18:57.200470+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62501888000,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "shortcut_artifacts": {
+            "valid": false,
+            "errors": [
+              "root.ssu.yaml: missing or empty",
+              "nlu/nlu.lzfse: missing or empty",
+              "nlu/*.version: missing or empty",
+              "root.ssu.yaml: unreadable metadata"
+            ],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:18:57.201484+00:00",
+          "ended": "2026-10-30T15:19:26.991209+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/398109ccdd5d44a1946f6aa5bab1b931/ios-metadata-recovery-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "iphonesimulator",
+            "-destination",
+            "generic/platform=iOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=1,2",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "clean",
+            "build"
+          ],
+          "clean_metadata_recovery": true,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:18:57.201488+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62501888000,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:19:26.991257+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62932271104,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "shortcut_artifacts": {
+            "valid": true,
+            "errors": [],
+            "files": [
+              {
+                "path": "extract.actionsdata",
+                "bytes": 1764,
+                "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+              },
+              {
+                "path": "nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+                "bytes": 1,
+                "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+              },
+              {
+                "path": "nlu/nlu.lzfse",
+                "bytes": 2124,
+                "sha256": "3d00e1d89f81bc715e26913c19657d8e91051bc6bb0196e027fac6454613cfe5"
+              },
+              {
+                "path": "root.ssu.yaml",
+                "bytes": 926,
+                "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+              },
+              {
+                "path": "version.json",
+                "bytes": 53,
+                "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+              }
+            ]
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": true,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-30T15:19:26.992876+00:00",
+      "ended": "2026-10-30T15:19:54.231083+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/4c21bdf8841749c981a7e0db8905809e/macos-final-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "macosx",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:19:26.992876+00:00",
+          "ended": "2026-10-30T15:19:54.231083+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/4c21bdf8841749c981a7e0db8905809e/macos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "macosx",
+            "-destination",
+            "platform=macOS",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:19:26.992880+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62932275200,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:19:54.231136+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62778109952,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-30T15:19:54.231968+00:00",
+      "ended": "2026-10-30T15:20:22.684165+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/d31c93bd005e4cf8a3e03441cd7a2262/tvos-final-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "appletvsimulator",
+        "-destination",
+        "generic/platform=tvOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=3",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:19:54.231968+00:00",
+          "ended": "2026-10-30T15:20:22.684165+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/d31c93bd005e4cf8a3e03441cd7a2262/tvos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "appletvsimulator",
+            "-destination",
+            "generic/platform=tvOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=3",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:19:54.231972+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62778097664,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:20:22.684376+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62631665664,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-30T15:20:22.685483+00:00",
+      "ended": "2026-10-30T15:20:51.581042+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/5565fcf5978d4ee998ed86c3b1e26c89/visionos-final-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewReplica",
+        "-sdk",
+        "xrsimulator",
+        "-destination",
+        "generic/platform=visionOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=7",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:20:22.685483+00:00",
+          "ended": "2026-10-30T15:20:51.581042+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/5565fcf5978d4ee998ed86c3b1e26c89/visionos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewReplica",
+            "-sdk",
+            "xrsimulator",
+            "-destination",
+            "generic/platform=visionOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=7",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:20:22.685488+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62631653376,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:20:51.581107+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62477557760,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-30T15:20:51.581972+00:00",
+      "ended": "2026-10-30T15:20:59.230899+00:00",
+      "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/f6df17a1991d482396a435bc17974df5/watchos-final-build.log",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+        "-scheme",
+        "HomeViewWatch",
+        "-sdk",
+        "watchsimulator",
+        "-destination",
+        "generic/platform=watchOS Simulator",
+        "-derivedDataPath",
+        "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "TARGETED_DEVICE_FAMILY=4",
+        "ONLY_ACTIVE_ARCH=YES",
+        "ARCHS=arm64",
+        "build"
+      ],
+      "attempts": [
+        {
+          "exit_code": 0,
+          "started": "2026-10-30T15:20:51.581972+00:00",
+          "ended": "2026-10-30T15:20:59.230899+00:00",
+          "log": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData/HomeViewBuildReceipts/f6df17a1991d482396a435bc17974df5/watchos-final-build.log",
+          "command": [
+            "xcodebuild",
+            "-project",
+            "/Volumes/Extern/Workspaces/homeview-burndown-20261022/HomeViewReplica.xcodeproj",
+            "-scheme",
+            "HomeViewWatch",
+            "-sdk",
+            "watchsimulator",
+            "-destination",
+            "generic/platform=watchOS Simulator",
+            "-derivedDataPath",
+            "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "CODE_SIGNING_ALLOWED=NO",
+            "TARGETED_DEVICE_FAMILY=4",
+            "ONLY_ACTIVE_ARCH=YES",
+            "ARCHS=arm64",
+            "build"
+          ],
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "storage_before": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:20:51.581976+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62477557760,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          },
+          "storage_after": {
+            "minimum_free_bytes": 17179869184,
+            "checked_at": "2026-10-30T15:20:59.230946+00:00",
+            "destination": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "checked_directory": "/Volumes/Extern/OpenClaw/builds/homeview-burndown/DerivedData",
+            "device": 16777239,
+            "free_bytes": 62447738880,
+            "total_bytes": 500073234432,
+            "sufficient": true
+          }
+        }
+      ],
+      "ios_shortcut_artifacts_valid": null,
+      "storage_headroom_ok": true,
+      "failure_code": null
+    }
+  ],
+  "sdk_products": {
+    "files": [
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Info.plist",
+        "bytes": 3253,
+        "sha256": "00ade6ed8692d31e40effde63eb24de42809fb5988bb5f4c45c9629761dddc09"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica",
+        "bytes": 40224,
+        "sha256": "89d25156e7ab62209ec2bb089f77056f1ffa2cfff65a1eb6e8c00def284dc131"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/MacOS/HomeViewReplica.debug.dylib",
+        "bytes": 29427992,
+        "sha256": "2625a48a9914dd74ade5e2e58afb9a3a23a19c39ea321dedd2f57e8c1b59dcdd"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/MacOS/__preview.dylib",
+        "bytes": 16760,
+        "sha256": "ef42e4140edff5aa41beea98327030af0bc0a463fc79a07b6ba04d72088f6690"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/PkgInfo",
+        "bytes": 8,
+        "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/Assets.car",
+        "bytes": 14232664,
+        "sha256": "767d8e5b21a7fb9a20db530d5e9fe8e9dbd350c150b5a867ba06398435fe36a7"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/FeedKit-LICENSE.txt",
+        "bytes": 1083,
+        "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/extract.actionsdata",
+        "bytes": 1764,
+        "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/Metadata.appintents/version.json",
+        "bytes": 53,
+        "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/default.metallib",
+        "bytes": 71552,
+        "sha256": "2d900cbbfd77ccef3c3d572f238e0f3b856a08d9ccdb38dd9e64e509e58878ed"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/demo-artwork.mp4",
+        "bytes": 93364,
+        "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/demo-tone.wav",
+        "bytes": 176444,
+        "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-caption-test.mp4",
+        "bytes": 365116,
+        "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+      },
+      {
+        "path": "Debug/HomeViewReplica.app/Contents/Resources/podcast-test-audio.wav",
+        "bytes": 1920044,
+        "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/Assets.car",
+        "bytes": 14236856,
+        "sha256": "b4c9d7d3bd6c0bb265ec47c0a72d60d24793158eb38b32d94e58c98e502ab3ae"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+        "bytes": 1083,
+        "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica",
+        "bytes": 40224,
+        "sha256": "97131d8f4ccf3b60dedee3b1691a48789f95dee3018777c62ab6c24e12f38978"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+        "bytes": 27731992,
+        "sha256": "16ec2f155174c586a681dbb78ea2240dd62b32dbe1dcaf7259f8e77e092053c0"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/Info.plist",
+        "bytes": 2238,
+        "sha256": "1aaf27c60965a35dd296adaeb788ed9a54b00488e86415458473c7198384d703"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/PkgInfo",
+        "bytes": 8,
+        "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/__preview.dylib",
+        "bytes": 16760,
+        "sha256": "670e17274069643540183ea4a2bc7f9e4d071010627b412e93fa8e1f07081b75"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/default.metallib",
+        "bytes": 73120,
+        "sha256": "4bc27cae4df99c4a034115102721f3de1aba4b333b5b23217ac207ddb4563fd7"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/demo-artwork.mp4",
+        "bytes": 93364,
+        "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/demo-tone.wav",
+        "bytes": 176444,
+        "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+        "bytes": 365116,
+        "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+      },
+      {
+        "path": "Debug-appletvsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+        "bytes": 1920044,
+        "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+        "bytes": 15425,
+        "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+        "bytes": 22442,
+        "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+        "bytes": 15242504,
+        "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+        "bytes": 1083,
+        "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+        "bytes": 40224,
+        "sha256": "20e3454443a820f8ebf9f148b69ba8db3a2a50347c81807cbfe238cc2bb39681"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+        "bytes": 29551496,
+        "sha256": "e10ef2b7d4141f6a9cf719dc363fdc78b9a2c14e6f5e370325a70ba097788394"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+        "bytes": 2488,
+        "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+        "bytes": 1764,
+        "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+        "bytes": 1,
+        "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/nlu.lzfse",
+        "bytes": 2124,
+        "sha256": "3d00e1d89f81bc715e26913c19657d8e91051bc6bb0196e027fac6454613cfe5"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/root.ssu.yaml",
+        "bytes": 926,
+        "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+        "bytes": 53,
+        "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+        "bytes": 8,
+        "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+        "bytes": 40224,
+        "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+        "bytes": 261104,
+        "sha256": "e3a32fb1734a59ad59c7fe1cde4a9cd27c458052236e010cc3f8adbc4f580775"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+        "bytes": 774,
+        "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+        "bytes": 16752,
+        "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+        "bytes": 16760,
+        "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+        "bytes": 73088,
+        "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-artwork.mp4",
+        "bytes": 93364,
+        "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+        "bytes": 176444,
+        "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+        "bytes": 365116,
+        "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+        "bytes": 1920044,
+        "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+        "bytes": 40224,
+        "sha256": "c78d242145cb07b2b7ac478fe2c2514e89514bcc39e277adf01344f324289152"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+        "bytes": 295888,
+        "sha256": "f412a585a92d94fcebf34c8d0a89cfd83d60bfdf680726d081b201b338d640fa"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/Info.plist",
+        "bytes": 774,
+        "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+      },
+      {
+        "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/__preview.dylib",
+        "bytes": 16768,
+        "sha256": "266e6199c94ea97332a5288d350ee22a4425698c7358d01cd4b72f704c142c7e"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/Assets.car",
+        "bytes": 14236856,
+        "sha256": "a771995aac5ec007e91664e4428067ac0555610c4b215035bfc3e79c79a932ed"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/FeedKit-LICENSE.txt",
+        "bytes": 1083,
+        "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch",
+        "bytes": 40224,
+        "sha256": "7cbd76f08b69d235082ed075ff3aaa495b617031354cf30409b4b0d802addffe"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/HomeViewWatch.debug.dylib",
+        "bytes": 2941400,
+        "sha256": "ebb5ed4b86193fda0ad1079d367b8f4d5a5fa15da2e5b8855f9c45b0ccf8408c"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/Info.plist",
+        "bytes": 1888,
+        "sha256": "8959eb2cf5183d039a531124408fccf21345622723ebf2a620d73eab81aede21"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/PkgInfo",
+        "bytes": 8,
+        "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/__preview.dylib",
+        "bytes": 16760,
+        "sha256": "bf73f1f668d076a35153530e76ea07d6ae5a749fdf5f87c63273b33277d69de9"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/demo-tone.wav",
+        "bytes": 176444,
+        "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-caption-test.mp4",
+        "bytes": 365116,
+        "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+      },
+      {
+        "path": "Debug-watchsimulator/HomeViewWatch.app/podcast-test-audio.wav",
+        "bytes": 1920044,
+        "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/Assets.car",
+        "bytes": 14236856,
+        "sha256": "b2f643d74a2e6016352536f6e3ce8a2d753afd36329ff9d633c6e830df180909"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+        "bytes": 1083,
+        "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica",
+        "bytes": 40224,
+        "sha256": "543d5f2769af33af6e06d6e477c0e57385eaf9e84e00941ff8977130d4d6bdaf"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+        "bytes": 29032760,
+        "sha256": "2a2af74de888948f6331ad1caed5f16ca8f0ab1c4088143fc1059e484f64a9b6"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/Info.plist",
+        "bytes": 2191,
+        "sha256": "867b3419211945a79074901c4c8c2e719824f505dc178705a6da1b0b435bada5"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+        "bytes": 1764,
+        "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+        "bytes": 53,
+        "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/PkgInfo",
+        "bytes": 8,
+        "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/__preview.dylib",
+        "bytes": 16760,
+        "sha256": "f969dc8b19bebb6ffb9280f2343858d8a568ff2373374385700dcae25761a1b4"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/default.metallib",
+        "bytes": 73136,
+        "sha256": "5ce1f26d647310d55fc2249c5cba4735e94a07626545edbb8e169d5fdce1b955"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/demo-artwork.mp4",
+        "bytes": 93364,
+        "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/demo-tone.wav",
+        "bytes": 176444,
+        "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+        "bytes": 365116,
+        "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+      },
+      {
+        "path": "Debug-xrsimulator/HomeViewReplica.app/podcast-test-audio.wav",
+        "bytes": 1920044,
+        "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+      }
+    ],
+    "all_outputs_read_back": true,
+    "delta_files": 5,
+    "delta_sha256": "1f1df1a95e4e5a5f45cf77d8fa31a2408d10c7f5129fede1f424079005146ee7",
+    "warning": "Initial failed vision build may leave historical vision output; platform success is determined solely by matching SDK receipts, never existence of an output."
+  },
+  "source_archive_readback": {
+    "all253_read_back": true,
+    "all253_exact_in_code_commit": true,
+    "code_commit": "d353bb111a2d57c18c381aa281a56007a92a5b25",
+    "source_sha256": "e979785e45d4a07d25dbe2ecbe59dfdd00e34797fe9bbb0c6006475d75b704a0",
+    "archives": [
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-air-quality-20261030/source-final.zip",
+        "sha256": "160ad1475612398c94a0906a77127647fdd9e2b7fbb830f753bf956c2c8e35b0"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-air-quality-20261030/matrix-source-delta.zip",
+        "sha256": "696719105ffa9c9d923f5e452fb2d29005ef85d40c2269c66d6e65c4a85f459b"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-photo-search-20261030/before-source-delta.zip",
+        "sha256": "1c38ce0f9f3edce904ba3e31ca2bf0a36c4b678588109f6ddb2e8720cf204c70"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-photo-search-20261030/candidate-source-delta.zip",
+        "sha256": "929640fd0fdff6e4b6a830237a7044463ac38cf8ad7d9c2893dd16acf27a540b"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-photo-search-20261030/recreate-source-delta.zip",
+        "sha256": "3a7fe7ae6fa5159cf32432daa4ffd5daa2afc700b15b2b98f21d700082b49195"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-photo-search-20261030/final-source-delta.zip",
+        "sha256": "6a3d3745bb255559a597adf0aeffe0d5f6c2b3a72b0da4b7aeae12f1e233ba54"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-photo-search-20261030/multi-source-delta.zip",
+        "sha256": "e43fd6eb17a3505944e60df5c414760e653d045cf4f0397a688365e3832dc66f"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/before-source-delta.zip",
+        "sha256": "09bdef90534d26f3d3d5c7a5def67c0d6960064196693e22e15c77752f0a16f0"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/candidate-source-delta.zip",
+        "sha256": "b81c9c1d061400d4eaf9e400d90cb658ee244798c09f98804c21e7af1cc247f8"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/final-source-delta.zip",
+        "sha256": "a96e51a973d72de42be4b94e6817e1434e24b250943abac9d5a22b076e624d7d"
+      },
+      {
+        "path": "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030/delivery-source-delta.zip",
+        "sha256": "eddf527ea83488d4c5c595096baabf126f1d861f39a677cc8dc78bc830a3915e"
+      }
+    ]
+  },
+  "terminal_evidence": {
+    "files": 998,
+    "bytes": 277956362,
+    "seal_sha256": "198deca22109a8c433b68d9a1308b13301aab235c80513498d0a342c1c183775",
+    "read_back": true,
+    "path": "/Volumes/Extern/OpenClaw/research/homeview-animated-artwork-20261030"
+  },
+  "original_contract_assessment": {
+    "issue": 58,
+    "assessment": "The original conditional capability contract, not full F079 parity",
+    "original_tasks": [
+      "Offiziell verfügbare Felder/Rechte und Animationstransporte prüfen",
+      "Nicht verfügbare Lyrics ehrlich ausweisen",
+      "Keine fremden Lyrics scrapen oder Demo-Text als echte Lyrics darstellen",
+      "Reduce Motion und Cachegrenzen für Animationen vorsehen"
+    ],
+    "original_acceptance": "Fähigkeitsnachweis und tatsächliche Wiedergabe je unterstütztem Inhalt; statische Cover allein schließen F079 nicht.",
+    "evidence_by_task": [
+      "Dated15publicAPItypechecks+rights review; actual ownMITlocalH264clip+renderer; inspected currentSDKpublic motion/power flags",
+      "Source-specific native info sheets with explicit absence, existing catalog contract unchanged",
+      "No lyric import/scrape/provider endpoint; synthetic demo has no lyrics, no sample text passed off as lyrics",
+      "Actual moving/stationary native pixel controls,64policyvectors, one fixed bundlefile <=1000000bytes, zero network/persistent video cache"
+    ],
+    "acceptance_scope": "Actual native in-app video playback for the supported own bundled content, not static-cover-only or successful buttons. General catalog/local-library/system transport is not advertised supported. The original task is decide per public capability, not implement every possible provider or every public API. Real MusicKit audio/account/hardware remains #57; full original comparison #78; per-platform runtime #79.",
+    "parity_accepted": false,
+    "F079_status": "partial",
+    "pending_before_closure": [
+      "Publish code/evidence; fresh exact full issue/body/state readback"
+    ],
+    "closure_not_yet_written": true,
+    "code_commit": "d353bb111a2d57c18c381aa281a56007a92a5b25"
+  },
+  "limits": [
+    "Own clip only; optional media-item lyrics and animated Now Playing adapters not advertised implemented",
+    "No live catalog rights/transport/lyric timing, physical/acoustic/OS-presentation acceptance",
+    "Native iPhone/iPad renderer plus native Mac decoder; five SDKs do not prove all platform runtime",
+    "Initial visionOS compile failure retained; guarded external-playback API call corrected; two separate post-guard native runs",
+    "Probe RGB classifier corrected before final decode; initial no-Pillow review commands failed before reading images; legacy generator deprecations are not runtime errors",
+    "No Home/account/library/camera/microphone/message/call/host/TCC/signing mutation"
+  ]
+}

@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [#58: eigener berechtigter animierter Artworkpfad](demo-animated-artwork.md): tatsächlicher lokaler Videorenderer, Motion-/Autoplay-/Stromspar-/Thermalsperren, keine Downloads oder persistenten Videocaches. #58 bleibt für übrige Quellen-/System-/Originalabnahmen offen; F079 partial/parity=false. Statische Katalogcover und fehlende Lyrics werden weiterhin ehrlich ausgewiesen.
+
 - [iOS27-Fotosuche im echten App-Umschalter geschützt](native-photos-search.md):14nativeMatrixausführungen und4separateSuch-/Mehrfachauswahlprüfungen mit exaktgleichen19Appdateien,5SDKs/73Produktdateien. Ursprünglicher iPhone-Fehler65,452%→98,618%; iPadbereits99,132%. Quellen/Fehlstände erhalten, F095 partial/parity=false, #67 offen. Nächster eigenständiger Softwareblock: #58, eigene berechtigte animierteArtworkquelle/Renderer statt pauschaler Hardwareblockade.
 
 - [#21 abgeschlossen im ursprünglichen Daten-/eigenen Wetterzustandsvertrag](weather-air-quality.md):457Coretests,6isolierteTransportfälle,10finaleMobiltests,5SDKs.36Zustandskombinationen/72Face-App-Zustände; echter optionaler CAMS-EU-AQI mit eigenem Modellzeitpunkt. F019 bleibt partial/parity=false. Weiter mit #67, native Foto-Suche/App-Umschalter.

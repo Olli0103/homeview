@@ -2528,7 +2528,7 @@
       "MEDIA-02"
     ],
     "current": [
-      "Quellbezogene Player-Information macht statische Cover und fehlende Lyrics/Animationsassets sichtbar. Öffentliche MusicKit-/MediaPlayer-Teilpfade typgeprüft, keine neue Lyrics-/Animation-Wiedergabe. Eigene lizenzierte Assets und Adapter bleiben Softwarearbeit; Originalumfang weiterhin nicht abgenommen. Docs/music-artwork-and-lyrics.md."
+      "Own MIT procedural silent bundled movie now plays with public AVFoundation in the demo player, with static fallback, scene/Reduce Motion/autoplay/power/thermal gates and a one-megabyte file ceiling; 20 final native iPhone/iPad executions, four exact paused baseline comparisons and actual changing/still ROI pairs. Catalog artwork remains static and lyric absence is explicit. Optional MPMediaItem lyrics and system animated Now Playing adapters, real-source playback, original and physical acceptance remain open; no general catalog animation/lyrics claim. Docs/demo-animated-artwork.md."
     ],
     "parity_accepted": false,
     "issue_urls": [
@@ -2539,9 +2539,9 @@
       "reason": "Konkreter Bild-/Sequenzbezug im bestehenden Referenzkatalog; belegt nur den genannten sichtbaren Zustand."
     },
     "target": "iPad core",
-    "implementation_status": "blocked",
+    "implementation_status": "partial",
     "acceptance": {
-      "functional": "pending",
+      "functional": "Own demo renderer/lifecycle and source-specific missing-lyrics declaration passed; real catalog/library/system paths pending",
       "visual": "pending original-state comparison",
       "device_service": "pending where required; classify explicitly before acceptance"
     },
