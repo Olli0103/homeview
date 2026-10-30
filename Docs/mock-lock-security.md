@@ -1,6 +1,6 @@
 # Mock-Schloss: Gerätefreigabe, separate Bestätigung und bestätigter Zustand
 
-30. Oktober 2026 · [#25 / HOME-03](https://github.com/Olli0103/homeview/issues/25). Ursprünglicher **synthetischer Softwarevertrag**, kein betriebsbereites echtes Türschloss und keine Original-/Hardware-Parity.
+30. Oktober 2026 · [#25 / HOME-03](https://github.com/Olli0103/homeview/issues/25). **#25closed/completed frisch zurückgelesen;41 ursprüngliche Issues erledigt/40offen**,1Snoopy-Ausschluss. [Abgleich](verification/backlog-reconciliation-20261030.json). Ursprünglicher **synthetischer Softwarevertrag**, kein betriebsbereites echtes Türschloss und keine Original-/Hardware-Parity.
 
 Die ursprüngliche Abnahme lautet unverändert:
 
