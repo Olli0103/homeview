@@ -67,6 +67,10 @@ struct PodcastCaptionControls:View {
           .multilineTextAlignment(.center).lineLimit(4).frame(maxWidth:.infinity)
           .padding(14).background(Color(white:0.94),in:RoundedRectangle(cornerRadius:12))
           .accessibilityIdentifier("podcast.captions.current")
+          #if os(tvOS)
+            // Remote focus must scroll the actual cue into the viewport.
+            .focusable()
+          #endif
       }
     }.padding(.bottom,side)
   }

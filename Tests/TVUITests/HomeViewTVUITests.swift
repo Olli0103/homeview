@@ -48,6 +48,58 @@ final class HomeViewTVUITests:XCTestCase {
     XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
     capture(settings,"tv-ossettings-root")
   }
+  @MainActor func testNativeTVSourceCaptionsActualCuesOffAndSourceChange() {
+    continueAfterFailure=false;executionTimeAllowance=240
+    let app=launch("Podcasts",extra:["--podcast-fixture","--podcast-caption-fixture","--mute-podcast-fixture"])
+    func act(_ id:String) {
+      var e=app.buttons[id]
+      if id == "podcast.captions.option.0" || id == "podcast.captions.off" {
+        // Native tvOS exposes each exact SwiftUI action identifier on an
+        // Other inside a focusable Cell, not on a Button. Bind to that owner.
+        capture(app,"TV-caption-native-menu-"+(id.hasSuffix("off") ? "off":"track"))
+        let rows=app.cells.containing(.other,identifier:id)
+        XCTAssertEqual(rows.count,1,"Exactly one native row must own the requested action identifier")
+        e=rows.element(boundBy:0)
+      }
+      if !e.waitForExistence(timeout:8) {capture(app,"TV-caption-target-missing")}
+      XCTAssertTrue(e.exists)
+      select(e,in:app,maxMoves:80,allowFocusedDescendant:id.hasPrefix("podcast.captions"))
+    }
+    act("podcast.feeds");act("podcast.feed.fixture");act("podcast.episode.0")
+    let captions=app.buttons["podcast.captions"]
+    XCTAssertTrue(captions.exists);XCTAssertFalse(captions.isEnabled)
+    XCTAssertTrue(app.staticTexts["podcast.status"].label.contains("Paused"))
+    act("podcast.play")
+    expectation(for:NSPredicate(format:"enabled == true"),evaluatedWith:captions);waitForExpectations(timeout:12)
+    act("podcast.captions");act("podcast.captions.option.0")
+    let cue=app.staticTexts["podcast.captions.current"]
+    expectation(for:NSPredicate(format:"exists == true AND label CONTAINS %@","first marker"),evaluatedWith:cue);waitForExpectations(timeout:12)
+    act("podcast.play");XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    select(cue,in:app,maxMoves:80,activate:false)
+    XCTAssertTrue(app.otherElements["reference.viewport"].frame.intersection(app.scrollViews.firstMatch.frame).contains(cue.frame))
+    capture(app,"TV-source-captions-first-cue")
+    act("podcast.captions");act("podcast.captions.off")
+    XCTAssertFalse(cue.exists);XCTAssertEqual(captions.value as? String,"off")
+    act("podcast.captions");act("podcast.captions.option.0")
+    for _ in 0..<3 {act("podcast.back")}
+    XCTAssertTrue(app.staticTexts["podcast.position"].label.hasPrefix("0:00 /"))
+    for _ in 0..<3 {act("podcast.forward")}
+    XCTAssertTrue(app.staticTexts["podcast.position"].label.hasPrefix("0:45 /"))
+    act("podcast.play")
+    expectation(for:NSPredicate(format:"exists == true AND label CONTAINS %@","final marker"),evaluatedWith:cue);waitForExpectations(timeout:12)
+    act("podcast.play");XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    select(cue,in:app,maxMoves:80,activate:false)
+    XCTAssertTrue(app.otherElements["reference.viewport"].frame.intersection(app.scrollViews.firstMatch.frame).contains(cue.frame))
+    capture(app,"TV-source-captions-final-cue")
+    act("podcast.feeds");act("podcast.episode.1");XCTAssertFalse(cue.exists)
+    act("podcast.play")
+    let status=app.staticTexts["podcast.captions.status"]
+    expectation(for:NSPredicate(format:"label == %@","No captions supplied by this episode."),evaluatedWith:status);waitForExpectations(timeout:12)
+    XCTAssertFalse(captions.isEnabled);XCTAssertFalse(cue.exists)
+    XCTAssertTrue(app.otherElements["reference.viewport"].frame.contains(status.frame))
+    capture(app,"TV-source-no-invented-captions")
+    act("podcast.play");XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+  }
   private func launch(_ page:String?=nil,extra:[String]=[])->XCUIApplication {
     continueAfterFailure=false
     let app=XCUIApplication(bundleIdentifier:"org.example.HomeViewReplica")
@@ -60,12 +112,15 @@ final class HomeViewTVUITests:XCTestCase {
     let shot=XCTAttachment(screenshot:app.screenshot());shot.name=name;shot.lifetime = .keepAlways;add(shot)
     let tree=XCTAttachment(string:app.debugDescription);tree.name=name+"-tree";tree.lifetime = .keepAlways;add(tree)
   }
-  private func select(_ target:XCUIElement,in app:XCUIApplication,maxMoves:Int=24) {
+  private func select(_ target:XCUIElement,in app:XCUIApplication,maxMoves:Int=24,allowFocusedDescendant:Bool=false,activate:Bool=true) {
+    func intendedFocus()->Bool {
+      target.hasFocus || (allowFocusedDescendant && target.descendants(matching:.any).allElementsBoundByIndex.contains(where:{$0.hasFocus}))
+    }
     XCTAssertTrue(target.waitForExistence(timeout:5))
     var trace:[String]=[]
     var attempted:[String:Set<Int>]=[:]
     for _ in 0..<maxMoves {
-      if target.hasFocus { break }
+      if intendedFocus() { break }
       guard let current=app.descendants(matching:.any).allElementsBoundByIndex.first(where:{$0.hasFocus}) else {
         XCTFail("No current native focus");return
       }
@@ -81,8 +136,8 @@ final class HomeViewTVUITests:XCTestCase {
     }
     let receipt=XCTAttachment(string:trace.joined(separator:"\n"));receipt.name="remote-focus-"+target.identifier;receipt.lifetime = .keepAlways;add(receipt)
     capture(app,"before-select-"+target.identifier)
-    XCTAssertTrue(target.hasFocus,"Select must only activate the intended focused control")
-    XCUIRemote.shared.press(.select)
+    XCTAssertTrue(intendedFocus(),"Select must only activate the intended control or its actually owned focused descendant")
+    if activate {XCUIRemote.shared.press(.select)}
   }
   func testNativeTVCameraGridAndDemoTalkback() {
     let app=launch("Cameras")

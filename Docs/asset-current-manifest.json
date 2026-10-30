@@ -766,11 +766,11 @@
     },
     {
       "path": "Sources/App/HomeScreens.swift",
-      "sha256": "2487976a5ec0ce119cfc9fa58a6b978d41d98b871f757813bfe17d1b1f99a7b7"
+      "sha256": "ad6017944395c331b577b5eb40116f931b683b4e2d5f4f8a6b7432017f8f0666"
     },
     {
       "path": "Sources/App/Faces.swift",
-      "sha256": "70152f76bf13b0508d6d8f6ae5149ac4bb9714babecb3f07f82c269c89b77ee5"
+      "sha256": "a3dcaab0a5e6d11ad902846cfd8bdac9e00a1f72cb40e7bde7978a2b34fe0482"
     },
     {
       "path": "Scripts/generate_podcast_caption_fixture.py",
@@ -863,5 +863,26 @@
       "Sources/App/Faces.swift"
     ],
     "reason": "Current whole-source fingerprints after mock-lock state publication and confirmation UI changes; no asset geometry, existing authorship or historical rights verdict changed."
+  },
+  "mock_device_contract_provenance_source_refresh": {
+    "date": "2026-10-30",
+    "previous_source_commit": "3ad7379",
+    "current_published_source": "09f911643acfb75f190e2c5efa468836d7bcdc27",
+    "rows": [
+      {
+        "path": "Sources/App/HomeScreens.swift",
+        "previous_sha256": "2487976a5ec0ce119cfc9fa58a6b978d41d98b871f757813bfe17d1b1f99a7b7",
+        "current_sha256": "ad6017944395c331b577b5eb40116f931b683b4e2d5f4f8a6b7432017f8f0666",
+        "already_stale_in_published_baseline": true
+      },
+      {
+        "path": "Sources/App/Faces.swift",
+        "previous_sha256": "70152f76bf13b0508d6d8f6ae5149ac4bb9714babecb3f07f82c269c89b77ee5",
+        "current_sha256": "a3dcaab0a5e6d11ad902846cfd8bdac9e00a1f72cb40e7bde7978a2b34fe0482",
+        "already_stale_in_published_baseline": true
+      }
+    ],
+    "unchanged_DemoAlbumCover_sha256": "c5a264a98d137a1cb3f03a5973f184d5eef52b60bb4c24f7c98e06be589857ad",
+    "reason": "The already-published typed device/read-back changes updated whole HomeScreens/Faces source files; actual diff reviewed. Procedural cover block, all declared resource bytes, authorship/licenses, and original historical-rights qualifications remain unchanged. Initial gate found stale source binding, not new asset bytes or a new rights verdict."
   }
 }

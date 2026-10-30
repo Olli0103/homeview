@@ -53,11 +53,65 @@ import XCTest
     XCTAssertTrue(settings.wait(for:.runningForeground,timeout:30))
     capture(settings,"vision-ossettings-root")
   }
-  private func launch(_ page:String?=nil)->XCUIApplication {
+  func testNativeVisionSourceCaptionsActualCuesOffAndSourceChange() {
+    continueAfterFailure=false;executionTimeAllowance=240
+    let app=launch("Podcasts",extra:["--podcast-fixture","--podcast-caption-fixture","--mute-podcast-fixture"])
+    func act(_ id:String) {
+      let e=app.buttons[id];XCTAssertTrue(e.waitForExistence(timeout:8))
+      if !id.hasPrefix("podcast.captions.option.") && id != "podcast.captions.off" {revealCaptionControl(e,in:app)}
+      XCTAssertTrue(e.isHittable);e.tap()
+    }
+    act("podcast.feeds");act("podcast.feed.fixture");act("podcast.episode.0")
+    let captions=app.buttons["podcast.captions"]
+    XCTAssertTrue(captions.exists);XCTAssertFalse(captions.isEnabled)
+    XCTAssertTrue(app.staticTexts["podcast.status"].label.contains("Paused"))
+    act("podcast.play")
+    expectation(for:NSPredicate(format:"enabled == true"),evaluatedWith:captions);waitForExpectations(timeout:12)
+    act("podcast.captions");act("podcast.captions.option.0")
+    let cue=app.staticTexts["podcast.captions.current"]
+    expectation(for:NSPredicate(format:"exists == true AND label CONTAINS %@","first marker"),evaluatedWith:cue);waitForExpectations(timeout:12)
+    act("podcast.play");XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    revealCaptionControl(cue,in:app)
+    capture(app,"Vision-source-captions-first-cue")
+    act("podcast.captions");act("podcast.captions.off")
+    XCTAssertFalse(cue.exists);XCTAssertEqual(captions.value as? String,"off")
+    act("podcast.captions");act("podcast.captions.option.0")
+    for _ in 0..<3 {act("podcast.back")}
+    XCTAssertTrue(app.staticTexts["podcast.position"].label.hasPrefix("0:00 /"))
+    for _ in 0..<3 {act("podcast.forward")}
+    XCTAssertTrue(app.staticTexts["podcast.position"].label.hasPrefix("0:45 /"))
+    act("podcast.play")
+    expectation(for:NSPredicate(format:"exists == true AND label CONTAINS %@","final marker"),evaluatedWith:cue);waitForExpectations(timeout:12)
+    act("podcast.play");XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+    revealCaptionControl(cue,in:app)
+    capture(app,"Vision-source-captions-final-cue")
+    act("podcast.feeds");act("podcast.episode.1");XCTAssertFalse(cue.exists)
+    act("podcast.play")
+    let status=app.staticTexts["podcast.captions.status"]
+    expectation(for:NSPredicate(format:"label == %@","No captions supplied by this episode."),evaluatedWith:status);waitForExpectations(timeout:12)
+    XCTAssertFalse(captions.isEnabled);XCTAssertFalse(cue.exists)
+    revealCaptionControl(status,in:app)
+    capture(app,"Vision-source-no-invented-captions")
+    act("podcast.play");XCTAssertEqual(app.staticTexts["podcast.status"].label,"Paused")
+  }
+  private func revealCaptionControl(_ target:XCUIElement,in app:XCUIApplication) {
+    let viewport=app.otherElements["reference.viewport"],scroll=app.scrollViews.firstMatch
+    XCTAssertTrue(viewport.exists);XCTAssertTrue(scroll.exists)
+    for _ in 0..<10 {
+      let clip=viewport.frame.intersection(scroll.frame),f=target.frame
+      // Native toolbar controls are outside the scroll content, but must still be wholly inside the own rendered viewport.
+      if !f.isEmpty && viewport.frame.contains(f) && !scroll.frame.intersects(f) {return}
+      if !f.isEmpty && clip.contains(f) {return}
+      if f.midY<clip.midY {scroll.swipeDown(velocity:.slow)} else {scroll.swipeUp(velocity:.slow)}
+    }
+    XCTAssertTrue(viewport.frame.intersection(scroll.frame).contains(target.frame),"Target must be fully rendered in the actual own viewport")
+  }
+  private func launch(_ page:String?=nil,extra:[String]=[])->XCUIApplication {
     continueAfterFailure=false
     let app=XCUIApplication(bundleIdentifier:"org.example.HomeViewReplica")
     app.launchArguments=["--uitesting","--reference-clock","--persistence-test",UUID().uuidString,"--reset-test-store"]
     if let page {app.launchArguments += ["--page",page]}
+    app.launchArguments += extra
     app.launch();XCTAssertTrue(app.staticTexts["mock.badge"].waitForExistence(timeout:30));return app
   }
   private func capture(_ app:XCUIApplication,_ name:String) {

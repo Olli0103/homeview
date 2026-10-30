@@ -556,6 +556,10 @@ struct PodcastsView: View {
           Button("Demo") { model.usePodcastDemo() }.accessibilityIdentifier("podcast.demo")
         }
       }.font(.system(size:navigationSize)).padding(.horizontal,30)
+        #if os(tvOS)
+          // Bridge the horizontal gaps above the player's remote-focus region.
+          .focusSection()
+        #endif
       ScrollView {
         VStack(spacing:20) {
           if feeds { feedControls }

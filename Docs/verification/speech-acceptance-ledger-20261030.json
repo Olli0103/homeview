@@ -4,7 +4,7 @@
   "original_acceptance_unchanged": true,
   "research_acceptance": "Usability per target/tool OR concrete blockade; a text field does not cover F105.",
   "status": "open",
-  "why_open": "Two available-runtime media flows and visible Vision warm invocation remain unqualified; five OS routes remain unresolved, not proved impossible. Enumeration alone is not acceptance.",
+  "why_open": "Visible Vision warm invocation remains unqualified; five OS routes unresolved, not proved impossible. Setup/host/app boundaries remain distinct.",
   "implementation_partial": true,
   "parity": false,
   "dimensions": {
@@ -14,11 +14,10 @@
   },
   "counts": {
     "blocked_setup": 31,
-    "observed_usable": 4,
+    "observed_usable": 6,
     "blocked_host": 2,
     "unresolved_os_path": 5,
     "not_exposed_app": 3,
-    "pending_runtime_validation": 2,
     "partial_observed_open": 1
   },
   "cells": [
@@ -381,12 +380,13 @@
     {
       "platform": "Apple TV",
       "tool": "Own source-media captions",
-      "support": "Shared legible selector/output code is present; no target-specific remote selection/cue run in this receipt.",
+      "support": "Actual own muted source captions: first/final cue, Off, seek and source change passed; TV remote focus/return additionally corrected.",
       "evidence": [
-        "podcast-source-captions.md"
+        "tv-vision-source-captions.md",
+        "verification/tv-vision-source-captions.json"
       ],
-      "boundary": "Available TV runtime has not yet qualified this own-media flow. This is remaining software validation, NOT a hardware/API blockade.",
-      "status": "pending_runtime_validation",
+      "boundary": "Bounded own tone/timedtext fixture on simulator only; not broad streams, languages, OS LiveCaptions or physical/acoustic acceptance.",
+      "status": "observed_usable",
       "parity": false
     },
     {
@@ -472,12 +472,13 @@
     {
       "platform": "Vision Pro",
       "tool": "Own source-media captions",
-      "support": "Shared selector/output implementation present; no target-specific visible cue/selection run in this receipt.",
+      "support": "Actual own muted source captions: first/final cue, Off, seek and source change passed with three held actual virtual-camera frames.",
       "evidence": [
-        "podcast-source-captions.md"
+        "tv-vision-source-captions.md",
+        "verification/tv-vision-source-captions.json"
       ],
-      "boundary": "Available Vision runtime has not yet qualified this own-media flow; remaining software validation, not an invented API/hardware blockade.",
-      "status": "pending_runtime_validation",
+      "boundary": "Bounded own tone/timedtext fixture on simulator only; not broad streams, languages, OS LiveCaptions or physical/acoustic acceptance.",
+      "status": "observed_usable",
       "parity": false
     },
     {

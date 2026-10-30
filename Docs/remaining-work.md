@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Eigene TV-/Vision-Quelluntertitel nativ geprüft](tv-vision-source-captions.md): zwei getrennte akzeptierte Vollfälle, sechs erhaltene Fehlversuche; TV-Cue durch Remote erreichbar und Rückweg zur Feedliste korrigiert. Fünf finale SDKs/73Outputs/242Inputs; Core unverändert. #74 weiter offen für übrige OS-Pfade und sichtbare Vision-Warmzielwahl.
+
 - [#74: alle48 Plattform-/Hilfsmittelzellen bilanziert](speech-acceptance-ledger-20261030.md): vier historisch benutzbare Teilpfade, dokumentierte Setup-/Host-/Appgrenzen; fünf OS-Pfade und drei eigene Softwareprüfungen noch offen. Vision-Inventur1PASS, drei Kalt-/WarmmethodenFAIL;14 tatsächliche Kamerabilder geprüft, Diagnose aus Standardtarget bytegenau entfernt. Kein neuer Produktcode oder voreilige Schließung.
 
 - [#24: ursprünglicher synthetischer Gerätevertrag geprüft](mock-device-contract.md): alle vier Regler mit Erfolg/Timeout/Ablehnung/Fremdänderung und Neustarts;449Coretests, letzte neun native Mobil-/TV-/Watch-Ausführungen/fünf SDKs. Read-only-/Stale-Metadata-/Plan-Dialogfehler getrennt korrigiert. Keine reale Home-/Original-Parity; Veröffentlicht mit `06ba7e7`; Issue24 als closed/completed mit exaktem Body und unveränderter ursprünglicher Abnahme zurückgelesen.

@@ -1,0 +1,239 @@
+{
+  "date": "2026-10-30",
+  "issue74": "open",
+  "product_changes": {
+    "Sources/App/PodcastCaptions.swift": "OnlytvOS: actual cue focusable for remote scrolling.",
+    "Sources/App/Controls.swift": "OnlytvOS: existing Podcasts navigation HStack focusSection for return from player."
+  },
+  "acceptance": {
+    "Vision": "One full actual source-caption method passed at caption2 before later TV-only product conditionals. Three held virtual-camera frames decoded/viewed. Not a current OS Shortcut warm pass.",
+    "TV": "One full method passed at caption7: first/final actual cues, Off, seek0/45, native remote focus/visibility, RSS-return and source without captions. Same test file as failedcaption6.",
+    "same_final_run": false,
+    "all_other_platform_behavior": "Both product additions are #ifos(tvOS); no global caption/player change."
+  },
+  "native_history": {
+    "executions": 8,
+    "passed": 2,
+    "failed": 6,
+    "rows": [
+      {
+        "id": "caption1-vision",
+        "exit_code": 65,
+        "elapsed_seconds": 35.434779667,
+        "archive_sha256": "b00d104c355e7e21fc1ea862cd046cd6ecc3650c3ab307d7aaf5ae240ed0c23a",
+        "archive_full_read_back": true,
+        "inputs_unchanged": true,
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "decoded_pngs": 0,
+        "source_manifest_sha256": "ce788ed96c372c50bfe2f336014a86130bbe38b2d400cb6961623dc73bdf122f"
+      },
+      {
+        "id": "caption2-vision",
+        "exit_code": 0,
+        "elapsed_seconds": 106.844638375,
+        "archive_sha256": "a0f371d46868bac0295f42b152dc0afa7932765ee59826934eeeae3d71c40029",
+        "archive_full_read_back": true,
+        "inputs_unchanged": true,
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "decoded_pngs": 3,
+        "source_manifest_sha256": "893758f439dc88d2d259477703907de426996944bf19b46c3bb81792d686aca4"
+      },
+      {
+        "id": "caption2-tv",
+        "exit_code": 65,
+        "elapsed_seconds": 95.4349435,
+        "archive_sha256": "f60d7e097d2e69ce2950e9b33404c81ecca2f8a6eab47d72ba1b283a9b7be15c",
+        "archive_full_read_back": true,
+        "inputs_unchanged": true,
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "decoded_pngs": 5,
+        "source_manifest_sha256": "893758f439dc88d2d259477703907de426996944bf19b46c3bb81792d686aca4"
+      },
+      {
+        "id": "caption3-tv",
+        "exit_code": 65,
+        "elapsed_seconds": 33.9555985,
+        "archive_sha256": "f747ae05302b28a735f7c7f967634886cea5233738344223458d6d6dec3f8608",
+        "archive_full_read_back": true,
+        "inputs_unchanged": true,
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "decoded_pngs": 5,
+        "source_manifest_sha256": "8c37530bf0fc63028195b2804e150d8a6da619ae2bc411279e251915edf90970"
+      },
+      {
+        "id": "caption4-tv",
+        "exit_code": 65,
+        "elapsed_seconds": 36.442738,
+        "archive_sha256": "8ab9b21ada38f23bbd416e5cf3c8f8fc2594b668bf4ae0720d569eb84c5e2f19",
+        "archive_full_read_back": true,
+        "inputs_unchanged": true,
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "decoded_pngs": 7,
+        "source_manifest_sha256": "8755d810c4e450c39d140c6eef9b00d879ad2d8c652ee7b0b48b0dd503a7cf8e"
+      },
+      {
+        "id": "caption5-tv",
+        "exit_code": 65,
+        "elapsed_seconds": 37.563023375,
+        "archive_sha256": "878f402bb1fe31188901b13e0734e5312957274a6414ff65b83cfc0dfaed4776",
+        "archive_full_read_back": true,
+        "inputs_unchanged": true,
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "decoded_pngs": 8,
+        "source_manifest_sha256": "bd1f6f993b5e3c6c8bcc6f868695c51c6d9343707776c7739a1a664cc4a4a352"
+      },
+      {
+        "id": "caption6-tv",
+        "exit_code": 65,
+        "elapsed_seconds": 160.856346,
+        "archive_sha256": "08962920fda79ede3ba4498ddcbba5c2dd49e82d3aa6da32e7682030b9d4e56e",
+        "archive_full_read_back": true,
+        "inputs_unchanged": true,
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "decoded_pngs": 27,
+        "source_manifest_sha256": "ba6729d38d00009d4ed073849eaab0bfbf16205caf4fdaf25d1af6209cd4d7d7"
+      },
+      {
+        "id": "caption7-tv",
+        "exit_code": 0,
+        "elapsed_seconds": 108.13233591599999,
+        "archive_sha256": "9bbdd4445ea09473d21fc48da32a1310ff927af5b3407889531ba1a7e25a060c",
+        "archive_full_read_back": true,
+        "inputs_unchanged": true,
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "decoded_pngs": 31,
+        "source_manifest_sha256": "354c8d4a0f0a0098f5531af9a8967cfc0cf9a8b57179aba6cb7f60f2c3c8247e"
+      }
+    ],
+    "earlier_tv_compile_failure": "caption1TV build65 before any method, Swift6 actor isolation in new test corrected atcaption2; source in caption1Vision archive."
+  },
+  "tests_and_product_sources": {
+    "final_input_files": 242,
+    "manifest": "tv-vision-source-captions-source.json",
+    "Vision_executed_manifest_sha256": "893758f439dc88d2d259477703907de426996944bf19b46c3bb81792d686aca4",
+    "TV_executed_manifest_sha256": "354c8d4a0f0a0098f5531af9a8967cfc0cf9a8b57179aba6cb7f60f2c3c8247e",
+    "Core": "Unchanged; prior449Core run not counted as new."
+  },
+  "five_sdk": {
+    "platforms": 5,
+    "all_passed": true,
+    "outputs": 73,
+    "source_files": 242,
+    "archive_sha256": "8d60fdff9b73e4ffcea7f1d0e7b87f0d027af1903a710ec3184269282f81fb26",
+    "full_archive_read_back": true,
+    "ios_one_normal_clean_recovery": true,
+    "rows": [
+      {
+        "platform": "iOS",
+        "exit_code": 0,
+        "started": "2026-10-30T07:54:00.325957+00:00",
+        "ended": "2026-10-30T07:54:40.906436+00:00",
+        "attempts": 2
+      },
+      {
+        "platform": "macOS",
+        "exit_code": 0,
+        "started": "2026-10-30T07:54:40.908341+00:00",
+        "ended": "2026-10-30T07:55:09.051508+00:00",
+        "attempts": 1
+      },
+      {
+        "platform": "tvOS",
+        "exit_code": 0,
+        "started": "2026-10-30T07:55:09.052279+00:00",
+        "ended": "2026-10-30T07:55:35.630892+00:00",
+        "attempts": 1
+      },
+      {
+        "platform": "visionOS",
+        "exit_code": 0,
+        "started": "2026-10-30T07:55:35.631514+00:00",
+        "ended": "2026-10-30T07:56:03.647662+00:00",
+        "attempts": 1
+      },
+      {
+        "platform": "watchOS",
+        "exit_code": 0,
+        "started": "2026-10-30T07:56:03.648336+00:00",
+        "ended": "2026-10-30T07:56:10.045601+00:00",
+        "attempts": 1
+      }
+    ]
+  },
+  "image_review": {
+    "decoded_native_app_pngs": 86,
+    "contacts": 11,
+    "Vision_actual_held_camera_pngs": 3,
+    "own_public_images": [
+      {
+        "path": "Docs/screenshots/tv-vision-source-captions/tv-first.png",
+        "sha256": "e76bda4275fc97323ce9105257d7a16f0387a2fefaf754b84e5485f1cf40b34d",
+        "source_png_sha256": "b2e111c3417cf3553d43cb67fd9b37b5636d63789ff54b2b9e393a9d1df406b3",
+        "crop": [
+          512,
+          72,
+          1408,
+          968
+        ],
+        "scope": "Own reference viewport only; no system menu or Vision environment redistributed."
+      },
+      {
+        "path": "Docs/screenshots/tv-vision-source-captions/tv-final.png",
+        "sha256": "2661b92de64d5dba64591b9ebfb26955577d123911e6f2bfad8a3f19715670dd",
+        "source_png_sha256": "47ccfa09935ad3941ed5b1c873d3cc26bfff301bde50a8a842bd27cba0a2eab8",
+        "crop": [
+          512,
+          72,
+          1408,
+          968
+        ],
+        "scope": "Own reference viewport only; no system menu or Vision environment redistributed."
+      },
+      {
+        "path": "Docs/screenshots/tv-vision-source-captions/tv-no-captions.png",
+        "sha256": "cbe160b605d3500f9747c8dfe986a58c70387cf27d755a6aa5dcd83089aa2051",
+        "source_png_sha256": "81b9a376ec184fd0bcebcfedbb102eaa407c575bbe8ce994a005abfadeaf87ca",
+        "crop": [
+          512,
+          72,
+          1408,
+          968
+        ],
+        "scope": "Own reference viewport only; no system menu or Vision environment redistributed."
+      }
+    ],
+    "raw_Vision_images_and_system_menu_private": true
+  },
+  "scope_limits": [
+    "Own muted tone and timedtext only; not real podcasts, languages, ASR, OS LiveCaptions, Siri, RTT, acoustic usability, physical hardware or suspended-device acceptance.",
+    "All Home/physical/signing holds unchanged; no account, microphone/camera/call/message/systemassistive activation.",
+    "Five unknown OS routes and visible Vision warm-window routing still unresolved; enumeration is not complete #74 acceptance."
+  ],
+  "asset_gate": {
+    "initial_result": "AssertionError: stale whole-source hash for HomeScreens; Faces also stale. Both already published by09f9116, not current TV focus change.",
+    "current_source_bindings_refreshed": [
+      {
+        "path": "Sources/App/HomeScreens.swift",
+        "previous_sha256": "2487976a5ec0ce119cfc9fa58a6b978d41d98b871f757813bfe17d1b1f99a7b7",
+        "current_sha256": "ad6017944395c331b577b5eb40116f931b683b4e2d5f4f8a6b7432017f8f0666",
+        "already_stale_in_published_baseline": true
+      },
+      {
+        "path": "Sources/App/Faces.swift",
+        "previous_sha256": "70152f76bf13b0508d6d8f6ae5149ac4bb9714babecb3f07f82c269c89b77ee5",
+        "current_sha256": "a3dcaab0a5e6d11ad902846cfd8bdac9e00a1f72cb40e7bde7978a2b34fe0482",
+        "already_stale_in_published_baseline": true
+      }
+    ],
+    "DemoAlbumCover_byte_equal_to3ad7379": true,
+    "resource_and_license_declarations_unchanged": true
+  }
+}
