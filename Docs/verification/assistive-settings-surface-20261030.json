@@ -1,0 +1,331 @@
+{
+  "date": "2026-10-30",
+  "issue": 73,
+  "base_commit": "0369baf90d728c8990342dfc0b6ee72d30c6848a",
+  "delivered_product_and_test_files_exact": 253,
+  "delivered_source_sha256": "5dfe543256ae85b41c715e757aec8510e85d897d2f89db79bd3dbf1069247536",
+  "temporary_test_diagnostics_removed": true,
+  "product_changes": [],
+  "scope": "Observed iOS27.0/24A434 owned simulator Settings surface, not a public API impossibility or physical-device statement. Inventory PASS does not establish actual assistive service activation or product usability.",
+  "executions": [
+    {
+      "checkpoint": "inventory",
+      "device": "phone",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "compiled_files": 33,
+      "installed_app_before": true,
+      "installed_app_after": true,
+      "installed_runner_after": true,
+      "source_sha256": "435bdd67601b5c7e6e2270fcddfc905266d3727abcc4abbfc46a34d9fc7418b9"
+    },
+    {
+      "checkpoint": "surface",
+      "device": "phone",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "compiled_files": 33,
+      "installed_app_before": true,
+      "installed_app_after": true,
+      "installed_runner_after": true,
+      "source_sha256": "2d98f95ba8fb59ff5553658d317b06ea08766c836641e377fe55769f4994eb42",
+      "native_report": {
+        "final_native_assistive_touch": false,
+        "observations": [
+          {
+            "native_assistive_touch": false,
+            "observed_routes": [
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Touch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "AssistiveTouch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Switch Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Voice Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Zoom"
+              }
+            ],
+            "stage": "top"
+          },
+          {
+            "native_assistive_touch": false,
+            "observed_routes": [
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Touch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "AssistiveTouch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Switch Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Voice Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Zoom"
+              }
+            ],
+            "stage": "scroll-1"
+          },
+          {
+            "native_assistive_touch": false,
+            "observed_routes": [
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Touch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "AssistiveTouch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Switch Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Voice Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Zoom"
+              }
+            ],
+            "stage": "scroll-2"
+          },
+          {
+            "native_assistive_touch": false,
+            "observed_routes": [
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Touch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "AssistiveTouch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Switch Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Voice Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Zoom"
+              }
+            ],
+            "stage": "scroll-3"
+          }
+        ],
+        "original_native_assistive_touch": false,
+        "scope": "Read-only full bounded Accessibility menu inventory on an owned simulator. Three table-only scrolls; no switch, action, microphone, account, Nearby Device or personal store used. Inventory completion does not establish assistive activation, product usability, physical capability or universal API absence."
+      }
+    },
+    {
+      "checkpoint": "surface",
+      "device": "ipad",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "compiled_files": 33,
+      "installed_app_before": true,
+      "installed_app_after": true,
+      "installed_runner_after": true,
+      "source_sha256": "2d98f95ba8fb59ff5553658d317b06ea08766c836641e377fe55769f4994eb42",
+      "native_report": {
+        "final_native_assistive_touch": false,
+        "observations": [
+          {
+            "native_assistive_touch": false,
+            "observed_routes": [
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Touch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "AssistiveTouch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Switch Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Voice Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Zoom"
+              }
+            ],
+            "stage": "top"
+          },
+          {
+            "native_assistive_touch": false,
+            "observed_routes": [
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Touch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "AssistiveTouch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Switch Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Voice Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Zoom"
+              }
+            ],
+            "stage": "scroll-1"
+          },
+          {
+            "native_assistive_touch": false,
+            "observed_routes": [
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Touch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "AssistiveTouch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Switch Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Voice Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Zoom"
+              }
+            ],
+            "stage": "scroll-2"
+          },
+          {
+            "native_assistive_touch": false,
+            "observed_routes": [
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Touch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "AssistiveTouch"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Switch Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Voice Control"
+              },
+              {
+                "exact_button_exists": false,
+                "exact_cell_exists": false,
+                "name": "Zoom"
+              }
+            ],
+            "stage": "scroll-3"
+          }
+        ],
+        "original_native_assistive_touch": false,
+        "scope": "Read-only full bounded Accessibility menu inventory on an owned simulator. Three table-only scrolls; no switch, action, microphone, account, Nearby Device or personal store used. Inventory completion does not establish assistive activation, product usability, physical capability or universal API absence."
+      }
+    }
+  ],
+  "initial_failure": "Touch Button not reached. Complete later native menu inventory has no Touch route, so the initial selector-only hypothesis is not established. Failure retained.",
+  "native_pngs_decoded": 10,
+  "contact_sheets_reviewed": 1,
+  "core_or_platform_build_rerun": false,
+  "no_fresh_app_ui_acceptance": true,
+  "holds_preserved": [
+    "HomeKit disabled",
+    "synthetic only",
+    "no personal library/account",
+    "physical/signing paused",
+    "no host or security/config changes"
+  ],
+  "diagnostic_source_sha256": "b500aea5df888eb7ea6efb3b0fba4605b92bf053393cf429cfa3f91b9ae8a151",
+  "private_artifact_seal": {
+    "sha256": "e33e85c6a26c1790739ed6206a6483f008fb5a004971f7e0f8a625e87fac797e",
+    "count": 206,
+    "bytes": 18873843
+  }
+}

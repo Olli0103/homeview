@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [iOS27-Hilfsmittelmenü tatsächlich inventarisiert](assistive-settings-surface.md): zwei read-only Menüinventuren abgeschlossen, ursprünglicher nicht erreichter Touch-Pfad erhalten. AssistiveTouch, Sprach-/Schaltersteuerung und Zoom in diesen beobachteten Simulator-Menüs nicht erreichbar; nativer Zustand unverändert aus. Keine Hilfsmittel-/Produktabnahme, Diagnose aus Standardtarget entfernt, Produkt unverändert. #73 bleibt offen; weiter zum TV-Timer-Sprachfokus.
+
 - [TV-VoiceOver: Überschrift und echte Remote-Kameraaktion](tv-voiceover-remote.md): neun aktuelle TV-/zwei mobile Ausführungen sowie fünf SDKs/77Produkte bestanden. Zwei ganze TV-Bilder, beide mobilen Viewports und fünf TV-Rechtecke exakt erhalten. API-Traversal scheitert auch am unabhängigen UIKit-Button, realer VoiceOver-Remote-Callback funktioniert. Timer-Sprachfokus nach Resume weiterhin offen; wirkungslose Kandidaten entfernt. #73 offen, keine Original-/akustische-/physische Gesamtabnahme.
 
 - [iOS26-Mindestpfad: native Vorbereitung vor App-Test blockiert](ios26-native-preparation.md): offizielles Archiv, alle vier Restore-Komponenten und verwaltete Runtimekopie bytegeprüft; Zusatzverifier scheitert identisch auch an vorhandener offizieller iOS27-Runtime. Frischer Phone-Start meldet Finished, aber Import/OS-Fotos/Screenshot/Appinstallation hängen. Null native App-Tests; sechs OS-Dateien unverändert, kein Importretry, keine Produktänderung. #67-Legacypfad bleibt offen; der native TV-VoiceOver-Nachweis ist getrennt oben verlinkt.
