@@ -221,7 +221,8 @@ final class AppModel {
   private(set) var assistantUsesAI = false
   var assistantInput = ""
   private(set) var personalSessionGeneration = 0
-  var assistantReply = "What can I help you with?" { didSet {assistantDocument=nil} }
+  var assistantDeviceControl:HomeControlSlot?
+  var assistantReply = "What can I help you with?" { didSet {assistantDocument=nil;assistantDeviceControl=nil} }
   private(set) var assistantDocument:AssistantResponseDocument?
   var playing = false
   var podcastPlaying = false
@@ -1946,9 +1947,11 @@ final class AppModel {
     case .temperature(let t):
       command(.temperature(t))
       assistantReply = homeCommandReply("The mock thermostat is set to \(t)°.")
+      if lastHomeCommandState.pending {assistantDeviceControl = .temperature}
     case .light:
       command(.entryLight)
       assistantReply = homeCommandReply("The entryway light is \(observedHome.entryLight ? "on" : "off").")
+      if lastHomeCommandState.pending {assistantDeviceControl = .entryLight}
     case .timer:
       assistantReply = "Specify an explicit timer duration, for example ‘set a timer for 5 minutes’."
     case .recipe:
@@ -1980,7 +1983,7 @@ final class AppModel {
     switch lastHomeCommandState {
     case .confirmed:return confirmed
     case .failed(let failure):return error ?? failure.localizedDescription
-    case .checking,.writing,.verifying:return "Mock device command pending. The result is not confirmed."
+    case .checking,.writing,.verifying:return "Mock device command requested. Its current device status is shown below."
     case .idle,.unverified:return error ?? "Mock device outcome is unverified. No automatic retry."
     }
   }

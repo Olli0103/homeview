@@ -54,11 +54,12 @@ enum HomeControlOperationState: Equatable, Sendable {
   }
   func state(_ key: HomeCharacteristicID) -> HomeControlOperationState { states[key] ?? .idle }
   func descriptor(_ key: HomeCharacteristicID) -> HomeCharacteristicDescriptor? {
-    readings[key]?.descriptor ?? provider.descriptors[key]
+    provider.descriptors[key]
   }
   func canWrite(_ key: HomeCharacteristicID) -> Bool {
     guard active,contextAllowed(),pending[key]==nil,unsettledWrites[key]==nil,let descriptor=descriptor(key) else { return false }
-    return descriptor.source == .mock && descriptor.valid && descriptor.readable && descriptor.writable && readings[key]?.valid == true
+    return descriptor.source == .mock && descriptor.valid && descriptor.readable && descriptor.writable
+      && readings[key]?.valid == true && readings[key]?.descriptor == descriptor
   }
   private func version(_ key: HomeCharacteristicID) -> UUID {
     if let current=versions[key] { return current }
@@ -73,6 +74,7 @@ enum HomeControlOperationState: Equatable, Sendable {
   }
   private func accepts(_ reading: HomeCharacteristicReading, key: HomeCharacteristicID) -> Bool {
     reading.descriptor.id==key && reading.descriptor.source == .mock && reading.valid
+      && provider.descriptors[key] == reading.descriptor
   }
   private func publish(_ reading: HomeCharacteristicReading, key: HomeCharacteristicID) {
     readings[key]=reading;versions[key]=UUID()

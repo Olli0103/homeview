@@ -333,6 +333,7 @@ struct AssistantView: View {
           Text(model.assistantReply).font(.system(size:localAnswerSize,weight:.medium))
             .frame(maxWidth:.infinity,alignment:.leading).padding(.horizontal,34)
             .padding(.top,24).accessibilityIdentifier("assistant.reply")
+          if let slot=model.assistantDeviceControl {HomeControlStatus(slot:slot).padding(.horizontal,34)}
           if let document=model.assistantDocument {
             AssistantResponseView(document:document,openRecipe:model.openAssistantExampleRecipe,
               selectExample:showExample).padding(.horizontal,34)

@@ -3657,6 +3657,22 @@ final class HomeViewUITests: XCTestCase {
     }
     viewportShot("device-all-modes-persisted-cool")
   }
+  func testAssistantShowsLiveDeviceReadbackWithoutPrematureSuccess() {
+    continueAfterFailure=false
+    launch(["--persistence-test",UUID().uuidString,"--reset-test-store","--mock-control-case","delayed","temperature"])
+    tap("nav.assistant")
+    let field=app.textFields["assistant.input"]
+    field.tap();field.typeText("temperature 72");tap("assistant.send")
+    XCTAssertTrue(app.staticTexts["assistant.reply"].label.contains("requested"))
+    XCTAssertFalse(app.staticTexts["assistant.reply"].label.contains("is set"))
+    let status=app.staticTexts["home.control.status.temperature"]
+    XCTAssertTrue(status.label.contains("pending"))
+    let done=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Confirmed by device state"),object:status)
+    XCTAssertEqual(XCTWaiter.wait(for:[done],timeout:12),.completed)
+    viewportShot("device-assistant-live-confirmed-status",assistantRectangle:true)
+    tap("nav.faces");tap("home.thermostat")
+    XCTAssertEqual(mockDeviceValue("temperature").label,"72°")
+  }
   func testMockLockLargestSystemTextKeepsConfirmationReachable() {
     continueAfterFailure=false
     XCTAssertEqual(UIApplication.shared.preferredContentSizeCategory,.accessibilityExtraExtraExtraLarge)

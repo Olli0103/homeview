@@ -373,7 +373,10 @@ struct HomeControlStatus:View {
   var slot:HomeControlSlot
   var body:some View {
     let state=model.homeControlState(slot)
-    Text(model.homeControlDescriptor(slot)?.writable == false ? "Read-only device · Observed state":state.text)
+    let descriptor=model.homeControlDescriptor(slot)
+    Text(descriptor?.valid != true ? "Device controls unavailable":descriptor?.readable != true
+      ? "Device state unavailable · Reading not allowed":descriptor?.writable == false
+      ? "Read-only device · Observed state":state.text)
       .font(.system(size:17)).multilineTextAlignment(.center).fixedSize(horizontal:false,vertical:true)
       .accessibilityIdentifier("home.control.status.\(slot.rawValue)")
   }

@@ -440,7 +440,7 @@ struct ThermostatView: View {
             symbol: "chevron.down", color: .clear, foreground: .white, size: 76,
             label: "Decrease temperature"
           ) { model.stepHomeControl(.temperature,direction:-1) }
-          .disabled(model.homeControlState(.temperature).pending || model.observedHome.temperature<=Int(model.homeControlDescriptor(.temperature)?.numeric?.minimum ?? 50))
+          .disabled((!model.canWriteHomeControl(.temperature) && !model.storeReadOnly) || model.observedHome.temperature<=Int(model.homeControlDescriptor(.temperature)?.numeric?.minimum ?? 50))
           .accessibilityIdentifier("thermostat.down")
           Spacer(minLength: 0)
           Text("\(model.observedHome.temperature)").font(.system(size: 170, weight: .light))
@@ -451,7 +451,7 @@ struct ThermostatView: View {
             symbol: "chevron.up", color: .clear, foreground: .white, size: 76,
             label: "Increase temperature"
           ) { model.stepHomeControl(.temperature,direction:1) }
-          .disabled(model.homeControlState(.temperature).pending || model.observedHome.temperature>=Int(model.homeControlDescriptor(.temperature)?.numeric?.maximum ?? 90))
+          .disabled((!model.canWriteHomeControl(.temperature) && !model.storeReadOnly) || model.observedHome.temperature>=Int(model.homeControlDescriptor(.temperature)?.numeric?.maximum ?? 90))
           .accessibilityIdentifier("thermostat.up")
         }.padding(.horizontal, 28)
         HStack(spacing: 10) {

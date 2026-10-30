@@ -190,6 +190,19 @@ import XCTest
     let(s,p,_)=setup();p.readFailure = .offline
     XCTAssertEqual(s.request(HomeMockControls.id(.temperature),value:.number(72)),.failed(.offline));XCTAssertEqual(p.writes,0)
   }
+  func testNewReadOnlyMetadataFencesAStalePreflightEvenWithoutNotification() async throws {
+    let(s,p,_)=setup(),key=HomeMockControls.id(.temperature),old=p.reading(HomeMockControls.id(.temperature)),d=p.descriptors[HomeMockControls.id(.temperature)]!
+    p.holdReads=true;s.request(key,value:.number(72))
+    p.descriptors[key]=HomeCharacteristicDescriptor(id:key,kind:d.kind,unit:d.unit,source:d.source,readable:true,writable:false,numeric:d.numeric,modes:d.modes)
+    XCTAssertFalse(s.canWrite(key))
+    try XCTUnwrap(p.readReplies.first)(.success(old))
+    XCTAssertEqual(s.state(key),.failed(.changed));XCTAssertEqual(p.writes,0);XCTAssertEqual(p.applied,0)
+  }
+  func testRemovedMetadataCannotReuseAnOlderCachedCapability() async {
+    let(s,p,_)=setup(),key=HomeMockControls.id(.temperature);p.descriptors.removeValue(forKey:key)
+    XCTAssertNil(s.descriptor(key));XCTAssertFalse(s.canWrite(key))
+    XCTAssertEqual(s.request(key,value:.number(72)),.failed(.unsupported));XCTAssertEqual(p.writes,0)
+  }
   func testStopAndRestartFencesPreflightAndDuplicateCallbacks() async throws {
     let(s,p,_)=setup(),key=HomeMockControls.id(.temperature);p.holdReads=true
     s.request(key,value:.number(72));let old=try XCTUnwrap(p.readReplies.first)
