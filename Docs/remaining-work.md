@@ -18,6 +18,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [Pausierte Demo-Musik skaliert und scrollt](demo-music-dynamic-type.md): acht akzeptierte aktuelle UI-Ausführungen/fünf SDKs. 14 Textausdehnungen wachsen, alle 16 normalen ganzen RGBA-Paare exakt gleich; vier übernommene Scroll-Instrumentfehler erhalten. Kein Playback/Provider-/Kontrast-/Hilfsmittel-PASS, #73 offen.
+
 - [Foto-/Album-Einstellungen: Systemschrift und Kontrast](photo-controls-accessibility.md): 18 aktuelle UI-Ausführungen/fünf SDKs grün. 26 native Textbedingungen wachsen; 18 qualifizierte Kontrastbedingungen 7,00:1, zwei XXXL-Ganztext-ROIs bleiben unqualifiziert. Keine pauschale Normalpixel-/Hilfsmittel-/Original-Parity; #73/#11 offen.
 
 - [Native Fotoauswahl auf Fenster-Ebene geschützt, iPhone-Tastaturebene offen](native-photos-snapshot.md): zehn aktuelle neue UI-Ausführungen mit neun PASS/einem ausdrücklich offenen 98%-Keyboardguard; zwölf bestehende Regressionen und fünf SDKs grün. Bild-/Suchinhalt verdeckt, ausstehende Auswahl/Suchentwurf erhalten. Kein vollständiger #67-Abschluss.

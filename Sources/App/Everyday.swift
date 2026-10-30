@@ -627,6 +627,13 @@ struct RemindersView: View {
 struct MusicView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.nativeCanvasScale) private var canvasScale
+  @Environment(\.dynamicTypeSize) private var textSize
+  @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
+  @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
+  @ScaledMetric(relativeTo:.headline) private var libraryTitleSize:CGFloat=23
+  @ScaledMetric(relativeTo:.body) private var libraryDetailSize:CGFloat=17
+  @ScaledMetric(relativeTo:.headline) private var trackTitleSize:CGFloat=25
+  @ScaledMetric(relativeTo:.body) private var artistSize:CGFloat=21
   private var minimumHitSide:CGFloat {(44 / max(0.01,canvasScale)).rounded(.up)}
   @State private var browse = false
   var body: some View {
@@ -636,8 +643,15 @@ struct MusicView: View {
           Color(red: 0.31, green: 0.46, blue: 0.62), Color(red: 0.13, green: 0.22, blue: 0.35),
         ], startPoint: .topLeading, endPoint: .bottomTrailing)
       VStack(spacing: 17) {
-        AppHeader(title:browse ? "Music":"",light:true,closeSize:max(48,minimumHitSide))
-        if browse { library } else { player }
+        AppHeader(title:browse ? "Music":"",light:true,closeSize:max(48,minimumHitSide),
+          titleFontSize:headerSize,clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
+        if textSize.isAccessibilitySize {
+          ScrollView {
+            if browse {library} else {player}
+          }.accessibilityIdentifier("music.demo.accessible.content")
+        } else {
+          if browse {library} else {player}
+        }
         Spacer(minLength: 0)
       }.foregroundStyle(.white)
     }.buttonStyle(.plain)
@@ -656,8 +670,8 @@ struct MusicView: View {
             DemoAlbumCover().frame(width: 78, height: 78).clipShape(
               RoundedRectangle(cornerRadius: 12))
             VStack(alignment: .leading, spacing: 6) {
-              Text(Fixtures.songs[i]).font(.system(size: 23, weight: .semibold))
-              Text("Bundled demo audio").font(.system(size: 17)).opacity(0.65)
+              Text(Fixtures.songs[i]).font(.system(size: libraryTitleSize, weight: .semibold))
+              Text("Bundled demo audio").font(.system(size: libraryDetailSize)).opacity(0.65)
             }
             Spacer()
             Image(systemName: "play.fill")
@@ -673,8 +687,8 @@ struct MusicView: View {
         .overlay(alignment: .bottomTrailing) { MusicArtworkInfoButton(source: .demo) }
       HStack {
         VStack(alignment: .leading, spacing: 5) {
-          Text(Fixtures.songs[model.song]).font(.system(size: 25, weight: .semibold))
-          Text("Demo Artist").font(.system(size: 21)).opacity(0.6)
+          Text(Fixtures.songs[model.song]).font(.system(size: trackTitleSize, weight: .semibold))
+          Text("Demo Artist").font(.system(size: artistSize)).opacity(0.6)
         }
         Spacer()
         Button {

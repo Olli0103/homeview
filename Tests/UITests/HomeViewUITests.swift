@@ -315,6 +315,69 @@ extension HomeViewUITests {
     a.name="photo-type-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
     viewportShot("photo-type-"+state)
   }
+  private func revealPausedMusicTransport(_ element:XCUIElement) {
+    // This is a functional midpoint probe, not a 44pt edge audit. The music
+    // transport sits at the content end; a photo-specific extra 40pt scroll
+    // clearance is not its clipping boundary. Keep full actual containment.
+    revealRecipeTypeElement(element,margin:0,horizontalMargin:0)
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    let clip=recipeTypeScrollContains(element,scroll) ? scroll.frame.intersection(viewport):viewport
+    XCTAssertTrue(axContains(clip,element.frame));XCTAssertTrue(element.isHittable)
+    let f=element.frame
+    let report:[String:Any]=["id":element.identifier,"frame":[f.minX,f.minY,f.width,f.height],
+      "actual_clip":[clip.minX,clip.minY,clip.width,clip.height],"hittable":element.isHittable,
+      "scope":"Full actual scroll-clip containment plus original next/previous/paused callback; not a minimum hit rectangle or assistive-service test."]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="photo-type-music-transport-"+element.label;a.lifetime = .keepAlways;add(a)
+  }
+  private func musicTypeObserve(_ state:String,_ element:XCUIElement) {
+    // Music rows can sit at either natural scroll end. Observe the actual
+    // clip, not the photo-settings helper's ornamental 40pt clearance.
+    revealRecipeTypeElement(element,margin:0,horizontalMargin:0)
+    RunLoop.current.run(until:Date().addingTimeInterval(0.5))
+    let viewport=app.otherElements["reference.viewport"].frame,scroll=app.scrollViews.firstMatch
+    let clip=recipeTypeScrollContains(element,scroll) ? scroll.frame.intersection(viewport):viewport
+    let f=element.frame
+    // All declared music targets are short text, not paragraph excerpts.
+    XCTAssertTrue(axContains(clip,f))
+    func box(_ f:CGRect)->[Double] {[f.minX,f.minY,f.width,f.height]}
+    let report:[String:Any]=["state":state,"control_envelope_not_font_metric":false,
+      "target":["id":element.identifier,"label":element.label,"frame":box(f),"clip":box(clip),
+        "fully_in_clip":axContains(clip,f),"visible_intersection":box(f.intersection(clip))]]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:report,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name="photo-type-"+state+"-geometry";a.lifetime = .keepAlways;add(a)
+    viewportShot("photo-type-"+state)
+  }
+  func testPausedDemoMusicSystemTextSizeInventoryWithoutPlayback() {
+    continueAfterFailure=false
+    launchPausedDemoMusicAudit()
+    musicTypeObserve("music-player-title",app.staticTexts["FEVER DREAM"])
+    musicTypeObserve("music-player-artist",app.staticTexts["Demo Artist"])
+    let next=app.buttons["player.next"],previous=app.buttons["Previous track"]
+    revealPausedMusicTransport(next);next.tap()
+    XCTAssertTrue(app.staticTexts["A Little Sunshine"].exists)
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    revealPausedMusicTransport(previous);previous.tap()
+    XCTAssertTrue(app.staticTexts["FEVER DREAM"].exists)
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    let info=app.buttons["music.artwork.info.demo"]
+    revealPhotoTypeElement(info);info.tap()
+    XCTAssertTrue(app.staticTexts["music.artwork.source"].waitForExistence(timeout:5))
+    tap("music.artwork.done")
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    let library=app.buttons["Music library"]
+    revealPhotoTypeElement(library);library.tap()
+    musicTypeObserve("music-library-heading",app.staticTexts["Music"])
+    for (i,title) in ["FEVER DREAM","A Little Sunshine","Evening Light"].enumerated() {
+      musicTypeObserve("music-library-title-\(i)",app.staticTexts[title])
+    }
+    musicTypeObserve("music-library-policy",app.staticTexts["Bundled demo audio"].firstMatch)
+    // A library selection would start audio. Do not activate any library row.
+    tap("close")
+    XCTAssertTrue(app.buttons["personal.photos.open"].waitForExistence(timeout:5))
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    musicTypeObserve("positive-settings-heading",app.staticTexts["Settings"])
+  }
   func testPhotoSettingsSystemTextSizeInventoryWithoutLibrary() {
     continueAfterFailure=false
     launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store"])
