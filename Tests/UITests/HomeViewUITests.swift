@@ -3526,8 +3526,82 @@ final class HomeViewUITests: XCTestCase {
     tap("grid.lock")
     XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked","Authentication never performs the security action automatically")
     tap("lock.action")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked","A proposal is not a sent command")
+    tap("lock.confirm")
     XCTAssertEqual(app.staticTexts["lock.state"].label, "Unlocked")
     viewportShot("guest-policy-explicit-authenticated-mock-lock")
+  }
+  func testMockLockProposalAndCancelNeverSendACommand() {
+    continueAfterFailure=false
+    launch(["--page","Home","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("grid.lock")
+    tap("lock.action")
+    tap("device.unlock")
+    tap("grid.lock")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    tap("lock.action")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked","Preparing a security action must not send it")
+    XCTAssertTrue(app.buttons["lock.confirm"].waitForExistence(timeout:5))
+    viewportShot("mock-lock-proposal-no-command")
+    tap("lock.cancel")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    XCTAssertFalse(app.buttons["lock.confirm"].exists)
+    viewportShot("mock-lock-cancel-no-command")
+  }
+  private func waitForMockLockState(_ expected:String) {
+    let condition=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@",expected),object:app.staticTexts["lock.state"])
+    XCTAssertEqual(XCTWaiter.wait(for:[condition],timeout:5),.completed)
+  }
+  func testMockLockConfirmedReadbackPersistsWithoutPersistingAuthorization() {
+    continueAfterFailure=false
+    let id=UUID().uuidString
+    launch(["--page","Home","--persistence-test",id,"--reset-test-store","--mock-lock-state","low-battery"])
+    tap("grid.lock");tap("lock.action");tap("device.unlock");tap("grid.lock")
+    waitForMockLockState("Locked")
+    XCTAssertEqual(app.staticTexts["lock.battery"].label,"Low battery · 15%")
+    tap("lock.action");XCTAssertEqual(app.staticTexts["lock.state"].label,"Locked")
+    tap("lock.confirm");waitForMockLockState("Unlocked")
+    XCTAssertTrue(app.staticTexts["lock.status"].label.contains("confirmed by state read-back"))
+    viewportShot("mock-lock-confirmed-low-battery")
+    tap("lock.action")
+    XCTAssertEqual(app.staticTexts["lock.state"].label,"Unlocked")
+    XCTAssertEqual(app.buttons["lock.confirm"].label,"Confirm Lock")
+    tap("lock.cancel")
+    app.terminate()
+    launch(["--page","Home","--persistence-test",id])
+    tap("grid.lock");waitForMockLockState("Unlocked")
+    XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device")
+    XCTAssertFalse(app.buttons["lock.confirm"].exists)
+    viewportShot("mock-lock-restart-observed-state-no-grant")
+  }
+  func testMockLockBackgroundDiscardsPendingConfirmation() {
+    continueAfterFailure=false
+    launch(["--page","Home","--persistence-test",UUID().uuidString,"--reset-test-store"])
+    tap("grid.lock");tap("lock.action");tap("device.unlock");tap("grid.lock")
+    waitForMockLockState("Locked");tap("lock.action")
+    XCTAssertTrue(app.buttons["lock.confirm"].waitForExistence(timeout:5))
+    XCUIDevice.shared.press(.home)
+    XCTAssertTrue(app.wait(for:.runningBackground,timeout:5))
+    app.activate()
+    XCTAssertTrue(app.buttons["lock.action"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.buttons["lock.action"].label,"Authenticate Device")
+    XCTAssertFalse(app.buttons["lock.confirm"].exists)
+    tap("lock.refresh");waitForMockLockState("Locked")
+    viewportShot("mock-lock-background-no-approval-no-command")
+  }
+  func testMockLockUnknownJammedAndBatteryFaultNeverOfferACommand() {
+    continueAfterFailure=false
+    for (fixture,state,battery) in [("unknown","Unknown","Battery level unavailable"),("jammed","Jammed","Low battery · 15%"),("battery-fault","Locked","Battery fault · Control unavailable")] {
+      launch(["--page","Home","--persistence-test",UUID().uuidString,"--reset-test-store","--mock-lock-state",fixture])
+      tap("grid.lock");tap("lock.action");tap("device.unlock");tap("grid.lock")
+      waitForMockLockState(state)
+      XCTAssertEqual(app.staticTexts["lock.battery"].label,battery)
+      XCTAssertFalse(app.buttons["lock.action"].isEnabled)
+      XCTAssertFalse(app.buttons["lock.confirm"].exists)
+      XCTAssertTrue(app.buttons["lock.refresh"].isEnabled)
+      viewportShot("mock-lock-unavailable-"+fixture)
+      app.terminate()
+    }
   }
   func testRecipeIngredientsCookingAndInlineTimer() {
     launch(["--screen-recipe"])

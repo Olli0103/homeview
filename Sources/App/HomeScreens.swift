@@ -386,8 +386,8 @@ struct HomeGrid: View {
         tile("fan.desk", "Fan", "Office", model.data.home.fan) { model.command(.fan) }
           .accessibilityIdentifier("grid.fan")
         tile(
-          model.data.home.locked ? "lock.fill" : "lock.open.fill", "Door Lock", "Front Door",
-          !model.data.home.locked
+          model.observedMockLockSymbol, "Door Lock", "Front Door",
+          model.observedMockLockState == .unlocked
         ) { model.route = .lock }.accessibilityIdentifier("grid.lock")
       }
     }.padding(12).background(.white).buttonStyle(.plain).foregroundStyle(.gray)
@@ -486,6 +486,7 @@ struct LockView: View {
   @Environment(AppModel.self) private var model
   @Environment(\.dynamicTypeSize) private var textSize
   @Environment(\.nativeCanvasScale) private var canvasScale
+  @State private var lockTask: Task<Void,Never>?
   @ScaledMetric(relativeTo:.headline) private var headerSize:CGFloat=23
   @ScaledMetric(relativeTo:.title2) private var clockSize:CGFloat=22
   @ScaledMetric(relativeTo:.largeTitle) private var stateSize:CGFloat=45
@@ -493,46 +494,69 @@ struct LockView: View {
   @ScaledMetric(relativeTo:.headline) private var actionSize:CGFloat=21
   private var minimumHitSide:CGFloat {ceil(44/max(0.01,canvasScale))}
   var body:some View {
-    Group {
-      if textSize.isAccessibilitySize {
-        VStack(spacing:25) {
-          header
-          ScrollView {
-            VStack(spacing:25) {symbol;state;policy;lockAction}.padding(.vertical,32)
-          }.accessibilityIdentifier("lock.accessible.content")
-        }
-      } else {
-        VStack(spacing:25) {header;Spacer();symbol;state;policy;lockAction;Spacer()}
-      }
-    }.padding(.horizontal,30).background(.white).foregroundStyle(.black)
+    VStack(spacing:16) {
+      header
+      ScrollView {
+        VStack(spacing:20) {
+          symbol;state;policy
+          Text(model.securityLock.reading?.batteryText ?? "Battery level unavailable")
+            .font(.system(size:policySize)).accessibilityIdentifier("lock.battery")
+          Text(model.securityLock.status).font(.system(size:policySize))
+            .accessibilityIdentifier("lock.status")
+        }.frame(maxWidth:.infinity).padding(.vertical,12)
+      }.accessibilityIdentifier("lock.accessible.content")
+      lockAction
+      Pill(title:"Refresh state",symbol:"arrow.clockwise",fontSize:actionSize,minimumHeight:minimumHitSide) {
+        lockTask?.cancel();lockTask=Task { await model.securityLock.refresh() }
+      }.disabled(model.securityLock.busy).accessibilityIdentifier("lock.refresh")
+    }.padding(.horizontal,30).padding(.bottom,12).background(.white).foregroundStyle(.black)
+      .task { await model.securityLock.refresh() }
+      .onDisappear { lockTask?.cancel();lockTask=nil;model.revokeLockApproval() }
   }
   private var header:some View {
     AppHeader(title:"Front Door",closeSize:textSize.isAccessibilitySize ? max(48,minimumHitSide):48,
       titleFontSize:headerSize,clockFontSize:clockSize,accessibilityLayout:textSize.isAccessibilitySize)
   }
   private var symbol:some View {
-    Image(systemName:model.data.home.locked ? "lock.fill":"lock.open.fill")
-      .font(.system(size:112)).foregroundStyle(model.data.home.locked ? .green:.orange)
+    let state=model.securityLock.reading?.state ?? .unknown
+    return Image(systemName:state == .locked ? "lock.fill":state == .unlocked ? "lock.open.fill":"exclamationmark.shield")
+      .font(.system(size:112)).foregroundStyle(state == .locked ? .green:.orange)
   }
   private var state:some View {
-    Text(model.data.home.locked ? "Locked":"Unlocked").font(.system(size:stateSize,weight:.semibold))
+    Text(model.securityLock.reading?.state.title ?? "Unknown").font(.system(size:stateSize,weight:.semibold))
       .accessibilityIdentifier("lock.state")
+      .accessibilityHint("Last observed mock state. The request status is shown separately.")
   }
   private var policy:some View {
     Text("Mock lock · Device authentication required").font(.system(size:policySize))
       .foregroundStyle(.black.opacity(0.65))
   }
-  private var lockAction:some View {
-    Pill(title:model.canControlMockSecurity ? (model.data.home.locked ? "Unlock":"Lock"):"Authenticate Device",
-      symbol:model.canControlMockSecurity ? "lock.open":"lock.shield",fontSize:actionSize,
-      minimumHeight:textSize.isAccessibilitySize ? minimumHitSide:0) {
-        if model.canControlMockSecurity {
-          model.command(.lock)
-        } else {
-          model.pendingPage = .home
-          model.route = .deviceUnlock
+  @ViewBuilder private var lockAction:some View {
+    if let proposal=model.securityLock.proposal {
+      VStack(spacing:8) {
+        Text(proposal.targetLocked ? "Lock mock Front Door?":"Unlock mock Front Door?")
+          .font(.system(size:policySize,weight:.semibold))
+        HStack(spacing:12) {
+          Pill(title:proposal.title,symbol:"checkmark.shield",tint:.orange,fontSize:actionSize,minimumHeight:minimumHitSide) {
+            lockTask?.cancel();lockTask=Task { await model.securityLock.confirm(id:proposal.id) }
+          }.accessibilityIdentifier("lock.confirm")
+          Pill(title:"Cancel",symbol:"xmark",fontSize:actionSize,minimumHeight:minimumHitSide) {
+            lockTask?.cancel();lockTask=nil;model.securityLock.cancelProposal()
+          }.accessibilityIdentifier("lock.cancel")
         }
-      }.accessibilityIdentifier("lock.action")
+      }
+    } else {
+      Pill(title:model.canControlMockSecurity ? (model.securityLock.reading?.state == .unlocked ? "Lock":"Unlock"):"Authenticate Device",
+        symbol:model.canControlMockSecurity ? "lock.open":"lock.shield",fontSize:actionSize,minimumHeight:minimumHitSide) {
+          if model.canControlMockSecurity {
+            lockTask?.cancel();lockTask=Task { await model.securityLock.prepare() }
+          } else {
+            model.pendingPage = .home
+            model.route = .deviceUnlock
+          }
+        }.disabled(model.securityLock.busy || (model.canControlMockSecurity && model.securityLock.reading?.canCommand != true))
+        .accessibilityIdentifier("lock.action")
+    }
   }
 }
 struct PrivacyView: View {

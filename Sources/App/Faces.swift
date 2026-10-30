@@ -122,7 +122,7 @@ struct HomeModularFace: View {
         HStack(spacing: 10) {
           homeTile("waveform", "Intercom", "Everywhere") { model.navigate(.intercom) }
           homeTile(
-            model.data.home.locked ? "lock.fill" : "lock.open.fill", "Door Lock", "Front Door"
+            model.observedMockLockSymbol, "Door Lock", "Front Door"
           ) { model.route = .lock }
           homeTile("lamp.ceiling.fill", "Lights", "Entryway") {
             model.command(.entryLight)

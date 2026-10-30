@@ -11,6 +11,38 @@ import SwiftUI
 final class AppModel {
   #if !os(watchOS)
     let connections = DeviceConnections()
+    @ObservationIgnored private var lockSessionStorage: LockActionSession?
+    private var lockForeground=false
+    var securityLock: LockActionSession {
+      if let lockSessionStorage { return lockSessionStorage }
+      let value=LockActionSession(provider:MockLockDevice(model:self),context:{ [weak self] in
+        guard let self else { return LockAccessContext(generation:0,active:false,authenticated:false) }
+        return LockAccessContext(generation:self.personalSessionGeneration,
+          active:self.lockForeground && self.route == .lock && !self.incomingCall && self.demoDoorbell.current == nil,
+          authenticated:self.canControlMockSecurity)
+      })
+      lockSessionStorage=value;return value
+    }
+    func revokeLockApproval() { lockSessionStorage?.revoke() }
+    // Never publish the provider's just-written value as a UI success before its read-back.
+    var observedMockLockState: LockReportedState {
+      if let lockSessionStorage { return lockSessionStorage.reading?.state ?? .unknown }
+      guard data.home.online else { return .unknown }
+      return data.home.locked ? .locked:.unlocked
+    }
+    var observedMockLockSymbol: String {
+      switch observedMockLockState {
+      case .locked: "lock.fill"
+      case .unlocked: "lock.open.fill"
+      case .unknown,.jammed: "exclamationmark.shield"
+      }
+    }
+    func setLockForeground(_ active: Bool) { lockForeground=active;if !active { revokeLockApproval() } }
+    @discardableResult func commitMockLock(_ home: MockHome) -> Bool {
+      guard lockForeground,route == .lock,canControlMockSecurity,
+        lockSessionStorage?.phase == .sending,lockSessionStorage?.busy == true else { return false }
+      return updateLocalControls { $0.home=home }
+    }
     let houseNotices=HouseNoticeInbox()
     private var noticeDemoAnchor:Date?
     var houseNoticeStatus="No demo sequence loaded. Apple Home stays disconnected."
@@ -64,6 +96,9 @@ final class AppModel {
   var data: Snapshot
   var route: Route = .face {
     didSet {
+      #if !os(watchOS)
+        if oldValue == .lock,route != .lock { revokeLockApproval() }
+      #endif
       guard oldValue == .assistant,route != .assistant else { return }
       assistantAI.clear();stopAnswerSpeech();assistantDocument=nil
       #if !os(watchOS)
@@ -1192,6 +1227,10 @@ final class AppModel {
   }
   func interact() { lastInteraction = Date() }
   func command(_ command: HomeCommand) {
+    if case .lock=command {
+      error="Open Front Door and confirm the mock security action separately. No command sent."
+      return
+    }
     guard writableStore() else { return }
     var candidate=data.home
     do {
@@ -1239,6 +1278,7 @@ final class AppModel {
   }
   func lockPersonalAccess() {
     #if !os(watchOS)
+      revokeLockApproval()
       discardDemoPlan()
     #endif
     localResetAttempt+=1;localResetAuthorizedSession=nil;localResetAuthorizationDeadline=nil
@@ -1288,6 +1328,9 @@ final class AppModel {
     }
   }
   func tick() {
+    #if !os(watchOS)
+      lockSessionStorage?.expireApproval()
+    #endif
     now = Date()
     let args = ProcessInfo.processInfo.arguments
     if args.contains("--uitesting"), args.contains("--fast-photo-clock") {

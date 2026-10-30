@@ -275,6 +275,7 @@ struct RootView: View {
     .task {
       model.setTimerActivityForeground(scenePhase == .active)
       model.localResetForeground=scenePhase == .active
+      model.setLockForeground(scenePhase == .active)
       model.presentIntroductionOnLaunch()
       model.setAnswerSpeechForeground(scenePhase == .active)
       consumeAssistantShortcut()
@@ -308,16 +309,18 @@ struct RootView: View {
       }
     #endif
     .onChange(of: model.route) { _, route in if route == .privacy { model.lockPersonalAccess() } }
-    .onChange(of:model.incomingCall) { _,incoming in if incoming { model.stopAnswerSpeech();model.dismissDemoDoorbell();model.pauseFeedPodcast() } }
+    .onChange(of:model.incomingCall) { _,incoming in if incoming { model.revokeLockApproval();model.stopAnswerSpeech();model.dismissDemoDoorbell();model.pauseFeedPodcast() } }
+    .onChange(of:model.demoDoorbell.current) { _,event in if event != nil { model.revokeLockApproval() } }
     .onChange(of: model.data.keepDisplayOn) { _, enabled in
       model.display.apply(enabled: enabled && scenePhase == .active)
     }
     .onChange(of: model.connections.personalUnlocked) { _, unlocked in
-      if !unlocked { model.stopAnswerSpeech();model.albumCatalogue.invalidate();model.recipeHandoff.stop() }
+      if !unlocked { model.revokeLockApproval();model.stopAnswerSpeech();model.albumCatalogue.invalidate();model.recipeHandoff.stop() }
     }
     .onDisappear {
       model.setTimerActivityForeground(false)
       model.localResetForeground=false
+      model.setLockForeground(false)
       model.setAnswerSpeechForeground(false)
       model.connections.endSharedPanelSession()
       model.recipeHandoff.stop()
@@ -334,6 +337,7 @@ struct RootView: View {
     .onChange(of: scenePhase) { _, phase in
       model.setTimerActivityForeground(phase == .active)
       model.localResetForeground=phase == .active
+      model.setLockForeground(phase == .active)
       model.setAnswerSpeechForeground(phase == .active)
       if phase != .active { model.recipeHandoff.stopOffering() }
       model.setAlbumDisplayActive(phase == .active)
