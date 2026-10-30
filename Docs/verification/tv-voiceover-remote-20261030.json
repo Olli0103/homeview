@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-30",
+  "issue": 73,
+  "issue_closed": false,
+  "code_commit": "d8f7cfb0024881b7cf910cefe8a094ad622b1bad",
+  "source_inputs": 253,
+  "source_sha256": "5dfe543256ae85b41c715e757aec8510e85d897d2f89db79bd3dbf1069247536",
+  "only_product_file": "Sources/App/Design.swift",
+  "normal_target_has_no_external_calibration_dependency": true,
+  "current_native_executions": {
+    "TV_passed": 9,
+    "mobile_passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "structured_runtime_warnings": 0
+  },
+  "historical_exploration": {
+    "executions": 10,
+    "passed": 2,
+    "failed": 8,
+    "not_a_success_suite": true
+  },
+  "native_VO_required_values": [
+    "Cameras",
+    "Front Door",
+    "Back Yard",
+    "Living Room",
+    "Driveway",
+    "Show 9",
+    "Show 4"
+  ],
+  "native_remote_grid_callback_verified": true,
+  "original_VO_false_restored": true,
+  "raw_report_independent_runner_readback_exact": true,
+  "SDKs_passed": 5,
+  "SDK_product_files": 77,
+  "SDK_outputs_all_read_back": true,
+  "new_SDK_binary_archive_files": 3,
+  "iOS_standard_metadata_clean_recovery_preserved": true,
+  "unchanged_core_package_test_inputs": 96,
+  "prior_bound_Core_tests_passed": 458,
+  "new_Core_run": false,
+  "whole_TV_frames": [
+    {
+      "method": "testNativeTVMatchedCloseFocusedPausedMusicReference",
+      "state": "tv-music-matched-close-paused-reference",
+      "before_artifact": "matched/tv-attachments/06D80A20-6445-4119-AA67-482BBBA07AD2.png",
+      "after_artifact": "final/tv-attachments/57656D89-D040-4DEA-9567-E7E334E5815E.png",
+      "before_png_sha256": "778c50ff4c6a594c94071110157d7c85e41e7befebdddab947a1a8ec55b79922",
+      "after_png_sha256": "778c50ff4c6a594c94071110157d7c85e41e7befebdddab947a1a8ec55b79922",
+      "native_size": [
+        1920,
+        1080
+      ],
+      "changed_RGBA_channels": 0,
+      "changed_pixels": 0,
+      "full_frame_exact": true,
+      "mask_or_RGB_tolerance": false
+    },
+    {
+      "method": "testNativeTVCameraGridAndDemoTalkback",
+      "state": "tv-nine-demo-cameras",
+      "before_artifact": "final/tv-attachments/72094198-964A-4CB6-84C7-BD627E9E9AA7.png",
+      "after_artifact": "final/tv-attachments/08270C5E-EEEF-480B-BA60-8A7BC2CB411B.png",
+      "before_png_sha256": "d7adb0036ad4d8aae6bed733d2863b3e3a4b9468278cb334abe0d1dad6b08fd9",
+      "after_png_sha256": "d7adb0036ad4d8aae6bed733d2863b3e3a4b9468278cb334abe0d1dad6b08fd9",
+      "native_size": [
+        1920,
+        1080
+      ],
+      "changed_RGBA_channels": 0,
+      "changed_pixels": 0,
+      "full_frame_exact": true,
+      "mask_or_RGB_tolerance": false
+    }
+  ],
+  "all_five_TV_rectangles_exact": true,
+  "whole_mobile_viewports": [
+    {
+      "device": "phone",
+      "before": "mobile/phone-attachments/9BE31793-173F-4E9A-B5DC-7D7D9E0A1A1F.png",
+      "after": "mobile/phone-attachments/5D479AEC-C410-49A6-BBD9-080B2B031420.png",
+      "size": [
+        1134,
+        1134
+      ],
+      "before_sha256": "b82b4db810ea32139c79cfca7492bed3a246fe28b8731ed3309abfbb98057728",
+      "after_sha256": "b82b4db810ea32139c79cfca7492bed3a246fe28b8731ed3309abfbb98057728",
+      "changed_RGBA_channels": 0,
+      "changed_pixels": 0,
+      "whole_viewport_exact": true,
+      "mask_or_RGB_tolerance": false
+    },
+    {
+      "device": "ipad",
+      "before": "mobile/ipad-attachments/68DAC6FA-8F6D-45AB-81BD-6179D83568C4.png",
+      "after": "mobile/ipad-attachments/C57C1528-D078-4EFB-9F1F-3CF1304DBD63.png",
+      "size": [
+        1592,
+        1592
+      ],
+      "before_sha256": "dc9103bad04192555ef0126d6e3bbd80532197c2eff9578d47683c1a25c247bc",
+      "after_sha256": "dc9103bad04192555ef0126d6e3bbd80532197c2eff9578d47683c1a25c247bc",
+      "changed_RGBA_channels": 0,
+      "changed_pixels": 0,
+      "whole_viewport_exact": true,
+      "mask_or_RGB_tolerance": false
+    }
+  ],
+  "all_current_source_and_binary_archives_reconstructed": true,
+  "decoded_PNG_inputs": 104,
+  "actually_viewed_contact_pages": 11,
+  "public_own_images": [
+    {
+      "path": "Docs/verification/tv-voiceover-images/tv-native-heading.png",
+      "source": "final/tv-attachments/84FC750A-04C2-4083-BCDC-0C6217477E18.png",
+      "sha256": "e8f295d26c4cbe6637b6337fed7d93e5345ac9578f6c310dcef42818708f4aa9"
+    },
+    {
+      "path": "Docs/verification/tv-voiceover-images/tv-native-camera-action.png",
+      "source": "final/tv-attachments/6F023538-779C-42E6-93AF-E4569F95CB29.png",
+      "sha256": "5fccf02523478d946a3074a5e5f18e0fdeae6f4ba5ccc59d5d78a5d8a2a67983"
+    }
+  ],
+  "artifact_id": "homeview-tv-voiceover-20261030",
+  "sealed_files": 1394,
+  "sealed_bytes": 243351437,
+  "artifact_manifest_sha256": "49c0f915a3f7ba009707514edcad6971e7148479ff57743d70c94bb3e4925e3f",
+  "all_sealed_bytes_read_back": true,
+  "retained_open": [
+    "bounded next-element API traversal also fails independent UIKit peer",
+    "Timer focused AX Pause timer versus native report MOCK HOME after Resume",
+    "other central native assistive flows",
+    "long full-literal reading",
+    "Voice Control/Switch Control/AssistiveTouch",
+    "acoustic/original/physical acceptance"
+  ],
+  "rejected_candidates_not_shipped": [
+    "test-only geometry-marker opt-out",
+    "local Timer AccessibilityFocusState/async restoration"
+  ],
+  "home_accounts_physical_signing_holds_unchanged": true,
+  "F103_parity": false
+}
