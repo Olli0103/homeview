@@ -1,0 +1,10 @@
+# Ergänzende Originalquellen ·30. Oktober2026
+
+Begrenzte Nachsuche zu aktuellen Hands-ons, kein Ersatz des eingefrorenen Gesamtkatalogs. [Datierte Abrufe, originale Bild-URLs/Hashes und Grenzen](verification/reference-followup-20261030.json). Keine Originalbilder im Repository oder Produkt.
+
+- [Wallpaper,23.Oktober](https://www.wallpaper.com/tech/apple-homeview-review): Der erste Textabruf lieferte nur Newsletter-Inhalt. Der eigentliche öffentlich ausgelieferte HTML-Artikel wurde gesondert gelesen; Datierung und Bildcredits geprüft. Die betrachteten Ansichten sind Apple-Pressebilder von Rezept, Face-Collage, Timer, Assistenten-Text/Kalender, FaceTime und Assistent/Telefon. Keine vollständige Editorpalette oder Weltuhr-Detailansicht daraus.
+- [Macworld,Text MichaelSimon/Bilder BrittaO’Boyle](https://www.macworld.com/article/3259702/hands-on-with-homeview-apples-adorable-new-smart-hub-oozes-personality.html): Artikel vom13.Oktober; ein separates News-Schema nennt eine Änderung am22.Oktober. Suchtrefferdatum ist keine neue Demonstration. Die zusätzlichen eigenen Veranstaltungsfotos zeigen unter anderem die analoge Numerals-Uhr an der Wand, ein Foto-Face mit hohen10:09-Glasziffern und eine bildschirmfüllende Glühbirne/72%-Fläche. Perspektivische Fotos sind keine flachen Originalscreens und keine gemessene Bewegungsfolge.
+
+Elf relevante Bilder vollständig dekodiert und zwei Kontaktseiten tatsächlich gesichtet. Nur ausgewählte Bildschirmansichten; keine Snoopy-Auswahl oder bloßen Rückseitenfotos heruntergeladen. Die begleitende Face-Collage bleibt ein Bildzitat im privaten Prüfsatz, kein redistribuierbares Asset. Keine neue UI-/Original-/Gerätefreigabe oder Issue-Schließung.
+
+Die Glühbirne/72%-Ansicht ist ein begrenzter weiterer UI-Hinweis. Bildcaption und Artikel legen das gesteuerte Ziel, die konkrete Navigationsroute und Geste nicht fest. Daher keine blinde Umstellung des vorhandenen Mock-LightView oder Behauptung einer Home-Anbindung. Vollständige Gesten-/Editor-/Weltuhr-Lücken bleiben offen; die Quellenlücke wird nicht durch eine eigene Näherung als bestanden markiert.

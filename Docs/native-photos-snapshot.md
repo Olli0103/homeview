@@ -1,5 +1,7 @@
 # Native Fotoauswahl: begrenzter Snapshot-Schutz
 
+**Historischer Prüfstand vor dem nachfolgenden iOS-27-Suchfokus-Fix.** [Aktuelle begrenzte Fotosuche-Abnahme](native-photos-search.md); die alten FAIL-Ergebnisse unten bleiben unverändert erhalten.
+
 30. Oktober 2026 · #67 bleibt offen, F095 partial/parity=false.
 
 ## Ergebnis und offene Grenze

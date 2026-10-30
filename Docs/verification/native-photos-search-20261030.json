@@ -1,0 +1,760 @@
+{
+  "date": "2026-10-30",
+  "issue": 67,
+  "code_commit": "41c3edf34b1f5d997f72967c8ab40545badfe524",
+  "scope": "iOS27 native photo search/pending selection only; Issue67 OPEN and F095 partial/parity=false.",
+  "source_manifest": "native-photos-search-source-20261030.json",
+  "checkpoints": {
+    "before": {
+      "devices": {
+        "phone": {
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "13282b4af831ac1d44bf92be8755c99d0cb946005f7852a49d305ec92211ff6f",
+          "started": "2026-10-30T14:00:45.075017+00:00",
+          "finished": "2026-10-30T14:01:52.362713+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        },
+        "ipad": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "13282b4af831ac1d44bf92be8755c99d0cb946005f7852a49d305ec92211ff6f",
+          "started": "2026-10-30T14:01:54.107754+00:00",
+          "finished": "2026-10-30T14:03:09.339086+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        }
+      },
+      "compiled_inputs": 32
+    },
+    "candidate": {
+      "devices": {
+        "phone": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "3925ba33fa62c4034b3e74963c3578b34bf388e05605578b52558cf22fd88671",
+          "started": "2026-10-30T14:03:32.490724+00:00",
+          "finished": "2026-10-30T14:04:42.211927+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        },
+        "ipad": {
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "3925ba33fa62c4034b3e74963c3578b34bf388e05605578b52558cf22fd88671",
+          "started": "2026-10-30T14:04:43.744463+00:00",
+          "finished": "2026-10-30T14:05:27.758395+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        }
+      },
+      "compiled_inputs": 29
+    },
+    "recreate": {
+      "devices": {
+        "phone": {
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "2c403828c081db6aafb63bba80f5fa87efcd208dc728acb9f16f36bed33593e6",
+          "started": "2026-10-30T14:07:23.860326+00:00",
+          "finished": "2026-10-30T14:09:25.543496+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        },
+        "ipad": {
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "2c403828c081db6aafb63bba80f5fa87efcd208dc728acb9f16f36bed33593e6",
+          "started": "2026-10-30T14:09:27.229856+00:00",
+          "finished": "2026-10-30T14:11:42.553558+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        }
+      },
+      "compiled_inputs": 29
+    },
+    "preflight": {
+      "devices": {
+        "phone": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "5cc764766ac3141dc71931e0350f9d87811efe4696ecc80eac29460020aba322",
+          "started": "2026-10-30T14:12:31.749009+00:00",
+          "finished": "2026-10-30T14:14:17.889974+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        }
+      },
+      "compiled_inputs": 29
+    },
+    "final": {
+      "devices": {
+        "phone": {
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "5cc764766ac3141dc71931e0350f9d87811efe4696ecc80eac29460020aba322",
+          "started": "2026-10-30T14:14:52.467692+00:00",
+          "finished": "2026-10-30T14:22:10.097181+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        },
+        "ipad": {
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "5cc764766ac3141dc71931e0350f9d87811efe4696ecc80eac29460020aba322",
+          "started": "2026-10-30T14:22:12.150185+00:00",
+          "finished": "2026-10-30T14:29:12.004169+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        }
+      },
+      "compiled_inputs": 29
+    },
+    "multi": {
+      "devices": {
+        "phone": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "609040c54bcf454948e020faec6687e9a3e90611f73626d24b30b625ef079fc7",
+          "started": "2026-10-30T14:29:52.476157+00:00",
+          "finished": "2026-10-30T14:31:44.880911+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        },
+        "ipad": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "runtime_warnings": [],
+          "source_sha256": "609040c54bcf454948e020faec6687e9a3e90611f73626d24b30b625ef079fc7",
+          "started": "2026-10-30T14:31:46.268081+00:00",
+          "finished": "2026-10-30T14:33:37.819741+00:00",
+          "installed_app_before_exact": true,
+          "installed_app_after_exact": true,
+          "installed_runner_after_exact": true,
+          "source_and_compiled_inputs_unchanged": true
+        }
+      },
+      "compiled_inputs": 29
+    }
+  },
+  "accepted_final14": {
+    "executions": 14,
+    "failed": 0,
+    "skipped": 0,
+    "native_cards": 10,
+    "actual_contact_pages_viewed": 8,
+    "png_decoded": {
+      "phone": 34,
+      "ipad": 34
+    },
+    "source_inputs": 246,
+    "compiled_inputs": 29,
+    "app_files": 19
+  },
+  "separate_same_app_selection_guard": {
+    "executions": 4,
+    "failed": 0,
+    "skipped": 0,
+    "native_cards": 2,
+    "actual_contact_pages_viewed": 4,
+    "png_decoded": {
+      "phone": 9,
+      "ipad": 9
+    },
+    "source_inputs": 247,
+    "compiled_inputs": 29,
+    "app_files": 19,
+    "app_bytes_exact_to_final14": true,
+    "only_test_source_and_secondary_fixture_added": true,
+    "first_then_query_then_second_then_explicit_done_two_items": true,
+    "native_two_checkmarks_and_gallery_actually_viewed": true
+  },
+  "cards": [
+    {
+      "device": "phone",
+      "checkpoint": "switcher-photos-grid-inactive",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9861769384125142,
+        "blackThreshold": 20,
+        "cardFrame": [
+          63.31073895145386,
+          128.97906926261362,
+          275.3785220970923,
+          598.7085281414394
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-0AFB8653-B63F-4038-AF10-DF6DF8F89F24",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          189,
+          386,
+          828,
+          1798
+        ],
+        "screenFrame": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9861769384125142,
+      "pass": true,
+      "sha256": "5268a4aad77d0e73adeaa064a638f1ea8c703a98d435a9638843f7a30b693875",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "phone",
+      "checkpoint": "switcher-photos-home-background",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 3,
+        "blackFraction": 0.9861769384125142,
+        "blackThreshold": 20,
+        "cardFrame": [
+          63.31073895145386,
+          128.97906926261362,
+          275.3785220970923,
+          598.7085281414394
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-0AFB8653-B63F-4038-AF10-DF6DF8F89F24",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          189,
+          386,
+          828,
+          1798
+        ],
+        "screenFrame": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9861769384125142,
+      "pass": true,
+      "sha256": "0a3a007a06393a389e0a8deaa76b15b9038b5615baefb75c774b1eacf0f58629",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "phone",
+      "checkpoint": "switcher-photos-pending-selection",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9861769384125142,
+        "blackThreshold": 20,
+        "cardFrame": [
+          63.31073895145386,
+          128.97906926261362,
+          275.3785220970923,
+          598.7085281414394
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-0AFB8653-B63F-4038-AF10-DF6DF8F89F24",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          189,
+          386,
+          828,
+          1798
+        ],
+        "screenFrame": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9861769384125142,
+      "pass": true,
+      "sha256": "41bbf1964b81e68219b1e4fa813e13effe1cda30b3964ef6f41ad538d8a93155",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "phone",
+      "checkpoint": "switcher-photos-preview",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9861769384125142,
+        "blackThreshold": 20,
+        "cardFrame": [
+          63.31073895145386,
+          128.97906926261362,
+          275.3785220970923,
+          598.7085281414394
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-0AFB8653-B63F-4038-AF10-DF6DF8F89F24",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          189,
+          386,
+          828,
+          1798
+        ],
+        "screenFrame": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9861769384125142,
+      "pass": true,
+      "sha256": "8d591e64278d9357a8f0b47f26e9ba24ec7f9370fa141d0d329adab721204309",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "phone",
+      "checkpoint": "switcher-photos-search-keyboard",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9861776101196713,
+        "blackThreshold": 20,
+        "cardFrame": [
+          63.31073895145386,
+          128.97906926261362,
+          275.3785220970923,
+          598.7085281414394
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-0AFB8653-B63F-4038-AF10-DF6DF8F89F24",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          189,
+          386,
+          828,
+          1798
+        ],
+        "screenFrame": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9861776101196713,
+      "pass": true,
+      "sha256": "152bbf5a6105a7f7f0d5aa31dcf3a10fb2a091462603f66a25b40dd3e3867e70",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "ipad",
+      "checkpoint": "switcher-photos-grid-inactive",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9913202122954445,
+        "blackThreshold": 20,
+        "cardFrame": [
+          508.33898305084745,
+          124,
+          237.66101694915255,
+          342
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-BB7BB578-7339-4609-BB40-F4586AB3780C",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          1016,
+          248,
+          476,
+          684
+        ],
+        "screenFrame": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9913202122954445,
+      "pass": true,
+      "sha256": "3a06b37bc8dab9863ab22d59a44fad1a6c340e3e597b429ded2a6d8eb0d517bf",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "ipad",
+      "checkpoint": "switcher-photos-home-background",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 3,
+        "blackFraction": 0.9913202122954445,
+        "blackThreshold": 20,
+        "cardFrame": [
+          508.33898305084745,
+          124,
+          237.66101694915255,
+          342
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-BB7BB578-7339-4609-BB40-F4586AB3780C",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          1016,
+          248,
+          476,
+          684
+        ],
+        "screenFrame": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9913202122954445,
+      "pass": true,
+      "sha256": "e4595eb33edc0662473ae522f0b9e8b3a755680eefa1321ef06c9c357fde1bf9",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "ipad",
+      "checkpoint": "switcher-photos-pending-selection",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9913202122954445,
+        "blackThreshold": 20,
+        "cardFrame": [
+          508.33898305084745,
+          124,
+          237.66101694915255,
+          342
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-BB7BB578-7339-4609-BB40-F4586AB3780C",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          1016,
+          248,
+          476,
+          684
+        ],
+        "screenFrame": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9913202122954445,
+      "pass": true,
+      "sha256": "42214a0995169f37385adc998f8af064f23aeca6f1f9191a35cecededa79ad02",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "ipad",
+      "checkpoint": "switcher-photos-preview",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9913202122954445,
+        "blackThreshold": 20,
+        "cardFrame": [
+          508.33898305084745,
+          124,
+          237.66101694915255,
+          342
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-BB7BB578-7339-4609-BB40-F4586AB3780C",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          1016,
+          248,
+          476,
+          684
+        ],
+        "screenFrame": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9913202122954445,
+      "pass": true,
+      "sha256": "1c11ba98aca83cfb6348b889acf2d96cedbdb66dac6ad576ed9334cefcb09fbe",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "ipad",
+      "checkpoint": "switcher-photos-search-keyboard",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9913202122954445,
+        "blackThreshold": 20,
+        "cardFrame": [
+          508.33898305084745,
+          124,
+          237.66101694915255,
+          342
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-BB7BB578-7339-4609-BB40-F4586AB3780C",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          1016,
+          248,
+          476,
+          684
+        ],
+        "screenFrame": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9913202122954445,
+      "pass": true,
+      "sha256": "bcd98b597dd0281009eab668815a1106b28f4fa021c0bceba53103fbf9a64d68",
+      "checkpoint_group": "final"
+    },
+    {
+      "device": "phone",
+      "checkpoint": "switcher-photos-search-keyboard",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9861776101196713,
+        "blackThreshold": 20,
+        "cardFrame": [
+          63.31073895145386,
+          128.97906926261362,
+          275.3785220970923,
+          598.7085281414394
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-0AFB8653-B63F-4038-AF10-DF6DF8F89F24",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          189,
+          386,
+          828,
+          1798
+        ],
+        "screenFrame": [
+          0,
+          0,
+          402,
+          874
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9861776101196713,
+      "pass": true,
+      "sha256": "e95eda1ddf665540fbc59318d9d269cc768275edf8a2ab3bfc34a9a0fbc2755d",
+      "checkpoint_group": "multi"
+    },
+    {
+      "device": "ipad",
+      "checkpoint": "switcher-photos-search-keyboard",
+      "native": {
+        "acceptance": "coarse full-card pixel guard plus required actual-image review; no OCR or hardware guarantee",
+        "appState": 4,
+        "blackFraction": 0.9913202122954445,
+        "blackThreshold": 20,
+        "cardFrame": [
+          508.33898305084745,
+          124,
+          237.66101694915255,
+          342
+        ],
+        "cardIdentifier": "card:org.example.HomeViewReplica:sceneID:org.example.HomeViewReplica-BB7BB578-7339-4609-BB40-F4586AB3780C",
+        "cardLabel": "HomeView",
+        "minimumBlackFraction": 0.98,
+        "pixelFrame": [
+          1016,
+          248,
+          476,
+          684
+        ],
+        "screenFrame": [
+          0,
+          0,
+          820,
+          1180
+        ],
+        "systemState": 4,
+        "wholeCardVisible": true
+      },
+      "PIL_black_fraction": 0.9913202122954445,
+      "pass": true,
+      "sha256": "1c11ba98aca83cfb6348b889acf2d96cedbdb66dac6ad576ed9334cefcb09fbe",
+      "checkpoint_group": "multi"
+    }
+  ],
+  "sdk": {
+    "platforms": [
+      {
+        "platform": "iOS",
+        "exit_code": 0,
+        "storage_headroom_ok": true,
+        "metadata_clean_recovery": true
+      },
+      {
+        "platform": "macOS",
+        "exit_code": 0,
+        "storage_headroom_ok": true,
+        "metadata_clean_recovery": false
+      },
+      {
+        "platform": "tvOS",
+        "exit_code": 0,
+        "storage_headroom_ok": true,
+        "metadata_clean_recovery": false
+      },
+      {
+        "platform": "visionOS",
+        "exit_code": 0,
+        "storage_headroom_ok": true,
+        "metadata_clean_recovery": false
+      },
+      {
+        "platform": "watchOS",
+        "exit_code": 0,
+        "storage_headroom_ok": true,
+        "metadata_clean_recovery": false
+      }
+    ],
+    "product_files": 73,
+    "all_product_bytes_read_back": true,
+    "new_archived_files": 4,
+    "products_manifest_sha256": "7fc64122e26fc2b3a9fd442897a6524d86a9870d455ae4267b73793e198f2c58",
+    "results_sha256": "6ae52f92d586d44e663572d7921de00e98636ab9f670a24d82406418e328f5c6"
+  },
+  "core": {
+    "previous_passed": 457,
+    "new_core_run_claimed": false,
+    "unchanged_core_package_model_inputs": 96,
+    "all244_other_existing_source_inputs_unchanged": true,
+    "previous_source_sha256": "ddc17786165db8049f576320d777a3be689efdabc774309068fe8ca914311286"
+  },
+  "isolated_media": {
+    "recorded_fresh_simulators": 2,
+    "initial_files_each": 7,
+    "final_files_each": 8,
+    "owned_fixtures_each": 2,
+    "untouched_OS_samples_each": 6,
+    "one_secondary_import_each_verified": true,
+    "prior7files_byte_preserved": true,
+    "fixtureA_sha256": "4065c9efe64a63645f2beb3eaa1960eab1dc75b149f2d4ae9515ed830257fbe0",
+    "fixtureB": {
+      "file": "NativePhotosPrivacyCanaryB.png",
+      "sha256": "3111de3bcb1df1ba98195d6efc9b4261c2326405b1e4739bacc11bbacaf16ad8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "origin": "Own algorithmic magenta/cyan checkerboard and own text; Pillow bundled font, no OS/photo/reference pixels. Secondary opt-in isolated native-picker fixture, not a shipped product asset.",
+      "license": "Repository test fixture under MIT; no font file redistributed.",
+      "provisioning_not_yet_done": false,
+      "decoded_and_actually_viewed": true
+    }
+  },
+  "preserved_rejected_results": {
+    "candidate": "iPhone functional PASS is not acceptance: late returned grid ignores native filter and inherited dark header rejected; iPad canary hittability fails before search, exact cause not isolated.",
+    "recreate": "Two privacy PASS; two new import-method FAIL retained. Old test expected Settings after Done, while established model deliberately opens Photos. Corrected face/canary/import assertions pass in subsequent distinct checkpoint; earlier failures not relabeled.",
+    "observational_tool_failures": "Optional direct simctl screenshot outside allowed service paths and unsupported stdout filename failed; no permission changes, no product defect inferred."
+  },
+  "source_and_input_archives": {
+    "source_all247_reconstructed_read_back": true,
+    "source_readback_receipt_sha256": "40a279d6e91f6b940d7e4ce2ec7321e7e64aee8dbba3fc90ddc244d77765ea4a",
+    "unchanged_archive_bytes_not_copied_per_device": true,
+    "compiled_delta_sha256": {
+      "before": "1b1ae0ddffa36fa03e259177bb1726e67037bc18a82bd8450ae5888b68edc87b",
+      "candidate": "cb021ace477efe98d80b02fe1622ab73d39342f766ccaad31342a15bf6e320ff",
+      "recreate": "fb6e686b43e98dab9515dcb1398d38303a6717108cad7d6898ddf57d11ff0cce",
+      "preflight": "9fb1b79d0e9267173c6fa4fc19fbe34c8d3b289794ce0ba875278534940f4419",
+      "final": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+      "multi": "3a916858f47504df3cc9b388ea8cccc277cc16e4cc16818732a917c93fdbf88f"
+    },
+    "sdk_delta_sha256": "6fc9cb20f328b5980663d6c4084e119edd2864c20785e8b732c1916b418ef4ff"
+  },
+  "public_images": "../screenshots/native-photos-search-20261030/manifest.json",
+  "limits": [
+    "Not an iOS26/macOS/visionOS/physical picker fix or full UI/audio/media/presence acceptance.",
+    "Whole-card0.98 guard is unchanged and coarse, paired with actual image review; no universal OCR guarantee.",
+    "No Home/account/library authorization, camera/mic/messages/calls or Gateway/config changes.",
+    "Original tasks/acceptance untouched; no Issue67 closure."
+  ],
+  "terminal_result_seal": {
+    "files": 1383,
+    "bytes": 615286520,
+    "all_read_back_twice": true,
+    "manifest_sha256": "0d271cfc182fc2b5ce5b4c123be51996c144de81838c1a314afd9de78f14ba7b"
+  }
+}

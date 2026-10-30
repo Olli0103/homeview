@@ -1,0 +1,53 @@
+{
+  "scope": "Only own synthetic UI/confirmed fixtures, empty search or own App Switcher cards. Raw populated OS picker images stay private; no original HomeView/reference images or OS stock-photo pixels published.",
+  "files": [
+    {
+      "path": "screenshots/native-photos-search-20261030/phone-before-search-card.png",
+      "sha256": "d22da60644d80cc9b3e1b2f7c76c4402f106f28f5f5185dc74ee73c792696cc3",
+      "source_native_sha256": "d22da60644d80cc9b3e1b2f7c76c4402f106f28f5f5185dc74ee73c792696cc3",
+      "scope": "Unmodified native own App Switcher card before product change; no stock-photo grid."
+    },
+    {
+      "path": "screenshots/native-photos-search-20261030/phone-current-search-card.png",
+      "sha256": "152bbf5a6105a7f7f0d5aa31dcf3a10fb2a091462603f66a25b40dd3e3867e70",
+      "source_native_sha256": "152bbf5a6105a7f7f0d5aa31dcf3a10fb2a091462603f66a25b40dd3e3867e70",
+      "scope": "Unmodified native own protected App Switcher card."
+    },
+    {
+      "path": "screenshots/native-photos-search-20261030/phone-current-query-return.png",
+      "sha256": "05143a2aab761768b46f42aa913ff41172119857360b3f1cb5508f45235a343f",
+      "source_native_sha256": "05143a2aab761768b46f42aa913ff41172119857360b3f1cb5508f45235a343f",
+      "scope": "Unmodified own synthetic query and empty native results, keyboard restored. No photo grid/OS stock images."
+    },
+    {
+      "path": "screenshots/native-photos-search-20261030/phone-confirmed-two-owned-photos.png",
+      "sha256": "d1a1dd3b000a75d98998ccc67645e4255e45945b090389c76fdb847652301e50",
+      "source_native_sha256": "d1a1dd3b000a75d98998ccc67645e4255e45945b090389c76fdb847652301e50",
+      "scope": "Unmodified own Photos face with synthetic fixtureB and confirmed OF2 gallery. No OS sample selection or grid."
+    },
+    {
+      "path": "screenshots/native-photos-search-20261030/ipad-before-search-card.png",
+      "sha256": "8d96fa90ad80649670514d34233874d530258bde43f455f048becbe45c853ed0",
+      "source_native_sha256": "8d96fa90ad80649670514d34233874d530258bde43f455f048becbe45c853ed0",
+      "scope": "Unmodified native own App Switcher card before product change; no stock-photo grid."
+    },
+    {
+      "path": "screenshots/native-photos-search-20261030/ipad-current-search-card.png",
+      "sha256": "bcd98b597dd0281009eab668815a1106b28f4fa021c0bceba53103fbf9a64d68",
+      "source_native_sha256": "bcd98b597dd0281009eab668815a1106b28f4fa021c0bceba53103fbf9a64d68",
+      "scope": "Unmodified native own protected App Switcher card."
+    },
+    {
+      "path": "screenshots/native-photos-search-20261030/ipad-current-query-return.png",
+      "sha256": "7e791787e853e20b5be4f8ce1ed635b70e31b6728420ea32d027d96045cb5e13",
+      "source_native_sha256": "7e791787e853e20b5be4f8ce1ed635b70e31b6728420ea32d027d96045cb5e13",
+      "scope": "Unmodified own synthetic query and empty native results, keyboard restored. No photo grid/OS stock images."
+    },
+    {
+      "path": "screenshots/native-photos-search-20261030/ipad-confirmed-two-owned-photos.png",
+      "sha256": "0f7b3206958f4590a8e315b03e94d6c37117887e843ab74e8b0dca155f929212",
+      "source_native_sha256": "0f7b3206958f4590a8e315b03e94d6c37117887e843ab74e8b0dca155f929212",
+      "scope": "Unmodified own Photos face with synthetic fixtureB and confirmed OF2 gallery. No OS sample selection or grid."
+    }
+  ]
+}
