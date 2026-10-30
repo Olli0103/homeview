@@ -87,8 +87,8 @@
       "Docs/asset-current-manifest.json",
       "Docs/verification/asset-provenance.json"
     ],
-    "github_state": "open",
-    "github_state_verified_on": "2026-10-29",
+    "github_state": "closed",
+    "github_state_verified_on": "2026-10-30",
     "completion": {
       "date": "2026-10-30",
       "evidence": [
@@ -97,7 +97,8 @@
         "Docs/asset-current-manifest.json"
       ],
       "scope": "Original independent replacement-assets and reachable public-source hygiene, not visual parity, physical acceptance or general rights certification."
-    }
+    },
+    "github_state_reason": "completed"
   },
   {
     "key": "PUB-02",
@@ -1960,7 +1961,7 @@
       "F094",
       "F096"
     ],
-    "current": "Sechs bewusst gewählte Demo-Profile und lokale Trennung sind vorhanden. Keine biometrische Identifikation oder Partnergerätebindung.",
+    "current": "Ursprünglicher synthetischer Isolations-/Freigabevertrag geprüft:6Profile/36geordneteWechseljeAusführung,788nativeBedingungen/14aktuellemobileUI-Ausführungen bestanden;0Produktcodeänderungen,alte244Inputsund32kompilierteUI-Inputsidentisch. PublicCompanion-Authentifizierungrecherchiert,keinbenannterHaushaltsidentitäts- oderPartnergeräte-PASS. F093/F094/F096bleibenblocked/parity=false.",
     "tasks": [
       "Öffentliche Authentifizierung und tatsächlich mögliche Partnergerätebindung prüfen",
       "Demo-Auswahl niemals als Berechtigung auf echte Daten akzeptieren",
@@ -1973,9 +1974,18 @@
     ],
     "issue_url": "https://github.com/Olli0103/homeview/issues/66",
     "issue_number": 66,
-    "state": "open",
+    "state": "completed",
     "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state_verified_on": "2026-10-29",
+    "completion": {
+      "date": "2026-10-30",
+      "evidence": [
+        "Docs/six-profile-authentication-boundary.md",
+        "Docs/verification/six-profile-authentication-boundary-20261030.json",
+        "Tests/NativeProbes/SixProfileAuthenticationBoundary.swift"
+      ],
+      "scope": "Original synthetic multiuser isolation and device-authentication boundary; no actual six-person recognition, partner-device or physical acceptance."
+    }
   },
   {
     "key": "SYS-04",

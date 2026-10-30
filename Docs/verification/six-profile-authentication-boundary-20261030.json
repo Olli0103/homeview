@@ -1,0 +1,448 @@
+{
+  "date": "2026-10-30",
+  "issue": 66,
+  "scope": "Original synthetic multiuser isolation/authentication contract, not real six-person identity or partner-device binding.",
+  "original_tasks_and_acceptance_retained": true,
+  "native": {
+    "executions": 2,
+    "conditions": 788,
+    "failed": 0,
+    "modes": [
+      {
+        "mode": "allow",
+        "conditions": 394,
+        "failed": 0,
+        "profile_transitions": 36,
+        "actual_result_stdout_sha256": "20abb9f07ee959c2cca5fbcb1bb25793f9580b3dd2ea03e2aec07d8cde201096",
+        "source_unchanged": true,
+        "device_authentication_is_fixture_only": true
+      },
+      {
+        "mode": "deny",
+        "conditions": 394,
+        "failed": 0,
+        "profile_transitions": 36,
+        "actual_result_stdout_sha256": "0c1716d9713914d766908914940cb11658f75c3c276b3c65973fa5e352dc336e",
+        "source_unchanged": true,
+        "device_authentication_is_fixture_only": true
+      }
+    ],
+    "actual_AppModel_and_DeviceConnections": true,
+    "product_methods_replaced": false,
+    "external_store_URL_getter_only": true,
+    "binary_sha256": "359e7dbab41440214d7a8b9305611c89511102d38515b67002cc5e905e9d360a",
+    "same_binary_for_both_modes": true,
+    "source_inputs": 245,
+    "source_pin_sha256": "23a086407661ef4e47051bf1566e92afcd258b5e04c55558443f7234671ec5cc",
+    "new_opt_in_probe_only": true,
+    "previous244inputs_unchanged": true,
+    "all_continuations_terminal": true,
+    "real_OS_authentication_or_personal_provider_calls": false
+  },
+  "current_UI": [
+    {
+      "device": "phone",
+      "summary": {
+        "totalTestCount": 7,
+        "passedTests": 7,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "startTime": 1793357926.362,
+        "finishTime": 1793358245.826
+      },
+      "devices": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "deviceName": "iPhone 18 Pro",
+            "modelName": "iPhone 18 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 7,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "exit_code": 0,
+      "installed_app_before_after_exact": true,
+      "installed_runner_tests_exact": true,
+      "same32compiled_launch_inputs": true,
+      "new_builds": 0
+    },
+    {
+      "device": "ipad",
+      "summary": {
+        "totalTestCount": 7,
+        "passedTests": 7,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "startTime": 1793358249.797,
+        "finishTime": 1793358564.947
+      },
+      "devices": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "deviceName": "iPad Air 11-inch (M4)",
+            "modelName": "iPad Air 11-inch (M4)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 7,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "exit_code": 0,
+      "installed_app_before_after_exact": true,
+      "installed_runner_tests_exact": true,
+      "same32compiled_launch_inputs": true,
+      "new_builds": 0
+    }
+  ],
+  "current_UI_executions": 14,
+  "current_UI_unique_methods": 7,
+  "source_and_all32compiled_inputs_unchanged": true,
+  "compiled_inputs": [
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon60x60@2x.png",
+      "bytes": 15425,
+      "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/AppIcon76x76@2x~ipad.png",
+      "bytes": 22442,
+      "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Assets.car",
+      "bytes": 15242504,
+      "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "20e3454443a820f8ebf9f148b69ba8db3a2a50347c81807cbfe238cc2bb39681"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/HomeViewReplica.debug.dylib",
+      "bytes": 29012040,
+      "sha256": "87882115d813eee5f2c2e6fd7d4f4d2fe5ff935d14cb04573a84d0e52c72c197"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Info.plist",
+      "bytes": 2488,
+      "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/nlu/nlu.lzfse",
+      "bytes": 2123,
+      "sha256": "09932acf24542912d05c3488ecdbf143495f305963a808e6aae4a2ee35e4b23b"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/root.ssu.yaml",
+      "bytes": 926,
+      "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "bytes": 40224,
+      "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "bytes": 261104,
+      "sha256": "e3a32fb1734a59ad59c7fe1cde4a9cd27c458052236e010cc3f8adbc4f580775"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+      "bytes": 774,
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+      "bytes": 16752,
+      "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/default.metallib",
+      "bytes": 73088,
+      "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewReplica.app/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "bytes": 40224,
+      "sha256": "c78d242145cb07b2b7ac478fe2c2514e89514bcc39e277adf01344f324289152"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "bytes": 295888,
+      "sha256": "f412a585a92d94fcebf34c8d0a89cfd83d60bfdf680726d081b201b338d640fa"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/Info.plist",
+      "bytes": 774,
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewTimerWidget.appex/__preview.dylib",
+      "bytes": 16768,
+      "sha256": "266e6199c94ea97332a5288d350ee22a4425698c7358d01cd4b72f704c142c7e"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/HomeViewUITests-Runner",
+      "bytes": 113728,
+      "sha256": "a2a058c87c45755e677e9008b78b91308a08e596bd8c121de7697d3bc875095f"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/Info.plist",
+      "bytes": 10917,
+      "sha256": "7f4aa0cce89bea569b93dff27192c410567474560af25978ea3e0823c23d0a93"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/PlugIns/HomeViewUITests.xctest/HomeViewUITests",
+      "bytes": 3523696,
+      "sha256": "344c41172e251d5fed17f84f276827c1dfc090f8eea1da49a37648080a48b3ca"
+    },
+    {
+      "path": "Debug-iphonesimulator/HomeViewUITests-Runner.app/PlugIns/HomeViewUITests.xctest/Info.plist",
+      "bytes": 1860,
+      "sha256": "e3bd792283f4386eae40873b5876eebc4ee4e87382a91e2fcd560f30240745c3"
+    },
+    {
+      "path": "HomeViewReplica_iphonesimulator27.0-arm64.xctestrun",
+      "bytes": 5196,
+      "sha256": "60c1a79a2fef8b070a60d7aa4e91565241cbb3fa8731c3e327e8d1a324d60e64"
+    }
+  ],
+  "prior_sealed_UI_inputs_reused": {
+    "prior_sealed_inputs_reused": true,
+    "new_builds": 0,
+    "old_source_inputs_identical": 244,
+    "source_extra": [
+      "Tests/NativeProbes/SixProfileAuthenticationBoundary.swift"
+    ],
+    "new_frozen_source_inputs": 245,
+    "compiled_input_files": 32,
+    "shared_prior_delta_sha256": "5d3ed5fbf2411a2dcb4b9d44f20f6c0cf2dcb6f6b1eb12c16bd38c26c65420ff",
+    "all_prior_compiled_bytes_read_back_from_sealed_archives": true
+  },
+  "native_inputs_readback": {
+    "source_inputs_reconstructed_and_read_back": 245,
+    "source_manifest_sha256": "23a086407661ef4e47051bf1566e92afcd258b5e04c55558443f7234671ec5cc",
+    "unchanged_baseline_source_inputs": 244,
+    "new_opt_in_probe_inputs": 1,
+    "prior_shared_source_archive_sha256": "5d3ed5fbf2411a2dcb4b9d44f20f6c0cf2dcb6f6b1eb12c16bd38c26c65420ff",
+    "native_input_additions_sha256": "5c275f8dc24437e449205ce55f654d49aa2f5fa10082c68313eb459fa689541b",
+    "native_input_additions_bytes": 37549,
+    "all_source_bytes_verified": true,
+    "native_binary_retained_and_sha256": "359e7dbab41440214d7a8b9305611c89511102d38515b67002cc5e905e9d360a",
+    "one_native_binary_shared_by_both_modes": true
+  },
+  "terminal_result_files": {
+    "count": 202,
+    "bytes": 13052277,
+    "manifest_sha256": "cb5c4a0660a1a75000d3906c1b89ccd6aa07c9b8f317be5d71cda60fdd6f626a",
+    "new_result_bundle_full_copies": 0
+  },
+  "official_sources": [
+    {
+      "url": "https://developer.apple.com/documentation/localauthentication/lacontext",
+      "final_url": "https://developer.apple.com/documentation/localauthentication/lacontext",
+      "status": 200,
+      "fetched_at": "2026-10-30T10:59:45.306Z",
+      "extract_truncated": false,
+      "extract_utf8_sha256": "f3bb270b9fd7fbfc0aa07bff96055626455f340e4cec12e38b038393e83ef00b",
+      "saved_receipt_sha256": "630f3e86bb0983b36e3100e7d5257f7f009192e33b09d804347be2759ba9c6b3",
+      "exact_relevant_quotes": [
+        "A mechanism for evaluating authentication policies and access controls.",
+        "You then receive an asynchronous callback, which provides an indication of authentication success or failure, and an error instance that explains the reason for a failure, if any."
+      ]
+    },
+    {
+      "url": "https://developer.apple.com/documentation/localauthentication/lapolicy/deviceownerauthenticationwithcompanion",
+      "final_url": "https://developer.apple.com/documentation/localauthentication/lapolicy/deviceownerauthenticationwithcompanion",
+      "status": 200,
+      "fetched_at": "2026-10-30T10:59:56.261Z",
+      "extract_truncated": false,
+      "extract_utf8_sha256": "7d53b5c1f8dd05331ada577fd145946c212c74103356545b32afab6c521437df",
+      "saved_receipt_sha256": "3cecc3b2d3896d171058971bf7189dc166d3b7366c65586273830b08d5dca28d",
+      "exact_relevant_quotes": [
+        "Device owner will be authenticated by a companion device e.g. Watch, Mac, etc.",
+        "Companion authentication is required. If no nearby paired companion device can be found, LAErrorCompanionNotAvailable is returned."
+      ]
+    }
+  ],
+  "images": {
+    "fully_decoded_PNG": 42,
+    "distinct_states_actually_reviewed_in_four_contact_pages": 26,
+    "native_contact_pages_actually_viewed": 4,
+    "public_own_images": [
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/phone-dialog-profile-switch-no-inherited-conversation.png",
+        "device": "phone",
+        "state": "dialog-profile-switch-no-inherited-conversation",
+        "sha256": "7bcebede1d84970513d57af5a87cd05483a9b60005744004d964897404099cd6",
+        "bytes": 211962,
+        "native_attachment_name": "viewport-dialog-profile-switch-no-inherited-conversation"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/phone-guest-session-calendar-requires-new-unlock.png",
+        "device": "phone",
+        "state": "guest-session-calendar-requires-new-unlock",
+        "sha256": "2ac8145aff40712b85dfa596fae54c82eb25f057a594c3cbae2e6ea196bd9680",
+        "bytes": 96608,
+        "native_attachment_name": "viewport-guest-session-calendar-requires-new-unlock"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/phone-guest-session-calendar-explicit-new-unlock.png",
+        "device": "phone",
+        "state": "guest-session-calendar-explicit-new-unlock",
+        "sha256": "1d2946505771ef6d018abd870277d5a3373d1f6d61b84b77262b2e543c7dd519",
+        "bytes": 115743,
+        "native_attachment_name": "viewport-guest-session-calendar-explicit-new-unlock"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/phone-reset-denied-auth-no-content-deleted.png",
+        "device": "phone",
+        "state": "reset-denied-auth-no-content-deleted",
+        "sha256": "1cdf5a4fc9665f62862a91f3722d34175693e8cd037be4934a2bb754ccc7e397",
+        "bytes": 317565,
+        "native_attachment_name": "reset-denied-auth-no-content-deleted"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/phone-reset-complete-source-permissions-retained.png",
+        "device": "phone",
+        "state": "reset-complete-source-permissions-retained",
+        "sha256": "8346115eb9c75f6c9d96af1531ff3982c34ed38fe1d4e1fea34d83c79e030880",
+        "bytes": 137319,
+        "native_attachment_name": "viewport-reset-complete-source-permissions-retained"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/ipad-dialog-profile-switch-no-inherited-conversation.png",
+        "device": "ipad",
+        "state": "dialog-profile-switch-no-inherited-conversation",
+        "sha256": "1914a68de5a5ab02e600fcf1f2a5a683cebff266fc2249d188aa89d7465c48e6",
+        "bytes": 154638,
+        "native_attachment_name": "viewport-dialog-profile-switch-no-inherited-conversation"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/ipad-guest-session-calendar-requires-new-unlock.png",
+        "device": "ipad",
+        "state": "guest-session-calendar-requires-new-unlock",
+        "sha256": "e623a8ad317c0ff79509eb2e876943e118144408a64d7dfd5fa49154ecca64d4",
+        "bytes": 179055,
+        "native_attachment_name": "viewport-guest-session-calendar-requires-new-unlock"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/ipad-guest-session-calendar-explicit-new-unlock.png",
+        "device": "ipad",
+        "state": "guest-session-calendar-explicit-new-unlock",
+        "sha256": "1071325a6b2230c3edc72275f85884ed7659c0c83052beeb7ef41bc53d45628c",
+        "bytes": 212648,
+        "native_attachment_name": "viewport-guest-session-calendar-explicit-new-unlock"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/ipad-reset-denied-auth-no-content-deleted.png",
+        "device": "ipad",
+        "state": "reset-denied-auth-no-content-deleted",
+        "sha256": "f3f5ef308c730a8f314d6992cb4ff3df3be15106f0a3b979c05d15a16a63af08",
+        "bytes": 387072,
+        "native_attachment_name": "reset-denied-auth-no-content-deleted"
+      },
+      {
+        "path": "Docs/screenshots/six-profile-authentication-20261030/ipad-reset-complete-source-permissions-retained.png",
+        "device": "ipad",
+        "state": "reset-complete-source-permissions-retained",
+        "sha256": "531d5b100100e907f710150708befb6e62dafe322799f71d0d14e27b5c96dec2",
+        "bytes": 300028,
+        "native_attachment_name": "viewport-reset-complete-source-permissions-retained"
+      }
+    ],
+    "scope": "State/route review, not simultaneous full policy reading, full a11y/contrast, physical snapshot or original parity."
+  },
+  "new_app_code_changes": 0,
+  "new_SDK_builds": 0,
+  "new_Core_suite_runs": 0,
+  "prior_SDK_scope": "Previous five-SDK/73product-file lock-current gate; carried only through exact unchanged244source inputs and32compiled UI inputs, not reported as newly executed.",
+  "features_not_originally_implemented": [
+    "F093 six-person recognition",
+    "F094 face/partner-device named-person binding",
+    "F096 original personal-device recognition/continuation path"
+  ],
+  "feature_implementation_status_kept": "blocked",
+  "parity_accepted": false,
+  "holds_unchanged": [
+    "Real Home disabled; no HMHomeManager construction",
+    "Physical/signing owner-paused",
+    "No Gateway/config/TCC/provider changes"
+  ],
+  "assessment": "Original synthetic security acceptance satisfied. Companion policy publicly exists but is not enabled/tested or treated as a household identity result. No general security-release or physical-authentication PASS."
+}

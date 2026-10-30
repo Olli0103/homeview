@@ -1,6 +1,6 @@
 # Verbleibende Arbeit und Grenzen
 
-**Aktuell, 30. Oktober: 43 ursprüngliche Issues erledigt, 1 Snoopy-Ausschluss, 38 offen.** [Vollständiger GitHub-Abgleich nach #74](verification/backlog-reconciliation-after-speech-20261030.json). #24/#25 sind im ursprünglichen synthetischen Vertrag abgeschlossen, #74 als Fähigkeitsrecherche mit konkreten Blockaden; keine pauschale Original-/Home-/Geräteabnahme. Die Speicherpause ist nach der freigegebenen exakten Cachebereinigung beendet. [Build-Speichergrenze](build-storage.md).
+**Aktuell, 30. Oktober: 44 ursprüngliche Issues erledigt, 1 Snoopy-Ausschluss, 37 offen.** [Frischer vollständiger GitHub-Abgleich nach #3](verification/backlog-reconciliation-after-assets-20261030.json). [Vollständiger GitHub-Abgleich nach #74](verification/backlog-reconciliation-after-speech-20261030.json). #24/#25 sind im ursprünglichen synthetischen Vertrag abgeschlossen, #74 als Fähigkeitsrecherche mit konkreten Blockaden; keine pauschale Original-/Home-/Geräteabnahme. Die Speicherpause ist nach der freigegebenen exakten Cachebereinigung beendet. [Build-Speichergrenze](build-storage.md).
 
 - [Zwei native Fehlermeldungen im App-Umschalter geschützt](app-switcher-alerts.md): vier Vorherfehler und vier verworfene Rückkehrfehler erhalten; zwölf aktuelle UI-Ausführungen/fünf SDKs bestanden. Meldung, Picker und Read-only-Speicher bleiben erhalten. Weitere OS-Composer, physische/Präsenz-/Mediengrenzen bei #67 offen.
 
@@ -20,7 +20,9 @@
 
 ## Aktueller Arbeitsblock
 
-- [#3: explizit freigegebene Historienbereinigung veröffentlicht und ursprüngliche Ersatzasset-/Quellhygiene-Kriterien abgeglichen](asset-history-publication-20261030.md). Heutiger Produktbaum exakt identisch, 129 andere lokale Refs erhalten. Keine pauschale Original-/Gerätefreigabe; GitHub-Schließung nach Veröffentlichung separat zurücklesen.
+- [#66: ursprünglicher synthetischer Mehrnutzer-/Freigabevertrag](six-profile-authentication-boundary.md):788nativeBedingungen/14aktuellemobileUI-Ausführungen bestanden,keineProduktcodeänderung/keinneuerSDK-Build. ÖffentlicheCompanion-Policybelegt,nichtaktiviert;F093/F094/F096bleibenblocked/parity=false. GitHub-Schließung nach Veröffentlichung getrennt zurücklesen.
+
+- [#3: explizit freigegebene Historienbereinigung veröffentlicht und ursprüngliche Ersatzasset-/Quellhygiene-Kriterien abgeglichen](asset-history-publication-20261030.md). Heutiger Produktbaum exakt identisch, 129 andere lokale Refs erhalten. Keine pauschale Original-/Gerätefreigabe; GitHub-Schließung als completed mit exaktem vollständigem Body, Titel und unveränderten Labels zurückgelesen.
 
 - [Separaten Mock-Schlossadapter auf aktuellen Speicherstand umgestellt](mock-lock-current-observation.md): identische20native Bedingungen vorher8PASS/12FAIL, nachher20PASS; sechs aktuelle iPhone-/iPad-UI-Ausführungen und fünf SDKs. Bestätigung verwirft fremde Schlossänderung; kein Home-/Geräte-/Original-PASS und keine neue Issue-Schließung. Weiter zum unveränderten historischen Assetumfang von #3.
 
@@ -123,7 +125,7 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs oder einen ausdr
 |---|---|---|
 | [#1](https://github.com/Olli0103/homeview/issues/1) | Verbindlichen Parity-Vertrag und API-Grenzen festschreiben | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#2](https://github.com/Olli0103/homeview/issues/2) | Vollständigen Referenzsatz für Zustände und Bewegungen sichern | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
-| [#3](https://github.com/Olli0103/homeview/issues/3) | Redistribuierbare Grafik- und Typografiegrundlage herstellen | Offen. Aktuelle Ressourcen und öffentlicher historischer Asset-/Rechteumfang getrennt; #3 nicht vollständig abgenommen. |
+| [#3](https://github.com/Olli0103/homeview/issues/3) | Redistribuierbare Grafik- und Typografiegrundlage herstellen | Geschlossen im ursprünglichen Ersatzasset-/erreichbaren öffentlichen Quellhygiene-Umfang; keine Original-/Geräte-Parity. |
 | [#4](https://github.com/Olli0103/homeview/issues/4) | Quelllizenz und Veröffentlichungsunterlagen festlegen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#5](https://github.com/Olli0103/homeview/issues/5) | Face-Katalog und Varianten vollständig gegen Referenz abnehmen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#6](https://github.com/Olli0103/homeview/issues/6) | Face-Wechsel und App-Raster-Übergänge vermessen | Offen; zusätzliche Software-, Originalzustands-/Geometrie-/Bewegungsabnahme erforderlich. |

@@ -1390,7 +1390,10 @@ Abnahme: Explizite Entscheidung mit belegtem Ziel. Optionale Erweiterungen schli
 Abhängigkeiten: BASE-01.
 
 
-**Abschluss,30.Oktober:** [veröffentlichte gezielte Historienbereinigung und vollständiger ursprünglicher Kriterienabgleich](asset-history-publication-20261030.md). Eigene Ersatzasset-/Quellhygiene abgeschlossen; Originaloptik/Geräteabnahmen bleiben separat. GitHub-Schließung wird nach Veröffentlichung exakt zurückgelesen.
+**Abschluss,30.Oktober:** [veröffentlichte gezielte Historienbereinigung und vollständiger ursprünglicher Kriterienabgleich](asset-history-publication-20261030.md). Eigene Ersatzasset-/Quellhygiene abgeschlossen; Originaloptik/Geräteabnahmen bleiben separat. GitHub-Schließung closed/completed mit vollem Body, Titel und unveränderten Labels exakt zurückgelesen.
+
+
+**Abschluss,30.Oktober:** [ursprünglicher synthetischer Isolations-/Freigabevertrag](six-profile-authentication-boundary.md):788nativeBedingungen/14mobileUI-Ausführungen bestanden,keineProduktcodeänderung. ÖffentlicheCompanion-PolicyistGeräteinhaberprüfung,keineSechs-Personen-Identität. F093/F094/F096bleibenblocked/parity=false. GitHub-Schließung nach Veröffentlichung getrennt zurücklesen.
 
 ## Aktueller Gesamtstatus · 22. Oktober 2026
 
