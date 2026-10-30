@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-30",
+  "base_commit": "99ab60af6d88a8df597befb8771a023edb36e132",
+  "scope": "Separate local mock-lock adapter fresh persisted-state reading; no real Home",
+  "source_inputs_each": 244,
+  "before_source_digest": "d4e87bdcc93c327a279cb92183b6a9659ffba791793f298e33bd847a8db67a92",
+  "after_source_digest": "63bf52aa59dd059106373c1dd9fab1145fa322a56171ba7070d51845e6152b09",
+  "same_native_probe_before_after": true,
+  "changed_product_files": [
+    "Sources/App/MockLockDevice.swift"
+  ],
+  "native": {
+    "conditions_each": 20,
+    "before": {
+      "passed": 8,
+      "failed": 12,
+      "process_exit": 1,
+      "binary_sha256": "06ac09150845feaa81b207fed8daacf91855c0a0b93fec035b9d6a23bec1eb3c",
+      "checks": {
+        "cancel_no_write": true,
+        "consumed_approval_no_replay": true,
+        "foreign_offline_invalidates_approval": false,
+        "foreign_offline_no_write": false,
+        "foreign_target_invalidates_approval": false,
+        "foreign_target_latest_reading": true,
+        "foreign_target_no_write": false,
+        "malformed_store_invalidates_approval": false,
+        "malformed_store_no_write": false,
+        "neighbour_action_confirmed": true,
+        "neighbour_exact_home_preserved": false,
+        "neighbour_fan_and_light_preserved": false,
+        "neighbour_foreign_audit_retained": false,
+        "neighbour_temperature_preserved": false,
+        "no_system_alarm_or_timer_ids": true,
+        "prepare_does_not_write": true,
+        "prepare_observes_persisted_lock": false,
+        "prepare_proposes_from_persisted_lock": false,
+        "revocation_no_write": true,
+        "revocation_not_confirmed": true
+      }
+    },
+    "after": {
+      "passed": 20,
+      "failed": 0,
+      "process_exit": 0,
+      "binary_sha256": "2a0662c028d5ae741b12017392c0ecbc39ab929cde28e0da91ce7859504e0c82",
+      "checks": {
+        "cancel_no_write": true,
+        "consumed_approval_no_replay": true,
+        "foreign_offline_invalidates_approval": true,
+        "foreign_offline_no_write": true,
+        "foreign_target_invalidates_approval": true,
+        "foreign_target_latest_reading": true,
+        "foreign_target_no_write": true,
+        "malformed_store_invalidates_approval": true,
+        "malformed_store_no_write": true,
+        "neighbour_action_confirmed": true,
+        "neighbour_exact_home_preserved": true,
+        "neighbour_fan_and_light_preserved": true,
+        "neighbour_foreign_audit_retained": true,
+        "neighbour_temperature_preserved": true,
+        "no_system_alarm_or_timer_ids": true,
+        "prepare_does_not_write": true,
+        "prepare_observes_persisted_lock": true,
+        "prepare_proposes_from_persisted_lock": true,
+        "revocation_no_write": true,
+        "revocation_not_confirmed": true
+      }
+    },
+    "private_store_accessor_only": true,
+    "product_methods_replaced": false,
+    "macOS_model_process_not_UI_XCTest": true
+  },
+  "sdks": {
+    "passed": 5,
+    "rows": [
+      {
+        "platform": "iOS",
+        "exit_code": 0,
+        "attempts": 2,
+        "headroom_ok": true
+      },
+      {
+        "platform": "macOS",
+        "exit_code": 0,
+        "attempts": 1,
+        "headroom_ok": true
+      },
+      {
+        "platform": "tvOS",
+        "exit_code": 0,
+        "attempts": 1,
+        "headroom_ok": true
+      },
+      {
+        "platform": "visionOS",
+        "exit_code": 0,
+        "attempts": 1,
+        "headroom_ok": true
+      },
+      {
+        "platform": "watchOS",
+        "exit_code": 0,
+        "attempts": 1,
+        "headroom_ok": true
+      }
+    ],
+    "product_files": 73,
+    "delta_changed_files": 5,
+    "delta_bytes": 26411925,
+    "delta_sha256": "f49461894f18c4262d25406ee51b6227166971d80f46bdc65df35a47bcbd9465",
+    "baseline_sha256": "243fe23748bcfcc0e3fa1e214b666625bef9c538dfe2182f36cb001c85c7b334",
+    "all_products_byte_read_back": true
+  },
+  "mobile": [
+    {
+      "device": "phone",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "installed_app_and_runner_byte_verified": true,
+      "source_and_compiled_inputs_unchanged": true,
+      "native_summary_devices": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+            "deviceName": "iPhone 18 Pro",
+            "modelName": "iPhone 18 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 3,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ]
+    },
+    {
+      "device": "ipad",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_warnings": [],
+      "installed_app_and_runner_byte_verified": true,
+      "source_and_compiled_inputs_unchanged": true,
+      "native_summary_devices": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+            "deviceName": "iPad Air 11-inch (M4)",
+            "modelName": "iPad Air 11-inch (M4)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 3,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ]
+    }
+  ],
+  "mobile_executions": 6,
+  "mobile_unique_methods": 3,
+  "shared_UI_inputs": {
+    "source_digest": "63bf52aa59dd059106373c1dd9fab1145fa322a56171ba7070d51845e6152b09",
+    "source_files": 244,
+    "compiled_files": 32,
+    "delta_sha256": "5d3ed5fbf2411a2dcb4b9d44f20f6c0cf2dcb6f6b1eb12c16bd38c26c65420ff",
+    "sdk_delta_sha256": "f49461894f18c4262d25406ee51b6227166971d80f46bdc65df35a47bcbd9465",
+    "sdk_baseline_sha256": "243fe23748bcfcc0e3fa1e214b666625bef9c538dfe2182f36cb001c85c7b334",
+    "all_inputs_read_back": true,
+    "one_archive_shared_by_both_devices": true
+  },
+  "UI_package_shortcut_artifacts_valid": true,
+  "images": [
+    {
+      "device": "phone",
+      "name": "viewport-mock-lock-background-no-approval-no-command",
+      "path": "Docs/screenshots/mock-lock-current-20261030/phone-viewport-mock-lock-background-no-approval-no-command.png",
+      "sha256": "e53441dcfde833f629bcc2ab68dd9cce3b6dc3597c3de05971004230c9080c58"
+    },
+    {
+      "device": "phone",
+      "name": "viewport-mock-lock-restart-observed-state-no-grant",
+      "path": "Docs/screenshots/mock-lock-current-20261030/phone-viewport-mock-lock-restart-observed-state-no-grant.png",
+      "sha256": "e293fa870c7daf92ef187bfd47b765095197478afdd164253ea4236c1b974ddb"
+    },
+    {
+      "device": "phone",
+      "name": "viewport-mock-lock-confirmed-low-battery",
+      "path": "Docs/screenshots/mock-lock-current-20261030/phone-viewport-mock-lock-confirmed-low-battery.png",
+      "sha256": "3918914961012913d07df11a1770b7a04c385ec8e5eceb2a6b761d7b1a835438"
+    },
+    {
+      "device": "phone",
+      "name": "viewport-mock-lock-unavailable-battery-fault",
+      "path": "Docs/screenshots/mock-lock-current-20261030/phone-viewport-mock-lock-unavailable-battery-fault.png",
+      "sha256": "c5cea204682a5149680485eb2c4cc718c20aa5ced5bf7c6a74b0190f2454a6d5"
+    },
+    {
+      "device": "phone",
+      "name": "viewport-mock-lock-unavailable-jammed",
+      "path": "Docs/screenshots/mock-lock-current-20261030/phone-viewport-mock-lock-unavailable-jammed.png",
+      "sha256": "f52ae2bb9426170d6c90a208f64eed6d23429d863472427e0eed11944ef62207"
+    },
+    {
+      "device": "phone",
+      "name": "viewport-mock-lock-unavailable-unknown",
+      "path": "Docs/screenshots/mock-lock-current-20261030/phone-viewport-mock-lock-unavailable-unknown.png",
+      "sha256": "33f6f0565bc76b44989260ed05e78fdf0f691e4febb324ac23c9b2f7d619fcab"
+    },
+    {
+      "device": "ipad",
+      "name": "viewport-mock-lock-background-no-approval-no-command",
+      "path": "Docs/screenshots/mock-lock-current-20261030/ipad-viewport-mock-lock-background-no-approval-no-command.png",
+      "sha256": "9cad3f878bf7dbacbcf9dfd8573035b7d972adf89bb98d63a88c35f75adf08c3"
+    },
+    {
+      "device": "ipad",
+      "name": "viewport-mock-lock-restart-observed-state-no-grant",
+      "path": "Docs/screenshots/mock-lock-current-20261030/ipad-viewport-mock-lock-restart-observed-state-no-grant.png",
+      "sha256": "9fe646a9307a52a42d8e0b2929f0030a1f802ba0bcfac436c54b0e6d40dd14a6"
+    },
+    {
+      "device": "ipad",
+      "name": "viewport-mock-lock-confirmed-low-battery",
+      "path": "Docs/screenshots/mock-lock-current-20261030/ipad-viewport-mock-lock-confirmed-low-battery.png",
+      "sha256": "6b563a991e254660951210f990f480d2be78ee3b0939afe4c09f6d857c152ac0"
+    },
+    {
+      "device": "ipad",
+      "name": "viewport-mock-lock-unavailable-battery-fault",
+      "path": "Docs/screenshots/mock-lock-current-20261030/ipad-viewport-mock-lock-unavailable-battery-fault.png",
+      "sha256": "6b2bf1c2e3716e6d70ead825092db4d7ceda83f1bf54dcecf6379f2aac7cacf2"
+    },
+    {
+      "device": "ipad",
+      "name": "viewport-mock-lock-unavailable-jammed",
+      "path": "Docs/screenshots/mock-lock-current-20261030/ipad-viewport-mock-lock-unavailable-jammed.png",
+      "sha256": "56066904acc33ac158c6c462e12e52ff4eaba29f410847e5dea5cb6b82d6889f"
+    },
+    {
+      "device": "ipad",
+      "name": "viewport-mock-lock-unavailable-unknown",
+      "path": "Docs/screenshots/mock-lock-current-20261030/ipad-viewport-mock-lock-unavailable-unknown.png",
+      "sha256": "13d3f091572468abb87ab8fb279ae284717480337f1f4cf2b3bca42f1e5d4236"
+    }
+  ],
+  "native_viewports_actually_viewed": 12,
+  "files": [
+    {
+      "path": "Sources/App/MockLockDevice.swift",
+      "bytes": 2267,
+      "sha256": "2c17e1d398b975dc66d2fc3b491cbd00e075e0bb9d53439f26b025bc0b6d893a"
+    },
+    {
+      "path": "Tests/NativeProbes/MockLockPersistentObservation.swift",
+      "bytes": 4993,
+      "sha256": "c1d767ebd247008236c1ea25c3ffd9ac2d15bd22c032487731e118291775d652"
+    }
+  ],
+  "limits": [
+    "No real Home/lock/discovery/household identity/device biometric acceptance",
+    "No new Core run or universal security/release certification",
+    "No general atomic multi-process storage guarantee",
+    "Phone initial battery text partly clipped by existing details scroll viewport; no whole-literal reading acceptance",
+    "Previous275 neighbour conditions remain a separate earlier checkpoint, not275 new lock conditions"
+  ]
+}

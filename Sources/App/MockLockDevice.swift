@@ -16,20 +16,26 @@ import Foundation
   }
   private func readNow() throws -> LockReading {
     guard let model else { throw LockDeviceError.unavailable }
-    guard model.data.home.online else { return LockReading(state:.unknown) }
+    return reading(try model.readMockControlSnapshot())
+  }
+  private func reading(_ home:MockHome) -> LockReading {
+    guard home.online else { return LockReading(state:.unknown) }
     switch fixture {
     case "unknown": return LockReading(state:.unknown)
     case "jammed": return LockReading(state:.jammed,batteryPercent:15)
-    case "battery-fault": return LockReading(state:model.data.home.locked ? .locked:.unlocked,batteryFault:true)
-    case "low-battery": return LockReading(state:model.data.home.locked ? .locked:.unlocked,batteryPercent:15)
-    default: return LockReading(state:model.data.home.locked ? .locked:.unlocked)
+    case "battery-fault": return LockReading(state:home.locked ? .locked:.unlocked,batteryFault:true)
+    case "low-battery": return LockReading(state:home.locked ? .locked:.unlocked,batteryPercent:15)
+    default: return LockReading(state:home.locked ? .locked:.unlocked)
     }
   }
   func setLocked(_ target: Bool,expected: LockReading) async throws {
     guard let model,model.route == .lock,model.canControlMockSecurity else { throw LockDeviceError.denied }
-    let current=try readNow()
+    // Read and modify the same current snapshot, not the AppModel cache. A
+    // persisted target change must invalidate the consumed approval before any
+    // write; unrelated current device values/audit must survive an allowed one.
+    var candidate=try model.readMockControlSnapshot()
+    let current=reading(candidate)
     guard current.canCommand,current==expected,current.state.lockedValue != target else { throw LockDeviceError.stateChanged }
-    var candidate=model.data.home
     try candidate.transact(.lock,authorized:true)
     guard candidate.locked==target else { throw LockDeviceError.stateChanged }
     guard model.commitMockLock(candidate) else { throw LockDeviceError.notWritable }
