@@ -10,6 +10,8 @@
 
 **Weitere Softwarelieferung, 22. Oktober:** [Quellseitige Podcast-Untertitel](podcast-source-captions.md) im bestehenden AVPlayer-Pfad. Die unten beschriebene fehlende Legible-Auswahl gilt für den datierten Quellbefund, nicht den aktuellen Softwarestand. OS-Live-Captions und echte Hilfsmittelabnahmen bleiben getrennt.
 
+**Aktualisierung,30.Oktober:** [48-Zellen-Abnahmematrix und tatsächliche Vision-Systemdiagnose](speech-acceptance-ledger-20261030.md). Frühere Compiler-/Quellbelege werden nicht zu Plattform-Runtime-PASSes; verbleibende verfügbare Softwareprüfungen sind keine Hardwareblockaden. #74 bleibt offen.
+
 ## Eigener Lieferumfang
 
 | Funktion | Tatsächlicher HomeView-Code | Was daraus nicht folgt |

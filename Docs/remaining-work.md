@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+- [#74: alle48 Plattform-/Hilfsmittelzellen bilanziert](speech-acceptance-ledger-20261030.md): vier historisch benutzbare Teilpfade, dokumentierte Setup-/Host-/Appgrenzen; fünf OS-Pfade und drei eigene Softwareprüfungen noch offen. Vision-Inventur1PASS, drei Kalt-/WarmmethodenFAIL;14 tatsächliche Kamerabilder geprüft, Diagnose aus Standardtarget bytegenau entfernt. Kein neuer Produktcode oder voreilige Schließung.
+
 - [#24: ursprünglicher synthetischer Gerätevertrag geprüft](mock-device-contract.md): alle vier Regler mit Erfolg/Timeout/Ablehnung/Fremdänderung und Neustarts;449Coretests, letzte neun native Mobil-/TV-/Watch-Ausführungen/fünf SDKs. Read-only-/Stale-Metadata-/Plan-Dialogfehler getrennt korrigiert. Keine reale Home-/Original-Parity; Veröffentlicht mit `06ba7e7`; Issue24 als closed/completed mit exaktem Body und unveränderter ursprünglicher Abnahme zurückgelesen.
 
 - [#25: ursprünglicher Mock-Schloss-Sicherheitsvertrag erfüllt](mock-lock-security.md):429Coretests, zwölf aktuelle native UI-Ausführungen/fünf SDKs sowie unabhängige1152Vektoren/5775Bedingungen und Terminal-Cancel-Gegenprobe bestanden. Gerätefreigabe statt Demo-Profil, separate30s-Einmalbestätigung, Widerruf, Unknown/Jammed/Batteriefehler und nichtoptimistischer Read-back. Echte Home-/Identitätsbindung bleibt #23/#66, F028partial/parity=false. Veröffentlichung sowie geschlossener Issue-State mitreasoncompleted, unverändertem Aufgaben-/Abnahmetext und Labels frisch zurückgelesen; Zähler jetzt40offen. Danach #24: typisierter Geräte-/Read-back-Vertrag unter unveränderter Home-Sperre, nicht weitere kleine Schriftpakete.

@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-30",
+  "published_product_head": "09f911643acfb75f190e2c5efa468836d7bcdc27",
+  "product_changes": 0,
+  "original_issue_open": true,
+  "current_native_history": {
+    "executions": 4,
+    "passed": 1,
+    "failed": 3,
+    "scope_of_only_pass": "Discovery/inventory only; not OS execution",
+    "rows": [
+      {
+        "id": "inventory",
+        "exit_code": 0,
+        "captures": 3,
+        "captures_within_held_states": true,
+        "capture_errors": [],
+        "inputs_unchanged": true,
+        "archive_read_back": true,
+        "archive_sha256": "31b3719129349a173f3ab5c7003cf91da119a84b90cdf6f46e3b674a6e5ea7de",
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "cold_observed": false,
+        "complete_cold_warm_pass": false
+      },
+      {
+        "id": "coldwarm",
+        "exit_code": 65,
+        "captures": 2,
+        "captures_within_held_states": false,
+        "capture_errors": [],
+        "inputs_unchanged": true,
+        "archive_read_back": true,
+        "archive_sha256": "60c55eedc3cbe5da4f111d78702d367706150ec4a15c961ee22544861d039a11",
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "cold_observed": true,
+        "complete_cold_warm_pass": false
+      },
+      {
+        "id": "warmdiag",
+        "exit_code": 65,
+        "captures": 4,
+        "captures_within_held_states": true,
+        "capture_errors": [],
+        "inputs_unchanged": true,
+        "archive_read_back": true,
+        "archive_sha256": "6be653cbf5c1041f2767345e764de26c9ff2bdc8bd88bb78c58137a10239c1cb",
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "cold_observed": true,
+        "complete_cold_warm_pass": false
+      },
+      {
+        "id": "warmsource",
+        "exit_code": 65,
+        "captures": 5,
+        "captures_within_held_states": true,
+        "capture_errors": [],
+        "inputs_unchanged": true,
+        "archive_read_back": true,
+        "archive_sha256": "890c737113771824d77f355d811ba34bd99a5addc1c5ce739bdcba5502a9a534",
+        "installed_own_app_verified": true,
+        "runner_verified": true,
+        "cold_observed": true,
+        "complete_cold_warm_pass": false
+      }
+    ]
+  },
+  "virtual_camera_frames": 14,
+  "mac_read_only_boundary": {
+    "at": "2026-10-30T07:08:55.002454+00:00",
+    "DevToolsSecurity": "Developer mode is currently disabled.",
+    "computer_screenshot_tool": "Gateway computer is unavailable; enable its computer provider and desktop session",
+    "scope": "Read-only checks only; not a proved single cause for prior zero-method XCTest starts. No security/desktop config change."
+  },
+  "temporary_probe_restoration": {
+    "temporary_test_restored_sha256": "75f49342c39320ce0e36d5bfb80fc3dc0b94b8acf083649bf76d01750378d642",
+    "other_inputs_unchanged": 241,
+    "native_processes_collected": true,
+    "published_head": "09f911643acfb75f190e2c5efa468836d7bcdc27"
+  },
+  "sources": [
+    {
+      "id": "E1",
+      "url": "https://support.apple.com/guide/apple-vision-pro/enter-text-and-use-dictation-tana14220eef/visionos",
+      "status": 200,
+      "truncated": false,
+      "characters": 5882,
+      "extracted_text_sha256": "82de8c735f98f27db0849ad07aec41fd8e2ee6b010665e4c68dcff64618bc02d",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E2",
+      "url": "https://support.apple.com/guide/apple-vision-pro/change-siri-accessibility-features-tane21826ac2/visionos",
+      "status": 200,
+      "truncated": false,
+      "characters": 3111,
+      "extracted_text_sha256": "17dde5d8ac6dd1f0584b67b892c3ae3094157ef339e70950e58219ca4c61ed4d",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E3",
+      "url": "https://support.apple.com/guide/watch/how-to-use-siri-apd02f71f945/watchos",
+      "status": 200,
+      "truncated": false,
+      "characters": 3928,
+      "extracted_text_sha256": "f0ac8d620d6b610b86a5a52f1849240edb3861d9237904b06bb6cf8d73c1a8bb",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E4",
+      "url": "https://support.apple.com/guide/watch/enter-text-apdaf7837856/watchos",
+      "status": 200,
+      "truncated": false,
+      "characters": 5618,
+      "extracted_text_sha256": "916b3dfe51fc470ab88da1b97c76f57b9a232a235ff9e2b6b3ed0087e340765b",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E5",
+      "url": "https://support.apple.com/guide/watch/type-to-speak-apd86a007717/watchos",
+      "status": 200,
+      "truncated": false,
+      "characters": 869,
+      "extracted_text_sha256": "961194ec85634fa0eb9d68983bab0e2ddc495fd6799f95e634886e32f2a8d118",
+      "contains_substantive_body": false,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E6",
+      "url": "https://support.apple.com/guide/watch/shortcuts-apd99050d435/watchos",
+      "status": 200,
+      "truncated": false,
+      "characters": 2159,
+      "extracted_text_sha256": "b4358c0671f1290a4fbc5c06be0cbf4916a71452e8e0202d29c8402cbdb32e5f",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E7",
+      "url": "https://support.apple.com/guide/mac-help/use-dictation-mh40584/mac",
+      "status": 200,
+      "truncated": false,
+      "characters": 10828,
+      "extracted_text_sha256": "a927c1bb54facbf913224e7e5585433dff7976315e3b9551bc21236ccb665378",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E8",
+      "url": "https://support.apple.com/guide/mac-help/change-siri-settings-for-accessibility-mchl5715a9f2/mac",
+      "status": 200,
+      "truncated": false,
+      "characters": 2663,
+      "extracted_text_sha256": "cd688d11c249296ee820bd9f63c03c195d6119d5a44b0b0dcc365e6a2972bebe",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E9",
+      "url": "https://support.apple.com/guide/iphone/dictate-text-iph2c0651d2/ios",
+      "status": 200,
+      "truncated": false,
+      "characters": 5745,
+      "extracted_text_sha256": "bf4d52f115f218e527654ab2754c33a2e4ddfa956fa70ad4af49f36be85e66a5",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E10",
+      "url": "https://support.apple.com/guide/iphone/change-siri-accessibility-settings-iphaff1d606/ios",
+      "status": 200,
+      "truncated": false,
+      "characters": 4843,
+      "extracted_text_sha256": "104f21dd5fbfd9c78df57593629beee71470cf66dec31e85c7e15057b46c6b9e",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E11",
+      "url": "https://support.apple.com/guide/ipad/dictate-text-ipad55d35a41/ipados",
+      "status": 200,
+      "truncated": false,
+      "characters": 1884,
+      "extracted_text_sha256": "09048ced2a841ca0f95d59d08881241571b62bbc39499a9ab907df93459b54fa",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E12",
+      "url": "https://support.apple.com/guide/ipad/change-siri-accessibility-settings-ipadd58b8673/ipados",
+      "status": 200,
+      "truncated": false,
+      "characters": 4757,
+      "extracted_text_sha256": "d11ce76fbc029d640777f8283b52facd27cfa79bbc098c144e50ab050c5d8325",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E13",
+      "url": "https://support.apple.com/guide/watch/type-to-speak-apd86a007717/27/watchos/27",
+      "status": 200,
+      "truncated": false,
+      "characters": 2960,
+      "extracted_text_sha256": "2c36ad79c0c99b1c498ef5e45bf60835d3b58fb38b7c7192f5e545fd3e471cbe",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    },
+    {
+      "id": "E14",
+      "url": "https://support.apple.com/guide/mac-help/siri-ai-use-the-siri-app-q7ny3g54v9lk/mac",
+      "status": 200,
+      "truncated": false,
+      "characters": 6432,
+      "extracted_text_sha256": "768037d822b75a76ea66d50ca065ac06acf0d62c5ddfe7c8e83a7496cf361560",
+      "contains_substantive_body": true,
+      "not_a_runtime_test": true
+    }
+  ],
+  "prior_sources": [
+    "speech-feature-boundaries.json",
+    "speech-platform-update-20261029.json"
+  ],
+  "no_new_Core_or_five_SDK_claim": true,
+  "all_physical_signing_Home_holds_unchanged": true,
+  "actual_camera_review": {
+    "decoded": 14,
+    "fully_visible_contacts_reviewed": 3,
+    "direct_full_before_warm_and_return_frames_reviewed": true,
+    "raw_system_images_private": true
+  }
+}

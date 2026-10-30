@@ -1,0 +1,575 @@
+{
+  "date": "2026-10-30",
+  "issue": 74,
+  "original_acceptance_unchanged": true,
+  "research_acceptance": "Usability per target/tool OR concrete blockade; a text field does not cover F105.",
+  "status": "open",
+  "why_open": "Two available-runtime media flows and visible Vision warm invocation remain unqualified; five OS routes remain unresolved, not proved impossible. Enumeration alone is not acceptance.",
+  "implementation_partial": true,
+  "parity": false,
+  "dimensions": {
+    "platforms": 6,
+    "tools": 8,
+    "cells": 48
+  },
+  "counts": {
+    "blocked_setup": 31,
+    "observed_usable": 4,
+    "blocked_host": 2,
+    "unresolved_os_path": 5,
+    "not_exposed_app": 3,
+    "pending_runtime_validation": 2,
+    "partial_observed_open": 1
+  },
+  "cells": [
+    {
+      "platform": "iPhone",
+      "tool": "OS Live Speech",
+      "support": "Apple documents the product family; S1 dated 2023, not a current model certification.",
+      "evidence": [
+        "S1"
+      ],
+      "boundary": "No enabled/trained assistive session, chosen voice/model, acoustic or call acceptance in the current owner-held physical scope.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPhone",
+      "tool": "OS Live Captions",
+      "support": "Apple guide documents the platform; model/language/region restrictions remain individual.",
+      "evidence": [
+        "S3"
+      ],
+      "boundary": "No enabled OS transcription session or authorized microphone/call fixture; own legible media cues are not OS captions.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPhone",
+      "tool": "OS RTT",
+      "support": "Documented phone/FaceTime RTT setup, distinct from own composer.",
+      "evidence": [
+        "N2"
+      ],
+      "boundary": "No configured carrier/region/phone pair and authorized RTT conversation partner; app has no RTT transport.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPhone",
+      "tool": "OS Dictation",
+      "support": "Documented system text dictation; iPad E11 specifically documents an Apple external-keyboard route.",
+      "evidence": [
+        "E9"
+      ],
+      "boundary": "No enabled system dictation, chosen language/model and authorized acoustic session; own Speech/AVAudioEngine recognition is a separate API.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPhone",
+      "tool": "OS Type to Siri",
+      "support": "Documented keyboard requests to Siri, not HomeView text entry. Mac E14 is specifically Siri AI Beta/macOS27 with language/model restrictions.",
+      "evidence": [
+        "E10"
+      ],
+      "boundary": "No configured and authorized Siri service session. No own shortcut invocation is counted as a Siri conversation.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPhone",
+      "tool": "OS Vocal Shortcuts",
+      "support": "User records/trains a phrase for a chosen action.",
+      "evidence": [
+        "S7"
+      ],
+      "boundary": "No user-trained phrase or authorized acoustic invocation; AppShortcuts metadata does not train a Vocal Shortcut.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPhone",
+      "tool": "Own App Shortcut",
+      "support": "Native OS discovery and terminated-process cold / same-process warm invocation observed.",
+      "evidence": [
+        "assistant-os-shortcut.md",
+        "verification/assistant-os-shortcut.json"
+      ],
+      "boundary": "Historical29Oct checkpoint, unlocked fresh account-free simulator only; no Siri, physical authentication, multiwindow or other OS-version acceptance.",
+      "status": "observed_usable",
+      "parity": false
+    },
+    {
+      "platform": "iPhone",
+      "tool": "Own source-media captions",
+      "support": "Actual muted own timed-text cue / selection / seek / Off / source-change UI observed.",
+      "evidence": [
+        "podcast-source-captions.md",
+        "verification/podcast-source-captions.json"
+      ],
+      "boundary": "Historical22Oct checkpoint; bounded own tone/markers, not general streams, languages, format or acoustic/physical acceptance.",
+      "status": "observed_usable",
+      "parity": false
+    },
+    {
+      "platform": "iPad",
+      "tool": "OS Live Speech",
+      "support": "Apple documents the product family; S1 dated 2023, not a current model certification.",
+      "evidence": [
+        "S1"
+      ],
+      "boundary": "No enabled/trained assistive session, chosen voice/model, acoustic or call acceptance in the current owner-held physical scope.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPad",
+      "tool": "OS Live Captions",
+      "support": "Apple guide documents the platform; model/language/region restrictions remain individual.",
+      "evidence": [
+        "S2"
+      ],
+      "boundary": "No enabled OS transcription session or authorized microphone/call fixture; own legible media cues are not OS captions.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPad",
+      "tool": "OS RTT",
+      "support": "Documented phone/FaceTime RTT setup, distinct from own composer.",
+      "evidence": [
+        "N1"
+      ],
+      "boundary": "No configured carrier/region/phone pair and authorized RTT conversation partner; app has no RTT transport.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPad",
+      "tool": "OS Dictation",
+      "support": "Documented system text dictation; iPad E11 specifically documents an Apple external-keyboard route.",
+      "evidence": [
+        "E11"
+      ],
+      "boundary": "No enabled system dictation, chosen language/model and authorized acoustic session; own Speech/AVAudioEngine recognition is a separate API.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPad",
+      "tool": "OS Type to Siri",
+      "support": "Documented keyboard requests to Siri, not HomeView text entry. Mac E14 is specifically Siri AI Beta/macOS27 with language/model restrictions.",
+      "evidence": [
+        "E12"
+      ],
+      "boundary": "No configured and authorized Siri service session. No own shortcut invocation is counted as a Siri conversation.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPad",
+      "tool": "OS Vocal Shortcuts",
+      "support": "User records/trains a phrase for a chosen action.",
+      "evidence": [
+        "S8"
+      ],
+      "boundary": "No user-trained phrase or authorized acoustic invocation; AppShortcuts metadata does not train a Vocal Shortcut.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "iPad",
+      "tool": "Own App Shortcut",
+      "support": "Native OS discovery and terminated-process cold / same-process warm invocation observed.",
+      "evidence": [
+        "assistant-os-shortcut.md",
+        "verification/assistant-os-shortcut.json"
+      ],
+      "boundary": "Historical29Oct checkpoint, unlocked fresh account-free simulator only; no Siri, physical authentication, multiwindow or other OS-version acceptance.",
+      "status": "observed_usable",
+      "parity": false
+    },
+    {
+      "platform": "iPad",
+      "tool": "Own source-media captions",
+      "support": "Actual muted own timed-text cue / selection / seek / Off / source-change UI observed.",
+      "evidence": [
+        "podcast-source-captions.md",
+        "verification/podcast-source-captions.json"
+      ],
+      "boundary": "Historical22Oct checkpoint; bounded own tone/markers, not general streams, languages, format or acoustic/physical acceptance.",
+      "status": "observed_usable",
+      "parity": false
+    },
+    {
+      "platform": "Mac",
+      "tool": "OS Live Speech",
+      "support": "Apple documents the product family; S1 dated 2023, not a current model certification.",
+      "evidence": [
+        "S1"
+      ],
+      "boundary": "No enabled/trained assistive session, chosen voice/model, acoustic or call acceptance in the current owner-held physical scope. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Mac",
+      "tool": "OS Live Captions",
+      "support": "Apple guide documents the platform; model/language/region restrictions remain individual.",
+      "evidence": [
+        "S4"
+      ],
+      "boundary": "No enabled OS transcription session or authorized microphone/call fixture; own legible media cues are not OS captions. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Mac",
+      "tool": "OS RTT",
+      "support": "Documented phone/FaceTime RTT setup, distinct from own composer.",
+      "evidence": [
+        "S6"
+      ],
+      "boundary": "No configured carrier/region/phone pair and authorized RTT conversation partner; app has no RTT transport. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Mac",
+      "tool": "OS Dictation",
+      "support": "Documented system text dictation; iPad E11 specifically documents an Apple external-keyboard route.",
+      "evidence": [
+        "E7"
+      ],
+      "boundary": "No enabled system dictation, chosen language/model and authorized acoustic session; own Speech/AVAudioEngine recognition is a separate API. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Mac",
+      "tool": "OS Type to Siri",
+      "support": "Documented keyboard requests to Siri, not HomeView text entry. Mac E14 is specifically Siri AI Beta/macOS27 with language/model restrictions.",
+      "evidence": [
+        "E14"
+      ],
+      "boundary": "No configured and authorized Siri service session. No own shortcut invocation is counted as a Siri conversation. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Mac",
+      "tool": "OS Vocal Shortcuts",
+      "support": "User records/trains a phrase for a chosen action.",
+      "evidence": [
+        "S9"
+      ],
+      "boundary": "No user-trained phrase or authorized acoustic invocation; AppShortcuts metadata does not train a Vocal Shortcut. Fresh Mac UI access unavailable; Developer mode disabled, prior two bounded runner starts executed zero methods; not a proved single cause.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Mac",
+      "tool": "Own App Shortcut",
+      "support": "Registration/SDK metadata and direct intent/root body probes, not native Mac OS invocation.",
+      "evidence": [
+        "assistant-app-shortcut.md",
+        "mac-runtime-boundary.md",
+        "fresh-Mac-boundary"
+      ],
+      "boundary": "Mac interactive desktop unavailable and zero-method runner attempts; no direct perform substitution for OS use.",
+      "status": "blocked_host",
+      "parity": false
+    },
+    {
+      "platform": "Mac",
+      "tool": "Own source-media captions",
+      "support": "Shared public AVPlayer legible implementation compiles; native controller evidence is not a Mac UI run.",
+      "evidence": [
+        "podcast-source-captions.md",
+        "mac-runtime-boundary.md",
+        "fresh-Mac-boundary"
+      ],
+      "boundary": "Mac interactive desktop unavailable; actual Mac selection/cue/return not executed.",
+      "status": "blocked_host",
+      "parity": false
+    },
+    {
+      "platform": "Apple TV",
+      "tool": "OS Live Speech",
+      "support": "No positive specialized OS route established; NOT an OS unsupported claim.",
+      "evidence": [
+        "N7",
+        "os-speech-settings-inventory-20261029.md",
+        "fresh-TV-guide"
+      ],
+      "boundary": "Native simulator menu also omits documented VoiceOver; catalog/menu/search absence is not qualified negative evidence. A reliable target-specific capability route remains unresolved.",
+      "status": "unresolved_os_path",
+      "parity": false
+    },
+    {
+      "platform": "Apple TV",
+      "tool": "OS Live Captions",
+      "support": "Documented specifically for FaceTime on Apple TV4K.",
+      "evidence": [
+        "N4"
+      ],
+      "boundary": "No configured FaceTime endpoint, authorized counterpart, matching hardware and language/region acceptance; not ambient or own podcast captions.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Apple TV",
+      "tool": "OS RTT",
+      "support": "No positive specialized OS route established; NOT an OS unsupported claim.",
+      "evidence": [
+        "N7",
+        "os-speech-settings-inventory-20261029.md",
+        "bounded-TV-Vision-searches"
+      ],
+      "boundary": "Same failed known-positive menu control; guide searches return other-platform/global-nav matches, not a TV RTT transport.",
+      "status": "unresolved_os_path",
+      "parity": false
+    },
+    {
+      "platform": "Apple TV",
+      "tool": "OS Dictation",
+      "support": "Documented Siri/Search-button text dictation.",
+      "evidence": [
+        "N8"
+      ],
+      "boundary": "No authorized remote microphone / actual Siri-remote dictation session; TV assistant keyboard does not establish dictation.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Apple TV",
+      "tool": "OS Type to Siri",
+      "support": "Documented Type to Siri and screen/Bluetooth/iPhone/iPad keyboard paths.",
+      "evidence": [
+        "N7",
+        "N8"
+      ],
+      "boundary": "No configured authorized Siri service/keyboard pairing or real system request; own local assistant is not Siri.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Apple TV",
+      "tool": "OS Vocal Shortcuts",
+      "support": "No positive target-specific trained Vocal Shortcuts route established.",
+      "evidence": [
+        "bounded-Vocal-Shortcuts-searches",
+        "N7"
+      ],
+      "boundary": "Search results describe Voice Isolation/Recognize My Voice, not user-trained Vocal Shortcuts. No unsupported-OS conclusion. Target route still unresolved.",
+      "status": "unresolved_os_path",
+      "parity": false
+    },
+    {
+      "platform": "Apple TV",
+      "tool": "Own App Shortcut",
+      "support": "Own AppIntent/Provider excluded by explicit platform guard; no own shortcut registered.",
+      "evidence": [
+        "Sources/App/AssistantAppShortcut.swift",
+        "assistant-app-shortcut.md"
+      ],
+      "boundary": "Concrete app-scope/software omission; TV does not expose this action. No claim that the OS lacks every possible shortcut capability.",
+      "status": "not_exposed_app",
+      "parity": false
+    },
+    {
+      "platform": "Apple TV",
+      "tool": "Own source-media captions",
+      "support": "Shared legible selector/output code is present; no target-specific remote selection/cue run in this receipt.",
+      "evidence": [
+        "podcast-source-captions.md"
+      ],
+      "boundary": "Available TV runtime has not yet qualified this own-media flow. This is remaining software validation, NOT a hardware/API blockade.",
+      "status": "pending_runtime_validation",
+      "parity": false
+    },
+    {
+      "platform": "Vision Pro",
+      "tool": "OS Live Speech",
+      "support": "Specialized guide explicitly: unavailable outside calls; output at other end of call. Native settings row visibly Off.",
+      "evidence": [
+        "N5",
+        "fresh-Vision-Live-Speech",
+        "os-speech-settings-inventory-20261029.md"
+      ],
+      "boundary": "No authorized configured call/counterpart or physical device acceptance. Own AVSpeechSynthesizer has no telephony uplink.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Vision Pro",
+      "tool": "OS Live Captions",
+      "support": "Apple documents system captions; capture/mirroring unavailable while enabled.",
+      "evidence": [
+        "S5"
+      ],
+      "boundary": "No enabled authorized OS caption session / acoustic or call fixture; not activated to work around the capture restriction.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Vision Pro",
+      "tool": "OS RTT",
+      "support": "No positive specialized route established; NOT an unsupported-OS claim.",
+      "evidence": [
+        "os-speech-settings-inventory-20261029.md",
+        "bounded-TV-Vision-searches"
+      ],
+      "boundary": "Native RTT search returns no result, but known visible Live Speech also returns no result; search not qualified as capability enumeration.",
+      "status": "unresolved_os_path",
+      "parity": false
+    },
+    {
+      "platform": "Vision Pro",
+      "tool": "OS Dictation",
+      "support": "Documented virtual keyboard Dictation and some Look to Dictate fields.",
+      "evidence": [
+        "E1"
+      ],
+      "boundary": "No authorized real microphone/gaze dictation session; no system dictation activated.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Vision Pro",
+      "tool": "OS Type to Siri",
+      "support": "Accessibility > Siri > Type to Siri explicitly documented.",
+      "evidence": [
+        "E2"
+      ],
+      "boundary": "No configured/authorized system Siri session or actual Siri text request.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Vision Pro",
+      "tool": "OS Vocal Shortcuts",
+      "support": "Explicitly documented user training of a chosen phrase/action.",
+      "evidence": [
+        "N9"
+      ],
+      "boundary": "No user phrase training or acoustic invocation / physical acceptance.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Vision Pro",
+      "tool": "Own App Shortcut",
+      "support": "Actual OS provider discovered; three cold branches open own assistant from terminated process. No complete cold/warm method passed.",
+      "evidence": [
+        "current-Vision-probes"
+      ],
+      "boundary": "Warm source.activate path was occluded; restart-source path visibly fronts Shortcuts but HomeView stays behind after tap. Same HomeViewPID14688/normal args observed; AX field/draft survival is not a visible warm-return PASS. Cause not established; no product change invented.",
+      "status": "partial_observed_open",
+      "parity": false
+    },
+    {
+      "platform": "Vision Pro",
+      "tool": "Own source-media captions",
+      "support": "Shared selector/output implementation present; no target-specific visible cue/selection run in this receipt.",
+      "evidence": [
+        "podcast-source-captions.md"
+      ],
+      "boundary": "Available Vision runtime has not yet qualified this own-media flow; remaining software validation, not an invented API/hardware blockade.",
+      "status": "pending_runtime_validation",
+      "parity": false
+    },
+    {
+      "platform": "Apple Watch",
+      "tool": "OS Live Speech",
+      "support": "Current watchOS27 guide documents type-to-speak in person and phone/FaceTime audio calls.",
+      "evidence": [
+        "E13"
+      ],
+      "boundary": "No enabled voice/download/accessibility shortcut, acoustic/physical session or authorized call. WatchRoot has no own assistant/TTS.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Apple Watch",
+      "tool": "OS Live Captions",
+      "support": "Documented remote transcript display from nearby paired iPhone Live Listen, not standalone WatchASR.",
+      "evidence": [
+        "N6"
+      ],
+      "boundary": "No paired nearby same-account iPhone, selected audio hardware and authorized iPhone-microphone Live Listen session.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Apple Watch",
+      "tool": "OS RTT",
+      "support": "Cellular-Watch RTT explicitly documented.",
+      "evidence": [
+        "N3"
+      ],
+      "boundary": "No configured Cellular carrier/region/watch/iPhone setup or authorized conversation counterpart; simulator is not carrier acceptance.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Apple Watch",
+      "tool": "OS Dictation",
+      "support": "Native text entry guide documents Dictation and language limits.",
+      "evidence": [
+        "E4"
+      ],
+      "boundary": "No real enabled Dictation/acoustic session; current WatchRoot has no assistant composer to claim an integration.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Apple Watch",
+      "tool": "OS Type to Siri",
+      "support": "Settings > Accessibility > Siri > Type to Siri documented.",
+      "evidence": [
+        "E3"
+      ],
+      "boundary": "Siri setup on iPhone and internet required by guide; no configured authorized paired service session/request.",
+      "status": "blocked_setup",
+      "parity": false
+    },
+    {
+      "platform": "Apple Watch",
+      "tool": "OS Vocal Shortcuts",
+      "support": "Watch can run compatible iPhone shortcuts, including by Siri; distinct from trained Vocal Shortcuts.",
+      "evidence": [
+        "E6",
+        "bounded-Vocal-Shortcuts-searches"
+      ],
+      "boundary": "No positive Watch user-trained Vocal Shortcuts route established; generic Shortcuts/Siri is not substituted.",
+      "status": "unresolved_os_path",
+      "parity": false
+    },
+    {
+      "platform": "Apple Watch",
+      "tool": "Own App Shortcut",
+      "support": "Provider excluded from Watch bundle; current WatchRoot has no assistant.",
+      "evidence": [
+        "Sources/App/AssistantAppShortcut.swift",
+        "Sources/App/WatchRoot.swift"
+      ],
+      "boundary": "Concrete app-scope/software omission, not proof of OS-wide impossibility.",
+      "status": "not_exposed_app",
+      "parity": false
+    },
+    {
+      "platform": "Apple Watch",
+      "tool": "Own source-media captions",
+      "support": "Current WatchRoot does not expose Podcast AVPlayer/caption UI.",
+      "evidence": [
+        "Sources/App/WatchRoot.swift",
+        "podcast-source-captions.md"
+      ],
+      "boundary": "Concrete app-scope/software omission; phone captions do not count as Watch UI.",
+      "status": "not_exposed_app",
+      "parity": false
+    }
+  ]
+}
