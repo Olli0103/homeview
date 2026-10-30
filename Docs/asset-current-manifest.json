@@ -667,6 +667,19 @@
       ]
     },
     {
+      "path": "Resources/demo-artwork.mp4",
+      "bytes": 93364,
+      "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6",
+      "author_or_generator": "HomeView contributors; Scripts/generate_demo_artwork.swift",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; generated geometric raster only, no font/image/audio input or SDK binary redistributed",
+      "origin": "Own procedural gradient/circle/cubic wave;512x512,12fps,48frames/four-second H264 loop; no audio, photographs, catalog animation or extracted font contours",
+      "evidence": [
+        "Scripts/generate_demo_artwork.swift",
+        "Tests/NativeProbes/DemoArtworkDecode.swift"
+      ]
+    },
+    {
       "path": "Resources/demo-tone.wav",
       "bytes": 176444,
       "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157",
@@ -677,19 +690,6 @@
       "evidence": [
         "NOTICE.md",
         "Docs/publication.md"
-      ]
-    },
-    {
-      "path": "Resources/podcast-test-audio.wav",
-      "bytes": 1920044,
-      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
-      "author_or_generator": "Olli0103 and HomeView contributors",
-      "license": "MIT",
-      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
-      "origin": "Declared project-synthesized audio, not a borrowed recording; declaration is not a retained generator replay",
-      "evidence": [
-        "NOTICE.md",
-        "Docs/public-podcast-feeds.md"
       ]
     },
     {
@@ -705,6 +705,19 @@
         "Resources/podcast-test-audio.wav",
         "NOTICE.md"
       ]
+    },
+    {
+      "path": "Resources/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8",
+      "author_or_generator": "Olli0103 and HomeView contributors",
+      "license": "MIT",
+      "license_notice": "LICENSE and NOTICE.md; upstream notice retained where named; no rights to incidental Apple/system components granted",
+      "origin": "Declared project-synthesized audio, not a borrowed recording; declaration is not a retained generator replay",
+      "evidence": [
+        "NOTICE.md",
+        "Docs/public-podcast-feeds.md"
+      ]
     }
   ],
   "source_inputs": [
@@ -714,7 +727,7 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "7f0342c786d34a78c4f879cc7f62c93c96494f9ce42d765be2abfdf788e14919"
+      "sha256": "447cf82e7dbf0cd53f76b5399c5aa6960fdeb4f468239118b20f483d1a33a632"
     },
     {
       "path": "Scripts/check_asset_manifest.py",
@@ -775,6 +788,11 @@
     {
       "path": "Scripts/generate_podcast_caption_fixture.py",
       "sha256": "1a1edb5544659d37d6ecd39ed7f8359a702fa76603edf0125052bbb6a7aa4dfc"
+    },
+    {
+      "path": "Scripts/generate_demo_artwork.swift",
+      "sha256": "17270b3eb801e772bf35e9fbd41187779ebf441c3219471f94d597b2b4f753a8",
+      "scope": "Own procedural demo video generator; public AVFoundation encoder, no reference input."
     }
   ],
   "runtime_and_code_assets": [

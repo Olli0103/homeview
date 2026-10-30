@@ -682,7 +682,7 @@ struct MusicView: View {
   }
   private var player: some View {
     VStack(spacing: 17) {
-      DemoAlbumCover().frame(width: 270, height: 270).clipped()
+      DemoAnimatedArtwork(playing:model.playing).frame(width: 270, height: 270).clipped()
         .clipShape(RoundedRectangle(cornerRadius: 18)).shadow(radius: 20)
         .overlay(alignment: .bottomTrailing) { MusicArtworkInfoButton(source: .demo) }
       HStack {

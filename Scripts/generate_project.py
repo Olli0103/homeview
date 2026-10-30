@@ -14,7 +14,7 @@ def buildsettings(d):return '{ '+ ' '.join((q(k) if '[' in k else k)+' = '+(v if
 files=[]
 for p in sorted(p for p in (root/'Sources').rglob('*') if p.suffix in ['.swift', '.metal']):
     rel=str(p.relative_to(root));kind='sourcecode.metal' if p.suffix=='.metal' else 'sourcecode.swift';obj(rel,'{isa = PBXFileReference; lastKnownFileType = '+kind+'; path = '+q(rel)+'; sourceTree = SOURCE_ROOT;}');files.append(rel)
-for rel,kind in [('Resources/Assets.xcassets','folder.assetcatalog'),('Resources/demo-tone.wav','audio.wav'),('Resources/podcast-test-audio.wav','audio.wav'),('Resources/podcast-caption-test.mp4','file'),('Resources/FeedKit-LICENSE.txt','text'),('Tests/UITests/HomeViewUITests.swift','sourcecode.swift'),('Tests/TVUITests/HomeViewTVUITests.swift','sourcecode.swift'),('Tests/WatchUITests/HomeViewWatchUITests.swift','sourcecode.swift'),('Tests/VisionUITests/HomeViewVisionUITests.swift','sourcecode.swift')]:obj(rel,'{isa = PBXFileReference; lastKnownFileType = '+kind+'; path = '+q(rel)+'; sourceTree = SOURCE_ROOT;}')
+for rel,kind in [('Resources/Assets.xcassets','folder.assetcatalog'),('Resources/demo-tone.wav','audio.wav'),('Resources/podcast-test-audio.wav','audio.wav'),('Resources/podcast-caption-test.mp4','file'),('Resources/demo-artwork.mp4','file'),('Resources/FeedKit-LICENSE.txt','text'),('Tests/UITests/HomeViewUITests.swift','sourcecode.swift'),('Tests/TVUITests/HomeViewTVUITests.swift','sourcecode.swift'),('Tests/WatchUITests/HomeViewWatchUITests.swift','sourcecode.swift'),('Tests/VisionUITests/HomeViewVisionUITests.swift','sourcecode.swift')]:obj(rel,'{isa = PBXFileReference; lastKnownFileType = '+kind+'; path = '+q(rel)+'; sourceTree = SOURCE_ROOT;}')
 products=[];targets=[];schemes=[]
 package=obj('FeedKitPackage','{isa = XCRemoteSwiftPackageReference; repositoryURL = '+q('https://github.com/nmdias/FeedKit.git')+'; requirement = {kind = exactVersion; version = 10.9.4;};}')
 feedproduct=obj('FeedKitProduct','{isa = XCSwiftPackageProductDependency; package = '+package+'; productName = FeedKit;}')
@@ -25,7 +25,9 @@ def make_target(name,platform,sources,uitest=False,widget=False,test_target='Hom
     sp=obj(name+'sources','{isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = '+arr(src)+'; runOnlyForDeploymentPostprocessing = 0;}')
     res=[]
     if not uitest and not widget:
-        for f in ['Resources/Assets.xcassets','Resources/demo-tone.wav','Resources/podcast-test-audio.wav','Resources/podcast-caption-test.mp4','Resources/FeedKit-LICENSE.txt']:res.append(obj(name+f,'{isa = PBXBuildFile; fileRef = '+uid(f)+';}'))
+        for f in ['Resources/Assets.xcassets','Resources/demo-tone.wav','Resources/podcast-test-audio.wav','Resources/podcast-caption-test.mp4','Resources/demo-artwork.mp4','Resources/FeedKit-LICENSE.txt']:
+            if platform=='watch' and f=='Resources/demo-artwork.mp4':continue
+            res.append(obj(name+f,'{isa = PBXBuildFile; fileRef = '+uid(f)+';}'))
     rp=obj(name+'resources','{isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = '+arr(res)+'; runOnlyForDeploymentPostprocessing = 0;}')
     frameworks=[obj(name+'FeedKitLink','{isa = PBXBuildFile; productRef = '+feedproduct+';}')] if name=='HomeViewReplica' else []
     fp=obj(name+'frameworks','{isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = '+arr(frameworks)+'; runOnlyForDeploymentPostprocessing = 0;}')
@@ -65,7 +67,7 @@ make_target('HomeViewTVUITests','tvos',['Tests/TVUITests/HomeViewTVUITests.swift
 make_target('HomeViewWatchUITests','watch',['Tests/WatchUITests/HomeViewWatchUITests.swift'],True,test_target='HomeViewWatch')
 make_target('HomeViewVisionUITests','vision',['Tests/VisionUITests/HomeViewVisionUITests.swift'],True)
 pg=obj('products','{isa = PBXGroup; children = '+arr(products)+'; name = Products; sourceTree = "<group>";}')
-fg=obj('files','{isa = PBXGroup; children = '+arr([uid(f) for f in files]+[uid('Resources/Assets.xcassets'),uid('Resources/demo-tone.wav'),uid('Resources/podcast-test-audio.wav'),uid('Resources/podcast-caption-test.mp4'),uid('Resources/FeedKit-LICENSE.txt'),uid('Tests/UITests/HomeViewUITests.swift'),uid('Tests/TVUITests/HomeViewTVUITests.swift'),uid('Tests/WatchUITests/HomeViewWatchUITests.swift'),uid('Tests/VisionUITests/HomeViewVisionUITests.swift')])+'; name = Sources; sourceTree = "<group>";}')
+fg=obj('files','{isa = PBXGroup; children = '+arr([uid(f) for f in files]+[uid('Resources/Assets.xcassets'),uid('Resources/demo-tone.wav'),uid('Resources/podcast-test-audio.wav'),uid('Resources/podcast-caption-test.mp4'),uid('Resources/demo-artwork.mp4'),uid('Resources/FeedKit-LICENSE.txt'),uid('Tests/UITests/HomeViewUITests.swift'),uid('Tests/TVUITests/HomeViewTVUITests.swift'),uid('Tests/WatchUITests/HomeViewWatchUITests.swift'),uid('Tests/VisionUITests/HomeViewVisionUITests.swift')])+'; name = Sources; sourceTree = "<group>";}')
 mg=obj('main','{isa = PBXGroup; children = '+arr([fg,pg])+'; sourceTree = "<group>";}')
 configs=[]
 for c in ['Debug','Release']:configs.append(obj('project'+c,'{isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES;}; name = '+c+';}'))

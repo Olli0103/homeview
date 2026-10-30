@@ -83,3 +83,7 @@ RSS fixture episodes. Details: [public-podcast-feeds.md](Docs/public-podcast-fee
 ## Synthetic timed-caption fixture
 
 Resources/podcast-caption-test.mp4 contains the project's own synthetic podcast-test-audio.wav tone, encoded with AAC, and project-authored timed text identifying the first/final synthetic-tone markers. It contains no video, speech transcription, borrowed lyrics or private recording. Scripts/generate_podcast_caption_fixture.py records generation using a separately installed FFmpeg development tool; that tool is not bundled. The own fixture/cues are covered by the project MIT license.
+
+## Synthetic animated demo cover
+
+Resources/demo-artwork.mp4 is original project-generated gradient/circle/cubic-wave artwork, produced by Scripts/generate_demo_artwork.swift using public CoreGraphics and AVFoundation. It is a silent four-second,512×512,12fps loop, with no photo, font, audio or catalog-animation input. The own clip and generator are covered by MIT. Runtime DEMO lettering remains a system-font UI element and is not encoded into the video. No third-party cover/lyric rights or system animated-Now-Playing entitlement are implied.

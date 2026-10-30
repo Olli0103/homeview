@@ -5800,7 +5800,7 @@ final class HomeViewUITests: XCTestCase {
     info.tap()
     XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Bundled demo player")
     XCTAssertTrue(app.staticTexts["music.lyrics.availability"].label.contains("No lyrics are included"))
-    XCTAssertTrue(app.staticTexts["music.artwork.motion"].label.contains("No animated cover video"))
+    XCTAssertTrue(app.staticTexts["music.artwork.motion"].label.contains("No cover video is downloaded"))
     shot("music-artwork-demo-information")
     tap("music.artwork.done")
     XCTAssertEqual(app.buttons["player.play"].label,"Play")
@@ -5825,7 +5825,7 @@ final class HomeViewUITests: XCTestCase {
   func testArtworkInformationWithReducedMotionNeverAddsAnimationOrLyrics() {
     launch(["--page","Music","--reduce-motion"])
     tap("music.artwork.info.demo")
-    XCTAssertTrue(app.staticTexts["music.artwork.motion"].label.contains("including with Reduce Motion"))
+    XCTAssertTrue(app.staticTexts["music.artwork.motion"].label.contains("Reduce Motion"))
     XCTAssertTrue(app.staticTexts["music.lyrics.availability"].label.contains("No sample text"))
     shot("music-artwork-reduced-motion-information")
     tap("music.artwork.done");XCTAssertEqual(app.buttons["player.play"].label,"Play")
@@ -10008,4 +10008,131 @@ extension HomeViewUITests {
     throw XCTSkip("Only separately provisioned synthetic simulator media")
     #endif
   }
+}
+
+extension HomeViewUITests {
+  private func artworkGeometryAndCapture(_ name:String) {
+    let viewport=app.otherElements["reference.viewport"],info=app.buttons["music.artwork.info.demo"]
+    XCTAssertTrue(viewport.exists);XCTAssertTrue(info.exists);XCTAssertTrue(info.isHittable)
+    let button=info.frame,side=button.width*270.0/72.0
+    let cover=CGRect(x:button.maxX-side,y:button.maxY-side,width:side,height:side)
+    XCTAssertGreaterThan(side,0);XCTAssertTrue(viewport.frame.contains(cover))
+    let rect:(CGRect)->[Double]={[Double($0.minX),Double($0.minY),Double($0.width),Double($0.height)]}
+    let data:[String:Any]=["viewport":rect(viewport.frame),"cover":rect(cover),"info":rect(button),
+      "scope":"Own270-point cover bounds derived from native72-point overlay button; qualify against actual captured image before pixel comparisons. No original geometry claim."]
+    let a=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    a.name=name+"-geometry";a.lifetime = .keepAlways;add(a)
+    viewportShot(name)
+  }
+  private func pausedArtworkReference(_ reduced:Bool) {
+    continueAfterFailure=false
+    launch(["--page","Music","--animation-test"]+(reduced ? ["--reduce-motion"]:[]))
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    XCTAssertTrue(app.staticTexts["FEVER DREAM"].exists)
+    let name=reduced ? "artwork-reduced-paused":"artwork-normal-paused"
+    artworkGeometryAndCapture(name)
+    tap("music.artwork.info.demo")
+    XCTAssertTrue(app.staticTexts["music.artwork.source"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["music.artwork.source"].label,"Bundled demo player")
+    XCTAssertTrue(app.staticTexts["music.lyrics.availability"].exists)
+    XCTAssertTrue(app.staticTexts["music.artwork.motion"].exists)
+    shot(name+"-information")
+    tap("music.artwork.done")
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+  func testDemoArtworkPausedNormalReference() { pausedArtworkReference(false) }
+  func testDemoArtworkPausedReducedReference() { pausedArtworkReference(true) }
+}
+
+extension HomeViewUITests {
+  private func mutedArtworkPlayer(_ flags:[String]=[]) {
+    launch(["--page","Music","--animation-test"]+flags)
+    tap("nav.controls")
+    let volume=app.sliders["Demo audio"]
+    scrollPhotoControlFullyIntoView(volume)
+    volume.adjust(toNormalizedSliderPosition:0)
+    let number=(volume.value as? String ?? "").filter { "0123456789.-".contains($0) }
+    XCTAssertEqual(Double(number),0,"Mute only this app's own demo audio before explicit Play")
+    drawer();tap("app.Music")
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+  private func artworkPixels(_ name:String)->Data {
+    let viewport=app.otherElements["reference.viewport"].frame
+    let button=app.buttons["music.artwork.info.demo"].frame,side=button.width*270.0/72.0
+    let cover=CGRect(x:button.maxX-side,y:button.maxY-side,width:side,height:side)
+    let area=CGRect(x:cover.minX+side*0.15,y:cover.minY+side*0.15,width:side*0.50,height:side*0.50)
+    XCTAssertTrue(viewport.contains(area))
+    let capture=app.screenshot(),image=capture.image.cgImage!,scale=CGFloat(image.width)/app.frame.width
+    let crop=CGRect(x:area.minX*scale,y:area.minY*scale,width:area.width*scale,height:area.height*scale).integral
+    let extracted=image.cropping(to:crop)!
+    let a=XCTAttachment(image:UIImage(cgImage:extracted));a.name=name+"-fixed-cover-roi";a.lifetime = .keepAlways;add(a)
+    let data:[String:Any]=["global_roi":[area.minX,area.minY,area.width,area.height],
+      "pixel_roi":[crop.minX,crop.minY,crop.width,crop.height],"minimum_changed_channels":100,
+      "scope":"Predetermined inner cover region excludes DEMO label, info control, audio progress, play button and host chrome. Actual decoded RGBA, not PNG container inequality." ]
+    let geometry=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:data,options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    geometry.name=name+"-roi-geometry";geometry.lifetime = .keepAlways;add(geometry)
+    return viewportPixels(UIImage(cgImage:extracted).pngData()!,inset:0)
+  }
+  private func changedArtworkChannels(_ first:Data,_ second:Data)->Int {
+    XCTAssertEqual(first.count,second.count)
+    return zip(first,second).reduce(0) {$0+($1.0 == $1.1 ? 0:1)}
+  }
+  private func settleArtwork(_ seconds:Double=0.8) {RunLoop.current.run(until:Date().addingTimeInterval(seconds))}
+  func testDemoArtworkActuallyMovesThenPausesAndSurvivesBackground() {
+    continueAfterFailure=false;executionTimeAllowance=180
+    mutedArtworkPlayer()
+    tap("player.play")
+    let playing=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","Pause"),object:app.buttons["player.play"])
+    XCTAssertEqual(XCTWaiter.wait(for:[playing],timeout:10),.completed)
+    settleArtwork(1.5)
+    let first=artworkPixels("artwork-moving-a");settleArtwork()
+    let second=artworkPixels("artwork-moving-b");settleArtwork()
+    let third=artworkPixels("artwork-moving-c")
+    XCTAssertGreaterThan(changedArtworkChannels(first,second),100)
+    XCTAssertGreaterThan(changedArtworkChannels(second,third),100,"A first-frame transition alone is not ongoing decoded motion")
+    artworkGeometryAndCapture("artwork-playing-native")
+    tap("player.play");XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    settleArtwork()
+    let explicitPause=artworkPixels("artwork-explicit-pause-a");settleArtwork()
+    XCTAssertEqual(changedArtworkChannels(explicitPause,artworkPixels("artwork-explicit-pause-b")),0)
+    tap("player.play")
+    let playingAgain=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","Pause"),object:app.buttons["player.play"])
+    XCTAssertEqual(XCTWaiter.wait(for:[playingAgain],timeout:10),.completed)
+    settleArtwork()
+    XCUIDevice.shared.press(.home)
+    XCTAssertTrue(app.wait(for:.runningBackground,timeout:10) || app.state == .runningBackgroundSuspended)
+    app.activate();XCTAssertTrue(app.buttons["player.play"].waitForExistence(timeout:10))
+    // Existing app media lifecycle may retain or pause its own audio. Either
+    // state must obey the corresponding actual moving/stationary cover policy.
+    let resumed=app.buttons["player.play"].label == "Pause"
+    let state=XCTAttachment(data:try! JSONSerialization.data(withJSONObject:["demo_audio_still_playing_after_return":resumed,
+      "scope":"Observe the existing app audio lifecycle separately; actual cover must follow that state. No new background audio promise."],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    state.name="artwork-background-audio-state";state.lifetime = .keepAlways;add(state)
+    settleArtwork(1.5)
+    let returned=artworkPixels("artwork-background-return-a");settleArtwork()
+    let returnedLater=artworkPixels("artwork-background-return-b")
+    if resumed {XCTAssertGreaterThan(changedArtworkChannels(returned,returnedLater),100);tap("player.play")}
+    else {XCTAssertEqual(changedArtworkChannels(returned,returnedLater),0)}
+    XCTAssertEqual(app.buttons["player.play"].label,"Play")
+    settleArtwork()
+    let paused=artworkPixels("artwork-paused-a");settleArtwork()
+    XCTAssertEqual(changedArtworkChannels(paused,artworkPixels("artwork-paused-b")),0)
+    artworkGeometryAndCapture("artwork-paused-after-playback")
+  }
+  private func restrictedArtwork(_ flag:String,_ name:String) {
+    continueAfterFailure=false;executionTimeAllowance=180
+    mutedArtworkPlayer([flag]);tap("player.play")
+    let playing=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","Pause"),object:app.buttons["player.play"])
+    XCTAssertEqual(XCTWaiter.wait(for:[playing],timeout:10),.completed)
+    settleArtwork(1.5)
+    let first=artworkPixels("artwork-"+name+"-a");settleArtwork()
+    XCTAssertEqual(changedArtworkChannels(first,artworkPixels("artwork-"+name+"-b")),0,
+      "Explicit demo audio playback must not bypass this independent motion restriction")
+    artworkGeometryAndCapture("artwork-"+name+"-playing-static")
+    tap("player.play");XCTAssertEqual(app.buttons["player.play"].label,"Play")
+  }
+  func testDemoArtworkReducedMotionKeepsPlayingCoverStatic() {restrictedArtwork("--reduce-motion","reduced")}
+  func testDemoArtworkAutoplayRestrictionKeepsPlayingCoverStatic() {restrictedArtwork("--artwork-test-no-autoplay","autoplay-off")}
+  func testDemoArtworkLowPowerRestrictionKeepsPlayingCoverStatic() {restrictedArtwork("--artwork-test-low-power","low-power")}
+  func testDemoArtworkThermalRestrictionKeepsPlayingCoverStatic() {restrictedArtwork("--artwork-test-hot","thermal")}
 }

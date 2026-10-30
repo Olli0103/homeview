@@ -34,7 +34,7 @@ private struct MusicArtworkInformation: View {
             Text("Artwork").font(.title2.bold())
             Text(source == .catalog
               ? "This connection supplies static cover images, not animated cover videos."
-              : "This player uses a synthetic static cover and bundled demo audio.")
+              : "This player uses synthetic cover artwork and bundled demo audio. A silent local cover video runs during demo playback when motion is allowed.")
               .accessibilityIdentifier("music.artwork.availability")
           }
           VStack(alignment: .leading, spacing: 8) {
@@ -44,7 +44,9 @@ private struct MusicArtworkInformation: View {
               : "No lyrics are included with the demo audio. No sample text is presented as song lyrics.")
               .accessibilityIdentifier("music.lyrics.availability")
           }
-          Text("The cover stays static, including with Reduce Motion. No animated cover video is downloaded or cached.")
+          Text(source == .catalog
+            ? "The cover stays static, including with Reduce Motion. No animated cover video is downloaded or cached."
+            : "No cover video is downloaded. Motion follows Reduce Motion, Play Animated Images and power settings. The cover stays static while playback is paused or the app is inactive.")
             .foregroundStyle(.secondary).accessibilityIdentifier("music.artwork.motion")
         }.font(.body).frame(maxWidth: .infinity, alignment: .leading).padding(24)
       }.navigationTitle("Artwork & lyrics")
