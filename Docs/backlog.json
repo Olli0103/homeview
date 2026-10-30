@@ -2400,7 +2400,7 @@
     "priority": "P2",
     "kind": "validation",
     "functions": [],
-    "current": "Fünf SDK-Ziele bauen historisch. Nur iOS/iPadOS besitzen vollständige UI-Simulatorläufe; Mac nur Start-/Fenster-Smoke. Watch ist reduziert.",
+    "current": "Native TV footer focus gap corrected with tvOS-only full-width focus guide. Seven actual TV methods plus separate matched-focus whole1920x1080 reference and two mobile controls pass; all3 own paused displays exact. Five SDKs/77products,96Core/package/test inputs unchanged to458PASS; four old focus failures retained. Mac/Vision/Watch/account/physical criteria remain separate, Issue79 OPEN. Docs/tv-media-focus.md.",
     "tasks": [
       "Mac-Fenstergrößen, Tastatur/Maus und Freigaben testen",
       "TV-Fokus/Fernbedienung und fehlende WebKit-/Kamera-/Fotopfade abnehmen",
@@ -2415,7 +2415,11 @@
     "issue_number": 79,
     "state": "open",
     "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state_verified_on": "2026-10-29",
+    "progress_evidence": [
+      "Docs/tv-media-focus.md",
+      "Docs/verification/tv-media-focus-20261030.json"
+    ]
   },
   {
     "key": "QA-05",

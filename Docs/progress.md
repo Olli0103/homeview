@@ -1,5 +1,9 @@
 # Bearbeitungsstand
 
+## TV-Medien und erreichbare Fernbedienungsnavigation ·30.Oktober2026
+
+[TV-Fokuslücke korrigiert](tv-media-focus.md): sieben aktuelle TV-Flows, eine separate exakt pixelgleiche1920×1080-Ruheaufnahme, zwei mobile Kontrollen und fünf SDKs/77Produkte bestanden. Nur tvOS-Fokusbereich erweitert; sichtbare Geometrie unverändert. Vier alte Fokusfehler bleiben erhalten, Core unverändert zum458er-PASS. #79 bleibt für übrige Plattform-/Gerätekriterien offen; keine zusätzliche Issue-Schließung. **47 erledigt ·1 ausgeschlossen ·34 offen.**
+
 ## Eigener animierter Artworkpfad ·30.Oktober2026
 
 [Tatsächliches lokales Video statt statischem Ersatz](demo-animated-artwork.md): eigener MIT-Clip mit nativem Renderer, Motion-/Autoplay-/Stromspar-/Thermalsperren und begrenzter Bundlequelle.458Coretests,20nativeMatrixfälle und vier exakt erhaltene pausierte Viewports; ursprünglicher visionOS-Compilerfehler und korrigierte separate Abnahme im Nachweis. #58 im ursprünglichen fähigkeitsabhängigen Aufgabenvertrag abgeschlossen und vollständig als closed/completed zurückgelesen; F079 bleibt partial/parity=false. **47 erledigt ·1 ausgeschlossen ·34 offen.** Übrige Quellen-/System-/Original-/Gerätekriterien bleiben getrennt; Gesamtauftrag läuft weiter.

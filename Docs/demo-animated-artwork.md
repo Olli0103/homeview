@@ -2,6 +2,8 @@
 
 30 October 2026. This extends the [dated public-capability decision](music-artwork-and-lyrics.md). It does **not** acquire Apple Music animations or lyric rights. #58 is closed/completed in its original conditional public-capability contract; F079 remains partial, parity=false. [Exact original-body/task/state read-back](verification/demo-animated-artwork-issue-readback-20261030.json).
 
+Later same-day follow-up: [native TV remote focus and actual cover rendering](tv-media-focus.md). The iPhone/iPad and SDK checkpoint below is retained with its original source pins. Background attachment fields named audio describe the existing UI playing flag, not independently measured backend/acoustic audio continuity.
+
 ## Supported content and rights
 
 The bundled demo player now renders an original, project-generated **silent four-second H.264 loop**, 512×512 at 12 fps, 93,364 bytes. [Generator](../Scripts/generate_demo_artwork.swift), [movie](../Resources/demo-artwork.mp4), MIT [notice](../NOTICE.md), and the current asset manifest record its provenance. CoreGraphics gradients, a circle and a cubic wave are its only inputs: no photos, font outlines, catalog artwork, borrowed lyrics or audio. The runtime DEMO caption is an ordinary system-font UI element, not a movie input.
@@ -32,7 +34,7 @@ Existing screenshot-test freezing is preserved. The new test-only power/autoplay
 - **Four baseline executions** on unchanged product code, then **four separate renderer pilots**, then **20 final executions** (ten methods each on iPhone/iPad): all passed, zero skips or structured runtime warnings. These are three separate checkpoints, not a fabricated single 28-test suite.
 - **458 Core tests passed**. Core/package/test inputs remained byte-identical from that checkpoint to final; no redundant new Core run is claimed.
 - Four whole paused native viewports (normal/reduced × both devices) are exactly equal to their baseline decoded RGBA pixels. Final review decoded all 76 PNGs and actually viewed eight contact pages; earlier baseline/pilot review is separately retained.
-- Independent pixel comparisons of predeclared inner-cover ROIs: **six moving pairs** exceed 100 changed RGBA channels, **twelve stationary pairs** have zero changes. The ROI excludes DEMO lettering, information button, progress and player chrome. Actual Home/background return is tested separately from explicit Pause; both tested demo players continued playing on return, and their covers resumed moving.
+- Independent pixel comparisons of predeclared inner-cover ROIs: **six moving pairs** exceed 100 changed RGBA channels, **twelve stationary pairs** have zero changes. The ROI excludes DEMO lettering, information button, progress and player chrome. Actual Home/background return is tested separately from explicit Pause; both player UIs still indicated playing on return, and their covers actually resumed moving. The Play/Pause-label observation is not an independent audio-backend or acoustic-continuity proof.
 - Reduce Motion, disabled autoplay, low-power and serious/critical thermal restrictions are four distinct playing/static test cases. Forced test restrictions prove these software branches, not a physical low-battery/heat experiment.
 - Five SDK builds, final installed App/Runner bytes, compiled inputs, source-delta reconstruction and output read-back are recorded in the receipt. Watch intentionally excludes this unused video and has no new Music UI. SDK success on Mac/TV/Vision is not native renderer/runtime acceptance there.
 

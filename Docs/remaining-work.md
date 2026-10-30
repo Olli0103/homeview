@@ -20,9 +20,11 @@
 
 ## Aktueller Arbeitsblock
 
+- [#79: native TV-Medien und Fokusnavigation korrigiert](tv-media-focus.md): sieben TV-Flows, separate ganze1920×1080-Ruheaufnahme exakt, beide mobile Viewports exakt und fünf SDKs/77Produkte. Nur tvOS-Fokusguide, vier frühere Fehler erhalten; #79 für übrige Kriterien offen.
+
 - [#58: eigener berechtigter animierter Artworkpfad](demo-animated-artwork.md): tatsächlicher lokaler Videorenderer, Motion-/Autoplay-/Stromspar-/Thermalsperren, keine Downloads oder persistenten Videocaches. #58 im ursprünglichen fähigkeitsabhängigen Aufgabenvertrag abgeschlossen; F079 partial/parity=false, übrige Quellen-/System-/Original-/Geräteabnahmen getrennt. Statische Katalogcover und fehlende Lyrics werden weiterhin ehrlich ausgewiesen.
 
-- [iOS27-Fotosuche im echten App-Umschalter geschützt](native-photos-search.md):14nativeMatrixausführungen und4separateSuch-/Mehrfachauswahlprüfungen mit exaktgleichen19Appdateien,5SDKs/73Produktdateien. Ursprünglicher iPhone-Fehler65,452%→98,618%; iPadbereits99,132%. Quellen/Fehlstände erhalten, F095 partial/parity=false, #67 offen. Nächster eigenständiger Softwareblock: #58, eigene berechtigte animierteArtworkquelle/Renderer statt pauschaler Hardwareblockade.
+- [iOS27-Fotosuche im echten App-Umschalter geschützt](native-photos-search.md):14nativeMatrixausführungen und4separateSuch-/Mehrfachauswahlprüfungen mit exaktgleichen19Appdateien,5SDKs/73Produktdateien. Ursprünglicher iPhone-Fehler65,452%→98,618%; iPadbereits99,132%. Quellen/Fehlstände erhalten, F095 partial/parity=false, #67 offen. Der anschließende eigene Artworkblock #58 ist im ursprünglichen Fähigkeitsvertrag abgeschlossen; aktuelle TV-Fokusarbeit bei #79 separat.
 
 - [#21 abgeschlossen im ursprünglichen Daten-/eigenen Wetterzustandsvertrag](weather-air-quality.md):457Coretests,6isolierteTransportfälle,10finaleMobiltests,5SDKs.36Zustandskombinationen/72Face-App-Zustände; echter optionaler CAMS-EU-AQI mit eigenem Modellzeitpunkt. F019 bleibt partial/parity=false. Weiter mit #67, native Foto-Suche/App-Umschalter.
 
