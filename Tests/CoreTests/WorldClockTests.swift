@@ -4,6 +4,50 @@ import XCTest
 final class WorldClockTests: XCTestCase {
   private func date(_ iso: String) -> Date { ISO8601DateFormatter().date(from: iso)! }
   private func city(_ zone: String) -> WorldCity { WorldCity.catalogue.first { $0.zone == zone }! }
+  func testDaylightPositionsRetainActualDSTDayLength() throws {
+    let berlin = city("Europe/Berlin")
+    var calendar = Calendar(identifier: .gregorian); calendar.timeZone = berlin.timeZone
+    for (instant, hours) in [("2026-03-29T12:00:00Z", 23.0), ("2026-10-25T12:00:00Z", 25.0)] {
+      let day = try XCTUnwrap(calendar.dateInterval(of: .day, for: date(instant)))
+      XCTAssertEqual(day.duration, hours * 3600)
+      let window = DaylightWindow.compute(latitude: berlin.latitude, longitude: berlin.longitude,
+        dayOf: date(instant), zone: berlin.timeZone)
+      let rise = try XCTUnwrap(window.sunrise), set = try XCTUnwrap(window.sunset)
+      XCTAssertEqual(try XCTUnwrap(window.sunriseFraction), rise.timeIntervalSince(day.start) / day.duration)
+      XCTAssertEqual(try XCTUnwrap(window.sunsetFraction), set.timeIntervalSince(day.start) / day.duration)
+      XCTAssertTrue(day.contains(rise)); XCTAssertTrue(day.contains(set))
+    }
+  }
+  func testDaylightChangesAtLocalMidnightWithoutLosingSameDayIdentity() throws {
+    let berlin = city("Europe/Berlin")
+    func window(_ instant: String) -> DaylightWindow {
+      DaylightWindow.compute(latitude: berlin.latitude, longitude: berlin.longitude,
+        dayOf: date(instant), zone: berlin.timeZone)
+    }
+    XCTAssertEqual(window("2026-06-21T12:00:00Z"), window("2026-06-21T21:59:59Z"))
+    let before = window("2026-06-21T21:59:59Z"), after = window("2026-06-21T22:00:00Z")
+    XCTAssertGreaterThan(try XCTUnwrap(after.sunrise), try XCTUnwrap(before.sunrise))
+    XCTAssertNotEqual(before, after)
+  }
+  func testDifferentCoordinatesWithinOneZoneCannotShareTheSolarWindow() {
+    let instant = date("2026-06-21T12:00:00Z"), zone = TimeZone(identifier: "Europe/Oslo")!
+    let tromso = DaylightWindow.compute(latitude: 69.65, longitude: 18.96, dayOf: instant, zone: zone)
+    let oslo = DaylightWindow.compute(latitude: 59.91, longitude: 10.75, dayOf: instant, zone: zone)
+    XCTAssertEqual(tromso.kind, .polarDay)
+    XCTAssertEqual(oslo.kind, .normal)
+    XCTAssertNotNil(oslo.sunrise)
+    XCTAssertNotEqual(tromso, oslo)
+  }
+  func testChangedZoneAndUnknownCoordinatesKeepTheirOwnWindow() {
+    let instant = date("2026-06-21T22:30:00Z")
+    let berlin = TimeZone(identifier: "Europe/Berlin")!, utc = TimeZone(secondsFromGMT: 0)!
+    let a = DaylightWindow.compute(latitude: 52.52, longitude: 13.41, dayOf: instant, zone: berlin)
+    let b = DaylightWindow.compute(latitude: 52.52, longitude: 13.41, dayOf: instant, zone: utc)
+    XCTAssertNotEqual(a.sunrise, b.sunrise)
+    let missing = DaylightWindow.compute(latitude: nil, longitude: nil, dayOf: instant, zone: berlin)
+    XCTAssertEqual(missing.kind, .unavailable)
+    XCTAssertTrue(missing.daylightIntervals.isEmpty)
+  }
   func testAucklandCanBeTwoCalendarDatesAheadOfUTCMinusTwelve() {
     let reading=WorldClockReading(city:city("Pacific/Auckland"),
       instant:date("2026-01-01T11:30:00Z"),referenceZone:TimeZone(identifier:"Etc/GMT+12")!,

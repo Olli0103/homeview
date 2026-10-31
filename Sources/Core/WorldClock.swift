@@ -56,9 +56,25 @@ struct WorldCity: Identifiable, Sendable {
   }
 }
 
+/// NSCache provides thread-safe, disposable storage; eviction only causes a
+/// fresh computation. Entries are immutable and never written to disk.
+private final class DaylightWindowCache: @unchecked Sendable {
+  final class Entry: NSObject {
+    let value: DaylightWindow
+    init(_ value: DaylightWindow) { self.value = value }
+  }
+  let entries: NSCache<NSString, Entry>
+  init() {
+    let entries = NSCache<NSString, Entry>()
+    entries.countLimit = 64
+    self.entries = entries
+  }
+}
+
 /// Bounded day/night estimate for one calendar day in the city's own zone.
 /// Derived from the same low-order solar model as `WorldClockReading.daylight`.
 struct DaylightWindow: Sendable, Equatable {
+  private static let cache = DaylightWindowCache()
   enum Kind: Sendable, Equatable { case normal, polarDay, polarNight, unavailable }
   var kind: Kind = .unavailable
   var sunrise: Date?
@@ -79,6 +95,16 @@ struct DaylightWindow: Sendable, Equatable {
     guard let interval = calendar.dateInterval(of: .day, for: instant) else { return .init() }
     let start = interval.start, end = interval.end, span = end.timeIntervalSince(start)
     guard span > 0 else { return .init() }
+    // The scan depends on coordinates and the complete local-day interval,
+    // not the instant's second. Keep both endpoints: DST days need 23/25 hours,
+    // and a changed zone or a local midnight must not reuse yesterday's scan.
+    let key = ("\(latitude.bitPattern)|\(longitude.bitPattern)|\(zone.identifier)|"
+      + "\(start.timeIntervalSinceReferenceDate.bitPattern)|\(end.timeIntervalSinceReferenceDate.bitPattern)") as NSString
+    if let entry = cache.entries.object(forKey: key) { return entry.value }
+    func remember(_ value: Self) -> Self {
+      cache.entries.setObject(DaylightWindowCache.Entry(value), forKey: key)
+      return value
+    }
     func altitude(_ date: Date) -> Double {
       SolarPosition.altitude(at: date, latitude: latitude, longitude: longitude)
     }
@@ -116,12 +142,12 @@ struct DaylightWindow: Sendable, Equatable {
     if sunrise == nil && sunset == nil {
       let noon = start.addingTimeInterval(span / 2)
       let light=altitude(noon) >= horizon
-      return .init(kind: light ? .polarDay : .polarNight,daylightIntervals:light ? [0...1]:[])
+      return remember(.init(kind: light ? .polarDay : .polarNight,daylightIntervals:light ? [0...1]:[]))
     }
-    return .init(kind: .normal, sunrise: sunrise, sunset: sunset,
+    return remember(.init(kind: .normal, sunrise: sunrise, sunset: sunset,
       sunriseFraction: sunrise.map { $0.timeIntervalSince(start) / span },
       sunsetFraction: sunset.map { $0.timeIntervalSince(start) / span },
-      daylightIntervals:intervals)
+      daylightIntervals:intervals))
   }
 }
 

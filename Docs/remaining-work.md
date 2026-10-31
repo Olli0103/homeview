@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+[Weltuhr-Tagesverlauf flüchtig wiederverwenden](world-clock-daylight-computation.md): 17 Coretests, 1.512 angeforderte Fenster × drei Durchläufe mit identischen Ergebnis-Digests und 216 nebenläufige Vergleiche je Stand. Begrenzter Median166→18ms, keine Gesamt-App-/Akku-/Gerätebehauptung. #53 bleibt wegen der Originalreferenz offen.
+
 [Fotoalbum-Antworten an die aktuelle Auswahl gebunden](album-async-boundaries.md): Einmalimporte können Trennen, neue Fotoauswahl und neueren Import nicht mehr überschreiben; Katalog/Export prüfen Widerruf vor Übernahme erneut. 25 gezielte Coretests und sieben native AppModel-Szenarien bestanden, ausschließlich synthetische Daten. #11 bleibt für Originalregeln und reale PhotoKit-/Geräteabnahme offen.
 
 Das gemeinsame [Timer-/Wecker-Lifecycle-Paket für #49/#52](alarm-schedule-admission.md) verhindert nach wartender Systemfreigabe veraltete oder abgelaufene Planung. Sechs qualifizierte Vorherfehler; aktuell zehn gemeinsame AppModel-/symbolische Anbieterszenarien und18gezielte Coretests bestanden. Fünf SDK-Ziele am abschließenden Produktstand; nur der iOS-Adapter brauchte eine native Isolationskorrektur und den vorhandenen Metadaten-Clean-Recovery. Dessen Entfernung der anderen Produkte ist erhalten; die vier Pakete wurden für den finalen Archiv-Read-back wiederhergestellt, ohne Verhaltenstests zu wiederholen. Keine neue UI-/Original-/OS-/Hardwareabnahme, beide Issues bleiben OPEN. [Quellen, Fehlstände und Archiv-Read-back](verification/alarm-schedule-admission-20261031.json). [Frischer vollständiger 48-erledigt/1-Ausschluss/33-offen-Abgleich](verification/backlog-after-alarm-admission-20261031.json).

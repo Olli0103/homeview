@@ -1,0 +1,645 @@
+{
+  "date": "2026-10-31",
+  "issues": [
+    53
+  ],
+  "base_commit": "5bce3e9fb8a0fe6ff7a6138a8c730342f6180705",
+  "source_manifest": "world-clock-computation-source.json",
+  "source_digest": "4b409e514e928d91df8064b99bb3ff12838685b2c741ecae5a9ee636c242d1f8",
+  "source_files": 263,
+  "product_delta": [
+    "Sources/Core/WorldClock.swift"
+  ],
+  "core": {
+    "before": 17,
+    "after": 17,
+    "failures": 0,
+    "logs": [
+      {
+        "name": "core-before.log",
+        "sha256": "201ae961fbeabb1e179f5fd20072046f2cd15bee3f3387ab007731140c894a2d"
+      },
+      {
+        "name": "core-after.log",
+        "sha256": "362005227ad24196f84b492c4478a5af5c701fb9a78ecb2ea44c602632857cf9"
+      }
+    ]
+  },
+  "native": {
+    "before": {
+      "calls_per_pass": 1512,
+      "concurrent_checks": 216,
+      "concurrent_mismatches": 0,
+      "elapsed_seconds": [
+        0.181256917,
+        0.16645175,
+        0.165552542
+      ],
+      "output_sha256": [
+        "039755e8ae30da253aa45c15692a42735fd196f183489756ac43afd892fb67ad",
+        "039755e8ae30da253aa45c15692a42735fd196f183489756ac43afd892fb67ad",
+        "039755e8ae30da253aa45c15692a42735fd196f183489756ac43afd892fb67ad"
+      ],
+      "passes": 3,
+      "qualification": "Fixed native optimized solar-window workload, not whole-app CPU/GPU, energy or physical-device acceptance."
+    },
+    "after": {
+      "calls_per_pass": 1512,
+      "concurrent_checks": 216,
+      "concurrent_mismatches": 0,
+      "elapsed_seconds": [
+        0.025443625,
+        0.018423667,
+        0.017608917
+      ],
+      "output_sha256": [
+        "039755e8ae30da253aa45c15692a42735fd196f183489756ac43afd892fb67ad",
+        "039755e8ae30da253aa45c15692a42735fd196f183489756ac43afd892fb67ad",
+        "039755e8ae30da253aa45c15692a42735fd196f183489756ac43afd892fb67ad"
+      ],
+      "passes": 3,
+      "qualification": "Fixed native optimized solar-window workload, not whole-app CPU/GPU, energy or physical-device acceptance."
+    },
+    "qualified_inputs_before": {
+      "world_clock_sha256": "f2fa5fe6493f4cf0ba7a126f41df98c2e90a0bd1eeaac8ac5fd178c59d7bdbbc",
+      "probe_source_sha256": "fefac7247495d308d2922b2e6106e23871c2188d3ced51c84847cea95b908e22",
+      "binary_sha256": "96e0971ec5a22f76223f8d769fc732e41061589a77db70441f69096eaad2b722",
+      "compile_exit_code": 0,
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-O",
+        "-parse-as-library",
+        "-swift-version",
+        "6",
+        "WorldClock.swift",
+        "WorldClockComputationProbe.swift",
+        "-o",
+        "before-probe"
+      ],
+      "host": {
+        "os": "macOS 27.0.1",
+        "build": "26A434",
+        "architecture": "arm64",
+        "compiler": "Apple Swift 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)"
+      }
+    },
+    "qualified_inputs_after": {
+      "world_clock_sha256": "31f91ef9e37c60321953cd686d95b2181981fb2330f2bfec442f408402a3cf0e",
+      "probe_source_sha256": "fefac7247495d308d2922b2e6106e23871c2188d3ced51c84847cea95b908e22",
+      "binary_sha256": "d8efe6487c355f3adb430d4493df3022bdedc4333de144cae8695a808576e9cd",
+      "compile_exit_code": 0,
+      "command": [
+        "xcrun",
+        "swiftc",
+        "-O",
+        "-parse-as-library",
+        "-swift-version",
+        "6",
+        "WorldClock.swift",
+        "WorldClockComputationProbe.swift",
+        "-o",
+        "after-probe"
+      ],
+      "host": {
+        "os": "macOS 27.0.1",
+        "build": "26A434",
+        "architecture": "arm64",
+        "compiler": "Apple Swift 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)"
+      }
+    },
+    "inputs_preserved_before_after": true,
+    "median_before_seconds": 0.16645175,
+    "median_after_seconds": 0.018423667,
+    "median_ratio": 9.034669916689223,
+    "source_change_only_world_clock": true
+  },
+  "sdk": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "started": "2026-10-31T11:34:13.281774+00:00",
+      "ended": "2026-10-31T11:35:04.365638+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "log_sha256": "7883c1ebe35b145082d367e229245ffe7d3f8e95075359a7a477f44a7086fcf9",
+          "shortcut_artifacts_valid": false,
+          "storage_before_sufficient": true,
+          "storage_after_sufficient": true
+        },
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": true,
+          "executed": true,
+          "log_sha256": "f83fac99bc4f44c123e39fe05259d132112f52722de839dfc34b7520d6f92108",
+          "shortcut_artifacts_valid": true,
+          "storage_before_sufficient": true,
+          "storage_after_sufficient": true
+        }
+      ]
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "started": "2026-10-31T11:35:04.367383+00:00",
+      "ended": "2026-10-31T11:35:33.425345+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "log_sha256": "eed8fac27e316d7522b54519c0b36c10a462183d2373d8e82bbbe9aa78602513",
+          "shortcut_artifacts_valid": null,
+          "storage_before_sufficient": true,
+          "storage_after_sufficient": true
+        }
+      ]
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "started": "2026-10-31T11:35:33.426408+00:00",
+      "ended": "2026-10-31T11:36:03.616761+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "log_sha256": "9522f2991f3b40b416b7823989ce6ce7d5befc124346c33ae969c3915169dd44",
+          "shortcut_artifacts_valid": null,
+          "storage_before_sufficient": true,
+          "storage_after_sufficient": true
+        }
+      ]
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "started": "2026-10-31T11:36:03.620548+00:00",
+      "ended": "2026-10-31T11:36:38.095757+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "log_sha256": "3b8781ab0b0eaae1c637b6487ba3c8a29e36ab97340d45128064d8abd2a892a7",
+          "shortcut_artifacts_valid": null,
+          "storage_before_sufficient": true,
+          "storage_after_sufficient": true
+        }
+      ]
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "started": "2026-10-31T11:36:38.097027+00:00",
+      "ended": "2026-10-31T11:36:46.601494+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "executed": true,
+          "log_sha256": "36102c793746d647958c2a41d72f980395b56fb816e5c3787f8e4b1d3b634697",
+          "shortcut_artifacts_valid": null,
+          "storage_before_sufficient": true,
+          "storage_after_sufficient": true
+        }
+      ]
+    }
+  ],
+  "sdk_products": [
+    {
+      "path": "iOS/AppIcon60x60@2x.png",
+      "bytes": 15425,
+      "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+    },
+    {
+      "path": "iOS/AppIcon76x76@2x~ipad.png",
+      "bytes": 22442,
+      "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+    },
+    {
+      "path": "iOS/Assets.car",
+      "bytes": 15242504,
+      "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+    },
+    {
+      "path": "iOS/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "iOS/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "20e3454443a820f8ebf9f148b69ba8db3a2a50347c81807cbfe238cc2bb39681"
+    },
+    {
+      "path": "iOS/HomeViewReplica.debug.dylib",
+      "bytes": 30462728,
+      "sha256": "93e2286496f0e11f6b235998875606c3009f9c3a549d73df4eec86fe90d9a5bf"
+    },
+    {
+      "path": "iOS/Info.plist",
+      "bytes": 2488,
+      "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b"
+    },
+    {
+      "path": "iOS/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "iOS/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "path": "iOS/Metadata.appintents/nlu/nlu.lzfse",
+      "bytes": 2126,
+      "sha256": "38a1e59f502e9e91107b63525c40bd6328af11c2533738e20420346fd4389394"
+    },
+    {
+      "path": "iOS/Metadata.appintents/root.ssu.yaml",
+      "bytes": 926,
+      "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+    },
+    {
+      "path": "iOS/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "iOS/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "iOS/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+      "bytes": 40224,
+      "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+    },
+    {
+      "path": "iOS/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+      "bytes": 261104,
+      "sha256": "e3a32fb1734a59ad59c7fe1cde4a9cd27c458052236e010cc3f8adbc4f580775"
+    },
+    {
+      "path": "iOS/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+      "bytes": 774,
+      "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+    },
+    {
+      "path": "iOS/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+      "bytes": 16752,
+      "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+    },
+    {
+      "path": "iOS/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+    },
+    {
+      "path": "iOS/default.metallib",
+      "bytes": 73088,
+      "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+    },
+    {
+      "path": "iOS/demo-artwork.mp4",
+      "bytes": 93364,
+      "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+    },
+    {
+      "path": "iOS/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "iOS/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "iOS/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "macOS/Contents/Info.plist",
+      "bytes": 3253,
+      "sha256": "00ade6ed8692d31e40effde63eb24de42809fb5988bb5f4c45c9629761dddc09"
+    },
+    {
+      "path": "macOS/Contents/MacOS/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "89d25156e7ab62209ec2bb089f77056f1ffa2cfff65a1eb6e8c00def284dc131"
+    },
+    {
+      "path": "macOS/Contents/MacOS/HomeViewReplica.debug.dylib",
+      "bytes": 30291624,
+      "sha256": "086290734bb7bc032194e15e3d50b934d343029f03f7a30350df6b096e69b047"
+    },
+    {
+      "path": "macOS/Contents/MacOS/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "ef42e4140edff5aa41beea98327030af0bc0a463fc79a07b6ba04d72088f6690"
+    },
+    {
+      "path": "macOS/Contents/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "macOS/Contents/Resources/Assets.car",
+      "bytes": 14232664,
+      "sha256": "767d8e5b21a7fb9a20db530d5e9fe8e9dbd350c150b5a867ba06398435fe36a7"
+    },
+    {
+      "path": "macOS/Contents/Resources/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "macOS/Contents/Resources/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "macOS/Contents/Resources/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "macOS/Contents/Resources/default.metallib",
+      "bytes": 71552,
+      "sha256": "2d900cbbfd77ccef3c3d572f238e0f3b856a08d9ccdb38dd9e64e509e58878ed"
+    },
+    {
+      "path": "macOS/Contents/Resources/demo-artwork.mp4",
+      "bytes": 93364,
+      "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+    },
+    {
+      "path": "macOS/Contents/Resources/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "macOS/Contents/Resources/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "macOS/Contents/Resources/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "watchOS/Assets.car",
+      "bytes": 14236856,
+      "sha256": "a771995aac5ec007e91664e4428067ac0555610c4b215035bfc3e79c79a932ed"
+    },
+    {
+      "path": "watchOS/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "watchOS/HomeViewWatch",
+      "bytes": 40224,
+      "sha256": "7cbd76f08b69d235082ed075ff3aaa495b617031354cf30409b4b0d802addffe"
+    },
+    {
+      "path": "watchOS/HomeViewWatch.debug.dylib",
+      "bytes": 2968616,
+      "sha256": "f6a4cef070de239574a4c696cc5abaf4822355999cc4aa0dfc85076f33de0422"
+    },
+    {
+      "path": "watchOS/Info.plist",
+      "bytes": 1888,
+      "sha256": "8959eb2cf5183d039a531124408fccf21345622723ebf2a620d73eab81aede21"
+    },
+    {
+      "path": "watchOS/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "watchOS/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "bf73f1f668d076a35153530e76ea07d6ae5a749fdf5f87c63273b33277d69de9"
+    },
+    {
+      "path": "watchOS/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "watchOS/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "watchOS/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "tvOS/Assets.car",
+      "bytes": 14236856,
+      "sha256": "b4c9d7d3bd6c0bb265ec47c0a72d60d24793158eb38b32d94e58c98e502ab3ae"
+    },
+    {
+      "path": "tvOS/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "tvOS/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "97131d8f4ccf3b60dedee3b1691a48789f95dee3018777c62ab6c24e12f38978"
+    },
+    {
+      "path": "tvOS/HomeViewReplica.debug.dylib",
+      "bytes": 28643064,
+      "sha256": "0260227b5aad18456d8f197e7e1e2a1e9bc6e19de92c9313ed3831106e9b5896"
+    },
+    {
+      "path": "tvOS/Info.plist",
+      "bytes": 2238,
+      "sha256": "1aaf27c60965a35dd296adaeb788ed9a54b00488e86415458473c7198384d703"
+    },
+    {
+      "path": "tvOS/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "tvOS/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "670e17274069643540183ea4a2bc7f9e4d071010627b412e93fa8e1f07081b75"
+    },
+    {
+      "path": "tvOS/default.metallib",
+      "bytes": 73120,
+      "sha256": "4bc27cae4df99c4a034115102721f3de1aba4b333b5b23217ac207ddb4563fd7"
+    },
+    {
+      "path": "tvOS/demo-artwork.mp4",
+      "bytes": 93364,
+      "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+    },
+    {
+      "path": "tvOS/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "tvOS/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "tvOS/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    },
+    {
+      "path": "visionOS/Assets.car",
+      "bytes": 14236856,
+      "sha256": "b2f643d74a2e6016352536f6e3ce8a2d753afd36329ff9d633c6e830df180909"
+    },
+    {
+      "path": "visionOS/FeedKit-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+    },
+    {
+      "path": "visionOS/HomeViewReplica",
+      "bytes": 40224,
+      "sha256": "543d5f2769af33af6e06d6e477c0e57385eaf9e84e00941ff8977130d4d6bdaf"
+    },
+    {
+      "path": "visionOS/HomeViewReplica.debug.dylib",
+      "bytes": 29868872,
+      "sha256": "7bce00e714ceba6784d3a874599ff1953627464dfa79734326e0ed773549e056"
+    },
+    {
+      "path": "visionOS/Info.plist",
+      "bytes": 2191,
+      "sha256": "867b3419211945a79074901c4c8c2e719824f505dc178705a6da1b0b435bada5"
+    },
+    {
+      "path": "visionOS/Metadata.appintents/extract.actionsdata",
+      "bytes": 1764,
+      "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+    },
+    {
+      "path": "visionOS/Metadata.appintents/version.json",
+      "bytes": 53,
+      "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+    },
+    {
+      "path": "visionOS/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "visionOS/__preview.dylib",
+      "bytes": 16760,
+      "sha256": "f969dc8b19bebb6ffb9280f2343858d8a568ff2373374385700dcae25761a1b4"
+    },
+    {
+      "path": "visionOS/default.metallib",
+      "bytes": 73136,
+      "sha256": "5ce1f26d647310d55fc2249c5cba4735e94a07626545edbb8e169d5fdce1b955"
+    },
+    {
+      "path": "visionOS/demo-artwork.mp4",
+      "bytes": 93364,
+      "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+    },
+    {
+      "path": "visionOS/demo-tone.wav",
+      "bytes": 176444,
+      "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+    },
+    {
+      "path": "visionOS/podcast-caption-test.mp4",
+      "bytes": 365116,
+      "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+    },
+    {
+      "path": "visionOS/podcast-test-audio.wav",
+      "bytes": 1920044,
+      "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+    }
+  ],
+  "archives": [
+    {
+      "name": "source-delta.zip",
+      "bytes": 9391,
+      "sha256": "3b388f446f7e7aad7b140ac40573d150d1fc0b077894da7772046ff973393ce9",
+      "changed": [
+        "Sources/Core/WorldClock.swift",
+        "Tests/CoreTests/WorldClockTests.swift",
+        "Tests/NativeProbes/WorldClockComputationProbe.swift"
+      ],
+      "removed": [],
+      "base_locator": "research/homeview-album-boundaries-20261031/source.zip",
+      "base_sha256": "fdd0eea20ed02849da83d3622f57408d1d67747be40c10594aeaa317d46673c1",
+      "reconstructed_entries": 263,
+      "all_reconstructed_entries_read_back": true
+    },
+    {
+      "name": "sdk-products-delta.zip",
+      "bytes": 28299066,
+      "sha256": "d9e2e3f927e0e05498fb581784e1a4faf06a4ea49bcae068af833f6d20312390",
+      "changed": [
+        "iOS/HomeViewReplica.debug.dylib",
+        "iOS/Metadata.appintents/nlu/nlu.lzfse",
+        "macOS/Contents/MacOS/HomeViewReplica.debug.dylib",
+        "tvOS/HomeViewReplica.debug.dylib",
+        "visionOS/HomeViewReplica.debug.dylib",
+        "watchOS/HomeViewWatch.debug.dylib"
+      ],
+      "removed": [],
+      "base_locator": "research/homeview-album-boundaries-20261031/sdk-products.zip",
+      "base_sha256": "bade77c68cd78733c7ad7753c7f5bcc7afc1e8ea36dce1247041e9351ca8a66b",
+      "reconstructed_entries": 73,
+      "all_reconstructed_entries_read_back": true
+    }
+  ],
+  "cache": {
+    "implementation": "Foundation NSCache with immutable entries",
+    "count_limit_hint": 64,
+    "hard_memory_quota": false,
+    "persistent": false,
+    "key": [
+      "exact latitude bits",
+      "exact longitude bits",
+      "zone identifier",
+      "actual local day start",
+      "actual next local day start"
+    ],
+    "eviction": "Recompute using unchanged solar equations; concurrent misses may recompute."
+  },
+  "historical_attempts_retained": [
+    "Initial successful benchmark pair: 0.181637s/0.018322666s medians; binary input digests captured only after those runs. Not substituted for the final qualified pair with actual before/after binary and source manifests.",
+    "Incremental iOS build with incomplete Shortcut metadata; existing standard clean/build recovery before remaining SDK matrix."
+  ],
+  "scope": "DaylightWindow calculation only. No renderer/resource edits, UI/focus/pixel runs, whole-app CPU/GPU/memory/energy/physical evidence or ephemeris accuracy claim.",
+  "remaining": [
+    "Concrete original World Clock detail/solar-curve reference",
+    "Physical and energy acceptance remains separately open"
+  ],
+  "holds_unchanged": [
+    "Home",
+    "Physical devices",
+    "Signing"
+  ],
+  "issues_remain_open": true,
+  "private_artifact_locator": "research/homeview-world-clock-computation-20261031"
+}
