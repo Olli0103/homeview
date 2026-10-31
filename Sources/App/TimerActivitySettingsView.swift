@@ -16,6 +16,7 @@ struct TimerActivitySettingsView:View {
           if model.timerLiveActivity.busy {ProgressView("Updating timer activity")}
           if let report=timerActivitySystemFixtureReport() {
             Text(report).accessibilityIdentifier("timer.activity.system-report")
+              .accessibilityValue(timerActivitySystemFixtureDeadline() ?? "none")
           }
           if model.timerActivityPreferenceSavePending {
             Text("Off for this app session. The preference could not be saved.")

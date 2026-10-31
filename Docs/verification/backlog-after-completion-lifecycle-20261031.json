@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-31",
+  "open_query": "repo:Olli0103/homeview is:issue is:open",
+  "closed_query": "repo:Olli0103/homeview is:issue is:closed",
+  "query_limit_each": 100,
+  "search_result_state_fields_null": true,
+  "membership_derived_from_explicit_search_qualifier": true,
+  "all_ids_disjoint_and_complete_1_through_83": true,
+  "original_issue_count": 82,
+  "original_implemented_count": 48,
+  "original_excluded_count": 1,
+  "exclusion_issue": 14,
+  "original_open_count": 33,
+  "community_closed_issue": 83,
+  "open": [
+    {
+      "issue": 81,
+      "title": "[QA-06] Dauerleistung, Energie und Animation-Lifecycle vermessen"
+    },
+    {
+      "issue": 79,
+      "title": "[QA-04] macOS, tvOS, visionOS und Watch als eigene Plattformabnahmen führen"
+    },
+    {
+      "issue": 78,
+      "title": "[QA-03] Visuelle Parity aller belegten Zustände und Animationen abnehmen"
+    },
+    {
+      "issue": 77,
+      "title": "[QA-02] Physisches iPad signieren, installieren und dauerhaft betreiben"
+    },
+    {
+      "issue": 75,
+      "title": "[SYS-12] On-device-Spracherkennung auf echter Hardware abnehmen"
+    },
+    {
+      "issue": 73,
+      "title": "[SYS-10] Accessibility über alle zentralen Flows abnehmen"
+    },
+    {
+      "issue": 67,
+      "title": "[SYS-04] Persönliche Inhalte bei Weggehen und Unterbrechungen zuverlässig verbergen"
+    },
+    {
+      "issue": 64,
+      "title": "[SYS-01] Live-Spiegel, Zoom und Ringlicht auf iPad-Hardware abnehmen"
+    },
+    {
+      "issue": 61,
+      "title": "[MEDIA-05] AirPlay-Routenauswahl und Mehrraumwiedergabe abnehmen"
+    },
+    {
+      "issue": 57,
+      "title": "[MEDIA-01] MusicKit-Suche, Bibliothek und Player produktiv abnehmen"
+    },
+    {
+      "issue": 56,
+      "title": "[DAY-10] Rezept-Handoff über öffentliche Continuity-Technik implementieren"
+    },
+    {
+      "issue": 53,
+      "title": "[DAY-07] Weltuhr um Zonenwahl und Tag-/Nachtanzeige ergänzen"
+    },
+    {
+      "issue": 52,
+      "title": "[DAY-06] Eigene Wecker über Neustart und Gerätebetrieb abnehmen"
+    },
+    {
+      "issue": 51,
+      "title": "[DAY-05] Live Activities für Timer und zulässige Aktivitäten implementieren"
+    },
+    {
+      "issue": 49,
+      "title": "[DAY-03] Mehrere Timer und große Countdown-Ansicht vollständig abnehmen"
+    },
+    {
+      "issue": 48,
+      "title": "[DAY-02] Erinnerungen mit Listenrechten und Read-back abnehmen"
+    },
+    {
+      "issue": 47,
+      "title": "[DAY-01] Kalenderverbindung und Agenda auf echter Hardware abnehmen"
+    },
+    {
+      "issue": 44,
+      "title": "[COM-03] Explizite Nachrichten- und Anruf-Systemübergaben abnehmen"
+    },
+    {
+      "issue": 43,
+      "title": "[COM-02] Center Stage auf geeigneter Kamera-Hardware prüfen"
+    },
+    {
+      "issue": 36,
+      "title": "[AI-04] Antwortansicht mit Text, Bildern und Karten vervollständigen"
+    },
+    {
+      "issue": 29,
+      "title": "[CAM-03] Gegensprechen mit Audio-Lifecycle und Freigaben ergänzen"
+    },
+    {
+      "issue": 28,
+      "title": "[CAM-02] Türklingel-Ereignis und Unterbrechungsregeln umsetzen"
+    },
+    {
+      "issue": 27,
+      "title": "[CAM-01] Echte Kamera-Streams bis neun Feeds und Detailaktionen anbinden"
+    },
+    {
+      "issue": 26,
+      "title": "[HOME-04] Szenen und Routinen mit nachgewiesenem Umfang bedienen"
+    },
+    {
+      "issue": 23,
+      "title": "[HOME-01] HomeKit-Einrichtung und Adapter nach ausdrücklichem Fortsetzen implementieren"
+    },
+    {
+      "issue": 20,
+      "title": "[FACE-11] Prismen-Hintergrund und analoge Materialschichten angleichen"
+    },
+    {
+      "issue": 18,
+      "title": "[FACE-09] Fade-Verlauf und zeitabhängige Ziffern abgleichen"
+    },
+    {
+      "issue": 17,
+      "title": "[FLOW-03] CPU-Fluid schrittweise auf Metal-Texturen portieren"
+    },
+    {
+      "issue": 16,
+      "title": "[FLOW-02] Flow-Glas, Fluidparameter und Originalbewegung kalibrieren"
+    },
+    {
+      "issue": 15,
+      "title": "[FLOW-01] Variable Flow-Ziffern mit korrekten Metriken entwickeln"
+    },
+    {
+      "issue": 11,
+      "title": "[PHOTO-01] Foto-Galerie und geteilte Alben vervollständigen"
+    },
+    {
+      "issue": 7,
+      "title": "[FACE-03] Räumlichen Face-Editor vollständig kalibrieren"
+    },
+    {
+      "issue": 6,
+      "title": "[FACE-02] Face-Wechsel und App-Raster-Übergänge vermessen"
+    }
+  ],
+  "closed_ids": [
+    83,
+    82,
+    80,
+    76,
+    74,
+    72,
+    71,
+    70,
+    69,
+    68,
+    66,
+    65,
+    63,
+    62,
+    60,
+    59,
+    58,
+    55,
+    54,
+    50,
+    46,
+    45,
+    42,
+    41,
+    40,
+    39,
+    38,
+    37,
+    35,
+    34,
+    33,
+    32,
+    31,
+    30,
+    25,
+    24,
+    22,
+    21,
+    19,
+    14,
+    13,
+    12,
+    10,
+    9,
+    8,
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "no_issue_closed_by_current_packages": true
+}

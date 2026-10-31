@@ -1,0 +1,454 @@
+{
+  "date": "2026-10-31",
+  "issue": 51,
+  "base_commit": "7849a990e52328cd6c2e60e4e8841358720b5bda",
+  "product_change": "Only explicitly guarded own synthetic ActivityKit deadline AX value; no normal UI or timer-lifecycle behavior change",
+  "source_manifest_sha256": "255da538a08bac1c8b7435986a9e50d86b62ea1e99790ab53ce8a87a81026cf4",
+  "source_files": 265,
+  "compiled_manifest_sha256": "981b106d641e08e5ddc1f5b536857090528779bfb861b07763d03cc9add5c87a",
+  "compiled_files": 26,
+  "ui_archive_readback": {
+    "files": 26,
+    "all_entries_read_back": true,
+    "additional_phone_recovery_launch_sha256": "c33f66f84074e0ec1a43bdfaba46fbe5b7858dfcec3f18ae4492b4cdc693edb8"
+  },
+  "unique_new_methods": 1,
+  "current_executions": 2,
+  "current_passed": 2,
+  "historical_executions": 3,
+  "historical_passed": 2,
+  "historical_failed": 1,
+  "UI": [
+    {
+      "device": "iphone",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+              "deviceName": "iPhone 18 Pro",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793454134.591,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793453994.36,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "timing": {
+        "activity_deadline": 1793454109.566201,
+        "background_at": 1793454066.608581,
+        "background_wait_seconds": 45.193799916654825,
+        "deadline_observed_at": 1793454062.7152572,
+        "expired_observed_at": 1793454111.56813,
+        "owned_store_id": "33926AD9-F533-408F-AC65-298475CB2A4E",
+        "wait_source": "Actual own ActivityKit content deadline; no clock override"
+      },
+      "stored_records": [
+        {
+          "label": "recovered",
+          "owned_uuid": "968BC4C7-7E02-4291-8813-F98A88429D72",
+          "snapshot_sha256": "3ed86b010bda32085c4d6c328c6caf1f880fd758ba2e0d367b8ad8f4c65107e2",
+          "stored_deadline": 1793453104.215478,
+          "did_alert": true,
+          "activity_preference": false
+        },
+        {
+          "label": "current",
+          "owned_uuid": "33926AD9-F533-408F-AC65-298475CB2A4E",
+          "snapshot_sha256": "a9a48b9ed3e63251f6afd2908528703082ce83866cc70c787cda9bab65589340",
+          "stored_deadline": 1793454109.566201,
+          "did_alert": true,
+          "activity_preference": false
+        }
+      ],
+      "registry_zero_return_and_opt_out": true,
+      "installed_files_exact": 20,
+      "log_sha256": "819dafb6164e48eac6c1d5fcc79ef06a6e3bc8db390c3ac4acbec66dcbd70736"
+    },
+    {
+      "device": "ipad",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+              "deviceName": "iPad Air 11-inch (M4)",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793454588.244,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793454477.325,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "timing": {
+        "activity_deadline": 1793454567.6995091,
+        "background_at": 1793454519.167382,
+        "background_wait_seconds": 50.80692712496966,
+        "deadline_observed_at": 1793454516.496207,
+        "expired_observed_at": 1793454569.700786,
+        "owned_store_id": "25BBD041-3D67-4AD1-9D99-89F772068828",
+        "wait_source": "Actual own ActivityKit content deadline; no clock override"
+      },
+      "stored_records": [
+        {
+          "owned_uuid": "25BBD041-3D67-4AD1-9D99-89F772068828",
+          "snapshot_sha256": "17941180c2f75c05490c690723ba38cb24f6b28e61cf8b33dd57aee1d421c3e6",
+          "stored_deadline": 1793454567.6995091,
+          "did_alert": true,
+          "activity_preference": false,
+          "native_timer_ids": [],
+          "native_alarm_ids": []
+        }
+      ],
+      "registry_zero_return_and_opt_out": true,
+      "installed_files_exact": 20,
+      "log_sha256": "c1f3731f61d09e9b4e72fcdf0097fc157cbb07920a9c8e65cad58c9517609a69"
+    }
+  ],
+  "initial_failed_summary": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+          "deviceName": "iPhone 18 Pro",
+          "modelName": "iPhone 18 Pro",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "passedTests": 0,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "HomeViewReplica · Built with macOS 27.0.1",
+    "expectedFailures": 0,
+    "failedTests": 1,
+    "finishTime": 1793453573.739,
+    "passedTests": 0,
+    "result": "Failed",
+    "runtimeWarnings": [],
+    "skippedTests": 0,
+    "startTime": 1793453008.036,
+    "statistics": [],
+    "testFailures": [
+      {
+        "failureText": "failed - Owned cleanup target not visible",
+        "targetName": "HomeViewUITests",
+        "testIdentifier": 1,
+        "testIdentifierString": "HomeViewUITests/testOwnTimerActivityBackgroundExpiryReconcilesFromActualDeadlineOnReturn()",
+        "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewUITests/HomeViewUITests/testOwnTimerActivityBackgroundExpiryReconcilesFromActualDeadlineOnReturn",
+        "testName": "testOwnTimerActivityBackgroundExpiryReconcilesFromActualDeadlineOnReturn()"
+      }
+    ],
+    "title": "Test - HomeViewReplica",
+    "topInsights": [],
+    "totalTestCount": 1
+  },
+  "preparation_failures": [
+    "First tearDown actor-isolation compile failure: zero UI executions.",
+    "Initial iPhone cleanup overscrolled settings; expiry/return checks passed but complete method FAILED. Cleanup-only test correction retained identical 20 app files.",
+    "After test failure the Xcode diagnostic collector stalled. Only verified own simctl diagnose child received SIGINT after method/suite had failed; finalized xcresult retains failure. Current runs use supported -collect-test-diagnostics never; assertions and manual attachments unchanged.",
+    "Optional direct simulator screenshot write rejected; empty outputs are not evidence. Inspected last frame decoded from original failed recording."
+  ],
+  "background_observation": "iPhone compact countdown visibly remains at 0:00 after deadline outside app. iPad Home has no visible activity. Foreground reconciliation, not autonomous OS/background dismissal.",
+  "images": [
+    {
+      "device": "iphone",
+      "current": false,
+      "state": "timer-expiry-foreground-reconciled-zero-before-opt-out",
+      "sha256": "64b236c2db067e89139e1240a87b593a50565b00f79eebe60f088397f3d053a6",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "current": false,
+      "state": "timer-expiry-outside-after-deadline",
+      "sha256": "172087016ab731a49d404aba7ca0471f147b234f05636d2f3ea1e4a09a7ad33b",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "current": false,
+      "state": "timer-expiry-running-before-background",
+      "sha256": "3b76c1191dca2ace2fc1f6eb7e00a54fa103217565698e7ee8c1bf38c45182cf",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "current": true,
+      "state": "timer-expiry-teardown-explicit-opt-out-zero",
+      "sha256": "004c86a341e2b89437c7cd7564af11ca2cf60b0550f410866722aa4f31400db1",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "current": true,
+      "state": "timer-expiry-foreground-reconciled-zero-before-opt-out",
+      "sha256": "2f65896762cb8feffb981971b3e87165a8497911f76953b198e855332b3a9bf9",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "current": true,
+      "state": "timer-expiry-outside-after-deadline",
+      "sha256": "c78ca1181ce9e0bc53921c7d4fcbdc1da90bf375522c865aef7f0b750303fac8",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "current": true,
+      "state": "timer-expiry-running-before-background",
+      "sha256": "65088fcec27c3ad836c5d3d93966d5bd34fb91ebd51a38a0cae63a5feee05181",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "current": true,
+      "state": "timer-expiry-previous-run-recovery-explicit-opt-out-zero",
+      "sha256": "6517ea6e4688434c1e5b42d05d9e085e785a096b111d2d5cb8b0284d94faef1d",
+      "visually_reviewed": true
+    },
+    {
+      "device": "ipad",
+      "current": true,
+      "state": "timer-expiry-teardown-explicit-opt-out-zero",
+      "sha256": "db19389b3577bb7711824214ff45de5a5e84f70655e1619c2f4fdd22852e4914",
+      "visually_reviewed": true
+    },
+    {
+      "device": "ipad",
+      "current": true,
+      "state": "timer-expiry-foreground-reconciled-zero-before-opt-out",
+      "sha256": "d34a5ef0b93cfb51205ab19ad734dd3302a5317b587233c330484b418626c53f",
+      "visually_reviewed": true
+    },
+    {
+      "device": "ipad",
+      "current": true,
+      "state": "timer-expiry-outside-after-deadline",
+      "sha256": "4a6f2607ab8d2e0506ff0ef02d746a780a754999e53c7a6037ed9a2f28ffa5ee",
+      "visually_reviewed": true
+    },
+    {
+      "device": "ipad",
+      "current": true,
+      "state": "timer-expiry-running-before-background",
+      "sha256": "f0dc81ceb117b92f0319a3bcde7af0d527194cc0e17e43e56d309d891d16da59",
+      "visually_reviewed": true
+    }
+  ],
+  "derived_failed_video_frame": {
+    "video_sha256": "998e3da45d7dd7efc91fef96504a71cca5448b9b3972b5615c9ac1e25c8ff2cf",
+    "frame_seconds": 125.415,
+    "scope": "Last decoded frame from original failing XCTest recording; not a recaptured or regenerated historical frame."
+  },
+  "builds": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "started": "2026-10-31T13:52:35.490600+00:00",
+      "ended": "2026-10-31T13:53:10.182205+00:00",
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false
+        },
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": true
+        }
+      ]
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "started": "2026-10-31T13:53:10.184076+00:00",
+      "ended": "2026-10-31T13:53:36.587838+00:00",
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false
+        }
+      ]
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "started": "2026-10-31T13:53:36.588686+00:00",
+      "ended": "2026-10-31T13:54:01.441244+00:00",
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false
+        }
+      ]
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "started": "2026-10-31T13:54:01.442286+00:00",
+      "ended": "2026-10-31T13:54:27.637497+00:00",
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false
+        }
+      ]
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "started": "2026-10-31T13:54:27.638491+00:00",
+      "ended": "2026-10-31T13:54:34.118747+00:00",
+      "storage_headroom_ok": true,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false
+        }
+      ]
+    }
+  ],
+  "UI_shortcut_metadata": {
+    "valid": false,
+    "errors": [
+      "root.ssu.yaml: missing or empty",
+      "nlu/nlu.lzfse: missing or empty",
+      "nlu/*.version: missing or empty",
+      "root.ssu.yaml: unreadable metadata"
+    ],
+    "files": [
+      {
+        "path": "extract.actionsdata",
+        "bytes": 1764,
+        "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+      },
+      {
+        "path": "version.json",
+        "bytes": 53,
+        "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+      }
+    ]
+  },
+  "normal_iOS_SDK_shortcut_metadata_complete": true,
+  "new_Core_run": false,
+  "Core_unchanged_from_base": true,
+  "archives": [
+    {
+      "name": "source-delta.zip",
+      "bytes": 196514,
+      "sha256": "1c19d6bc0530158b2858ba1ac8d0afcc937fa7515b8c89006ecb230b775319d1",
+      "changed": [
+        "Sources/App/AppModel.swift",
+        "Sources/App/Controls.swift",
+        "Sources/App/DeviceConnections.swift",
+        "Sources/App/HomeScreens.swift",
+        "Sources/App/NativeTimerLiveActivity.swift",
+        "Sources/App/TimerActivitySettingsView.swift",
+        "Sources/Core/ConnectedDataSession.swift",
+        "Sources/Core/WorldClock.swift",
+        "Tests/CoreTests/DeviceConnectionTests.swift",
+        "Tests/CoreTests/WorldClockTests.swift",
+        "Tests/NativeProbes/MusicSourceBoundaryProbe.swift",
+        "Tests/NativeProbes/QueuedAudioStartProbe.swift",
+        "Tests/NativeProbes/WorldClockComputationProbe.swift",
+        "Tests/UITests/HomeViewUITests.swift"
+      ],
+      "removed": [],
+      "base_locator": "research/homeview-album-boundaries-20261031/source.zip",
+      "base_sha256": "fdd0eea20ed02849da83d3622f57408d1d67747be40c10594aeaa317d46673c1",
+      "reconstructed_entries": 265,
+      "all_reconstructed_entries_read_back": true
+    },
+    {
+      "name": "sdk-products-delta.zip",
+      "bytes": 28309935,
+      "sha256": "72b008140bbe00106fb43fde0821284b732505bb9128da88ec426b9ca7208693",
+      "changed": [
+        "iOS/HomeViewReplica.debug.dylib",
+        "iOS/Metadata.appintents/nlu/nlu.lzfse",
+        "macOS/Contents/MacOS/HomeViewReplica.debug.dylib",
+        "tvOS/HomeViewReplica.debug.dylib",
+        "visionOS/HomeViewReplica.debug.dylib",
+        "watchOS/HomeViewWatch.debug.dylib"
+      ],
+      "removed": [],
+      "base_locator": "research/homeview-album-boundaries-20261031/sdk-products.zip",
+      "base_sha256": "bade77c68cd78733c7ad7753c7f5bcc7afc1e8ea36dce1247041e9351ca8a66b",
+      "reconstructed_entries": 73,
+      "all_reconstructed_entries_read_back": true
+    }
+  ],
+  "private_artifact_locator": "research/homeview-timer-activity-expiry-20261031",
+  "limitations": [
+    "One-minute own timer, approximately 45/51 seconds actually outside app; not long suspension or process kill/crash.",
+    "No autonomous second-accurate background removal, Lock Screen, permission revocation, expanded/minimal, multiwindow, mirroring or physical acceptance.",
+    "didAlert is persisted local receipt, not acoustic or system-alarm proof.",
+    "Home/physical/signing holds unchanged; only owned synthetic UUID stores used."
+  ],
+  "issue_remains_open": true
+}

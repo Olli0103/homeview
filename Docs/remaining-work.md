@@ -20,6 +20,10 @@
 
 ## Aktueller Arbeitsblock
 
+[Frischer vollständiger Abgleich nach den vier Abschluss-/Lifecycle-Paketen](verification/backlog-after-completion-lifecycle-20261031.json): weiterhin48ursprüngliche Implementierungen,1ausdrücklicher Ausschluss,33offen; zusätzliches Community-Issue83 separat geschlossen. Kein Teilerfolg wird als vollständige Original-/Geräteabnahme gezählt.
+
+[Eigene Live Activity nach tatsächlichem Hintergrundablauf bereinigt](timer-activity-background-expiry.md): zwei aktuelle native iPhone-/iPad-Ausführungen und fünf SDKs bestanden; erste Cleanup-Fehlausführung und Wiederherstellung bleiben erhalten. Echte ActivityKit-Frist statt nomineller Wartezeit, Registry bei Rückkehr null, anschließendes Opt-out exakt gespeichert. Kein autonomer Hintergrund-Cleanup: iPhone zeigt vorher weiterhin 0:00. #51 bleibt für die übrige ursprüngliche Matrix offen.
+
 [Musik-Widerruf, bewusste Quellenwahl und überholte Audiostarts gemeinsam abgesichert](music-permission-boundaries.md): 85 relevante Coretests, tatsächlicher AppModel-Quellenvertrag und sieben Audio-Task-Szenarien. Fehlgeschlagene Quellen bleiben von der Demo getrennt; alte Tasks dürfen nach Stop oder Quellenwechsel keinen neuen Backend-Start mehr anfordern. Native UI-/SDK-Checkpoints und verbleibende reale MusicKit-/Medien-/Geräteabnahmen sind im Bericht getrennt; #57/#67 bleiben offen.
 
 [Eigene Timer-Live-Activity über Prozessende und Opt-out geprüft](timer-activity-process-lifecycle.md): zwei native Ausführungen auf iPhone/iPad bestanden; wiederholtes Show erzeugt genau eine Aktivität, Ausschalten plus erneuter Prozessstart bleibt bei null. Produktquellen unverändert; keine neuen Core-/Fünf-SDK-Wiederholungen. Suspendierungsablauf, Lock Screen, Rechteentzug und übrige #51-Abnahme bleiben offen.

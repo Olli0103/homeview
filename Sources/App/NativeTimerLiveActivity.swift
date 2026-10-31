@@ -73,3 +73,16 @@ import ActivityKit
   return "System timer activities unavailable on this platform."
   #endif
 }
+
+/// Exact own synthetic deadline for expiry tests; never exposed in a normal launch.
+@MainActor func timerActivitySystemFixtureDeadline()->String? {
+  guard timerActivitySystemFixtureReport() != nil else {return nil}
+  #if canImport(ActivityKit) && os(iOS) && !targetEnvironment(macCatalyst)
+  let owned=Activity<HomeViewTimerAttributes>.activities.filter {$0.activityState == .active || $0.activityState == .stale}
+  guard let deadline=owned.first?.content.state.deadline,
+    deadline.timeIntervalSince1970.isFinite else {return nil}
+  return String(deadline.timeIntervalSince1970)
+  #else
+  return nil
+  #endif
+}

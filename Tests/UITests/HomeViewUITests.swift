@@ -3117,6 +3117,51 @@ final class HomeViewUITests: XCTestCase {
     XCUIDevice.shared.orientation = .portrait
     super.tearDown()
   }
+  @MainActor private static func cleanupOwnSystemTimerActivity(_ args:[String],checkpoint:String="teardown") {
+    let app=XCUIApplication()
+    app.launchArguments=["--uitesting","--reference-clock"]+args
+    app.launch()
+    guard app.staticTexts["mock.badge"].waitForExistence(timeout:15) else {
+      XCTFail("Owned timer cleanup could not launch its synthetic app");return
+    }
+    let button=app.buttons["settings.timer-activity"]
+    guard button.waitForExistence(timeout:8) else {
+      XCTFail("Owned timer cleanup settings target missing");return
+    }
+    let viewport=app.otherElements["reference.viewport"],scroll=app.scrollViews.firstMatch
+    guard viewport.exists,scroll.exists else {XCTFail("Owned cleanup viewport missing");return}
+    for _ in 0..<24 {
+      let safe=scroll.frame.intersection(viewport.frame).insetBy(dx:0,dy:40),target=button.frame
+      if button.isHittable,safe.contains(target) {break}
+      let gap:CGFloat
+      if target.isEmpty {gap=safe.height*0.6}
+      else if target.minY<safe.minY {gap = -(safe.minY-target.minY+14)}
+      else {gap=target.maxY-safe.maxY+14}
+      let distance=min(max(abs(gap),24),safe.height*0.6)*(gap<0 ? -1:1)
+      let start=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:safe.minX+15,dy:safe.midY+distance/2))
+      let end=app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:safe.minX+15,dy:safe.midY-distance/2))
+      start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.2)
+    }
+    guard button.isHittable,viewport.frame.contains(button.frame) else {XCTFail("Owned cleanup target not visible");return}
+    button.tap()
+    guard app.switches["timer.activity.enabled"].waitForExistence(timeout:8),
+      app.staticTexts["timer.activity.system-report"].waitForExistence(timeout:8) else {
+      XCTFail("Owned timer cleanup controls missing");return
+    }
+    let control=app.switches["timer.activity.enabled"]
+    if control.value as? String != "0" {
+      let frame=control.frame
+      guard control.isHittable,app.frame.contains(frame),frame.width>44 else {XCTFail("Owned cleanup switch not visible");return}
+      control.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:frame.width-25,dy:frame.height/2)).tap()
+    }
+    let off=XCTNSPredicateExpectation(predicate:NSPredicate(format:"value == %@","0"),object:control)
+    XCTAssertEqual(XCTWaiter.wait(for:[off],timeout:8),.completed)
+    let empty=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","Own activities=0; running=0; paused=0"),object:app.staticTexts["timer.activity.system-report"])
+    XCTAssertEqual(XCTWaiter.wait(for:[empty],timeout:10),.completed,"Owned expiry experiment must end with no own activity")
+    XCTContext.runActivity(named:"Owned expiry activity explicitly disabled and registry empty") { activity in
+      let image=XCTAttachment(screenshot:app.screenshot());image.name="timer-expiry-\(checkpoint)-explicit-opt-out-zero";image.lifetime = .keepAlways;activity.add(image)
+    }
+  }
   func rotateAssistantDevice(_ orientation:UIDeviceOrientation) {
     XCUIDevice.shared.orientation=orientation
     let until=Date().addingTimeInterval(8)
@@ -9012,6 +9057,60 @@ extension HomeViewUITests {
     shot("timer-process-opt-out-cold-relaunch-zero")
     #else
     throw XCTSkip("Opt-in own ActivityKit process-lifecycle probe is simulator-only")
+    #endif
+  }
+
+  func testOwnTimerActivityBackgroundExpiryReconcilesFromActualDeadlineOnReturn() throws {
+    #if targetEnvironment(simulator)
+    executionTimeAllowance=240
+    if let previous=ProcessInfo.processInfo.environment["HOMEVIEW_PREVIOUS_TIMER_ACTIVITY_STORE"] {
+      guard let old=UUID(uuidString:previous) else {throw XCTSkip("Invalid owned recovery UUID")}
+      Self.cleanupOwnSystemTimerActivity(["--persistence-test",old.uuidString,"--timer-activity-system-test","--page","Settings"],checkpoint:"previous-run-recovery")
+    }
+    let id=UUID().uuidString,args=["--persistence-test",id,"--timer-activity-system-test","--page","Settings"]
+    let ownership=XCTAttachment(string:id);ownership.name="timer-expiry-owned-store-id";ownership.lifetime = .keepAlways;add(ownership)
+    addTeardownBlock {
+      await MainActor.run {HomeViewUITests.cleanupOwnSystemTimerActivity(args)}
+    }
+    launch(args);openTimerActivitySettings();setTimerActivityEnabled(true)
+    tap("timer.activity.done");tap("nav.faces");drawer();tap("app.Timers")
+    let minute=app.buttons["1 min"]
+    XCTAssertTrue(minute.waitForExistence(timeout:5));minute.tap();tap("timer.start")
+    XCTAssertTrue(app.buttons["timer.pause"].waitForExistence(timeout:5))
+    tap("nav.controls");tap("controls.settings");openTimerActivitySettings()
+    XCTAssertTrue(expectOwnSystemActivity(1,0))
+    let value=try XCTUnwrap(app.staticTexts["timer.activity.system-report"].value as? String)
+    let seconds=try XCTUnwrap(Double(value)),deadline=Date(timeIntervalSince1970:seconds)
+    let observed=Date(),remaining=deadline.timeIntervalSince(observed)
+    XCTAssertGreaterThan(remaining,8,"Do not certify a timer already expired during setup")
+    XCTAssertLessThanOrEqual(remaining,61,"A one-minute choice must not become an unbounded wait")
+    shot("timer-expiry-running-before-background")
+    XCUIDevice.shared.press(.home)
+    let springboard=XCUIApplication(bundleIdentifier:"com.apple.springboard");springboard.activate()
+    XCTAssertTrue(springboard.wait(for:.runningForeground,timeout:10))
+    let left=XCTNSPredicateExpectation(predicate:NSPredicate(format:"state != %@",NSNumber(value:XCUIApplication.State.runningForeground.rawValue)),object:app)
+    XCTAssertEqual(XCTWaiter.wait(for:[left],timeout:10),.completed)
+    let backgroundAt=Date(),backgroundUptime=ProcessInfo.processInfo.systemUptime
+    XCTAssertLessThan(backgroundAt,deadline)
+    RunLoop.current.run(until:deadline.addingTimeInterval(2))
+    let expiredAt=Date()
+    XCTAssertGreaterThan(expiredAt.timeIntervalSince(deadline),1)
+    let outside=XCTAttachment(screenshot:springboard.screenshot())
+    outside.name="timer-expiry-outside-after-deadline";outside.lifetime = .keepAlways;add(outside)
+    let timing=XCTAttachment(data:try JSONSerialization.data(withJSONObject:[
+      "activity_deadline":seconds,"deadline_observed_at":observed.timeIntervalSince1970,
+      "background_at":backgroundAt.timeIntervalSince1970,"expired_observed_at":expiredAt.timeIntervalSince1970,
+      "background_wait_seconds":ProcessInfo.processInfo.systemUptime-backgroundUptime,
+      "owned_store_id":id,
+      "wait_source":"Actual own ActivityKit content deadline; no clock override"],options:[.sortedKeys]),uniformTypeIdentifier:"public.json")
+    timing.name="timer-expiry-actual-deadline-timing";timing.lifetime = .keepAlways;add(timing)
+    app.activate()
+    XCTAssertTrue(expectOwnSystemActivity(0,0,0),"Foreground reconciliation must end the expired own activity")
+    XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"1")
+    XCTAssertEqual(app.staticTexts["timer.activity.system-report"].value as? String,"none")
+    shot("timer-expiry-foreground-reconciled-zero-before-opt-out")
+    #else
+    throw XCTSkip("Own ActivityKit expiry experiment is simulator-only")
     #endif
   }
 }
