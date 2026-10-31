@@ -1,0 +1,939 @@
+{
+  "date": "2026-10-31",
+  "issues": [
+    49,
+    52
+  ],
+  "base_commit": "61fc2987598e657e33dd30e395b863ac455bc98f",
+  "source_manifest": "alarm-schedule-admission-source.json",
+  "source_digest": "65e66e407e217b49509f9a4d8983e7238b1f10aed972316ae0e37d2fe4309ba3",
+  "source_files": 260,
+  "baseline": {
+    "app_model_commit": "61fc2987598e657e33dd30e395b863ac455bc98f",
+    "app_model_sha256": "ecff017cd03f21657f11d440972603721e95328acac10e21586817a72d6de161",
+    "cases": [
+      {
+        "actual_OS_operations": false,
+        "case": "timer_expired",
+        "checks": {
+          "actual_timer_deadline_passed": true,
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": false,
+          "no_spurious_error": true,
+          "no_stale_ownership": false,
+          "no_stale_schedule_even_transiently": false,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule"
+        ],
+        "failed": [
+          "no_orphan_after_settle",
+          "no_stale_ownership",
+          "no_stale_schedule_even_transiently"
+        ],
+        "verdict": "FAIL"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "timer_pause",
+        "checks": {
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": false,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel"
+        ],
+        "failed": [
+          "no_stale_schedule_even_transiently"
+        ],
+        "verdict": "FAIL"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "timer_delete",
+        "checks": {
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": false,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel"
+        ],
+        "failed": [
+          "no_stale_schedule_even_transiently"
+        ],
+        "verdict": "FAIL"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_disable",
+        "checks": {
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": false,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel"
+        ],
+        "failed": [
+          "no_stale_schedule_even_transiently"
+        ],
+        "verdict": "FAIL"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_delete",
+        "checks": {
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": false,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel"
+        ],
+        "failed": [
+          "no_stale_schedule_even_transiently"
+        ],
+        "verdict": "FAIL"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_replace",
+        "checks": {
+          "current_ownership_committed": true,
+          "current_schedule_active": true,
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_spurious_error": true,
+          "one_current_schedule": false,
+          "replaced_generation_never_scheduled": false,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel",
+          "authorize",
+          "schedule"
+        ],
+        "failed": [
+          "one_current_schedule",
+          "replaced_generation_never_scheduled"
+        ],
+        "verdict": "FAIL"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "timer_positive",
+        "checks": {
+          "current_ownership_committed": true,
+          "current_schedule_active": true,
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_spurious_error": true,
+          "one_current_schedule": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_positive",
+        "checks": {
+          "current_ownership_committed": true,
+          "current_schedule_active": true,
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_spurious_error": true,
+          "one_current_schedule": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "timer_after_effect",
+        "checks": {
+          "disk_matches_memory": true,
+          "inflight_effect_cleaned_up": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_after_effect",
+        "checks": {
+          "disk_matches_memory": true,
+          "inflight_effect_cleaned_up": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      }
+    ],
+    "passed": 4,
+    "failed": 6,
+    "actual_deadline_observed": true,
+    "qualification": "Original AppModel alarm conditional selected on macOS, explicitly supplied symbolic provider. No actual AlarmKit authorization/delivery."
+  },
+  "targeted_core": {
+    "tests": 18,
+    "failures": 0,
+    "admission_cases": 9,
+    "recurrence_cases": 9,
+    "core_package_inputs": 98,
+    "unchanged_after_run": true,
+    "scope": "Selected tests, not a complete Core/UI regression"
+  },
+  "app_model": {
+    "processes": 10,
+    "passed": 10,
+    "failed": 0,
+    "cases": [
+      {
+        "actual_OS_operations": false,
+        "case": "timer_expired",
+        "checks": {
+          "actual_timer_deadline_passed": true,
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "timer_pause",
+        "checks": {
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "timer_delete",
+        "checks": {
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_disable",
+        "checks": {
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_delete",
+        "checks": {
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "no_stale_schedule_even_transiently": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_replace",
+        "checks": {
+          "current_ownership_committed": true,
+          "current_schedule_active": true,
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_spurious_error": true,
+          "one_current_schedule": true,
+          "replaced_generation_never_scheduled": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "authorize",
+          "schedule"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "timer_positive",
+        "checks": {
+          "current_ownership_committed": true,
+          "current_schedule_active": true,
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_spurious_error": true,
+          "one_current_schedule": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_positive",
+        "checks": {
+          "current_ownership_committed": true,
+          "current_schedule_active": true,
+          "disk_matches_memory": true,
+          "no_effect_before_authorization": true,
+          "no_spurious_error": true,
+          "one_current_schedule": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "timer_after_effect",
+        "checks": {
+          "disk_matches_memory": true,
+          "inflight_effect_cleaned_up": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      },
+      {
+        "actual_OS_operations": false,
+        "case": "alarm_after_effect",
+        "checks": {
+          "disk_matches_memory": true,
+          "inflight_effect_cleaned_up": true,
+          "no_effect_before_authorization": true,
+          "no_orphan_after_settle": true,
+          "no_spurious_error": true,
+          "no_stale_ownership": true,
+          "writer_settled": true
+        },
+        "events": [
+          "authorize",
+          "schedule",
+          "cancel"
+        ],
+        "failed": [],
+        "verdict": "PASS"
+      }
+    ],
+    "actual_os_operations": false,
+    "scope": "Actual AppModel with only alarm-platform conditional and private-store accessor changed. Symbolic provider uses production admission gate; not actual AlarmKit behavior."
+  },
+  "final_sdks": [
+    {
+      "platform": "iOS",
+      "sdk": "iphonesimulator",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": 2
+    },
+    {
+      "platform": "macOS",
+      "sdk": "macosx",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": 1
+    },
+    {
+      "platform": "tvOS",
+      "sdk": "appletvsimulator",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": 1
+    },
+    {
+      "platform": "visionOS",
+      "sdk": "xrsimulator",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": 1
+    },
+    {
+      "platform": "watchOS",
+      "sdk": "watchsimulator",
+      "exit_code": 0,
+      "storage_headroom_ok": true,
+      "attempts": 1
+    }
+  ],
+  "checkpoints": {
+    "native_test_to_final_source_delta": [
+      "Sources/App/NativeAlarms.swift"
+    ],
+    "qualification": "Only operation-local AlarmKit manager reference movement for native Swift 6 isolation. Shared gate, AppModel and Core inputs unchanged. Symbolic/Core tests not repeated; all five delivered SDKs build from final product source."
+  },
+  "failures_retained": [
+    {
+      "kind": "probe_compile",
+      "path": "baseline",
+      "reason": "New probe used =! instead of spaced assignment; zero executed cases"
+    },
+    {
+      "kind": "probe_link",
+      "path": "baseline-qualified",
+      "reason": "Batch compiler invocation had missing temporary object link inputs; zero executed cases"
+    },
+    {
+      "kind": "invalid_expiry_assumption",
+      "paths": [
+        "baseline-wmo",
+        "candidate"
+      ],
+      "reason": "Countdown clamps requested 0.15 seconds to one second. 220ms is not expiry; those expiry results are unqualified. Final common baseline/candidate explicitly waits past the actual stored deadline."
+    },
+    {
+      "kind": "native_iOS_compile",
+      "reason": "Non-Sendable AlarmKit manager captured by two closures; operation-local references resolve native compiler isolation without unchecked Sendable or lowered checks."
+    },
+    {
+      "kind": "iOS_metadata",
+      "reason": "Successful incremental iOS build lacked Shortcut outputs; existing builder ran its single standard clean-build recovery, final metadata valid."
+    },
+    {
+      "kind": "archive_preparation",
+      "reason": "Targeted iOS clean removed all other SDK products before archival. Partial iOS-only product zip retained, never certified as complete. Other four SDKs rebuilt and final v2 archive fully read back. Build rule added to repository AGENTS.md."
+    }
+  ],
+  "archives": [
+    {
+      "name": "delivered-source.zip",
+      "bytes": 19975247,
+      "sha256": "d4273f1a101bc10dd81048b63f9d96995e7b255bfdc3b84b0c2fb211f78709fa",
+      "all_entries_read_back": true
+    },
+    {
+      "name": "final-sdk-products-v2.zip",
+      "bytes": 101719510,
+      "sha256": "dc6332c129cad70c56ba32ed8ea588db90928a49d273f945e073d6ed3b93391d",
+      "all_entries_read_back": true
+    }
+  ],
+  "sdk_products": [
+    {
+      "platform": "iOS",
+      "files": [
+        {
+          "path": "iOS/AppIcon60x60@2x.png",
+          "bytes": 15425,
+          "sha256": "91fc4edf48e1044ddfb9b81dd42be98f35800c0699dc9e81a33862e77adf0646"
+        },
+        {
+          "path": "iOS/AppIcon76x76@2x~ipad.png",
+          "bytes": 22442,
+          "sha256": "6d935de5b250070facf9e7d13af733f2ac5ae11fc347eed646774bd15376042d"
+        },
+        {
+          "path": "iOS/Assets.car",
+          "bytes": 15242504,
+          "sha256": "e10372ccb91ed3a6136db3bf4fe361572ba4609abfa4205574aef41319911e1f"
+        },
+        {
+          "path": "iOS/FeedKit-LICENSE.txt",
+          "bytes": 1083,
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "iOS/HomeViewReplica",
+          "bytes": 40224,
+          "sha256": "20e3454443a820f8ebf9f148b69ba8db3a2a50347c81807cbfe238cc2bb39681"
+        },
+        {
+          "path": "iOS/HomeViewReplica.debug.dylib",
+          "bytes": 30436376,
+          "sha256": "74972ca01f7ff72e031da143da6047ac22ebe37c665f69c0c5e96febf4796859"
+        },
+        {
+          "path": "iOS/Info.plist",
+          "bytes": 2488,
+          "sha256": "718838d4b2142267f3127ab59c0196e2f10da4b9aa9111c716f5390d045cbd3b"
+        },
+        {
+          "path": "iOS/Metadata.appintents/extract.actionsdata",
+          "bytes": 1764,
+          "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+        },
+        {
+          "path": "iOS/Metadata.appintents/nlu/154405c20cc41a1158a5f4a3acdfee01.version",
+          "bytes": 1,
+          "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+        },
+        {
+          "path": "iOS/Metadata.appintents/nlu/nlu.lzfse",
+          "bytes": 2125,
+          "sha256": "8a78c8a529dea37640735dc971d7501c0487e23b16afd5f0004bbe68dd92bf49"
+        },
+        {
+          "path": "iOS/Metadata.appintents/root.ssu.yaml",
+          "bytes": 926,
+          "sha256": "f4f1096cbb65305ae2999c95051b0fe4077477e547e8754b7fa825027345a177"
+        },
+        {
+          "path": "iOS/Metadata.appintents/version.json",
+          "bytes": 53,
+          "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+        },
+        {
+          "path": "iOS/PkgInfo",
+          "bytes": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "iOS/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget",
+          "bytes": 40224,
+          "sha256": "1c2f273d371cb9e502f36026fcdb3038f11a1852d30ebc93859f65a3182ce595"
+        },
+        {
+          "path": "iOS/PlugIns/HomeViewTimerWidget.appex/HomeViewTimerWidget.debug.dylib",
+          "bytes": 261104,
+          "sha256": "e3a32fb1734a59ad59c7fe1cde4a9cd27c458052236e010cc3f8adbc4f580775"
+        },
+        {
+          "path": "iOS/PlugIns/HomeViewTimerWidget.appex/Info.plist",
+          "bytes": 774,
+          "sha256": "a7a0e6efe2c68a27a221d8a199c9168f1938349ff1ac47b33426678d4c7d2f0d"
+        },
+        {
+          "path": "iOS/PlugIns/HomeViewTimerWidget.appex/__preview.dylib",
+          "bytes": 16752,
+          "sha256": "1a4fd776ef6ff48be247b652b2f2581d3d25125975429f9b89092daeaabbc3d1"
+        },
+        {
+          "path": "iOS/__preview.dylib",
+          "bytes": 16760,
+          "sha256": "d9232e7ea0603217adc485acddb841faa83339d9dfb4a8f5cb8694a0f7e0180a"
+        },
+        {
+          "path": "iOS/default.metallib",
+          "bytes": 73088,
+          "sha256": "28668997edf6532fa694b002af5084ba5f15b3c65dbe653e8438a943d162a431"
+        },
+        {
+          "path": "iOS/demo-artwork.mp4",
+          "bytes": 93364,
+          "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+        },
+        {
+          "path": "iOS/demo-tone.wav",
+          "bytes": 176444,
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "iOS/podcast-caption-test.mp4",
+          "bytes": 365116,
+          "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+        },
+        {
+          "path": "iOS/podcast-test-audio.wav",
+          "bytes": 1920044,
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        }
+      ]
+    },
+    {
+      "platform": "macOS",
+      "files": [
+        {
+          "path": "macOS/Contents/Info.plist",
+          "bytes": 3253,
+          "sha256": "00ade6ed8692d31e40effde63eb24de42809fb5988bb5f4c45c9629761dddc09"
+        },
+        {
+          "path": "macOS/Contents/MacOS/HomeViewReplica",
+          "bytes": 40224,
+          "sha256": "89d25156e7ab62209ec2bb089f77056f1ffa2cfff65a1eb6e8c00def284dc131"
+        },
+        {
+          "path": "macOS/Contents/MacOS/HomeViewReplica.debug.dylib",
+          "bytes": 30281672,
+          "sha256": "00274a5adf51ea812ade8ed455f0219b6eabad1a3a05960094d893cde9d3a10f"
+        },
+        {
+          "path": "macOS/Contents/MacOS/__preview.dylib",
+          "bytes": 16760,
+          "sha256": "ef42e4140edff5aa41beea98327030af0bc0a463fc79a07b6ba04d72088f6690"
+        },
+        {
+          "path": "macOS/Contents/PkgInfo",
+          "bytes": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "macOS/Contents/Resources/Assets.car",
+          "bytes": 14232664,
+          "sha256": "767d8e5b21a7fb9a20db530d5e9fe8e9dbd350c150b5a867ba06398435fe36a7"
+        },
+        {
+          "path": "macOS/Contents/Resources/FeedKit-LICENSE.txt",
+          "bytes": 1083,
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "macOS/Contents/Resources/Metadata.appintents/extract.actionsdata",
+          "bytes": 1764,
+          "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+        },
+        {
+          "path": "macOS/Contents/Resources/Metadata.appintents/version.json",
+          "bytes": 53,
+          "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+        },
+        {
+          "path": "macOS/Contents/Resources/default.metallib",
+          "bytes": 71552,
+          "sha256": "2d900cbbfd77ccef3c3d572f238e0f3b856a08d9ccdb38dd9e64e509e58878ed"
+        },
+        {
+          "path": "macOS/Contents/Resources/demo-artwork.mp4",
+          "bytes": 93364,
+          "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+        },
+        {
+          "path": "macOS/Contents/Resources/demo-tone.wav",
+          "bytes": 176444,
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "macOS/Contents/Resources/podcast-caption-test.mp4",
+          "bytes": 365116,
+          "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+        },
+        {
+          "path": "macOS/Contents/Resources/podcast-test-audio.wav",
+          "bytes": 1920044,
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        }
+      ]
+    },
+    {
+      "platform": "tvOS",
+      "files": [
+        {
+          "path": "tvOS/Assets.car",
+          "bytes": 14236856,
+          "sha256": "b4c9d7d3bd6c0bb265ec47c0a72d60d24793158eb38b32d94e58c98e502ab3ae"
+        },
+        {
+          "path": "tvOS/FeedKit-LICENSE.txt",
+          "bytes": 1083,
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "tvOS/HomeViewReplica",
+          "bytes": 40224,
+          "sha256": "97131d8f4ccf3b60dedee3b1691a48789f95dee3018777c62ab6c24e12f38978"
+        },
+        {
+          "path": "tvOS/HomeViewReplica.debug.dylib",
+          "bytes": 28616584,
+          "sha256": "22dc3b14077a8ece10786c00d3a1d467f8bd9105d5dde8f5b2b84c98df939e00"
+        },
+        {
+          "path": "tvOS/Info.plist",
+          "bytes": 2238,
+          "sha256": "1aaf27c60965a35dd296adaeb788ed9a54b00488e86415458473c7198384d703"
+        },
+        {
+          "path": "tvOS/PkgInfo",
+          "bytes": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "tvOS/__preview.dylib",
+          "bytes": 16760,
+          "sha256": "670e17274069643540183ea4a2bc7f9e4d071010627b412e93fa8e1f07081b75"
+        },
+        {
+          "path": "tvOS/default.metallib",
+          "bytes": 73120,
+          "sha256": "4bc27cae4df99c4a034115102721f3de1aba4b333b5b23217ac207ddb4563fd7"
+        },
+        {
+          "path": "tvOS/demo-artwork.mp4",
+          "bytes": 93364,
+          "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+        },
+        {
+          "path": "tvOS/demo-tone.wav",
+          "bytes": 176444,
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "tvOS/podcast-caption-test.mp4",
+          "bytes": 365116,
+          "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+        },
+        {
+          "path": "tvOS/podcast-test-audio.wav",
+          "bytes": 1920044,
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        }
+      ]
+    },
+    {
+      "platform": "visionOS",
+      "files": [
+        {
+          "path": "visionOS/Assets.car",
+          "bytes": 14236856,
+          "sha256": "b2f643d74a2e6016352536f6e3ce8a2d753afd36329ff9d633c6e830df180909"
+        },
+        {
+          "path": "visionOS/FeedKit-LICENSE.txt",
+          "bytes": 1083,
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "visionOS/HomeViewReplica",
+          "bytes": 40224,
+          "sha256": "543d5f2769af33af6e06d6e477c0e57385eaf9e84e00941ff8977130d4d6bdaf"
+        },
+        {
+          "path": "visionOS/HomeViewReplica.debug.dylib",
+          "bytes": 29842520,
+          "sha256": "2faa9f0716db29238407c0723c4db5bdca4ac67756f6ef745c470fef9014e6ce"
+        },
+        {
+          "path": "visionOS/Info.plist",
+          "bytes": 2191,
+          "sha256": "867b3419211945a79074901c4c8c2e719824f505dc178705a6da1b0b435bada5"
+        },
+        {
+          "path": "visionOS/Metadata.appintents/extract.actionsdata",
+          "bytes": 1764,
+          "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+        },
+        {
+          "path": "visionOS/Metadata.appintents/version.json",
+          "bytes": 53,
+          "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+        },
+        {
+          "path": "visionOS/PkgInfo",
+          "bytes": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "visionOS/__preview.dylib",
+          "bytes": 16760,
+          "sha256": "f969dc8b19bebb6ffb9280f2343858d8a568ff2373374385700dcae25761a1b4"
+        },
+        {
+          "path": "visionOS/default.metallib",
+          "bytes": 73136,
+          "sha256": "5ce1f26d647310d55fc2249c5cba4735e94a07626545edbb8e169d5fdce1b955"
+        },
+        {
+          "path": "visionOS/demo-artwork.mp4",
+          "bytes": 93364,
+          "sha256": "0613615458cfeadc875d097c163385baac685902159aaa0f3ee86a3cb44bb3b6"
+        },
+        {
+          "path": "visionOS/demo-tone.wav",
+          "bytes": 176444,
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "visionOS/podcast-caption-test.mp4",
+          "bytes": 365116,
+          "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+        },
+        {
+          "path": "visionOS/podcast-test-audio.wav",
+          "bytes": 1920044,
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        }
+      ]
+    },
+    {
+      "platform": "watchOS",
+      "files": [
+        {
+          "path": "watchOS/Assets.car",
+          "bytes": 14236856,
+          "sha256": "a771995aac5ec007e91664e4428067ac0555610c4b215035bfc3e79c79a932ed"
+        },
+        {
+          "path": "watchOS/FeedKit-LICENSE.txt",
+          "bytes": 1083,
+          "sha256": "2490847f72bd00ab9742711fe9e062cda2e67f7459d4c7bb9e3afa4c9bd038d0"
+        },
+        {
+          "path": "watchOS/HomeViewWatch",
+          "bytes": 40224,
+          "sha256": "7cbd76f08b69d235082ed075ff3aaa495b617031354cf30409b4b0d802addffe"
+        },
+        {
+          "path": "watchOS/HomeViewWatch.debug.dylib",
+          "bytes": 2942392,
+          "sha256": "511b4a144b31a3b0fdfdf7ec3742048b505579c612f496c02d239d8266df1dd1"
+        },
+        {
+          "path": "watchOS/Info.plist",
+          "bytes": 1888,
+          "sha256": "8959eb2cf5183d039a531124408fccf21345622723ebf2a620d73eab81aede21"
+        },
+        {
+          "path": "watchOS/PkgInfo",
+          "bytes": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "watchOS/__preview.dylib",
+          "bytes": 16760,
+          "sha256": "bf73f1f668d076a35153530e76ea07d6ae5a749fdf5f87c63273b33277d69de9"
+        },
+        {
+          "path": "watchOS/demo-tone.wav",
+          "bytes": 176444,
+          "sha256": "2492dd6c27f8ece5c4700a5f96e2265b2d7bcb67068eef0089e1a011e7fef157"
+        },
+        {
+          "path": "watchOS/podcast-caption-test.mp4",
+          "bytes": 365116,
+          "sha256": "d5913d7d0a15e5ed207569bce3f8e35abd71a813fc6d4db57a2e3a7bef4a770a"
+        },
+        {
+          "path": "watchOS/podcast-test-audio.wav",
+          "bytes": 1920044,
+          "sha256": "33ec2d17e1ffd25b6708cfdad022cd0a0dc3c0bf3b37043ff2820cb51fd4bdc8"
+        }
+      ]
+    }
+  ],
+  "visual_scope": "No renderer, resource or UI edit; no new focus/pixel probe or mobile UI run claimed.",
+  "remaining": [
+    "Actual OS authorization/revocation/reboot reconciliation",
+    "Physical and acoustic delivery outside app",
+    "Unproved original alarm repeat/timer layout semantics"
+  ],
+  "holds_unchanged": [
+    "Home",
+    "Physical devices",
+    "Signing"
+  ],
+  "issues_remain_open": true,
+  "private_artifact_locator": "research/homeview-alarm-admission-20261031"
+}

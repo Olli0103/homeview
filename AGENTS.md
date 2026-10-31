@@ -23,6 +23,11 @@ app/test/launch inputs and manifests required by the checkpoint; keep distinct r
 bundles and logs. A historical receipt must not depend on mutable current products.
 Do not duplicate unchanged source/binary archives for each device/test selection.
 
+A targeted `xcodebuild clean` can remove the other SDK products from this shared
+DerivedData, not just the SDK being repaired. Seal any required existing products
+before a targeted clean/recovery. Prefer the common builder's ordered iOS recovery
+first and remaining SDKs afterward; never assume other bundles survived a clean.
+
 Use the existing `Scripts/build_platforms.py` for SDK checks. It checks the actual
 destination filesystem before each build/recovery and records capacity afterward;
 the default reserve is 16 GiB (`HOMEVIEW_MIN_FREE_GIB` may explicitly select a positive

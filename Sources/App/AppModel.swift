@@ -1558,7 +1558,8 @@ final class AppModel {
     /// Serialize each system identity: cleanup of an old completion must finish
     /// before its replacement starts. Different identities remain independent.
     private func queueNativeSchedule(_ id:UUID,wanted:@escaping @MainActor ()->Bool,
-      schedule:@escaping @MainActor () async throws -> Void,record:@escaping (inout Snapshot)->Void) {
+      schedule:@escaping @MainActor (@escaping @MainActor ()->Bool) async throws -> Bool,
+      record:@escaping (inout Snapshot)->Void) {
       let predecessor=nativeScheduleTasks[id]?.task,token=UUID()
       nativeScheduleTokens[id]=token;nativeSchedulesInFlight+=1
       let task=Task {
@@ -1568,9 +1569,12 @@ final class AppModel {
           if nativeScheduleTokens[id]==token {nativeScheduleTokens.removeValue(forKey:id)}
         }
         if let predecessor {await predecessor.value}
-        guard nativeScheduleTokens[id]==token,!Task.isCancelled,wanted() else {return}
+        let isCurrent: @MainActor ()->Bool = {
+          self.nativeScheduleTokens[id]==token && !Task.isCancelled && !self.storeReadOnly && wanted()
+        }
+        guard isCurrent() else {return}
         do {
-          do {try await schedule()}
+          do {guard try await schedule(isCurrent) else {return}}
           catch {
             guard nativeScheduleTokens[id]==token,wanted() else {return}
             throw error
@@ -1595,8 +1599,8 @@ final class AppModel {
       guard systemAlarmsAllowed,let deadline=timer.deadline else {return}
       queueNativeSchedule(timer.id,wanted:{
         self.data.timers.contains {$0.id==timer.id && $0.deadline==deadline && !$0.didAlert}
-      },schedule:{
-        try await self.nativeAlarms.scheduleTimer(id:timer.id,seconds:max(1,deadline.timeIntervalSinceNow),title:timer.title)
+      },schedule:{ isCurrent in
+        try await self.nativeAlarms.scheduleTimer(id:timer.id,deadline:deadline,title:timer.title,isCurrent:isCurrent)
       },record:{$0.nativeTimerIDs.insert(timer.id)})
     #endif
   }
@@ -1661,8 +1665,8 @@ final class AppModel {
       guard systemAlarmsAllowed else {return}
       queueNativeSchedule(alarm.id,wanted:{
         self.data.alarms.contains {$0.id==alarm.id && $0.enabled && $0.hour==alarm.hour && $0.minute==alarm.minute && $0.recurrence==alarm.recurrence}
-      },schedule:{
-        try await self.nativeAlarms.scheduleAlarm(id:alarm.id,hour:alarm.hour,minute:alarm.minute,recurrence:alarm.recurrence)
+      },schedule:{ isCurrent in
+        try await self.nativeAlarms.scheduleAlarm(id:alarm.id,hour:alarm.hour,minute:alarm.minute,recurrence:alarm.recurrence,isCurrent:isCurrent)
       },record:{$0.nativeAlarmIDs.insert(alarm.id)})
     #endif
   }

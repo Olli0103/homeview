@@ -11,26 +11,32 @@ import SwiftUI
   @available(iOS 26.1, *)
   @MainActor
   final class NativeAlarmService {
-    func scheduleTimer(id: UUID, seconds: TimeInterval, title: String) async throws {
-      let deadline = Date().addingTimeInterval(seconds)
-      let manager = AlarmManager.shared
-      guard try await manager.requestAuthorization() == .authorized else {
-        throw NativeServiceError.permissionDenied
-      }
-      let attributes = AlarmAttributes(
-        presentation: AlarmPresentation(alert: .init(title: "\(title)")),
-        metadata: HomeViewAlarmMetadata(), tintColor: .orange)
-      _ = try await manager.schedule(
-        id: id,
-        configuration: .timer(
-          duration: max(1, deadline.timeIntervalSinceNow), attributes: attributes))
+    func scheduleTimer(id: UUID, deadline: Date, title: String,
+      isCurrent:@escaping @MainActor ()->Bool = {true}) async throws -> Bool {
+      return try await AlarmScheduleAdmission.perform(deadline:deadline,isCurrent:isCurrent,authorize:{
+        let manager=AlarmManager.shared
+        guard try await manager.requestAuthorization() == .authorized else {
+          throw NativeServiceError.permissionDenied
+        }
+      },schedule:{ remaining in
+        let manager=AlarmManager.shared
+        guard let remaining else {throw HomeError.invalidValue}
+        let attributes = AlarmAttributes(
+          presentation: AlarmPresentation(alert: .init(title: "\(title)")),
+          metadata: HomeViewAlarmMetadata(), tintColor: .orange)
+        _ = try await manager.schedule(id:id,configuration:.timer(duration:remaining,attributes:attributes))
+      })
     }
-    func scheduleAlarm(id: UUID, hour: Int, minute: Int, recurrence: AlarmRecurrence = .once) async throws {
+    func scheduleAlarm(id: UUID, hour: Int, minute: Int, recurrence: AlarmRecurrence = .once,
+      isCurrent:@escaping @MainActor ()->Bool = {true}) async throws -> Bool {
       guard (0...23).contains(hour), (0...59).contains(minute) else { throw HomeError.invalidValue }
-      let manager = AlarmManager.shared
-      guard try await manager.requestAuthorization() == .authorized else {
-        throw NativeServiceError.permissionDenied
-      }
+      return try await AlarmScheduleAdmission.perform(isCurrent:isCurrent,authorize:{
+        let manager=AlarmManager.shared
+        guard try await manager.requestAuthorization() == .authorized else {
+          throw NativeServiceError.permissionDenied
+        }
+      },schedule:{ _ in
+        let manager=AlarmManager.shared
       let attributes = AlarmAttributes(
         presentation: AlarmPresentation(alert: .init(title: "HomeView alarm")),
         metadata: HomeViewAlarmMetadata(), tintColor: .orange)
@@ -40,6 +46,7 @@ import SwiftUI
       let schedule = Alarm.Schedule.relative(.init(time: .init(hour: hour, minute: minute), repeats: repeats))
       _ = try await manager.schedule(
         id: id, configuration: .alarm(schedule: schedule, attributes: attributes))
+      })
     }
     func canResetLocalState() throws -> Bool {
       let manager=AlarmManager.shared
@@ -53,7 +60,8 @@ import SwiftUI
     func activeIDs() throws -> Set<UUID> { Set(try AlarmManager.shared.alarms.map(\.id)) }
     func scheduleTest(seconds: TimeInterval = 60) async throws -> UUID {
       let id = UUID()
-      try await scheduleTimer(id: id, seconds: seconds, title: "HomeView test timer")
+      guard try await scheduleTimer(id:id,deadline:Date().addingTimeInterval(seconds),title:"HomeView test timer")
+      else {throw HomeError.invalidValue}
       return id
     }
     func cancel(_ id: UUID) throws {
