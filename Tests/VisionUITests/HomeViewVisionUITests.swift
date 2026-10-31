@@ -1,6 +1,55 @@
 import XCTest
 
 @MainActor final class HomeViewVisionUITests:XCTestCase {
+  func testNativeVisionActualWindowResizePreservesTimerAndUnsentInput() {
+    continueAfterFailure=false;executionTimeAllowance=240
+    let app=launch("Timers",extra:["--vision-window-system-test"])
+    let report=app.staticTexts["vision.window.report"]
+    XCTAssertTrue(report.waitForExistence(timeout:10))
+    expectation(for:NSPredicate(format:"label CONTAINS %@","window="),evaluatedWith:report);waitForExpectations(timeout:10)
+    let initial=report.label
+    addTeardownBlock { @MainActor in
+      let restore=app.buttons["vision.window.restore"]
+      guard restore.exists,restore.isHittable else {XCTFail("Owned window restore control unavailable");return}
+      restore.tap()
+      let expected=initial.replacingOccurrences(of:"request=initial",with:"request=restore")
+      let restored=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@",expected),object:report)
+      XCTAssertEqual(XCTWaiter.wait(for:[restored],timeout:10),.completed)
+    }
+    func resize(_ name:String,_ size:String) {
+      let control=app.buttons["vision.window."+name]
+      XCTAssertTrue(control.isHittable);control.tap()
+      let expected="request=\(name); window=\(size); scene=\(size); error=none"
+      expectation(for:NSPredicate(format:"label == %@",expected),evaluatedWith:report);waitForExpectations(timeout:10)
+      let window=app.windows.containing(.other,identifier:"reference.viewport").firstMatch
+      let viewport=app.otherElements["reference.viewport"]
+      XCTAssertTrue(window.exists);XCTAssertTrue(window.frame.contains(viewport.frame))
+      for id in ["nav.faces","nav.apps","nav.assistant","nav.controls"] {
+        let button=app.buttons[id];XCTAssertTrue(window.frame.contains(button.frame));XCTAssertTrue(button.isHittable)
+      }
+    }
+    app.buttons["timer.start"].tap();XCTAssertTrue(app.buttons["timer.pause"].waitForExistence(timeout:5))
+    app.buttons["timer.pause"].tap();XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    resize("wide","1000x650")
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    capture(app,"vision-window-wide-paused-timer")
+    app.buttons["nav.assistant"].tap()
+    let field=app.textFields["assistant.input"];XCTAssertTrue(field.waitForExistence(timeout:5))
+    field.tap();field.typeText("OWNED WINDOW DRAFT")
+    resize("portrait","650x1000")
+    XCTAssertEqual(field.value as? String,"OWNED WINDOW DRAFT")
+    capture(app,"vision-window-portrait-unsent-input")
+    app.buttons["nav.faces"].tap();resize("compact","500x650")
+    app.buttons["home.thermostat"].tap()
+    XCTAssertTrue(app.staticTexts["thermostat.value"].waitForExistence(timeout:5))
+    XCTAssertEqual(app.staticTexts["thermostat.value"].label,"68°")
+    capture(app,"vision-window-compact-mock-thermostat")
+    app.buttons["nav.faces"].tap();app.buttons["nav.apps"].tap()
+    XCTAssertTrue(app.buttons["all.apps"].waitForExistence(timeout:5));app.buttons["all.apps"].tap()
+    XCTAssertTrue(app.buttons["app.Timers"].waitForExistence(timeout:5));app.buttons["app.Timers"].tap()
+    XCTAssertEqual(app.buttons["timer.pause"].label,"Resume timer")
+    app.buttons["timer.delete"].tap();XCTAssertTrue(app.buttons["timer.start"].waitForExistence(timeout:5))
+  }
   func testReadOnlyVisionVisibleLiveSpeechAndRTTSearchInventory() {
     continueAfterFailure=false
     let settings=XCUIApplication(bundleIdentifier:"com.apple.Preferences")

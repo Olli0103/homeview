@@ -9,6 +9,9 @@ struct HomeViewReplicaApp: App {
         WatchRoot().environment(model)
       #else
         RootView().environment(model)
+          #if os(visionOS)
+            .modifier(VisionWindowSystemTestModifier())
+          #endif
           #if os(macOS)
             .frame(minWidth: 440, minHeight: 460)
           #endif

@@ -1,0 +1,447 @@
+{
+  "date": "2026-10-31",
+  "issue": 79,
+  "base_commit": "a5fb03599eb1131b4a545bb66398ea02c58117f2",
+  "scope": "Actual public OS scene resize of owned synthetic visionOS app; no renderer or physical-headset change",
+  "actual_OS_geometry_sequence": [
+    [
+      1280,
+      720
+    ],
+    [
+      1000,
+      650
+    ],
+    [
+      650,
+      1000
+    ],
+    [
+      500,
+      650
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "geometry_sources": [
+    "UIWindow.bounds.size",
+    "UIWindowScene.effectiveGeometry.coordinateSpace.bounds.size"
+  ],
+  "request_API": "UIWindowScene.requestGeometryUpdate(.Vision(size:)); no changed minimum/maximum/resizing restriction",
+  "source_files": 266,
+  "source_manifest_sha256": "4f63ef7762987a0e0c5cf8d5f9f8599e38d7270e2b325f85d8c08bc515a4abe9",
+  "compiled_UI_files": 20,
+  "compiled_manifest_sha256": "a554f9bdbcf7496c4c226d7352c839b0e292f5b9f2ae8d011e46d0eb8f931735",
+  "installed_app_files_each": 14,
+  "initial_failed_run_same_14_app_files": true,
+  "UI": [
+    {
+      "lane": "vision-v2",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D52824FF-D0CF-4397-A0C5-4E21F26CE31D",
+              "deviceName": "HomeView Vision QA 20261029",
+              "modelName": "Apple Vision Pro",
+              "osBuildNumber": "24M362",
+              "osVersion": "27.0",
+              "platform": "visionOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewVision · Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793455654.325,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793455575.378,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewVision",
+        "topInsights": [],
+        "totalTestCount": 1
+      }
+    },
+    {
+      "lane": "vision-normal",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D52824FF-D0CF-4397-A0C5-4E21F26CE31D",
+              "deviceName": "HomeView Vision QA 20261029",
+              "modelName": "Apple Vision Pro",
+              "osBuildNumber": "24M362",
+              "osVersion": "27.0",
+              "platform": "visionOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewVision · Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793455753.898,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793455713.326,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewVision",
+        "topInsights": [],
+        "totalTestCount": 1
+      }
+    }
+  ],
+  "unique_current_methods": 2,
+  "current_executions": 2,
+  "current_passed": 2,
+  "historical_executions": 3,
+  "historical_failed": 1,
+  "initial_failure": {
+    "summary": {
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "D52824FF-D0CF-4397-A0C5-4E21F26CE31D",
+            "deviceName": "HomeView Vision QA 20261029",
+            "modelName": "Apple Vision Pro",
+            "osBuildNumber": "24M362",
+            "osVersion": "27.0",
+            "platform": "visionOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 1,
+          "passedTests": 0,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "environmentDescription": "HomeViewVision · Built with macOS 27.0.1",
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "finishTime": 1793455500.081,
+      "passedTests": 0,
+      "result": "Failed",
+      "runtimeWarnings": [],
+      "skippedTests": 0,
+      "startTime": 1793455472.826,
+      "statistics": [],
+      "testFailures": [
+        {
+          "failureText": "Failed to tap \"app.Timers\" Button: No matches found for Elements matching predicate '\"app.Timers\" IN identifiers' from input {(\n    Button, identifier: 'vision.window.wide', label: 'Wide',\n    Button, identifier: 'vision.window.portrait', label: 'Portrait',\n    Button, identifier: 'vision.window.compact', label: 'Compact',\n    Button, identifier: 'vision.window.restore', label: 'Restore',\n    Button, identifier: 'personal.profile', label: 'Choose profile',\n    Button, identifier: 'all.apps', label: 'All Apps',\n    Button, identifier: 'nav.faces', label: 'Faces',\n    Button, identifier: 'nav.apps', label: 'Apps',\n    Button, identifier: 'nav.assistant', label: 'Assistant',\n    Button, identifier: 'nav.controls', label: 'Control Center',\n    Button, identifier: 'home.thermostat', label: '68',\n    Button, identifier: 'scene.goodnight', label: 'Good Night, Scene',\n    Button, identifier: 'temperature.decrease', label: 'Decrease temperature',\n    Button, identifier: 'temperature.increase', label: 'Increase temperature',\n    Button, label: 'Intercom, Everywhere',\n    Button, label: 'Door Lock, Front Door',\n    Button, identifier: 'home.entrylight', label: 'Lights, Entryway',\n    Button,\n    Button, identifier: 'personal.photos.open', label: 'Photos',\n    Button, identifier: 'app.FaceTime', label: 'FaceTime',\n    Button, identifier: 'app.Home', label: 'Home',\n    Button, identifier: 'app.Music', label: 'Music',\n    Button, identifier: 'app.Messages', label: 'Messages'\n)}\nPossibly caused by runtime issues:\nAutomation type mismatch: computed Button from legacy attributes vs PopUpButton from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 14;\n    \"XC_kAXXCAttributeElementBaseType\" = NSObject;\n    \"XC_kAXXCAttributeElementType\" = \"SwiftUI.AccessibilityNode\";\n    \"XC_kAXXCAttributeTraits\" = 1108101562369;\n}\nSee test report attachments for more detail.",
+          "targetName": "HomeViewVisionUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "HomeViewVisionUITests/testNativeVisionActualWindowResizePreservesTimerAndUnsentInput()",
+          "testIdentifierURL": "test://com.apple.xcode/HomeViewReplica/HomeViewVisionUITests/HomeViewVisionUITests/testNativeVisionActualWindowResizePreservesTimerAndUnsentInput",
+          "testName": "testNativeVisionActualWindowResizePreservesTimerAndUnsentInput()"
+        }
+      ],
+      "title": "Test - HomeViewVision",
+      "topInsights": [],
+      "totalTestCount": 1
+    },
+    "cause": "Test attempted timer icon before All Apps; failed before first resize. Corrected only native test navigation."
+  },
+  "normal_synthetic_launch_without_geometry_flag": {
+    "AX_trees": [
+      {
+        "sha256": "244b88d0c343cc2a16deee0f7c5269be66d00be581ed18fbb6b72f64a2c6fb87",
+        "diagnostic_controls_absent": true
+      },
+      {
+        "sha256": "c540d8f7680db9c77afef8d6094d2e13e6e193038aed0e18f1208a8faa9c6a64",
+        "diagnostic_controls_absent": true
+      }
+    ],
+    "normal_signed_production_launch": false
+  },
+  "public_SDK_headers": [
+    {
+      "name": "UIWindowSceneGeometryPreferencesVision.h",
+      "sha256": "763fdba6f7929c880fa970f37e1fc0ae5b3406b290b21deee0f2f74abd70cf7b"
+    },
+    {
+      "name": "UIWindowSceneGeometry.h",
+      "sha256": "ebaf041f9d8311ab193403ef0a2005dd7bfdcceadfae4e37486abea8074a687b"
+    }
+  ],
+  "captures": [
+    {
+      "exit_code": 0,
+      "elapsed_seconds": 79.91238575,
+      "ended": "2026-10-31T14:07:34.454816+00:00",
+      "system_captures": {
+        "vision-window-wide-paused-timer": {
+          "native_ready_at": 1793455598.094252,
+          "host_capture_started_at": 1793455598.204461,
+          "host_capture_ended_at": 1793455598.740905,
+          "file": "vision-window-wide-paused-timer.png",
+          "bytes": 6128789,
+          "sha256": "5b7234ccee6f3247357b867a7b61f728e19d2e95723e313de5aee168487569b2",
+          "read_back": true,
+          "native_done_at": 1793455608.114335,
+          "inside_held_state": true
+        },
+        "vision-window-portrait-unsent-input": {
+          "native_ready_at": 1793455617.1723351,
+          "host_capture_started_at": 1793455617.218752,
+          "host_capture_ended_at": 1793455617.737012,
+          "file": "vision-window-portrait-unsent-input.png",
+          "bytes": 6050667,
+          "sha256": "550bb964afa1adf9eeac4f26db2d8496d768132d44491a29e60c143158643cf5",
+          "read_back": true,
+          "native_done_at": 1793455627.180973,
+          "inside_held_state": true
+        },
+        "vision-window-compact-mock-thermostat": {
+          "native_ready_at": 1793455634.1752992,
+          "host_capture_started_at": 1793455634.1964118,
+          "host_capture_ended_at": 1793455634.6539679,
+          "file": "vision-window-compact-mock-thermostat.png",
+          "bytes": 6577972,
+          "sha256": "55d582f7a4b6a2d7559686f52fa59cd1999a68270de53b0a3c9d179abd9158bc",
+          "read_back": true,
+          "native_done_at": 1793455644.184691,
+          "inside_held_state": true
+        }
+      },
+      "capture_errors": [],
+      "captures_within_held_states": true
+    },
+    {
+      "exit_code": 0,
+      "elapsed_seconds": 41.544997584,
+      "ended": "2026-10-31T14:09:13.950921+00:00",
+      "system_captures": {
+        "vision-native-window": {
+          "native_ready_at": 1793455728.741939,
+          "host_capture_started_at": 1793455728.818923,
+          "host_capture_ended_at": 1793455729.21342,
+          "file": "vision-native-window.png",
+          "bytes": 6058206,
+          "sha256": "f660df19a15af3b04d9ebcdd7470826c83518522fe589ec073b3436e63d0f231",
+          "read_back": true,
+          "native_done_at": 1793455738.750719,
+          "inside_held_state": true
+        },
+        "vision-mock-thermostat": {
+          "native_ready_at": 1793455742.7205791,
+          "host_capture_started_at": 1793455742.756833,
+          "host_capture_ended_at": 1793455743.1446521,
+          "file": "vision-mock-thermostat.png",
+          "bytes": 5645695,
+          "sha256": "a4e886de0151ed200d6111d9362be6e65af94473cf865aa53e40949c76fefc41",
+          "read_back": true,
+          "native_done_at": 1793455752.720928,
+          "inside_held_state": true
+        }
+      },
+      "capture_errors": [],
+      "captures_within_held_states": true
+    }
+  ],
+  "images": [
+    {
+      "state": "vision-window-wide-paused-timer",
+      "camera_sha256": "5b7234ccee6f3247357b867a7b61f728e19d2e95723e313de5aee168487569b2",
+      "camera_size": [
+        3840,
+        2160
+      ],
+      "full_camera_visually_reviewed": true,
+      "crop_rectangle": [
+        1195,
+        878,
+        2582,
+        1778
+      ],
+      "public_crop": "Docs/screenshots/vision-window-resizing/vision-window-wide-paused-timer-own-window-crop.png",
+      "crop_sha256": "7481aa1fd84575c5cbcff0674437e68efe9e5c766aa038e58376efd1b367c5fe",
+      "crop_size": [
+        1387,
+        900
+      ],
+      "operation": "Unscaled axis-aligned crop; no perspective correction or renderer substitution",
+      "public_crop_visually_reviewed": true
+    },
+    {
+      "state": "vision-window-portrait-unsent-input",
+      "camera_sha256": "550bb964afa1adf9eeac4f26db2d8496d768132d44491a29e60c143158643cf5",
+      "camera_size": [
+        3840,
+        2160
+      ],
+      "full_camera_visually_reviewed": true,
+      "crop_rectangle": [
+        1437,
+        633,
+        2339,
+        2022
+      ],
+      "public_crop": "Docs/screenshots/vision-window-resizing/vision-window-portrait-unsent-input-own-window-crop.png",
+      "crop_sha256": "1a5c783a0943edd3f4de29988bcb3de79cb49864c45980203cc334f702084aef",
+      "crop_size": [
+        902,
+        1389
+      ],
+      "operation": "Unscaled axis-aligned crop; no perspective correction or renderer substitution",
+      "public_crop_visually_reviewed": true
+    },
+    {
+      "state": "vision-window-compact-mock-thermostat",
+      "camera_sha256": "55d582f7a4b6a2d7559686f52fa59cd1999a68270de53b0a3c9d179abd9158bc",
+      "camera_size": [
+        3840,
+        2160
+      ],
+      "full_camera_visually_reviewed": true,
+      "crop_rectangle": [
+        1540,
+        879,
+        2234,
+        1780
+      ],
+      "public_crop": "Docs/screenshots/vision-window-resizing/vision-window-compact-mock-thermostat-own-window-crop.png",
+      "crop_sha256": "41f136949195a7ae92a441a077cdae606579829576856d1843f2885ea9c94a34",
+      "crop_size": [
+        694,
+        901
+      ],
+      "operation": "Unscaled axis-aligned crop; no perspective correction or renderer substitution",
+      "public_crop_visually_reviewed": true
+    },
+    {
+      "state": "vision-native-window",
+      "camera_sha256": "f660df19a15af3b04d9ebcdd7470826c83518522fe589ec073b3436e63d0f231",
+      "camera_size": [
+        3840,
+        2160
+      ],
+      "full_camera_visually_reviewed": true,
+      "crop_rectangle": [
+        1001,
+        825,
+        2776,
+        1829
+      ],
+      "public_crop": "Docs/screenshots/vision-window-resizing/vision-native-window-own-window-crop.png",
+      "crop_sha256": "7ab6395b8d466fcdd27c0ea5436779a264740ef851eeae4e42b2ceb8348384c2",
+      "crop_size": [
+        1775,
+        1004
+      ],
+      "operation": "Unscaled axis-aligned crop; no perspective correction or renderer substitution",
+      "public_crop_visually_reviewed": true
+    },
+    {
+      "state": "vision-mock-thermostat",
+      "camera_sha256": "a4e886de0151ed200d6111d9362be6e65af94473cf865aa53e40949c76fefc41",
+      "camera_size": [
+        3840,
+        2160
+      ],
+      "full_camera_visually_reviewed": true,
+      "crop_rectangle": [
+        1001,
+        825,
+        2776,
+        1829
+      ],
+      "public_crop": "Docs/screenshots/vision-window-resizing/vision-mock-thermostat-own-window-crop.png",
+      "crop_sha256": "f20dbef2e5f62ff1de98253f54d4478c769f0f776c742771388a5f35dfa62fe3",
+      "crop_size": [
+        1775,
+        1004
+      ],
+      "operation": "Unscaled axis-aligned crop; no perspective correction or renderer substitution",
+      "public_crop_visually_reviewed": true
+    }
+  ],
+  "AX_limit": "AX wrapper/window frames may include padding and keyboard windows; not equated to UIKit logical scene size or standalone visible-content proof. Actual full simulator camera frames inspected.",
+  "SDK": {
+    "platform": "visionOS",
+    "exit_code": 0,
+    "storage_headroom_ok": true,
+    "started": "2026-10-31T14:09:51.066157+00:00",
+    "ended": "2026-10-31T14:09:56.440419+00:00",
+    "files": 14,
+    "UI_same_files": 13,
+    "UI_different_files": [
+      "Assets.car"
+    ],
+    "builder": "Existing Scripts/build_platforms.py build_platform selected visionOS configuration; no modifications"
+  },
+  "Core_unchanged": true,
+  "new_Core_run": false,
+  "new_other_four_SDK_runs": false,
+  "prior_other_four_SDK_receipt": "verification/timer-activity-expiry-20261031.json",
+  "archives": {
+    "archives": [
+      {
+        "name": "source-delta.zip",
+        "bytes": 217086,
+        "sha256": "eb00e91a65cba43e7a95f32afd336aec98a66b9ffbb96dc45f497422d617c7c1"
+      },
+      {
+        "name": "ui-inputs.zip",
+        "bytes": 21502250,
+        "sha256": "8f72cd7cc6bc0bb32510866b728e14cdb2b02a78760ae8508db8996f1e396056"
+      },
+      {
+        "name": "ui-v2-delta.zip",
+        "bytes": 50824,
+        "sha256": "d95b48ddaec944b343ef480575b48c7e1000a48f0e23b8122c1683608fe1a168"
+      },
+      {
+        "name": "vision-sdk.zip",
+        "bytes": 21432974,
+        "sha256": "7e0fdfd4f227d680bbf2931eb61def3170e574db4e086be0e18871264e181ec7"
+      }
+    ],
+    "source_base_locator": "research/homeview-album-boundaries-20261031/source.zip",
+    "source_base_sha256": "fdd0eea20ed02849da83d3622f57408d1d67747be40c10594aeaa317d46673c1",
+    "source_files_read_back": 266,
+    "source_delta_files": 18,
+    "compiled_UI_files_read_back": 20,
+    "normal_Vision_SDK_files_read_back": 14
+  },
+  "limits": [
+    "Public programmatic size requests, not physical corner drag or gaze/hand input.",
+    "One owned window; no multiwindow, warm Shortcuts foreground routing or older OS acceptance.",
+    "Only local paused timer, unsent fixture draft and MockHome thermostat; no personal sources, audio playback, microphone/camera or Home.",
+    "Physical/signing/Home holds remain; native Mac blocked setup not changed.",
+    "No new pixel parity, original renderer or all-flow accessibility acceptance."
+  ],
+  "private_artifact_locator": "research/homeview-vision-window-geometry-20261031",
+  "issue_remains_open": true
+}

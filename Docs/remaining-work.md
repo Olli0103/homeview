@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+[Echte Vision-OS-Fenstergrößen und Eingabe geprüft](vision-window-resizing.md):1000×650/650×1000/500×650, ursprüngliche1280×720wiederhergestellt; Timer/ungesendeterEntwurf/Mock-Navigation erhalten. Zwei aktuelle native Methoden und gezielter Vision-SDK-Build bestanden. Fünf vollständige virtuelle Kamerabilder gesichtet; keine physische Geste/Mehrfenster-/Warmzielwahl-/Originalabnahme. #79 bleibt offen.
+
 [Frischer vollständiger Abgleich nach den vier Abschluss-/Lifecycle-Paketen](verification/backlog-after-completion-lifecycle-20261031.json): weiterhin48ursprüngliche Implementierungen,1ausdrücklicher Ausschluss,33offen; zusätzliches Community-Issue83 separat geschlossen. Kein Teilerfolg wird als vollständige Original-/Geräteabnahme gezählt.
 
 [Eigene Live Activity nach tatsächlichem Hintergrundablauf bereinigt](timer-activity-background-expiry.md): zwei aktuelle native iPhone-/iPad-Ausführungen und fünf SDKs bestanden; erste Cleanup-Fehlausführung und Wiederherstellung bleiben erhalten. Echte ActivityKit-Frist statt nomineller Wartezeit, Registry bei Rückkehr null, anschließendes Opt-out exakt gespeichert. Kein autonomer Hintergrund-Cleanup: iPhone zeigt vorher weiterhin 0:00. #51 bleibt für die übrige ursprüngliche Matrix offen.
