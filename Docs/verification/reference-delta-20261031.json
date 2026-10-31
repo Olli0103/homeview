@@ -1,0 +1,946 @@
+{
+  "date": "2026-10-31",
+  "observed_utc": "2026-10-31T06:04:45.486841+00:00",
+  "repository": "Olli0103/homeview",
+  "base_commit": "f6a84191d2d6422bc040fa250037999642bfaf65",
+  "scope": "Bounded current original-source follow-up and documentation reconciliation; not a full source sweep or product acceptance",
+  "searches": [
+    {
+      "tool_record": "search0",
+      "query": "Apple HomeView \"world clock\" interface review",
+      "kind": "results",
+      "result_count": 5,
+      "provider": "brave",
+      "error": null,
+      "response_sha256": "0ba7ea65eae0b8116d7004be8423e21da9d47377a06de3a66c39bd34a172243d"
+    },
+    {
+      "tool_record": "search1",
+      "query": "Apple HomeView customize face \"font\" colors editor",
+      "kind": "results",
+      "result_count": 5,
+      "provider": "brave",
+      "error": null,
+      "response_sha256": "8b87435909f05a59aa2fc8ce77c835fbb8e4c548a5f0e88c8c2d75d4d5c6c54f"
+    },
+    {
+      "tool_record": "search2",
+      "query": "Apple HomeView photo gallery shuffle shared album review",
+      "kind": "results",
+      "result_count": 5,
+      "provider": "brave",
+      "error": null,
+      "response_sha256": "27abd0c392173ddb807e08f45491cf2a464abf965cd31d3b4a38f489908181f0"
+    },
+    {
+      "tool_record": "follow0",
+      "query": "\"HomeView\" \"user guide\" Apple",
+      "kind": "results",
+      "result_count": 4,
+      "provider": "brave",
+      "error": null,
+      "response_sha256": "5340423eaa660cfa5c86eeab13151c8e73df4781b7422b1a9a809126169f2e84"
+    },
+    {
+      "tool_record": "follow1",
+      "query": "\"HomeView\" \"review\" after:2026-10-23",
+      "kind": "results",
+      "result_count": 6,
+      "provider": "brave",
+      "error": null,
+      "response_sha256": "d00381788601a8a57159d00b1c0dcfbe33da386901a24991159eeea481d28a9d"
+    },
+    {
+      "tool_record": "follow2",
+      "query": "\"HomeView\" \"clock\" \"customize\"",
+      "kind": "error",
+      "result_count": null,
+      "provider": "brave",
+      "error": "provider_error",
+      "response_sha256": "04236e6b36327fdf8cb9d684d304450b0b267a4bc596b27bb6342af220ec19ba"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.gbnews.com/tech/apple-homeview-first-impressions",
+      "finalUrl": "https://www.gbnews.com/tech/apple-homeview-first-impressions",
+      "status": 200,
+      "truncated": false,
+      "fetchedAt": "2026-10-31T06:01:33.940Z",
+      "extractor": "readability",
+      "extracted_text_sha256": "f44885fa249fe34377f74aa9f9fd30dc48eea61bfbfa57ba019e503455d14f85"
+    },
+    {
+      "url": "https://appleinsider.com/articles/26/10/15/devil-is-in-the-details-tidbits-from-our-time-trying-homeview",
+      "finalUrl": "https://appleinsider.com/articles/26/10/15/devil-is-in-the-details-tidbits-from-our-time-trying-homeview",
+      "status": 200,
+      "truncated": false,
+      "fetchedAt": "2026-10-31T06:01:34.754Z",
+      "extractor": "firecrawl",
+      "extracted_text_sha256": "c91e01a6843675c341616d36958add634a8c57acfdb8735873a742a34beb7976"
+    },
+    {
+      "url": "https://www.wallpaper.com/tech/apple-homeview-review",
+      "finalUrl": "https://www.wallpaper.com/tech/apple-homeview-review",
+      "status": 200,
+      "truncated": false,
+      "fetchedAt": "2026-10-31T06:01:46.614Z",
+      "extractor": "firecrawl",
+      "extracted_text_sha256": "dced3353247c01b12f8a08c68b021c840c8a4c5c20d0ae5caa6f3e01f519a4d4"
+    },
+    {
+      "url": "https://blakecrosley.com/blog/apple-homeview-developers-day-one",
+      "finalUrl": "https://blakecrosley.com/blog/apple-homeview-developers-day-one",
+      "status": 200,
+      "truncated": true,
+      "fetchedAt": "2026-10-31T06:01:45.803Z",
+      "extractor": "readability",
+      "extracted_text_sha256": "671e98684b9bf27b46fcc73a7a07d2471bb85a04c0e0294925b155e7428765c1"
+    },
+    {
+      "url": "https://www.apple.com/apple-homeview/",
+      "finalUrl": "https://www.apple.com/apple-homeview/",
+      "status": 200,
+      "truncated": false,
+      "fetchedAt": "2026-10-31T06:01:46.869Z",
+      "extractor": "readability",
+      "extracted_text_sha256": "adb80767b6d25263797ac06d3b20d2643c9fa013ee435b3dccbcb7bcda87a7e9"
+    },
+    {
+      "url": "https://www.apple.com/apple-homeview/specs/",
+      "finalUrl": "https://www.apple.com/apple-homeview/specs/",
+      "status": 200,
+      "truncated": false,
+      "fetchedAt": "2026-10-31T06:01:47.355Z",
+      "extractor": "readability",
+      "extracted_text_sha256": "59cda0f5103fcd8f21368e11a5b37fe43b0749368c9d1f55670af6d9d67d2399"
+    }
+  ],
+  "wallpaper_html": {
+    "url": "https://www.wallpaper.com/tech/apple-homeview-review",
+    "status": 200,
+    "bytes": 1128130,
+    "sha256": "90acad546894b6a8a33557a91c6d2c0efe52c568aec5a61cc73ce6993fbd2338",
+    "author": "Jonathan Bell",
+    "datePublished": "2026-10-23T07:25:05+00:00",
+    "initial_tool_extraction_article_complete": false,
+    "public_full_html_body_read": true
+  },
+  "images": [
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/MoUgReEbipopjosZoySLhG.jpg",
+      "caption": "blank",
+      "description": "Apple HomeView",
+      "height": 1440,
+      "width": 2560,
+      "id": "W01",
+      "path": "wallpaper-ef9150aa7937019c.jpg",
+      "status": 200,
+      "bytes": 374015,
+      "sha256": "90cb145d789e83f832c5b6ad399ccf8134dd5bb6fcd00d221116e096672d1a98",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        1440
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/nhcbDU3cHxQ2FrmAF3xCYS.jpg",
+      "caption": "<p>Apple HomeView </p>",
+      "description": "Apple HomeView ",
+      "height": 1707,
+      "width": 2560,
+      "id": "W02",
+      "path": "wallpaper-f980a2f3a59a652f.jpg",
+      "status": 200,
+      "bytes": 967313,
+      "sha256": "ae49a97132a57318d83026a79164b2696ccc9ee94c33ab033248705e1daef463",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        1707
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/D6yNHzJeiPJ2XLsxb5cTea.jpg",
+      "caption": "<p>Apple HomeView</p>",
+      "description": "Apple HomeView",
+      "height": 1707,
+      "width": 2560,
+      "id": "W03",
+      "path": "wallpaper-56514534b5c003de.jpg",
+      "status": 200,
+      "bytes": 241088,
+      "sha256": "135c92d98bce9feaf9f80129ca9ac6a8f2a2ca5f654dcb483f8025c0991e1c51",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        1707
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/e2itYTAXzQm2K8tve4ytMe.jpg",
+      "caption": "<p>Apple HomeView wall mounted edition</p>",
+      "description": "Apple HomeView wall mounted edition",
+      "height": 2560,
+      "width": 2560,
+      "id": "W04",
+      "path": "wallpaper-15c7fa09467228ad.jpg",
+      "status": 200,
+      "bytes": 506551,
+      "sha256": "e0fe300c59a861046c9e460bc8df6d6cd24d8cdcbcc5abc7813f20abbd705f0e",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        2560
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/p6fvt9TExDa6QEza23dtDW.jpg",
+      "caption": "<p>Apple HomeView colour family</p>",
+      "description": "Apple HomeView colour family",
+      "height": 1707,
+      "width": 2560,
+      "id": "W05",
+      "path": "wallpaper-2d460ecbeebfd98a.jpg",
+      "status": 200,
+      "bytes": 385930,
+      "sha256": "b8805b7028ee4bee9d1356b35b9813843c467dabef7f1604e64c97ce59935d2e",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        1707
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/dQSn5gYk5m2GuEfP72mGJj.jpg",
+      "caption": "<p>Speakers are integrated into the screen and the base</p>",
+      "description": "Speakers are integrated into the screen and the base",
+      "height": 1707,
+      "width": 2560,
+      "id": "W06",
+      "path": "wallpaper-2842335ae863ab7e.jpg",
+      "status": 200,
+      "bytes": 523691,
+      "sha256": "13318f2290c627a71de95d0d37e3806462ff12b51fa32568b5edda430991c91b",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        1707
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/6QSFAyLCrLjDLeTLPGJB7N.jpg",
+      "caption": "<p>Apple HomeView design details</p>",
+      "description": "Apple HomeView design details",
+      "height": 1707,
+      "width": 2560,
+      "id": "W07",
+      "path": "wallpaper-1ab6368a54c0f684.jpg",
+      "status": 200,
+      "bytes": 437691,
+      "sha256": "504a2b2077c41f3ed9c6b0ef85e51a4ce30ad34cf185c59375d3977f139c15da",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        1707
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/RvEtXaBwMeeHzpw8n6QmEH.jpg",
+      "caption": "<p>Apple HomeView </p>",
+      "description": "Apple HomeView ",
+      "height": 1707,
+      "width": 2560,
+      "id": "W08",
+      "path": "wallpaper-24201137647e2d74.jpg",
+      "status": 200,
+      "bytes": 391858,
+      "sha256": "2d66634e16609fb462707e6e7553e08291dcb17d41c840d46231c38cda28f40a",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        1707
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/EgLMnS5bYz97mLUCEqoSv3.jpg",
+      "caption": "<p>Apple HomeView cooking view</p>",
+      "description": "Apple HomeView cooking view",
+      "height": 2048,
+      "width": 2560,
+      "id": "W09",
+      "path": "wallpaper-3488f4d39ccd23d0.jpg",
+      "status": 200,
+      "bytes": 468811,
+      "sha256": "5d44ce93f15fd4d0cb8bc618f622a091a54af0b3eafe94912a75ce5a009d0450",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        2048
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/i5N4fbTmLdVjzhwQKm4fd7.jpg",
+      "caption": "<p>Apple HomeView screen personalisation</p>",
+      "description": "Apple HomeView screen personalisation",
+      "height": 1440,
+      "width": 2560,
+      "id": "W10",
+      "path": "wallpaper-1cdcaec1a97499a0.jpg",
+      "status": 200,
+      "bytes": 476351,
+      "sha256": "e32310dfaa1a5027cee0db3e0345ad0a1f16483033419f3d4996dd12daebf50a",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        1440
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/qAm5CfHrEgV2dDgyqzF6LC.jpg",
+      "description": "Apple HomeView in action",
+      "height": 2048,
+      "width": 2560,
+      "id": "W11",
+      "path": "wallpaper-d5d10ba7fa4fa344.jpg",
+      "status": 200,
+      "bytes": 272208,
+      "sha256": "525f68a3023b856ea8cee55662751da7b05165b06fe38c45a5975a470eb670ca",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        2048
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/kPEJM3eX6DMzzv6avEkYKC.jpg",
+      "description": "Apple HomeView in action",
+      "height": 2048,
+      "width": 2560,
+      "id": "W12",
+      "path": "wallpaper-8bb6849e395910e4.jpg",
+      "status": 200,
+      "bytes": 397117,
+      "sha256": "309f4adca7d1f42c175432868b859d8fa0d859da5c5f5ba5e8f5e13e7e2edde7",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        2048
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/kALFkoPHucZZV7jtC4k6RC.jpg",
+      "description": "Apple HomeView in action",
+      "height": 2048,
+      "width": 2560,
+      "id": "W13",
+      "path": "wallpaper-069f0258c6458e9e.jpg",
+      "status": 200,
+      "bytes": 490366,
+      "sha256": "d90f12a46b6e032c9524b220d32713ee36dd61755cbcd6fc5b5060e54c8b2df2",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        2048
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/BKdddEgChQbJHJnWpVA6JC.jpg",
+      "description": "Apple HomeView in action",
+      "height": 2048,
+      "width": 2560,
+      "id": "W14",
+      "path": "wallpaper-1bf8af118bf47cd0.jpg",
+      "status": 200,
+      "bytes": 317782,
+      "sha256": "f5da09706ddc7d2906d2637922d7aabe62819d9892623d5855b26d27faa3f17a",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        2048
+      ],
+      "mode": "RGB"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://cdn.mos.cms.futurecdn.net/3rHeHy4GdcthxJTTQZTBRC.jpg",
+      "description": "Apple HomeView in action",
+      "height": 2048,
+      "width": 2560,
+      "id": "W15",
+      "path": "wallpaper-588b13353ffe54c9.jpg",
+      "status": 200,
+      "bytes": 616940,
+      "sha256": "0294240fb369ec2053283042577559ce85c45231b7b18ccc5e137c7b661997d1",
+      "mime": "image/jpeg",
+      "decoded_dimensions": [
+        2560,
+        2048
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "inspection": {
+    "decoded": 15,
+    "visually_reviewed_contact_sheets": 1,
+    "reviewed_image_ids": [
+      "W01",
+      "W02",
+      "W03",
+      "W04",
+      "W05",
+      "W06",
+      "W07",
+      "W08",
+      "W09",
+      "W10",
+      "W11",
+      "W12",
+      "W13",
+      "W14",
+      "W15"
+    ],
+    "new_unique_original_states_claimed": 0,
+    "native_screenshots_claimed": false,
+    "video_samples": 0,
+    "originals_redistributed": false,
+    "new_world_clock_editor_gallery_rules": false
+  },
+  "backlog": {
+    "queries": [
+      {
+        "query": "repo:Olli0103/homeview is:issue is:open",
+        "requested_limit": 100,
+        "returned_count": 33,
+        "issue_ids": [
+          6,
+          7,
+          11,
+          15,
+          16,
+          17,
+          18,
+          20,
+          23,
+          26,
+          27,
+          28,
+          29,
+          36,
+          43,
+          44,
+          47,
+          48,
+          49,
+          51,
+          52,
+          53,
+          56,
+          57,
+          61,
+          64,
+          67,
+          73,
+          75,
+          77,
+          78,
+          79,
+          81
+        ],
+        "returned_state_fields_all_null": true,
+        "body_hashes": [
+          {
+            "number": 81,
+            "sha256": "b21a45f816f618d151c7294dd865a5a2a5a75d3422e3d149a13e89ccb3981b4e"
+          },
+          {
+            "number": 79,
+            "sha256": "3ee9bd57bd92f5b78fe208a43c4b6d2b968a94e3d9e66dacc4f0bbe6a8354d01"
+          },
+          {
+            "number": 78,
+            "sha256": "8a64197c7f1d3531624af7984b09daf4f360500e4731848abc61e9a9ba2b8cc5"
+          },
+          {
+            "number": 77,
+            "sha256": "8279db5b1ac94a07e9022da79c0ebd6b4d5b298c2bee24f461ca60b27125ebe6"
+          },
+          {
+            "number": 75,
+            "sha256": "60c9f33576dcc86d8bb6290fec46c31fec974ab34e1722ea30fc9b76bc5dc171"
+          },
+          {
+            "number": 73,
+            "sha256": "a82a916b50375bc183580a1396659288230a3bbb6815924657e17d936b75a223"
+          },
+          {
+            "number": 67,
+            "sha256": "6eaeaa10bb2f72fbdb621fd8dc351251b5f8cb92a84211be8e053ad017c0bef8"
+          },
+          {
+            "number": 64,
+            "sha256": "99367031eb915a388b0b49fb0b2110abd71e2947934a8324e7dbaff839ae2395"
+          },
+          {
+            "number": 61,
+            "sha256": "67fa2173d80e7faf826b2ea794fd2e289c049c7da430ac50786b16444d8d2e40"
+          },
+          {
+            "number": 57,
+            "sha256": "c759074b30c71e2e4b3b8ea4fd3f74caf8cc2f1b24db5cf08d88cc94ed6ebaa7"
+          },
+          {
+            "number": 56,
+            "sha256": "c6921e4f7a59de4861efe7a79f94945652c670a73cf6a1cf72817c29346b4ece"
+          },
+          {
+            "number": 53,
+            "sha256": "de3cd520b6d099ac32fe3198e18c308f431aaf5e093457a03d1a74310106aaf8"
+          },
+          {
+            "number": 52,
+            "sha256": "511b78e7831ffda18fa6a7bd8fbbb9173fce17f33a7bfb87edf09d696d277334"
+          },
+          {
+            "number": 51,
+            "sha256": "56bc2d5e0f49ed432ecb5d2878f85e091b7f31c60e06b3db57fb79054d512d11"
+          },
+          {
+            "number": 49,
+            "sha256": "94a9a476ab07cb21b3b80be0c0459a300b005642b7e5aca2810b809dbfdcafb2"
+          },
+          {
+            "number": 48,
+            "sha256": "0aa89c2850978e6dc0305a02035817be0f2630e99237e96834681baf9bf072b2"
+          },
+          {
+            "number": 47,
+            "sha256": "dc4034b1202096bae341bf77d47932e317ce47b1dd09a73e9da5f635c1615349"
+          },
+          {
+            "number": 44,
+            "sha256": "89225e9e7ed96ee2a7aed4b6fe8e46d3196a7beef17154bff3b788f1792e0e27"
+          },
+          {
+            "number": 43,
+            "sha256": "9b569b3cda67ed3608ab6dabd436b99a34cc72303d684d7a768bb3663d107a74"
+          },
+          {
+            "number": 36,
+            "sha256": "205db958c2eae87374d515aecedac2560cf93998eb20a41a281c926e53120887"
+          },
+          {
+            "number": 29,
+            "sha256": "21057ccab19d90e1e1355aaf898f7a9a32ff3770a4b1fdfd207e913042a308b4"
+          },
+          {
+            "number": 28,
+            "sha256": "f4a5c1cd120760d478ec0340d06f0bd9c1afcc767e871a915167d9920fa0bf74"
+          },
+          {
+            "number": 27,
+            "sha256": "f4dea69287d626e3536a21ac89b25a30ebfa5210f5b8d01c0653f3cb4f6c2e4c"
+          },
+          {
+            "number": 26,
+            "sha256": "56ef2ff9cff33863ef034f7ac9b33671c19f38e3f076a4abb0f637d29ba560b3"
+          },
+          {
+            "number": 23,
+            "sha256": "6dde88541e6e010af37aaaf986138bbfe92b546564c83d8b485d23b725da8fdf"
+          },
+          {
+            "number": 20,
+            "sha256": "9598bed69bd86f853ae52d05b23f200d8f1b0b86c712a4a867a80e7e47bac8af"
+          },
+          {
+            "number": 18,
+            "sha256": "923753fc4836b0d8ed0b2224e1b8d9ec4869004840eb5a014480b0b158e0afc8"
+          },
+          {
+            "number": 17,
+            "sha256": "a72623dc0c51f97f3641a029a1f93d9e9c3d483d566cfb13cc23fa1abb615ea0"
+          },
+          {
+            "number": 16,
+            "sha256": "77895ab3d4ff4d0c6c86256a2d85165f54e695052599bac919bcb38e18c75aae"
+          },
+          {
+            "number": 15,
+            "sha256": "4db9bc01abaced7fc6517eddcd0cb91ccdbcc4ba9c1ebbf7c7005009ab42cdc0"
+          },
+          {
+            "number": 11,
+            "sha256": "4169a13ef45df511fcb02753bcbffa1bae1e2b668c22c0609106a83df201fc07"
+          },
+          {
+            "number": 7,
+            "sha256": "b38b6984c6abe91dfd5709d3a3c37268d3ec5215289711fa7bd810fff097b8d8"
+          },
+          {
+            "number": 6,
+            "sha256": "58cf6b8e539fc3cd7d46a06c1aa6bb3f0030c49dd647f0cb6fc4c7e31ce65a32"
+          }
+        ]
+      },
+      {
+        "query": "repo:Olli0103/homeview is:issue is:closed",
+        "requested_limit": 100,
+        "returned_count": 50,
+        "issue_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          19,
+          21,
+          22,
+          24,
+          25,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          45,
+          46,
+          50,
+          54,
+          55,
+          58,
+          59,
+          60,
+          62,
+          63,
+          65,
+          66,
+          68,
+          69,
+          70,
+          71,
+          72,
+          74,
+          76,
+          80,
+          82,
+          83
+        ],
+        "returned_state_fields_all_null": true,
+        "body_hashes": [
+          {
+            "number": 83,
+            "sha256": "bf9118a9a3adc9eec9e6e663a5e880635febbca682b93a38869be2e0f5ae45da"
+          },
+          {
+            "number": 82,
+            "sha256": "fcf406fc6f9db629300e203b88ed7d4c9268a5fbc70b162d44f477f2452f16e0"
+          },
+          {
+            "number": 80,
+            "sha256": "edfc2ecf3fae9ee628a4f2d21e3aed6a8ed96af8e833c7af90f847eedc535dd4"
+          },
+          {
+            "number": 76,
+            "sha256": "f4c5ffca3dd7f27633764cf1ec9b79ac6c74d98d26a338c0e078c80bd68d8939"
+          },
+          {
+            "number": 74,
+            "sha256": "b066cd43984ae87fe751528fde7ac5d137bd0ced5a6502de21df82aa1c6844dc"
+          },
+          {
+            "number": 72,
+            "sha256": "5b9fbccece1fcfd85310e6acdb5b7cf83a67a6dc707c7e2245f884553ae4cb7d"
+          },
+          {
+            "number": 71,
+            "sha256": "dcd5f8c4830882dbee20c7cbbefffc15f258447f762dce1ead8d7244dd2bd27c"
+          },
+          {
+            "number": 70,
+            "sha256": "1f1a1142ef290a04a823251935f1d73319eb23e638bfe7dad53e946752593c65"
+          },
+          {
+            "number": 69,
+            "sha256": "c5e334bcac21c6f370b7bb897ec9746657e15f92867f8c2bb13b840b927579f9"
+          },
+          {
+            "number": 68,
+            "sha256": "0bfbe23927f5d769f038b9f2a2e794b141b2fb845fc17769be0892125fa86ae0"
+          },
+          {
+            "number": 66,
+            "sha256": "72fd46bc3e8fb2b10418743a3dd582a4d6928644ce15913dff4ead071d7c8eb1"
+          },
+          {
+            "number": 65,
+            "sha256": "d7d42a6dfcacabb571298a00aa5437d523abd11bb9df475343cd66f5a3b63a8c"
+          },
+          {
+            "number": 63,
+            "sha256": "096fc50ce638afa61e7a8f0e8ecd4759ba46d887be7c097d3a03a4b19534e929"
+          },
+          {
+            "number": 62,
+            "sha256": "6c4184a053a30434ef29661959bd7ad7d5247b67d5379b98a072aa89aec35b04"
+          },
+          {
+            "number": 60,
+            "sha256": "31f15e35aaa79bff18e2a4b9d5db5d235fd14dbc4024681f6069d98d0457a72c"
+          },
+          {
+            "number": 59,
+            "sha256": "9a19f314c164cd880de3c06d880f7edd7217459647ec24f2f91a4a183d55269e"
+          },
+          {
+            "number": 58,
+            "sha256": "c8bb168b9b5c037b6b3cca4b1e7f84cd272115537dabf0b0fe7f353736895417"
+          },
+          {
+            "number": 55,
+            "sha256": "2f1220bdd73ac960bcb82927739b90e1b4f80142bbdd4dfcdfc833ec1ab1e9f2"
+          },
+          {
+            "number": 54,
+            "sha256": "0e1caca60fb2a454acaeebd96eecadefc2e2c5b82492a44b27f34ef4b76ac494"
+          },
+          {
+            "number": 50,
+            "sha256": "1dd4cc2e935ae40b8fdddf1408e98304aa55a827b13f4706c22ea3c8944bbc04"
+          },
+          {
+            "number": 46,
+            "sha256": "6873abfaa007e4d415d32b2e4b87c476430ab4265bcdb7a1f568d34544aef5db"
+          },
+          {
+            "number": 45,
+            "sha256": "a97d6b69e125df5540c1ea7ded6db0c6ea2474d24c417d4fcf10c64cfc5a06fe"
+          },
+          {
+            "number": 42,
+            "sha256": "85ca0374a3517a9fdf1b5068c3d8e29bf4c7ad65daa1d60acfcbd74a8fe538aa"
+          },
+          {
+            "number": 41,
+            "sha256": "1e6e96ccc74c2035b2b5d1322a082381844f8b81c169df660aec7efa457e8515"
+          },
+          {
+            "number": 40,
+            "sha256": "353b520f6a8f45ecdb63505bbf0ceb229ca465e5a5b93017d9a5816636818b40"
+          },
+          {
+            "number": 39,
+            "sha256": "8afa57ef2aeb2a7c5922b31ad5e6536412c155ebb0f9b0b6705819aec2ec2fe9"
+          },
+          {
+            "number": 38,
+            "sha256": "ad27351ad789a9515c3d5561ca269975788090645709531ab1408015d70a30f4"
+          },
+          {
+            "number": 37,
+            "sha256": "e3f2491a1cf9353c16fcfc9aca87b28e2666b02ac129f877f20f508f35d2e9b2"
+          },
+          {
+            "number": 35,
+            "sha256": "20283b891577511f8b6264db6b993e418a1f8c7c31c5e05279c151f5b511d84e"
+          },
+          {
+            "number": 34,
+            "sha256": "f35883ea8f18d58eb4da1a2e088f49e231fede099b014e34996bda9986131198"
+          },
+          {
+            "number": 33,
+            "sha256": "e47f7fd6863a865ec45dad5f8165e3aa3e31b8ccc4ac9f073e3ddb0992e6799d"
+          },
+          {
+            "number": 32,
+            "sha256": "5bc2f5c290cf0f516d6813a1f115eef6aa7a014c9395dfc3ba0b86356650086b"
+          },
+          {
+            "number": 31,
+            "sha256": "efe44466bcf121306e30dfaeafe626e7081d4d53d90b10f8e7ffb04eeec8aeb1"
+          },
+          {
+            "number": 30,
+            "sha256": "3cc82ad33073f87ad11ce4aee47f94a600e82dcd99db727c67343dcc7e3de39e"
+          },
+          {
+            "number": 25,
+            "sha256": "a49c35e21fd2572452df7e816f83e974c17cea7c21ecc5ba3606677d126d2edd"
+          },
+          {
+            "number": 24,
+            "sha256": "9e61c91932d0149b53a0a95e8ad84b0f3dc0797e40c24c4e4986014d229d8fd5"
+          },
+          {
+            "number": 22,
+            "sha256": "e5fc931e71ae7476bc077d24377dd15c37ab9aa112b7b19d33d3d890a31e43f6"
+          },
+          {
+            "number": 21,
+            "sha256": "e510ac5147043e6b65d23def3f962f45b8b4ae3e0f2e489d9a3d8b8649ba5dac"
+          },
+          {
+            "number": 19,
+            "sha256": "4bdd92d6179cf179612902482e9250ca5e1309d28ec4268f4c26c2de733c3272"
+          },
+          {
+            "number": 14,
+            "sha256": "3db59203c51a2c297bb416a212d8627042839236ac8cb60e7dc6c1cb59e03eb2"
+          },
+          {
+            "number": 13,
+            "sha256": "f441344769485d2ab039a75df7db72d65944b29d848a8246516a7dcebde8a68d"
+          },
+          {
+            "number": 12,
+            "sha256": "4018c580e80c67b221eb103b7c60654b61079a962139ff37037a72b99c3ab1f7"
+          },
+          {
+            "number": 10,
+            "sha256": "134eec41eb34c74dbc850eb18802db9568aac18c1b4d666e2898038a452e597d"
+          },
+          {
+            "number": 9,
+            "sha256": "5f37e6617f5fe5a0e9e73ff939662a5065746a4778bfa6a8d7b4567e5cad8c4b"
+          },
+          {
+            "number": 8,
+            "sha256": "c323d5975c9c40a300c3369a430d48a9353264c2bb75d6e6ed4e178db0ab0694"
+          },
+          {
+            "number": 5,
+            "sha256": "e0aef067b17b334e0b0974c601fdc1d013ca25c3a43805f704de4cf28fbd768a"
+          },
+          {
+            "number": 4,
+            "sha256": "6b2f07e130017d34da8ae99f7c847fcf7379794c04b80d2185d905b77f82da9b"
+          },
+          {
+            "number": 3,
+            "sha256": "ce7f99900d0fac7deccdeb2e7341de06492d402187125293540d2c117824fcbc"
+          },
+          {
+            "number": 2,
+            "sha256": "f244459dc91d1440c40a55857cde078ab7b1e031856cac275a8f78665c5c0c82"
+          },
+          {
+            "number": 1,
+            "sha256": "818b96f6d5d234f2a3634e137c6f8aa9d030effbc5165f6512d650382005f7b6"
+          }
+        ]
+      }
+    ],
+    "original_total": 82,
+    "completed": 48,
+    "excluded": [
+      14
+    ],
+    "open": 33,
+    "open_ids": [
+      6,
+      7,
+      11,
+      15,
+      16,
+      17,
+      18,
+      20,
+      23,
+      26,
+      27,
+      28,
+      29,
+      36,
+      43,
+      44,
+      47,
+      48,
+      49,
+      51,
+      52,
+      53,
+      56,
+      57,
+      61,
+      64,
+      67,
+      73,
+      75,
+      77,
+      78,
+      79,
+      81
+    ],
+    "community_issues_separate": [
+      83
+    ],
+    "current_table_rows_checked": 82,
+    "table_mismatches_after_correction": [],
+    "issue19": {
+      "issue_number": 19,
+      "title": "[FACE-10] Numerals-Typografie und analoge Uhrvarianten kalibrieren",
+      "state": "closed",
+      "state_reason": "completed"
+    },
+    "issue_mutations": 0
+  },
+  "unchanged_non_document_inputs": {
+    "count": 258,
+    "sorted_path_sha256_manifest_digest": "f22417546dd69ba347d70fd2f1e031d51c8197521c759dd474089f4c1e2f2cc3",
+    "compared_with_base_git_blobs": true
+  },
+  "new_app_core_ui_sdk_tests": 0,
+  "holds_unchanged": [
+    "Real Home setup",
+    "Physical-device and signing acceptance"
+  ],
+  "limits": [
+    "Five searches returned results; one HTTP429",
+    "Date-operator results include older pages",
+    "Secondary developer article extract truncated and not used as complete API evidence",
+    "No claim that absent detail references do not exist elsewhere",
+    "No issue closure or original/physical parity from this work"
+  ]
+}
