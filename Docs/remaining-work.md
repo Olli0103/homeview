@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+[Eigene Timer-Live-Activity über Prozessende und Opt-out geprüft](timer-activity-process-lifecycle.md): zwei native Ausführungen auf iPhone/iPad bestanden; wiederholtes Show erzeugt genau eine Aktivität, Ausschalten plus erneuter Prozessstart bleibt bei null. Produktquellen unverändert; keine neuen Core-/Fünf-SDK-Wiederholungen. Suspendierungsablauf, Lock Screen, Rechteentzug und übrige #51-Abnahme bleiben offen.
+
 [Kalender-/Reminder-Abschlüsse auch bei Abbruch und Fehler bereinigen](personal-request-completion.md): drei reproduzierte fehlgeschlagene Testmethoden/34 verletzte Bedingungen; danach79relevanteCoretests. Widerruf leert den betroffenen alten Cache ohne nächsten Tick, überholte Abschlüsse können neue Sitzungen nicht bereinigen. Keine echten Konten oder UI-Änderung; ursprüngliche Hardware-/Accountkriterien von #47/#48 und übrige #67-Grenzen bleiben offen.
 
 [Weltuhr-Tagesverlauf flüchtig wiederverwenden](world-clock-daylight-computation.md): 17 Coretests, 1.512 angeforderte Fenster × drei Durchläufe mit identischen Ergebnis-Digests und 216 nebenläufige Vergleiche je Stand. Begrenzter Median166→18ms, keine Gesamt-App-/Akku-/Gerätebehauptung. #53 bleibt wegen der Originalreferenz offen.

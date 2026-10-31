@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-31",
+  "issue": 51,
+  "product_commit": "c8b9165b1fe4367eee17fb2ef7f6a90e8c564cd2",
+  "product_sources_unchanged": true,
+  "source_manifest_sha256": "fee48af81c67327bbe118719045f7425c80d373566e6cebaa04c115460c421a7",
+  "compiled_inputs_sha256": "a9e3ac384e5035aebbf2da9e0d1ceb183985068acf72299f8b4fe8b9e3c10a6c",
+  "compiled_files": 29,
+  "installed_app_files_per_device": 23,
+  "SDK_app_same_files": 22,
+  "SDK_app_total_files": 23,
+  "SDK_app_different_files": [
+    "Assets.car"
+  ],
+  "UI": [
+    {
+      "device": "iphone",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+              "deviceName": "iPhone 18 Pro",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793449920.976,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793449808.31,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "log_sha256": "49e003bcc0c1eac4ce05adc1d27443d663a21032c7f18af4e20864c21805138c"
+    },
+    {
+      "device": "ipad",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+              "deviceName": "iPad Air 11-inch (M4)",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793450030.93,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793449937.317,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "log_sha256": "b3be4e8a0cb89f32d69de4d15152d9d9824248f1b1648845c55a333ce9778587"
+    }
+  ],
+  "unique_new_methods": 1,
+  "total_executions": 2,
+  "registry_after_first_relaunch_before_new_show": {
+    "iphone": "Own activities=1; running=1; paused=0",
+    "ipad": "Own activities=1; running=1; paused=0"
+  },
+  "final_own_active_or_stale_activities": {
+    "iphone": 0,
+    "ipad": 0
+  },
+  "images": [
+    {
+      "device": "iphone",
+      "state": "timer-process-opt-out-cold-relaunch-zero",
+      "sha256": "639764e1f34aefacef0b4420a827342e64b5dfdc4dbeffbe9bc34e32113a007b",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "state": "timer-process-explicit-reconciliation",
+      "sha256": "c56d72dde2fa91d09b82bfc962a18eed4ffcea31a4a893ed40a248949c5490ea",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "state": "timer-process-outside-before-termination",
+      "sha256": "bb2d49f9f4df0f2b32bd473d318646d6599c0ebb1ea4f2aa3df9669b4d9d8076",
+      "visually_reviewed": true
+    },
+    {
+      "device": "iphone",
+      "state": "timer-process-before-background",
+      "sha256": "c56d72dde2fa91d09b82bfc962a18eed4ffcea31a4a893ed40a248949c5490ea",
+      "visually_reviewed": true
+    },
+    {
+      "device": "ipad",
+      "state": "timer-process-opt-out-cold-relaunch-zero",
+      "sha256": "db19389b3577bb7711824214ff45de5a5e84f70655e1619c2f4fdd22852e4914",
+      "visually_reviewed": true
+    },
+    {
+      "device": "ipad",
+      "state": "timer-process-explicit-reconciliation",
+      "sha256": "f0dc81ceb117b92f0319a3bcde7af0d527194cc0e17e43e56d309d891d16da59",
+      "visually_reviewed": true
+    },
+    {
+      "device": "ipad",
+      "state": "timer-process-outside-before-termination",
+      "sha256": "4a6f2607ab8d2e0506ff0ef02d746a780a754999e53c7a6037ed9a2f28ffa5ee",
+      "visually_reviewed": true
+    },
+    {
+      "device": "ipad",
+      "state": "timer-process-before-background",
+      "sha256": "f0dc81ceb117b92f0319a3bcde7af0d527194cc0e17e43e56d309d891d16da59",
+      "visually_reviewed": true
+    }
+  ],
+  "archives": [
+    {
+      "name": "source-delta.zip",
+      "sha256": "7946d90c86e032b69b3d5e29134621bdef0c09a9067a0de279a0e1b9a09ff35a"
+    },
+    {
+      "name": "ui-inputs-delta.zip",
+      "sha256": "5dcb25fe94494aab61c91a396a4ec8cfad3d4d261869f1e08baad0fe80f9ebcb"
+    }
+  ],
+  "archive_reconstructed_entries_read_back": 29,
+  "preparation_failures": [
+    "Concurrent xcresult summary/export of same iPad bundle: SQLite destination collision; sequential export succeeded, no test rerun.",
+    "Pillow unavailable for optional contact sheet; directly inspected all eight original PNGs."
+  ],
+  "new_Core_or_5SDK_run": false,
+  "limitations": [
+    "XCTest process termination, not crash or observed user force quit",
+    "No autonomous background expiry, Lock Screen, permission-revocation, expanded/minimal, multiwindow, mirroring or physical acceptance",
+    "iPhone compact Dynamic Island visible; no iPad home-screen activity visible"
+  ],
+  "private_artifact_locator": "research/homeview-timer-activity-process-20261031",
+  "issue_remains_open": true
+}

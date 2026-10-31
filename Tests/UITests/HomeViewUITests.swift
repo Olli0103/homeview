@@ -8938,6 +8938,58 @@ extension HomeViewUITests {
     }
     XCTAssertTrue(started,"No own ActivityKit system activity established; not an outside-app visibility PASS")
   }
+
+  func testOwnTimerActivityProcessTerminationReconciliationAndPersistedOptOut() throws {
+    #if targetEnvironment(simulator)
+    executionTimeAllowance=240
+    let id=UUID().uuidString
+    let args=["--persistence-test",id,"--timer-activity-system-test","--page","Settings"]
+    let ownership=XCTAttachment(string:id)
+    ownership.name="timer-process-owned-store-id";ownership.lifetime = .keepAlways;add(ownership)
+    launch(args);openTimerActivitySettings();setTimerActivityEnabled(true)
+    createOwnActivityTimer()
+    let established=expectOwnSystemActivity(1,0)
+    if !established {
+      setTimerActivityEnabled(false)
+      XCTAssertTrue(expectOwnSystemActivity(0,0,0))
+      XCTFail("No own activity established; process lifecycle experiment not admitted")
+      return
+    }
+    // Once admitted, retain the cleanup path even if a later check fails.
+    continueAfterFailure=true
+    for _ in 0..<3 {tap("timer.activity.show")}
+    XCTAssertTrue(expectOwnSystemActivity(1,0),"Repeated explicit starts must not duplicate an own activity")
+    shot("timer-process-before-background")
+    XCUIDevice.shared.press(.home)
+    let springboard=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+    springboard.activate()
+    XCTAssertTrue(springboard.wait(for:.runningForeground,timeout:10))
+    XCTAssertTrue(app.wait(for:.runningBackground,timeout:10))
+    let outside=XCTAttachment(screenshot:springboard.screenshot())
+    outside.name="timer-process-outside-before-termination";outside.lifetime = .keepAlways;add(outside)
+    app.terminate();XCTAssertTrue(app.wait(for:.notRunning,timeout:10))
+    launch(args);openTimerActivitySettings()
+    XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"1")
+    let reopened=XCTAttachment(string:app.staticTexts["timer.activity.system-report"].label)
+    reopened.name="timer-process-registry-after-relaunch-before-explicit-show"
+    reopened.lifetime = .keepAlways;add(reopened)
+    // The OS may retain or end an activity when the process terminates. Record
+    // that observation; the app must converge to exactly one on explicit show.
+    tap("timer.activity.show")
+    XCTAssertTrue(expectOwnSystemActivity(1,0))
+    shot("timer-process-explicit-reconciliation")
+    setTimerActivityEnabled(false)
+    XCTAssertTrue(expectOwnSystemActivity(0,0,0),"Explicit opt-out must clean the actual own registry")
+    app.terminate();XCTAssertTrue(app.wait(for:.notRunning,timeout:10))
+    launch(args);openTimerActivitySettings()
+    XCTAssertEqual(app.switches["timer.activity.enabled"].value as? String,"0")
+    XCTAssertFalse(app.buttons["timer.activity.show"].isEnabled)
+    XCTAssertTrue(expectOwnSystemActivity(0,0,0),"Persisted opt-out cannot recreate an activity after relaunch")
+    shot("timer-process-opt-out-cold-relaunch-zero")
+    #else
+    throw XCTSkip("Opt-in own ActivityKit process-lifecycle probe is simulator-only")
+    #endif
+  }
 }
 
 extension HomeViewUITests {
