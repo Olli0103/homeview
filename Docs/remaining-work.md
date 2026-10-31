@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+[Musik-Widerruf, bewusste Quellenwahl und überholte Audiostarts gemeinsam abgesichert](music-permission-boundaries.md): 85 relevante Coretests, tatsächlicher AppModel-Quellenvertrag und sieben Audio-Task-Szenarien. Fehlgeschlagene Quellen bleiben von der Demo getrennt; alte Tasks dürfen nach Stop oder Quellenwechsel keinen neuen Backend-Start mehr anfordern. Native UI-/SDK-Checkpoints und verbleibende reale MusicKit-/Medien-/Geräteabnahmen sind im Bericht getrennt; #57/#67 bleiben offen.
+
 [Eigene Timer-Live-Activity über Prozessende und Opt-out geprüft](timer-activity-process-lifecycle.md): zwei native Ausführungen auf iPhone/iPad bestanden; wiederholtes Show erzeugt genau eine Aktivität, Ausschalten plus erneuter Prozessstart bleibt bei null. Produktquellen unverändert; keine neuen Core-/Fünf-SDK-Wiederholungen. Suspendierungsablauf, Lock Screen, Rechteentzug und übrige #51-Abnahme bleiben offen.
 
 [Kalender-/Reminder-Abschlüsse auch bei Abbruch und Fehler bereinigen](personal-request-completion.md): drei reproduzierte fehlgeschlagene Testmethoden/34 verletzte Bedingungen; danach79relevanteCoretests. Widerruf leert den betroffenen alten Cache ohne nächsten Tick, überholte Abschlüsse können neue Sitzungen nicht bereinigen. Keine echten Konten oder UI-Änderung; ursprüngliche Hardware-/Accountkriterien von #47/#48 und übrige #67-Grenzen bleiben offen.

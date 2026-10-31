@@ -201,6 +201,7 @@ final class DeviceConnections {
         weatherFetchFailed = false
       }
       guard generation[kind] == ticket, !Task.isCancelled else { return }
+      guard personalSourceAvailable(kind) else { return }
       enabled.insert(kind)
       status[kind] = testing ? "Connected · synthetic source" : "Connected"
       if !testing {
@@ -387,14 +388,16 @@ final class DeviceConnections {
     await browseMusic(query, library:true)
   }
   private func browseMusic(_ query:String, library:Bool) async {
-    guard !Task.isCancelled, musicSearchAllowed, !busy.contains(.music),
+    guard !Task.isCancelled, personalSourceAvailable(.music), musicSearchAllowed, !busy.contains(.music),
       library || !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     else { return }
     // A new search changes the queue; prior guest consent cannot follow it.
     _ = setGuestMusicSharing(false)
     let ticket = generation[.music]
     busy.insert(.music)
-    defer { if generation[.music] == ticket { busy.remove(.music) } }
+    defer {
+      if generation[.music] == ticket, personalSourceAvailable(.music) { busy.remove(.music) }
+    }
     do {
       let term=String(query.trimmingCharacters(in:.whitespacesAndNewlines).prefix(200))
       let values = try await (library ? provider.libraryMusic(term):provider.searchMusic(term))
@@ -415,11 +418,17 @@ final class DeviceConnections {
     }
   }
   func playMusic(_ index: Int) async {
-    guard musicAccessAllowed, !busy.contains(.music), tracks.indices.contains(index), !Task.isCancelled else { return }
+    guard !Task.isCancelled, personalSourceAvailable(.music), musicAccessAllowed,
+      !busy.contains(.music), tracks.indices.contains(index) else { return }
     let connection = generation[.music]
     musicActionGeneration += 1
     let action = musicActionGeneration
     let id = tracks[index].id
+    defer {
+      if generation[.music] == connection, musicActionGeneration == action {
+        _ = personalSourceAvailable(.music)
+      }
+    }
     func current() -> Bool {
       generation[.music] == connection && musicActionGeneration == action
         && musicAccessAllowed && !Task.isCancelled
@@ -437,10 +446,15 @@ final class DeviceConnections {
     }
   }
   func toggleMusic() async {
-    guard musicAccessAllowed, let index=currentTrack, tracks.indices.contains(index),
-      !Task.isCancelled else { return }
+    guard !Task.isCancelled, personalSourceAvailable(.music), musicAccessAllowed,
+      let index=currentTrack, tracks.indices.contains(index) else { return }
     musicActionGeneration += 1
     let action=musicActionGeneration;let connection=generation[.music]
+    defer {
+      if generation[.music] == connection, musicActionGeneration == action {
+        _ = personalSourceAvailable(.music)
+      }
+    }
     if musicPlaying { provider.pauseMusic() }
     else {
       do { try await provider.resumeMusic() }
@@ -460,11 +474,7 @@ final class DeviceConnections {
     pollMusic()
   }
   func pollMusic() {
-    guard enabled.contains(.music) else { return }
-    guard provider.authorized(.music) else {
-      endGuestMusicSession();tracks=[];currentTrack=nil
-      status[.music]="Music source permission was revoked.";return
-    }
+    guard enabled.contains(.music), personalSourceAvailable(.music) else { return }
     guard musicAccessAllowed else { musicPlaying=false;musicTime=0;return }
     musicPlaying = provider.musicPlaying
     musicTime = provider.musicTime
@@ -481,21 +491,31 @@ final class DeviceConnections {
   /// Authorization status only: no permission prompt or personal read. Keep the
   /// user's connection choice, but require explicit reconnect after revocation.
   private func personalSourceAvailable(_ kind: DataConnection) -> Bool {
-    guard kind == .calendar || kind == .reminders else { return true }
+    guard kind == .calendar || kind == .reminders || kind == .music else { return true }
     guard provider.authorized(kind) else {
       generation[kind, default: 0] += 1
       busy.remove(kind)
       enabled.remove(kind)
-      if kind == .calendar { events = []; calendarPublications=[] } else { reminders = [] }
-      status[kind] = kind == .calendar
-        ? CalendarAgendaError.permissionRequired.localizedDescription
-        : "Reminders access changed. Connect again in Settings."
+      switch kind {
+      case .calendar:
+        events=[];calendarPublications=[]
+        status[kind]=CalendarAgendaError.permissionRequired.localizedDescription
+      case .reminders:
+        reminders=[]
+        status[kind]="Reminders access changed. Connect again in Settings."
+      case .music:
+        musicActionGeneration+=1;guestMusicShared=false
+        provider.pauseMusic();tracks=[];currentTrack=nil;musicLibrary=false
+        musicPlaying=false;musicTime=0
+        status[kind]="Music source permission was revoked. Connect again in Settings."
+      case .weather: break
+      }
       return false
     }
     return true
   }
   func tick() {
-    for kind in [DataConnection.calendar, .reminders]
+    for kind in [DataConnection.calendar, .reminders, .music]
     where enabled.contains(kind) || busy.contains(kind) {
       _ = personalSourceAvailable(kind)
     }

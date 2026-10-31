@@ -6186,6 +6186,30 @@ final class HomeViewUITests: XCTestCase {
     tap("home.thermostat")
     XCTAssertEqual(app.staticTexts["thermostat.value"].label, "68°")
   }
+  func testDeniedMusicKeepsSelectedSourceUntilExplicitDisconnectWithoutDemoPlayback() {
+    launch(["--page","Settings","--persistence-test",UUID().uuidString,"--reset-test-store","--connection-denied"])
+    connectService("Apple Music",success:false)
+    drawer();tap("app.Music")
+    let unavailable=app.staticTexts["Music source access is unavailable. Reconnect explicitly in Settings."]
+    XCTAssertTrue(unavailable.waitForExistence(timeout:5))
+    XCTAssertFalse(app.buttons["player.play"].exists)
+    XCTAssertFalse(app.textFields["music.search.input"].exists)
+    shot("music-denied-selected-source-not-demo")
+    tap("nav.assistant")
+    let field=app.textFields["assistant.input"]
+    field.tap();field.typeText("music");tap("assistant.send")
+    XCTAssertTrue(unavailable.waitForExistence(timeout:5))
+    tap("nav.assistant")
+    XCTAssertEqual(app.staticTexts["assistant.reply"].label,"Apple Music is unavailable. Reconnect in Settings.")
+    shot("music-denied-assistant-no-demo-request")
+    tap("nav.controls");tap("controls.settings")
+    let forget=app.buttons["connection.forget.Apple Music"]
+    scrollPhotoControlFullyIntoView(forget);forget.tap()
+    drawer();tap("app.Music")
+    let play=app.buttons["player.play"]
+    XCTAssertTrue(play.waitForExistence(timeout:5));XCTAssertEqual(play.label,"Play")
+    shot("music-explicit-disconnect-returns-paused-demo")
+  }
   func openWeather() {
     drawer(); tap("app.Weather")
     XCTAssertTrue(app.staticTexts["weather.source"].waitForExistence(timeout:5))

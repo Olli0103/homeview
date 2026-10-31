@@ -8,7 +8,7 @@ struct AppContent: View {
     case .home: HomeGrid()
     case .calendar: CalendarView()
     case .music:
-      if model.connections.enabled.contains(.music) { DeviceMusicView() } else { MusicView() }
+      if model.connections.requested.contains(.music) { DeviceMusicView() } else { MusicView() }
     case .weather:
       WeatherScreen()
     case .timers: TimerView()

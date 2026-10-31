@@ -1129,4 +1129,111 @@ extension DeviceConnectionTests {
     try XCTUnwrap(p.libraryReply).resume(returning:p.libraryItems);await read.value
     await s.playMusic(0);XCTAssertEqual(p.playCalls,1);XCTAssertEqual(s.currentTrack,0)
   }
+
+  func testMusicPermissionCompletionAuthorizationRechecksRevocation() async throws {
+    for cancelled in [false,true] {
+      let p=Provider(),s=DeviceConnections(provider:p);_ = await s.unlock()
+      p.delayAuthorization=true
+      let started=expectation(description:"music authorization suspended");p.onStart={started.fulfill()}
+      let connect=Task {await s.connect(.music)};await fulfillment(of:[started],timeout:2)
+      p.revoked.insert(.music);if cancelled {connect.cancel()}
+      try XCTUnwrap(p.authorizationReply).resume();await connect.value
+      XCTAssertFalse(s.enabled.contains(.music));XCTAssertFalse(s.busy.contains(.music))
+      XCTAssertTrue(s.requested.contains(.music));XCTAssertTrue(s.tracks.isEmpty)
+      XCTAssertTrue(s.status[.music]?.contains("revoked") == true)
+      XCTAssertEqual(p.musicPermissionRequests,1);XCTAssertEqual(p.libraryCalls,0)
+    }
+  }
+  func testMusicPermissionCompletionLibraryPurgesOldTitlesOnSuccessFailureAndCancellation() async throws {
+    for fails in [false,true] {
+      for cancelled in [false,true] {
+        let p=Provider(),s=DeviceConnections(provider:p)
+        _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary()
+        XCTAssertFalse(s.tracks.isEmpty)
+        p.libraryDelayed=true
+        let started=expectation(description:"replacement music library suspended");p.onStart={started.fulfill()}
+        let read=Task {await s.loadMusicLibrary("replacement")};await fulfillment(of:[started],timeout:2)
+        p.revoked.insert(.music);if cancelled {read.cancel()}
+        let reply=try XCTUnwrap(p.libraryReply)
+        if fails {reply.resume(throwing:CocoaError(.fileReadNoPermission))}
+        else {reply.resume(returning:p.libraryItems)}
+        await read.value
+        XCTAssertTrue(s.tracks.isEmpty);XCTAssertNil(s.currentTrack);XCTAssertFalse(s.musicPlaying)
+        XCTAssertFalse(s.enabled.contains(.music));XCTAssertFalse(s.busy.contains(.music))
+        XCTAssertFalse(s.guestMusicShared);XCTAssertTrue(s.requested.contains(.music))
+        XCTAssertTrue(s.status[.music]?.contains("revoked") == true)
+        XCTAssertEqual(p.libraryCalls,2);XCTAssertEqual(p.playCalls,0)
+      }
+    }
+  }
+  func testMusicPermissionCompletionPlaybackAndResumeStopAfterRevokedCallback() async throws {
+    for resume in [false,true] {
+      for fails in [false,true] {
+        for cancelled in [false,true] {
+          let p=Provider(),s=DeviceConnections(provider:p)
+          _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary()
+          if resume {await s.playMusic(0)}
+          p.delayPlayback=true
+          let started=expectation(description:"native play or resume callback suspended");p.onPlayback={started.fulfill()}
+          let play=Task {if resume {await s.toggleMusic()} else {await s.playMusic(0)}}
+          await fulfillment(of:[started],timeout:2)
+          let pauses=p.pauseCalls
+          p.revoked.insert(.music);p.reportedPlaying=true
+          if cancelled {play.cancel()}
+          let reply=try XCTUnwrap(resume ? p.resumeReply:p.playbackReply)
+          if fails {reply.resume(throwing:CocoaError(.fileReadNoPermission))}
+          else {reply.resume()}
+          await play.value
+          XCTAssertTrue(s.tracks.isEmpty);XCTAssertNil(s.currentTrack)
+          XCTAssertFalse(s.musicPlaying);XCTAssertEqual(s.musicTime,0)
+          XCTAssertFalse(s.enabled.contains(.music));XCTAssertTrue(s.requested.contains(.music))
+          XCTAssertFalse(p.reportedPlaying);XCTAssertGreaterThan(p.pauseCalls,pauses)
+          XCTAssertTrue(s.status[.music]?.contains("revoked") == true)
+        }
+      }
+    }
+  }
+  func testMusicPermissionRevocationEntryBlocksCallsAndPurgesBeforePolling() async {
+    let p=Provider(),s=DeviceConnections(provider:p)
+    _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary();await s.playMusic(0)
+    let reads=p.libraryCalls,plays=p.playCalls,resumes=p.resumeCalls
+    p.revoked.insert(.music)
+    await s.loadMusicLibrary();await s.playMusic(0);await s.toggleMusic()
+    XCTAssertTrue(s.tracks.isEmpty);XCTAssertNil(s.currentTrack)
+    XCTAssertFalse(s.enabled.contains(.music));XCTAssertFalse(s.musicSearchAllowed)
+    XCTAssertEqual(p.libraryCalls,reads);XCTAssertEqual(p.playCalls,plays);XCTAssertEqual(p.resumeCalls,resumes)
+  }
+  func testMusicPermissionRevocationPollingEndsGrantAndRequiresExplicitReconnect() async {
+    let p=Provider(),s=DeviceConnections(provider:p)
+    _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary();await s.playMusic(0)
+    XCTAssertTrue(s.setGuestMusicSharing(true));s.lock()
+    p.revoked.insert(.music);s.tick()
+    XCTAssertFalse(s.enabled.contains(.music));XCTAssertTrue(s.requested.contains(.music))
+    XCTAssertFalse(s.guestMusicShared);XCTAssertTrue(s.tracks.isEmpty)
+    p.revoked.remove(.music);_ = await s.unlock();s.tick()
+    XCTAssertFalse(s.musicSearchAllowed);XCTAssertFalse(s.musicAccessAllowed)
+    await s.loadMusicLibrary();XCTAssertEqual(p.libraryCalls,1)
+    await s.connect(.music);await s.loadMusicLibrary()
+    XCTAssertTrue(s.musicSearchAllowed);XCTAssertEqual(p.musicPermissionRequests,2)
+    XCTAssertEqual(p.libraryCalls,2);XCTAssertFalse(s.guestMusicShared)
+  }
+  func testMusicPermissionOldLibraryCompletionCannotClearReplacementSession() async throws {
+    for fails in [false,true] {
+      let p=Provider(),s=DeviceConnections(provider:p)
+      _ = await s.unlock();await s.connect(.music);await s.loadMusicLibrary()
+      p.libraryDelayed=true
+      let started=expectation(description:"obsolete library suspended");p.onStart={started.fulfill()}
+      let read=Task {await s.loadMusicLibrary("old")};await fulfillment(of:[started],timeout:2)
+      let old=try XCTUnwrap(p.libraryReply)
+      s.disconnect(.music);p.libraryDelayed=false
+      await s.connect(.music);await s.loadMusicLibrary("current")
+      let status=s.status[.music];p.revoked.insert(.music)
+      if fails {old.resume(throwing:CocoaError(.fileReadUnknown))}
+      else {old.resume(returning:[])}
+      await read.value
+      XCTAssertTrue(s.enabled.contains(.music));XCTAssertFalse(s.tracks.isEmpty)
+      XCTAssertEqual(s.status[.music],status,"Obsolete operation must not mutate a new generation")
+      s.tick();XCTAssertFalse(s.enabled.contains(.music));XCTAssertTrue(s.tracks.isEmpty)
+    }
+  }
 }

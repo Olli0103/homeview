@@ -152,7 +152,7 @@ struct PersonalView: View {
     }.accessibilityIdentifier("personal.weather.open")
   }
   private func mediaWidget(podcast:Bool) -> some View {
-    let connectedMusic = !podcast && model.connections.enabled.contains(.music)
+    let connectedMusic = !podcast && model.connections.requested.contains(.music)
     return VStack(spacing:8) {
       VStack(alignment:.leading,spacing:podcast ? 12:8) {
         HStack(alignment:.top) {
@@ -167,7 +167,9 @@ struct PersonalView: View {
           Image(systemName:podcast ? "mic.circle":"music.note").font(.system(size:27)).opacity(0.8)
         }
         if connectedMusic || podcast {
-          Text(connectedMusic ? "Connected Music":model.currentPodcastSource)
+          Text(connectedMusic
+            ? model.connections.enabled.contains(.music) ? "Connected Music":"Apple Music unavailable"
+            : model.currentPodcastSource)
             .font(.system(size:16,weight:.medium)).opacity(0.75)
         }
         Button { model.navigate(podcast ? .podcasts:.music) } label: {

@@ -1,0 +1,944 @@
+{
+  "date": "2026-10-31",
+  "issues": [
+    57,
+    67
+  ],
+  "base_commit": "f0514414fc0b842c74397dca84c0b9100e1aa47d",
+  "source_files": 265,
+  "source_digest": "8857f59e16a2180a742db4d6cefc3b630896079d8d46b1d38a9fb904c1e47489",
+  "product_changes": [
+    "Sources/Core/ConnectedDataSession.swift",
+    "Sources/App/AppModel.swift",
+    "Sources/App/Controls.swift",
+    "Sources/App/HomeScreens.swift",
+    "Sources/App/DeviceConnections.swift (synthetic denial fixture only)"
+  ],
+  "core": {
+    "qualified_before_methods": 6,
+    "before_failed_assertions": 69,
+    "new_subcases": 18,
+    "after_tests": 85,
+    "after_failed": 0,
+    "core_inputs_byte_equal_to_delivery": true,
+    "initial_unqualified_run_retained": true
+  },
+  "appmodel_source_contract": {
+    "before": [
+      {
+        "checks": {
+          "actual_fixture_artist": true,
+          "actual_fixture_title": true,
+          "explicit_source_connected": true,
+          "fixture_device_grant": true,
+          "only_explicit_disconnect_returns_demo": true,
+          "provider_pause_state": true,
+          "provider_playback_state": true
+        },
+        "failed": [],
+        "provider": "FixtureDeviceDataProvider",
+        "real_MusicKit_or_audio": false,
+        "scenario": "positive",
+        "verdict": "PASS"
+      },
+      {
+        "checks": {
+          "correct_reconnect_or_unlock_route": false,
+          "fixture_device_grant": true,
+          "no_demo_artist": false,
+          "no_demo_audio_dispatch": false,
+          "no_demo_start_request": false,
+          "no_demo_title": false,
+          "no_old_demo_playback_projection": false,
+          "selected_source_is_not_connected": true,
+          "source_choice_stops_old_demo_state": false
+        },
+        "failed": [
+          "correct_reconnect_or_unlock_route",
+          "no_demo_artist",
+          "no_demo_audio_dispatch",
+          "no_demo_start_request",
+          "no_demo_title",
+          "no_old_demo_playback_projection",
+          "source_choice_stops_old_demo_state"
+        ],
+        "provider": "FixtureDeviceDataProvider",
+        "real_MusicKit_or_audio": false,
+        "scenario": "denied",
+        "verdict": "FAIL"
+      },
+      {
+        "checks": {
+          "correct_reconnect_or_unlock_route": false,
+          "fixture_device_grant": true,
+          "no_demo_artist": false,
+          "no_demo_audio_dispatch": false,
+          "no_demo_start_request": false,
+          "no_demo_title": false,
+          "no_old_demo_playback_projection": false,
+          "selected_source_is_not_connected": true,
+          "source_choice_stops_old_demo_state": false
+        },
+        "failed": [
+          "correct_reconnect_or_unlock_route",
+          "no_demo_artist",
+          "no_demo_audio_dispatch",
+          "no_demo_start_request",
+          "no_demo_title",
+          "no_old_demo_playback_projection",
+          "source_choice_stops_old_demo_state"
+        ],
+        "provider": "FixtureDeviceDataProvider",
+        "real_MusicKit_or_audio": false,
+        "scenario": "locked",
+        "verdict": "FAIL"
+      }
+    ],
+    "after": [
+      {
+        "checks": {
+          "actual_fixture_artist": true,
+          "actual_fixture_title": true,
+          "explicit_source_connected": true,
+          "fixture_device_grant": true,
+          "only_explicit_disconnect_returns_demo": true,
+          "provider_pause_state": true,
+          "provider_playback_state": true
+        },
+        "failed": [],
+        "provider": "FixtureDeviceDataProvider",
+        "real_MusicKit_or_audio": false,
+        "scenario": "positive",
+        "verdict": "PASS"
+      },
+      {
+        "checks": {
+          "correct_reconnect_or_unlock_route": true,
+          "fixture_device_grant": true,
+          "no_demo_artist": true,
+          "no_demo_audio_dispatch": true,
+          "no_demo_start_request": true,
+          "no_demo_title": true,
+          "no_old_demo_playback_projection": true,
+          "selected_source_is_not_connected": true,
+          "source_choice_stops_old_demo_state": true
+        },
+        "failed": [],
+        "provider": "FixtureDeviceDataProvider",
+        "real_MusicKit_or_audio": false,
+        "scenario": "denied",
+        "verdict": "PASS"
+      },
+      {
+        "checks": {
+          "correct_reconnect_or_unlock_route": true,
+          "fixture_device_grant": true,
+          "no_demo_artist": true,
+          "no_demo_audio_dispatch": true,
+          "no_demo_start_request": true,
+          "no_demo_title": true,
+          "no_old_demo_playback_projection": true,
+          "selected_source_is_not_connected": true,
+          "source_choice_stops_old_demo_state": true
+        },
+        "failed": [],
+        "provider": "FixtureDeviceDataProvider",
+        "real_MusicKit_or_audio": false,
+        "scenario": "locked",
+        "verdict": "PASS"
+      }
+    ],
+    "assertions": 25,
+    "scope": "Actual AppModel with ordinary FixtureDeviceDataProvider; no audio asset or MusicKit operations. Recorded before the final two queued-audio admission guards; those are independently checked below."
+  },
+  "queued_audio_contract": {
+    "before": [
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "music_positive",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      },
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "podcast_positive",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      },
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": false,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [
+          "audio_api_admission"
+        ],
+        "real_audio": false,
+        "scenario": "music_stop",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "FAIL"
+      },
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": false,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [
+          "audio_api_admission"
+        ],
+        "real_audio": false,
+        "scenario": "music_double_toggle",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "FAIL"
+      },
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": false,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [
+          "audio_api_admission"
+        ],
+        "real_audio": false,
+        "scenario": "music_source",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "FAIL"
+      },
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": false,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [
+          "audio_api_admission"
+        ],
+        "real_audio": false,
+        "scenario": "podcast_stop",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "FAIL"
+      },
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": false,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [
+          "audio_api_admission"
+        ],
+        "real_audio": false,
+        "scenario": "podcast_double_toggle",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "FAIL"
+      }
+    ],
+    "after": [
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "music_positive",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      },
+      {
+        "audio_api_calls": 1,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "podcast_positive",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      },
+      {
+        "audio_api_calls": 0,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "music_stop",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      },
+      {
+        "audio_api_calls": 0,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "music_double_toggle",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      },
+      {
+        "audio_api_calls": 0,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "music_source",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      },
+      {
+        "audio_api_calls": 0,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "podcast_stop",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      },
+      {
+        "audio_api_calls": 0,
+        "checks": {
+          "actual_appmodel_task_entered": true,
+          "audio_api_admission": true,
+          "music_model_state": true,
+          "no_pending_music_flag": true,
+          "no_pending_podcast_flag": true,
+          "no_timer_chime": true,
+          "podcast_model_state": true
+        },
+        "failed": [],
+        "real_audio": false,
+        "scenario": "podcast_double_toggle",
+        "scope": "Actual AppModel admission into a symbolic audio dependency, not AVAudioPlayer or acoustic evidence",
+        "task_entries": 1,
+        "verdict": "PASS"
+      }
+    ],
+    "assertions": 49,
+    "scope": "Actual AppModel with symbolic LocalAudioEngine and Task-entry instrumentation; not AVAudioPlayer, queue-timing or acoustic evidence."
+  },
+  "UI_current": [
+    {
+      "device": "iphone",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+              "deviceName": "iPhone 18 Pro",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 2,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793451793.563,
+        "passedTests": 2,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793451676.612,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 2
+      },
+      "installed_manifest_sha256": "ee309a9e46c99ad63cccc83b470728b37160f9b827d867831dba444f7455f0b8"
+    },
+    {
+      "device": "ipad",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+              "deviceName": "iPad Air 11-inch (M4)",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 2,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793451927.134,
+        "passedTests": 2,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793451812.556,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 2
+      },
+      "installed_manifest_sha256": "ee309a9e46c99ad63cccc83b470728b37160f9b827d867831dba444f7455f0b8"
+    }
+  ],
+  "UI_supplementary_pre_audio_guard": [
+    {
+      "device": "iphone",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3169F5E3-D953-4B0C-8645-BD8A0E410324",
+              "deviceName": "iPhone 18 Pro",
+              "modelName": "iPhone 18 Pro",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 2,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793451082.918,
+        "passedTests": 2,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793450896.702,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 2
+      }
+    },
+    {
+      "device": "ipad",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "D2BAF3D4-0B23-400E-8442-24AB937D51BE",
+              "deviceName": "iPad Air 11-inch (M4)",
+              "modelName": "iPad Air 11-inch (M4)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 2,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "HomeViewReplica \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793451300.379,
+        "passedTests": 2,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1793451111.875,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - HomeViewReplica",
+        "topInsights": [],
+        "totalTestCount": 2
+      }
+    }
+  ],
+  "UI_total_historical_executions": 8,
+  "UI_current_executions": 4,
+  "UI_unique_methods": 3,
+  "UI_compiled_inputs": 26,
+  "UI_installed_files_per_device": 20,
+  "UI_shortcut_metadata": {
+    "valid": false,
+    "errors": [
+      "root.ssu.yaml: missing or empty",
+      "nlu/nlu.lzfse: missing or empty",
+      "nlu/*.version: missing or empty",
+      "root.ssu.yaml: unreadable metadata"
+    ],
+    "files": [
+      {
+        "path": "extract.actionsdata",
+        "bytes": 1764,
+        "sha256": "cb7684697a65b0ffa2d0615eb897d6ce95d918ba854bdaad61e417a5fdb67053"
+      },
+      {
+        "path": "version.json",
+        "bytes": 53,
+        "sha256": "dd4247d69cd8c750931505420148b52da7955333be2932b866fef83e3c713ac4"
+      }
+    ]
+  },
+  "UI_archive_readback": {
+    "files": 26,
+    "all_entries_reconstructed_and_read_back": true
+  },
+  "SDK": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "started": "2026-10-31T13:06:45.587567+00:00",
+      "ended": "2026-10-31T13:07:22.949612+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false,
+          "shortcut_artifacts_valid": false,
+          "log_sha256": "b8c1cc34eb418177c4303747bf816ecbc820b92cbc7d6b3f50e11813a90921cd"
+        },
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": true,
+          "shortcut_artifacts_valid": true,
+          "log_sha256": "631ca34b147d77288ec22680048caa22bca765ed139b9660f64aacc5f18e774e"
+        }
+      ]
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "started": "2026-10-31T13:07:22.951223+00:00",
+      "ended": "2026-10-31T13:07:50.355591+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false,
+          "shortcut_artifacts_valid": null,
+          "log_sha256": "03601f5c49b739d7b3484b5830384ec2c7c9e0229d25e548f40e89b7dd5c3451"
+        }
+      ]
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "started": "2026-10-31T13:07:50.356540+00:00",
+      "ended": "2026-10-31T13:08:15.641377+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false,
+          "shortcut_artifacts_valid": null,
+          "log_sha256": "cee02465efe002a0d86f57394d12de9c73da6fecb84d9cd4f60ff1d62e769df1"
+        }
+      ]
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "started": "2026-10-31T13:08:15.642290+00:00",
+      "ended": "2026-10-31T13:08:41.538262+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false,
+          "shortcut_artifacts_valid": null,
+          "log_sha256": "b9d8353a8e6d7eb2cd3af9bcb78f3fbf8eaaa91886bedc0d57d76676c10c15e6"
+        }
+      ]
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "started": "2026-10-31T13:08:41.539403+00:00",
+      "ended": "2026-10-31T13:08:48.916921+00:00",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "metadata_clean_recovery": false,
+          "shortcut_artifacts_valid": null,
+          "log_sha256": "41d92290cbe2ff806ea2fcda6d8878fb93fabcd5f4367c9548b3f903d3c479fc"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "screen-connected-library-return-to-catalog-paused",
+      "sha256": "5dc8282482b7fb6893eca9eeca9a8c50fb49a739d0ca53bea7bb3c699b59b9b6"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "viewport-connected-library-return-to-catalog-paused",
+      "sha256": "9e23c6127ca4da0afe87d0eff73370d3fe3115c5a0d0c493cf55dd02fe9f8f9d"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "screen-connected-library-empty-not-error",
+      "sha256": "6c8d2aadd55b3373e74289a43642fab3247c90975d01440bed4d53200b2b3ecd"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "viewport-connected-library-empty-not-error",
+      "sha256": "eb98b6936a701b54bf7fef5dd723b141aa43673d02e71cf18c509fc49ad6daff"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "screen-connected-library-progress-and-route-fixture",
+      "sha256": "90827bb56676b1f259090ab45670547acf11c7ce05524d594bce160e7f23d69c"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "viewport-connected-library-progress-and-route-fixture",
+      "sha256": "318c78ece732bb30851581c1cddf57608b397d3687ea2bf38310473c4236dfb4"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "screen-connected-library-two-songs",
+      "sha256": "7ac7bbb0caa37f111c7d4c9afbd9d692d5955f8a27daabaa5e16f581e8946522"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "viewport-connected-library-two-songs",
+      "sha256": "1b7623a7b7ba5700fdc0ddce2a27059471bd46d5a22204788a36e34d25694287"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "music-explicit-disconnect-returns-paused-demo",
+      "sha256": "e9de4882264b4e76b73667bc1f333f48994f42e933fd5878a1b8d82b98b2e90c"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "music-denied-assistant-no-demo-request",
+      "sha256": "54d53793a8d51469b9feeb8d50c0dc5b68708dbf3e2d68ed3d8aef3ae18a1e31"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "iphone",
+      "state": "music-denied-selected-source-not-demo",
+      "sha256": "0dbca068de659b3ee35371e363934a4f058683448c45765660e96f12e9f311d6"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "screen-connected-library-return-to-catalog-paused",
+      "sha256": "212377c86d0bc0b4acd75ee5749302c9240774cd4d5f1661344528fd6e3919ca"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "viewport-connected-library-return-to-catalog-paused",
+      "sha256": "f28d7e9f3962e40f2f27f7c1c15993f107ba12a5aa1dd3bf5ee67cc7cb474676"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "screen-connected-library-empty-not-error",
+      "sha256": "a3caa10e4961fe2fa390f27a545dd5fd1a7479c5690772aa49d1d93c3a691799"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "viewport-connected-library-empty-not-error",
+      "sha256": "deaec3ea0bf9a567b603dd559b5635368b47673522e108b1c2cc7e29dd87f24b"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "screen-connected-library-progress-and-route-fixture",
+      "sha256": "55d9d1d66bbe4f95e1054857191c74a52cfe4cd4d67e97d1cec97c904544240e"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "viewport-connected-library-progress-and-route-fixture",
+      "sha256": "b9b908eeca8d13ff74c84bc0ea4ce0483ee87983e4b639213c97feab8b8580e9"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "screen-connected-library-two-songs",
+      "sha256": "53d37850ea93a8d671debaa96fe0f7a9e052f0a270d7662f93676cdeb33315c6"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "viewport-connected-library-two-songs",
+      "sha256": "2b21a1438629fdf57152261dbf6d3c682566daacf0530c88610d6cebe734e937"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "music-explicit-disconnect-returns-paused-demo",
+      "sha256": "7c8fa1d38dfe5b0c4f7056abe94b9a5c6d1dc230ac3dc46ec81d662cfdc41c9c"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "music-denied-assistant-no-demo-request",
+      "sha256": "3bede754ebc814b9d36fc34b961e7bf694d6881771478cd40ba85429a274d4cd"
+    },
+    {
+      "checkpoint": "pre-audio-guard",
+      "device": "ipad",
+      "state": "music-denied-selected-source-not-demo",
+      "sha256": "e4e2d065c2fb4ff8350e72a5366afe07acac76720c4c87799151439912340a30"
+    },
+    {
+      "checkpoint": "final-",
+      "device": "iphone",
+      "state": "music-explicit-disconnect-returns-paused-demo",
+      "sha256": "049d03505431ea8bd479eb58973073263236d6d25e4c54d293d05e6b2b48dbf6"
+    },
+    {
+      "checkpoint": "final-",
+      "device": "iphone",
+      "state": "music-denied-assistant-no-demo-request",
+      "sha256": "188c7e964dd3c2c835f27ef2657e52dd9af56b2b437aaf4e2ab94b1d66f17932"
+    },
+    {
+      "checkpoint": "final-",
+      "device": "iphone",
+      "state": "music-denied-selected-source-not-demo",
+      "sha256": "a7d742c97412526a5a53f8db56cd3b59e59d033471265c93b77331e2931ae74b"
+    },
+    {
+      "checkpoint": "final-",
+      "device": "iphone",
+      "state": "UI22-music",
+      "sha256": "3db57dd219b6ef0ac763da9c1189466d725371499c07bbeaac1667b26151b7e1"
+    },
+    {
+      "checkpoint": "final-",
+      "device": "ipad",
+      "state": "music-explicit-disconnect-returns-paused-demo",
+      "sha256": "7c8fa1d38dfe5b0c4f7056abe94b9a5c6d1dc230ac3dc46ec81d662cfdc41c9c"
+    },
+    {
+      "checkpoint": "final-",
+      "device": "ipad",
+      "state": "music-denied-assistant-no-demo-request",
+      "sha256": "3bede754ebc814b9d36fc34b961e7bf694d6881771478cd40ba85429a274d4cd"
+    },
+    {
+      "checkpoint": "final-",
+      "device": "ipad",
+      "state": "music-denied-selected-source-not-demo",
+      "sha256": "e4e2d065c2fb4ff8350e72a5366afe07acac76720c4c87799151439912340a30"
+    },
+    {
+      "checkpoint": "final-",
+      "device": "ipad",
+      "state": "UI22-music",
+      "sha256": "51d243e786cfd0d9722a5ab484e045995dc309713d2535eab25e70f91ff623d4"
+    }
+  ],
+  "archives": [
+    {
+      "name": "source-delta.zip",
+      "bytes": 192485,
+      "sha256": "758674076bd5ee2f2a4a9721eed00b9b6c4fe4954171c771156dc7cf39348141",
+      "changed": [
+        "Sources/App/AppModel.swift",
+        "Sources/App/Controls.swift",
+        "Sources/App/DeviceConnections.swift",
+        "Sources/App/HomeScreens.swift",
+        "Sources/Core/ConnectedDataSession.swift",
+        "Sources/Core/WorldClock.swift",
+        "Tests/CoreTests/DeviceConnectionTests.swift",
+        "Tests/CoreTests/WorldClockTests.swift",
+        "Tests/NativeProbes/MusicSourceBoundaryProbe.swift",
+        "Tests/NativeProbes/QueuedAudioStartProbe.swift",
+        "Tests/NativeProbes/WorldClockComputationProbe.swift",
+        "Tests/UITests/HomeViewUITests.swift"
+      ],
+      "removed": [],
+      "base_locator": "research/homeview-album-boundaries-20261031/source.zip",
+      "base_sha256": "fdd0eea20ed02849da83d3622f57408d1d67747be40c10594aeaa317d46673c1",
+      "reconstructed_entries": 265,
+      "all_reconstructed_entries_read_back": true
+    },
+    {
+      "name": "sdk-products-delta.zip",
+      "bytes": 28308369,
+      "sha256": "877abc49a12ec81535cddc95f1220f3fb723a5b0240144d6979820ea2e705a11",
+      "changed": [
+        "iOS/HomeViewReplica.debug.dylib",
+        "iOS/Metadata.appintents/nlu/nlu.lzfse",
+        "macOS/Contents/MacOS/HomeViewReplica.debug.dylib",
+        "tvOS/HomeViewReplica.debug.dylib",
+        "visionOS/HomeViewReplica.debug.dylib",
+        "watchOS/HomeViewWatch.debug.dylib"
+      ],
+      "removed": [],
+      "base_locator": "research/homeview-album-boundaries-20261031/sdk-products.zip",
+      "base_sha256": "bade77c68cd78733c7ad7753c7f5bcc7afc1e8ea36dce1247041e9351ca8a66b",
+      "reconstructed_entries": 73,
+      "all_reconstructed_entries_read_back": true
+    }
+  ],
+  "historical_preparations": [
+    "Original generic connection-denied fixture did not deny Music authorization; initial native setup rejected, qualified pair used corrected synthetic authorization method.",
+    "Initial symbolic-audio compile omitted the paired NativeAudioError enum; zero scenarios executed, corrected qualified pair retained.",
+    "A fixed29file UI-package assumption stopped admission before any UI execution; actual26 files recorded, known SSU omission remains explicit and final normal SDK metadata gate passed without relaxing it.",
+    "Initial contact sheet clipped its third row; distinct full-height overviews and actual originals reviewed."
+  ],
+  "holds_unchanged": [
+    "Home",
+    "Physical devices",
+    "Signing"
+  ],
+  "limitations": [
+    "No real MusicKit subscription, region, offline, OS authorization or AirPlay receiver acceptance",
+    "Explicit reconnect requirement is for the observed live session; preapproved-source startup restoration is unchanged",
+    "UI Shortcut omission not retroactively repaired in the installed test package",
+    "Only positive own bundled demo UI playback; no acoustic or physical privacy acceptance",
+    "No original pixel/animation parity"
+  ],
+  "issues_remain_open": true,
+  "private_artifact_locator": "research/homeview-music-permission-completion-20261031"
+}

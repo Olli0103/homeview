@@ -237,7 +237,11 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
     }
   }
   func removeReminder(_ id: String) async throws { list.removeAll { $0.id == id } }
-  func authorizeMusic() async throws {}
+  func authorizeMusic() async throws {
+    if ProcessInfo.processInfo.arguments.contains("--connection-denied") {
+      throw NativeServiceError.permissionDenied
+    }
+  }
   func searchMusic(_ text: String) async throws -> [DeviceTrack] {
     fixtureMusicIDs=["song1","song2"]
     return [

@@ -273,8 +273,10 @@ final class AppModel {
   }
   var currentMusicTitle: String {
     #if !os(watchOS)
-      if connections.enabled.contains(.music) {
-        guard connections.musicAccessAllowed else { return "Apple Music · Locked" }
+      if connections.requested.contains(.music) {
+        guard connections.musicAccessAllowed else {
+          return connections.personalUnlocked ? "Apple Music · Unavailable":"Apple Music · Locked"
+        }
         if let index = connections.currentTrack, connections.tracks.indices.contains(index) {
           return connections.tracks[index].title
         }
@@ -285,8 +287,10 @@ final class AppModel {
   }
   var currentMusicArtist: String {
     #if !os(watchOS)
-      if connections.enabled.contains(.music) {
-        guard connections.musicAccessAllowed else { return "Device authentication required" }
+      if connections.requested.contains(.music) {
+        guard connections.musicAccessAllowed else {
+          return connections.personalUnlocked ? "Reconnect in Settings":"Device authentication required"
+        }
         if let index = connections.currentTrack, connections.tracks.indices.contains(index) {
           return connections.tracks[index].artist
         }
@@ -297,7 +301,7 @@ final class AppModel {
   }
   var musicIsPlaying: Bool {
     #if !os(watchOS)
-      if connections.enabled.contains(.music) { return connections.musicAccessAllowed && connections.musicPlaying }
+      if connections.requested.contains(.music) { return connections.musicAccessAllowed && connections.musicPlaying }
     #endif
     return playing
   }
@@ -1224,6 +1228,9 @@ final class AppModel {
     var choices=previous ?? connections.requested;choices.insert(kind)
     data.connectionConsent=choices
     guard persist() else { data.connectionConsent=previous;return }
+    if kind == .music {
+      audioGeneration+=1;playing=false;startingMusic=false;audio.stopMusic()
+    }
     await connections.connect(kind,date:clock,timeZone:displayTimeZone)
   }
   func beginGuestMusicUse() {
@@ -1371,7 +1378,7 @@ final class AppModel {
     #if !os(watchOS)
       if page == .calendar && connections.requested.contains(.calendar)
         || page == .reminders && connections.requested.contains(.reminders)
-        || page == .music && connections.enabled.contains(.music) && !connections.musicAccessAllowed
+        || page == .music && connections.requested.contains(.music) && !connections.musicAccessAllowed
       {
         pendingPage = page
         route = connections.personalUnlocked ? .app(page) : .deviceUnlock
@@ -1998,11 +2005,16 @@ final class AppModel {
       let wasPlaying = musicIsPlaying || startingMusic
       togglePlayback()
       #if !os(watchOS)
-        if connections.enabled.contains(.music) {
-          assistantReply =
-            connections.currentTrack == nil
-            ? "Choose a song in Apple Music."
-            : wasPlaying ? "Pause requested." : "Playback requested."
+        if connections.requested.contains(.music) {
+          if !connections.musicAccessAllowed {
+            assistantReply=connections.personalUnlocked
+              ? "Apple Music is unavailable. Reconnect in Settings."
+              : "Unlock this device to use Apple Music."
+          } else {
+            assistantReply = connections.currentTrack == nil
+              ? "Choose a song in Apple Music."
+              : wasPlaying ? "Pause requested." : "Playback requested."
+          }
           break
         }
       #endif
@@ -2070,9 +2082,9 @@ final class AppModel {
       pauseFeedPodcast()
     #endif
     #if !os(watchOS)
-      if connections.enabled.contains(.music) {
+      if connections.requested.contains(.music) {
         guard connections.musicAccessAllowed else {
-          pendingPage = .music;route = .deviceUnlock;return
+          navigate(.music);return
         }
         if connections.currentTrack == nil {
           route = .app(.music)
@@ -2095,6 +2107,7 @@ final class AppModel {
     podcastPlaying = false
     audio.stopPodcast()
     Task {
+      guard !Task.isCancelled,audioGeneration == generation else { return }
       let started = await audio.playMusic(volume: Float(data.volume))
       guard audioGeneration == generation else { return }
       startingMusic = false
@@ -2123,6 +2136,7 @@ final class AppModel {
     playing = false
     audio.stopMusic()
     Task {
+      guard !Task.isCancelled,audioGeneration == generation else { return }
       let started = await audio.playPodcast(volume: Float(data.volume))
       guard audioGeneration == generation else { return }
       startingPodcast = false
