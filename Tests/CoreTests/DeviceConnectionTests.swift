@@ -242,6 +242,112 @@ final class DeviceConnectionTests: XCTestCase {
     XCTAssertEqual(p.reminderItems.count,2);XCTAssertFalse(s.busy.contains(.reminders))
   }
 
+  func testPersonalCompletionCancelledRefreshStillPurgesRevokedSource() async throws {
+    for kind in [DataConnection.calendar, .reminders] {
+      for fails in [false, true] {
+        let p=Provider(),s=DeviceConnections(provider:p)
+        _ = await s.unlock();await s.connect(.calendar);await s.connect(.reminders)
+        XCTAssertFalse(s.events.isEmpty);XCTAssertFalse(s.reminders.isEmpty)
+        p.delayEvents=true;p.delayReminders=true
+        let started=expectation(description:"personal refresh suspended")
+        p.onStart={started.fulfill()}
+        let read=Task { await s.connect(kind,requestPermission:false) }
+        await fulfillment(of:[started],timeout:2)
+        p.revoked.insert(kind);read.cancel()
+        if kind == .calendar {
+          let reply=try XCTUnwrap(p.eventReply)
+          if fails {reply.resume(throwing:CocoaError(.fileReadNoPermission))}
+          else {reply.resume(returning:[Provider.event])}
+        } else {
+          let reply=try XCTUnwrap(p.reminderReply)
+          if fails {reply.resume(throwing:CocoaError(.fileReadNoPermission))}
+          else {reply.resume(returning:p.reminderItems)}
+        }
+        await read.value
+        XCTAssertFalse(s.enabled.contains(kind));XCTAssertFalse(s.busy.contains(kind))
+        XCTAssertTrue(s.requested.contains(kind));XCTAssertTrue(s.personalUnlocked)
+        if kind == .calendar {
+          XCTAssertTrue(s.events.isEmpty);XCTAssertFalse(s.reminders.isEmpty)
+        } else {
+          XCTAssertTrue(s.reminders.isEmpty);XCTAssertFalse(s.events.isEmpty)
+        }
+        XCTAssertTrue(s.status[kind]?.contains("access changed") == true)
+        XCTAssertEqual(p.permissionRequests,2,"Completion never prompts again")
+        p.revoked.remove(kind)
+        XCTAssertFalse(s.enabled.contains(kind),"Permission returning is not a reconnect")
+      }
+    }
+  }
+
+  func testPersonalCompletionReminderFailurePurgesRevokedSourceWithoutPolling() async throws {
+    for atReadback in [false,true] {
+      for cancelled in [false,true] {
+        let p=Provider(),s=DeviceConnections(provider:p)
+        _ = await s.unlock();await s.connect(.calendar);await s.connect(.reminders)
+        p.delayReminderWrite = !atReadback;p.delayReminders=atReadback
+        let started=expectation(description:"reminder write or readback suspended")
+        p.onStart={started.fulfill()}
+        let write=Task {await s.addReminder("Synthetic uncertain completion")}
+        await fulfillment(of:[started],timeout:2)
+        p.revoked.insert(.reminders)
+        if cancelled {write.cancel()}
+        if atReadback {try XCTUnwrap(p.reminderReply).resume(throwing:CocoaError(.fileReadNoPermission))}
+        else {try XCTUnwrap(p.writeReply).resume(throwing:CocoaError(.fileWriteNoPermission))}
+        let confirmed=await write.value
+        XCTAssertFalse(confirmed);XCTAssertTrue(s.reminders.isEmpty)
+        XCTAssertFalse(s.enabled.contains(.reminders));XCTAssertFalse(s.busy.contains(.reminders))
+        XCTAssertTrue(s.requested.contains(.reminders));XCTAssertFalse(s.events.isEmpty)
+        XCTAssertTrue(s.status[.reminders]?.contains("access changed") == true)
+        XCTAssertEqual(p.reminderWrites,1,"No automatic retry of an uncertain write")
+        XCTAssertEqual(p.reminderReads,atReadback ? 2:1)
+        XCTAssertEqual(p.reminderItems.count,atReadback ? 2:1,
+          "A submitted write with failed readback is not claimed rolled back")
+      }
+    }
+  }
+
+  func testPersonalCompletionCancelledWriteSuccessStillPurgesRevokedSource() async throws {
+    for atReadback in [false,true] {
+      let p=Provider(),s=DeviceConnections(provider:p)
+      _ = await s.unlock();await s.connect(.reminders)
+      p.delayReminderWrite = !atReadback;p.delayReminders=atReadback
+      let started=expectation(description:"submitted reminder completion suspended")
+      p.onStart={started.fulfill()}
+      let write=Task {await s.addReminder("Synthetic already submitted")}
+      await fulfillment(of:[started],timeout:2)
+      p.revoked.insert(.reminders);write.cancel()
+      if atReadback {try XCTUnwrap(p.reminderReply).resume(returning:p.reminderItems)}
+      else {try XCTUnwrap(p.writeReply).resume()}
+      let confirmed=await write.value
+      XCTAssertFalse(confirmed);XCTAssertTrue(s.reminders.isEmpty)
+      XCTAssertFalse(s.enabled.contains(.reminders));XCTAssertFalse(s.busy.contains(.reminders))
+      XCTAssertTrue(s.status[.reminders]?.contains("access changed") == true)
+      XCTAssertEqual(p.reminderWrites,1);XCTAssertEqual(p.reminderReads,atReadback ? 2:1)
+      XCTAssertEqual(p.reminderItems.count,2)
+    }
+  }
+
+  func testPersonalCompletionStaleErrorCannotPurgeReconnectedSession() async throws {
+    for kind in [DataConnection.calendar,.reminders] {
+      let p=Provider(),s=DeviceConnections(provider:p)
+      _ = await s.unlock();await s.connect(kind)
+      p.delayEvents=true;p.delayReminders=true
+      let started=expectation(description:"obsolete personal refresh suspended")
+      p.onStart={started.fulfill()}
+      let read=Task {await s.connect(kind,requestPermission:false)}
+      await fulfillment(of:[started],timeout:2)
+      s.disconnect(kind);p.delayEvents=false;p.delayReminders=false
+      await s.connect(kind);let currentStatus=s.status[kind]
+      p.revoked.insert(kind)
+      if kind == .calendar {try XCTUnwrap(p.eventReply).resume(throwing:CocoaError(.fileReadUnknown))}
+      else {try XCTUnwrap(p.reminderReply).resume(throwing:CocoaError(.fileReadUnknown))}
+      await read.value
+      XCTAssertTrue(s.enabled.contains(kind));XCTAssertEqual(s.status[kind],currentStatus,
+        "Only the current operation or authorization poll may change the replacement session")
+      s.tick();XCTAssertFalse(s.enabled.contains(kind))
+    }
+  }
+
   func testPersonalRequestCancellationDropsLateCalendarAndRestoresPriorStatus() async throws {
     let p=Provider();let s=DeviceConnections(provider:p);_ = await s.unlock();p.delayEvents=true
     let started=expectation(description:"calendar read before cancellation");p.onStart={started.fulfill()}

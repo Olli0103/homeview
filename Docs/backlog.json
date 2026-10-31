@@ -1446,7 +1446,11 @@
     "issue_number": 47,
     "state": "open",
     "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state_verified_on": "2026-10-29",
+    "progress_evidence": [
+      "Docs/personal-request-completion.md",
+      "Docs/verification/personal-request-completion-20261031.json"
+    ]
   },
   {
     "key": "DAY-02",
@@ -1471,7 +1475,11 @@
     "issue_number": 48,
     "state": "open",
     "github_state": "open",
-    "github_state_verified_on": "2026-10-29"
+    "github_state_verified_on": "2026-10-29",
+    "progress_evidence": [
+      "Docs/personal-request-completion.md",
+      "Docs/verification/personal-request-completion-20261031.json"
+    ]
   },
   {
     "key": "DAY-03",
@@ -2056,7 +2064,9 @@
       "Docs/unlock-owner.md",
       "Docs/verification/unlock-owner.json",
       "Docs/native-photos-search.md",
-      "Docs/verification/native-photos-search-20261030.json"
+      "Docs/verification/native-photos-search-20261030.json",
+      "Docs/personal-request-completion.md",
+      "Docs/verification/personal-request-completion-20261031.json"
     ],
     "implementation_note": " Drei deterministisch reproduzierte Musik-Suchfehler korrigiert: verspäteter Fehler nach Trennen, alte Bereinigung während neuer Suche und Ergebnis nach Task-Abbruch. Generation und Abbruch werden auf Erfolg/Fehler/Bereinigung geprüft; Red3Tests/5Assertions, danach grün in171 Coretests. Docs/music-search-lifecycle.md. Play/Resume, allgemeine Medienpolicy und breitere Kriterien bleiben offen.",
     "github_state": "open",

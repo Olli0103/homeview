@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-31",
+  "issues": [
+    47,
+    48,
+    67
+  ],
+  "base_commit": "e02c6e2266b1925ad05e1fffc2c379ef5f9ade1b",
+  "source_files": 263,
+  "source_digest": "9f307fbc1503051d2567186fc3122200edf89ab3767bf138d026a6ad39987d7e",
+  "product_delta": [
+    "Sources/Core/ConnectedDataSession.swift"
+  ],
+  "core": {
+    "before_methods": 4,
+    "before_failed_methods": 3,
+    "before_failed_assertions": 34,
+    "new_subcases": 12,
+    "after_tests": 79,
+    "after_failures": 0,
+    "scope": "DeviceConnectionTests, CalendarAgendaTests, SharedPanelTests"
+  },
+  "sdk": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "log_sha256": "a41da6fbd410aa21cbc78b2f5549cc351cf06971907c08c8c8db9ec659104f3a"
+        },
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": true,
+          "log_sha256": "5a697eb83c03303bfdf33a6eee04183242588f81ee8dd4cb27911fe71c329636"
+        }
+      ]
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "log_sha256": "5374afbda61ac80bd1cecad507b2e799d8aba34f5d60bbd609c6711a689a8d34"
+        }
+      ]
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "log_sha256": "0ad1035ed6164e86df5e3f10ccd219d006cf04aa7de4914e52d097e78d2a92a3"
+        }
+      ]
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "log_sha256": "3ac1db0f61dc647ddf897bf77eb41419d71a8308c395735af98bee4d5da6dcf3"
+        }
+      ]
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "attempts": [
+        {
+          "exit_code": 0,
+          "clean_metadata_recovery": false,
+          "log_sha256": "36382b2cf3bbf4154665d3bbe6eb2fd73356eaeaf39efbd96819cfee8bb26407"
+        }
+      ]
+    }
+  ],
+  "archives": [
+    {
+      "name": "source-delta.zip",
+      "bytes": 25300,
+      "sha256": "8e0ecfa46950899977dd852748b2eec9e896a7df4f287c66ab3ee56bd07c5bd0",
+      "changed": [
+        "Sources/Core/ConnectedDataSession.swift",
+        "Sources/Core/WorldClock.swift",
+        "Tests/CoreTests/DeviceConnectionTests.swift",
+        "Tests/CoreTests/WorldClockTests.swift",
+        "Tests/NativeProbes/WorldClockComputationProbe.swift"
+      ],
+      "removed": [],
+      "base_locator": "research/homeview-album-boundaries-20261031/source.zip",
+      "base_sha256": "fdd0eea20ed02849da83d3622f57408d1d67747be40c10594aeaa317d46673c1",
+      "reconstructed_entries": 263,
+      "all_reconstructed_entries_read_back": true
+    },
+    {
+      "name": "sdk-products-delta.zip",
+      "bytes": 28298287,
+      "sha256": "579870725ebd673bb6b7d3ab60699bd8cbce6e577e7d672739d06c49465133e2",
+      "changed": [
+        "iOS/HomeViewReplica.debug.dylib",
+        "iOS/Metadata.appintents/nlu/nlu.lzfse",
+        "macOS/Contents/MacOS/HomeViewReplica.debug.dylib",
+        "tvOS/HomeViewReplica.debug.dylib",
+        "visionOS/HomeViewReplica.debug.dylib",
+        "watchOS/HomeViewWatch.debug.dylib"
+      ],
+      "removed": [],
+      "base_locator": "research/homeview-album-boundaries-20261031/sdk-products.zip",
+      "base_sha256": "bade77c68cd78733c7ad7753c7f5bcc7afc1e8ea36dce1247041e9351ca8a66b",
+      "reconstructed_entries": 73,
+      "all_reconstructed_entries_read_back": true
+    }
+  ],
+  "logs": [
+    {
+      "name": "before-tests.log",
+      "sha256": "1c9d809b2e6707b17528ce071cbc031e0148fac79a032de28547f25e830c9ae0"
+    },
+    {
+      "name": "after-tests.log",
+      "sha256": "37cce3cc6029917d57640673fff6241edfd78278a13b731d9f5ec52ec7524fad"
+    },
+    {
+      "name": "sdk-builds.log",
+      "sha256": "07c8681f745d0fdf72baa9f753a79e15cbeca4e43382ca64c255fa3c6a2a97e5"
+    }
+  ],
+  "core_bundle": {
+    "archive": "core-tests.zip",
+    "sha256": "6368df10876f68e7a8641442ae6f414395ad005e375824c2dcf3dec8df287efb",
+    "all_entries_read_back": true
+  },
+  "historical_preparations": [
+    "Initial Core bundle archive lookup expected SwiftPM traditional debug layout; assertion stopped before archiving. Actual .build/out/Products/Debug XCTest bundle then saved and read back; no test rerun."
+  ],
+  "scope": "Completion-path authorization cleanup only; synthetic providers, no UI or resource changes, real accounts or physical acceptance.",
+  "holds_unchanged": [
+    "Home",
+    "Physical devices",
+    "Signing"
+  ],
+  "issues_remain_open": true,
+  "private_artifact_locator": "research/homeview-personal-completion-20261031"
+}

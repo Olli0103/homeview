@@ -156,7 +156,9 @@ final class DeviceConnections {
     let ticket = generation[kind]
     status[kind] = "Connecting…"
     defer {
-      if generation[kind] == ticket {
+      // Cancellation suppresses results, not authorization cleanup. Check only
+      // the owned generation so an obsolete completion cannot touch a new one.
+      if generation[kind] == ticket, personalSourceAvailable(kind) {
         busy.remove(kind)
         if Task.isCancelled {
           status[kind] = previousStatus ?? "Not connected"
@@ -348,7 +350,11 @@ final class DeviceConnections {
     generation[.reminders, default: 0] += 1
     let ticket = generation[.reminders]
     busy.insert(.reminders)
-    defer { if generation[.reminders] == ticket { busy.remove(.reminders) } }
+    defer {
+      if generation[.reminders] == ticket, personalSourceAvailable(.reminders) {
+        busy.remove(.reminders)
+      }
+    }
     do {
       let id = try await action()
       guard generation[.reminders] == ticket, personalUnlocked, !Task.isCancelled else { return false }
