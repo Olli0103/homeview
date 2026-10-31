@@ -91,8 +91,10 @@ final class AlbumCatalogueSession {
     do {
       try await provider.requestPermission()
       guard ticket == generation, isCurrent(), !Task.isCancelled else { return }
+      guard provider.authorizationGranted() else { throw AlbumAccessError.permissionDenied }
       let values = try await provider.catalogue()
       guard ticket == generation, isCurrent(), !Task.isCancelled else { return }
+      guard provider.authorizationGranted() else { throw AlbumAccessError.permissionDenied }
       var seen = Set<String>()
       albums = values.filter { $0.valid && seen.insert($0.id).inserted }.prefix(50).map { $0 }
       status = albums.isEmpty ? "No accessible shared albums." : "Choose photos for this display."
@@ -223,7 +225,10 @@ final class AlbumDisplaySession {
     do {
       guard provider.authorizationGranted() else { throw AlbumAccessError.permissionDenied }
       let batch = try await provider.readAlbum(selected.id, known: photos)
-      guard ticket == generation, !Task.isCancelled else { return }
+      guard ticket == generation else { return }
+      // A suspended provider may return cached bytes or an unrelated failure
+      // after access changed. Never admit them using the pre-read permission.
+      guard !revokeIfDenied(), !Task.isCancelled else { return }
       guard batch.orderedIDs.count <= 10,
             batch.orderedIDs.allSatisfy(DisplayAlbum.validIdentifier),
             Set(batch.orderedIDs).count == batch.orderedIDs.count,
@@ -247,7 +252,8 @@ final class AlbumDisplaySession {
         : partial ? "Imported copies · some photos unavailable"
         : "Updated \(photos.count) album photos."
     } catch {
-      guard ticket == generation, !Task.isCancelled else { return }
+      guard ticket == generation else { return }
+      guard !revokeIfDenied(), !Task.isCancelled else { return }
       if let reason = error as? AlbumAccessError,
          reason == .permissionDenied || reason == .noLongerAccessible {
         stop()

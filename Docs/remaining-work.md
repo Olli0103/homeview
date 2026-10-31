@@ -20,6 +20,8 @@
 
 ## Aktueller Arbeitsblock
 
+[Fotoalbum-Antworten an die aktuelle Auswahl gebunden](album-async-boundaries.md): Einmalimporte können Trennen, neue Fotoauswahl und neueren Import nicht mehr überschreiben; Katalog/Export prüfen Widerruf vor Übernahme erneut. 25 gezielte Coretests und sieben native AppModel-Szenarien bestanden, ausschließlich synthetische Daten. #11 bleibt für Originalregeln und reale PhotoKit-/Geräteabnahme offen.
+
 Das gemeinsame [Timer-/Wecker-Lifecycle-Paket für #49/#52](alarm-schedule-admission.md) verhindert nach wartender Systemfreigabe veraltete oder abgelaufene Planung. Sechs qualifizierte Vorherfehler; aktuell zehn gemeinsame AppModel-/symbolische Anbieterszenarien und18gezielte Coretests bestanden. Fünf SDK-Ziele am abschließenden Produktstand; nur der iOS-Adapter brauchte eine native Isolationskorrektur und den vorhandenen Metadaten-Clean-Recovery. Dessen Entfernung der anderen Produkte ist erhalten; die vier Pakete wurden für den finalen Archiv-Read-back wiederhergestellt, ohne Verhaltenstests zu wiederholen. Keine neue UI-/Original-/OS-/Hardwareabnahme, beide Issues bleiben OPEN. [Quellen, Fehlstände und Archiv-Read-back](verification/alarm-schedule-admission-20261031.json). [Frischer vollständiger 48-erledigt/1-Ausschluss/33-offen-Abgleich](verification/backlog-after-alarm-admission-20261031.json).
 
 [Frischer Originalquellen- und vollständiger Statusabgleich vom 31. Oktober](reference-delta-20261031.md): 15 Artikelbilder tatsächlich gesichtet, keine neue belegte Editor-/Galerie-/Weltuhr-Detailansicht. Keine neue Produktänderung oder Issue-Schließung; die veraltete offene #19-Tabellenzeile ist gegen den tatsächlichen GitHub-Abschluss korrigiert.

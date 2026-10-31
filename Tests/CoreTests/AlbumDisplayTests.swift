@@ -7,6 +7,7 @@ private final class ControlledAlbumProvider: AlbumPhotoProvider {
   var allowed = true
   var holdPermission = false
   var holdRead = false
+  var holdCatalogue = false
   var permissionCalls = 0
   var catalogueReads = 0
   var readCalls = 0
@@ -16,8 +17,10 @@ private final class ControlledAlbumProvider: AlbumPhotoProvider {
   var batch = AlbumBatch(orderedIDs: [], photos: [])
   var permissions: [Int: CheckedContinuation<Void, Error>] = [:]
   var reads: [Int: CheckedContinuation<AlbumBatch, Error>] = [:]
+  var catalogues: [Int: CheckedContinuation<[DisplayAlbum], Error>] = [:]
   private var permissionEntries: [Int: CheckedContinuation<Void, Never>] = [:]
   private var readEntries: [Int: CheckedContinuation<Void, Never>] = [:]
+  private var catalogueEntries: [Int: CheckedContinuation<Void, Never>] = [:]
   func authorizationGranted() -> Bool { allowed }
   func requestPermission() async throws {
     permissionCalls += 1
@@ -32,6 +35,13 @@ private final class ControlledAlbumProvider: AlbumPhotoProvider {
   }
   func catalogue() async throws -> [DisplayAlbum] {
     catalogueReads += 1
+    if holdCatalogue {
+      let call = catalogueReads
+      return try await withCheckedThrowingContinuation { continuation in
+        catalogues[call] = continuation
+        catalogueEntries.removeValue(forKey: call)?.resume()
+      }
+    }
     return [DisplayAlbum(id: "chosen", title: "Synthetic album")]
   }
   func readAlbum(_ id: String, known: [AlbumPhoto]) async throws -> AlbumBatch {
@@ -55,6 +65,91 @@ private final class ControlledAlbumProvider: AlbumPhotoProvider {
   func readStarted(_ call: Int) async {
     if reads[call] != nil { return }
     await withCheckedContinuation { readEntries[call] = $0 }
+  }
+  func catalogueStarted(_ call: Int) async {
+    if catalogues[call] != nil { return }
+    await withCheckedContinuation { catalogueEntries[call] = $0 }
+  }
+}
+
+extension AlbumDisplayTests {
+  func testRevocationDuringReadDiscardsLateSuccessAndClearsLinkedCopies() async {
+    await revokedRead(throwing: false, rejectCleanup: false)
+  }
+  func testRevocationDuringFailedReadClearsLinkedCopiesRatherThanKeepingOfflineData() async {
+    await revokedRead(throwing: true, rejectCleanup: false)
+  }
+  func testRevocationClearsSessionEvenWhenSavingDisconnectionFails() async {
+    await revokedRead(throwing: false, rejectCleanup: true)
+  }
+  private func revokedRead(throwing: Bool, rejectCleanup: Bool) async {
+    let provider = ControlledAlbumProvider()
+    let session = AlbumDisplaySession(provider: provider)
+    var saved: [AlbumPhoto] = [], commits = 0, cleanups = 0
+    session.apply = { album, photos in
+      if album == nil { cleanups += 1; if rejectCleanup { return false } }
+      else { commits += 1 }
+      saved = photos
+      return true
+    }
+    session.setActive(true)
+    XCTAssertTrue(session.select(chosen, deviceAuthenticated: true, explicitDisplayConsent: true))
+    provider.batch = AlbumBatch(orderedIDs: ["old"], photos: [photo("old")])
+    await session.refresh(force: true)
+    XCTAssertEqual(saved.map(\.id), ["old"])
+    let before = commits
+    provider.holdRead = true
+    let pending = Task { await session.refresh(force: true) }
+    await provider.readStarted(2)
+    provider.allowed = false
+    if throwing {
+      provider.reads.removeValue(forKey: 2)!.resume(throwing: AlbumAccessError.unavailable)
+    } else {
+      provider.reads.removeValue(forKey: 2)!.resume(returning: AlbumBatch(orderedIDs: ["late"], photos: [photo("late")]))
+    }
+    await pending.value
+    XCTAssertEqual(commits, before, "No revoked photo commit")
+    XCTAssertEqual(cleanups, 1)
+    XCTAssertNil(session.album)
+    XCTAssertTrue(session.photos.isEmpty)
+    XCTAssertNil(session.lastSuccess)
+    XCTAssertFalse(session.busy)
+    XCTAssertNil(provider.changeHandler)
+    XCTAssertTrue(session.status.contains("revoked"))
+    if rejectCleanup { XCTAssertTrue(session.status.contains("could not be cleared")) }
+    else { XCTAssertTrue(saved.isEmpty) }
+    XCTAssertEqual(provider.permissionCalls, 0)
+    XCTAssertEqual(provider.catalogueReads, 0)
+  }
+  func testRevokedCatalogueCompletionCannotPublishAlbumNames() async {
+    let provider = ControlledAlbumProvider(); provider.holdCatalogue = true
+    let catalogue = AlbumCatalogueSession(provider: provider)
+    let pending = Task { await catalogue.load { true } }
+    await provider.catalogueStarted(1)
+    provider.allowed = false
+    provider.catalogues.removeValue(forKey: 1)!.resume(returning: [chosen])
+    await pending.value
+    XCTAssertTrue(catalogue.albums.isEmpty)
+    XCTAssertFalse(catalogue.busy)
+    XCTAssertTrue(catalogue.status.contains("Photos access"))
+  }
+  func testOldCatalogueReadCannotPublishOrClearNewRequestBusyState() async {
+    let provider = ControlledAlbumProvider(); provider.holdCatalogue = true
+    let catalogue = AlbumCatalogueSession(provider: provider)
+    let first = Task { await catalogue.load { true } }
+    await provider.catalogueStarted(1)
+    catalogue.invalidate()
+    let second = Task { await catalogue.load { true } }
+    await provider.catalogueStarted(2)
+    provider.catalogues.removeValue(forKey: 1)!.resume(returning: [chosen])
+    await first.value
+    XCTAssertTrue(catalogue.albums.isEmpty)
+    XCTAssertTrue(catalogue.busy)
+    let newer = DisplayAlbum(id: "new", title: "New synthetic album")
+    provider.catalogues.removeValue(forKey: 2)!.resume(returning: [newer])
+    await second.value
+    XCTAssertEqual(catalogue.albums, [newer])
+    XCTAssertFalse(catalogue.busy)
   }
 }
 

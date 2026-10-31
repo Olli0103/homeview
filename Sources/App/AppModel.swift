@@ -167,6 +167,7 @@ final class AppModel {
     let albumCatalogue: AlbumCatalogueSession
     let albumUpdates: AlbumDisplaySession
     private var albumRefreshTask: Task<Void,Never>?
+    private var albumImportGeneration = 0
     private(set) var demoPlan:DemoActionPlan?
     private var demoPlanTask:Task<Void,Never>?
     private var demoPlanGeneration=0
@@ -853,6 +854,7 @@ final class AppModel {
     guard storePhotos(bytes.map { [$0] } ?? [],selection:bytes == nil ? .none:.single,
       title:nil,album:nil,assets:[],navigate:true) else { return }
     #if !os(watchOS)
+      albumImportGeneration += 1
       albumRefreshTask?.cancel()
       albumUpdates.stop(clearDisplay:false)
     #endif
@@ -901,6 +903,7 @@ final class AppModel {
     guard !images.isEmpty else { error = "Choose at least one photo.";return false }
     guard storePhotos(images,selection:.gallery,title:title,album:nil,assets:[],navigate:true) else { return false }
     #if !os(watchOS)
+      albumImportGeneration += 1
       albumRefreshTask?.cancel()
       albumUpdates.stop(clearDisplay:false)
     #endif
@@ -1003,22 +1006,37 @@ final class AppModel {
     }
   }
   func importAlbumOnce(_ album:DisplayAlbum) async {
-    guard connections.personalUnlocked,albumCatalogue.albums.contains(album) else { return }
+    guard !Task.isCancelled,connections.personalUnlocked,albumCatalogue.albums.contains(album) else { return }
+    guard albumPhotoProvider.authorizationGranted() else {
+      albumCatalogue.invalidate(locked:false)
+      error="Photos access is required before importing an album."
+      return
+    }
     let generation=personalSessionGeneration
+    albumImportGeneration += 1
+    let request=albumImportGeneration
     do {
       let batch=try await albumPhotoProvider.readAlbum(album.id,known:[])
-      guard !Task.isCancelled,connections.personalUnlocked,personalSessionGeneration == generation else { return }
+      guard !Task.isCancelled,connections.personalUnlocked,personalSessionGeneration == generation,
+            albumImportGeneration == request else { return }
+      guard albumPhotoProvider.authorizationGranted() else {
+        albumCatalogue.invalidate(locked:false)
+        error="Photos access was revoked. The album was not imported."
+        return
+      }
       let values=batch.orderedIDs.compactMap { id in batch.photos.first { $0.id == id }?.bytes }
       guard !values.isEmpty else { error="No photos could be imported.";return }
       _ = setGallery(values,title:album.title)
     } catch {
-      guard !Task.isCancelled,connections.personalUnlocked,personalSessionGeneration == generation else { return }
+      guard !Task.isCancelled,connections.personalUnlocked,personalSessionGeneration == generation,
+            albumImportGeneration == request else { return }
       self.error="The selected album could not be imported."
     }
   }
   func linkAlbumForDisplay(_ album:DisplayAlbum) {
     guard connections.personalUnlocked,albumCatalogue.albums.contains(album) else { return }
     if albumUpdates.select(album,deviceAuthenticated:connections.personalUnlocked,explicitDisplayConsent:true) {
+      albumImportGeneration += 1
       data.face = .photos;persist();route = .face
       refreshDisplayAlbum()
     }
@@ -1029,6 +1047,7 @@ final class AppModel {
     albumRefreshTask=Task { await albumUpdates.refresh(force:true) }
   }
   func disconnectDisplayAlbum() {
+    albumImportGeneration += 1
     albumRefreshTask?.cancel()
     albumUpdates.stop()
   }
