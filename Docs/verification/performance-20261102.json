@@ -1,0 +1,447 @@
+{
+  "date": "2026-11-02",
+  "reported_build": "0.1.0 (1)",
+  "physical_report_reproduced": false,
+  "requester_device": "not yet supplied",
+  "mac_device": "Apple M1 Max",
+  "gpu_scope": "Isolated actual Mac GPU shader dispatch, not SwiftUI frame time or physical iPad acceptance",
+  "gpu_before": [
+    {
+      "median_gpu_ms": 0.5411249585449696,
+      "samples_gpu_ms": [
+        1.120458240620792,
+        1.0977499186992645,
+        1.189291593618691,
+        0.8302499772980809,
+        0.5411249585449696,
+        0.4895000020042062,
+        0.4893750883638859,
+        0.4916249308735132,
+        0.4914999008178711,
+        0.4615415818989277
+      ],
+      "shader": "PrismScene",
+      "side": 1200,
+      "variant": 0
+    },
+    {
+      "median_gpu_ms": 0.5886249709874392,
+      "samples_gpu_ms": [
+        0.522708403877914,
+        0.800624955445528,
+        0.6747916340827942,
+        0.5862916586920619,
+        0.587041606195271,
+        0.5882083205506206,
+        0.5886249709874392,
+        0.5879999371245503,
+        0.5891250912100077,
+        0.5886249709874392
+      ],
+      "shader": "PrismScene",
+      "side": 1200,
+      "variant": 1
+    },
+    {
+      "median_gpu_ms": 0.976541661657393,
+      "samples_gpu_ms": [
+        0.976541661657393,
+        0.976541661657393,
+        0.9759999811649323,
+        0.9762500412762165,
+        0.9762499248608947,
+        0.976541661657393,
+        0.9770416654646397,
+        1.4226249186322093,
+        1.1677499860525131,
+        0.5876667564734817
+      ],
+      "shader": "PrismScene",
+      "side": 1200,
+      "variant": 2
+    },
+    {
+      "median_gpu_ms": 0.5881666438654065,
+      "samples_gpu_ms": [
+        0.49183331429958344,
+        0.4917082842439413,
+        0.4920000210404396,
+        0.5514166550710797,
+        0.5883749108761549,
+        0.5885417340323329,
+        0.5881666438654065,
+        0.5886249709874392,
+        0.5885000573471189,
+        0.4915832541882992
+      ],
+      "shader": "PrismScene",
+      "side": 1200,
+      "variant": 3
+    },
+    {
+      "median_gpu_ms": 15.476500033400953,
+      "samples_gpu_ms": [
+        15.46970836352557,
+        15.566083369776607,
+        15.427208272740245,
+        15.476500033400953,
+        15.5314999865368,
+        15.416000038385391,
+        15.23895829450339,
+        14.89920832682401,
+        16.22391666751355,
+        15.847750008106232
+      ],
+      "shader": "WeatherClouds",
+      "side": 1200,
+      "variant": 0
+    },
+    {
+      "median_gpu_ms": 15.579125029034913,
+      "samples_gpu_ms": [
+        15.171333332546055,
+        15.630500041879714,
+        14.646041672676802,
+        15.816708328202367,
+        15.337374992668629,
+        15.4907499672845,
+        15.37008339073509,
+        15.579125029034913,
+        15.684125013649464,
+        16.01299992762506
+      ],
+      "shader": "WeatherClouds",
+      "side": 1200,
+      "variant": 1
+    },
+    {
+      "median_gpu_ms": 15.829999931156635,
+      "samples_gpu_ms": [
+        15.829999931156635,
+        15.86037501692772,
+        15.815874910913408,
+        15.622916631400585,
+        15.928125008940697,
+        16.009583370760083,
+        15.60762501321733,
+        15.881750034168363,
+        15.120625030249357,
+        15.770124970003963
+      ],
+      "shader": "WeatherClouds",
+      "side": 1200,
+      "variant": 2
+    },
+    {
+      "median_gpu_ms": 15.813791658729315,
+      "samples_gpu_ms": [
+        15.850124997086823,
+        15.813791658729315,
+        15.992374974302948,
+        16.095499973744154,
+        15.844124951399863,
+        15.54016675800085,
+        15.436875051818788,
+        15.456499997526407,
+        15.52924991119653,
+        15.350083354860544
+      ],
+      "shader": "WeatherClouds",
+      "side": 1200,
+      "variant": 3
+    }
+  ],
+  "gpu_after": [
+    {
+      "median_gpu_ms": 0.3296666545793414,
+      "samples_gpu_ms": [
+        0.3279166994616389,
+        0.3296666545793414,
+        0.3305417485535145,
+        0.3279999364167452,
+        0.3279999364167452,
+        0.32962497789412737,
+        0.43649994768202305,
+        0.42045838199555874,
+        0.364125007763505,
+        0.32774999272078276
+      ],
+      "shader": "PrismScene",
+      "side": 1200,
+      "variant": 0
+    },
+    {
+      "median_gpu_ms": 0.3287083236500621,
+      "samples_gpu_ms": [
+        0.4569166339933872,
+        0.3281249664723873,
+        0.3282083198428154,
+        0.34270831383764744,
+        0.49050000961869955,
+        0.3787499153986573,
+        0.32812508288770914,
+        0.3285000566393137,
+        0.3287083236500621,
+        0.32824999652802944
+      ],
+      "shader": "PrismScene",
+      "side": 1200,
+      "variant": 1
+    },
+    {
+      "median_gpu_ms": 0.4006667295470834,
+      "samples_gpu_ms": [
+        0.5504166474565864,
+        0.406083301641047,
+        0.3667917335405946,
+        0.42504165321588516,
+        0.329458387568593,
+        0.3287500003352761,
+        0.3298750380054116,
+        0.4006667295470834,
+        0.4909583367407322,
+        0.34962501376867294
+      ],
+      "shader": "PrismScene",
+      "side": 1200,
+      "variant": 2
+    },
+    {
+      "median_gpu_ms": 0.16612501349300146,
+      "samples_gpu_ms": [
+        0.16612501349300146,
+        0.16549997963011265,
+        0.16604166012257338,
+        0.16649998724460602,
+        0.1665833406150341,
+        0.1666666939854622,
+        0.16558333300054073,
+        0.16612501349300146,
+        0.16499997582286596,
+        0.16566668637096882
+      ],
+      "shader": "PrismScene",
+      "side": 1200,
+      "variant": 3
+    },
+    {
+      "median_gpu_ms": 8.325750008225441,
+      "samples_gpu_ms": [
+        8.947374997660518,
+        8.101125014945865,
+        8.724250015802681,
+        7.954249973408878,
+        10.172291775234044,
+        8.20649997331202,
+        8.309500059112906,
+        8.325750008225441,
+        8.014500024728477,
+        9.037458337843418
+      ],
+      "shader": "WeatherClouds",
+      "side": 1200,
+      "variant": 0
+    },
+    {
+      "median_gpu_ms": 8.26012494508177,
+      "samples_gpu_ms": [
+        8.372874930500984,
+        8.111499948427081,
+        8.26012494508177,
+        7.917750044725835,
+        9.001375059597194,
+        8.206249913200736,
+        7.954333443194628,
+        9.316916693933308,
+        7.959833252243698,
+        8.804999990388751
+      ],
+      "shader": "WeatherClouds",
+      "side": 1200,
+      "variant": 1
+    },
+    {
+      "median_gpu_ms": 8.6839166469872,
+      "samples_gpu_ms": [
+        8.19275004323572,
+        8.839000016450882,
+        7.968916674144566,
+        8.6839166469872,
+        9.451125049963593,
+        7.958125090226531,
+        8.874624967575073,
+        7.965375087223947,
+        9.172083344310522,
+        8.108166744932532
+      ],
+      "shader": "WeatherClouds",
+      "side": 1200,
+      "variant": 2
+    },
+    {
+      "median_gpu_ms": 8.470500004477799,
+      "samples_gpu_ms": [
+        7.991333259269595,
+        8.079999941401184,
+        9.042375022545457,
+        8.650000090710819,
+        7.962333387695253,
+        8.119374979287386,
+        9.002291597425938,
+        8.948125061579049,
+        8.2321249647066,
+        8.470500004477799
+      ],
+      "shader": "WeatherClouds",
+      "side": 1200,
+      "variant": 3
+    }
+  ],
+  "shader_pixel_comparison": [
+    {
+      "file": "PrismScene-0.rgba16",
+      "max_channel_delta": 0.00048828125,
+      "different_channels": 524,
+      "mean_channel_delta": 2.033445570203993e-08
+    },
+    {
+      "file": "PrismScene-1.rgba16",
+      "max_channel_delta": 0.00048828125,
+      "different_channels": 845,
+      "mean_channel_delta": 2.6735994550916883e-08
+    },
+    {
+      "file": "PrismScene-2.rgba16",
+      "max_channel_delta": 0.00048828125,
+      "different_channels": 493,
+      "mean_channel_delta": 2.536773681640625e-08
+    },
+    {
+      "file": "PrismScene-3.rgba16",
+      "max_channel_delta": 0.00048828125,
+      "different_channels": 678,
+      "mean_channel_delta": 2.7476416693793402e-08
+    },
+    {
+      "file": "WeatherClouds-0.rgba16",
+      "max_channel_delta": 0,
+      "different_channels": 0,
+      "mean_channel_delta": 0.0
+    },
+    {
+      "file": "WeatherClouds-1.rgba16",
+      "max_channel_delta": 0.00048828125,
+      "different_channels": 87,
+      "mean_channel_delta": 6.569756401909722e-09
+    },
+    {
+      "file": "WeatherClouds-2.rgba16",
+      "max_channel_delta": 0,
+      "different_channels": 0,
+      "mean_channel_delta": 0.0
+    },
+    {
+      "file": "WeatherClouds-3.rgba16",
+      "max_channel_delta": 0.00048828125,
+      "different_channels": 210,
+      "mean_channel_delta": 8.212195502387153e-09
+    }
+  ],
+  "flow_bytes": {
+    "after_checksum": 21013,
+    "after_ms_per_frame": 0.04929006099700928,
+    "before_checksum": 21013,
+    "before_ms_per_frame": 0.9162753820419312,
+    "identical_bytes": true,
+    "iterations": 200,
+    "pixels": 16384
+  },
+  "native_ui": {
+    "simulators": [
+      "iPhone 18 Pro",
+      "iPad Air 11-inch (M4)"
+    ],
+    "tests_per_simulator": 2,
+    "total_passed": 4,
+    "failed": 0,
+    "cases": [
+      "Flow menu roundtrip and resumed animation",
+      "Reduce Motion stable frame and night deactivation"
+    ]
+  },
+  "final_sdk_results": [
+    {
+      "platform": "iOS",
+      "exit_code": 0,
+      "started": "2026-11-02T14:06:11.742140+00:00",
+      "ended": "2026-11-02T14:06:44.709313+00:00"
+    },
+    {
+      "platform": "macOS",
+      "exit_code": 0,
+      "started": "2026-11-02T14:06:44.711688+00:00",
+      "ended": "2026-11-02T14:07:11.432570+00:00"
+    },
+    {
+      "platform": "tvOS",
+      "exit_code": 0,
+      "started": "2026-11-02T14:07:11.433508+00:00",
+      "ended": "2026-11-02T14:07:36.839841+00:00"
+    },
+    {
+      "platform": "visionOS",
+      "exit_code": 0,
+      "started": "2026-11-02T14:07:36.840851+00:00",
+      "ended": "2026-11-02T14:08:02.674797+00:00"
+    },
+    {
+      "platform": "watchOS",
+      "exit_code": 0,
+      "started": "2026-11-02T14:08:02.675760+00:00",
+      "ended": "2026-11-02T14:08:09.860363+00:00"
+    }
+  ],
+  "source_manifest_sha256": "87353aa4db95dd9a48e1af3507d4665d7179526cd98e2bf2ff1073d4582203f3",
+  "source_and_test_files": 187,
+  "all_source_inputs_unchanged": true,
+  "decoded_visuals_reviewed": [
+    "after/PrismScene-0.png",
+    "after/WeatherClouds-0.png",
+    "ipad Flow resumed native viewport"
+  ],
+  "real_home_enabled": false,
+  "upload_attempted": false,
+  "artifact_locator": "/Volumes/Extern/OpenClaw/qa/hearthside-performance-20261102",
+  "prepared_distribution": {
+    "version": "0.1.0",
+    "build": "2",
+    "ipa_bytes": 21290152,
+    "ipa_sha256": "3501929794cbe2662f51003f92a429f66d6d2c0a417fb080d6ecc0aa18c61179",
+    "bundles": [
+      {
+        "identifier": "cloud.posselt.Hearthside",
+        "version": "0.1.0",
+        "build": "2",
+        "display_name": "Hearthside",
+        "strict_signature": true,
+        "distribution_profile": true,
+        "get_task_allow": false
+      },
+      {
+        "identifier": "cloud.posselt.Hearthside.TimerWidget",
+        "version": "0.1.0",
+        "build": "2",
+        "display_name": "Hearthside Timers",
+        "strict_signature": true,
+        "distribution_profile": true,
+        "get_task_allow": false
+      }
+    ],
+    "internal_testing_only": true,
+    "upload_attempted": false,
+    "apple_validation_passed": false,
+    "testflight_ready": false,
+    "blocker": "Fresh App Store Connect navigation redirected to login with authResult=FAILED; prior temporary API key was revoked. Owner must restore browser login.",
+    "matching_exported_executable_and_archive_dsym": true
+  }
+}

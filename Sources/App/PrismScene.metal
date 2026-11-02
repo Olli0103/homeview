@@ -18,6 +18,9 @@ static float3 prismSlab(float3 behind,float2 world,float2 center,float angle,
     float2 d=world-center;
     float2 p=float2(c*d.x+s*d.y,-s*d.x+c*d.y);
     float distance=prismRoundBox(p,halfSize,5);
+    // Outside the antialiased slab its contribution is exactly zero. Avoid
+    // four relief evaluations and lighting for every invisible layer.
+    if(distance>=0.7) return behind;
     float cover=1.0-smoothstep(-0.7,0.7,distance);
     float2 gradient=float2(prismRelief(p+float2(1,0),halfSize)-prismRelief(p-float2(1,0),halfSize),
         prismRelief(p+float2(0,1),halfSize)-prismRelief(p-float2(0,1),halfSize))*0.5;

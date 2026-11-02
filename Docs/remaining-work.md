@@ -272,3 +272,8 @@ Geschlossen bedeutet Abschluss des dokumentierten Issue-Umfangs oder einen ausdr
 | [#80](https://github.com/Olli0103/homeview/issues/80) | Persistenz, Migration, Offline und späte Antworten systematisch prüfen | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
 | [#81](https://github.com/Olli0103/homeview/issues/81) | Dauerleistung, Energie und Animation-Lifecycle vermessen | Offen; verlangte Geräte-/Dienst-/Hilfsmittelabnahme fehlt bzw. ist pausiert. Weitere Softwarearbeit nicht pauschal ausgeschlossen. |
 | [#82](https://github.com/Olli0103/homeview/issues/82) | Palette, Bounce-Gitter und Flux als optionale Watch-inspirierte Erweiterungen bewerten | Geschlossen im dokumentierten Umfang; keine pauschale Original-/Hardware-Parity. |
+
+
+## 2. November — Performance-Beschwerde zu Hearthside 0.1.0 (1)
+
+[Konkrete Renderkosten korrigiert](performance-20261102.md): statische Menü-Backdrops, vollständige Flow-Deaktivierung im Backdrop, unsichtbare Prism-/Wetterarbeit übersprungen und zusammenhängender Flow-RGBA-Puffer. Vier gezielte iPhone-/iPad-Simulatortests und fünf finale SDKs bestanden. Isolierte M1-Max-Messungen sind keine Gerätegrenze: Wetter15,48–15,83→8,26–8,68ms/1200²; Flow-Bytes0,916→0,049ms/128². Exaktes betroffenes Gerät und physische Reproduktion stehen aus; #17/#81 bleiben offen. Build2 wird separat vorbereitet; Apple-Sitzung beim frischen Aufruf abgelaufen, daher kein Upload behauptet.

@@ -1857,6 +1857,26 @@ extension HomeViewUITests {
 }
 
 extension HomeViewUITests {
+  func testFlowBackdropMenusRemainNavigableAndFaceResumes() {
+    launch(["--face","Flow","--animation-test"])
+    let report=app.staticTexts["flow.compute.test"]
+    XCTAssertTrue(report.waitForExistence(timeout:8))
+    expectation(for:NSPredicate(format:"value CONTAINS %@","active=true"),evaluatedWith:report)
+    waitForExpectations(timeout:8)
+    tap("nav.apps")
+    XCTAssertTrue(app.buttons["all.apps"].waitForExistence(timeout:5))
+    tap("all.apps")
+    XCTAssertTrue(app.buttons["app.Weather"].waitForExistence(timeout:5))
+    tap("nav.faces")
+    XCTAssertTrue(report.waitForExistence(timeout:8))
+    expectation(for:NSPredicate(format:"value CONTAINS %@","active=true"),evaluatedWith:report)
+    waitForExpectations(timeout:8)
+    let first=report.value as? String
+    expectation(for:NSPredicate { _,_ in (report.value as? String) != first },evaluatedWith:report)
+    waitForExpectations(timeout:8)
+    viewportShot("flow-resumes-after-static-menu-backdrops")
+  }
+
   func testFlowComputeReducedFrameStopsAndNightDoesNotSubmitFluidWork() {
     launch(["--face","Flow","--animation-test","--reduce-motion"])
     let report=app.staticTexts["flow.compute.test"]

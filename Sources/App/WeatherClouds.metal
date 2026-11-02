@@ -47,6 +47,11 @@ static float3 weatherScene(float2 uv,float time,float cover,float night) {
     if(cover<=0.0) return base;
     float daylight=1.0-night;
     float topBand=1.0-smoothstep(0.28,0.54,uv.y);
+    float glow=exp(-length((uv-float2(0.27,0.04))*float2(5.0,6.0))*3.5)*(1.0-night);
+    base=mix(base,float3(1.0,0.99,0.95),glow*0.70);
+    // Below the cloud band opacity is exactly zero for all sixteen steps.
+    // Keep the identical sky/glow without evaluating 240 noise octaves.
+    if(topBand<=0.0) return base;
     float3 origin=float3(uv*4.0,1.37)+float3(time*0.018,0,0);
     float3 sunlight=normalize(float3(-0.5,-0.7,-0.5));
     float transmission=1.0;
@@ -70,8 +75,6 @@ static float3 weatherScene(float2 uv,float time,float cover,float night) {
         cloudLight+=transmission*opacity*color;
         transmission*=1.0-opacity;
     }
-    float glow=exp(-length((uv-float2(0.27,0.04))*float2(5.0,6.0))*3.5)*(1.0-night);
-    base=mix(base,float3(1.0,0.99,0.95),glow*0.70);
     return base*transmission+cloudLight;
 }
 [[ stitchable ]] half4 weatherCloudField(float2 position,half4 input,

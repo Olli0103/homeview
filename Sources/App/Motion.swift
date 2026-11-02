@@ -1,19 +1,35 @@
 import SwiftUI
 
+private struct ArtworkMotionEnabledKey: EnvironmentKey {
+  static let defaultValue = true
+}
+extension EnvironmentValues {
+  /// Decorative backdrops must not compete with the foreground controls.
+  var artworkMotionEnabled: Bool {
+    get { self[ArtworkMotionEnabledKey.self] }
+    set { self[ArtworkMotionEnabledKey.self] = newValue }
+  }
+}
+
 /// Motion follows app activity and Reduce Motion. Screenshot fixtures stay still.
 struct MotionTimeline<Content: View>: View {
+  @Environment(\.artworkMotionEnabled) private var motionEnabled
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
   @Environment(\.scenePhase) private var scenePhase
   @State private var epoch = Date()
   var content: (Double) -> Content
   private var paused: Bool {
     let args = ProcessInfo.processInfo.arguments
-    return reduceMotion || scenePhase != .active || args.contains("--reduce-motion")
+    return !motionEnabled || reduceMotion || scenePhase != .active || args.contains("--reduce-motion")
       || args.contains("--uitesting") && !args.contains("--animation-test")
   }
   var body: some View {
-    TimelineView(.animation(minimumInterval: 1.0 / 20, paused: paused)) { timeline in
-      content(paused ? 0 : max(0, timeline.date.timeIntervalSince(epoch)))
+    if paused {
+      content(0)
+    } else {
+      TimelineView(.animation(minimumInterval: 1.0 / 20)) { timeline in
+        content(max(0, timeline.date.timeIntervalSince(epoch)))
+      }
     }
   }
 }
@@ -42,8 +58,14 @@ struct GlassPressStyle: ButtonStyle {
   var currentImage:CGImage? {
     if imageRevision != session.revision || image == nil {
       let simulation=session.simulation
-      let bytes:[UInt8]=simulation.dye.flatMap { color in
-        [color.x,color.y,color.z,1].map {UInt8(min(255,max(0,$0*255)))}
+      // One contiguous frame buffer, not two temporary arrays per pixel on
+      // MainActor (32,768 small arrays for every 128-square frame).
+      var bytes=[UInt8](repeating:255,count:simulation.dye.count*4)
+      for (index,color) in simulation.dye.enumerated() {
+        let offset=index*4
+        bytes[offset]=UInt8(min(255,max(0,color.x*255)))
+        bytes[offset+1]=UInt8(min(255,max(0,color.y*255)))
+        bytes[offset+2]=UInt8(min(255,max(0,color.z*255)))
       }
       let provider=CGDataProvider(data:Data(bytes) as CFData)!
       image=CGImage(width:simulation.side,height:simulation.side,bitsPerComponent:8,
@@ -63,6 +85,7 @@ private struct FlowFrameRequest:Hashable {
 
 struct FlowArtwork: View {
   @Environment(\.scenePhase) private var scenePhase
+  @Environment(\.artworkMotionEnabled) private var motionEnabled
   let date: Date
   let timeZone: TimeZone
   var far: Bool
@@ -120,10 +143,13 @@ struct FlowArtwork: View {
           }.onEnded { _ in impulse = .zero })
       #endif
       .onChange(of:scenePhase,initial:true) { _,phase in
-        if phase == .active && !highContrastNight {frames.activate()} else {frames.deactivate()}
+        if phase == .active && motionEnabled && !highContrastNight {frames.activate()} else {frames.deactivate()}
       }
       .onChange(of:highContrastNight) { _,night in
-        if scenePhase == .active && !night {frames.activate()} else {frames.deactivate()}
+        if scenePhase == .active && motionEnabled && !night {frames.activate()} else {frames.deactivate()}
+      }
+      .onChange(of:motionEnabled) { _,enabled in
+        if scenePhase == .active && enabled && !highContrastNight {frames.activate()} else {frames.deactivate()}
       }
       .onDisappear {frames.deactivate()}
       .accessibilityLabel("Flow clock")

@@ -111,3 +111,11 @@ The native Xcode Apple-ID upload attempt failed before delivery with a missing
 `Actor/relationships/providerId` reference. The exported IPA was validated and
 uploaded by `altool` with a temporary API key, preserving its exact SHA-256.
 See [the sanitized receipt](verification/hearthside-testflight-20261102.json).
+
+## Performance follow-up candidate: 0.1.0 (2)
+
+[Render-cost fixes and measured limits](performance-20261102.md). Locally signed
+and distribution-exported, with app/widget signatures and internal-only scope
+verified. **Not uploaded:** fresh App Store Connect access requires the owner to
+restore the Chrome login (`authResult=FAILED`). Build 1 remains the only delivered
+build established here; reconcile current Apple builds before uploading Build 2.

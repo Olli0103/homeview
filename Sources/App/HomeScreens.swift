@@ -21,6 +21,7 @@ struct PersonalView: View {
   var body: some View {
     ZStack {
       FaceView(selection:model.data.face).blur(radius:22).overlay(.black.opacity(0.28))
+        .environment(\.artworkMotionEnabled,false)
         .allowsHitTesting(false).accessibilityHidden(true)
         #if os(tvOS)
           .disabled(true)
@@ -348,6 +349,7 @@ struct AppDrawer: View {
       }
     }.background {
       FaceView(selection: model.data.face).blur(radius: 22).overlay(.black.opacity(0.35))
+        .environment(\.artworkMotionEnabled,false)
         .allowsHitTesting(false).accessibilityHidden(true)
     }
     .foregroundStyle(.white).buttonStyle(.plain)
