@@ -653,7 +653,7 @@ extension HomeViewUITests {
     albumSettings()
     photoTypeObserve("album-linked-title",app.staticTexts["Synthetic shared album"])
     photoTypeObserve("album-linked-notice",app.staticTexts.matching(NSPredicate(format:"label == %@",
-      "New photos from this album appear on this shared display while HomeView is active. Up to ten photos are kept.")).firstMatch)
+      "New photos from this album appear on this shared display while Hearthside is active. Up to ten photos are kept.")).firstMatch)
     photoTypeObserve("album-status",app.staticTexts["photos.shared.status"])
     let refresh=app.buttons["photos.shared.refresh"]
     photoTypeObserve("album-refresh-control",refresh,control:true)

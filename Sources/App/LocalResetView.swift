@@ -10,7 +10,7 @@ import LocalAuthentication
   #if canImport(LocalAuthentication) && !os(tvOS)
     let context=LAContext()
     return (try? await context.evaluatePolicy(.deviceOwnerAuthentication,
-      localizedReason:"Authenticate before separately confirming a reset of HomeView’s local app content.")) == true
+      localizedReason:"Authenticate before separately confirming a reset of Hearthside’s local app content.")) == true
   #else
     return false
   #endif

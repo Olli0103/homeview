@@ -5,6 +5,15 @@ This independent reconstruction is incomplete and is not an Apple product.
 Start with owner-only internal testing. No public link, external invitations or
 App Store release is part of this step.
 
+## Beta name
+
+The TestFlight listing is **Hearthside Display** (the shorter name **Hearthside**
+was unavailable in App Store Connect). The installed app is **Hearthside**, including
+its display name, onboarding,
+permission copy, assistant shortcut and timer widget. Internal source/target names
+and existing persistence keys remain unchanged; historical receipts retain the old
+working name. The pre-rename unsigned archive is not the release candidate.
+
 ## Scope and packaging
 
 Faces/editor, local everyday apps, mock smart home, explicit opt-in data sources
@@ -28,10 +37,10 @@ physical acceptance or authorize Home discovery.
 
 1. Sign the paid Developer account into Xcode → Settings → Accounts. Verify its
    team and App Store Connect access. Credentials and 2FA belong in Apple's UI.
-2. Check existing HomeView apps, registered identifiers and uploaded build numbers
-   before creating anything. `cloud.posselt.HomeView` and its `.TimerWidget` child
-   are **proposed, not confirmed registered** identifiers. Match an existing app
-   instead if present. Check MusicKit's App Service for the explicit App ID.
+2. Check existing Hearthside apps, registered identifiers and uploaded build numbers
+   before creating anything. `cloud.posselt.Hearthside` and its `.TimerWidget` child
+   were registered on 2 November 2026. MusicKit is enabled for the host App ID.
+   The App Store Connect app is Hearthside Display (6829618442).
 3. Select that team for both targets. Generate project changes with
    `Scripts/generate_project.py`. Pass `DEVELOPMENT_TEAM` and
    `HOMEVIEW_APP_BUNDLE_IDENTIFIER` as build settings. Never override
@@ -57,7 +66,7 @@ people or create a public testing link implicitly.
 
 ## What to Test (German, ready to paste)
 
-Erste interne HomeView-Beta für iPhone und iPad. Unabhängiger Prototyp,
+Erste interne Hearthside-Beta für iPhone und iPad. Unabhängiger Prototyp,
 keine Apple-App. Bitte Start, Face-Wechsel, Editor und gespeicherte Einstellungen,
 lokale Timer sowie Verhalten nach App-Wechsel und Neustart prüfen. Persönliche
 Datenquellen nur bewusst verbinden; auch abgelehnte Berechtigungen testen.
@@ -80,3 +89,10 @@ Simulation. Die Rekonstruktion ist unvollständig und nicht mit Apple verbunden.
 - [Apple required-reason APIs](https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api)
 - [Apple API categories and reasons](https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitype)
 - [MusicKit App Service](https://developer.apple.com/help/account/services/musickit)
+
+
+## Internal distribution boundary
+
+The first beta is exported with `testFlightInternalTestingOnly=true`. Apple must
+not distribute this build to external TestFlight groups or the App Store. This
+does not close any physical-device, live-account or original-reference gate.

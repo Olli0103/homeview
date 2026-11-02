@@ -38,7 +38,7 @@ import SwiftUI
       },schedule:{ _ in
         let manager=AlarmManager.shared
       let attributes = AlarmAttributes(
-        presentation: AlarmPresentation(alert: .init(title: "HomeView alarm")),
+        presentation: AlarmPresentation(alert: .init(title: "Hearthside alarm")),
         metadata: HomeViewAlarmMetadata(), tintColor: .orange)
       let days: [Locale.Weekday] = [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
       let repeats: Alarm.Schedule.Relative.Recurrence = recurrence == .once
@@ -60,7 +60,7 @@ import SwiftUI
     func activeIDs() throws -> Set<UUID> { Set(try AlarmManager.shared.alarms.map(\.id)) }
     func scheduleTest(seconds: TimeInterval = 60) async throws -> UUID {
       let id = UUID()
-      guard try await scheduleTimer(id:id,deadline:Date().addingTimeInterval(seconds),title:"HomeView test timer")
+      guard try await scheduleTimer(id:id,deadline:Date().addingTimeInterval(seconds),title:"Hearthside test timer")
       else {throw HomeError.invalidValue}
       return id
     }

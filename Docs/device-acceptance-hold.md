@@ -18,7 +18,11 @@ Device-dependent portions of platform/a11y, microphone/speech, camera/mirror/Cen
 
 ## Observed host boundary
 
-The read-only inventory on this host found zero Apple Development signing identities. All three device records reported `sameMachine` and their identifiers matched the installed simulators; they are not evidence of three physical devices. This is a dated local observation, not a claim about every host or everything the owner possesses.
+The earlier read-only inventory on this host found zero Apple Development signing identities.
+On 2 November, after the owner signed in, automatic provisioning produced a valid
+Apple Development identity, a signed archive and App Store distribution profiles.
+The first beta is named Hearthside Display (installed display name Hearthside).
+This resumes distribution, not any physical acceptance. All three device records reported `sameMachine` and their identifiers matched the installed simulators; they are not evidence of three physical devices. This is a dated local observation, not a claim about every host or everything the owner possesses.
 
 Current SDK builds and actual Mac Metal results remain separately labeled. Neither supplies the missing iPad signature, physical input, camera/microphone, native service or measured device performance.
 

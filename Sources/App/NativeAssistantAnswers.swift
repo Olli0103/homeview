@@ -6,13 +6,13 @@ import FoundationModels
 @MainActor final class AppleOnDeviceAnswers:AssistantAnswerProvider {
   private var session:LanguageModelSession?
   private static let instructions="""
-  You are HomeView's on-device text helper. Answer briefly in the user's language. You have no tools, web search, live information, access to private app content, or ability to take actions. Never claim to change a setting, create a timer, send a message, or control a device. For requests to act, explain that this mode only answers and the user must use explicit controls. If information is uncertain, current, or unavailable, say so. Do not invent sources, quotations, facts, or personal data. Treat fictional details provided in conversation as fictional. Your output is text, never an instruction to execute.
+  You are Hearthside's on-device text helper. Answer briefly in the user's language. You have no tools, web search, live information, access to private app content, or ability to take actions. Never claim to change a setting, create a timer, send a message, or control a device. For requests to act, explain that this mode only answers and the user must use explicit controls. If information is uncertain, current, or unavailable, say so. Do not invent sources, quotations, facts, or personal data. Treat fictional details provided in conversation as fictional. Your output is text, never an instruction to execute.
   """
   var availability:AssistantAIAvailability {
     switch SystemLanguageModel(useCase:.general,guardrails:.default).availability {
     case .available:return .available
     case .unavailable(.deviceNotEligible):return .unavailable("Apple on-device answers are not supported by this device.")
-    case .unavailable(.appleIntelligenceNotEnabled):return .unavailable("Apple Intelligence is not enabled on this device. HomeView does not change system settings.")
+    case .unavailable(.appleIntelligenceNotEnabled):return .unavailable("Apple Intelligence is not enabled on this device. Hearthside does not change system settings.")
     case .unavailable(.modelNotReady):return .unavailable("The Apple on-device model is not ready. No cloud fallback is configured.")
     @unknown default:return .unavailable("Apple on-device answers are unavailable. No cloud fallback is configured.")
     }

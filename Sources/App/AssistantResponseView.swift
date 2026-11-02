@@ -15,7 +15,7 @@ struct AssistantResponseView:View {
         CyanotypeExampleIllustration().frame(height:220).clipShape(RoundedRectangle(cornerRadius:22))
           .accessibilityLabel("Illustration: pale fern-like branches on a deep-blue background")
           .accessibilityIdentifier("assistant.card.image")
-        Text("HomeView illustration · Not a historical print").font(.caption).foregroundStyle(.secondary)
+        Text("Hearthside illustration · Not a historical print").font(.caption).foregroundStyle(.secondary)
       case .agenda(let events):
         ForEach(Array(events.enumerated()),id:\.offset) { index,event in
           VStack(alignment:.leading,spacing:8) {

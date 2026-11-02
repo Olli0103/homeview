@@ -23,7 +23,7 @@ final class RecipeHandoffController {
   var offering:Bool { activity != nil }
   func offer(_ transfer:RecipeTransfer) throws {
     guard Self.canPublish else {
-      status="Handoff is unavailable here. Use two configured, signed HomeView apps on supported devices. No recipe was sent."
+      status="Handoff is unavailable here. Use two configured, signed Hearthside apps on supported devices. No recipe was sent."
       return
     }
     let bytes=try RecipeContinuity.encode(transfer)
@@ -37,7 +37,7 @@ final class RecipeHandoffController {
     item.userInfo=["payload":bytes]
     activity=item;offeredDocument=transfer.document
     item.becomeCurrent()
-    status="Offered while HomeView is active. A receiving app is not confirmed; nothing is marked delivered."
+    status="Offered while Hearthside is active. A receiving app is not confirmed; nothing is marked delivered."
   }
   func update(recipe:RecipeDocument,step:Int) {
     guard let activity else { return }

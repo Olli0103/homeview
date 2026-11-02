@@ -11,7 +11,7 @@ private struct SnapshotPrivacyProtection: ViewModifier {
       if phase != .active {
         ZStack {
           Color.black
-          Label("HomeView locked", systemImage: "lock.shield")
+          Label("Hearthside locked", systemImage: "lock.shield")
             .font(.title2).foregroundStyle(.white)
         }.ignoresSafeArea().accessibilityIdentifier("privacy.snapshot.shield")
       }
@@ -39,7 +39,7 @@ private struct SnapshotErrorAlert:ViewModifier {
     let presentation=Binding(get:{presented},set:{ value in
       if generation==ticket {presented=value}
     })
-    return content.alert("HomeView",isPresented:presentation) {
+    return content.alert("Hearthside",isPresented:presentation) {
       Button("OK",role:.cancel) {
         guard active,generation==ticket,message==expected else {return}
         message=nil

@@ -1072,7 +1072,7 @@ struct AlarmsView: View {
           .background(.black.opacity(0.08),in:Capsule()).foregroundStyle(.primary)
       }.padding(.horizontal,32).accessibilityIdentifier("alarm.add")
       Text(
-        "Times follow this device. Without a permitted iPhone/iPad system alert, alarms ring only while HomeView is active. Missed foreground alerts are not replayed."
+        "Times follow this device. Without a permitted iPhone/iPad system alert, alarms ring only while Hearthside is active. Missed foreground alerts are not replayed."
       ).font(.system(size: 16)).foregroundStyle(.gray).padding(.horizontal, 32).padding(.bottom, 24)
     }.background(.white).foregroundStyle(.black).buttonStyle(.plain)
   }

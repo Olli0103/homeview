@@ -37,7 +37,7 @@ struct AnswerSpeechSettingsView:View {
           Text(model.answerSpeech.status).accessibilityIdentifier("answer.speech.settings.status")
           Text("Changing voice, language, rate or mute stops the current readout. Unmuting does not replay it. Timer chimes have priority; music, podcasts, microphone capture, calls, navigation, lock and background stop readout. Nothing resumes automatically. Your OS controls which ordinary system voices are available.")
             .font(.callout).foregroundStyle(.gray)
-          Text("Up to 4000 characters from the latest answer. Voice choice and rate are kept only for this app process. HomeView does not download voice packs or request Personal Voice authorization.")
+          Text("Up to 4000 characters from the latest answer. Voice choice and rate are kept only for this app process. Hearthside does not download voice packs or request Personal Voice authorization.")
             .font(.callout).foregroundStyle(.gray)
         }.padding(24)
       }

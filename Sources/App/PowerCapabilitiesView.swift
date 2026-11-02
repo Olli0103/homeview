@@ -30,7 +30,7 @@ struct PowerCapabilitiesView:View {
         VStack(alignment:.leading,spacing:20) {
           Text("Adapter adequacy: Not available").font(.headline)
             .accessibilityIdentifier("power.assessment")
-          Text("HomeView does not determine whether this device’s adapter is sufficient. No adapter warning or replacement advice is inferred from battery percentage, charging state, Low Power Mode or temperature.")
+          Text("Hearthside does not determine whether this device’s adapter is sufficient. No adapter warning or replacement advice is inferred from battery percentage, charging state, Low Power Mode or temperature.")
             .accessibilityIdentifier("power.noheuristics")
           #if os(macOS)
             MacAdapterReport()
@@ -38,7 +38,7 @@ struct PowerCapabilitiesView:View {
             Text("Newer Mac Catalyst SDKs can expose adapter metadata, but this app does not integrate or assess that path. No adequate-power result is claimed.")
               .accessibilityIdentifier("power.platform")
           #elseif os(iOS) || os(visionOS)
-            Text("Public device APIs expose battery state and charge level, not a generic wattage or adequacy result. HomeView does not turn on battery monitoring for this information page.")
+            Text("Public device APIs expose battery state and charge level, not a generic wattage or adequacy result. Hearthside does not turn on battery monitoring for this information page.")
               .accessibilityIdentifier("power.platform")
           #else
             Text("This app has no adapter measurement or adequacy assessment on this platform. No value is guessed.")

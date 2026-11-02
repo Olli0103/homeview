@@ -311,7 +311,7 @@ struct SharedAlbumControls: View {
           .disabled(model.albumCatalogue.busy || importing)
           .accessibilityIdentifier("photos.shared.load")
         if !model.albumCatalogue.albums.isEmpty {
-          Text("Keep updated lets new photos from the chosen album appear on this shared display while HomeView is active. Up to ten copies are kept until you disconnect.")
+          Text("Keep updated lets new photos from the chosen album appear on this shared display while Hearthside is active. Up to ten copies are kept until you disconnect.")
             .font(.system(size:statusSize)).foregroundStyle(.black.opacity(0.65))
             .accessibilityIdentifier("photos.shared.display.notice")
         }
@@ -329,7 +329,7 @@ struct SharedAlbumControls: View {
       }
       if let grant=model.data.albumDisplay {
         Text(grant.album.title).font(.system(size:albumTitleSize,weight:.semibold))
-        Text("New photos from this album appear on this shared display while HomeView is active. Up to ten photos are kept.")
+        Text("New photos from this album appear on this shared display while Hearthside is active. Up to ten photos are kept.")
           .font(.system(size:statusSize)).foregroundStyle(.black.opacity(0.65))
         Button("Update now") { model.refreshDisplayAlbum() }
           .disabled(model.albumUpdates.busy).accessibilityIdentifier("photos.shared.refresh")

@@ -193,7 +193,7 @@ final class AlbumDisplaySession {
     if value, revokeIfDenied() { return }
     if album != nil {
       dirty = true
-      status = value ? "Album update pending." : "Updates paused while HomeView is inactive."
+      status = value ? "Album update pending." : "Updates paused while Hearthside is inactive."
     }
     reconcileObserver()
   }

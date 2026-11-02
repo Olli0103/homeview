@@ -1145,7 +1145,7 @@ final class AppModel {
     #if canImport(AlarmKit) && os(iOS) && !targetEnvironment(macCatalyst)
       if systemAlarmsAllowed {
         do { guard try nativeAlarms.canResetLocalState() else {
-          localResetStatus="HomeView still has a system alarm. Cancel it before resetting local data."
+          localResetStatus="Hearthside still has a system alarm. Cancel it before resetting local data."
           return false
         } } catch {
           localResetStatus="System-alarm state could not be verified. Nothing was reset. Resolve alarm access in system settings first."

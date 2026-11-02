@@ -36,7 +36,7 @@ import Combine
             ForEach(model.data.timers) { t in Text(t.display(at: model.now)) }
           }
           Section("World Clock") { Text(model.clock, style: .time) }
-        }.navigationTitle("HomeView")
+        }.navigationTitle("Hearthside")
       }
       .onReceive(scenePhase == .active ? pulse.eraseToAnyPublisher()
         : Empty<Date,Never>().eraseToAnyPublisher()) { _ in model.tick() }

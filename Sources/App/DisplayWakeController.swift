@@ -34,7 +34,7 @@ final class DisplayWakeController {
       if enabled, activity == nil {
         activity = ProcessInfo.processInfo.beginActivity(
           options: [.idleDisplaySleepDisabled, .idleSystemSleepDisabled],
-          reason: "HomeView foreground display")
+          reason: "Hearthside foreground display")
       }
       if !enabled, let token = activity {
         ProcessInfo.processInfo.endActivity(token)

@@ -34,7 +34,7 @@ enum TimerActivityDelivery: Equatable, Sendable {
     switch self {
     case .active: "ActivityKit accepted timer updates. Visibility is controlled by the system."
     case .ended: "No own timer activity is active."
-    case .waitingForExplicitStart: "Start a timer or choose Show timer activity while HomeView is open."
+    case .waitingForExplicitStart: "Start a timer or choose Show timer activity while Hearthside is open."
     case .unavailable: "Live Activities are unavailable or disabled in system settings."
     case .synthetic(let active): "Synthetic timer activity (\(active ? "active":"ended")) · No system activity created."
     }

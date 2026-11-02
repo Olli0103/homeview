@@ -20,9 +20,9 @@ struct HomeViewTimerWidget:Widget {
   var body:some WidgetConfiguration {
     ActivityConfiguration(for:HomeViewTimerAttributes.self) { context in
       VStack(alignment:.leading,spacing:8) {
-        Label("HomeView timers",systemImage:"timer").font(.headline)
+        Label("Hearthside timers",systemImage:"timer").font(.headline)
         TimerActivityValue(state:context.state,stale:context.isStale).font(.title)
-        if context.isStale { Text("Open HomeView for current timers.").font(.caption) }
+        if context.isStale { Text("Open Hearthside for current timers.").font(.caption) }
         else {Text("\(context.state.runningCount) running · \(context.state.pausedCount) paused").font(.caption)}
       }.padding().activityBackgroundTint(.black).activitySystemActionForegroundColor(.white)
         .foregroundStyle(.white)
@@ -33,7 +33,7 @@ struct HomeViewTimerWidget:Widget {
           TimerActivityValue(state:context.state,stale:context.isStale).frame(maxWidth:130)
         }
         DynamicIslandExpandedRegion(.bottom) {
-          if context.isStale {Text("Open HomeView for current timers.")}
+          if context.isStale {Text("Open Hearthside for current timers.")}
           else {Text("\(context.state.runningCount) running · \(context.state.pausedCount) paused")}
         }
       } compactLeading: {Image(systemName:"timer")}

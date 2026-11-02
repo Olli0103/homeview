@@ -52,7 +52,7 @@ struct AssistantResponseDocument:Equatable,Sendable {
     var title:String {self == .museum ? "Science Museum Group":"Bundled sample"}
     var detail:String {
       self == .museum
-        ? "Album of cyanotypes of British and Foreign Ferns. This saved factual example was checked on 20 October 2026; it is not a live search. The illustration is drawn by HomeView, not a museum image."
+        ? "Album of cyanotypes of British and Foreign Ferns. This saved factual example was checked on 20 October 2026; it is not a live search. The illustration is drawn by Hearthside, not a museum image."
         : "Fictional agenda/message entries or the app’s bundled demo recipe. No personal calendar, message or account was searched."
     }
     var url:URL? {
@@ -70,7 +70,7 @@ struct AssistantResponseDocument:Equatable,Sendable {
     let card:String
     switch content {
     case .illustration:
-      card="Illustration: pale fern-like branches on a deep-blue background. HomeView illustration. Not a historical print."
+      card="Illustration: pale fern-like branches on a deep-blue background. Hearthside illustration. Not a historical print."
     case .agenda(let events):
       card=events.map {[$0.day,$0.title,$0.detail].joined(separator:". ")}.joined(separator:"\n")
     case .message(let message):

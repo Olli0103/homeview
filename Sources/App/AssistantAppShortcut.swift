@@ -21,7 +21,7 @@ import Observation
 }
 
 struct OpenHomeViewAssistantIntent:AppIntent {
-  static var title:LocalizedStringResource { "Open HomeView Assistant" }
+  static var title:LocalizedStringResource { "Open Hearthside Assistant" }
   static var description:IntentDescription? { "Open the request field. Does not send, record, play audio or unlock personal content." }
   static var authenticationPolicy:IntentAuthenticationPolicy { .requiresLocalDeviceAuthentication }
   // Compatibility for supported deployments before the foreground-modes API.

@@ -24,7 +24,7 @@ struct RecipeHandoffView: View {
           Text("Done").frame(minWidth:minimumHitSide,minHeight:minimumHitSide).contentShape(Rectangle())
         }.accessibilityIdentifier("recipe.handoff.done")
       }
-      Text("Continue cooking in HomeView on another device.").font(.system(size:titleSize))
+      Text("Continue cooking in Hearthside on another device.").font(.system(size:titleSize))
       Text("Recipe text, ingredients and source URLs are not copied. Save the same recipe on both devices first.")
         .font(.system(size:policySize)).foregroundStyle(.black.opacity(0.65))
       Text(model.recipeHandoff.status).font(.system(size:statusSize))

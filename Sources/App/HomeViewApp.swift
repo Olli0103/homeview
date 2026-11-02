@@ -21,7 +21,7 @@ struct HomeViewReplicaApp: App {
       .defaultSize(width: 740, height: 760)
       .commands {
         CommandGroup(after: .appInfo) {
-          Button("HomeView Faces") { model.route = .face }.keyboardShortcut(
+          Button("Hearthside Faces") { model.route = .face }.keyboardShortcut(
             "h", modifiers: [.command])
           Button("All Apps") { model.route = .drawer }.keyboardShortcut("a", modifiers: [.command])
           Button("Control Center") { model.route = .controlCenter }.keyboardShortcut(

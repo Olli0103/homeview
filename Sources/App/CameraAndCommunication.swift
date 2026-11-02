@@ -354,7 +354,7 @@ struct FindMyView: View {
           Text("The demo tone uses this device only, never an AirTag.")
             .font(.system(size:18)).foregroundStyle(.secondary)
           Divider()
-          Text("This website is for Apple devices. Use Apple's Find My app for AirTags or shared people. It opens outside HomeView; no locations are imported here.")
+          Text("This website is for Apple devices. Use Apple's Find My app for AirTags or shared people. It opens outside Hearthside; no locations are imported here.")
             .font(.system(size:18)).foregroundStyle(.secondary)
             .accessibilityIdentifier("findmy.website.scope")
           Button("Open Apple's Find Devices website") { openFindDevices() }
@@ -371,7 +371,7 @@ struct FindMyView: View {
     // Public Apple website, not a private native-app scheme or account API.
     openURL(URL(string:"https://www.icloud.com/find/")!) { accepted in
       websiteStatus=accepted
-        ? "Website handoff accepted · No location data returned to HomeView"
+        ? "Website handoff accepted · No location data returned to Hearthside"
         : "Find Devices website could not be opened."
     }
   }

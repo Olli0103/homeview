@@ -484,7 +484,7 @@ struct FaceTimeLanding: View {
       Image(systemName: "video.fill").font(.system(size: 60)).foregroundStyle(.green)
       Text("FaceTime").font(.system(size: 31, weight: .semibold))
       SystemFaceTimeAction().padding(.horizontal, 32)
-      Text("Start calls in the FaceTime app. HomeView does not receive or control its calls.")
+      Text("Start calls in the FaceTime app. Hearthside does not receive or control its calls.")
         .font(.system(size: 18)).multilineTextAlignment(.center).foregroundStyle(.gray)
       Divider()
       Button { previewExpanded.toggle() } label: {

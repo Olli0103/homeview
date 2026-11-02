@@ -8,7 +8,7 @@ import Foundation
     let m=AppModel();var checks:[String:Bool]=[:]
     func visibleCardFragments(_ example:AssistantResponseExample)->[String] {
       switch example {
-      case .knowledge:["pale fern-like branches","HomeView illustration","Not a historical print"]
+      case .knowledge:["pale fern-like branches","Hearthside illustration","Not a historical print"]
       case .agenda:["Wednesday, April 1","Riley’s birthday","All day","Friday, April 17","Studio celebration","3:00–4:00 PM","Tuesday, April 28","Sam’s birthday"]
       case .message:["Avery Morgan","Today, 9:41 AM","I’ll arrive at Central Station","Read-only excerpt"]
       case .recipe:["Butternut Squash Soup","Home Cookbook","35 min","Serves 4"]

@@ -40,7 +40,7 @@ private struct MusicArtworkInformation: View {
           VStack(alignment: .leading, spacing: 8) {
             Text("Lyrics").font(.title2.bold())
             Text(source == .catalog
-              ? "Lyric text is not supplied by this connection, even when Apple Music has lyrics for a song. HomeView does not fetch lyrics from other sites."
+              ? "Lyric text is not supplied by this connection, even when Apple Music has lyrics for a song. Hearthside does not fetch lyrics from other sites."
               : "No lyrics are included with the demo audio. No sample text is presented as song lyrics.")
               .accessibilityIdentifier("music.lyrics.availability")
           }

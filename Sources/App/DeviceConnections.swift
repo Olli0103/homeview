@@ -167,7 +167,7 @@ final class SystemDeviceDataProvider: DeviceDataProvider {
       let context = LAContext()
       return
         (try? await context.evaluatePolicy(
-          .deviceOwnerAuthentication, localizedReason: "Unlock personal content in HomeView."
+          .deviceOwnerAuthentication, localizedReason: "Unlock personal content in Hearthside."
         )) == true
     #else
       return false
@@ -227,7 +227,7 @@ final class FixtureDeviceDataProvider: DeviceDataProvider {
   }
   func addReminder(_ title: String) async throws -> String {
     let id = UUID().uuidString
-    list.append(DeviceReminder(id: id, title: title, completed: false, listTitle: "HomeView"))
+    list.append(DeviceReminder(id: id, title: title, completed: false, listTitle: "Hearthside"))
     return id
   }
   func completeReminder(_ id: String, completed: Bool) async throws {

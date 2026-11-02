@@ -8,7 +8,7 @@ struct TimerActivitySettingsView:View {
         Section {
           Toggle("Own timer activity",isOn:Binding(get:{model.timerActivitiesEnabled},set:{model.setTimerLiveActivities($0)}))
             .accessibilityIdentifier("timer.activity.enabled")
-          Text("Shows timer counts and the next countdown outside HomeView. No timer titles, profiles, or other personal content are shared.")
+          Text("Shows timer counts and the next countdown outside Hearthside. No timer titles, profiles, or other personal content are shared.")
           Button("Show timer activity") {model.showTimerLiveActivity()}
             .disabled(!model.timerActivitiesEnabled)
             .accessibilityIdentifier("timer.activity.show")
@@ -26,8 +26,8 @@ struct TimerActivitySettingsView:View {
         }
         Section("Limits") {
           Text("This is a timer display, not an alarm. It does not add sound or guarantee a background alert.")
-          Text("The system controls visibility and duration. If a countdown becomes stale while HomeView is suspended, open the app to refresh or remove it.")
-          Text("Turning this off ends only HomeView's own timer activity. Other apps and system activities are not controlled.")
+          Text("The system controls visibility and duration. If a countdown becomes stale while Hearthside is suspended, open the app to refresh or remove it.")
+          Text("Turning this off ends only Hearthside's own timer activity. Other apps and system activities are not controlled.")
         }
       }.navigationTitle("Timer Live Activities")
         .toolbar {ToolbarItem(placement:.confirmationAction) {Button("Done") {dismiss()}.accessibilityIdentifier("timer.activity.done")}}

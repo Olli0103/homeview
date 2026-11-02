@@ -6,7 +6,7 @@ struct SetupIntroductionView:View {
   var body:some View {
     VStack(spacing:0) {
       HStack {
-        Text("Welcome to HomeView").font(.title2.bold());Spacer()
+        Text("Welcome to Hearthside").font(.title2.bold());Spacer()
         Button("Not now") { _ = model.endIntroduction(deferred:true) }
           .accessibilityIdentifier("setup.later")
       }.padding(24)
@@ -20,11 +20,11 @@ struct SetupIntroductionView:View {
             .accessibilityIdentifier("setup.step")
           if step==0 {
             Text("This device and the demo").font(.title2.bold())
-            Text("HomeView is an independent prototype, not Apple HomeView or a system replacement. It starts with synthetic demo content. Apple Home stays disconnected; this setup cannot discover or control your home.")
+            Text("Hearthside is an independent prototype, not Apple HomeView or a system replacement. It starts with synthetic demo content. Apple Home stays disconnected; this setup cannot discover or control your home.")
               .accessibilityIdentifier("setup.scope")
             Text("Device and OS support differ. On-device answers, voice input, camera, alarms and other native services can be unavailable. Adapter adequacy is not measured. A successful setup does not enable missing system features.")
               .accessibilityIdentifier("setup.capabilities")
-            Text("There is no app store here. HomeView cannot install arbitrary third-party apps. Only the built-in views and explicitly connected services are offered.")
+            Text("There is no app store here. Hearthside cannot install arbitrary third-party apps. Only the built-in views and explicitly connected services are offered.")
               .accessibilityIdentifier("setup.nostore")
           } else if step==1 {
             Text("Owner, profiles and privacy").font(.title2.bold())
@@ -38,7 +38,7 @@ struct SetupIntroductionView:View {
             Text("Choose services later").font(.title2.bold())
             Text("Nothing on this page requests permission or connects an account. You can use the demo now, then open Settings when you choose to connect. Denying access keeps the demo usable and you can try again later.")
               .accessibilityIdentifier("setup.permission")
-            Text("Calendar and Reminders: system permission plus device authentication. Photos: choose images in the system picker, or explicitly approve an album for display. Apple Music: system authorization and an eligible account/subscription may be required; HomeView makes no purchase. Weather and public podcast feeds: optional network access, not an Apple account import.")
+            Text("Calendar and Reminders: system permission plus device authentication. Photos: choose images in the system picker, or explicitly approve an album for display. Apple Music: system authorization and an eligible account/subscription may be required; Hearthside makes no purchase. Weather and public podcast feeds: optional network access, not an Apple account import.")
               .accessibilityIdentifier("setup.services")
             Text("Settings offers Connect and Disconnect for supported data services. Disconnect clears the app’s cached view and future automatic reconnection; it does not revoke OS permission or delete your source calendar, reminders, library or cloud account. System permissions can be changed in system settings.")
               .accessibilityIdentifier("setup.disconnect")

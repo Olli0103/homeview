@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-02",
+  "app_store_connect_app": "https://appstoreconnect.apple.com/apps/6829618442/testflight",
+  "listing_name": "Hearthside Display",
+  "installed_display_name": "Hearthside",
+  "version": "0.1.0",
+  "build": "1",
+  "archive_succeeded": true,
+  "distribution_export_succeeded": true,
+  "signatures_verified": true,
+  "matching_dsyms": true,
+  "source_manifest_unchanged": true,
+  "testflight_internal_only": true,
+  "targeted_core_tests": {
+    "completed": 41,
+    "passed": 41,
+    "failures": 0
+  },
+  "ipa_sha256": "8eee22ecaf13b36753a09617eec7ea62c8340d23b3d1eb3b52b0e62e9a1c701d",
+  "upload_attempted": false,
+  "apple_processing_verified": false,
+  "hardware_acceptance": false,
+  "real_home_enabled": false,
+  "internal_identifiers_unchanged": true,
+  "prior_attempts": [
+    "Missing development provisioning-profile file: first archive failed; original log retained.",
+    "Intermediate signed archive retained; Xcode keeps internal CFBundleName HomeViewReplica even with explicit name. Visible CFBundleDisplayName is Hearthside."
+  ],
+  "artifact_locator": "Private external release directory homeview-testflight-20261102/hearthside"
+}

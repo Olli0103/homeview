@@ -113,7 +113,7 @@ enum NativeServiceError: Error, LocalizedError {
         guard let source = store.defaultCalendarForNewReminders()?.source else {
           throw NativeServiceError.unavailable
         }
-        created.title = "HomeView"
+        created.title = "Hearthside"
         created.source = source
         try store.saveCalendar(created, commit: true)
         UserDefaults.standard.set(created.calendarIdentifier, forKey: ownListKey)
