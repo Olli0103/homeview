@@ -21,6 +21,8 @@ The default build cache is under the current user's Library/Developer/HomeViewPu
 
 ## Current scope
 
+First iPhone/iPad beta: [TestFlight preparation and Apple handoff](Docs/testflight.md).
+
 - iPad and iPhone share the square display UI. Mac, TV and Vision targets share adapted views. Watch is a reduced companion.
 - Editable faces and per-face complication persistence, photos, calendar, weather, timers, alarms, recipes, browser, music, mirror and local communication simulations.
 - Opt-in EventKit, MusicKit, selected-photo/shared-album import, public weather, on-device Speech and explicit Messages/FaceTime system handoffs where supported.

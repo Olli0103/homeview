@@ -1,0 +1,41 @@
+{
+  "signed": false,
+  "upload_attempted": false,
+  "apple_processing_verified": false,
+  "proposed_identifier_not_registered": true,
+  "bundles": [
+    {
+      "bundle": "HomeViewReplica.app",
+      "id": "cloud.posselt.HomeView",
+      "version": "0.1.0",
+      "build": "1",
+      "minimum_os": "26.1",
+      "executable_sha256": "befca858142cf84afc02776c1729c0a6894d70586ed0331e6ec817281ccb93a0",
+      "dSYM_UUIDs": [
+        "UUID: 14F10A34-435F-3C35-A7F4-F5FF86C4C0E8"
+      ]
+    },
+    {
+      "bundle": "HomeViewTimerWidget.appex",
+      "id": "cloud.posselt.HomeView.TimerWidget",
+      "version": "0.1.0",
+      "build": "1",
+      "minimum_os": "26.1",
+      "executable_sha256": "d0105f1902ccca8de97d4930af1e94814ee47165679eab6c781fc85c61b61efa",
+      "dSYM_UUIDs": [
+        "UUID: 256FFF1D-7BE0-3B4C-AE99-B5676710A438"
+      ]
+    }
+  ],
+  "assistant_metadata_present": true,
+  "source_manifest_unchanged": true,
+  "date": "2026-11-02",
+  "source_base": "6902c658f577a3e3af2992aebe0ba194a9ad196a",
+  "scope": "Release iphoneos arm64 archive packaging only; no new runtime or physical acceptance",
+  "result": "ARCHIVE SUCCEEDED",
+  "source_manifest_sha256": "638bfae6b113cde6b5725404d07e64bb53f19bf7e05a7079e7df36f5788e2614",
+  "privacy_manifest_sha256": "57f557ce71de4f1c0f7b39373c76efb1745ed81af6cc38ecbbb6ac46ebbb1c3a",
+  "warning_summary": "Existing source warnings: ineffective preconcurrency, deprecated coordinateSpace and localized interpolation, unreachable catch, immutable variable. Not a warning-free build.",
+  "blocker": "Apple account/team must be signed into this Xcode; no local signing identities or provisioning profiles at preflight. Owner confirmed paid membership exists.",
+  "artifact_locator": "Private external release directory: homeview-testflight-20261102; unsigned archive, result bundle, full log, source manifest and verification retained. No IPA exported."
+}

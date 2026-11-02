@@ -14,7 +14,7 @@ def buildsettings(d):return '{ '+ ' '.join((q(k) if '[' in k else k)+' = '+(v if
 files=[]
 for p in sorted(p for p in (root/'Sources').rglob('*') if p.suffix in ['.swift', '.metal']):
     rel=str(p.relative_to(root));kind='sourcecode.metal' if p.suffix=='.metal' else 'sourcecode.swift';obj(rel,'{isa = PBXFileReference; lastKnownFileType = '+kind+'; path = '+q(rel)+'; sourceTree = SOURCE_ROOT;}');files.append(rel)
-for rel,kind in [('Resources/Assets.xcassets','folder.assetcatalog'),('Resources/demo-tone.wav','audio.wav'),('Resources/podcast-test-audio.wav','audio.wav'),('Resources/podcast-caption-test.mp4','file'),('Resources/demo-artwork.mp4','file'),('Resources/FeedKit-LICENSE.txt','text'),('Tests/UITests/HomeViewUITests.swift','sourcecode.swift'),('Tests/TVUITests/HomeViewTVUITests.swift','sourcecode.swift'),('Tests/WatchUITests/HomeViewWatchUITests.swift','sourcecode.swift'),('Tests/VisionUITests/HomeViewVisionUITests.swift','sourcecode.swift')]:obj(rel,'{isa = PBXFileReference; lastKnownFileType = '+kind+'; path = '+q(rel)+'; sourceTree = SOURCE_ROOT;}')
+for rel,kind in [('Resources/PrivacyInfo.xcprivacy','text.xml'),('Resources/Assets.xcassets','folder.assetcatalog'),('Resources/demo-tone.wav','audio.wav'),('Resources/podcast-test-audio.wav','audio.wav'),('Resources/podcast-caption-test.mp4','file'),('Resources/demo-artwork.mp4','file'),('Resources/FeedKit-LICENSE.txt','text'),('Tests/UITests/HomeViewUITests.swift','sourcecode.swift'),('Tests/TVUITests/HomeViewTVUITests.swift','sourcecode.swift'),('Tests/WatchUITests/HomeViewWatchUITests.swift','sourcecode.swift'),('Tests/VisionUITests/HomeViewVisionUITests.swift','sourcecode.swift')]:obj(rel,'{isa = PBXFileReference; lastKnownFileType = '+kind+'; path = '+q(rel)+'; sourceTree = SOURCE_ROOT;}')
 products=[];targets=[];schemes=[]
 package=obj('FeedKitPackage','{isa = XCRemoteSwiftPackageReference; repositoryURL = '+q('https://github.com/nmdias/FeedKit.git')+'; requirement = {kind = exactVersion; version = 10.9.4;};}')
 feedproduct=obj('FeedKitProduct','{isa = XCSwiftPackageProductDependency; package = '+package+'; productName = FeedKit;}')
@@ -25,7 +25,7 @@ def make_target(name,platform,sources,uitest=False,widget=False,test_target='Hom
     sp=obj(name+'sources','{isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = '+arr(src)+'; runOnlyForDeploymentPostprocessing = 0;}')
     res=[]
     if not uitest and not widget:
-        for f in ['Resources/Assets.xcassets','Resources/demo-tone.wav','Resources/podcast-test-audio.wav','Resources/podcast-caption-test.mp4','Resources/demo-artwork.mp4','Resources/FeedKit-LICENSE.txt']:
+        for f in ['Resources/PrivacyInfo.xcprivacy','Resources/Assets.xcassets','Resources/demo-tone.wav','Resources/podcast-test-audio.wav','Resources/podcast-caption-test.mp4','Resources/demo-artwork.mp4','Resources/FeedKit-LICENSE.txt']:
             if platform=='watch' and f=='Resources/demo-artwork.mp4':continue
             res.append(obj(name+f,'{isa = PBXBuildFile; fileRef = '+uid(f)+';}'))
     rp=obj(name+'resources','{isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = '+arr(res)+'; runOnlyForDeploymentPostprocessing = 0;}')
@@ -39,10 +39,13 @@ def make_target(name,platform,sources,uitest=False,widget=False,test_target='Hom
     if uitest and platform=='watch':settings.update({'SDKROOT':'watchos','SUPPORTED_PLATFORMS':'(watchos, watchsimulator)','TARGETED_DEVICE_FAMILY':'4','WATCHOS_DEPLOYMENT_TARGET':'26.0','TEST_TARGET_NAME':test_target})
     if uitest and platform=='vision':settings.update({'SDKROOT':'xros','SUPPORTED_PLATFORMS':'(xros, xrsimulator)','TARGETED_DEVICE_FAMILY':'7','XROS_DEPLOYMENT_TARGET':'26.0'})
     if widget:settings.update({'SDKROOT':'iphoneos','SUPPORTED_PLATFORMS':'(iphoneos, iphonesimulator)','TARGETED_DEVICE_FAMILY':'1,2','IPHONEOS_DEPLOYMENT_TARGET':'26.1','GENERATE_INFOPLIST_FILE':'NO','INFOPLIST_FILE':'Resources/TimerWidgetInfo.plist','SKIP_INSTALL':'YES','APPLICATION_EXTENSION_API_ONLY':'YES','SUPPORTS_MACCATALYST':'NO','INFOPLIST_KEY_CFBundleDisplayName':'HomeView Timers'})
-    if widget:settings['PRODUCT_BUNDLE_IDENTIFIER']='org.example.HomeViewReplica.TimerWidget'
+    # One override keeps the embedded extension prefixed with the host app ID.
+    if name=='HomeViewReplica' or widget:
+        settings['HOMEVIEW_APP_BUNDLE_IDENTIFIER']='org.example.HomeViewReplica'
+        settings['PRODUCT_BUNDLE_IDENTIFIER']='$(HOMEVIEW_APP_BUNDLE_IDENTIFIER)'+('.TimerWidget' if widget else '')
     configs=[]
     for conf in ['Debug','Release']:
-        s=dict(settings);s['SWIFT_OPTIMIZATION_LEVEL']='-Onone' if conf=='Debug' else '-O';s['DEBUG_INFORMATION_FORMAT']='dwarf';s['SWIFT_ACTIVE_COMPILATION_CONDITIONS']='DEBUG' if conf=='Debug' else ''
+        s=dict(settings);s['SWIFT_OPTIMIZATION_LEVEL']='-Onone' if conf=='Debug' else '-O';s['DEBUG_INFORMATION_FORMAT']='dwarf' if conf=='Debug' else 'dwarf-with-dsym';s['SWIFT_ACTIVE_COMPILATION_CONDITIONS']='DEBUG' if conf=='Debug' else ''
         configs.append(obj(name+conf,'{isa = XCBuildConfiguration; buildSettings = '+buildsettings(s)+'; name = '+conf+';}'))
     cl=obj(name+'config','{isa = XCConfigurationList; buildConfigurations = '+arr(configs)+'; defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;}')
     deps=[]

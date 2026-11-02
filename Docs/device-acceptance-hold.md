@@ -1,5 +1,11 @@
 # Physical acceptance is on hold, not passed
 
+**2 November 2026 update:** The owner requested the first TestFlight version and
+confirmed a paid Developer account exists. Signing/distribution preparation is
+therefore resumed. Other physical acceptances remain unproved; real Home setup is
+still forbidden. See [the beta handoff](testflight.md). The old request not to ask
+for signing applied to the previous hold, not this newly requested distribution.
+
 22 October 2026. The owner has no test iPad/signing information available for now and explicitly asked to leave device acceptances open. Do not repeatedly ask for a device or Apple Team ID while this hold applies.
 
 **Software implementation, synthetic tests, simulator work and available-source comparison continue independently.** This is not a cancellation of the HomeView backlog and not permission to close unmet original criteria.
