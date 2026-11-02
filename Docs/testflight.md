@@ -96,3 +96,18 @@ Simulation. Die Rekonstruktion ist unvollständig und nicht mit Apple verbunden.
 The first beta is exported with `testFlightInternalTestingOnly=true`. Apple must
 not distribute this build to external TestFlight groups or the App Store. This
 does not close any physical-device, live-account or original-reference gate.
+
+## Verified distribution result
+
+Hearthside Display **0.1.0 (1)** passed Apple validation and uploaded successfully.
+Apple reports `VALID`, `INTERNAL_ONLY`, and App Store Connect shows `Ready to Test`.
+The internal Owner group contains one tester (the owner, status Invited) and this
+one build, displayed as Testing in that group; automatic distribution is disabled. What to Test notes and beta
+description were saved and read back. The temporary Developer upload key was
+revoked and its task-local private file removed. No external group or public link
+was created. No physical installation or device runtime is claimed.
+
+The native Xcode Apple-ID upload attempt failed before delivery with a missing
+`Actor/relationships/providerId` reference. The exported IPA was validated and
+uploaded by `altool` with a temporary API key, preserving its exact SHA-256.
+See [the sanitized receipt](verification/hearthside-testflight-20261102.json).

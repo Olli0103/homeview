@@ -17,8 +17,8 @@
     "failures": 0
   },
   "ipa_sha256": "8eee22ecaf13b36753a09617eec7ea62c8340d23b3d1eb3b52b0e62e9a1c701d",
-  "upload_attempted": false,
-  "apple_processing_verified": false,
+  "upload_attempted": true,
+  "apple_processing_verified": true,
   "hardware_acceptance": false,
   "real_home_enabled": false,
   "internal_identifiers_unchanged": true,
@@ -26,5 +26,28 @@
     "Missing development provisioning-profile file: first archive failed; original log retained.",
     "Intermediate signed archive retained; Xcode keeps internal CFBundleName HomeViewReplica even with explicit name. Visible CFBundleDisplayName is Hearthside."
   ],
-  "artifact_locator": "Private external release directory homeview-testflight-20261102/hearthside"
+  "artifact_locator": "Private external release directory homeview-testflight-20261102/hearthside",
+  "apple_validation_passed": true,
+  "upload_via_temporary_api_key": true,
+  "native_xcode_upload_error": "ASC_PROVIDER_RELATIONSHIP_MISSING before delivery; original log retained",
+  "testers": {
+    "internal_group": "Owner",
+    "count": 1,
+    "owner_only": true,
+    "automatic_distribution": false,
+    "builds": 1,
+    "owner_status": "Invited",
+    "assigned_build_status": "Testing",
+    "assigned_version_build": "0.1.0 (1)"
+  },
+  "upload_succeeded": true,
+  "apple_build_status": "VALID",
+  "testflight_status": "Ready to Test",
+  "build_audience": "INTERNAL_ONLY",
+  "delivery_id": "3d9e9aab-3dbe-4f59-bd3a-ae7366afc80f",
+  "expires": "2027-01-31",
+  "temporary_api_key_revoked": true,
+  "temporary_private_key_removed": true,
+  "physical_installation_verified": false,
+  "group_build_readback_verified": true
 }
